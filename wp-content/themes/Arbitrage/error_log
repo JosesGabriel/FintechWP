@@ -1,0 +1,5 @@
+[14-May-2019 16:56:48 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/vyndue03/arbitrage.ph/wp-content/themes/Arbitrage/index.php on line 1
+[15-May-2019 20:30:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/vyndue03/arbitrage.ph/wp-content/themes/Arbitrage/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/vyndue03/arbitrage.ph/wp-content/themes/Arbitrage/index.php on line 1

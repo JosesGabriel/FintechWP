@@ -1,0 +1,25 @@
+h1.tradelogs-header{font-family:'Montserrat', sans-serif;font-weight:600;text-align:center;font-size:26px }
+ .tradelogs-heading{font-family:'Montserrat', sans-serif;font-weight:600;}
+ .btn-tradelog{border-radius:0px;margin:10px 0px;background:#273647;border:1px solid #273647;font-family:'Montserrat', sans-serif;font-weight:600;}
+ .side-header .right-image .onto-user-name{margin-bottom:5px;font-family:'Montserrat', sans-serif;}
+ .inner-main-content, .header-dashboard-inner{width:1240px;margin:0 auto;display:flex;justify-content:space-between;}
+ .table td, .table th{font-size:11px;text-align:left;}
+ .table thead th{vertical-align:bottom;border:none !important;background:#273647;}
+ .side-header .right-image .onto-user-meta-details{color:#ffffff;font-family:'Montserrat', sans-serif;font-weight:600;}
+ .totalpl{position:absolute;right:15px;background:#273647;padding:10px;font-size:11px;margin-top:0px;}
+ .totalpl p{margin-bottom:0px !important;padding-bottom:0px !important }
+ .panel-tabs{}
+ .panel-tabs > li{float:left;margin-bottom:-1px;}
+ .panel-tabs > li > a{margin-right:2px;margin-top:4px;line-height:.85;border:1px solid transparent;border-radius:4px 4px 0 0;color:#ffffff;}
+ .panel-tabs > li > a:hover{border-color:transparent;color:#ffffff;background-color:transparent;}
+ .panel-tabs > li.active > a, .panel-tabs > li.active > a:hover, .panel-tabs > li.active > a:focus{color:#fff;cursor:default;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:0px;background-color:#34495e;border-bottom-color:#34495e;padding-bottom:20px;}
+ .panel-primary>.panel-heading{color:#fff;background:#273647;padding:0px 0px;border-color:#233649 !important;}
+ h3.panel-title{font-family:'Montserrat', sans-serif;font-weight:600;}
+ .panel-body{padding:0px;margin:!important;}
+ .table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th{background-color:rgba(249, 249, 249, 0);}
+ .tab-content{background:#34495e !important;padding:20px;}
+ .panel-primary{border-color:#233649 !important;}
+ .oncommonsidebar .post-content{padding:15px !important;}
+ tfoot{border-top:none !important;background:#273647;}
+ .center-dashboard-part{float:left;margin-top:-40px !important;}
+ .left-dashboard-part{margin-top:-30px;}

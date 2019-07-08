@@ -1,0 +1,12 @@
+[14-Jun-2019 11:44:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function wp_get_current_user() in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php on line 9
+[14-Jun-2019 11:49:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function wp_get_current_user() in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php on line 9
+[14-Jun-2019 12:09:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function wp_get_current_user() in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/vyndue03/arbitrage.ph/wp-content/themes/arbitrage-child/template-rocktest.php on line 9

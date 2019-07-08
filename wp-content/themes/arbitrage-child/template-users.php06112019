@@ -1,0 +1,1244 @@
+<?php
+	/*
+	* Template Name: Users Page
+	* Template page for Dashboard Social Platform
+	*/
+
+// get_header();
+global $current_user;
+$user = wp_get_current_user();
+get_header( 'dashboard' );
+
+$profile_id = um_profile_id();
+$default_cover = UM()->options()->get( 'default_cover' );
+um_fetch_user($profile_id);
+
+$ismyprofile = ($user->id == $profile_id ? true : false);
+
+
+	$topargs = array(
+	    'role'          =>  '',
+	    // 'meta_key'      =>  'account_status',
+	    // 'meta_value'    =>  'approved'
+	);
+
+	$users = get_users($topargs);
+	$newuserlist = array();
+	foreach ($users as $key => $value) {
+		$userdetails['id'] = $value->id;
+		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+
+		array_push($newuserlist, $userdetails);
+	}
+
+	usort($newuserlist, function($a, $b) {
+	    return $a['followers'] <=> $b['followers'];
+	});
+	$toptraiders = array_reverse($newuserlist);
+
+	//$result = um_fetch_user(6);
+?>
+
+
+<style type="text/css">
+	#main-content .container:before {
+		background-color: none !important;
+	}
+	.um-header-outer {
+	    background: #142c46 !important;
+	    border-bottom-left-radius: 8px;
+	    border-bottom-right-radius: 8px;
+	}
+	.the_user_top_page {
+		background: none !important;
+	}
+	a.um-follow-btn.um-button.um-alt:hover {
+		background: #091523 !important;
+	}
+	a.um-follow-btn.um-button.um-alt {
+		-webkit-transition: all .5s ease-in-out !important;
+	    -moz-transition: all .5s ease-in-out !important;
+	    -o-transition: all .5s ease-in-out !important;
+	    transition: all .5s ease-in-out !important;
+	}
+	a.um-friend-btn.um-button.um-alt:hover {
+		background: #091523 !important;
+	}
+	a.um-friend-btn.um-button.um-alt {
+		-webkit-transition: all .5s ease-in-out !important;
+	    -moz-transition: all .5s ease-in-out !important;
+	    -o-transition: all .5s ease-in-out !important;
+	    transition: all .5s ease-in-out !important;
+	}
+
+/*	.right-dashboard-part{
+	    float: left;
+	    width: 27%;
+	    padding: 10px 0px !important;
+	    height: 140%;
+	    position: -webkit-sticky;
+	    position: sticky;
+	    top: -112%;
+	}*/
+    .btn-tradelog {
+        border-radius: 0px;
+        margin: 10px 0px;
+        background: #273647;
+        border: 1px solid #273647;
+        font-weight: 600;
+    }
+
+    .side-header .right-image .onto-user-name {
+        margin-bottom: 5px;
+        text-transform: capitalize !important;
+    }
+
+    .onto-user-name {
+    	font-size: 13px;
+    	padding-left: 12px;
+	    color: #fffffe;
+	    padding-top: 10;
+	    margin-bottom: 0px !important;
+    }
+
+    .table{
+    	margin-bottom: 0px !important
+    }
+
+	tr.to-watch-data td {
+	    display: table-cell;
+	    vertical-align: middle;
+	    padding:12px 5px;
+	    color:#ecf0f1;
+		position:relative;
+
+	}
+	.to-watch-data {
+		border-bottom: #1e3554 solid 1px;
+	}
+	td.to-stock {
+	    margin-left:10px;
+	}
+
+	.table td, .table th {
+	    border-top:none !important;
+	}
+
+	td.to-stock a {
+	}
+	.trading-name {
+		font-family: 'Nunito', sans-serif;
+	    color: #999999;
+	    font-size: 13px;
+	    padding-left: 10px;
+	}
+	.one {
+		font-weight: 500;
+	}
+	.two {
+		font-weight: 500;
+		margin-top: 13px;
+	}
+	.two a {
+		border-radius: 4px;
+	}
+	.third {
+		font-weight: 500;
+	}
+	.fourth {
+		font-weight: 500;
+	}
+	.five {
+		font-weight: 500;
+	}
+	.side-content-inner {
+	    margin-top: 10px !important;
+	}
+	.site-header {
+		padding-bottom: 0px !important;
+		margin-bottom: 22px !important;
+		padding: 0px 0px 0px 0px !important;
+	}
+	.active {
+
+	}
+	#mingle-btn {
+		border-radius: 26px !important;
+		border: 1.3px solid #6583a8 !important;
+    	padding: 5px 14px !important;
+    	font-family: 'Nunito', sans-serif;
+    	color: #6583a8;
+	}
+	#removes-btn {
+		border-radius: 26px !important;
+		border: 1.3px solid #6583a8 !important;
+    	padding: 5px 11px !important;
+    	font-family: 'Nunito', sans-serif;
+    	color: #6583a8;
+    	margin-left: 3px !important;
+	}
+	a.add-btn {
+
+	}
+	.true-name {
+		padding-left: 10px;
+		font-size: 14px;
+		font-weight: 500;
+	}
+	.following-people {
+		width: 33.3%;
+	    float: left;
+	    text-align: left;
+	    font-size: 12px;
+	    color: #999999;
+	    font-family: 'Nunito', sans-serif;
+	    display: inline-block;
+	}
+	.your-posts {
+		width: 28.3%;
+	    text-align: left;
+	    font-size: 12px;
+	    color: #999999;
+	    font-family: 'Nunito', sans-serif;
+	    display: inline-block;
+	    float: left;
+	    margin-left: 1px;
+	}
+	.your-followers {
+		width: 31.3%;
+	    text-align: left;
+	    font-size: 12px;
+	    color: #999999;
+	    font-family: 'Nunito', sans-serif;
+	    display: inline-block;
+	}
+	.num-followers {
+		font-size: 12px;
+		color: #fffffe;
+	}
+	.num-posts {
+		font-size: 12px;
+		color: #fffffe;
+	}
+	.num-following {
+		font-size: 12px;
+		color: #fffffe;
+	}
+	.top-traiders-inner {
+		padding-top: 0px;
+   		padding-left: 4px;
+	}
+	.dplsicon {
+		display: inline-block !important;
+		float: right;
+	}
+	.dplsicon a {
+		color: #fff
+	}
+	.um-activity-head {
+    	border-radius: 6px 6px 0 0;
+		padding-top:13px;
+		padding-bottom: 9px !important;
+	}
+	.um-activity-author-meta {
+		padding-top: 4px;
+    	padding-left: 11px;
+	}
+	.hidden-bttn {
+		visibility: hidden;
+	}
+	.hidden-bttn:hover {
+		cursor: pointer;
+	}
+	.traider-inner:hover .hidden-bttn{
+		visibility: visible;
+	}
+	.hidden-bttn {
+		color: black;
+		font-size: 14px;
+		float: right;
+	    color: #fff;
+	}
+
+	.remm-sm {
+	    display: none;
+	    margin-top: -1px;
+	    position: absolute;
+	    background-color: #f9f9f9;
+	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    z-index: 1;
+	    right: 22px;
+	    /* bottom: 0; */
+	    color: #fff;
+	    background-color: #2b405b;
+	    font-size: 10px;
+	    padding: 6px 10px;
+	    border-radius: 25px;
+	}
+	.hidden-bttn:hover .remm-sm {
+		display:block;
+	}
+	.drop-over-post {
+		color: #fff;
+		font-size: 20px;
+		margin-top: 7px;
+    	margin-right: 7px;
+	}
+	.to-content-part {
+		background: none;
+	}
+	.top-stocks .to-content-part ul li.even,
+	.watch-list-inner .to-content-part ul li.even {
+	    background: none;
+	    /* margin-top: 19px; */
+	}
+	.to-content-part {
+    	background: #142c46;
+	}
+	.um-activity-widget .um-activity-foot.status {
+	    background: #142c46;
+	    padding: 9px 0px 0px 0px;
+	    border: 0 none;
+	}
+	hr.style15 {
+	    border: 0;
+	    height: 1px;
+	    width: 96%;
+	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
+	    margin-top: 0rem !important;
+	    margin-bottom: 2.5px !important;
+	    display: flex;
+	}
+	hr.style11 {
+	    border: 0;
+	    height: 1px;
+	    width: 100%;
+	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
+	    margin-top: 0.5rem !important;
+	    margin-bottom: 1.5px !important;
+	    display: flex;
+	}
+	hr.style10 {
+	    border: 0;
+	    height: 1px;
+	    width: 96%;
+	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
+	    margin-top: 10px !important;
+	    margin-bottom: 3px !important;
+	}
+	.um-activity-new-post .um-activity-foot .um-activity-right a {
+	    /*color: #ffffff !important;
+	    padding: 8px 24px !important;
+	    line-height: 1em !important;
+	    height: initial !important;
+	    margin-top: 10px !important;
+	    font-size: 12px !important;
+	    font-weight: normal !important;
+	     text-transform: uppercase !important;
+	    border-radius: 6px !important;
+	    background: #2196f3 !important;*/
+	    border-radius: 26px !important;
+	    border: 1.3px solid #6583a8 !important;
+	    padding: 0px 17px !important;
+	    font-family: 'Nunito', sans-serif;
+	    color: #6583a8;
+	    background-color: none !important;
+	    background: none !important;
+	}
+	.um-activity-left .um-activity-actions {
+		display: none !important;
+	}
+	.um-activity-widget .um-activity-foot.status div > a {
+		background: none !important;
+		border-radius: 50px;
+	}
+	.um-activity-actions {
+	    width: 100%;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bearish {
+	    margin-left: 10px;/*
+	    background: #142c46;*/
+	    width: auto;
+	    display: inline-block;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bullish {
+	    margin-left: 17px;/*
+	    background: #142c46;*/
+	    display: inline-block;
+	}
+	.top-traiders .to-content-part .trader-item .traider-image {
+	    width: 20%;
+	    display: inline-block;
+	    margin-top: 5px;
+	    margin-right: 12px;
+	}
+	.um-activity-widget .upload {
+		padding: 9px 10px;
+    	top: -4px;
+	}
+	.upload.photo-upload-cont:hover {
+		background-color: #0d1f33 !important;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
+	    background: #142c46;
+	    padding: 7px 6px;
+	    border-radius: 50px;
+	    -webkit-transition: all .5s ease-in-out;
+	    -moz-transition: all .5s ease-in-out;
+	    -o-transition: all .5s ease-in-out;
+	    transition: all .5s ease-in-out;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase {
+	    background: #142c46;
+	    padding: 7px 6px;
+	    border-radius: 50px;
+	    -webkit-transition: all .5s ease-in-out;
+	    -moz-transition: all .5s ease-in-out;
+	    -o-transition: all .5s ease-in-out;
+	    transition: all .5s ease-in-out;
+	}
+	.um-activity-widget div.um-activity-textarea textarea,
+	.um-activity-widget div.um-activity-textarea textarea:hover,
+	.um-activity-widget div.um-activity-textarea textarea:focus {
+		height: 90px !important;
+	    border-radius: 0 !important;
+	    padding: 22px 15px 10px 65px !important;
+	}
+	img.arb_newpostimg {
+		width: 41px !important;
+	}
+	.add-post .um-activity-widget .um-activity-ava a {
+	    width: 41px;
+	    height: 41px;
+	}
+	.to-content-part {
+    	padding: 5px;
+	}
+	.um-activity-dialog.um-activity-tool-dialog {display:none;}
+	.side-content ul li a {
+	    display: block;
+	    color: #ecf0f1;
+	    padding: 7px 15px 7px 5px;
+	    font-size: 13px;
+	    font-family: Roboto, sans-serif;
+	    font-weight: 500;
+	}
+	.top-stocks .to-content-part ul li a {
+	    display: block;
+	    padding: 11px 10px;
+	    font-size: 12px;
+	    color: #ecf0f1;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.watch-list-inner .to-top-title,
+	.top-stocks .to-top-title,
+	.top-traiders-inner .to-top-title,
+	.watch-list-inner .to-bottom-title,
+	.top-traiders-inner .to-bottom-title,
+	.top-stocks .to-bottom-title,
+	.latest-news .to-top-title,
+	.latest-news .to-bottom-title{
+		background: transparent;
+		padding: 10px 14px 10px 1px;
+		font-size: 15px;
+		font-weight: normal;
+	}
+	.watch-list-inner .to-top-title {
+        padding: 10px 14px 0px 14px !important;
+    }
+    .style18 {
+    	width: 92% !important;
+    	margin-bottom: 0;
+    	margin-top: 9px;
+    }
+    .watch-list {
+    	background: #142c46;
+    	margin-top: 15px;
+    }
+    .latest-news {
+    	background: #142c46;
+    	margin-top: 15px;
+    }
+    .latest-news .to-top-title {
+	    padding: 10px 14px 2px 14px !important
+	}
+	.srr-tab-wrap > li.srr-active-tab {
+	    border-bottom: solid 2px #ffeb3b !important;
+	    background: none !important;
+	    border-radius: 0;
+	}
+	.srr-tab-wrap li {
+		border: none;
+	}
+    .srr-tab-wrap {
+	    margin: 0px 0 10px!important;
+	    background: none!important;
+	    border: none!important;
+	    padding: 0!important;
+	}
+	.srr-tab-wrap > li {
+	    background: none;
+	    border: none !important;
+	    font-size: 11px;
+	    text-transform: uppercase;
+	}
+	.srr-tab-wrap li {
+    	margin: 0px 5px 0 0!important;
+	}
+	.um-activity-bodyinner-photo {
+		padding-top: 4px;
+    	background-color: #142c46;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
+		border: #25ae5f solid 2px !important;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bullish:hover a span.diconbase {
+		transform: scale(1.3);
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase {
+		border: #d04234 solid 2px !important;
+	}
+	.um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
+		transform: scale(1.3);
+	}
+	.um-activity-comment-data {
+		background-color: #2b405b3d;
+	    padding: 6px 12px 7px 14px;
+	    border-radius: 25px;
+	}
+	.um-activity-comment-child {
+	    border-left: none !important;
+	}
+	.um-activity-comment-meta {
+		padding-left: 15px;
+	}
+	.um-activity-commentl .um-activity-comment-area .um-activity-comment-avatar {
+	    width: 31px;
+	    height: 31px;
+		visibility: visible;
+	    position: absolute;
+	    z-index: 9999;
+	}
+	.add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-avatar {
+	    left: 5px;
+	    top: 5px;
+	    visibility: visible;
+	    position: absolute;
+	    z-index: 9999;
+	}
+	.um-activity-comment-avatar.hidden-0 {
+	    margin-left: 5px !important;
+	    position: absolute !important;
+	    top: -3px;
+	}
+	.um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img  {
+	    width: 100%;
+	    height: 100%;
+	    top: 5px;
+    	position: relative;
+	}
+	.um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img .um-avatar-uploaded  {
+	    width: 100% !important;
+	    height: 100% !important;
+	    top: 0px;
+    	position: relative;
+	}
+	.um-activity-comment-info .um-activity-comment-area {
+	    margin-top: 8px;
+	    padding-bottom: 2px !important;
+	}
+	.um-activity-comment-child {
+	    padding-left: 5px;
+	}
+	.um a.um-link {
+	    color: #6583a8 !important;
+	    text-transform: capitalize;
+	}
+	.um-activity-widget .um-activity-comments .um-activity-comment-text {
+	    color: #fff !important;
+	    font-size: 13px !important;
+	    letter-spacing: 0.1px;
+	}
+	.um-activity-ccommentload {
+		padding-top: 10px;
+	}
+	.um-activity-commentl.is-child .um-activity-comment-hidden {
+	    padding-top: 7px;
+	}
+	.um-activity-comment-textarea .ui-autocomplete-input .ui-autocomplete-loading {
+		height: auto !important;
+	}
+	.auto-height {
+		height: 40px !important;
+	}
+	.arb_watchlst_cont table tbody tr td {
+		text-align: left !important;
+	}
+	.vertical-box table tbody tr td div {
+	     display: block !important;
+	     padding-bottom: 3px !important;
+	}
+	.vertical-box table tbody tr td {
+	    padding-left: 6px !important;
+	}
+	.um-cover {
+		height: 320px !important
+	}
+	.um-cover-add {
+		height: 320px !important;
+	}
+	.um-dropdown {
+	    z-index: 999999;
+	    right: 28px !important;
+	    top: 45px;
+	    position: absolute;
+	    height: auto;
+	    background: #0d1f33;
+	    -moz-border-radius: 5px;
+	    -webkit-border-radius: 5px;
+	    border-radius: 5px;
+	    z-index: 10;
+	    display: none;
+	    border: none;
+	    box-sizing: border-box;
+	    box-shadow: rgba(7, 13, 19, 0.52) 0px 2px 4px 1px;
+	}
+	.dnavtopinner ul li a {
+	    background: none;
+	    color: #fff;
+	    font-size: 13px;
+	    padding: 10px 15px;
+	    display: inline-block;
+	    border-radius: 6px;
+	    vertical-align: middle;
+	    line-height: 1em;
+	}
+	.dnavtopinner ul li a:hover {
+	    background: none;
+	    color: #d8d8d8;
+	}
+	.um-dropdown li:last-child a {
+	    border-top: none;
+	    padding: 7px;
+	}
+	#main-header {
+		z-index: 999999;
+	}
+	.um-profile.um .um-profile-headericon a {
+		color: #fffffe;
+	}
+	.um-icon-arrow-up-b {
+		color: #0d1f33;
+	}
+	.um-profile.um .um-profile-headericon a:hover, .um-profile.um .um-profile-edit-a.active {
+	    color: #00bcd4 !important;
+	}
+
+</style>
+
+<div id="main-content" class="ondashboardpage id<?php echo $profile_id; ?>">
+	<div class="container">
+	<div class="the_user_top_page">
+		<div class="um um-profile <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'um-editing' : 'um-viewing'); ?> um-11 um-role-administrator uimob800 topbannerprofile">
+			<div class="um-form">
+				<div class="um-cover  <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'has-cover' : ''); ?>" data-user_id="<?php echo $profile_id; ?>" data-ratio="2.7:1" style="height: 320px;">
+
+			<?php
+
+			$default_cover = UM()->options()->get( 'default_cover' );
+
+			$overlay = '<span class="um-cover-overlay">
+					<span class="um-cover-overlay-s">
+						<ins>
+							<i class="um-faicon-picture-o"></i>
+							<span class="um-cover-overlay-t">' . __( 'Change your cover photo', 'ultimate-member' ) . '</span>
+						</ins>
+					</span>
+				</span>';
+
+			do_action( 'um_cover_area_content', um_profile_id() );
+			if ( UM()->fields()->editing ) {
+
+				$hide_remove = um_profile( 'cover_photo' ) ? false : ' style="display:none;"';
+
+				$items = array(
+					'<a href="#" class="um-manual-trigger" data-parent=".um-cover" data-child=".um-btn-auto-width">' . __( 'Change cover photo', 'ultimate-member' ) . '</a>',
+					'<a href="#" class="um-reset-cover-photo" data-user_id="' . um_profile_id() . '" ' . $hide_remove . '>' . __( 'Remove', 'ultimate-member' ) . '</a>',
+					'<a href="#" class="um-dropdown-hide">' . __( 'Cancel', 'ultimate-member' ) . '</a>',
+				);
+
+				UM()->profile()->new_ui( 'bc', 'div.um-cover', 'click', $items );
+			}
+
+			UM()->fields()->add_hidden_field( 'cover_photo' );
+
+			echo $overlay; ?>
+
+			<div class="um-cover-e" data-ratio="<?php echo $args['cover_ratio']; ?>">
+
+				<?php if (um_profile( 'cover_photo' )) { ?>
+
+					<?php
+
+					if (UM()->mobile()->isMobile()) {
+						if (UM()->mobile()->isTablet()) {
+							echo um_user( 'cover_photo', 1000 );
+						} else {
+							echo um_user( 'cover_photo', 300 );
+						}
+					} else {
+						echo um_user( 'cover_photo', 1000 );
+					}
+
+					?>
+
+				<?php } else if ($default_cover && $default_cover['url']) {
+
+					$default_cover = $default_cover['url'];
+
+					echo '<img src="' . $default_cover . '" alt="" />';
+
+				} else {
+
+					if (!isset( UM()->user()->cannot_edit )) { ?>
+
+						<a href="#" class="um-cover-add um-manual-trigger" data-parent=".um-cover"
+						   data-child=".um-btn-auto-width"><span class="um-cover-add-i"><i
+									class="um-icon-plus um-tip-n"
+									title="<?php _e( 'Upload a cover photo', 'ultimate-member' ); ?>"></i></span></a>
+
+					<?php }
+
+				} ?>
+
+			</div>
+
+				</div>
+				<div class="top-header-gear">
+					<div class="top-header-inner">
+						<!-- <div class="um-profile-edit um-profile-headericon um-trigger-menu-on-click">
+							<a href="#" class="um-profile-edit-a" data-toggle="tooltip" data-placement="top" title="More Settings"><i class="um-faicon-cog"></i></a>
+							<div class="um-dropdown" data-element="div.um-profile-edit" data-position="bc" data-trigger="click" style="top: 178px;width: 163px;left: 27px !important;right: auto;text-align: center;">
+								<div class="um-dropdown-b">
+									<div class="um-dropdown-arr" style="top: -15px;left: 71px;right: auto;"><i class="um-icon-arrow-up-b"></i></div>
+									<ul>
+											<li><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
+											<li><a href="https://arbitrage.ph/account/" class="real_url">My Account</a></li>
+											<li><a href="https://arbitrage.ph/logout/" class="real_url">Logout</a></li>
+											<li><a href="#" class="um-dropdown-hide">Cancel</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+					</div>
+					<div class="profile-name">
+						<div class="prof-name-inner">
+							<?php
+								$unametype = get_user_meta($profile_id, 'disname', true);
+								$nickname = get_user_meta($profile_id, 'nickname', true);
+							?>
+							<?php if ($unametype == "" || $unametype == "rn") { ?>
+						  		<?php echo um_user('full_name'); ?>
+						  	<?php } else { ?>
+						  		<?php echo $nickname; ?>
+						  	<?php } ?>
+
+						</div>
+					</div>
+				</div>
+				<div class="um-header-outer">
+					<div class="um-header">
+
+						<?php
+
+						$default_size = str_replace( 'px', '', $args['photosize'] );
+
+						$overlay = '<span class="um-profile-photo-overlay">
+								<span class="um-profile-photo-overlay-s">
+									<ins>
+										<i class="um-faicon-camera"></i>
+									</ins>
+								</span>
+							</span>';
+
+						do_action( 'um_pre_header_editprofile', $args ); ?>
+
+						<div class="um-profile-photo" data-user_id="<?php echo um_profile_id(); ?>">
+
+							<a href="<?php echo um_user_profile_url(); ?>" class="um-profile-photo-img"
+							   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
+
+							<?php
+
+							if (!isset( UM()->user()->cannot_edit )) {
+
+								UM()->fields()->add_hidden_field( 'profile_photo' );
+
+								if (!um_profile( 'profile_photo' )) { // has profile photo
+
+									$items = array(
+										'<a href="#" class="um-manual-trigger" data-parent=".um-profile-photo" data-child=".um-btn-auto-width">' . __( 'Upload photo', 'ultimate-member' ) . '</a>',
+										'<a href="#" class="um-dropdown-hide">' . __( 'Cancel', 'ultimate-member' ) . '</a>',
+									);
+
+									$items = apply_filters( 'um_user_photo_menu_view', $items );
+
+									echo UM()->profile()->new_ui( 'bc', 'div.um-profile-photo', 'click', $items );
+
+								} else if (UM()->fields()->editing == true) {
+
+									$items = array(
+										'<a href="#" class="um-manual-trigger" data-parent=".um-profile-photo" data-child=".um-btn-auto-width">' . __( 'Change photo', 'ultimate-member' ) . '</a>',
+										'<a href="#" class="um-reset-profile-photo" data-user_id="' . um_profile_id() . '" data-default_src="' . um_get_default_avatar_uri() . '">' . __( 'Remove photo', 'ultimate-member' ) . '</a>',
+										'<a href="#" class="um-dropdown-hide">' . __( 'Cancel', 'ultimate-member' ) . '</a>',
+									);
+
+									$items = apply_filters( 'um_user_photo_menu_edit', $items );
+
+									echo UM()->profile()->new_ui( 'bc', 'div.um-profile-photo', 'click', $items );
+
+								}
+
+							}
+
+							?>
+
+						</div>
+						<div class="dmetadetails">
+							<div class="meta-details-inner">
+								<ul>
+									<li>
+										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
+										<div class="onlabel">Friends</div>
+									</li>
+									<!-- <li>
+										<div class="oncount"><?php echo UM()->Followers_API()->api()->count_followers( $profile_id ); ?></div>
+										<div class="onlabel">Followers</div>
+									</li> -->
+									<?php
+										$args = array(
+											'post_type' => 'um_activity',
+											'author'        =>  $profile_id,
+											'orderby'       =>  'post_date',
+											'order'         =>  'ASC',
+											'posts_per_page'	=> -1
+										);
+										$the_query = new WP_Query( $args );
+
+									?>
+									<li>
+										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $the_query->post_count; ?></a></div>
+										<div class="onlabel">Posts</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="profile-meta-data">
+							<div class="profile-meta-inner">
+								<!-- <div class="num-of-followers">
+									<div class="nof-title">Followers</div>
+									<div class="nof-title"><?php echo UM()->Followers_API()->api()->count_followers( $profile_id ); ?></div>
+								</div> -->
+								<!-- <div class="user-base-name"><?php echo um_user('full_name'); ?></div> -->
+								<!-- <div class="follow-items"><?php echo do_shortcode('[ultimatemember_followers_bar user_id="'.$profile_id.'" ]');  ?></div> -->
+								<br class="clear">
+
+							</div>
+						</div>
+						<div class="dnavtopleft">
+							<div class="dnavtopinner">
+								<ul>
+									<?php if(!$ismyprofile): ?>
+										<?php echo $ismyprofile; ?>
+										<!-- <li>
+											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->id; ?>">Follow</a>
+										</li> -->
+										<li>
+											<?php echo UM()->Friends_API()->api()->friend_button( $profile_id, get_current_user_id() ); ?>
+										</li>
+									<?php else: ?>
+											<?php if (isset($_GET['um_action']) && $_GET['um_action'] == 'edit'): ?>
+												<li>
+													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/" class=" um-button um-alt">Update</a>
+												</li>
+											<?php else: ?>
+												<li>
+													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" ">Edit Profile</a>
+												</li>
+											<?php endif ?>
+
+
+									<?php endif; ?>
+									<!-- <li>
+										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends" class="uimob800-hide uimob500-hide uimob340-hide" title="Friends">
+											<i class="um-faicon-users"></i>
+											<span class="title">Friends (<?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?>)</span>
+										</a>
+									</li> -->
+									<!-- <li> -->
+										<?php // if ($ismyprofile): ?>
+											<!-- <a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=messages" class="message-part-btn" ><span>Message</span></a> -->
+										<?php // else: ?>
+											<?php // echo do_shortcode( '[ultimatemember_message_button user_id="' . $profile_id . '"]' ); ?>
+										<?php // endif ?>
+									<!-- </li> -->
+									<!-- <li>
+										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=messages" class="uimob800-hide uimob500-hide uimob340-hide" title="Messages">
+											<i class="um-faicon-envelope-o"></i>
+											<span class="title">Messages</span>
+										</a>
+									</li> -->
+									<!-- <li>
+										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=photos" class="uimob800-hide uimob500-hide uimob340-hide" title="Photos">
+											<i class="um-icon-images"></i>
+											<span class="title">Photos</span>
+										</a>
+									</li> -->
+									<!-- <li>
+										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity" class="uimob800-hide uimob500-hide uimob340-hide" title="Activity">
+											<i class="um-icon-compose"></i>
+											<span class="title">Activity</span>
+										</a>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+	.side-header {
+		display: none;
+	}
+	.inner-center-dashboard {
+		padding: 0;
+    	margin-top: 9px;
+	}
+	.inner-placeholder {
+		padding-top: 0 !important;
+	}
+</style>
+	<div class="inner-placeholder">
+		<div class="inner-main-content userprofilepage">
+			<div class="left-dashboard-part">
+				<div class="dashboard-sidebar-left">
+					<div class="dashboard-sidebar-left-inner">
+
+                    	<?php get_template_part('parts/sidebar', 'profile'); ?>
+
+                        <?php get_template_part('parts/sidebar', 'traders'); ?>
+
+					</div>
+				</div>
+			</div>
+			<!-- <div class="left-dashboard-part">
+				<div class="dashboard-sidebar-left">
+					<div class="dashboard-sidebar-left-inner">
+						<div class="left-user-details">
+							<div class="left-user-details-inner">
+								<div class="onqoutebio">
+									<div class="qouteinner">
+										<?php $description = get_user_meta( $profile_id, 'description', true ); ?>
+										<?php echo esc_html( $description ); ?>
+									</div>
+								</div>
+								<div class="side-header">
+									<div class="topbase-data">
+										&nbsp;
+									</div>
+								</div>
+								<div class="side-content">
+									<div class="side-content-inner">
+										<ul>
+											<li class="two"><a href="/chart/">Interactive Chart</a></li>
+											<li class="three"><a href="/journal/">Trading Journal</a></li>
+											<li class="five"><a href="#">Watcher & Alerts</a></li>
+											<li class="four"><a href="#">Stock Screener</a></li>
+											<li class="one"><a href="#">Calculator</a></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="watch-list">
+							<div class="watch-list-inner">
+								<div class="to-top-title">My Watchlist</div>
+								<div class="to-content-part">
+									<ul>
+										<li class="even">
+											<div class="to-watch-data">
+												<div class="to-stock">IRC</div>
+												<div class="to-numsec bered">.4650</div>
+												<div class="to-persec bered">-2.5%</div>
+											</div>
+										</li>
+										<li class="odd">
+											<div class="to-watch-data">
+												<div class="to-stock">BCOR</div>
+												<div class="to-numsec begreen">.63</div>
+												<div class="to-persec begreen">8.1%</div>
+											</div>
+										</li>
+										<li class="even">
+											<div class="to-watch-data">
+												<div class="to-stock">ISM</div>
+												<div class="to-numsec begreen">1.70</div>
+												<div class="to-persec begreen">99%</div>
+											</div>
+										</li>
+										<li class="odd">
+											<div class="to-watch-data">
+												<div class="to-stock">SCC</div>
+												<div class="to-numsec begreen">8.20</div>
+												<div class="to-persec begreen">1.5%</div>
+											</div>
+										</li>
+										<li class="even">
+											<div class="to-watch-data">
+												<div class="to-stock">STI</div>
+												<div class="to-numsec begreen">3.5</div>
+												<div class="to-persec begreen">8.5%</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="to-bottom-title">
+									<a href="#" class="to-add-more">Add More</a>
+								</div>
+							</div>
+						</div>
+						<div class="top-traiders">
+							<div class="top-traiders-inner">
+								<div class="to-top-title">Top 5 Traders</div>
+								<div class="to-content-part">
+									<div class="content-inner-part">
+										<?php
+											$i=0;
+											foreach ($toptraiders as $key => $value) { ?>
+												<div class="trader-item">
+													<div class="traider-inner">
+														<div class="traider-image">
+															<div class="side-image" style="background: url('<?php echo esc_url( get_avatar_url( $value['id'] ) ); ?>') no-repeat center center;">&nbsp;</div>
+														</div>
+														<div class="traider-details">
+															<div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a></div>
+															<div class="traider-follower">
+																<div class="onbfdata"><?php echo $value['followers']; ?> followers </div>
+																<div class="onbfollow">
+																	<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Follow</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										<?php
+												$i++;
+												if($i==5) break;
+											}
+										?>
+									</div>
+								</div>
+								<div class="to-bottom-title">
+									<a href="" class="to-view-more">View all traders</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="center-dashboard-part">
+				<div class="inner-center-dashboard">
+					<div class="add-post">
+						<?php
+						//  if ( have_posts() ) : while ( have_posts() ) : the_post();
+						// the_content();
+						// endwhile; else:
+						 ?>
+						<!-- <p>Sorry, no posts matched your criteria.</p> -->
+						<?php   //endif; ?>
+					<?php
+						if (isset($_GET['getdpage']) && $_GET['getdpage'] == 'friends'):
+							?>
+							<div class="dpostlet">
+								<div class="header-port">Friends List</div>
+								<div class="body-port">
+									<div class="friends-list-profile"><?php echo do_shortcode('[ultimatemember_friends user_id='.$profile_id.']'); ?></div>
+								</div>
+							</div>
+							<?php
+						elseif (isset($_GET['getdpage']) && $_GET['getdpage'] == 'messages'):
+							?>
+								<div class="open-messages">
+									<div class="messages-inner">
+										<div class="message-header">Messages</div>
+										<div class="message-body">
+											<?php echo do_shortcode('[ultimatemember_messages]'); ?>
+										</div>
+									</div>
+								</div>
+							<?php
+							// echo do_shortcode('[ultimatemember_messages]');
+						elseif(isset($_GET['getdpage']) && $_GET['getdpage'] == 'activity'):
+							?>
+								<div class="profile-post-content">
+									<?php echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
+								</div>
+							<?php
+						else:
+							?>
+								<div class="profile-post-content">
+									<?php echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
+								</div>
+							<?php
+						endif;
+					?>
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+			<div class="right-dashboard-part" style="padding: 10px 0px !important;">
+				<div class="right-dashboard-part-inner">
+
+                	<?php // get_template_part('parts/sidebar', 'trendingstocks'); ?>
+
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
+
+                    <?php // get_template_part('parts/sidebar', 'watchlist'); ?>
+
+
+
+				</div>
+                <?php get_template_part('parts/sidebar', 'footer'); ?>
+			</div>
+			<br class="clear">
+		</div>
+	</div>
+
+</div> <!-- #main-content -->
+<style type="text/css">
+	#main-content {
+	    background-color: #0d1f33 !important;
+	}
+	#main-content .container {
+	    padding-top: 0px;
+	}
+	.et_fixed_nav.et_show_nav #page-container {
+		padding-top: 45px !important;
+	}
+	.um-header-outer {
+	    background: #142c46 !important;
+	}
+	.um-11.um .um-profile-photo a.um-profile-photo-img {
+	    width: 180px !important;
+	    height: 180px !important;
+	    top: -6px !important;
+	    left: 15px;
+	}
+	.top-header-inner .um-profile-edit {
+    	right: initial;
+    	top: -42px;
+	    margin-left: 17px;
+    }
+    .prof-name-inner {
+	    text-transform: capitalize;
+	    font-size: 30px;
+
+	}
+	.the_user_top_page .um-cover-e {
+	    background: #1e3554;
+	    -webkit-transition: background-color 0.5s ease-out;
+		-moz-transition: background-color 0.5s ease-out;
+		-o-transition: background-color 0.5s ease-out;
+		transition: background-color 0.5s ease-out;
+	}
+	.the_user_top_page .um-cover-e:hover {
+	    background: #091523;
+	}
+	.um-ajax-count-followers {
+		color: #2ea3f2;
+	}
+	.top-header-gear .profile-name .prof-name-inner {
+		position: absolute;
+	    top: -63px;
+	    color: #fff;
+	    text-shadow: 2px 2px 4px #333;
+	}
+	.dmetadetails {
+	    float: left;
+	    position: relative;
+	    display: block;
+	    left: 24%;
+	}
+	.top-header-inner .um-profile-edit {
+	    right: initial;
+
+	}
+	#main-content .container:before {
+		position: absolute;
+		top: 0;
+		width: 1px;
+		height: 100%;
+		background-color: #e2e2e2;
+		display: none;
+	}
+	.container {
+	    width: 100%;
+	    padding-right: 31px;
+	    padding-left: 31px;
+	}
+	.dnavtopinner ul {
+	    margin: 0;
+	    padding: 0;
+	    padding-right: 20px;
+	    padding-top: 3px;
+	}
+	a.um-follow-btn.um-button.um-alt {
+	    display: table-cell !important;
+	    border-radius: 26px !important;
+	    border: 1.3px solid #6583a8 !important;
+	    padding: 8px 27px !important;
+	    padding-top: 10px !important;
+	    font-family: 'Nunito', sans-serif;
+	    color: #6583a8 !important;
+	    background: none !important;
+	}
+	a.um-friend-btn.um-button.um-alt {
+	    display: table-cell !important;
+	    vertical-align: middle !important;
+	    text-align: center;
+	    border-radius: 26px !important;
+	    border: 1.3px solid #6583a8 !important;
+	    padding: 9px 14px !important;
+	    padding-top: 11px !important;
+	    font-family: 'Nunito', sans-serif;
+	    color: #6583a8 !important;
+	    background: none !important;
+	    line-height: 13px !important;
+	}
+	.meta-details-inner ul li .oncount a {
+	    color: #00bcd4;
+	}
+	.meta-details-inner ul li .oncount span {
+	    color: #00bcd4;
+	}
+</style>
+
+
+											<!-- <li class="six"><a href="#">Paper Trade</a></li> -->
+											<!-- <li class="seven"><a href="#">Chat</a></li> -->
+											<!-- <li class="eight"><a href="#">Groups</a></li> -->
+											<!-- <li class="nine"><a href="#">Traders</a></li> -->
+<?php
+
+get_footer('general');

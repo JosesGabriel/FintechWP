@@ -1,0 +1,150 @@
+<?php
+function my_theme_enqueue_styles() {
+    wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+
+add_shortcode( 'wpshout_frontend_post', 'wpshout_frontend_post' );
+function wpshout_frontend_post() {
+    wpshout_save_post_if_submitted();
+    ?>
+    	<div class="post-user">
+    		<form id="new_post" name="new_post" method="post">
+	    		<div class="post-user-inner">
+	    			<div class="header-post">
+	    				Share your ideas
+	    				<input type="hidden" name="title" value="<?php echo get_the_date('l jS \of F Y h:i:s A'); ?>">
+	    			</div>
+	    			<div class="inner-post">
+	    				<textarea id="content" tabindex="3" name="content" cols="50" rows="6"></textarea>
+	    			</div>
+	    			<div class="footer-post">
+	    				<div class="footer-left-upload">
+	    					Tags: <input type="text" value="" tabindex="5" size="16" name="post_tags" id="post_tags" />
+	    				</div>
+	    				<div class="footer-left-post">
+	    					<?php wp_nonce_field( 'wps-frontend-post' ); ?>
+	    					<input type="submit" value="Post" tabindex="6" id="submit" name="submit" />
+	    				</div>
+	    				<br class="clear">
+	    			</div>
+	    		</div>
+    		</form>
+    	</div>
+    <?php
+}
+
+
+function wpshout_save_post_if_submitted() {
+    // Stop running function if form wasn't submitted
+    if ( !isset($_POST['title']) ) {
+        return;
+    }
+
+    // Check that the nonce was set and valid
+    if( !wp_verify_nonce($_POST['_wpnonce'], 'wps-frontend-post') ) {
+        echo 'Did not save because your form seemed to be invalid. Sorry';
+        return;
+    }
+
+    // Do some minor form validation to make sure there is content
+    if (strlen($_POST['title']) < 3) {
+        echo 'Please enter a title. Titles must be at least three characters long.';
+        return;
+    }
+    if (strlen($_POST['content']) < 5) {
+        echo 'Please enter content more than 5 characters in length';
+        return;
+    }
+
+    // Add the content of the form to $post as an array
+    $post = array(
+        'post_title'    => $_POST['title'],
+        'post_content'  => $_POST['content'],
+        'post_status'   => 'publish',   // Could be: publish
+        'post_type' 	=> 'post' // Could be: `page` or your CPT
+    );
+    $postid = wp_insert_post($post);
+    wp_set_object_terms( $postid, 'user_post', 'category' );
+    wp_set_post_tags($postid, $_POST['post_tags'], true);
+
+    // echo 'Saved your post successfully! :)';
+    wp_redirect($_SERVER['HTTP_REFERER']);
+}
+
+include_once(ABSPATH.WPINC.'/rss.php');
+
+function readRss($atts) {
+    extract(shortcode_atts(array(
+    "feed" => 'http://',
+      "num" => '1',
+    ), $atts));
+
+    return wp_rss($feed, $num);
+}
+
+add_shortcode('rss', 'readRss');
+add_filter('show_admin_bar', '__return_true');
+add_filter('flp/redirect_url',
+    function($url){
+        return site_url('/');
+    }
+);
+
+// include styles of arbitrage team
+function custom_enqueue_styles() {
+
+    // enqueue parent styles
+	wp_enqueue_style('parent-theme-rp', get_stylesheet_directory_uri() .'/arphie-style.css');
+    wp_enqueue_style('parent-theme-nc', get_stylesheet_directory_uri() .'/nicar-style.css');
+
+}
+add_action('wp_enqueue_scripts', 'custom_enqueue_styles', 20);
+
+
+/*include 'ab-functions.php';
+include 'arphie-function.php';
+include 'nikko-functions.php';*/
+// include 'emman-functions.php';
+
+add_action( 'um_registration_complete', 'vyndue_user_register', 10, 2 );
+function vyndue_user_register( $user_id, $args ) {
+    echo "TESST";
+    var_dump($args);
+    exit();
+}
+
+$search_string = esc_attr( trim( get_query_var('s') ) );
+$users = new WP_User_Query( array(
+    'search'         => "*{$search_string}*",
+    'search_columns' => array(
+        'user_login',
+        'user_nicename',
+        'user_email',
+        'user_url',
+    ),
+    'meta_query' => array(
+        'relation' => 'OR',
+        array(
+            'key'     => 'first_name',
+            'value'   => $search_string,
+            'compare' => 'LIKE'
+        ),
+        array(
+            'key'     => 'last_name',
+            'value'   => $search_string,
+            'compare' => 'LIKE'
+        )
+    )
+) );
+$users_found = $users->get_results();
+
+function ab_exclusions() {
+	wp_deregister_script( 'frontend-builder-global-functions' );
+}
+add_action( 'wp_enqueue_scripts', 'ab_exclusions', 100 );
+/**
+* Added by Allan
+* 05-07-2019
+*/
+/* temp-disabled-start require_once get_stylesheet_directory() . '/apyc/init.php';

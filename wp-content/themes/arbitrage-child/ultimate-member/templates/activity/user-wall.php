@@ -766,37 +766,41 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<div class="innerbull">
 
-						        			<?php foreach (get_post_meta( $post->ID, '_bull_people', TRUE ) as $key => $value) {
+											<?php 
 
-												$user_info = get_userdata($value);
+												$post_bull_people = get_post_meta( $post->ID, '_bull_people', TRUE );
 
-												// echo 'Username: ' . $user_info->user_login . "<br />";
+												if ($post_bull_people):
+													foreach (get_post_meta($post->ID, '_bull_people', true) as $key => $value):
+														$user_info = get_userdata($value);
 
-												//print_r($user_info);
+											?>
 
-												 ?>
+													<div class="bullitems listofpeople">
 
-												<div class="bullitems listofpeople">
+														<div class="dusername">
 
-													<div class="dusername">
+															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
 
-														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
 
-															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+															</a>
 
-														</a>
+														</div>
+
+														<div class="isfriends">
+
+															<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
+
+														</div>
 
 													</div>
 
-													<div class="isfriends">
-
-														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
-
-													</div>
-
-												</div>
-
-											<?php } ?>
+											<?php
+											
+													endforeach;
+												endif;
+											?>
 
 						        		</div>
 
@@ -804,15 +808,16 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	<div class="bearish">
 
-						        		<?php foreach (get_post_meta( $post->ID, '_bear_people', TRUE ) as $key => $value) {
+										<?php 
+										
+											$post_bear_people = get_post_meta( $post->ID, '_bear_people', TRUE );
 
-												$user_info = get_userdata($value);
+											if ($post_bear_people):
+												foreach ($post_bear_people as $key => $value):
 
-												// echo 'Username: ' . $user_info->user_login . "<br />";
+													$user_info = get_userdata($value);
 
-												//print_r($user_info);
-
-												 ?>
+										?>
 
 												<div class="bullitems listofpeople">
 
@@ -834,21 +839,25 @@ foreach ( $wallposts->posts as $post ) {
 
 												</div>
 
-											<?php } ?>
+										<?php 
+												endforeach;
+											endif; 
+										?>
 
 						        	</div>
 
 						        	<div class="liked">
 
-						        		<?php foreach (get_post_meta( $post->ID, '_liked', TRUE ) as $key => $value) {
+										<?php 
+										
+											$post_liked = get_post_meta( $post->ID, '_liked', TRUE );
 
-												$user_info = get_userdata($value);
+											if ($post_liked):
+												foreach ($post_liked as $key => $value):
 
-												// echo 'Username: ' . $user_info->user_login . "<br />";
+													$user_info = get_userdata($value);
 
-												// print_r($user_info);
-
-												 ?>
+										?>
 
 												<div class="bullitems listofpeople">
 
@@ -870,7 +879,10 @@ foreach ( $wallposts->posts as $post ) {
 
 												</div>
 
-											<?php } ?>
+										<?php
+												endforeach;
+											endif;
+										?>
 
 						        	</div>
 

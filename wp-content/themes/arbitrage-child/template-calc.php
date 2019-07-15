@@ -1089,7 +1089,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 			</div>
 
 					<div class="cont-try-premium">
-						<img src="https://1948265747.rsc.cdn77.org/svg/try-primium.jpg">
+						<img src="<?php echo get_home_url(); ?>/svg/try-primium.jpg">
 					</div>
 				</div>
 			<?php get_template_part('parts/sidebar', 'ads'); ?>

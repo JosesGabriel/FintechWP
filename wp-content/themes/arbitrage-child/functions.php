@@ -2,13 +2,18 @@
 
 include 'functions-socket.php';
 include 'functions-um.php';
+include 'functions-arbitrage-api.php';
 
 function my_theme_enqueue_styles()
 {
+
+
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('normalize_css', get_template_directory_uri() . '/normalize.css');
+    // wp_enqueue_style('normalize_css', get_template_directory_uri() . '/normalize.css');
 }
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
+
+
 
 add_shortcode('wpshout_frontend_post', 'wpshout_frontend_post');
 function wpshout_frontend_post()
@@ -114,9 +119,9 @@ function custom_enqueue_scripts()
 
     if ($user_id !== 0) {
         $user_secret = get_user_meta($user_id, 'user_secret', true);
+        wp_enqueue_script('child-theme-em', get_stylesheet_directory_uri() . '/js/vyndue-script.js');
     }
 
-    wp_enqueue_script('child-theme-em', get_stylesheet_directory_uri() . '/js/vyndue-script.js');
     wp_enqueue_script('jquery-toast', get_stylesheet_directory_uri() . '/plugins/toast/jquery.toast.min.js');
     wp_localize_script('child-theme-em', 'scriptVars', ['user_secret' => $user_secret]);
 }
@@ -137,10 +142,18 @@ include 'nikko-functions.php';*/
 // }
 // add_action( 'um_user_register', 'vyndue_user_register', 10, 2 );
 
+// add_action('register_post', function ($sanitized_user_login, $user_email, $errors) {
+//     echo '<pre class="registerr-post">';
+//     print_r($sanitized_user_login);
+//     print_r($user_email);
+//     print_r($errors);
+//     echo '</pre>';
+//     exit();
+// }, 10, 2);
+
 add_action('user_register', 'myplugin_registration_save', 10, 1);
 function myplugin_registration_save($user_id)
 {
-    // initiate request
     // $secret = $_POST['nickname-9'] . $user_id . str_pad(rand(0, 9999), 3, '0', STR_PAD_LEFT);
     $secret = $_POST['nickname-9'] . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
     add_user_meta($user_id, 'user_secret', $secret);
@@ -154,9 +167,8 @@ function myplugin_registration_save($user_id)
         'user_secret' => $secret,
     ]);
     //endregion Set POST data
-    // {user_id}-{timestamp()}
 
-    $api_data = http_build_query([
+    $api_data = [
         'first_name' => $_POST['first_name-9'],
         'last_name' => $_POST['last_name-9'],
         'username' => $_POST['nickname-9'],
@@ -164,40 +176,12 @@ function myplugin_registration_save($user_id)
         'password' => $_POST['user_password-9'],
         'password_confirmation' => $_POST['user_password-9'],
         'profile_image' => '',
-    ]);
-
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://dev-api.arbitrage.ph/api/register');
-    curl_setopt($curl, CURLOPT_POST, 1);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $api_data);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    // $response = curl_exec($curl);
-    // var_dump($response);
-    // die($response);
-    $headers = [];
-    // this function is called by curl for each header received
-    curl_setopt($curl, CURLOPT_HEADERFUNCTION,
-        function($curl, $header) use (&$headers) {
-            $len = strlen($header);
-            $header = explode(':', $header, 2);
-            if (count($header) < 2) // ignore invalid headers
-                return $len;
-
-            $name = strtolower(trim($header[0]));
-            if (!array_key_exists($name, $headers))
-                $headers[$name] = [trim($header[1])];
-            else
-                $headers[$name][] = trim($header[1]);
-
-            return $len;
-        }
-    );
-    $response = curl_exec($curl);
-    print_r($response);
-    print_r($headers);
-    die();
-
-    curl_close($curl);
+    ];
+    
+    $response = arbitrage_api_curl('api/register', $api_data);
+    if ($response) {
+        add_user_meta($user_id, 'user_uuid', $response['user']['uuid']);
+    }
 
     //region call api
     $curl = curl_init();
@@ -293,14 +277,13 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://vyndue.com/api/user/update');
-    curl_setopt($curl, CURLOPT_POST, 1);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($curl);
-    curl_close($curl);
-
+    arbitrage_api_curl('api/user/update', [
+        'id' => arbitrage_api_get_user_uuid($user_id),
+        'email' => $user->user_email,
+        'first_name' => $user->first_name,
+        'last_name' => $user->last_name,
+    ]);
+    
     //region call api
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'https://vyndue.com/api/user/update');
@@ -317,10 +300,16 @@ function vyndue_user_update($user_id, $old_user_data)
 add_action('um_change_password_process_hook', 'vyndue_password_update', 10, 2);
 function vyndue_password_update($post)
 {
-    $user = get_userdata(get_current_user_id());
+    $user_id = get_current_user_id();
+    $user = get_userdata($user_id);
 
     $data = http_build_query([
         'email_id' => $user->user_email,
+        'password' => $_POST['user_password'],
+    ]);
+
+    arbitrage_api_curl('api/user/update', [
+        'id' => arbitrage_api_get_user_uuid($user_id),
         'password' => $_POST['user_password'],
     ]);
 
@@ -418,4 +407,4 @@ add_action('wp_ajax_nopriv_get_friends', 'getfriendsbyat');
 * Added by Allan
 * 05-07-2019
 */
-/* temp-disabled-start require_once get_stylesheet_directory() . '/apyc/init.php';
+/* temp-disabled-start require_once get_stylesheet_directory() . '/apyc/init.php'; */

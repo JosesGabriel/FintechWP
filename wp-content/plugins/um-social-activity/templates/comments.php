@@ -59,7 +59,9 @@
 						<i class="um-icon-forward"></i>
 						<span><?php echo $text ?></span>
 					</a>
-					<div class="um-activity-commentload-spin" style="background: url(./img/loader.svg) no-repeat left 3px; background-size: 25px !important;"></div>
+					<div class="um-activity-commentload-spin" style="top: -10px;">
+						<img src="<?php echo get_home_url(); ?>/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px;">
+					</div>
 
 				<?php }
 			}

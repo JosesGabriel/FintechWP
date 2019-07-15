@@ -654,7 +654,7 @@ input#first_name-9 {
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
     	<img src="<?php echo $homeurlgen; ?>/svg/arblogo_svg.svg" style="width:54px; height:43px;">
-        <div class="rlewaylogo">ARBITRAGE <?php echo $force_show; ?></div>
+        <div class="rlewaylogo">ARBITRAGE <?php echo $force_show ?? ''; ?></div>
         <div class="arb_circle_btns">
             <a class="prtnr_login" href="#">
             	<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">

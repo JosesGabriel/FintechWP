@@ -4,6 +4,7 @@ $user_id = get_current_user_id();
 // function is_user_logged_in() {
 //     $user_id = get_current_user_id();
 if ($user_id !== 0) {
+    $uuid = get_user_meta($user_id, 'user_uuid', true);
     $secret = get_user_meta($user_id, 'user_secret', true);
     // var_dump($secret);
 ?>
@@ -16,7 +17,6 @@ if ($user_id !== 0) {
         MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
         new MutationObserver(function onSrcChange(){
-            // src attribute just changed!!! put code here
             jQuery.ajax({
                 url: 'https://vyndue.com/api/user/update_avatar',
                 method: 'POST',
@@ -30,6 +30,19 @@ if ($user_id !== 0) {
 
                     }
                 },
+            });
+
+            jQuery.ajax({
+                url: 'https://dev-api.arbitrage.ph/api/user/update',
+                method: 'POST',
+                data: {
+                    id: '<?php echo $uuid ?>',
+                    profile_image: jQuery('.um-profile-photo-img img').attr('src'),
+                },
+                dataType: 'json',
+                success: function (data) {
+
+                }
             });
             // alert($('.um-profile-photo-img img').attr('src'))
         })

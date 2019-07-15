@@ -1,6 +1,8 @@
 <!-- New Post HTML template -->
 <div class="um-activity-widget um-activity-new-post" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;">
-
+	<!-- <form action="" id="img_form">
+		<input type="hidden" name="_post_img" value="" />
+	</form> -->
 	<form action="" method="post" class="um-activity-publish">
 		<input type="hidden" name="action" id="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" id="_post_id" value="0" />

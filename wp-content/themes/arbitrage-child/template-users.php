@@ -1650,7 +1650,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	<div class="the_user_top_page">
 		<div class="um um-profile <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'um-editing' : 'um-viewing'); ?> um-11 um-role-administrator uimob800 topbannerprofile">
 			<div class="um-form">
-				<div class="um-cover  <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'has-cover' : ''); ?>" data-user_id="<?php echo $profile_id; ?>" data-ratio="2.7:1" style="height: 320px;">
+				<div class="um-cover <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'has-cover' : ''); ?>" data-user_id="<?php echo $profile_id; ?>" data-ratio="2.7:1" style="height: 320px;">
 
 			<?php
 
@@ -1725,7 +1725,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 				</div>
 				<div class="top-header-gear">
 					<div class="top-header-inner">
-						<!-- <div class="um-profile-edit um-profile-headericon um-trigger-menu-on-click">
+						<?php /*?><div class="um-profile-edit um-profile-headericon um-trigger-menu-on-click">
 							<a href="#" class="um-profile-edit-a" data-toggle="tooltip" data-placement="top" title="More Settings"><i class="um-faicon-cog"></i></a>
 							<div class="um-dropdown" data-element="div.um-profile-edit" data-position="bc" data-trigger="click" style="top: 178px;width: 163px;left: 27px !important;right: auto;text-align: center;">
 								<div class="um-dropdown-b">
@@ -1738,7 +1738,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 									</ul>
 								</div>
 							</div>
-						</div> -->
+						</div><?php */?>
 					</div>
 					<div class="profile-name">
 						<div class="prof-name-inner">
@@ -1770,7 +1770,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 						<div class="um-profile-photo" data-user_id="<?php echo um_profile_id(); ?>">
 
-							<a href="<?php echo um_user_profile_url(); ?>" class="um-profile-photo-img"
+							<a href="<?php echo um_user_profile_url(); ?>"  class="um-profile-photo-img"
 							   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
 
 							<?php
@@ -1873,7 +1873,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 												</li>-->
 											<?php else: ?>
 												<li>
-													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" ">Edit Profile</a>
+													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" >Edit Profile</a>
 												</li>
 											<?php endif ?>
 
@@ -1969,9 +1969,6 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 						endif;
 					?>
 
-
-
-
 					</div>
 				</div>
 			</div>
@@ -1981,9 +1978,10 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
+					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>
-                <?php get_template_part('parts/sidebar', 'footer'); ?>
+                
 			</div>
 			<br class="clear">
 		</div>
@@ -2004,9 +2002,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	    background: #142c46 !important;
 	}
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
-	    width: 180px !important;
-	    height: 180px !important;
-	    top: -6px !important;
+	    width: 180px;
+	    height: 180px;
+	    top: -6px;
 	    left: 15px;
 	}
 	.top-header-inner .um-profile-edit {

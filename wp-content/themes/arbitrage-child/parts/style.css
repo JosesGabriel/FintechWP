@@ -1670,8 +1670,8 @@ ul.footmore li.nobar:after {
     margin: 0 !important;
 }
 .um-11.um .um-profile-photo a.um-profile-photo-img {
-    width: 209px !important;
-    height: 209px !important;
+    width: 180px;
+    height: 180px;
     top: -30px !important;
 }
 .tlb-inner .onlikebutton {

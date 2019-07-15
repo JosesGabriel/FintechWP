@@ -11,7 +11,7 @@ html {
 }
 .et_fixed_nav #main-header, .et_fixed_nav #top-header {
     position: fixed;
-	z-index: 9999999999;
+	z-index: 2147483644;
 }
 .showonmobonly {
 	display:none;
@@ -269,7 +269,7 @@ html {
 }
 .onto-user-name {
 	font-size: 13px;
-	padding-left: 10px;
+	padding-left: 2px;
 	color: #fffffe;
 	padding-top: 10;
 	margin-bottom: 0px !important;
@@ -2420,6 +2420,14 @@ i.fa.fa-search {
     right: 88%;
     font-size: 14px;
 	width: 15px;
+}
+.um-activity-commentload-spin, .um-activity-ccommentload-spin {
+    background: none !important;
+    padding: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    position: relative;
+    margin-top: 0 !important;
 }
 
 </style>

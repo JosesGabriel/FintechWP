@@ -169,6 +169,7 @@ jQuery(function(){
   }
 </style>
 <?php
+  $dwatchinfo = null;
   // $curl = curl_init();
   //
   // curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
@@ -176,6 +177,8 @@ jQuery(function(){
   // $dwatchinfo = curl_exec($curl);
   // curl_close($curl);
 
+  // added false
+  if ($dwatchinfo !== null):
   $genstockinfo = json_decode($dwatchinfo);
   $stockinfo = $genstockinfo->data;
 ?>
@@ -340,4 +343,5 @@ jQuery(function(){
         
     </div>
 </div>
+          <?php endif; ?>
 </div>

@@ -24,7 +24,7 @@
           <div class="right-image">
 
                   <div class="onto-user-name true-name">
-                    <!-- <a href="<?php echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
+                    <!-- <a href="<?php //echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php // echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">
                       <?php // echo um_user('first_name') . " " . um_user('last_name'); ?>
                     </a> -->
@@ -57,11 +57,11 @@
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
               <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
-				  <li class="zero openleftpanel active">
+				  <?php /*?><li class="zero openleftpanel active showonmobonly">
 					<a href="#" style="background: #213f58 !important;">
 					  <img src="<?php echo get_home_url(); ?>/svg/openleftpanel_al.svg">
 					</a>
-          		  </li>
+          		  </li><?php */?>
 				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">	<span>Social Wall</span></a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart.svg">
 					  <span>Interactive Chart</span></a></li>
@@ -90,11 +90,11 @@
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
 					  <span>Games</span></a>
 				  </li>
-				  <li class="eight slideleft">
+				  <?php /*?><li class="eight slideleft showonmobonly">
 					<a href="#">
 					  <img src="<?php echo get_home_url(); ?>/svg/slideleft.svg">
 					</a>
-          		  </li>
+          		  </li><?php */?>
                   <?php /*?><li class="seven"><a href="https://game.arbitrage.ph/game/activateme/<?php echo md5($dusersecret); ?>"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">Games</a></li><?php */?>
               </ul>
           </div>
@@ -114,14 +114,6 @@
         // jQuery('.true-name a').hide();
 
   jQuery(document).ready(function(){
-	  
-	jQuery(document).on("click", "li.eight.slideleft", function(){
-    	$(this).toggleClass('open');
-    	var right = $(this).hasClass('open') ? 0 : '-100%';
-    	// jQuery('.right-dashboard-part').animate({right: right});	
-		jQuery('.right-dashboard-part').css("right",right);
-		jQuery('.right-dashboard-part').css("right",right);
-	});
 
         jQuery('input[type="checkbox"]').click(function(){
             if(jQuery(this).is(":checked")){
@@ -202,7 +194,7 @@
       jQuery('.side-content ul .three').addClass('active');
     }else if(pageURL == '<?php echo get_home_url(); ?>/watchlist/'){
       jQuery('.side-content ul .four').addClass('active');
-    }else if(pageURL == 'https://vyndue.com/'){
+    }else if(pageURL == '<?php echo get_home_url(); ?>/vyndue/'){
       jQuery('.side-content ul .five').addClass('active');
     }else if(pageURL == '<?php echo get_home_url(); ?>/tools/'){
       jQuery('.side-content ul .six').addClass('active');

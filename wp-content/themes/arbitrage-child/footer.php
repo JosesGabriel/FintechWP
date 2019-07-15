@@ -23,16 +23,7 @@ html {margin-top: 0 !important;}
 body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
 .et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
 </style>
-<?php /* temp-disabled
-	$curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	$dwatchinfo = curl_exec($curl);
-	curl_close($curl);
 
-	$genstockinfo = json_decode($dwatchinfo);
-	$stockinfo = $genstockinfo->data; */
-?>
 <script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 <script type="text/javascript">
 		(function($) {
@@ -42,14 +33,8 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		    jQuery(document).ready(function() {
 
 		    	var postid;
-		    	
-		    	
-
 
 		    	jQuery(".um-activity-new-post .um-activity-textarea").append('<div class="tagging_cont"></div>');
-
-
-				
 				jQuery(this).on('keyup', '.um-activity-comment-textarea', function (e) {
 
 					postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
@@ -58,22 +43,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 					if($(this).parent().find('.comment_tag_' + postid).length == 0){
 						jQuery(this).parents('.um-activity-comment-box').append('<div class="comment_tag_'+postid+'"></div>');
-						
-						$('<input>').attr({
-						    type: 'hidden',
-						    value: '',
-						    class: 'userlogin',
-						}).appendTo('.um-activity-comment-box');
 					
 					}
 
 				});
 
-
-
-
 		    	jQuery(this).scrollTop(0);
-
 		    	jQuery(".nobar").click(function(e){
 					e.preventDefault();
 					event.stopPropagation();
@@ -88,7 +63,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 		    	var dauto = false;
 		    	var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#ffeb3b'];
-
 		    	var arraylimit = colors.length - 1;
 
 				// var typingTimer;                //timer identifier
@@ -105,40 +79,19 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				// 	clearTimeout(typingTimer);
 				// });
 
+				//var loopfriends;
+				//jQuery('.um-activity-textarea textarea').on('keydown', function (e) {
+					//clearTimeout(loopfriends);
+				//});
 				var loopfriends;
 				jQuery('.um-activity-textarea textarea').on('keydown', function (e) {
 					clearTimeout(loopfriends);
 				});
 
 
-
 		        jQuery('.um-activity-textarea textarea').on('keyup', function (e) {
 					<?php
-						/*global $wpdb;
-					
-
-
-						//$profile_id = 7;
-						$table = $wpdb->prefix . "um_friends";
-						$results = $wpdb->get_results( $wpdb->prepare(
-							//"SELECT user_id1, user_id2 FROM {$table} WHERE status = 1 AND ( user_id1 = %d OR user_id2 = %d ) ORDER BY time DESC", $profile_id, $profile_id
-							//"SELECT user_id1, user_id2 FROM {$table} WHERE status = 1 AND ( user_id1 = %d ) ORDER BY time DESC"
-							"SELECT user_id1, user_id2 FROM {$table} WHERE status = 0 AND ( user_id1 = %d ) ORDER BY time DESC"
-						), ARRAY_A ); 
 						
-						$listoffriends = array();
-						foreach ( $results as $page )
-							{
-							$user_info = get_userdata($page['user_id1']);       
-							
-							$infoars = [];
-							$infoars['id'] = $user_info->ID;
-							$infoars['firstname'] = $user_info->first_name;
-							$infoars['lastname'] = $user_info->last_name;
-
-							array_push($listoffriends,$infoars);
-								
-							}*/
 							
 						$topargs = array(
 							'role'          =>  '',
@@ -149,8 +102,10 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 						$users = get_users($topargs);
 						$newuserlist = array();
 						foreach ($users as $key => $value) {
-								$userdetails['id'] = $value->id;
-								$userdata = get_userdata($value->id);
+								//$userdetails['id'] = $value->id;
+								//$userdata = get_userdata($value->id);
+								$userdetails['id'] = $value->ID;
+								$userdata = get_userdata($value->ID);
 								// $userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
 								$userdetails['displayname'] = $userdata->first_name .  " " . $userdata->last_name;
 								array_push($newuserlist, $userdetails);
@@ -159,9 +114,9 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 					?>
 		        	var counx = 0;
-		        	var dstocks = '<?php echo $dwatchinfo; ?>';
-		        	var allstocks = dstocks.data;
-					var allprocess = '<?php echo json_encode($listoffriends); ?>';
+		        	
+
+					
 					var usersall = '<?php echo json_encode($newuserlist); ?>';
 					clearInterval(loopfriends);
 					// console.log(usersall);
@@ -269,8 +224,10 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 						$users = get_users($topargs);
 						$newuserlist = array();
 						foreach ($users as $key => $value) {
-								$userdetails['id'] = $value->id;
-								$userdata = get_userdata($value->id);
+								//$userdetails['id'] = $value->id;
+								//$userdata = get_userdata($value->id);
+								$userdetails['id'] = $value->ID;
+								$userdata = get_userdata($value->ID);
 								$userdetails['user_login'] = $value->user_login;
 								$userdetails['displayname'] = $userdata->first_name .  " " . $userdata->last_name;
 								array_push($newuserlist, $userdetails);
@@ -281,14 +238,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 
 		        	var counx = 0;
-		        	var dstocks = '<?php echo $dwatchinfo; ?>';
-		        	var allstocks = dstocks.data;
-					var allprocess = '<?php echo json_encode($listoffriends); ?>';
+		        	
+					
 					var usersall = '<?php echo json_encode($newuserlist); ?>';
 					clearInterval(loopfriends);
 					
-					//jQuery(".um-activity-comment-box .comment_tag_" + postid);
-					//jQuery(this).parents(".um-activity-comment-box .comment_tag_" + postid);
+					
 				
 		        	if (e.which == 52) { dauto = true; }
 		        	if (e.which == 32) { dauto = false; }
@@ -362,7 +317,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 		  $(document).on('click','.cgitem', function(){
 
-		  	//console.log(jQuery(this).text());
+		  
 
 		  			var textval = jQuery(this).parents('.um-activity-comment-box').find('textarea').val();
 
@@ -382,7 +337,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 					
 					
 					
-					var res = dtextareas.split(" ");
+					//var res = dtextareas.split(" ");
 
 					//var dlastitem = res[res.length-1];
 
@@ -397,11 +352,9 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 					var dreplaceditem = comm + '@'+did+'_'+dfinalname;
 
-
-
 					console.log(dreplaceditem);
 					jQuery(this).parents('.um-activity-comment-box').find('textarea').val(dreplaceditem).focus();
-					jQuery(this).parents('.um-activity-comment-box').find('input.userlogin').attr('value', userlogin);
+					//jQuery(this).parents('.um-activity-comment-box').find('input.userlogin').attr('value', userlogin);
 
 		  });
 			
@@ -469,20 +422,113 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				    // console.log(newdesc);
 				    jQuery(this).parents('.um-activity-textarea').find(".popname").remove();
 				});
+				
 		    });
 	 
 		})(jQuery);
+	
+	
 	</script>
 
 <?php get_footer('all') ?>
-<?php get_footer('sockets') ?>
+
+<?php if ( is_user_logged_in() ) { ?>
+
+	<?php get_footer('sockets') ?>
+
+	<script language="javascript">
+		
+	<?php /*?>jQuery(document).ready(function(){
+		
+		jQuery('.left-slide-trigger').mousedown(function(){
+			jQuery('.left-dashboard-part').css("left","-12px");
+		});
+		
+	});<?php */?>
+
+	function swipedetect(el, callback){
+
+		var touchsurface = el,
+		swipedir,
+		startX,
+		startY,
+		distX,
+		distY,
+		threshold = 30, //required min distance traveled to be considered swipe
+		restraint = 100, // maximum distance allowed at the same time in perpendicular direction
+		allowedTime = 300, // maximum time allowed to travel that distance
+		elapsedTime,
+		startTime,
+		handleswipe = callback || function(swipedir){}
+
+		touchsurface.addEventListener('touchstart', function(e){
+			var touchobj = e.changedTouches[0]
+			swipedir = 'none'
+			dist = 0
+			startX = touchobj.pageX
+			startY = touchobj.pageY
+			startTime = new Date().getTime() // record time when finger first makes contact with surface
+			e.preventDefault()
+		}, false)
+
+		touchsurface.addEventListener('touchmove', function(e){
+			e.preventDefault() // prevent scrolling when inside DIV
+		}, false)
+
+		touchsurface.addEventListener('touchend', function(e){
+			var touchobj = e.changedTouches[0]
+			distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
+			distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
+			elapsedTime = new Date().getTime() - startTime // get time elapsed
+			if (elapsedTime <= allowedTime){ // first condition for awipe met
+				if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){ // 2nd condition for horizontal swipe met
+					swipedir = (distX < 0)? 'left' : 'right' // if dist traveled is negative, it indicates left swipe
+				}
+				else if (Math.abs(distY) >= threshold && Math.abs(distX) <= restraint){ // 2nd condition for vertical swipe met
+					swipedir = (distY < 0)? 'up' : 'down' // if dist traveled is negative, it indicates up swipe
+				}
+			}
+			handleswipe(swipedir)
+			e.preventDefault()
+		}, false)
+	}
+
+	var el = document.getElementById('left-slide-trigger');
+	swipedetect(el, function(swipedir){
+		if(swipedir == "right"){
+			jQuery('.left-dashboard-part').css("left","0");
+			jQuery('.slidecloseoverlay').css("display","block");
+			jQuery('.left-dashboard-part-overlay').fadeIn("fast");
+		}
+	});
+		
+	var el2 = document.getElementById('slidecloseoverlay');
+	swipedetect(el2, function(swipedir){
+		if (swipedir == "left"){
+			jQuery('.left-dashboard-part').css("left","-100%");
+			jQuery('.slidecloseoverlay').css("display","none");
+			jQuery('.left-dashboard-part-overlay').fadeOut("fast");
+		}
+	});
+		
+	jQuery('.top-slide-trigger').click(function(){
+		jQuery('.left-dashboard-part').css("left","0");
+		jQuery('.slidecloseoverlay').css("display","block");
+		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
+	});
+
+	</script>
+
+<?php } ?>
+
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+<?php /*?><script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script><?php */?>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
-<script>
+<?php /*?><script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyD1qzYu4IMXmAkDCwiyIzz5ybYlMpByISY",
@@ -495,17 +541,23 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-</script>
+</script><?php */?>
+
+<?php if ( is_user_logged_in() ) { ?>
+	<?php if (is_front_page()){ // PWA - Add to homepage ?>
+		<script>
+		 if ('serviceWorker' in navigator) {
+			console.log("Add to homepage");
+			navigator.serviceWorker.register('serworkr.js')
+			  .then(function(reg){
+				console.log("Done!");
+			 }).catch(function(err) {
+				console.log("Woops... Sorry...", err)
+			});
+		 }
+		</script>
+	<?php } ?>
+<?php } ?>
+<div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>
 </body>
-<script>
- if ('serviceWorker' in navigator) {
-    console.log("Will the service worker register?");
-    navigator.serviceWorker.register('serworkr.js')
-      .then(function(reg){
-        console.log("Yes, it did.");
-     }).catch(function(err) {
-        console.log("No it didn't. This happened:", err)
-    });
- }
-</script>
 </html>

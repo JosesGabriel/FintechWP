@@ -1,7 +1,11 @@
+<?php
+    $user_id = get_current_user_id();
+    // $uuid = arbitrage_api_get_user_uuid($user_id);
+?>
 <script>
 (function ($) {
 
-    var user_id = '<?php echo get_current_user_id() ?>'
+    var user_id = '<?php echo $user_id ?>'
 
     function add_loading_btn($btn) {
         $btn.append('&nbsp;<i class="fa fa-spinner fa-spin" style="margin: 0" aria-hidden="true"></i>')
@@ -134,6 +138,20 @@
                     // remove_loading_btn($btn)
                     // window.location.reload(true);
                 }
+            });
+
+            // Social wall cloud
+            var file    = document.querySelector('input[type=file]').files[0];
+            var formData = new FormData();
+            formData.append('file', file);
+            fetch('https://dev-api.arbitrage.ph/api/storage/upload', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(json => {
+                let imgUrl = JSON.stringify(json.data.file.url)
+                alert(imgUrl)
+                let updateQuery = "UPDATE im_message SET message = " + fileURL + " WHERE im_message.m_id = " + msg_id + ";";
+                mysqlCon2.execute(updateQuery);
+
             });
         })
     })

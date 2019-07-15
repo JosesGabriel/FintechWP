@@ -949,7 +949,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
 			
-			<div class="left-dashboard-part">
+			<div class="left-dashboard-part" id="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
                     
@@ -972,7 +972,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 					</div>
 				</div>
 			</div>
-			
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
@@ -983,21 +982,22 @@ date_default_timezone_set('Asia/Manila'); ?>
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
 
                     <?php get_template_part('parts/sidebar', 'alert'); ?>
+					
+					<?php // get_template_part('parts/sidebar', 'ads'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>
 			</div>
 			
-			<div class="banner-try">
+			<?php /*?><div class="banner-try">
 				<div class="to-top-title">Sponsored <div class="to-top-create">Create ads</div>
-					<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;/* margin: 5px 0px !important; */">
+					<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;">
 				</div>
 				<div class="cont-try-premium">
-					<img src="https://1948265747.rsc.cdn77.org/svg/try-primium.jpg">
+					<img src="<?php echo get_home_url(); ?>/svg/try-primium.jpg">
 				</div>
-			</div>
-			
-			<?php //get_template_part('parts/sidebar', 'ads'); ?>
-			<?php get_template_part('parts/sidebar', 'footer'); ?>
+			</div><?php */?>
 
 			<br class="clear">
 		</div>

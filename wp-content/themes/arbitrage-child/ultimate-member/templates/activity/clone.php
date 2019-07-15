@@ -1,4 +1,4 @@
-<?php global $user_ID; ?>
+<?php global $user_ID, $post; ?>
 
 <?php um_fetch_user( $user_ID ); ?>
 
@@ -248,27 +248,9 @@
 					</a>
 
 				</div>
-
-				<!--<div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active' : '') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
-
-						<a href="#">
-
-							<i class="um-faicon-thumbs-up"></i>
-
-							<i class="um-faicon-thumbs-down" style="display:none;"></i>
-
-							<div class="dnumof"><?php echo $likes; ?></div>
-
-						</a>
-
-					</div>
-
-			</div> -->
 			
 
 			<div class="um-clear"></div>
-			
-
 				
 
 		</div>

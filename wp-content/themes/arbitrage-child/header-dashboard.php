@@ -235,11 +235,18 @@ $user = wp_get_current_user();
 </head>
 <body <?php body_class(); ?>>
 <?php /* Global CSS Overrides */ get_template_part('parts/global', 'css'); ?>
-<?php /* Responsive */ get_template_part('parts/global', 'responsive'); ?>
+<?php /* Responsive 1 */ get_template_part('parts/global', 'responsive'); ?>
+<?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
 <?php
 	$product_tour_enabled = et_builder_is_product_tour_enabled();
 	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>
 	<div id="page-container"<?php echo $page_container_style; ?>>
+
+<div class="slidecloseoverlay" id="slidecloseoverlay"></div>
+<div class="left-slide-trigger" id="left-slide-trigger"></div>
+<div class="right-slide-trigger" id="right-slide-trigger"></div>
+<div class="top-slide-trigger" id="top-slide-trigger"></div>
+		
 <?php
 	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {
 		return;

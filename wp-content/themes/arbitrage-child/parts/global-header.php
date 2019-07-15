@@ -218,13 +218,13 @@ $cdnorlocal = get_home_url();
                 jQuery("#toghandlingers").hide().removeClass("dropthiss");
             });
         });
-        $("body").on('DOMSubtreeModified', ".um-notification-live-count.counter", function(event) {
+        jQuery("body").on('DOMSubtreeModified', ".um-notification-live-count.counter", function(event) {
                 
                 var counter = parseInt($(event.target));
-                $(".um-notification-live-count.counter").empty();
+                jQuery(".um-notification-live-count.counter").empty();
                 // $(".um-notification-live-count.countx_max").empty();
                 if (counter >= 9){
-                    $('.um-notification-live-count.countx_max').html("9+");
+                    jQuery('.um-notification-live-count.countx_max').html("9+");
                 }
                 // var counter = count = $(".um-notification-live-count.counter").empty();
                 // console.log('pre if', counter, count, event.target)

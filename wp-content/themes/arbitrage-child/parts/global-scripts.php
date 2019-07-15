@@ -16,13 +16,7 @@
   src="https://www.facebook.com/tr?id=594260294422186&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-7982031973729040",
-          enable_page_level_ads: true
-     });
-</script>
+
 <?php /*?><!-- Rich Partners Start -->
 <script src="https://richinfo.co/js/rp.js"></script>
 <script>

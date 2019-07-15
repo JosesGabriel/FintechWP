@@ -129,7 +129,7 @@
 					$text = sprintf(__('load <span class="um-activity-more-count">%s</span> more reply','um-activity'), $calc );
 				}
 				echo '<a href="javascript:void(0);" class="um-activity-ccommentload" data-load_replies="'. __('load more replies','um-activity').'" data-load_comments="'.__('load more comments','um-activity') . '" data-loaded="'. count( $child ) . '"><i class="um-icon-forward"></i><span>' . $text . '</span></a>';
-				echo '<div class="um-activity-ccommentload-spin"></div>';
+				echo '<div class="um-activity-ccommentload-spin"><img src='.get_home_url().'/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px;"></div>';
 			} ?>
 
 		</div>

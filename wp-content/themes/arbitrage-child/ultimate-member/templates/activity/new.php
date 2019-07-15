@@ -1,7 +1,10 @@
 <!-- New Post HTML template -->
-<div class="um-activity-widget um-activity-new-post" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;">
-
-	<form action="" method="post" class="um-activity-publish">
+<div class="um-activity-widget um-activity-new-post ss" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;">
+	<!-- <form action="" >
+		<input type="file" onchange="previewFile()"><br>
+       	<img src="" height="200" alt="Image preview...">
+	</form> -->
+	<form action="" method="post"  enctype="multipart/form-data" class="um-activity-publish" id="publishImage">
 		<input type="hidden" name="action" id="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" id="_post_id" value="0" />
 		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( $user_id ); ?>" />

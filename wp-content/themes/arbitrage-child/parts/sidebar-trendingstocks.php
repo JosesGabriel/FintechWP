@@ -49,32 +49,35 @@ jQuery("#show_hide").click(function () {
     $gerdqoute = json_decode($gerdqoute);
 
     $listofstocks = [];
-    foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
-        $indls = [];
-        $indls['stock'] = $dlskey;
-        $dstocknamme = $dlskey;
-        $indls['stnamename'] = strtolower($stocksdesc->$dstocknamme->description);
 
-        $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
-        $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
-        $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
-        $indls['following'] = ($dpullbear != "" ? $dpullbear : 0) + ($dpullbull != "" ? $dpullbull : 0);
-
-        // trending on posts
-
-        $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".strtolower($dstocknamme)."%'");
-        $countpstock = 0;
-        foreach ($dsprest as $rsffkey => $rsffvalue) {
-            $dcontent = $rsffvalue->post_content;
-            if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
-                $countpstock++;
+    if ($gerdqoute) {
+        foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
+            $indls = [];
+            $indls['stock'] = $dlskey;
+            $dstocknamme = $dlskey;
+            $indls['stnamename'] = strtolower($stocksdesc->$dstocknamme->description);
+    
+            $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
+            $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
+            $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
+            $indls['following'] = ($dpullbear != "" ? $dpullbear : 0) + ($dpullbull != "" ? $dpullbull : 0);
+    
+            // trending on posts
+    
+            $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".strtolower($dstocknamme)."%'");
+            $countpstock = 0;
+            foreach ($dsprest as $rsffkey => $rsffvalue) {
+                $dcontent = $rsffvalue->post_content;
+                if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+                    $countpstock++;
+                }
             }
+    
+            $indls['following'] += $countpstock;
+    
+    
+            array_push($listofstocks, $indls);
         }
-
-        $indls['following'] += $countpstock;
-
-
-        array_push($listofstocks, $indls);
     }
 
     function date_compare($a, $b)
@@ -113,7 +116,8 @@ jQuery("#show_hide").click(function () {
         <ul>
             <?php
                 $countss = 1;
-                $numinarrat = count($lfstkey);
+                // $numinarrat = count($lfstkey);
+                $numinarrat = count($finaltopstocks);
             ?>
             <?php foreach ($finaltopstocks as $lfstkey => $lfstvalue) { ?>
 

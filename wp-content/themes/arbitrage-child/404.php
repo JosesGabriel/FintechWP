@@ -22,6 +22,7 @@ html, .home body.et_cover_background {
 
 			<div class="page-wrapper">
 				<div class="page-content" style="text-align:center; color:#fff;">
+					<img src="/images/Comp-11.gif">
 					<h3 style="color:#fff; font-weight:300;"><?php echo 'We&rsquo;re unable to locate the page you&rsquo;re trying to access.'; ?></h3>
 				</div><!-- .page-content -->
 			</div><!-- .page-wrapper -->

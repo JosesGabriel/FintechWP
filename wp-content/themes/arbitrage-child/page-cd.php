@@ -15,7 +15,4 @@ if (!isset($headers['X-Gitlab-Token ']) ||
     exit();
 }
 
-shell_exec(
-    "sudo -u vyndue03 -S cd /home/vyndue03/arbitrage.ph
-    && sudo -u vyndue03 -S git pull origin develop"
-);
+shell_exec("cd /home/vyndue03/arbitrage.ph && sudo -u vyndue03 -S git pull origin develop");

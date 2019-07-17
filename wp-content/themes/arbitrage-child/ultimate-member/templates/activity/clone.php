@@ -185,7 +185,7 @@
 
 				<div class="um-activity-bodyinner-photo">
 
-					<a href="#" class="um-photo-modal" data-src="{{{data.img_src}}}">
+					<a href="#" class="um-photo-modal" data-src="{{{data.img_src_url}}}">
 
 						<img src="{{{data.img_src_url}}}" alt="" />
 
@@ -355,7 +355,7 @@
 
 		<div class="um-activity-bodyinner-photo">
 
-			<a href="#" class="um-photo-modal" data-src="{{{data.img_src}}}">
+			<a href="#" class="um-photo-modal" data-src="{{{data.img_src_url}}}">
 
 				<img src="{{{data.img_src_url}}}" alt="" />
 

@@ -38,6 +38,10 @@
 /* Tablet Landscape */
 @media only screen and (min-width: 981px) and (max-width: 1024px){
 
+	.left-dashboard-part {
+		display: none !important;
+	}
+	
 }
 /* Tablet Portrait */
 @media only screen and (min-width: 740px) and (max-width: 768px){

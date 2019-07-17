@@ -54,6 +54,10 @@
 		display: block;
 	}
 
+	.side-content ul li a {
+    	padding: 5px !important;
+	}
+
 	.left-dashboard-part {
 		transition: all 0.5s ease;
 		position: fixed !important;
@@ -64,6 +68,19 @@
 		background-color: #0d1f33;
 		bottom: 0;
 	}
+
+	.slidecloseoverlay {
+		z-index: 2147483647;
+		position: fixed;
+		display: none;
+		right: 0;
+		left: 200px;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
 	.left-dashboard-part-overlay {
 		position: fixed !important;
 		z-index: 2147483645;
@@ -77,6 +94,14 @@
 	}
 	.dashboard-sidebar-left {
 		padding: 0 12px 0;
+	}
+
+	li.eight.slideleft.open img {
+		-webkit-transform: scaleX(-1);
+  		transform: scaleX(-1);
+	}
+	.left-dashboard-part.open {
+		left: 0;
 	}
 
 }

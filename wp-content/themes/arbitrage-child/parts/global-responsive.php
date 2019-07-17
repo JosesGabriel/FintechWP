@@ -68,6 +68,20 @@
 		background-color: #0d1f33;
 		bottom: 0;
 	}
+	.inner-placeholder {
+		transition: all 0.5s ease;
+		display: block !important;
+		position: absolute !important;
+		float: none !important;
+		right: -110%;
+		z-index: 9 !important;
+		top: -39px !important;
+		padding: 15px 29px 0 8px !important;
+		background-color: rgb(13, 31, 51) !important;
+		width: 100% !important;
+		max-width: 512px !important;
+		height: auto !important;
+	}
 
 	.slidecloseoverlay {
 		z-index: 2147483647;

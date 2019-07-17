@@ -7,6 +7,9 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 740px) and (max-width: 768px){
 
+	.left-dashboard-part{
+		display: none;
+	}
 	
 }
 /* Mobile */

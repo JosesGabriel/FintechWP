@@ -38,6 +38,10 @@
 		height: 165px !important;
 	}
 
+	.bkcalcbox, .halfts {
+		height: 100% !important;
+	}
+
 	
 }
 /* Mobile Smaller */
@@ -52,6 +56,9 @@
 
 	.the_user_top_page .um-cover {
 		height: 130px !important;
+	}
+	.bkcalcbox, .halfts {
+		height: 100% !important;
 	}
 }
 </style>

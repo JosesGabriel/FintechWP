@@ -50,73 +50,7 @@
 		display:block !important;
 	}
 
-	.slideleft {
-		display: block;
-	}
-
-	.side-content ul li a {
-    	padding: 5px !important;
-	}
-
-	.left-dashboard-part {
-		transition: all 0.5s ease;
-		position: fixed !important;
-		z-index: 2147483646;
-		top: 0 !important;
-		left: -100%;
-		width: 85%;
-		background-color: #0d1f33;
-		bottom: 0;
-	}
-	.inner-placeholder {
-		transition: all 0.5s ease;
-		display: block !important;
-		position: absolute !important;
-		float: none !important;
-		right: -110%;
-		z-index: 9 !important;
-		top: -39px !important;
-		padding: 15px 29px 0 8px !important;
-		background-color: rgb(13, 31, 51) !important;
-		width: 100% !important;
-		max-width: 512px !important;
-		height: auto !important;
-	}
-
-	.slidecloseoverlay {
-		z-index: 2147483647;
-		position: fixed;
-		display: none;
-		right: 0;
-		left: 200px;
-		top: 0;
-		bottom: 0;
-		height: 100%;
-		width: 100%;
-	}
-
-	.left-dashboard-part-overlay {
-		position: fixed !important;
-		z-index: 2147483645;
-		top: 0 !important;
-		left: 0;
-		right: 0;
-		width: 100%;
-		background-color: rgba(0,0,0,0.6);
-		bottom: 0;
-		display: none;
-	}
-	.dashboard-sidebar-left {
-		padding: 0 12px 0;
-	}
-
-	li.eight.slideleft.open img {
-		-webkit-transform: scaleX(-1);
-  		transform: scaleX(-1);
-	}
-	.left-dashboard-part.open {
-		left: 0;
-	}
+	
 
 }
 /* Mobile */

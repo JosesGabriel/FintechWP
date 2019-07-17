@@ -42,6 +42,10 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 740px) and (max-width: 768px){
 
+	.left-dashboard-part {
+		display: none !important;
+	}
+
 }
 /* Mobile */
 @media only screen and (max-width: 767px){

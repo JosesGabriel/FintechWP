@@ -50,6 +50,35 @@
 		display:block !important;
 	}
 
+	.slideleft {
+		display: block;
+	}
+
+	.left-dashboard-part {
+		transition: all 0.5s ease;
+		position: fixed !important;
+		z-index: 2147483646;
+		top: 0 !important;
+		left: -100%;
+		width: 85%;
+		background-color: #0d1f33;
+		bottom: 0;
+	}
+	.left-dashboard-part-overlay {
+		position: fixed !important;
+		z-index: 2147483645;
+		top: 0 !important;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: rgba(0,0,0,0.6);
+		bottom: 0;
+		display: none;
+	}
+	.dashboard-sidebar-left {
+		padding: 0 12px 0;
+	}
+
 }
 /* Mobile */
 @media only screen and (max-width: 767px){

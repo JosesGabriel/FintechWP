@@ -46,6 +46,10 @@
 		display: none !important;
 	}
 
+	.left-slide-trigger {
+		display:block !important;
+	}
+
 }
 /* Mobile */
 @media only screen and (max-width: 767px){

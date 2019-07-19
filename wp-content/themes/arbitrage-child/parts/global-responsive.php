@@ -46,6 +46,11 @@
 	body {
 		overflow-x: hidden;
 	}
+
+	.left-dashboard-part-overlay {
+		display: none;
+	}
+
 	.center-dashboard-part {
 		transition: all 0.5s ease;
 	}

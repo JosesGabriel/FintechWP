@@ -43,8 +43,6 @@
 @media only screen and (min-width: 740px) and (max-width: 981px){
 
 
-
-	
 	body {
 		overflow-x: hidden;
 	}
@@ -114,7 +112,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 85%;
+		width: 25%;
 		background-color: #0d1f33;
 		bottom: 0;
 	}

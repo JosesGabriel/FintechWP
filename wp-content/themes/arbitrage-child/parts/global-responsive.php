@@ -47,8 +47,8 @@
 		overflow-x: hidden;
 	}
 
-	.left-dashboard-part-overlay {
-		display: none;
+	.left-dashboard-part-overlay{
+		display: none !important;
 	}
 
 	.center-dashboard-part {

@@ -75,12 +75,7 @@
 		max-width: 708px;
 	}
 	
-	.searchbar {
-		top: 7px;
-    	position: absolute;
-		z-index: 99;
-		width: 180px;
-	}
+	
 	.closerff,
 	.cls-inner {
 		width: 100% !important;
@@ -135,7 +130,7 @@
 	.inner-main-content {
 		position: relative;
 	}
-	.inner-placeholder .inner-main-content .right-dashboard-part {
+	.inner-placeholder .inner-main-content {
 		transition: all 0.5s ease;
 		display: block !important;
 		position: absolute !important;
@@ -149,6 +144,7 @@
 		max-width: 512px !important;
 		height: auto !important;
 	}
+
 	li.eight.slideleft.open img {
 		-webkit-transform: scaleX(-1);
   		transform: scaleX(-1);

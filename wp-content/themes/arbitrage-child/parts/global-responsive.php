@@ -44,10 +44,7 @@
 
 
 
-	.left-dashboard-part {
-		display: none !important;
-	}
-
+	
 	body {
 		overflow-x: hidden;
 	}

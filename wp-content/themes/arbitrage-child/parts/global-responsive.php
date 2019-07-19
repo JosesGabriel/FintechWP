@@ -112,7 +112,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 25%;
+		width: 30%;
 		background-color: #0d1f33;
 		bottom: 0;
 	}

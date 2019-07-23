@@ -965,8 +965,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php // echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
-						<?php echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$_GET['wall_post'].'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>
+						<?php echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
+						<?php // echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$_GET['wall_post'].'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 						the_content();
 						endwhile; else: ?>

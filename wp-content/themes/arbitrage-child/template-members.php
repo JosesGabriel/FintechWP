@@ -965,10 +965,10 @@ date_default_timezone_set('Asia/Manila'); ?>
 						
                         <?php get_template_part('parts/sidebar', 'tasks'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-
+						<?php get_template_part('parts/sidebar', 'traders'); ?>
+						
 					</div>
-
-                    <?php get_template_part('parts/sidebar', 'traders'); ?>
+                    
 				</div>
 			</div>
 			<div class="center-dashboard-part">
@@ -989,19 +989,19 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
 					<?php get_template_part('parts/sidebar', 'watchlist'); ?>
-					</div>
+					
 					<?php get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>
 				</div>
 
-				<div class="banner-try">
+				<?php /*?><div class="banner-try">
 					<div class="to-top-title">Sponsored <div class="to-top-create">Create ads</div>
-						<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;/* margin: 5px 0px !important; */">
+						<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;">
                     </div>
                         <div class="cont-try-premium">
                         <img src="<?php echo get_home_url(); ?>/svg/try-primium.jpg">
                     </div>
-				</div>
+				</div><?php */?>
 
                 <div class="forsticky">
                     <?php // get_template_part('parts/sidebar', 'ads'); ?>

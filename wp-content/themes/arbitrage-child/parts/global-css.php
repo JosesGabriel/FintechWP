@@ -257,6 +257,7 @@ html {
 	overflow: hidden;
 	padding-top: 0 !important;
 	font-weight: 500 !important;
+	padding-left: 15px;
 }
 .arb_smalltxt {
 	font-weight: 300;

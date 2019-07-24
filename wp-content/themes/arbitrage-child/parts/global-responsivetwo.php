@@ -88,7 +88,11 @@
 	}
 
 	.meta-details-inner ul li .onlabel {
-		 font-size: 12px !important;
+		font-size: 12px !important;
+	}
+
+	.dnavtopinner ul {
+		padding-right: 10px !important;
 	}
 }
 </style>

@@ -1056,7 +1056,7 @@ get_header( 'dashboard' );
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 936px;">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php //echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>

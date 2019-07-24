@@ -46,6 +46,35 @@
 		height: 100% !important;
 	}
 
+	.prof-name-inner {
+		font-size: 20px !important;
+	}
+
+	.top-header-gear .profile-name .prof-name-inner {
+		top: -43px !important;
+    	left: 30% !important;
+	}
+
+	.dnavtopinner ul li a.um-button.um-alt {
+		line-height: 7px !important;
+		padding: 10px 10px !important;
+	}
+
+	.dmetadetails {
+		left: 30% !important;
+	}
+
+	.meta-details-inner ul li .oncount {
+		 font-size: 20px !important;
+	}
+
+	.meta-details-inner ul li .onlabel {
+		font-size: 12px !important;
+	}
+
+	.dnavtopinner ul {
+		padding-right: 10px !important;
+	}
 	
 }
 /* Mobile Smaller */

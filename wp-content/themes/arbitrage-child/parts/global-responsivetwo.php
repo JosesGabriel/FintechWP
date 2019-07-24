@@ -138,7 +138,7 @@
 		padding-right: 10px !important;
 	}
 
-	.um-friends-user{
+	.friends-list-profile .um-friends-user {
 		padding-left: 20px !important;
 	}
 

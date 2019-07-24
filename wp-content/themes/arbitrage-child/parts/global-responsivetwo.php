@@ -20,7 +20,7 @@
 		width: 70px !important;
    		height: 70px !important;
    		top: 100px !important;
-    	left: -135px !important;
+    	left: -155px !important;
 	}
 
 

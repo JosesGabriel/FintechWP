@@ -1035,7 +1035,7 @@ get_header( 'dashboard' );
 		jQuery('.um-faicon-trash-o').html('<img src="https://arbitrage.ph/svg/garbage1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-trash-o').removeClass('um-faicon-trash-o');
 
-		jQuery(".um-field-nickname").find(".um-field-label label").text('Traiding Name');
+		jQuery(".um-field-nickname").find(".um-field-label label").text('Trading Name');
 	});
 
 

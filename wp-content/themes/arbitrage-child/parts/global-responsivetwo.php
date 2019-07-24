@@ -66,7 +66,7 @@
 	}
 
 	.prof-name-inner {
-		font-size: 20px;
+		font-size: 20px !important;
 	}
 }
 </style>

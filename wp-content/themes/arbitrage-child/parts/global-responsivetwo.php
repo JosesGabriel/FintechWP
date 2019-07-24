@@ -70,7 +70,7 @@
 	}
 
 	.top-header-gear .profile-name .prof-name-inner {
-		top: -53px !important;
+		top: -43px !important;
     	left: 30% !important;
 	}
 

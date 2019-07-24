@@ -75,6 +75,11 @@
 	.dnavtopinner ul {
 		padding-right: 10px !important;
 	}
+
+	.center-dashboard-part {
+		width: 100% !important;
+	}
+
 	
 }
 /* Mobile Smaller */

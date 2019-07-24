@@ -952,6 +952,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="left-dashboard-part" id="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
+						
+						<?php get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
                         
@@ -963,7 +965,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php //echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
+						<?php echo do_shortcode('[ultimatemember_activity]'); ?>
+						<?php // echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
+						<?php // echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$_GET['wall_post'].'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 						the_content();
 						endwhile; else: ?>
@@ -982,8 +986,6 @@ date_default_timezone_set('Asia/Manila'); ?>
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
 
                     <?php get_template_part('parts/sidebar', 'alert'); ?>
-					
-					<?php // get_template_part('parts/sidebar', 'ads'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 

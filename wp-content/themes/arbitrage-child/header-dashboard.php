@@ -236,7 +236,7 @@ $user = wp_get_current_user();
 <body <?php body_class(); ?>>
 <?php /* Global CSS Overrides */ get_template_part('parts/global', 'css'); ?>
 <?php /* Responsive 1 */ get_template_part('parts/global', 'responsive'); ?>
-<?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
+<?php /* Responsive 2 */ // get_template_part('parts/global', 'responsivetwo'); ?>
 <?php
 	$product_tour_enabled = et_builder_is_product_tour_enabled();
 	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>

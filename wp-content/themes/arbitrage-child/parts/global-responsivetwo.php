@@ -80,6 +80,9 @@
 		width: 100% !important;
 	}
 
+	.um-left {
+    	float: initial !important;
+	}
 	
 }
 /* Mobile Smaller */

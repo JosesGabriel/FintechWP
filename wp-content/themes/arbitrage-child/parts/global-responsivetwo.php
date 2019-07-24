@@ -137,5 +137,10 @@
 	.dnavtopinner ul {
 		padding-right: 10px !important;
 	}
+
+	.um-friends-user{
+		padding-left: 20px !important;
+	}
+
 }
 </style>

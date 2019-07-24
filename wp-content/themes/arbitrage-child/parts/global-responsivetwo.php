@@ -68,5 +68,11 @@
 	.prof-name-inner {
 		font-size: 20px !important;
 	}
+
+	.top-header-gear .profile-name .prof-name-inner {
+		top: -53px;
+    	left: 30%;
+	}
+
 }
 </style>

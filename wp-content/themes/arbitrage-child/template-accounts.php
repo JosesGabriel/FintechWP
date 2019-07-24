@@ -656,7 +656,7 @@ get_header( 'dashboard' );
 		font-size: 12px;
 		color: #fffffe;
 		font-family: 'Roboto', sans-serif !important;
-		padding-left: 4px;
+		padding-left: 12px;
 		font-weight: 500;
 	}
 	div.uimob800 .um-account-side li a span.um-account-icontip {

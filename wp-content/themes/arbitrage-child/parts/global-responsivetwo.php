@@ -17,10 +17,10 @@
 @media only screen and (max-width: 767px){
 
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
-		width: 100px !important;
-   		height: 100px !important;
-   		top: 75px !important;
-    	left: -208px !important;
+		width: 70px !important;
+   		height: 70px !important;
+   		top: 100px !important;
+    	left: -135px !important;
 	}
 
 
@@ -39,7 +39,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 165px !important;
+		height: 115px !important;
 	}
 
 	.bkcalcbox, .halfts {

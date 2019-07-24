@@ -69,19 +69,25 @@
 						if ( isset( $info['custom'] ) || UM()->options()->get( "account_tab_{$id}" ) == 1 || $id == 'general' ) { ?>
 
 							<li>
-								<a data-tab="<?php echo $id ?>" href="<?php echo UM()->account()->tab_link( $id ); ?>" class="um-account-link <?php if ( $id == UM()->account()->current_tab ) echo 'current'; ?>">
-									<?php if ( UM()->mobile()->isMobile() ) { ?>
-										<span class="um-account-icontip uimob800-show" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation"><?php echo $info['title']; ?></span></span>
-									<?php } else { ?>
-										<span class="um-account-icontip uimob800-show um-tip-w" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation"><?php echo $info['title']; ?></span></span>
-									<?php } ?>
 
-									<span class="um-account-icon uimob800-hide"><i class="<?php echo $info['icon']; ?>"></i></span>
-									<span class="um-account-title uimob800-hide"><?php echo $info['title']; ?></span>
-									<span class="um-account-arrow uimob800-hide">
-										<i class="<?php if ( is_rtl() ) { ?>um-faicon-angle-left<?php } else { ?>um-faicon-angle-right<?php } ?>"></i>
-									</span>
-								</a>
+								<?php if ( $id != 'um_user_photos'){  ?>
+
+									<a data-tab="<?php echo $id ?>" href="<?php echo UM()->account()->tab_link( $id ); ?>" class="um-account-link <?php if ( $id == UM()->account()->current_tab ) echo 'current'; ?>">
+										<?php if ( UM()->mobile()->isMobile() ) { ?>
+											<span class="um-account-icontip uimob800-show" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation"><?php echo $info['title']; ?></span></span>
+										<?php } else { ?>
+											<span class="um-account-icontip uimob800-show um-tip-w" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation"><?php echo $info['title']; ?></span></span>
+										<?php } ?>
+
+										<span class="um-account-icon uimob800-hide"><i class="<?php echo $info['icon']; ?>"></i></span>
+										<span class="um-account-title uimob800-hide"><?php echo $info['title']; ?></span>
+										<span class="um-account-arrow uimob800-hide">
+											<i class="<?php if ( is_rtl() ) { ?>um-faicon-angle-left<?php } else { ?>um-faicon-angle-right<?php } ?>"></i>
+										</span>
+									</a>
+
+								<?php } ?>
+
 							</li>
 
 						<?php }

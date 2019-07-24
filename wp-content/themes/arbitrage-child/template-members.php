@@ -992,6 +992,11 @@ date_default_timezone_set('Asia/Manila'); ?>
 					
 					<?php //get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>
+                    <div class="forsticky">
+                    <?php // get_template_part('parts/sidebar', 'ads'); ?>
+
+                    <?php get_template_part('parts/sidebar', 'footer'); ?>
+                	</div>
 				</div>
 
 				<?php /*?><div class="banner-try">
@@ -1003,11 +1008,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     </div>
 				</div><?php */?>
 
-                <div class="forsticky">
-                    <?php // get_template_part('parts/sidebar', 'ads'); ?>
-
-                    <?php get_template_part('parts/sidebar', 'footer'); ?>
-                </div>
+                
                 <br class="clear">
 			</div>
 

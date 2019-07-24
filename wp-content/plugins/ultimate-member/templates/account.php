@@ -74,7 +74,7 @@
 
 									<a data-tab="<?php echo $id ?>" href="<?php echo UM()->account()->tab_link( $id ); ?>" class="um-account-link <?php if ( $id == UM()->account()->current_tab ) echo 'current'; ?>">
 										<?php if ( UM()->mobile()->isMobile() ) { ?>
-											<span class="um-account-icontip uimob800-show" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation" style="padding-left: 12px;"><?php echo $info['title']; ?></span></span>
+											<span class="um-account-icontip uimob800-show" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation" style="padding-left: 12px !important;"><?php echo $info['title']; ?></span></span>
 										<?php } else { ?>
 											<span class="um-account-icontip uimob800-show um-tip-w" title="<?php echo $info['title']; ?>"><i class="<?php echo $info['icon']; ?>"></i><span class="titlenavigation"><?php echo $info['title']; ?></span></span>
 										<?php } ?>

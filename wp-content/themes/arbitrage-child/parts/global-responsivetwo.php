@@ -54,8 +54,8 @@
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;
    		height: 70px !important;
-   		top: 95px !important;
-    	left: -160px !important;
+   		top: 100px !important;
+    	left: -145px !important;
 	}
 
 	.the_user_top_page .um-cover {

@@ -59,7 +59,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 120px !important;
+		height: 115px !important;
 	}
 	.bkcalcbox, .halfts {
 		height: 100% !important;
@@ -77,6 +77,18 @@
 	.dnavtopinner ul li a.um-button.um-alt {
 		line-height: 7px !important;
 		padding: 10px 10px !important;
+	}
+
+	.dmetadetails {
+		left: 30% !important;
+	}
+
+	.meta-details-inner ul li .oncount {
+		 font-size: 20px !important;
+	}
+
+	.meta-details-inner ul li .onlabel {
+		 font-size: 12px !important;
 	}
 }
 </style>

@@ -49,7 +49,7 @@
 	
 }
 /* Mobile Smaller */
-@media only screen and (max-width: 414px){
+@media only screen and (max-width: 410px){
 
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;

@@ -59,7 +59,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 130px !important;
+		height: 122px !important;
 	}
 	.bkcalcbox, .halfts {
 		height: 100% !important;

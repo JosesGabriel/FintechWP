@@ -64,5 +64,9 @@
 	.bkcalcbox, .halfts {
 		height: 100% !important;
 	}
+
+	.prof-name-inner {
+		font-size: 20px;
+	}
 }
 </style>

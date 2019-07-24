@@ -492,7 +492,7 @@ get_header( 'dashboard' );
 	    text-transform: uppercase;
 	}
 	.latest-news .to-content-part {
-		height: 379px;
+		height: 279px;
 	}
 	.srr-tab-wrap li {
     	margin: 0px 5px 0 0!important;

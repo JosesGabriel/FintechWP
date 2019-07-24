@@ -1914,7 +1914,22 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 				</div>
 			</div>
 
-			<div class="center-dashboard-part">
+<?php 
+
+	if($_GET['um_action'] == 'edit'){
+		?>
+		<div class="center-dashboard-part" style="max-width: 900px;">
+		<?php
+	}
+	else{ 
+		?>
+		<div class="center-dashboard-part">
+		<?php
+	}
+
+?>
+
+			<!--<div class="center-dashboard-part">-->
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php

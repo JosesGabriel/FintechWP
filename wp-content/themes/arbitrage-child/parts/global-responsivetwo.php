@@ -83,6 +83,12 @@
 	.um-left {
     	float: initial !important;
 	}
+
+	.um-friends-user-photo {
+		position: absolute !important;
+		top: 20px !important;
+		left: 5px !important;
+	}
 	
 }
 /* Mobile Smaller */

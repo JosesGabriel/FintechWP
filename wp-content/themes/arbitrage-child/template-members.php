@@ -1003,11 +1003,11 @@ date_default_timezone_set('Asia/Manila'); ?>
                     </div>
 				</div><?php */?>
 
-                <div class="forsticky">
+                <!--<div class="forsticky">
                     <?php // get_template_part('parts/sidebar', 'ads'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'footer'); ?>
-                </div>
+                    <?php// get_template_part('parts/sidebar', 'footer'); ?>
+                </div>-->
                 <br class="clear">
 			</div>
 

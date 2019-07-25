@@ -143,7 +143,7 @@
 		height: 51em !important;
 	}
 
-	.sccas {
+	.xmakfb {
 		max-width: 100% !important;
 	}
 

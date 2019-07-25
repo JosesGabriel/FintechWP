@@ -196,5 +196,9 @@
     	padding-right: 0px !important;
 	}
 
+	.arb_calcbox {
+		align-items: flex-start !important;
+	}
+
 }
 </style>

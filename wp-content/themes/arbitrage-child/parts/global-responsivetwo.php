@@ -64,8 +64,8 @@
 
 
 	.container {
-		padding-right: 10px !important;
-    	padding-left: 10px !important;	
+		padding-right: 0px !important;
+    	padding-left: 0px !important;	
 	}
 
 	.um-notification-live-feed:before{

@@ -7,6 +7,14 @@
 		display: none !important;
 	}
 
+	.container {
+		max-width: 100% !important;
+	}
+
+	.top-header-gear .profile-name .prof-name-inner {
+		left: 21% !important;
+	}
+
 }
 
 

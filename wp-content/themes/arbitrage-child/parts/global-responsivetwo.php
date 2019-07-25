@@ -8,8 +8,8 @@
 	}
 
 	.container {
-		padding-right: 0px;
-    	padding-left: 0px;
+		padding-right: 0px !important;
+    	padding-left: 0px !important;
 		max-width: 100% !important;
 	}
 

@@ -17,6 +17,10 @@
 		left: 21% !important;
 	}
 
+	.um-11.um .um-profile-photo a.um-profile-photo-img {
+		left: -10px !important;
+		top: 0px !important;
+	}
 }
 
 

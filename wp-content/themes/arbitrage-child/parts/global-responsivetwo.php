@@ -11,7 +11,7 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 768px) and (max-width: 980px){
 
-	.um-cover {
+	.the_user_top_page .um-cover {
 		height: 270px !important;
 	}
 	

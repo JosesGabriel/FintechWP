@@ -20,6 +20,10 @@
     	padding-left: 0px !important;
 		max-width: 730px !important;
 	}
+
+	.um-11.um .um-profile-photo a.um-profile-photo-img {
+		top: 30px !important;
+	}
 	
 }
 /* Mobile */

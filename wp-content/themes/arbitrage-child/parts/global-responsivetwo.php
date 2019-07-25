@@ -140,9 +140,9 @@
 	}
 
 	.halfts {
-		height: 45em !important;
+		height: 51em !important;
 	}
-	
+
 }
 
 

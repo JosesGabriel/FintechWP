@@ -24,7 +24,7 @@
 	}
 
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
-		top: 30px !important;
+		top: 37px !important;
 	}
 	
 	.top-header-gear .profile-name .prof-name-inner {

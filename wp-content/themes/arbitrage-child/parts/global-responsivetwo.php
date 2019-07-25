@@ -86,10 +86,7 @@
 		height: 115px !important;
 	}
 
-	.bkcalcbox, .halfts {
-		height: 100% !important;
-	}
-
+	
 	.prof-name-inner {
 		font-size: 20px !important;
 	}

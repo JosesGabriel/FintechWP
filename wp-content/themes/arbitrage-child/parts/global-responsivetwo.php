@@ -134,6 +134,10 @@
     	padding: 0px !important;
 	}
 
+	.profile-post-content {
+		padding: 0px !important;
+	}
+
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;
    		height: 70px !important;

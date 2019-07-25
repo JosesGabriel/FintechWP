@@ -31,6 +31,9 @@
 		left: 28% !important;
 	}
 
+	.dmetadetails {
+		left: 30% !important;
+	}
 }
 
 

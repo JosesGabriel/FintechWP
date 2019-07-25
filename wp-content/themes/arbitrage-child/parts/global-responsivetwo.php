@@ -131,6 +131,18 @@
 		left: 5px !important;
 	}
 	
+	.arb_calcbox {
+		align-items: flex-start !important;
+	}
+
+	.bkcalcbox {
+		height: 100% !important;
+	}
+
+	.halfts {
+		height: 45em !important;
+	}
+	
 }
 
 

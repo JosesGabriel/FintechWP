@@ -3,10 +3,6 @@
 /* Tablet Landscape */
 @media only screen and (min-width: 981px) and (max-width: 1024px){
 
-	#left-dashboard-part {
-		display: none !important;
-	}
-
 	.container {
 		padding-right: 0px !important;
     	padding-left: 0px !important;

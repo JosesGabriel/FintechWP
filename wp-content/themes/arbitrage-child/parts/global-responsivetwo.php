@@ -143,6 +143,10 @@
 		height: 51em !important;
 	}
 
+	.sccas {
+		max-width: 100% !important;
+	}
+
 }
 
 

@@ -200,5 +200,13 @@
 		align-items: flex-start !important;
 	}
 
+	.bkcalcbox {
+		height: 100% !important;
+	}
+
+	.halfts {
+		height: 45em !important;
+	}
+
 }
 </style>

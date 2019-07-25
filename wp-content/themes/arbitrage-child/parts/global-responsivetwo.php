@@ -9,8 +9,11 @@
 
 }
 /* Tablet Portrait */
-@media only screen and (min-width: 740px) and (max-width: 768px){
+@media only screen and (min-width: 768px) and (max-width: 980px){
 	
+	.container {
+		max-width: 730px !important;
+	}
 	
 }
 /* Mobile */

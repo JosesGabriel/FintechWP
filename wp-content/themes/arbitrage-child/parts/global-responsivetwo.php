@@ -62,6 +62,11 @@
     	left: -165px !important;
 	}
 
+	div.um .um-profile-body.activity, div.um-activity {
+		padding-left: 0px !important;
+    	padding-right: 0px !important;
+	}
+
 
 	body .um-notification-live-feed {
 		margin-top: -5px !important;

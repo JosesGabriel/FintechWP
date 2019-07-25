@@ -8,6 +8,8 @@
 	}
 
 }
+
+
 /* Tablet Portrait */
 @media only screen and (min-width: 768px) and (max-width: 980px){
 
@@ -25,7 +27,13 @@
 		top: 30px !important;
 	}
 	
+	.top-header-gear .profile-name .prof-name-inner {
+		left: 28% !important;
+	}
+
 }
+
+
 /* Mobile */
 @media only screen and (max-width: 767px){
 
@@ -104,6 +112,8 @@
 	}
 	
 }
+
+
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 

@@ -138,7 +138,7 @@
 		width: 70px !important;
    		height: 70px !important;
    		top: 100px !important;
-    	left: -135px !important;
+    	left: -153px !important;
 	}
 
 	.the_user_top_page .um-cover {

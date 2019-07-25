@@ -186,5 +186,10 @@
 		padding-left: 20px !important;
 	}
 
+	div.um .um-profile-body.activity, div.um-activity {
+		padding-left: 0px !important;
+    	padding-right: 0px !important;
+	}
+
 }
 </style>

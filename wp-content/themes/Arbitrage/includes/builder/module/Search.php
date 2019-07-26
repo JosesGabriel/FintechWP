@@ -397,7 +397,7 @@ class ET_Builder_Module_Search extends ET_Builder_Module {
 				<form role="search" method="get" class="et_pb_searchform" action="%1$s">
 					<div>
 						<label class="screen-reader-text" for="s">%8$s</label>
-						<input type="text" value="" name="s" class="et_pb_s"%7$s>
+						<input type="text" value="" name="s" style="height:25px;" class="et_pb_s"%7$s>
 						<input type="hidden" name="et_pb_searchform_submit" value="et_search_proccess" />
 						%4$s
 						%5$s

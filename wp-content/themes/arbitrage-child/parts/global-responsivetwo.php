@@ -121,6 +121,10 @@
 		width: 100% !important;
 	}
 
+	.left-dashboard-part {
+		overflow: scroll;
+	}
+	
 	.um-left {
     	float: initial !important;
 	}

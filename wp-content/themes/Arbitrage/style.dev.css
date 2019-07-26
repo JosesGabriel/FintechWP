@@ -19531,6 +19531,7 @@ article.et_pb_has_overlay {
 
 .et_pb_search input.et_pb_s {
 	display: inline-block;
+	height: 25px !important;
 	width: 100%;
 	padding-right: 80px;
 	background: transparent;

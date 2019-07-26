@@ -1832,7 +1832,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 }
 .sccas{
 	padding: 12px 20px 15px 20px !important;
-	max-width: 359px !important;
+	max-width: 359px;
 	background: linear-gradient(#11273e,#24405f);
 }
 .xmakfb {

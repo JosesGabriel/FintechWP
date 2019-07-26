@@ -225,4 +225,13 @@
 	}
 
 }
+
+/* Mobile Smallest */
+@media only screen and (max-width: 320px){
+
+	.um-11.um .um-profile-photo a.um-profile-photo-img {
+		left: -135px !important;
+	}
+
+}
 </style>

@@ -156,7 +156,7 @@
 	}
 
 	.dpostlet {
-		margin: 0px !important;
+		margin: 0px;
 	}
 
 }
@@ -238,7 +238,7 @@
 	}
 
 	.dpostlet {
-		margin: 0px !important;
+		margin: 0px;
 	}
 
 }

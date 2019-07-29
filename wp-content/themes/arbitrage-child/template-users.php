@@ -1902,7 +1902,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 </style>
 	<div class="inner-placeholder">
 		<div class="inner-main-content userprofilepage">
-			<div class="left-dashboard-part">
+			<div class="left-dashboard-part" id="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 

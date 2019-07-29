@@ -5,11 +5,21 @@ function arbitrage_api_get_user_uuid($user_id) {
 }
 
 function arbitrage_api_curl($uri = '', $data = [], $method = 'POST') {
+    $valid_methods = ['DELETE', 'GET', 'POST', 'PUT'];
+
+    if (!in_array($method, $valid_methods)) {
+        error_log('CUSTOM ERROR LOG ====================================================');
+        error_log('functions-arbitrage-api.php => function arbitrage_api_curl');
+        error_log('INVALID METHOD: Given method was ' . $method);
+        error_log('END CUSTOM ERROR LOG ====================================================');
+        return false;
+    }
+
     $error = null;
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://dev-api.arbitrage.ph/$uri");
     curl_setopt($curl, CURLOPT_RESOLVE, ['dev-api.arbitrage.ph:443:35.247.145.199']);
-    curl_setopt($curl, CURLOPT_POST, 1);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $response = curl_exec($curl);

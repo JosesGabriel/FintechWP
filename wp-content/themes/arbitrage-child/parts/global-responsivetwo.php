@@ -163,9 +163,6 @@
 		text-align: left !important;
 	}
 
-	.friends-list-profile .um-friends-user {
-		padding-left: 60px !important;
-	}
 
 }
 
@@ -225,7 +222,7 @@
 	}
 
 	.friends-list-profile .um-friends-user {
-		padding-left: 20px !important;
+		padding-left: 60px !important;
 	}
 
 	div.um .um-profile-body.activity, div.um-activity {

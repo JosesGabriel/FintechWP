@@ -163,6 +163,10 @@
 		text-align: left !important;
 	}
 
+	.friends-list-profile .um-friends-user {
+		padding-left: 60px !important;
+	}
+
 }
 
 

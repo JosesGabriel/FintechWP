@@ -151,6 +151,10 @@
 		max-width: 100% !important;
 	}
 
+	.dnavtopinner ul li a.um-button.um-alt{
+		display: none;
+	}
+
 }
 
 

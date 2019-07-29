@@ -124,7 +124,7 @@
 	.left-dashboard-part {
 		overflow: scroll;
 	}
-	
+
 	.um-left {
     	float: initial !important;
 	}
@@ -151,6 +151,9 @@
 		max-width: 100% !important;
 	}
 
+	a.um-unfriend-btn.um-button.um-alt {
+		display: none !important;
+	}
 }
 
 

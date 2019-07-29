@@ -155,6 +155,10 @@
 		display: none;
 	}
 
+	.dpostlet {
+		margin: 0px !important;
+	}
+
 }
 
 
@@ -231,6 +235,10 @@
 
 	.halfts {
 		height: 45em !important;
+	}
+
+	.dpostlet {
+		margin: 0px !important;
 	}
 
 }

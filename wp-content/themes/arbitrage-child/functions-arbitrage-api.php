@@ -4,7 +4,7 @@ function arbitrage_api_get_user_uuid($user_id) {
     return get_user_meta($user_id, 'user_uuid', true);
 }
 
-function arbitrage_api_curl($uri = '', $data = []) {
+function arbitrage_api_curl($uri = '', $data = [], $method = 'POST') {
     $error = null;
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://dev-api.arbitrage.ph/$uri");

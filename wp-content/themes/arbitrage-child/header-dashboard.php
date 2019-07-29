@@ -45,6 +45,7 @@ $user = wp_get_current_user();
 				die();
 			}
 		}
+		arbitrage_api_verify_user($user_id);
 		/* if($checksharing == "shared"){
 		}elseif($checksharing == "verified"){
 		}elseif(!$checksharing){

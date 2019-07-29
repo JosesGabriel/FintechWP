@@ -99,6 +99,7 @@
 	.dnavtopinner ul li a.um-button.um-alt {
 		line-height: 7px !important;
 		padding: 10px 10px !important;
+		display: none !important;
 	}
 
 	.dmetadetails {

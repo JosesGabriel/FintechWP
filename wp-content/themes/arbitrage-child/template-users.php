@@ -2152,4 +2152,4 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 											<!-- <li class="nine"><a href="#">Traders</a></li> -->
 <?php
 
-get_footer('general');
+get_footer();

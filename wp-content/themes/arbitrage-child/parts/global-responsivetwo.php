@@ -159,6 +159,10 @@
 		margin: 0px;
 	}
 
+	.um-friends-user{
+		text-align: left !important;
+	}
+
 }
 
 

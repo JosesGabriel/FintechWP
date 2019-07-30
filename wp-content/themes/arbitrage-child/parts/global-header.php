@@ -92,15 +92,17 @@ $cdnorlocal = get_home_url();
                             </div>
                         <?php } ?>
                     </div>
+
+                    <div class="right-slider-menu">
+                                <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="5%">
+                    </div>
                     
                     <ul class="main-drop">
                         <div class="main-user-name" id="main-user-name">
                             <div class="header-image">
                                 <div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>') no-repeat center center;">&nbsp;</div>
                             </div>
-                            <!--<div class="right-slider-menu">-->
-                                <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="5%">
-                            <!--</div>-->
+                            
                         </div>
                         <ul id="droppouts" style="">
                             <li><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>

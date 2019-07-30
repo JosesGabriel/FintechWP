@@ -56,6 +56,8 @@
 
 	.right-slider-menu > img {
 		display: block !important;
+		float: right;
+    	margin-top: 10px;
 	}
 
 	

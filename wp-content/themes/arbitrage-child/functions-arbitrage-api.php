@@ -4,7 +4,7 @@ function arbitrage_api_get_user_uuid($user_id) {
     return get_user_meta($user_id, 'user_uuid', true);
 }
 
-function arbitrage_api_curl($uri = '', $data = [], $method = 'POST') {
+function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = []) {
     $valid_methods = ['DELETE', 'GET', 'POST', 'PUT'];
 
     if (!in_array($method, $valid_methods)) {
@@ -17,6 +17,10 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST') {
 
     $error = null;
     $curl = curl_init();
+    if (!empty($headers)) {
+        curl_setopt($curl, CURLOPT_HEADER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    }
     curl_setopt($curl, CURLOPT_URL, "https://dev-api.arbitrage.ph/$uri");
     curl_setopt($curl, CURLOPT_RESOLVE, ['dev-api.arbitrage.ph:443:35.247.145.199']);
     curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);

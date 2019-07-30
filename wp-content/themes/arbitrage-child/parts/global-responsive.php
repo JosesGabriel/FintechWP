@@ -111,6 +111,19 @@
 		height: 100%;
 		width: 100%;
 	}
+
+	.right-slidecloseoverlay {
+		z-index: 2147483647;
+		position: fixed;
+		display: none;
+		right: 0;
+		left: 0px;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+		width: 50%;
+	}
+
 	.left-dashboard-part {
 		transition: all 0.5s ease;
 		position: fixed !important;

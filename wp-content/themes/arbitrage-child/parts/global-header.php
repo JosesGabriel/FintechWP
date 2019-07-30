@@ -92,10 +92,6 @@ $cdnorlocal = get_home_url();
                             </div>
                         <?php } ?>
                     </div>
-
-                    <div class="right-slider-menu">
-                                <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="5%">
-                    </div>
                     
                     <ul class="main-drop">
                         <div class="main-user-name" id="main-user-name">
@@ -112,15 +108,16 @@ $cdnorlocal = get_home_url();
                         </ul>
                         
                     </ul>
-
-                    
-                    
-
-
+      
                     <div class="opennotification">
                         <div class="notifinnerbase">
                         </div>
                     </div>
+
+                    <div class="right-slider-menu">
+                                <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="5%">
+                    </div>
+
                 </div>
             </div>
             <br class="clear">

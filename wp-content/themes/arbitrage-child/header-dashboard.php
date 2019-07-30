@@ -26,7 +26,10 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
 	<script src="<?php echo get_home_url(); ?>/assets/js/addtohomescreen.min.js"></script>
-	<script>addToHomescreen();</script>
+	<script>
+		addToHomescreen.removeSession()
+		addToHomescreen();
+	</script>
 <?php
 global $current_user;
 $user = wp_get_current_user();

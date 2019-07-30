@@ -249,17 +249,7 @@
 		display: none;
 	}
 
-	.right-dashboard-part {
-		transition: all 0.5s ease;
-		position: fixed !important;
-		z-index: 2147483646;
-		top: 0 !important;
-		right: : -110%;
-		width: 85%;
-		background-color: #0d1f33;
-		bottom: 0;
-	}
-
+	
 	.right-dashboard-part-overlay {
 		position: fixed !important;
 		z-index: 2147483645;
@@ -280,7 +270,7 @@
 	.inner-main-content {
 		position: relative;
 	}
-	.inner-placeholder .inner-main-content {
+	.inner-placeholder .inner-main-content .right-dashboard-part {
 		transition: all 0.5s ease;
 		display: block !important;
 		position: absolute !important;

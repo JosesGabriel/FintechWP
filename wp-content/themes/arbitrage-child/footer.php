@@ -499,15 +499,29 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 			jQuery('.left-dashboard-part').css("left","0");
 			jQuery('.slidecloseoverlay').css("display","block");
 			jQuery('.left-dashboard-part-overlay').fadeIn("fast");
+
+			if(jQuery('.right-dashboard-part').css('right') == '-7%'){
+				jQuery('.right-dashboard-part').css("right","-110%");
+			}
+
+
 		}
 	});
 		
 	var el2 = document.getElementById('slidecloseoverlay');
 	swipedetect(el2, function(swipedir){
 		if (swipedir == "left"){
+
 			jQuery('.left-dashboard-part').css("left","-100%");
 			jQuery('.slidecloseoverlay').css("display","none");
 			jQuery('.left-dashboard-part-overlay').fadeOut("fast");
+
+			if(jQuery('.right-dashboard-part').css('right') == '-110%'){
+				jQuery('.right-dashboard-part').css("right","-7%");
+				jQuery('.slidecloseoverlay').css("display","block");
+				jQuery('.right-dashboard-part-overlay').fadeIn("fast");
+			}
+
 		}
 	});
 		

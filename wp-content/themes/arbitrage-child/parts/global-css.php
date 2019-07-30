@@ -145,7 +145,7 @@ body .um-notification-live-feed {
 	width: 365.05px;
 }
 .um-notification-ajax {
-	padding-top: 0px;
+	padding-top: 36px;
 }
 .um-notification-live-feed {
 	max-width: 365px !important;

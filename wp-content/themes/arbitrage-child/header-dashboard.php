@@ -15,23 +15,16 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/assets/css/addtohomescreen.css">
-	<!--<link rel="manifest" href="/manifest.json">-->     
+	<link rel="manifest" href="/manifest.json">     
 	<meta name="msapplication-TileColor" content="#142c46">
 	<meta name="msapplication-TileImage" content="/assets/icons/launcher-icon-4x.png">
 	<meta name="theme-color" content="#0d1f33">
+	<!-- THIS IS WHERE JQUERY IS -->
 	<script
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
-	<script src="<?php echo get_home_url(); ?>/assets/js/addtohomescreen.min.js"></script>
-	<script>
-		instance.clearSession()
-		// addToHomescreen.removeSession()
-		// addToHomescreen();
-	</script>
 <?php
 global $current_user;
 $user = wp_get_current_user();

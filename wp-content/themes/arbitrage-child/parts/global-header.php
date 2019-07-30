@@ -108,15 +108,17 @@ $cdnorlocal = get_home_url();
                         </ul>
                         
                     </ul>
-      
+        
+                     <div class="right-slider-menu" >
+                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="22px" style="display: none;">
+                    </div>
+        
                     <div class="opennotification">
                         <div class="notifinnerbase">
                         </div>
                     </div>
 
-                    <div class="right-slider-menu" >
-                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="22px" style="display: none;">
-                    </div>
+                   
 
                 </div>
             </div>

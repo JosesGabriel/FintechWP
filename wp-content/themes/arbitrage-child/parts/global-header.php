@@ -109,9 +109,10 @@ $cdnorlocal = get_home_url();
                         
                     </ul>
         
-                     <div id="right-menu" class="right-slider-menu" >
+                     <div class="right-slider-menu" >
                         <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="22px" style="display: none;">
                     </div>
+                    <div id="right-menu" class="right-slider-menu1"></div>
 
                     <div class="opennotification">
                         <div class="notifinnerbase">

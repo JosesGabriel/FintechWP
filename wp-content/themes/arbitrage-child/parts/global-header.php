@@ -105,11 +105,12 @@ $cdnorlocal = get_home_url();
                             <hr class="style14 style15">
                             <li class="onto-last-element"><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>
                         </ul>
-                        <div class="right-slider-menu">
-                            <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg">
-                        </div>
+                        
                     </ul>
 
+                    <div class="right-slider-menu">
+                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="10%">
+                    </div>
                     
 
 

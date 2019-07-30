@@ -517,6 +517,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
 	});
 
+	jQuery('.right-slider-menu').click(function(){
+		jQuery('.left-dashboard-part').css("left","0");
+		jQuery('.slidecloseoverlay').css("display","block");
+		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
+	});
+
 	</script>
 
 <?php } ?>

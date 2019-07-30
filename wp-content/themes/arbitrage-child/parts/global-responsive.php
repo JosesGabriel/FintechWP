@@ -281,7 +281,7 @@
 		background-color: rgb(13, 31, 51) !important;
 		width: 80% !important;
 		max-width: 320px !important;
-		height: auto !important;
+		height: 100% !important;
 	}
 	li.eight.slideleft.open img {
 		-webkit-transform: scaleX(-1);

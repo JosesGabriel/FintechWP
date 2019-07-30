@@ -523,7 +523,10 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 	jQuery('.right-slider-menu').click(function(){
 
-		
+	var right = jQuery('.right-dashboard-part').css("right");
+
+	console.log(right);
+
 	  if(jQuery('.right-dashboard-part').css("right") == "-7%" ){
 			jQuery('.right-dashboard-part').css("right","-110%");
 			jQuery('.slidecloseoverlay').css("display","block");

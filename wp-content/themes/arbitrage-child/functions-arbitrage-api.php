@@ -35,6 +35,7 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
     if (!$response) {
         $error = curl_error($curl);
     }
+    $info = curl_getinfo($curl);
     curl_close($curl);
 
     if (!$response) {
@@ -47,6 +48,8 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
         error_log(print_r($error, true));
         error_log('functions-arbitrage-api.php => function arbitrage_api_curl $response');
         error_log(print_r($response, true));
+        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $info');
+        error_log(print_r($info, true));
         error_log('END CUSTOM ERROR LOG ====================================================');
 
         return false;
@@ -62,6 +65,8 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
         error_log(print_r($data, true));
         error_log('functions-arbitrage-api.php => function arbitrage_api_curl $response');
         error_log(print_r($response, true));
+        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $info');
+        error_log(print_r($info, true));
         error_log('END CUSTOM ERROR LOG ====================================================');
         
         return false;

@@ -523,7 +523,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 	jQuery('.right-slider-menu').click(function(){
 
-		var right = jQuery('.right-dashboard-part').css('right');
+		var right = jQuery('.right-dashboard-part').css('right').val();
 
 		console.log('right=> ' + right);
 

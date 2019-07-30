@@ -525,6 +525,8 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 		var right = jQuery('.right-dashboard-part').css("right");
 
+		console.log('right=> ' + right);
+
 	  if(right == '-110%'){
 			jQuery('.right-dashboard-part').css("right","-7%");
 			jQuery('.slidecloseoverlay').css("display","block");

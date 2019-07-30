@@ -276,11 +276,11 @@
 		float: none !important;
 		right: -110%;
 		z-index: 9 !important;
-		top: -39px !important;
+		top: 0px !important;
 		padding: 15px 29px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
 		width: 100% !important;
-		max-width: 512px !important;
+		max-width: 320px !important;
 		height: auto !important;
 	}
 	li.eight.slideleft.open img {

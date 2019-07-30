@@ -286,11 +286,11 @@
 	.inner-placeholder .inner-main-content .right-dashboard-part {
 		transition: all 0.5s ease;
 		display: block !important;
-		position: absolute !important;
+		position: fixed !important;
 		float: none !important;
 		right: -110%;
 		z-index: 9 !important;
-		top: 0px !important;
+		top: 40px !important;
 		padding: 15px 29px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
 		width: 80% !important;

@@ -2382,6 +2382,12 @@ hr.style11 {
 .top-stocks .to-content-part {
 }
 
+.right-slider-menu {
+    display: none;
+}
+
+
+
 .um-activity-widget div.um-activity-textarea textarea,
 .um-activity-widget div.um-activity-textarea textarea:hover,
 .um-activity-widget div.um-activity-textarea textarea:focus {

@@ -518,7 +518,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	});
 
 	jQuery('.right-slider-menu').click(function(){
-		console.log('solod ni');
+		jQuery('.right-dashboard-part').css("right","-7%");
 	});
 
 	</script>

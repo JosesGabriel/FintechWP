@@ -526,7 +526,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 	  if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("right","-7%");
-			jQuery('.slidecloseoverlay').css("display","block");
 			jQuery('.right-dashboard-part-overlay').fadeIn("fast");
 			$('#right-menu').removeClass();
 		}else{

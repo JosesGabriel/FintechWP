@@ -15,6 +15,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/assets/css/addtohomescreen.css">
 	<!--<link rel="manifest" href="/manifest.json">-->     

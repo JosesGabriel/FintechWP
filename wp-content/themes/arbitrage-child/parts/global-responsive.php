@@ -11,7 +11,7 @@
 	top:0;
 	bottom:0;
 	left:0;
-	width: 150px;
+	width: 50px;
 	background-color: transparent; 
 	z-index: 9999999999;
 }

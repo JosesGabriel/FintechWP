@@ -28,8 +28,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 	<script src="<?php echo get_home_url(); ?>/assets/js/addtohomescreen.min.js"></script>
 	<script>
-		addToHomescreen.removeSession()
-		addToHomescreen();
+		instance.clearSession()
+		// addToHomescreen.removeSession()
+		// addToHomescreen();
 	</script>
 <?php
 global $current_user;

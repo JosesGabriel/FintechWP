@@ -248,6 +248,21 @@
 		bottom: 0;
 		display: none;
 	}
+
+	.right-dashboard-part-overlay {
+		position: fixed !important;
+		z-index: 2147483645;
+		top: 0 !important;
+		width: 100%;
+		background-color: rgba(0,0,0,0.6);
+		bottom: 0;
+		display: none;
+	}
+
+
+
+
+
 	.dashboard-sidebar-left {
 		padding: 0 12px 0;
 	}

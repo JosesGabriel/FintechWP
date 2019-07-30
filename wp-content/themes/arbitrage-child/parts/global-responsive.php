@@ -296,6 +296,7 @@
 		width: 80% !important;
 		max-width: 320px !important;
 		height: 100% !important;
+		overflow: scroll;
 	}
 	li.eight.slideleft.open img {
 		-webkit-transform: scaleX(-1);

@@ -4,6 +4,11 @@ function arbitrage_api_get_user_uuid($user_id) {
     return get_user_meta($user_id, 'user_uuid', true);
 }
 
+function arbitrage_api_curl_multipart($uri = '', $data = [], $method = 'POST', $headers = []) {
+    $headers[] = 'Content-Type:multipart/form-data';
+    return arbitrage_api_curl($uri, $data, $method, $headers);
+}
+
 function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = []) {
     $valid_methods = ['DELETE', 'GET', 'POST', 'PUT'];
 

@@ -496,22 +496,18 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	var el = document.getElementById('left-slide-trigger');
 	swipedetect(el, function(swipedir){
 		if(swipedir == "right"){
-
-				jQuery('.left-dashboard-part').css("left","0");
-				jQuery('.slidecloseoverlay').css("display","block");
-				jQuery('.left-dashboard-part-overlay').fadeIn("fast");
-			
+			jQuery('.left-dashboard-part').css("left","0");
+			jQuery('.slidecloseoverlay').css("display","block");
+			jQuery('.left-dashboard-part-overlay').fadeIn("fast");
 		}
 	});
 		
 	var el2 = document.getElementById('slidecloseoverlay');
 	swipedetect(el2, function(swipedir){
 		if (swipedir == "left"){
-
 			jQuery('.left-dashboard-part').css("left","-100%");
 			jQuery('.slidecloseoverlay').css("display","none");
 			jQuery('.left-dashboard-part-overlay').fadeOut("fast");
-
 		}
 	});
 		
@@ -519,18 +515,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		jQuery('.left-dashboard-part').css("left","0");
 		jQuery('.slidecloseoverlay').css("display","block");
 		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
-	});
-
-	jQuery('.right-slider-menu').click(function(){
-
-
-	  if($('#right-menu').hasClass('right-slider-menu1')){
-			jQuery('.right-dashboard-part').css("right","-7%");		
-			$('#right-menu').removeClass();
-		}else{
-			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-menu').addClass('right-slider-menu1')
-		}
 	});
 
 	</script>
@@ -561,7 +545,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 <?php if ( is_user_logged_in() ) { ?>
 	<?php if (is_front_page()){ // PWA - Add to homepage ?>
-		<script>
+
+		<!-- iOS and Android -->
+		
+
+
+		<?php /*?><script>
 		 if ('serviceWorker' in navigator) {
 			console.log("Add to homepage");
 			navigator.serviceWorker.register('serworkr.js')
@@ -571,9 +560,11 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				console.log("Woops... Sorry...", err)
 			});
 		 }
-		</script>
+		</script><?php */?>
 	<?php } ?>
 <?php } ?>
+
+
 <div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>
 </body>
 </html>

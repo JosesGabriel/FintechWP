@@ -109,7 +109,7 @@ $cdnorlocal = get_home_url();
                     </ul>
 
                     <div class="right-slider-menu">
-                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="10%">
+                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg" width="5%">
                     </div>
                     
 

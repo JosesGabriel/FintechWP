@@ -245,6 +245,7 @@ $user = wp_get_current_user();
 
 <div class="slidecloseoverlay" id="slidecloseoverlay"></div>
 <div class="left-slide-trigger" id="left-slide-trigger"></div>
+<div class="right-slidecloseoverlay" id="right-slidecloseoverlay"></div>
 <!--<div class="right-slide-trigger" id="right-slide-trigger"></div>-->
 <div class="top-slide-trigger" id="top-slide-trigger"></div>
 		

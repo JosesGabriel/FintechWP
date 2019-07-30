@@ -16,7 +16,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
-	<link rel="manifest" href="/manifest.json">     
+	<!--<link rel="manifest" href="/manifest.json">-->     
 	<meta name="msapplication-TileColor" content="#142c46">
 	<meta name="msapplication-TileImage" content="/assets/icons/launcher-icon-4x.png">
 	<meta name="theme-color" content="#0d1f33">

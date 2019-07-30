@@ -106,6 +106,12 @@ $cdnorlocal = get_home_url();
                             <li class="onto-last-element"><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>
                         </ul>
                     </ul>
+
+                    <div class="right-slider-menu">
+                        <img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg">
+                    </div>
+
+
                     <div class="opennotification">
                         <div class="notifinnerbase">
                         </div>

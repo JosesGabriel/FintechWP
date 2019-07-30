@@ -54,6 +54,10 @@
     	padding: 0px !important;
 	}
 
+	.right-slider-menu > img {
+		display: block !important;
+	}
+
 	
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;

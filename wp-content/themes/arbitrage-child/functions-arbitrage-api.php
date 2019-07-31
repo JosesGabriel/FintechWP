@@ -4,43 +4,9 @@ function arbitrage_api_get_user_uuid($user_id) {
     return get_user_meta($user_id, 'user_uuid', true);
 }
 
-function arbitrage_api_curl_multipart($uri = '', $data = [], $method = 'POST', $headers = []) {
-    $boundary = uniqid();
-    $delimiter = '-------------' . $boundary;
-    
-    $post_data = build_data_files($boundary, [], $data);
-
-    $headers[] = 'Accept: application/json';
-    $headers[] = 'Content-Type:multipart/form-data; boundary=' . $delimiter;
-    $headers[] = 'Content-Length: ' . strlen($post_data);
-    return arbitrage_api_curl($uri, $post_data, $method, $headers);
-}
-
-function build_data_files($boundary, $fields, $files){
-    $data = '';
-    $eol = "\r\n";
-
-    $delimiter = '-------------' . $boundary;
-
-    foreach ($fields as $name => $content) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $name . "\"".$eol.$eol
-            . $content . $eol;
-    }
-
-    foreach ($files as $file) {
-        $data .= "--" . $delimiter . $eol
-            . 'Content-Disposition: form-data; name="' . $file['name'] . '"; filename="' . $file['filename'] . '"' . $eol
-            //. 'Content-Type: image/png'.$eol
-            . 'Content-Transfer-Encoding: binary'.$eol
-            ;
-
-        $data .= $eol;
-        $data .= $file['content'] . $eol;
-    }
-    $data .= "--" . $delimiter . "--".$eol;
-
-    return $data;
+function arbitrage_api_curl_multipart($uri = '', $data = [], $files = [], $method = 'POST', $headers = []) {
+    $headers[] = 'Content-Type:multipart/form-data';
+    return arbitrage_api_curl($uri, $data, $method, $headers);
 }
 
 function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = []) {
@@ -125,7 +91,7 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
         echo "END CUSTOM ERROR LOG ====================================================$eol";
         $contents = ob_get_contents();
         ob_end_clean();
-        
+
         error_log($contents);
         return false;
     }

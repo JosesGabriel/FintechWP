@@ -298,8 +298,8 @@
 		top: 40px !important;
 		padding: 15px 29px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 80% !important;
-		max-width: 320px !important;
+		width: 100% !important;
+		max-width: 100% !important;
 		height: 100% !important;
 		overflow: scroll;
 	}

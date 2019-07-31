@@ -520,7 +520,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	jQuery('.right-slider-menu').click(function(){
 
 		if($('#right-menu').hasClass('right-slider-menu1')){
-			jQuery('.right-dashboard-part').css("right","-7%");
+			jQuery('.right-dashboard-part').css("right","0%");
 			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();

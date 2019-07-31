@@ -408,3 +408,27 @@ add_action('wp_ajax_nopriv_get_friends', 'getfriendsbyat');
 * 05-07-2019
 */
 /* temp-disabled-start require_once get_stylesheet_directory() . '/apyc/init.php'; */
+
+/**
+ * Upload to Google Cloud Storage
+ * 
+ * @see https://developer.wordpress.org/reference/hooks/wp_handle_upload/
+ */
+add_filter('wp_handle_upload', function ($upload) {
+    $file = $upload['file'];
+    $url  = $upload['url'];
+    $type = $upload['type'];
+
+    $data[] = [
+        'name' => 'file',
+        'content' => fopen($upload['file'], 'r'),
+        'filename' => end(explode('/', $upload['file']))
+    ];
+    $response = arbitrage_api_curl_multipart('api/storage/upload', $data);
+
+    if ($response !== false) {
+        $upload['url'] = $response['file']['url'];
+    }
+
+    return $upload;
+}, 90, 1);

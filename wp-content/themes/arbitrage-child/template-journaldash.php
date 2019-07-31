@@ -1589,7 +1589,7 @@ if ($getdstocks && $getdstocks != "") {
 					<div class="dashboard-sidebar-left-inner">
 
                     	<?php echo get_template_part( 'parts/sidebar', 'profile' ); ?>
-
+                    	 <?php get_template_part('parts/sidebar', 'traders'); ?>
 					</div>
 				</div>
 			</div>

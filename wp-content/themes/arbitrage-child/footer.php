@@ -517,6 +517,20 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
 	});
 
+	jQuery('.right-slider-menu').click(function(){
+
+		if($('#right-menu').hasClass('right-slider-menu1')){
+			jQuery('.right-dashboard-part').css("right","-7%");
+			$('#right-menu').removeClass();
+		}else{
+			jQuery('.right-dashboard-part').css("right","-110%");
+			$('#right-menu').addClass('right-slider-menu1');
+		}
+	});
+
+
+
+
 	</script>
 
 <?php } ?>

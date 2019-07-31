@@ -3054,6 +3054,9 @@ class Activity_Main_API
                     $output['photo_orig_url'] = UM()->uploader()->get_upload_base_url() . get_current_user_id() . '/' . $filename;
 
                     $output['photo_orig_base'] = wp_basename($output['photo_orig_url']);
+
+                    // add gcs url to output
+                    $output['photo_gsc_url'] = $_post_img_url;
                 }
 
                 $output['postid'] = $post_id;
@@ -3145,6 +3148,9 @@ class Activity_Main_API
                     $output['photo_orig_url'] = UM()->uploader()->get_upload_base_url() . get_current_user_id() . '/' . $filename;
 
                     $output['photo_orig_base'] = wp_basename($output['photo_orig_url']);
+                    
+                    // add gcs url to output
+                    $output['photo_gsc_url'] = $_post_img_url;
                 } else {
                     $photo_uri = get_post_meta($post_id, '_photo', true);
 

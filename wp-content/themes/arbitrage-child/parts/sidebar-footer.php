@@ -1,4 +1,4 @@
-<div class="ads1" style="margin: 15px 0"><img src="<?php echo get_home_url(); ?>/assets/img/adsense_sample_003.png" style="width: 266px;height: 221px;" /></div>
+<div class="ads1" style="margin: 15px 0"><img src="<?php echo get_home_url(); ?>/assets/img/adsense_sample_003.png" style="width: 100%;height: 221px;" /></div>
 
 <div class="ontofooter">
     <div class="ontonowfooter">

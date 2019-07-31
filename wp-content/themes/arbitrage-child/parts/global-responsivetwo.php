@@ -172,10 +172,6 @@
 		padding-left: 60px !important;
 	}
 
-	.ads1 {
-		width: 100% !important;
-	}
-
 }
 
 

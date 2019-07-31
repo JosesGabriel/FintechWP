@@ -1592,7 +1592,7 @@ if ($getdstocks && $getdstocks != "") {
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 900px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>
@@ -3957,8 +3957,8 @@ if ($getdstocks && $getdstocks != "") {
 				</div>
 			</div>
 
-			
-			
+
+
 			<br class="clear">
 		</div>
 	</div>

@@ -180,6 +180,11 @@
 	.center-dashboard-part {
 		transition: all 0.5s ease;
 	}
+
+	.right-slider-menu {
+		transition: all 0.5s ease;
+	}
+
 	.left-slide-trigger, .right-slide-trigger, .top-slide-trigger,
 	.showonmobonly {
 		display:block !important;

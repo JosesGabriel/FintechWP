@@ -28,7 +28,6 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
     $error = null;
     $curl = curl_init();
     if (!empty($headers)) {
-        curl_setopt($curl, CURLOPT_HEADER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
     curl_setopt($curl, CURLOPT_URL, "https://dev-api.arbitrage.ph/$uri");

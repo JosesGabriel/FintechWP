@@ -125,6 +125,8 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
         echo "END CUSTOM ERROR LOG ====================================================$eol";
         $contents = ob_get_contents();
         ob_end_clean();
+        
+        error_log($contents);
         return false;
     }
 

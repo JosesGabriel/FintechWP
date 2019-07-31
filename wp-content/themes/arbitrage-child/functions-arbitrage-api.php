@@ -28,7 +28,6 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
     $error = null;
     $curl = curl_init();
     if (!empty($headers)) {
-        curl_setopt($curl, CURLOPT_HEADER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
     curl_setopt($curl, CURLOPT_URL, "https://dev-api.arbitrage.ph/$uri");
@@ -77,6 +76,7 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
         ob_start();
         echo "CUSTOM ERROR LOG ====================================================$eol";
         echo "functions-arbitrage-api.php => function arbitrage_api_curl $eol $eol";
+        echo "\$uri $eol";
         var_dump($uri);
         echo $eol . $eol;
         echo '$data' . $eol;

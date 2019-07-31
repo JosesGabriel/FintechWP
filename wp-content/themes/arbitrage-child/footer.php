@@ -527,6 +527,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		}else{
 			jQuery('.right-dashboard-part').css("right","-110%");
 			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg');
+			$('#right-slider-icon').attr('width','20px');
 			$('#right-menu').addClass('right-slider-menu1');
 		}
 	});

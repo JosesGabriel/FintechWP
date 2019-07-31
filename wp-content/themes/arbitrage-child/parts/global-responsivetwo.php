@@ -59,7 +59,6 @@
 		float: right;
     	margin-top: 40px;
 	}
-
 	
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;
@@ -171,6 +170,10 @@
 
 	.friends-list-profile .um-friends-user {
 		padding-left: 60px !important;
+	}
+
+	.ads1 {
+		width: 100% !important;
 	}
 
 }

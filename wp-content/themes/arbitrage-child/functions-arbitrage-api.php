@@ -11,12 +11,17 @@ function arbitrage_api_curl_multipart($uri = '', $data = [], $method = 'POST', $
 
 function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = []) {
     $valid_methods = ['DELETE', 'GET', 'POST', 'PUT'];
+    $eol = "\r\n";
 
     if (!in_array($method, $valid_methods)) {
-        error_log('CUSTOM ERROR LOG ====================================================');
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl');
-        error_log('INVALID METHOD: Given method was ' . $method);
-        error_log('END CUSTOM ERROR LOG ====================================================');
+        ob_start();
+        echo "CUSTOM ERROR LOG ====================================================$eol";
+        echo "functions-arbitrage-api.php => function arbitrage_api_curl $eol";
+        echo "INVALID METHOD: Given method was " . $method;
+        echo "END CUSTOM ERROR LOG ====================================================$eol";
+        $contents = ob_get_contents();
+        ob_end_clean();
+        error_log($contents);
         return false;
     }
 
@@ -39,18 +44,29 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
     curl_close($curl);
 
     if (!$response) {
-        error_log('CUSTOM ERROR LOG ====================================================');
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $uri');
-        error_log(print_r($uri, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $data');
-        error_log(print_r($data, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $error');
-        error_log(print_r($error, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $response');
-        error_log(print_r($response, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $info');
-        error_log(print_r($info, true));
-        error_log('END CUSTOM ERROR LOG ====================================================');
+        ob_start();
+        echo "CUSTOM ERROR LOG ====================================================$eol";
+        echo "functions-arbitrage-api.php => function arbitrage_api_curl $eol $eol";
+        echo "\$uri $eol";
+        var_dump($uri, true);
+        echo $eol . $eol;
+        echo "\$data $eol";
+        var_dump($data, true);
+        echo $eol . $eol;
+        echo "\$error $eol";
+        var_dump($error, true);
+        echo $eol . $eol;
+        echo "\$response $eol";
+        var_dump($response, true);
+        echo $eol . $eol;
+        echo "\$info $eol";
+        var_dump($info, true);
+        echo $eol . $eol;
+        echo "END CUSTOM ERROR LOG ====================================================$eol";
+        $contents = ob_get_contents();
+        ob_end_clean();
+
+        error_log($contents);
 
         return false;
     }
@@ -58,17 +74,23 @@ function arbitrage_api_curl($uri = '', $data = [], $method = 'POST', $headers = 
     $response = json_decode($response, true);
 
     if (!$response['success']) {
-        error_log('CUSTOM ERROR LOG ====================================================');
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $uri');
-        error_log(print_r($uri, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $data');
-        error_log(print_r($data, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $response');
-        error_log(print_r($response, true));
-        error_log('functions-arbitrage-api.php => function arbitrage_api_curl $info');
-        error_log(print_r($info, true));
-        error_log('END CUSTOM ERROR LOG ====================================================');
-        
+        ob_start();
+        echo "CUSTOM ERROR LOG ====================================================$eol";
+        echo "functions-arbitrage-api.php => function arbitrage_api_curl $eol $eol";
+        var_dump($uri);
+        echo $eol . $eol;
+        echo '$data' . $eol;
+        var_dump($data);
+        echo $eol . $eol;
+        echo '$response' . $eol;
+        var_dump($response);
+        echo $eol . $eol;
+        echo '$info' . $eol;
+        var_dump($info);
+        echo $eol . $eol;
+        echo "END CUSTOM ERROR LOG ====================================================$eol";
+        $contents = ob_get_contents();
+        ob_end_clean();
         return false;
     }
 

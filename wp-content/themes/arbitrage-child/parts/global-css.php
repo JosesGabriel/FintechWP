@@ -901,7 +901,7 @@ ul.main-drop > ul {
 	position: absolute !important;
 	right: -4px !important;
 	background: #142c46 !important;
-	min-width: 200px !important;
+	min-width: 200px;
 	text-align: left !important;
 	margin-top: 8px !important;
 	border: none !important;

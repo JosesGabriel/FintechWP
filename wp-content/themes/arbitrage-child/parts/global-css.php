@@ -899,7 +899,7 @@ ul.main-drops > ul li:last-child {
 ul.main-drop > ul {
 	font-size: 13px !important;
 	position: absolute !important;
-	right: -4px !important;
+	right: -4px;
 	background: #142c46 !important;
 	min-width: 200px;
 	text-align: left !important;

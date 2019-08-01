@@ -576,7 +576,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 	ul.main-drop > ul {
 	    font-size: 13px !important;
 	    position: absolute !important;
-	    right: -1px !important;
+	    right: -1px;
 	    background: #142c46 !important;
 	    min-width: 200px;
 	    text-align: left !important;

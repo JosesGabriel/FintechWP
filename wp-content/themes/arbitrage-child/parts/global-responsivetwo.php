@@ -55,7 +55,8 @@
 	}
 
 	ul.main-drop > ul {
-		min-width: 420px !important;
+		right: -15px !important;
+		min-width: 430px !important;
 	}
 
 	.right-slider-menu > img {

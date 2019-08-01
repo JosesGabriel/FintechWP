@@ -1835,10 +1835,8 @@ class Activity_Main_API
         $author_id = $this->get_author($post_id);
 
         if (current_user_can('edit_users')) {
-            do_action('um_activity_before_wall_post_deleted', $post_id);
             wp_delete_post($post_id, true);
         } elseif ($author_id == get_current_user_id() && is_user_logged_in()) {
-            do_action('um_activity_before_wall_post_deleted', $post_id);
             wp_delete_post($post_id, true);
         }
 

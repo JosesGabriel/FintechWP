@@ -578,7 +578,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    position: absolute !important;
 	    right: -1px !important;
 	    background: #142c46 !important;
-	    min-width: 200px !important;
+	    min-width: 200px;
 	    text-align: left !important;
 	    margin-top: 9px !important;
 	    border: none !important; 

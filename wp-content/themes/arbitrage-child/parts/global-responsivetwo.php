@@ -277,5 +277,10 @@
 		left: -135px !important;
 	}
 
+	ul.main-drop > ul {
+    	right: -10px !important;
+    	min-width: 330px !important;
+	}
+
 }
 </style>

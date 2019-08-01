@@ -185,7 +185,7 @@
 
 	ul.main-drop > ul {
 		right: -10px !important;
-		min-width: 380px !important;
+		min-width: 375px !important;
 	}
 
 	ul.main-drop > ul li {

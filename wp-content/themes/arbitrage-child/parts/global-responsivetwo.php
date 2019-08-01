@@ -302,7 +302,7 @@
 	}
 
 	.um-notification-live-feed {
-		min-width: 0px !important;
+		max-width: 319px !important;
 	}
 
 }

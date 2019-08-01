@@ -54,6 +54,10 @@
     	padding: 0px !important;
 	}
 
+	ul.main-drop > ul {
+		min-width: 420px !important;
+	}
+
 	.right-slider-menu > img {
 		display: block !important;
 		float: right;
@@ -178,9 +182,7 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
-	ul.main-drop > ul {
-		min-width: 420px !important;
-	}
+
 
 	#et-main-area {
     	padding: 0px !important;

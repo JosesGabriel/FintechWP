@@ -188,6 +188,10 @@
 		min-width: 380px !important;
 	}
 
+	ul.main-drop > ul li {
+   		padding: 6px 25px !important;
+	}
+
 	#et-main-area {
     	padding: 0px !important;
 	}

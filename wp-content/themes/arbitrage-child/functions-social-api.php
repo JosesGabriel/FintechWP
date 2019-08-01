@@ -7,7 +7,7 @@ add_action('um_activity_after_wall_post_updated', 'arbitrage_social_post_api_cre
  */
 function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
     $user_id = get_current_user_id();
-    $account_user_id = get_user_meta($user_id, 'user_uuid', true);
+    $account_user_id = arbitrage_api_get_user_uuid($user_id);
     $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
 
     $data = [

@@ -328,5 +328,12 @@
 		max-width: 319px !important;
 	}
 
+	ul.main-drops > ul {
+		min-width: 325px !important;
+	}
+
+	ul.main-drops > ul:before {
+    	right: 32% !important;
+	}
 }
 </style>

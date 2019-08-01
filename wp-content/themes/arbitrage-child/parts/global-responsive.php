@@ -307,7 +307,7 @@
 	}
 
 	body .um-notification-live-feed {
-		right: 180px !important;
+		right: 213px !important;
 	}
 	.um-notification-live-feed:before{
 		right: 13% !important;

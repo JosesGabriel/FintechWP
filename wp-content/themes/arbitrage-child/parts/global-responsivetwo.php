@@ -199,6 +199,14 @@
    		padding: 6px 25px !important;
 	}
 
+	body .um-notification-live-feed {
+		right: 188px !important;
+	}
+
+	.um-notification-live-feed {
+		min-width: 373px !important;
+	}
+	
 	#et-main-area {
     	padding: 0px !important;
 	}

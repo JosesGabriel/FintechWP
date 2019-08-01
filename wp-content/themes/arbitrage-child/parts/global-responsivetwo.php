@@ -206,7 +206,7 @@
 	.um-notification-live-feed {
 		min-width: 373px !important;
 	}
-	
+
 	#et-main-area {
     	padding: 0px !important;
 	}
@@ -295,6 +295,14 @@
 	ul.main-drop > ul {
     	right: -10px !important;
     	min-width: 330px !important;
+	}
+
+	body .um-notification-live-feed {
+		right: 160px !important;
+	}
+
+	.um-notification-live-feed {
+		min-width: 0px !important;
 	}
 
 }

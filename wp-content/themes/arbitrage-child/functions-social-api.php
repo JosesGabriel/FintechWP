@@ -23,7 +23,7 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
 
     $response = arbitrage_api_curl($url, $data, $method);
 
-    if ($response && $social_post_id) {
+    if ($response && !$social_post_id) {
         add_post_meta($post_id, 'social_api_post_id', $response['post']['id'], true);
     }
 }

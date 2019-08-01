@@ -86,6 +86,10 @@
 		min-width: 423px !important;
 	}
 
+	.um-notification-header {
+		width: 423px !important;
+	}
+
 	.container {
 		padding-right: 0px !important;
     	padding-left: 0px !important;	

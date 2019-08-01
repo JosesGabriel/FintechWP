@@ -64,6 +64,16 @@
 		float: right;
     	margin-top: 40px;
 	}
+
+
+	ul.main-drops > ul:before {
+		right: 24% !important;
+	}
+
+	ul.main-drops > ul {
+		right: -98px !important;
+		min-width: 425px !important;
+	}
 	
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		width: 70px !important;

@@ -89,8 +89,8 @@
                         widget_template = wp.template( 'um-activity-widget' );
                         template_data = {
                             'content'       : data.content,
-                            'img_src'       : data.photo_orig_base,
-                            'img_src_url'   : data.photo_orig_url,
+                            'img_src'       : data.photo_gsc_url,
+                            'img_src_url'   : data.photo_gsc_url,
                             // 'img_src'       : form.find('input[name="_post_img"]').val(),
                             // 'img_src_url'   : form.find('input[name="_post_img_url"]').val(),
                             'wall_id'       : formdata._wall_id,
@@ -118,8 +118,8 @@
                         widget_template = wp.template( 'um-activity-post' );
                         template_data = {
                             'content'       : data.content,
-                            'img_src'       : data.photo_orig_base,
-                            'img_src_url'   : data.photo_orig_url,
+                            'img_src'       : data.photo_gsc_url,
+                            'img_src_url'   : data.photo_gsc_url,
                             /*'img_src'       : form.find('input[name="_post_img"]').val(),
                             'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
                             'wall_id'       : formdata._wall_id,

@@ -40,7 +40,6 @@ add_action('before_delete_post', function ($post_id) {
 
         $data = [
             'user_id' => $uuid,
-            'pid' => $post_id,
         ];
 
         $response = arbitrage_api_curl("api/social/posts/$social_post_id", $data, "DELETE");

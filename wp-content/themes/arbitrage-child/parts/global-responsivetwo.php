@@ -89,7 +89,7 @@
 
 
 	body .um-notification-live-feed {
-		margin-top: -68px !important;
+		margin-top: -72px !important;
 	}
 
 	.um-notification-live-feed {

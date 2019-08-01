@@ -82,6 +82,9 @@
 		margin-top: -68px !important;
 	}
 
+	.um-notification-live-feed {
+		min-width: 423px !important;
+	}
 
 	.container {
 		padding-right: 0px !important;

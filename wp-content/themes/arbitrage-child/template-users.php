@@ -1569,9 +1569,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
             font-size: 13px !important;
             /* display: none; */
             position: absolute !important;
-            right: -1px !important;
+            right: -1px;
             background: #142c46 !important;
-            min-width: 200px !important;
+            min-width: 200px;
             text-align: left !important;
             margin-top: 9px !important;
             border: none !important;

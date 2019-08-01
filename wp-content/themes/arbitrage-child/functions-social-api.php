@@ -28,7 +28,7 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
     }
 }
 
-add_action('um_activity_after_wall_post_deleted', 'arbitrage_social_post_api_delete');
+add_action('um_activity_before_wall_post_deleted', 'arbitrage_social_post_api_delete');
 /**
  * Deletes a post in social api
  */
@@ -36,10 +36,11 @@ function arbitrage_social_post_api_delete($post_id) {
     // get this post's user id
     // not the current id as deletion may have been triggered by an admin
     $user_id = get_post_field('post_author', $post_id);
+    $uuid = arbitrage_api_get_user_uuid($user_id);
     $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
 
     $data = [
-        'user_id' => $user_id,
+        'user_id' => $uuid,
     ];
 
     $response = arbitrage_api_curl("api/social/posts/$social_post_id", $data, "DELETE");

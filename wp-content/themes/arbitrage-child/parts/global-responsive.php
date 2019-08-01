@@ -280,8 +280,6 @@
 
 
 
-
-
 	.dashboard-sidebar-left {
 		padding: 0 12px 0;
 	}

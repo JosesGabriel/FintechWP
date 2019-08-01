@@ -178,6 +178,10 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	ul.main-drop > ul {
+		min-width: 420px !important;
+	}
+
 	#et-main-area {
     	padding: 0px !important;
 	}

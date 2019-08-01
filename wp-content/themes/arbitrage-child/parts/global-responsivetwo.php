@@ -209,6 +209,14 @@
    		padding: 6px 25px !important;
 	}
 
+	ul.main-drops > ul {
+		min-width: 375px !important;
+	}
+
+	ul.main-drops > ul:before {
+		right: 27% !important;
+	}
+
 	body .um-notification-live-feed {
 		right: 188px !important;
 	}

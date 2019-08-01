@@ -217,6 +217,10 @@
 		right: 27% !important;
 	}
 
+	ul.main-drops > ul li {
+    	padding: 6px 25px !important;
+	}
+
 	body .um-notification-live-feed {
 		right: 188px !important;
 	}

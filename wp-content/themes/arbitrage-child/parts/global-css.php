@@ -841,9 +841,9 @@ span.nocont {
 ul.main-drops > ul {
 font-size: 13px !important;
 position: absolute !important;
-right: -4px !important;
+right: -4px;
 background: #142c46 !important;
-min-width: 200px !important;
+min-width: 200px;
 text-align: left !important;
 margin-top: 8px !important;
 border: none !important;

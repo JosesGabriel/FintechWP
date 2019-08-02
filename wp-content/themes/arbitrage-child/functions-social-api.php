@@ -18,7 +18,7 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
         'status' => 'active',
     ];
 
-    $url = 'api/social/posts' . ($social_post_id ? '/' . $social_post_id : '');
+    $url = 'api/social/posts' . ($social_post_id ? "/$social_post_id/update" : '');
     $method = $social_post_id ? 'PUT' : 'POST';
 
     $response = arbitrage_api_curl($url, $data, $method);

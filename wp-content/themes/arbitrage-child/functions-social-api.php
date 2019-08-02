@@ -51,6 +51,7 @@ add_action('before_delete_post', function ($post_id) {
 add_action('wp_insert_comment', function ($comment_id, $comment) {
     $user_id = get_current_user_id();
     $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    $comment = get_comment($comment_id);
 
     $social_post_id = get_post_meta($comment->comment_post_ID, 'social_api_post_id', true);
 

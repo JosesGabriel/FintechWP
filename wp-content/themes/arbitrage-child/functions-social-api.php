@@ -48,31 +48,50 @@ add_action('before_delete_post', function ($post_id) {
 /**
  * Create a comment in social api
  */
-add_action('um_activity_after_wall_comment_published', function ($comment_id, $comment_parent, $post_id, $user_id) {
-    $user = get_current_user_id();
+add_action('wp_insert_comment', function ($comment_id, $comment) {
+    $user_id = get_current_user_id();
     $user_uuid = arbitrage_api_get_user_uuid($user_id);
-    $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
-    $comment = get_comment_text($comment_id);
-    $social_comment_id = get_comment_meta($comment_id, 'social_api_comment_id', true);
 
-    if ($comment_parent != 0) {
+    $social_post_id = get_post_meta($comment->comment_post_ID, 'social_api_post_id', true);
+
+    $comment_parent = $comment->comment_parent;
+
+    if ($comment_parent) {
         $comment_parent = get_comment_meta($comment_parent, 'social_api_comment_id', true);
     }
 
     $data = [
-        'post_id' => $social_post_id,
         'parent_id' => $comment_parent,
         'user_id' => $user_uuid,
-        'content' => $comment,
+        'content' => $comment->comment_content,
     ];
 
-    // check if this is an already existing comment in Social API
-    // if yes, update 
-    $url = "api/social/posts/$social_post_id/comments" . ($social_comment_id ? "/$social_comment_id/update" : "");
+    $url = "api/social/posts/$social_post_id/comments";
 
     $response = arbitrage_api_curl($url, $data);
 
     if ($response) {
         add_comment_meta($comment_id, 'social_api_comment_id', $response['comment']['id'], true);
     }
+});
+
+/**
+ * Update a comment in social api
+ */
+add_action('edit_comment', function ($comment_id, $comment_data) {
+    $user_id = get_current_user_id();
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
+
+    $social_post_id = get_post_meta($comment_data['comment_post_ID'], 'social_api_post_id', true);
+
+    $social_comment_id = get_comment_meta($comment_id, 'social_api_comment_id', true);
+
+    $data = [
+        'user_id' => $user_uuid,
+        'content' => $comment_data['comment_content'],
+    ];
+
+    $url = "api/social/posts/$social_post_id/comments/$social_comment_id";
+
+    $response = arbitrage_api_curl($url, $data);
 });

@@ -18,10 +18,9 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
         'status' => 'active',
     ];
 
-    $url = 'api/social/posts' . ($social_post_id ? '/' . $social_post_id : '');
-    $method = $social_post_id ? 'PUT' : 'POST';
+    $url = 'api/social/posts' . ($social_post_id ? "/$social_post_id/update" : '');
 
-    $response = arbitrage_api_curl($url, $data, $method);
+    $response = arbitrage_api_curl($url, $data);
 
     if ($response && !$social_post_id) {
         add_post_meta($post_id, 'social_api_post_id', $response['post']['id'], true);
@@ -42,6 +41,6 @@ add_action('before_delete_post', function ($post_id) {
             'user_id' => $uuid,
         ];
 
-        $response = arbitrage_api_curl("api/social/posts/$social_post_id", $data, "DELETE");
+        $response = arbitrage_api_curl("api/social/posts/$social_post_id/delete", $data);
     }
 });

@@ -1593,7 +1593,7 @@ if ($getdstocks && $getdstocks != "") {
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 800px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>

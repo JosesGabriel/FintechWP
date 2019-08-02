@@ -44,3 +44,32 @@ add_action('before_delete_post', function ($post_id) {
         $response = arbitrage_api_curl("api/social/posts/$social_post_id/delete", $data);
     }
 });
+
+/**
+ * Create a comment in social api
+ */
+add_action('um_activity_after_wall_comment_published', function ($comment_id, $comment_parent, $post_id, $user_id) {
+    $user = get_current_user_id();
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
+    $comment = get_comment_text($comment_id);
+
+    if ($comment_parent != 0) {
+        $comment_parent = get_comment_meta($comment_parent, 'social_api_comment_id', true);
+    }
+
+    $data = [
+        'post_id' => $social_post_id,
+        'parent_id' => $comment_parent,
+        'user_id' => $user_uuid,
+        'content' => $comment,
+    ];
+
+    $url = "api/social/posts/$social_post_id/comments";
+
+    $response = arbitrage_api_curl($url, $data);
+
+    if ($response) {
+        add_comment_meta($comment_id, 'social_api_comment_id', $response['comment']['id'], true);
+    }
+});

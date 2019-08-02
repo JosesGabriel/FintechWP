@@ -399,7 +399,7 @@ jQuery( document ).ready(function () {
 			return false;
 		}
 		
-		jQuery(this).parents( '.um-activity-publish' ).submit();
+		jQuery(this).closest( '.um-activity-publish' ).submit();
 		// window.setTimeout(function(){ document.location.reload(true); }, 5000);
 	});
 	

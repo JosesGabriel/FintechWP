@@ -3,6 +3,7 @@
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
+include 'functions-social-api.php';
 
 function my_theme_enqueue_styles()
 {

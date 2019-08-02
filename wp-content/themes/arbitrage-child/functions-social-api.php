@@ -42,6 +42,6 @@ add_action('before_delete_post', function ($post_id) {
             'user_id' => $uuid,
         ];
 
-        $response = arbitrage_api_curl("api/social/posts/$social_post_id", $data, "DELETE");
+        $response = arbitrage_api_curl("api/social/posts/$social_post_id", $data);
     }
 });

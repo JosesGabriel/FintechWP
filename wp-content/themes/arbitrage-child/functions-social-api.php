@@ -93,7 +93,7 @@ add_action('edit_comment', function ($comment_id, $comment_data) {
         'content' => $comment->comment_content,
     ];
 
-    $url = "api/social/posts/$social_post_id/comments/$social_comment_id";
+    $url = "api/social/posts/$social_post_id/comments/$social_comment_id/update";
 
     $response = arbitrage_api_curl($url, $data);
 });

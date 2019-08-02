@@ -53,6 +53,7 @@ add_action('um_activity_after_wall_comment_published', function ($comment_id, $c
     $user_uuid = arbitrage_api_get_user_uuid($user_id);
     $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
     $comment = get_comment_text($comment_id);
+    $social_comment_id = get_comment_meta($comment_id, 'social_api_comment_id', true);
 
     if ($comment_parent != 0) {
         $comment_parent = get_comment_meta($comment_parent, 'social_api_comment_id', true);
@@ -65,7 +66,9 @@ add_action('um_activity_after_wall_comment_published', function ($comment_id, $c
         'content' => $comment,
     ];
 
-    $url = "api/social/posts/$social_post_id/comments";
+    // check if this is an already existing comment in Social API
+    // if yes, update 
+    $url = "api/social/posts/$social_post_id/comments" . ($social_comment_id ? "/$social_comment_id/update" : "");
 
     $response = arbitrage_api_curl($url, $data);
 

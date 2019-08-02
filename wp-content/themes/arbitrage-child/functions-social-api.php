@@ -82,14 +82,15 @@ add_action('wp_insert_comment', function ($comment_id, $comment) {
 add_action('edit_comment', function ($comment_id, $comment_data) {
     $user_id = get_current_user_id();
     $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    $comment = get_comment($comment_id);
 
-    $social_post_id = get_post_meta($comment_data['comment_post_ID'], 'social_api_post_id', true);
+    $social_post_id = get_post_meta($comment->comment_post_ID, 'social_api_post_id', true);
 
     $social_comment_id = get_comment_meta($comment_id, 'social_api_comment_id', true);
 
     $data = [
         'user_id' => $user_uuid,
-        'content' => $comment_data['comment_content'],
+        'content' => $comment->comment_content,
     ];
 
     $url = "api/social/posts/$social_post_id/comments/$social_comment_id";

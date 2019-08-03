@@ -168,3 +168,20 @@ add_action('um_activity_after_wall_post_beared', function ($post_id, $user_id) {
 
     arbitrage_api_curl($url, $data);
 });
+
+/**
+ * Unbear a post in social api
+ */
+add_action('um_activity_after_wall_post_unbeared', function ($post_id, $user_id) {
+    $user_id = get_current_user_id();
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
+
+    $data = [
+        'user_id' => $user_uuid,
+    ];
+
+    $url = "api/social/posts/$social_post_id/unbear";
+
+    arbitrage_api_curl($url, $data);
+});

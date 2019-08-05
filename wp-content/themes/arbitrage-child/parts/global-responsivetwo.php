@@ -54,6 +54,10 @@
     	padding: 0px !important;
 	}
 
+	#journal .right-slider-icon {
+		display: none !important;
+	}
+
 	.oncommonsidebar .post-content {
 		padding: 0px !important;
 	}

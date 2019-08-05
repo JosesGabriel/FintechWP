@@ -1601,7 +1601,7 @@ if ($getdstocks && $getdstocks != "") {
 								<div class="col-md-12">
 						            <div class="panel panel-primary">
 						               <div class="panel-heading">
-						                    <span class="journaltabs">
+						                    <span id="journal" class="journaltabs">
 						                        <!-- Tabs -->
 						                        <ul class="nav panel-tabs">
 						                            <li class="active"><a href="#tab1" data-toggle="tab" class="active show">Dashboard</a></li>

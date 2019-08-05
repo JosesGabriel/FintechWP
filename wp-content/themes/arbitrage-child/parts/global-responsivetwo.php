@@ -54,6 +54,14 @@
     	padding: 0px !important;
 	}
 
+	.box-portlet-content {
+    	padding: 15px 5px;
+	}
+
+	.dstatstrade ul li.headerpart {
+		padding: 5px 0px;
+	}
+
 	.left-dashboard-part {
 		display: block !important;
 	}

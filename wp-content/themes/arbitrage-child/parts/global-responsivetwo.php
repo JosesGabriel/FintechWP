@@ -55,7 +55,7 @@
 	}
 
 	.oncommonsidebar .post-content {
-		padding: 0px;
+		padding: 0px !important;
 	}
 
 	ul.main-drop > ul {

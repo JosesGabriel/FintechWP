@@ -54,8 +54,8 @@
     	padding: 0px !important;
 	}
 
-	#journal .right-slider-icon > img {
-		visibility: hidden !important;
+	#journal .right-slider-menu > img {
+		display: none !important;
 	}
 
 	.oncommonsidebar .post-content {

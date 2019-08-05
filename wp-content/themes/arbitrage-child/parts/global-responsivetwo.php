@@ -54,6 +54,10 @@
     	padding: 0px !important;
 	}
 
+	.left-dashboard-part {
+		display: block !important;
+	}
+
 	#journal .right-slider-menu > img {
 		display: none !important;
 	}

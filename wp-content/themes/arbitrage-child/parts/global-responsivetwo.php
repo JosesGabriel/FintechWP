@@ -55,11 +55,11 @@
 	}
 
 	.box-portlet-content {
-    	padding: 15px 5px;
+    	padding: 15px 5px !important;
 	}
 
 	.dstatstrade ul li.headerpart {
-		padding: 5px 0px;
+		padding: 5px 0px !important;
 	}
 
 	.left-dashboard-part {

@@ -27,10 +27,9 @@ get_header( 'dashboard' );
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 
 <style type="text/css">
-	.hideformodal, .right-slider-icon {
+	.hideformodal {
 		display:none !important;
 	}
-
     .btn-tradelog {
         border-radius: 0px;
         margin: 10px 0px;

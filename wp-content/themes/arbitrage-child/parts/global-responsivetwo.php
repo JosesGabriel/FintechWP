@@ -55,7 +55,7 @@
 	}
 
 	#journal .right-slider-icon {
-		display: none !important;
+		visibility: hidden !important;
 	}
 
 	.oncommonsidebar .post-content {

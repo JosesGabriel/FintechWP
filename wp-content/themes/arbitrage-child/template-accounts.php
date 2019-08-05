@@ -600,7 +600,7 @@ get_header( 'dashboard' );
 		color: #fffffe;
 	}
 	.left-dashboard-part {
-		/*display: none;*/
+		display: block;
 	}
 	.center-dashboard-part {
 		width: 80%;

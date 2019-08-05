@@ -54,7 +54,7 @@
     	padding: 0px !important;
 	}
 
-	#journal .right-slider-icon {
+	#journal .right-slider-icon > img {
 		visibility: hidden !important;
 	}
 

@@ -68,7 +68,7 @@
 	}
 
 	.right-slider-menu > img {
-		display: block !important;
+		display: block;
 		float: right;
     	margin-top: 40px;
 	}

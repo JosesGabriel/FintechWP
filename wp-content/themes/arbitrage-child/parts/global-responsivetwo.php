@@ -54,6 +54,10 @@
     	padding: 0px !important;
 	}
 
+	.oncommonsidebar .post-content {
+		padding: 0px;
+	}
+
 	ul.main-drop > ul {
 		right: -15px !important;
 		min-width: 430px !important;

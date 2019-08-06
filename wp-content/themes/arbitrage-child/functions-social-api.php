@@ -32,7 +32,7 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
     if ($gcs_url) {
         arbitrage_api_curl("api/social/posts/$social_post_id/attachments", [
             'user_id' => $account_user_id,
-            'url' = $gcs_url,
+            'url' => $gcs_url,
         ]);
     }
 }

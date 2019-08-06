@@ -55,17 +55,17 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     	<li class="arbit-checked"><a href="<?php echo get_home_url(); ?>/user/<?php 
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editcover"><i class="far fa-check-square"></i> Change cover photo</a>
                         </li>
-                    <? }else{ ?>
+                    <?php }else{ ?>
                     	<li class="arbit-checked"><i class="fas fa-check-square"></i> Cover photo updated</li>
-                    <? } ?>
+                    <?php } ?>
                     
                     <?php if(!$profilepicactive){ ?>
                     	<li class="arbit-checked"><a href="<?php echo get_home_url(); ?>/user/<?php 
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editphoto"><i class="far fa-check-square"></i> Change profile photo</a>
                         </li>
-                    <? }else{ ?>
+                    <?php }else{ ?>
                     	<li class="arbit-checked"><i class="fas fa-check-square"></i> Profile photo updated</li>
-                    <? } ?>
+                    <?php } ?>
                     
                     
 					<?php if ($friendstotal < 3){ ?>
@@ -81,12 +81,6 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
 								$pphrase = $remainingtoadd.' more peer';
 							}
 							echo $pphrase;
-							// echo "remainingtoadd: " . $remainingtoadd . "<br />";
-							// echo "initval: " . $initval . "<br />";
-							// echo "friendstotal: " . $friendstotal . "<br />";
-							// echo um_profile( 'cover_photo' ) . "<br />";
-							// echo um_profile( 'profile_photo' ) . "<br />"
-							
 						?></a></li>
 					<?php } ?>
 					

@@ -1813,7 +1813,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 .bkcalcboxess {
 	padding: 20px 20px 20px 20px;
 	color: #fff;
-	max-width: 550px;
+	max-width: 600px;
 	border-radius: 5px;
 	margin: 0 auto;
 	width: 100%;

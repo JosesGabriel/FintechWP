@@ -225,7 +225,7 @@ $user = wp_get_current_user();
 				<a href="javascript:void(0);" class="um-activity-edit-cancel">
 					<?php _e( 'Cancel editing', 'um-activity' ); ?>
 				</a>
-				<a href="javascript:void(0);" class="um-button um-activity-manage um-disabled">
+				<a href="javascript:void(0);" class="um-button um-activity-post um-disabled">
 					<?php _e( 'Update', 'um-activity' ); ?>
 				</a>
 			</div>

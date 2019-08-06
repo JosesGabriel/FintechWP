@@ -54,7 +54,7 @@
 		overflow-x: scroll;
 	}
 
-	.dstatstrade {
+	.stats-info > div {
 		width: 800px;
 	}
 

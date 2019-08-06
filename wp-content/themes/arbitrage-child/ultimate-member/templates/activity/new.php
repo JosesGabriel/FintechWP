@@ -1,3 +1,83 @@
+<?php
+$user = wp_get_current_user();
+if ( is_user_logged_in() ) {
+    // echo 'Welcome, registered user!';
+} else {
+    wp_redirect( 'https://arbitrage.ph/login/', 301 );
+    exit;
+}
+$profile_id = um_profile_id();
+$default_cover = UM()->options()->get( 'default_cover' );
+um_fetch_user($profile_id);
+$ismyprofile = ($user->id == $profile_id ? true : false);
+?>
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+<?php
+global $current_user;
+$user = wp_get_current_user();
+  if (!is_page(26)){ 
+	  	$user_id = $user->ID;
+		if(isset($_POST['check_user_share_input'])){
+		  $sharecheck = $_POST['check_user_share_input'];
+		  update_user_meta($user_id, 'check_user_share', $sharecheck);
+		}
+		$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
+		$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
+		if(!$checksharing){
+			if($checkfbshare){
+				header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+				die(); 
+			}else{
+				header('Location: https://arbitrage.ph/verify/?'.rand(12345 ,89019));
+				die();
+			}
+		}
+		arbitrage_api_verify_user($user_id);
+		/* if($checksharing == "shared"){
+		}elseif($checksharing == "verified"){
+		}elseif(!$checksharing){
+			if ($checkfbshare && !$checksharing){
+				header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+				die();
+			}else{
+				header('Location: https://arbitrage.ph/verify/?'.rand(12345 ,89019));
+				die();
+			}
+		} */
+	  /*if(isset($_POST['check_user_share_input'])){
+			$sharecheck = $_POST['check_user_share_input'];
+			update_user_meta($user_id, 'check_user_share', $sharecheck);
+	  }
+	  $checksharing1 = get_user_meta( $user_id, "_um_sso_facebook_email", true );
+	  $checksharing2 = get_user_meta( $user_id, "check_user_share", true );
+	  if ($checksharing1 && !$checksharing2){
+			echo '<script type="text/javascript">window.location.href = "https://arbitrage.ph/share/?'.rand(12345 ,89019).'";</script>';
+	  }else{
+		  	echo '<script type="text/javascript">window.location.href = "https://arbitrage.ph/verify/?'.rand(12345 ,89019).'";</script>';
+	  }*/
+  }
+  if (isset($_GET['resetshare'])){
+	    $user_id = $user->ID;
+		update_user_meta($user_id, 'check_user_share', "");
+		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+		die();
+  } 
+	elegant_description();
+	elegant_keywords();
+	elegant_canonical();
+	/**
+	 * Fires in the head, before {@see wp_head()} is called. This action can be used to
+	 * insert elements into the beginning of the head before any styles or scripts.
+	 *
+	 * @since 1.0
+	 */
+	do_action( 'et_head_meta' );
+	$cdnorlocal = get_home_url();
+	$template_directory_uri = get_template_directory_uri();
+?>
 <!-- New Post HTML template -->
 <div class="um-activity-widget um-activity-new-post ss" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;">
 	<!-- <form action="" >
@@ -23,8 +103,8 @@
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
-				          placeholder="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
+						  data-ph="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
+				          placeholder="<?php esc_attr_e( 'What\'s on your mind2?','um-activity' ); ?>"
 				          class="um-activity-textarea-elem" name="_post_content"></textarea>
 				<hr class="style14 style15">
 			</div>

@@ -289,15 +289,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    margin-top: 10px !important;
 	    margin-bottom: 3px !important;
 	}
-	.um-activity-new-post .um-activity-foot .um-activity-right a {
-	    border-radius: 26px !important;
-	    border: 1.3px solid #6583a8 !important;
-	    padding: 0px 17px !important;
-	    font-family: 'Nunito', sans-serif;
-	    color: #6583a8;
-	    background-color: none !important;
-	    background: none !important;
-	}
 	.um-activity-left .um-activity-actions {
 		display: none !important;
 	}

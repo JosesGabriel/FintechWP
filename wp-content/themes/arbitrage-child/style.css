@@ -222,7 +222,7 @@
 }
 .um-activity-widget .um-activity-foot.status a,
 .um-activity-widget .um-activity-foot.status i {
-    color: #fff !important;
+    /* color: #fff !important; */
 }
 .um-activity-widget .um-activity-foot .um-activity-bullish.active a {
     /*color: red !important;*/

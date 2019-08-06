@@ -761,21 +761,34 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 
 .um-activity-comment-meta .um-activity-editc a {
 	font-size: 15px;
-	color: #aaa;
+	color: #fffffe;
 }
 .um-activity-comment-meta .um-activity-editc a:hover,
 .um-activity-comment-meta .um-activity-editc a:active,
-.um-activity-comment-meta .um-activity-editc a:focus {color: #666}
+.um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe}
 
 .um-activity-comment-meta .um-activity-editc-d {
-	position: absolute;
-	top: 24px;
-	left: 0;
-	width: 100px;
-	background: #fff;
-	box-shadow: 0 1px 2px #ddd;
-	display: none;
-	z-index: 999;
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100px;
+    background: #123;
+    display: none;
+    z-index: 999;
+    border-radius: 3px;
+}
+.um-activity-comment-meta .um-activity-editc-d:before {
+	content: "";
+    bottom: 100%;
+    right: 10px;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #123;
+    border-width: 8px;
 }
 
 .um-activity-comment-meta span.um-activity-editc-d:after {
@@ -784,12 +797,15 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 
 .um-activity-comment-meta .um-activity-editc-d a {
 	display: block;
-	font-size: 13px;
-	padding: 8px 10px;
+    font-size: 12px;
+    padding: 8px 10px;
+    color: #fffffe;
 }
 
 .um-activity-comment-meta .um-activity-editc-d a:hover {
-	background: #f9f9f9;
+	color: #fffffe;
+	background: #11273e;
+	border-radius: 3px;
 }
 
 /* Comment loading */

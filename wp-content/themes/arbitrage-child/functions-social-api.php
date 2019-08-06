@@ -56,24 +56,6 @@ add_action('before_delete_post', function ($post_id) {
 });
 
 /**
- * Add attachment to post in social api
- */
-add_action('um_activity_wall_post_attachment', function ($post_id, $gcs_url) {
-    $user_id = get_post_field('post_author', $post_id);
-    $uuid = arbitrage_api_get_user_uuid($user_id);
-    $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
-
-    if ($social_post_id) {
-        $data = [
-            'user_id' => $uuid,
-            'url' => $gcs_url,
-        ];
-
-        $response = arbitrage_api_curl("api/social/posts/$social_post_id/attachments", $data);
-    }
-});
-
-/**
  * Create a comment in social api
  */
 add_action('wp_insert_comment', function ($comment_id, $comment) {

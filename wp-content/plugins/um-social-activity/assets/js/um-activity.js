@@ -519,7 +519,7 @@ jQuery( document ).ready(function () {
 
 
 	/*Edit Post*/
-	jQuery( document.body ).on( 'click', '.um-activity-manage', function() {
+	jQuery( document.body ).on( 'click', '.um-activity-post', function() {
 		var widget = jQuery(this).parents('.um-activity-widget');
 
 		if ( jQuery(this).parents('.um-activity-dialog').length ) {

@@ -326,193 +326,84 @@
 
 <div class="arb_calcbox varcalc">
 
-<div class="bkcalcboxess">
+<!-- <div class="bkcalcboxess">
 
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
-
     
-
-    <div class="halfts">
-
-
-
-    <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Stock Name</div>
-
-        <div class="arb_calcbox_right">
-
-            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
+    <div class="halfts" style="width: 50%">
+        <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
 
         
 
-        <div class="arb_calcbox_left">Current Price</div>
+            <div class="arb_calcbox_left">Stock Name</div>
 
-        <div class="arb_calcbox_right">
+            <div class="arb_calcbox_right">
 
-            <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="padbott"></div>
-
-    
-
-    <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Portfolio Size</div>
-
-        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Portfolio Allocation</div>
-
-        <div class="arb_calcbox_right">
-
-            <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Position Size</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="posisize" id="posisize" type="text" value="0" style="width:85%;">
-
-        	<i class="fa fa-lock" aria-hidden="true"></i>
+                <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
 
             </div>
 
-        <div class="arb_clear smlspc"></div>
+            <div class="arb_clear smlspc"></div>
 
-        
+            
 
-    	<div class="padbott"></div>
+            <div class="arb_calcbox_left">Current Price</div>
 
-    
+            <div class="arb_calcbox_right">
 
-    <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Identified Entry Price</div>
-
-        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Risk Tolerance</div>
-
-        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Target Profit</div>
-
-        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Stoploss</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Take Profit Price</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Stoploss Price</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Value at Risk</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
+                <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
 
             </div>
 
-        <div class="arb_clear smlspc"></div>
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="padbott"></div>
 
         
 
-        <div class="arb_calcbox_left">Upside</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
+        <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
 
         
 
-        <div class="padbott"></div>
+            <div class="arb_calcbox_left">Portfolio Size</div>
 
-    
+            <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
 
-    <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="arb_calcbox_left">Portfolio Allocation</div>
+
+            <div class="arb_calcbox_right">
+
+                <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
+
+            </div>
+
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="arb_calcbox_left">Position Size</div>
+
+            <div class="arb_calcbox_right lockedd">
+
+                <input name="posisize" id="posisize" type="text" value="0" style="width:85%;">
+
+                <i class="fa fa-lock" aria-hidden="true"></i>
+
+                </div>
+
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="padbott"></div>
+        
+        <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
 
     
 
@@ -568,12 +459,258 @@
 
         </div>
 
-        
-
     </div>
 
-</div>
+    <div >
+        <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
+        <div class="arb_calcbox_left">Identified Entry Price</div>
+        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
+        <div class="arb_clear smlspc"></div>
 
+        <div class="arb_calcbox_left">Risk Tolerance</div>
+        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Target Profit</div>
+        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Stoploss</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+        <div class="arb_calcbox_left">Take Profit Price</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Stoploss Price</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Value at Risk</div>
+        <div class="arb_calcbox_right lockedd">
+        	<div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Upside</div>
+        <div class="arb_calcbox_right lockedd">
+        	<div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+        <div class="padbott"></div>
+    </div>        
+</div> -->
+
+    <div class="bkcalcboxess container-fluid">
+    <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
+        <div class="row">
+            
+            <div class="col-6">
+                <div class="halfts">
+                    <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
+
+                    
+
+                        <div class="arb_calcbox_left">Stock Name</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
+
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Current Price</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
+
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="padbott"></div>
+
+                    
+
+                    <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
+
+                    
+
+                        <div class="arb_calcbox_left">Portfolio Size</div>
+
+                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Portfolio Allocation</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <input name="portalloc" id="portalloc" type="number" value="0" style="width:80%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
+
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Position Size</div>
+
+                        <div class="arb_calcbox_right lockedd">
+
+                            <input name="posisize" id="posisize" type="text" value="0" style="width:80%;">
+
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+
+                            </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="padbott"></div>
+                    
+                    <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
+
+                
+
+                    <div class="arb_calcbox_left">Board lot</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input name="boardlot" id="boardlot" type="text" value="0" style="width:85%;">
+
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="arb_calcbox_left">No of Shares to Buy</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input name="noofshare" id="noofshare" type="text" value="0" style="width:85%;">
+
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="arb_calcbox_left">Risk to Reward Ratio</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;">
+
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="padbott"></div>
+
+                    
+
+                    <div style="display:none;">Boardlot (Tmp - dynamic on chart)
+
+                    <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="number" value="30" style="width:100%;">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="halfts">
+                    <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
+                    <div class="arb_calcbox_left">Identified Entry Price</div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Risk Tolerance</div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Target Profit</div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Stoploss</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+                    <div class="arb_calcbox_left">Take Profit Price</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Stoploss Price</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Value at Risk</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Upside</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+                    <div class="padbott"></div>
+                </div>  
+            </div>
+        </div>
+    </div>
 </div>
 
 <script language="javascript">

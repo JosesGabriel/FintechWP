@@ -50,6 +50,14 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.stats-info {
+		overflow-x: scroll;
+	}
+
+	.dstatstrade .overridewidth {
+		width: 800px;
+	}
+
 	.inner-portlet .inner-portlet-content {
     	padding-right: 15px !important;
     	padding-left: 0px !important;

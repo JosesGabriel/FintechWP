@@ -1907,7 +1907,7 @@ h2.watchtitle {
         jQuery(".addwatch").addClass('eventnone');
     <?php }else{ ?>
         jQuery(".addwatch").removeClass('eventnone');
-    <?php }?>
+    <?php } ?>
 </script>
 
 <?php

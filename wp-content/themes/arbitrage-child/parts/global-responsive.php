@@ -15,6 +15,11 @@
 	background-color: transparent; 
 	z-index: 9999999999;
 }
+
+.right-slider-menu > img {
+	display: none;
+}
+
 .right-slide-trigger {
 	display:none;
 	position: fixed;

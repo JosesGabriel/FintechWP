@@ -50,8 +50,33 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.inner-portlet .inner-portlet-content {
+    	padding-right: 15px !important;
+    	padding-left: 0px !important;
+	}
+
 	#et-main-area, .profile-post-content {
     	padding: 0px !important;
+	}
+
+	.box-portlet-content {
+    	padding: 15px 5px !important;
+	}
+
+	.dstatstrade ul li.headerpart {
+		padding: 5px 0px !important;
+	}
+
+	.left-dashboard-part {
+		display: block !important;
+	}
+
+	#journal .right-slider-menu > img {
+		display: none !important;
+	}
+
+	.oncommonsidebar .post-content {
+		padding: 0px !important;
 	}
 
 	ul.main-drop > ul {
@@ -60,7 +85,7 @@
 	}
 
 	.right-slider-menu > img {
-		display: block !important;
+		display: block;
 		float: right;
     	margin-top: 40px;
 	}

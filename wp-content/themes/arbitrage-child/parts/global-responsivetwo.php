@@ -54,7 +54,7 @@
 		overflow-x: scroll;
 	}
 
-	.dstatstrade .overridewidth {
+	.dstatstrade {
 		width: 800px;
 	}
 

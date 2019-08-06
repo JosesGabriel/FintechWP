@@ -23,7 +23,17 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
     $response = arbitrage_api_curl($url, $data);
 
     if ($response && !$social_post_id) {
-        add_post_meta($post_id, 'social_api_post_id', $response['post']['id'], true);
+        $social_post_id = $response['post']['id'];
+        add_post_meta($post_id, 'social_api_post_id', $social_post_id, true);
+    }
+    
+    // check if has a photo
+    $gcs_url = get_post_meta($post_id, '_photo_gcs_url', true);
+    if ($gcs_url) {
+        arbitrage_api_curl("api/social/posts/$social_post_id/attachments", [
+            'user_id' => $account_user_id,
+            'url' = $gcs_url,
+        ]);
     }
 }
 
@@ -42,24 +52,6 @@ add_action('before_delete_post', function ($post_id) {
         ];
 
         $response = arbitrage_api_curl("api/social/posts/$social_post_id/delete", $data);
-    }
-});
-
-/**
- * Add attachment to post in social api
- */
-add_action('um_activity_wall_post_attachment', function ($post_id, $gcs_url) {
-    $user_id = get_post_field('post_author', $post_id);
-    $uuid = arbitrage_api_get_user_uuid($user_id);
-    $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
-
-    if ($social_post_id) {
-        $data = [
-            'user_id' => $uuid,
-            'url' => $gcs_url,
-        ];
-
-        $response = arbitrage_api_curl("api/social/posts/$social_post_id/attachments", $data);
     }
 });
 

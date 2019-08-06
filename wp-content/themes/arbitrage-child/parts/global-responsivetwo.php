@@ -50,6 +50,11 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.inner-portlet .inner-portlet-content {
+    	padding-right: 15px !important;
+    	padding-left: 0px !important;
+	}
+
 	#et-main-area, .profile-post-content {
     	padding: 0px !important;
 	}

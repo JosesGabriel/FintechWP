@@ -1663,7 +1663,7 @@ if ($getdstocks && $getdstocks != "") {
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
-                                                                    <div class="dstatstrade overridewidth">
+                                                                    <div id="live_portfolio" class="dstatstrade overridewidth">
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">

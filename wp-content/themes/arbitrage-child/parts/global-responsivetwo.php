@@ -54,7 +54,7 @@
 		overflow-x: scroll;
 	}
 
-	.stats-info > div {
+	#live_portfolio {
 		width: 800px;
 	}
 

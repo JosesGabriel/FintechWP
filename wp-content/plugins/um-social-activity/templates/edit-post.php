@@ -119,7 +119,7 @@
 
 				</a>
 
-				<a href="javascript:void(0);" class="um-button um-activity-post um-disabled">
+				<a href="javascript:void(0);" class="um-button um-activity-manage um-disabled">
 
 					<?php _e( 'Update', 'um-activity' ); ?>
 

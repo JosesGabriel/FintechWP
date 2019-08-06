@@ -23,7 +23,17 @@ function arbitrage_social_post_api_create($post_id, $user_id, $wall_id) {
     $response = arbitrage_api_curl($url, $data);
 
     if ($response && !$social_post_id) {
-        add_post_meta($post_id, 'social_api_post_id', $response['post']['id'], true);
+        $social_post_id = $response['post']['id'];
+        add_post_meta($post_id, 'social_api_post_id', $social_post_id, true);
+    }
+    
+    // check if has a photo
+    $gcs_url = get_post_meta($post_id, '_photo_gcs_url', true);
+    if ($gcs_url) {
+        arbitrage_api_curl("api/social/posts/$social_post_id/attachments", [
+            'user_id' => $account_user_id,
+            'url' = $gcs_url,
+        ]);
     }
 }
 

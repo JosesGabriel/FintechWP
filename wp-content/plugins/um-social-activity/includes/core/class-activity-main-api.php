@@ -3036,6 +3036,7 @@ class Activity_Main_API
                     
                     // add gcs url
                     update_post_meta($post_id, '_photo_gcs_url', $_post_img_url);
+                    do_action('um_activity_wall_post_attachment', $post_id, $_post_img_url);
 
                     $filename = wp_basename($photo_uri);
 
@@ -3125,6 +3126,7 @@ class Activity_Main_API
                         
                         // add gcs url
                         update_post_meta($post_id, '_photo_gcs_url', $_post_img_url);
+                        do_action('um_activity_wall_post_attachment', $post_id, $_post_img_url);
 
                         $filename = wp_basename($photo_uri);
 

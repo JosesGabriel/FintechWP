@@ -20,7 +20,7 @@
 
     position: absolute;
 
-    right: 14px;
+    right: 1px;
 
     font-size: 14px;
 
@@ -379,7 +379,7 @@
 
             <div class="arb_calcbox_right">
 
-                <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
+                <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><i class="fas fa-percentage" aria-hidden="true"></i>
 
             </div>
 
@@ -468,16 +468,16 @@
         <div class="arb_clear smlspc"></div>
 
         <div class="arb_calcbox_left">Risk Tolerance</div>
-        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
+        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
         <div class="arb_clear smlspc"></div>
 
         <div class="arb_calcbox_left">Target Profit</div>
-        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
+        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
         <div class="arb_clear smlspc"></div>
 
         <div class="arb_calcbox_left">Stoploss</div>
         <div class="arb_calcbox_right lockedd">
-        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
+        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><i class="fas fa-percentage" aria-hidden="true"></i>
             <i class="fa fa-lock" aria-hidden="true"></i>
         </div>
 
@@ -571,7 +571,8 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="number" value="0" style="width:80%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
+                            <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>
 
@@ -583,7 +584,7 @@
 
                         <div class="arb_calcbox_right lockedd">
 
-                            <input name="posisize" id="posisize" type="text" value="0" style="width:80%;">
+                            <input class="input-locked" name="posisize" id="posisize" type="text" value="0" style="width:85%;" disabled>
 
                             <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -603,7 +604,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input name="boardlot" id="boardlot" type="text" value="0" style="width:85%;">
+                        <input class="input-locked" name="boardlot" id="boardlot" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -617,7 +618,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input name="noofshare" id="noofshare" type="text" value="0" style="width:85%;">
+                        <input class="input-locked" name="noofshare" id="noofshare" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -631,7 +632,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;">
+                        <input class="input-locked" name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -657,27 +658,27 @@
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:99%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%; border-radius:0;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%; border-radius:0;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Stoploss</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
+                        <input class="input-locked" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </div>
 
                     <div class="arb_clear smlspc"></div>
                     <div class="arb_calcbox_left">Take Profit Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
+                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </div>
 
@@ -685,7 +686,7 @@
 
                     <div class="arb_calcbox_left">Stoploss Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
+                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </div>
 
@@ -693,7 +694,7 @@
 
                     <div class="arb_calcbox_left">Value at Risk</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
+                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock" aria-hidden="true"></i>
                         </div>
 
@@ -701,7 +702,7 @@
 
                     <div class="arb_calcbox_left">Upside</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
+                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </div>
 

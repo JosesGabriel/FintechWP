@@ -1813,11 +1813,23 @@ a.um-friend-respond-btn.um-button.um-alt {
 .bkcalcboxess {
 	padding: 20px 20px 20px 20px;
 	color: #fff;
-	max-width: 600px;
+	max-width: 650px;
 	border-radius: 5px;
 	margin: 0 auto;
+	height: 460px;
 	width: 100%;
 	background: #142c46;
+}
+.bkcalcboxess input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.bkcalcboxess input{ 
+	text-align: right;
+}
+.input-locked{
+	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 
 }
 .toclassclose {
 	cursor: pointer;

@@ -421,12 +421,16 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
+
+				<?php if ( $author_id == get_current_user_id() ) { ?>
+
 					<a href="#" class="um-activity-ticon um-activity-start-dialog" data-role="um-activity-tool-dialog">
 
 						<i class="fas fa-ellipsis-h drop-over-post"></i>
 
 					</a>
 
+				<?php } ?>
 
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
@@ -458,7 +462,7 @@ foreach ( $wallposts->posts as $post ) {
 						<?php }
 
 
-
+					/*
 						if ( $author_id != get_current_user_id() ) { ?>
 
 							<!--<span class="sep"></span>-->
@@ -473,9 +477,9 @@ foreach ( $wallposts->posts as $post ) {
 
 							</a>
 
-						<?php } ?>
+						<?php }  */ ?>
 
-
+						
 
 					</div>
 

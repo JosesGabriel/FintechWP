@@ -29,6 +29,11 @@
     	top: 10px !important;
 	}
 
+	.right-dashboard-part-inner, .fixed-rightsidebar, .ads1, .ontofooter {
+		width: 210px !important;
+	}
+
+
 	.the_user_top_page .um-cover {
 		height: 270px !important;
 	}

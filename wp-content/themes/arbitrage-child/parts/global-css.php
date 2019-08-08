@@ -2550,4 +2550,14 @@ i.fa.fa-search {
     width: 20%;
 }
 
+.fixed-rightsidebar-ads {
+	position: fixed;
+    top: 280px;
+}
+.fixed-rightsidebar-footer {
+	position: fixed;
+    width: 20%;
+    top: 510px;
+}
+
 </style>

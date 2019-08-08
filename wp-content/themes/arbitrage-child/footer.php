@@ -538,9 +538,13 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		if($(window).scrollTop() >= 150 ){
 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
 			jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
+			jQuery('.ads1').addClass('fixed-rightsidebar-ads');
+			jQuery('.ontofooter').addClass('fixed-rightsidebar-footer');
 		}else {
 			jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
 			jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
+			jQuery('.ads1').removeClass('fixed-rightsidebar-ads');
+			jQuery('.ontofooter').removeClass('fixed-rightsidebar-footer');
 		}
 
 	});

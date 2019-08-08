@@ -2542,6 +2542,7 @@ i.fa.fa-search {
 .fixed-sidebar {
 	position: fixed;
 	width: 14.5%;
+	top: -100px;
 }
 
 </style>

@@ -23,6 +23,12 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 768px) and (max-width: 980px){
 
+	.dashboard-sidebar-left-inner, .fixed-sidebar {
+    	position: sticky !important;
+    	width: 100% !important;
+    	top: 10px !important;
+	}
+
 	.the_user_top_page .um-cover {
 		height: 270px !important;
 	}

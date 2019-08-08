@@ -534,7 +534,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	});
 
 
-	$(window).scroll(function(){
+	jQuery(window).scroll(function(){
 		if($(window).scrollTop() >= 300 ){
 			console.log('sulodba ni');
 			$('dashboard-sidebar-left-inner').addClass('fixed-sidebar');

@@ -1551,7 +1551,7 @@ if ($getdstocks && $getdstocks != "") {
 
 <!-- Delete Data -->
 <?php
-	if (isset($_POST) && $_POST['deletedata'] == "Reset Data") {
+	if (isset($_POST) && $_POST['deletedata'] == "Reset") {
 
 		$dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
@@ -1642,7 +1642,7 @@ if ($getdstocks && $getdstocks != "") {
                                                         	<!-- <div class="dltbutton">
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post">
-                                                        				<input type="submit" name="deletedata" value="Reset Data">
+                                                        				<input type="submit" name="deletedata" value="Reset">
                                                         			</form>
                                                         		</div>
                                                         	</div> -->
@@ -1651,12 +1651,12 @@ if ($getdstocks && $getdstocks != "") {
                                                                 <div class="dltbutton">
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post" class="resetform">
-                                                        				<input type="submit" name="deletedata" value="Reset Data" class="delete-data-btn resetdata">
+                                                        				<input type="submit" name="deletedata" value="Reset" class="delete-data-btn resetdata">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
                                                         			<form action="" method="post">
-                                                        				<input type="submit" name="entertradebtn" value="Enter Trade" class="enter-trade-btn">
+                                                        				<input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn">
                                                         			</form>
                                                         		</div>
                                                         	</div>

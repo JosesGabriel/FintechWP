@@ -1831,6 +1831,7 @@ input[type=number]::-webkit-outer-spin-button {
 .swal-modal {
 	background-color: #142b46;
 	border-radius: 15px;
+	width: 500px;
 }
 .swal-text, .swal-title {
 	color: white;
@@ -1854,6 +1855,52 @@ input[type=number]::-webkit-outer-spin-button {
     height: auto;
     border-radius: 25px;
     padding: 3px 9px;
+}
+.arbitrage-button {
+	font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+    background: none;
+    border: 2px #fff solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.arbitrage-button--primary {
+	border: 2px #2481bc solid;
+}
+.arbitrage-button--primary:hover {
+	background-color: #2481bc;
+}
+.arbitrage-button--secondary {
+	border: 2px #9E9E9E solid;
+}
+.arbitrage-button--secondary:hover {
+	background-color: #9E9E9E;
+}
+.arbitrage-button--success {
+	border: 2px #49ba6f solid;
+}
+.arbitrage-button--success:hover {
+	background-color: #49ba6f;
+}
+.arbitrage-button--warning {
+	border: 2px #e77e24 solid;
+}
+.arbitrage-button--warning:hover {
+	background-color: #e77e24;
+}
+.arbitrage-button--danger {
+	border: 2px #e84c3c solid;
+}
+.arbitrage-button--danger:hover {
+	background-color: #e84c3c;
+}
+.arbitrage-button--info {
+	border: 2px #874a9a solid;
+}
+.arbitrage-button--info:hover {
+	background-color: #874a9a;
 }
 .input-locked{
 	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 

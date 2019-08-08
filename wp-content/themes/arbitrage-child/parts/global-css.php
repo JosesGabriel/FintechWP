@@ -1969,8 +1969,8 @@ input[type=number]::-webkit-outer-spin-button {
 .arb_buyprice input {
 	background: #11273e !important;
 	border: 1px solid #1e3554 !important;
-	border-radius: 9px !important;
-	height: 35px;
+	/* border-radius: 9px !important; */
+	/* height: 35px; */
 }
 .arb_sellprice input {
 	background: #11273e !important;

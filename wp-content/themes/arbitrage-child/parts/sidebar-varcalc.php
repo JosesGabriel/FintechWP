@@ -531,7 +531,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
+                            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%; text-align: left;">
 
                         </div>
 

@@ -63,6 +63,21 @@
     	top: 10px !important;
 	}
 
+	.right-dashboard-part-inner, .fixed-rightsidebar {
+		position: sticky !important;
+    	width: 100% !important;
+	}
+
+	.ads1, .fixed-rightsidebar-ads {
+		position: sticky !important;
+    	top: 0px !important;
+	}
+
+	.ontofooter, .fixed-rightsidebar-footer {
+		position: sticky !important;
+    	width: 100% !important;
+    	top: 0px !important;
+	}
 
 	.stats-info {
 		overflow-x: scroll;

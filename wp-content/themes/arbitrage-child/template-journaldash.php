@@ -3199,7 +3199,8 @@ if ($getdstocks && $getdstocks != "") {
 															<div class="box-portlet">
 																<div class="box-portlet-header">
 																	Daily Buy Volume<br />
-                                                                    <span>For the last 20 trading days</span>
+                                                                    <!--<span>For the last 20 trading days</span>-->
+                                                                    <span>Last 20 Trades</span>
 																</div>
 																<div class="box-portlet-content" style="padding-right:0;">
 																	<div id="chartdiv7"></div>
@@ -3211,7 +3212,8 @@ if ($getdstocks && $getdstocks != "") {
 															<div class="box-portlet">
 																<div class="box-portlet-header">
 																	Daily Buy Value<br />
-                                                                    <span>For the last 20 trading days</span>
+                                                                    <!--<span>For the last 20 trading days</span>-->
+                                                                    <span>Last 20 Trades</span>
 																</div>
 																<div class="box-portlet-content" style="padding-right:0;">
 																	<div id="chartdiv8"></div>
@@ -3401,7 +3403,8 @@ if ($getdstocks && $getdstocks != "") {
 															<div class="box-portlet">
 																<div class="box-portlet-header">
 																	Gross Profit & Loss<br />
-																	<span>Last 20 trading days</span>
+																	<!--<span>Last 20 trading days</span>-->
+																	<span>Last 20 Trades</span>
 																</div>
 																<div class="box-portlet-content" style="padding-right:0;">
 																	<div id="chartdiv10"></div>

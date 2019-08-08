@@ -10,7 +10,7 @@
             <!-- <span class="ddot">.</span> -->
             <li><a href="https://arbitrage.ph/#">About</a></li><span class="ddot">.</span>
             <li><a href="https://arbitrage.ph/#">FAQ</a></li><span class="ddot">.</span>
-            <li><a href="https://arbitrage.ph/#">Arbitrage &copy; <?php echo date("Y"); ?></a></li>
+            <li><!--<a href="https://arbitrage.ph/#">-->Arbitrage &copy; <?php echo date("Y"); ?><!--</a>--></li>
             <!-- <li><a href="#">Business</a></li> -->
 <!--             <li class="nobar">
                 <a class="moretoclick">More</a>

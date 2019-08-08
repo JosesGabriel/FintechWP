@@ -1886,7 +1886,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <div class="groupinput selectonly">
 																	                                                <select name="inpt_data_emotion" class="rnd">
 																	                                                    <option value="" selected>Select Emotion</option>
-																	                                                    <option value="Nuetral">Nuetral</option>
+																	                                                    <option value="Nuetral">Neutral</option>
 																	                                                    <option value="Greedy">Greedy</option>
 																	                                                    <option value="Fearful">Fearful</option>
 																	                                                </select>

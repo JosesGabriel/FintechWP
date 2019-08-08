@@ -2539,4 +2539,9 @@ i.fa.fa-search {
     cursor: no-drop !important;
 }
 
+.fixed-sidebar {
+	position: fixed;
+	width: 14.5%;
+}
+
 </style>

@@ -534,6 +534,15 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	});
 
 
+	$(window).scroll(function(){
+		if($(window).scrollTop() >= 300 ){
+			$('dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+		}else {
+			$('dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
+		}
+
+	});
+
 
 
 	</script>

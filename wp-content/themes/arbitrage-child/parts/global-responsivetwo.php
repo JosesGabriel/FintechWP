@@ -50,6 +50,14 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+
+	.fixed-sidebar {
+    	position: sticky;
+    	width: 100%;
+    	top: 10px;
+	}
+
+
 	.stats-info {
 		overflow-x: scroll;
 	}

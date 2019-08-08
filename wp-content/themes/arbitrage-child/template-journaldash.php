@@ -1053,9 +1053,11 @@ get_header( 'dashboard' );
 	}
 	.dbuttondelete {
 		display: inline-block;
+		margin: 0px 5px;
 	}
 	.dbuttonenter {
 		display: inline-block;
+		margin-right: 20px;
 	}
 	input.delete-data-btn:hover {
 	    background: #e91e63;

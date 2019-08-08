@@ -978,7 +978,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 
                     <?php get_template_part('parts/sidebar', 'alert'); ?>
 					
-					<?php //get_template_part('parts/sidebar', 'footer'); ?>
+					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>
 			</div>

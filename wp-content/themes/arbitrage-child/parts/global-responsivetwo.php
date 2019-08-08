@@ -52,9 +52,9 @@
 
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
-    	position: sticky;
-    	width: 100%;
-    	top: 10px;
+    	position: sticky !important;
+    	width: 100% !important;
+    	top: 10px !important;
 	}
 
 

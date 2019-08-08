@@ -1982,6 +1982,9 @@ input[type=number]::-webkit-outer-spin-button {
 	width: 49.5%;
 	display: inline-block;
 }
+.arb_calcbox_right input {
+	text-align: right;
+}
 input.dpri {
 	padding-left: 16px !important;
 	width: 100%;

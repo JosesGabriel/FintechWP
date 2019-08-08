@@ -535,7 +535,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 
 	jQuery(window).scroll(function(){
-		if($(window).scrollTop() >= 100 ){
+		if($(window).scrollTop() >= 150 ){
 			console.log('sulodba ni');
 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
 		}else {

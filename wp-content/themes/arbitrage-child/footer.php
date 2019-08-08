@@ -536,10 +536,11 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 	jQuery(window).scroll(function(){
 		if($(window).scrollTop() >= 150 ){
-			console.log('sulodba ni');
 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+			jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
 		}else {
 			jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
+			jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
 		}
 
 	});

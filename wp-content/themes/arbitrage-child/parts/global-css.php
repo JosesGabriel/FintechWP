@@ -2545,4 +2545,9 @@ i.fa.fa-search {
 	top: -100px;
 }
 
+.fixed-rightsidebar {
+	position: fixed;
+    width: 20%;
+}
+
 </style>

@@ -51,7 +51,7 @@
 @media only screen and (max-width: 767px){
 
 
-	.fixed-sidebar {
+ 	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky;
     	width: 100%;
     	top: 10px;

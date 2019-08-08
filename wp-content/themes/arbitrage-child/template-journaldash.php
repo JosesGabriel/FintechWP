@@ -4159,25 +4159,11 @@ if ($getdstocks && $getdstocks != "") {
 
 		jQuery('.resetdata').click(function(e){
 			e.preventDefault();
-			console.log("hits");
 			swal({
 				title: "Are you sure?",
 				text: "Once deleted, you will not be able to recover your Journal Data!",
 				icon: "warning",
-				buttons: true,
-				dangerMode: true,
-			})
-			.then((willDelete) => {
-				if (willDelete) {
-					swal("Poof! Your imaginary file has been deleted!", {
-						icon: "success",
-					});
-					jQuery('.resetform').submit();
-				} else {
-					swal("Your imaginary file is safe!",{
-						icon: "success",
-					});
-				}
+				buttons: true
 			});
 		});
 

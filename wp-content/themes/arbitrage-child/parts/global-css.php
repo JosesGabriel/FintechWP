@@ -1828,6 +1828,33 @@ input[type=number]::-webkit-outer-spin-button {
 .bkcalcboxess input{ 
 	text-align: right;
 }
+.swal-modal {
+	background-color: #142b46;
+	border-radius: 15px;
+}
+.swal-text, .swal-title {
+	color: white;
+}
+.swal-button--confirm {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #00bcd4 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.swal-button--cancel {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #9E9E9E solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
 .input-locked{
 	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 
 }

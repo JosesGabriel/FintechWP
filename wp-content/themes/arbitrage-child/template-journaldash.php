@@ -1675,7 +1675,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:11%">Profit</div>
                                                                                     <div style="width:9%">Performance</div>
                                                                                     <div style="width:112px; text-align:center;">Action</div>
-                                                                                    <!--<div style="width:45px; text-align: right;">Notes</div>-->
+                                                                                    <div style="width:45px; text-align: right;">Notes</div>
                                                                                 </div>
                                                                             </li>
                                                                             <?php
@@ -1905,12 +1905,11 @@ if ($getdstocks && $getdstocks != "") {
 																	                                </div>
 		                                                                                        </div>
 		                                                                                    </div>
-		                                                                                   
-		                                                                                   <!-- <div style="width:40px; text-align: right;"><?php /*?>Notes<?php */?>
+		                                                                                    <div style="width:40px; text-align: right;"><?php /*?>Notes<?php */?>
 		                                                                                    	<a href="#tradingnotes_JFC" class="smlbtn blue fancybox-inline">
 		                                                                                    		<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
 		                                                                                    	</a>
-		                                                                                    </div>-->
+		                                                                                    </div>
 		                                                                                </div>
 		                                                                            </li>
 

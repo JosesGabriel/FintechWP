@@ -2541,13 +2541,13 @@ i.fa.fa-search {
 
 .fixed-sidebar {
 	position: fixed;
-	width: 14.5%;
+	width: 200px;
 	top: -100px;
 }
 
 .fixed-rightsidebar {
 	position: fixed;
-    width: 20%;
+    width: 265px;
 }
 
 .fixed-rightsidebar-ads {
@@ -2556,7 +2556,7 @@ i.fa.fa-search {
 }
 .fixed-rightsidebar-footer {
 	position: fixed;
-    width: 20%;
+    width: 265px;
     top: 510px;
 }
 

@@ -1614,7 +1614,7 @@ if ($getdstocks && $getdstocks != "") {
 						                </div>
 						                <div class="panel-body">
 						                    <div class="tab-content">
-						                        <div class="tab-pane show <?php echo (isset($_GET['pt']) ? '' : 'active'); ?>" id="tab1">
+						                        <div class="tab-pane <?php echo (isset($_GET['pt']) ? '' : 'active show'); ?>" id="tab1">
 
                                                     <div class="liveportfoliobox">
                                                         <div class="box-portlet">
@@ -3418,7 +3418,7 @@ if ($getdstocks && $getdstocks != "") {
 														</div>
 													</div>
 						                        </div>
-						                        <div class="tab-pane <?php echo (isset($_GET['pt']) ? 'active' : ''); ?>" id="tab2">
+						                        <div class="tab-pane <?php echo (isset($_GET['pt']) ? 'active show' : ''); ?> testss" id="tab2">
 
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">

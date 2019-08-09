@@ -3933,7 +3933,7 @@ if ($getdstocks && $getdstocks != "") {
 
 </div> <!-- #main-content -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
 <script>
 	$(document).ready(function(){
 		$('.confirmtrd.green').prop('disabled',true);
@@ -3945,7 +3945,7 @@ if ($getdstocks && $getdstocks != "") {
 			}
 		});
 	});
-</script>
+</script> -->
 <div class="script">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

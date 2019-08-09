@@ -790,7 +790,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						        <div class="arb_buyprice padbott"><strong>Buy Price:</strong> <input name="buyprice" id="buyprice" type="number" value="0"></div>
 						        <div class="arb_buyvalue padbott">Value: ₱<span id="buyvalue">0.00</span></div>
 						        <div class="arb_buyfees padbott">
-						            Fees: ₱<span id="buyfees">0.00</span> <small class="smlinline"> - see details</small>
+						            Fees: ₱<span id="buyfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>
 						            <div class="feedetails_buy">
 						                <div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
 						                <small>Commission: ₱<span id="buycommadjst">0.00</span></small>
@@ -806,7 +806,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						        <div class="arb_sellprice padbott"><strong>Sell Price:</strong> <input name="sellprice" id="sellprice" type="number" value="0"></div>
 						        <div class="arb_sellvalue padbott">Value: ₱<span id="sellvalue">0.00</span></div>
 						        <div class="arb_sellfees padbott">
-						            Fees: ₱<span id="sellfees">0.00</span> <small class="smlinline"> - see details</small>
+						            Fees: ₱<span id="sellfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>
 						            <div class="feedetails_sell">
 						                <div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
 						                <small>Commission: ₱<span id="sellcommadjst">0.00</span></small>

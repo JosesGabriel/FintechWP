@@ -471,7 +471,15 @@ class Activity_Main_API
                 }
             }
 
-            return nl2br($newconts);
+            ob_start();
+            echo '<div class="desc-note">';
+            echo nl2br($newconts);
+            echo '<div class="desc-note1">';
+            echo get_post_meta( $post_id, '_shared_link', true ); 
+            echo '</div>';
+            $contents = ob_get_contents();
+            ob_end_clean();
+            return nl2br($contents);
         }
 
         return '';

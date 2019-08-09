@@ -429,7 +429,7 @@ add_filter('wp_handle_upload', function ($upload) {
     $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
 
     if ($response !== false) {
-        $upload['url'] = $response['file']['url'];
+        $upload['gcs_url'] = $response['file']['url'];
     }
 
     return $upload;

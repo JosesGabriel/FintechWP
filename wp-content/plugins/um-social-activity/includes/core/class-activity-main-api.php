@@ -1817,7 +1817,7 @@ class Activity_Main_API
 
         $content = ob_get_clean();
 
-        echo $content;
+        echo trim($content);
 
         die();
     }

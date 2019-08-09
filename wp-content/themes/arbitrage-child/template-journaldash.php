@@ -3611,6 +3611,7 @@ if ($getdstocks && $getdstocks != "") {
 		padding-left: 16px;
 		margin-bottom: 2px;
 		font-weight: 400;
+		font-family: 'Roboto', sans-serif;
 	}
 	.depo-body {
 		position: relative;
@@ -3747,15 +3748,15 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="modal-header header-depo">
 																							<h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
 																							<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																							<span aria-hidden="true" class="x-close-depo">&times;</span>
+																							<i class="fas fa-times modal-btn-close-deposit"></i>
 																							</button>
 																						</div>
 																						<hr class="style14 style15">
 																						<div class="modal-body depo-body">
-																							<div class="dmainform">
+																							<div class="dmainform-withraw">
 																								<div class="dinnerform">
 																									<div class="dinitem">
-																										<div class="dnlabel">Amount</div>
+																										<div class="dnlabel">Please enter your amount</div>
 																										<div class="dninput"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ',' ); ?>"></div>
 																									</div>
 																								</div>
@@ -3765,7 +3766,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds depo-mon-btn" name="subs" value="Withraw funds">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withraw funds">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>

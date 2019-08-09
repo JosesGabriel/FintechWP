@@ -3447,12 +3447,44 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:38px; text-align:right">Notes</div>
                                                                                 </div>
                                                                             </li>
+																			<li>
+																				<?php
+																					$paginate = 2;
+																					$count = 1;
+																					$dpage = 1;
+																					$dlisttrade = [];
+																					if ( $author_posts->have_posts() ) {
+																						while ( $author_posts->have_posts() ) { $author_posts->the_post();
+																							
+																							
+
+																							// $dlisttrade[$dpage]
+																							if($count == 2){
+																								$count = 1;
+																								$dpage++;
+																							} else {
+																								$count++;
+																							}
+																							
+
+																						}
+																						wp_reset_postdata();
+																					}
+																					echo "dpage: ".$dpage;
+																				?>
+																			</li>
                                                                             <?php
 																				$totalprofit = 0;
 																				// The Loop
 																				$logcount = 1;
 																				if ( $author_posts->have_posts() ) {
 																					while ( $author_posts->have_posts() ) { $author_posts->the_post();
+																						
+																						
+
+																						
+
+																						
 
 																						$data_sellmonth = get_post_meta(get_the_ID(), 'data_sellmonth', true);
 																						$data_sellday = get_post_meta(get_the_ID(), 'data_sellday', true);
@@ -3579,6 +3611,7 @@ if ($getdstocks && $getdstocks != "") {
 		padding-left: 16px;
 		margin-bottom: 2px;
 		font-weight: 400;
+		font-family: 'Roboto', sans-serif;
 	}
 	.depo-body {
 		position: relative;
@@ -3648,7 +3681,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                 	<div class="button" style="float: right;">
                                                                 	<a href="#" data-toggle="modal" data-target="#depositmods" class="deposit-btn">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog" role="document" style="left: 0;">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
@@ -3709,7 +3742,7 @@ if ($getdstocks && $getdstocks != "") {
 																	<?php if ($dbaseaccount > 0): ?>
 																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="withdraw-btn">Withdraw</a>
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																			<div class="modal-dialog" role="document" style="left: 0;">
+																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">
 																					<form action="/journal" method="post">
 																						<div class="modal-header header-depo">
@@ -3720,10 +3753,10 @@ if ($getdstocks && $getdstocks != "") {
 																						</div>
 																						<hr class="style14 style15">
 																						<div class="modal-body depo-body">
-																							<div class="dmainform">
+																							<div class="dmainform-withraw">
 																								<div class="dinnerform">
 																									<div class="dinitem">
-																										<div class="dnlabel">Amount</div>
+																										<div class="dnlabel">Please enter your amount</div>
 																										<div class="dninput"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ',' ); ?>"></div>
 																									</div>
 																								</div>
@@ -3733,7 +3766,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds depo-mon-btn" name="subs" value="Withraw funds">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withraw funds">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>

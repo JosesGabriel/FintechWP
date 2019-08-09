@@ -352,14 +352,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    height: 41px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    font-size: 12px;
 	    color: #ecf0f1;

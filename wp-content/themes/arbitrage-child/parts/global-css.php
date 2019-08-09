@@ -344,6 +344,7 @@ td.to-stock a {
 }
 .seven {
 	font-weight: 500;
+	cursor: pointer;
 }
 .side-content-inner {
 	margin-top: 10px !important;
@@ -591,7 +592,7 @@ img.arb_newpostimg {
 }
 .side-content ul li a {
 	display: block;
-	color: #ecf0f1;
+	color: #ecf0f1 !important;
 	padding: 7px 7px 7px 5px;
 	font-size: 13px;
 	font-family: Roboto, sans-serif;

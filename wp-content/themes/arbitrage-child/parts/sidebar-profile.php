@@ -74,6 +74,7 @@
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
             <span>Games</span></a></li>
             
+            <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>
                   <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators.svg">
             <span>Buy/Sell Calculators</span></a></li>

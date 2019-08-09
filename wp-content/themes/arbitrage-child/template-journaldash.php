@@ -3938,12 +3938,12 @@ if ($getdstocks && $getdstocks != "") {
 	$(document).ready(function(){
 		$('.confirmtrd.green').prop('disabled',true);
 		$('.textfield-button-buyprice').keyup(function(){
-			if($('.textfield-button-buyprice').val().length != 0)
+			if($('.textfield-button-buyprice').val().length != 0){
 				$('.confirmtrd.green').prop('disabled',false);            
-			else{
+			}else{
 				$('.confirmtrd.green').prop('disabled',true);
 			}
-		})
+		});
 	});
 </script>
 <div class="script">

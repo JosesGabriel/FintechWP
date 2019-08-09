@@ -3680,7 +3680,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                 	<div class="button" style="float: right;">
                                                                 	<a href="#" data-toggle="modal" data-target="#depositmods" class="deposit-btn">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog" role="document" style="left: 0;">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
@@ -3741,7 +3741,7 @@ if ($getdstocks && $getdstocks != "") {
 																	<?php if ($dbaseaccount > 0): ?>
 																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="withdraw-btn">Withdraw</a>
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																			<div class="modal-dialog" role="document" style="left: 0;">
+																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">
 																					<form action="/journal" method="post">
 																						<div class="modal-header header-depo">

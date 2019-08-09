@@ -476,14 +476,20 @@ class Activity_Main_API
             ob_start();
             echo '<div class="desc-note">';
             echo nl2br($newconts);
-            echo '<div class="desc-note1">';
+            echo '</div><div class="desc-note1">';
             echo $has_share_link;
             echo '</div>';
             $contents = ob_get_contents();
             ob_end_clean();
             return nl2br($contents);
         } else if ($has_share_link) {
-            return $has_share_link;
+            ob_start();
+            echo '<div class="desc-note"></div><div class="desc-note1">';
+            echo $has_share_link;
+            echo '</div>';
+            $contents = ob_get_contents();
+            ob_end_clean();
+            return nl2br($contents);
         }
 
         return '';

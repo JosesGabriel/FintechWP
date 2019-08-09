@@ -172,7 +172,7 @@ function UM_wall_img_upload() {
 					widget.find('.um-activity-preview img').attr( 'src', response.data[0].url );
 					widget.find('.um-activity-preview').show();
 					widget.find( 'input[type="hidden"][name="_post_img"]' ).val( response.data[0].file );
-					widget.find( 'input[type="hidden"][name="_post_img_url"]' ).val( response.data[0].url );
+					widget.find( 'input[type="hidden"][name="_post_img_url"]' ).val( response.data[0].gcs_url );
 				
 				}
 

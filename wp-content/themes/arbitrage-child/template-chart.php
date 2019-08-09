@@ -1048,7 +1048,7 @@
 	    height: 35px;
 	}
 	.doneitem li {
-	    width: 49.4%;
+	    width: 48.4%;
 	    display: inline-block;
 	}
 	input.dpri {
@@ -1071,6 +1071,8 @@
 	}
 	.paramlist .jjaajs {
 	    margin-top: 15px !important;
+	    height: 100px;
+    	overflow-y: scroll;
 	}
 	.doneitem li span {
 	    padding-left: 17px;
@@ -1569,6 +1571,7 @@
                                                         <iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
                                                     </div>
                                                     <div class="groupinput">
+                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
                                                         <input type="hidden" value="Live" name="inpt_data_status">
                                                         <input type="submit" class="confirmtrd green" value="Confirm Trade">
                                                     </div>
@@ -2496,6 +2499,11 @@
 		 		$(".inpt_total_cost").val('00.00');
 		 	}
 		 	
+		});
+
+
+		jQuery('.chart-loader').click(function(){
+			jQuery('.chart-loader').css("display","block");
 		});
 		
 	

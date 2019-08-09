@@ -5071,7 +5071,7 @@ $(document).ready(function(){
 		// }else{
 		// 	$('.confirmtrd').prop('able', false);
 		// }
-	})
+	});
 });
 </script>
 

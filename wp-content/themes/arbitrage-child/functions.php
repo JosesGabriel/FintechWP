@@ -437,18 +437,3 @@ add_filter('wp_handle_upload', function ($upload) {
 
     return $upload;
 }, 90, 1);
-
-/**
- * Upload to Google Cloud Storage after resize
- */
-add_filter('um_ajax_resize_image', function ($output) {
-    $image = $output['image']['source_path'];
-    
-    $response = arbitrage_api_upload_to_gcs($image);
-
-    if ($response !== false) {
-        $output['image']['gcs_url'] = $response['file']['url'];
-    }
-
-    return $output;
-});

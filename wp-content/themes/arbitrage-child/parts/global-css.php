@@ -2633,7 +2633,7 @@ i.fa.fa-search {
 
 .fixed-rightsidebar-ads {
 	position: fixed;
-    top: 280px;
+	top: 280px;
 }
 .fixed-rightsidebar-footer {
 	position: fixed;

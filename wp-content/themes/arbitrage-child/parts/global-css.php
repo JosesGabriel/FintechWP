@@ -2010,7 +2010,7 @@ input.dpos {
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 .doneitem li span {
 	padding-left: 17px;
@@ -2628,19 +2628,20 @@ i.fa.fa-search {
 	top: 60px;
 }
 
+
 .fixed-rightsidebar {
-	position: fixed;
-    width: 265px;
+	/* position: fixed;*/
+   /* width: 265px; */
 }
 /* 
 .fixed-rightsidebar-ads {
-	position: fixed;
-	top: 280px;
+	/* position: fixed; */
+	/* top: 345px; */
 }
 .fixed-rightsidebar-footer {
-	position: fixed;
-    width: 265px;
-    top: 510px;
+	/* position: fixed; */
+    /* width: 265px; */
+    /* top: 580px; */
 }
 .fixed-rightsidebar-traiders {
     position: fixed;

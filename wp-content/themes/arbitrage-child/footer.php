@@ -536,6 +536,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	});
 
 
+
 	// jQuery(window).scroll(function(){
 
 	// 	jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');

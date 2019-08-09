@@ -3656,15 +3656,15 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																					<a class="deposit-modal-btn show-button1" style="float: right;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2" style="float: right;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show">
-																					<div class="modal-body depo-body">
-																						<div class="dmainform">
-																							<div class="dinnerform">
-																								<div class="dinitem">
+																				<div class="modal-body depo-body">
+																					<div class="dmainform">
+																						<div class="dinnerform">
+																							<div class="dinitem">
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
 																									<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																								</div>

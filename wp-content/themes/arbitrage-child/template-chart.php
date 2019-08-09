@@ -2625,7 +2625,7 @@
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);
 			// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
 		}
-		$(this).remove();
+	
 	});
 
 	});

@@ -3933,12 +3933,25 @@ if ($getdstocks && $getdstocks != "") {
 
 </div> <!-- #main-content -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.confirmtrd.green').attr('disabled',true);
+		$('.textfield-button-buyprice').keyup(function(){
+			if($('.textfield-button-buyprice').val().length == 0)
+				$('.confirmtrd.green').attr('disabled',false);            
+			else
+				$('.confirmtrd.green').attr('disabled',true);
+		})
+	});
+</script>
 <div class="script">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 
-
-    <script type="text/javascript">
+	<script type="text/javascript">
+		
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
         jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
@@ -4171,15 +4184,7 @@ if ($getdstocks && $getdstocks != "") {
 
 			// console.log("here");
 		});
-		$(document).ready(function(){
-			$('.confirmtrd.green').attr('disabled',true);
-			$('.textfield-button-buyprice').keyup(function(){
-				if($('.textfield-button-buyprice').val().length !=0)
-					$('.confirmtrd').attr('disabled',false);            
-				else
-					$('.confirmtrd').attr('disabled',true);
-			})
-		});
+		
 	});
     </script>
 

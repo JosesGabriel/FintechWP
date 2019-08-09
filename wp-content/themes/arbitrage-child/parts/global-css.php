@@ -2702,4 +2702,81 @@ li.five a span {
 	color: #a6a6a6;
 	transition-duration: 300ms;
 }
+.modal-btn-close-deposit {
+	cursor: pointer;
+    font-size: 14px;
+    color: #d8d8d8;
+    float: right;
+    top: 8px;
+    position: relative;
+}
+.header-depo {
+    padding: 5px 13px;
+    border-bottom: none;
+}
+.title-depo {
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	margin: 0;
+	color: #ffffff;
+	line-height: 1.428571429;
+	padding-bottom: 0 !important;
+}
+.title-depo-in {
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	margin: 0;
+	color: #ffffff;
+	line-height: 1.428571429;
+	padding-bottom: 0 !important;
+	display: inline;
+	padding-left: 12px;
+	padding-left: 12px;
+    font-size: 1em;
+}
+.close-depo {
+	opacity: 1;
+    padding: 0px 7px !important;
+	margin: 0 !important;
+}
+.x-close-depo {
+	line-height: 0;
+	color: #ffffff;
+	text-shadow: none;
+	border: none;
+	font-weight: 400;
+}
+.footer-depo {
+	border: none;
+	padding: 0px 21px 10px 10px;
+	margin-top: 0;
+	text-align: right;
+	border-top: none;
+}
+.depo-mon-btn {
+	border-radius: 26px !important;
+	border: 1.3px solid #6583a8 !important;
+	padding: 4px 17px 2px 17px !important;
+	font-family: 'Nunito', sans-serif;
+	color: #6583a8;
+	background: none !important;
+	font-size: 15px;
+	font-weight: 500;
+}
+.depo-mon-btn:hover {
+	background-color: #123;
+}
+.depo-input-field {
+	background: #0b1d33 !important;
+	border: 1px solid #1e3554 !important;
+	border-radius: 25px;
+	width: 100%;
+	height: 40px;
+	color: #FFFFFE !important;
+	padding-left: 14px !important;
+	padding-bottom: 4px !important;
+	font-size: 13px;
+}
 </style>

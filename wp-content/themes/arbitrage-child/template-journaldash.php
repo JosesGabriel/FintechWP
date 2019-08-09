@@ -787,11 +787,11 @@ get_header( 'dashboard' );
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
-		background-color:#2c3e50;
+		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
 		padding: 20px 0 15px 20px;
-		background-color: #34495e;
+		background-color: #142b46;
 		border-radius: 4px;
 	}
 	.entr_wrapper_bot {
@@ -804,7 +804,7 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #34495e;
+		background-color: #142b46;
 		padding: 12px;
 		border-radius: 4px;
 	}
@@ -1668,9 +1668,6 @@ if ($getdstocks && $getdstocks != "") {
                                                         	</div>
                                                             </div>
                                                             <div class="box-portlet-content">
-															<pre>
-																<?php print_r($gerdqoute); ?>
-															</pre>
                                                                 <div class="stats-info">
                                                                     <div id="live_portfolio" class="dstatstrade overridewidth">
                                                                         <ul>
@@ -1699,6 +1696,7 @@ if ($getdstocks && $getdstocks != "") {
 
 																					$dstockinfo = $gerdqoute->data->$value;
 																					
+																					// print_r($dstockinfo);
 
 															            			$totalmarketvalue = 0;
 															            			$dtotalcosts = 0;

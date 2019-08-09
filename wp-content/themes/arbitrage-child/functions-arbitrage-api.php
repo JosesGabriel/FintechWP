@@ -106,3 +106,16 @@ function arbitrage_api_verify_user($user_id) {
         $response = arbitrage_api_curl('api/user/verify', ['id' => $uuid]);
     }
 }
+
+function arbitrage_api_upload_to_gcs($filepath = '') {
+    $info = pathinfo($filepath);
+    $filename = $info['basename'];
+    $type = mime_content_type($filename);
+
+    $file_data = new CURLFILE($filepath, $type, $filename);
+    $data = [
+        'file' => $file_data,
+    ];
+
+    return arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
+}

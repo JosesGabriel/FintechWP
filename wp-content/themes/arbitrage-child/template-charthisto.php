@@ -157,18 +157,14 @@
         foreach ($dlistofstocks as $key => $value) {
             $min = 1;
             $max = 10;
-            $infos = [];
-            // $infos['symbol'] = $value;
             $curprice = mt_rand ($min*10, $max*10) / 10;
-            $infos[$value]['last'] = $curprice;
-            $infos[$value]['change'] = mt_rand ($min*10, $max*10) / 10;
-            $infos[$value]['open'] = mt_rand ($min*10, $max*10) / 10;
-            $infos[$value]['high'] = mt_rand (6*10, 10*10) / 10;
-            $infos[$value]['low'] = mt_rand (1*10, 5*10) / 10;
-            $infos[$value]['volume'] = rand(500,1000);
-            $infos[$value]['value'] = $curprice;
-
-            array_push($stockinfo, $infos);
+            $stockinfo[$value]['last'] = $curprice;
+            $stockinfo[$value]['change'] = mt_rand ($min*10, $max*10) / 10;
+            $stockinfo[$value]['open'] = mt_rand ($min*10, $max*10) / 10;
+            $stockinfo[$value]['high'] = mt_rand (6*10, 10*10) / 10;
+            $stockinfo[$value]['low'] = mt_rand (1*10, 5*10) / 10;
+            $stockinfo[$value]['volume'] = rand(500,1000);
+            $stockinfo[$value]['value'] = $curprice;
         }
         $finalinfo = [];
         $finalinfo['data'] = $stockinfo;

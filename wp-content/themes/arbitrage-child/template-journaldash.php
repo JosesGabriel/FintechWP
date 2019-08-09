@@ -1696,6 +1696,7 @@ if ($getdstocks && $getdstocks != "") {
 
 																					$dstockinfo = $gerdqoute->data->$value;
 																					
+																					print_r($dstockinfo);
 
 															            			$totalmarketvalue = 0;
 															            			$dtotalcosts = 0;

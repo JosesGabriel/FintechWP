@@ -4177,7 +4177,7 @@ if ($getdstocks && $getdstocks != "") {
 	<script>
 		$(document).ready(function(){
 			$('.confirmtrd.green').prop('disabled',true);
-			$('.textfield-button-buyprice').keyup(function(){
+			$('.textfield-button-buyprice').on('keyup', function(){
 				if($('.textfield-button-buyprice').val().length != 0){
 					$('.confirmtrd.green').prop('disabled',false);            
 				}else{

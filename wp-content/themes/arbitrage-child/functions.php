@@ -447,7 +447,7 @@ add_action('um_after_upload_db_meta', function ($user_id, $field_key) {
     }
 
     $filename = get_user_meta($user_id, $field_key, true);
-    $filepath = ABSPATH . '/wp-content/uploads/ultimatemember/' . $filename;
+    $filepath = ABSPATH . "/wp-content/uploads/ultimatemember/$user_id/$filename";
 
     if (!$filename) {
         return;

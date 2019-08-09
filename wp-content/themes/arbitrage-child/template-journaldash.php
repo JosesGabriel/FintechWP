@@ -1135,7 +1135,7 @@ get_header( 'dashboard' );
 	    transition: all .3s ease-out;
 	}
 	.modal-content {
-		background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
+		background: #142c46;
 	}
 
 	/* New CSS */
@@ -1840,8 +1840,8 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value="&#8369;<?php echo number_format( $dstockinfo->high, 2, '.', ',' ); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
-																	                                                <div class="groupinput midd lockedd"><label>Volume</label><input type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd lockedd"><label>Value</label><input type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																	                                                <div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																	                                                <div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd">
 																	                                                	<?php
 																	                                                    	$dboard = 0;
@@ -3563,62 +3563,7 @@ if ($getdstocks && $getdstocks != "") {
 													<br class="clear">
 						                        </div>
 						                        <style type="text/css">
-						                        	.header-depo {
-						                        		padding: 10px;
-    													border-bottom: none;
-						                        	}
-						                        	.title-depo {
-						                        		font-weight: 500;
-						                        		font-family: 'Roboto', sans-serif;
-						                        		font-size: 19px;
-						                        		margin: 0;
-						                        		color: #ffffff;
-													    line-height: 1.428571429;
-													    padding-bottom: 0 !important;
-						                        	}
-						                        	.close-depo {
-						                        		opacity: 1;
-						                        		padding: 0 !important;
-						                        		margin: 0 !important;
-						                        	}
-						                        	.x-close-depo {
-						                        		line-height: 0;
-													    color: #ffffff;
-													    text-shadow: none;
-													    border: none;
-													    font-weight: 400;
-						                        	}
-						                        	.footer-depo {
-						                        		border: none;
-													    padding: 0px 21px 10px 10px;
-													    margin-top: 0;
-													    text-align: right;
-													    border-top: none;
-						                        	}
-						                        	.depo-mon-btn {
-						                        		border-radius: 26px !important;
-													    border: 1.3px solid #6583a8 !important;
-													    padding: 4px 17px 2px 17px !important;
-													    font-family: 'Nunito', sans-serif;
-													    color: #6583a8;
-													    background: none !important;
-													    font-size: 15px;
-    													font-weight: 500;
-						                        	}
-						                        	.depo-mon-btn:hover {
-						                        		background-color: #123;
-						                        	}
-						                        	.depo-input-field {
-						                        		background: #0b1d33 !important;
-													    border: 1px solid #1e3554 !important;
-													    border-radius: 25px;
-													    width: 100%;
-													    height: 40px;
-													    color: #FFFFFE !important;
-													    padding-left: 14px !important;
-													    padding-bottom: 4px !important;
-													    font-size: 13px;
-						                        	}
+						                        	
 						                        	.sss {
 						                        		padding-right: 14px !important;
 						                        	}
@@ -3633,8 +3578,8 @@ if ($getdstocks && $getdstocks != "") {
 													    font-weight: 400;
 						                        	}
 						                        	.depo-body {
-						                        		position: relative;
-    													padding: 0px 20px 10px 20px;
+														position: relative;
+    													padding: 5px 10px;
 						                        	}
 						                        	.active-funds {
 						                        		display: block !important;
@@ -3705,11 +3650,12 @@ if ($getdstocks && $getdstocks != "") {
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
 																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																					<span aria-hidden="true" class="x-close-depo">&times;</span>
+																						<i class="fas fa-times modal-btn-close-deposit"></i>
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
+																					<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																					<a class="deposit-modal-btn show-button1" style="float: right;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2" style="float: right;">Deposit Funds</a>
 																				</div>
@@ -3718,9 +3664,8 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="dmainform">
 																							<div class="dinnerform">
 																								<div class="dinitem">
-																									<h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>
-																									<div class="dnlabel">Amount</div>
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field"></div>
+																									<!-- <div class="dnlabel">Amount</div> -->
+																									<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																								</div>
 																							</div>
 																						</div>

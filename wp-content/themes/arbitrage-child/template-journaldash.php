@@ -4173,7 +4173,7 @@ if ($getdstocks && $getdstocks != "") {
 		});
 	});
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/core.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('.confirmtrd.green').prop('disabled',true);
@@ -4185,7 +4185,7 @@ if ($getdstocks && $getdstocks != "") {
 				}
 			});
 		});
-	</script>
+	</script> -->
 
 <script language="javascript">
 	// Chart 1 - Current Allocation

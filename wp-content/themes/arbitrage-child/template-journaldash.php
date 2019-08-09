@@ -1839,15 +1839,15 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty"></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
-																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>" readonly></div>
-																	                                                <div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="<?php echo $dstockinfo->change; ?>%" readonly></div>
-																	                                                <div class="groupinput midd lockedd"><label>Open</label><input type="text" name="inpt_data_open" value="&#8369;<?php echo number_format( $dstockinfo->open, 2, '.', ',' ); ?>" readonly></div>
-																	                                                <div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="&#8369;<?php echo number_format( $dstockinfo->low, 2, '.', ',' ); ?>" readonly></div>
-																	                                                <div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="&#8369;<?php echo number_format( $dstockinfo->high, 2, '.', ',' ); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>Change</label><input type="text" name="inpt_data_change" value="<?php echo $dstockinfo->change; ?>%" readonly></div>
+																	                                                <div class="groupinput midd"><label>Open</label><input type="text" name="inpt_data_open" value="&#8369;<?php echo number_format( $dstockinfo->open, 2, '.', ',' ); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>Low</label><input type="text" name="inpt_data_low" value="&#8369;<?php echo number_format( $dstockinfo->low, 2, '.', ',' ); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>High</label><input type="text" name="inpt_data_high" value="&#8369;<?php echo number_format( $dstockinfo->high, 2, '.', ',' ); ?>" readonly></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
-																	                                                <div class="groupinput midd lockedd"><label>Volume</label><input type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>" readonly></div>
-																	                                                <div class="groupinput midd lockedd"><label>Value</label><input type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>Volume</label><input type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>" readonly></div>
+																	                                                <div class="groupinput midd"><label>Value</label><input type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>" readonly></div>
 																	                                                <div class="groupinput midd lockedd">
 																	                                                	<?php
 																	                                                    	$dboard = 0;

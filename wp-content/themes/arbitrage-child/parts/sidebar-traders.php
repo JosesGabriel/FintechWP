@@ -103,7 +103,7 @@ $userID = $current_user->ID;
 					  </div>
 			  <?php
 					  $i++;
-					  if($i==2) break;
+					  if($i==3) break;
 				  } 
 			  ?>
 

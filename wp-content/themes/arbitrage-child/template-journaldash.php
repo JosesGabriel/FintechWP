@@ -1435,9 +1435,9 @@ get_header( 'dashboard' );
 	$gerdqoutetwo = json_decode($gerdqoute);
 	$gerdqoute = [];
 ?>
-<pre>
+<!-- <pre>
 	<?php print_r($gerdqoutetwo); ?>
-</pre>
+</pre> -->
 <!-- BOF get the tradelogs -->
 <?php
 	$author_query = array(

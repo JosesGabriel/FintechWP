@@ -1426,15 +1426,18 @@ get_header( 'dashboard' );
 <?php
 	$getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
-	// $curl = curl_init();
-	// curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes');
-	// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	// $gerdqoute = curl_exec($curl);
-	// curl_close($curl);
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	$gerdqoute = curl_exec($curl);
+	curl_close($curl);
 	//
-	// $gerdqoute = json_decode($gerdqoute);
+	$gerdqouteteo = json_decode($gerdqoute);
 	$gerdqoute = [];
 ?>
+<pre>
+	<?php print_r($gerdqouteteo); ?>
+</pre>
 <!-- BOF get the tradelogs -->
 <?php
 	$author_query = array(

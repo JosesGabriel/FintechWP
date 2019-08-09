@@ -416,7 +416,7 @@ a.add-btn {
 }
 .top-traiders-inner {
 	padding-top: 0px;
-	padding-left: 4px;
+	padding-left: 0px;
 }
 .dplsicon {
 	display: inline-block !important;
@@ -2672,5 +2672,12 @@ li.seven.calc-menu-buysell span {
 li.five a span {
     position: relative;
     top: -2px;
+}
+.top-traiders {
+	background-color: #142c46;
+}
+.top-traiders .to-content-part {
+	min-height: 126px;
+    padding: 7px 10px !important;
 }
 </style>

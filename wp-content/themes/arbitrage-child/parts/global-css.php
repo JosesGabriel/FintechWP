@@ -2688,7 +2688,7 @@ li.five a span {
     margin-bottom: 7px !important;
 }
 .see-more-btn.see-all-members {
-	padding: 0 0 8px 5px !important;
+	padding: 0 0 2px 5px !important;
 }
 .see-more-btn.see-all-members strong:hover {
 	color: #a6a6a6;

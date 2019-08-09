@@ -166,6 +166,15 @@
                 $stockinfo[$value]['low'] = 2.61;
                 $stockinfo[$value]['volume'] = "9.20M";
                 $stockinfo[$value]['value'] = $curprice;
+            } elseif($value == "TEL"){
+                $curprice = 1168;
+                $stockinfo[$value]['last'] = $curprice;
+                $stockinfo[$value]['change'] = 1.72;
+                $stockinfo[$value]['open'] = 1168;
+                $stockinfo[$value]['high'] = 1208;
+                $stockinfo[$value]['low'] = 1168;
+                $stockinfo[$value]['volume'] = "232.49k";
+                $stockinfo[$value]['value'] = $curprice;
             } else {
                 $curprice = mt_rand ($min*10, $max*10) / 10;
                 $stockinfo[$value]['last'] = $curprice;

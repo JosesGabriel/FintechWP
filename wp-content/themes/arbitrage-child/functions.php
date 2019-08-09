@@ -445,7 +445,7 @@ add_filter('um_ajax_resize_image', function ($output) {
     $image = $output['image']['source_path'];
     $filename = $output['image']['filename'];
 
-    $file = new CURLFILE($image['source_path'], mime_content_type($filename), $filename);
+    $file_data = new CURLFILE($image['source_path'], mime_content_type($filename), $filename);
     $data = [
         'file' => $file_data,
     ];

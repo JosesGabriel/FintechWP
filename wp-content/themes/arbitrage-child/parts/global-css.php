@@ -364,6 +364,10 @@ td.to-stock a {
     font-family: 'Nunito', sans-serif;
     color: #e77e24 !important;
 }
+#mingle-btn:hover {
+	background: #e77e24 !important;
+	color: #fff !important;
+}
 #removes-btn {
 	border-radius: 26px !important;
 	border: 1.3px solid #6583a8 !important;
@@ -1001,9 +1005,7 @@ time.srr-date div {
 	min-height: 13px;
 	margin-top: 1px !important;
 }
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:hover {
-	background: #0c1c2b;
-}
+
 .um-activity-widget .um-activity-body .um-activity-bodyinner .um-activity-bodyinner-txt {
 	color: #fff;
 	background-color: #142c46;
@@ -2630,7 +2632,7 @@ i.fa.fa-search {
 	position: fixed;
     width: 265px;
 }
-
+/* 
 .fixed-rightsidebar-ads {
 	position: fixed;
 	top: 280px;
@@ -2640,6 +2642,11 @@ i.fa.fa-search {
     width: 265px;
     top: 510px;
 }
+.fixed-rightsidebar-traiders {
+    position: fixed;
+    width: 265px;
+    top: 296px;
+} */
 
 
 

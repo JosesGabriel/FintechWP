@@ -2010,7 +2010,7 @@ input.dpos {
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 .doneitem li span {
 	padding-left: 17px;

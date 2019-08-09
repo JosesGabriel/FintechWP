@@ -1181,6 +1181,10 @@ get_header( 'dashboard' );
 		padding: 5px !important;
 	}
 </style>
+
+<?php get_template_part('parts/sidebar', 'calc'); ?>
+<?php get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 <?php
 	function getfees($funmarketval, $funtype) {
 		// Commissions

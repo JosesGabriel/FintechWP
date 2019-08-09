@@ -1836,9 +1836,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price"></div>
-																													<i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty"></div>
-																													<i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"></div>

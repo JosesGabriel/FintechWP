@@ -1875,6 +1875,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .arbitrage-button--primary:hover {
 	background-color: #2481bc;
+	transition-duration: 300ms;
 }
 .arbitrage-button--secondary {
 	border: 2px #9E9E9E solid;
@@ -2703,16 +2704,18 @@ li.five a span {
 	transition-duration: 300ms;
 }
 .modal-btn-close-deposit {
-	cursor: pointer;
+    cursor: pointer;
     font-size: 14px;
-    color: #d8d8d8;
+    color: #d8d8d8 !important;
     float: right;
     top: 8px;
     position: relative;
+    text-shadow: none;
+    opacity: 1 !important;
 }
 .header-depo {
-    padding: 5px 13px;
-    border-bottom: none;
+    padding: 5px 13px !important;
+    border-bottom: none !important;
 }
 .title-depo {
 	font-weight: 500;
@@ -2724,15 +2727,15 @@ li.five a span {
 	padding-bottom: 0 !important;
 }
 .title-depo-in {
-	font-weight: 500;
-	font-family: 'Roboto', sans-serif;
-	font-size: 19px;
-	margin: 0;
-	color: #ffffff;
-	line-height: 1.428571429;
-	padding-bottom: 0 !important;
-	display: inline;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 0 !important;
+    display: inline;
+    padding-left: 12px;
     font-size: 1em;
+    position: relative;
+    bottom: -7px;
 }
 .close-depo {
 	opacity: 1;
@@ -2747,34 +2750,33 @@ li.five a span {
 	font-weight: 400;
 }
 .footer-depo {
-	border: none;
-	padding: 0px 21px 10px 10px;
-	margin-top: 0;
-	text-align: right;
-	border-top: none;
+	border: none !important;
+    padding: 3px 13px 10px 13px!important;
+    margin: 0 !important;
 }
 .depo-mon-btn {
 	border-radius: 26px !important;
-	border: 1.3px solid #6583a8 !important;
-	padding: 4px 17px 2px 17px !important;
-	font-family: 'Nunito', sans-serif;
-	color: #6583a8;
-	background: none !important;
-	font-size: 15px;
-	font-weight: 500;
+    border: 2px solid #2481bc !important;
+    padding: 5px 18px !important;
+    font-family: 'Roboto', sans-serif;
+    color: #2481bc;
+    background: none !important;
+    font-size: 15px;
+    font-weight: 500;
 }
 .depo-mon-btn:hover {
-	background-color: #123;
+	background: #2481bc !important;
+	color: #fff !important;
+	transition-duration: 300ms;
 }
 .depo-input-field {
-	background: #0b1d33 !important;
-	border: 1px solid #1e3554 !important;
-	border-radius: 25px;
-	width: 100%;
-	height: 40px;
-	color: #FFFFFE !important;
-	padding-left: 14px !important;
-	padding-bottom: 4px !important;
-	font-size: 13px;
+    background: #0b1d33 !important;
+    border: 1px solid #1e3554 !important;
+    border-radius: 25px;
+    width: 100%;
+    color: #d8d8d8 !important;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 11px !important;
 }
 </style>

@@ -110,9 +110,9 @@ function arbitrage_api_verify_user($user_id) {
 function arbitrage_api_upload_to_gcs($filepath = '') {
     $info = pathinfo($filepath);
     $filename = $info['basename'];
-    $type = mime_content_type($filename);
+    $mime = wp_check_filetype($filename);
 
-    $file_data = new CURLFILE($filepath, $type, $filename);
+    $file_data = new CURLFILE($filepath, $mime['type'], $filename);
     $data = [
         'file' => $file_data,
     ];

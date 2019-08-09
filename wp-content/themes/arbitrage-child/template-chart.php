@@ -1048,7 +1048,7 @@
 	    height: 35px;
 	}
 	.doneitem li {
-	    width: 49.4%;
+	    width: 48.4%;
 	    display: inline-block;
 	}
 	input.dpri {
@@ -1071,6 +1071,8 @@
 	}
 	.paramlist .jjaajs {
 	    margin-top: 15px !important;
+	    height: 100px;
+    	overflow-y: scroll;
 	}
 	.doneitem li span {
 	    padding-left: 17px;

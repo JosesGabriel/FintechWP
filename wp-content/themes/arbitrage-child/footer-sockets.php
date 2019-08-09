@@ -31,20 +31,6 @@ if ($user_id !== 0) {
                     }
                 },
             });
-
-            jQuery.ajax({
-                url: 'https://dev-api.arbitrage.ph/api/user/update',
-                method: 'POST',
-                data: {
-                    id: '<?php echo $uuid ?>',
-                    profile_image: jQuery('.um-profile-photo-img img').attr('src'),
-                },
-                dataType: 'json',
-                success: function (data) {
-
-                }
-            });
-            // alert($('.um-profile-photo-img img').attr('src'))
         })
         .observe(img,{attributes:true,attributeFilter:["src"]})
     }

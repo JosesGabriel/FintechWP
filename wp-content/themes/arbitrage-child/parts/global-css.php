@@ -2656,6 +2656,7 @@ li.seven.calc-menu-var img {
 }
 li.seven.calc-menu-buysell img {
 	width: 20px;
+	height: 23px;
 }
 li.seven.calc-menu-avprice img {
 	width: 22px;
@@ -2665,7 +2666,7 @@ li.seven.calc-menu-var span {
     position: relative; */
 }
 li.seven.calc-menu-buysell span {
-	top: -4px;
+	top: -2px;
     position: relative;
 }
 </style>

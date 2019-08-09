@@ -358,11 +358,11 @@ td.to-stock a {
 
 }
 #mingle-btn {
-	border-radius: 26px !important;
-	border: 1.3px solid #6583a8 !important;
-	padding: 5px 14px !important;
-	font-family: 'Nunito', sans-serif;
-	color: #6583a8;
+    border-radius: 26px !important;
+    border: 2px solid #e77e24 !important;
+    padding: 5px 14px !important;
+    font-family: 'Nunito', sans-serif;
+    color: #e77e24 !important;
 }
 #removes-btn {
 	border-radius: 26px !important;
@@ -536,10 +536,10 @@ hr.style10 {
 	display: inline-block;
 }
 .top-traiders .to-content-part .trader-item .traider-image {
-	width: 20%;
-	display: inline-block;
-	margin-top: 5px;
-	margin-right: 12px;
+    width: 20%;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 5px;
 }
 .um-activity-widget .upload {
 	padding: 9px 10px;
@@ -999,6 +999,7 @@ time.srr-date div {
 }
 .top-traiders .to-content-part .trader-item .traider-details .traider-name {
 	min-height: 13px;
+	margin-top: 1px !important;
 }
 .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:hover {
 	background: #0c1c2b;
@@ -2006,7 +2007,7 @@ input.dpos {
 }
 .paramlist .jjaajs {
 	margin-top: 15px !important;
-	height: 100px !important;
+	max-height: 100px !important;
     overflow-y: scroll !important;
 }
 .doneitem li span {
@@ -2678,6 +2679,19 @@ li.five a span {
 }
 .top-traiders .to-content-part {
 	min-height: 126px;
-    padding: 7px 10px !important;
+    padding: 7px 13px 7px 13px !important;
+}
+.top-traiders .to-top-title {
+    padding-top: 10px !important;
+    padding-left: 15px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 7px !important;
+}
+.see-more-btn.see-all-members {
+	padding: 0 0 2px 5px !important;
+}
+.see-more-btn.see-all-members strong:hover {
+	color: #a6a6a6;
+	transition-duration: 300ms;
 }
 </style>

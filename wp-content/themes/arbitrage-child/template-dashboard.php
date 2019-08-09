@@ -130,13 +130,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	.active {
 
 	}
-	#mingle-btn {
-		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
-    	padding: 5px 14px !important;
-    	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
-	}
 	#removes-btn {
 		border-radius: 26px !important;
 		border: 1.3px solid #6583a8 !important;
@@ -309,12 +302,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    margin-left: 17px;/*
 	    background: #142c46;*/
 	    display: inline-block;
-	}
-	.top-traiders .to-content-part .trader-item .traider-image {
-	    width: 20%;
-	    display: inline-block;
-	    margin-top: 5px;
-	    margin-right: 12px;
 	}
 	.um-activity-widget .upload {
 		padding: 9px 10px;

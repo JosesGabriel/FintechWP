@@ -73,7 +73,7 @@ $userID = $current_user->ID;
 					  <div class="trader-item userid_<?php echo $value['id']; ?>">
 						  <div class="traider-inner">
 							  <div class="traider-image">
-								  <div class="circle-frame" style="border: 2px solid #1e3554;padding: 4px !important;border-radius: 50%;width: 47px;height: 47px;">
+								  <div class="circle-frame" style="border:2px solid rgba(101, 131, 168, 0.4196078431372549);padding: 4px !important;border-radius: 50%;width: 47px;height: 47px;">
 								  <div class="side-image" style="background: url('<?php echo esc_url( get_avatar_url( $value['id'] ) ); ?>') no-repeat center center;">&nbsp;</div>
 								  </div>
 							  </div>
@@ -103,11 +103,11 @@ $userID = $current_user->ID;
 					  </div>
 			  <?php
 					  $i++;
-					  if($i==5) break;
+					  if($i==3) break;
 				  } 
 			  ?>
 
-			   <div class="see-more-btn" style="padding: 0 0 0px 2px;">
+			   <div class="see-more-btn see-all-members" style="padding: 0 0 0px 2px;">
 				  <a href="https://arbitrage.ph/member-directory/">
 				 	 <strong style="font-size:13px;font-weight: 400;">View all members</strong>
 				  </a>

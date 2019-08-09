@@ -948,8 +948,6 @@ date_default_timezone_set('Asia/Manila'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
                         
-                        <?php get_template_part('parts/sidebar', 'traders'); ?>
-                        
 					</div>
 				</div>
 			</div>
@@ -970,7 +968,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-                	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'traders'); ?>
                     
                     <?php //get_template_part('parts/sidebar', 'latestnews'); ?>
                     

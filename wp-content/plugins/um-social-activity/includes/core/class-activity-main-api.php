@@ -396,6 +396,8 @@ class Activity_Main_API
             }
         }
 
+        $has_share_link = get_post_meta( $post_id, '_shared_link', true ); 
+
         if (trim($content) != '') {
             if ($this->get_action_type($post_id) == 'status') {
                 $content = $this->shorten_string($content);
@@ -475,11 +477,13 @@ class Activity_Main_API
             echo '<div class="desc-note">';
             echo nl2br($newconts);
             echo '<div class="desc-note1">';
-            echo get_post_meta( $post_id, '_shared_link', true ); 
+            echo $has_share_link;
             echo '</div>';
             $contents = ob_get_contents();
             ob_end_clean();
             return nl2br($contents);
+        } else if ($has_share_link) {
+            return $has_share_link;
         }
 
         return '';

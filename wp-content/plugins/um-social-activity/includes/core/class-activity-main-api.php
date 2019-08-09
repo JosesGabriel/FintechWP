@@ -616,6 +616,10 @@ class Activity_Main_API
             $content = '<span class="post-meta sdfsdfsdf ons2"><a href="{post_url}" target="_blank" class="dmeta"><div class="closerff"><div class="cls-inner">{post_title} {post_excerpt} {post_domain}</div></div>{post_image}</a></span>';
         }
 
+        if (isset($tags['image'])){
+            $content = '<span class="post-meta sdfsdfsdf ons2"><a href="{post_url}" target="_blank" class="dmeta"><div class="closerff"><div class="cls-inner">{post_title} {post_excerpt} {post_domain}</div></div></a></span>';
+        }
+
         if (isset($tags['description'])) {
             if (isset($tags['image_width']) && $tags['image_width'] <= 400) {
                 $content = str_replace('{post_excerpt}', '', $content);

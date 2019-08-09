@@ -392,13 +392,13 @@
     .groupinput.midd input {
         width:138px;
     }
-    .entr_wrapper_top {
+	.entr_wrapper_top {
         padding:20px 0 15px 20px;
-        background-color:#2c3e50;
+        background-color:#0c1f33;
     }
     .entr_wrapper_mid {
         padding: 20px 0 15px 20px;
-        background-color: #34495e;
+        background-color: #142b46;
         border-radius: 4px;
     }
     .entr_wrapper_bot {
@@ -578,7 +578,7 @@
 		margin: 1px 0 3px;
 	}
 	.fancybox-content {
-		background: #2c3e50;
+		background: #0c1f33;
 		padding: 10px;
 	}
 	.fancybox-slide--html .fancybox-close-small {
@@ -2625,7 +2625,7 @@
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);
 			// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
 		}
-		$(this).remove();
+	
 	});
 
 	});

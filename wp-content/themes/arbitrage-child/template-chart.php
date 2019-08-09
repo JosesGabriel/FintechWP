@@ -578,7 +578,7 @@
 		margin: 1px 0 3px;
 	}
 	.fancybox-content {
-		background: #2c3e50;
+		background: #0c1f33;
 		padding: 10px;
 	}
 	.fancybox-slide--html .fancybox-close-small {

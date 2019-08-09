@@ -193,7 +193,7 @@
 		<div class="arb_buyfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-				<small class="smlinline"> see details - </small> ₱ <span id="buyfees">0.00</span>
+				<i class="fas fa-info-circle" style="padding-right: 5px;"></i> ₱ <span id="buyfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_buy">
@@ -221,7 +221,8 @@
 			</span>
 		<div class="arb_sellfees padbott ">
 			<span>Fees: </span>
-			<span class="rightAlignCal"><small class="smlinline"> see details - </small> ₱ <span id="sellfees">0.00</span>
+			<span class="rightAlignCal">
+			<i class="fas fa-info-circle" style="padding-right: 5px;"></i> ₱ <span id="sellfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_sell">

@@ -2732,8 +2732,6 @@ li.five a span {
 	line-height: 1.428571429;
 	padding-bottom: 0 !important;
 	display: inline;
-	padding-left: 12px;
-	padding-left: 12px;
     font-size: 1em;
 }
 .close-depo {

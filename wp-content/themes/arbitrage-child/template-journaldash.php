@@ -1097,24 +1097,25 @@ get_header( 'dashboard' );
 	    transition: all .3s ease-out;
 	}
 	.deposit-modal-btn {
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #6583a8 !important;
-	    background: none;
-	    border: 1px #6583a8 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 5px 9px 4px 9px;
-	    font-weight: 500;
-	    text-decoration: none;
-	    margin-right: 3px;
-	    cursor: pointer;
+		font-family: 'Roboto', sans-serif;
+		font-size: 12px;
+		color: #6583a8 !important;
+		background: none;
+		border: 1px #6583a8 solid;
+		height: auto;
+		border-radius: 25px;
+		padding: 3px 10px !important;
+		font-weight: 500;
+		text-decoration: none;
+		margin-right: 3px;
+		cursor: pointer;
 	}
 	.deposit-modal-btn:hover {
 		color: #fff;
 		text-decoration: none;
-	    background: #123;
-	    transition: all .3s ease-out;
+		background: #6583a8;
+		color: #fff !important;
+		transition: all .3s ease-out;
 	}
 	.withdraw-btn {
 	    font-family: 'Roboto', sans-serif;
@@ -3562,36 +3563,36 @@ if ($getdstocks && $getdstocks != "") {
 													</div>
 													<br class="clear">
 						                        </div>
-						                        <style type="text/css">
-						                        	
-						                        	.sss {
-						                        		padding-right: 14px !important;
-						                        	}
-						                        	.sss::placeholder {
-						                        		color: #ffffff;
-						                        		font-size: 13px;
-						                        	}
-						                        	.dnlabel {
-						                        		font-size: 15px;
-													    padding-left: 16px;
-													    margin-bottom: 2px;
-													    font-weight: 400;
-						                        	}
-						                        	.depo-body {
-														position: relative;
-    													padding: 5px 10px;
-						                        	}
-						                        	.active-funds {
-						                        		display: block !important;
-						                        	}
-						                        	.button-funds {
-						                        		padding: 6px 21px 0px 0px;
-    													display: block;
-						                        	}
-						                        	/*.dropopen {
-						                        		display: block;
-						                        	}*/
-						                        </style>
+<style type="text/css">
+	
+	.sss {
+		padding-right: 14px !important;
+	}
+	.sss::placeholder {
+		color: #ffffff;
+		font-size: 13px;
+	}
+	.dnlabel {
+		font-size: 15px;
+		padding-left: 16px;
+		margin-bottom: 2px;
+		font-weight: 400;
+	}
+	.depo-body {
+		position: relative;
+		padding: 5px 10px;
+	}
+	.active-funds {
+		display: block !important;
+	}
+	.button-funds {
+		padding: 7px 10px 2px 10px;
+		display: block;
+	}
+	/*.dropopen {
+		display: block;
+	}*/
+</style>
 						                        <script type="text/javascript">
 						                        	jQuery(document).ready(function(){
 							                        	jQuery('.add-funds-show').show();
@@ -3675,7 +3676,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
-																						<input type="submit" name="subs" value="Deposit now" class="depo-mon-btn">
+																						<input type="submit" name="subs" value="Deposit" class="arbitrage-button arbitrage-button--primary">
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>
@@ -3684,9 +3685,9 @@ if ($getdstocks && $getdstocks != "") {
 																							<div class="dmainform">
 																								<div class="dinnerform">
 																									<div class="dinitem">
-																										<h5 class="modal-title title-depo" id="exampleModalLabel">Dividend Income</h5>
-																										<div class="dnlabel">Amount</div>
-																										<div class="dninput"><input type="text" name="damount" class="depo-input-field"></div>
+																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
+																										<!-- <div class="dnlabel">Amount</div> -->
+																										<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3695,7 +3696,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="dividend">
-																							<input type="submit" name="subs" value="Deposit now" class="depo-mon-btn">
+																							<input type="submit" name="subs" value="Deposit" class="arbitrage-button arbitrage-button--primary">
 																							<!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>

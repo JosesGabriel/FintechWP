@@ -71,25 +71,32 @@
 					  <span>Watcher & Alerts</span></a></li>
                   <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/ico_messager_blue.svg">
 					  <span>Vyndue Messenger</span></a></li>
-                  <li class="six dpowerdown">
-                    <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">
-						<span>Power Tools</span>
-                    	<span><i class="fas fa-ellipsis-h sddropps"></i></a></span>
-						<span>
-							<div class="ddroplace">
-							  <div class="ddropinner">
-								<ul>
-								  <li><a>Buy/Sell Calculators</a></li>
-								  <li><a>VAR Calculator</a></li>
-								  <li><a>Average Price Calculator</a></li>
-								</ul>
-							  </div>
-							</div>
-						</span>
-                  </li>
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
-					  <span>Games</span></a>
-				  </li>
+            <span>Games</span></a></li>
+            
+            <span>Power Tools</span>
+                  <li class="seven calc-menu-buysell"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+            <span>Buy/Sell Calculators</span></a></li>
+                  <li class="seven calc-menu-var"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+            <span>VAR Calculator</span></a></li>
+                  <li class="seven calc-menu-avprice"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+            <span>Average Price Calculator</span></a></li>
+                  <!-- <li class="six dpowerdown isopened">
+                    <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">
+                      <span>Power Tools</span>
+                        <span><i class="fas fa-ellipsis-h sddropps"></i></a></span>
+                      <span>
+                        <div class="ddroplace">
+                          <div class="ddropinner">
+                          <ul>
+                            <li><a>Buy/Sell Calculators</a></li>
+                            <li><a>VAR Calculator</a></li>
+                            <li><a>Average Price Calculator</a></li>
+                          </ul>
+                          </div>
+                        </div>
+                      </span>
+                  </li> -->
 				  <?php /*?><li class="eight slideleft showonmobonly">
 					<a href="#">
 					  <img src="<?php echo get_home_url(); ?>/svg/slideleft.svg">
@@ -170,17 +177,17 @@
             }
         });
 
-        jQuery('.dpowerdown').click(function(e){
-          e.preventDefault();
+        // jQuery('.dpowerdown').click(function(e){
+        //   e.preventDefault();
 
-          if (jQuery(this).hasClass('isopened')) {
-            jQuery(this).removeClass('isopened');
-            jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').hide('fast');
-          }else{
-            jQuery(this).addClass('isopened');
-            jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').show('fast');
-          }
-        });
+        //   if (jQuery(this).hasClass('isopened')) {
+        //     jQuery(this).removeClass('isopened');
+        //     jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').hide('fast');
+        //   }else{
+        //     jQuery(this).addClass('isopened');
+        //     jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').show('fast');
+        //   }
+        // });
 	  
     });
 

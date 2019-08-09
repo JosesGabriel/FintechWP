@@ -443,17 +443,8 @@ add_filter('wp_handle_upload', function ($upload) {
  */
 add_filter('um_ajax_resize_image', function ($output) {
     $image = $output['image']['source_path'];
-    $filename = $output['image']['filename'];
-
-    $file = new CURLFILE($image['source_path'], mime_content_type($filename), $filename);
-    $data = [
-        'file' => $file_data,
-    ];
-
-    $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
-
-    // if the response fails, use wp's upload url
-    $output['image']['gcs_url'] = $output['image']['source_url'];
+    
+    $response = arbitrage_api_upload_to_gcs($image);
 
     if ($response !== false) {
         $output['image']['gcs_url'] = $response['file']['url'];

@@ -3456,7 +3456,8 @@ if ($getdstocks && $getdstocks != "") {
 																					if ( $author_posts->have_posts() ) {
 																						while ( $author_posts->have_posts() ) { $author_posts->the_post();
 																							
-																							
+																							$dlisttrade[$dpage][$count]['id'] = get_the_ID();	
+																							$dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);	
 
 																							// $dlisttrade[$dpage]
 																							if($count == 2){
@@ -3470,8 +3471,10 @@ if ($getdstocks && $getdstocks != "") {
 																						}
 																						wp_reset_postdata();
 																					}
-																					echo "dpage: ".$dpage;
 																				?>
+																				<pre>
+																					<?php print_r($dlisttrade); ?>
+																				</pre>
 																			</li>
                                                                             <?php
 																				$totalprofit = 0;
@@ -3481,11 +3484,6 @@ if ($getdstocks && $getdstocks != "") {
 																					while ( $author_posts->have_posts() ) { $author_posts->the_post();
 																						
 																						
-
-																						
-
-																						
-
 																						$data_sellmonth = get_post_meta(get_the_ID(), 'data_sellmonth', true);
 																						$data_sellday = get_post_meta(get_the_ID(), 'data_sellday', true);
 																						$data_sellyear = get_post_meta(get_the_ID(), 'data_sellyear', true);

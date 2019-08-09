@@ -192,7 +192,7 @@ $cdnorlocal = get_home_url();
         });
 
         jQuery(document).ready(function(){
-            jQuery(".ddropinner ul li:first-child, ul.main-drops > ul li:first-child").on("click", function () {
+            jQuery(".seven.calc-menu-buysell, ul.main-drops > ul li:first-child").on("click", function () {
                 event.stopPropagation();
                  var openthis = jQuery("#showplease").hasClass("dropthiss");
                  if ( openthis ) {
@@ -201,12 +201,12 @@ $cdnorlocal = get_home_url();
                 jQuery("#toghandle").show().addClass("dropthiss");
                 }
             });
-            jQuery(".ddropinner ul li:nth-child(2), ul.main-drops > ul li:nth-child(2)").on("click", function () {
+            jQuery(".seven.calc-menu-var, ul.main-drops > ul li:nth-child(2)").on("click", function () {
                 event.stopPropagation();
                 jQuery("#toghandlings").show().addClass("dropthiss");
 
             });
-            jQuery(".ddropinner ul li:nth-child(3), ul.main-drops > ul li:nth-child(3)").on("click", function () {
+            jQuery(".seven.calc-menu-avprice, ul.main-drops > ul li:nth-child(3)").on("click", function () {
                 event.stopPropagation();
                 jQuery("#toghandlingers").show().addClass("dropthiss");
             });

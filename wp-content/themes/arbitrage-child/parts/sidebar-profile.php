@@ -74,12 +74,12 @@
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
             <span>Games</span></a></li>
             
-            <span>Power Tools</span>
-                  <li class="seven calc-menu-buysell"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+            <span class="menu-title-calc">Power Tools</span>
+                  <li class="seven calc-menu-buysell"><a>
             <span>Buy/Sell Calculators</span></a></li>
-                  <li class="seven calc-menu-var"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+                  <li class="seven calc-menu-var"><a>
             <span>VAR Calculator</span></a></li>
-                  <li class="seven calc-menu-avprice"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+                  <li class="seven calc-menu-avprice"><a>
             <span>Average Price Calculator</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">

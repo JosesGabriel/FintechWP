@@ -2637,4 +2637,11 @@ i.fa.fa-search {
     top: 510px;
 }
 
+
+
+span.menu-title-calc {
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    color: #aaa;
+}
 </style>

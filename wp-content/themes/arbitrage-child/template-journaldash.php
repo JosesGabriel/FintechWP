@@ -3940,8 +3940,9 @@ if ($getdstocks && $getdstocks != "") {
 		$('.textfield-button-buyprice').keyup(function(){
 			if($('.textfield-button-buyprice').val().length == 0)
 				$('.confirmtrd.green').attr('disabled',false);            
-			else
+			else if ($('.textfield-button-buyprice').val().length > 0){
 				$('.confirmtrd.green').attr('disabled',true);
+			}
 		})
 	});
 </script>

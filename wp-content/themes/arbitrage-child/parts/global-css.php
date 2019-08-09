@@ -2735,7 +2735,6 @@ li.five a span {
     padding-left: 12px;
     font-size: 1em;
     position: relative;
-    bottom: -7px;
 }
 .close-depo {
 	opacity: 1;

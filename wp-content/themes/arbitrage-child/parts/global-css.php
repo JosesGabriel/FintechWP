@@ -2619,7 +2619,7 @@ i.fa.fa-search {
 .fixed-sidebar {
 	position: fixed;
 	width: 200px;
-	top: -100px;
+	top: -150px;
 }
 
 .fixed-rightsidebar {
@@ -2643,5 +2643,9 @@ span.menu-title-calc {
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
     color: #aaa;
+}
+.m-separator {
+    width: 100%;
+    height: 15px;
 }
 </style>

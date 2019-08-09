@@ -171,24 +171,29 @@
 <div class="arb_calcbox">
 <div class="bkcalcbox">
 	<span><span class="toborderbotcalc"><strong>Buy/Sell</strong> Calculator</span><i class="fas fa-times toclassclose"></i></span>
-	<div class="arb_calcshares" style="padding-top: 5px;padding-bottom: 12px;"><span class="arb_xjz bit_asda"><strong>Number of Shares: </strong></span>
-		<input name="numofshares" id="numofshares" class="_fottns" type="number" value="0" style="width:100%; text-align: right;">
+	<div style="padding-top: 5px;padding-bottom: 12px;">
+		<div class="arb_calcbox_left">Number of Shares: </div>
+		<div class="arb_calcbox_right">
+			<input name="numofshares" id="numofshares" class="_fottns" type="number" value="0" style="width:100%; text-align: right;">
+		</div>
 	</div>
 	<div class="arb_calcbox_lefting">
-		<div class="arb_buyprice padbott"><span class="arb_xjz bit_asda">
-		<!-- <strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"></div> -->
+	<div class="arb_dvdr"></div>
+		<div class="padbott"><span class=" bit_asda">
+		<!-- <strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"> -->
 		<div class="arb_calcbox_left">Buy Price: </div>
 		<div class="arb_calcbox_right">
 			<input name="buyprice" id="buyprice" type="number" value="0" style="width:95%; text-align: right;">
 		</div>
-		<div class="arb_buyvalue padbott arb_xjz">
+		</div>
+		<div class="arb_buyvalue padbott ">
 			<span>Value: </span>
 			<span class="rightAlignCal">₱ <span id="buyvalue">0.00</span></span>
 		</div>
-		<div class="arb_buyfees padbott arb_xjz">
+		<div class="arb_buyfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-				<small class="smlinline"> <i class="fas fa-info-circle"></i> </small> ₱ <span id="buyfees">0.00</span>
+				<small class="smlinline"> see details - </small> ₱ <span id="buyfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_buy">
@@ -199,16 +204,22 @@
 				<small>SCCP: ₱<span id="buysccpfix">0.00</span></small>
 			</div>
 		</div>
-		<div class="arb_buytotal padbott arb_xjz">
+		<div class="arb_buytotal padbott ">
 		<span>Buy Total: </span>
 		<span class="rightAlignCal" id="buytotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
-		<div class="arb_sellprice padbott"><span class="arb_xjz bit_asda"><strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0" style="text-align: right;"></div>
-		<div class="arb_sellvalue padbott arb_xjz">
+		<div class="padbott"><span class=" bit_asda">
+			<!-- <strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"> -->
+			<div class="arb_calcbox_left">Sell Price: </div>
+			<div class="arb_calcbox_right">
+				<input name="sellprice" id="sellprice" class="_fottns" type="number" value="0">
+			</div>
+		</div>
+		<div class="arb_sellvalue padbott ">
 			<span>Value: </span>
 				<span class="rightAlignCal">₱ <span id="sellvalue">0.00</span></div>
 			</span>
-		<div class="arb_sellfees padbott arb_xjz">
+		<div class="arb_sellfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal"><small class="smlinline"> see details - </small> ₱ <span id="sellfees">0.00</span>
 			</span>
@@ -222,11 +233,11 @@
 				<small>Sales Tax: ₱<span id="sellsaletxfix">0.00</span></small>
 			</div>
 		</div>
-		<div class="arb_selltotal arb_xjz">
+		<div class="arb_selltotal ">
 		<span>Sell Total: </span>
 		<span class="rightAlignCal" id="selltotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
-		<div class="arbnetprofit padbott arb_xjz">
+		<div class="arbnetprofit padbott ">
 			<span class="textchangecolor"><strong>Net Profit: 
 			<span class="rightAlignCal">
 				₱<span id="arbnetprofitf">0.00</span> (<span id="arbperctg">0</span>%)</strong></span>

@@ -854,8 +854,8 @@ get_header( 'dashboard' );
 
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #2c3e50 !important;
-		background: #2c3e50 !important;
+		border-color: #142c46 !important;
+		background: #142c46 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;
@@ -984,6 +984,7 @@ get_header( 'dashboard' );
 	.trdlgsbox {
 		color:#FFFFFF;
 		padding:10px;
+		display: flex;
 	}
 	.trdleft {
 		width:50%;
@@ -997,16 +998,43 @@ get_header( 'dashboard' );
 		clear:both;
 	}
 	.darkbgpadd {
-		background-color: #34495e;
-		padding: 12px 15px;
+		background-color: #11273e;
+		padding: 11px 12px;
 		border-radius: 6px;
+		width: 50%;
+		max-height: 230px;
+    	overflow: auto;}
+	}
+	.darkbgpadd::-webkit-scrollbar-track
+	{
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		border-radius: 11px;
+		background-color: #0f121d;
+	}
+
+	.darkbgpadd::-webkit-scrollbar
+	{
+		width: 8px;
+		border-radius: 10px;
+		background-color: none;
+	}
+
+	.darkbgpadd::-webkit-scrollbar-thumb
+	{
+		border-radius: 10px;
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+		background-color: #34495e;
 	}
 	.onelnetrd {
 		line-height: 25px;
 	}
-	.onelnetrd span {
-		display:inline-block;
-		line-height: 32px;
+	.onelnetrd span:first-child {
+		display: block;
+		line-height: 1.5;
+		padding: 0 0 0 1px;
+	}
+	.onelnetrd span:nth-child(2) {
+		padding-left: 10px;
 	}
 	.onelnetrd > span {
 		width:105px;
@@ -5060,20 +5088,18 @@ if ($getdstocks && $getdstocks != "") {
 	});
 
 </script>
-<script>
+<!-- <script>
 $(document).ready(function(){
 	$('.confirmtrd').prop('disabled',true);
 	$('.textfield-button-buyprice').keyup(function(){
-		var valueinp = $('.textfield-button-buyprice').val();
-		// console.log(valueinp);
-		if($(valueinp).val() != 0){
+		if($('.textfield-button-buyprice').val().length != 0){
 			$('.confirmtrd').prop('disabled', true);            
 		}else{
 			$('.confirmtrd').prop('able', false);
 		}
 	});
 });
-</script>
+</script> -->
 
 </div>
 <?php get_footer();

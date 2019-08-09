@@ -1614,7 +1614,7 @@ if ($getdstocks && $getdstocks != "") {
 						                </div>
 						                <div class="panel-body">
 						                    <div class="tab-content">
-						                        <div class="tab-pane show active" id="tab1">
+						                        <div class="tab-pane show <?php echo (isset($_GET['pt']) ? '' : 'active'); ?>" id="tab1">
 
                                                     <div class="liveportfoliobox">
                                                         <div class="box-portlet">
@@ -1804,7 +1804,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" class="confirmtrd red" value="Confirm trade">
+																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade">
 																			                                </div>
 
 																			                             </div>
@@ -3418,7 +3418,7 @@ if ($getdstocks && $getdstocks != "") {
 														</div>
 													</div>
 						                        </div>
-						                        <div class="tab-pane" id="tab2">
+						                        <div class="tab-pane <?php echo (isset($_GET['pt']) ? 'active' : ''); ?>" id="tab2">
 
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">
@@ -3480,7 +3480,7 @@ if ($getdstocks && $getdstocks != "") {
 																						$dtlprofperc = (abs($dprofit)/($data_quantity * $data_avr_price)) * 100;
 																						$totalprofit += $dprofit;
 																						?>
-																						<li>
+																						<li class="<?php echo $author_posts->post_count; ?>">
 			                                                                            	<div style="width:99%;">
 			                                                                                	<div style="width:20px"><?php echo $logcount; ?></div>
 			                                                                                    <div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>

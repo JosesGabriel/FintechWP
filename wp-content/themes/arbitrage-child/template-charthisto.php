@@ -157,14 +157,25 @@
         foreach ($dlistofstocks as $key => $value) {
             $min = 1;
             $max = 10;
-            $curprice = mt_rand ($min*10, $max*10) / 10;
-            $stockinfo[$value]['last'] = $curprice;
-            $stockinfo[$value]['change'] = mt_rand ($min*10, $max*10) / 10;
-            $stockinfo[$value]['open'] = mt_rand ($min*10, $max*10) / 10;
-            $stockinfo[$value]['high'] = mt_rand (6*10, 10*10) / 10;
-            $stockinfo[$value]['low'] = mt_rand (1*10, 5*10) / 10;
-            $stockinfo[$value]['volume'] = rand(500,1000);
-            $stockinfo[$value]['value'] = $curprice;
+            if($value == "PHEN"){
+                $curprice = 2.66;
+                $stockinfo[$value]['last'] = $curprice;
+                $stockinfo[$value]['change'] = 0;
+                $stockinfo[$value]['open'] = 2.66;
+                $stockinfo[$value]['high'] = 2.70;
+                $stockinfo[$value]['low'] = 2.61;
+                $stockinfo[$value]['volume'] = "9.20M";
+                $stockinfo[$value]['value'] = $curprice;
+            } else {
+                $curprice = mt_rand ($min*10, $max*10) / 10;
+                $stockinfo[$value]['last'] = $curprice;
+                $stockinfo[$value]['change'] = mt_rand ($min*10, $max*10) / 10;
+                $stockinfo[$value]['open'] = mt_rand ($min*10, $max*10) / 10;
+                $stockinfo[$value]['high'] = mt_rand (6*10, 10*10) / 10;
+                $stockinfo[$value]['low'] = mt_rand (1*10, 5*10) / 10;
+                $stockinfo[$value]['volume'] = "".rand(500,1000);
+                $stockinfo[$value]['value'] = $curprice;
+            }
         }
         $finalinfo = [];
         $finalinfo['data'] = $stockinfo;

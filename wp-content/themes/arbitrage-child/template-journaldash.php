@@ -1605,8 +1605,8 @@ if ($getdstocks && $getdstocks != "") {
 						                    <span id="journal" class="journaltabs">
 						                        <!-- Tabs -->
 						                        <ul class="nav panel-tabs">
-						                            <li class="<?php echo (isset($_GET['pt']) ? '' : 'active'); ?>"><a href="#tab1" data-toggle="tab" class="active show">Dashboard</a></li>
-						                            <li class="<?php echo (isset($_GET['pt']) ? 'active' : ''); ?>"><a href="#tab2" data-toggle="tab">Tradelogs</a></li>
+						                            <li class="<?php echo (isset($_GET['pt']) ? '' : 'active'); ?>"><a href="#tab1" data-toggle="tab" class="<?php echo (isset($_GET['pt']) ? '' : 'active show'); ?>">Dashboard</a></li>
+						                            <li class="<?php echo (isset($_GET['pt']) ? 'active' : ''); ?>"><a href="#tab2" data-toggle="tab" class="<?php echo (isset($_GET['pt']) ? 'active show' : ''); ?>">Tradelogs</a></li>
 						                            <li class=""><a href="#tab3" data-toggle="tab" class="">Ledger</a></li>
 						                            <!-- <li class=""><a href="#tab4" data-toggle="tab" class="">Calendar</a></li> -->
 						                        </ul>

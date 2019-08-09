@@ -2503,6 +2503,7 @@
 
 
 		jQuery('.chart-loader').click(function(){
+			console.log('confirmed');
 			jQuery('.chart-loader').css("display","block");
 		});
 		

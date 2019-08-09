@@ -2623,7 +2623,7 @@ i.fa.fa-search {
 .fixed-sidebar {
 	position: fixed;
 	width: 200px;
-	top: -150px;
+	top: 60px;
 }
 
 .fixed-rightsidebar {
@@ -2633,7 +2633,7 @@ i.fa.fa-search {
 
 .fixed-rightsidebar-ads {
 	position: fixed;
-    top: 280px;
+	top: 280px;
 }
 .fixed-rightsidebar-footer {
 	position: fixed;

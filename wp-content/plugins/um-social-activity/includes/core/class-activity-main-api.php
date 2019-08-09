@@ -681,7 +681,8 @@ class Activity_Main_API
             }
             // if images array is empty, do not display
 			if(empty($images)){
-                $content = str_replace('{post_image}', '', $content);
+                //$content = str_replace('{post_image}', '', $content);
+                $content = str_replace('{post_image}', '<span class="post-image"><span class="postImageBlur" style="background: url(' .$images[0]. ');background-size: cover;background-repeat: no-repeat;"><img src="' . $images[0] . '" class="inpostimage" /></span></span>', $content);
             }else{
                 $content = str_replace('{post_image}', '<span class="post-image"><span class="postImageBlur" style="background: url(' .$images[0]. ');background-size: cover;background-repeat: no-repeat;"><img src="' . $images[0] . '" class="inpostimage" /></span></span>', $content);
             }

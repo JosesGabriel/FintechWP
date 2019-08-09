@@ -14,7 +14,7 @@
 
 }
 
-.lockedd i.fa.fa-lock {
+/* .lockedd i.fa.fa-lock {
 
     top: 7px;
 
@@ -24,7 +24,7 @@
 
     font-size: 14px;
 
-    color: #ecf0f1;
+    color: #ecf0f1; */
 
 }
 

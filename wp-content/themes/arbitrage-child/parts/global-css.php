@@ -364,6 +364,10 @@ td.to-stock a {
     font-family: 'Nunito', sans-serif;
     color: #e77e24 !important;
 }
+#mingle-btn:hover {
+	background: #e77e24 !important;
+	color: #fff !important;
+}
 #removes-btn {
 	border-radius: 26px !important;
 	border: 1.3px solid #6583a8 !important;
@@ -1001,9 +1005,7 @@ time.srr-date div {
 	min-height: 13px;
 	margin-top: 1px !important;
 }
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:hover {
-	background: #0c1c2b;
-}
+
 .um-activity-widget .um-activity-body .um-activity-bodyinner .um-activity-bodyinner-txt {
 	color: #fff;
 	background-color: #142c46;
@@ -2008,7 +2010,7 @@ input.dpos {
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 .doneitem li span {
 	padding-left: 17px;
@@ -2626,25 +2628,31 @@ i.fa.fa-search {
 	top: 60px;
 }
 
-.fixed-rightsidebar {
-	position: fixed;
-    width: 265px;
-}
 
+.fixed-rightsidebar {
+	/* position: fixed;*/
+   /* width: 265px; */
+}
+/* 
 .fixed-rightsidebar-ads {
-	position: fixed;
-	top: 280px;
+	/* position: fixed; */
+	/* top: 345px; */
 }
 .fixed-rightsidebar-footer {
-	position: fixed;
-    width: 265px;
-    top: 510px;
+	/* position: fixed; */
+    /* width: 265px; */
+    /* top: 580px; */
 }
+.fixed-rightsidebar-traiders {
+    position: fixed;
+    width: 265px;
+    top: 296px;
+} */
 
 
 
-span.menu-title-calc {
-    font-size: 13px;
+.seven span.menu-title-calc {
+    font-size: 13px !important;
     font-family: 'Roboto', sans-serif;
     color: #aaa;
 }
@@ -2693,5 +2701,80 @@ li.five a span {
 .see-more-btn.see-all-members strong:hover {
 	color: #a6a6a6;
 	transition-duration: 300ms;
+}
+.modal-btn-close-deposit {
+	cursor: pointer;
+    font-size: 14px;
+    color: #d8d8d8;
+    float: right;
+    top: 8px;
+    position: relative;
+}
+.header-depo {
+    padding: 5px 13px;
+    border-bottom: none;
+}
+.title-depo {
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	margin: 0;
+	color: #ffffff;
+	line-height: 1.428571429;
+	padding-bottom: 0 !important;
+}
+.title-depo-in {
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	margin: 0;
+	color: #ffffff;
+	line-height: 1.428571429;
+	padding-bottom: 0 !important;
+	display: inline;
+    font-size: 1em;
+}
+.close-depo {
+	opacity: 1;
+    padding: 0px 7px !important;
+	margin: 0 !important;
+}
+.x-close-depo {
+	line-height: 0;
+	color: #ffffff;
+	text-shadow: none;
+	border: none;
+	font-weight: 400;
+}
+.footer-depo {
+	border: none;
+	padding: 0px 21px 10px 10px;
+	margin-top: 0;
+	text-align: right;
+	border-top: none;
+}
+.depo-mon-btn {
+	border-radius: 26px !important;
+	border: 1.3px solid #6583a8 !important;
+	padding: 4px 17px 2px 17px !important;
+	font-family: 'Nunito', sans-serif;
+	color: #6583a8;
+	background: none !important;
+	font-size: 15px;
+	font-weight: 500;
+}
+.depo-mon-btn:hover {
+	background-color: #123;
+}
+.depo-input-field {
+	background: #0b1d33 !important;
+	border: 1px solid #1e3554 !important;
+	border-radius: 25px;
+	width: 100%;
+	height: 40px;
+	color: #FFFFFE !important;
+	padding-left: 14px !important;
+	padding-bottom: 4px !important;
+	font-size: 13px;
 }
 </style>

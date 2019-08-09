@@ -428,6 +428,9 @@ add_filter('wp_handle_upload', function ($upload) {
 
     $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
 
+    // if the response fails, use wp's upload url
+    $upload['gcs_url'] = $upload['url'];
+
     if ($response !== false) {
         $upload['gcs_url'] = $response['file']['url'];
     }

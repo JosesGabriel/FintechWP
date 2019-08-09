@@ -476,7 +476,7 @@ class Activity_Main_API
             ob_start();
             echo '<div class="desc-note">';
             echo nl2br($newconts);
-            echo '<div class="desc-note1">';
+            echo '</div><div class="desc-note1">';
             echo $has_share_link;
             echo '</div>';
             $contents = ob_get_contents();

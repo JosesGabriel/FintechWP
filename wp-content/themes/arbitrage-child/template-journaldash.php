@@ -1203,6 +1203,24 @@ get_header( 'dashboard' );
 		line-height: 150%;
 		padding: 5px !important;
 	}
+	.stats-info .pagination {
+		width: 100%;
+		text-align: right;
+	}
+	.stats-info .pagination ul {
+		margin:0;
+		padding:0;
+	}
+	.stats-info .pagination ul li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.stats-info .pagination ul li a {
+		border: 1px solid #3292cc;
+		color: #fff;
+		padding: 5px 9px;
+		border-radius: 40px;
+	}
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3461,8 +3479,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                     <div class="dstatstrade overridewidth">
                                                                         <ul>
                                                                         	<li class="headerpart">
-                                                                            	<div style="width:100%;">
-                                                                                	<div style="width:20px">#</div>
+                                                                            	<div style="width:100%;">                                                                                	
                                                                                     <div style="width:70px">Date</div>
                                                                                     <div style="width:60px">Stocks</div>
                                                                                     <div style="width:65px">Volume</div>
@@ -3473,130 +3490,130 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:85px">Profit/Loss</div>
                                                                                     <div style="width:30px">%</div>
                                                                                     <div style="width:38px; text-align:right">Notes</div>
+																					<div style="width:20px">&nbsp;</div>
                                                                                 </div>
                                                                             </li>
-																			<li>
-																				<?php
-																					$paginate = 2;
-																					$count = 1;
-																					$dpage = 1;
-																					$dlisttrade = [];
-																					if ( $author_posts->have_posts() ) {
-																						while ( $author_posts->have_posts() ) { $author_posts->the_post();
-																							
-																							$dlisttrade[$dpage][$count]['id'] = get_the_ID();	
-																							$dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);	
-
-																							// $dlisttrade[$dpage]
-																							if($count == 2){
-																								$count = 1;
-																								$dpage++;
-																							} else {
-																								$count++;
-																							}
-																							
-
-																						}
-																						wp_reset_postdata();
-																					}
-																				?>
-																				<pre>
-																					<?php print_r($dlisttrade); ?>
-																				</pre>
-																			</li>
-                                                                            <?php
-																				$totalprofit = 0;
-																				// The Loop
-																				$logcount = 1;
+																			<?php
+																				$paginate = 5;
+																				$count = 1;
+																				$dpage = 1;
+																				$current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
+																				$dlisttrade = [];
 																				if ( $author_posts->have_posts() ) {
 																					while ( $author_posts->have_posts() ) { $author_posts->the_post();
 																						
-																						
-																						$data_sellmonth = get_post_meta(get_the_ID(), 'data_sellmonth', true);
-																						$data_sellday = get_post_meta(get_the_ID(), 'data_sellday', true);
-																						$data_sellyear = get_post_meta(get_the_ID(), 'data_sellyear', true);
+																						$dlisttrade[$dpage][$count]['id'] = get_the_ID();	
+																						$dlisttrade[$dpage][$count]['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
+																						$dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
+																						$dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
+																						$dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
 
-																						$data_stock = get_post_meta(get_the_ID(), 'data_stock', true);
 																						$data_dprice = get_post_meta(get_the_ID(), 'data_dprice', true);
-																						$data_dprice = str_replace('₱', '', $data_dprice);
+																						$dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $data_dprice);
 
-																						$data_sell_price = get_post_meta(get_the_ID(), 'data_sell_price', true);
-																						$data_quantity = get_post_meta(get_the_ID(), 'data_quantity', true);
+																						$dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
+																						$dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
 
 																						$data_trade_info = get_post_meta(get_the_ID(), 'data_trade_info', true);
-																						$data_trade_info = json_decode($data_trade_info);
-																						$data_avr_price = get_post_meta(get_the_ID(), 'data_avr_price', true);
+																						$dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($data_trade_info);
+																						$dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta(get_the_ID(), 'data_avr_price', true);
 
-																						// get prices
-																						$soldplace = $data_quantity * $data_sell_price;
-																						$baseprice = $data_quantity * $data_dprice;
 
-																						$sellfee = getfees($soldplace, 'sell');
+																						// $dlisttrade[$dpage]
+																						if($count == $paginate){
+																							$count = 1;
+																							$dpage++;
+																						} else {
+																							$count++;
+																						}
+																						
 
-																						//profit or loss
-																						$dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
-
-																						// profperc
-																						$dtlprofperc = (abs($dprofit)/($data_quantity * $data_avr_price)) * 100;
-																						$totalprofit += $dprofit;
-																						?>
-																						<li class="<?php echo $author_posts->post_count; ?>">
-			                                                                            	<div style="width:99%;">
-			                                                                                	<div style="width:20px"><?php echo $logcount; ?></div>
-			                                                                                    <div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-			                                                                                    <div style="width:60px"><?php echo $data_stock; ?></div>
-			                                                                                    <div style="width:65px"><?php echo $data_quantity; ?></div>
-			                                                                                    <div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
-			                                                                                    <div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
-			                                                                                    <div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
-			                                                                                    <div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
-			                                                                                    <div style="width:85px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-			                                                                                    <div style="width:30px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-			                                                                                    <div style="width:38px; text-align:right">
-			                                                                                    	<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-					                                                                                	<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
-					                                                                                </a>
-			                                                                                    </div>
-			                                                                                </div>
-
-																							<div class="hidethis">
-			                                                                                	<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
-			                                                                                    	<div class="entr_ttle_bar">
-																				                    	<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
-																				                    </div>
-			                                                                                        <div class="trdlgsbox">
-
-			                                                                                        	<div class="trdleft">
-			                                                                                                <div class="onelnetrd"><span><strong>Strategy:</strong></span> <span><?php echo $data_trade_info[0]->strategy; ?></span></div>
-			                                                                                                <div class="onelnetrd"><span><strong>Trade Plan:</strong></span> <span><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
-			                                                                                                <div class="onelnetrd"><span><strong>Emotion:</strong></span> <span><?php echo $data_trade_info[0]->emotion; ?></span></div>
-			                                                                                                <div class="onelnetrd"><span><strong>Performance:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</span></div>
-			                                                                                                <div class="onelnetrd"><span><strong>Outcome:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? 'Gain' : 'Loss'); ?></span></div>
-			                                                                                            </div>
-			                                                                                            <div class="trdright darkbgpadd">
-			                                                                                            	<div><strong>Notes:</strong></div>
-			                                                                                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
-			                                                                                            </div>
-
-			                                                                                        <div class="trdclr"></div>
-			                                                                                        </div>
-
-			                                                                                    </div>
-			                                                                                </div>
-
-			                                                                            </li>
-																						<?php
-																						$logcount++;
 																					}
 																					wp_reset_postdata();
-																				} else {
-																					?>
-																						<li>No Trades yet.</li>
-																					<?php
 																				}
+																					
+																				foreach($dlisttrade[$current] as $tlkey => $tlvalue):
+																					$data_sellmonth = $tlvalue['data_sellmonth'];
+																					$data_sellday = $tlvalue['data_sellday'];
+																					$data_sellyear = $tlvalue['data_sellyear'];
+																					$data_stock = $tlvalue['data_stock'];
+																					$data_dprice = $tlvalue['data_dprice'];
+																					$data_sell_price = $tlvalue['data_sell_price'];
+																					$data_quantity = $tlvalue['data_quantity'];
+																					$data_trade_info = $tlvalue['data_trade_info'];
+																					$data_avr_price = $tlvalue['data_avr_price'];
+
+																					// get prices
+																					$soldplace = $data_quantity * $data_sell_price;
+																					$baseprice = $data_quantity * $data_dprice;
+
+																					$sellfee = getfees($soldplace, 'sell');
+
+																					//profit or loss
+																					$dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
+
+																					// profperc
+																					$dtlprofperc = (abs($dprofit)/($data_quantity * $data_avr_price)) * 100;
+																					$totalprofit += $dprofit;
 																			?>
+																			<li class="<?php echo $author_posts->post_count; ?>">
+																				<div style="width:99%;">
+																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:60px"><?php echo $data_stock; ?></div>
+																					<div style="width:65px"><?php echo $data_quantity; ?></div>
+																					<div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
+																					<div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
+																					<div style="width:85px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+																					<div style="width:30px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:38px; text-align:right">
+																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
+																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+																						</a>
+																					</div>
+																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;">x</a></div>
+																				</div>
+
+																				<div class="hidethis">
+																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
+																						<div class="entr_ttle_bar">
+																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+																						</div>
+																						<div class="trdlgsbox">
+
+																							<div class="trdleft">
+																								<div class="onelnetrd"><span><strong>Strategy:</strong></span> <span><?php echo $data_trade_info[0]->strategy; ?></span></div>
+																								<div class="onelnetrd"><span><strong>Trade Plan:</strong></span> <span><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+																								<div class="onelnetrd"><span><strong>Emotion:</strong></span> <span><?php echo $data_trade_info[0]->emotion; ?></span></div>
+																								<div class="onelnetrd"><span><strong>Performance:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</span></div>
+																								<div class="onelnetrd"><span><strong>Outcome:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? 'Gain' : 'Loss'); ?></span></div>
+																							</div>
+																							<div class="trdright darkbgpadd">
+																								<div><strong>Notes:</strong></div>
+																								<div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+																							</div>
+
+																						<div class="trdclr"></div>
+																						</div>
+
+																					</div>
+																				</div>
+
+																			</li>
+																					
+																			<?php endforeach; ?>
                                                                         </ul>
                                                                     </div>
+																	<div class="pagination">
+																		<div class="pginner">
+																			<ul>
+																				<?php for ($i=1; $i <= $dpage; $i++) { ?>
+																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+																				<?php } ?>
+																			</ul>
+																		</div>
+																	</div>	
                                                                 </div>
                                                             </div>
 

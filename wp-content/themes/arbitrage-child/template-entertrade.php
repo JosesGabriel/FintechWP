@@ -419,6 +419,7 @@ a.smlbtn.green:hover {
             </div>
             
             <div class="groupinput">
+                <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
             	<input type="hidden" value="Live" name="inpt_data_status">
             	<input type="submit" class="confirmtrd green" value="Confirm Trade">
             </div>

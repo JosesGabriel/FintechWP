@@ -344,6 +344,7 @@ td.to-stock a {
 }
 .seven {
 	font-weight: 500;
+	cursor: pointer;
 }
 .side-content-inner {
 	margin-top: 10px !important;
@@ -591,7 +592,7 @@ img.arb_newpostimg {
 }
 .side-content ul li a {
 	display: block;
-	color: #ecf0f1;
+	color: #ecf0f1 !important;
 	padding: 7px 7px 7px 5px;
 	font-size: 13px;
 	font-family: Roboto, sans-serif;
@@ -1979,7 +1980,7 @@ input[type=number]::-webkit-outer-spin-button {
 	height: 35px;
 }
 .doneitem li {
-	width: 48.5%;
+	width: 48.5% !important;
 	display: inline-block;
 }
 .arb_calcbox_right input {
@@ -2005,8 +2006,8 @@ input.dpos {
 }
 .paramlist .jjaajs {
 	margin-top: 15px !important;
-	height: 100px;
-    overflow-y: scroll;
+	height: 100px !important;
+    overflow-y: scroll !important;
 }
 .doneitem li span {
 	padding-left: 17px;
@@ -2649,5 +2650,22 @@ span.menu-title-calc {
 .m-separator {
     width: 100%;
     height: 15px;
+}
+li.seven.calc-menu-var img {
+	/* width: 20px; */
+}
+li.seven.calc-menu-buysell img {
+	width: 20px;
+}
+li.seven.calc-menu-avprice img {
+	width: 22px;
+}
+li.seven.calc-menu-var span {
+	/* top: -4px;
+    position: relative; */
+}
+li.seven.calc-menu-buysell span {
+	top: -4px;
+    position: relative;
 }
 </style>

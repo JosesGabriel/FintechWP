@@ -2623,7 +2623,7 @@ i.fa.fa-search {
 .fixed-sidebar {
 	position: fixed;
 	width: 200px;
-	top: -150px;
+	top: 60px;
 }
 
 .fixed-rightsidebar {

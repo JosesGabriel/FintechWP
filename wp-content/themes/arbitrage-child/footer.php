@@ -549,6 +549,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
 				jQuery('.ads1').addClass('fixed-rightsidebar-ads');
 				jQuery('.ontofooter').addClass('fixed-rightsidebar-footer');
+				jQuery('.top-traiders').addClass('fixed-rightsidebar-footer');
 			}
 
 		}else {
@@ -556,6 +557,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 			jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
 			jQuery('.ads1').removeClass('fixed-rightsidebar-ads');
 			jQuery('.ontofooter').removeClass('fixed-rightsidebar-footer');
+			jQuery('.top-traiders').removeClass('fixed-rightsidebar-footer');
 		}
 
 	});

@@ -127,17 +127,17 @@ jQuery(document).ready(function() {
 						d = new Date();
 
 						if ( key == 'profile_photo') {
-							jQuery('.um-profile-photo-img img').attr('src', response.data.image.gcs_url + "?"+d.getTime());
+							jQuery('.um-profile-photo-img img').attr('src', response.data.image.source_url + "?"+d.getTime());
 						}
 
 						if ( key == 'cover_photo') {
-							jQuery('.um-cover-e').empty().html('<img src="' + response.data.image.gcs_url + "?"+d.getTime() + '" alt="" />');
+							jQuery('.um-cover-e').empty().html('<img src="' + response.data.image.source_url + "?"+d.getTime() + '" alt="" />');
 							if ( jQuery('.um').hasClass('um-editing') ) {
 								jQuery('.um-cover-overlay').show();
 							}
 						}
 
-						jQuery('.um-single-image-preview[data-key='+key+']').fadeIn().find('img').attr('src', response.data.image.gcs_url + "?"+d.getTime());
+						jQuery('.um-single-image-preview[data-key='+key+']').fadeIn().find('img').attr('src', response.data.image.source_url + "?"+d.getTime());
 						
 						um_remove_modal();
 						

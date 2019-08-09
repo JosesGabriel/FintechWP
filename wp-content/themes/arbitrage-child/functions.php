@@ -453,7 +453,7 @@ add_filter('um_ajax_resize_image', function ($output) {
     $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
 
     // if the response fails, use wp's upload url
-    $output['gcs_url'] = $output['image']['source_url'];
+    $output['image']['gcs_url'] = $output['image']['source_url'];
 
     if ($response !== false) {
         $output['image']['gcs_url'] = $response['file']['url'];

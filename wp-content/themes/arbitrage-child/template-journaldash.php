@@ -1109,6 +1109,8 @@ get_header( 'dashboard' );
 		text-decoration: none;
 		margin-right: 3px;
 		cursor: pointer;
+		z-index: 999;
+    	position: relative;
 	}
 	.deposit-modal-btn:hover {
 		color: #fff;

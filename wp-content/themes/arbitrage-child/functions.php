@@ -437,3 +437,35 @@ add_filter('wp_handle_upload', function ($upload) {
 
     return $upload;
 }, 90, 1);
+
+/**
+ * Hook to user meta update
+ */
+add_action('um_after_upload_db_meta', function ($user_id, $field_key) {
+    if (!in_array($field_key, ['profile_photo','cover_photo'])) {
+        return;
+    }
+
+    $filename = get_user_meta($user_id, $field_key, true);
+    $filepath = ABSPATH . '/wp-content/uploads/ultimatemember/' . $filename;
+
+    if (!$filename) {
+        return;
+    }
+
+    $response = arbitrage_api_upload_to_gcs($filepath);
+
+    if ($response !== false) {
+        $user_uuid = arbitrage_api_get_user_uuid($user_id);
+
+        $data = [
+            'id' => $user_uuid,
+        ];
+
+        $key = (explode('_', $field_key))[0] . '_image';
+        $data[$key] = $response['file']['url'];
+
+        arbitrage_api_curl_multipart("api/user/update", $data);
+    }
+
+}, 10, 2);

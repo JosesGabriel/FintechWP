@@ -4172,6 +4172,11 @@ if ($getdstocks && $getdstocks != "") {
 			});
 		});
 
+		jQuery('.chart-loader').click(function(){
+			jQuery('.chart-loader').css("display","block");
+		});
+
+
 
 		jQuery(".dwidfunds").click(function(e){
 			if ($dwidraw > 0) {

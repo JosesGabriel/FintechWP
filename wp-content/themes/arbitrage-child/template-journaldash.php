@@ -3447,12 +3447,44 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:38px; text-align:right">Notes</div>
                                                                                 </div>
                                                                             </li>
+																			<li>
+																				<?php
+																					$paginate = 2;
+																					$count = 1;
+																					$dpage = 1;
+																					$dlisttrade = [];
+																					if ( $author_posts->have_posts() ) {
+																						while ( $author_posts->have_posts() ) { $author_posts->the_post();
+																							
+																							
+
+																							// $dlisttrade[$dpage]
+																							if($count == 2){
+																								$count = 1;
+																								$dpage++;
+																							} else {
+																								$count++;
+																							}
+																							
+
+																						}
+																						wp_reset_postdata();
+																					}
+																					echo "dpage: ".$dpage;
+																				?>
+																			</li>
                                                                             <?php
 																				$totalprofit = 0;
 																				// The Loop
 																				$logcount = 1;
 																				if ( $author_posts->have_posts() ) {
 																					while ( $author_posts->have_posts() ) { $author_posts->the_post();
+																						
+																						
+
+																						
+
+																						
 
 																						$data_sellmonth = get_post_meta(get_the_ID(), 'data_sellmonth', true);
 																						$data_sellday = get_post_meta(get_the_ID(), 'data_sellday', true);

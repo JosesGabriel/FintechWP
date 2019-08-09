@@ -593,7 +593,7 @@ img.arb_newpostimg {
 .side-content ul li a {
 	display: block;
 	color: #ecf0f1 !important;
-	padding: 7px 7px 7px 5px;
+	padding: 6px 1px 6px 5px;
 	font-size: 13px;
 	font-family: Roboto, sans-serif;
 	font-weight: 500;
@@ -2668,5 +2668,9 @@ li.seven.calc-menu-var span {
 li.seven.calc-menu-buysell span {
 	top: -2px;
     position: relative;
+}
+li.five a span {
+    position: relative;
+    top: -2px;
 }
 </style>

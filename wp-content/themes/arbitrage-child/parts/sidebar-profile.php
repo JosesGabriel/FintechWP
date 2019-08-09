@@ -78,7 +78,7 @@
             <span class="menu-title-calc">Power Tools</span>
                   <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators.svg">
             <span>Buy/Sell Calculators</span></a></li>
-                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/VarCalculator.svg">
+                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think.svg">
             <span>VAR Calculator</span></a></li>
                   <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator.svg">
             <span>Average Price Calculator</span></a></li>

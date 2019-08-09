@@ -2652,7 +2652,7 @@ span.menu-title-calc {
     height: 15px;
 }
 li.seven.calc-menu-var img {
-	width: 20px;
+	/* width: 20px; */
 }
 li.seven.calc-menu-buysell img {
 	width: 20px;
@@ -2661,8 +2661,8 @@ li.seven.calc-menu-avprice img {
 	width: 22px;
 }
 li.seven.calc-menu-var span {
-	top: -4px;
-    position: relative;
+	/* top: -4px;
+    position: relative; */
 }
 li.seven.calc-menu-buysell span {
 	top: -4px;

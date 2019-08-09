@@ -3748,7 +3748,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="modal-header header-depo">
 																							<h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
 																							<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																							<span aria-hidden="true" class="x-close-depo">&times;</span>
+																							<i class="fas fa-times modal-btn-close-deposit"></i>
 																							</button>
 																						</div>
 																						<hr class="style14 style15">

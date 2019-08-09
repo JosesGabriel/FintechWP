@@ -5065,12 +5065,12 @@ $(document).ready(function(){
 	$('.confirmtrd').prop('disabled',true);
 	$('.textfield-button-buyprice').keyup(function(){
 		var valueinp = $('.textfield-button-buyprice').val();
-		console.log(valueinp);
-		// if($('.textfield-button-buyprice').val() != 0){
-		// 	$('.confirmtrd').prop('disabled', true);            
-		// }else{
-		// 	$('.confirmtrd').prop('able', false);
-		// }
+		// console.log(valueinp);
+		if($(valueinp).val() != 0){
+			$('.confirmtrd').prop('disabled', true);            
+		}else{
+			$('.confirmtrd').prop('able', false);
+		}
 	});
 });
 </script>

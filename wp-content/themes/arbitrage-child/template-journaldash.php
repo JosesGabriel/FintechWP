@@ -4131,9 +4131,9 @@ if ($getdstocks && $getdstocks != "") {
 		$('.confirmtrd.green').attr('disabled',true);
 		$('.textfield-button-buyprice').keyup(function(){
 			if($('.textfield-button-buyprice').val().length !=0)
-				$('.confirmtrd.green').attr('disabled', false);            
+				$('.confirmtrd').attr('disabled',false);            
 			else
-				$('.confirmtrd.green').attr('disabled',true);
+				$('.confirmtrd').attr('disabled',true);
 		})
 	});
 	jQuery(document).ready(function(){

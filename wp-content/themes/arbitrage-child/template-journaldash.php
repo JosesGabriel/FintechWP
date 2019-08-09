@@ -1432,8 +1432,8 @@ get_header( 'dashboard' );
 	$gerdqoute = curl_exec($curl);
 	curl_close($curl);
 	
-	$gerdqoutetwo = json_decode($gerdqoute);
-	$gerdqoute = [];
+	$gerdqoute = json_decode($gerdqoute);
+	// $gerdqoute = [];
 ?>
 <!-- BOF get the tradelogs -->
 <?php

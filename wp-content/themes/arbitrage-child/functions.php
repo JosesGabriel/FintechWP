@@ -428,9 +428,36 @@ add_filter('wp_handle_upload', function ($upload) {
 
     $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
 
+    // if the response fails, use wp's upload url
+    $upload['gcs_url'] = $upload['url'];
+
     if ($response !== false) {
         $upload['gcs_url'] = $response['file']['url'];
     }
 
     return $upload;
 }, 90, 1);
+
+/**
+ * Upload to Google Cloud Storage after resize
+ */
+add_filter('um_ajax_resize_image', function ($output) {
+    $image = $output['image']['source_path'];
+    $filename = $output['image']['filename'];
+
+    $file = new CURLFILE($image['source_path'], mime_content_type($filename), $filename);
+    $data = [
+        'file' => $file_data,
+    ];
+
+    $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
+
+    // if the response fails, use wp's upload url
+    $output['image']['gcs_url'] = $output['image']['source_url'];
+
+    if ($response !== false) {
+        $output['image']['gcs_url'] = $response['file']['url'];
+    }
+
+    return $output;
+});

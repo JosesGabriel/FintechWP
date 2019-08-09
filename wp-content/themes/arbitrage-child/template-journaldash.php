@@ -787,11 +787,11 @@ get_header( 'dashboard' );
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
-		background-color:#2c3e50;
+		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
 		padding: 20px 0 15px 20px;
-		background-color: #34495e;
+		background-color: #142b46;
 		border-radius: 4px;
 	}
 	.entr_wrapper_bot {
@@ -804,7 +804,7 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #34495e;
+		background-color: #142b46;
 		padding: 12px;
 		border-radius: 4px;
 	}
@@ -1432,12 +1432,9 @@ get_header( 'dashboard' );
 	$gerdqoute = curl_exec($curl);
 	curl_close($curl);
 	
-	$gerdqoutetwo = json_decode($gerdqoute);
-	$gerdqoute = [];
+	$gerdqoute = json_decode($gerdqoute);
+	// $gerdqoute = [];
 ?>
-<pre>
-	<?php print_r($gerdqoutetwo); ?>
-</pre>
 <!-- BOF get the tradelogs -->
 <?php
 	$author_query = array(
@@ -1671,6 +1668,9 @@ if ($getdstocks && $getdstocks != "") {
                                                         	</div>
                                                             </div>
                                                             <div class="box-portlet-content">
+															<pre>
+																<?php print_r($gerdqoute); ?>
+															</pre>
                                                                 <div class="stats-info">
                                                                     <div id="live_portfolio" class="dstatstrade overridewidth">
                                                                         <ul>
@@ -1697,7 +1697,8 @@ if ($getdstocks && $getdstocks != "") {
 															            			if ($dstocktraded && $dstocktraded != "") {
 															            				# code...
 
-															            			$dstockinfo = $gerdqoute->data->$value;
+																					$dstockinfo = $gerdqoute->data->$value;
+																					
 
 															            			$totalmarketvalue = 0;
 															            			$dtotalcosts = 0;
@@ -1740,7 +1741,7 @@ if ($getdstocks && $getdstocks != "") {
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php //echo ($dprofit < 0 ? '-' : '') ?><?php //echo number_format( $profpet, 2, '.', ',' ); ?>%</div>-->
 		                                                                                     <div style="width:11%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php echo ($dprofit < 0 ? '-' : '') ?><?php echo number_format( $profpet, 2, '.', ',' ); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
-		                                                                                        <a href="#entertrade_<?php echo $value; ?>" style="color: #27ae60; margin-right: 5px;">BUY</a>
+		                                                                                        <a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" style="color: #e64c3c;">SELL</a>
 		                                                                                        <div class="hideformodal">
 		                                                                                        	<div class="selltrade" id="selltrade_<?php echo $value; ?>">

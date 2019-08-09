@@ -416,7 +416,7 @@ a.add-btn {
 }
 .top-traiders-inner {
 	padding-top: 0px;
-	padding-left: 4px;
+	padding-left: 0px;
 }
 .dplsicon {
 	display: inline-block !important;
@@ -593,7 +593,7 @@ img.arb_newpostimg {
 .side-content ul li a {
 	display: block;
 	color: #ecf0f1 !important;
-	padding: 7px 7px 7px 5px;
+	padding: 6px 1px 6px 5px;
 	font-size: 13px;
 	font-family: Roboto, sans-serif;
 	font-weight: 500;
@@ -2656,6 +2656,7 @@ li.seven.calc-menu-var img {
 }
 li.seven.calc-menu-buysell img {
 	width: 20px;
+	height: 23px;
 }
 li.seven.calc-menu-avprice img {
 	width: 22px;
@@ -2665,7 +2666,18 @@ li.seven.calc-menu-var span {
     position: relative; */
 }
 li.seven.calc-menu-buysell span {
-	top: -4px;
+	top: -2px;
     position: relative;
+}
+li.five a span {
+    position: relative;
+    top: -2px;
+}
+.top-traiders {
+	background-color: #142c46;
+}
+.top-traiders .to-content-part {
+	min-height: 126px;
+    padding: 7px 10px !important;
 }
 </style>

@@ -59,6 +59,7 @@ $userID = $current_user->ID;
 <div class="top-traiders">
   <div class="top-traiders-inner">
 	  <div class="to-top-title">Who to Mingle</div>
+	  <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
 	  <div class="to-content-part to-back-back">
 		  <div class="content-inner-part">
 			  <?php

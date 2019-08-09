@@ -80,7 +80,7 @@
             <span>Buy/Sell Calculators</span></a></li>
                   <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think.svg">
             <span>VAR Calculator</span></a></li>
-                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator.svg">
+                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1.svg">
             <span>Average Price Calculator</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">

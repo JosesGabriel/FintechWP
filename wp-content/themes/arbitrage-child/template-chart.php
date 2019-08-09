@@ -392,13 +392,13 @@
     .groupinput.midd input {
         width:138px;
     }
-    .entr_wrapper_top {
+	.entr_wrapper_top {
         padding:20px 0 15px 20px;
-        background-color:#2c3e50;
+        background-color:#0c1f33;
     }
     .entr_wrapper_mid {
         padding: 20px 0 15px 20px;
-        background-color: #34495e;
+        background-color: #142b46;
         border-radius: 4px;
     }
     .entr_wrapper_bot {
@@ -2501,11 +2501,6 @@
 		 	
 		});
 
-
-		jQuery('.chart-loader').click(function(){
-			console.log('confirmed');
-			jQuery('.chart-loader').css("display","block");
-		});
 		
 	
 	$( ".closesidebar a" ).click(function(){
@@ -2622,13 +2617,15 @@
 
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
+		$('.chart-loader').css("display","block");
+		
 
 		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 			e.preventDefault();
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);
 			// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
 		}
-
+	
 	});
 
 	});

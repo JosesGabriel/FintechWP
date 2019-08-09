@@ -834,7 +834,9 @@
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
-			var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+            var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+
+                vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
 			var vr_noofshare = jQuery('#noofshare').val(vr_noofsharetot2);
 
@@ -844,7 +846,9 @@
 
 			var vr_risktorewardtot2 = Number(vr_upsidetot) / Number(vr_valueatrisk2);
 
-			var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+            var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+
+                vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
 
 			var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
 

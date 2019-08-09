@@ -2781,4 +2781,7 @@ li.five a span {
 .dmainform {
     margin-top: -25px;
 }
+.modal-dialog.modal-modelbox-margin {
+    transform: translate(0,32%) !important;
+}
 </style>

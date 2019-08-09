@@ -1842,15 +1842,22 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"></div>
-																	                                                <div class="groupinput midd"><label>Change</label><input type="text" name="inpt_data_change" value="<?php echo $dstockinfo->change; ?>%"></div>
-																	                                                <div class="groupinput midd"><label>Open</label><input type="text" name="inpt_data_open" value="&#8369;<?php echo number_format( $dstockinfo->open, 2, '.', ',' ); ?>"></div>
-																	                                                <div class="groupinput midd"><label>Low</label><input type="text" name="inpt_data_low" value="&#8369;<?php echo number_format( $dstockinfo->low, 2, '.', ',' ); ?>"></div>
-																	                                                <div class="groupinput midd"><label>High</label><input type="text" name="inpt_data_high" value="&#8369;<?php echo number_format( $dstockinfo->high, 2, '.', ',' ); ?>"></div>
-																	                                            </div>
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd"><label>Change</label><input type="text" name="inpt_data_change" value="<?php echo $dstockinfo->change; ?>%"></div>
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd"><label>Open</label><input type="text" name="inpt_data_open" value="&#8369;<?php echo number_format( $dstockinfo->open, 2, '.', ',' ); ?>"></div>
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd"><label>Low</label><input type="text" name="inpt_data_low" value="&#8369;<?php echo number_format( $dstockinfo->low, 2, '.', ',' ); ?>"></div>
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd"><label>High</label><input type="text" name="inpt_data_high" value="&#8369;<?php echo number_format( $dstockinfo->high, 2, '.', ',' ); ?>"></div>
+																													<i class="fa fa-lock" aria-hidden="true"></i></div>
+																												</div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd"><label>Volume</label><input type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>"></div>
-																	                                                <div class="groupinput midd"><label>Value</label><input type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>"></div>
-																	                                                <div class="groupinput midd lockedd">
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd"><label>Value</label><input type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>"></div>
+																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
+																													<div class="groupinput midd lockedd">
 																	                                                	<?php
 																	                                                    	$dboard = 0;
 																	                                                    	if ( $dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099){

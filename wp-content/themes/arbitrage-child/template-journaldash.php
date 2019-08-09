@@ -1737,7 +1737,7 @@ if ($getdstocks && $getdstocks != "") {
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php //echo ($dprofit < 0 ? '-' : '') ?><?php //echo number_format( $profpet, 2, '.', ',' ); ?>%</div>-->
 		                                                                                     <div style="width:11%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php echo ($dprofit < 0 ? '-' : '') ?><?php echo number_format( $profpet, 2, '.', ',' ); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
-		                                                                                        <a href="#entertrade_<?php echo $value; ?>" style="color: #27ae60; margin-right: 5px;">BUY</a>
+		                                                                                        <a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" style="color: #e64c3c;">SELL</a>
 		                                                                                        <div class="hideformodal">
 		                                                                                        	<div class="selltrade" id="selltrade_<?php echo $value; ?>">

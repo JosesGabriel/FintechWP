@@ -2651,8 +2651,8 @@ i.fa.fa-search {
 
 
 
-span.menu-title-calc {
-    font-size: 13px;
+.seven span.menu-title-calc {
+    font-size: 13px !important;
     font-family: 'Roboto', sans-serif;
     color: #aaa;
 }

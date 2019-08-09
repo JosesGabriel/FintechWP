@@ -563,8 +563,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 	// });
 
-
-
 	</script>
 
 <?php } ?>

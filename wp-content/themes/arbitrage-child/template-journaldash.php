@@ -4127,15 +4127,6 @@ if ($getdstocks && $getdstocks != "") {
             saveEvent();
         });
     });
-	$(document).ready(function(){
-		$('.confirmtrd.green').attr('disabled',true);
-		$('.textfield-button-buyprice').keyup(function(){
-			if($('.textfield-button-buyprice').val().length !=0)
-				$('.confirmtrd.green').attr('disabled', false);            
-			else
-				$('.confirmtrd.green').attr('disabled',true);
-		})
-	});
 	jQuery(document).ready(function(){
 		jQuery("li.dspecitem").click(function(e){
 			if (jQuery(this).hasClass("ledgeopened")) {
@@ -5068,6 +5059,20 @@ if ($getdstocks && $getdstocks != "") {
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
 
+</script>
+<script>
+$(document).ready(function(){
+	$('.confirmtrd').prop('disabled',true);
+	$('.textfield-button-buyprice').keyup(function(){
+		var valueinp = $('.textfield-button-buyprice').val();
+		console.log(valueinp);
+		// if($('.textfield-button-buyprice').val() != 0){
+		// 	$('.confirmtrd').prop('disabled', true);            
+		// }else{
+		// 	$('.confirmtrd').prop('able', false);
+		// }
+	})
+});
 </script>
 
 </div>

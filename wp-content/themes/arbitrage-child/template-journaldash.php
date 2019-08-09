@@ -3487,7 +3487,7 @@ if ($getdstocks && $getdstocks != "") {
 																						$dtlprofperc = (abs($dprofit)/($data_quantity * $data_avr_price)) * 100;
 																						$totalprofit += $dprofit;
 																						?>
-																						<li>
+																						<li class="<?php echo $author_posts->post_count; ?>">
 			                                                                            	<div style="width:99%;">
 			                                                                                	<div style="width:20px"><?php echo $logcount; ?></div>
 			                                                                                    <div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>

@@ -578,7 +578,7 @@
 		margin: 1px 0 3px;
 	}
 	.fancybox-content {
-		background: #2c3e50;
+		background: #0c1f33;
 		padding: 10px;
 	}
 	.fancybox-slide--html .fancybox-close-small {
@@ -2618,8 +2618,8 @@
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
 		$('.chart-loader').css("display","block");
+		$(this).hide();
 		
-
 		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 			e.preventDefault();
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);

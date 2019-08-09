@@ -1668,9 +1668,6 @@ if ($getdstocks && $getdstocks != "") {
                                                         	</div>
                                                             </div>
                                                             <div class="box-portlet-content">
-															<pre>
-																<?php print_r($gerdqoute); ?>
-															</pre>
                                                                 <div class="stats-info">
                                                                     <div id="live_portfolio" class="dstatstrade overridewidth">
                                                                         <ul>

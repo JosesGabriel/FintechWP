@@ -2501,10 +2501,6 @@
 		 	
 		});
 
-
-		jQuery('.chart-loader').click(function(){
-			jQuery('.chart-loader').css("display","block");
-		});
 		
 	
 	$( ".closesidebar a" ).click(function(){
@@ -2621,6 +2617,7 @@
 
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
+		$('.chart-loader').css("display","block");
 
 		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 			e.preventDefault();

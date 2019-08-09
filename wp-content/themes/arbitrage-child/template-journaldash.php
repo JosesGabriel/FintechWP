@@ -4171,15 +4171,15 @@ if ($getdstocks && $getdstocks != "") {
 
 			// console.log("here");
 		});
-		// $(document).ready(function(){
-		// 	$('.confirmtrd.green').attr('disabled',true);
-		// 	$('.textfield-button-buyprice').keyup(function(){
-		// 		if($('.textfield-button-buyprice').val().length !=0)
-		// 			$('.confirmtrd').attr('disabled',false);            
-		// 		else
-		// 			$('.confirmtrd').attr('disabled',true);
-		// 	})
-		// });
+		$(document).ready(function(){
+			$('.confirmtrd.green').attr('disabled',true);
+			$('.textfield-button-buyprice').keyup(function(){
+				if($('.textfield-button-buyprice').val().length !=0)
+					$('.confirmtrd').attr('disabled',false);            
+				else
+					$('.confirmtrd').attr('disabled',true);
+			})
+		});
 	});
     </script>
 

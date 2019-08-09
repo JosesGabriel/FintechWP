@@ -1979,7 +1979,7 @@ input[type=number]::-webkit-outer-spin-button {
 	height: 35px;
 }
 .doneitem li {
-	width: 48.5%;
+	width: 48.5% !important;
 	display: inline-block;
 }
 .arb_calcbox_right input {
@@ -2005,8 +2005,8 @@ input.dpos {
 }
 .paramlist .jjaajs {
 	margin-top: 15px !important;
-	height: 100px;
-    overflow-y: scroll;
+	height: 100px !important;
+    overflow-y: scroll !important;
 }
 .doneitem li span {
 	padding-left: 17px;

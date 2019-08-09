@@ -2644,4 +2644,8 @@ span.menu-title-calc {
     font-family: 'Roboto', sans-serif;
     color: #aaa;
 }
+.m-separator {
+    width: 100%;
+    height: 15px;
+}
 </style>

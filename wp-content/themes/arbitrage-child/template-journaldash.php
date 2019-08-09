@@ -1668,6 +1668,9 @@ if ($getdstocks && $getdstocks != "") {
                                                         	</div>
                                                             </div>
                                                             <div class="box-portlet-content">
+															<pre>
+																<?php print_r($gerdqoute); ?>
+															</pre>
                                                                 <div class="stats-info">
                                                                     <div id="live_portfolio" class="dstatstrade overridewidth">
                                                                         <ul>
@@ -1694,7 +1697,8 @@ if ($getdstocks && $getdstocks != "") {
 															            			if ($dstocktraded && $dstocktraded != "") {
 															            				# code...
 
-															            			$dstockinfo = $gerdqoute->data->$value;
+																					$dstockinfo = $gerdqoute->data->$value;
+																					
 
 															            			$totalmarketvalue = 0;
 															            			$dtotalcosts = 0;

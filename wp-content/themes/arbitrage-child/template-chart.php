@@ -2500,6 +2500,11 @@
 		 	}
 		 	
 		});
+
+
+		jQuery('.chart-loader').click(function(){
+			jQuery('.chart-loader').css("display","block");
+		});
 		
 	
 	$( ".closesidebar a" ).click(function(){

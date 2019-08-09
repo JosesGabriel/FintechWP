@@ -537,19 +537,22 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 
 	jQuery(window).scroll(function(){
+
+		jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+
 		if($(window).scrollTop() >= 150 ){
 
 			if(jQuery('.um-profile').hasClass('topbannerprofile')){
 				return;
 			}else {
-				jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+				//jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
 				jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
 				jQuery('.ads1').addClass('fixed-rightsidebar-ads');
 				jQuery('.ontofooter').addClass('fixed-rightsidebar-footer');
 			}
 
 		}else {
-			jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
+			//jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
 			jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
 			jQuery('.ads1').removeClass('fixed-rightsidebar-ads');
 			jQuery('.ontofooter').removeClass('fixed-rightsidebar-footer');

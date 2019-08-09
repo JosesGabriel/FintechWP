@@ -1181,6 +1181,10 @@ get_header( 'dashboard' );
 		padding: 5px !important;
 	}
 </style>
+
+<?php get_template_part('parts/sidebar', 'calc'); ?>
+<?php get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 <?php
 	function getfees($funmarketval, $funtype) {
 		// Commissions
@@ -1908,6 +1912,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
+																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
 																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade">
 																	                                        </div>
@@ -4169,6 +4174,11 @@ if ($getdstocks && $getdstocks != "") {
 				buttons: true
 			});
 		});
+
+		jQuery('.chart-loader').click(function(){
+			jQuery('.chart-loader').css("display","block");
+		});
+
 
 
 		jQuery(".dwidfunds").click(function(e){

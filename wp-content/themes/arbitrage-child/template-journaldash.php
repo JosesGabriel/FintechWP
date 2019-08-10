@@ -1240,10 +1240,10 @@ get_header( 'dashboard' );
 		position: relative;
 		left: 595px;
 	}
-	.entr_wrapper_top input {
+	/* .entr_wrapper_top input {
 		text-align: right;
 		padding-right: 20px;
-	}
+	} */
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>

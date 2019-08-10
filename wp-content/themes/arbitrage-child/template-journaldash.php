@@ -4218,15 +4218,15 @@ if ($getdstocks && $getdstocks != "") {
     </script>
 
 <script language="javascript">
-	$('.confirmtrd').attr('disabled',true);
+	$('.confirmtrd').prop('disabled',true);
 		$('#textfield-buyprice').keyup(function(){
 				var inputVal = document.getElementById('textfield-buyprice').value;
 				if(inputVal.length != 0){
 					console.log('1');
-					$('.confirmtrd').attr('disabled', false);            
+					$('.confirmtrd').prop('disabled', false);            
 				}else if(inputVal.length == 0) {
 					console.log('2');
-					$('.confirmtrd').attr('disabled', true);
+					$('.confirmtrd').prop('disabled', true);
 				}
 			});
 	// Chart 1 - Current Allocation

@@ -2823,4 +2823,5 @@ span.menu-title-calc {
 .modal-title-content-dev .depo-input-field {
 	padding: 8px 11px 8px 155px !important;
 }
+
 </style>

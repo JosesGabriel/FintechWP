@@ -476,6 +476,7 @@ get_header( 'dashboard' );
 		background: rgba(36, 65, 90, 0.4) !important;
 		padding: 10px 15px;
 		margin-bottom: 0;
+		text-align: center !important;
 	}
 	.dstatstrade ul li {
 		line-height: 150%;

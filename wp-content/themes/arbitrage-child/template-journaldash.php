@@ -3725,7 +3725,7 @@ if ($getdstocks && $getdstocks != "") {
 															var inputVal = jQuery(this).val().length;
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
-
+																console.log('tesssssss');
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
@@ -3733,8 +3733,8 @@ if ($getdstocks && $getdstocks != "") {
 
 														$(".confirmtrd").click(function(e){
 
-															//var inputVal = jQuery(this).val().length;
-															if($('.textfield-buyprice').val().length != 0 ){
+															var inputVal = $('.textfield-buyprice').val().length;
+															if(inputVal != 0 ){
 																console.log('test sulod');
 															}
 

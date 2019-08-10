@@ -614,6 +614,7 @@ get_header( 'dashboard' );
 
 	.dstatstrade.overridewidth ul li div {
 		width: auto;
+		text-align: right;
 	}
 
 		/* Enter Trade Form */

@@ -1054,7 +1054,7 @@ get_header( 'dashboard' );
 		margin-top: 0;
 		border-radius: 0 5px 5px 0;
 		width: 137px;
-		padding: 6px 10px 3px 0px;
+		padding: 6px 10px 3px 10px;
 		text-align: right;
 	}
 	.modal-notes-result-toleft {

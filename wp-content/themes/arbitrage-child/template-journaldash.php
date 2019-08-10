@@ -1045,18 +1045,21 @@ get_header( 'dashboard' );
 		color: #a1adb5;
 	}
 	span.modal-notes-result {
-    float: right;
-    line-height: 20px;
-    background-color: #11273e;
-    border: none;
-    color: #ecf0f1;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 0;
-    border-radius: 0 5px 5px 0;
-    width: 137px;
-    padding: 6px 10px 3px 0px;
-    text-align: right;
-}
+		float: right;
+		line-height: 20px;
+		background-color: #11273e;
+		border: none;
+		color: #ecf0f1;
+		font-family: 'Roboto', sans-serif;
+		margin-top: 0;
+		border-radius: 0 5px 5px 0;
+		width: 137px;
+		padding: 6px 10px 3px 0px;
+		text-align: right;
+	}
+	.modal-notes-result-toleft {
+		text-align: left !important;
+	}
 	.onelnetrd > span {
 		width:50%;
 	}
@@ -3605,9 +3608,9 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result"><?php echo $data_trade_info[0]->strategy; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result <?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? 'Gain' : 'Loss'); ?></span></div>
 																							</div>

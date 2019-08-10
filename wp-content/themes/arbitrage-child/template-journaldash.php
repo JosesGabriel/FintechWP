@@ -3744,7 +3744,7 @@ if ($getdstocks && $getdstocks != "") {
 
 														$(".confirmtrd").click(function(e){
 
-															console.log(inputVal2);
+															//console.log(inputVal2);
 															if(x == 1 && y == 1){
 																console.log('test sulod');
 															}

@@ -1878,7 +1878,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-button-buyprice" id="textfield-buyprice"></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" id="textfield-buyprice"></div>
 																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" id="textfield-quantity"></div>
 																	                                            </div>
 																	                                            <div class="entr_col">

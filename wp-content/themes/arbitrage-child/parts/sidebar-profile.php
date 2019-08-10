@@ -82,6 +82,8 @@
             <span>VAR Calculator</span></a></li>
                   <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1.svg">
             <span>Average Price Calculator</span></a></li>
+                  <li class="seven calc-menu-multichart"><a><img src="<?php echo get_home_url(); ?>/svg/statistics.svg">
+            <span>Multichart</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">
                       <span>Power Tools</span>

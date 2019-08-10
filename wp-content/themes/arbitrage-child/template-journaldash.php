@@ -1281,6 +1281,13 @@ get_header( 'dashboard' );
 ?>
 <!-- BOF Deposit -->
 <?php
+	if(isset($_POST['todelete'])){
+		echo "delete: ". $_POST['todelete'];
+		$post = array( 'ID' => $_POST['todelete'], 'post_status' => 'draft' );
+		wp_update_post($post);
+		wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+		exit;
+	}
 	if (isset($_POST['istype'])) {
 
 		if ($_POST['damount'] > 0) {
@@ -1480,6 +1487,7 @@ get_header( 'dashboard' );
 <?php
 	$author_query = array(
 		'posts_per_page' => '-1',
+		'post_status' => 'publish',
 		'meta_key' => 'data_userid',
 		'meta_value'  => get_current_user_id()
 	);
@@ -1653,16 +1661,16 @@ if ($getdstocks && $getdstocks != "") {
 						                    <span id="journal" class="journaltabs">
 						                        <!-- Tabs -->
 						                        <ul class="nav panel-tabs">
-						                            <li class="<?php echo (isset($_GET['pt']) ? '' : 'active'); ?>"><a href="#tab1" data-toggle="tab" class="<?php echo (isset($_GET['pt']) ? '' : 'active show'); ?>">Dashboard</a></li>
+						                            <li class="<?php echo (isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'); ?>"><a href="#tab1" data-toggle="tab" class="<?php echo (isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active show'); ?>">Dashboard</a></li>
 						                            <li class="<?php echo (isset($_GET['pt']) ? 'active' : ''); ?>"><a href="#tab2" data-toggle="tab" class="<?php echo (isset($_GET['pt']) ? 'active show' : ''); ?>">Tradelogs</a></li>
-						                            <li class=""><a href="#tab3" data-toggle="tab" class="">Ledger</a></li>
+						                            <li class="<?php echo (isset($_GET['ld']) ? 'active' : ''); ?>"><a href="#tab3" data-toggle="tab" class="<?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>">Ledger</a></li>
 						                            <!-- <li class=""><a href="#tab4" data-toggle="tab" class="">Calendar</a></li> -->
 						                        </ul>
 						                    </span>
 						                </div>
 						                <div class="panel-body">
 						                    <div class="tab-content">
-						                        <div class="tab-pane <?php echo (isset($_GET['pt']) ? '' : 'active show'); ?>" id="tab1">
+						                        <div class="tab-pane <?php echo (isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active show'); ?>" id="tab1">
 
                                                     <div class="liveportfoliobox">
                                                         <div class="box-portlet">
@@ -3556,7 +3564,7 @@ if ($getdstocks && $getdstocks != "") {
 																					$dtlprofperc = (abs($dprofit)/($data_quantity * $data_avr_price)) * 100;
 																					$totalprofit += $dprofit;
 																			?>
-																			<li class="<?php echo $author_posts->post_count; ?>">
+																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 																				<div style="width:99%;">
 																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
 																					<div style="width:60px"><?php echo $data_stock; ?></div>
@@ -3572,7 +3580,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
 																						</a>
 																					</div>
-																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;">x</a></div>
+																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">x</a></div>
 																				</div>
 
 																				<div class="hidethis">
@@ -3605,6 +3613,11 @@ if ($getdstocks && $getdstocks != "") {
 																			<?php endforeach; ?>
                                                                         </ul>
                                                                     </div>
+																	<div class="deleteform">
+																		<form class="deleteformitem" action="" method="post">
+																			<input type="hidden" value="" name="todelete" id="todelete">
+																		</form>
+																	</div>
 																	<div class="pagination">
 																		<div class="pginner">
 																			<ul>
@@ -3714,7 +3727,7 @@ if ($getdstocks && $getdstocks != "") {
 
 													// });
 						                        </script>
-						                        <div class="tab-pane" id="tab3">
+						                        <div class="tab-pane <?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>" id="tab3">
 
 						                        	<div class="ledgerbox">
                                                         <div class="box-portlet">
@@ -4171,6 +4184,32 @@ if ($getdstocks && $getdstocks != "") {
         });
     });
 	jQuery(document).ready(function(){
+
+		jQuery(".deletelog").click(function(e){
+
+			var dlogid = jQuery(this).attr('data-istl');
+			console.log(dlogid);
+
+			swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this entry!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					swal("Poof! Your imaginary file has been deleted!");
+					jQuery(this).parents(".dloglist").addClass("housed");
+					jQuery(".deleteformitem").find("#todelete").val(dlogid);
+					jQuery(".deleteformitem").submit();
+				} else {
+					// swal("Your imaginary file is safe!");
+				}
+			});
+
+
+		});
 		jQuery("li.dspecitem").click(function(e){
 			if (jQuery(this).hasClass("ledgeopened")) {
 				jQuery(this).removeClass("ledgeopened");

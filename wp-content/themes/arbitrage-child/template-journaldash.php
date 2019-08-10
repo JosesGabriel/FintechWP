@@ -5104,20 +5104,20 @@ if ($getdstocks && $getdstocks != "") {
 
 </script>
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> -->
-<script>
+<!-- <script>
 $(document).ready(function(){
-	// jQuery('.confirmtrd').prop('disabled',true);
+	$('.confirmtrd').prop('disabled',true);
 	$('#textfield-buyprice, #textfield-quantity').keyup(function(){
 		var inputVal = $('#textfield-buyprice, #textfield-quantity').value.length;
-		if(inputVal != 0){
-			$('.confirmtrd').prop('disabled', false);            
-		}else{
-			$('.confirmtrd').prop('disabled', true);
-		}
+		console.log(vals);
 	});
-	// console.log(vals);
+			// if(inputVal != 0){
+			// 	$('.confirmtrd').prop('disabled', false);            
+			// }else{
+			// 	$('.confirmtrd').prop('disabled', true);
+			// }
 });
-</script>
+</script> -->
 
 </div>
 <?php get_footer();

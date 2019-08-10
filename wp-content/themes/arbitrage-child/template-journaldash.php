@@ -3747,7 +3747,8 @@ if ($getdstocks && $getdstocks != "") {
 
 															//
 															if(x == 1 && y == 1){
-																console.log('test sulod');
+																$('.chart-loader').css("display","block");
+																$(this).hide();
 															}
 
 															

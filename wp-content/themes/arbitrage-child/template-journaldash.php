@@ -3690,8 +3690,10 @@ if ($getdstocks && $getdstocks != "") {
 		jQuery('#textfield-buyprice').keyup(function(){
 			var inputVal = jQuery(this).val().length;
 			if(inputVal != 0){
+				console.log('1');
 				$('#modal-button-confirm').prop('disabled', false);            
 			}else{
+				console.log('2');
 				$('#modal-button-confirm').prop('disabled', true);
 			}
 			// console.log(inputVal);

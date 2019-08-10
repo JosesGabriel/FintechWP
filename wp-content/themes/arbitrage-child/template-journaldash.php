@@ -3708,6 +3708,7 @@ if ($getdstocks && $getdstocks != "") {
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
+														var x = 0;
 
 														jQuery(".show-button2").click(function(e){
 															e.preventDefault();
@@ -3723,13 +3724,12 @@ if ($getdstocks && $getdstocks != "") {
 														jQuery('.textfield-buyprice').keyup(function(){
 															console.log('asdasdasd');
 															var inputVal = jQuery(this).val().length;
-															var x;
+															
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
-																 x = 0;
+																 x = 1;
 																console.log('tesssssss');
 															}else{
-																 x = 1;
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
@@ -3737,7 +3737,7 @@ if ($getdstocks && $getdstocks != "") {
 														$(".confirmtrd").click(function(e){
 
 															
-															if(x == 0 ){
+															if(x == 1 ){
 																console.log('test sulod');
 															}
 

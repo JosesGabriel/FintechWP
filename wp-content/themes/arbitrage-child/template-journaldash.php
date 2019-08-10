@@ -1233,8 +1233,8 @@ get_header( 'dashboard' );
 		border-radius: 40px;
 	}
 	.buy-order--submit {
-		padding-top: 16px;
-		padding-right: 5px;
+		position: relative;
+		left: 590px;
 	}
 	.modal-button-confirm {
 		position: relative;
@@ -1879,7 +1879,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
 																			                             </div>

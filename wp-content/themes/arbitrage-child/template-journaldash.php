@@ -3711,7 +3711,6 @@ if ($getdstocks && $getdstocks != "") {
 	}*/
 </style>
 				<script type="text/javascript">
-				alert('asdasd');
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
@@ -4011,6 +4010,10 @@ if ($getdstocks && $getdstocks != "") {
 
 
     <script type="text/javascript">
+	$( document ).ready(function() {
+		console.log( "ready!" );
+	});
+
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
         jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');

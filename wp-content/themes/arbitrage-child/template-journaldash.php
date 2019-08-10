@@ -3688,6 +3688,13 @@ if ($getdstocks && $getdstocks != "") {
 		});
 		$('#textfield-buyprice').keyup(function(){
 			var inputVal = document.getElementById('textfield-buyprice').value;
+			if(inputVal.length != 0){
+				console.log('1');
+				$('.confirmtrd').prop('disabled', false);            
+			}else{
+				console.log('2');
+				$('.confirmtrd').prop('disabled', true);
+			}
 			console.log(inputVal);
 		});
 	//  $('.confirmtrd').prop('disabled',true);

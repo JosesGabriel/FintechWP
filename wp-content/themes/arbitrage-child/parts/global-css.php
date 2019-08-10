@@ -2727,7 +2727,7 @@ li.five a span {
 	padding-bottom: 0 !important;
 }
 .title-depo-in {
-	font-weight: 500;
+    font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #d8d8d8;
     padding-bottom: 0 !important;
@@ -2735,7 +2735,7 @@ li.five a span {
     position: relative;
     display: inline-block;
     background-color: #4e6a85;
-    padding: 2px 32px 2px 10px !important;
+    padding: 7px 32px 7px 10px !important;
     border-radius: 5px 0 0 5px;
     bottom: -35px;
 }
@@ -2812,5 +2812,8 @@ span.menu-title-calc {
 }
 .table-cell-live {
 	text-align: right;
+}
+.modal-title-content-dev .depo-input-field {
+	padding: 8px 11px 8px 155px !important;
 }
 </style>

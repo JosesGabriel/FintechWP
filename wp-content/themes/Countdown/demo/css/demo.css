@@ -19,7 +19,7 @@ body {
 }
 
 @font-face {
-    font-family: "digital-7";
+    font-family: "digital-7" , sans-serif !important;
     src: url('./fonts/digital-7.ttf');
          
     font-weight: normal;
@@ -64,7 +64,7 @@ body {
 
 .text .val {
 	font-size: 150px;
-	font-family: "digital-7";
+	font-family: "digital-7", sans-serif!important;
 	color: #0084ff;
 }
 

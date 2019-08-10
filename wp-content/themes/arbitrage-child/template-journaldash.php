@@ -1982,7 +1982,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
+																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm trade">
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>
@@ -3718,7 +3718,6 @@ if ($getdstocks && $getdstocks != "") {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
-														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
 															console.lo('asdasdasd');
@@ -3728,11 +3727,7 @@ if ($getdstocks && $getdstocks != "") {
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
-														});//joses
-														jQuery("#modal-button-confirm").click(function(e){
-															console.log('test icle');
 														});
-														
 
 													});
 						                        </script>

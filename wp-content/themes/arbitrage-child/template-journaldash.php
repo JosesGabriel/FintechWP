@@ -1852,7 +1852,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
+																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade">
 																			                                </div>
 
 																			                             </div>
@@ -1956,7 +1956,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade">
+																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>

@@ -3733,7 +3733,8 @@ if ($getdstocks && $getdstocks != "") {
 
 														$(".confirmtrd").click(function(e){
 
-															if(jQuery('.textfield-buyprice').val().length != 0 ){
+															//var inputVal = jQuery(this).val().length;
+															if($('.textfield-buyprice').val().length != 0 ){
 																console.log('test sulod');
 															}
 

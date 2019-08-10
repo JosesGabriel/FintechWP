@@ -1150,27 +1150,12 @@ get_header( 'dashboard' );
 	    transition: all .3s ease-out;
 	}
 	.deposit-modal-btn {
-		font-family: 'Roboto', sans-serif;
-		font-size: 12px;
-		color: #6583a8 !important;
-		background: none;
-		border: 1px #6583a8 solid;
-		height: auto;
-		border-radius: 25px;
-		padding: 3px 10px !important;
-		font-weight: 500;
-		text-decoration: none;
-		margin-right: 3px;
 		cursor: pointer;
 		z-index: 999;
     	position: relative;
 	}
 	.deposit-modal-btn:hover {
-		color: #fff;
 		text-decoration: none;
-		background: #6583a8;
-		color: #fff !important;
-		transition: all .3s ease-out;
 	}
 	.withdraw-btn {
 	    font-family: 'Roboto', sans-serif;
@@ -1911,8 +1896,8 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice"></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity"></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -3728,6 +3713,7 @@ if ($getdstocks && $getdstocks != "") {
 														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
+															console.lo('asdasdasd');
 															var inputVal = jQuery(this).val().length;
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);            
@@ -3762,8 +3748,8 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1" style="float: right;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2" style="float: right;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show">
 																				<div class="modal-body depo-body">
@@ -4010,6 +3996,7 @@ if ($getdstocks && $getdstocks != "") {
 
 
     <script type="text/javascript">
+
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
         jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');

@@ -3671,49 +3671,64 @@ if ($getdstocks && $getdstocks != "") {
 		display: block;
 	}*/
 </style>
-						                        <script type="text/javascript">
-						                        	jQuery(document).ready(function(){
-							                        	jQuery('.add-funds-show').show();
-							                        	jQuery('.add-funds-shows').hide();
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('.add-funds-show').show();
+		jQuery('.add-funds-shows').hide();
 
-							                        	jQuery(".show-button2").click(function(e){
-															e.preventDefault();
-															jQuery('.add-funds-shows').hide();
-															jQuery('.add-funds-show').show();
-														});
-														jQuery(".show-button1").click(function(e){
-															e.preventDefault();
-															jQuery('.add-funds-show').hide();
-															jQuery('.add-funds-shows').show();
-														});
-													});
+		jQuery(".show-button2").click(function(e){
+			e.preventDefault();
+			jQuery('.add-funds-shows').hide();
+			jQuery('.add-funds-show').show();
+		});
+		jQuery(".show-button1").click(function(e){
+			e.preventDefault();
+			jQuery('.add-funds-show').hide();
+			jQuery('.add-funds-shows').show();
+		});
+		$('#textfield-buyprice').keyup(function(){
+			var inputVal = document.getElementById('textfield-buyprice').value.length;
+			console.log(inputVal);
+		});
+	//  $('.confirmtrd').prop('disabled',true);
+	// 	$('#textfield-buyprice').keyup(function(){
+	// 			var inputVal = document.getElementById('textfield-buyprice').value;
+	// 			if(inputVal.length != 0){
+	// 				console.log('1');
+	// 				$('.confirmtrd').prop('disabled', false);            
+	// 			}else if(inputVal.length == 0) {
+	// 				console.log('2');
+	// 				$('.confirmtrd').prop('disabled', true);
+	// 			}
+	// 		});
 
-													// 	var isopen1 = jQuery(".add-funds-show").hasClass("dropopen");
+	});
+	// 	var isopen1 = jQuery(".add-funds-show").hasClass("dropopen");
 
-													// 	if (isopen1) {
-													// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
+	// 	if (isopen1) {
+	// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
 
-													// 	} else {
-													// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
-													// 		jQuery(".add-funds-show").show().addClass("dropopen");
-													// 	}
+	// 	} else {
+	// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
+	// 		jQuery(".add-funds-show").show().addClass("dropopen");
+	// 	}
 
-													// });
+	// });
 
-													// jQuery(".show-button2").click(function(e){
-													// 	e.preventDefault();
-													// 	var isopen1 = jQuery(".add-funds-shows").hasClass("dropopen");
+	// jQuery(".show-button2").click(function(e){
+	// 	e.preventDefault();
+	// 	var isopen1 = jQuery(".add-funds-shows").hasClass("dropopen");
 
-													// 	if (isopen1) {
-													// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
+	// 	if (isopen1) {
+	// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
 
-													// 	} else {
-													// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
-													// 		jQuery(".add-funds-shows").show().addClass("dropopen");
-													// 	}
+	// 	} else {
+	// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
+	// 		jQuery(".add-funds-shows").show().addClass("dropopen");
+	// 	}
 
-													// });
-						                        </script>
+	// });
+</script>
 						                        <div class="tab-pane" id="tab3">
 
 						                        	<div class="ledgerbox">
@@ -4218,17 +4233,7 @@ if ($getdstocks && $getdstocks != "") {
     </script>
 
 <script language="javascript">
-	$('.confirmtrd').prop('disabled',true);
-		$('#textfield-buyprice').keyup(function(){
-				var inputVal = document.getElementById('textfield-buyprice').value;
-				if(inputVal.length != 0){
-					console.log('1');
-					$('.confirmtrd').prop('disabled', false);            
-				}else if(inputVal.length == 0) {
-					console.log('2');
-					$('.confirmtrd').prop('disabled', true);
-				}
-			});
+
 	// Chart 1 - Current Allocation
 	AmCharts.makeChart("chartdiv1",
 		{

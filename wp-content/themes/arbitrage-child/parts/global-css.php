@@ -2600,23 +2600,23 @@ i.fa.fa-search {
 	    background: none !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
-	background: #6583a8 !important;
+	/* background: #6583a8 !important;
 	color: #fff !important;
-	transition-duration: 300ms;
+	transition-duration: 300ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:active {
-	background: #8ca8cc !important;
+	/* background: #8ca8cc !important;
 	color: #fff !important;
-	transition-duration: 200ms;
+	transition-duration: 200ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
-	border-radius: 26px !important;
+	/* border-radius: 26px !important;
 	    border: 1.3px solid #6583a8 !important;
 	    padding: 0px 17px !important;
 	    font-family: 'Nunito', sans-serif;
 	    color: #6583a8 !important;
 	    background-color: none !important;
-	    background: none !important;
+	    background: none !important; */
 }
 .um-disabled {
 	opacity: 0.5 !important;
@@ -2731,10 +2731,13 @@ li.five a span {
     font-family: 'Roboto', sans-serif;
     color: #d8d8d8;
     padding-bottom: 0 !important;
-    display: inline;
-    padding-left: 12px;
-    font-size: 1em;
+    font-size: 14px;
     position: relative;
+    display: inline-block;
+    background-color: #4e6a85;
+    padding: 7px 32px 7px 10px !important;
+    border-radius: 5px 0 0 5px;
+    bottom: -35px;
 }
 .close-depo {
 	opacity: 1;
@@ -2771,15 +2774,22 @@ li.five a span {
 .depo-input-field {
     background: #0b1d33 !important;
     border: 1px solid #1e3554 !important;
-    border-radius: 25px;
+    border-radius: 5px;
     width: 100%;
     color: #d8d8d8 !important;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-    padding: 8px 11px !important;
+    padding: 8px 11px 8px 97px !important;
+}
+.dwithdrawnum.depo-input-field.sss {
+	padding: 8px 11px 8px 11px !important;
+
+}
+a.deposit-modal-btn.show-button2 {
+    margin-right: 5px;
 }
 .dmainform {
-    margin-top: -25px;
+    margin-top: -33px;
 }
 .modal-dialog.modal-modelbox-margin {
     transform: translate(0,32%) !important;
@@ -2793,5 +2803,27 @@ span.menu-title-calc {
     font-size: 13px;
     font-family: Roboto, sans-serif;
     font-weight: 500;
+}
+.table-title-avprice {
+}
+.table-title-tcost {
+}
+.table-title-profit {
+}
+.table-title-performance {
+}
+.table-title-mvalue {
+}
+.table-title-live {
+	text-align: right;
+}
+.table-cell-live {
+	text-align: right;
+}
+.modal-title-content-dev .depo-input-field {
+	padding: 8px 11px 8px 155px !important;
+}
+li.dspecitem div div {
+    text-align: right;
 }
 </style>

@@ -476,6 +476,7 @@ get_header( 'dashboard' );
 		background: rgba(36, 65, 90, 0.4) !important;
 		padding: 10px 15px;
 		margin-bottom: 0;
+		text-align: center !important;
 	}
 	.dstatstrade ul li {
 		line-height: 150%;
@@ -1067,7 +1068,8 @@ get_header( 'dashboard' );
 	    color: #e44c3c !important;
 	}
 	.dgreenpart {
-	    color: #27ae60 !important;
+		color: #27ae60 !important;
+		text-align: right;
 	}
 	.dltbutton {
 		width: auto;
@@ -1149,27 +1151,12 @@ get_header( 'dashboard' );
 	    transition: all .3s ease-out;
 	}
 	.deposit-modal-btn {
-		font-family: 'Roboto', sans-serif;
-		font-size: 12px;
-		color: #6583a8 !important;
-		background: none;
-		border: 1px #6583a8 solid;
-		height: auto;
-		border-radius: 25px;
-		padding: 3px 10px !important;
-		font-weight: 500;
-		text-decoration: none;
-		margin-right: 3px;
 		cursor: pointer;
 		z-index: 999;
     	position: relative;
 	}
 	.deposit-modal-btn:hover {
-		color: #fff;
 		text-decoration: none;
-		background: #6583a8;
-		color: #fff !important;
-		transition: all .3s ease-out;
 	}
 	.withdraw-btn {
 	    font-family: 'Roboto', sans-serif;
@@ -1244,6 +1231,14 @@ get_header( 'dashboard' );
 		color: #fff;
 		padding: 5px 9px;
 		border-radius: 40px;
+	}
+	.buy-order--submit {
+		padding-top: 16px;
+		padding-right: 5px;
+	}
+	.modal-button-confirm {
+		position: relative;
+		left: 595px;
 	}
 </style>
 
@@ -1748,16 +1743,16 @@ if ($getdstocks && $getdstocks != "") {
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:8%">Stocks</div>
-                                                                                    <div style="width:9%">Position</div>
+                                                                                    <div style="width:7%; text-align: left !important;">Stocks</div>
+                                                                                    <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
-                                                                                    <div style="width:15%">Average Price</div>
-                                                                                    <div style="width:11%">Total Cost</div>
+                                                                                    <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>
+                                                                                    <div style="width:13%" class="table-title-live table-title-tcost">Total Cost</div>
                                                                                     <!--<div style="width:11%">Market Value</div>-->
-                                                                                    <div style="width:15%">Market Value</div>
-                                                                                    <div style="width:11%">Profit</div>
+                                                                                    <div style="width:13%" class="table-title-live table-title-mvalue">Market Value</div>
+                                                                                    <div style="width:13%" class="table-title-live table-title-profit">Profit</div>
                                                                                     <!--<div style="width:9%">Performance</div>-->
-                                                                                    <div style="width:11%">Performance</div>
+                                                                                    <div style="width:11%" class="table-title-live table-title-performance">Performance</div>
                                                                                     <div style="width:112px; text-align:center;">Action</div>
                                                                                     <!--<div style="width:45px; text-align: right;">Notes</div>-->
                                                                                 </div>
@@ -1803,14 +1798,14 @@ if ($getdstocks && $getdstocks != "") {
 																	            	<li>
 		                                                                            	<div style="width:99%;">
 		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
-		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
-		                                                                                    <div style="width:9%"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
+		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
+		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>-->
-		                                                                                    <div style="width:15%">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>
-		                                                                                    <div style="width:11%">&#8369;<?php echo number_format( $totalfixmarktcost, 2, '.', ',' ); ?></div>
-		                                                                                    <div style="width:11%">&#8369;<?php echo number_format( $dselltotal, 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format( $totalfixmarktcost, 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format( $dselltotal, 2, '.', ',' ); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' ); ?></div>-->
-		                                                                                    <div style="width:15%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:13%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php //echo ($dprofit < 0 ? '-' : '') ?><?php //echo number_format( $profpet, 2, '.', ',' ); ?>%</div>-->
 		                                                                                     <div style="width:11%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php echo ($dprofit < 0 ? '-' : '') ?><?php echo number_format( $profpet, 2, '.', ',' ); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
@@ -1884,7 +1879,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
 																			                                </div>
 
 																			                             </div>
@@ -1910,8 +1905,8 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice"></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity"></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1988,7 +1983,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
+																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>
@@ -3679,40 +3674,42 @@ if ($getdstocks && $getdstocks != "") {
 													<br class="clear">
 						                        </div>
 												<style type="text/css">
-													
-													.sss {
-														padding-right: 14px !important;
-													}
-													.sss::placeholder {
-														color: #ffffff;
-														font-size: 13px;
-													}
-													.dnlabel {
-														font-size: 15px;
-														padding-left: 16px;
-														margin-bottom: 2px;
-														font-weight: 400;
-														font-family: 'Roboto', sans-serif;
-													}
-													.depo-body {
-														position: relative;
-														padding: 5px 10px;
-													}
-													.active-funds {
-														display: block !important;
-													}
-													.button-funds {
-														padding: 7px 10px 2px 10px;
-														display: block;
-													}
-													/*.dropopen {
-														display: block;
-													}*/
-												</style>
-												<script type="text/javascript">
+	
+	.sss {
+		padding-right: 14px !important;
+	}
+	.sss::placeholder {
+		color: #ffffff;
+		font-size: 13px;
+	}
+	.dnlabel {
+		font-size: 15px;
+		padding-left: 11px;
+		margin-bottom: 2px;
+		font-weight: 400;
+		font-family: 'Roboto', sans-serif;
+	}
+	.depo-body {
+		position: relative;
+		padding: 5px 10px;
+	}
+	.active-funds {
+		display: block !important;
+	}
+	.button-funds {
+		padding: 7px 10px 2px 10px;
+		display: block;
+	}
+	/*.dropopen {
+		display: block;
+	}*/
+</style>
+				<script type="text/javascript">
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
+														var x = 0;
+														var y = 0;
 
 														jQuery(".show-button2").click(function(e){
 															e.preventDefault();
@@ -3724,21 +3721,38 @@ if ($getdstocks && $getdstocks != "") {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
-														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															var inputVal = jQuery(this).val().length;
+															console.log('asdasdasd');
+															var inputVal = jQuery(this).val().length;													
+
 															if(inputVal != 0){
-																$('.confirmtrd').prop('disabled', false);            
+																$('.confirmtrd').prop('disabled', false);
+																 x = 1;
+																console.log('tesssssss');
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
-														jQuery("#modal-button-confirm").click(function(e){
-															e.preventDefault();
-															console.log('test icle');
+
+														jQuery('.textfield-quantity').keyup(function(){
+															var inputVal2 = jQuery(this).val().length;
+															console.log(inputVal2);
+															if(inputVal2 != 0){
+																y = 1
+															}
 														});
 
+														$(".confirmtrd").click(function(e){
+
+															//
+															if(x == 1 && y == 1){
+																$('.chart-loader').css("display","block");
+																$(this).hide();
+															}
+
+															
+														});
 													});
 						                        </script>
 						                        <div class="tab-pane <?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>" id="tab3">
@@ -3761,8 +3775,8 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1" style="float: right;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2" style="float: right;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show">
 																				<div class="modal-body depo-body">
@@ -3792,7 +3806,7 @@ if ($getdstocks && $getdstocks != "") {
 																									<div class="dinitem">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
-																										<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
+																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3836,7 +3850,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withraw funds">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>
@@ -4030,6 +4044,7 @@ if ($getdstocks && $getdstocks != "") {
 
 
     <script type="text/javascript">
+
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
         jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');

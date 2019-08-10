@@ -3678,38 +3678,38 @@ if ($getdstocks && $getdstocks != "") {
 													</div>
 													<br class="clear">
 						                        </div>
-<style type="text/css">
-	
-	.sss {
-		padding-right: 14px !important;
-	}
-	.sss::placeholder {
-		color: #ffffff;
-		font-size: 13px;
-	}
-	.dnlabel {
-		font-size: 15px;
-		padding-left: 16px;
-		margin-bottom: 2px;
-		font-weight: 400;
-		font-family: 'Roboto', sans-serif;
-	}
-	.depo-body {
-		position: relative;
-		padding: 5px 10px;
-	}
-	.active-funds {
-		display: block !important;
-	}
-	.button-funds {
-		padding: 7px 10px 2px 10px;
-		display: block;
-	}
-	/*.dropopen {
-		display: block;
-	}*/
-</style>
-				<script type="text/javascript">
+												<style type="text/css">
+													
+													.sss {
+														padding-right: 14px !important;
+													}
+													.sss::placeholder {
+														color: #ffffff;
+														font-size: 13px;
+													}
+													.dnlabel {
+														font-size: 15px;
+														padding-left: 16px;
+														margin-bottom: 2px;
+														font-weight: 400;
+														font-family: 'Roboto', sans-serif;
+													}
+													.depo-body {
+														position: relative;
+														padding: 5px 10px;
+													}
+													.active-funds {
+														display: block !important;
+													}
+													.button-funds {
+														padding: 7px 10px 2px 10px;
+														display: block;
+													}
+													/*.dropopen {
+														display: block;
+													}*/
+												</style>
+												<script type="text/javascript">
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
@@ -3905,7 +3905,28 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:19%">Ending Balance</div>
                                                                                 </div>
                                                                             </li>
+																			
                                                                             <?php
+																				$numofitems = 2;
+																				$ldcount = 1;
+																				$ldpages = 1;
+																				$listledger = [];
+																				foreach($dmonthdata as $ldskey => $ldsvalue){
+
+																					$listledger[$ldpages][$ldcount] = $ldsvalue;
+
+																					if($ldcount == $numofitems){
+																						$ldcount = 1;
+																						$ldpages++;
+																					} else {
+																						$ldcount++;
+																					}
+																				}
+																			?>
+																			<pre>
+																				<?php print_r($listledger); ?>
+																			</pre>
+																			<?php
                                                                             	$mstart = 0;
                                                                             	foreach ($dmonthdata as $dmdkey => $dmdvalue) { ?>
                                                                             		<li class="dspecitem">

@@ -439,7 +439,17 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	<?php get_footer('sockets') ?>
 
 	<script language="javascript">
-		
+		$('.confirmtrd').attr('disabled',true);
+		$('#textfield-buyprice').keyup(function(){
+				var inputVal = document.getElementById('textfield-buyprice').value;
+				if(inputVal.length != 0){
+					$('.confirmtrd').attr('disabled', false);            
+				}else{
+					$('.confirmtrd').attr('disabled', true);
+				}
+				console.log(inputVal);
+			});
+		});
 	<?php /*?>jQuery(document).ready(function(){
 		
 		jQuery('.left-slide-trigger').mousedown(function(){
@@ -535,18 +545,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		}
 	});
 
-
-	$('.confirmtrd').attr('disabled',true);
-	$('#textfield-buyprice').keyup(function(){
-			var inputVal = document.getElementById('textfield-buyprice').value;
-			if(inputVal.length != 0){
-				$('.confirmtrd').attr('disabled', false);            
-			}else{
-				$('.confirmtrd').attr('disabled', true);
-			}
-			console.log(inputVal);
-		});
-	});
 	// jQuery(window).scroll(function(){
 
 	// 	jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');

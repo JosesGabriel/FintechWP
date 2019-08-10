@@ -3673,7 +3673,7 @@ if ($getdstocks && $getdstocks != "") {
 													</div>
 													<br class="clear">
 						                        </div>
-<style type="text/css">
+												<style type="text/css">
 	
 	.sss {
 		padding-right: 14px !important;
@@ -3919,7 +3919,28 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:19%">Ending Balance</div>
                                                                                 </div>
                                                                             </li>
+																			
                                                                             <?php
+																				$numofitems = 2;
+																				$ldcount = 1;
+																				$ldpages = 1;
+																				$listledger = [];
+																				foreach($dmonthdata as $ldskey => $ldsvalue){
+
+																					$listledger[$ldpages][$ldcount] = $ldsvalue;
+
+																					if($ldcount == $numofitems){
+																						$ldcount = 1;
+																						$ldpages++;
+																					} else {
+																						$ldcount++;
+																					}
+																				}
+																			?>
+																			<pre>
+																				<?php print_r($listledger); ?>
+																			</pre>
+																			<?php
                                                                             	$mstart = 0;
                                                                             	foreach ($dmonthdata as $dmdkey => $dmdvalue) { ?>
                                                                             		<li class="dspecitem">

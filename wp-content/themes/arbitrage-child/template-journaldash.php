@@ -5106,7 +5106,7 @@ if ($getdstocks && $getdstocks != "") {
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> -->
 <script>
 $(document).ready(function(){
-	jQuery('.confirmtrd').prop('disabled',true);
+	$('.confirmtrd').prop('disabled',true);
 	$('#textfield-buyprice, #textfield-quantity').keyup(function(){
 		var inputVal = $('#textfield-buyprice, #textfield-quantity').value.length;
 		console.log(inputVal);

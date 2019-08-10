@@ -5,12 +5,12 @@
         <ul class="footmore">
             <li><a href="https://arbitrage.ph/privacy-policy">Privacy</a></li><span class="ddot">.</span>
             <li><a href="https://arbitrage.ph/terms-of-use">Terms</a></li><span class="ddot">.</span>
-            <li><a href="https://arbitrage.ph/guidelines">Guidelines</a></li><span class="ddot">.</span>
-            <li><a href="https://arbitrage.ph/#">Contact Us</a></li>
+            <!--<li><a href="https://arbitrage.ph/guidelines">Guidelines</a></li><span class="ddot">.</span>-->
+            <li><a href="https://arbitrage.ph/#">Contact Us sss</a></li>
             <!-- <span class="ddot">.</span> -->
             <li><a href="https://arbitrage.ph/#">About</a></li><span class="ddot">.</span>
             <li><a href="https://arbitrage.ph/#">FAQ</a></li><span class="ddot">.</span>
-            <li style="font-size: 13px;"><!--<a href="https://arbitrage.ph/#">-->Arbitrage &copy; <?php echo date("Y"); ?><!--</a>--></li>
+            <li style="font-size: 13px;"><!--<a href="https://arbitrage.ph/#">-->Arbitrage &copy; <?php echo date('Y'); ?><!--</a>--></li>
             <!-- <li><a href="#">Business</a></li> -->
 <!--             <li class="nobar">
                 <a class="moretoclick">More</a>
@@ -21,7 +21,7 @@
                 </ul>
             </li> -->
         </ul>
-        <!-- <div class="copyright">Arbitrage &copy; <?php echo date("Y"); ?></div> -->
+        <!-- <div class="copyright">Arbitrage &copy; <?php echo date('Y'); ?></div> -->
     </div>
 </div>
 

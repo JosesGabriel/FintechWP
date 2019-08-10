@@ -3737,6 +3737,7 @@ if ($getdstocks && $getdstocks != "") {
 
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
+															console.log(inputVal2);
 															if(inputVal2 != 0){
 																y = 1
 															}
@@ -3744,7 +3745,7 @@ if ($getdstocks && $getdstocks != "") {
 
 														$(".confirmtrd").click(function(e){
 
-															//console.log(inputVal2);
+															//
 															if(x == 1 && y == 1){
 																console.log('test sulod');
 															}

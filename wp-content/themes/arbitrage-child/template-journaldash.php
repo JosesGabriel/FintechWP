@@ -1240,6 +1240,21 @@ get_header( 'dashboard' );
 		position: relative;
 		left: 595px;
 	}
+
+	.dledinner ul {
+		margin: 0;
+		padding: 0;
+		text-align: right;
+	}
+	.dledinner ul li {
+
+	}
+	.dledinner ul li a {
+		border: 1px solid #5d7ca0;
+		padding: 5px 9px;
+		border-radius: 20px;
+	}
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3675,36 +3690,36 @@ if ($getdstocks && $getdstocks != "") {
 						                        </div>
 												<style type="text/css">
 	
-	.sss {
-		padding-right: 14px !important;
-	}
-	.sss::placeholder {
-		color: #ffffff;
-		font-size: 13px;
-	}
-	.dnlabel {
-		font-size: 15px;
-		padding-left: 11px;
-		margin-bottom: 2px;
-		font-weight: 400;
-		font-family: 'Roboto', sans-serif;
-	}
-	.depo-body {
-		position: relative;
-		padding: 5px 10px;
-	}
-	.active-funds {
-		display: block !important;
-	}
-	.button-funds {
-		padding: 7px 10px 2px 10px;
-		display: block;
-	}
-	/*.dropopen {
-		display: block;
-	}*/
-</style>
-				<script type="text/javascript">
+													.sss {
+														padding-right: 14px !important;
+													}
+													.sss::placeholder {
+														color: #ffffff;
+														font-size: 13px;
+													}
+													.dnlabel {
+														font-size: 15px;
+														padding-left: 11px;
+														margin-bottom: 2px;
+														font-weight: 400;
+														font-family: 'Roboto', sans-serif;
+													}
+													.depo-body {
+														position: relative;
+														padding: 5px 10px;
+													}
+													.active-funds {
+														display: block !important;
+													}
+													.button-funds {
+														padding: 7px 10px 2px 10px;
+														display: block;
+													}
+													/*.dropopen {
+														display: block;
+													}*/
+												</style>
+												<script type="text/javascript">
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
@@ -3778,7 +3793,7 @@ if ($getdstocks && $getdstocks != "") {
 																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
 																				</div>
-																				<form action="/journal" method="post" class="add-funds-show">
+																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
@@ -3795,11 +3810,12 @@ if ($getdstocks && $getdstocks != "") {
 																						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
-																						<input type="submit" name="subs" value="Deposit" class="arbitrage-button arbitrage-button--primary">
+																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>
-																				<form action="/journal" method="post" class="add-funds-shows" style="display: none;">
+																				<form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
 																						<div class="modal-body depo-body">
 																							<div class="dmainform">
 																								<div class="dinnerform">
@@ -3815,7 +3831,8 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="dividend">
-																							<input type="submit" name="subs" value="Deposit" class="arbitrage-button arbitrage-button--primary">
+																							<!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
+																							<a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
 																							<!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
@@ -3937,13 +3954,11 @@ if ($getdstocks && $getdstocks != "") {
 																					}
 																				}
 																			?>
-																			<pre>
-																				<?php print_r($listledger); ?>
-																			</pre>
 																			<?php
-                                                                            	$mstart = 0;
-                                                                            	foreach ($dmonthdata as $dmdkey => $dmdvalue) { ?>
-                                                                            		<li class="dspecitem">
+																				$cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
+																				$mstart = 0;
+																				foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) { ?>
+																					<li class="dspecitem">
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format( $mstart, 2, '.', ',' ); ?></div>
@@ -3975,12 +3990,18 @@ if ($getdstocks && $getdstocks != "") {
 		                                                                                	</div>
 		                                                                                </div>
 		                                                                            </li>
-                                                                            	<?php
-                                                                            	$mstart = $dmdvalue['isenfing'];
-                                                                            	}
-                                                                            ?>
+																				<?php }  ?>
                                                                         </ul>
                                                                     </div>
+																	<div class="dledgerpag">
+																		<div class="dledinner">
+																			<ul>
+																				<?php for ($i=1; $i <= $ldpages; $i++) { ?>
+																					<li><a href="/journal/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+																				<?php } ?>
+																			</ul>
+																		</div>
+																	</div>
                                                                 </div>
                                                             </div>
                                                             <!-- Modal -->
@@ -4257,9 +4278,34 @@ if ($getdstocks && $getdstocks != "") {
 					// swal("Your imaginary file is safe!");
 				}
 			});
-
-
 		});
+
+		jQuery(".depotbutton").click(function(e){
+			
+			var dinputinfo = jQuery(this).parents(".depotincome").find(".depo-input-field").val();
+
+			if(dinputinfo != ""){
+				jQuery(".depotincome").submit();
+				console.log("its not empty");
+			} else {
+				swal("field should not be empty");
+				console.log("it is empty");	
+			}
+		});
+
+		jQuery(".divibutton").click(function(e){
+			
+			var dinputinfo = jQuery(this).parents(".dividincome").find(".depo-input-field").val();
+
+			if(dinputinfo != ""){
+				jQuery(".dividincome").submit();
+				console.log("its not empty");
+			} else {
+				swal("field should not be empty");
+				console.log("it is empty");	
+			}
+		});
+
 		jQuery("li.dspecitem").click(function(e){
 			if (jQuery(this).hasClass("ledgeopened")) {
 				jQuery(this).removeClass("ledgeopened");

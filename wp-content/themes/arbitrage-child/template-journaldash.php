@@ -1233,12 +1233,16 @@ get_header( 'dashboard' );
 		border-radius: 40px;
 	}
 	.buy-order--submit {
-		padding-top: 16px;
-		padding-right: 5px;
+		position: relative;
+		left: 590px;
 	}
 	.modal-button-confirm {
 		position: relative;
 		left: 595px;
+	}
+	.entr_wrapper_top input {
+		text-align: right;
+		padding-right: 20px;
 	}
 </style>
 
@@ -1846,7 +1850,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                            </div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock"
-																			                                        value="<?php echo $value; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
 																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1879,7 +1883,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
 																			                             </div>

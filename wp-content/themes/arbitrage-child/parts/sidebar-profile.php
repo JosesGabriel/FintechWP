@@ -62,27 +62,27 @@
 					  <img src="<?php echo get_home_url(); ?>/svg/openleftpanel_al.svg">
 					</a>
           		  </li><?php */?>
-				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">	<span>Social Wall</span></a></li>
-                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart.svg">
+				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-1.svg">	<span>Social Wall</span></a></li>
+                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-1.svg">
 					  <span>Interactive Chart</span></a></li>
-                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1.svg">
+                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-1.svg">
 					  <span>Trading Journal</span></a></li>
-                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5.svg">
+                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-1.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1.svg">
+                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
 					  <span>Vyndue</span></a></li>
-                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
+                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-1.svg">
             <span>Games</span></a></li>
             
             <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>
-                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators.svg">
+                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-1.svg">
             <span>Buy/Sell Calculators</span></a></li>
-                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think.svg">
+                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-1.svg">
             <span>VAR Calculator</span></a></li>
-                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1.svg">
+                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-1.svg">
             <span>Average Price Calculator</span></a></li>
-                  <li class="seven calc-menu-multichart"><a><img src="<?php echo get_home_url(); ?>/svg/statistics.svg">
+                  <li class="seven calc-menu-multichart"><a><img src="<?php echo get_home_url(); ?>/svg/statistics-1.svg">
             <span>Multichart</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">

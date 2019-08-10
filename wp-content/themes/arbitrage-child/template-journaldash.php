@@ -3709,6 +3709,7 @@ if ($getdstocks && $getdstocks != "") {
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
 														var x = 0;
+														var y = 0;
 
 														jQuery(".show-button2").click(function(e){
 															e.preventDefault();
@@ -3734,11 +3735,17 @@ if ($getdstocks && $getdstocks != "") {
 															}
 														});
 
+														jQuery('.textfield-quantity').keyup(function(){
+															var inputVal2 = jQuery(this).val().length;
+															if(inputVal2 != 0){
+																y = 1
+															}
+														});
+
 														$(".confirmtrd").click(function(e){
 
-															var inputVal2 = $('.textfield-quantity').val().length
 															console.log(inputVal2);
-															if(x == 1 ){
+															if(x == 1 && y == 1){
 																console.log('test sulod');
 															}
 

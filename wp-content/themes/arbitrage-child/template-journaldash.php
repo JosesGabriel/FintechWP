@@ -1235,6 +1235,10 @@ get_header( 'dashboard' );
 		padding-top: 16px;
 		padding-right: 5px;
 	}
+	.modal-button-confirm {
+		position: relative;
+		left: 595px;
+	}
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>

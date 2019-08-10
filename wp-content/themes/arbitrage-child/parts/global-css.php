@@ -2813,7 +2813,7 @@ span.menu-title-calc {
 .table-cell-live {
 	text-align: right;
 }
-.depo-input-field .modal-title-content-dev {
+.modal-title-content-dev .depo-input-field {
 	padding: 8px 11px 8px 155px !important;
 }
 </style>

@@ -64,7 +64,7 @@
           		  </li><?php */?>
 				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">	<span>Social Walllllll</span></a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart.svg">
-					  <span>Interactive Chart iausdgasd</span></a></li>
+					  <span>Interactive Chart</span></a></li>
                   <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1.svg">
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5.svg">

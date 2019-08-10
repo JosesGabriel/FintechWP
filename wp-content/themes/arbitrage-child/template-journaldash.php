@@ -1884,7 +1884,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green" value="Confirm trade">
 																			                                </div>
 
 																			                             </div>
@@ -3733,11 +3733,11 @@ if ($getdstocks && $getdstocks != "") {
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
-														});
-														jQuery(".confirmtrd").click(function(e){
-															e.preventDefault();
+														});//joses
+														jQuery("#buy-order--submit").click(function(e){
 															console.log('test icle');
 														});
+														
 
 													});
 						                        </script>

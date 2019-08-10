@@ -439,18 +439,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	<?php get_footer('sockets') ?>
 
 	<script language="javascript">
-		$('.confirmtrd').attr('disabled',true);
-		$('#textfield-buyprice').keyup(function(){
-				var inputVal = document.getElementById('textfield-buyprice').value;
-				if(inputVal.length != 0){
-					console.log('1');
-					$('.confirmtrd').attr('disabled', false);            
-				}else{
-					console.log('1');
-					$('.confirmtrd').attr('disabled', true);
-				}
-			});
-		});
+		
 	<?php /*?>jQuery(document).ready(function(){
 		
 		jQuery('.left-slide-trigger').mousedown(function(){

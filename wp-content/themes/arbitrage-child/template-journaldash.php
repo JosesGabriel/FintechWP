@@ -4218,6 +4218,18 @@ if ($getdstocks && $getdstocks != "") {
     </script>
 
 <script language="javascript">
+	$('.confirmtrd').attr('disabled',true);
+		$('#textfield-buyprice').keyup(function(){
+				var inputVal = document.getElementById('textfield-buyprice').value;
+				if(inputVal.length != 0){
+					console.log('1');
+					$('.confirmtrd').attr('disabled', false);            
+				}else if(inputVal.length == 0) {
+					console.log('2');
+					$('.confirmtrd').attr('disabled', true);
+				}
+			});
+		});
 	// Chart 1 - Current Allocation
 	AmCharts.makeChart("chartdiv1",
 		{

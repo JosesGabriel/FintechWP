@@ -1878,8 +1878,8 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" id="textfield-buyprice"></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" id="textfield-quantity"></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice"></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity"></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -3687,7 +3687,7 @@ if ($getdstocks && $getdstocks != "") {
 			jQuery('.add-funds-shows').show();
 		});
 		$('.confirmtrd').prop('disabled',true);
-		jQuery('#textfield-buyprice').keyup(function(){
+		jQuery('.textfield-buyprice').keyup(function(){
 			var inputVal = jQuery(this).val().length;
 			if(inputVal != 0){
 				console.log('1');
@@ -3697,14 +3697,6 @@ if ($getdstocks && $getdstocks != "") {
 				$('.confirmtrd').prop('disabled', true);
 			}
 			// console.log(inputVal);
-		});
-		jQuery('#textfield-quantity').keyup(function(){
-			var inputVal = jQuery(this).val().length;
-			if(inputVal != 0){
-				$('.confirmtrd').prop('disabled', false);            
-			}else{
-				$('.confirmtrd').prop('disabled', true);
-			}
 		});
 	// 	$('#textfield-buyprice').keyup(function(){
 	// 			var inputVal = document.getElementById('textfield-buyprice').value;

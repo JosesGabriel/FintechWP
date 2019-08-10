@@ -614,7 +614,6 @@ get_header( 'dashboard' );
 
 	.dstatstrade.overridewidth ul li div {
 		width: auto;
-		text-align: right;
 	}
 
 		/* Enter Trade Form */
@@ -1744,7 +1743,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:7%">Stocks</div>
+                                                                                    <div style="width:7%; text-align: left !important;">Stocks</div>
                                                                                     <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
                                                                                     <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>

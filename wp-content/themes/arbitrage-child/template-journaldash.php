@@ -3687,7 +3687,7 @@ if ($getdstocks && $getdstocks != "") {
 			jQuery('.add-funds-shows').show();
 		});
 		$('#textfield-buyprice').keyup(function(){
-			var inputVal = document.getElementById('textfield-buyprice').value.length;
+			var inputVal = document.getElementById('textfield-buyprice').value;
 			console.log(inputVal);
 		});
 	//  $('.confirmtrd').prop('disabled',true);

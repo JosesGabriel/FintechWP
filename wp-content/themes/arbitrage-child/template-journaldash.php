@@ -4229,7 +4229,6 @@ if ($getdstocks && $getdstocks != "") {
 					$('.confirmtrd').attr('disabled', true);
 				}
 			});
-		});
 	// Chart 1 - Current Allocation
 	AmCharts.makeChart("chartdiv1",
 		{

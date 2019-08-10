@@ -5107,10 +5107,9 @@ if ($getdstocks && $getdstocks != "") {
 <script>
 $(document).ready(function(){
 	$('.confirmtrd').prop('disabled',true);
-	$('#textfield-buyprice, #textfield-quantity').keyup(function(){
-		var inputVal = $('#textfield-buyprice, #textfield-quantity').value.length;
-		console.log(inputVal);
-		if(inputVal != 0){
+	$('#textfield-buyprice').keyup(function(){
+		var inputVal = document.getElementById('textfield-buyprice').value;
+		if(inputVal.length != 0){
 			$('.confirmtrd').prop('disabled', false);            
 		}else{
 			$('.confirmtrd').prop('disabled', true);

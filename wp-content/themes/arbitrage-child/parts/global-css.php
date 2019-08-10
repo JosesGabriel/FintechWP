@@ -2600,23 +2600,23 @@ i.fa.fa-search {
 	    background: none !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
-	background: #6583a8 !important;
+	/* background: #6583a8 !important;
 	color: #fff !important;
-	transition-duration: 300ms;
+	transition-duration: 300ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:active {
-	background: #8ca8cc !important;
+	/* background: #8ca8cc !important;
 	color: #fff !important;
-	transition-duration: 200ms;
+	transition-duration: 200ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
-	border-radius: 26px !important;
+	/* border-radius: 26px !important;
 	    border: 1.3px solid #6583a8 !important;
 	    padding: 0px 17px !important;
 	    font-family: 'Nunito', sans-serif;
 	    color: #6583a8 !important;
 	    background-color: none !important;
-	    background: none !important;
+	    background: none !important; */
 }
 .um-disabled {
 	opacity: 0.5 !important;

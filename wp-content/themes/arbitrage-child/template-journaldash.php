@@ -3686,16 +3686,16 @@ if ($getdstocks && $getdstocks != "") {
 			jQuery('.add-funds-show').hide();
 			jQuery('.add-funds-shows').show();
 		});
+		$('.confirmtrd').prop('disabled',true);
 		jQuery('#textfield-buyprice').keyup(function(){
-			var inputVal = jQuery(this).val();
-			if(inputVal.length != 0){
+			var inputVal = jQuery(this).val().length;
+			if(inputVal != 0){
 				$('#modal-button-confirm').prop('disabled', false);            
 			}else{
 				$('#modal-button-confirm').prop('disabled', true);
 			}
 			// console.log(inputVal);
 		});
-	//  $('.confirmtrd').prop('disabled',true);
 	// 	$('#textfield-buyprice').keyup(function(){
 	// 			var inputVal = document.getElementById('textfield-buyprice').value;
 	// 			if(inputVal.length != 0){

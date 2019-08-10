@@ -1067,7 +1067,8 @@ get_header( 'dashboard' );
 	    color: #e44c3c !important;
 	}
 	.dgreenpart {
-	    color: #27ae60 !important;
+		color: #27ae60 !important;
+		text-align: right;
 	}
 	.dltbutton {
 		width: auto;
@@ -1743,13 +1744,13 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:8%">Stocks</div>
                                                                                     <div style="width:9%">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
-                                                                                    <div style="width:15%">Average Price</div>
-                                                                                    <div style="width:11%">Total Cost</div>
+                                                                                    <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>
+                                                                                    <div style="width:11%" class="table-title-live table-title-tcost">Total Cost</div>
                                                                                     <!--<div style="width:11%">Market Value</div>-->
-                                                                                    <div style="width:15%">Market Value</div>
-                                                                                    <div style="width:11%">Profit</div>
+                                                                                    <div style="width:11%" class="table-title-live table-title-mvalue">Market Value</div>
+                                                                                    <div style="width:15%" class="table-title-live table-title-profit">Profit</div>
                                                                                     <!--<div style="width:9%">Performance</div>-->
-                                                                                    <div style="width:11%">Performance</div>
+                                                                                    <div style="width:11%" class="table-title-live table-title-performance">Performance</div>
                                                                                     <div style="width:112px; text-align:center;">Action</div>
                                                                                     <!--<div style="width:45px; text-align: right;">Notes</div>-->
                                                                                 </div>
@@ -1796,11 +1797,11 @@ if ($getdstocks && $getdstocks != "") {
 		                                                                            	<div style="width:99%;">
 		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
 		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
-		                                                                                    <div style="width:9%"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
+		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>-->
-		                                                                                    <div style="width:15%">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>
-		                                                                                    <div style="width:11%">&#8369;<?php echo number_format( $totalfixmarktcost, 2, '.', ',' ); ?></div>
-		                                                                                    <div style="width:11%">&#8369;<?php echo number_format( $dselltotal, 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:11%" class="table-cell-live">&#8369;<?php echo number_format( $totalfixmarktcost, 2, '.', ',' ); ?></div>
+		                                                                                    <div style="width:11%" class="table-cell-live">&#8369;<?php echo number_format( $dselltotal, 2, '.', ',' ); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' ); ?></div>-->
 		                                                                                    <div style="width:15%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php //echo ($dprofit < 0 ? '-' : '') ?><?php //echo number_format( $profpet, 2, '.', ',' ); ?>%</div>-->

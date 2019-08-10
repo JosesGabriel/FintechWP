@@ -2794,4 +2794,20 @@ span.menu-title-calc {
     font-family: Roboto, sans-serif;
     font-weight: 500;
 }
+.table-title-avprice {
+}
+.table-title-tcost {
+}
+.table-title-profit {
+}
+.table-title-performance {
+}
+.table-title-mvalue {
+}
+.table-title-live {
+	text-align: right;
+}
+.table-cell-live {
+	text-align: right;
+}
 </style>

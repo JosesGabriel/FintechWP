@@ -7,8 +7,8 @@
             <li><a href="https://arbitrage.ph/terms-of-use">Terms of Use</a></li><span class="ddot">.</span>
             <!--<li><a href="https://arbitrage.ph/guidelines">Guidelines</a></li><span class="ddot">.</span>-->
             <li><a href="https://arbitrage.ph/#">Contact Us</a></li>
-            <!-- <span class="ddot">.</span> -->
-            <li><a href="https://arbitrage.ph/about-us">About Us</a></li><span class="ddot">.</span>
+            <!-- <span class="ddot">.</span>-->
+            <li><a href="https://arbitrage.ph/about">About</a></li><span class="ddot">.</span>
             <li><a href="https://arbitrage.ph/#">FAQ</a></li><span class="ddot">.</span>
             <li style="font-size: 13px;"><!--<a href="https://arbitrage.ph/#">-->Arbitrage &copy; <?php echo date('Y'); ?><!--</a>--></li>
             <!-- <li><a href="#">Business</a></li> -->

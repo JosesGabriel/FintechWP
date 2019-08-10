@@ -20,8 +20,8 @@ body {
 
 @font-face {
     font-family: 'digital-7regular';
-    src: url("../fonts/digital-7.ttf") format('woff2'),
-         url('https://arbitrage.ph/wp-content/themes/Countdown/fonts/digital-7-webfont.woff') format('woff');
+    src: url("./fonts/digital-7.ttf");
+         
     font-weight: normal;
     font-style: normal;
 

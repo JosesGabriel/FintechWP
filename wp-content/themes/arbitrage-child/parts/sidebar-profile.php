@@ -69,7 +69,7 @@
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo.svg">
+                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1.svg">
 					  <span>Vyndue Messenger</span></a></li>
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
             <span>Games</span></a></li>

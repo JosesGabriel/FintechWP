@@ -1240,6 +1240,10 @@ get_header( 'dashboard' );
 		position: relative;
 		left: 595px;
 	}
+	.entr_wrapper_top input {
+		text-align: right;
+		padding-right: 20px;
+	}
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1846,7 +1850,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                            </div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock"
-																			                                        value="<?php echo $value; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
 																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>

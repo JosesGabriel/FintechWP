@@ -1471,7 +1471,7 @@
                                                               <input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
                                                             </div>
                                                             <div class="groupinput midd lockedd"><label>Stock</label>
-                                                            <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px;" value="{{stock_details[stock.symbol].symbol}}" readonly>
+                                                            <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
                                                             <i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price" name="inpt_data_price"></div>

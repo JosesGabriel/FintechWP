@@ -1233,15 +1233,13 @@ get_header( 'dashboard' );
 		border-radius: 40px;
 	}
 	.buy-order--submit {
-		padding-top: 16px;
-		padding-right: 5px;
+		position: relative;
+		left: 590px;
 	}
 	.modal-button-confirm {
 		position: relative;
 		left: 595px;
-	}
-
-	.dledinner ul {
+	}.dledinner ul {
 		margin: 0;
 		padding: 0;
 		text-align: right;
@@ -1254,7 +1252,6 @@ get_header( 'dashboard' );
 		padding: 5px 9px;
 		border-radius: 20px;
 	}
-
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1861,7 +1858,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                            </div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock"
-																			                                        value="<?php echo $value; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
 																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1894,7 +1891,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
 																			                             </div>
@@ -1996,7 +1993,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
+																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>

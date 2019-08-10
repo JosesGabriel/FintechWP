@@ -2786,5 +2786,6 @@ li.five a span {
 }
 .stock-label {
 	color: #01afc8 !important;
+	font-weight: 600;
 }
 </style>

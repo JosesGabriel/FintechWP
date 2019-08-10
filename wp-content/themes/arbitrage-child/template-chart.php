@@ -1188,7 +1188,7 @@
 	}
 	.entr_wrapper_top input {
 		text-align: right;
-		padding-right: 25px;
+		padding-right: 25px !important;
 	}
     
     </style>

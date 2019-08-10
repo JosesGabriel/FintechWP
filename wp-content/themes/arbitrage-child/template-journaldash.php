@@ -797,7 +797,7 @@ get_header( 'dashboard' );
 	}
 	.entr_ttle_bar {
 		background-color: #142b46;
-		padding: 12px;
+		padding: 0 13px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -806,10 +806,11 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 14px;
+		font-size: 17px;
+		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
-		font-weight:700 !important;
+		font-weight: 700 !important;
 		vertical-align: middle;
 	}
 	.entr_successmsg {
@@ -841,10 +842,12 @@ get_header( 'dashboard' );
 	}
 	span.datestamp_header {
 		color: #a1adb5;
-		display: inline-block;
+		display: block;
 		vertical-align: middle;
-		margin: 0 0 0px 10px;
+		margin: 0;
+		font-size: 12px;
 	}
+
 	.fctnlhdn {
 		visibility:hidden;
 		opacity:0;
@@ -986,7 +989,7 @@ get_header( 'dashboard' );
 		padding:10px;
 	}
 	.trdleft {
-		width:50%;
+		width:100%;
 		float:left;
 	}
 	.trdright {
@@ -1002,7 +1005,7 @@ get_header( 'dashboard' );
 		border-radius: 6px;
 		width: 100%;
 		max-height: 230px;
-    	overflow: auto;}
+		overflow: auto;
 	}
 	.darkbgpadd::-webkit-scrollbar-track
 	{
@@ -1026,17 +1029,36 @@ get_header( 'dashboard' );
 	}
 	.onelnetrd {
 		line-height: 25px;
+		background: #11273e;
+		margin: 0 0 9px 0;
+		border-radius: 6px;
 	}
 	.modal-notes-ftitle {
-		display: block;
-		line-height: 1.5;
-		padding: 0 0 0 1px;
+		display: inline-block;
+		line-height: 30px;
+		background-color: rgba(78, 106, 133, 0.47843137254901963);
+		padding: 0 0 0 10px;
+		border-radius: 5px 0 0 5px;
 	}
-	.modal-notes-result {
-		padding-left: 10px;
+
+	.modal-notes-ftitle strong{
+		color: #a1adb5;
 	}
+	span.modal-notes-result {
+    float: right;
+    line-height: 20px;
+    background-color: #11273e;
+    border: none;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0;
+    border-radius: 0 5px 5px 0;
+    width: 137px;
+    padding: 6px 10px 3px 0px;
+    text-align: right;
+}
 	.onelnetrd > span {
-		width:105px;
+		width:50%;
 	}
 	.dredpart {
 	    color: #e44c3c !important;
@@ -3579,6 +3601,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
 																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">

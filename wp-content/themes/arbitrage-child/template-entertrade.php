@@ -357,7 +357,7 @@ a.smlbtn.green:hover {
                         <input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
                         </div>
                     
-                    <div class="groupinput midd"><label>Stock</label><input type="text" name="inpt_data_stock"></div>
+                    <div class="groupinput midd"><label>Stock</label><input type="text" name="inpt_data_stock" style="text-align: left;"></div>
                     <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price"></div>
                     <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty"></div>
                 </div>

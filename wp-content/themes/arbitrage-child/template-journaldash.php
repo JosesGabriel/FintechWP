@@ -1795,7 +1795,7 @@ if ($getdstocks && $getdstocks != "") {
 																	            	<li>
 		                                                                            	<div style="width:99%;">
 		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
-		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
+		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>-->
 		                                                                                    <div style="width:15%">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>

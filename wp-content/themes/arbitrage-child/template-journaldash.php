@@ -3690,13 +3690,10 @@ if ($getdstocks && $getdstocks != "") {
 		jQuery('.textfield-buyprice').keyup(function(){
 			var inputVal = jQuery(this).val().length;
 			if(inputVal != 0){
-				console.log('1');
 				$('.confirmtrd').prop('disabled', false);            
 			}else{
-				console.log('2');
 				$('.confirmtrd').prop('disabled', true);
 			}
-			// console.log(inputVal);
 		});
 	// 	$('#textfield-buyprice').keyup(function(){
 	// 			var inputVal = document.getElementById('textfield-buyprice').value;

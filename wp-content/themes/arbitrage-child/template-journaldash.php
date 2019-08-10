@@ -3713,6 +3713,7 @@ if ($getdstocks && $getdstocks != "") {
 														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
+															console.lo('asdasdasd');
 															var inputVal = jQuery(this).val().length;
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);            
@@ -3995,6 +3996,7 @@ if ($getdstocks && $getdstocks != "") {
 
 
     <script type="text/javascript">
+
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
         jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');

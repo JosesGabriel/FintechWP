@@ -1186,6 +1186,10 @@
 	    font-family: 'Roboto', sans-serif;
 	    font-size: 12px;
 	}
+	.entr_wrapper_top input {
+		text-align: right;
+		padding-right: 25px;
+	}
     
     </style>
 	<script language="javascript">

@@ -2727,14 +2727,17 @@ li.five a span {
 	padding-bottom: 0 !important;
 }
 .title-depo-in {
-    font-weight: 500;
+	font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: #d8d8d8;
     padding-bottom: 0 !important;
-    display: inline;
-    padding-left: 12px;
-    font-size: 1em;
+    font-size: 14px;
     position: relative;
+    display: inline-block;
+    background-color: #4e6a85;
+    padding: 2px 32px 2px 10px !important;
+    border-radius: 5px 0 0 5px;
+    bottom: -35px;
 }
 .close-depo {
 	opacity: 1;
@@ -2771,15 +2774,15 @@ li.five a span {
 .depo-input-field {
     background: #0b1d33 !important;
     border: 1px solid #1e3554 !important;
-    border-radius: 25px;
+    border-radius: 5px;
     width: 100%;
     color: #d8d8d8 !important;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-    padding: 8px 11px !important;
+    padding: 8px 11px 8px 97px !important;
 }
 .dmainform {
-    margin-top: -25px;
+    margin-top: -33px;
 }
 .modal-dialog.modal-modelbox-margin {
     transform: translate(0,32%) !important;

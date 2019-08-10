@@ -1150,27 +1150,12 @@ get_header( 'dashboard' );
 	    transition: all .3s ease-out;
 	}
 	.deposit-modal-btn {
-		font-family: 'Roboto', sans-serif;
-		font-size: 12px;
-		color: #6583a8 !important;
-		background: none;
-		border: 1px #6583a8 solid;
-		height: auto;
-		border-radius: 25px;
-		padding: 3px 10px !important;
-		font-weight: 500;
-		text-decoration: none;
-		margin-right: 3px;
 		cursor: pointer;
 		z-index: 999;
     	position: relative;
 	}
 	.deposit-modal-btn:hover {
-		color: #fff;
 		text-decoration: none;
-		background: #6583a8;
-		color: #fff !important;
-		transition: all .3s ease-out;
 	}
 	.withdraw-btn {
 	    font-family: 'Roboto', sans-serif;
@@ -3762,8 +3747,8 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1" style="float: right;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2" style="float: right;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show">
 																				<div class="modal-body depo-body">

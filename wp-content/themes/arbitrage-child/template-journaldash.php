@@ -3711,6 +3711,7 @@ if ($getdstocks && $getdstocks != "") {
 	}*/
 </style>
 				<script type="text/javascript">
+				alert('asdasd');
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();

@@ -536,7 +536,17 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	});
 
 
-
+	$('.confirmtrd').prop('disabled',true);
+		$('#textfield-buyprice').keyup(function(){
+			var inputVal = document.getElementById('textfield-buyprice').value;
+			if(inputVal.length != 0){
+				$('.confirmtrd').prop('disabled', false);            
+			}else{
+				$('.confirmtrd').prop('disabled', true);
+			}
+			console.log(inputVal);
+		});
+	});
 	// jQuery(window).scroll(function(){
 
 	// 	jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');

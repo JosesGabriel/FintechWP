@@ -5103,20 +5103,5 @@ if ($getdstocks && $getdstocks != "") {
 	});
 
 </script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-	$('.confirmtrd').prop('disabled',true);
-	$('#textfield-buyprice').keyup(function(){
-		var inputVal = document.getElementById('textfield-buyprice').value;
-		if(inputVal.length != 0){
-			$('.confirmtrd').prop('disabled', false);            
-		}else{
-			$('.confirmtrd').prop('disabled', true);
-		}
-	});
-});
-</script>
-
 </div>
 <?php get_footer();

@@ -317,11 +317,12 @@
     }
     .confirmtrd,
     input[type="submit"].confirmtrd {
+		position: relative;
+		left: 535px;
 		border: 0;
 		line-height: 26px;
 		height: 32px;
 		font-weight: 300;
-		text-transform: uppercase;
 		font-size: 14px;
 		padding: 0 18px;
 		border-radius: 50px;

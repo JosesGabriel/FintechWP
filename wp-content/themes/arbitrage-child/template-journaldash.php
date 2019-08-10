@@ -476,6 +476,7 @@ get_header( 'dashboard' );
 		background: rgba(36, 65, 90, 0.4) !important;
 		padding: 10px 15px;
 		margin-bottom: 0;
+		text-align: center !important;
 	}
 	.dstatstrade ul li {
 		line-height: 150%;
@@ -1742,7 +1743,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:7%">Stocks</div>
+                                                                                    <div style="width:7%; text-align: left !important;">Stocks</div>
                                                                                     <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
                                                                                     <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>
@@ -1982,7 +1983,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
+																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>
@@ -3718,7 +3719,6 @@ if ($getdstocks && $getdstocks != "") {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
-														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
 															console.log('asdasdasd');
@@ -3728,9 +3728,6 @@ if ($getdstocks && $getdstocks != "") {
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
-														});//joses
-														jQuery("#modal-button-confirm").click(function(e){
-															console.log('test icle');
 														});
 
 														$(".confirmtrd").click(function(e){

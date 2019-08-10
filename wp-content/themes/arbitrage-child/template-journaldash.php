@@ -3734,7 +3734,7 @@ if ($getdstocks && $getdstocks != "") {
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
-														jQuery("#modal-button-confirm").click(function(e){
+														jQuery(".confirmtrd").click(function(e){
 															e.preventDefault();
 															console.log('test icle');
 														});

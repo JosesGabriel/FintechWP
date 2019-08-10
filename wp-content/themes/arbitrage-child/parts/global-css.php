@@ -2781,6 +2781,13 @@ li.five a span {
     font-family: 'Roboto', sans-serif;
     padding: 8px 11px 8px 97px !important;
 }
+.dwithdrawnum.depo-input-field.sss {
+	padding: 8px 11px 8px 11px !important;
+
+}
+a.deposit-modal-btn.show-button2 {
+    margin-right: 5px;
+}
 .dmainform {
     margin-top: -33px;
 }

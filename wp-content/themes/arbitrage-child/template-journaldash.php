@@ -1235,6 +1235,10 @@ get_header( 'dashboard' );
 		padding-top: 16px;
 		padding-right: 5px;
 	}
+	.modal-button-confirm {
+		position: relative;
+		left: 595px;
+	}
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3679,7 +3683,7 @@ if ($getdstocks && $getdstocks != "") {
 	}
 	.dnlabel {
 		font-size: 15px;
-		padding-left: 16px;
+		padding-left: 11px;
 		margin-bottom: 2px;
 		font-weight: 400;
 		font-family: 'Roboto', sans-serif;
@@ -3827,7 +3831,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withraw funds">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>

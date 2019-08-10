@@ -797,7 +797,7 @@ get_header( 'dashboard' );
 	}
 	.entr_ttle_bar {
 		background-color: #142b46;
-		padding: 12px;
+		padding: 0 13px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -806,10 +806,11 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 14px;
+		font-size: 17px;
+		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
-		font-weight:700 !important;
+		font-weight: 700 !important;
 		vertical-align: middle;
 	}
 	.entr_successmsg {
@@ -841,10 +842,12 @@ get_header( 'dashboard' );
 	}
 	span.datestamp_header {
 		color: #a1adb5;
-		display: inline-block;
+		display: block;
 		vertical-align: middle;
-		margin: 0 0 0px 10px;
+		margin: 0;
+		font-size: 12px;
 	}
+
 	.fctnlhdn {
 		visibility:hidden;
 		opacity:0;
@@ -984,10 +987,9 @@ get_header( 'dashboard' );
 	.trdlgsbox {
 		color:#FFFFFF;
 		padding:10px;
-		display: flex;
 	}
 	.trdleft {
-		width:50%;
+		width:100%;
 		float:left;
 	}
 	.trdright {
@@ -1001,9 +1003,9 @@ get_header( 'dashboard' );
 		background-color: #11273e;
 		padding: 11px 12px;
 		border-radius: 6px;
-		width: 50%;
+		width: 100%;
 		max-height: 230px;
-    	overflow: auto;}
+		overflow: auto;
 	}
 	.darkbgpadd::-webkit-scrollbar-track
 	{
@@ -1027,17 +1029,39 @@ get_header( 'dashboard' );
 	}
 	.onelnetrd {
 		line-height: 25px;
+		background: #11273e;
+		margin: 0 0 9px 0;
+		border-radius: 6px;
 	}
-	.onelnetrd span:first-child {
-		display: block;
-		line-height: 1.5;
-		padding: 0 0 0 1px;
+	.modal-notes-ftitle {
+		display: inline-block;
+		line-height: 30px;
+		background-color: rgba(78, 106, 133, 0.47843137254901963);
+		padding: 0 0 0 10px;
+		border-radius: 5px 0 0 5px;
 	}
-	.onelnetrd span:nth-child(2) {
-		padding-left: 10px;
+
+	.modal-notes-ftitle strong{
+		color: #a1adb5;
+	}
+	span.modal-notes-result {
+		float: right;
+		line-height: 20px;
+		background-color: #11273e;
+		border: none;
+		color: #ecf0f1;
+		font-family: 'Roboto', sans-serif;
+		margin-top: 0;
+		border-radius: 0 5px 5px 0;
+		width: 137px;
+		padding: 6px 10px 3px 10px;
+		text-align: right;
+	}
+	.modal-notes-result-toleft {
+		text-align: left !important;
 	}
 	.onelnetrd > span {
-		width:105px;
+		width:50%;
 	}
 	.dredpart {
 	    color: #e44c3c !important;
@@ -1779,7 +1803,7 @@ if ($getdstocks && $getdstocks != "") {
 																	            	<li>
 		                                                                            	<div style="width:99%;">
 		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
-		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
+		                                                                                    <div style="width:8%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ',' ); ?></div>
 		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>-->
 		                                                                                    <div style="width:15%">&#8369;<?php echo number_format( $dstocktraded['aveprice'], 2, '.', ',' ); ?></div>
@@ -1886,8 +1910,8 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-button-buyprice"></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" ></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice"></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity"></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format( $dstockinfo->last, 2, '.', ',' ); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1964,7 +1988,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade">
+																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>
@@ -3588,14 +3612,15 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
 																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">
-																								<div class="onelnetrd"><span><strong>Strategy:</strong></span> <span><?php echo $data_trade_info[0]->strategy; ?></span></div>
-																								<div class="onelnetrd"><span><strong>Trade Plan:</strong></span> <span><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
-																								<div class="onelnetrd"><span><strong>Emotion:</strong></span> <span><?php echo $data_trade_info[0]->emotion; ?></span></div>
-																								<div class="onelnetrd"><span><strong>Performance:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</span></div>
-																								<div class="onelnetrd"><span><strong>Outcome:</strong></span> <span class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? 'Gain' : 'Loss'); ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result <?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? 'Gain' : 'Loss'); ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>
@@ -3684,12 +3709,12 @@ if ($getdstocks && $getdstocks != "") {
 		display: block;
 	}*/
 </style>
-						                        <script type="text/javascript">
+				<script type="text/javascript">
 						                        	jQuery(document).ready(function(){
-							                        	jQuery('.add-funds-show').show();
-							                        	jQuery('.add-funds-shows').hide();
+														jQuery('.add-funds-show').show();
+														jQuery('.add-funds-shows').hide();
 
-							                        	jQuery(".show-button2").click(function(e){
+														jQuery(".show-button2").click(function(e){
 															e.preventDefault();
 															jQuery('.add-funds-shows').hide();
 															jQuery('.add-funds-show').show();
@@ -3699,33 +3724,22 @@ if ($getdstocks && $getdstocks != "") {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
+														$('.confirmtrd').prop('disabled',true);
+														// jQuery('td[name=tcol1]')
+														jQuery('.textfield-buyprice').keyup(function(){
+															var inputVal = jQuery(this).val().length;
+															if(inputVal != 0){
+																$('.confirmtrd').prop('disabled', false);            
+															}else{
+																$('.confirmtrd').prop('disabled', true);
+															}
+														});
+														jQuery("#modal-button-confirm").click(function(e){
+															e.preventDefault();
+															console.log('test icle');
+														});
+
 													});
-
-													// 	var isopen1 = jQuery(".add-funds-show").hasClass("dropopen");
-
-													// 	if (isopen1) {
-													// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
-
-													// 	} else {
-													// 		jQuery(".add-funds-shows").hide().removeClass("dropopen");
-													// 		jQuery(".add-funds-show").show().addClass("dropopen");
-													// 	}
-
-													// });
-
-													// jQuery(".show-button2").click(function(e){
-													// 	e.preventDefault();
-													// 	var isopen1 = jQuery(".add-funds-shows").hasClass("dropopen");
-
-													// 	if (isopen1) {
-													// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
-
-													// 	} else {
-													// 		jQuery(".add-funds-show").hide().removeClass("dropopen");
-													// 		jQuery(".add-funds-shows").show().addClass("dropopen");
-													// 	}
-
-													// });
 						                        </script>
 						                        <div class="tab-pane <?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>" id="tab3">
 
@@ -4257,6 +4271,7 @@ if ($getdstocks && $getdstocks != "") {
     </script>
 
 <script language="javascript">
+
 	// Chart 1 - Current Allocation
 	AmCharts.makeChart("chartdiv1",
 		{
@@ -5142,18 +5157,5 @@ if ($getdstocks && $getdstocks != "") {
 	});
 
 </script>
-<!-- <script>
-$(document).ready(function(){
-	$('.confirmtrd').prop('disabled',true);
-	$('.textfield-button-buyprice').keyup(function(){
-		if($('.textfield-button-buyprice').val().length != 0){
-			$('.confirmtrd').prop('disabled', true);            
-		}else{
-			$('.confirmtrd').prop('able', false);
-		}
-	});
-});
-</script> -->
-
 </div>
 <?php get_footer();

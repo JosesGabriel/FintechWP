@@ -2784,4 +2784,14 @@ li.five a span {
 .modal-dialog.modal-modelbox-margin {
     transform: translate(0,32%) !important;
 }
+.stock-label {
+	color: #01afc8 !important;
+	font-weight: 600;
+}
+span.menu-title-calc {
+    color: #aaa;
+    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+}
 </style>

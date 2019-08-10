@@ -3687,7 +3687,7 @@ if ($getdstocks && $getdstocks != "") {
 			jQuery('.add-funds-shows').show();
 		});
 		$('.confirmtrd').prop('disabled',true);
-		jQuery('#textfield-buyprice').keyup(function(){
+		jQuery('#textfield-buyprice, #textfield-quantity').keyup(function(){
 			var inputVal = jQuery(this).val().length;
 			if(inputVal != 0){
 				console.log('1');

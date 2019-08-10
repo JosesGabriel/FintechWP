@@ -1750,7 +1750,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:8%">Stocks</div>
-                                                                                    <div style="width:9%">Position</div>
+                                                                                    <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
                                                                                     <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>
                                                                                     <div style="width:11%" class="table-title-live table-title-tcost">Total Cost</div>

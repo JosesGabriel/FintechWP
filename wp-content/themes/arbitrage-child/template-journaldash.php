@@ -3724,14 +3724,20 @@ if ($getdstocks && $getdstocks != "") {
 															console.log('asdasdasd');
 															var inputVal = jQuery(this).val().length;
 															if(inputVal != 0){
-																$('.confirmtrd').prop('disabled', false);            
+																$('.confirmtrd').prop('disabled', false);
+
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
 
 														$(".confirmtrd").click(function(e){
-															console.log('test test');
+
+															if(jQuery('.textfield-buyprice').val().length != 0 ){
+																console.log('test sulod');
+															}
+
+															
 														});
 													});
 						                        </script>

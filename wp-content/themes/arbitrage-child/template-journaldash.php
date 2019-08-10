@@ -3709,6 +3709,7 @@ if ($getdstocks && $getdstocks != "") {
 			jQuery('.add-funds-shows').show();
 		});
 		$('.confirmtrd').prop('disabled',true);
+		// jQuery('td[name=tcol1]')
 		jQuery('.textfield-buyprice').keyup(function(){
 			var inputVal = jQuery(this).val().length;
 			if(inputVal != 0){
@@ -3716,6 +3717,9 @@ if ($getdstocks && $getdstocks != "") {
 			}else{
 				$('.confirmtrd').prop('disabled', true);
 			}
+		});
+		jQuery( "#modal-button-confirm" ).click(function() {
+			alert('submit lOL');
 		});
 	// 	$('#textfield-buyprice').keyup(function(){
 	// 			var inputVal = document.getElementById('textfield-buyprice').value;

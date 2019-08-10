@@ -3735,7 +3735,7 @@ if ($getdstocks && $getdstocks != "") {
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});//joses
-														jQuery("#buy-order--submit").click(function(e){
+														jQuery("#modal-button-confirm").click(function(e){
 															console.log('test icle');
 														});
 														

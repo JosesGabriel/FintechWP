@@ -3695,7 +3695,7 @@ if ($getdstocks && $getdstocks != "") {
 				$('.confirmtrd').prop('disabled', true);
 			}
 		});
-		jQuery('#modal-button-confirm').on('click', {
+		$( "#modal-button-confirm" ).click(function() {
 			alert('submit lOL');
 		});
 	// 	$('#textfield-buyprice').keyup(function(){

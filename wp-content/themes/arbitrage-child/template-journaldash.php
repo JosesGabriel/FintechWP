@@ -3724,7 +3724,9 @@ if ($getdstocks && $getdstocks != "") {
 														jQuery('.textfield-buyprice').keyup(function(){
 															console.log('asdasdasd');
 															var inputVal = jQuery(this).val().length;
-															
+															var inputVal2 = jQuery('.textfield-quantity').val().length
+
+															console.log(inputVal2);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;

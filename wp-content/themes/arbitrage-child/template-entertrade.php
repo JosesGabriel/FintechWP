@@ -685,7 +685,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
                                         </div>
                                     
                                     <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock" 
-                                    value="<?php echo get_post_meta(get_the_ID(), 'data_stock', true); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                                    value="<?php echo get_post_meta(get_the_ID(), 'data_stock', true); ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
                                     
                                     <div class="groupinput midd lockedd"><label>Buy Price</label><input type="text" name="inpt_data_price"
                                     value="<?php echo get_post_meta(get_the_ID(), 'data_price', true); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>

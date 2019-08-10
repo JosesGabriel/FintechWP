@@ -1956,7 +1956,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
-																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade">
+																	                                            <input type="submit" class="confirmtrd green" value="Confirm trade" disabled>
 																	                                        </div>
 																	                                     </div>
 																	                                    </form>
@@ -5105,14 +5105,14 @@ if ($getdstocks && $getdstocks != "") {
 </script>
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script> -->
 <script>
-jQuery(document).ready(function(){
-	jQuery('.confirmtrd').prop('disabled',true);
-	jQuery('#textfield-buyprice, #textfield-quantity').keyup(function(){
-		var inputVal = jQuery('#textfield-buyprice, #textfield-quantity').val().length;
+$(document).ready(function(){
+	// jQuery('.confirmtrd').prop('disabled',true);
+	$('#textfield-buyprice, #textfield-quantity').keyup(function(){
+		var inputVal = $('#textfield-buyprice, #textfield-quantity').value.length;
 		if(inputVal != 0){
-			jQuery('.confirmtrd').prop('disabled', false);            
+			$('.confirmtrd').prop('disabled', false);            
 		}else{
-			jQuery('.confirmtrd').prop('disabled', true);
+			$('.confirmtrd').prop('disabled', true);
 		}
 	});
 	// console.log(vals);

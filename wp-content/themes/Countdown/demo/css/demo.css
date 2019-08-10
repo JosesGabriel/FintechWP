@@ -2,6 +2,17 @@ html, body {
 	height: 100%;
 }
 
+@font-face {
+    font-family: "digital-7" , sans-serif !important;
+    src: url('./fonts/digital-7.ttf');
+         
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
 html {
 	/*background-image: url('../img/sample.jpg');*/
 	background-color: #0d1f30;
@@ -18,14 +29,7 @@ body {
 	font-family: 'Raleway', 'Arial', sans-serif;
 }
 
-@font-face {
-    font-family: "digital-7" , sans-serif !important;
-    src: url('./fonts/digital-7.ttf');
-         
-    font-weight: normal;
-    font-style: normal;
 
-}
 
 .countdown-container {
 	position: relative;

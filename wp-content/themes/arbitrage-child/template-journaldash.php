@@ -3688,14 +3688,12 @@ if ($getdstocks && $getdstocks != "") {
 		});
 		jQuery('#textfield-buyprice').keyup(function(){
 			var inputVal = jQuery(this).val();
-			// if(inputVal.length != 0){
-			// 	console.log('1');
-			// 	$('#modal-button-confirm').prop('disabled', false);            
-			// }else{
-			// 	console.log('2');
-			// 	$('#modal-button-confirm').prop('disabled', true);
-			// }
-			console.log(inputVal);
+			if(inputVal.length != 0){
+				$('#modal-button-confirm').prop('disabled', false);            
+			}else{
+				$('#modal-button-confirm').prop('disabled', true);
+			}
+			// console.log(inputVal);
 		});
 	//  $('.confirmtrd').prop('disabled',true);
 	// 	$('#textfield-buyprice').keyup(function(){

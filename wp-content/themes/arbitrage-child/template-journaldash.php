@@ -1852,7 +1852,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade">
+																			                                    <input type="submit" class="confirmtrd green" value="Confirm trade" id="modal-button-confirm">
 																			                                </div>
 
 																			                             </div>
@@ -3690,10 +3690,10 @@ if ($getdstocks && $getdstocks != "") {
 			var inputVal = document.getElementById('textfield-buyprice').value;
 			if(inputVal.length != 0){
 				console.log('1');
-				$('.confirmtrd').prop('disabled', false);            
+				$('#modal-button-confirm').prop('disabled', false);            
 			}else{
 				console.log('2');
-				$('.confirmtrd').prop('disabled', true);
+				$('#modal-button-confirm').prop('disabled', true);
 			}
 			console.log(inputVal);
 		});

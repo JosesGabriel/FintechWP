@@ -52,6 +52,8 @@
 .arb_calcbox_righting {
 	float: right;
 	width: 40%;
+	padding-top: 16px;
+	padding-right: 5px;
 }
 
 .padbott {

@@ -3721,7 +3721,7 @@ if ($getdstocks && $getdstocks != "") {
 														$('.confirmtrd').prop('disabled',true);
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.lo('asdasdasd');
+															console.log('asdasdasd');
 															var inputVal = jQuery(this).val().length;
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);            
@@ -3732,8 +3732,10 @@ if ($getdstocks && $getdstocks != "") {
 														jQuery("#modal-button-confirm").click(function(e){
 															console.log('test icle');
 														});
-														
 
+														$(".confirmtrd").click(function(e){
+															console.log('test test');
+														});
 													});
 						                        </script>
 						                        <div class="tab-pane <?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>" id="tab3">

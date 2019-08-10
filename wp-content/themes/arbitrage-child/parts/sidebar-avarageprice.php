@@ -52,11 +52,9 @@
                         <div class="paramlist">
                             <div class="adprams">
                                 <div style="margin-top: 20px; margin-right: 50px;">
-                                    <div class="clearbtn"><a>Clear</a></div>
-
-                                    <div class="calculate"><a>Calculate</a></div>
-
                                     <div class="additems"><a>Add Item</a></div>
+                                    <div class="calculate"><a>Calculate</a></div>
+                                    <div class="clearbtn"><a>Clear</a></div>
                                 </div>
 
                             </div>

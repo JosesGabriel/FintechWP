@@ -1981,7 +1981,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
+																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
@@ -3673,7 +3673,7 @@ if ($getdstocks && $getdstocks != "") {
 													</div>
 													<br class="clear">
 						                        </div>
-<style type="text/css">
+												<style type="text/css">
 	
 	.sss {
 		padding-right: 14px !important;
@@ -3708,6 +3708,8 @@ if ($getdstocks && $getdstocks != "") {
 						                        	jQuery(document).ready(function(){
 														jQuery('.add-funds-show').show();
 														jQuery('.add-funds-shows').hide();
+														var x = 0;
+														var y = 0;
 
 														jQuery(".show-button2").click(function(e){
 															e.preventDefault();
@@ -3721,15 +3723,36 @@ if ($getdstocks && $getdstocks != "") {
 														});
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.lo('asdasdasd');
-															var inputVal = jQuery(this).val().length;
+															console.log('asdasdasd');
+															var inputVal = jQuery(this).val().length;													
+
 															if(inputVal != 0){
-																$('.confirmtrd').prop('disabled', false);            
+																$('.confirmtrd').prop('disabled', false);
+																 x = 1;
+																console.log('tesssssss');
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
 
+														jQuery('.textfield-quantity').keyup(function(){
+															var inputVal2 = jQuery(this).val().length;
+															console.log(inputVal2);
+															if(inputVal2 != 0){
+																y = 1
+															}
+														});
+
+														$(".confirmtrd").click(function(e){
+
+															//
+															if(x == 1 && y == 1){
+																$('.chart-loader').css("display","block");
+																$(this).hide();
+															}
+
+															
+														});
 													});
 						                        </script>
 						                        <div class="tab-pane <?php echo (isset($_GET['ld']) ? 'active show' : ''); ?>" id="tab3">
@@ -3896,7 +3919,28 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:19%">Ending Balance</div>
                                                                                 </div>
                                                                             </li>
+																			
                                                                             <?php
+																				$numofitems = 2;
+																				$ldcount = 1;
+																				$ldpages = 1;
+																				$listledger = [];
+																				foreach($dmonthdata as $ldskey => $ldsvalue){
+
+																					$listledger[$ldpages][$ldcount] = $ldsvalue;
+
+																					if($ldcount == $numofitems){
+																						$ldcount = 1;
+																						$ldpages++;
+																					} else {
+																						$ldcount++;
+																					}
+																				}
+																			?>
+																			<pre>
+																				<?php print_r($listledger); ?>
+																			</pre>
+																			<?php
                                                                             	$mstart = 0;
                                                                             	foreach ($dmonthdata as $dmdkey => $dmdvalue) { ?>
                                                                             		<li class="dspecitem">

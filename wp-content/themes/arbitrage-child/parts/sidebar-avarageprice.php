@@ -1,5 +1,5 @@
 <div class="add-postsis sdjalc" id="toghandlingers"  style="display: none;">
-    <br />
+
     <div class="arb_calcbox varcalc">
 
     <div class="bkcalcbox sccas xmakfb">
@@ -14,7 +14,7 @@
 
                     <div class="tobottomsit">
 
-                        <ul>
+                        <!-- <ul>
 
                             <li>Total Cost</br><span class="totalcost">612.56</span></li>
 
@@ -22,6 +22,27 @@
 
                             <li>Average Price</br><span class="totalprice">26.63</span></li>
 
+                        </ul> -->
+                        <ul>
+                        <div>
+                            <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Cost</div>
+                            <div class="arb_calcbox_right">
+                                <input name="stockname" id="stockname" type="text" value="612.56" style="width:95%;">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Position</div>
+                            <div class="arb_calcbox_right">
+                                <input name="stockname" id="stockname" type="text" value="23" style="width:95%;">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="arb_calcbox_left">Average Price</div>
+                            <div class="arb_calcbox_right">
+                                <input name="stockname" id="stockname" type="text" value="26.63" style="width:95%;">
+                            </div>
+                        </div>
+                        
                         </ul>
 
                     </div>
@@ -30,12 +51,11 @@
 
                         <div class="paramlist">
                             <div class="adprams">
-
-                                <div class="clearbtn"><a>Clear</a></div>
-
-                                <div class="calculate"><a>Calculate</a></div>
-
-                                <div class="additems"><a>Add Item</a></div>
+                                <div style="margin-top: 20px; margin-right: 50px;">
+                                    <div class="additems"><a>Add Item</a></div>
+                                    <div class="calculate"><a>Calculate</a></div>
+                                    <div class="clearbtn"><a>Clear</a></div>
+                                </div>
 
                             </div>
 

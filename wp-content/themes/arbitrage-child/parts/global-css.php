@@ -2785,6 +2785,9 @@ li.five a span {
 	padding: 8px 11px 8px 11px !important;
 
 }
+a.deposit-modal-btn.show-button2 {
+    margin-right: 5px;
+}
 .dmainform {
     margin-top: -33px;
 }

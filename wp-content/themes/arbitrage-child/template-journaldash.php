@@ -3679,7 +3679,7 @@ if ($getdstocks && $getdstocks != "") {
 	}
 	.dnlabel {
 		font-size: 15px;
-		padding-left: 16px;
+		padding-left: 11px;
 		margin-bottom: 2px;
 		font-weight: 400;
 		font-family: 'Roboto', sans-serif;

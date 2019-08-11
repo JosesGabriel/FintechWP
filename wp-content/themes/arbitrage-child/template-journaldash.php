@@ -1254,6 +1254,7 @@ get_header( 'dashboard' );
 	}
 	.selltrade--align input {
 		text-align: right;
+		padding-right: 20px;
 	}
 </style>
 

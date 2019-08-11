@@ -36,7 +36,7 @@ get_header('dashboard');
 
 	<div class="sub-container">
 
-		<h2>About Usss</h2>
+		<h2>About Us</h2>
 
 		<p>Every company has a story to tell. Although ours is just starting, it is rather fascinating tale of how we are forced evolved beyond the blueprint of our already mapped out journey.</p>
 

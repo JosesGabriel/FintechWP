@@ -304,14 +304,14 @@ function vyndue_password_update($post)
 {
     $user_id = get_current_user_id();
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
 
     $data = http_build_query([
         'email_id' => $user->user_email,
         'password' => $_POST['user_password'],
     ]);
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'password' => $_POST['user_password'],
     ]);
 

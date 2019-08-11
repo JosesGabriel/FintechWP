@@ -6,7 +6,8 @@
 $homeurlgen = get_home_url();
 
 if ( is_user_logged_in() ) {
-	header("Location: ".$homeurlgen."/");
+	//header("Location: ".$homeurlgen."/");
+  header("Location: https://arbitrage.ph/wp-content/themes/Countdown/demo/index.html");
 	die();
 }
 global $current_user;

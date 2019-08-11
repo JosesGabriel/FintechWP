@@ -261,6 +261,7 @@ function vyndue_user_update($user_id, $old_user_data)
 {
     //region get users
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
     //endregion get users
 
     //region data validation
@@ -279,8 +280,7 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'email' => $user->user_email,
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,

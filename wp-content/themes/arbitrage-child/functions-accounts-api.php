@@ -32,7 +32,7 @@ add_action('um_after_remove_profile_photo', function ($user_id) {
     ];
 
     $response = arbitrage_api_curl("api/users/$user_uuid/update", $data);
-});
+}, 10, 1);
 
 // delete cover photo
 add_action('um_after_remove_cover_photo', function ($user_id) {
@@ -43,4 +43,4 @@ add_action('um_after_remove_cover_photo', function ($user_id) {
     ];
 
     $response = arbitrage_api_curl("api/users/$user_uuid/update", $data);
-});
+}, 10, 1);

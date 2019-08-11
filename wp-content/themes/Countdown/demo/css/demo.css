@@ -68,7 +68,8 @@ body {
 
 .text .val {
 	font-size: 150px;
-	font-family: "digital-7", sans-serif!important;
+	/*font-family: "digital-7", sans-serif!important;*/
+	font-family: 'Orbitron', sans-serif;
 	color: #0084ff;
 }
 

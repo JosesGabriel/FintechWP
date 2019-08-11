@@ -1252,7 +1252,7 @@ get_header( 'dashboard' );
 		padding: 5px 9px;
 		border-radius: 20px;
 	}
-	.selltrade--align {
+	.selltrade--align input {
 		text-align: right;
 	}
 </style>

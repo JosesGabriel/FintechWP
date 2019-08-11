@@ -103,7 +103,7 @@ function arbitrage_api_verify_user($user_id) {
     $uuid = arbitrage_api_get_user_uuid($user_id);
 
     if ($uuid != '') {
-        $response = arbitrage_api_curl('api/user/verify', ['id' => $uuid]);
+        $response = arbitrage_api_curl("api/users/$uuid/verify", []);
     }
 }
 

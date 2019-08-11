@@ -1880,10 +1880,10 @@ if ($getdstocks && $getdstocks != "") {
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice"></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
 
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
-																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>"></div>
+																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
 																			                                   </div>
 
 																			                                    <div class="entr_clear"></div>

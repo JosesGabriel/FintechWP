@@ -1474,8 +1474,8 @@
                                                             <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
                                                             <i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price" name="inpt_data_price"></div>
-                                                            <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty" name="inpt_data_qty"></div>
+                                                            <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price" name="inpt_data_price" required></div>
+                                                            <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty" name="inpt_data_qty" required></div>
                                                             <div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                         </div>
                                                         <div class="entr_col">

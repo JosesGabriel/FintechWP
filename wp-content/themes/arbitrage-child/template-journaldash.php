@@ -1234,7 +1234,7 @@ get_header( 'dashboard' );
 	}
 	.buy-order--submit {
 		position: relative;
-		left: 590px;
+		left: 580px;
 	}
 	.modal-button-confirm {
 		position: relative;

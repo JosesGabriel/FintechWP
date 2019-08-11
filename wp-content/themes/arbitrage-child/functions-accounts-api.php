@@ -6,7 +6,7 @@ add_filter('um_ajax_resize_image', function ($output) {
 
     if (in_array($key, ['profile_photo','cover_photo'])) {
 
-        $response = arbitrage_api_upload_to_gcs($output['source_path']);
+        $response = arbitrage_api_upload_to_gcs($output['image']['source_path']);
 
         if ($response) {
             $user_uuid = arbitrage_api_get_user_uuid( get_current_user_id() );

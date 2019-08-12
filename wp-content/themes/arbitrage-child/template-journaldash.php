@@ -3779,7 +3779,7 @@ if ($getdstocks && $getdstocks != "") {
                                                             <div class="box-portlet-header">
                                                                 Ledger
                                                                 	<div class="button" style="float: right;">
-                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="deposit-btn">Add funds</a>
+                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																			<div class="modal-content">
@@ -3842,7 +3842,7 @@ if ($getdstocks && $getdstocks != "") {
 																		</div>
 																	</div>
 																	<?php if ($dbaseaccount > 0): ?>
-																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="withdraw-btn">Withdraw</a>
+																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">

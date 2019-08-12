@@ -758,7 +758,7 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
-	/* Countdown */
+	/* Countdown 
 	#page-container {display: none;}
 	.um-social-login-overlay, #preloader, html {background-image: none !important;}
 	html, .home body.et_cover_background {
@@ -767,7 +767,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 	.text .val {
 		margin: -11px 0 0 0;
 		padding: 0;
-	}
+	}*/
 	
 	
 </style> 

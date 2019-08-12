@@ -77,16 +77,22 @@ if (isset($_GET['remove'])) {
 #    return $t1 - $t2;
 #}
 
+#if ($havemeta) {
+#    usort($havemeta, 'date_compare');
+#    array_reverse($havemeta);
+#}
 
-function working_days_ago($days) {
-    $count = 0;
-    $day = strtotime('-2 day');
-    while ($count < $days || date('N', $day) > 5) {
-       $count++;
-       $day = strtotime('-1 day', $day);
-    }
-    return date('Y-m-d', $day);
-}
+#function working_days_ago($days) {
+#    $count = 0;
+#    $day = strtotime('-2 day');
+#    while ($count < $days || date('N', $day) > 5) {
+#       $count++;
+#       $day = strtotime('-1 day', $day);
+#    }
+#    return date('Y-m-d', $day);
+#}
+
+$watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 ?>
 

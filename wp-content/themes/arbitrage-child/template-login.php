@@ -765,7 +765,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 		background-color: #0b1927 !important;
 	}
 	.text .val {
-		margin: 0;
+		margin: -11px 0 0 0;
 		padding: 0;
 	}
 	

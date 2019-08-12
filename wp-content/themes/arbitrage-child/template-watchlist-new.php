@@ -68,12 +68,7 @@ if (isset($_GET['remove'])) {
     wp_redirect( 'https://arbitrage.ph/watchlist' );
 }
 
-function date_compare($a, $b)
-{
-    $t1 = strtotime($a['toadddate']);
-    $t2 = strtotime($b['toadddate']);
-    return $t1 - $t2;
-}
+
 
 ?>
 

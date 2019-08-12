@@ -1874,7 +1874,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #2481bc solid;
 }
 .arbitrage-button--primary:hover {
-	background-color: #2481bc;
+	background-color: #2481bc !important;
 	transition-duration: 300ms;
 }
 .arbitrage-button--secondary {

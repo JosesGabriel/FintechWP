@@ -189,8 +189,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			//console.log(JSON.parse(dstockinfo));
 			// TODO Fix: this is causing front end errors
 			 jQuery.each(dstockinfo.data, function( index, value ) {
-				console.log(value.symbol);
-			 //  jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+				//console.log(value.symbol);
+			 	jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 			 });
 
 			var startTime = '9:00 AM';

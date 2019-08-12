@@ -343,14 +343,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 		right: 9px;
     	top: 24px;
 	}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks {
 		margin-bottom: 15px !important;
 	}

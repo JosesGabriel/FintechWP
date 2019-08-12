@@ -387,14 +387,6 @@ date_default_timezone_set('Asia/Manila'); ?>
     	padding: 5px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    display: block;
 	    padding: 11px 10px;
@@ -798,7 +790,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						        <div class="arb_buyprice padbott"><strong>Buy Price:</strong> <input name="buyprice" id="buyprice" type="number" value="0"></div>
 						        <div class="arb_buyvalue padbott">Value: ₱<span id="buyvalue">0.00</span></div>
 						        <div class="arb_buyfees padbott">
-						            Fees: ₱<span id="buyfees">0.00</span> <small class="smlinline"> - see details</small>
+						            Fees: ₱<span id="buyfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>
 						            <div class="feedetails_buy">
 						                <div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
 						                <small>Commission: ₱<span id="buycommadjst">0.00</span></small>
@@ -814,7 +806,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						        <div class="arb_sellprice padbott"><strong>Sell Price:</strong> <input name="sellprice" id="sellprice" type="number" value="0"></div>
 						        <div class="arb_sellvalue padbott">Value: ₱<span id="sellvalue">0.00</span></div>
 						        <div class="arb_sellfees padbott">
-						            Fees: ₱<span id="sellfees">0.00</span> <small class="smlinline"> - see details</small>
+						            Fees: ₱<span id="sellfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>
 						            <div class="feedetails_sell">
 						                <div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
 						                <small>Commission: ₱<span id="sellcommadjst">0.00</span></small>

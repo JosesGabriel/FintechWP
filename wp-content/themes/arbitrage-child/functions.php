@@ -3,6 +3,7 @@
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
+include 'functions-accounts-api.php';
 include 'functions-social-api.php';
 
 function my_theme_enqueue_styles()
@@ -260,6 +261,7 @@ function vyndue_user_update($user_id, $old_user_data)
 {
     //region get users
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
     //endregion get users
 
     //region data validation
@@ -278,8 +280,7 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'email' => $user->user_email,
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
@@ -303,14 +304,14 @@ function vyndue_password_update($post)
 {
     $user_id = get_current_user_id();
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
 
     $data = http_build_query([
         'email_id' => $user->user_email,
         'password' => $_POST['user_password'],
     ]);
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'password' => $_POST['user_password'],
     ]);
 
@@ -437,18 +438,3 @@ add_filter('wp_handle_upload', function ($upload) {
 
     return $upload;
 }, 90, 1);
-
-/**
- * Upload to Google Cloud Storage after resize
- */
-add_filter('um_ajax_resize_image', function ($output) {
-    $image = $output['image']['source_path'];
-    
-    $response = arbitrage_api_upload_to_gcs($image);
-
-    if ($response !== false) {
-        $output['image']['gcs_url'] = $response['file']['url'];
-    }
-
-    return $output;
-});

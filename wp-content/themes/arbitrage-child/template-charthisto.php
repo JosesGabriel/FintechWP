@@ -191,6 +191,10 @@
 
         print_r(json_encode($finalinfo));
     }
+
+    if(isset($_GET['todel']) && $_GET['todel'] == "sampleprice"){
+        echo "here";
+    }
     
     
 

@@ -1875,6 +1875,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .arbitrage-button--primary:hover {
 	background-color: #2481bc;
+	transition-duration: 300ms;
 }
 .arbitrage-button--secondary {
 	border: 2px #9E9E9E solid;
@@ -2010,7 +2011,7 @@ input.dpos {
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 .doneitem li span {
 	padding-left: 17px;
@@ -2599,23 +2600,23 @@ i.fa.fa-search {
 	    background: none !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
-	background: #6583a8 !important;
+	/* background: #6583a8 !important;
 	color: #fff !important;
-	transition-duration: 300ms;
+	transition-duration: 300ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:active {
-	background: #8ca8cc !important;
+	/* background: #8ca8cc !important;
 	color: #fff !important;
-	transition-duration: 200ms;
+	transition-duration: 200ms; */
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
-	border-radius: 26px !important;
+	/* border-radius: 26px !important;
 	    border: 1.3px solid #6583a8 !important;
 	    padding: 0px 17px !important;
 	    font-family: 'Nunito', sans-serif;
 	    color: #6583a8 !important;
 	    background-color: none !important;
-	    background: none !important;
+	    background: none !important; */
 }
 .um-disabled {
 	opacity: 0.5 !important;
@@ -2628,19 +2629,20 @@ i.fa.fa-search {
 	top: 60px;
 }
 
+
 .fixed-rightsidebar {
-	position: fixed;
-    width: 265px;
+	/* position: fixed;*/
+   /* width: 265px; */
 }
 /* 
 .fixed-rightsidebar-ads {
-	position: fixed;
-	top: 280px;
+	/* position: fixed; */
+	/* top: 345px; */
 }
 .fixed-rightsidebar-footer {
-	position: fixed;
-    width: 265px;
-    top: 510px;
+	/* position: fixed; */
+    /* width: 265px; */
+    /* top: 580px; */
 }
 .fixed-rightsidebar-traiders {
     position: fixed;
@@ -2650,8 +2652,8 @@ i.fa.fa-search {
 
 
 
-span.menu-title-calc {
-    font-size: 13px;
+.seven span.menu-title-calc {
+    font-size: 13px !important;
     font-family: 'Roboto', sans-serif;
     color: #aaa;
 }
@@ -2700,5 +2702,128 @@ li.five a span {
 .see-more-btn.see-all-members strong:hover {
 	color: #a6a6a6;
 	transition-duration: 300ms;
+}
+.modal-btn-close-deposit {
+    cursor: pointer;
+    font-size: 14px;
+    color: #d8d8d8 !important;
+    float: right;
+    top: 8px;
+    position: relative;
+    text-shadow: none;
+    opacity: 1 !important;
+}
+.header-depo {
+    padding: 5px 13px !important;
+    border-bottom: none !important;
+}
+.title-depo {
+	font-weight: 500;
+	font-family: 'Roboto', sans-serif;
+	font-size: 19px;
+	margin: 0;
+	color: #ffffff;
+	line-height: 1.428571429;
+	padding-bottom: 0 !important;
+}
+.title-depo-in {
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 0 !important;
+    font-size: 14px;
+    position: relative;
+    display: inline-block;
+    background-color: #4e6a85;
+    padding: 7px 32px 7px 10px !important;
+    border-radius: 5px 0 0 5px;
+    bottom: -35px;
+}
+.close-depo {
+	opacity: 1;
+    padding: 0px 7px !important;
+	margin: 0 !important;
+}
+.x-close-depo {
+	line-height: 0;
+	color: #ffffff;
+	text-shadow: none;
+	border: none;
+	font-weight: 400;
+}
+.footer-depo {
+	border: none !important;
+    padding: 3px 13px 10px 13px!important;
+    margin: 0 !important;
+}
+.depo-mon-btn {
+	border-radius: 26px !important;
+    border: 2px solid #2481bc !important;
+    padding: 5px 18px !important;
+    font-family: 'Roboto', sans-serif;
+    color: #2481bc;
+    background: none !important;
+    font-size: 15px;
+    font-weight: 500;
+}
+.depo-mon-btn:hover {
+	background: #2481bc !important;
+	color: #fff !important;
+	transition-duration: 300ms;
+}
+.depo-input-field {
+    background: #0b1d33 !important;
+    border: 1px solid #1e3554 !important;
+    border-radius: 5px;
+    width: 100%;
+    color: #d8d8d8 !important;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    padding: 8px 11px 8px 97px !important;
+}
+.dwithdrawnum.depo-input-field.sss {
+	padding: 8px 11px 8px 11px !important;
+
+}
+a.deposit-modal-btn.show-button2 {
+    margin-right: 5px;
+}
+.dmainform {
+    margin-top: -33px;
+}
+.modal-dialog.modal-modelbox-margin {
+    transform: translate(0,32%) !important;
+}
+.stock-label {
+	color: #01afc8 !important;
+	font-weight: 600;
+}
+span.menu-title-calc {
+    color: #aaa;
+    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+}
+.table-title-avprice {
+}
+.table-title-tcost {
+}
+.table-title-profit {
+}
+.table-title-performance {
+}
+.table-title-mvalue {
+}
+.table-title-live {
+	text-align: right;
+}
+.table-cell-live {
+	text-align: right;
+}
+.modal-title-content-dev .depo-input-field {
+	padding: 8px 11px 8px 155px !important;
+}
+li.dspecitem div div {
+    text-align: right;
 }
 </style>

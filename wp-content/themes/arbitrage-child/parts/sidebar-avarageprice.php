@@ -27,19 +27,19 @@
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Cost</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="612.56" style="width:95%;">
+                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Position</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="23" style="width:95%;">
+                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left">Average Price</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="26.63" style="width:95%;">
+                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         
@@ -52,11 +52,9 @@
                         <div class="paramlist">
                             <div class="adprams">
                                 <div style="margin-top: 20px; margin-right: 50px;">
-                                    <div class="clearbtn"><a>Clear</a></div>
-
-                                    <div class="calculate"><a>Calculate</a></div>
-
                                     <div class="additems"><a>Add Item</a></div>
+                                    <div class="calculate"><a>Calculate</a></div>
+                                    <div class="clearbtn"><a>Clear</a></div>
                                 </div>
 
                             </div>

@@ -14,7 +14,7 @@
 
 }
 
-.lockedd i.fa.fa-lock {
+/* .lockedd i.fa.fa-lock {
 
     top: 7px;
 
@@ -24,7 +24,7 @@
 
     font-size: 14px;
 
-    color: #ecf0f1;
+    color: #ecf0f1; */
 
 }
 
@@ -321,6 +321,9 @@
 	cursor:not-allowed;
 
 }
+.lockedd i.fa.fa-lock.lock__icon--position {
+    right: 1px;
+}
 
 </style>
 
@@ -393,7 +396,7 @@
 
                 <input name="posisize" id="posisize" type="text" value="0" style="width:85%;">
 
-                <i class="fa fa-lock" aria-hidden="true"></i>
+                <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
                 </div>
 
@@ -413,7 +416,7 @@
 
         	<input name="boardlot" id="boardlot" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -427,7 +430,7 @@
 
         	<input name="noofshare" id="noofshare" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -441,7 +444,7 @@
 
         	<input name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -478,14 +481,14 @@
         <div class="arb_calcbox_left">Stoploss</div>
         <div class="arb_calcbox_right lockedd">
         	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><i class="fas fa-percentage" aria-hidden="true"></i>
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
         </div>
 
         <div class="arb_clear smlspc"></div>
         <div class="arb_calcbox_left">Take Profit Price</div>
         <div class="arb_calcbox_right lockedd">
         	<input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
         </div>
 
         <div class="arb_clear smlspc"></div>
@@ -493,7 +496,7 @@
         <div class="arb_calcbox_left">Stoploss Price</div>
         <div class="arb_calcbox_right lockedd">
         	<input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
         </div>
 
         <div class="arb_clear smlspc"></div>
@@ -501,7 +504,7 @@
         <div class="arb_calcbox_left">Value at Risk</div>
         <div class="arb_calcbox_right lockedd">
         	<div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
             </div>
 
         <div class="arb_clear smlspc"></div>
@@ -509,7 +512,7 @@
         <div class="arb_calcbox_left">Upside</div>
         <div class="arb_calcbox_right lockedd">
         	<div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
         </div>
 
         <div class="arb_clear smlspc"></div>
@@ -586,7 +589,7 @@
 
                             <input class="input-locked" name="posisize" id="posisize" type="text" value="0" style="width:85%;" disabled>
 
-                            <i class="fa fa-lock" aria-hidden="true"></i>
+                            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
                             </div>
 
@@ -600,13 +603,13 @@
 
                 
 
-                    <div class="arb_calcbox_left">Board lot</div>
+                    <div class="arb_calcbox_left">Board Lot</div>
 
                     <div class="arb_calcbox_right lockedd">
 
                         <input class="input-locked" name="boardlot" id="boardlot" type="text" value="0" style="width:85%;" disabled>
 
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
                     </div>
 
@@ -620,7 +623,7 @@
 
                         <input class="input-locked" name="noofshare" id="noofshare" type="text" value="0" style="width:85%;" disabled>
 
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
                     </div>
 
@@ -634,7 +637,7 @@
 
                         <input class="input-locked" name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;" disabled>
 
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
                     </div>
 
@@ -672,14 +675,14 @@
                     <div class="arb_calcbox_left">Stoploss</div>
                     <div class="arb_calcbox_right lockedd">
                         <input class="input-locked" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
                     <div class="arb_clear smlspc"></div>
                     <div class="arb_calcbox_left">Take Profit Price</div>
                     <div class="arb_calcbox_right lockedd">
                         <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:80%;" disabled>
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
                     <div class="arb_clear smlspc"></div>
@@ -687,7 +690,7 @@
                     <div class="arb_calcbox_left">Stoploss Price</div>
                     <div class="arb_calcbox_right lockedd">
                         <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:80%;" disabled>
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
                     <div class="arb_clear smlspc"></div>
@@ -695,7 +698,7 @@
                     <div class="arb_calcbox_left">Value at Risk</div>
                     <div class="arb_calcbox_right lockedd">
                         <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
                     <div class="arb_clear smlspc"></div>
@@ -703,7 +706,7 @@
                     <div class="arb_calcbox_left">Upside</div>
                     <div class="arb_calcbox_right lockedd">
                         <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
-                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
                     <div class="arb_clear smlspc"></div>
@@ -834,7 +837,9 @@
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
-			var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+            var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+
+                vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
 			var vr_noofshare = jQuery('#noofshare').val(vr_noofsharetot2);
 
@@ -844,7 +849,9 @@
 
 			var vr_risktorewardtot2 = Number(vr_upsidetot) / Number(vr_valueatrisk2);
 
-			var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+            var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+
+                vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
 
 			var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
 

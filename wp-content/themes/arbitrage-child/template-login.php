@@ -4,6 +4,7 @@
 	*/
 // get_header();'
 $homeurlgen = get_home_url();
+
 if ( is_user_logged_in() ) {
 	header("Location: ".$homeurlgen."/");
 	die();

@@ -552,15 +552,8 @@ foreach ( $wallposts->posts as $post ) {
 						// }
 							
 						?>
-						
-						<?php //echo $newconts; ?>
-
-						<div class="desc-note">
-							<?php echo $um_activity_post; ?>
-						</div>
-						<div class="desc-note1">
-							<?php echo $um_shared_link; ?>
-						</div>
+	
+						<?php echo $um_activity_post; ?>
 
 					</div>
 

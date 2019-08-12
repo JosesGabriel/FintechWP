@@ -126,8 +126,22 @@ $userID = $current_user->ID;
 </div>
 <style type="text/css">
 	.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt {
-	    padding: 6px 1px !important;
-    	width: 110px !important;
-    	font-size: 10px !important;
+		border-radius: 26px !important;
+		border: 2px solid #e77e24 !important;
+		padding: 5px 14px !important;
+		font-family: 'Nunito', sans-serif;
+		color: #e77e24 !important;
+	}
+	a.um-friend-btn.um-button.um-alt {
+		border-radius: 26px !important;
+		border: 2px solid #e77e24 !important;
+		padding: 5px 14px !important;
+		font-family: 'Nunito', sans-serif;
+		color: #e77e24 !important;
+	}
+	a.um-friend-btn.um-button.um-alt:hover, 
+	.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt:hover {
+		background: #e77e24 !important;
+		color: #fff !important;
 	}
 </style>

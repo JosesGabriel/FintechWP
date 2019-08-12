@@ -764,6 +764,10 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 	html, .home body.et_cover_background {
 		background-color: #0b1927 !important;
 	}
+	.text .val {
+		margin: 0;
+		padding: 0;
+	}
 	
 	
 </style> 

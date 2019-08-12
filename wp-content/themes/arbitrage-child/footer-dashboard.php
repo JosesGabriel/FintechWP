@@ -183,11 +183,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				$dwatchinfo = curl_exec($curl);
 				curl_close($curl); /*temp-disabled-end */
 			?>
-			var dstockinfo = '<?php echo $dwatchinfo; ?>';
+			var dstockinfo = '<?php echo json_decode($dwatchinfo); ?>';
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
 			// TODO Fix: this is causing front end errors
-			 jQuery.each(dstockinfo.data, function( value ) {
+			 jQuery.each(dstockinfo.data, function( index, value ) {
 			   jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 			 });
 

@@ -758,6 +758,8 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
+	/* Countdown */
+	#page-container {display: none;}
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
@@ -849,4 +851,11 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 		
 	});
 </script>
+
+
+
+
+
+
+
 <?php get_footer();

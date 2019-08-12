@@ -58,7 +58,15 @@ if (isset($_POST) && !empty($_POST)) {
 
 }
 
-
+if (isset($_GET['remove'])) {
+    foreach ($havemeta as $key => $value) {
+        if ($value['stockname'] == $_GET['remove']) {
+            unset($havemeta[$key]);
+        }
+    }
+    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+    wp_redirect( 'https://arbitrage.ph/watchlist' );
+}
 
 ?>
 

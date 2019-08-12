@@ -2637,17 +2637,17 @@
 
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
-
-
-		if(x == 1 && y == 1){
-			$('.chart-loader').css("display","block");
-			$(this).hide();
-		 }
+	
 		
 		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 			e.preventDefault();
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);
 			// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
+		}else {
+			if(x == 1 && y == 1){
+			$('.chart-loader').css("display","block");
+			$(this).hide();
+		 }
 		}
 	
 	});

@@ -106,13 +106,13 @@ $user = wp_get_current_user();
 <body <?php body_class(); ?>>
 	
 <!-- Countdown -->
-<div class="header">
+<div class="header contercontrol">
     <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
 </div>
-<div class="title-header">
+<div class="title-header contercontrol">
        <center> COMING SOON</center>
 </div>
-<div class="countdown countdown-container container">
+<div class="countdown countdown-container container contercontrol">
     
     <div class="clock row">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">

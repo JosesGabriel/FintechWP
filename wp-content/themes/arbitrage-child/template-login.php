@@ -758,17 +758,22 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
-	/* Countdown 
-	#page-container {display: none;}
-	.um-social-login-overlay, #preloader, html {background-image: none !important;}
-	html, .home body.et_cover_background {
-		background-color: #0b1927 !important;
-	}
-	.text .val {
-		margin: -11px 0 0 0;
-		padding: 0;
-	}*/
 	
+	<?php if (isset($_GET['admin'])){ ?>
+		/* Countdown disabled */
+	.contercontrol {display:none;}
+	<?php }else{ ?>
+		/* Countdown */
+		#page-container {display: none;}
+		.um-social-login-overlay, #preloader, html {background-image: none !important;}
+		html, .home body.et_cover_background {
+			background-color: #0b1927 !important;
+		}
+		.text .val {
+			margin: -11px 0 0 0;
+			padding: 0;
+		}
+	<?php } ?>
 	
 </style> 
 <script type="text/javascript">

@@ -2840,4 +2840,7 @@ span.menu-title-calc {
 li.dspecitem div div {
     text-align: right;
 }
+.headerpart.headerpart-tradelogs {
+	text-align: left !important;
+}
 </style>

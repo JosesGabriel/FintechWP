@@ -3521,7 +3521,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                 <div class="stats-info">
                                                                     <div class="dstatstrade overridewidth">
                                                                         <ul>
-                                                                        	<li class="headerpart">
+                                                                        	<li class="headerpart headerpart-tradelogs">
                                                                             	<div style="width:100%;">                                                                                	
                                                                                     <div style="width:70px">Date</div>
                                                                                     <div style="width:60px">Stocks</div>

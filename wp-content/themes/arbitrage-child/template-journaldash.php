@@ -478,6 +478,9 @@ get_header( 'dashboard' );
 		margin-bottom: 0;
 		text-align: center !important;
 	}
+	.dstatstrade ul li.headerpart.headerpart-tradelogs {
+		text-align: left !important;
+	}
 	.dstatstrade ul li {
 		line-height: 150%;
 		padding: 5px 5px 5px 15px;

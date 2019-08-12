@@ -759,7 +759,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
 	
-	<?php if (isset($_GET['admin'])){ ?>
+	<?php if (isset($_GET['active'])){ ?>
 		/* Countdown disabled */
 		.contercontrol {display:none !important;}
 	<?php }else{ ?>

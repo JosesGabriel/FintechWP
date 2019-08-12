@@ -186,11 +186,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			var dstockinfo = '<?php echo $dwatchinfo; ?>';
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 
-			console.log(JSON.parse(dstockinfo));
+			//console.log(JSON.parse(dstockinfo));
 			// TODO Fix: this is causing front end errors
-			 //jQuery.each(dstockinfo.data, function( index, value ) {
+			 jQuery.each(dstockinfo.data, function( index, value ) {
+				console.log(value);
 			 //  jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
-			 //});
+			 });
 
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';

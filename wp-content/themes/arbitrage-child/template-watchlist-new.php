@@ -68,7 +68,25 @@ if (isset($_GET['remove'])) {
     wp_redirect( 'https://arbitrage.ph/watchlist' );
 }
 
+//removing date compare function as it broke the page:
 
+#function date_compare($a, $b)
+#{
+#    $t1 = strtotime($a['toadddate']);
+#    $t2 = strtotime($b['toadddate']);
+#    return $t1 - $t2;
+#}
+
+
+function working_days_ago($days) {
+    $count = 0;
+    $day = strtotime('-2 day');
+    while ($count < $days || date('N', $day) > 5) {
+       $count++;
+       $day = strtotime('-1 day', $day);
+    }
+    return date('Y-m-d', $day);
+}
 
 ?>
 

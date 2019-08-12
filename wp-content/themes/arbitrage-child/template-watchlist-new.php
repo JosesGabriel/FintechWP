@@ -158,9 +158,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                 $dwatchinfo = curl_exec($curl);
                                                                 #$dwatchinfo = $staticstock;
 																curl_close($curl);
-                                                                
-                                                                $genstockinfo = json_decode($dwatchinfo);
-                                                                //echo var_dump($genstockinfo);
+
+																$genstockinfo = json_decode($dwatchinfo);
 																$stockinfo = $genstockinfo->data;
 
                                                                 $counters = 0;
@@ -516,8 +515,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			// get stcok history
 			$curl = curl_init();
-            #curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
-            curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
+			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			$dhistofronold = curl_exec($curl);
 			curl_close($curl);

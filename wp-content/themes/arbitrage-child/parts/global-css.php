@@ -1990,6 +1990,9 @@ input[type=number]::-webkit-outer-spin-button {
 .arb_calcbox_right input {
 	text-align: right;
 }
+.content-inner-part {
+	padding-left: 25px;
+}
 input.dpri {
 	padding-left: 16px !important;
 	width: 100%;

@@ -14,7 +14,53 @@ date_default_timezone_set('Asia/Manila');
 
 ?>    
 
+<?php
 
+$havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
+
+if (isset($_POST) && !empty($_POST)) {
+
+    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+
+        foreach ($havemeta as $key => $value) {
+            if ($value['stockname'] == $_POST['stockname']) {
+                unset($havemeta[$key]);
+            }
+        }
+
+        array_push($havemeta, $_POST);
+        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+
+        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        exit;
+
+    } else {
+
+        if (isset($havemeta) && !empty($havemeta)){
+            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
+                echo "Stock Already Exist";
+            } else {
+                array_push($havemeta, $_POST);
+                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+            }
+
+        } else {
+            $newarray = [];
+            array_push($newarray, $_POST);
+            // add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            update_user_meta($userID, '_watchlist_instrumental', $newarray);
+        }
+
+        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        exit;
+    }
+
+
+}
+
+
+
+?>
 
 
 

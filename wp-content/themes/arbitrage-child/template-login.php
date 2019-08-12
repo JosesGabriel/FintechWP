@@ -759,8 +759,8 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
 	/* Countdown */
-	#page-container {display: none;}
-	.um-social-login-overlay, #preloader, html {background-image: none !important;}
+	/* #page-container {display: none;}
+	.um-social-login-overlay, #preloader, html {background-image: none !important;} */
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){

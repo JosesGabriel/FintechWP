@@ -1874,6 +1874,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #2481bc solid;
 }
 .arbitrage-button--primary:hover {
+	color: #ffffff;
 	background-color: #2481bc !important;
 	transition-duration: 300ms;
 }
@@ -1881,6 +1882,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #9E9E9E solid;
 }
 .arbitrage-button--secondary:hover {
+	color: #ffffff;
 	background-color: #9E9E9E !important;
 	transition-duration: 300ms;
 }
@@ -1888,6 +1890,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #49ba6f solid;
 }
 .arbitrage-button--success:hover {
+	color: #ffffff;
 	background-color: #49ba6f !important;
 	transition-duration: 300ms;
 }
@@ -1895,6 +1898,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #e77e24 solid;
 }
 .arbitrage-button--warning:hover {
+	color: #ffffff;
 	background-color: #e77e24 !important;
 	transition-duration: 300ms;
 }
@@ -1902,6 +1906,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #e84c3c solid;
 }
 .arbitrage-button--danger:hover {
+	color: #ffffff;
 	background-color: #e84c3c !important;
 	transition-duration: 300ms;
 }
@@ -1909,6 +1914,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #874a9a solid;
 }
 .arbitrage-button--info:hover {
+	color: #ffffff;
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
 }

@@ -478,6 +478,9 @@ get_header( 'dashboard' );
 		margin-bottom: 0;
 		text-align: center !important;
 	}
+	.dstatstrade ul li.headerpart.headerpart-tradelogs {
+		text-align: left !important;
+	}
 	.dstatstrade ul li {
 		line-height: 150%;
 		padding: 5px 5px 5px 15px;
@@ -3521,7 +3524,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                 <div class="stats-info">
                                                                     <div class="dstatstrade overridewidth">
                                                                         <ul>
-                                                                        	<li class="headerpart">
+                                                                        	<li class="headerpart headerpart-tradelogs">
                                                                             	<div style="width:100%;">                                                                                	
                                                                                     <div style="width:70px">Date</div>
                                                                                     <div style="width:60px">Stocks</div>

@@ -238,7 +238,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		</div>
 																	</div>
 
-																	<!-- <div class="dtockname">
+																	 <div class="dtockname">
 																		<div class="stocknn"><?php echo $value['stockname']; ?></div>
 																		<div class="subnotif">
 																			<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
@@ -246,7 +246,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				echo ",";
 																			} ?>
 																		</div>
-																	</div>															<div class="dcontainer">
+																	</div>															
+                                                                    <div class="dcontainer">
 																		<div class="dchart">
 																			<div class="chartjs">
 																				<div id="chart_div_<?php //echo $value['stockname']; ?>" class="chart">
@@ -262,7 +263,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<div class="curprice">&#8369;<?php //echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
 																		<br style="clear:both;">
-																	</div> -->
+																	</div> 
 
 
 

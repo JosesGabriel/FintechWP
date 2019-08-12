@@ -237,7 +237,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																
 																		</div>
 																	</div>
-
+                                                                     <!--                       
 																	 <div class="dtockname">
 																		<div class="stocknn"><?php echo $value['stockname']; ?></div>
 																		<div class="subnotif">
@@ -263,7 +263,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<div class="curprice">&#8369;<?php //echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
 																		<br style="clear:both;">
-																	</div> 
+																	</div> -->
 
 
 

@@ -72,27 +72,27 @@ if (isset($_GET['remove'])) {
 
 //removing date compare function as it broke the page:
 
-#function date_compare($a, $b)
-#{
-#    $t1 = strtotime($a['toadddate']);
-#    $t2 = strtotime($b['toadddate']);
-#    return $t1 - $t2;
-#}
+function date_compare($a, $b)
+{
+    $t1 = strtotime($a['toadddate']);
+    $t2 = strtotime($b['toadddate']);
+    return $t1 - $t2;
+}
 
-#if ($havemeta) {
-#    usort($havemeta, 'date_compare');
-#    array_reverse($havemeta);
-#}
+if ($havemeta) {
+    usort($havemeta, 'date_compare');
+    array_reverse($havemeta);
+}
 
-#function working_days_ago($days) {
-#    $count = 0;
-#    $day = strtotime('-2 day');
-#    while ($count < $days || date('N', $day) > 5) {
-#       $count++;
-#       $day = strtotime('-1 day', $day);
-#    }
-#    return date('Y-m-d', $day);
-#}
+function working_days_ago($days) {
+    $count = 0;
+    $day = strtotime('-2 day');
+    while ($count < $days || date('N', $day) > 5) {
+       $count++;
+       $day = strtotime('-1 day', $day);
+    }
+    return date('Y-m-d', $day);
+}
 
 $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 

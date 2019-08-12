@@ -1881,31 +1881,36 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #9E9E9E solid;
 }
 .arbitrage-button--secondary:hover {
-	background-color: #9E9E9E;
+	background-color: #9E9E9E !important;
+	transition-duration: 300ms;
 }
 .arbitrage-button--success {
 	border: 2px #49ba6f solid;
 }
 .arbitrage-button--success:hover {
-	background-color: #49ba6f;
+	background-color: #49ba6f !important;
+	transition-duration: 300ms;
 }
 .arbitrage-button--warning {
 	border: 2px #e77e24 solid;
 }
 .arbitrage-button--warning:hover {
-	background-color: #e77e24;
+	background-color: #e77e24 !important;
+	transition-duration: 300ms;
 }
 .arbitrage-button--danger {
 	border: 2px #e84c3c solid;
 }
 .arbitrage-button--danger:hover {
-	background-color: #e84c3c;
+	background-color: #e84c3c !important;
+	transition-duration: 300ms;
 }
 .arbitrage-button--info {
 	border: 2px #874a9a solid;
 }
 .arbitrage-button--info:hover {
-	background-color: #874a9a;
+	background-color: #874a9a !important;
+	transition-duration: 300ms;
 }
 .input-locked{
 	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 

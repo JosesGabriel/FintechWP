@@ -153,7 +153,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
 																curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-																$dwatchinfo = curl_exec($curl);
+                                                                #$dwatchinfo = curl_exec($curl);
+                                                                $dwatchinfo = $staticstock;
 																curl_close($curl);
 
 																$genstockinfo = json_decode($dwatchinfo);

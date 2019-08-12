@@ -69,10 +69,10 @@
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-1.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
-					  <span>Vyndue</span></a></li>
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-1.svg">
             <span>Games</span></a></li>
+                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
+            <span>Vyndue</span></a></li>
             
             <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>

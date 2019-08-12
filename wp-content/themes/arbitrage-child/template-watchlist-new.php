@@ -417,3 +417,89 @@ date_default_timezone_set('Asia/Manila');
 
 </div>
 
+<script>
+    if (typeof angular !== 'undefined') {
+		var app = angular.module('arbitrage_wl', ['nvd3']);
+		<?php
+		if ($havemeta) {
+		foreach ($havemeta as $key => $value) {
+
+
+
+			// get stcok history
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			$dhistofronold = curl_exec($curl);
+			curl_close($curl);
+
+			$dhistoforchart = json_decode($dhistofronold);
+
+			$dhistoflist = "";
+			$counter = 0;
+			for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+				$dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+				$counter++;
+			}
+
+			$currentTime = (new DateTime())->modify('+1 day');
+			$startTime = new DateTime('15:30');
+			$endTime = (new DateTime('09:00'))->modify('+1 day');
+
+			if ($currentTime >= $startTime && $currentTime <= $endTime) {
+			  	$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				$dintrabase = curl_exec($curl);
+				curl_close($curl);
+
+				$dintraforchart = json_decode($dintrabase);
+
+				$open = end($dintraforchart->o);
+				$high = end($dintraforchart->h);
+				$low = end($dintraforchart->l);
+
+				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+			}
+
+
+
+			?>
+		app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+			$scope.options = {
+					chart: {
+						type: 'candlestickBarChart',
+						height: 70,
+						width: 195,
+						margin : {
+							top: 0,
+							right: 0,
+							bottom: 0,
+							left: 0
+						},
+						interactiveLayer: {
+							tooltip: { enabled: false }
+						},
+						x: function(d){ return d['date']; },
+						y: function(d){ return d['close']; },
+						duration: 100,
+						zoom: {
+							enabled: true,
+							scaleExtent: [1, 10],
+							useFixedDomain: false,
+							useNiceScale: false,
+							horizontalOff: false,
+							verticalOff: true,
+							unzoomEventType: 'dblclick.zoom'
+						}
+					}
+				};
+
+			$scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+		});
+		<?php
+			}
+		}
+        ?>
+    }
+    </script>

@@ -761,7 +761,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 	
 	<?php if (isset($_GET['admin'])){ ?>
 		/* Countdown disabled */
-	.contercontrol {display:none;}
+		.contercontrol {display:none !important;}
 	<?php }else{ ?>
 		/* Countdown */
 		#page-container {display: none;}

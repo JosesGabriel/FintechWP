@@ -1,4 +1,4 @@
-<?php /* Template Name: Laumching */ ?>
+<?php /* Template Name: Launching */ ?>
 <!doctype html>
 <html>
 <head>	
@@ -7,17 +7,15 @@
     <meta name="keywords" content="">
     <meta name="author" content="Pragmatic Mates s.r.o. - http://pragmaticmates.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="http://fonts.googleapis.com/css?family=dgital-7:400,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <link rel="stylesheet" type="text/css" href="cd/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="cd/css/demo.css">
 
 	<title>Arbitrage.ph</title>
 </head>
 
 <body>
 <div class="header">
-    <center><img class="header-image" src="./img/Asset 4.png"></center>
+    <center><img class="header-image" src="cd/img/Asset 4.png"></center>
 </div>
 <div class="title-header">
        <center> COMING SOON</center>
@@ -82,8 +80,8 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/kinetic.js"></script>
-<script type="text/javascript" src="../jquery.final-countdown.js"></script>
+<script type="text/javascript" src="cd/js/kinetic.js"></script>
+<script type="text/javascript" src="jquery.final-countdown.js"></script>
 <script type="text/javascript">  
     $('document').ready(function() {
         'use strict';

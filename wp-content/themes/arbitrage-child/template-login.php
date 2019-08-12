@@ -759,8 +759,8 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
 	/* Countdown */
-	/* #page-container {display: none;}
-	.um-social-login-overlay, #preloader, html {background-image: none !important;} */
+	#page-container {display: none;}
+	.um-social-login-overlay, #preloader, html {background-image: none !important;}
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
@@ -923,8 +923,8 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="js/kinetic.js"></script>
-<script type="text/javascript" src="../jquery.final-countdown.js"></script>
+<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
+<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script>
 <script type="text/javascript">  
     $('document').ready(function() {
         'use strict';

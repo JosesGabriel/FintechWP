@@ -4,6 +4,11 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	
+	<?php // Countdown ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
+	
+	
 <?php
 global $current_user;
 $user = wp_get_current_user();

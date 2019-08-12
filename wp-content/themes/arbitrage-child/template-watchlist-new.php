@@ -160,7 +160,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																curl_close($curl);
                                                                 
                                                                 $genstockinfo = json_decode($dwatchinfo);
-                                                                print_r(genstockinfo);
+                                                                echo var_dump($genstockinfo);
+                                                                
 																$stockinfo = $genstockinfo->data;
 
                                                                 $counters = 0;

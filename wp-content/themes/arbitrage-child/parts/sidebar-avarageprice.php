@@ -27,19 +27,19 @@
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Cost</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="totalcost" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Position</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="totalposition" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left">Average Price</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="stockname" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="averageprice" type="text" value="0" style="width:95%;">
                             </div>
                         </div>
                         
@@ -127,7 +127,8 @@
 
             var transfer = marketvalue * 0.00005;
 
-            var sccp = marketvalue * 0.0001;
+            // var sccp = marketvalue * 0.0001;
+            var sccp = 0;
 
 
 
@@ -142,7 +143,7 @@
 
 
         jQuery(".additems a").click(function(e) {
-
+            console.log("rhsdd");
             e.preventDefault();
 
 
@@ -167,7 +168,23 @@
 
         });
 
+        jQuery('.clearbtn a').click(function(e) {
+            jQuery("#totalcost, #totalposition, #averageprice").val(0);
+            jQuery(".paramlist div .bodies").empty();
 
+            var ditem = "";
+
+            ditem += '<ul class="doneitem">';
+
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos" placeholder="Enter Position"></li>';
+
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri" placeholder="Enter Price"></li>';
+
+            ditem += "</ul>";
+
+            jQuery(".paramlist div .bodies").append(ditem).attr('data-numcount', 1);
+
+        });
 
         jQuery('.calculate a').click(function(e) {
 
@@ -175,6 +192,7 @@
 
             var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
 
+            console.log(dcount);
 
 
             if (dcount > 0) {
@@ -187,6 +205,7 @@
 
                 var totalvolume = 0;
 
+                var costfee = 0;
 
 
                 jQuery(".paramlist div .bodies ul").each(function(index) {
@@ -194,6 +213,8 @@
 
 
                     var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val() : 0);
+                    
+                    
 
                     var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val() : 0);
 
@@ -205,25 +226,34 @@
 
                         totalcost += parseFloat(dprice) * parseFloat(dposition);
 
+                        costfee += totalcost + parseFloat(getfee(totalcost));
+
+                        console.log("fees: "+parseFloat(getfee(totalcost)));
+
                     }
 
 
 
                 });
 
+                // console.log("totalvol: "+totalvolume);
+                // console.log("totalprice: "+totalprice);
+                // console.log("totalcost: "+totalcost);
+                // console.log("costfee: "+costfee);
+
+                // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
+                var finalcost = costfee / totalvolume;
+
+                // console.log("finalcost: "+finalcost);
 
 
-                var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
-
-                console.log(getfee(totalcost));
 
 
+                jQuery("#totalcost").val(parseFloat(costfee).toFixed(2));
 
-                jQuery(".totalcost").text((totalcost + parseFloat(getfee(totalcost))).toFixed(2));
+                jQuery("#totalposition").val(totalvolume);
 
-                jQuery(".totalposition").text(totalvolume);
-
-                jQuery(".totalprice").text((finalcost).toFixed(2));
+                jQuery("#averageprice").val((finalcost).toFixed(2));
 
 
 

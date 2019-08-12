@@ -1,12 +1,12 @@
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
-<html <?php language_attributes(); ?>>
-<head>
+<html <?php language_attributes(); ?>><head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	
 	<?php // Countdown ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
+	
 	
 	
 <?php
@@ -107,7 +107,7 @@ $user = wp_get_current_user();
 	
 <!-- Countdown -->
 <div class="header">
-    <center><img class="header-image" src="./img/Asset 4.png"></center>
+    <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
 </div>
 <div class="title-header">
        <center> COMING SOON</center>

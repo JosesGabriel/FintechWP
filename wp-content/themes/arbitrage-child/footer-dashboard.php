@@ -183,7 +183,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				$dwatchinfo = curl_exec($curl);
 				curl_close($curl); /*temp-disabled-end */
 			?>
-			var dstockinfo = '<?php echo $dwatchinfo; ?>';
+			var dstockinfo = JSON.parse('<?php echo $dwatchinfo; ?>');
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 
 			//console.log(JSON.parse(dstockinfo));

@@ -2471,6 +2471,8 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var x = 0;
+		var y = 0;
 
 		function fees(marketval) {
 
@@ -2614,6 +2616,19 @@
 
 		});
 
+	jQuery('.inpt_data_price').keyup(function(){
+		var inputVal = jQuery(this).val().length;
+		if(inputVal != 0){
+			y = 1
+		}
+	});
+	jQuery('.inpt_data_qty').keyup(function(){
+		var inputVal2 = jQuery(this).val().length;
+		if(inputVal2 != 0){
+			x = 1
+		}
+	});
+
 	$(".confirmtrd").click(function(e){
 
 		var dbuypower = $(".input_buy_power").attr('data-dbaseval');
@@ -2622,13 +2637,17 @@
 
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
-		$('.chart-loader').css("display","block");
-		$(this).hide();
+	
 		
 		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 			e.preventDefault();
 			$(".derrormes").text('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is ₱'+dpurprice);
 			// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
+		}else {
+			if(x == 1 && y == 1){
+			$('.chart-loader').css("display","block");
+			$(this).hide();
+		 }
 		}
 	
 	});

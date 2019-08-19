@@ -1918,9 +1918,6 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
 }
-.input-locked{
-	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 
-}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;

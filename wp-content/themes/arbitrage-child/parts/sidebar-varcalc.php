@@ -697,7 +697,7 @@
 
                     <div class="arb_calcbox_left">Value at Risk</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
@@ -705,7 +705,7 @@
 
                     <div class="arb_calcbox_left">Upside</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before" >₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 

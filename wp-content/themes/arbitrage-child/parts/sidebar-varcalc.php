@@ -212,7 +212,7 @@
 
     line-height: 30px;
 
-    background-color: rgba(78, 106, 133, 0.47843137254901963);
+    background-color: #11273e;
 
     padding: 0 0 0 10px;
 
@@ -248,7 +248,7 @@
 
     line-height: 20px;
 
-    background-color: #11273e;
+    background-color: rgba(78, 106, 133, 0.47843137254901963);
 
     border: none;
 

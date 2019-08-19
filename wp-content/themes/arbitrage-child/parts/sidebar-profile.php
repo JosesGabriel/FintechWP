@@ -188,6 +188,11 @@
             }
         });
 
+        jQuery('.info-circle').click(function(e){
+          jQuery('.todos_box').css("display","block");
+          
+        });
+
         // jQuery('.dpowerdown').click(function(e){
         //   e.preventDefault();
 
@@ -371,5 +376,5 @@ input:checked + .slider:before {
   .info-circle:hover {
     cursor: pointer;
   }
-  
+
 </style>

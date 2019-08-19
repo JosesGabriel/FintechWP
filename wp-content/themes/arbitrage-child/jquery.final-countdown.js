@@ -294,6 +294,26 @@
                 timer.seconds++;
             }
 
+
+            if(timer.seconds >= 59){
+                $(".type-seconds").text("SECOND");
+            }else {
+                $(".type-seconds").text("SECONDS");
+            }
+
+            if(timer.minutes >= 59){
+                $(".type-minutes").text("MINUTE");
+            }else {
+                $(".type-minutes").text("MINUTES");
+            }
+
+             if(timer.hours >= 23){
+                $(".type-hours").text("HOUR");
+            }else {
+                $(".type-hours").text("HOURS");
+            }
+
+
             layerSeconds.draw();
         }, 1000);
     }

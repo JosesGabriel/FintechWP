@@ -54,6 +54,13 @@
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
+
+      <div class="profile-progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+            70%
+          </div>
+      </div>
+
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
               <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">

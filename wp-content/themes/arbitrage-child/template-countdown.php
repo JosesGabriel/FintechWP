@@ -93,7 +93,7 @@
 
     	$('.countdown').final_countdown({
             'start': 1565338684,
-            'end': ,
+            'end': 1568592000,
             'now': timestamp     
         });
     });

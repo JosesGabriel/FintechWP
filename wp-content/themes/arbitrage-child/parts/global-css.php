@@ -1799,7 +1799,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 	height: 100%;
 	margin: 0 auto;
 	font-size: 13px;
-	background: rgba(94, 115, 138, 0.52);
+	background: rgba(30, 30, 30, 0.9);
 	position: fixed;
 	z-index: 99999999000;
 	display: flex;
@@ -1822,7 +1822,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 	margin: 0 auto;
 	height: 460px;
 	width: 100%;
-	background: #142c46;
+	background: #0c1f33;
 }
 .bkcalcboxess input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

@@ -534,7 +534,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%; text-align: left;">
+                            <input name="stockname" id="stockname" type="text" value="BDO" style="text-align: left;">
 
                         </div>
 
@@ -546,7 +546,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
+                            <input name="currentprice" id="currentprice" type="number" value="0"  tabindex="1">
 
                         </div>
 
@@ -564,7 +564,7 @@
 
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
-                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
+                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" tabindex="2"></div>
 
                         <div class="arb_clear smlspc"></div>
 

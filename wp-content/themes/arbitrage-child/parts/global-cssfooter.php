@@ -58,6 +58,7 @@
 	    list-style: circle;
 	}
 	.p-padding {
-		
+		margin: 0;
+		padding-bottom: 13px;
 	}
 </style>

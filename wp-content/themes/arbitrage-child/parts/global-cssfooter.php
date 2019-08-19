@@ -9,14 +9,11 @@
 
 	.container h2 {
 
-		font-weight: 600;
-
-	    font-family: 'Roboto', sans-serif;
-
-		margin: 25px 0px 25px 0;
-
-	    padding: 0px 0px 4px 0px;
-
+		font-family: 'Roboto', sans-serif;
+		margin: 25px 0px 0 0;
+		padding: 0px 0px 4px 0px;
+		text-align: center;
+		font-weight: 500;
 	}
 
 	.container h4 {

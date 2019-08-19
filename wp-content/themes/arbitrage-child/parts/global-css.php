@@ -2742,7 +2742,7 @@ li.five a span {
     font-size: 14px;
     position: relative;
     display: inline-block;
-    background-color: #4e6a85;
+    background-color: #34495e;
     padding: 7px 32px 7px 10px !important;
     border-radius: 5px 0 0 5px;
     bottom: -35px;
@@ -2780,8 +2780,8 @@ li.five a span {
 	transition-duration: 300ms;
 }
 .depo-input-field {
-    background: #0b1d33 !important;
-    border: 1px solid #1e3554 !important;
+    background: #4e6a85 !important;
+    border: 1px solid #4e6a85 !important;
     border-radius: 5px;
     width: 100%;
     color: #d8d8d8 !important;
@@ -2852,5 +2852,8 @@ p.content-meta-date {
     height: 300px;
     position: absolute;
     background: #0b1827;
+}
+.a-link {
+	color: #03A9F4;
 }
 </style>

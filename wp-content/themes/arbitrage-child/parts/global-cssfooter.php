@@ -17,21 +17,17 @@
 	}
 
 	.container h4 {
-
 		font-weight: 500;
-
-	    font-family: 'Roboto', sans-serif;
-
-	    font-size: 22px;
-
+		font-family: 'Roboto', sans-serif;
+		font-size: 22px;
+		padding-bottom: 0;
 	}
 
 	.container p {
-
-		line-height: 1.5;
-		font-weight: 300;
-		color: #cdcdcd !important;
-
+		line-height: 1.3;
+		color: #d8d8d8 !important;
+		font-weight: 400;
+		font-family: 'Roboto', sans-serif;
 	}
 
 	.container {

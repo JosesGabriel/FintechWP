@@ -16,12 +16,12 @@ get_header('dashboard');
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
+<div class="background-positionfix"></div>
 <div class="container">
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2>Privacy Policy</h2>
 
-		<p>Last updated: April 8, 2019</p>
+		<p class="content-meta-date">Last updated: April 8, 2019</p>
 		<div class="inner-content">
 		<p>Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site. <br><br>We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
 

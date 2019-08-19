@@ -2836,11 +2836,14 @@ li.dspecitem div div {
 }
 
 .inner-content {
-    padding: 20px 35px;
+    padding: 35px 35px;
     border-radius: 5px;
     background: #142c46;
 }
 .fas .fa-percentage {
 	margin-left: 1px;
+}
+.content-meta-date {
+	text-align: center;
 }
 </style>

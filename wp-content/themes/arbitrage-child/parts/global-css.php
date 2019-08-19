@@ -2864,8 +2864,8 @@ p.content-meta-date {
 }
 
 .progress-bar {
-	height: 10px;
-    font-size: 10px;
+	height: 5px;
+    font-size: 5px;
     color: black;
     border-radius: 5px;
 }

@@ -191,7 +191,7 @@
         jQuery('.info-circle').click(function(){
 
           if($('.todos_box').css('display') == 'none'){
-              jQuery('.todos_box').animate({"display": "block"}, 2500);
+              jQuery('.todos_box').css("display","block");
           }else {
               jQuery('.todos_box').css("display","none");
           }

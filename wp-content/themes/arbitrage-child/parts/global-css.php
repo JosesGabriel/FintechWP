@@ -2849,7 +2849,7 @@ p.content-meta-date {
 }
 .background-positionfix {
 	width: 100%;
-    height: 300px;
+    height: 350px;
     position: absolute;
     background: #0b1827;
 }

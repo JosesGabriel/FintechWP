@@ -673,8 +673,7 @@ get_header( 'dashboard' );
 		border: #27ae60 solid 2px !important;
 	    background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -697,8 +696,7 @@ get_header( 'dashboard' );
 	input[type="submit"].red {
 		background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -802,8 +800,8 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #142b46;
-		padding: 0 13px;
+		background-color: #34495e;
+		padding: 12px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -812,7 +810,7 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 17px;
+		font-size: 14px;
 		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
@@ -847,11 +845,11 @@ get_header( 'dashboard' );
 		margin: -1px 0 0px 5px;
 	}
 	span.datestamp_header {
-		color: #a1adb5;
-		display: block;
-		vertical-align: middle;
-		margin: 0;
 		font-size: 12px;
+		color: #a1adb5;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0px 10px;
 	}
 
 	.fctnlhdn {
@@ -860,11 +858,13 @@ get_header( 'dashboard' );
 		position:absolute;
 		z-index:-1;
 	}
-
+	.fa-lock {
+		color: white;
+	}
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #142c46 !important;
-		background: #142c46 !important;
+		border-color: #0c1f33 !important;
+		background: #0c1f33 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;
@@ -1243,7 +1243,7 @@ get_header( 'dashboard' );
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 595px;
+		left: 565px;
 	}.dledinner ul {
 		margin: 0;
 		padding: 0;

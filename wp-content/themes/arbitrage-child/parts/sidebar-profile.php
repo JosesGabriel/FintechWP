@@ -54,10 +54,10 @@
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
-      <span style="font-size: 11px;">Profile: 70% </span>
-      <div class="profile-progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-          </div>
+      <small style="float: left;">70% complete</small>
+      <small style="float:right;font-size: 16px !important;margin-top: -7px;"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
+      <div class="profile-progress" style="clear: both;">
+          <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div>
       </div>
 
       <div class="side-content">

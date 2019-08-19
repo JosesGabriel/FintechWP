@@ -2853,4 +2853,7 @@ p.content-meta-date {
     position: absolute;
     background: #0b1827;
 }
+.a-link {
+	color: #03A9F4;
+}
 </style>

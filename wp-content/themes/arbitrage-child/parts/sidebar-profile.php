@@ -60,6 +60,8 @@
           <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div>
       </div>
 
+      <?php get_template_part('parts/sidebar', 'tasks'); ?>
+
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
               <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">

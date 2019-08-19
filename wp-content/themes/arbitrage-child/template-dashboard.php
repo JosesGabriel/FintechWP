@@ -923,7 +923,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 						
-						<?php get_template_part('parts/sidebar', 'tasks'); ?>
+						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
                         

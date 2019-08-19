@@ -188,9 +188,13 @@
             }
         });
 
-        jQuery('.info-circle').click(function(e){
-          jQuery('.todos_box').css("display","block");
-          
+        jQuery('.info-circle').click(function(){
+
+          if($('.todos_box').css('display') == 'none'){
+              jQuery('.todos_box').css("display","block");
+          }else {
+              jQuery('.todos_box').css("display","none");
+          }
         });
 
         // jQuery('.dpowerdown').click(function(e){

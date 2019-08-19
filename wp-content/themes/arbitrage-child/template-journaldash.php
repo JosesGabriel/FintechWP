@@ -1243,7 +1243,7 @@ get_header( 'dashboard' );
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 585px;
+		left: 565px;
 	}.dledinner ul {
 		margin: 0;
 		padding: 0;

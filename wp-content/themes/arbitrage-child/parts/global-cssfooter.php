@@ -8,9 +8,8 @@
 	}
 
 	.container h2 {
-
 		font-family: 'Roboto', sans-serif;
-		margin: 25px 0px 0 0;
+		margin: 70px 0px 0 0;
 		padding: 0px 0px 4px 0px;
 		text-align: center;
 		font-weight: 500;
@@ -28,6 +27,8 @@
 		color: #d8d8d8 !important;
 		font-weight: 400;
 		font-family: 'Roboto', sans-serif;
+		font-size: 15px;
+		letter-spacing: 0.2px;
 	}
 
 	.container {

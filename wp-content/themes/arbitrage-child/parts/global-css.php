@@ -2836,7 +2836,7 @@ li.dspecitem div div {
 }
 
 .inner-content {
-    padding: 40px 35px 25px 35px;
+	padding: 45px 40px 25px 40px;
     border-radius: 5px;
     background: #142c46;
 }

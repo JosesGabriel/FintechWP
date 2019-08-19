@@ -22,7 +22,7 @@ get_header('dashboard');
 		<h2>Privacy Policy</h2>
 
 		<p>Last updated: April 8, 2019</p>
-
+		<div class="inner-content">
 		<p>Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site. <br><br>We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
 
 		<h4>Information Collection And Use</h4>
@@ -52,6 +52,7 @@ get_header('dashboard');
 		<h4>Contact Us</h4>
 
 		<p>If you have any questions about this Privacy Policy, please contact us.</p>
+		</div>
 	</div>
 </div>
 

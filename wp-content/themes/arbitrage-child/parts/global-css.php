@@ -2834,4 +2834,10 @@ span.menu-title-calc {
 li.dspecitem div div {
     text-align: right;
 }
+
+.inner-content {
+    padding: 20px 35px;
+    border-radius: 5px;
+    background: #142c46;
+}
 </style>

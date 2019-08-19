@@ -2,7 +2,7 @@
 
 	/*
 
-	* Template Name: Contact
+	* Template Name: Contacts
 
 	*/
 

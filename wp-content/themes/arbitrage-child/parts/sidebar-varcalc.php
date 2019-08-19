@@ -665,11 +665,11 @@
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%; border-radius:0;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%; border-radius:0;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Stoploss</div>

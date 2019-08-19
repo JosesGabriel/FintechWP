@@ -18,7 +18,6 @@
 	.container h4 {
 		font-weight: 500;
 		font-family: 'Roboto', sans-serif;
-		font-size: 22px;
 		padding-bottom: 0;
 	}
 

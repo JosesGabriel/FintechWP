@@ -802,8 +802,8 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #142b46;
-		padding: 0 13px;
+		background-color: #34495e;
+		padding: 12px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -863,8 +863,8 @@ get_header( 'dashboard' );
 
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #142c46 !important;
-		background: #142c46 !important;
+		border-color: #0c1f33 !important;
+		background: #0c1f33 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;

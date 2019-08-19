@@ -780,6 +780,8 @@ get_header( 'dashboard' );
 	}
 	.groupinput.midd input {
 		width:138px;
+		text-align: right;
+		padding-right: 20px;
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
@@ -1919,7 +1921,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>

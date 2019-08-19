@@ -3797,7 +3797,7 @@ if ($getdstocks && $getdstocks != "") {
 																				<hr class="style14 style15">
 																				<div class="button-funds">
 																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: left; font-size: 15px;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
@@ -3817,7 +3817,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
 																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary">Deposit</a>
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 15px;">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>

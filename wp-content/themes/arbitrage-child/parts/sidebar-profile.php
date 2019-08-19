@@ -193,7 +193,7 @@
           if($('.todos_box').css('display') == 'none'){
               jQuery('.todos_box').slideDown();
           }else {
-              jQuery('.todos_box').css("display","none");
+              jQuery('.todos_box').slideUp();
           }
         });
 

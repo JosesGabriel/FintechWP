@@ -534,7 +534,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="stockname" id="stockname" type="text" value="BDO" style="text-align: left;">
+                            <input name="stockname" id="stockname" type="text" value="BDO" style="width: 85%; text-align: left;">
 
                         </div>
 
@@ -546,7 +546,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="currentprice" id="currentprice" type="number" value="0"  tabindex="1">
+                            <input name="currentprice" id="currentprice" type="number" value="0" style="width: 85%;" tabindex="1">
 
                         </div>
 
@@ -564,7 +564,7 @@
 
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
-                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" tabindex="2"></div>
+                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width: 85%;" tabindex="2"></div>
 
                         <div class="arb_clear smlspc"></div>
 
@@ -661,7 +661,7 @@
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:99%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>

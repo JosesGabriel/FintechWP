@@ -2840,7 +2840,7 @@ li.dspecitem div div {
     border-radius: 5px;
     background: #142c46;
 }
-.fas .fa-percentage {
+.fa-percentage {
 	margin-left: 1px;
 }
 </style>

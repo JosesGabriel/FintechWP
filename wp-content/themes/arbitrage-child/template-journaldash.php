@@ -3804,9 +3804,12 @@ if ($getdstocks && $getdstocks != "") {
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
-																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
+																									
+																								<div class="arb_calcbox_left">Target Profit</div>
+																								<div class="arb_calcbox_right">
+																								<input name="targetprof" id="targetprof" type="number" value="0" style="width:80%;" tabindex="6">
+																								<i class="fas fa-percentage" aria-hidden="true"></i>
+																								</div>
 																								</div>
 																							</div>
 																						</div>

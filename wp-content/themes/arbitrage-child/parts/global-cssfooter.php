@@ -65,4 +65,11 @@
 		background: linear-gradient(to right, #F44336 1%, #E91E63 5%, #2196F3 15%, #8BC34A 25%, #FFEB3B 35%, #FF9800);
 		font-weight: 700 !important;
 	}
+	.wavey-bottom-bg {
+		bottom: -87px;
+		position: absolute;
+		height: 100px !important;
+		width: 100%;
+		transform: rotatex(-180deg);
+	}
 </style>

@@ -185,7 +185,7 @@ $user = wp_get_current_user();
 
     	$('.countdown').final_countdown({
             'start': 1565338684,
-            'end': 1568592000,
+            'end': 1568595600,
             'now': timestamp     
         });
     });

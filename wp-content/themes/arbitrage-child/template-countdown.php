@@ -91,11 +91,7 @@
 
         console.log(timestamp);
 
-    	$('.countdown').final_countdown({
-            'start': 1565338684,
-            'end': ,
-            'now': timestamp     
-        });
+    	
     });
 </script>
 

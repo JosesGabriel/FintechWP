@@ -44,7 +44,7 @@ $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
 
-<div class="todos_box">
+<div class="todos_box" style="display: none;">
   <div class="todos_box-inner">
 	  <div class="to-top-title">Complete your Profile</div>
 	  <div class="to-content-part to-back-back">

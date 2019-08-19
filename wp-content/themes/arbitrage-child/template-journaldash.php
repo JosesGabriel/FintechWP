@@ -812,7 +812,7 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 17px;
+		font-size: 14px;
 		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
@@ -847,11 +847,11 @@ get_header( 'dashboard' );
 		margin: -1px 0 0px 5px;
 	}
 	span.datestamp_header {
-		color: #a1adb5;
-		display: block;
-		vertical-align: middle;
-		margin: 0;
 		font-size: 12px;
+		color: #a1adb5;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0px 10px;
 	}
 
 	.fctnlhdn {
@@ -1243,7 +1243,7 @@ get_header( 'dashboard' );
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 595px;
+		left: 590px;
 	}.dledinner ul {
 		margin: 0;
 		padding: 0;

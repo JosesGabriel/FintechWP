@@ -212,7 +212,7 @@
 
     line-height: 30px;
 
-    background-color: #11273e;
+    background-color: #34495e;
 
     padding: 0 0 0 10px;
 
@@ -234,7 +234,7 @@
 
     line-height: 20px;
 
-    background: #11273e !important;
+    background: #4e6a85 !important;
 
 }
 
@@ -248,7 +248,7 @@
 
     line-height: 20px;
 
-    background-color: rgba(78, 106, 133, 0.47843137254901963);
+    background-color: #4e6a85;
 
     border: none;
 

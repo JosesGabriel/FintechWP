@@ -2467,7 +2467,11 @@
 	    border-right: 0 !important;
 		border-left: 4px solid #34495e !important;
 	}
-	
+	svg {
+		border: 2px solid white;
+		border-radius: 20px;
+		background: black;
+	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){

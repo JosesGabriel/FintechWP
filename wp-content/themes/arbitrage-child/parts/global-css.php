@@ -2856,4 +2856,17 @@ p.content-meta-date {
 .a-link {
 	color: #03A9F4;
 }
+
+.profile-progress {
+	margin: 5px;
+    background: white;
+    border-radius: 5px;
+}
+
+.progress-bar {
+	height: 10px;
+    font-size: 10px;
+    color: black;
+    border-radius: 5px;
+}
 </style>

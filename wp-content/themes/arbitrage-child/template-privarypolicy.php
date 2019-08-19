@@ -24,8 +24,8 @@ get_header('dashboard');
 		<p class="content-meta-date">Last updated: April 8, 2019</p>
 		<div class="inner-content">
 		
-		<p>Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site. 
-		<br><br>We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
+		<p class="p-padding">Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.</p>
+		<p class="p-padding">We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
 
 		<h4>Information Collection And Use</h4>
 
@@ -33,7 +33,9 @@ get_header('dashboard');
 
 		<h4>Log Data</h4>
 
-		<p>Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). <br><br>This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages and other statistics. <br><br>In addition, we may use third party services such as Google Analytics that collect, monitor and analyze this.</p>
+		<p class="p-padding">Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data").</p>
+		<p class="p-padding">This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages and other statistics.</p>
+		<p class="p-padding">In addition, we may use third party services such as Google Analytics that collect, monitor and analyze this.</p>
 
 		<h4>Communications</h4>
 
@@ -41,7 +43,8 @@ get_header('dashboard');
 
 		<h4>Cookies</h4>
 
-		<p>Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive. <br><br>Like many sites, we use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.</p>
+		<p class="p-padding">Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive. </p>
+		<p class="p-padding">Like many sites, we use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.</p>
 
 		<h4>Security</h4>
 
@@ -49,13 +52,18 @@ get_header('dashboard');
 
 		<h4>Changes To This Privacy Policy</h4>
 
-		<p>This Privacy Policy is effective as of April 8, 2019 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. <br><br>We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. <br><br>If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.</p>
+		<p class="p-padding">This Privacy Policy is effective as of April 8, 2019 and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. </p>
+		<p class="p-padding">We reserve the right to update or change our Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. </p>
+		<p class="p-padding">If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.</p>
 
 		<h4>Contact Us</h4>
 
 		<p>If you have any questions about this Privacy Policy, please contact us.</p>
 		</div>
 	</div>
+</div>
+<div class="footer-container">
+	<div class="container"></div>
 </div>
 
 

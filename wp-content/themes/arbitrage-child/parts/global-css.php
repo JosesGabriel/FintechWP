@@ -2852,6 +2852,5 @@ p.content-meta-date {
     height: 300px;
     position: absolute;
     background: #0b1827;
-	overflow-x: hidden;
 }
 </style>

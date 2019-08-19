@@ -212,7 +212,7 @@
 
     line-height: 30px;
 
-    background-color: rgba(78, 106, 133, 0.47843137254901963);
+    background-color: #34495e;
 
     padding: 0 0 0 10px;
 
@@ -234,7 +234,7 @@
 
     line-height: 20px;
 
-    background: #11273e !important;
+    background: #4e6a85 !important;
 
 }
 
@@ -248,7 +248,7 @@
 
     line-height: 20px;
 
-    background-color: #11273e;
+    background-color: #4e6a85;
 
     border: none;
 
@@ -288,7 +288,7 @@
 
 	border-radius:0;
 
-	background-color: #11273e;
+	background-color: #4e6a85;
 
 }
 
@@ -534,7 +534,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%; text-align: left;">
+                            <input name="stockname" id="stockname" type="text" value="BDO" style="width: 85%; text-align: left;">
 
                         </div>
 
@@ -546,7 +546,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
+                            <input name="currentprice" id="currentprice" type="number" value="0" style="width: 85%;" tabindex="1">
 
                         </div>
 
@@ -564,7 +564,7 @@
 
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
-                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
+                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width: 85%;" tabindex="2"></div>
 
                         <div class="arb_clear smlspc"></div>
 
@@ -661,15 +661,15 @@
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:99%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%; border-radius:0;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%; border-radius:0;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Stoploss</div>
@@ -697,7 +697,7 @@
 
                     <div class="arb_calcbox_left">Value at Risk</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
@@ -705,7 +705,7 @@
 
                     <div class="arb_calcbox_left">Upside</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before" style="background-color: rgba(78, 106, 133, 0.47843137254901963);">₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before" >₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 

@@ -1799,7 +1799,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 	height: 100%;
 	margin: 0 auto;
 	font-size: 13px;
-	background: rgba(94, 115, 138, 0.52);
+	background: rgba(30, 30, 30, 0.9);
 	position: fixed;
 	z-index: 99999999000;
 	display: flex;
@@ -1822,7 +1822,7 @@ a.um-friend-respond-btn.um-button.um-alt {
 	margin: 0 auto;
 	height: 460px;
 	width: 100%;
-	background: #142c46;
+	background: #0c1f33;
 }
 .bkcalcboxess input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -1917,9 +1917,6 @@ input[type=number]::-webkit-outer-spin-button {
 	color: #ffffff;
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
-}
-.input-locked{
-	background-color: rgba(78, 106, 133, 0.47843137254901963) !important; 
 }
 .toclassclose {
 	cursor: pointer;
@@ -2745,7 +2742,7 @@ li.five a span {
     font-size: 14px;
     position: relative;
     display: inline-block;
-    background-color: #4e6a85;
+    background-color: #34495e;
     padding: 7px 32px 7px 10px !important;
     border-radius: 5px 0 0 5px;
     bottom: -35px;
@@ -2783,8 +2780,8 @@ li.five a span {
 	transition-duration: 300ms;
 }
 .depo-input-field {
-    background: #0b1d33 !important;
-    border: 1px solid #1e3554 !important;
+    background: #4e6a85 !important;
+    border: 1px solid #4e6a85 !important;
     border-radius: 5px;
     width: 100%;
     color: #d8d8d8 !important;
@@ -2836,5 +2833,27 @@ span.menu-title-calc {
 }
 li.dspecitem div div {
     text-align: right;
+}
+
+.inner-content {
+	padding: 45px 40px 25px 40px;
+    border-radius: 5px;
+    background: #142c46;
+}
+.fa-percentage {
+	margin-left: 1px;
+}
+p.content-meta-date {
+    text-align: center;
+    padding-bottom: 20px !important;
+}
+.background-positionfix {
+	width: 100%;
+    height: 300px;
+    position: absolute;
+    background: #0b1827;
+}
+.a-link {
+	color: #03A9F4;
 }
 </style>

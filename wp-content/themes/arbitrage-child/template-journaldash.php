@@ -673,8 +673,7 @@ get_header( 'dashboard' );
 		border: #27ae60 solid 2px !important;
 	    background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -697,8 +696,7 @@ get_header( 'dashboard' );
 	input[type="submit"].red {
 		background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -780,6 +778,8 @@ get_header( 'dashboard' );
 	}
 	.groupinput.midd input {
 		width:138px;
+		text-align: right;
+		padding-right: 20px;
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
@@ -800,8 +800,8 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #142b46;
-		padding: 0 13px;
+		background-color: #34495e;
+		padding: 12px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -810,7 +810,7 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 17px;
+		font-size: 14px;
 		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
@@ -845,11 +845,11 @@ get_header( 'dashboard' );
 		margin: -1px 0 0px 5px;
 	}
 	span.datestamp_header {
-		color: #a1adb5;
-		display: block;
-		vertical-align: middle;
-		margin: 0;
 		font-size: 12px;
+		color: #a1adb5;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0px 10px;
 	}
 
 	.fctnlhdn {
@@ -858,11 +858,13 @@ get_header( 'dashboard' );
 		position:absolute;
 		z-index:-1;
 	}
-
+	.fa-lock {
+		color: white;
+	}
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #142c46 !important;
-		background: #142c46 !important;
+		border-color: #0c1f33 !important;
+		background: #0c1f33 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;
@@ -1241,7 +1243,7 @@ get_header( 'dashboard' );
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 595px;
+		left: 565px;
 	}.dledinner ul {
 		margin: 0;
 		padding: 0;
@@ -1919,7 +1921,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
@@ -3784,7 +3786,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                 	<div class="button" style="float: right;">
                                                                 	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
@@ -3794,8 +3796,8 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
@@ -3815,7 +3817,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
 																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary">Deposit</a>
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 15px;">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>

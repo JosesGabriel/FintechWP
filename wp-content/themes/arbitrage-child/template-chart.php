@@ -1576,7 +1576,7 @@
                                                         <iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
                                                     </div>
                                                     <div class="groupinput">
-                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
+                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right; margin-right: 20px;">
                                                         <input type="hidden" value="Live" name="inpt_data_status">
                                                         <input type="submit" class="confirmtrd green" value="Confirm Trade">
                                                     </div>
@@ -2467,7 +2467,11 @@
 	    border-right: 0 !important;
 		border-left: 4px solid #34495e !important;
 	}
-	
+	svg {
+		border: 2px solid white;
+		border-radius: 20px;
+		background: black;
+	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){

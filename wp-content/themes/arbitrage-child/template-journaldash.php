@@ -673,8 +673,7 @@ get_header( 'dashboard' );
 		border: #27ae60 solid 2px !important;
 	    background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -697,8 +696,7 @@ get_header( 'dashboard' );
 	input[type="submit"].red {
 		background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -860,7 +858,9 @@ get_header( 'dashboard' );
 		position:absolute;
 		z-index:-1;
 	}
-
+	.fa-lock {
+		color: white;
+	}
 	/* Popup Overrides */
 	div#fancybox-content {
 		border-color: #0c1f33 !important;
@@ -1243,7 +1243,7 @@ get_header( 'dashboard' );
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 590px;
+		left: 585px;
 	}.dledinner ul {
 		margin: 0;
 		padding: 0;

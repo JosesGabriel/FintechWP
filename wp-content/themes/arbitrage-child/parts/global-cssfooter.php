@@ -66,7 +66,7 @@
 		font-weight: 700 !important;
 	}
 	.wavey-bottom-bg {
-		bottom: -87px;
+		top: 300px;
 		position: absolute;
 		height: 100px !important;
 		width: 100%;

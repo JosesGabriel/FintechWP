@@ -54,9 +54,8 @@
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
-
+      Profile: 70% complete
       <div class="profile-progress">
-          Profile: 70% complete
           <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
           </div>
       </div>

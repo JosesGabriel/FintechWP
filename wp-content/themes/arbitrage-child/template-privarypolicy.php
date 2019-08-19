@@ -36,7 +36,7 @@ get_header('dashboard');
 
 		<h4 class="sub-topics">Information Collection And Use</h4>
 
-		<p>While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to your name ("Personal Information").</p>
+		<p class="p-padding">While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to your name ("Personal Information").</p>
 
 		<h4 class="sub-topics">Log Data</h4>
 
@@ -46,7 +46,7 @@ get_header('dashboard');
 
 		<h4 class="sub-topics">Communications</h4>
 
-		<p>We may use your Personal Information to contact you with newsletters, marketing or promotional materials and other information that we deemed helpful with your trading & investing activities.</p>
+		<p class="p-padding">We may use your Personal Information to contact you with newsletters, marketing or promotional materials and other information that we deemed helpful with your trading & investing activities.</p>
 
 		<h4 class="sub-topics">Cookies</h4>
 
@@ -55,7 +55,7 @@ get_header('dashboard');
 
 		<h4 class="sub-topics">Security</h4>
 
-		<p>The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
+		<p class="p-padding">The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
 
 		<h4 class="sub-topics">Changes To This Privacy Policy</h4>
 

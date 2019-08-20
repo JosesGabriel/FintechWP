@@ -131,7 +131,7 @@ get_header('dashboard');
 		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a> |
 		<a href="https://arbitrage.ph/contact/">Contact Us</a> |
 		<a href="https://arbitrage.ph/about/">About Us</a> |
-		<a href="https://arbitrage.ph/FAQ/">FAQ</a> |
+		<a>FAQ</a> |
 		<span class="c-footer-arbitrage"> Arbitrage © 2019</span>
 	</div>
 </div>

@@ -1927,6 +1927,10 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #2481bc !important;
 	transition-duration: 300ms;
 }
+.flex-box {
+  display:flex;
+  justify-content:flex-end;
+}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;
@@ -2873,6 +2877,7 @@ p.content-meta-date {
 }
 
 .profile-progress {
+	height: 5px;
 	margin: 5px 0px;
     background: white;
     border-radius: 5px;

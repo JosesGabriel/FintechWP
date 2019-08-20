@@ -77,7 +77,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
           <small style="float: left;"><?php echo $num; ?>% complete</small>
           <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
           <div class="profile-progress" style="clear: both;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%"></div>
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background-color: #11a932;"></div>
           </div>
     <?php } ?>
       <?php get_template_part('parts/sidebar', 'tasks'); ?>
@@ -90,14 +90,14 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
 					  <img src="<?php echo get_home_url(); ?>/svg/openleftpanel_al.svg">
 					</a>
           		  </li><?php */?>
-				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-1.svg">	<span>Social Wall</span></a></li>
-                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-1.svg">
+				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
+                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-2.svg">
 					  <span>Interactive Chart</span></a></li>
-                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-1.svg">
+                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-2.svg">
 					  <span>Trading Journal</span></a></li>
-                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-1.svg">
+                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-2.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-1.svg">
+                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-2.svg">
             <span>Games</span></a></li>
                   <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>

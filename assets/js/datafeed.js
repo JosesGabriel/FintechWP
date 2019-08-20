@@ -198,7 +198,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		// if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
 		// 	url = 'https://arbitrage.ph/charthisto/';
 		// } else {
-			url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
+		url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
 		// }
 		
 		rangeStartDate = rangeStartDate.format('YYYY-MM-DD');
@@ -212,7 +212,8 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		symbol: symbolInfo.ticker.toUpperCase(),
 		// firstDataRequest: firstDataRequest,
 		from: rangeStartDate,
-		resolution: '1D'
+		resolution: '1D',
+		stock: 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
 	};
 	
 	// if ( ! firstDataRequest) {

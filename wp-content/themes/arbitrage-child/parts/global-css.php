@@ -2638,6 +2638,7 @@ i.fa.fa-search {
 	    color: #6583a8 !important;
 	    background-color: none !important;
 	    background: none !important; */
+	background: none !important;
 }
 .um-disabled {
 	opacity: 0.5 !important;

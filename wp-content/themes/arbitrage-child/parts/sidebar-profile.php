@@ -13,6 +13,24 @@
   } else {
     $name = "";
   }
+
+
+$profile_id = um_profile_id();
+// $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
+$friendreqs = UM()->Friends_API()->api()->friend_reqs_sent( $profile_id );
+$friendstotal = count($friendreqs);
+$coverhphotoactive = um_profile( 'cover_photo' );
+$profilepicactive = um_profile( 'profile_photo' );
+if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
+  $num = 100;
+}else if((!$coverhphotoactive && $profilepicactive && $friendstotal > 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal > 3) || ($coverhphotoactive && $profilepicactive && $friendstotal < 3)){
+  $num = 66.66;
+}else if((!$coverhphotoactive && !$profilepicactive && $friendstotal > 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 3)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 3)){
+  $num = 33.33;
+}else{
+  $num = 0;
+}
+
 ?>
 <div class="left-user-details">
   <div class="left-user-details-inner">
@@ -54,7 +72,7 @@
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
-      <small style="float: left;">70% complete</small>
+      <small style="float: left;"><?php echo $num; ?>% complete</small>
       <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
       <div class="profile-progress" style="clear: both;">
           <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%"></div>

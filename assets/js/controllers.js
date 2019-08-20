@@ -384,7 +384,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         });
         // console.log("my symbol: "+_symbol);
         socket.emit('stock', _symbol, function(data) {
-            
+            console.log(data);
             if (data.transactions) {
                 $scope.transactions = data.transactions;
             }
@@ -667,6 +667,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 theme: "Dark",
             });
             widget.onChartReady(function() {
+                
                 function changeTheme() {
                     $('body').toggleClass('dark-theme', nightmode);
                     $('#tv_chart_container iframe').contents().find('html').toggleClass('theme-dark', nightmode);
@@ -675,13 +676,17 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 // changeTheme();
                 $('#tv_chart_container').show();
                 chart = widget.chart();
+                console.log("its here na");
+                
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
+                    console.log(symbolData);
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
                     var symbol = symbolData.ticker;
                     $rootScope.selectedSymbol = $scope.$parent.selectedStock = _symbol = symbol;
                     if (symbolData.type == 'index') {
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
+                    
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
@@ -699,8 +704,10 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
-
+                        
                         $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
+
+                        
                             if (response.data.success) {
                                 $scope.$parent.marketdepth = response.data.data;
                             }

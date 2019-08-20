@@ -1539,7 +1539,7 @@
                                                         </div>
                                                         <div class="entr_clear"></div>
                                                 </div>
-                                                <div class="derrormes"></div>
+                                                <div class="derrormes" style="color: red;"></div>
                                                 <div class="entr_wrapper_mid">
                                                     <div class="entr_col">
                                                         <div class="groupinput selectonly">

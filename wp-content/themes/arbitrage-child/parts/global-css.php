@@ -1918,6 +1918,15 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
 }
+.arbitrage-button--dark {
+	border: 2px #2481bc solid;
+	color: #2481bc;
+}
+.arbitrage-button--dark:hover {
+	color: white;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;
@@ -2840,6 +2849,11 @@ li.dspecitem div div {
     border-radius: 5px;
     background: #142c46;
 }
+.inner-content--contact {
+    background: white;
+	margin: 0 120px;
+	margin-top: 20px;
+}
 .fa-percentage {
 	margin-left: 1px;
 }
@@ -2870,5 +2884,44 @@ p.content-meta-date {
     font-size: 5px;
     color: black;
     border-radius: 5px;
+}
+.terms-padding {
+	margin-bottom: 48px !important;
+}
+.footer-container {
+	width: 100%;
+    height: 30px;
+}
+.a-link-text-align {
+    text-align: center;
+}
+.a-link-text-margin {
+	margin: 50px auto;
+}
+.a-text-font, .a-text-font a {
+    color: #d8d8d8;
+}
+.a-text-font a {
+    padding: 5px;
+}
+.a-text-font a:hover {
+    background: #142c46;
+    border-radius: 3px;
+	color: #e4e4e4;
+}
+.deletelog.smlbtn-delete {
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
+    height: 23px;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+}
+.deletelog.smlbtn-delete:hover {
+    background-color: #e91e63;
+    color: #FFFFFF;
 }
 </style>

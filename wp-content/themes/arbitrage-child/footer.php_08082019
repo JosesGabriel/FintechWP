@@ -172,33 +172,30 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				    }
 
 				    if (dauto) {
-				    	var stocks = '["2GO","8990P","AAA","AB","ABA","ABC","ABG","ABS","ABSP","AC","ACE","ACPA","ACPB1","ACPB2","ACR","AEV","AGI","ALCO","ALCPB","ALHI","ALI","ALL","ANI","ANS","AP","APC","APL","APO","APX","AR","ARA","AT","ATI","ATN","ATNB","AUB","BC","BCB","BCOR","BCP","BDO","BEL","BH","BHI","BKR","BLFI","BLOOM","BMM","BPI","BRN","BSC","CA","CAB","CAT","CDC","CEB","CEI","CEU","CHI","CHIB","CHP","CIC","CIP","CLC","CLI","CNPF","COAL","COL","COSCO","CPG","CPM","CPV","CPVB","CROWN","CSB","CYBR","DAVIN","DD","DDPR","DELM","DFNN","DIZ","DMC","DMCP","DMPA1","DMPA2","DMW","DNA","DNL","DTEL","DWC","EAGLE","ECP","EDC","EEI","EG","EIBA","EIBB","ELI","EMP","EURO","EVER","EW","FAF","FB","FBP","FBP2","FDC","FERRO","FEU","FFI","FGEN","FGENF","FGENG","FIN","FJP","FJPB","FLI","FMETF","FNI","FOOD","FPH","FPHP","FPHPC","FPI","FYN","FYNB","GEO","GERI","GLO","GLOPA","GLOPP","GMA7","GMAP","GPH","GREEN","GSMI","GTCAP","GTPPA","GTPPB","H2O","HDG","HI","HLCM","HOUSE","HVN","I","ICT","IDC","IMI","IMP","IND","ION","IPM","IPO","IRC","IS","ISM","JAS","JFC","JGS","JOH","KEP","KPH","KPHB","LAND","LBC","LC","LCB","LFM","LIHC","LMG","LOTO","LPZ","LR","LRP","LRW","LSC","LTG","M-O","MA","MAB","MAC","MACAY","MAH","MAHB","MARC","MAXS","MB","MBC","MBT","MED","MEG","MER","MFC","MFIN","MG","MGH","MHC","MJC","MJIC","MPI","MRC","MRP","MRSGI","MVC","MWC","MWIDE","MWP","NI","NIKL","NOW","NRCP","NXGEN","OM","OPM","OPMB","ORE","OV","PA","PAL","PAX","PBB","PBC","PCOR","PCP","PERC","PGOLD","PHA","PHC","PHEN","PHES","PHN","PIP","PIZZA","PLC","PMPC","PMT","PNB","PNC","PNX","PNX3A","PNX3B","PNXP","POPI","PORT","PPC","PPG","PRC","PRF2A","PRF2B","PRIM","PRMX","PRO","PSB","PSE","PSEI","PTC","PTT","PX","PXP","RCB","RCI","REG","RFM","RLC","RLT","ROCK","ROX","RRHI","RWM","SBS","SCC","SECB","SEVN","SFI","SFIP","SGI","SGP","SHLPH","SHNG","SLF","SLI","SM","SMC","SMC2A","SMC2B","SMC2C","SMC2D","SMC2E","SMC2F","SMC2G","SMC2H","SMC2I","SMCP1","SMPH","SOC","SPC","SPM","SRDC","SSI","SSP","STI","STN","STR","SUN","SVC","T","TBGI","TECB2","TECH","TEL","TFC","TFHI","TLII","TLJJ","TUGS","UBP","UNI","UPM","URC","V","VITA","VLL","VMC","VUL","VVT","WEB","WIN","WLCON","WPI","X","ZHI"]';
-        				stocks = JSON.parse(stocks); 
-				    	jQuery(this).parent().find(".popname").remove();
+				    	// jQuery(this).parent().find(".popname").remove();
 
-				    	var dpop = "";
-				    	dpop += '<div class="popname">';
-					    	dpop += '<ul>';
-					    	$.each(stocks, function(index, dfeats){
-								console.log(String.fromCharCode(e.which));
-					    		if (dfeats.indexOf(String.fromCharCode(e.which)) >= 0) {
-					    			// dpop += '<li style="background:'+colors[counx]+';">'+index+'</li>';
-					    			dpop += '<li style="background-image: linear-gradient(to right, '+colors[counx]+' , '+colors[(counx + 0 >= arraylimit ? 0 : counx + 1)]+');color:#fff;"><span class="inboxc">'+dfeats+'</span></li>';
+				    	// var dpop = "";
+				    	// dpop += '<div class="popname">';
+					    // 	dpop += '<ul>';
+					    // 	$.each(allstocks, function(index, dfeats){
+					    // 		if (index.indexOf(String.fromCharCode(e.which)) >= 0) {
+					    // 			// dpop += '<li style="background:'+colors[counx]+';">'+index+'</li>';
+					    // 			dpop += '<li style="background-image: linear-gradient(to right, '+colors[counx]+' , '+colors[(counx + 0 >= arraylimit ? 0 : counx + 1)]+');color:#fff;"><span class="inboxc">'+index+'</span></li>';
 
-					    			if (counx >= (arraylimit)) {
-						    			counx = 0;
-						    		} else {
-						    			counx++;
-						    		}
-					    		}
+					    // 			if (counx >= (arraylimit)) {
+						//     			counx = 0;
+						//     		} else {
+						//     			counx++;
+						//     		}
+					    // 		}
 
 
-					    	});
-					    	dpop += '</ul>';
-				    	dpop += '</div>';
-				    	jQuery(this).parent().append(dpop);
+					    // 	});
+					    // 	dpop += '</ul>';
+				    	// dpop += '</div>';
+				    	// jQuery(this).parent().append(dpop);
 				    } else {
-				    	jQuery(this).parent().find(".popname").remove();
+				    	// jQuery(this).parent().find(".popname").remove();
 				    }
 				   	 // console.log(dcontexttext);
 				});
@@ -536,31 +533,23 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		}
 	});
 
-	 jQuery(window).scroll(function(){
 
-	// 	jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+	jQuery(window).scroll(function(){
+		if($(window).scrollTop() >= 150 ){
+			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+			jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
+			jQuery('.ads1').addClass('fixed-rightsidebar-ads');
+			jQuery('.ontofooter').addClass('fixed-rightsidebar-footer');
+		}else {
+			jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
+			jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
+			jQuery('.ads1').removeClass('fixed-rightsidebar-ads');
+			jQuery('.ontofooter').removeClass('fixed-rightsidebar-footer');
+		}
 
-	 	//if($(window).scrollTop() >= 150 ){
+	});
 
-	 		if(jQuery('.um-profile').hasClass('topbannerprofile')){
-	 			return;
-	 		}else {
-	 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
-	// 			jQuery('.right-dashboard-part-inner').addClass('fixed-rightsidebar');
-	// 			jQuery('.top-traiders').addClass('fixed-rightsidebar-traiders');
-	// 			jQuery('.ads1').addClass('fixed-rightsidebar-ads');
-	// 			jQuery('.ontofooter').addClass('fixed-rightsidebar-footer');
-			}
 
-	 	//}else {
-	 		//jQuery('.dashboard-sidebar-left-inner').removeClass('fixed-sidebar');
-	// 		jQuery('.right-dashboard-part-inner').removeClass('fixed-rightsidebar');
-	// 		jQuery('.top-traiders').removeClass('fixed-rightsidebar-traiders');
-	// 		jQuery('.ads1').removeClass('fixed-rightsidebar-ads');
-	// 		jQuery('.ontofooter').removeClass('fixed-rightsidebar-footer');
-	 	//}
-
-	 });
 
 	</script>
 

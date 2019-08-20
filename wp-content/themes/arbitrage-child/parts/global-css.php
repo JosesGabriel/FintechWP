@@ -1929,7 +1929,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .flex-box {
   display:flex;
-  justify-content:space-between;
+  justify-content:flex-end;
 }
 .toclassclose {
 	cursor: pointer;

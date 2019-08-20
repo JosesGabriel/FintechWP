@@ -2897,4 +2897,20 @@ p.content-meta-date {
     border-radius: 3px;
 	color: #e4e4e4;
 }
+.deletelog.smlbtn-delete {
+	line-height: 19px;
+    padding: 0;
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 10px;
+}
+.deletelog.smlbtn-delete:hover {
+    background-color: #e91e63;
+    color: #FFFFFF;
+}
 </style>

@@ -634,7 +634,7 @@ get_header( 'dashboard' );
 		border-radius: 3px 0 0 3px;
 		margin-bottom: 0;
 	}
-	.groupinput input[type="text"] {
+	.groupinput input[type="text"], .groupinput input[type="number"] {
 		display: inline-block;
 		border-radius: 0 3px 3px 0;
 		width: 172px;

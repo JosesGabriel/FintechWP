@@ -40,18 +40,103 @@ get_header('dashboard');
 			<path class="wavePath-haxJK1" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="#0b1827" style=""></path>
 		</svg>
 	</div>
-<div class="container">
-	<div class="sub-container" style="width: 100%; text-align: justify;">
-		<h2>Contact Us</h2>
+<div class="container-fluid">
+	<!--Section: Contact v.2-->
+<section class="mb-4">
 
-		<div class="inner-content">
-		
-		<p class="p-padding">Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.</p>
-		<p class="p-padding">We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
+<!--Section heading-->
+<h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+<!--Section description-->
+<p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+	a matter of hours to help you.</p>
 
-		<h4 class="sub-topics">Information Collection And Use</h4>
+<div class="row">
+
+	<!--Grid column-->
+	<div class="col-md-9 mb-md-0 mb-5">
+		<form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+			<!--Grid row-->
+			<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-6">
+					<div class="md-form mb-0">
+						<input type="text" id="name" name="name" class="form-control">
+						<label for="name" class="">Your name</label>
+					</div>
+				</div>
+				<!--Grid column-->
+
+				<!--Grid column-->
+				<div class="col-md-6">
+					<div class="md-form mb-0">
+						<input type="text" id="email" name="email" class="form-control">
+						<label for="email" class="">Your email</label>
+					</div>
+				</div>
+				<!--Grid column-->
+
+			</div>
+			<!--Grid row-->
+
+			<!--Grid row-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="md-form mb-0">
+						<input type="text" id="subject" name="subject" class="form-control">
+						<label for="subject" class="">Subject</label>
+					</div>
+				</div>
+			</div>
+			<!--Grid row-->
+
+			<!--Grid row-->
+			<div class="row">
+
+				<!--Grid column-->
+				<div class="col-md-12">
+
+					<div class="md-form">
+						<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+						<label for="message">Your message</label>
+					</div>
+
+				</div>
+			</div>
+			<!--Grid row-->
+
+		</form>
+
+		<div class="text-center text-md-left">
+			<a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
 		</div>
+		<div class="status"></div>
 	</div>
+	<!--Grid column-->
+
+	<!--Grid column-->
+	<div class="col-md-3 text-center">
+		<ul class="list-unstyled mb-0">
+			<li><i class="fas fa-map-marker-alt fa-2x"></i>
+				<p>San Francisco, CA 94126, USA</p>
+			</li>
+
+			<li><i class="fas fa-phone mt-4 fa-2x"></i>
+				<p>+ 01 234 567 89</p>
+			</li>
+
+			<li><i class="fas fa-envelope mt-4 fa-2x"></i>
+				<p>contact@mdbootstrap.com</p>
+			</li>
+		</ul>
+	</div>
+	<!--Grid column-->
+
+</div>
+
+</section>
+<!--Section: Contact v.2-->
 </div>
 <div class="footer-container">
 	<div class="container a-link-text-align a-link-text-margin a-text-font">

@@ -1920,10 +1920,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .arbitrage-button--dark {
 	border: 2px #2481bc solid;
+	color: #2481bc;
 }
 .arbitrage-button--dark:hover {
 	color: white;
-	background-color: white !important;
+	background-color: #2481bc !important;
 	transition-duration: 300ms;
 }
 .toclassclose {

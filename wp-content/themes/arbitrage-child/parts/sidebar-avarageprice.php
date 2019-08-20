@@ -27,19 +27,19 @@
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Cost</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="totalcost" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="totalcost" type="text" value="0" style="width:95%;" readonly>
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Position</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="totalposition" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="totalposition" type="text" value="0" style="width:95%;" readonly>
                             </div>
                         </div>
                         <div>
                             <div class="arb_calcbox_left">Average Price</div>
                             <div class="arb_calcbox_right">
-                                <input name="stockname" id="averageprice" type="text" value="0" style="width:95%;">
+                                <input name="stockname" id="averageprice" type="text" value="0" style="width:95%;" readonly>
                             </div>
                         </div>
                         
@@ -116,13 +116,8 @@
         function getfee(marketvalue) {
 
             var totalfee = 0;
-
-
-
             var partcpms = marketvalue * 0.0025;
-
             var commission = (partcpms > 20 ? partcpms : 20);
-
             var tax = marketvalue * 0.12;
 
             var transfer = marketvalue * 0.00005;
@@ -228,7 +223,7 @@
 
                         costfee += totalcost + parseFloat(getfee(totalcost));
 
-                        console.log("fees: "+parseFloat(getfee(totalcost)));
+                        // console.log("fees: "+parseFloat(getfee(totalcost)));
 
                     }
 
@@ -242,7 +237,7 @@
                 // console.log("costfee: "+costfee);
 
                 // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
-                var finalcost = costfee / totalvolume;
+                var finalcost = totalcost / totalvolume;
 
                 // console.log("finalcost: "+finalcost);
 

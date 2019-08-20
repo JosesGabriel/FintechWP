@@ -3534,8 +3534,8 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:65px" class="table-title-live">Sell Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:80px" class="table-title-live">Profit/Loss</div>
-                                                                                    <div style="width:70px" class="table-title-live">%</div>
-                                                                                    <div style="width:60px; text-align:center">Action</div>
+                                                                                    <div style="width:65px" class="table-title-live">%</div>
+                                                                                    <div style="width:65px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
 																			<?php
@@ -3612,8 +3612,8 @@ if ($getdstocks && $getdstocks != "") {
 																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
 																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
 																					<div style="width:80px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-																					<div style="width:70px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-																					<div style="width:30px; text-align:center">
+																					<div style="width:65px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:35px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
 																						</a>

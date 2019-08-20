@@ -40,27 +40,22 @@ get_header('dashboard');
 			<path class="wavePath-haxJK1" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="#0b1827" style=""></path>
 		</svg>
 	</div>
-<div class="container-fluid">
-	<form action="">
-		<div class="row">
-			<div class="col-12">
-				<label for="contact__input--name">Name</label>
-				<input type="text" id="contact__input--name">
-			</div>
+<div class="container">
+	<div class="sub-container" style="width: 100%; text-align: justify;">
+		<h2>Contact Us</h2>
+
+		<div class="inner-content">
+		
+			<label for="contact--textField__name">Name</label>
+			<input type="text" id="contact--textField__name">
+
+			<label for="contact--textField__email">Email</label>
+			<input type="text" id="contact--textField__email">
+
+			<label for="contact--textField__message">Message</label>
+			<textarea name="" id="contact--textField__message" cols="30" rows="4"></textarea>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<label for="contact__input--email">Email</label>
-				<input type="email" id="contact__input--email">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<label for="contact__input--message">Message</label>
-				<textarea name="" id="" cols="30" rows="4" id="contact__input--message"></textarea>
-			</div>
-		</div>
-	</form>
+	</div>
 </div>
 <div class="footer-container">
 	<div class="container a-link-text-align a-link-text-margin a-text-font">

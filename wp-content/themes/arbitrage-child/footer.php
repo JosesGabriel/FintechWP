@@ -180,8 +180,8 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 				    	dpop += '<div class="popname">';
 					    	dpop += '<ul>';
 					    	$.each(stocks, function(index, dfeats){
-								console.log(String.fromCharCode(e.which));
-					    		if (dfeats.indexOf(String.fromCharCode(e.which)) >= 0) {
+								// console.log(String.fromCharCode(e.which));
+					    		if (dfeats.indexOf(String.fromCharCode(e.which), 0) >= 0) {
 					    			// dpop += '<li style="background:'+colors[counx]+';">'+index+'</li>';
 					    			dpop += '<li style="background-image: linear-gradient(to right, '+colors[counx]+' , '+colors[(counx + 0 >= arraylimit ? 0 : counx + 1)]+');color:#fff;"><span class="inboxc">'+dfeats+'</span></li>';
 

@@ -1922,7 +1922,7 @@ input[type=number]::-webkit-outer-spin-button {
 	border: 2px #2481bc solid;
 }
 .arbitrage-button--dark:hover {
-	color: #2481bc;
+	color: white;
 	background-color: white !important;
 	transition-duration: 300ms;
 }

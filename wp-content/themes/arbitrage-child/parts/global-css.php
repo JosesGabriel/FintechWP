@@ -2871,6 +2871,6 @@ p.content-meta-date {
     border-radius: 5px;
 }
 .terms-padding {
-	margin-bottom: 48px;
+	margin-bottom: 48px !important;
 }
 </style>

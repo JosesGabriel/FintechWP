@@ -3605,6 +3605,7 @@ if ($getdstocks && $getdstocks != "") {
 																					$totalprofit += $dprofit;
 																			?>
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
+																			
 																				<div style="width:99%;">
 																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
 																					<div style="width:60px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>

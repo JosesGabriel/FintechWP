@@ -2859,6 +2859,7 @@ p.content-meta-date {
 }
 
 .profile-progress {
+	height: 5px;
 	margin: 5px 0px;
     background: white;
     border-radius: 5px;

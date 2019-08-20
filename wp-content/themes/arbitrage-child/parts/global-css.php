@@ -2889,4 +2889,9 @@ p.content-meta-date {
 .a-text-font a {
     padding: 5px;
 }
+.a-text-font a:hover {
+    background: #142c46;
+    border-radius: 3px;
+	color: #e4e4e4;
+}
 </style>

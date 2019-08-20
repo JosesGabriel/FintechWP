@@ -3608,20 +3608,20 @@ if ($getdstocks && $getdstocks != "") {
 																				<div style="width:99%;">
 																					<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
 																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
-																					<div style="width:55px"><?php echo $data_quantity; ?></div>
-																					<div style="width:65px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
-																					<div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
-																					<div style="width:90px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-																					<div style="width:60px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-																					<div style="width:35px; text-align:right">
+																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
+																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
+																					<div style="width:90px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+																					<div style="width:60px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:30px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
 																						</a>
 																					</div>
-																					<div style="width:20px">
-																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">
+																					<div style="width:25px">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px; text-align:center">
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>

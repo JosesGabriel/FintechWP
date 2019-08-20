@@ -2840,6 +2840,11 @@ li.dspecitem div div {
     border-radius: 5px;
     background: #142c46;
 }
+.inner-content--contact {
+    background: white;
+	margin: 0 120px;
+	margin-top: 20px;
+}
 .fa-percentage {
 	margin-left: 1px;
 }
@@ -2893,5 +2898,20 @@ p.content-meta-date {
     background: #142c46;
     border-radius: 3px;
 	color: #e4e4e4;
+}
+.deletelog.smlbtn-delete {
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
+    height: 23px;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+}
+.deletelog.smlbtn-delete:hover {
+    background-color: #e91e63;
+    color: #FFFFFF;
 }
 </style>

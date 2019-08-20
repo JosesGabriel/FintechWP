@@ -928,9 +928,7 @@ get_header( 'dashboard' );
 	}
 	a.smlbtn.blue {
 		line-height: 19px;
-		padding: 0;
-		width: 23px;
-		height: 23px;
+		padding: 1.5px 6.63px;
 		text-align: center;
 		border: 2px solid #3597d3;
 		background-color: transparent;
@@ -3528,17 +3526,16 @@ if ($getdstocks && $getdstocks != "") {
                                                                         <ul>
                                                                         	<li class="headerpart headerpart-tradelogs">
                                                                             	<div style="width:100%;">                                                                                	
-                                                                                    <div style="width:70px">Date</div>
-                                                                                    <div style="width:60px">Stocks</div>
-                                                                                    <div style="width:65px">Volume</div>
-                                                                                    <div style="width:70px">Ave. Price</div>
-                                                                                    <div style="width:95px">Buy Value</div>
-                                                                                    <div style="width:65px">Sell Price</div>
-                                                                                    <div style="width:95px">Sell Value</div>
-                                                                                    <div style="width:85px">Profit/Loss</div>
-                                                                                    <div style="width:30px">%</div>
-                                                                                    <div style="width:38px; text-align:right">Notes</div>
-																					<div style="width:20px">&nbsp;</div>
+                                                                                    <div style="width:65px">Date</div>
+                                                                                    <div style="width:45px">Stocks</div>
+                                                                                    <div style="width:55px" class="table-title-live">Volume</div>
+                                                                                    <div style="width:65px" class="table-title-live">Ave. Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Buy Value</div>
+                                                                                    <div style="width:65px" class="table-title-live">Sell Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:80px" class="table-title-live">Profit/Loss</div>
+                                                                                    <div style="width:60px" class="table-title-live">%</div>
+                                                                                    <div style="width:60px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
 																			<?php
@@ -3605,22 +3602,27 @@ if ($getdstocks && $getdstocks != "") {
 																					$totalprofit += $dprofit;
 																			?>
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
+
 																				<div style="width:99%;">
-																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:60px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>"><?php echo $data_stock; ?></a></div>
-																					<div style="width:65px"><?php echo $data_quantity; ?></div>
-																					<div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
-																					<div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
-																					<div style="width:85px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-																					<div style="width:30px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-																					<div style="width:38px; text-align:right">
+																					<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
+																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
+																					<div style="width:90px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+																					<div style="width:60px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:30px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+																							<i class="fas fa-clipboard"></i>
 																						</a>
 																					</div>
-																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">x</a></div>
+																					<div style="width:25px">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+																							<i class="fas fa-eraser"></i>
+																						</a>
+																					</div>
 																				</div>
 
 																				<div class="hidethis">

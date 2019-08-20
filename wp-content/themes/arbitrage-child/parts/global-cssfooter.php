@@ -38,8 +38,7 @@
 
 	.sub-container {
 		padding: 50px 10% 0px 10%;
-    	margin-bottom: 80px;
-
+    	margin-bottom: 50px;
 	}
 	ol, ul {
 

@@ -70,7 +70,7 @@ get_header('dashboard');
 	</div>
 </div>
 <div class="footer-container">
-	<div class="container">
+	<div class="container a-link-text-align">
 		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a> |
 		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a> |
 		<a href="https://arbitrage.ph/contact/">Contact Us</a> |

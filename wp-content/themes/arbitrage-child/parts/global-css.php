@@ -2876,6 +2876,8 @@ p.content-meta-date {
 .footer-container {
 	width: 100%;
     height: 30px;
-    background: #131619;
+}
+.a-link-text-align {
+    text-align: center;
 }
 </style>

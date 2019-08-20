@@ -3535,7 +3535,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:95px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:90px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:60px" class="table-title-live">%</div>
-                                                                                    <div style="width:60px; text-align:center">Notes</div>
+                                                                                    <div style="width:60px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
 																			<?php

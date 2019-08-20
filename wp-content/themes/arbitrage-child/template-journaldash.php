@@ -3621,7 +3621,7 @@ if ($getdstocks && $getdstocks != "") {
 																						</a>
 																					</div>
 																					<div style="width:25px">
-																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px; text-align:center">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>

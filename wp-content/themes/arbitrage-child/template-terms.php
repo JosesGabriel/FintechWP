@@ -43,24 +43,24 @@ get_header('dashboard');
 
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 
-		<h2>Terms of use</h2>
+		<h2 class="terms-padding">Terms of use</h2>
 
 		<div class="inner-content">
 
-		<h4>Terms</h4>
+		<h4 class="sub-topics">Terms</h4>
 
 
-		<p>By accessing the website at https://arbitrage.ph/, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
-
-
-
-		<h4>Use License</h4>
+		<p class="p-padding">By accessing the website at https://arbitrage.ph/, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.</p>
 
 
 
-		<p>Permission is granted to temporarily download one copy of the materials (information or software) on Arbitrage PH's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license, you may not:</p>
+		<h4 class="sub-topics">Use License</h4>
 
-		<div>
+
+
+		<p class="p-padding">Permission is granted to temporarily download one copy of the materials (information or software) on Arbitrage PH's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license, you may not:</p>
+
+		<div class="p-padding">
 			<ul>
 				<li>Modify or copy the materials;</li>
 				<li>Use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li>
@@ -70,56 +70,56 @@ get_header('dashboard');
 			</ul>
 		</div>
 
-		<p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by Arbitrage PH at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
+		<p class="p-padding">This license shall automatically terminate if you violate any of these restrictions and may be terminated by Arbitrage PH at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p>
 
 
-		<h4>Disclaimer</h4>
-
-
-
-		<p>The information in this site has been obtained from reliable sources such as The Philippines Stock Exchange (PSE), Local and International News Firms and other relevant sources which we may deemed helpful to the overall relevance of the “site”. The accuracy or completeness is not guaranteed. Opinions expressed by individual users remained to be their own opinions and should be taken together with your own due diligence.</p>
-
-		<p>Arbitrage PH accepts no liability for any direct or incidental loss arising from the use of this site. This site is not to be construed as an offer or a solicitation of an offer to buy or sell any securities.</p>
+		<h4 class="sub-topics">Disclaimer</h4>
 
 
 
-		<h4>Limitations</h4>
+		<p class="p-padding">The information in this site has been obtained from reliable sources such as The Philippines Stock Exchange (PSE), Local and International News Firms and other relevant sources which we may deemed helpful to the overall relevance of the “site”. The accuracy or completeness is not guaranteed. Opinions expressed by individual users remained to be their own opinions and should be taken together with your own due diligence.</p>
+
+		<p class="p-padding">Arbitrage PH accepts no liability for any direct or incidental loss arising from the use of this site. This site is not to be construed as an offer or a solicitation of an offer to buy or sell any securities.</p>
 
 
 
-		<p>In no event shall Arbitrage PH or its Affiliates be liable for any negative results (including, without limitation, damages for loss of money or profit, or due to informations served in the site) arising out of the use or inability to use the materials on Arbitrage PH's website, even if Arbitrage PH or a Arbitrage PH authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
+		<h4 class="sub-topics">Limitations</h4>
 
 
 
-		<h4>Accuracy of materials</h4>
+		<p class="p-padding">In no event shall Arbitrage PH or its Affiliates be liable for any negative results (including, without limitation, damages for loss of money or profit, or due to informations served in the site) arising out of the use or inability to use the materials on Arbitrage PH's website, even if Arbitrage PH or a Arbitrage PH authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p>
 
 
 
-		<p>The materials appearing on Arbitrage PH's website could include technical, typographical, or photographic errors. Arbitrage PH does not warrant that any of the materials on its website are accurate, complete or current. Arbitrage PH may make changes to the materials contained on its website at any time without notice. However, Arbitrage PH does not make any commitment to update the materials.</p>
+		<h4 class="sub-topics">Accuracy of materials</h4>
 
 
 
-		<h4>Links</h4>
+		<p class="p-padding">The materials appearing on Arbitrage PH's website could include technical, typographical, or photographic errors. Arbitrage PH does not warrant that any of the materials on its website are accurate, complete or current. Arbitrage PH may make changes to the materials contained on its website at any time without notice. However, Arbitrage PH does not make any commitment to update the materials.</p>
 
 
 
-		<p>Arbitrage PH has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Arbitrage PH of the site. Use of any such linked website is at the user's own risk.</p>
+		<h4 class="sub-topics">Links</h4>
 
 
 
-		<h4>Modifications</h4>
+		<p class="p-padding">Arbitrage PH has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Arbitrage PH of the site. Use of any such linked website is at the user's own risk.</p>
 
 
 
-		<p>Arbitrage PH may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
+		<h4 class="sub-topics">Modifications</h4>
 
 
 
-		<h4>Governing Law</h4>
+		<p class="p-padding">Arbitrage PH may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.</p>
 
 
 
-		<p>These terms and conditions are governed by and construed in accordance with the laws of Philippines and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
+		<h4 class="sub-topics">Governing Law</h4>
+
+
+
+		<p class="p-padding">These terms and conditions are governed by and construed in accordance with the laws of Philippines and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
 
 	</div>
 

@@ -2870,4 +2870,7 @@ p.content-meta-date {
     color: black;
     border-radius: 5px;
 }
+.terms-padding {
+	margin-bottom: 48px;
+}
 </style>

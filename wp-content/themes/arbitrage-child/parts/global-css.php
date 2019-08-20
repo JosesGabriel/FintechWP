@@ -2883,4 +2883,10 @@ p.content-meta-date {
 .a-link-text-margin {
 	margin: 50px auto;
 }
+.a-text-font, .a-text-font a {
+    color: #d8d8d8;
+}
+.a-text-font a {
+    padding: 5px;
+}
 </style>

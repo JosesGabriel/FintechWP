@@ -2873,4 +2873,9 @@ p.content-meta-date {
 .terms-padding {
 	margin-bottom: 48px !important;
 }
+.footer-container {
+	width: 100%;
+    height: 30px;
+    background: #131619;
+}
 </style>

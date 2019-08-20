@@ -125,9 +125,14 @@ get_header('dashboard');
 
 	</div>
 </div>
-
-
-
-
+<div class="footer-container">
+	<div class="container">
+		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a> |
+		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a> |
+		<a href="https://arbitrage.ph/contact/">Contact Us</a> |
+		<a href="https://arbitrage.ph/about/">About Us</a> |
+		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
+	</div>
+</div>
 
 <?php get_footer();

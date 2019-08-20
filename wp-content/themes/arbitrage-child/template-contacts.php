@@ -44,16 +44,21 @@ get_header('dashboard');
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2>Contact Us</h2>
 
-		<div class="inner-content">
-		
-			<label for="contact--textField__name">Name</label>
-			<input type="text" id="contact--textField__name">
-
-			<label for="contact--textField__email">Email</label>
-			<input type="text" id="contact--textField__email">
-
-			<label for="contact--textField__message">Message</label>
-			<textarea name="" id="contact--textField__message" cols="30" rows="4"></textarea>
+		<div class="inner-content inner-content--contact">
+			<form action="" id="contact--form">
+				<div>
+					<label for="contact--textField__name">Name</label>
+					<input type="text" id="contact--textField__name">
+				</div>
+				<div>
+					<label for="contact--textField__email">Email</label>
+					<input type="text" id="contact--textField__email">
+				</div>
+				<div>
+					<label for="contact--textField__message">Message</label>
+					<textarea name="" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

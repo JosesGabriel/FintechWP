@@ -2840,6 +2840,9 @@ li.dspecitem div div {
     border-radius: 5px;
     background: #142c46;
 }
+.inner-content--contact {
+    background: white;
+}
 .fa-percentage {
 	margin-left: 1px;
 }

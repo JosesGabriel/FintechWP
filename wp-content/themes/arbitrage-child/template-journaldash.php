@@ -3528,16 +3528,16 @@ if ($getdstocks && $getdstocks != "") {
                                                                         <ul>
                                                                         	<li class="headerpart headerpart-tradelogs">
                                                                             	<div style="width:100%;">                                                                                	
-                                                                                    <div style="width:70px">Date</div>
-                                                                                    <div style="width:60px">Stocks</div>
-                                                                                    <div style="width:65px">Volume</div>
-                                                                                    <div style="width:70px">Ave. Price</div>
+                                                                                    <div style="width:65px">Date</div>
+                                                                                    <div style="width:45px">Stocks</div>
+                                                                                    <div style="width:55px">Volume</div>
+                                                                                    <div style="width:65px">Ave. Price</div>
                                                                                     <div style="width:95px">Buy Value</div>
                                                                                     <div style="width:65px">Sell Price</div>
                                                                                     <div style="width:95px">Sell Value</div>
-                                                                                    <div style="width:85px">Profit/Loss</div>
-                                                                                    <div style="width:30px">%</div>
-                                                                                    <div style="width:38px; text-align:right">Notes</div>
+                                                                                    <div style="width:90px">Profit/Loss</div>
+                                                                                    <div style="width:60px">%</div>
+                                                                                    <div style="width:35px; text-align:right">Notes</div>
 																					<div style="width:20px">&nbsp;</div>
                                                                                 </div>
                                                                             </li>
@@ -3605,23 +3605,27 @@ if ($getdstocks && $getdstocks != "") {
 																					$totalprofit += $dprofit;
 																			?>
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
-																			
+
 																				<div style="width:99%;">
-																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:60px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
-																					<div style="width:65px"><?php echo $data_quantity; ?></div>
-																					<div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
+																					<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:55px"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
 																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
 																					<div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
 																					<div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
-																					<div style="width:85px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-																					<div style="width:30px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-																					<div style="width:38px; text-align:right">
+																					<div style="width:90px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+																					<div style="width:60px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:35px; text-align:right">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+																							<i class="fas fa-clipboard"></i>
 																						</a>
 																					</div>
-																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">x</a></div>
+																					<div style="width:20px">
+																						<a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">
+																							<i class="fas fa-eraser"></i>
+																						</a>
+																					</div>
 																				</div>
 
 																				<div class="hidethis">

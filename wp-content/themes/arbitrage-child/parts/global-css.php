@@ -1918,6 +1918,19 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
 }
+.arbitrage-button--dark {
+	border: 2px #2481bc solid;
+	color: #2481bc;
+}
+.arbitrage-button--dark:hover {
+	color: white;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.flex-box {
+  display:flex;
+  justify-content:flex-end;
+}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;
@@ -2599,18 +2612,18 @@ i.fa.fa-search {
 	color: #fffffe !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a {
-	    border-radius: 26px !important;
-	    border: 1.3px solid #6583a8 !important;
-	    padding: 0px 17px !important;
-	    font-family: 'Nunito', sans-serif;
-	    color: #6583a8;
-	    background-color: none !important;
-	    background: none !important;
+    border-radius: 26px !important;
+    border: 2px solid #2481bc!important;
+    padding: 0px 17px !important;
+    color: #fffffe;
+    font-family: 'Roboto', sans-serif;
+    background: none !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
 	/* background: #6583a8 !important;
 	color: #fff !important;
 	transition-duration: 300ms; */
+	background: #2481bc !important;
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:active {
 	/* background: #8ca8cc !important;
@@ -2625,6 +2638,7 @@ i.fa.fa-search {
 	    color: #6583a8 !important;
 	    background-color: none !important;
 	    background: none !important; */
+	background: none !important;
 }
 .um-disabled {
 	opacity: 0.5 !important;
@@ -2840,6 +2854,11 @@ li.dspecitem div div {
     border-radius: 5px;
     background: #142c46;
 }
+.inner-content--contact {
+    background: white;
+	margin: 0 120px;
+	margin-top: 20px;
+}
 .fa-percentage {
 	margin-left: 1px;
 }
@@ -2859,6 +2878,7 @@ p.content-meta-date {
 }
 
 .profile-progress {
+	height: 5px;
 	margin: 5px 0px;
     background: white;
     border-radius: 5px;
@@ -2893,5 +2913,20 @@ p.content-meta-date {
     background: #142c46;
     border-radius: 3px;
 	color: #e4e4e4;
+}
+.deletelog.smlbtn-delete {
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
+    height: 23px;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+}
+.deletelog.smlbtn-delete:hover {
+    background-color: #e91e63;
+    color: #FFFFFF;
 }
 </style>

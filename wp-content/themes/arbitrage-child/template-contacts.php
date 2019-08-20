@@ -44,12 +44,24 @@ get_header('dashboard');
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2>Contact Us</h2>
 
-		<div class="inner-content">
-		
-		<p class="p-padding">Arbitrage PH [https://arbitrage.ph/] (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.</p>
-		<p class="p-padding">We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.</p>
-
-		<h4 class="sub-topics">Information Collection And Use</h4>
+		<div class="inner-content inner-content--contact">
+			<form action="" class="contact--form" id="contact--form">
+				<div class="form-group">
+					<label for="contact--textField__name" class="contact--label">Name</label>
+					<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name">
+				</div>
+				<div class="form-group">
+					<label for="contact--textField__email" class="contact--label">Email</label>
+					<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email">
+				</div>
+				<div class="form-group">
+					<label for="contact--textField__message" class="contact--label">Message</label>
+					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
+				</div>
+				<div class="flex-box">
+					<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

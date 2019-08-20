@@ -72,8 +72,10 @@ get_header('dashboard');
 	</div>
 </div>
 
-
-
-
+<style>
+strong {
+    font-weight: 900;
+}
+</style>
 
 <?php get_footer();

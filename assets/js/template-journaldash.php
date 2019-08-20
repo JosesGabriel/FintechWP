@@ -478,9 +478,6 @@ get_header( 'dashboard' );
 		margin-bottom: 0;
 		text-align: center !important;
 	}
-	.dstatstrade ul li.headerpart.headerpart-tradelogs {
-		text-align: left !important;
-	}
 	.dstatstrade ul li {
 		line-height: 150%;
 		padding: 5px 5px 5px 15px;
@@ -634,7 +631,7 @@ get_header( 'dashboard' );
 		border-radius: 3px 0 0 3px;
 		margin-bottom: 0;
 	}
-	.groupinput input[type="text"], .groupinput input[type="number"] {
+	.groupinput input[type="text"] {
 		display: inline-block;
 		border-radius: 0 3px 3px 0;
 		width: 172px;
@@ -673,7 +670,8 @@ get_header( 'dashboard' );
 		border: #27ae60 solid 2px !important;
 	    background: none;
 	    line-height: 29px;
-	    font-size: 14px;
+	    font-weight: bold;
+	    font-size: 12px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -696,7 +694,8 @@ get_header( 'dashboard' );
 	input[type="submit"].red {
 		background: none;
 	    line-height: 29px;
-	    font-size: 14px;
+	    font-weight: bold;
+	    font-size: 12px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -778,8 +777,6 @@ get_header( 'dashboard' );
 	}
 	.groupinput.midd input {
 		width:138px;
-		text-align: right;
-		padding-right: 20px;
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
@@ -800,8 +797,8 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #34495e;
-		padding: 12px;
+		background-color: #142b46;
+		padding: 0 13px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -810,7 +807,7 @@ get_header( 'dashboard' );
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 14px;
+		font-size: 17px;
 		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
@@ -845,11 +842,11 @@ get_header( 'dashboard' );
 		margin: -1px 0 0px 5px;
 	}
 	span.datestamp_header {
-		font-size: 12px;
 		color: #a1adb5;
-		display: inline-block;
+		display: block;
 		vertical-align: middle;
-		margin: 0 0 0px 10px;
+		margin: 0;
+		font-size: 12px;
 	}
 
 	.fctnlhdn {
@@ -858,13 +855,11 @@ get_header( 'dashboard' );
 		position:absolute;
 		z-index:-1;
 	}
-	.fa-lock {
-		color: white;
-	}
+
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #0c1f33 !important;
-		background: #0c1f33 !important;
+		border-color: #142c46 !important;
+		background: #142c46 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;
@@ -928,7 +923,9 @@ get_header( 'dashboard' );
 	}
 	a.smlbtn.blue {
 		line-height: 19px;
-		padding: 1.5px 6.63px;
+		padding: 0;
+		width: 23px;
+		height: 23px;
 		text-align: center;
 		border: 2px solid #3597d3;
 		background-color: transparent;
@@ -1236,13 +1233,15 @@ get_header( 'dashboard' );
 		border-radius: 40px;
 	}
 	.buy-order--submit {
-		position: relative;
-		left: 580px;
+		padding-top: 16px;
+		padding-right: 5px;
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 565px;
-	}.dledinner ul {
+		left: 595px;
+	}
+
+	.dledinner ul {
 		margin: 0;
 		padding: 0;
 		text-align: right;
@@ -1255,10 +1254,7 @@ get_header( 'dashboard' );
 		padding: 5px 9px;
 		border-radius: 20px;
 	}
-	.selltrade--align input {
-		text-align: right;
-		padding-right: 20px !important;
-	}
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1831,7 +1827,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
 		                                                                                        <div class="hideformodal">
-		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
+		                                                                                        	<div class="selltrade" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
 																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
@@ -1865,7 +1861,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                            </div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock"
-																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo $value; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
 																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1883,10 +1879,10 @@ if ($getdstocks && $getdstocks != "") {
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="text" name="inpt_data_sellprice"></div>
 
-																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
-																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
+																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="text" name="inpt_data_qty"
+																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>"></div>
 																			                                   </div>
 
 																			                                    <div class="entr_clear"></div>
@@ -1898,7 +1894,7 @@ if ($getdstocks && $getdstocks != "") {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
 																			                                </div>
 
 																			                             </div>
@@ -1919,7 +1915,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
@@ -2000,7 +1996,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
@@ -3524,18 +3520,19 @@ if ($getdstocks && $getdstocks != "") {
                                                                 <div class="stats-info">
                                                                     <div class="dstatstrade overridewidth">
                                                                         <ul>
-                                                                        	<li class="headerpart headerpart-tradelogs">
+                                                                        	<li class="headerpart">
                                                                             	<div style="width:100%;">                                                                                	
-                                                                                    <div style="width:65px">Date</div>
-                                                                                    <div style="width:45px">Stocks</div>
-                                                                                    <div style="width:55px" class="table-title-live">Volume</div>
-                                                                                    <div style="width:65px" class="table-title-live">Ave. Price</div>
-                                                                                    <div style="width:95px" class="table-title-live">Buy Value</div>
-                                                                                    <div style="width:65px" class="table-title-live">Sell Price</div>
-                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
-                                                                                    <div style="width:80px" class="table-title-live">Profit/Loss</div>
-                                                                                    <div style="width:65px" class="table-title-live">%</div>
-                                                                                    <div style="width:65px; text-align:center">Action</div>
+                                                                                    <div style="width:70px">Date</div>
+                                                                                    <div style="width:60px">Stocks</div>
+                                                                                    <div style="width:65px">Volume</div>
+                                                                                    <div style="width:70px">Ave. Price</div>
+                                                                                    <div style="width:95px">Buy Value</div>
+                                                                                    <div style="width:65px">Sell Price</div>
+                                                                                    <div style="width:95px">Sell Value</div>
+                                                                                    <div style="width:85px">Profit/Loss</div>
+                                                                                    <div style="width:30px">%</div>
+                                                                                    <div style="width:38px; text-align:right">Notes</div>
+																					<div style="width:20px">&nbsp;</div>
                                                                                 </div>
                                                                             </li>
 																			<?php
@@ -3602,27 +3599,22 @@ if ($getdstocks && $getdstocks != "") {
 																					$totalprofit += $dprofit;
 																			?>
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
-
 																				<div style="width:99%;">
-																					<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
-																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
-																					<div style="width:80px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
-																					<div style="width:65px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
-																					<div style="width:35px; text-align:center">
+																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:60px"><?php echo $data_stock; ?></div>
+																					<div style="width:65px"><?php echo $data_quantity; ?></div>
+																					<div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>
+																					<div style="width:65px">₱<?php echo number_format( $data_sell_price, 2, '.', ',' ); ?></div>
+																					<div style="width:95px">₱<?php echo number_format( $soldplace, 2, '.', ',' ); ?></div>
+																					<div style="width:85px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>">₱<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
+																					<div style="width:30px" class="<?php echo ($dprofit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo ($dprofit > 0 ? '+' : '-'); ?><?php echo number_format( $dtlprofperc, 2, '.', ',' ); ?>%</div>
+																					<div style="width:38px; text-align:right">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-																							<i class="fas fa-clipboard"></i>
+																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
 																						</a>
 																					</div>
-																					<div style="width:25px">
-																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
-																							<i class="fas fa-eraser"></i>
-																						</a>
-																					</div>
+																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">x</a></div>
 																				</div>
 
 																				<div class="hidethis">
@@ -3786,9 +3778,9 @@ if ($getdstocks && $getdstocks != "") {
                                                             <div class="box-portlet-header">
                                                                 Ledger
                                                                 	<div class="button" style="float: right;">
-                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
+                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="deposit-btn">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
@@ -3798,8 +3790,8 @@ if ($getdstocks && $getdstocks != "") {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a>
+																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
 																				</div>
 																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
@@ -3808,7 +3800,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<div class="dinitem">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85;"></div>
+																									<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -3819,7 +3811,7 @@ if ($getdstocks && $getdstocks != "") {
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
 																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 15px;">Deposit</a>
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>
@@ -3830,7 +3822,7 @@ if ($getdstocks && $getdstocks != "") {
 																									<div class="dinitem">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field"></div>
+																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3839,7 +3831,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="dividend">
-																							<!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
+																							<input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary">
 																							<a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
 																							<!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
@@ -3849,7 +3841,7 @@ if ($getdstocks && $getdstocks != "") {
 																		</div>
 																	</div>
 																	<?php if ($dbaseaccount > 0): ?>
-																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>
+																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="withdraw-btn">Withdraw</a>
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">

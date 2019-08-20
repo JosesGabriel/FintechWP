@@ -2929,4 +2929,7 @@ p.content-meta-date {
     background-color: #e91e63;
     color: #FFFFFF;
 }
+.c-footer-arbitrage {
+	padding-left: 4px;
+}
 </style>

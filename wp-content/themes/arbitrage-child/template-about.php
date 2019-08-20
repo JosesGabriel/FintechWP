@@ -69,7 +69,7 @@ get_header('dashboard');
 		<a href="https://arbitrage.ph/contact/">Contact Us</a> |
 		<a href="https://arbitrage.ph/about/">About Us</a> |
 		<a href="https://arbitrage.ph/FAQ/">FAQ</a> |
-		<span> Arbitrage © 2019</span>
+		<span class="c-footer-arbitrage"> Arbitrage © 2019</span>
 	</div>
 </div>
 

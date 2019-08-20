@@ -1918,6 +1918,14 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #874a9a !important;
 	transition-duration: 300ms;
 }
+.arbitrage-button--dark {
+	border: 2px #2481bc solid;
+}
+.arbitrage-button--dark:hover {
+	color: #2481bc;
+	background-color: white !important;
+	transition-duration: 300ms;
+}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;

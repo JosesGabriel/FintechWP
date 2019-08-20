@@ -46,17 +46,17 @@ get_header('dashboard');
 
 		<div class="inner-content inner-content--contact">
 			<form action="" id="contact--form">
-				<div>
+				<div class="form-group">
 					<label for="contact--textField__name">Name</label>
-					<input type="text" id="contact--textField__name">
+					<input type="text" class="form-control" id="contact--textField__name">
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="contact--textField__email">Email</label>
-					<input type="text" id="contact--textField__email">
+					<input type="email" class="form-control" id="contact--textField__email">
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="contact--textField__message">Message</label>
-					<textarea name="" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
+					<textarea name="" class="form-control" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
 				</div>
 			</form>
 		</div>

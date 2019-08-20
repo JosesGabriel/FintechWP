@@ -2880,4 +2880,7 @@ p.content-meta-date {
 .a-link-text-align {
     text-align: center;
 }
+.a-link-text-margin {
+	margin: 50px auto;
+}
 </style>

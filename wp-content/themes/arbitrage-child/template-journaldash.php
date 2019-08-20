@@ -3607,7 +3607,7 @@ if ($getdstocks && $getdstocks != "") {
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 																				<div style="width:99%;">
 																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:60px"><?php echo $data_stock; ?></div>
+																					<div style="width:60px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>"><?php echo $data_stock; ?></a></div>
 																					<div style="width:65px"><?php echo $data_quantity; ?></div>
 																					<div style="width:70px">₱<?php echo number_format( $data_avr_price, 2, '.', ',' ); ?></div>
 																					<div style="width:95px">₱<?php echo number_format( ($data_quantity * $data_avr_price), 2, '.', ',' ); ?></div>

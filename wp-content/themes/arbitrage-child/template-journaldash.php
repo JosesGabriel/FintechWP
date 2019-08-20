@@ -3530,15 +3530,14 @@ if ($getdstocks && $getdstocks != "") {
                                                                             	<div style="width:100%;">                                                                                	
                                                                                     <div style="width:65px">Date</div>
                                                                                     <div style="width:45px">Stocks</div>
-                                                                                    <div style="width:55px">Volume</div>
-                                                                                    <div style="width:65px">Ave. Price</div>
-                                                                                    <div style="width:95px">Buy Value</div>
-                                                                                    <div style="width:65px">Sell Price</div>
-                                                                                    <div style="width:95px">Sell Value</div>
-                                                                                    <div style="width:90px">Profit/Loss</div>
-                                                                                    <div style="width:60px">%</div>
-                                                                                    <div style="width:35px; text-align:right">Notes</div>
-																					<div style="width:20px">&nbsp;</div>
+                                                                                    <div style="width:55px" class="table-title-live">Volume</div>
+                                                                                    <div style="width:65px" class="table-title-live">Ave. Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Buy Value</div>
+                                                                                    <div style="width:65px" class="table-title-live">Sell Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:90px" class="table-title-live">Profit/Loss</div>
+                                                                                    <div style="width:60px" class="table-title-live">%</div>
+                                                                                    <div style="width:50px; text-align:center">Notes</div>
                                                                                 </div>
                                                                             </li>
 																			<?php

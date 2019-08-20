@@ -24,9 +24,9 @@ $profilepicactive = um_profile( 'profile_photo' );
 if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
   $num = 100;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal > 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal > 3) || ($coverhphotoactive && $profilepicactive && $friendstotal < 3)){
-  $num = 66.66;
+  $num = 66;
 }else if((!$coverhphotoactive && !$profilepicactive && $friendstotal > 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 3)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 3)){
-  $num = 33.33;
+  $num = 33;
 }else{
   $num = 0;
 }

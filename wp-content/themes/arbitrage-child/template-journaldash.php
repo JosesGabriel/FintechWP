@@ -928,9 +928,7 @@ get_header( 'dashboard' );
 	}
 	a.smlbtn.blue {
 		line-height: 19px;
-		padding: 0;
-		width: 23px;
-		height: 23px;
+		padding: 1.5px 6.63px;
 		text-align: center;
 		border: 2px solid #3597d3;
 		background-color: transparent;
@@ -3537,7 +3535,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                                     <div style="width:95px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:90px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:60px" class="table-title-live">%</div>
-                                                                                    <div style="width:50px; text-align:center">Notes</div>
+                                                                                    <div style="width:60px; text-align:center">Notes</div>
                                                                                 </div>
                                                                             </li>
 																			<?php

@@ -2898,16 +2898,15 @@ p.content-meta-date {
 	color: #e4e4e4;
 }
 .deletelog.smlbtn-delete {
-	line-height: 19px;
-    padding: 0;
-    width: 23px;
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
     height: 23px;
-    text-align: center;
     border: 2px solid #e91e63;
     background-color: transparent;
-    border-radius: 20px;
+    border-radius: 25px;
     color: #fff;
-    font-size: 10px;
+    font-size: 12px;
 }
 .deletelog.smlbtn-delete:hover {
     background-color: #e91e63;

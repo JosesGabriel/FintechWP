@@ -53,7 +53,7 @@
 	div ul li {
 		color: #cdcdcd !important;
 	    font-weight: 300;
-	    list-style: circle;
+	    list-style: circle !important;
 	}
 	.p-padding {
 		margin: 0;

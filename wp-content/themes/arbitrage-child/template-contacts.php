@@ -48,11 +48,11 @@ get_header('dashboard');
 			<form action="" class="contact--form" id="contact--form">
 				<div class="form-group">
 					<label for="contact--textField__name" class="contact--label">Name</label>
-					<input type="text" class="form-control contact--textField" id="contact--textField__name">
+					<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name">
 				</div>
 				<div class="form-group">
 					<label for="contact--textField__email" class="contact--label">Email</label>
-					<input type="email" class="form-control contact--textField" id="contact--textField__email">
+					<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email">
 				</div>
 				<div class="form-group">
 					<label for="contact--textField__message" class="contact--label">Message</label>

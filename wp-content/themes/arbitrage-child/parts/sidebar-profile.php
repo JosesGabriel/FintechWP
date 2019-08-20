@@ -72,12 +72,14 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
-      <small style="float: left;"><?php echo $num; ?>% complete</small>
-      <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
-      <div class="profile-progress" style="clear: both;">
-          <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%"></div>
-      </div>
 
+    <?php if($num != 100) { ?>
+          <small style="float: left;"><?php echo $num; ?>% complete</small>
+          <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
+          <div class="profile-progress" style="clear: both;">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%"></div>
+          </div>
+    <?php } ?>
       <?php get_template_part('parts/sidebar', 'tasks'); ?>
 
       <div class="side-content">

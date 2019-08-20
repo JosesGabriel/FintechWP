@@ -1927,6 +1927,10 @@ input[type=number]::-webkit-outer-spin-button {
 	background-color: #2481bc !important;
 	transition-duration: 300ms;
 }
+.flex-box {
+  display:flex;
+  justify-content:space-between;
+}
 .toclassclose {
 	cursor: pointer;
 	font-size: 14px;

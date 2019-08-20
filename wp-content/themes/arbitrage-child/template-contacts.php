@@ -45,18 +45,18 @@ get_header('dashboard');
 		<h2>Contact Us</h2>
 
 		<div class="inner-content inner-content--contact">
-			<form action="" id="contact--form">
+			<form action="" class="contact--form" id="contact--form">
 				<div class="form-group">
-					<label for="contact--textField__name">Name</label>
-					<input type="text" class="form-control" id="contact--textField__name">
+					<label for="contact--textField__name" class="contact--label">Name</label>
+					<input type="text" class="form-control contact--textField" id="contact--textField__name">
 				</div>
 				<div class="form-group">
-					<label for="contact--textField__email">Email</label>
-					<input type="email" class="form-control" id="contact--textField__email">
+					<label for="contact--textField__email" class="contact--label">Email</label>
+					<input type="email" class="form-control contact--textField" id="contact--textField__email">
 				</div>
 				<div class="form-group">
-					<label for="contact--textField__message">Message</label>
-					<textarea name="" class="form-control" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
+					<label for="contact--textField__message" class="contact--label">Message</label>
+					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
 				</div>
 			</form>
 		</div>

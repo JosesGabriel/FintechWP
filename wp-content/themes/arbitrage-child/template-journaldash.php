@@ -1429,7 +1429,8 @@ get_header( 'dashboard' );
 
 
 
-		wp_redirect( '/chart/'.$tradeinfo['stock'] );
+		// wp_redirect( '/chart/'.$tradeinfo['stock'] );
+		wp_redirect( '/journal' );
 		exit;
 
 	}

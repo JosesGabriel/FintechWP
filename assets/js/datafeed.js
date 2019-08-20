@@ -195,11 +195,11 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 	if (resolution == 'D') {
 		// url = 'https://tsupetot.com/api/history2';
 		// url = 'https://arbitrage.ph/charthisto/';
-		if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
-			url = 'https://arbitrage.ph/charthisto/';
-		} else {
+		// if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
+		// 	url = 'https://arbitrage.ph/charthisto/';
+		// } else {
 			url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
-		}
+		// }
 		
 		rangeStartDate = rangeStartDate.format('YYYY-MM-DD');
 		rangeEndDate = rangeEndDate.format('YYYY-MM-DD');

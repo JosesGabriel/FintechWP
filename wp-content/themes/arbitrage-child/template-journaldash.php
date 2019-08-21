@@ -1259,6 +1259,9 @@ get_header('dashboard');
 		text-align: right;
 		padding-right: 20px !important;
 	}
+    .arb_wdrw{
+        display:block;
+    }
     .arb_wdrw_left{
         float: left;
         width: 60%;
@@ -3842,7 +3845,7 @@ if ($getdstocks && $getdstocks != '') {
 																						<div class="modal-body depo-body">
 																							<div class="dmainform-withraw">
 																								<div class="dinnerform">
-																									<div class="dinitem">
+																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
 																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>

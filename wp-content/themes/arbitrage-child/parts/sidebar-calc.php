@@ -172,6 +172,9 @@
 .amtdtls{
     float:right;
 }
+.lblbcl{
+    margin-left:10px;
+}
 </style>
 <div class="arb_calcbox">
 <div class="bkcalcbox">
@@ -192,11 +195,11 @@
 		</div>
 		</div>
 		<div class="arb_buyvalue padbott ">
-			<span>Value: </span>
+			<span class="lblbcl">Value: </span>
 			<span class="rightAlignCal">₱ <span id="buyvalue">0.00</span></span>
 		</div>
 		<div class="arb_buyfees padbott ">
-			<span>Fees: </span>
+			<span class="lblbcl">Fees: </span>
 			<span class="rightAlignCal">
 				<i class="fas fa-info-circle" title="view more..."  style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="buyfees">0.00</span>
 			</span>
@@ -210,7 +213,7 @@
 			</div>
 		</div>
 		<div class="arb_buytotal padbott ">
-		<span>Buy Total: </span>
+		<span class="lblbcl">Buy Total: </span>
 		<span class="rightAlignCal" id="buytotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
 		<div class="padbott"><span class=" bit_asda">
@@ -221,30 +224,30 @@
 			</div>
 		</div>
 		<div class="arb_sellvalue padbott ">
-			<span>Value: </span>
+			<span class="lblbcl">Value: </span>
 				<span class="rightAlignCal">₱ <span id="sellvalue">0.00</span></div>
 			</span>
 		<div class="arb_sellfees padbott ">
-			<span>Fees: </span>
+			<span class="lblbcl">Fees: </span>
 			<span class="rightAlignCal">
 			<i class="fas fa-info-circle" title="view more..." style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="sellfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_sell">
 				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
-				<small>Commission: ₱<span id="sellcommadjst">0.00</span></small>
-				<small>Value Added Tax: ₱<span id="sellvatfix">0.00</span></small>
-				<small>Transfer Fee: ₱<span id="sellpsetffix">0.00</span></small>
-				<small>SCCP: ₱<span id="sellsccpfix">0.00</span></small>
-				<small>Sales Tax: ₱<span id="sellsaletxfix">0.00</span></small>
+				<small>Commission: <span class="amtdtls">₱<span id="sellcommadjst">0.00</span></span></small>
+				<small>Value Added Tax: <span class="amtdtls">₱<span id="sellvatfix">0.00</span></span></small>
+				<small>Transfer Fee: <span class="amtdtls">₱<span id="sellpsetffix">0.00</span></span></small>
+				<small>SCCP: <span class="amtdtls">₱<span id="sellsccpfix">0.00</span></span></small>
+				<small>Sales Tax: <span class="amtdtls">₱<span id="sellsaletxfix">0.00</span></span></small>
 			</div>
 		</div>
 		<div class="arb_selltotal ">
-		<span>Sell Total: </span>
+		<span class="lblbcl">Sell Total: </span>
 		<span class="rightAlignCal" id="selltotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
 		<div class="arbnetprofit padbott ">
-			<span class="textchangecolor"><strong>Net Profit: 
+			<span class="textchangecolor lblbcl"><strong>Net Profit: 
 			<span class="rightAlignCal">
 				₱<span id="arbnetprofitf">0.00</span> (<span id="arbperctg">0</span>%)</strong></span>
 			</span>

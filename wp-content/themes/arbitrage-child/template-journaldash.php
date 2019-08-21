@@ -1279,9 +1279,10 @@ get_header('dashboard');
         border-radius: 0 5px 5px 0;
         border: none;
         display: inline-block;
-        padding: 5px 6px;
-        line-height: 20px;
         background: #4e6a85 !important;
+        line-height: 28px;
+        padding: 0px 10px 0px 10px !important;
+        text-align: right;
     }
 </style>
 
@@ -3869,7 +3870,7 @@ if ($getdstocks && $getdstocks != '') {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>

@@ -1254,7 +1254,31 @@ get_header( 'dashboard' );
 		padding: 5px 9px;
 		border-radius: 20px;
 	}
-
+    .arb_wdrw{
+        display:block;
+    }
+    .arb_wdrw_left{
+        float: left;
+        width: 60%;
+        line-height: 30px;
+        background-color: #34495e;
+        padding: 0 0 0 10px;
+        border-radius: 5px 0 0 5px;
+    }
+    .arb_wdrw_right{
+        float: right;
+        width: 40%;
+    }
+    .arb_wdrw_right > input{
+        margin-top: 0;
+        border-radius: 0 5px 5px 0;
+        border: none;
+        display: inline-block;
+        background: #4e6a85 !important;
+        line-height: 28px;
+        padding: 0px 10px 0px 10px !important;
+        text-align: right;
+    }
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3856,9 +3880,9 @@ if ($getdstocks && $getdstocks != "") {
 																						<div class="modal-body depo-body">
 																							<div class="dmainform-withraw">
 																								<div class="dinnerform">
-																									<div class="dinitem">
-																										<div class="dnlabel">Please enter your amount</div>
-																										<div class="dninput"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ',' ); ?>"></div>
+																									<div class="dinitem arb_wdrw">
+																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ',' ); ?>"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3867,7 +3891,7 @@ if ($getdstocks && $getdstocks != "") {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw">
+																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																						</div>
 																					</form>

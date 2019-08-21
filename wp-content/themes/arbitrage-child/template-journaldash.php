@@ -3520,6 +3520,13 @@ if ($getdstocks && $getdstocks != "") {
 
                                                             <div class="box-portlet-header">
                                                                 Tradelogs
+																<div class="headright">
+																	<form action="" method="get" id="ptchangenum">
+																		<input type="number" id="ptnum" name="ptnum">
+																		<input type="hidden" name="pt" value="1">
+																		<a href="#" class="dmoveto">Go</a>
+																	</form>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3540,7 +3547,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                                 </div>
                                                                             </li>
 																			<?php
-																				$paginate = 5;
+																				$paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
 																				$count = 1;
 																				$dpage = 1;
 																				$current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
@@ -3786,6 +3793,13 @@ if ($getdstocks && $getdstocks != "") {
 
                                                             <div class="box-portlet-header">
                                                                 Ledger
+																<div class="headright">
+																	<form action="" method="get" id="ldchangenum">
+																		<input type="number" id="ldnum" name="ldnum">
+																		<input type="hidden" name="ld" value="1">
+																		<a href="#" class="lddmoveto">Go</a>
+																	</form>
+																</div>
                                                                 	<div class="button" style="float: right;">
                                                                 	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -3947,7 +3961,7 @@ if ($getdstocks && $getdstocks != "") {
                                                                             </li>
 																			
                                                                             <?php
-																				$numofitems = 2;
+																				$numofitems = (isset($_GET['ldnum']) && @$_GET['ldnum'] != "" ? 1 : $_GET['ldnum']);
 																				$ldcount = 1;
 																				$ldpages = 1;
 																				$listledger = [];
@@ -4358,6 +4372,35 @@ if ($getdstocks && $getdstocks != "") {
 
 			// console.log("here");
 		});
+
+		jQuery(".dmoveto").click(function(e){
+			e.preventDefault();
+			// ptchangenum
+			// console.log("southboys");
+			// jQuery("#ptchangenum").submit();
+			var dnumsec = jQuery("#ptchangenum").find("#ptnum").val();
+			console.log(dnumsec);
+			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
+				console.log("cant go");
+			} else {
+				jQuery("#ptchangenum").submit();
+			}
+		});
+
+		jQuery(".lddmoveto").click(function(e){
+			e.preventDefault();
+			// ptchangenum
+			// console.log("southboys");
+			// jQuery("#ptchangenum").submit();
+			var dnumsec = jQuery("#ldchangenum").find("#ldnum").val();
+			console.log(dnumsec);
+			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
+				console.log("cant go");
+			} else {
+				jQuery("#ldchangenum").submit();
+			}
+		});
+
 	});
     </script>
 

@@ -1725,6 +1725,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                     <div class="liveportfoliobox">
                                                         <div class="box-portlet">
+
                                                         	<?php
                                                                 function date_lvp_sort($a, $b)
                                                                 {
@@ -3515,7 +3516,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Tradelogs
-																<div class="headright">
+																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
 																		<input type="hidden" name="pt" value="1">
@@ -3542,7 +3543,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
 																			<?php
-                                                                                $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+																				// $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+																				// echo  $_GET['ptnum'];
+                                                                                $paginate = 20;
                                                                                 $count = 1;
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
@@ -3569,9 +3572,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
                                                                                             $count = 1;
-                                                                                            ++$dpage;
+                                                                                            $dpage++;
                                                                                         } else {
-                                                                                            ++$count;
+                                                                                            $count++;
                                                                                         }
                                                                                     }
                                                                                     wp_reset_postdata();
@@ -3787,7 +3790,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Ledger
-																<div class="headright">
+																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ldchangenum">
 																		<input type="number" id="ldnum" name="ldnum">
 																		<input type="hidden" name="ld" value="1">
@@ -3955,7 +3958,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                             </li>
 																			
                                                                             <?php
-                                                                                $numofitems = (isset($_GET['ldnum']) && @$_GET['ldnum'] != "" ? 1 : $_GET['ldnum']);
+                                                                                // $numofitems = (isset($_GET['ldnum']) && @$_GET['ldnum'] != "" ? 1 : $_GET['ldnum']);
+                                                                                $numofitems = 20;
                                                                                 $ldcount = 1;
                                                                                 $ldpages = 1;
                                                                                 $listledger = [];

@@ -3515,7 +3515,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Tradelogs
-																<div class="headright" style="display:none;">
+																<div class="headright">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
 																		<input type="hidden" name="pt" value="1">
@@ -3787,7 +3787,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Ledger
-																<div class="headright" style="display:none;">
+																<div class="headright">
 																	<form action="" method="get" id="ldchangenum">
 																		<input type="number" id="ldnum" name="ldnum">
 																		<input type="hidden" name="ld" value="1">
@@ -3875,7 +3875,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="dinnerform">
 																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input style="padding: 0px 11px 0px 11px !important;" type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>
 																								</div>
 																							</div>

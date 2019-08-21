@@ -75,6 +75,7 @@
 		font-weight: 300
 	}
 	.contact--textField__name, .contact--textField__email {
+		color: white;
 		padding: 6px 12px !important;
 	}
 	

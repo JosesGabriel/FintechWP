@@ -195,11 +195,11 @@
 		<div class="arb_buyfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-				<i class="fas fa-info-circle" style="padding-right: 5px;"></i> ₱ <span id="buyfees">0.00</span>
+				<i class="fas fa-info-circle" style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="buyfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_buy">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-window-close"></i></small></div>
 				<small>Commission: ₱<span id="buycommadjst">0.00</span></small>
 				<small>Value Added Tax: ₱<span id="buyvatfix">0.00</span></small>
 				<small>Transfer Fee: ₱<span id="buypsetffix">0.00</span></small>
@@ -224,11 +224,11 @@
 		<div class="arb_sellfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-			<i class="fas fa-info-circle" style="padding-right: 5px;"></i> ₱ <span id="sellfees">0.00</span>
+			<i class="fas fa-info-circle" style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="sellfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_sell">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-window-close"></i></small></div>
 				<small>Commission: ₱<span id="sellcommadjst">0.00</span></small>
 				<small>Value Added Tax: ₱<span id="sellvatfix">0.00</span></small>
 				<small>Transfer Fee: ₱<span id="sellpsetffix">0.00</span></small>

@@ -72,6 +72,7 @@
 	}
 	/* Contact Us */
 	.contact--label {
+		color: white;
 		font-weight: 300
 	}
 	.contact--textField__name, .contact--textField__email {

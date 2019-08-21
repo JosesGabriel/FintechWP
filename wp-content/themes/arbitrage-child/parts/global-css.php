@@ -2855,7 +2855,6 @@ li.dspecitem div div {
     background: #142c46;
 }
 .inner-content--contact {
-    background: white;
 	margin: 0 120px;
 	margin-top: 20px;
 }

@@ -173,13 +173,13 @@
     float:right;
 }
 .lblbcl{
-    margin-left:10px;
+    margin-left:15px;
 }
 </style>
 <div class="arb_calcbox">
 <div class="bkcalcbox">
 	<span><span class="toborderbotcalc"><strong>Buy/Sell</strong> Calculator</span><i class="fas fa-times toclassclose"></i></span>
-	<div style="padding-top: 5px;padding-bottom: 12px;">
+	<div style="padding-top: 10px;padding-bottom: 12px;">
 		<div class="arb_calcbox_left">Number of Shares: </div>
 		<div class="arb_calcbox_right">
 			<input name="numofshares" id="numofshares" class="_fottns" type="number" value="0" style="width:100%; text-align: right;">
@@ -191,10 +191,10 @@
 		<!-- <strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"> -->
 		<div class="arb_calcbox_left">Buy Price: </div>
 		<div class="arb_calcbox_right">
-			<input name="buyprice" id="buyprice" type="number" value="0" style="width:95%; text-align: right;">
+			<input name="buyprice" id="buyprice" type="number" value="0" style="width:80%;">
 		</div>
 		</div>
-		<div class="arb_buyvalue padbott ">
+		<div class="arb_buyvalue padbott" style="padding-top: 30px;">
 			<span class="lblbcl">Value: </span>
 			<span class="rightAlignCal">₱ <span id="buyvalue">0.00</span></span>
 		</div>
@@ -220,10 +220,10 @@
 			<!-- <strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"> -->
 			<div class="arb_calcbox_left">Sell Price: </div>
 			<div class="arb_calcbox_right">
-				<input name="sellprice" id="sellprice" class="_fottns" type="number" value="0">
+				<input name="sellprice" id="sellprice" class="_fottns" type="number" style="width:80%;" value="0">
 			</div>
 		</div>
-		<div class="arb_sellvalue padbott ">
+		<div class="arb_sellvalue padbott " style="padding-top: 30px;">
 			<span class="lblbcl">Value: </span>
 				<span class="rightAlignCal">₱ <span id="sellvalue">0.00</span></div>
 			</span>

@@ -199,7 +199,7 @@
 			</span>
 			
 			<div class="feedetails_buy">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-window-close"></i></small></div>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
 				<small>Commission: ₱<span id="buycommadjst">0.00</span></small>
 				<small>Value Added Tax: ₱<span id="buyvatfix">0.00</span></small>
 				<small>Transfer Fee: ₱<span id="buypsetffix">0.00</span></small>
@@ -228,7 +228,7 @@
 			</span>
 			
 			<div class="feedetails_sell">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-window-close"></i></small></div>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
 				<small>Commission: ₱<span id="sellcommadjst">0.00</span></small>
 				<small>Value Added Tax: ₱<span id="sellvatfix">0.00</span></small>
 				<small>Transfer Fee: ₱<span id="sellpsetffix">0.00</span></small>

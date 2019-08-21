@@ -169,6 +169,9 @@
 	float: right;
 	margin-right: 25px;
 }
+.amtdtls{
+    float:right;
+}
 </style>
 <div class="arb_calcbox">
 <div class="bkcalcbox">
@@ -195,15 +198,15 @@
 		<div class="arb_buyfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-				<i class="fas fa-info-circle" style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="buyfees">0.00</span>
+				<i class="fas fa-info-circle" title="view more..."  style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="buyfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_buy">
 				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
-				<small>Commission: ₱<span id="buycommadjst">0.00</span></small>
-				<small>Value Added Tax: ₱<span id="buyvatfix">0.00</span></small>
-				<small>Transfer Fee: ₱<span id="buypsetffix">0.00</span></small>
-				<small>SCCP: ₱<span id="buysccpfix">0.00</span></small>
+				<small>Commission: <span class="amtdtls">₱<span id="buycommadjst">0.00</span></span></small>
+				<small>Value Added Tax: <span class="amtdtls">₱<span id="buyvatfix">0.00</span></span></small>
+				<small>Transfer Fee: <span class="amtdtls">₱<span id="buypsetffix">0.00</span></span></small>
+				<small>SCCP: <span class="amtdtls">₱<span id="buysccpfix">0.00</span></span></small>
 			</div>
 		</div>
 		<div class="arb_buytotal padbott ">
@@ -224,7 +227,7 @@
 		<div class="arb_sellfees padbott ">
 			<span>Fees: </span>
 			<span class="rightAlignCal">
-			<i class="fas fa-info-circle" style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="sellfees">0.00</span>
+			<i class="fas fa-info-circle" title="view more..." style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="sellfees">0.00</span>
 			</span>
 			
 			<div class="feedetails_sell">

@@ -3515,7 +3515,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Tradelogs
-																<div class="headright">
+																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
 																		<input type="hidden" name="pt" value="1">
@@ -3787,7 +3787,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Ledger
-																<div class="headright">
+																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ldchangenum">
 																		<input type="number" id="ldnum" name="ldnum">
 																		<input type="hidden" name="ld" value="1">

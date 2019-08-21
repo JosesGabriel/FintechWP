@@ -1265,10 +1265,23 @@ get_header('dashboard');
     .arb_wdrw_left{
         float: left;
         width: 60%;
+        line-height: 30px;
+        background-color: #34495e;
+        padding: 0 0 0 10px;
+        border-radius: 5px 0 0 5px;
     }
     .arb_wdrw_right{
         float: right;
         width: 40%;
+    }
+    .arb_wdrw_right > input{
+        margin-top: 0;
+        border-radius: 0 5px 5px 0;
+        border: none;
+        display: inline-block;
+        padding: 5px 6px;
+        line-height: 20px;
+        background: #4e6a85 !important;
     }
 </style>
 

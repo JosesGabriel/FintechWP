@@ -2912,7 +2912,7 @@ p.content-meta-date {
     text-align: center;
 }
 .a-link-text-margin {
-	margin: 15px auto 50px auto;
+	margin: 20px auto 50px auto;
 }
 .a-text-font, .a-text-font a {
     color: #d8d8d8;

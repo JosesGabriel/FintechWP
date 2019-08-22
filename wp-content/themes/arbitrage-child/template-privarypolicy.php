@@ -99,17 +99,17 @@ get_header('dashboard');
 <script>
 	$(document).ready(function(){
 		$(".media-facebook").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/bar-chart-2.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/facebook-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/facebook-01.svg");
 		});
 		$(".media-twitter").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/bar-chart-2.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/twitter-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
 		});
 		$(".media-instagram").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/bar-chart-2.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/instagram-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/instagram-01.svg");
 		});

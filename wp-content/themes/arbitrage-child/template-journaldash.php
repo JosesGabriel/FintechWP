@@ -1285,6 +1285,11 @@ get_header('dashboard');
         padding: 0px 10px 0px 10px !important;
         text-align: right;
     }
+
+    .search-tlogs {
+    	width: 200px;
+    }
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>

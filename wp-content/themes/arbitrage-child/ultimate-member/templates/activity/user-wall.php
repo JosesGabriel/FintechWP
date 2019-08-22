@@ -739,9 +739,9 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<!-- <li class="">All</li> -->
 
-						        		<li class="totabs" style="color: white;" data-btname="bullish">Bullish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bullish"><span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span></li>
 
-						        		<li class="totabs" style="color: white;" data-btname="bearish">Bearish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bearish"><span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span></li>
 
 						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 

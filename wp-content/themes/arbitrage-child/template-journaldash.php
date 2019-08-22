@@ -786,9 +786,10 @@ get_header('dashboard');
 		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
-		padding: 20px 0 15px 20px;
+		padding: 20px 0 2px 20px;
 		background-color: #142b46;
 		border-radius: 4px;
+		min-height: 230px;
 	}
 	.entr_wrapper_bot {
 		padding:25px 0 25px 25px;
@@ -1284,6 +1285,19 @@ get_header('dashboard');
         padding: 0px 10px 0px 10px !important;
         text-align: right;
     }
+
+    .search-tlogs {
+    	width: 150px;
+    	float: right;
+    }
+
+    .search-logs{
+    	border-radius: 30px;
+    	height: 25px;
+    	background-color: #4e6a85 !important;
+    	color: #fff !important;
+    }
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1837,9 +1851,9 @@ if ($getdstocks && $getdstocks != '') {
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
-		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?>">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->
-		                                                                                     <div style="width:11%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?>"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
+		                                                                                     <div style="width:11%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
@@ -3523,6 +3537,12 @@ if ($getdstocks && $getdstocks != '') {
 																		<a href="#" class="dmoveto">Go</a>
 																	</form>
 																</div>
+
+																<div class="search-tlogs">
+																	<form action="" method="get">
+																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
+																	</form>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3543,8 +3563,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
 																			<?php
-																				// $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
-																				// echo  $_GET['ptnum'];
+                                                                                // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+                                                                                // echo  $_GET['ptnum'];
                                                                                 $paginate = 20;
                                                                                 $count = 1;
                                                                                 $dpage = 1;
@@ -3572,9 +3592,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
                                                                                             $count = 1;
-                                                                                            $dpage++;
+                                                                                            ++$dpage;
                                                                                         } else {
-                                                                                            $count++;
+                                                                                            ++$count;
                                                                                         }
                                                                                     }
                                                                                     wp_reset_postdata();
@@ -3878,7 +3898,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="dinnerform">
 																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>
 																								</div>
 																							</div>

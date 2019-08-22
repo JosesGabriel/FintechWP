@@ -2029,6 +2029,18 @@ input.dpos {
 	font-family: 'Roboto', sans-serif !important;
 	font-size: 15px;
 }
+input.dpos::placeholder, input.dpri::placeholder {
+	color: white;
+} 
+.bullbear-Modal--header {
+    background-color: #213f58;
+}
+.bullbear-Modal--body {
+    background-color: #142b46;
+}
+.totabs active {
+	border-bottom: 2px solid red;
+}
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
@@ -2900,7 +2912,7 @@ p.content-meta-date {
     text-align: center;
 }
 .a-link-text-margin {
-	margin: 50px auto;
+	margin: 15px auto 50px auto;
 }
 .a-text-font, .a-text-font a {
     color: #d8d8d8;
@@ -2930,5 +2942,14 @@ p.content-meta-date {
 }
 .c-footer-arbitrage {
 	padding-left: 4px;
+}
+.button-media-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.button-media-container a img {
+    display: inline;
+    width: 40px;
+    margin: 0 5px;
 }
 </style>

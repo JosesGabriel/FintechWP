@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/cd/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/cd/css/demo.css">
+    <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
 
 	<title>Arbitrage.ph</title>
 </head>

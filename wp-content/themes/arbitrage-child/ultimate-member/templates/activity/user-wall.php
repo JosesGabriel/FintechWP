@@ -648,7 +648,9 @@ foreach ( $wallposts->posts as $post ) {
 		</div>
 
 		<style type="text/css">
-			
+			.totabs active {
+				border-bottom: 2px solid #e77e24;
+			}
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
@@ -727,7 +729,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						    <div class="modal-content">
 
-						      <div class="modal-header">
+						      <div class="modal-header bullbear-Modal--header">
 
 						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
 
@@ -737,11 +739,11 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<!-- <li class="">All</li> -->
 
-						        		<li class="totabs" data-btname="bullish">Bullish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bullish">Bullish</li>
 
-						        		<li class="totabs" data-btname="bearish">Bearish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bearish">Bearish</li>
 
-						        		<li class="totabs" data-btname="liked">Liked</li>
+						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
 						        	</ul>
 
@@ -755,7 +757,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						      </div>
 
-						      <div class="modal-body">
+						      <div class="modal-body bullbear-Modal--body">
 
 						        <div class="totab">
 
@@ -843,7 +845,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	</div>
 
-						        	<div class="liked">
+						        	<!-- <div class="liked">
 
 										<?php 
 										
@@ -881,7 +883,7 @@ foreach ( $wallposts->posts as $post ) {
 											endif;
 										?>
 
-						        	</div>
+						        	</div> -->
 
 						        </div>
 

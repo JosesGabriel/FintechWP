@@ -70,12 +70,28 @@ get_header('dashboard');
 	</div>
 </div>
 <div class="footer-container">
+	<div class="button-media-container">
+		<a href="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
+			<img src="https://arbitrage.ph/svg/facebook-01.svg" class="media-facebook" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
+		</a>
+		<a href="https://twitter.com/ArbitragePh?s=09">
+			<img src="https://arbitrage.ph/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
+		</a>
+		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="https://arbitrage.ph/svg/instagram-01.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+		</a>
+	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
-		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a> |
-		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a> |
-		<a href="https://arbitrage.ph/contact/">Contact Us</a> |
-		<a href="https://arbitrage.ph/about/">About Us</a> |
-		<a>FAQ</a> |
+		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/contact/">Contact Us</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/about/">About Us</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
+		<span class="ddot">.</span>
 		<span class="c-footer-arbitrage"> Arbitrage © 2019</span>
 	</div>
 </div>

@@ -33,9 +33,6 @@
 .dtabspart ul.tabbutton {
     margin: 0;
 }
-.totab {
-    color: #000 !important;
-}
 .totab > div {
     display: none;
 }

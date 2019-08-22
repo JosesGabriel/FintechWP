@@ -211,6 +211,12 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
             }
         });
 
+        if(jQuery('.um-profile').hasClass('topbannerprofile')){
+          jQuery('.side-completenessbox').css("display","none");
+        }else{
+          jQuery('.side-completenessbox').css("display","block");
+        }
+
         jQuery('.info-circle').click(function(){
 
           if($('.todos_box').css('display') == 'none'){

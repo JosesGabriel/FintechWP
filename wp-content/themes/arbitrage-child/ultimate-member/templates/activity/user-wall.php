@@ -741,7 +741,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<li class="totabs" data-btname="bearish">Bearish</li>
 
-						        		<li class="totabs" data-btname="liked">Liked</li>
+						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
 						        	</ul>
 

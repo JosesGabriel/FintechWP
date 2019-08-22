@@ -727,7 +727,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						    <div class="modal-content">
 
-						      <div class="modal-header">
+						      <div class="modal-header bullbear-Modal--header">
 
 						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
 
@@ -755,7 +755,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						      </div>
 
-						      <div class="modal-body">
+						      <div class="modal-body bullbear-Modal--body">
 
 						        <div class="totab">
 

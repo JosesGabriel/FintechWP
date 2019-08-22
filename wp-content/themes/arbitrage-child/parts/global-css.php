@@ -2032,6 +2032,12 @@ input.dpos {
 input.dpos::placeholder, input.dpri::placeholder {
 	color: white;
 } 
+.bullbear-Modal--header {
+    background-color: #213f58;
+}
+.bullbear-Modal--body {
+    background-color: #142b46;
+}
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;

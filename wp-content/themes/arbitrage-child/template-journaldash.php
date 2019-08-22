@@ -1293,6 +1293,7 @@ get_header('dashboard');
 
     .search-logs{
     	border-radius: 30px;
+    	height: 25px;
     }
 
 </style>
@@ -3537,7 +3538,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																<div class="search-tlogs">
 																	<form action="" method="get">
-																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" placeholder="Search...">
+																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
 																	</form>
 																</div>
                                                             </div>

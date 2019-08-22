@@ -1287,13 +1287,15 @@ get_header('dashboard');
     }
 
     .search-tlogs {
-    	width: 200px;
+    	width: 150px;
     	float: right;
     }
 
     .search-logs{
     	border-radius: 30px;
     	height: 25px;
+    	background-color: #4e6a85 !important;
+    	color: #fff !important;
     }
 
 </style>

@@ -786,9 +786,10 @@ get_header('dashboard');
 		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
-		padding: 20px 0 15px 20px;
+		padding: 20px 0 2px 20px;
 		background-color: #142b46;
 		border-radius: 4px;
+		min-height: 230px;
 	}
 	.entr_wrapper_bot {
 		padding:25px 0 25px 25px;

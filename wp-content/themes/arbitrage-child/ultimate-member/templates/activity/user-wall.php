@@ -648,7 +648,9 @@ foreach ( $wallposts->posts as $post ) {
 		</div>
 
 		<style type="text/css">
-			
+			.totabs active {
+				border-bottom: 2px solid #e77e24;
+			}
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
@@ -894,7 +896,7 @@ foreach ( $wallposts->posts as $post ) {
 						</div>
 
 					</div>
-											
+
 				</div>
 
 

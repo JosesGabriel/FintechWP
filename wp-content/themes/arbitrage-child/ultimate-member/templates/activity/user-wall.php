@@ -786,7 +786,7 @@ foreach ( $wallposts->posts as $post ) {
 											?>
 
 													<div>
-														<span>
+														<span style="width: 100%;">
 															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
 																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
 															</a>

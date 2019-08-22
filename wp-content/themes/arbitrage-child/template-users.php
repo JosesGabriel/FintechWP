@@ -1628,8 +1628,13 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
     
     </script>
 <?php } ?>
-
-<div id="main-content" class="ondashboardpage id<?php echo $profile_id; ?>">
+<?php
+    if(!$ismyprofile && isset($_GET['profiletab']) && isset($_GET['um_action'])){
+        wp_redirect( "https://arbitrage.ph/user/".um_user('user_login') );
+        exit;
+    }
+?>
+<div id="main-content" class="ondashboardpage id<?php echo $profile_id; ?> <?php echo $ismyprofile; ?>">
 	<div class="container">
 	<div class="the_user_top_page">
 		<div class="um um-profile <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'um-editing' : 'um-viewing'); ?> um-11 um-role-administrator uimob800 topbannerprofile">

@@ -117,13 +117,13 @@
 
             var totalfee = 0;
             var partcpms = marketvalue * 0.0025;
-            var commission = (partcpms > 20 ? partcpms : 20);
-            var tax = marketvalue * 0.12;
+            var commission = (partcpms >= 20 ? partcpms : 20);
+            var tax = commission * 0.12;
 
             var transfer = marketvalue * 0.00005;
 
-            // var sccp = marketvalue * 0.0001;
-            var sccp = 0;
+            var sccp = marketvalue * 0.0001;
+            // var sccp = 0;
 
 
 
@@ -131,7 +131,7 @@
 
 
 
-            return totalfee;
+            return totalfee.toFixed(2);
 
         };
 
@@ -219,9 +219,10 @@
 
                         totalprice += parseFloat(dprice);
 
-                        totalcost += parseFloat(dprice) * parseFloat(dposition);
+                        var nscost = parseFloat(dprice) * parseFloat(dposition)
+                        totalcost += nscost;
 
-                        costfee += totalcost + parseFloat(getfee(totalcost));
+                        costfee += nscost + parseFloat(getfee(totalcost));
 
                         // console.log("fees: "+parseFloat(getfee(totalcost)));
 
@@ -231,13 +232,13 @@
 
                 });
 
-                // console.log("totalvol: "+totalvolume);
-                // console.log("totalprice: "+totalprice);
-                // console.log("totalcost: "+totalcost);
-                // console.log("costfee: "+costfee);
+                console.log("totalvol: "+totalvolume);
+                console.log("totalprice: "+totalprice);
+                console.log("totalcost: "+totalcost);
+                console.log("costfee: "+costfee);
 
                 // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
-                var finalcost = totalcost / totalvolume;
+                var finalcost = costfee / totalvolume;
 
                 // console.log("finalcost: "+finalcost);
 

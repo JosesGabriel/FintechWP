@@ -519,8 +519,88 @@
         <div class="padbott"></div>
     </div>        
 </div> -->
+    <?php
 
-    <div class="bkcalcboxess container-fluid">
+        function getfees($funmarketval, $funtype)
+        {
+            // Commissions
+            $dpartcommission = $funmarketval * 0.0025;
+            $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
+            // TAX
+            $dtax = $dcommission * 0.12;
+            // Transfer Fee
+            $dtransferfee = $funmarketval * 0.00005;
+            // SCCP
+            $dsccp = $funmarketval * 0.0001;
+            $dsell = $funmarketval * 0.006;
+
+            if ($funtype == 'buy') {
+                $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
+            } else {
+                $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+            }
+
+            return $dall;
+        }
+
+        $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $gerdqoute = curl_exec($curl);
+        curl_close($curl);
+
+        $gerdqoute = json_decode($gerdqoute);
+
+        if ($getdstocks && $getdstocks != '') {
+            $dtradeingfo = [];
+            foreach ($getdstocks as $dstockskey => $dstocksvalue) {
+                $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+                if ($dstocktraded && $dstocktraded != '') {
+                    $dstockinfo = $gerdqoute->data->$dstocksvalue;
+                    $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+                    $dsellfees = getfees($marketval, 'sell');
+                    $dtotal = $marketval - $dsellfees;
+        
+                    $dstocktraded['totalcost'] = $dtotal;
+                    $dstocktraded['stockname'] = $dstocksvalue;
+                    array_push($dtradeingfo, $dstocktraded);
+                }
+            }
+        }
+
+        $duseridmo = get_current_user_id();
+        $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+    
+        $buypower = 0;
+        foreach ($dledger as $getbuykey => $getbuyvalue) {
+            if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+                $buypower = $buypower + $getbuyvalue->tranamount;
+            } else {
+                $buypower = $buypower - $getbuyvalue->tranamount;
+            }
+        }
+
+        $dequityp = $buypower;
+
+        if ($dtradeingfo) {
+            foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+                $dinforstocl = $trinfovalue['stockname'];
+                $dstockinfo = $gerdqoute->data->$dinforstocl;
+                $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+                $dsellfees = getfees($marketval, 'sell');
+                $dtotal = $marketval - $dsellfees;
+    
+                $dequityp += $dtotal;
+                $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+                $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
+            }
+        }
+
+        // $dequityp = 0;
+    ?>
+    <div class="bkcalcboxess container-fluid ">
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">
             
@@ -564,7 +644,10 @@
 
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
-                        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width: 85%;" tabindex="2"></div>
+                        <div class="arb_calcbox_right">
+                            <input name="portsize" id="portsize" type="number" value="<?php echo $dequityp; ?>" style="width: 85%;" tabindex="2" readonly>
+                            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                        </div>
 
                         <div class="arb_clear smlspc"></div>
 
@@ -650,7 +733,7 @@
                     
 
                     <div style="display:none;">Boardlot (Tmp - dynamic on chart)
-
+[]
                     <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="number" value="30" style="width:100%;">
 
                     </div>
@@ -797,7 +880,8 @@
 
 			/* POSITION SIZING & RRR */
 
-			var boardlotget_var = $("#inpt_data_boardlot_get_").val();
+			// var boardlotget_var = $("#inpt_data_boardlot_get_").val();
+			var boardlotget_var = $("#idenentryprice").val();
 
 			var boardlotget_val
 

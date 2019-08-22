@@ -42,7 +42,7 @@ get_header('dashboard');
 	</div>
 <div class="container">
 	<div class="sub-container" style="width: 100%; text-align: justify;">
-		<h2>Contact Us</h2>
+		<h2 class="terms-padding">Contact Us</h2>
 
 		<div class="inner-content inner-content--contact">
 			<form action="" class="contact--form" id="contact--form">

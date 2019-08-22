@@ -2904,6 +2904,15 @@ p.content-meta-date {
 .terms-padding {
 	margin-bottom: 48px !important;
 }
+h2.terms-padding:after {
+    content: "";
+    width: 6%;
+    height: 3px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 3px;
+    background: #fff;
+}
 .footer-container {
 	width: 100%;
     height: 30px;

@@ -2029,7 +2029,7 @@ input.dpos {
 	font-family: 'Roboto', sans-serif !important;
 	font-size: 15px;
 }
-input.dpos::placeholder {
+input.dpos::placeholder, input.dpri::placeholder {
 	color: white;
 } 
 .paramlist .jjaajs {

@@ -648,9 +648,7 @@ foreach ( $wallposts->posts as $post ) {
 		</div>
 
 		<style type="text/css">
-			.totabs {
-				color: white;
-			}
+			
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
@@ -739,9 +737,9 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<!-- <li class="">All</li> -->
 
-						        		<li class="totabs" data-btname="bullish">Bullish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bullish">Bullish</li>
 
-						        		<li class="totabs" data-btname="bearish">Bearish</li>
+						        		<li class="totabs" style="color: white;" data-btname="bearish">Bearish</li>
 
 						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
@@ -896,7 +894,7 @@ foreach ( $wallposts->posts as $post ) {
 						</div>
 
 					</div>
-
+											
 				</div>
 
 

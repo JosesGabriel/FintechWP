@@ -2912,7 +2912,7 @@ p.content-meta-date {
     text-align: center;
 }
 .a-link-text-margin {
-	margin: 50px auto;
+	margin: 15px auto 50px auto;
 }
 .a-text-font, .a-text-font a {
     color: #d8d8d8;
@@ -2942,5 +2942,18 @@ p.content-meta-date {
 }
 .c-footer-arbitrage {
 	padding-left: 4px;
+}
+.button-media-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.button-media-container a img {
+    display: inline;
+    width: 45px;
+}
+.button-media-container a img {
+    display: inline;
+    width: 45px;
+    margin: 0 5px;
 }
 </style>

@@ -2038,6 +2038,9 @@ input.dpos::placeholder, input.dpri::placeholder {
 .bullbear-Modal--body {
     background-color: #142b46;
 }
+.totabs active {
+	border-bottom: 2px solid red;
+}
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;

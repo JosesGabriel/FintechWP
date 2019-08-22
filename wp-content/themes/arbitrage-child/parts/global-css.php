@@ -2029,6 +2029,9 @@ input.dpos {
 	font-family: 'Roboto', sans-serif !important;
 	font-size: 15px;
 }
+input.dpos::placeholder, input.dpri::placeholder {
+	color: white;
+} 
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;

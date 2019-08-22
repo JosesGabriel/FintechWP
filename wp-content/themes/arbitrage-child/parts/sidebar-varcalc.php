@@ -519,7 +519,7 @@
         <div class="padbott"></div>
     </div>        
 </div> -->
-
+    
     <div class="bkcalcboxess container-fluid">
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">
@@ -650,7 +650,7 @@
                     
 
                     <div style="display:none;">Boardlot (Tmp - dynamic on chart)
-
+[]
                     <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="number" value="30" style="width:100%;">
 
                     </div>

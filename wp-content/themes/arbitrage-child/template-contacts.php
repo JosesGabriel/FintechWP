@@ -67,10 +67,14 @@ get_header('dashboard');
 </div>
 <div class="footer-container">
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
-		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a> |
-		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a> |
-		<a href="https://arbitrage.ph/contact/">Contact Us</a> |
-		<a href="https://arbitrage.ph/about/">About Us</a> |
+		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/contact/">Contact Us</a>
+		<span class="ddot">.</span>
+		<a href="https://arbitrage.ph/about/">About Us</a>
+		<span class="ddot">.</span>
 		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
 	</div>
 </div>

@@ -262,15 +262,15 @@
 	}
 
 	.clock-item .inner {
-		width: 50%;
+		width: 50% !important;
 	}
 
 	.text .val {
-		font-size: 65px;
+		font-size: 65px !important;
 	}
 
 	.countdown-container {
-		top: 100%;
+		top: 100% !important;
 	}
 
 }

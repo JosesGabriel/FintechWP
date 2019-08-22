@@ -3524,6 +3524,12 @@ if ($getdstocks && $getdstocks != '') {
 																		<a href="#" class="dmoveto">Go</a>
 																	</form>
 																</div>
+
+																<div class="search-tlogs">
+																	<form action="" method="get">
+																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm" placeholder="Search...">
+																	</form>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">

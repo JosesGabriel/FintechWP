@@ -23,7 +23,6 @@
 .dtabspart ul li {
     color: white;
 }
-
 .dtabspart ul.tabbutton > li {
     display: inline-block;
     line-height: 1em;
@@ -34,8 +33,12 @@
 .dtabspart ul.tabbutton {
     margin: 0;
 }
-.totab {
-    color: #000 !important;
+.totabs {
+    color: white !important;
+}
+.totabs active {
+    text-decoration: underline;
+    text-decoration-color: #874a9a;
 }
 .totab > div {
     display: none;

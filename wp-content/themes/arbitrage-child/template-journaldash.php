@@ -1285,6 +1285,17 @@ get_header('dashboard');
         padding: 0px 10px 0px 10px !important;
         text-align: right;
     }
+
+    .search-tlogs {
+    	width: 200px;
+    	float: right;
+    }
+
+    .search-logs{
+    	border-radius: 30px;
+    	height: 25px;
+    }
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3524,6 +3535,12 @@ if ($getdstocks && $getdstocks != '') {
 																		<a href="#" class="dmoveto">Go</a>
 																	</form>
 																</div>
+
+																<div class="search-tlogs">
+																	<form action="" method="get">
+																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
+																	</form>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3544,8 +3561,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
 																			<?php
-																				// $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
-																				// echo  $_GET['ptnum'];
+                                                                                // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+                                                                                // echo  $_GET['ptnum'];
                                                                                 $paginate = 20;
                                                                                 $count = 1;
                                                                                 $dpage = 1;
@@ -3573,9 +3590,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
                                                                                             $count = 1;
-                                                                                            $dpage++;
+                                                                                            ++$dpage;
                                                                                         } else {
-                                                                                            $count++;
+                                                                                            ++$count;
                                                                                         }
                                                                                     }
                                                                                     wp_reset_postdata();
@@ -3879,7 +3896,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="dinnerform">
 																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>
 																								</div>
 																							</div>

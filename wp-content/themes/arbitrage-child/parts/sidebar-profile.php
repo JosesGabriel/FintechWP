@@ -107,13 +107,13 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
             
             <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>
-                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-1.svg">
+                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-2.svg">
             <span>Buy/Sell Calculators</span></a></li>
-                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-1.svg">
+                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-2.svg">
             <span>VAR Calculator</span></a></li>
-                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-1.svg">
+                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-2.svg">
             <span>Average Price Calculator</span></a></li>
-                  <li class="seven calc-menu-multichart"><a href="/multicharts/"><img src="<?php echo get_home_url(); ?>/svg/statistics-1.svg">
+                  <li class="seven calc-menu-multichart"><a href="/multicharts/"><img src="<?php echo get_home_url(); ?>/svg/statistics-2.svg">
             <span>Multichart</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">

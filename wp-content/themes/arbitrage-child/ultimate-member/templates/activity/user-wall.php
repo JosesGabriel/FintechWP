@@ -684,43 +684,6 @@ foreach ( $wallposts->posts as $post ) {
 						<span class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 
 					</div>
-					<div>
-						<?php 
-
-						$post_bull_people = get_post_meta( $post->ID, '_bull_people', TRUE );
-
-						if ($post_bull_people):
-							foreach (get_post_meta($post->ID, '_bull_people', true) as $key => $value):
-								$user_info = get_userdata($value);
-
-						?>
-
-							<div class="bullitems listofpeople">
-
-								<div class="dusername">
-
-									<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-										<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-
-									</a>
-
-								</div>
-
-								<div class="isfriends">
-
-									<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
-
-								</div>
-
-							</div>
-
-						<?php
-
-							endforeach;
-						endif;
-						?>
-					</div>
 
 					<!-- <div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active isyours' : 'notyours') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
 
@@ -800,7 +763,41 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<div class="innerbull">
 
+											<?php 
+
+												$post_bull_people = get_post_meta( $post->ID, '_bull_people', TRUE );
+
+												if ($post_bull_people):
+													foreach (get_post_meta($post->ID, '_bull_people', true) as $key => $value):
+														$user_info = get_userdata($value);
+
+											?>
+
+													<div class="bullitems listofpeople">
+
+														<div class="dusername">
+
+															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+
+																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
+
+															</a>
+
+														</div>
+
+														<div class="isfriends">
+
+															<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
+
+														</div>
+
+													</div>
+
+											<?php
 											
+													endforeach;
+												endif;
+											?>
 
 						        		</div>
 
@@ -846,7 +843,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	</div>
 
-						        	<div class="liked">
+						        	<!-- <div class="liked">
 
 										<?php 
 										
@@ -884,7 +881,7 @@ foreach ( $wallposts->posts as $post ) {
 											endif;
 										?>
 
-						        	</div>
+						        	</div> -->
 
 						        </div>
 

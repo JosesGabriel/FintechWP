@@ -2946,11 +2946,7 @@ p.content-meta-date {
 }
 .button-media-container a img {
     display: inline;
-    width: 45px;
-}
-.button-media-container a img {
-    display: inline;
-    width: 45px;
+    width: 40px;
     margin: 0 5px;
 }
 </style>

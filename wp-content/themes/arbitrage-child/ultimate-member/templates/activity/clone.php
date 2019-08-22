@@ -515,7 +515,8 @@
 
 							<a href="{{{data.permalink}}}" class="um-activity-comment-permalink">
 
-								{{{data.time}}}
+								<!-- {{{data.time}}} -->
+								Just Now
 
 							</a>
 
@@ -706,7 +707,8 @@
 
 							<a href="{{{data.permalink}}}" class="um-activity-comment-permalink">
 
-								{{{data.time}}}
+								<!-- {{{data.time}}} -->
+								Just Now
 
 							</a>
 
@@ -890,7 +892,8 @@
 
 					<a href="{{{data.permalink}}}" class="um-activity-comment-permalink">
 
-						{{{data.time}}}
+						<!-- {{{data.time}}} -->
+						Just Now
 
 					</a>
 

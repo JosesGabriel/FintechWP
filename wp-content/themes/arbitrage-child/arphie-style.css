@@ -21,7 +21,13 @@
     font-size: 13px;
 }
 .dtabspart ul li {
-    color: #000;
+    color: white;
+}
+.bullbear-Modal--header {
+    background-color: #213f58;
+}
+.bullbear-Modal--body {
+    background-color: #142b46;
 }
 .dtabspart ul.tabbutton > li {
     display: inline-block;

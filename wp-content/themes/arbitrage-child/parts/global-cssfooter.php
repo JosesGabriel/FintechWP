@@ -85,7 +85,7 @@
 	.hg-rainbow {
 		-webkit-background-clip: text !important;
 		-webkit-text-fill-color: transparent !important;
-		background: linear-gradient(to right, #F44336 1%, #E91E63 5%, #2196F3 50%, #8BC34A 80%, #FFEB3B 90%, #FF9800 100%);
+		background: linear-gradient(to right, #F44336 1%, #E91E63 5%, #2196F3 100%);
 		font-weight: 900 !important;
 	}
 	

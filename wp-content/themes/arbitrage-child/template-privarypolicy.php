@@ -102,17 +102,17 @@ get_header('dashboard');
 			$(this).attr('src', "https://arbitrage.ph/svg/facebook-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/facebook-01.svg");
-		});
+		}, 1500);
 		$(".media-twitter").hover(function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/twitter-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
-		});
+		}, 1500);
 		$(".media-instagram").hover(function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/instagram-1.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/instagram-01.svg");
-		});
+		}, 1500);
 	});
 </script>
 

@@ -786,17 +786,10 @@ foreach ( $wallposts->posts as $post ) {
 											?>
 
 													<div>
-
-															<span>
-																<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-																	<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-																</a>
-															</span>
-
-
-															<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
-
-
+														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+															<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
+														</a>
+														<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
 													</div>
 
 											<?php

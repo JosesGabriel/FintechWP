@@ -90,8 +90,20 @@ body {
 	}
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
 	.clock-item {
 		margin: 0px 30px 30px 30px;
+	}
+
+	.clock-item .inner {
+		width: 50% !important;
+	}
+
+	.text .val {
+		font-size: 65px !important;
+	}
+
+	.countdown-container {
+		top: 100% !important;
 	}
 }

@@ -33,6 +33,13 @@
 .dtabspart ul.tabbutton {
     margin: 0;
 }
+.totabs {
+    color: white !important;
+}
+.totabs active {
+    text-decoration: underline;
+    text-decoration-color: #874a9a;
+}
 .totab > div {
     display: none;
 }

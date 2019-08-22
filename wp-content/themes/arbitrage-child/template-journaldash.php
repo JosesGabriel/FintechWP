@@ -3544,8 +3544,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
 																			<?php
-																				// $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
-																				// echo  $_GET['ptnum'];
+                                                                                // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+                                                                                // echo  $_GET['ptnum'];
                                                                                 $paginate = 20;
                                                                                 $count = 1;
                                                                                 $dpage = 1;
@@ -3573,9 +3573,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
                                                                                             $count = 1;
-                                                                                            $dpage++;
+                                                                                            ++$dpage;
                                                                                         } else {
-                                                                                            $count++;
+                                                                                            ++$count;
                                                                                         }
                                                                                     }
                                                                                     wp_reset_postdata();
@@ -3879,7 +3879,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="dinnerform">
 																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>
 																								</div>
 																							</div>

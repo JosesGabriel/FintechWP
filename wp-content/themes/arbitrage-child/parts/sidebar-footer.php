@@ -3,7 +3,7 @@
 <div class="ontofooter">
     <div class="ontonowfooter">
         <ul class="footmore">
-            <li><a href="https://arbitrage.ph/privacy-policy">Privacy</a></li><span class="ddot">.</span>
+            <li><a href="https://arbitrage.ph/privacy-policy">Privacy Policy</a></li><span class="ddot">.</span>
             <li><a href="https://arbitrage.ph/terms-of-use">Terms of Use</a></li><span class="ddot">.</span>
             <!--<li><a href="https://arbitrage.ph/guidelines">Guidelines</a></li><span class="ddot">.</span>-->
             <li><a href="https://arbitrage.ph/contact">Contact Us</a></li>

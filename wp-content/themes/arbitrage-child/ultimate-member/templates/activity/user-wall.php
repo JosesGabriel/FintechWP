@@ -741,14 +741,14 @@ foreach ( $wallposts->posts as $post ) {
 
 										<li class="totabs" style="color: white;" data-btname="bullish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg" style="width: 24px; padding: 5px;">
+												<img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
 											</span>
 											<span class="dnumof" data-istab="bullish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbullish); ?></span>
 										</li>
 
 										<li class="totabs" style="color: white;" data-btname="bearish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg" style="width: 20px; padding: 5px;">
+												<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
 											</span>
 											<span class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 										</li>

@@ -788,7 +788,7 @@ foreach ( $wallposts->posts as $post ) {
 													<div class="bullitems listofpeople" style>
 
 														<div class="dusername">
-															<span style="width: 100%;">
+															<span>
 																<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%;">
 
 																	<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>

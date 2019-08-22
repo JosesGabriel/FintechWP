@@ -413,7 +413,7 @@ div.um-activity {
     height: 20px;
     line-height: 20px;
 }
-.um-activity-actions .active a {color: #666 !important}
+/* .um-activity-actions .active a {color: #666 !important} */
 .um-activity-actions a:hover {color: #666}
 .um-activity-actions i {color: #999;display: inline-block;}
 .um-activity-actions span {

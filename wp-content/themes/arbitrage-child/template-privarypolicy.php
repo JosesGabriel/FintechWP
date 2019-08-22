@@ -72,13 +72,13 @@ get_header('dashboard');
 <div class="footer-container">
 	<div class="button-media-container">
 		<a href="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
-			<img src="https://arbitrage.ph/svg/facebook.svg" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
+			<img src="https://arbitrage.ph/svg/facebook-1.svg" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
 		</a>
 		<a href="https://twitter.com/ArbitragePh?s=09">
-			<img src="https://arbitrage.ph/svg/twitter.svg" alt="https://twitter.com/ArbitragePh?s=09">
+			<img src="https://arbitrage.ph/svg/twitter-1.svg" alt="https://twitter.com/ArbitragePh?s=09">
 		</a>
 		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
-			<img src="https://arbitrage.ph/svg/instagram.svg" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="https://arbitrage.ph/svg/instagram-1.svg" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
 		</a>
 	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">

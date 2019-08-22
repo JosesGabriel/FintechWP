@@ -1291,6 +1291,10 @@ get_header('dashboard');
     	float: right;
     }
 
+    .search-logs{
+    	border-radius: 30px;
+    }
+
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3533,7 +3537,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																<div class="search-tlogs">
 																	<form action="" method="get">
-																		 <input type="text" name="searchlogs" id="searchlogs" class="search-logs" placeholder="Search...">
+																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" placeholder="Search...">
 																	</form>
 																</div>
                                                             </div>

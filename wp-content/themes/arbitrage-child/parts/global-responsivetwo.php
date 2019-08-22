@@ -261,6 +261,18 @@
 		padding-left: 60px !important;
 	}
 
+	.clock-item .inner {
+		width: 50%;
+	}
+
+	.text .val {
+		font-size: 65px;
+	}
+
+	.countdown-container {
+		top: 100%;
+	}
+
 }
 
 

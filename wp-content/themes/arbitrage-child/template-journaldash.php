@@ -3829,7 +3829,7 @@ if ($getdstocks && $getdstocks != '') {
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<div class="button-funds">
+																				<div class="button-funds" style="z-index: 25;">
 																					<select class="rnd" name="" id="" style="z-index: 20;">
 																						<option class="deposit-modal-btn show-button1" value="33">Dividend Income</option>
 																						<option class="deposit-modal-btn show-button2" value="33">Deposit Funds</option>
@@ -3841,7 +3841,7 @@ if ($getdstocks && $getdstocks != '') {
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
-																							<div class="dinitem" style="z-index: 15;">
+																							<div class="dinitem">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
 																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85;"></div>

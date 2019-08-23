@@ -329,7 +329,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
-            stock['previous']   = parseFloat(stock['previous']);
+            stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);
             stock['low']        = parseFloat(stock['low']);
@@ -340,7 +340,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayLast']  = price_format(stock['last']);
             stock['displayDifference']  = price_format(stock['difference'], stock['last']);
             stock['displayOpen']  = price_format(stock['open']);
-            stock['displayPrevious']  = price_format(stock['previous']);
+            stock['displayPrevious']  = price_format(stock['close']);
             stock['displayAverage']  = price_format(stock['average']);
             stock['displayLow']  = price_format(stock['low']);
             stock['displayHigh']  = price_format(stock['high']);

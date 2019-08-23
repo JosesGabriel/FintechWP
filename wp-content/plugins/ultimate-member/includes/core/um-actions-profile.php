@@ -643,7 +643,7 @@ function um_profile_header_cover_area( $args ) {
 
 					$default_cover = $default_cover['url'];
 
-					echo '<img/>';
+					echo '<img src="' . $default_cover . '" alt="" />';
 
 				} else {
 
@@ -738,7 +738,7 @@ function um_profile_header( $args ) {
 
 		<div class="um-profile-photo" data-user_id="<?php echo um_profile_id(); ?>">
 
-			<a href="<?php echo um_user_profile_url(); ?>" class="um-profile-photo-img"
+			<a class="um-profile-photo-img"
 			   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
 
 			<?php

@@ -83,7 +83,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
     margin-top: -15px;">
           </small>
           <div class="profile-progress" style="clear: both;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #6c1b89 12%,#d34a28 38%,#fcf528 64%,#8ced80 89%);"></div>
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #71f29f 12%, #b5dc5d 89%);"></div>
           </div>
     <?php } ?>
       <?php get_template_part('parts/sidebar', 'tasks'); ?>

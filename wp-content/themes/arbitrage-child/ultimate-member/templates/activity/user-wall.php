@@ -815,7 +815,7 @@ foreach ( $wallposts->posts as $post ) {
 
 										?>
 
-												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white; margin-right: 10px; margin-left: 0px;">
+												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white!important; margin-right: 10px; margin-left: 0px;">
 													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
 													<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
 												</a>

@@ -2867,7 +2867,7 @@ li.dspecitem div div {
     background: #142c46;
 }
 .inner-content--contact {
-	margin: 0 120px;
+	margin: 0 90px;
 	margin-top: 20px;
 }
 .fa-percentage {

@@ -1286,7 +1286,17 @@ get_header('dashboard');
         text-align: right;
     }
 
-    
+    .search-tlogs {
+    	width: 150px;
+    	float: right;
+    }
+
+    .search-logs{
+    	border-radius: 30px;
+    	height: 25px;
+    	background-color: #4e6a85 !important;
+    	color: #fff !important;
+    }
 
 </style>
 
@@ -3527,13 +3537,15 @@ if ($getdstocks && $getdstocks != '') {
 																		<a href="#" class="dmoveto">Go</a>
 																	</form>
 																</div>
-																<!--
+<<<<<<< HEAD
+
 																<div class="search-tlogs">
 																	<form action="" method="get">
 																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
 																	</form>
-																</div>-->
-
+																</div>
+=======
+>>>>>>> parent of e59c5c5... add search to tradelogs
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">

@@ -58,7 +58,7 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     <?php }else{ ?>
                     	<li class="arbit-checked">
                     		<!--<i class="fas fa-check-square"></i>-->
-                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="10%">
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="8%">
                     		Cover photo updated</li>
                     <?php } ?>
                     
@@ -69,7 +69,7 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     <?php }else{ ?>
                     	<li class="arbit-checked">
                     		<!--<i class="fas fa-check-square"></i> -->
-                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="10%">
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="8%">
                     		Profile photo updated</li>
                     <?php } ?>
                     

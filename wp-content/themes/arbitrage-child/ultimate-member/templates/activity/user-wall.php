@@ -786,11 +786,9 @@ foreach ( $wallposts->posts as $post ) {
 											?>
 
 													<div>
-														<span style="width: 100%;">
-															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+															<span href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="font-size: 1em; color: white;">
 																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-															</a>
-														</span>
+															</span>
 														<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
 													</div>
 

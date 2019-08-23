@@ -17,7 +17,7 @@ if ($_GET['ruadmin'] == "yeah"){
 .todos_box {
 	margin: 2px 0 0 0;
     padding: 15px 15px 10px 15px;
-    background-color: #213f58;
+    background-color: #142c46;
     border-radius: 5px;
 }
 .todos_box a i {
@@ -56,7 +56,10 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editcover"><i class="far fa-check-square"></i> Change cover photo</a>
                         </li>
                     <?php }else{ ?>
-                    	<li class="arbit-checked"><i class="fas fa-check-square"></i> Cover photo updated</li>
+                    	<li class="arbit-checked">
+                    		<!--<i class="fas fa-check-square"></i>-->
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="8%">
+                    		Cover photo updated</li>
                     <?php } ?>
                     
                     <?php if(!$profilepicactive){ ?>
@@ -64,7 +67,10 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editphoto"><i class="far fa-check-square"></i> Change profile photo</a>
                         </li>
                     <?php }else{ ?>
-                    	<li class="arbit-checked"><i class="fas fa-check-square"></i> Profile photo updated</li>
+                    	<li class="arbit-checked">
+                    		<!--<i class="fas fa-check-square"></i> -->
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="8%">
+                    		Profile photo updated</li>
                     <?php } ?>
                     
                     

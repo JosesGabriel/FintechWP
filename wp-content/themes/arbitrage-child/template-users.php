@@ -1694,7 +1694,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 					$default_cover = $default_cover['url'];
 
-					echo '<img src="' . $default_cover . '" alt="" />';
+					echo '<img/>';
 
 				} else {
 

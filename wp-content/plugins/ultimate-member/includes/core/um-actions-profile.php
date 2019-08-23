@@ -643,7 +643,7 @@ function um_profile_header_cover_area( $args ) {
 
 					$default_cover = $default_cover['url'];
 
-					echo '<img src="' . $default_cover . '" alt="" />';
+					echo '<img/>';
 
 				} else {
 

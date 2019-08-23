@@ -883,7 +883,9 @@
 
 			/* POSITION SIZING & RRR */
 
-			var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
+            var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
+            
+            var boardlotget_val;
 
 			if ( boardlotget_var >= 0.0001 && boardlotget_var <= 0.0099){
 

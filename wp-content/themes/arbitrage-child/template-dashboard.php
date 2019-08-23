@@ -910,6 +910,14 @@ date_default_timezone_set('Asia/Manila'); ?>
 	.um-form textarea {
 		line-height: 18px;
 	}
+	.user-counter {
+		font-size: 20px;
+    	margin-left: 6px;
+	}
+	.usercounter {
+		font-size: 14px;
+	}
+
 </style>
 <?php get_template_part('parts/global', 'css'); ?>
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -928,7 +936,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
                         <div class="user-counter">
-                        	 <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        	 <i class="fa fa-users-circle" aria-hidden="true"></i>
                         	 <span class="usercounter">123,456 Members</span>
                         </div>
 

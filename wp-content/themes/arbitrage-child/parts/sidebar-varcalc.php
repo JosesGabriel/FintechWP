@@ -859,7 +859,13 @@
 
 			var vr_takeprofitpricetot2 = Number(vr_idenentryprice) + Number(vr_takeprofitpricetot1);
 
-			var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2));
+            //var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2))
+
+            console.log('Take Profit Price');
+            console.log(vr_takeprofitpricetot2.toFixed(2));
+            console.log(numeral(vr_takeprofitpricetot2).format('0,0.00'));
+
+            var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2));
 
 			
 
@@ -867,8 +873,9 @@
 
 			var vr_stoplosspricetot2 = Number(vr_idenentryprice) - Number(vr_stoplosspricetot1);
 
-			var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
+			//var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
 
+			var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
 			
 
 			var vr_valueatrisk1 = Number(vr_risktoler) / 100;

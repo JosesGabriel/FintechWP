@@ -134,7 +134,7 @@ get_header('dashboard');
 			<img src="https://arbitrage.ph/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
 		</a>
 		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
-			<img src="https://arbitrage.ph/svg/instagram-1.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="https://arbitrage.ph/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
 		</a>
 	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
@@ -165,7 +165,7 @@ get_header('dashboard');
 		$(".media-instagram").hover(function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/instagram-2.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-1.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/instagram-white.svg");
 		}, 1500);
 	});
 </script>

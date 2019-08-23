@@ -3841,7 +3841,7 @@ if ($getdstocks && $getdstocks != '') {
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
-																							<div class="dinitem">
+																							<div class="dinitem" style="z-index: 25;">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
 																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85;"></div>
@@ -3863,7 +3863,7 @@ if ($getdstocks && $getdstocks != '') {
 																						<div class="modal-body depo-body">
 																							<div class="dmainform">
 																								<div class="dinnerform">
-																									<div class="dinitem" style="z-index: 25;">
+																									<div class="dinitem">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
 																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field"></div>

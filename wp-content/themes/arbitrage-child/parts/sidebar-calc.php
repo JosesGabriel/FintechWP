@@ -346,7 +346,6 @@ jQuery(document).ready(function() {
 		var vrbuyvalue = Math.round(vrnumofshares * vrbuyprice);
         jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
 
-    
 		/* Buy Fees */
 		var vrbuycommcheck = vrbuyvalue * 0.0025;
 		var vrbuycommadjst;

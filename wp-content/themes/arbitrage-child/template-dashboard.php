@@ -936,7 +936,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
                         <div class="user-counter">
-                        	 <i class="fa fa-users-circle" aria-hidden="true"></i>
+                        	 <i class="fas fa-users" aria-hidden="true"></i>
                         	 <span class="usercounter">123,456 Members</span>
                         </div>
 

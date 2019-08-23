@@ -3979,6 +3979,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div>
                                                                                 </div>
+																				<select name="" id="">
+																						<option class="deposit-modal-btn show-button1" value="">Dividend Income</option>
+																						<option class="deposit-modal-btn show-button2" value="">Deposit Funds</option>
+																					</select>
                                                                             </li>
 																			
                                                                             <?php

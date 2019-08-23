@@ -911,11 +911,16 @@ date_default_timezone_set('Asia/Manila'); ?>
 		line-height: 18px;
 	}
 	.user-counter {
-		font-size: 20px;
+		font-size: 15px;
     	margin-left: 6px;
 	}
 	.usercounter {
-		font-size: 14px;
+		font-size: 12px;
+	}
+	.icon-users {
+		background: green;
+    	padding: 5px;
+    	border-radius: 50%;
 	}
 
 </style>
@@ -936,7 +941,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
                         <div class="user-counter">
-                        	 <i class="fas fa-users" aria-hidden="true"></i>
+                        	 <i class="fas fa-users icon-users" aria-hidden="true"></i>
                         	 <span class="usercounter">123,456 Members</span>
                         </div>
 

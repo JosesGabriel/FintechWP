@@ -76,7 +76,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
     <div class="side-completenessbox">
     <?php if($num != 100) { ?>
           <small style="float: left;"><?php echo $num; ?>% complete</small>
-          <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle">
+          <small style="float:right;font-size: 14px !important;margin-top: -4px;" class="info-circle">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
             <!--<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%" style="
     float: right;

@@ -727,7 +727,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						  <div class="modal-dialog" role="document" style="float: none; max-width: 300px;">
 
-						    <div class="modal-content">
+						    <div class="modal-content" style="border-radius: 20px;">
 
 						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
 
@@ -741,14 +741,14 @@ foreach ( $wallposts->posts as $post ) {
 
 										<li class="totabs" style="color: white;" data-btname="bullish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/svg/Bullish-border.svg" style="width: 16px; padding: 5px; border-radius: 20px; border: 2px solid #24ae5f; padding: 8px 7px;">
+												<img src="https://arbitrage.ph/svg/Bullish-border.svg" style="width: 30px; padding: 5px;">
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bullish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbullish); ?></span>
 										</li>
 
 										<li class="totabs" style="color: white;" data-btname="bearish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/svg/Bearish-border.svg" style="width: 12px; padding: 5px; border-radius: 20px; border: 2px solid #d04234; padding: 8px 7px;">
+												<img src="https://arbitrage.ph/svg/Bearish-border.svg" style="width: 30px; padding: 5px;">
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 										</li>
@@ -815,7 +815,7 @@ foreach ( $wallposts->posts as $post ) {
 
 										?>
 
-												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white; margin-right: 10px; margin-left: 0px;">
+												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white!important; margin-right: 10px; margin-left: 0px;">
 													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
 													<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
 												</a>

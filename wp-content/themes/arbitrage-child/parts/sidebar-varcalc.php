@@ -883,10 +883,14 @@
 
 			/* POSITION SIZING & RRR */
 
-            var boardlotget_var = $("#idenentryprice").val();
+     //       var boardlotget_var = $("#idenentryprice").val();
            
-  //          var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
+               var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
            
+               console.log('emman sucks');
+            console.log(boardlotget_var);
+
+               boardlotget_var = parseFloat(boardlotget_var);
 
             var boardlotget_val;
 

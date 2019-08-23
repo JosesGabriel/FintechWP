@@ -921,7 +921,9 @@
 			}			
 
 
-			var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
+ //            var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
+             
+             var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);			
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 

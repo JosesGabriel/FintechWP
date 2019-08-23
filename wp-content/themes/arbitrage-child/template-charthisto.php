@@ -59,8 +59,7 @@
 
         if ($response !== false) {
             $response = json_decode($response, true);
-            $data = keysToLower($response['data']);
-            echo json_encode($data);
+            echo json_encode($response['data']);
         }
     }
 

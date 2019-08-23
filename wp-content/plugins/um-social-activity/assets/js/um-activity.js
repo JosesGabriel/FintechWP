@@ -1242,6 +1242,8 @@ jQuery( document ).ready(function () {
 
 			var todo = '';
 
+			console.log("here");
+
 
 			// get others data
 			var numberbullx = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').attr('data-numbear');

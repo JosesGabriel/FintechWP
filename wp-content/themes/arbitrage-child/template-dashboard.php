@@ -926,7 +926,11 @@ date_default_timezone_set('Asia/Manila'); ?>
 						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-                        
+
+                        <div class="user-counter">
+                        	 <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        </div>
+
 					</div>
 				</div>
 			</div>

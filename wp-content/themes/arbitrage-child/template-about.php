@@ -77,7 +77,7 @@ get_header('dashboard');
 			
 			<p class="p-padding">The real journey is about to begin. We know that it is going to be exciting. As we <strong>write our story</strong>, we invite you to come to take this journey with us. We will traverse off the beaten track and leave a trail for everyone else to follow. We will cultivate tools and approach way beyond the TA prevalent highway. We will make everyone see how other fronts prove effective and efficient to attaining a successful trading journey. Tools like <strong>fair market value calculator</strong> are in the pipeline. Research and barney style explanations, understanding business dynamics, sales cycle, enterprise seasonality and the strengths and weaknesses of each industry. A glimpse of how economies work, how money works, all easy to understand and painless to navigate online trading platform.</p>
 			
-			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" style="color:cyan;"><strong>Join us!</strong></a></p>
+			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" class="a-link a-color-pink"><strong>Join us!</strong></a></p>
 		</div>
 
 	</div>

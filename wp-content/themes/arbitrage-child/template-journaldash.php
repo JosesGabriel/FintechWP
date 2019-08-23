@@ -1304,7 +1304,7 @@ get_header('dashboard');
 <?php get_template_part('parts/sidebar', 'varcalc'); ?>
 <?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 <?php
-    function getfees($funmarketval, $funtype)
+    function getjurfees($funmarketval, $funtype)
     {
         // Commissions
         $dpartcommission = $funmarketval * 0.0025;
@@ -1420,7 +1420,7 @@ get_header('dashboard');
                 $totalquanta = 0;
                 foreach ($dstocktraded['data'] as $ddatakey => $ddatavalue) {
                     $dmarkvval = $ddatavalue['price'] * $ddatavalue['qty'];
-                    $dfees = getfees($dmarkvval, 'buy');
+                    $dfees = getjurfees($dmarkvval, 'buy');
                     $totalprice += $dmarkvval + $dfees;
                     $totalquanta += $ddatavalue['qty'];
                 }
@@ -1434,7 +1434,7 @@ get_header('dashboard');
             array_push($finaldata['data'], $tradeinfo);
             $finaldata['totalstock'] = $_POST['inpt_data_qty'];
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
-            $dfees = getfees($dmarkvval, 'buy');
+            $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
             update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $finaldata);
 
@@ -1450,7 +1450,7 @@ get_header('dashboard');
         echo $dtotalpurchse;
 
         $stockcost = ($_POST['inpt_data_price'] * $_POST['inpt_data_qty']);
-        $purchasefee = getfees($stockcost, 'buy');
+        $purchasefee = getjurfees($stockcost, 'buy');
 
         $wpdb->insert('arby_ledger', array(
                 'userid' => get_current_user_id(),
@@ -1523,7 +1523,7 @@ get_header('dashboard');
         }
 
         $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
-        $purchasefee = getfees($stockcost, 'sell');
+        $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
                 'userid' => get_current_user_id(),
@@ -1620,7 +1620,7 @@ if ($getdstocks && $getdstocks != '') {
         if ($dstocktraded && $dstocktraded != '') {
             $dstockinfo = $gerdqoute->data->$dstocksvalue;
             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-            $dsellfees = getfees($marketval, 'sell');
+            $dsellfees = getjurfees($marketval, 'sell');
             $dtotal = $marketval - $dsellfees;
 
             $dstocktraded['totalcost'] = $dtotal;
@@ -1658,7 +1658,7 @@ if ($getdstocks && $getdstocks != '') {
             $dinforstocl = $trinfovalue['stockname'];
             $dstockinfo = $gerdqoute->data->$dinforstocl;
             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-            $dsellfees = getfees($marketval, 'sell');
+            $dsellfees = getjurfees($marketval, 'sell');
             $dtotal = $marketval - $dsellfees;
 
             $dequityp += $dtotal;
@@ -1822,7 +1822,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         $totalquanta = 0;
                                                                                         foreach ($dstocktraded['data'] as $dtradeissuekey => $dtradeissuevalue) {
                                                                                             $dmarketvalue = $dtradeissuevalue['price'] * $dtradeissuevalue['qty'];
-                                                                                            $dfees = getfees($dmarketvalue, 'buy');
+                                                                                            $dfees = getjurfees($dmarketvalue, 'buy');
                                                                                             $totalmarketvalue += $dmarketvalue;
                                                                                             $dtotalcosts += $dmarketvalue + $dfees;
                                                                                             $totalquanta += $dtradeissuevalue['qty'];
@@ -1830,13 +1830,13 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         }
 
                                                                                         $dsellmarket = $dstockinfo->last * $dstocktraded['totalstock'];
-                                                                                        $dsellfees = getfees($dsellmarket, 'sell');
+                                                                                        $dsellfees = getjurfees($dsellmarket, 'sell');
                                                                                         $dselltotal += $dsellmarket - $dsellfees;
 
                                                                                         $totalfixmarktcost = $dstocktraded['totalstock'] * $dstocktraded['aveprice'];
-                                                                                        // $totalfinalcost = $totalfixmarktcost + getfees($totalfixmarktcost, 'buy');
+                                                                                        // $totalfinalcost = $totalfixmarktcost + getjurfees($totalfixmarktcost, 'buy');
 
-                                                                                        $totalbuyfee = getfees($totalfixmarktcost, 'buy');
+                                                                                        $totalbuyfee = getjurfees($totalfixmarktcost, 'buy');
                                                                                         $totalfinalcost = $totalfixmarktcost - $totalbuyfee;
 
                                                                                         $dprofit = ($dselltotal - $totalfixmarktcost);
@@ -2088,7 +2088,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getfees($selprice, 'sell');
+                                                                    $sellfee = getjurfees($selprice, 'sell');
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
@@ -2221,7 +2221,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 if ($atlvalue['data_sellmonth'] == $monfvalue) {
                                                                     $sellprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_sell_price']);
                                                                     $projectprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_avr_price']);
-                                                                    $sellfee = getfees($sellprice, 'sell');
+                                                                    $sellfee = getjurfees($sellprice, 'sell');
 
                                                                     $istotal = ($sellprice - $sellfee) - $projectprice;
                                                                     $dinpart['performance'] += $istotal;
@@ -2244,7 +2244,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($alltradelogs as $atlkey => $tmvalue) {
                                                             $sellprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_sell_price']);
                                                             $projectprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_avr_price']);
-                                                            $sellfee = getfees($sellprice, 'sell');
+                                                            $sellfee = getjurfees($sellprice, 'sell');
 
                                                             $istotal = ($sellprice - $sellfee) - $projectprice;
 
@@ -2282,7 +2282,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                 $dsellprice = $ssvalue['data_sell_price'] * $ssvalue['data_quantity'];
                                                                 $dbaseprice = $sbp * $ssvalue['data_quantity'];
-                                                                $sellfee = getfees($dsellprice, 'sell');
+                                                                $sellfee = getjurfees($dsellprice, 'sell');
 
                                                                 $isprofit = ($dsellprice - $sellfee) - $dbaseprice;
 
@@ -2400,7 +2400,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 $soldplace = $data_quantity * $data_sell_price;
                                                                 $baseprice = $data_quantity * $data_dprice;
 
-                                                                $sellfee = getfees($soldplace, 'sell');
+                                                                $sellfee = getjurfees($soldplace, 'sell');
 
                                                                 //profit or loss
                                                                 $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2443,7 +2443,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         $soldplace = $data_quantity * $data_sell_price;
                                                                         $baseprice = $data_quantity * $data_dprice;
 
-                                                                        $sellfee = getfees($soldplace, 'sell');
+                                                                        $sellfee = getjurfees($soldplace, 'sell');
 
                                                                         //profit or loss
                                                                         $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2583,7 +2583,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         $soldplace = $data_quantity * $data_sell_price;
                                                                         $baseprice = $data_quantity * $data_dprice;
 
-                                                                        $sellfee = getfees($soldplace, 'sell');
+                                                                        $sellfee = getjurfees($soldplace, 'sell');
 
                                                                         //profit or loss
                                                                         $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2772,7 +2772,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     //profit or loss
                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -3024,7 +3024,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     //profit or loss
                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -3385,7 +3385,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $dquantity * $dsellprice;
                                                                     $baseprice = $dquantity * $dbuyprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                                     $dlls['profit'] += $dprofit;
@@ -3412,7 +3412,7 @@ if ($getdstocks && $getdstocks != '') {
                                                             $soldplace = $dquantity * $dsellprice;
                                                             $baseprice = $dquantity * $dbuyprice;
 
-                                                            $sellfee = getfees($soldplace, 'sell');
+                                                            $sellfee = getjurfees($soldplace, 'sell');
 
                                                             $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                             $instrade['profit'] = $dprofit;
@@ -3475,7 +3475,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 $soldplace = $dquantity * $dsellprice;
                                                                 $baseprice = $dquantity * $dbuyprice;
 
-                                                                $sellfee = getfees($soldplace, 'sell');
+                                                                $sellfee = getjurfees($soldplace, 'sell');
 
                                                                 $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                                 $indays['profit'] += $dprofit;
@@ -3615,7 +3615,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                                     //profit or loss
                                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);

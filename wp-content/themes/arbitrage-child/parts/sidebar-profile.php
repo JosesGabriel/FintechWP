@@ -78,7 +78,9 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
           <small style="float: left;"><?php echo $num; ?>% complete</small>
           <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle">
             <!--<i class="fa fa-info-circle" aria-hidden="true"></i>-->
-            <img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%">
+            <img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%" style="
+    float: right;
+    margin-top: -15px;">
           </small>
           <div class="profile-progress" style="clear: both;">
               <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #6c1b89 12%,#d34a28 38%,#fcf528 64%,#8ced80 89%);"></div>

@@ -727,7 +727,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						  <div class="modal-dialog" role="document" style="float: none; max-width: 300px;">
 
-						    <div class="modal-content">
+						    <div class="modal-content" style="border-radius: 20px;">
 
 						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
 

@@ -56,6 +56,7 @@
 	.p-padding {
 		margin: 0;
 		padding-bottom: 13px;
+		text-align: justify;
 	}
 	.sub-topics {
 		-webkit-background-clip: text !important;

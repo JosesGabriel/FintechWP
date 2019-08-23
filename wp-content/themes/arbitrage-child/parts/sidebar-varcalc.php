@@ -841,7 +841,8 @@
 			/* TRADE PLANNING */
 
             var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/\D/g,'');
-            
+
+            console.log('vr_idenentryprice');
             console.log(vr_idenentryprice);
 
 			var vr_risktoler = jQuery('#risktoler').val();

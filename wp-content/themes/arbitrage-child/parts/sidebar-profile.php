@@ -105,7 +105,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-2.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-3.svg">
+                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-4.svg">
             <span>Games</span></a></li>
                   <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>

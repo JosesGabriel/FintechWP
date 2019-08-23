@@ -929,6 +929,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 
                         <div class="user-counter">
                         	 <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        	 <span class="usercounter">123,456 Members</span>
                         </div>
 
 					</div>

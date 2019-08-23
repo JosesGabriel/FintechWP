@@ -3830,13 +3830,14 @@ if ($getdstocks && $getdstocks != '') {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					<select class="rnd" name="" id="">
-																						<option class="deposit-modal-btn show-button1" value="33">Dividend Income</option>
-																						<option class="deposit-modal-btn show-button2" value="33">Deposit Funds</option>
-																					</select>
+																					
 																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
 																				</div>
+																				<select class="rnd" name="" id="">
+																						<option class="deposit-modal-btn show-button1" value="33">Dividend Income</option>
+																						<option class="deposit-modal-btn show-button2" value="33">Deposit Funds</option>
+																					</select>
 																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">

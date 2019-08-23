@@ -2038,9 +2038,6 @@ input.dpos::placeholder, input.dpri::placeholder {
 .bullbear-Modal--body {
     background-color: #142b46;
 }
-.mingle-button {
-	position: absolute;
-}
 .totabs active {
 	border-bottom: 2px solid red;
 }

@@ -2436,3 +2436,7 @@ hr.style11 {
     border-width: 10px;
     margin-left: -36px;
     }
+
+    .mingle-button {
+        position: absolute;
+    }

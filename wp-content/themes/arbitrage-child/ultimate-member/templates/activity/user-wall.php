@@ -815,25 +815,11 @@ foreach ( $wallposts->posts as $post ) {
 
 										?>
 
-												<div class="bullitems listofpeople">
-
-													<div class="dusername">
-
-														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
-
-														</a>
-
-													</div>
-
-													<div class="isfriends">
-
-														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
-
-													</div>
-
-												</div>
+											<div>
+												<span href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="font-size: 1em; color: white; margin-right: 10px; margin-left: 0px;">
+													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+												</span>
+											</div>
 
 										<?php 
 												endforeach;

@@ -2436,5 +2436,6 @@ hr.style11 {
     border-width: 10px;
     margin-left: -36px;
     }
-
-   
+.totabs active {
+    color: red;
+}

@@ -322,7 +322,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
-    $http.get("https://arbitrage.ph/charthisto/?g=fullstack").then( function (response) {
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock=PSE").then( function (response) {
         stocks = response.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {

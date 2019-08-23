@@ -3830,14 +3830,13 @@ if ($getdstocks && $getdstocks != '') {
 																				</div>
 																				<hr class="style14 style15">
 																				<div class="button-funds">
-																					
-																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
-																				</div>
-																				<select class="rnd" name="" id="">
+																					<select class="rnd" name="" id="" style="z-index: 20;">
 																						<option class="deposit-modal-btn show-button1" value="33">Dividend Income</option>
 																						<option class="deposit-modal-btn show-button2" value="33">Deposit Funds</option>
 																					</select>
+																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
+																				</div>
 																				<form action="/journal" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
@@ -3864,7 +3863,7 @@ if ($getdstocks && $getdstocks != '') {
 																						<div class="modal-body depo-body">
 																							<div class="dmainform">
 																								<div class="dinnerform">
-																									<div class="dinitem">
+																									<div class="dinitem" style="z-index: 25;">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
 																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field"></div>

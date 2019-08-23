@@ -12,7 +12,7 @@ if ($_GET['ruadmin'] == "yeah"){
 	color: #ecf0f1;
     font-size: 13px;
     font-family: Roboto, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 .todos_box {
 	margin: 2px 0 0 0;
@@ -22,6 +22,7 @@ if ($_GET['ruadmin'] == "yeah"){
 }
 .todos_box a i {
 	opacity:0.3 !important;
+	margin-right: 2px;
 }
 .arbit-checked i {
 	opacity:1 !important;

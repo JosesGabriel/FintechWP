@@ -759,7 +759,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        </div>
 
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 0 15px;">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
 
 						          <span aria-hidden="true">&times;</span>
 
@@ -786,9 +786,11 @@ foreach ( $wallposts->posts as $post ) {
 											?>
 
 													<div>
-															<span href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="font-size: 1em; color: white; margin-right: 10px; margin-left: 0px;">
+														<span>
+															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="font-size: 1em; color: white; margin-right: 10px; margin-left: 0px;">
 																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-															</span>
+															</a>
+														</span>
 															
 													</div>
 														

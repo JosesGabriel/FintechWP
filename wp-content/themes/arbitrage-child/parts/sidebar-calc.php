@@ -339,10 +339,10 @@ jQuery(document).ready(function() {
 
 	function execlc() {
 
-		var vrnumofshares = document.getElementById("numofshares").value;
+		var vrnumofshares = document.getElementById("numofshares").value.replace(/\D/g,'');
 
 		/* Buy */
-		var vrbuyprice = document.getElementById("buyprice").value;
+		var vrbuyprice = document.getElementById("buyprice").value.replace(/\D/g,'');
 
         console.log('calculate');
 
@@ -381,9 +381,7 @@ jQuery(document).ready(function() {
 		jQuery("#buytotal").html(numeral(vrbuytotal).format('0,0.00'));
 
 		/* Sell */
-		var vrsellprice = document.getElementById("sellprice").value;
-
-        console.log(vrsellprice);
+		var vrsellprice = document.getElementById("sellprice").value.replace(/\D/g,'');
 
 		var vrsellvalue = Math.round(vrnumofshares * vrsellprice);
 		jQuery("#sellvalue").html(numeral(vrsellvalue).format('0,0.00'));

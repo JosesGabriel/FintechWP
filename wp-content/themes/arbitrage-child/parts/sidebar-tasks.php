@@ -29,7 +29,7 @@ if ($_GET['ruadmin'] == "yeah"){
 li.arbit-checked {
 	font-size: 13px;
     font-family: Roboto, sans-serif;
-	color: #25ae5f !important;
+	/*color: #25ae5f !important;*/
 	font-weight: 500 !important;
 	line-height: 24px;
 }

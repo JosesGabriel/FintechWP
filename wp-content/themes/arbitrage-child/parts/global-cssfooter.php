@@ -103,16 +103,16 @@
 	.a-color-blue:hover {
 		color: #0099ad;
 	}
-	.form-control.contact--textField{
+	.form-control.contact--textField:focus {
 		color: #fffffe;
 		background: #11273e;
 		border: 1px solid #1e3554 !important;
 	}
-	textarea.contact--textField:focus{
+	textarea.contact--textField {
 		height: 80px;
 		background: #11273e;
 	}
-	input.contact--textField:focus{
+	input.contact--textField {
 		height: 41px;
 		background: #11273e;
 	}

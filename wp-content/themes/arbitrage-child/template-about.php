@@ -46,7 +46,7 @@ get_header('dashboard');
 		<h2 class="terms-padding">About Us</h2>
 
 		<div class="inner-content">
-			<p class="p-padding">Every company has a story to tell. Although ours is just starting, it is rather fascinating tale of how we are forced evolved beyond the blueprint of our already mapped out journey.</p>
+			<!-- <p class="p-padding">Every company has a story to tell. Although ours is just starting, it is rather fascinating tale of how we are forced evolved beyond the blueprint of our already mapped out journey.</p>
 
 			<p class="p-padding">Arbitrage aimed to be a private online facility to cater our individual stock trading requirements. Having found the great limitations of meticulously developing our trading tools via MS Excel and other similar tools, we gave the idea of migrating such tools into its online equivalent. Using free online tools, we tried to hacked-in, improved and developed tools that we though will give us our competitive advantage as a Stock Trader. For one, the <strong class="hg-rainbow">Bid/Ask comparison</strong> which used to automatically extract online data and feed it in a form of a report via google sheets now has web-based equivalent we call the <strong class="hg-rainbow">Bid/Ask Bar.</strong> The tailor made <strong class="hg-rainbow">trading journal</strong> showed its real power when its website equivalent came into form.</p>
 
@@ -58,8 +58,28 @@ get_header('dashboard');
 
 			<p class="p-padding">The real journey is about to begin. We know inside that it is going to be exciting. As we <strong class="hg-rainbow">write our story</strong>, we invite you to come take this journey with us. We will traverse off the beaten track and leave a trail for everyone else to follow. We will cultivate tools and approach way beyond the TA prevalent highway. We will make everyone see how other fronts prove effective and efficient to attaining a successful trading journey. Tools like <strong class="hg-rainbow">fair market value calculator</strong> is in pipeline. Research and barney style explanations, understanding business dynamics, sales cycle, enterprise seasonality and the strengths and weaknesses of each industries.  A glimpse of how economies work, how money works, all in a easy to understand and painless to navigate online trading platform.</p>
 
+			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" style="color:cyan;"><strong>Join us!</strong></a></p> -->
+			<p class="p-padding">Every company has a story to tell. Although ours is just starting, it is rather a fascinating tale of how we are forced to evolve beyond the blueprint of our already mapped-out journey.</p>
+			
+			<h4 class="sub-topics">Our aim </h4>
+			
+			<p class="p-padding">Arbitrage aims to be a private online facility to cater to our stock trading requirements. Having found the great limitations of meticulously developing our trading tools via MS Excel and other similar tools, we give the idea of migrating such tools into its online equivalent. Using free online tools, we tried to hack on, improve and develop tools that we thought will give us our competitive advantage as a Stock Trader. For one, the <strong>Bid/Ask comparison</strong> which used to automatically extract online data and feed it in a form of a report via google sheets now has web-based equivalent we call the <strong>Bid/Ask Bar.</strong> The tailor-made <strong>trading journal</strong> showed its real power when its website equivalent came into form.</p>
+			
+			<h4 class="sub-topics">We are getting out of the box.</h4>
+			
+			<p class="p-padding">As we are to complete the migration of our offline tools into its online counterparts, we noticed that there are <strong>too many other possibilities open</strong> if we keep moving forward. So, instead of being satisfied with the tool migration plan, we continue to develop other tools which we deemed helpful to our trading journey. The online platform cross out the limits of our MS Excel tools. We can automate everything. Now, we call out data elsewhere and make a market summary report out of those. Algorithms can make things possible. Now, we can gauge a fool-proof <strong>market sentiments</strong>, a clear picture of <strong>supply and demand</strong>, an automated <strong>risk management tool</strong>, a <strong>trading diary</strong> with a dynamic dashboard reporting and so much more.</p>
+			
+			<h4 class="sub-topics">Our vision has finally zoomed out.</h4>
+			
+			<p class="p-padding">After these realizations, our mission shifted. What used to be a <strong>personal goal became organizational</strong> and, from there it transcended somewhere bigger than all of us combined. A vision pop-out. What we plan to arm ourselves now became a mission of arming everyone else. That, with a thought in mind that the beauty we saw will be seen by everyone else. We gave a select group of people a peek of what we have developed so far and instantly saw the glare in their eyes, the same glare present in ours every time we look at <strong>Arbitrage</strong>. It was a privilege. Something we will forever hold in high regard. We have done <strong>something right</strong>.</p>
+		
+			<h4 class="sub-topics">This is merely our humble beginning.</h4>
+			
+			<p class="p-padding">The real journey is about to begin. We know that it is going to be exciting. As we <strong>write our story</strong>, we invite you to come to take this journey with us. We will traverse off the beaten track and leave a trail for everyone else to follow. We will cultivate tools and approach way beyond the TA prevalent highway. We will make everyone see how other fronts prove effective and efficient to attaining a successful trading journey. Tools like <strong>fair market value calculator</strong> are in the pipeline. Research and barney style explanations, understanding business dynamics, sales cycle, enterprise seasonality and the strengths and weaknesses of each industry. A glimpse of how economies work, how money works, all easy to understand and painless to navigate online trading platform.</p>
+			
 			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" style="color:cyan;"><strong>Join us!</strong></a></p>
 		</div>
+
 	</div>
 </div>
 <div class="footer-container">
@@ -84,8 +104,7 @@ get_header('dashboard');
 		<a href="https://arbitrage.ph/about/">About Us</a>
 		<span class="ddot">.</span>
 		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
-		<span class="ddot">.</span>
-		<span class="c-footer-arbitrage"> Arbitrage © 2019</span>
+		<div class="c-footer-arbitrage">Copyright © 2019 by Arbitrage</div>
 	</div>
 </div>
 <script>

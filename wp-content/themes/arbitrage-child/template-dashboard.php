@@ -919,7 +919,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 	}
 	.icon-users {
 		background: green;
-    	padding: 5px;
+    	padding: 5px 4px;
     	border-radius: 50%;
 	}
 

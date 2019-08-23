@@ -25,6 +25,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
+	<script>
+		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {alert('Its Safari');}
+	</script>
 <?php
 global $current_user;
 $user = wp_get_current_user();
@@ -107,9 +110,6 @@ $user = wp_get_current_user();
 		jQuery(document).ready(function () {
 			jQuery('.um-profile-photo .um-btn-auto-width').trigger('click');
 			UM_hide_menus();
-
-			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {alert('Its Safari');}
-
 		})
 	</script>
 	<?php endif ?>

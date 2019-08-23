@@ -1619,7 +1619,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkLow</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock_details[stock.symbol].wiklo52 > stock.last, 'text-red': stock_details[stock.symbol].wiklo52 < stock.last}">{{stock_details[stock.symbol].wiklo52 | price}}</strong></td>
+                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow | price}}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Volume</td>
@@ -1645,7 +1645,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkHigh</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock_details[stock.symbol].wikhi52 > stock.last, 'text-red': stock_details[stock.symbol].wikhi52 < stock.last}">{{stock_details[stock.symbol].wikhi52 | price}}</strong></td>
+                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearHigh > stock.last, 'text-red': stock.weekYearHigh < stock.last}">{{stock.weekYearHigh | price}}</strong></td>
                                                         </tr>
                                                         <tr>
                                                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Value</td>

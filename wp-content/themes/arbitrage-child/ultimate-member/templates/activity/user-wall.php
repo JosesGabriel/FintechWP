@@ -786,7 +786,7 @@ foreach ( $wallposts->posts as $post ) {
 											?>
 
 													<div>
-															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%;">
 																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
 															</a>
 														<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>

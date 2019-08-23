@@ -942,7 +942,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 
                         <div class="user-counter">
                         	 <i class="fas fa-users icon-users" aria-hidden="true"></i>
-                        	 <span class="usercounter">123,456 Members</span>
+                        	 <span class="usercounter">
+                        	 <?php $result = count_users(); 
+                        	 	echo $result['total_users'];
+                        	 ?> 
+
+                        	 Members</span>
                         </div>
 
 					</div>

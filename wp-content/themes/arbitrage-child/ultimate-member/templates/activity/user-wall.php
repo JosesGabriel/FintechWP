@@ -725,7 +725,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<div class="modal fade" id="mod<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 60px;">
 
-						  <div class="modal-dialog" role="document" style="float: none;">
+						  <div class="modal-dialog" role="document" style="float: none; max-width: 300px;">
 
 						    <div class="modal-content">
 

@@ -650,7 +650,7 @@
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
                         <div class="arb_calcbox_right">
-                            <input name="portsize" id="portsize" class="number" type="text" value="<?php echo $dequityp; ?>" style="width: 85%;" tabindex="2" readonly>
+                            <input name="portsize" id="portsize" type="number" value="<?php echo $dequityp; ?>" style="width: 85%;" tabindex="2" readonly>
                             <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
@@ -662,7 +662,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="text" class="number" value="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
                             <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>
@@ -675,7 +675,7 @@
 
                         <div class="arb_calcbox_right lockedd">
 
-                            <input class="input-locked number" name="posisize" id="posisize" type="text" value="0" style="width:85%;" disabled>
+                            <input class="input-locked" name="posisize" id="posisize" type="text" value="0" style="width:85%;" disabled>
 
                             <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
@@ -695,7 +695,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input class="input-locked number" name="boardlot" id="boardlot" type="text" value="0" style="width:85%;" disabled>
+                        <input class="input-locked" name="boardlot" id="boardlot" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
@@ -709,7 +709,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input class="input-locked number" name="noofshare" id="noofshare" type="text" value="0" style="width:85%;" disabled>
+                        <input class="input-locked" name="noofshare" id="noofshare" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
@@ -723,7 +723,7 @@
 
                     <div class="arb_calcbox_right lockedd">
 
-                        <input class="input-locked number" name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;" disabled>
+                        <input class="input-locked" name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;" disabled>
 
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
@@ -739,7 +739,7 @@
 
                     <div style="display:none;">Boardlot (Tmp - dynamic on chart)
 []
-                    <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="text" class="number" value="30" style="width:100%;">
+                    <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="number" value="30" style="width:100%;">
 
                     </div>
 
@@ -753,16 +753,16 @@
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Stoploss</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input class="input-locked number" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
+                        <input class="input-locked" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
@@ -785,7 +785,7 @@
 
                     <div class="arb_calcbox_left">Value at Risk</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before">₱</div><input class="input-locked number" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before">₱</div><input class="input-locked" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
@@ -793,7 +793,7 @@
 
                     <div class="arb_calcbox_left">Upside</div>
                     <div class="arb_calcbox_right lockedd">
-                        <div class="sublbl before" >₱</div><input class="input-locked number" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
+                        <div class="sublbl before" >₱</div><input class="input-locked" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
@@ -821,20 +821,20 @@
 
 			/* ENTER STOCK DETAILS */
 
-			var vr_currentprice = jQuery('#currentprice').val().replace(/[^0-9\.]/g, ''); // 12.5
+			var vr_currentprice = jQuery('#currentprice').val(); // 12.5
 
 	
 			/* PORTFOLIO PLANNING */
 
-			var vr_portsize = jQuery('#portsize').val().replace(/[^0-9\.]/g, ''); // 100,000
+			var vr_portsize = jQuery('#portsize').val(); // 100,000
 
-			var vr_portalloc = jQuery('#portalloc').val().replace(/[^0-9\.]/g, ''); // 30
+			var vr_portalloc = jQuery('#portalloc').val(); // 30
 
 			var vr_portallocdeci = Number(vr_portalloc) / 100; 
 
 			var vr_posisizemin = Math.round(Number(vr_portallocdeci) * Number(vr_portsize));
 
-			jQuery('#posisize').val(numeral(vr_posisizemin).format('0,0.00'));
+			jQuery('#posisize').val(vr_posisizemin);
 
 			
 
@@ -842,11 +842,14 @@
 
             var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/[^0-9\.]/g, '');
 
-			var vr_risktoler = jQuery('#risktoler').val().replace(/[^0-9\.]/g, '');
+            console.log('vr_idenentryprice');
+            console.log(vr_idenentryprice);
 
-			var vr_targetprof = jQuery('#targetprof').val().replace(/[^0-9\.]/g, '');
+			var vr_risktoler = jQuery('#risktoler').val();
 
-			var vr_stoploss = jQuery('#stoploss').val(numeral(vr_risktoler).format('0,0.00'));
+			var vr_targetprof = jQuery('#targetprof').val();
+
+			var vr_stoploss = jQuery('#stoploss').val(vr_risktoler);
 
 			
 
@@ -856,7 +859,13 @@
 
 			var vr_takeprofitpricetot2 = Number(vr_idenentryprice) + Number(vr_takeprofitpricetot1);
 
-            var vr_takeprofitprice = jQuery('#takeprofitprice').val(numeral(vr_takeprofitpricetot2).format('0,0.00'));
+            //var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2))
+
+            console.log('Take Profit Price');
+            console.log(vr_takeprofitpricetot2.toFixed(2));
+            console.log(numeral(vr_takeprofitpricetot2).format('0,0.00'));
+
+            var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2));
 
 			
 
@@ -864,26 +873,31 @@
 
 			var vr_stoplosspricetot2 = Number(vr_idenentryprice) - Number(vr_stoplosspricetot1);
 
-			var vr_stoplossprice = jQuery('#stoplossprice').val(numeral(vr_stoplosspricetot2).format('0,0.00'));
+			//var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
+
+			var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
 			
 
 			var vr_valueatrisk1 = Number(vr_risktoler) / 100;
 
 			var vr_valueatrisk2 = Number(vr_posisizemin) * Number(vr_valueatrisk1)
 
-			var vr_valueatrisk = jQuery('#valueatrisk').val(numeral(vr_valueatrisk2).format('0,0.00'));
+			var vr_valueatrisk = jQuery('#valueatrisk').val(vr_valueatrisk2);
 
 			
 
 			var vr_upsidetot = Number(vr_posisizemin) * Number(vr_takeprofitpricetot0);
 
-			var vr_upside = jQuery('#upside').val(numeral(vr_upsidetot).format('0,0.00'));
+			var vr_upside = jQuery('#upside').val(vr_upsidetot);
 
 			
 
 			/* POSITION SIZING & RRR */
 
-			var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
+			// var boardlotget_var = $("#inpt_data_boardlot_get_").val();
+			var boardlotget_var = $("#idenentryprice").val();
+
+			var boardlotget_val
 
 			if ( boardlotget_var >= 0.0001 && boardlotget_var <= 0.0099){
 
@@ -916,7 +930,12 @@
 			}			
 
 
-			var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
+            console.log('boardlotget_val');
+            console.log(boardlotget_val);
+
+			var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);
+
+			
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
@@ -924,9 +943,9 @@
 
                 vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
-			var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+			var vr_noofshare = jQuery('#noofshare').val(vr_noofsharetot2);
 
-            
+			
 
 			var vr_risktorewardtot1 = Number(vr_valueatrisk2) / Number(vr_valueatrisk2);
 
@@ -936,7 +955,7 @@
 
                 vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
 
-			var vr_risktoreward = jQuery('#risktoreward').val(numeral(vr_risktorewardfmt).format('0,0.00'));	
+			var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
 
 			
 

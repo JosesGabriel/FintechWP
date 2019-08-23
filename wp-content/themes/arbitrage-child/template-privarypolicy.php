@@ -65,7 +65,7 @@ get_header('dashboard');
 
 		<h4 class="sub-topics">Contact Us</h4>
 
-		<p>If you have any questions about this Privacy Policy, please <a href="https://arbitrage.ph/contact/" class="a-link">contact us</a>.</p>
+		<p>If you have any questions about this Privacy Policy, please <a href="https://arbitrage.ph/contact/" class="a-color-blue"><strong>contact us</a>.</p>
 		</div>
 	</div>
 </div>
@@ -78,7 +78,7 @@ get_header('dashboard');
 			<img src="https://arbitrage.ph/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
 		</a>
 		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
-			<img src="https://arbitrage.ph/svg/instagram-01.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="https://arbitrage.ph/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
 		</a>
 	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
@@ -91,8 +91,7 @@ get_header('dashboard');
 		<a href="https://arbitrage.ph/about/">About Us</a>
 		<span class="ddot">.</span>
 		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
-		<span class="ddot">.</span>
-		<span class="c-footer-arbitrage"> Arbitrage © 2019</span>
+		<div class="c-footer-arbitrage">Copyright © 2019 by Arbitrage</div>
 	</div>
 </div>
 
@@ -109,9 +108,9 @@ get_header('dashboard');
 			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
 		}, 1500);
 		$(".media-instagram").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-1.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/instagram-2.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-01.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/instagram-white.svg");
 		}, 1500);
 	});
 </script>

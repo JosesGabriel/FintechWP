@@ -2885,13 +2885,15 @@ p.content-meta-date {
 	overflow-x: hidden;
 }
 .a-link {
-	color: #03A9F4;
+	font-weight: 700;
 }
-
+img.icon-game {
+	width: 22px;
+}
 .profile-progress {
 	height: 5px;
 	margin: 5px 0px;
-    background: white;
+    background: #a4a5a7;
     border-radius: 5px;
 }
 
@@ -2950,7 +2952,11 @@ h2.terms-padding:after {
     color: #FFFFFF;
 }
 .c-footer-arbitrage {
-	padding-left: 4px;
+	padding-top: 4px;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(to right, #F44336 33%, #E91E63 43%, #2196F3 49%, #8BC355 54%, #FFEB3B 84%, #FF9800 100%);
+    font-weight: 900 !important;
 }
 .button-media-container {
     text-align: center;

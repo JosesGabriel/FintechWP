@@ -2887,7 +2887,7 @@ p.content-meta-date {
 .a-link {
 	font-weight: 700;
 }
-.icon-game {
+img.icon-game {
 	width: 22px;
 }
 .profile-progress {

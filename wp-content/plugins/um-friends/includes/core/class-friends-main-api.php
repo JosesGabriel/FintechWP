@@ -132,7 +132,7 @@ class Friends_Main_API {
 				}
 
 			} else {
-				$res = '<a href="#" class="um-friend-btn um-button um-alt mingle-button" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Mingle','um-friends'). '</a>';
+				$res = '<a href="#" style="position: absolute;" class="um-friend-btn um-button um-alt" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Mingle','um-friends'). '</a>';
 			}
 		} else {
 			$res = '<a href="#" class="um-unfriend-btn um-button um-alt" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'" data-friends="'.__('Mingled','um-friends').'"  data-unfriend="'.__('Unmingle','um-friends').'">'. __('Mingled','um-friends'). '</a>';

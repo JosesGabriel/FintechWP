@@ -338,7 +338,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['value']      = parseFloat(stock['value']);
             stock['trades']     = parseFloat(stock['trades']);
             stock['displayLast']  = price_format(stock['last']);
-            stock['displayDifference']  = price_format(stock['difference'], stock['last']);
+            stock['displayDifference']  = price_format(stock['change']);
             stock['displayOpen']  = price_format(stock['open']);
             stock['displayPrevious']  = price_format(stock['close']);
             stock['displayAverage']  = price_format(stock['average']);

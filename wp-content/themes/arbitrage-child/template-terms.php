@@ -163,7 +163,7 @@ get_header('dashboard');
 			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
 		}, 1500);
 		$(".media-instagram").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-02.svg");
+			$(this).attr('src', "https://arbitrage.ph/svg/instagram-2.svg");
 			}, function(){
 			$(this).attr('src', "https://arbitrage.ph/svg/instagram-1.svg");
 		}, 1500);

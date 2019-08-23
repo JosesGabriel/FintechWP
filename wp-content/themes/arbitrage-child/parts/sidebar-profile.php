@@ -80,7 +80,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
             <!--<i class="fa fa-info-circle" aria-hidden="true"></i>-->
             <img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%" style="
     float: right;
-    margin-top: -15px;">
+    margin-top: -12px;">
           </small>
           <div class="profile-progress" style="clear: both;">
               <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #71f29f 12%, #b5dc5d 89%);"></div>

@@ -17,7 +17,7 @@ if ($_GET['ruadmin'] == "yeah"){
 .todos_box {
 	margin: 2px 0 0 0;
     padding: 15px 15px 10px 15px;
-    background-color: #213f58;
+    background-color: #142c46;
     border-radius: 5px;
 }
 .todos_box a i {

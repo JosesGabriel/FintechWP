@@ -749,7 +749,7 @@
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:80%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" value="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
@@ -769,7 +769,7 @@
                     <div class="arb_clear smlspc"></div>
                     <div class="arb_calcbox_left">Take Profit Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:80%;" disabled>
+                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" class="number" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
@@ -777,7 +777,7 @@
 
                     <div class="arb_calcbox_left">Stoploss Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:80%;" disabled>
+                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" class="number" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 

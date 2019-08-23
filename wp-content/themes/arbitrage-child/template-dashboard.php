@@ -921,6 +921,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		background: green;
     	padding: 5px 4px;
     	border-radius: 50%;
+    	margin-right: 5px;
 	}
 
 </style>

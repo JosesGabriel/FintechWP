@@ -785,14 +785,12 @@ foreach ( $wallposts->posts as $post ) {
 
 											?>
 
-													<div>
-														<span>
-															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 1em; color: white; margin-right: 10px; margin-left: 0px;">
-																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-															</a>
-														</span>
+												<span>
+													<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 1em; color: white; margin-right: 10px; margin-left: 0px;">
+														<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
+													</a>
+												</span>
 															
-													</div>
 														
 											<?php
 											

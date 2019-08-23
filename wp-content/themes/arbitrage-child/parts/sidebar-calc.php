@@ -350,13 +350,13 @@ jQuery(document).ready(function() {
 		} else {
 			vrbuycommadjst = vrbuyvalue * 0.0025;
 		}
-		jQuery("#buycommadjst").html(numeral(vrbuycommadjst).format('0,0.0000'));
+		jQuery("#buycommadjst").html(numeral(vrbuycommadjst).format('0,0.00'));
 		var vrbuyvatfix = vrbuycommadjst * 0.12;
-		jQuery("#buyvatfix").html(numeral(vrbuyvatfix).format('0,0.0000'));
+		jQuery("#buyvatfix").html(numeral(vrbuyvatfix).format('0,0.00'));
 		var vrbuypsetffix = vrbuyvalue * 0.00005;
-		jQuery("#buypsetffix").html(numeral(vrbuypsetffix).format('0,0.0000'));
+		jQuery("#buypsetffix").html(numeral(vrbuypsetffix).format('0,0.00'));
 		var vrbuysccpfix = vrbuyvalue * 0.0001;
-		jQuery("#buysccpfix").html(numeral(vrbuysccpfix).format('0,0.0000'));
+		jQuery("#buysccpfix").html(numeral(vrbuysccpfix).format('0,0.00'));
 
 		/* Buy Totals */
 		var vrbuyfees = vrbuycommadjst + vrbuyvatfix + vrbuypsetffix + vrbuysccpfix;
@@ -377,15 +377,15 @@ jQuery(document).ready(function() {
 		} else {
 			vrsellcommadjst = vrsellvalue * 0.0025;
 		}
-		jQuery("#sellcommadjst").html(numeral(vrsellcommadjst).format('0,0.0000'));
+		jQuery("#sellcommadjst").html(numeral(vrsellcommadjst).format('0,0.00'));
 		var vrsellvatfix = vrsellcommadjst * 0.12;
-		jQuery("#sellvatfix").html(numeral(vrsellvatfix).format('0,0.0000'));
+		jQuery("#sellvatfix").html(numeral(vrsellvatfix).format('0,0.00'));
 		var vrsellpsetffix = vrsellvalue * 0.00005;
-		jQuery("#sellpsetffix").html(numeral(vrsellpsetffix).format('0,0.0000'));
+		jQuery("#sellpsetffix").html(numeral(vrsellpsetffix).format('0,0.00'));
 		var vrsellsccpfix = vrsellvalue * 0.0001;
-		jQuery("#sellsccpfix").html(numeral(vrsellsccpfix).format('0,0.0000'));
+		jQuery("#sellsccpfix").html(numeral(vrsellsccpfix).format('0,0.00'));
 		var vrsellsaletxfix = vrsellvalue * 0.006;
-		jQuery("#sellsaletxfix").html(numeral(vrsellsaletxfix).format('0,0.0000'));
+		jQuery("#sellsaletxfix").html(numeral(vrsellsaletxfix).format('0,0.00'));
 
 		/* Sell Totals */
 		var vrsellfees = vrsellcommadjst + vrsellvatfix + vrsellpsetffix + vrsellsccpfix + vrsellsaletxfix;

@@ -93,7 +93,7 @@
 		color:#00BCD4;
 	}
 	.a-color-pink {
-		color:#E91E63;
+		color:#D42083;
 	}
 	.a-color-pink:hover{
 		color: #b1154a;

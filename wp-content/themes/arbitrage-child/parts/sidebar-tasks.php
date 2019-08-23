@@ -56,7 +56,10 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editcover"><i class="far fa-check-square"></i> Change cover photo</a>
                         </li>
                     <?php }else{ ?>
-                    	<li class="arbit-checked"><i class="fas fa-check-square"></i> Cover photo updated</li>
+                    	<li class="arbit-checked">
+                    		<!--<i class="fas fa-check-square"></i>-->
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="10%">
+                    		Cover photo updated</li>
                     <?php } ?>
                     
                     <?php if(!$profilepicactive){ ?>
@@ -64,7 +67,10 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
                     		echo $user->user_login; ?>/?profiletab=main&um_action=edit&arbitaction=editphoto"><i class="far fa-check-square"></i> Change profile photo</a>
                         </li>
                     <?php }else{ ?>
-                    	<li class="arbit-checked"><i class="fas fa-check-square"></i> Profile photo updated</li>
+                    	<li class="arbit-checked">
+                    		<!--<i class="fas fa-check-square"></i> -->
+                    		<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Checkbox.svg" width="10%">
+                    		Profile photo updated</li>
                     <?php } ?>
                     
                     

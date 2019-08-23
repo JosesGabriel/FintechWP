@@ -108,6 +108,11 @@
 		background: #11273e;
 		border: 1px solid #1e3554 !important;
 	}
+	.form-control.contact--textField {
+		color: #fffffe;
+		background: #11273e;
+		border: 1px solid #1e3554 !important;
+	}
 	textarea.contact--textField {
 		height: 80px;
 		background: #11273e;

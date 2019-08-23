@@ -220,7 +220,7 @@
 			<!-- <strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"> -->
 			<div class="arb_calcbox_left">Sell Price: </div>
 			<div class="arb_calcbox_right">
-				<input name="sellprice" id="sellprice" class="_fottns" type="number" style="width:80%;" value="0">
+				<input name="sellprice" id="sellprice" class="_fottns number" type="text" style="width:80%; text-align:right;" value="0">
 			</div>
 		</div>
 		<div class="arb_sellvalue padbott " style="padding-top: 30px;">
@@ -454,6 +454,39 @@ jQuery(document).ready(function() {
 		jQuery("#negbrkevn200").html(numeral(vrnegbrkevn2002).format('0,0.00'));
 
 	}
+
+    jQuery('input.number').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        var currentVal = jQuery(this).val();
+        var testDecimal = testDecimals(currentVal);
+        if (testDecimal.length > 1) {
+            console.log("You cannot enter more than one decimal point");
+            currentVal = currentVal.slice(0, -1);
+        }
+        jQuery(this).val(replaceCommas(currentVal));
+
+    });
+
+    function testDecimals(currentVal) {
+        var count;
+        currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        return count;
+    }
+
+    function replaceCommas(yourNumber) {
+        var components = yourNumber.toString().split(".");
+        if (components.length === 1) 
+            components[0] = yourNumber;
+        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (components.length === 2)
+            components[1] = components[1].replace(/\D/g, "");
+        return components.join(".");
+    }
+
 });
 </script>
 

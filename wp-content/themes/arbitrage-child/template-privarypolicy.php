@@ -65,7 +65,7 @@ get_header('dashboard');
 
 		<h4 class="sub-topics">Contact Us</h4>
 
-		<p>If you have any questions about this Privacy Policy, please <a href="https://arbitrage.ph/contact/" class="a-link">contact us</a>.</p>
+		<p>If you have any questions about this Privacy Policy, please <a href="https://arbitrage.ph/contact/" class="a-link a-color-blue">contact us</a>.</p>
 		</div>
 	</div>
 </div>

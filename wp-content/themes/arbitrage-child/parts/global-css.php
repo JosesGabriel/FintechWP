@@ -2885,7 +2885,7 @@ p.content-meta-date {
 	overflow-x: hidden;
 }
 .a-link {
-	color: #03A9F4;
+	font-weight: 500;
 }
 
 .profile-progress {

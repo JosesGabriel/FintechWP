@@ -325,6 +325,11 @@
     right: 1px;
 }
 
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+
 </style>
 
 <div class="arb_calcbox varcalc">
@@ -562,7 +567,7 @@
                     $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
                     $dsellfees = getfees($marketval, 'sell');
                     $dtotal = $marketval - $dsellfees;
-        
+
                     $dstocktraded['totalcost'] = $dtotal;
                     $dstocktraded['stockname'] = $dstocksvalue;
                     array_push($dtradeingfo, $dstocktraded);
@@ -572,7 +577,7 @@
 
         $duseridmo = get_current_user_id();
         $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
-    
+
         $buypower = 0;
         foreach ($dledger as $getbuykey => $getbuyvalue) {
             if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
@@ -591,7 +596,7 @@
                 $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
                 $dsellfees = getfees($marketval, 'sell');
                 $dtotal = $marketval - $dsellfees;
-    
+
                 $dequityp += $dtotal;
                 $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
                 $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
@@ -626,7 +631,7 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="currentprice" id="currentprice" type="number" value="0" style="width: 85%;" tabindex="1">
+                            <input name="currentprice" id="currentprice" type="text" value="0" class="number" style="width: 85%;" tabindex="1">
 
                         </div>
 
@@ -744,7 +749,7 @@
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:80%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" value="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
@@ -764,7 +769,7 @@
                     <div class="arb_clear smlspc"></div>
                     <div class="arb_calcbox_left">Take Profit Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:80%;" disabled>
+                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" class="number" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
@@ -772,7 +777,7 @@
 
                     <div class="arb_calcbox_left">Stoploss Price</div>
                     <div class="arb_calcbox_right lockedd">
-                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:80%;" disabled>
+                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" class="number" value="0" style="width:80%;" disabled>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                     </div>
 
@@ -818,8 +823,7 @@
 
 			var vr_currentprice = jQuery('#currentprice').val(); // 12.5
 
-			
-
+	
 			/* PORTFOLIO PLANNING */
 
 			var vr_portsize = jQuery('#portsize').val(); // 100,000
@@ -836,7 +840,10 @@
 
 			/* TRADE PLANNING */
 
-			var vr_idenentryprice = jQuery('#idenentryprice').val();
+            var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/\D/g,'');
+
+            console.log('vr_idenentryprice');
+            console.log(vr_idenentryprice);
 
 			var vr_risktoler = jQuery('#risktoler').val();
 
@@ -915,6 +922,11 @@
 
 			}			
 
+
+            console.log('calculate');
+            
+            console.log(boardlotget_val);
+
 			var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);
 
 			
@@ -941,7 +953,39 @@
 
 			
 
-		}
+        }
+        
+
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
 	});
 

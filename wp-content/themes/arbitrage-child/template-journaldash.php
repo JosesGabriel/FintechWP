@@ -3829,10 +3829,10 @@ if ($getdstocks && $getdstocks != '') {
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<div class="button-funds" style="z-index: 25;">
+																				<div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
 																					<select class="rnd" name="" id="" style="z-index: 20;">
-																						<option class="deposit-modal-btn show-button1" value="33">Dividend Income</option>
-																						<option class="deposit-modal-btn show-button2" value="33">Deposit Funds</option>
+																						<option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+																						<option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
 																					</select>
 																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
@@ -3842,7 +3842,7 @@ if ($getdstocks && $getdstocks != '') {
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
 																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85;"></div>
 																								</div>
@@ -3855,7 +3855,7 @@ if ($getdstocks && $getdstocks != '') {
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
 																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 15px;">Deposit</a>
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>

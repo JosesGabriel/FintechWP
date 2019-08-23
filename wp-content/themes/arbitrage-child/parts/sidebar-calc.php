@@ -339,12 +339,12 @@ jQuery(document).ready(function() {
 
 	function execlc() {
 
-		var vrnumofshares = document.getElementById("numofshares").value;
+		var vrnumofshares = document.getElementById("numofshares").value.replace(/\D/g,'');
 
 		/* Buy */
-		var vrbuyprice = document.getElementById("buyprice").value;
+		var vrbuyprice = document.getElementById("buyprice").value.replace(/\D/g,'');
 		var vrbuyvalue = Math.round(vrnumofshares * vrbuyprice);
-		jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
+        jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
 
 		/* Buy Fees */
 		var vrbuycommcheck = vrbuyvalue * 0.0025;
@@ -369,7 +369,8 @@ jQuery(document).ready(function() {
 		jQuery("#buytotal").html(numeral(vrbuytotal).format('0,0.00'));
 
 		/* Sell */
-		var vrsellprice = document.getElementById("sellprice").value;
+		var vrsellprice = document.getElementById("sellprice").value.replace(/\D/g,'');
+
 		var vrsellvalue = Math.round(vrnumofshares * vrsellprice);
 		jQuery("#sellvalue").html(numeral(vrsellvalue).format('0,0.00'));
 

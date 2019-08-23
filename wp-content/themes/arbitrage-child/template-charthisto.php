@@ -50,39 +50,16 @@
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "fullstack" ){
-        
-        $stocks = fopen("https://arbitrage.ph/data/fallstocks.json", "r") or die("Unable to open file!");
-        $jsondata = fgets($stocks);
-        fclose($stocks);
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock=PSE");
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-        $infobase = json_decode($jsondata);
-        // echo $jsondata;
-
-        // $source = [];
-        // foreach ($infobase as $key => $value) {
-        //     $code = $value->StockInfo->StockCode;
-        //     $value->StockHistory->symbol = $code;
-        //     array_push($source, $value->StockHistory);
-        // }
-
-        // $fallss = [];
-        // foreach ($infobase as $key => $value) {
-        //     // 
-        //     $inobject = [];
-        //     foreach ($value->StockHistory as $innerskey => $innersvalue) {
-        //         // array_push($inobject, [strtolower($innerskey) => $innersvalue]);
-        //         $inobject[strtolower($innerskey)] = $innersvalue;
-        //     }
-
-        //     array_push($fallss, $inobject);
-        //     // echo $value;
-        //     // print_r($value);
-        // }
-
-        $outputs = keysToLower($infobase);
-
-        echo json_encode($outputs);
-        // echo json_encode($fallss);
+        if (!$response) {
+            $response = json_decode($response, true);
+            echo $response['data'];
+        }
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "md"){

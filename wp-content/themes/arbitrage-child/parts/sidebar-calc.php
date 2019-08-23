@@ -175,6 +175,10 @@
 .lblbcl{
     margin-left:15px;
 }
+.number{
+    font-size: 13px;
+    text-align: right;
+}
 </style>
 <div class="arb_calcbox">
 <div class="bkcalcbox">
@@ -182,7 +186,7 @@
 	<div style="padding-top: 10px;padding-bottom: 12px;">
 		<div class="arb_calcbox_left">Number of Shares: </div>
 		<div class="arb_calcbox_right">
-			<input name="numofshares" id="numofshares" class="_fottns" type="number" value="0" style="width:100%; text-align: right;">
+			<input name="numofshares" id="numofshares" class="_fottns number" type="text" value="0" style="width:100%;">
 		</div>
 	</div>
 	<div class="arb_calcbox_lefting">
@@ -191,7 +195,7 @@
 		<!-- <strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"> -->
 		<div class="arb_calcbox_left">Buy Price: </div>
 		<div class="arb_calcbox_right">
-			<input name="buyprice" id="buyprice" type="number" value="0" style="width:80%;">
+			<input name="buyprice" id="buyprice" type="text" class="number" value="0" style="width:80%;">
 		</div>
 		</div>
 		<div class="arb_buyvalue padbott" style="padding-top: 30px;">
@@ -220,7 +224,7 @@
 			<!-- <strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"> -->
 			<div class="arb_calcbox_left">Sell Price: </div>
 			<div class="arb_calcbox_right">
-				<input name="sellprice" id="sellprice" class="_fottns" type="number" style="width:80%;" value="0">
+				<input name="sellprice" id="sellprice" class="_fottns number" type="text" style="width:80%;" value="0">
 			</div>
 		</div>
 		<div class="arb_sellvalue padbott " style="padding-top: 30px;">
@@ -335,12 +339,12 @@ jQuery(document).ready(function() {
 
 	function execlc() {
 
-		var vrnumofshares = document.getElementById("numofshares").value;
+		var vrnumofshares = document.getElementById("numofshares").value.replace(/[^0-9\.]/g, '');
 
 		/* Buy */
-		var vrbuyprice = document.getElementById("buyprice").value;
+		var vrbuyprice = document.getElementById("buyprice").value.replace(/[^0-9\.]/g, '');
 		var vrbuyvalue = Math.round(vrnumofshares * vrbuyprice);
-		jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
+        jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
 
 		/* Buy Fees */
 		var vrbuycommcheck = vrbuyvalue * 0.0025;
@@ -364,8 +368,10 @@ jQuery(document).ready(function() {
 		var vrbuytotal = vrbuyfees + vrbuyvalue;
 		jQuery("#buytotal").html(numeral(vrbuytotal).format('0,0.00'));
 
-		/* Sell */
-		var vrsellprice = document.getElementById("sellprice").value;
+        /* Sell */
+        // var vrsellprice = document.getElementById("sellprice").value.replace(/\D/g,'');
+		var vrsellprice = document.getElementById("sellprice").value.replace(/[^0-9\.]/g, '');
+
 		var vrsellvalue = Math.round(vrnumofshares * vrsellprice);
 		jQuery("#sellvalue").html(numeral(vrsellvalue).format('0,0.00'));
 
@@ -454,6 +460,39 @@ jQuery(document).ready(function() {
 		jQuery("#negbrkevn200").html(numeral(vrnegbrkevn2002).format('0,0.00'));
 
 	}
+
+    jQuery('input.number').keyup(function (event) {
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        var currentVal = jQuery(this).val();
+        var testDecimal = testDecimals(currentVal);
+        if (testDecimal.length > 1) {
+            console.log("You cannot enter more than one decimal point");
+            currentVal = currentVal.slice(0, -1);
+        }
+        jQuery(this).val(replaceCommas(currentVal));
+
+    });
+
+    function testDecimals(currentVal) {
+        var count;
+        currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        return count;
+    }
+
+    function replaceCommas(yourNumber) {
+        var components = yourNumber.toString().split(".");
+        if (components.length === 1) 
+            components[0] = yourNumber;
+        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (components.length === 2)
+            components[1] = components[1].replace(/\D/g, "");
+        return components.join(".");
+    }
+
 });
 </script>
 

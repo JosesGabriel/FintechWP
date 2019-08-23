@@ -147,7 +147,7 @@ get_header('dashboard');
 		<a href="https://arbitrage.ph/about/">About Us</a>
 		<span class="ddot">.</span>
 		<a href="https://arbitrage.ph/FAQ/">FAQ</a>
-		<div class="c-footer-arbitrage">Copyright © 2019 by Arbitrage</div>
+		<div class="c-footer-arbitrage">Copyright © 2019 Arbitrage</div>
 	</div>
 </div>
 <script>

@@ -3537,15 +3537,12 @@ if ($getdstocks && $getdstocks != '') {
 																		<a href="#" class="dmoveto">Go</a>
 																	</form>
 																</div>
-<<<<<<< HEAD
 
 																<div class="search-tlogs">
 																	<form action="" method="get">
 																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
 																	</form>
 																</div>
-=======
->>>>>>> parent of e59c5c5... add search to tradelogs
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">

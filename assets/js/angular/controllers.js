@@ -344,7 +344,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayAverage']  = price_format(stock['average']);
             stock['displayLow']  = price_format(stock['low']);
             stock['displayHigh']  = price_format(stock['high']);
-            stock['displayChange']  = number_format(stock['change'], '0,0.00');
+            stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
             stock['displayValue'] = abbr_format(stock['value']);
             return stock;
         });

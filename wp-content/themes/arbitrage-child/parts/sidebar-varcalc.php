@@ -840,7 +840,7 @@
 
 			/* TRADE PLANNING */
 
-            var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/\D/g,'');
+            var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/[^0-9\.]/g, '');
 
             console.log('vr_idenentryprice');
             console.log(vr_idenentryprice);
@@ -923,8 +923,7 @@
 			}			
 
 
-            console.log('calculate');
-            
+            console.log('boardlotget_val');
             console.log(boardlotget_val);
 
 			var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);

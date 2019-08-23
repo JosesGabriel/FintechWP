@@ -57,9 +57,10 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        if (!$response) {
+        if ($response !== false) {
             $response = json_decode($response, true);
-            echo $response['data'];
+            $data = keysToLower($response['data']);
+            echo json_encode($data);
         }
     }
 

@@ -3626,12 +3626,12 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            		<?php 
-                                                                            		$query = $_POST['keyword'];
+                                                                            	<input type="hidden" name="hsearchlogs">
+                                                                            	<?php 
 
-                                                                            		echo 'sample->' . $query;
+                                                                            	echo "<script> $('input[name='hsearchlogs']').val();</script>";
+                                                                            	?>	
 
-                                                                            		?>									              
                                                                             </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4446,7 +4446,7 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			//$('input[name="hsearchlogs"]').val(text);	
+    			$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
 
     			/*$.ajax({
@@ -4459,15 +4459,15 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });*/
+			        });
 					  jQuery.ajax({
-					   url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					   url: '<?php// echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',
 					   data: { action: 'data_fetch', keyword: keyword  },
 					   success: function(data) {
 					    jQuery('.s-logs').html( data );
 					   }
-					  });
+					  });*/
 
     		}	
 			

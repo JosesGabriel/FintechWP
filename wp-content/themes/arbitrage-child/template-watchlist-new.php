@@ -1860,7 +1860,7 @@ h2.watchtitle {
 	width: 500px;
 }
 .swal2-text, .swal2-title {
-	color: white;
+	color: #fff !important;
 }
 .swal2-button--confirm {
 	font-family: 'Roboto', sans-serif;
@@ -1872,12 +1872,26 @@ h2.watchtitle {
     border-radius: 25px;
     padding: 3px 9px;
 }
-.swal2-button--cancel {
-	font-family: 'Roboto', sans-serif;
+.swal2-popup .swal2-content {
+    color: #fff;
+    font-size: 16px;
+}
+.swal2-popup .swal2-styled.swal2-cancel {
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #ffffff;
     background: none;
     border: 2px #9E9E9E solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.swal2-popup .swal2-styled.swal2-confirm {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #00bcd4 solid;
     height: auto;
     border-radius: 25px;
     padding: 3px 9px;

@@ -30,6 +30,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 			var url = window.location.pathname;
 			if(url.includes("vyndue")) {
 				window.open("https://vyndue.com");
+				window.close();
 			}
 		}
 	</script>

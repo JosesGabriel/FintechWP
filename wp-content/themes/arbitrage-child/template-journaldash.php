@@ -3627,7 +3627,11 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			
+                                                                          			<?php if(isset($_POST['text'])) {
+                                                                          				echo $_POST['text'];
+                                                                          			}
+
+                                                                          			?>
                                                                              </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4442,17 +4446,14 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
-
-    			$.ajax({
-			          type: 'GET',
-			          url: '../themes/arbitrage-child/template-searchtradelogs.php',
-			          data: {id: text},
-			          success: function(data){
-			            $('.s-logs').html(data);
-			          }
-			        });
     			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
+
+    			$.ajax({
+			            url: 'template-journaldash.php',
+			            type: 'POST',
+			            data: {text: text}
+			        });
 
     		}	
 			

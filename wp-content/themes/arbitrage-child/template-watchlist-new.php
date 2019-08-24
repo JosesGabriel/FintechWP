@@ -216,7 +216,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		
 																		<div class="wlttlstockvals">
 
-                                                                            <span class="stocknn"><?php echo $value['stockname']; ?></span>
+																			<div class="dtockname">
+																				<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																				<div class="subnotif">
+																					<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																						echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																						echo ",";
+																					} ?>
+																				</div>
+																			</div>
 
                                                                             <span style="display:none;" class="subnotif">
                                                                                 <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {

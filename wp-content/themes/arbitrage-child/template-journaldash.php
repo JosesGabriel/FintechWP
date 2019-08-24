@@ -4,6 +4,7 @@
     */
 
 // get_header();
+// Ralph Was Here
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
@@ -1953,8 +1954,8 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -4471,7 +4472,39 @@ if ($getdstocks && $getdstocks != '') {
 
     		}	
 			
-		});
+        });
+        
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
 
 	});

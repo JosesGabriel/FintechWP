@@ -3626,10 +3626,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            	<input type="hidden" name="hsearchlogs">
+                                                                            	<input type="hidden" name="hsearchlogs" >
                                                                             	<?php 
 
-                                                                            	echo "<script> $('input[name='hsearchlogs']').val();</script>";
+                                                                            echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
                                                                             	?>	
 
                                                                             </li>

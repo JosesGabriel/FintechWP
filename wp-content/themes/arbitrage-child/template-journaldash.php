@@ -3626,9 +3626,17 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-
-                                                                            	<input type="hidden" value="botimkot" name="hsearchlogs">
-                                                                            	<div class="sample"><?php echo $post = isset($_GET['hsearchlogs']); ?></div>
+                                                                            	<form method="get">
+                                                                            		<input type="hidden" value="botimkot" name="hsearchlogs">
+                                                                            	</form>
+                                                                            	<div class="sample">
+                                                                            		<?php 
+                                                                            		if(isset($_GET['hsearchlogs'])){
+                                                                            			echo $post = isset($_GET['hsearchlogs']);
+                                                                            		}
+                                                                            		 ?>
+                                                                            			
+                                                                            		</div>
 
 
 

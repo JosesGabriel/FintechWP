@@ -28,14 +28,10 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	<script>
 		window.onload = function() {
 			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-				var url = window.location.pathname;
-				if(url.includes("vyndue")) {
 					alert('000');
 					$('#vyndue--link').attr("target","_blank");
 					$('#vyndue--link').attr("href","https://vyndue.com");
 					alert('123');
-				}
-			}
 		}
 	</script>
 <?php

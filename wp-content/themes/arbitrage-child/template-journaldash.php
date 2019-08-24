@@ -3626,7 +3626,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            	<form method="get">
+                                                                            	<form method="post">
                                                                             		<input type="hidden" value="botimkot" name="hsearchlogs">
                                                                             	</form>
                                                                             	<div class="sample">

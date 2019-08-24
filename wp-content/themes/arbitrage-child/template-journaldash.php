@@ -4461,16 +4461,14 @@ if ($getdstocks && $getdstocks != '') {
 			                }
 			        });*/
 
-			        $.ajax({
-					    type: 'post', // the method (could be GET btw)
-					    url: window.location, // The file where my php code is
-					    data: {
-					        'test': text // all variables i want to pass. In this case, only one.
-					    },
-					    success: function(data) { // in case of success get the output, i named data
-					        alert(data); // do something with the output, like an alert
-					    }
-					});
+			            jQuery.ajax({
+				            type: "POST",
+				            data:  text,
+				            success: function(data) {
+				                // Check the output of ajax call on firebug console
+				                console.log(data);
+				            }
+				        });
 
     		}	
 			

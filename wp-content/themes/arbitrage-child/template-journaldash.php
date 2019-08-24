@@ -4446,7 +4446,7 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			$('input[name="hsearchlogs"]').val(text);	
+    			$('input[name="hsearchlogs"]').val(keyword);	
     			//$('div.sample').text(text);
 
     			/*$.ajax({

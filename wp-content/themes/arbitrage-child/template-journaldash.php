@@ -3629,7 +3629,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             	<input type="hidden" name="hsearchlogs" >
                                                                             	<?php 
 
-                                                                            echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
+                                                                            echo "<script> print($('input[name=\"hsearchlogs\"]').val());</script>";
                                                                             	?>	
 
                                                                             </li>

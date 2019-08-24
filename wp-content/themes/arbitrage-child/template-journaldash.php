@@ -4428,8 +4428,13 @@ if ($getdstocks && $getdstocks != '') {
 
 
 		jQuery('.search-logs').on('keyup', function () {
-			console.log('yess');
-			jQuery('.dloglist').css("display","none");
+
+			if($(this).val().length < 1) {
+        		jQuery('.dloglist').css("display","block");
+    		}else {
+    			jQuery('.dloglist').css("display","none");
+    		}
+			
 		});
 
 

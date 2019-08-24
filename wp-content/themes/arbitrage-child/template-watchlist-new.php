@@ -1581,7 +1581,7 @@ h2.watchtitle {
     	font-size: 13px;
 	}
     .subnotif {
-        display: none;
+        display: block;
     }
     .dinnerlist .deleteme {
         text-align: right;

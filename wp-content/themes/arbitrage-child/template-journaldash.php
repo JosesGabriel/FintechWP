@@ -3628,7 +3628,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             <li class="s-logs" style="display: none;">
 
                                                                             	<input type="hidden" value="" name="hsearchlogs">
-                                                                            	<?php echo $_GET['hsearchlogs']; ?>
+                                                                            	<?php echo $_POST['hsearchlogs']; ?>
                                                                             </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4438,6 +4438,7 @@ if ($getdstocks && $getdstocks != '') {
 
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
+        		jQuery('.s-logs').css("display","none");
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");

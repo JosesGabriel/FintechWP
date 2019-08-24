@@ -3628,7 +3628,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                             <li class="s-logs" style="display: none;">
 
                                                                             	<input type="hidden" value="" name="hsearchlogs">
-                                                                            	<?php echo $_POST['hsearchlogs']; ?>
+                                                                            	<div class="sample"><?php echo $_POST['hsearchlogs']; ?></div>
+
+
+
                                                                             </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">

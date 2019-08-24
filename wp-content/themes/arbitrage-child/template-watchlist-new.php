@@ -296,7 +296,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<?php endif ?>
 																			<?php if (isset($value['dcondition_stop_loss_point'])): ?>
 																				<li>
-																					<div class="dcondition">Stop Loss</div>
+																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?></span>
 																						<span class="ontoright">Php</span>

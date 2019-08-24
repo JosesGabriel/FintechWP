@@ -27,7 +27,10 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 	<script>
 		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-			window.open("https://www.w3schools.com");
+			var url = window.location.pathname;
+			if(url.includes("vyndue")) {
+				window.open("https://vyndue.com");
+			}
 		}
 	</script>
 <?php

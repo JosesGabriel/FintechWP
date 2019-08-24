@@ -3626,11 +3626,11 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            <input type="hidden" name="hsearchlogs" value="<?php echo $var; ?>"/>															                                                                            	                                                                      		
-                                                                          			<div class="sample"><?php// if(isset($_POST['text'])) {
-                                                                          				//print_r($_POST['text']);
-                                                                          			//}
-                                                                          				echo $var;
+                                                                            																					                                                                            	                                                                      		
+                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
+                                                                          				print_r($_POST['text']);
+                                                                          			}
+
                                                                           			?></div>
                                                                              </li>
 
@@ -4445,9 +4445,9 @@ if ($getdstocks && $getdstocks != '') {
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
-    			//var text = $(this).val();
-    			$('input[name="hsearchlogs"]').val(text);	
-    			$('div.sample').text(text);
+    			var text = $(this).val();
+    			//$('input[name="hsearchlogs"]').val(text);	
+    			//$('div.sample').text(text);
 
     			$.ajax({
 			            url: window.location,

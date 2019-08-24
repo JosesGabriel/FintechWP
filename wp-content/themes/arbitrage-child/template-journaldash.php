@@ -4433,6 +4433,7 @@ if ($getdstocks && $getdstocks != '') {
         		jQuery('.dloglist').css("display","block");
     		}else {
     			jQuery('.dloglist').css("display","none");
+    			console.log($(this).val());
     		}
 			
 		});

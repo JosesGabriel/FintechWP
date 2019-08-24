@@ -29,8 +29,8 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
 			var url = window.location.pathname;
 			if(url.includes("vyndue")) {
-				window.open("https://vyndue.com");
-				window.close();
+				$('#vyndue--link').attr("target","_blank");
+				$('#vyndue--link').attr("href","https://vyndue.com");
 			}
 		}
 	</script>

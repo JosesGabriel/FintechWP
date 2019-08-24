@@ -26,7 +26,13 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
 	<script>
-		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {alert('Its Safari');}
+		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+			var url = window.location.pathname;
+			if(url.includes("vyndue")) {
+				window.open("https://vyndue.com");
+				window.close();
+			}
+		}
 	</script>
 <?php
 global $current_user;

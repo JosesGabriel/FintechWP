@@ -1886,6 +1886,10 @@ h2.watchtitle {
     border-radius: 25px;
     padding: 3px 9px;
 }
+.swal2-popup .swal2-styled:focus {
+	outline: 0;
+    box-shadow: none;
+}
 .swal2-popup .swal2-styled.swal2-confirm {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;

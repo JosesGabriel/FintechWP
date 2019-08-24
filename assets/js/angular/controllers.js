@@ -145,11 +145,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $scope.$watch('$root.stockList', function () {
+        $scope.stock_details = $rootScope.stockList;
+    });
     $scope.gainers      = 0;
     $scope.losers       = 0;
     $scope.unchanged    = 0;
     $scope.stocks = [];
-    $scope.stock_details = _stocks;
     $scope.watchlists = {
         'All Stocks': 'stocks', 
         'New Watchlist': 'new',

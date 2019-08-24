@@ -27,13 +27,13 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 	<script>
 		window.onload = function() {
-			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-				var url = window.location.pathname;
-				if(url.includes("vyndue")) {
-					$('#vyndue--link').attr("target","_blank");
-					$('#vyndue--link').attr("href","https://vyndue.com");
+			$('#vyndue--link').on('click', function(){
+				alert('1');
+				if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+					alert('2');
+					$("#vyndue--link__hidden").trigger("click");
 				}
-			}
+			});
 		}
 	</script>
 <?php

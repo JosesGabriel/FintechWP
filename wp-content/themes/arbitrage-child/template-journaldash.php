@@ -4426,7 +4426,9 @@ if ($getdstocks && $getdstocks != '') {
 			}
 		});
 
-		jQuery('.searchlogs').on('keyup', function (e) {
+
+		jQuery('.search-logs').on('keyup', function () {
+			console.log('yess');
 			jQuery('.dloglist').css("display","none");
 		});
 

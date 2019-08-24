@@ -1,7 +1,8 @@
 <?php
 	/*
 	* Template Name: Chart Page
-	* Template page for Trading Chart
+    * Template page for Trading Chart
+    * Ralph was here - Enter Buy Order
 	*/
 	global $current_user;
 	$user = wp_get_current_user();
@@ -1445,7 +1446,7 @@
                                             		
                                             	?>
                                                 <div class="entr_ttle_bar">
-                                                    <strong>Enter Buy Order last na</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
+                                                    <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
                                                 </div>
                                                 <form action="/journal" method="post">
                                                 <div class="entr_wrapper_top">
@@ -1475,8 +1476,8 @@
                                                             <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
                                                             <i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price" name="inpt_data_price" required></div>
-                                                            <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty" name="inpt_data_qty" required></div>
+                                                            <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
+                                                            <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
                                                             <div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                         </div>
                                                         <div class="entr_col">
@@ -2502,8 +2503,8 @@
 
 		$('.inpt_data_price, .inpt_data_qty').keyup(function() {
 		 	// console.log( $('.inpt_data_qty').val() );
-		 	var buyprice = $('.inpt_data_price').val();
-		 	var buyquanti = $('.inpt_data_qty').val();
+		 	var buyprice = $('.inpt_data_price').val().replace(/[^0-9\.]/g, '');
+		 	var buyquanti = $('.inpt_data_qty').val().replace(/[^0-9\.]/g, '');
 		 	console.log(buyprice +" ~ "+ buyquanti);
 		 	if (parseFloat(buyprice) > 0 && parseFloat(buyquanti) > 0) {
 		 		var marketvalx = parseFloat(buyprice) * parseFloat(buyquanti);
@@ -2642,8 +2643,8 @@
 	$(".confirmtrd").click(function(e){
 
 		var dbuypower = $(".input_buy_power").attr('data-dbaseval');
-		var dpurprice = $(".inpt_data_price").val();
-		var dpurqty = $(".inpt_data_qty").val();
+		var dpurprice = $(".inpt_data_price").val().replace(/[^0-9\.]/g, '');
+		var dpurqty = $(".inpt_data_qty").val().replace(/[^0-9\.]/g, '');
 
 		console.log(dbuypower);
 		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
@@ -2661,6 +2662,38 @@
 		}
 	
 	});
+
+    jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
 	});
 </script>

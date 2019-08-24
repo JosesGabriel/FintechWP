@@ -709,7 +709,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 
 		                         <div class="entertrade" id="entertrade_<?php echo $value; ?>">
                                     <div class="entr_ttle_bar">
-                                        <strong>Enter Buy Order test lang d</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
+                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
                                     </div>
                                     <form action="/buysell" method="post">
                                     <div class="entr_wrapper_top">

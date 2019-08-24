@@ -214,16 +214,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
-
-																			<div class="dtockname">
-																					<div class="stocknn"><?php echo $value['stockname']; ?></div>
-																					<div class="subnotif">
-																						<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-																							echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-																							echo ",";
-																						} ?>
-																					</div>
-																				</div>
+																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="subnotif">
+																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																					echo ",";
+																				} ?>
+																			</div>
+																			
 																			<div class="dpricechange">
 																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
 																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>

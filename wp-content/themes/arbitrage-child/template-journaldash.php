@@ -4445,7 +4445,7 @@ if ($getdstocks && $getdstocks != '') {
 
     			$.ajax({
 			          type: 'GET',
-			          url: 'template-searchtradelogs.php',
+			          url: 'https://arbitrage.ph/wp-content/themes/arbitrage-child/template-searchtradelogs.php',
 			          data: {id: text},
 			          success: function(data){
 			            $('.s-logs').html(data);

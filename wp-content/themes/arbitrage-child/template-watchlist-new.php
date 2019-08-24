@@ -213,37 +213,30 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	
 																	<div class="row">
-																		
 																		<div class="wlttlstockvals">
 
 																			<div class="dtockname">
-																				<div class="stocknn"><?php echo $value['stockname']; ?></div>
-																				<div class="subnotif">
-																					<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-																						echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-																						echo ",";
-																					} ?>
+																					<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																					<div class="subnotif">
+																						<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																							echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																							echo ",";
+																						} ?>
+																					</div>
 																				</div>
-																			</div>
-
-                                                                            <?php if($dchange < 0){$valcolor = "onred";}else{$valcolor = "ongreen";} ?>
-
-                                                                            <span class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></span>
-
-                                                                            <span class="curchange <?php echo $valcolor; ?>">(<?php echo $dchange; ?>%)</span>
-
-                                                                            <?php /*?><?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-                                                                                <span class="curchange onred">(<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php else: ?>
-                                                                                <span class="curchange ongreen">(+<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php endif; ?>
-
-                                                                            <span class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></span><?php */?>
+																			<div class="dpricechange">
+																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
+																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php else: ?>
+																				<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php endif; ?>
+																			<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
-																		<div class="col-md-6">
+																		<br style="clear:both;">
+																		</div>
+																		<div class="col-md-12">
 																			 <div class="dchart">
 																				<div class="chartjs">
-
                                                                                 <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
 																				
                                                                                 	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
@@ -253,6 +246,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 																		</div>
 																	</div>
+																	
                                                                      <!--                       
 																	 <div class="dtockname">
 																		<div class="stocknn"><?php echo $value['stockname']; ?></div>

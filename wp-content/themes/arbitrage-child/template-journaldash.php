@@ -3626,13 +3626,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            	<form name="form" action="" method="get">
-  																					<input type="hidden" id="hsearchlogs" name="hsearchlogs">
-																				</form>
-
-																				<?php echo $_GET['hsearchlogs']; ?>
-
-                                                                            	<div class="sample" id="textid"></div>                                                                       		
+                                                                            																					                                                                            	                                                                      		
                                                                           			
                                                                              </li>
 
@@ -4448,7 +4442,16 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
-    			$('input[name="hsearchlogs"]').val(text);	
+
+    			$.ajax({
+			          type: 'GET',
+			          url: 'template-searchtradelogs.php',
+			          data: {id: text},
+			          success: function(data){
+			            $('.s-logs').html(data);
+			          }
+			        });
+    			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
 
     		}	

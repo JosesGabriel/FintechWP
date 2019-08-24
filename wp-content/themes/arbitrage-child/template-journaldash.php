@@ -3631,8 +3631,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                             	</form>
                                                                             	<div class="sample">
                                                                             		<?php 
-                                                                            		
-                                                                            			echo "yess";
+                                                                            		$string = $_POST['hsearchlogs'];
+                                                                            			echo $string;
                                                                             	
                                                                             		 ?>
                                                                             			

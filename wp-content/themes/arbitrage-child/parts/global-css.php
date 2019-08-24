@@ -2967,4 +2967,8 @@ h2.terms-padding:after {
     width: 40px;
     margin: 0 5px;
 }
+.mc-background {
+	background-color: #142b46;
+    border-radius: 15px;
+}
 </style>

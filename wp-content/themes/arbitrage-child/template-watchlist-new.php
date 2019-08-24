@@ -302,7 +302,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content" style="background: #2c3e50;">
+																	    <div class="modal-content mc-background">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -319,8 +319,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																								<div class="col-md-8">
 																									<div class="innerdeliver">
 																										<ul>
-																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop">Website Popup</label></li>
-																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop">SMS Notification</label></li>
+																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin">Website Popup</label></li>
+																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin">SMS Notification</label></li>
 																										</ul>
 																									</div>
 																								</div>
@@ -329,7 +329,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																										<div class="col-md-6">
 																											<div class="condition-params">
 																												<div class="condition-type">
-																													<label>Conditions</label>
+																													<label class="label--margin">Conditions</label>
 																													<select id="condition-list">
 																														<option value="">Select Conditions</option>
 																														<option style="<?php echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
@@ -338,7 +338,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																													</select>
 																												</div>
 																												<div class="condition-freq">
-																													<label>Condition Frequency</label>
+																													<label class="label--margin">Condition Frequency</label>
 																													<input type="number" id="condition_frequency" name="confreq">
 																												</div>
 																												<div class="addtolist">

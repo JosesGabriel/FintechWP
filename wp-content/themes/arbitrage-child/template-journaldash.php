@@ -3626,17 +3626,15 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            	<form method="post">
-                                                                            		<input type="hidden" value="botimkot" name="hsearchlogs">
-                                                                            	</form>
-                                                                            	<div class="sample">
-                                                                            		
-                                                                            			
-                                                                            		</div>
+                                                                            	<form name="form" action="" method="get">
+  																					<input type="hidden" id="hsearchlogs" name="hsearchlogs">
+																				</form>
 
+																				<?php echo $_GET['hsearchlogs']; ?>
 
-
-                                                                            </li>
+                                                                            	<div class="sample" id="textid"></div>                                                                       		
+                                                                          			
+                                                                             </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
@@ -4451,7 +4449,8 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
     			$('input[name="hsearchlogs"]').val(text);	
-    			$('div.sample').text(text);
+    			//$('div.sample').text(text);
+
     		}	
 			
 		});

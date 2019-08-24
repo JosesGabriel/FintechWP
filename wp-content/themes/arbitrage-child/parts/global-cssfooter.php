@@ -82,7 +82,7 @@
 		padding: 6px 12px !important;
 	}
 	span.ddot {
-		top: -3px;
+		top: 1px;
 		position: relative;
 	}
 	.hg-rainbow {

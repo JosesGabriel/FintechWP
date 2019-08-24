@@ -3630,11 +3630,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             		<input type="hidden" value="botimkot" name="hsearchlogs">
                                                                             	</form>
                                                                             	<div class="sample">
-                                                                            		<?php 
-                                                                            		$string = $_POST['hsearchlogs'];
-                                                                            			echo $string;
-                                                                            	
-                                                                            		 ?>
+                                                                            		
                                                                             			
                                                                             		</div>
 
@@ -4455,6 +4451,7 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
     			$('input[name="hsearchlogs"]').val(text);	
+    			$('div.sample').text(text);
     		}	
 			
 		});

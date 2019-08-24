@@ -1935,7 +1935,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
+																	                                        <strong>Enter Buy Order  dsdsa</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
@@ -3627,10 +3627,10 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             	<input type="hidden" name="hsearchlogs" >
-                                                                            	<?php 
+                                                                            	<?php
 
                                                                             echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
-                                                                            	?>	
+                                                                                ?>	
 
                                                                             </li>
 
@@ -3698,10 +3698,10 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="pginner">
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
-                                                                                ?>
+                                                                                    ?>
 																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
-                                                                            } ?>
+                                                                                } ?>
 																			</ul>
 																		</div>
 																	</div>	

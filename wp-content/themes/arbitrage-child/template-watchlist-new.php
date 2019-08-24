@@ -1703,8 +1703,8 @@ h2.watchtitle {
     }
     .wlttlstockvals {
 		display: block;
-		border-bottom: 1px solid #1e3554;
 		width: 100%;
+		/* border-bottom: 1px solid #1e3554; */
         /* margin: 0 16px; */
         /* padding: 0px 0px 9px; */
     }

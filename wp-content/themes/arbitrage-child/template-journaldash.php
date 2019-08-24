@@ -3632,7 +3632,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             	<div class="sample">
                                                                             		<?php 
                                                                             		if(isset($_GET['hsearchlogs'])){
-                                                                            			echo $post = isset($_GET['hsearchlogs']);
+                                                                            			echo "yess";
                                                                             		}
                                                                             		 ?>
                                                                             			

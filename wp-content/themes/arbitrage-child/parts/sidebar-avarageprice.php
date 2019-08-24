@@ -160,9 +160,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
 
             ditem += "</ul>";
 
@@ -180,9 +180,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
 
             ditem += "</ul>";
 
@@ -241,10 +241,10 @@
 
                 });
 
-                console.log("totalvol: "+totalvolume);
-                console.log("totalprice: "+totalprice);
-                console.log("totalcost: "+totalcost);
-                console.log("costfee: "+costfee);
+                //console.log("totalvol: "+totalvolume);
+                //console.log("totalprice: "+totalprice);
+                //console.log("totalcost: "+totalcost);
+                //console.log("costfee: "+costfee);
 
                 // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
                 var finalcost = costfee / totalvolume;
@@ -252,14 +252,21 @@
                 // console.log("finalcost: "+finalcost);
 
 
+                
+                
+                jQuery("#totalcost").val(numeral(costfee).format('0,0.00'));
 
+                jQuery("#totalposition").val(numeral(totalvolume).format('0,0.00'));
 
+                jQuery("#averageprice").val(numeral(finalcost).format('0,0.00'));
+
+                /*
                 jQuery("#totalcost").val(parseFloat(costfee).toFixed(2));
 
                 jQuery("#totalposition").val(totalvolume);
 
                 jQuery("#averageprice").val((finalcost).toFixed(2));
-
+                */
 
 
             } else {

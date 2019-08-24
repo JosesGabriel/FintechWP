@@ -1129,7 +1129,7 @@ li.dbaseitem {
 }
 h2.watchtitle {
     font-size: 18px;
-    padding: 2px 10px 4px;
+	padding: 0 10px 4px;
     margin: 0;
     font-weight: 800;
 }

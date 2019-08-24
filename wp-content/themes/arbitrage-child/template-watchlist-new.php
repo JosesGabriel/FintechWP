@@ -703,8 +703,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 .dclosetab.active {
     display: block;
-    margin-left: 27px;
-    margin-right: 27px;
     box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
     background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
 }
@@ -1613,66 +1611,6 @@ h2.watchtitle {
     .tradelogscont .innerr {
         padding:25px 0;
     }
-    a.smlbtn {
-        background-color: #e64c3c;
-        color: #fff;
-        padding: 2px 8px;
-        display: inline-block;
-        font-size: 12px;
-        border-radius: 4px;
-        font-weight: bold;
-        text-decoration:none;
-    }
-    a.smlbtn.blue {
-        background-color: #3597d3;
-    }
-    a.smlbtn.green {
-        background-color: #27ae60;
-    }
-    a.smlbtn:hover {
-        background-color: #bb3527;
-    }
-    a.smlbtn.blue:hover {
-        background-color: #1870a6;
-    }
-    a.smlbtn.green:hover {
-        background-color: #167b41;
-    }
-    .sysoutput {background-color: #313131;}
-    .sysoutput span {
-        display: inline-block;
-        margin: 0 -4px 0 0px;
-        color: #9a9a9a;
-        background-color: #313131;
-        padding: 2px 8px;
-    }
-    .tradelogtable strong {
-        font-weight: 700 !important;
-    }
-    .tradingnotescont {
-        width:300px;
-        min-height:250px;
-    }
-
-    .panel-tabs > li.active > a, .panel-tabs > li.active > a:hover, .panel-tabs > li.active > a:focus {
-        border-radius: 4px 4px 0 0;
-        padding-bottom: 10px;
-    }
-    .panel-tabs > li a {
-        margin-left: 5px;
-    }
-    .panel {
-        background-color: #273647;
-        border-radius: 5px 5px 0 0;
-    }
-    .side-content {
-        background: #3a5168;
-        border: 1px solid #273647;
-    }
-    .side-content ul li {
-        background: #0c1e33;
-    }
-
     .side-header .right-image .onto-user-meta-details {
         color: #b2bbc4;
         font-size: 12px;

@@ -3627,8 +3627,8 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<div class="sample"><?php if(isset($_POST['test'])) {
-                                                                          				echo $_POST['test'];
+                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
+                                                                          				echo $_POST['text'];
                                                                           			}
 
                                                                           			?></div>
@@ -4461,7 +4461,7 @@ if ($getdstocks && $getdstocks != '') {
 			                }
 			        });*/
 
-			            jQuery.ajax({
+			           $.ajax({
 				            type: "POST",
 				            data:  {text: text},
 				            success: function(data) {

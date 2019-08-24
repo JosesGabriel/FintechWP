@@ -375,7 +375,120 @@ function data_fetch(){
     $query = $_POST['keyword'];
 
     echo $query;
+    $count = 1;
+$dpage = 1;
+$current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
+$dlisttrade = [];
+if ($author_posts->have_posts()) {
+    while ($author_posts->have_posts()) {
+        $author_posts->the_post();
+        $dlisttrade[$dpage][$count]['id'] = get_the_ID();
+        $dlisttrade[$dpage][$count]['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
+        $dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
+        $dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
+        $dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
 
+        $data_dprice = get_post_meta(get_the_ID(), 'data_dprice', true);
+        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $data_dprice);
+
+        $dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
+        $dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
+
+        $data_trade_info = get_post_meta(get_the_ID(), 'data_trade_info', true);
+        $dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($data_trade_info);
+        $dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta(get_the_ID(), 'data_avr_price', true);
+
+        // $dlisttrade[$dpage]
+        if ($count == $paginate) {
+            $count = 1;
+            ++$dpage;
+        } else {
+            ++$count;
+        }
+    }
+    wp_reset_postdata();
+}
+
+foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
+    $data_sellmonth = $tlvalue['data_sellmonth'];
+    $data_sellday = $tlvalue['data_sellday'];
+    $data_sellyear = $tlvalue['data_sellyear'];
+    $data_stock = $tlvalue['data_stock'];
+    $data_dprice = $tlvalue['data_dprice'];
+    $data_sell_price = $tlvalue['data_sell_price'];
+    $data_quantity = $tlvalue['data_quantity'];
+    $data_trade_info = $tlvalue['data_trade_info'];
+    $data_avr_price = $tlvalue['data_avr_price'];
+
+    // get prices
+    $soldplace = $data_quantity * $data_sell_price;
+    $baseprice = $data_quantity * $data_dprice;
+
+    $sellfee = getjurfees($soldplace, 'sell');
+
+    //profit or loss
+    $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
+
+    // profperc
+    $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
+    $totalprofit += $dprofit;
+
+
+    if($query == $data_stock){
+    ?>
+            <div style="width:99%;">
+                <div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+                <div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+                <div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
+                <div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+                <div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+                <div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+                <div style="width:95px" class="table-cell-live">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+                <div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+                <div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+                <div style="width:35px; text-align:center">
+                    <a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
+                        <i class="fas fa-clipboard"></i>
+                    </a>
+                </div>
+                <div style="width:25px">
+                    <a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+                        <i class="fas fa-eraser"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hidethis">
+                    <div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
+                        <div class="entr_ttle_bar">
+                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                        </div>
+                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                        <div class="trdlgsbox">
+
+                            <div class="trdleft">
+                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+                            </div>
+                            <div class="trdright darkbgpadd">
+                                <div><strong>Notes:</strong></div>
+                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+                            </div>
+
+                        <div class="trdclr"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+    <?php
+    }else{
+        echo "no data found";
+    }
+
+    endforeach;
 }
 
 

@@ -367,6 +367,17 @@ add_action('wp_enqueue_scripts', 'ab_exclusions', 100);
 // [bartag foo="foo-value"]
 
 
+add_action('wp_ajax_data_fetch', 'data_fetch');
+add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
+
+function data_fetch(){
+    $query = $_POST['keyword'];
+
+    echo $query;
+}
+
+
+
 
 function getfriendsbyat( $atts ) {
 	$a = shortcode_atts( array(

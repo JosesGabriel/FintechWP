@@ -3627,11 +3627,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
-                                                                          				echo $_POST['text'];
-                                                                          			}
-
-                                                                          			?></div>
+                                                                          	
                                                                              </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4445,7 +4441,7 @@ if ($getdstocks && $getdstocks != '') {
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
-    			var text = $(this).val();
+    			var keyword = $(this).val();
     			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
 
@@ -4460,15 +4456,14 @@ if ($getdstocks && $getdstocks != '') {
 			                  console.log("error");
 			                }
 			        });*/
-
-			           $.ajax({
-				            type: "POST",
-				            data:  {text: text},
-				            success: function(data) {
-				                // Check the output of ajax call on firebug console
-				                console.log(data);
-				            }
-				        });
+					  jQuery.ajax({
+					   url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					   type: 'post',
+					   data: { action: 'data_fetch', keyword: keyword  },
+					   success: function(data) {
+					    jQuery('.s-logs').html( data );
+					   }
+					  });
 
     		}	
 			

@@ -1518,7 +1518,7 @@ h2.watchtitle {
 					</div>
 				</div>
 			</div>
-            <div class="center-dashboard-part">
+			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div class="row">

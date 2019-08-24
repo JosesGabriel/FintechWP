@@ -2279,7 +2279,7 @@ ul.footmore li {
 	border-right: none !important;
 }
 ul.footmore .ddot {
-	top: -3px;
+	top: 2px;
 	position: relative;
 }
 .wh-container {

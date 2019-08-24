@@ -3627,8 +3627,8 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
-                                                                          				print_r($_POST['text']);
+                                                                          			<div class="sample"><?php if(isset($_POST['test'])) {
+                                                                          				echo $_POST['test'];
                                                                           			}
 
                                                                           			?></div>
@@ -4449,7 +4449,7 @@ if ($getdstocks && $getdstocks != '') {
     			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
 
-    			$.ajax({
+    			/*$.ajax({
 			            url: window.location,
 			            type: 'POST',
 			            data: {text: text},
@@ -4459,7 +4459,18 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });
+			        });*/
+
+			        $.ajax({
+					    type: 'post', // the method (could be GET btw)
+					    url: window.location, // The file where my php code is
+					    data: {
+					        'test': text // all variables i want to pass. In this case, only one.
+					    },
+					    success: function(data) { // in case of success get the output, i named data
+					        alert(data); // do something with the output, like an alert
+					    }
+					});
 
     		}	
 			

@@ -234,7 +234,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		<div class="col-md-12">
 																			 <div class="dchart">
 																				<div class="chartjs">
-                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
+                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span>
 																				
                                                                                 	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
 																					 </div>-->
@@ -777,7 +777,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     width: 32%;
     font-size: 11px;
     line-height: 1em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-align: center;
     position: relative;
     box-shadow: 0px 0px 6px -3px rgba(4,13,23,0.7);
@@ -1572,8 +1572,14 @@ h2.watchtitle {
     }
     .dpricechange {
 		text-align: right;
-    	padding-bottom: 5px;
-    }
+		padding-bottom: 7px;
+		display: block;
+		margin-top: -37px;
+	}
+	.chartjs span.nocont {
+		padding: 14px 0;
+    	font-size: 13px;
+	}
     .subnotif {
         display: none;
     }
@@ -1636,13 +1642,15 @@ h2.watchtitle {
 		font-weight: normal !important;
     }
     .dplusbutton {
-        padding: 60px 0px 0px 0px;
+        padding: 50px 0px 0px 0px;
     }
-
-
     .dinnerlist .dparams ul li {
         width: 31.6%;
-    }
+	}
+	.box-portlet-header, .box-portlet-footer {
+		background: none;
+    	padding: 0;
+	}
     span.curchange {
         font-size: 15px;
         font-weight: normal;
@@ -1668,6 +1676,8 @@ h2.watchtitle {
 	}
     .dpricechange .curprice {
 		font-size: 18px;
+		padding-bottom: 3px;
+		font-weight: 500 !important;
     }
     span.curprice {
         display: inline-block;
@@ -1687,9 +1697,9 @@ h2.watchtitle {
         padding: 0;
     }
     .wlttlstockvals {
-        display: block;
-        border-bottom: 1px solid #1e3554;
-        width: 95%;
+		display: block;
+		border-bottom: 1px solid #1e3554;
+		width: 100%;
         /* margin: 0 16px; */
         /* padding: 0px 0px 9px; */
     }

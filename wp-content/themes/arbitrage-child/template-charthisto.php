@@ -19,33 +19,6 @@
     }
 
     if(isset($_GET['query'])){
-        $stocks = fopen("https://arbitrage.ph/data/stocks.json", "r") or die("Unable to open file!");
-        $jsondata = fgets($stocks);
-        fclose($stocks);
-
-        $arraymode = json_decode($jsondata);
-        $dstock = strtolower($_GET['query']);
-
-        // add params
-        $newinfo = [];
-        foreach ($arraymode as $addvalskey => $addvalsvalue) {
-            $addvalsvalue->full_name = $addvalsvalue->symbol;
-            array_push($newinfo,$addvalsvalue);
-        }
-
-        $listofitems = [];
-        foreach ($newinfo as $key => $value) {
-            if (strpos(strtolower($value->symbol), $dstock) !== false) {
-                
-                array_push($listofitems, $value);
-                // echo "ersr";
-            }
-        }
-
-        // echo "[".json_encode($listofitems)."]";
-        // echo '[{"symbol":"BPI","description":"BANK OF THE PHILIPPINE ISLANDS","full_name":"BPI", "display_name" : "BPI"}]'; 
-        echo json_encode($listofitems);
-        // print_r($dstock);
 
     }
 

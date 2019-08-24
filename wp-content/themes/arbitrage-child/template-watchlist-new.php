@@ -213,29 +213,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	
 																	<div class="row">
-																		<div class="col-md-6">
-																			 <div class="dchart">
-																				<div class="chartjs">
-
-                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
-																				
-                                                                                	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
-																					 </div>-->
-																				
-                                                                                </div>
+																		<div class="wlttlstockvals">
+																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="subnotif">
+																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																					echo ",";
+																				} ?>
 																			</div>
-																		</div>
-																		<div class="col-md-6">
-
-																			<div class="dtockname">
-																					<div class="stocknn"><?php echo $value['stockname']; ?></div>
-																					<div class="subnotif">
-																						<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-																							echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-																							echo ",";
-																						} ?>
-																					</div>
-																				</div>
+																			
 																			<div class="dpricechange">
 																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
 																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
@@ -245,9 +231,20 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
 																		<br style="clear:both;">
-																
+																		</div>
+																		<div class="col-md-12">
+																			 <div class="dchart">
+																				<div class="chartjs">
+                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
+																				
+                                                                                	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
+																					 </div>-->
+																				
+                                                                                </div>
+																			</div>
 																		</div>
 																	</div>
+																	
                                                                      <!--                       
 																	 <div class="dtockname">
 																		<div class="stocknn"><?php echo $value['stockname']; ?></div>
@@ -637,39 +634,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     }
 	</script>
 	<style>
-	pre{
-    background: #fff;
-}
-.side-content-inner {
-    margin-top: 0px !important;
-}
-    .true-name {
-    padding-left: 10px;
-    font-size: 14px;
-    font-weight: 500;
-}
-   .um-activity-left.um-activity-actions > div {
-    color: #fff;
-    border-radius: 50px;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img {
-    width: 13px;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-like a > i {
-    font-size: 14px;
-    padding: 3px 7px;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-like a {
-    margin:0;
-}
-
-.um-activity-left.um-activity-actions > div .dnumof {
-    padding: 6px 15px 6px 0;
-    line-height: 1em;
-    display: inline-block;
-    margin-left: 5px;
-    font-size: 13px;
-}
 .dtabspart ul li {
     color: #000;
 }
@@ -1348,24 +1312,6 @@ h2.watchtitle {
 .innerdeliver {
     padding: 15px 0px;
 }
-
-.dcondition {
-    color: #fff;
-    font-size: 12px;
-    /* width: 119px; */
-}
-    body, html {
-        margin:0;
-        padding:0;
-        background: #0c1e33 !important;
-    }
-    body, html, p, a, span {
-        color: #ecf0f1;
-        font-family: 'Roboto', sans-serif;
-        font-size:13px;
-        font-weight:300;
-    }
-    .hideformodal {display:none;}
 
     /* Enter Trade Form */
     .groupinput label {

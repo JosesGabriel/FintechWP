@@ -27,9 +27,9 @@
         curl_close($curl);
 
         if ($response !== false) {
-            $response = json_decode($response, true);
+            $response = json_decode($response);
 
-            $arraymode = $response['data'];
+            $arraymode = $response->data;
             $dstock = strtolower($_GET['query']);
 
             // add params

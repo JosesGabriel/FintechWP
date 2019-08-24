@@ -3631,9 +3631,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                             	</form>
                                                                             	<div class="sample">
                                                                             		<?php 
-                                                                            		if(isset($_GET['hsearchlogs'])){
+                                                                            		
                                                                             			echo "yess";
-                                                                            		}
+                                                                            	
                                                                             		 ?>
                                                                             			
                                                                             		</div>

@@ -1579,90 +1579,79 @@ h2.watchtitle {
 
 																?>
 
-																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-
+i class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
 																	<div class="deleteme">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
 																	</div>
-
+																	
 																	<div class="row">
-
-                                                                        <div class="wlttlstockvals">
-
-                                                                            <span class="stocknn"><?php echo $value['stockname']; ?></span>
-
-                                                                            <span style="display:none;" class="subnotif">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </span>
-
-                                                                            <?php if($dchange < 0){$valcolor = "onred";}else{$valcolor = "ongreen";} ?>
-
-                                                                            <span class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></span>
-
-                                                                            <span class="curchange <?php echo $valcolor; ?>">(<?php echo $dchange; ?>%)</span>
-
-                                                                            <?php /*?><?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-                                                                                <span class="curchange onred">(<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php else: ?>
-                                                                                <span class="curchange ongreen">(+<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php endif; ?>
-
-                                                                            <span class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></span><?php */?>
-
-                                                                        </div>
-
-																		<div class="col-md-12" style="padding-top: 12px;">
-
-                                                                          <div class="minichartt">
-                                                                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                                                                            <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                                                                                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-                                                                            </div>
-                                                                          </div>
-
+																		<div class="col-md-6">
+																			 <div class="dchart">
+																				<div class="chartjs">
+																					<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
+																					 </div>
+																				</div>
+																			</div>
 																		</div>
-																		<div>
+																		<div class="col-md-6">
 
+																			<div class="dtockname">
+																					<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																					<div class="subnotif">
+																						<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																							echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																							echo ",";
+																						} ?>
+																					</div>
+																				</div>
+																			<div class="dpricechange">
+																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
+																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php else: ?>
+																				<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php endif; ?>
+																			<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
+																		</div>
 																		<br style="clear:both;">
-
+																
 																		</div>
 																	</div>
 
 																	<div class="dparams">
 																		<ul>
-																			<?php // if (isset($value['dcondition_entry_price'])): ?>
+																			<?php if (isset($value['dcondition_entry_price'])): ?>
 																				<li>
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
-																						<span class="ontoleft">₱ <?php echo @$value['dconnumber_entry_price']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?></span>
+																						<span class="ontoright">Php</span>
 																					</div>
 																				</li>
-																			<?php // endif ?>
-																			<?php // if (isset($value['dcondition_take_profit_point'])): ?>
+																			<?php endif ?>
+																			<?php if (isset($value['dcondition_take_profit_point'])): ?>
 																				<li>
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
-																						<span class="ontoleft">₱ <?php echo @$value['dconnumber_take_profit_point']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?></span>
+																						<span class="ontoright">Php</span>
 																					</div>
 																				</li>
-																			<?php // endif ?>
-																			<?php // if (isset($value['dcondition_stop_loss_point'])): ?>
+																			<?php endif ?>
+																			<?php if (isset($value['dcondition_stop_loss_point'])): ?>
 																				<li>
-																					<div class="dcondition">Stop <br/>Loss</div>
+																					<div class="dcondition">Stop Loss</div>
 																					<div class="dvalue">
-																						<span class="ontoleft">₱ <?php echo @$value['dconnumber_stop_loss_point']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?></span>
+																						<span class="ontoright">Php</span>
 																					</div>
 																				</li>
-																			<?php // endif ?>
+																			<?php endif ?>
 																		</ul>
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content" style="background: #0d1f33;padding: 15px;">
+																	    <div class="modal-content" style="background: #2c3e50;">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1680,10 +1669,7 @@ h2.watchtitle {
 																									<div class="innerdeliver">
 																										<ul>
 																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop">Website Popup</label></li>
-																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop">SMS Notif</label></li>
-																											<li><input id="emailpop" type="checkbox" name="delivery_type[]" value="email-notif" <?php echo (in_array("email-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop">Email Notif</label></li>
-                                                      <!--<li><input id="fbmpop" type="checkbox" name="delivery_type[]" value="fbm-notif" <?php //echo (in_array("fbm-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="fbmpop">FB Messenger</label></li>-->
-                                                      <!--<li><input id="whtapppop" type="checkbox" name="delivery_type[]" value="whtapp-notif" <?php //echo (in_array("whtapp-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="whtapppop">WhatsApp</label></li>-->
+																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop">SMS Notification</label></li>
 																										</ul>
 																									</div>
 																								</div>
@@ -1721,8 +1707,7 @@ h2.watchtitle {
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="<?php echo $value['dcondition_entry_price']; ?>">
 																																<input type="hidden" id="" name="dconnumber_entry_price" value="<?php echo $value['dconnumber_entry_price']; ?>">
-																																<button class="closemebutton">×</button>
-
+																																<button class="closemebutton">X</button>
 																															</div>
 																														</li>
 																													<?php endif ?>
@@ -1735,7 +1720,7 @@ h2.watchtitle {
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="<?php echo $value['dcondition_take_profit_point']; ?>">
 																																<input type="hidden" id="" name="dconnumber_take_profit_point" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
-																																<button class="closemebutton">×</button>
+																																<button class="closemebutton">X</button>
 																															</div>
 																														</li>
 																													<?php endif ?>
@@ -1748,11 +1733,11 @@ h2.watchtitle {
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="<?php echo $value['dcondition_stop_loss_point']; ?>">
 																																<input type="hidden" id="" name="dconnumber_stop_loss_point" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
-																																<button class="closemebutton">×</button>
+																																<button class="closemebutton">X</button>
 																															</div>
 																														</li>
 																													<?php endif ?>
-
+																													
 																												</ul>
 																											</div>
 																										</div>
@@ -1772,10 +1757,13 @@ h2.watchtitle {
 																				</div>
 																			</div>
 																	      </div>
+																	      <!-- <div class="modal-footer">
+																	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																	        <button type="button" class="btn btn-primary">Save changes</button>
+																	      </div> -->
 																	    </div>
 																	  </div>
 																	</div>
-
 																</li>
 															<?php } ?>
 

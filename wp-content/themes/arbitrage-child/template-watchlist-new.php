@@ -223,12 +223,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
+																				<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
+																					<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<?php else: ?>
+																					<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<?php endif; ?>
 																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
-																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
-																			<?php else: ?>
-																				<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
-																			<?php endif; ?>
 																		</div>
 																		<br style="clear:both;">
 																		</div>
@@ -1013,10 +1013,9 @@ input.subbuttons {
     font-weight: bold;
 }
 .dpricechange .curchange {
-    font-size: 18px;
-    color: #52c27a;
-    font-weight: bold;
+    font-size: 15px;
     line-height: 1em;
+    float: left;
 }
 .dpricechange .curchange.onred {
     color: #eb4d5c;
@@ -1635,7 +1634,8 @@ h2.watchtitle {
         margin-top: 0 !important;
     }
     .dpricechange .curchange, .dpricechange .curprice {
-        font-weight: normal !important;
+		font-weight: normal !important;
+		display: inline-block;
     }
     .dplusbutton {
         padding: 60px 0px 0px 0px;
@@ -1663,8 +1663,8 @@ h2.watchtitle {
         border-radius: 0px 0px 5px 5px;
     }
     .dpricechange .curprice {
-        font-size: 22px;
-        padding-top: 5px;
+		font-size: 18px;
+    	float: right;
     }
     span.curprice {
         display: inline-block;
@@ -1687,7 +1687,7 @@ h2.watchtitle {
         display: block;
         border-bottom: 1px solid #1e3554;
         width: 95%;
-        margin: 0 16px;
+        /* margin: 0 16px; */
         padding: 0px 0px 9px;
     }
 

@@ -120,7 +120,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 						
 						<?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     
-                    	<?php get_template_part('parts/sidebar', 'profile'); ?>
+						<?php 
+						// get_template_part('parts/sidebar', 'profile'); 
+						?>
                         
 					</div>
 				</div>

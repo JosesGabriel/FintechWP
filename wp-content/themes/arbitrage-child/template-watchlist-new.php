@@ -213,19 +213,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	
 																	<div class="row">
-																		<div class="col-md-6">
-																			 <div class="dchart">
-																				<div class="chartjs">
-
-                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
-																				
-                                                                                	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
-																					 </div>-->
-																				
-                                                                                </div>
-																			</div>
-																		</div>
-																		<div class="row">
 
                                                                         <div class="wlttlstockvals">
 
@@ -269,7 +256,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		<br style="clear:both;">
 
 																		</div>
-																	</div>
 																	</div>
                                                                      <!--                       
 																	 <div class="dtockname">

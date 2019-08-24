@@ -4463,7 +4463,7 @@ if ($getdstocks && $getdstocks != '') {
 
 			            jQuery.ajax({
 				            type: "POST",
-				            data:  text,
+				            data:  {text: text},
 				            success: function(data) {
 				                // Check the output of ajax call on firebug console
 				                console.log(data);

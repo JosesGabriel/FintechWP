@@ -1015,7 +1015,6 @@ input.subbuttons {
 .dpricechange .curchange {
     font-size: 15px;
     line-height: 1em;
-    float: left;
 }
 .dpricechange .curchange.onred {
     color: #eb4d5c;
@@ -1635,7 +1634,6 @@ h2.watchtitle {
     }
     .dpricechange .curchange, .dpricechange .curprice {
 		font-weight: normal !important;
-		display: inline-block;
     }
     .dplusbutton {
         padding: 60px 0px 0px 0px;
@@ -1664,7 +1662,6 @@ h2.watchtitle {
     }
     .dpricechange .curprice {
 		font-size: 18px;
-    	float: right;
     }
     span.curprice {
         display: inline-block;
@@ -1688,7 +1685,7 @@ h2.watchtitle {
         border-bottom: 1px solid #1e3554;
         width: 95%;
         /* margin: 0 16px; */
-        padding: 0px 0px 9px;
+        /* padding: 0px 0px 9px; */
     }
 
     #page-container {

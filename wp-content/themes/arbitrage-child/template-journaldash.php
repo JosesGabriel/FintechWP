@@ -3627,11 +3627,11 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<?php if(isset($_POST['texts'])) {
-                                                                          				echo $_POST['texts'];
+                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
+                                                                          				echo $_POST['text'];
                                                                           			}
 
-                                                                          			?>
+                                                                          			?></div>
                                                                              </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">

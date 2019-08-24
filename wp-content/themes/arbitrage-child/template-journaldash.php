@@ -3627,8 +3627,8 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<?php if(isset($_POST['text'])) {
-                                                                          				echo $_POST['text'];
+                                                                          			<?php if(isset($_POST['texts'])) {
+                                                                          				echo $_POST['texts'];
                                                                           			}
 
                                                                           			?>
@@ -4452,9 +4452,9 @@ if ($getdstocks && $getdstocks != '') {
     			$.ajax({
 			            url: window.location,
 			            type: 'POST',
-			            data: {text: text},
+			            data: {texts: text},
 			            success: function( response){
-			                  console.log("Successful! My post data is: "+response);
+			                  console.log("Successful! My post data is: "+texts);
 			                },
 			                error: function(error){
 			                  console.log("error");

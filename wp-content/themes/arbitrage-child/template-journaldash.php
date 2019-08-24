@@ -4,7 +4,8 @@
     */
 
 // get_header();
-// Ralph Was Here
+// Ralph Was Here 
+// Trading Journal
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
@@ -1940,7 +1941,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
+																	                                        <strong>Enter Buy Order test po</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">

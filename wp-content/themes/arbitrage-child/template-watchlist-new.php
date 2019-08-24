@@ -1711,7 +1711,7 @@ h2.watchtitle {
     .box-portlet-header {
         background: transparent;
         /*border-bottom: 1px solid #1e3554;*/
-       padding: 10px 0px
+       padding: 10px 0px 0;
     }
 
     .inner-placeholder {

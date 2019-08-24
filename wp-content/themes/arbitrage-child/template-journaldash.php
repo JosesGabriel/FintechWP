@@ -1394,8 +1394,12 @@ get_header('dashboard');
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
         $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
+        
+        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
         $tradeinfo['price'] = $_POST['inpt_data_price'];
+        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
@@ -1936,7 +1940,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order test again</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
@@ -3782,13 +3786,13 @@ if ($getdstocks && $getdstocks != '') {
 														});
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.log('asdasdasd');
+															
 															var inputVal = jQuery(this).val().length;													
-
+                                                            console.log(inputVal);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
-																console.log('tesssssss');
+
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}

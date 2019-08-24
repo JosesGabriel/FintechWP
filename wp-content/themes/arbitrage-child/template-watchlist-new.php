@@ -104,7 +104,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 	// get_template_part('parts/global', 'css'); 
 	?>
 	<?php
-	// get_template_part('parts/css', 'journal'); 
+	get_template_part('parts/css', 'journal'); 
 	?>
     <?php get_template_part('parts/sidebar', 'calc'); ?>
     <?php get_template_part('parts/sidebar', 'varcalc'); ?>
@@ -121,7 +121,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 						<?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     
 						<?php 
-						// get_template_part('parts/sidebar', 'profile'); 
+						get_template_part('parts/sidebar', 'profile'); 
 						?>
                         
 					</div>

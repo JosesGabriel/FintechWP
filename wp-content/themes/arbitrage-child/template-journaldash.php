@@ -3627,9 +3627,11 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<div class="sample"><?php if(isset($_POST['text'])) {
-                                                                          				print_r($_POST['text']);
-                                                                          			}
+                                                                          			<div class="sample"><?php// if(isset($_POST['text'])) {
+                                                                          				//print_r($_POST['text']);
+                                                                          			//}
+                                                                          				$phpVar =  $_COOKIE['var1'];
+   																						echo $phpVar;
 
                                                                           			?></div>
                                                                              </li>
@@ -4446,10 +4448,12 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
+
+    			document.cookie = "var1=" + text;
     			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
 
-    			$.ajax({
+    			/*$.ajax({
 			            url: window.location,
 			            type: 'POST',
 			            data: {text: text},
@@ -4459,7 +4463,7 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });
+			        });*/
 
     		}	
 			

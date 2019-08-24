@@ -226,13 +226,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				</div>
 																			</div>
 
-                                                                            <span style="display:none;" class="subnotif">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </span>
-
                                                                             <?php if($dchange < 0){$valcolor = "onred";}else{$valcolor = "ongreen";} ?>
 
                                                                             <span class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></span>

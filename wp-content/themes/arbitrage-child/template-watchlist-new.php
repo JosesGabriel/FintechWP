@@ -213,8 +213,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	
 																	<div class="row">
-
-                                                                        <div class="wlttlstockvals">
+																		
+																		<div class="wlttlstockvals">
 
                                                                             <span class="stocknn"><?php echo $value['stockname']; ?></span>
 
@@ -238,23 +238,18 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             <?php endif; ?>
 
                                                                             <span class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></span><?php */?>
-
-                                                                        </div>
-
-																		<div class="col-md-12" style="padding-top: 12px;">
-
-                                                                          <div class="minichartt">
-                                                                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                                                                            <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                                                                                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-                                                                            </div>
-                                                                          </div>
-
 																		</div>
-																		<div>
+																		<div class="col-md-6">
+																			 <div class="dchart">
+																				<div class="chartjs">
 
-																		<br style="clear:both;">
-
+                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
+																				
+                                                                                	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
+																					 </div>-->
+																				
+                                                                                </div>
+																			</div>
 																		</div>
 																	</div>
                                                                      <!--                       

@@ -4452,9 +4452,9 @@ if ($getdstocks && $getdstocks != '') {
     			$.ajax({
 			            url: window.location,
 			            type: 'POST',
-			            data: {texts: text},
+			            data: {text: text},
 			            success: function( response){
-			                  console.log("Successful! My post data is: "+texts);
+			                  console.log("Successful! My post data is: "+text);
 			                },
 			                error: function(error){
 			                  console.log("error");

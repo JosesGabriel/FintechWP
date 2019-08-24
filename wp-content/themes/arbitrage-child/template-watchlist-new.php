@@ -223,12 +223,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
+																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																				<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
 																				<?php else: ?>
 																					<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
 																				<?php endif; ?>
-																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
 																		</div>
 																		<div class="col-md-12">
@@ -1581,7 +1581,12 @@ h2.watchtitle {
     	font-size: 13px;
 	}
     .subnotif {
-        display: block;
+		display: block;
+		width: 50%;
+		font-size: 13px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
     }
     .dinnerlist .deleteme {
         text-align: right;

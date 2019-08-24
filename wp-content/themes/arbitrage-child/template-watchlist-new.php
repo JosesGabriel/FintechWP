@@ -1652,14 +1652,20 @@ h2.watchtitle {
     .onred {color: #ea4d5c !important;}
     .ongreen {color: #53b987 !important;}
     .dinnerlist .dparams ul li > div.dvalue {
-        font-size: 18px;
+        font-size: 13px;
         width: 100%;
         font-weight: bold;
         padding: 5px;
         border: 1px solid #132b46;
         text-align: center;
         border-radius: 0px 0px 5px 5px;
-    }
+	}
+	.dvalue span.ontoleft, .dvalue span.ontoright {
+		color: #ecf0f1;
+		font-family: 'Roboto', sans-serif;
+		font-size: 13px;
+		font-weight: 300;
+	}
     .dpricechange .curprice {
 		font-size: 18px;
     }

@@ -33,6 +33,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 					$('#vyndue--link').attr("href","https://vyndue.com");
 					alert('123');
 		}
+	}
 	</script>
 <?php
 global $current_user;

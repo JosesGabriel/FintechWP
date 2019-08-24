@@ -3626,14 +3626,12 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            	<form name="form" action="" method="get">
-  																					<input type="hidden" id="hsearchlogs" name="hsearchlogs">
-																				</form>
+                                                                            																					                                                                            	                                                                      		
+                                                                          			<div class="sample"><?php if(isset($_POST['test'])) {
+                                                                          				echo $_POST['test'];
+                                                                          			}
 
-																				<?php echo $_GET['hsearchlogs']; ?>
-
-                                                                            	<div class="sample" id="textid"></div>                                                                       		
-                                                                          			
+                                                                          			?></div>
                                                                              </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4448,8 +4446,31 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var text = $(this).val();
-    			$('input[name="hsearchlogs"]').val(text);	
+    			//$('input[name="hsearchlogs"]').val(text);	
     			//$('div.sample').text(text);
+
+    			/*$.ajax({
+			            url: window.location,
+			            type: 'POST',
+			            data: {text: text},
+			            success: function( response){
+			                  console.log("Successful! My post data is: "+text);
+			                },
+			                error: function(error){
+			                  console.log("error");
+			                }
+			        });*/
+
+			        $.ajax({
+					    type: 'post', // the method (could be GET btw)
+					    url: window.location, // The file where my php code is
+					    data: {
+					        'test': text // all variables i want to pass. In this case, only one.
+					    },
+					    success: function(data) { // in case of success get the output, i named data
+					        alert(data); // do something with the output, like an alert
+					    }
+					});
 
     		}	
 			

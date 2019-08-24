@@ -3626,9 +3626,13 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                                             <li class="s-logs" style="display: none;">
-                                                                            																					                                                                            	                                                                      		
-                                                                          	
-                                                                             </li>
+                                                                            		<?php 
+                                                                            		$query = $_POST['keyword'];
+
+                                                                            		echo 'sample->' . $query;
+
+                                                                            		?>									              
+                                                                            </li>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 

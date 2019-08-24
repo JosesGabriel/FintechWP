@@ -4450,9 +4450,15 @@ if ($getdstocks && $getdstocks != '') {
     			//$('div.sample').text(text);
 
     			$.ajax({
-			            url: 'template-journaldash.php',
+			            url: window.location,
 			            type: 'POST',
-			            data: {text: text}
+			            data: {text: text},
+			            success: function( response){
+			                  console.log("Successful! My post data is: "+response);
+			                },
+			                error: function(error){
+			                  console.log("error");
+			                }
 			        });
 
     		}	

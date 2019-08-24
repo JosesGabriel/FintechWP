@@ -1900,7 +1900,7 @@ h2.watchtitle {
     background: #00bcd4 !important;
     border-color: #00bcd4 !important;
 }
-.swal2-popup .swal2-styled.swal2-confirm:hover {
+.swal2-popup .swal2-styled.swal2-cancel:hover {
     background: #dd3333 !important;
     border-color: #00bcd4 !important;
 }

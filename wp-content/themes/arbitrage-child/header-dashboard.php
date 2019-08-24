@@ -28,6 +28,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	<script>
 		window.onload = function() {
 			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+				window.location.replace("https://www.arbitrage.ph/vyndue");
 				$('#vyndue--link').attr("target","_blank");
 				$('#vyndue--link').attr("href","https://vyndue.com");
 				window.close();

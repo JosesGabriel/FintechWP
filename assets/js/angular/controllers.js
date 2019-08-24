@@ -569,8 +569,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     // }
 	// setInterval(updateMarketDepth, 5000);
 }]);
-app.controller('disclosures', function($scope, $http) {
-    $scope.stocks = _stocks;
+app.controller('disclosures', function($scope, $http, $rootScope) {
+    $scope.$watch('$root.stockList', function () {
+        $scope.stocks = $rootScope.stockList;
+    });
     $scope.disclosures = [];
     $http.get("/api/disclosures").then(function (response) {
         if (response.data.success) {

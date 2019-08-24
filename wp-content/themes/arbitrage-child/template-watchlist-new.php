@@ -100,9 +100,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 
-	<?php 
-	get_template_part('parts/global', 'css'); 
-	?>
+	<?php get_template_part('parts/global', 'css'); ?>
     <?php get_template_part('parts/sidebar', 'calc'); ?>
     <?php get_template_part('parts/sidebar', 'varcalc'); ?>
     <?php get_template_part('parts/sidebar', 'avarageprice'); ?>    
@@ -1854,4 +1852,34 @@ h2.watchtitle {
         padding-bottom: 0;
         margin-bottom: 5px;
         font-weight: 400;
-    }</style>
+	}
+	
+.swal-modal {
+	background-color: #142b46;
+	border-radius: 15px;
+	width: 500px;
+}
+.swal-text, .swal-title {
+	color: white;
+}
+.swal-button--confirm {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #00bcd4 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.swal-button--cancel {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #9E9E9E solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+</style>

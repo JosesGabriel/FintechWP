@@ -3562,6 +3562,16 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     <div style="width:65px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
+                                                                            
+                                                                            <li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	<?php 
+
+	                                                                            echo $_POST['hsearchlogs'];
+	                                                                            	?>	
+
+                                                                            </li>
+
 																			<?php
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
                                                                                 // echo  $_GET['ptnum'];
@@ -3625,14 +3635,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
 
-                                                                            <li class="s-logs" style="display: none;">
-                                                                            	<input type="hidden" name="hsearchlogs" >
-                                                                            	<?php 
-
-                                                                            echo $_POST['hsearchlogs'];
-                                                                            	?>	
-
-                                                                            </li>
+                                                                       
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 

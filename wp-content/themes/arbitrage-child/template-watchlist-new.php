@@ -230,7 +230,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<?php endif; ?>
 																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																		</div>
-																		<br style="clear:both;">
 																		</div>
 																		<div class="col-md-12">
 																			 <div class="dchart">
@@ -1572,7 +1571,8 @@ h2.watchtitle {
         border-bottom: none;
     }
     .dpricechange {
-    text-align:right;
+		text-align: right;
+    	padding-bottom: 5px;
     }
     .subnotif {
         display: none;

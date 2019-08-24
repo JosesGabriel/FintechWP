@@ -214,20 +214,21 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
-																			<span class="stocknn"><?php echo $value['stockname']; ?></span>
+																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="subnotif">
+																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																					echo ",";
+																				} ?>
+																			</div>
 
-                                                                            <span style="display:none;" class="subnotif">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </span>
-
-                                                                            <?php if($dchange < 0){$valcolor = "onred";}else{$valcolor = "ongreen";} ?>
-
-                                                                            <span class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></span>
-
-                                                                            <span class="curchange <?php echo $valcolor; ?>">(<?php echo $dchange; ?>%)</span>
+																			<div class="dpricechange">
+																			<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
+																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
+																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php else: ?>
+																				<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																			<?php endif; ?>
 																		</div>
 																		<br style="clear:both;">
 																		</div>

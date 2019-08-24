@@ -3627,7 +3627,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
 
-                                                                            	<input type="hidden" value="" name="hsearchlogs">
+                                                                            	<input type="hidden" value="botimkot" name="hsearchlogs">
                                                                             	<div class="sample"><?php echo $post = $_REQUEST['hsearchlogs']; ?></div>
 
 

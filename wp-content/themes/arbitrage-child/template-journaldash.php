@@ -3627,8 +3627,8 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             																					                                                                            	                                                                      		
-                                                                          			<?php if(isset($_POST['text'])) {
-                                                                          				var_dump(echo $_POST['text']);
+                                                                          			<?php if(isset($_POST['texts'])) {
+                                                                          				echo $_POST['texts'];
                                                                           			}
 
                                                                           			?>

@@ -1881,7 +1881,7 @@ h2.watchtitle {
     font-size: 16px;
     color: #ffffff;
     background: none !important;
-    border: 2px #9E9E9E solid;
+    border: 2px #9E9E9E solid !important;
     height: auto;
     border-radius: 25px;
     padding: 3px 9px;
@@ -1891,7 +1891,7 @@ h2.watchtitle {
     font-size: 16px;
     color: #ffffff;
     background: none !important;
-    border: 2px #00bcd4 solid;
+    border: 2px #00bcd4 solid !important;
     height: auto;
     border-radius: 25px;
     padding: 3px 12px;
@@ -1902,7 +1902,7 @@ h2.watchtitle {
 }
 .swal2-popup .swal2-styled.swal2-cancel:hover {
     background: #dd3333 !important;
-    border-color: #00bcd4 !important;
+    border-color: #9E9E9E !important;
 }
 .swal2-popup .swal2-actions {
 	margin: 1.25em 0 0 auto;

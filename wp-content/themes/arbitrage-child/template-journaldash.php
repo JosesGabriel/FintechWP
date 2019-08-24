@@ -3627,10 +3627,10 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                             <li class="s-logs" style="display: none;">
                                                                             	<input type="hidden" name="hsearchlogs" >
-                                                                            	<?php 
+                                                                            	<?php
 
-                                                                            echo $_POST['hsearchlogs'];
-                                                                            	?>	
+                                                                            echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
+                                                                                ?>	
 
                                                                             </li>
 
@@ -3698,10 +3698,10 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="pginner">
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
-                                                                                ?>
+                                                                                    ?>
 																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
-                                                                            } ?>
+                                                                                } ?>
 																			</ul>
 																		</div>
 																	</div>	

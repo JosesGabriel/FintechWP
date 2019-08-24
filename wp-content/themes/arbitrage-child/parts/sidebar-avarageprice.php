@@ -1,3 +1,12 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+<style type="text/css">
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+</style>
+
 <div class="add-postsis sdjalc" id="toghandlingers"  style="display: none;">
 
     <div class="arb_calcbox varcalc">
@@ -69,7 +78,7 @@
 
                                             <span>Position</span></br>
 
-                                            <input type="text" class="dpos" placeholder="Enter Position">
+                                            <input type="text" class="dpos number" placeholder="Enter Position">
 
                                         </li>
 
@@ -77,7 +86,7 @@
 
                                             <span>Price</span></br>
 
-                                            <input type="text" class="dpri" placeholder="Enter Price">
+                                            <input type="text" class="dpri number" placeholder="Enter Price">
 
                                         </li>
 
@@ -262,6 +271,39 @@
 
 
         });
+
+
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
     });
 

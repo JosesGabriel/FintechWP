@@ -1902,7 +1902,7 @@ h2.watchtitle {
 }
 .swal2-popup .swal2-styled.swal2-cancel:hover {
     background: #dd3333 !important;
-    border-color: #9E9E9E !important;
+    border-color: #dd3333 !important;
 }
 .swal2-popup .swal2-actions {
 	margin: 1.25em 0 0 auto;

@@ -1854,15 +1854,15 @@ h2.watchtitle {
         font-weight: 400;
 	}
 	
-.swal-modal {
+.swal2-popup.swal2-modal {
 	background-color: #142b46;
 	border-radius: 15px;
 	width: 500px;
 }
-.swal-text, .swal-title {
+.swal2-text, .swal2-title {
 	color: white;
 }
-.swal-button--confirm {
+.swal2-button--confirm {
 	font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #ffffff;
@@ -1872,7 +1872,7 @@ h2.watchtitle {
     border-radius: 25px;
     padding: 3px 9px;
 }
-.swal-button--cancel {
+.swal2-button--cancel {
 	font-family: 'Roboto', sans-serif;
     font-size: 16px;
     color: #ffffff;

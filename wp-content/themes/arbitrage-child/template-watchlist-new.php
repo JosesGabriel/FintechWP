@@ -223,14 +223,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
-																				<?php
-																					if($dchange < 0){
-																						$valcolor = "onred";
-																					}else{
-																						$valcolor = "ongreen";
-																					}
-																				?>
-																				<div class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
+																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
 																			<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
 																				<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
 																			<?php else: ?>

@@ -28,7 +28,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	<script>
 		window.onload = function() {
 			$('#vyndue--link').on('click', function(){
+				alert('1');
 				if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+					alert('2');
 					$("#vyndue--link__hidden").trigger("click");
 				}
 			});

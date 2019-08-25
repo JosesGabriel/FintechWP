@@ -4476,7 +4476,7 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = [];
     			var tdata = $('.tdata').attr('id','tdata-1').text();
 
-    			console.log(tdata.innerText);
+    			console.log(tdata);
     			//var td =  $(".tdata").text().length / 2;
 				//console.log(td);
     			

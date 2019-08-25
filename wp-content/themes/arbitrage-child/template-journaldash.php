@@ -3655,7 +3655,7 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	
 	                                                                            	?>
                                                                             </li>-->
-                                                                          
+                                                                          	<?php echo $tnum; ?>
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 

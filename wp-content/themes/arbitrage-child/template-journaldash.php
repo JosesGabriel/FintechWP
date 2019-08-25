@@ -4464,7 +4464,7 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			var tdata = [];
     			tdata = $('.tdata').text();
-    			console.log(tdata[1]);
+    			console.log(tdata.length());
     			/*jQuery.ajax({
 			            //url: window.location,
 			            type: 'POST',

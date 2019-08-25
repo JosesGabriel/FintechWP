@@ -4452,6 +4452,7 @@ if ($getdstocks && $getdstocks != '') {
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
         		jQuery('.s-logs').css("display","none");
+        		jQuery(".s-logs").html(''); 
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
@@ -4465,13 +4466,13 @@ if ($getdstocks && $getdstocks != '') {
             	//});
 
 
-    			$.ajax({
-			            url: window.location,
+    			jQuery.ajax({
+			            //url: window.location,
 			            type: 'POST',
 			            data: {keyword: keyword},
 			            success: function( data){
-			            	  $(".s-logs").html(''); 
-			            	  $(".s-logs").html(keyword); 
+			            	 jQuery(".s-logs").html(''); 
+			            	 jQuery(".s-logs").html(keyword); 
 			                  console.log("Successful! My post data is: "+ keyword);
 			                },
 			                error: function(error){

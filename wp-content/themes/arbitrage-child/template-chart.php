@@ -2355,6 +2355,9 @@
 		arbitrage_socket.on('connect', function () {
 			console.log('ARBITRAGE socket connected');
 		});
+		arbitrage_socket.on('pse-chart', function (data) {
+			console.log('PSE-CHART', data);
+		});
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;

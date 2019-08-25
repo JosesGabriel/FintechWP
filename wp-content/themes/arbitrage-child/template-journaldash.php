@@ -3638,18 +3638,13 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
 
-<<<<<<< HEAD
-                                                                       
-=======
+                                                             
                                                                             <li class="s-logs" style="display: none;">
                                                                             	<input type="hidden" name="hsearchlogs" >
-                                                                            	<?php
-
-                                                                            echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
-                                                                                ?>	
+                                                                            	
 
                                                                             </li>
->>>>>>> 69c373f1c1bf467407649399e6b485c9dd995ab8
+
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 

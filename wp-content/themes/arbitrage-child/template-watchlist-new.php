@@ -100,12 +100,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 
-	<?php 
-	// get_template_part('parts/global', 'css'); 
-	?>
-	<?php
-	get_template_part('parts/css', 'journal'); 
-	?>
+	<?php get_template_part('parts/global', 'css'); ?>
     <?php get_template_part('parts/sidebar', 'calc'); ?>
     <?php get_template_part('parts/sidebar', 'varcalc'); ?>
     <?php get_template_part('parts/sidebar', 'avarageprice'); ?>    
@@ -213,11 +208,28 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	
 																	<div class="row">
-																		<div class="col-md-6">
+																		<div class="wlttlstockvals">
+																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="subnotif">
+																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+																					echo ",";
+																				} ?>
+																			</div>
+
+																			<div class="dpricechange">
+																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
+																				<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
+																					<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<?php else: ?>
+																					<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<?php endif; ?>
+																		</div>
+																		</div>
+																		<div class="col-md-12">
 																			 <div class="dchart">
 																				<div class="chartjs">
-
-                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span>
+                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span>
 																				
                                                                                 	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
 																					 </div>-->
@@ -225,52 +237,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 </div>
 																			</div>
 																		</div>
-																		<div class="row">
-
-                                                                        <div class="wlttlstockvals">
-
-                                                                            <span class="stocknn"><?php echo $value['stockname']; ?></span>
-
-                                                                            <span style="display:none;" class="subnotif">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </span>
-
-                                                                            <?php if($dchange < 0){$valcolor = "onred";}else{$valcolor = "ongreen";} ?>
-
-                                                                            <span class="curprice <?php echo $valcolor; ?>">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></span>
-
-                                                                            <span class="curchange <?php echo $valcolor; ?>">(<?php echo $dchange; ?>%)</span>
-
-                                                                            <?php /*?><?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-                                                                                <span class="curchange onred">(<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php else: ?>
-                                                                                <span class="curchange ongreen">(+<?php echo $dinstall['stock'][0]->percent_change; ?>%)</span>
-                                                                            <?php endif; ?>
-
-                                                                            <span class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></span><?php */?>
-
-                                                                        </div>
-
-																		<div class="col-md-12" style="padding-top: 12px;">
-
-                                                                          <div class="minichartt">
-                                                                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                                                                            <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                                                                                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-                                                                            </div>
-                                                                          </div>
-
-																		</div>
-																		<div>
-
-																		<br style="clear:both;">
-
-																		</div>
 																	</div>
-																	</div>
+																	
                                                                      <!--                       
 																	 <div class="dtockname">
 																		<div class="stocknn"><?php echo $value['stockname']; ?></div>
@@ -323,7 +291,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<?php endif ?>
 																			<?php if (isset($value['dcondition_stop_loss_point'])): ?>
 																				<li>
-																					<div class="dcondition">Stop Loss</div>
+																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?></span>
 																						<span class="ontoright">Php</span>
@@ -334,7 +302,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content" style="background: #2c3e50;">
+																	    <div class="modal-content mc-background">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -351,8 +319,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																								<div class="col-md-8">
 																									<div class="innerdeliver">
 																										<ul>
-																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop">Website Popup</label></li>
-																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop">SMS Notification</label></li>
+																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin">Website Popup</label></li>
+																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin">SMS Notification</label></li>
 																										</ul>
 																									</div>
 																								</div>
@@ -361,7 +329,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																										<div class="col-md-6">
 																											<div class="condition-params">
 																												<div class="condition-type">
-																													<label>Conditions</label>
+																													<label class="label--margin">Conditions</label>
 																													<select id="condition-list">
 																														<option value="">Select Conditions</option>
 																														<option style="<?php echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
@@ -370,7 +338,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																													</select>
 																												</div>
 																												<div class="condition-freq">
-																													<label>Condition Frequency</label>
+																													<label class="label--margin">Condition Frequency</label>
 																													<input type="number" id="condition_frequency" name="confreq">
 																												</div>
 																												<div class="addtolist">
@@ -804,7 +772,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     width: 32%;
     font-size: 11px;
     line-height: 1em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     text-align: center;
     position: relative;
     box-shadow: 0px 0px 6px -3px rgba(4,13,23,0.7);
@@ -1039,9 +1007,7 @@ input.subbuttons {
     font-weight: bold;
 }
 .dpricechange .curchange {
-    font-size: 18px;
-    color: #52c27a;
-    font-weight: bold;
+    font-size: 15px;
     line-height: 1em;
 }
 .dpricechange .curchange.onred {
@@ -1158,7 +1124,7 @@ li.dbaseitem {
 }
 h2.watchtitle {
     font-size: 18px;
-    padding: 2px 10px 4px;
+	padding: 0 10px 4px;
     margin: 0;
     font-weight: 800;
 }
@@ -1600,10 +1566,22 @@ h2.watchtitle {
         border-bottom: none;
     }
     .dpricechange {
-    text-align:right;
-    }
+		text-align: right;
+		padding-bottom: 7px;
+		display: block;
+		margin-top: -37px;
+	}
+	.chartjs span.nocont {
+		padding: 14px 0;
+    	font-size: 13px;
+	}
     .subnotif {
-        display: none;
+		display: block;
+		width: 50%;
+		font-size: 13px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
     }
     .dinnerlist .deleteme {
         text-align: right;
@@ -1661,16 +1639,18 @@ h2.watchtitle {
         margin-top: 0 !important;
     }
     .dpricechange .curchange, .dpricechange .curprice {
-        font-weight: normal !important;
+		font-weight: normal !important;
     }
     .dplusbutton {
-        padding: 60px 0px 0px 0px;
+        padding: 50px 0px 0px 0px;
     }
-
-
     .dinnerlist .dparams ul li {
         width: 31.6%;
-    }
+	}
+	.box-portlet-header, .box-portlet-footer {
+		background: none;
+    	padding: 0;
+	}
     span.curchange {
         font-size: 15px;
         font-weight: normal;
@@ -1680,17 +1660,24 @@ h2.watchtitle {
     .onred {color: #ea4d5c !important;}
     .ongreen {color: #53b987 !important;}
     .dinnerlist .dparams ul li > div.dvalue {
-        font-size: 18px;
+        font-size: 13px;
         width: 100%;
         font-weight: bold;
         padding: 5px;
         border: 1px solid #132b46;
         text-align: center;
         border-radius: 0px 0px 5px 5px;
-    }
+	}
+	.dvalue span.ontoleft, .dvalue span.ontoright {
+		color: #ecf0f1;
+		font-family: 'Roboto', sans-serif;
+		font-size: 13px;
+		font-weight: 300;
+	}
     .dpricechange .curprice {
-        font-size: 22px;
-        padding-top: 5px;
+		font-size: 18px;
+		padding-bottom: 3px;
+		font-weight: 500 !important;
     }
     span.curprice {
         display: inline-block;
@@ -1710,11 +1697,11 @@ h2.watchtitle {
         padding: 0;
     }
     .wlttlstockvals {
-        display: block;
-        border-bottom: 1px solid #1e3554;
-        width: 95%;
-        margin: 0 16px;
-        padding: 0px 0px 9px;
+		display: block;
+		width: 100%;
+		/* border-bottom: 1px solid #1e3554; */
+        /* margin: 0 16px; */
+        /* padding: 0px 0px 9px; */
     }
 
     #page-container {
@@ -1724,7 +1711,7 @@ h2.watchtitle {
     .box-portlet-header {
         background: transparent;
         /*border-bottom: 1px solid #1e3554;*/
-       padding: 10px 0px
+       padding: 10px 0px 0;
     }
 
     .inner-placeholder {
@@ -1865,4 +1852,63 @@ h2.watchtitle {
         padding-bottom: 0;
         margin-bottom: 5px;
         font-weight: 400;
-    }</style>
+	}
+	
+.swal2-popup.swal2-modal {
+	background-color: #142b46;
+	border-radius: 15px;
+	width: 500px;
+}
+.swal2-text, .swal2-title {
+	color: #fff !important;
+}
+.swal2-button--confirm {
+	font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none;
+    border: 2px #00bcd4 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.swal2-popup .swal2-content {
+    color: #fff;
+    font-size: 16px;
+}
+.swal2-popup .swal2-styled.swal2-cancel {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none !important;
+    border: 2px #9E9E9E solid !important;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.swal2-popup .swal2-styled:focus {
+	outline: 0;
+    box-shadow: none;
+}
+.swal2-popup .swal2-styled.swal2-confirm {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    background: none !important;
+    border: 2px #00bcd4 solid !important;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 12px;
+}
+.swal2-popup .swal2-styled.swal2-confirm:hover {
+    background: #00bcd4 !important;
+    border-color: #00bcd4 !important;
+}
+.swal2-popup .swal2-styled.swal2-cancel:hover {
+    background: #dd3333 !important;
+    border-color: #dd3333 !important;
+}
+.swal2-popup .swal2-actions {
+	margin: 1.25em 0 0 auto;
+}
+</style>

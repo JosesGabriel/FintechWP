@@ -216,11 +216,8 @@
 
 
 
-                    var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val() : 0);
-                    
-                    
-
-                    var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val() : 0);
+                    var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val().replace(/[^0-9\.]/g, '') : 0);
+                    var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val().replace(/[^0-9\.]/g, '') : 0);
 
                     if (dposition > 0 && dprice > 0) {
 

@@ -4,6 +4,8 @@
     */
 
 // get_header();
+// Ralph Was Here 
+// Trading Journal
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
@@ -1393,8 +1395,12 @@ get_header('dashboard');
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
         $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
+        
+        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
         $tradeinfo['price'] = $_POST['inpt_data_price'];
+        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
@@ -1953,8 +1959,8 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -3632,7 +3638,18 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
 
+<<<<<<< HEAD
                                                                        
+=======
+                                                                            <li class="s-logs" style="display: none;">
+                                                                            	<input type="hidden" name="hsearchlogs" >
+                                                                            	<?php
+
+                                                                            echo "<script> $('input[name=\"hsearchlogs\"]').val();</script>";
+                                                                                ?>	
+
+                                                                            </li>
+>>>>>>> 69c373f1c1bf467407649399e6b485c9dd995ab8
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
@@ -3698,10 +3715,10 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="pginner">
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
-                                                                                ?>
+                                                                                    ?>
 																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
-                                                                            } ?>
+                                                                                } ?>
 																			</ul>
 																		</div>
 																	</div>	
@@ -3781,13 +3798,13 @@ if ($getdstocks && $getdstocks != '') {
 														});
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.log('asdasdasd');
+															
 															var inputVal = jQuery(this).val().length;													
-
+                                                            console.log(inputVal);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
-																console.log('tesssssss');
+
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
@@ -4471,7 +4488,39 @@ if ($getdstocks && $getdstocks != '') {
 
     		}	
 			
-		});
+        });
+        
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
 
 	});

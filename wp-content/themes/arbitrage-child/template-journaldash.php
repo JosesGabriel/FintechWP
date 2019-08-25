@@ -3573,8 +3573,8 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	<input type="hidden" name="hsearchlogs" >
 	                                                                            	
 	                                                                            	<?php 
-	                                                                            		$current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
-	                                                                            		//echo $current;
+	                                                                            		$current = (isset($_GET['hsearchlogs']));
+	                                                                            		echo $current;
 	                                                                            	?>
                                                                             </li>
 
@@ -3642,12 +3642,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             ?>
 
                                                              
-                                                                            <li class="s-logs" style="display: none;">
-                                                                            	<input type="hidden" name="hsearchlogs" >
-                                                                            	
-
-                                                                            </li>
-
+                                                                          
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
@@ -4474,16 +4469,16 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });*/
+			        });
 					  jQuery.ajax({
-					   url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					   url: '<?php //echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',
 					   data: { action: 'data_fetch', keyword: keyword  },
 					   success: function(data) {
 					   	console.log(data);
 					    jQuery('.s-logs').html( data );
 					   }
-					  });
+					  });*/
 
     		}	
 			

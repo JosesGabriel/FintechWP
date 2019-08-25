@@ -4462,9 +4462,13 @@ if ($getdstocks && $getdstocks != '') {
     			$('input[name="hsearchlogs"]').val(keyword);	
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
-    			var tdata = [];
-    			tdata = $('.tdata').text();
+    			//var tdata = [];
+    			var tdata = $('.tdata').text();
     			console.log(tdata.length());
+
+    			if (keyword == tdata){
+    				 $('.tdata').text(tdata);
+    			}
     			/*jQuery.ajax({
 			            //url: window.location,
 			            type: 'POST',

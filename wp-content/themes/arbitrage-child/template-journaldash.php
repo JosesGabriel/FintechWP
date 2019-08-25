@@ -3573,8 +3573,8 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	<input type="hidden" name="hsearchlogs" >
 	                                                                            	
 	                                                                            	<?php 
-	                                                                            		$pt = $_GET['pt'];
-	                                                                            		echo $pt;
+	                                                                            		$current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
+	                                                                            		echo $current;
 	                                                                            	?>
                                                                             </li>
 

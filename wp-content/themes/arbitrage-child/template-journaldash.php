@@ -4502,7 +4502,7 @@ if ($getdstocks && $getdstocks != '') {
 		    				}
 		    			
 		    			if($('#logrows-'+ i).hasClass('s-logs'+ i)){
-
+		    				$('.s-logs').remove();
 		    				return;
 
 		    			}else{

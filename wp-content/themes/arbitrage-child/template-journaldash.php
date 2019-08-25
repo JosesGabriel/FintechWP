@@ -4477,6 +4477,7 @@ if ($getdstocks && $getdstocks != '') {
 					   type: 'post',
 					   data: { action: 'data_fetch', keyword: keyword  },
 					   success: function(data) {
+					   	console.log(data);
 					    jQuery('.s-logs').html( data );
 					   }
 					  });

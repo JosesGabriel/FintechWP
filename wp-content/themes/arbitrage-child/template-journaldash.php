@@ -3565,10 +3565,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             
                                                                             <li class="s-logs" style="display: none;">
 	                                                                            	<input type="hidden" name="hsearchlogs" >
-	                                                                            	<?php 
-
-	                                                                            echo $_POST['hsearchlogs'];
-	                                                                            	?>	
+	                                                                            	
 
                                                                             </li>
 
@@ -4449,7 +4446,7 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			$('input[name="hsearchlogs"]').val(keyword);	
+    			//$('input[name="hsearchlogs"]').val(keyword);	
     			//$('div.sample').text(text);
 
     			/*$.ajax({
@@ -4462,7 +4459,7 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });
+			        });*/
 					  jQuery.ajax({
 					   url: '<?php// echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',
@@ -4470,7 +4467,7 @@ if ($getdstocks && $getdstocks != '') {
 					   success: function(data) {
 					    jQuery('.s-logs').html( data );
 					   }
-					  });*/
+					  });
 
     		}	
 			

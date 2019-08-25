@@ -4335,7 +4335,7 @@ if ($getdstocks && $getdstocks != '') {
     });
 	jQuery(document).ready(function(){
 
-		jQuery(".deletelog .smlbtn-delete").on("click", function(e){
+		jQuery(".deletelog").on("click", function(e){
 
 		//jQuery(".deletelog").click(function(e){
 

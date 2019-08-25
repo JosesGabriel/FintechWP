@@ -4335,7 +4335,9 @@ if ($getdstocks && $getdstocks != '') {
     });
 	jQuery(document).ready(function(){
 
-		jQuery(".deletelog").click(function(e){
+		jQuery(".deletelog").on("click", function(e){
+
+		//jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
 			console.log(dlogid);

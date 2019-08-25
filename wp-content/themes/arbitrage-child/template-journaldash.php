@@ -4464,11 +4464,13 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var tdata = $('.tdata').text();
-    			console.log(tdata.length());
+    			//console.log(tdata.length());
 
     			if (keyword == tdata){
     				 $('.tdata').text(tdata);
-    			}
+    				}else{
+    					console.log('no records found');
+    				}
     			/*jQuery.ajax({
 			            //url: window.location,
 			            type: 'POST',

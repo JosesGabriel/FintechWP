@@ -4482,7 +4482,7 @@ if ($getdstocks && $getdstocks != '') {
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
         		jQuery('.s-logs').css("display","none");
-        		jQuery(".s-logs").html(''); 
+        		 
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");

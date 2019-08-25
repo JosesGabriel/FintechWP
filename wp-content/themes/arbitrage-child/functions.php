@@ -385,7 +385,7 @@ function data_fetch(){
     //echo $query;
             $count = 1;
             $dpage = 1;
-           // $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
+            $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
             $dlisttrade = [];
             if ($author_posts->have_posts()) {
                 while ($author_posts->have_posts()) {
@@ -411,7 +411,7 @@ function data_fetch(){
                 }
                 wp_reset_postdata();
             }
-            foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
+            foreach ($dlisttrade[$current] as $tlkey => $tlvalue) {
                     $data_sellmonth = $tlvalue['data_sellmonth'];
                     $data_sellday = $tlvalue['data_sellday'];
                     $data_sellyear = $tlvalue['data_sellyear'];
@@ -442,7 +442,7 @@ function data_fetch(){
                         echo 'no records found';
                     }
 
-            endforeach; 
+            }
 }
 
 

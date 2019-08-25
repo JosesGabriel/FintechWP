@@ -3569,14 +3569,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
                                                                             
-                                                                            <li class="s-logs" style="display: none;">
-	                                                                            	<input type="hidden" name="hsearchlogs" >
-	                                                                            	
-	                                                                            	<?php 
-	                                                                            		$current = (isset($_POST['keyword']));
-	                                                                            		echo $current;
-	                                                                            	?>
-                                                                            </li>
+                                                                            
 
 																			<?php
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
@@ -3641,7 +3634,45 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
 
-                                                             
+                                                             				<li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
+	                                                                            	<?php 
+	                                                                            		$text = (isset($_POST['keyword']));
+	                                                                            		//echo $text;
+
+	                                                                            	if ($text == $data_stock){
+	                                                                            		?>
+		                                                                            		<div style="width:99%;">
+																						<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																						<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																						<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
+																						<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+																						<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+																						<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+																						<div style="width:95px" class="table-cell-live">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																						<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+																						<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																						<div style="width:35px; text-align:center">
+																							<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
+																								<i class="fas fa-clipboard"></i>
+																							</a>
+																						</div>
+																						<div style="width:25px">
+																							<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+																								<i class="fas fa-eraser"></i>
+																							</a>
+																						</div>
+																					</div>
+
+		                                                                            	<?php
+
+		                                                                            }else {
+		                                                                            	echo "no recods found";
+		                                                                            }
+
+	                                                                            	?>
+                                                                            </li>
                                                                           
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
@@ -4458,13 +4489,7 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
     			$('input[name="hsearchlogs"]').val(keyword);	
-    			//$('div.sample').text(text);
-
-
-    			//$.ajax({ keyword : keyword }, function(data) { 
-                //	$(".s-logs").html(data); 
-            	//});
-
+    			
 
     			jQuery.ajax({
 			            //url: window.location,
@@ -4478,16 +4503,7 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });/*
-					  jQuery.ajax({
-					   url: '<?php //echo admin_url('admin-ajax.php'); ?>',
-					   type: 'post',
-					   data: { action: 'data_fetch', keyword: keyword  },
-					   success: function(data) {
-					   	console.log(data);
-					    jQuery('.s-logs').html( data );
-					   }
-					  });*/
+			        });
 
     		}	
 			

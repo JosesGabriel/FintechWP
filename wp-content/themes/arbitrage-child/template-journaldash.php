@@ -3573,7 +3573,7 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	<input type="hidden" name="hsearchlogs" >
 	                                                                            	
 	                                                                            	<?php 
-	                                                                            		$current = (isset($_POST['hsearchlogs']));
+	                                                                            		$current = (isset($_POST['keyword']));
 	                                                                            		echo $current;
 	                                                                            	?>
                                                                             </li>
@@ -4460,7 +4460,7 @@ if ($getdstocks && $getdstocks != '') {
     			//$('div.sample').text(text);
 
 
-    			$.post({ search : keyword }, function(data) { 
+    			$.post(window.location, { keyword : keyword }, function(data) { 
                 	$(".s-logs").html(data); 
             	});
 

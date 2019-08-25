@@ -3676,15 +3676,15 @@ if ($getdstocks && $getdstocks != '') {
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
 																				<div style="width:99%;">
-																					<div style="width:65px" class="tdate"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
 																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
-																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
-																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
-																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
 																					<div style="width:35px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
@@ -4497,10 +4497,13 @@ if ($getdstocks && $getdstocks != '') {
 
     			for(var i = 0; i < totalrow; i++){
     				var tdata = $('#tdata' + i).text();
+    				var tdate = $('#tdate' + i).text();
+    				var tquantity = $('#tquantity' + i).text();
 
     				if(keyword == tdata){
     					console.log("success");
-    					$('.tdatalogs').text(tdata);
+    					//$('.tdatalogs').text(tdata);
+    				$("<div style='width:99%;'><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
     				}
 
     			}

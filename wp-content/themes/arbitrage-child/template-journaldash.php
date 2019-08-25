@@ -4484,7 +4484,7 @@ if ($getdstocks && $getdstocks != '') {
     					console.log("success");
     					
     					//$('.tdatalogs').text(tdata);
-    				$("<div style='width:99%;' class='tdatalogs'><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
+    				$("<div style='width:99%;' class='tdatalogs'"+ i +"><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
     				}else{
     					//$('.tdatalogs').remove();
     				}

@@ -4475,7 +4475,7 @@ if ($getdstocks && $getdstocks != '') {
     			console.log("keyword=>"+ keyword);
 
     			for(var i = 0; i < totalrow; i++){
-    				var tdata = $('#tdata' + i).text();
+    				var tdata = $('#tdata' + 1).text();
     				var tdate = $('#tdate' + i).text();
     				var tquantity = $('#tquantity' + i).text();
 

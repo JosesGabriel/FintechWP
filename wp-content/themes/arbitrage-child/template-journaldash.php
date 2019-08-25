@@ -4513,6 +4513,7 @@ if ($getdstocks && $getdstocks != '') {
 		    					
     				}else{
     					$('.s-logs' + i).remove();
+    					$('.dstatstrade ul').append("<li class='s-logs"+ i +"'><div>No records found!!!</div></li>");
     				}
 
     			}

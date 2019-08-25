@@ -3569,7 +3569,16 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
                                                                             
-                                                                            
+                                                                            <li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
+	                                                                            	<?php 
+	                                                                            		//$text = (isset($_POST['keyword']));
+	                                                                            		//echo $text;
+
+	                                                                            	
+	                                                                            	?>
+                                                                            </li>
 
 																			<?php
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
@@ -3634,16 +3643,16 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
 
-                                                             				<li class="s-logs" style="display: none;">
+                                                             				<!--<li class="s-logs" style="display: none;">
 	                                                                            	<input type="hidden" name="hsearchlogs" >
 	                                                                            	
 	                                                                            	<?php 
-	                                                                            		$text = (isset($_POST['keyword']));
+	                                                                            		//$text = (isset($_POST['keyword']));
 	                                                                            		//echo $text;
 
 	                                                                            	
 	                                                                            	?>
-                                                                            </li>
+                                                                            </li>-->
                                                                           
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">

@@ -3572,7 +3572,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             <li class="s-logs" style="display: none;">
 	                                                                            	<input type="hidden" name="hsearchlogs" >
 	                                                                            	
-
+	                                                                            	<?php echo isset($_GET['pt']; ?>
                                                                             </li>
 
 																			<?php

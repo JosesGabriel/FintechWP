@@ -4460,22 +4460,22 @@ if ($getdstocks && $getdstocks != '') {
     			//$('div.sample').text(text);
 
 
-    			$.post({ keyword : keyword }, function(data) { 
-                	$(".s-logs").html(data); 
-            	});
+    			//$.ajax({ keyword : keyword }, function(data) { 
+                //	$(".s-logs").html(data); 
+            	//});
 
 
-    			/*$.ajax({
+    			$.ajax({
 			            url: window.location,
 			            type: 'POST',
-			            data: {text: text},
-			            success: function( response){
-			                  console.log("Successful! My post data is: "+text);
+			            data: {keyword: keyword},
+			            success: function( data){
+			                  console.log("Successful! My post data is: "+ keyword);
 			                },
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });
+			        });/*
 					  jQuery.ajax({
 					   url: '<?php //echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',

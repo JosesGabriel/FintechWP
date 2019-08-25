@@ -4493,7 +4493,7 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var td =  $(".tdata").text().length
-
+    			console.log("keyword=>"+ keyword);
 
     			for(var i = 0; i < totalrow; i++){
     				var tdata = $('#tdata' + i).text();

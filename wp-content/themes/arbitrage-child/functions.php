@@ -382,7 +382,7 @@ function data_fetch(){
     );
     $author_posts = new WP_Query($author_query);
 
-    echo $query;
+    //echo $query;
             $count = 1;
             $dpage = 1;
            // $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);

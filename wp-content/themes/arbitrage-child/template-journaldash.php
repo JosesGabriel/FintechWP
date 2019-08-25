@@ -4470,6 +4470,7 @@ if ($getdstocks && $getdstocks != '') {
 			            type: 'POST',
 			            data: {keyword: keyword},
 			            success: function( data){
+			            	  $(".s-logs").html(''); 
 			            	  $(".s-logs").html(keyword); 
 			                  console.log("Successful! My post data is: "+ keyword);
 			                },

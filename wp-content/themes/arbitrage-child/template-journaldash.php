@@ -4485,6 +4485,7 @@ if ($getdstocks && $getdstocks != '') {
     					
     					//$('.tdatalogs').text(tdata);
     				$("<div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px'>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
+    					return;
     				}else{
     					$('.tdatalogs'+ i).remove();
     				}

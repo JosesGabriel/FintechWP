@@ -3650,7 +3650,8 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	
 	                                                                            	?>
                                                                             </li>-->
-                                                                     
+                                                                     	<input type="hidden" id="<?php echo 'dprofit' . $tnum; ?>" value="<?php echo $dprofit; ?>">
+
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
@@ -4484,13 +4485,14 @@ if ($getdstocks && $getdstocks != '') {
     				var tsellvalue = $('#tsellvalue' + i).text();
     				var tploss = $('#tploss' + i).text();
     				var tpercent = $('#tpercent' + i).text();
+    				var dprofit = $('#dprofit' + i).val();
     				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
     				if(keyword == tdata){
     					console.log("success");
     					
     					//$('.tdatalogs').text(tdata);
-    				$("<div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px' >" + tploss + "</div><div style='width:65px'>" +tpercent + "</div><div style='width:35px; text-align:center'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div>").appendTo('.s-logs');
+    				$("<div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px' >" + tploss + "</div><div style='width:65px' class='"+dprofit+" > 0 ? 'txtgreen' : 'txtred' table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div>").appendTo('.s-logs');
     					return;
     				}else{
     					$('.tdatalogs'+ i).remove();

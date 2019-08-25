@@ -4464,7 +4464,7 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var tdata = $('.tdata').text();
-    			//console.log(tdata.length());
+    			console.log(tdata);
     			var td =  $(".tdata").text().length / 2;
 				console.log(td);
     			if (keyword == tdata){

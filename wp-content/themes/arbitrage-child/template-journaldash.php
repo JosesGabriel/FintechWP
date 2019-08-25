@@ -4514,7 +4514,11 @@ if ($getdstocks && $getdstocks != '') {
 		    					
     				}else{
     					$('.s-logs' + i).remove();
-    					$('.dstatstrade ul').append("<li class='s-logs'><div>No records found!!!</div></li>");
+    					if($('#norecords').hasClass('s-logs')){
+    						return;
+    					}else {
+    					$('.dstatstrade ul').append("<li class='s-logs' id='norecords'><div>No records found!!!</div></li>");
+    					}
     				}
 
     			}

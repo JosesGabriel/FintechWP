@@ -3570,7 +3570,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             </li>
                                                                             
                                                                             <li class="s-logs" style="display: none;">
-	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
 	                                                                            	
 	                                                                            	<?php 
 	                                                                            		//$text = (isset($_POST['keyword']));
@@ -3710,6 +3710,7 @@ if ($getdstocks && $getdstocks != '') {
 																			</li>
 																					
 																			<?php endforeach; ?>
+																		<input type="hidden" name="hsearchlogs" value="<?php echo $tnum; ?>" >
                                                                         </ul>
                                                                     </div>
 																	<div class="deleteform">
@@ -4470,14 +4471,14 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			$('input[name="hsearchlogs"]').val(keyword);	
+    			$('input[name="hsearchlogs"]').val();	
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var td =  $(".tdata").text().length
     			var tdata = $('#tdata' + 1).text();
 
-    			console.log(tdata + ' - ' + td);
+    			console.log(tdata + ' - ' + td + 'total - row' + $('input[name="hsearchlogs"]').val());
     			//var td =  $(".tdata").text().length / 2;
 				//console.log(td);
     			

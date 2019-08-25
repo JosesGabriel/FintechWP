@@ -4510,7 +4510,7 @@ if ($getdstocks && $getdstocks != '') {
 		    			}
 		    					
     				}else{
-    					//$('.s-logs' + i).remove();
+    					$('.s-logs' + i).remove();
     				}
 
     			}

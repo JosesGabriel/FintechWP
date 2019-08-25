@@ -409,7 +409,7 @@ function data_fetch(){
                     // $dlisttrade[$dpage]
                     
                 }
-                wp_reset_postdata();
+                //wp_reset_postdata();
             }
             foreach ($dlisttrade[$current] as $tlkey => $tlvalue) {
                     $data_sellmonth = $tlvalue['data_sellmonth'];

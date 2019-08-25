@@ -385,7 +385,7 @@ function data_fetch(){
     //echo $query;
             $count = 1;
             $dpage = 1;
-            $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
+            $current = 1;
             $dlisttrade = [];
             if ($author_posts->have_posts()) {
                 while ($author_posts->have_posts()) {

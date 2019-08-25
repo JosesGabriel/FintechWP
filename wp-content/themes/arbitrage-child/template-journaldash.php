@@ -3655,13 +3655,13 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                            	
 	                                                                            	?>
                                                                             </li>-->
-                                                                          	<?php echo $tnum; ?>
+                                                                     
 
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
 																				<div style="width:99%;">
 																					<div style="width:65px" class="tdate"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px" class="<?php echo 'tdata-' . $tnum; ?>" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
 																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
@@ -4474,9 +4474,10 @@ if ($getdstocks && $getdstocks != '') {
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
-    			var tdata = $('.tdata-' + 1).text();
+    			var td =  $(".tdata").text().length
+    			var tdata = $('#tdata' + 1).text();
 
-    			console.log(tdata);
+    			console.log(tdata + ' - ' + td);
     			//var td =  $(".tdata").text().length / 2;
 				//console.log(td);
     			

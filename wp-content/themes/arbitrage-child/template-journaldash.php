@@ -4478,7 +4478,7 @@ if ($getdstocks && $getdstocks != '') {
 			                }
 			        });*/
 					  jQuery.ajax({
-					   url: '<?php// echo admin_url('admin-ajax.php'); ?>',
+					   url: '<?php echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',
 					   data: { action: 'data_fetch', keyword: keyword  },
 					   success: function(data) {

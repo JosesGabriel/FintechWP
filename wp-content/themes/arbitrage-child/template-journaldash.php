@@ -3668,7 +3668,7 @@ if ($getdstocks && $getdstocks != '') {
 		                                                                            	<?php
 
 		                                                                            }else {
-		                                                                            	echo "no recods found";
+		                                                                            	echo "no recods found -> " . $text;
 		                                                                            }
 
 	                                                                            	?>

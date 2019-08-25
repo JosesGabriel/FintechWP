@@ -3650,7 +3650,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																				<div style="width:99%;">
 																					<div style="width:65px" class="tdate"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:45px" class="tdata"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
 																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
@@ -4461,7 +4461,8 @@ if ($getdstocks && $getdstocks != '') {
     			var keyword = $(this).val();
     			$('input[name="hsearchlogs"]').val(keyword);	
     			var tdate = $('.tdate').text();
-    			console.log(tdate);
+    			var tdata = $('.tdata').text();
+    			console.log(tdata);
     			/*jQuery.ajax({
 			            //url: window.location,
 			            type: 'POST',

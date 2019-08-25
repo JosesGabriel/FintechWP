@@ -4475,13 +4475,14 @@ if ($getdstocks && $getdstocks != '') {
     			console.log("keyword=>"+ keyword);
 
     			for(var i = 0; i < totalrow; i++){
-    				var tdata = $('#tdata' + 1).text();
+    				var tdata = $('#tdata' + i).text();
     				var tdate = $('#tdate' + i).text();
     				var tquantity = $('#tquantity' + i).text();
+    				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
     				if(keyword == tdata){
     					console.log("success");
-    					console.log(tdata + ' - ' + '-total - row' + totalrow);
+    					
     					//$('.tdatalogs').text(tdata);
     				$("<div style='width:99%;' class='tdatalogs'><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
     				}else{

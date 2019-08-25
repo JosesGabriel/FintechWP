@@ -4461,7 +4461,7 @@ if ($getdstocks && $getdstocks != '') {
     			var keyword = $(this).val();
     			$('input[name="hsearchlogs"]').val(keyword);	
     			var tdate = $('.tdate').text();
-    			var tdata = $('.tdata').text();
+    			var tdata[] = $('.tdata').text();
     			console.log(tdata);
     			/*jQuery.ajax({
 			            //url: window.location,

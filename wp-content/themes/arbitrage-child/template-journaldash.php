@@ -4463,7 +4463,7 @@ if ($getdstocks && $getdstocks != '') {
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			var tdata = [];
-    			tdata[] = $('.tdata').text();
+    			tdata = $('.tdata').text();
     			console.log(tdata);
     			/*jQuery.ajax({
 			            //url: window.location,

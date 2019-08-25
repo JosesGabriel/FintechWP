@@ -4497,7 +4497,7 @@ if ($getdstocks && $getdstocks != '') {
 			            data: {keyword: keyword},
 			            success: function( data){
 			            	 jQuery(".s-logs").html(''); 
-			            	 jQuery(".s-logs").html(data); 
+			            	 //jQuery(".s-logs").html(data); 
 			                  console.log("Successful! My post data is: "+ keyword);
 			                },
 			                error: function(error){

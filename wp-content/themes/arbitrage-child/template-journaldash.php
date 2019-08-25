@@ -3571,28 +3571,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                             
                                                                             <li class="s-logs" style="display: none;">
 
-	                                                                            	<div style="width:99%;">
-																					<div style="width:65px" class="tdate"></div>
-																					<div style="width:45px" class="tdatalogs" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"></a></div>
-																					<div style="width:55px" class="table-cell-live"></div>
-																					<div style="width:65px" class="table-cell-live"></div>
-																					<div style="width:95px" class="table-cell-live"></div>
-																					<div style="width:65px" class="table-cell-live"></div>
-																					<div style="width:95px" class="table-cell-live"></div>
-																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"></div>
-																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"></div>
-																					<div style="width:35px; text-align:center">
-																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-																							<i class="fas fa-clipboard"></i>
-																						</a>
-																					</div>
-																					<div style="width:25px">
-																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
-																							<i class="fas fa-eraser"></i>
-																						</a>
-																					</div>
-																				</div>
-	                                                                            	
+	                                                                            		                                                                            	
 	                                                                            	
                                                                             </li>
 
@@ -4482,7 +4461,7 @@ if ($getdstocks && $getdstocks != '') {
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
         		jQuery('.s-logs').css("display","none");
-        		$('.tdatalogs').text('');
+        		//$('.tdatalogs').text('');
         		 
     		}else {
     			jQuery('.dloglist').css("display","none");
@@ -4503,7 +4482,7 @@ if ($getdstocks && $getdstocks != '') {
     				if(keyword == tdata){
     					console.log("success");
     					//$('.tdatalogs').text(tdata);
-    				$("<div style='width:99%;'><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
+    				$("<div style='width:99%;' class='tdatalogs'><div style='width:65px'>" + tdate + "</div><div style='width:45px' class='tdatalogs' id=''>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div></div>").appendTo('.s-logs');
     				}else{
     					$('.tdatalogs').remove();
     				}

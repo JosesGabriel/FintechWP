@@ -4474,16 +4474,16 @@ if ($getdstocks && $getdstocks != '') {
 			                error: function(error){
 			                  console.log("error");
 			                }
-			        });*/
+			        });
 					  jQuery.ajax({
-					   url: '<?php echo admin_url('admin-ajax.php'); ?>',
+					   url: '<?php //echo admin_url('admin-ajax.php'); ?>',
 					   type: 'post',
 					   data: { action: 'data_fetch', keyword: keyword  },
 					   success: function(data) {
 					   	console.log(data);
 					    jQuery('.s-logs').html( data );
 					   }
-					  });
+					  });*/
 
     		}	
 			

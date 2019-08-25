@@ -3573,7 +3573,7 @@ if ($getdstocks && $getdstocks != '') {
 
 	                                                                            	<div style="width:99%;">
 																					<div style="width:65px" class="tdate"></div>
-																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"></a></div>
+																					<div style="width:45px" class="tdatalogs" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"></a></div>
 																					<div style="width:55px" class="table-cell-live"></div>
 																					<div style="width:65px" class="table-cell-live"></div>
 																					<div style="width:95px" class="table-cell-live"></div>
@@ -4499,6 +4499,7 @@ if ($getdstocks && $getdstocks != '') {
 
     				if(keyword == tdata){
     					console.log("success");
+    					$('.tdatalogs').text(tdata);
     				}
 
     			}

@@ -4460,7 +4460,7 @@ if ($getdstocks && $getdstocks != '') {
     			//$('div.sample').text(text);
 
 
-    			$.post(window.location, { keyword : keyword }, function(data) { 
+    			$.post({ keyword : keyword }, function(data) { 
                 	$(".s-logs").html(data); 
             	});
 

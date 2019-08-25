@@ -3618,6 +3618,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     wp_reset_postdata();
                                                                                 }
 
+                                                                                $tnum = 0;
+
                                                                                 foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
                                                                                     $data_sellmonth = $tlvalue['data_sellmonth'];
                                                                                     $data_sellday = $tlvalue['data_sellday'];
@@ -3659,7 +3661,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																				<div style="width:99%;">
 																					<div style="width:65px" class="tdate"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px" class="tdata[]"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:45px" class="tdata-<?php echo $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
 																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
@@ -3678,7 +3680,7 @@ if ($getdstocks && $getdstocks != '') {
 																						</a>
 																					</div>
 																				</div>
-
+																				<?php  $tnum++; ?>
 																				<div class="hidethis">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
@@ -4472,7 +4474,7 @@ if ($getdstocks && $getdstocks != '') {
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
-    			var tdata = $('.tdata[0]').text();
+    			var tdata = $('.tdata').text();
 
     			console.log(tdata);
     			//var td =  $(".tdata").text().length / 2;

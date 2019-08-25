@@ -3570,14 +3570,30 @@ if ($getdstocks && $getdstocks != '') {
                                                                             </li>
                                                                             
                                                                             <li class="s-logs" style="display: none;">
-	                                                                            	
-	                                                                            	
-	                                                                            	<?php 
-	                                                                            		//$text = (isset($_POST['keyword']));
-	                                                                            		//echo $text;
 
+	                                                                            	<div style="width:99%;">
+																					<div style="width:65px" class="tdate"></div>
+																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"></a></div>
+																					<div style="width:55px" class="table-cell-live"></div>
+																					<div style="width:65px" class="table-cell-live"></div>
+																					<div style="width:95px" class="table-cell-live"></div>
+																					<div style="width:65px" class="table-cell-live"></div>
+																					<div style="width:95px" class="table-cell-live"></div>
+																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"></div>
+																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"></div>
+																					<div style="width:35px; text-align:center">
+																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
+																							<i class="fas fa-clipboard"></i>
+																						</a>
+																					</div>
+																					<div style="width:25px">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+																							<i class="fas fa-eraser"></i>
+																						</a>
+																					</div>
+																				</div>
 	                                                                            	
-	                                                                            	?>
+	                                                                            	
                                                                             </li>
 
 																			<?php

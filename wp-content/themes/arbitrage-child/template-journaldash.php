@@ -4481,13 +4481,14 @@ if ($getdstocks && $getdstocks != '') {
     				var tavprice = $('#tavprice' + i).text();
     				var tbvalue = $('#tbvalue' + i).text();
     				var tsellprice = $('#tsellprice' + i).text();
+    				var tsellvalue = $('#tsellvalue' + i).text();
     				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
     				if(keyword == tdata){
     					console.log("success");
     					
     					//$('.tdatalogs').text(tdata);
-    				$("<div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px'>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div></div>").appendTo('.s-logs');
+    				$("<div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px'>"+ tdata +"</div><div style='width:55px' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div></div>").appendTo('.s-logs');
     					return;
     				}else{
     					$('.tdatalogs'+ i).remove();

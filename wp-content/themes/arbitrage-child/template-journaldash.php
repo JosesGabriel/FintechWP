@@ -4471,14 +4471,24 @@ if ($getdstocks && $getdstocks != '') {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			$('input[name="hsearchlogs"]').val();	
+    			var totalrow = $('input[name="hsearchlogs"]').val();	
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var td =  $(".tdata").text().length
-    			var tdata = $('#tdata' + 1).text();
 
-    			console.log(tdata + ' - ' + td + 'total - row' + $('input[name="hsearchlogs"]').val());
+
+    			for(var i = 0; i < totalrow; i++){
+    				var tdata = $('#tdata' + i).text();
+
+    				if(keyword == tdata){
+    					console.log("success");
+    				}
+
+    			}
+    			//var tdata = $('#tdata' + 1).text();
+
+    			console.log(tdata + ' - ' + '-total - row' + totalrow);
     			//var td =  $(".tdata").text().length / 2;
 				//console.log(td);
     			

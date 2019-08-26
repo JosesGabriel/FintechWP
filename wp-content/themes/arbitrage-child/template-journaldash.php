@@ -4617,9 +4617,7 @@ if ($getdstocks && $getdstocks != '') {
 				"valueWidth": 55
 			},
 			"titles": [],
-			"dataProvider": [
-				<?php echo $currentalocinfo; ?>
-			]
+			"dataProvider": [<?php echo $currentalocinfo; ?>]
 		}
 	);
 	// Chart 2 - Monthly Performance (Bar)
@@ -5109,7 +5107,7 @@ if ($getdstocks && $getdstocks != '') {
 			],
 			"allLabels": [],
 			"balloon": {
-				"fixedPosition": false,
+				"fixedPosition": false
 				"fontSize": 10,
 				"showBullet": true
 			},

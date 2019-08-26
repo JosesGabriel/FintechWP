@@ -73,6 +73,19 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         socket.emit('subscribe','ticker');
         console.log('subscribe: transactions')
     });
+    socket.on('pse-chart', function (data) {
+        var transaction = {
+            symbol: data.symbol,
+            price:  price_format(data.last),
+            change: data.change,
+            shares: abbr_format(data.volume),
+        };
+        $scope.ticker.push(transaction);
+        if ($scope.ticker.length > 50) {
+            $scope.ticker.pop();
+        }
+        $scope.$digest();
+    });
     socket.on('transaction', function(data) {
         var change = 0;
         if (data.flag == 0) {
@@ -402,6 +415,75 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 $scope.marketdepth = data.bidask;
             }
         });
+    });
+    socket.on('pse-chart', function (data) {
+        let stock = {
+            id: data.symbol,
+            symbol: data.symbol,
+            date: data[1],
+            last: data.last,
+            difference: data.changepercentage,
+            change: data.change,
+            previous: data.close,
+            open: data.open,
+            high: data.high,
+            low: data.low,
+            average: data.average,
+            volume: data.volume,
+            value: data.value,
+            trades: data.trades,
+            updated_at: data.timestamp,
+
+            displayLast: price_format(data.last),
+            displayDifference: price_format(data.changepercentage, data.last),
+            displayOpen: price_format(data.open),
+            displayPrevious: price_format(data.close),
+            displayAverage: price_format(data.average),
+            displayLow: price_format(data.low),
+            displayHigh: price_format(data.high),
+            displayChange: number_format(data.change, '0,0.00'),
+            displayValue: abbr_format(data.value),
+        }
+
+        if ($scope.stock && $scope.stock.symbol == stock.symbol) {
+            if ($scope.$parent.settings.chart == '1') {
+                beep();
+                if (stock.change > 0){changicotogreen();}
+				if (stock.change < 0){changicotored();}
+            }
+            setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
+            var transaction = {
+                symbol: stock.symbol,
+                price:  price_format(stock.last),
+                change: stock.change,
+                shares: abbr_format(stock.volume),
+                buyer:  "",
+                seller: "",
+                time:   (new Date()).getTime(),
+            }
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            $scope.stock = stock;
+        }
+        // UPDATE STOCK
+        var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
+        if (found.length) {
+            $scope.stocks[$scope.stocks.indexOf(found[0])] = stock;
+        } else $scope.stocks.push(stock);
+        $scope.count = $scope.stocks.reduce( function(a, b) {
+            if (b.change < 0) {
+                a.losers = ++a.losers || 1;
+            }  
+            if (b.change === 0) {
+                a.unchanged = ++a.unchanged || 1;
+            }  
+            if (b.change > 0) {
+                a.gainers = ++a.gainers || 1;
+            }
+            return a;
+        }, {});
     });
     socket.on('T', function(data) {
         var symbol = data[0];

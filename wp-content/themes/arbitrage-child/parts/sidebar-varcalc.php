@@ -650,7 +650,7 @@
                         <div class="arb_calcbox_left">Portfolio Size</div>
 
                         <div class="arb_calcbox_right">
-                            <input name="portsize" id="portsize" class="number" type="text" value="<?php echo $dequityp; ?>" style="width: 85%;" tabindex="2" readonly>
+                            <input name="portsize" id="portsize" class="number" type="text" value="<?php echo number_format($dequityp, 2, '.', ','); ?>" style="width: 85%;" tabindex="2" readonly>
                             <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
                         </div>
 
@@ -887,8 +887,8 @@
            
                var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
            
-               console.log('emman sucks');
-            console.log(boardlotget_var);
+            //    console.log('emman sucks');
+            // console.log(boardlotget_var);
 
                boardlotget_var = parseFloat(boardlotget_var);
 
@@ -935,7 +935,21 @@
 
                 vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
-			var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+
+            // var numofshares = vr_posisizemin / 
+            
+            var blots = parseFloat(boardlotget_val);
+            var sharestobuy = Math.floor(vr_posisizemin / vr_idenentryprice);
+            
+            var slotmultiplier = Math.floor(sharestobuy / blots);
+            var finalstocks = blots * slotmultiplier;
+
+            console.log(sharestobuy);
+
+                
+
+			// var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+			var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
 
             
 
@@ -947,7 +961,7 @@
 
                 vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
 
-			var vr_risktoreward = jQuery('#risktoreward').val(numeral(vr_risktorewardfmt).format('0,0.00'));	
+			var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
 
 			
 

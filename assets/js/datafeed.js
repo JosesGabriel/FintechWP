@@ -230,7 +230,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		// firstDataRequest: firstDataRequest,
 		from: rangeStartDate,
 		resolution: '1D',
-		stock: 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
+		'stock-exchange': 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
 	};
 	
 	// if ( ! firstDataRequest) {

@@ -432,7 +432,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             volume: data.volume,
             value: data.value,
             trades: data.trades,
-            updated_at: data.timestamp],
+            updated_at: data.timestamp,
 
             displayLast: price_format(data.last),
             displayDifference: price_format(data.changepercentage, data.last),

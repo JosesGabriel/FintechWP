@@ -102,7 +102,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             seller: data.seller.substr(0, 5).trim(),
         };
         $scope.ticker.push(transaction);
-        if ($scope.ticker.length > 150) {
+        if ($scope.ticker.length > 50) {
             $scope.ticker.pop();
         }
         $scope.$digest();

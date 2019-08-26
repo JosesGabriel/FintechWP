@@ -4492,7 +4492,10 @@ if ($getdstocks && $getdstocks != '') {
     				var deletelog = $('#deletelog' + i).val();
     				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
-    				if(keyword == tdata){
+    				//if(keyword == tdata){
+    				var rgxp = new RegExp(keyword, "gi");
+    				if (tdata.match(rgxp)) {
+
     					console.log("success");
 
 		    				if(dprofit > 0 ){
@@ -4520,25 +4523,7 @@ if ($getdstocks && $getdstocks != '') {
     				}
 
     			}
-    			//var tdata = $('#tdata' + 1).text();
-
     			
-    			//var td =  $(".tdata").text().length / 2;
-				//console.log(td);
-    			
-    			/*jQuery.ajax({
-			            //url: window.location,
-			            type: 'POST',
-			            data: {keyword: keyword},
-			            success: function( data){
-			            	 jQuery(".s-logs").html(''); 
-			            	 //jQuery(".s-logs").html(data); 
-			                  console.log("Successful! My post data is: "+ keyword);
-			                },
-			                error: function(error){
-			                  console.log("error");
-			                }
-			        });*/
 
     		}	
 			

@@ -16,7 +16,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Philippine Stock Exchange Platform" />
-	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/08/137fac46-arbitrage-og-01.jpg" />
+	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/08/b4ac0685-arbitrage-og-01.jpg" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	<link rel="manifest" href="/manifest.json">     
 	<meta name="msapplication-TileColor" content="#142c46">

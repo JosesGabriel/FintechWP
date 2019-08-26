@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+<meta property="og:title" content="test" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 <?php
 	elegant_description();

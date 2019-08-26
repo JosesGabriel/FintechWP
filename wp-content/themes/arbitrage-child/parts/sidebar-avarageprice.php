@@ -78,7 +78,7 @@
 
                                             <span>Position</span></br>
 
-                                            <input type="text" class="dpos number" placeholder="Enter Position">
+                                            <input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;">
 
                                         </li>
 
@@ -86,7 +86,7 @@
 
                                             <span>Price</span></br>
 
-                                            <input type="text" class="dpri number" placeholder="Enter Price">
+                                            <input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;">
 
                                         </li>
 
@@ -160,9 +160,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;">></li>';
 
             ditem += "</ul>";
 

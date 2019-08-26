@@ -457,9 +457,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 price:  price_format(stock.last),
                 change: stock.change,
                 shares: abbr_format(stock.volume),
-                buyer:  data[14].substr(0, 5).trim(),
-                seller: data[15].substr(0, 5).trim(),
-                time:   data[16],
+                buyer:  "",
+                seller: "",
+                time:   (new Date()).getTime(),
             }
             $scope.transactions.unshift(transaction);
             if ($scope.transactions.length > 20) {

@@ -1,5 +1,4 @@
 <?php
-
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
@@ -169,13 +168,14 @@ jQuery(function(){
   }
 </style>
 <?php
-  $dwatchinfo = null;
-  // $curl = curl_init();
-  //
-  // curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-  // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  // $dwatchinfo = curl_exec($curl);
-  // curl_close($curl);
+  // $dwatchinfo = null;
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock=PSE' );
+  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  $dwatchinfo = curl_exec($curl);
+  curl_close($curl);
+
 
   // added false
   if ($dwatchinfo !== null):
@@ -202,8 +202,15 @@ jQuery(function(){
                         <?php
 
                           $dstock = $value['stockname'];
-                          $dprice = number_format( $stockinfo->$dstock->last, 2, '.', ',' );
-                          $dchange = number_format( $stockinfo->$dstock->change, 2, '.', ',' );
+                          $dprice = 0;
+                          $dchange = 0;
+                          foreach($stockinfo as $stkey => $stvals){
+                              if($stvals->symbol == $dstock ){
+                                $dprice = number_format( $stvals->last, 2, '.', ',' );
+                                $dchange = number_format( $stvals->change, 2, '.', ',' );
+                              }
+                          }
+                         
                           $dyellow = '0.00';
 
                         ?>

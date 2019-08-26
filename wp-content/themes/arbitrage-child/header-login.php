@@ -1,6 +1,7 @@
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
 <html <?php language_attributes(); ?>><head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="test" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	
 	<?php // Countdown ?>

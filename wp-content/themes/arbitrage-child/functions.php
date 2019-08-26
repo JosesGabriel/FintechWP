@@ -367,7 +367,6 @@ add_action('wp_enqueue_scripts', 'ab_exclusions', 100);
 // [bartag foo="foo-value"]
 
 
-
 function getfriendsbyat( $atts ) {
 	$a = shortcode_atts( array(
 		'userid' => 0

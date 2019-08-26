@@ -19,70 +19,49 @@
     }
 
     if(isset($_GET['query'])){
-        $stocks = fopen("https://arbitrage.ph/data/stocks.json", "r") or die("Unable to open file!");
-        $jsondata = fgets($stocks);
-        fclose($stocks);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-        $arraymode = json_decode($jsondata);
-        $dstock = strtolower($_GET['query']);
+        if ($response !== false) {
+            $response = json_decode($response);
 
-        // add params
-        $newinfo = [];
-        foreach ($arraymode as $addvalskey => $addvalsvalue) {
-            $addvalsvalue->full_name = $addvalsvalue->symbol;
-            array_push($newinfo,$addvalsvalue);
-        }
+            $arraymode = $response->data;
+            $dstock = strtolower($_GET['query']);
 
-        $listofitems = [];
-        foreach ($newinfo as $key => $value) {
-            if (strpos(strtolower($value->symbol), $dstock) !== false) {
-                
-                array_push($listofitems, $value);
-                // echo "ersr";
+            // add params
+            $newinfo = [];
+            foreach ($arraymode as $addvalskey => $addvalsvalue) {
+                $addvalsvalue->full_name = $addvalsvalue->symbol;
+                array_push($newinfo,$addvalsvalue);
             }
+
+            $listofitems = [];
+            foreach ($newinfo as $key => $value) {
+                if (strpos(strtolower($value->symbol), $dstock) !== false) {
+                    array_push($listofitems, $value);
+                }
+            }
+
+            echo json_encode($listofitems);
         }
-
-        // echo "[".json_encode($listofitems)."]";
-        // echo '[{"symbol":"BPI","description":"BANK OF THE PHILIPPINE ISLANDS","full_name":"BPI", "display_name" : "BPI"}]'; 
-        echo json_encode($listofitems);
-        // print_r($dstock);
-
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "fullstack" ){
-        
-        $stocks = fopen("https://arbitrage.ph/data/fallstocks.json", "r") or die("Unable to open file!");
-        $jsondata = fgets($stocks);
-        fclose($stocks);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock=PSE");
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        curl_close($curl);
 
-        $infobase = json_decode($jsondata);
-        // echo $jsondata;
-
-        // $source = [];
-        // foreach ($infobase as $key => $value) {
-        //     $code = $value->StockInfo->StockCode;
-        //     $value->StockHistory->symbol = $code;
-        //     array_push($source, $value->StockHistory);
-        // }
-
-        // $fallss = [];
-        // foreach ($infobase as $key => $value) {
-        //     // 
-        //     $inobject = [];
-        //     foreach ($value->StockHistory as $innerskey => $innersvalue) {
-        //         // array_push($inobject, [strtolower($innerskey) => $innersvalue]);
-        //         $inobject[strtolower($innerskey)] = $innersvalue;
-        //     }
-
-        //     array_push($fallss, $inobject);
-        //     // echo $value;
-        //     // print_r($value);
-        // }
-
-        $outputs = keysToLower($infobase);
-
-        echo json_encode($outputs);
-        // echo json_encode($fallss);
+        if ($response !== false) {
+            $response = json_decode($response, true);
+            echo json_encode($response['data']);
+        }
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "md"){

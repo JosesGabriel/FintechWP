@@ -4,6 +4,8 @@
     */
 
 // get_header();
+// Ralph Was Here 
+// Trading Journal
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
@@ -1393,8 +1395,12 @@ get_header('dashboard');
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
         $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
+        
+        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
         $tradeinfo['price'] = $_POST['inpt_data_price'];
+        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
@@ -1953,8 +1959,8 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
 																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -3540,7 +3546,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																<div class="search-tlogs">
 																	<form action="" method="get">
-																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search..." >
+																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
                                                             </div>
@@ -3562,6 +3568,13 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     <div style="width:65px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
+                                                                            
+                                                                           <!-- <li class="s-logs" style="display: none;">
+
+	                                                                            		                                                                            	
+	                                                                            	
+                                                                            </li>-->
+
 																			<?php
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
                                                                                 // echo  $_GET['ptnum'];
@@ -3600,6 +3613,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     wp_reset_postdata();
                                                                                 }
 
+                                                                                $tnum = 0;
+
                                                                                 foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
                                                                                     $data_sellmonth = $tlvalue['data_sellmonth'];
                                                                                     $data_sellday = $tlvalue['data_sellday'];
@@ -3624,30 +3639,45 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
+
+                                                             				<!--<li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
+	                                                                            	<?php 
+	                                                                            		//$text = (isset($_POST['keyword']));
+	                                                                            		//echo $text;
+
+	                                                                            	
+	                                                                            	?>
+                                                                            </li>-->
+                                                                     	<input type="hidden" id="<?php echo 'dprofit' . $tnum; ?>" value="<?php echo $dprofit; ?>">
+
+
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
 																				<div style="width:99%;">
-																					<div style="width:65px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
-																					<div style="width:55px" class="table-cell-live"><?php echo $data_quantity; ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
-																					<div style="width:65px" class="table-cell-live">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
-																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
-																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
 																					<div style="width:35px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
 																						</a>
 																					</div>
+																					<input type="hidden" id="<?php echo 'deletelog' . $tnum; ?>" value="<?php echo $tlvalue['id']; ?>">
 																					<div style="width:25px">
 																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
 																				</div>
-
+																				<?php  $tnum++; ?>
 																				<div class="hidethis">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
@@ -3677,6 +3707,7 @@ if ($getdstocks && $getdstocks != '') {
 																			</li>
 																					
 																			<?php endforeach; ?>
+																		<input type="hidden" name="hsearchlogs" value="<?php echo $tnum; ?>" >
                                                                         </ul>
                                                                     </div>
 																	<div class="deleteform">
@@ -3688,10 +3719,10 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="pginner">
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
-                                                                                ?>
+                                                                                    ?>
 																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
-                                                                            } ?>
+                                                                                } ?>
 																			</ul>
 																		</div>
 																	</div>	
@@ -3771,13 +3802,13 @@ if ($getdstocks && $getdstocks != '') {
 														});
 														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.log('asdasdasd');
+															
 															var inputVal = jQuery(this).val().length;													
-
+                                                            console.log(inputVal);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
-																console.log('tesssssss');
+
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
@@ -4304,7 +4335,9 @@ if ($getdstocks && $getdstocks != '') {
     });
 	jQuery(document).ready(function(){
 
-		jQuery(".deletelog").click(function(e){
+		$(document).on("click", ".deletelog", function() {
+
+		//jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
 			console.log(dlogid);
@@ -4327,6 +4360,15 @@ if ($getdstocks && $getdstocks != '') {
 				}
 			});
 		});
+
+
+		//$(document).on("click", ".fancybox-inline", function() {
+			//e.preventDefault();
+  			//$(this).toggleClass("tradelogbox");
+
+  			//console.log('toggle click!');
+
+		//});
 
 		jQuery(".depotbutton").click(function(e){
 			
@@ -4425,6 +4467,114 @@ if ($getdstocks && $getdstocks != '') {
 				jQuery("#ldchangenum").submit();
 			}
 		});
+
+
+		jQuery('.search-logs').on('keyup', function () {
+
+			var totalrow = $('input[name="hsearchlogs"]').val();
+
+			if($(this).val().length < 1) {
+        		jQuery('.dloglist').css("display","block");
+        		for(var x = 0; x < totalrow; x++){
+        			jQuery('.s-logs'+ x).remove();
+        		}
+        		$('.s-logs').remove();
+        		 
+    		}else {
+    			jQuery('.dloglist').css("display","none");
+    			jQuery('.s-logs').css("display","block");
+    			var keyword = $(this).val();
+    				
+    			var tdate = $('.tdate').text();
+    			//var tdata = new Array($('.tdata').text());
+    			//var tdata = [];
+    			var td =  $(".tdata").text().length
+    			console.log("keyword=>"+ keyword);
+    			var tcolor;
+    			for(var i = 0; i < totalrow; i++){
+    				var tdata = $('#tdata' + i).text();
+    				var tdate = $('#tdate' + i).text();
+    				var tquantity = $('#tquantity' + i).text();
+    				var tavprice = $('#tavprice' + i).text();
+    				var tbvalue = $('#tbvalue' + i).text();
+    				var tsellprice = $('#tsellprice' + i).text();
+    				var tsellvalue = $('#tsellvalue' + i).text();
+    				var tploss = $('#tploss' + i).text();
+    				var tpercent = $('#tpercent' + i).text();
+    				var dprofit = $('#dprofit' + i).val();
+    				var deletelog = $('#deletelog' + i).val();
+    				console.log(tdata + ' - ' + '-total - row' + totalrow);
+
+    				//if(keyword == tdata){
+    				var rgxp = new RegExp(keyword, "gi");
+
+    				if (tdata.match(rgxp)) {
+
+    					console.log("success");
+
+		    				if(dprofit > 0 ){
+		    					tcolor = 'txtgreen';
+		    				}else{
+		    					tcolor = 'txtred';
+		    				}
+		    			
+		    			if($('#logrows-'+ i).hasClass('s-logs'+ i)){
+		    				$('.s-logs').remove();
+		    				return;
+
+		    			}else{
+
+		    				$('.dstatstrade ul').append(
+		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
+		    					$('.s-logs').remove();
+		    			}
+		    					
+    				}else{
+    					$('.s-logs' + i).remove();
+    					if(!$('#norecords').hasClass('s-logs')){
+    						$('.dstatstrade ul').append("<li class='s-logs' id='norecords'><div>No records found!!!</div></li>");
+    					}
+    				}
+
+    			}
+    			
+
+    		}	
+			
+        });
+        
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
 
 	});
     </script>

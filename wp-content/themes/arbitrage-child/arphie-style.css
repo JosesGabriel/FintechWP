@@ -21,7 +21,7 @@
     font-size: 13px;
 }
 .dtabspart ul li {
-    color: white;
+    color: #000;
 }
 .dtabspart ul.tabbutton > li {
     display: inline-block;
@@ -33,12 +33,8 @@
 .dtabspart ul.tabbutton {
     margin: 0;
 }
-.totabs {
-    color: white !important;
-}
-.totabs active {
-    text-decoration: underline;
-    text-decoration-color: #874a9a;
+.totab {
+    color: #000 !important;
 }
 .totab > div {
     display: none;
@@ -48,24 +44,141 @@
 }
 .submitform {
     text-align: right;
+    margin-top: -28px;
+    width: 159px;
+    float: right;
 }
 .dclosetab {
     display: none;
 }
 .dclosetab.active {
     display: block;
+    margin-left: 27px;
+    margin-right: 27px;
+    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
 }
-.dinnerlist > ul > li {
+.side-header .right-image .onto-user-name {
+    margin-bottom: 0 !important;
+}
+.addwatchs {
     display: block;
-    border: 1px solid #2c3e50;
-    padding: 10px;
-    float: left;
-    width: 49%;
+    /* border: 1px solid #2c3e50; */
+    padding: 10px 15px;
+    /* float: left; */
+    width: 100% !important;
     margin-right: 1%;
     border-radius: 5px;
     position: relative;
-    min-height: 185px;
-    margin-bottom: 25px;
+    min-height: 113px !important;
+    margin-bottom: 15px;
+    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 75%) !important;
+}
+.stats-watch {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fffffe;
+}
+.box-portlet {
+    overflow: visible;
+}
+.left-stats-watch {
+    float: left;
+    font-size: 12px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    left: 1px;
+    position: relative;
+    color: #fffffe;
+}
+.right-stats-watch {
+    float: right;
+    text-align: right;
+    font-size: 13px;
+    font-family: Roboto, sans-serif;
+    line-height: 1.7;
+    right: 1px;
+    position: relative;
+}
+.dinnerlist > ul > li {
+    display: block;
+    border: none;
+    padding: 12px 18px 9px 18px;
+    float: left;
+    width: 46%;
+    margin-right: 0%;
+    border-radius: 5px;
+    position: relative;
+    min-height: 214px;
+    background: #142c46;
+    background: -moz-linear-gradient(45deg, #0a1c31 0%, #1a3550 100%);
+    background: -webkit-linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
+    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a1c31', endColorstr='#1a3550',GradientType=1 );
+    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+    border-radius: 5px;
+    margin: 10px;
+}
+.dinnerlist .dtockname {
+    margin-top: 0 !important;
+}
+.dpricechange .curchange, .dpricechange .curprice {
+    font-weight: normal !important;
+}
+.dplusbutton {
+    padding: 60px 0px 0px 0px;
+}
+
+
+.dinnerlist .dparams ul li {
+    width: 31.6%;
+}
+span.curchange {
+    font-size: 15px;
+    font-weight: normal;
+    display: inline-block;
+    margin: 0 7px 0 0;
+}
+.onred {color: #ea4d5c !important;}
+.ongreen {color: #53b987 !important;}
+.dinnerlist .dparams ul li > div.dvalue {
+    font-size: 18px;
+    width: 100%;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid #132b46;
+    text-align: center;
+    border-radius: 0px 0px 5px 5px;
+}
+.dpricechange .curprice {
+    font-size: 22px;
+    padding-top: 5px;
+}
+span.curprice {
+    display: inline-block;
+    margin: 0 3px 0 8px;
+    font-size: 15px;
+    font-weight: normal;
+}
+.curprice, .stocknn, .curchange {
+    vertical-align: middle;
+    line-height: 22px;
+}
+.stocknn {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1em;
+    display: inline-block;
+    padding: 0;
+}
+.wlttlstockvals {
+    display: block;
+    border-bottom: 1px solid #1e3554;
+    width: 95%;
+    margin: 0 16px;
+    padding: 0px 0px 9px;
 }
 .dinnerlist > ul > li.addwatch {
     text-align: center;
@@ -78,9 +191,7 @@
     font-size: 20px;
     text-transform: capitalize;
 }
-.dplusbutton {
-    padding: 30px 0px;
-}
+
 .dinnerlist > ul > li.addwatch:hover {
     background: #2c3e50;
     cursor: pointer;
@@ -124,6 +235,7 @@
     margin-bottom: 10px;
     text-align: center;
     position: relative;
+    box-shadow: 0px 0px 6px -3px rgba(4,13,23,0.7);
 }
 .dinnerlist .dparams ul li > div.dvalue {
     font-size: 19px;
@@ -135,15 +247,16 @@
     border: 1px solid #fff;
 }
 .dinnerlist .dparams ul li > div.dcondition {
-    background: #fff;
+    background: #173250ad;
     display: block;
-    color: #2c3e50;
-    font-size: 11px;
+    color: #fffffe;
+    font-size: 10px;
     padding: 4px;
     text-align: left;
     text-transform: uppercase;
     line-height: 1em;
     text-align: center;
+    border-radius: 5px 5px 0px 0px;
 }
 .dinnerlist .deleteme {
     text-align: right;
@@ -169,11 +282,14 @@
     padding: 6px 8px;
 }
 .condition-params {
-    border-right: 1px solid #283648;
+    border-right: 1px solid #1e3554;
     margin-right: -15px;
 }
+#canceladd {
+    padding: 0 18px !important;
+}
 #main-header {
-    z-index: 3;
+    z-index: 1;
 }
 .editpartme {
     display: none;

@@ -2,6 +2,8 @@
 	var clearpath = ePanelSettings.clearpath;
 
 	jQuery(document).ready(function($){
+		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {alert('Its Safari');}
+
 		var editors = [];
 
 		function addEditorInstance(codeEditor, $element, config) {

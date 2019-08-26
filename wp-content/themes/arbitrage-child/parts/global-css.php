@@ -2279,7 +2279,7 @@ ul.footmore li {
 	border-right: none !important;
 }
 ul.footmore .ddot {
-	top: -3px;
+	top: 2px;
 	position: relative;
 }
 .wh-container {
@@ -2867,7 +2867,7 @@ li.dspecitem div div {
     background: #142c46;
 }
 .inner-content--contact {
-	margin: 0 120px;
+	margin: 0 90px;
 	margin-top: 20px;
 }
 .fa-percentage {
@@ -2966,5 +2966,9 @@ h2.terms-padding:after {
     display: inline;
     width: 40px;
     margin: 0 5px;
+}
+.mc-background {
+	background-color: #142b46;
+    border-radius: 15px;
 }
 </style>

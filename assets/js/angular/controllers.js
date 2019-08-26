@@ -3,11 +3,17 @@ var chart;
 var marketdepthTimeout;
 var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
-app.run(function($rootScope) {
+app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
-    $rootScope.stockList = _stocks;
+    $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
-})
+
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/list")
+        .then(function(response) {
+            $rootScope.stockList = response.data.data;
+            _stocks = response.data.data;
+        })
+}]);
 app.controller('message-notification', function($scope, $http, $filter) {
     $scope.count = 0;
     $http.get("/welcome/threads").then( function (response) {
@@ -139,11 +145,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    $scope.$watch('$root.stockList', function () {
+        $scope.stock_details = $rootScope.stockList;
+    });
     $scope.gainers      = 0;
     $scope.losers       = 0;
     $scope.unchanged    = 0;
     $scope.stocks = [];
-    $scope.stock_details = _stocks;
     $scope.watchlists = {
         'All Stocks': 'stocks', 
         'New Watchlist': 'new',
@@ -322,14 +330,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
-    $http.get("https://arbitrage.ph/charthisto/?g=fullstack").then( function (response) {
-        stocks = response.data;
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock=PSE").then( function (response) {
+        stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
-            stock['previous']   = parseFloat(stock['previous']);
+            stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);
             stock['low']        = parseFloat(stock['low']);
@@ -338,14 +346,16 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['value']      = parseFloat(stock['value']);
             stock['trades']     = parseFloat(stock['trades']);
             stock['displayLast']  = price_format(stock['last']);
-            stock['displayDifference']  = price_format(stock['difference'], stock['last']);
+            stock['displayDifference']  = price_format(stock['change']);
             stock['displayOpen']  = price_format(stock['open']);
-            stock['displayPrevious']  = price_format(stock['previous']);
+            stock['displayPrevious']  = price_format(stock['close']);
             stock['displayAverage']  = price_format(stock['average']);
             stock['displayLow']  = price_format(stock['low']);
             stock['displayHigh']  = price_format(stock['high']);
-            stock['displayChange']  = number_format(stock['change'], '0,0.00');
+            stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
             stock['displayValue'] = abbr_format(stock['value']);
+            stock['weekYearLow'] = price_format(stock['weekyearlow']);
+            stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
             return stock;
         });
 
@@ -559,8 +569,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     // }
 	// setInterval(updateMarketDepth, 5000);
 }]);
-app.controller('disclosures', function($scope, $http) {
-    $scope.stocks = _stocks;
+app.controller('disclosures', function($scope, $http, $rootScope) {
+    $scope.$watch('$root.stockList', function () {
+        $scope.stocks = $rootScope.stockList;
+    });
     $scope.disclosures = [];
     $http.get("/api/disclosures").then(function (response) {
         if (response.data.success) {

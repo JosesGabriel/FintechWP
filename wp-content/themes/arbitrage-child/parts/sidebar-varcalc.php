@@ -935,7 +935,21 @@
 
                 vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
-			var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+
+            // var numofshares = vr_posisizemin / 
+            
+            var blots = parseFloat(boardlotget_val);
+            var sharestobuy = Math.floor(vr_posisizemin / vr_idenentryprice);
+            
+            var slotmultiplier = Math.floor(sharestobuy / blots);
+            var finalstocks = blots * slotmultiplier;
+
+            console.log(sharestobuy);
+
+                
+
+			// var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+			var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
 
             
 

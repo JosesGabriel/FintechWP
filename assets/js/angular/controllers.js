@@ -416,6 +416,75 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
         });
     });
+    socket.on('pse-chart', function (data) {
+        let stock = {
+            id: data.symbol,
+            symbol: data.symbol,
+            date: data[1],
+            last: data.last,
+            difference: data.changepercentage,
+            change: data.change,
+            previous: data.close,
+            open: data.open,
+            high: data.high,
+            low: data.low,
+            average: data.average,
+            volume: data.volume,
+            value: data.value,
+            trades: data.trades,
+            updated_at: data.timestamp],
+
+            displayLast: price_format(data.last),
+            displayDifference: price_format(data.changepercentage, data.last),
+            displayOpen: price_format(data.open),
+            displayPrevious: price_format(data.close),
+            displayAverage: price_format(data.average),
+            displayLow: price_format(data.low),
+            displayHigh: price_format(data.high),
+            displayChange: number_format(data.change, '0,0.00'),
+            displayValue: abbr_format(data.value),
+        }
+
+        if ($scope.stock && $scope.stock.symbol == stock.symbol) {
+            if ($scope.$parent.settings.chart == '1') {
+                beep();
+                if (stock.change > 0){changicotogreen();}
+				if (stock.change < 0){changicotored();}
+            }
+            setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
+            var transaction = {
+                symbol: symbol,
+                price:  price_format(data[4]),
+                change: data[5],
+                shares: abbr_format(data[13]),
+                buyer:  data[14].substr(0, 5).trim(),
+                seller: data[15].substr(0, 5).trim(),
+                time:   data[16],
+            }
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            $scope.stock = stock;
+        }
+        // UPDATE STOCK
+        var found = $filter('filter')($scope.stocks, {symbol: symbol}, true);
+        if (found.length) {
+            $scope.stocks[$scope.stocks.indexOf(found[0])] = stock;
+        } else $scope.stocks.push(stock);
+        $scope.count = $scope.stocks.reduce( function(a, b) {
+            if (b.change < 0) {
+                a.losers = ++a.losers || 1;
+            }  
+            if (b.change === 0) {
+                a.unchanged = ++a.unchanged || 1;
+            }  
+            if (b.change > 0) {
+                a.gainers = ++a.gainers || 1;
+            }
+            return a;
+        }, {});
+    });
     socket.on('T', function(data) {
         var symbol = data[0];
         data[4]  = parseFloat(data[4]);

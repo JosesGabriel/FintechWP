@@ -60,7 +60,7 @@ var DataProvider = (function () {
 				}
 				subscriber.listener(lastBar);
         	}
-        });
+		});
         socket.on('reconnect', function() {
         	for (var listenerGuid in that._subscribers) {
         		socket.emit('subscribeBars2', listenerGuid);
@@ -70,7 +70,7 @@ var DataProvider = (function () {
     DataPulseProvider.prototype.subscribeBars = function (symbolInfo, resolution, newDataCallback, listenerGuid) {
     	var that = this;
         if (that._subscribers.hasOwnProperty(listenerGuid)) {
-            // console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
+            console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
             return;
         }
         if (symbolInfo.type == 'index') {
@@ -83,13 +83,13 @@ var DataProvider = (function () {
             resolution: resolution,
             listener: newDataCallback,
         };
-        // console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
+        console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
     };
     DataPulseProvider.prototype.unsubscribeBars = function (listenerGuid) {
         socket.emit('unsubscribeBars2', listenerGuid);
         socket.emit('unsubscribeBars3', 'test.' + listenerGuid);
         delete this._subscribers[listenerGuid];
-        // console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
+        console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
     };
     return DataPulseProvider;
 }());

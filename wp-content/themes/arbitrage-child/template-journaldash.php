@@ -4364,7 +4364,7 @@ if ($getdstocks && $getdstocks != '') {
 
 		$(document).on("click", "#tradelognotes", function(e) {
 			e.preventDefault();
-  			//$("#wrapper").toggleClass("toggled");
+  			$("a").toggleClass("fancybox-inline");
   			console.log('toggle click!');
 
 		});

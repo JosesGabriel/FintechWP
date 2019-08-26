@@ -970,7 +970,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'traders'); ?>
                     
-                    <?php //get_template_part('parts/sidebar', 'latestnews'); ?>
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
 

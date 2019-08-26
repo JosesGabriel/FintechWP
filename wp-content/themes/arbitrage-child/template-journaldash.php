@@ -4467,7 +4467,7 @@ if ($getdstocks && $getdstocks != '') {
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
         		for(var x = 0; x < totalrow; x++){
-        			jQuery('.s-logs'+ x).css("display","none");
+        			jQuery('.s-logs'+ x).remove();
         		}
         		$('.s-logs').remove();
         		 

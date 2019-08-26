@@ -73,6 +73,19 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         socket.emit('subscribe','ticker');
         console.log('subscribe: transactions')
     });
+    socket.on('pse-chart', function (data) {
+        var transaction = {
+            symbol: data.symbol,
+            price:  price_format(data.last),
+            change: data.change,
+            shares: abbr_format(data.volume),
+        };
+        $scope.ticker.push(transaction);
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
+        $scope.$digest();
+    });
     socket.on('transaction', function(data) {
         var change = 0;
         if (data.flag == 0) {

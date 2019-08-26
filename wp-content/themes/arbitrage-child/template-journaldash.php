@@ -4362,9 +4362,10 @@ if ($getdstocks && $getdstocks != '') {
 		});
 
 
-		$(document).on("click", "#tradelognotes", function(e) {
-			e.preventDefault();
-  			//$("a").toggleClass("fancybox-inline");
+		$(document).on("click", "#tradelognotes", function() {
+			//e.preventDefault();
+  			//$(this).toggleClass("fancybox-inline");
+  			$(this).attr('href',$(this).attr('href') == '#tradelognotes' ? '#tradelognotes' : '#tradelognotes');
   			console.log('toggle click!');
 
 		});

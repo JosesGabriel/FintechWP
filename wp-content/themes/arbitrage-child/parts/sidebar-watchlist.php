@@ -1,5 +1,4 @@
 <?php
-
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
@@ -169,13 +168,14 @@ jQuery(function(){
   }
 </style>
 <?php
-  $dwatchinfo = null;
-  // $curl = curl_init();
-  //
-  // curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-  // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-  // $dwatchinfo = curl_exec($curl);
-  // curl_close($curl);
+  // $dwatchinfo = null;
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list' );
+  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  $dwatchinfo = curl_exec($curl);
+  curl_close($curl);
+
 
   // added false
   if ($dwatchinfo !== null):

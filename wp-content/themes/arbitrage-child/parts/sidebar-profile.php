@@ -73,14 +73,22 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
 
+    <div class="side-completenessbox">
     <?php if($num != 100) { ?>
           <small style="float: left;"><?php echo $num; ?>% complete</small>
-          <small style="float:right;font-size: 16px !important;margin-top: -7px;" class="info-circle"><i class="fa fa-info-circle" aria-hidden="true"></i></small>
+          <small style="float:right;font-size: 14px !important;margin-top: -4px;" class="info-circle">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            <!--<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%" style="
+    float: right;
+    margin-top: -12px;">-->
+          </small>
           <div class="profile-progress" style="clear: both;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background-color: #11a932;"></div>
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #71f29f 12%, #b5dc5d 89%);"></div>
           </div>
     <?php } ?>
       <?php get_template_part('parts/sidebar', 'tasks'); ?>
+    </div>
+
 
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
@@ -97,20 +105,20 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-2.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-2.svg">
+                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-4.svg" class="icon-game">
             <span>Games</span></a></li>
-                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
+                  <li class="five"><a id="vyndue--link" href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>
             
             <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>
-                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-1.svg">
+                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-3.svg">
             <span>Buy/Sell Calculators</span></a></li>
-                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-1.svg">
+                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-3.svg">
             <span>VAR Calculator</span></a></li>
-                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-1.svg">
+                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-3.svg">
             <span>Average Price Calculator</span></a></li>
-                  <li class="seven calc-menu-multichart"><a href="/multicharts/"><img src="<?php echo get_home_url(); ?>/svg/statistics-1.svg">
+                  <li class="seven calc-menu-multichart"><a href="/multicharts/"><img src="<?php echo get_home_url(); ?>/svg/statistics-3.svg">
             <span>Multichart</span></a></li>
                   <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">
@@ -207,6 +215,12 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
                 });
             }
         });
+
+        if(jQuery('.um-profile').hasClass('topbannerprofile')){
+          jQuery('.side-completenessbox').css("display","none");
+        }else{
+          jQuery('.side-completenessbox').css("display","block");
+        }
 
         jQuery('.info-circle').click(function(){
 
@@ -399,6 +413,10 @@ input:checked + .slider:before {
 
   .info-circle:hover {
     cursor: pointer;
+  }
+
+  .side-completenessbox {
+    margin-top: 10px;
   }
 
 </style>

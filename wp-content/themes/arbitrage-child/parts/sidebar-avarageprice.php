@@ -1,3 +1,12 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+<style type="text/css">
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+</style>
+
 <div class="add-postsis sdjalc" id="toghandlingers"  style="display: none;">
 
     <div class="arb_calcbox varcalc">
@@ -69,7 +78,7 @@
 
                                             <span>Position</span></br>
 
-                                            <input type="text" class="dpos" placeholder="Enter Position">
+                                            <input type="text" class="dpos number" placeholder="Enter Position">
 
                                         </li>
 
@@ -77,7 +86,7 @@
 
                                             <span>Price</span></br>
 
-                                            <input type="text" class="dpri" placeholder="Enter Price">
+                                            <input type="text" class="dpri number" placeholder="Enter Price">
 
                                         </li>
 
@@ -117,13 +126,13 @@
 
             var totalfee = 0;
             var partcpms = marketvalue * 0.0025;
-            var commission = (partcpms > 20 ? partcpms : 20);
-            var tax = marketvalue * 0.12;
+            var commission = (partcpms >= 20 ? partcpms : 20);
+            var tax = commission * 0.12;
 
             var transfer = marketvalue * 0.00005;
 
-            // var sccp = marketvalue * 0.0001;
-            var sccp = 0;
+            var sccp = marketvalue * 0.0001;
+            // var sccp = 0;
 
 
 
@@ -131,7 +140,7 @@
 
 
 
-            return totalfee;
+            return totalfee.toFixed(2);
 
         };
 
@@ -151,9 +160,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
 
             ditem += "</ul>";
 
@@ -171,9 +180,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
 
             ditem += "</ul>";
 
@@ -207,11 +216,8 @@
 
 
 
-                    var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val() : 0);
-                    
-                    
-
-                    var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val() : 0);
+                    var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val().replace(/[^0-9\.]/g, '') : 0);
+                    var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val().replace(/[^0-9\.]/g, '') : 0);
 
                     if (dposition > 0 && dprice > 0) {
 
@@ -219,9 +225,10 @@
 
                         totalprice += parseFloat(dprice);
 
-                        totalcost += parseFloat(dprice) * parseFloat(dposition);
+                        var nscost = parseFloat(dprice) * parseFloat(dposition)
+                        totalcost += nscost;
 
-                        costfee += totalcost + parseFloat(getfee(totalcost));
+                        costfee += nscost + parseFloat(getfee(totalcost));
 
                         // console.log("fees: "+parseFloat(getfee(totalcost)));
 
@@ -231,25 +238,32 @@
 
                 });
 
-                // console.log("totalvol: "+totalvolume);
-                // console.log("totalprice: "+totalprice);
-                // console.log("totalcost: "+totalcost);
-                // console.log("costfee: "+costfee);
+                //console.log("totalvol: "+totalvolume);
+                //console.log("totalprice: "+totalprice);
+                //console.log("totalcost: "+totalcost);
+                //console.log("costfee: "+costfee);
 
                 // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
-                var finalcost = totalcost / totalvolume;
+                var finalcost = costfee / totalvolume;
 
                 // console.log("finalcost: "+finalcost);
 
 
+                
+                
+                jQuery("#totalcost").val(numeral(costfee).format('0,0.00'));
 
+                jQuery("#totalposition").val(numeral(totalvolume).format('0,0.00'));
 
+                jQuery("#averageprice").val(numeral(finalcost).format('0,0.00'));
+
+                /*
                 jQuery("#totalcost").val(parseFloat(costfee).toFixed(2));
 
                 jQuery("#totalposition").val(totalvolume);
 
                 jQuery("#averageprice").val((finalcost).toFixed(2));
-
+                */
 
 
             } else {
@@ -261,6 +275,39 @@
 
 
         });
+
+
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
     });
 

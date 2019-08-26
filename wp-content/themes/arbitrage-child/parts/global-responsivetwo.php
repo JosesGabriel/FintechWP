@@ -261,6 +261,8 @@
 		padding-left: 60px !important;
 	}
 
+	
+
 }
 
 

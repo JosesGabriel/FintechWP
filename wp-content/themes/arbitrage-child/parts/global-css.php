@@ -2029,6 +2029,18 @@ input.dpos {
 	font-family: 'Roboto', sans-serif !important;
 	font-size: 15px;
 }
+input.dpos::placeholder, input.dpri::placeholder {
+	color: white;
+} 
+.bullbear-Modal--header {
+    background-color: #213f58;
+}
+.bullbear-Modal--body {
+    background-color: #142b46;
+}
+.totabs active {
+	border-bottom: 2px solid red;
+}
 .paramlist .jjaajs {
 	margin-top: 15px !important;
 	max-height: 100px !important;
@@ -2267,7 +2279,7 @@ ul.footmore li {
 	border-right: none !important;
 }
 ul.footmore .ddot {
-	top: -3px;
+	top: 2px;
 	position: relative;
 }
 .wh-container {
@@ -2855,7 +2867,7 @@ li.dspecitem div div {
     background: #142c46;
 }
 .inner-content--contact {
-	margin: 0 120px;
+	margin: 0 90px;
 	margin-top: 20px;
 }
 .fa-percentage {
@@ -2873,13 +2885,15 @@ p.content-meta-date {
 	overflow-x: hidden;
 }
 .a-link {
-	color: #03A9F4;
+	font-weight: 700;
 }
-
+img.icon-game {
+	width: 22px;
+}
 .profile-progress {
 	height: 5px;
 	margin: 5px 0px;
-    background: white;
+    background: #a4a5a7;
     border-radius: 5px;
 }
 
@@ -2892,6 +2906,15 @@ p.content-meta-date {
 .terms-padding {
 	margin-bottom: 48px !important;
 }
+h2.terms-padding:after {
+    content: "";
+    width: 6%;
+    height: 3px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 3px;
+    background: #fff;
+}
 .footer-container {
 	width: 100%;
     height: 30px;
@@ -2900,7 +2923,7 @@ p.content-meta-date {
     text-align: center;
 }
 .a-link-text-margin {
-	margin: 50px auto;
+	margin: 20px auto 50px auto;
 }
 .a-text-font, .a-text-font a {
     color: #d8d8d8;
@@ -2929,6 +2952,23 @@ p.content-meta-date {
     color: #FFFFFF;
 }
 .c-footer-arbitrage {
-	padding-left: 4px;
+	padding-top: 4px;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(to right, #F44336 33%, #E91E63 43%, #2196F3 49%, #8BC355 54%, #FFEB3B 84%, #FF9800 100%);
+    font-weight: 900 !important;
+}
+.button-media-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.button-media-container a img {
+    display: inline;
+    width: 40px;
+    margin: 0 5px;
+}
+.mc-background {
+	background-color: #142b46;
+    border-radius: 15px;
 }
 </style>

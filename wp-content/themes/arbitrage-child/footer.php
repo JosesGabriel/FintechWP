@@ -90,6 +90,15 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 
 		        jQuery('.um-activity-textarea textarea').on('keyup', function (e) {
+
+		        	//if(this.value.length < 2) return;
+		        	if($(this).val().length < 2) {
+		        		jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont > li").remove();
+		        		jQuery(this).parent().find(".popname").remove();
+		        		return;
+		        	}
+
+
 					<?php
 						
 							

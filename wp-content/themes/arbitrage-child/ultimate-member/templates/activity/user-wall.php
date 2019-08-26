@@ -648,7 +648,9 @@ foreach ( $wallposts->posts as $post ) {
 		</div>
 
 		<style type="text/css">
-			
+			.totabs active {
+				border-bottom: 2px solid #e77e24;
+			}
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
@@ -723,11 +725,11 @@ foreach ( $wallposts->posts as $post ) {
 
 						<div class="modal fade" id="mod<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 60px;">
 
-						  <div class="modal-dialog" role="document" style="float: none;">
+						  <div class="modal-dialog" role="document" style="float: none; max-width: 300px;">
 
-						    <div class="modal-content">
+						    <div class="modal-content" style="border-radius: 20px;">
 
-						      <div class="modal-header">
+						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
 
 						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
 
@@ -737,25 +739,35 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<!-- <li class="">All</li> -->
 
-						        		<li class="totabs" data-btname="bullish">Bullish</li>
+										<li class="totabs" style="color: white;" data-btname="bullish">
+											<span style="margin-left: 0;">
+												<img src="https://arbitrage.ph/svg/Bullish-border.svg" style="width: 30px; padding: 5px;">
+											</span>
+											<span style="margin-left: 0px;" class="dnumof" data-istab="bullish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbullish); ?></span>
+										</li>
 
-						        		<li class="totabs" data-btname="bearish">Bearish</li>
+										<li class="totabs" style="color: white;" data-btname="bearish">
+											<span style="margin-left: 0;">
+												<img src="https://arbitrage.ph/svg/Bearish-border.svg" style="width: 30px; padding: 5px;">
+											</span>
+											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
+										</li>
 
-						        		<li class="totabs" data-btname="liked">Liked</li>
+						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
 						        	</ul>
 
 						        </div>
 
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 0 15px;">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
 
 						          <span aria-hidden="true">&times;</span>
 
 						        </button>
 
 						      </div>
-
-						      <div class="modal-body">
+							<div style="height: 3px; background-image: linear-gradient(to right, #894b9d, #eb8023, #c2b819, #49ba6f, #2581bc);"></div>
+						      <div class="modal-body bullbear-Modal--body">
 
 						        <div class="totab">
 
@@ -773,26 +785,13 @@ foreach ( $wallposts->posts as $post ) {
 
 											?>
 
-													<div class="bullitems listofpeople">
-
-														<div class="dusername">
-
-															<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-																<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-
-															</a>
-
-														</div>
-
-														<div class="isfriends">
-
-															<?php echo UM()->Friends_API()->api()->friend_button($user_info->ID, get_current_user_id()); ?>
-
-														</div>
-
-													</div>
-
+													<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white !important; margin-right: 10px; margin-left: 0px;">
+														<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
+														<img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
+													</a>
+															
+												
+										
 											<?php
 											
 													endforeach;
@@ -816,25 +815,10 @@ foreach ( $wallposts->posts as $post ) {
 
 										?>
 
-												<div class="bullitems listofpeople">
-
-													<div class="dusername">
-
-														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
-
-														</a>
-
-													</div>
-
-													<div class="isfriends">
-
-														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
-
-													</div>
-
-												</div>
+												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white!important; margin-right: 10px; margin-left: 0px;">
+													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+													<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
+												</a>
 
 										<?php 
 												endforeach;
@@ -843,7 +827,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	</div>
 
-						        	<div class="liked">
+						        	<!-- <div class="liked">
 
 										<?php 
 										
@@ -881,7 +865,7 @@ foreach ( $wallposts->posts as $post ) {
 											endif;
 										?>
 
-						        	</div>
+						        	</div> -->
 
 						        </div>
 

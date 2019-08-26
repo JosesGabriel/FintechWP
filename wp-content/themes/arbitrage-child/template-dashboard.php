@@ -910,6 +910,20 @@ date_default_timezone_set('Asia/Manila'); ?>
 	.um-form textarea {
 		line-height: 18px;
 	}
+	.user-counter {
+		font-size: 15px;
+    	margin-left: 6px;
+	}
+	.usercounter {
+		font-size: 12px;
+	}
+	.icon-users {
+		background: green;
+    	padding: 5px 4px;
+    	border-radius: 50%;
+    	margin-right: 5px;
+	}
+
 </style>
 <?php get_template_part('parts/global', 'css'); ?>
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -926,7 +940,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-                        
+
+                        <!--<div class="user-counter">
+                        	 <i class="fas fa-users icon-users" aria-hidden="true"></i>
+                        	 <span class="usercounter"><?php // $result = count_users(); echo $result['total_users']; ?> Members</span>
+                        </div>-->
+
 					</div>
 				</div>
 			</div>

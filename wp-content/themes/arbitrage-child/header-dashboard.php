@@ -25,6 +25,15 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
+	<script>
+		window.onload = function() {
+			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+				$('#vyndue--link').attr("target","_blank");
+				$('#vyndue--link').attr("href","https://vyndue.com");
+				window.close();
+			}
+		}
+	</script>
 <?php
 global $current_user;
 $user = wp_get_current_user();

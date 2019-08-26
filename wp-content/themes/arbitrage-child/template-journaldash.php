@@ -4365,7 +4365,7 @@ if ($getdstocks && $getdstocks != '') {
 		$(document).on("click", "#tradelognotes", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("fancybox-inline");
-  			$(this).attr('href',$(this).attr('href') == '#tradelognotes_MBT');
+  			$(this).attr('href',$(this).attr('href') == '#tradelognotes_MBT' ? '#wwd-section' : '#tradelognotes_MBT');
   			console.log('toggle click!');
 
 		});

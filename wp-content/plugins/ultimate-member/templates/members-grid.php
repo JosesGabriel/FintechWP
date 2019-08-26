@@ -19,7 +19,7 @@
 		?>
 
 		<div class="um-member-cover" data-ratio="<?php echo UM()->options()->get('profile_cover_ratio'); ?>">
-			<div class="um-member-cover-e"><a href="<?php echo um_user_profile_url(); ?>" title="<?php echo esc_attr(um_user('display_name')); ?>"><?php echo um_user('cover_photo', $cover_size); ?></a></div>
+			<div class="um-member-cover-e"><a href="<?php echo um_user_profile_url(); ?>" title="<?php echo esc_attr(um_user('display_name')); ?>" style="height: 90px;"><?php echo um_user('cover_photo', $cover_size); ?></a></div>
 		</div>
 
 		<?php } ?>

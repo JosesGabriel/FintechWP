@@ -2337,8 +2337,7 @@
 	<script>
 		var modalzindex = 10000;
 		var nightmode = localStorage.getItem('theme') == 'dark';
-		var arbitrage_socket = io('https://dev-socket-api.arbitrage.ph/');
-        var socket = io.connect('https://websocket2.pse.tools', {transports:['websocket'], upgrade:false});
+        var socket = io.connect('https://dev-socket-api.arbitrage.ph');
         socket.on('reconnect', function() {
             console.log('reconnected to websocket');
         });
@@ -2350,13 +2349,6 @@
 		    $( function () {
 		        $(".stocks-select2").select2({placeholder:"Stock", width: '100%'})
 		    });
-		});
-
-		arbitrage_socket.on('connect', function () {
-			console.log('ARBITRAGE socket connected');
-		});
-		arbitrage_socket.on('pse-chart', function (data) {
-			console.log('PSE-CHART', data);
 		});
 		var _stocks     = {};
 		var _admin 		= false;

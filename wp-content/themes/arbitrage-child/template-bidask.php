@@ -287,7 +287,7 @@
 	<script>
 		var modalzindex = 10000;
     	var nightmode = localStorage.getItem('theme') == 'dark';
-        var socket = io.connect('https://websocket2.pse.tools', {transports:['websocket'], upgrade:false});
+        var socket = io.connect('https://dev-socket-api.arbitrage.ph');
         socket.on('reconnect', function() {
             console.log('reconnected to websocket');
         });

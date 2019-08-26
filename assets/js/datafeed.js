@@ -61,6 +61,23 @@ var DataProvider = (function () {
 				subscriber.listener(lastBar);
         	}
 		});
+		socket.on('pse-chart', function (data) {
+			let listenerGuid = data.symbol + '_D';
+			if (that._subscribers.hasOwnProperty(listenerGuid)) {
+				var subscriber = that._subscribers[listenerGuid];
+				var lastBar = {
+					time: 	parseFloat(moment(data.timestamp).format('x')),
+					close: 	parseFloat(data.last),
+					open: 	parseFloat(data.open),
+					high: 	parseFloat(data.high),
+					low: 	parseFloat(data.low),
+				};
+				if (data.volume) {
+					lastBar.volume = parseFloat(data.volume);
+				}
+				subscriber.listener(lastBar);
+			}
+		});
         socket.on('reconnect', function() {
         	for (var listenerGuid in that._subscribers) {
         		socket.emit('subscribeBars2', listenerGuid);

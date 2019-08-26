@@ -352,3 +352,4 @@ jQuery(function(){
 </div>
           <?php endif; ?>
 </div>
+</div>

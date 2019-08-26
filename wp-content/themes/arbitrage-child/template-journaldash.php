@@ -3546,7 +3546,7 @@ if ($getdstocks && $getdstocks != '') {
 
 																<div class="search-tlogs">
 																	<form action="" method="get">
-																		 <input type="text" name="searchlogs" id="searchlogs" class="form-control form-control-sm search-logs" style="padding: 0px 10px; " placeholder="Search logs..." >
+																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
                                                             </div>

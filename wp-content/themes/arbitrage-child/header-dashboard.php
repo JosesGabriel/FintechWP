@@ -15,6 +15,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="test" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	<link rel="manifest" href="/manifest.json">     
 	<meta name="msapplication-TileColor" content="#142c46">

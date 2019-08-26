@@ -453,10 +453,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
             var transaction = {
-                symbol: symbol,
-                price:  price_format(data[4]),
-                change: data[5],
-                shares: abbr_format(data[13]),
+                symbol: stock.symbol,
+                price:  price_format(stock.last),
+                change: stock.change,
+                shares: abbr_format(stock.volume),
                 buyer:  data[14].substr(0, 5).trim(),
                 seller: data[15].substr(0, 5).trim(),
                 time:   data[16],

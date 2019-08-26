@@ -4462,16 +4462,20 @@ if ($getdstocks && $getdstocks != '') {
 
 		jQuery('.search-logs').on('keyup', function () {
 
+			var totalrow = $('input[name="hsearchlogs"]').val();
+
 			if($(this).val().length < 1) {
         		jQuery('.dloglist').css("display","block");
-        		jQuery('.s-logs').css("display","none");
+        		for(var x = 0; x < totalrow; x++){
+        			jQuery('.s-logs'+ x).css("display","none");
+        		}
         		$('.s-logs').remove();
         		 
     		}else {
     			jQuery('.dloglist').css("display","none");
     			jQuery('.s-logs').css("display","block");
     			var keyword = $(this).val();
-    			var totalrow = $('input[name="hsearchlogs"]').val();	
+    				
     			var tdate = $('.tdate').text();
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
@@ -4494,6 +4498,7 @@ if ($getdstocks && $getdstocks != '') {
 
     				//if(keyword == tdata){
     				var rgxp = new RegExp(keyword, "gi");
+
     				if (tdata.match(rgxp)) {
 
     					console.log("success");

@@ -4364,7 +4364,7 @@ if ($getdstocks && $getdstocks != '') {
 
 		$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
-  			//$(this).toggleClass("fancybox-inline");
+  			$(this).toggleClass("tradelogbox");
 
   			console.log('toggle click!');
 

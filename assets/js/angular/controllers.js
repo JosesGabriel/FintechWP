@@ -417,10 +417,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         });
     });
     socket.on('pse-chart', function (data) {
+        let date = (new Date(0)).setUTCSeconds(data.timestamp);
+        let full_date = new Intl.DateTimeFormat('en-US', {dateStyle: 'medium'}).format(date);
+        let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
         let stock = {
             id: data.symbol,
             symbol: data.symbol,
-            date: data[1],
+            date: full_date,
             last: data.last,
             difference: data.changepercentage,
             change: data.change,
@@ -432,7 +435,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             volume: data.volume,
             value: data.value,
             trades: data.trades,
-            updated_at: data.timestamp,
+            updated_at: full_date,
 
             displayLast: price_format(data.last),
             displayDifference: price_format(data.changepercentage, data.last),
@@ -459,7 +462,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 shares: abbr_format(stock.volume),
                 buyer:  "",
                 seller: "",
-                time:   (new Date()).getTime(),
+                time:   full_time,
             }
             $scope.transactions.unshift(transaction);
             if ($scope.transactions.length > 20) {

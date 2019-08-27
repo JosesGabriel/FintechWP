@@ -285,9 +285,9 @@ span.curprice {
     border-right: 1px solid #1e3554;
     margin-right: -15px;
 }
-#canceladd {
+/* #canceladd {
     padding: 0 18px !important;
-}
+} */
 #main-header {
     z-index: 1;
 }

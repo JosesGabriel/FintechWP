@@ -2974,4 +2974,14 @@ h2.terms-padding:after {
 .dclosetab.addwatchtab.active {
     margin: 3px 8px;
 }
+.dpaste {
+	min-height: 86px;
+}
+.condition-padding {
+	padding-left: 0;
+}
+.condition-notif {
+	margin: 0;
+	font-size: 13px;
+}
 </style>

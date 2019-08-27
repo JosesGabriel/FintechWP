@@ -458,13 +458,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<div class="">
 																<div class="innerdeliver">
 																	<ul>
-																		<li><input type="checkbox" name="delivery_type[]" value="web-notif"><label>Website Popup</label></li>
-																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label>SMS Notification</label></li>
+																		<li><input type="checkbox" name="delivery_type[]" value="web-notif"><label class="condition-notif">Website Popup</label></li>
+																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
 																	</ul>
 																</div>
 															</div>
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-6 condition-padding">
                                                                     <div class="condition-params">
                                                                         <div class="condition-type">
                                                                             <!-- <label>Conditions</label> -->
@@ -488,13 +488,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     <div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-md-12">
                                                                     <div class="submitform">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
-                                                                        <button id="canceladd">Cancel</button>
-                                                                        <button id="submitmenow">Submit</button>
+                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary">Cancel</button>
+                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -650,8 +648,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 .submitform {
     text-align: right;
-    margin-top: -28px;
-    width: 159px;
+    margin-top: -30px;
     float: right;
 }
 .dclosetab {
@@ -824,9 +821,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     border-right: 1px solid #1e3554;
     margin-right: -15px;
 }
-#canceladd {
+/* #canceladd {
     padding: 0 18px !important;
-}
+} */
 #main-header {
     z-index: 1;
 }
@@ -1031,6 +1028,7 @@ input.subbuttons {
 }
 .innerdeliver ul li input[type="checkbox"] {
     margin-right: 5px;
+    vertical-align: middle;
 }
 .condition-params > div {
     margin-bottom: 10px;
@@ -1301,7 +1299,9 @@ h2.watchtitle {
 }
 
 .innerdeliver {
-    padding: 15px 0px;
+    padding: 5px 0px 11px 0;
+    text-align: right;
+    margin-top: -31px;
 }
 
     /* Enter Trade Form */

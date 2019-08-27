@@ -539,13 +539,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     if (typeof angular !== 'undefined') {
 		var app = angular.module('arbitrage_wl', ['nvd3']);
 		<?php
+        
+        $printout = 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20');
+
 		if ($havemeta) {
-		foreach ($havemeta as $key => $value) {
-
-
-            $printout = 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20');
-            
-            
+		foreach ($havemeta as $key => $value) {    
             // get stcok history
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
@@ -586,7 +584,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			?>
 
-            
+
             console.log(<?php echo $printout; ?>);
 
 

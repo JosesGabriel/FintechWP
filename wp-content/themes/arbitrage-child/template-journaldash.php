@@ -2032,7 +2032,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                                    <div class="entr_clear"></div>
 
 																			                            </div>
-																			                            <div class="entr_wrapper_mid">
+																			                            <div>
 																			                                <div>
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
@@ -4458,7 +4458,6 @@ if ($getdstocks && $getdstocks != '') {
 			})
 			.then((willDelete) => {
 				if (willDelete) {
-					swal("Poof! Your imaginary file has been deleted!");
 					jQuery(this).parents(".dloglist").addClass("housed");
 					jQuery(".deleteformitem").find("#todelete").val(dlogid);
 					jQuery(".deleteformitem").submit();

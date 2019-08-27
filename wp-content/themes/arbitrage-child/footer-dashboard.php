@@ -184,16 +184,23 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-				$jsonstocklist = curl_exec($curl);
+				$response = curl_exec($curl);
 				curl_close($curl);
+
+				if ($response !== false) {
+					$response = json_decode($response);
+					$jsonstocklist = json_encode($response);
+				}	
 				
 			?>
-			var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
+			//var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
+			var stocklist = <?php echo $jsonstocklist; ?> ;
+				
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
 	
 			// TODO Fix: this is causing front end errors
-			 jQuery.each(dstockinfo.data, function( index, value ) {
+			 jQuery.each(stocklist.data, function( index, value ) {
 				//console.log(value.symbol);
 			 	jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 			 });

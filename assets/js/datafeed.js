@@ -5,7 +5,8 @@ Datafeeds.UDFCompatibleDatafeed = function(datafeedURL, updateFrequency) {
 	this._configuration = {
 		supports_search: true,
 		supports_group_request: false,
-		supported_resolutions: ['1','3','5','15','30','45','60','120','180','240',"D","3D","W","M","3M","6M","12M"],
+		// supported_resolutions: ['1','3','5','15','30','45','60','120','180','240',"D","3D","W","M","3M","6M","12M"],
+		supported_resolutions: ["D","3D","W","M","3M","6M","12M"],
 		supports_marks: false,
 		supports_timescale_marks: true,
 		supports_time: true,
@@ -66,7 +67,7 @@ var DataProvider = (function () {
 			if (that._subscribers.hasOwnProperty(listenerGuid)) {
 				var subscriber = that._subscribers[listenerGuid];
 				var lastBar = {
-					time: 	parseFloat(moment(data.timestamp).format('x')),
+					time: 	parseFloat(data.timestamp * 1000),
 					close: 	parseFloat(data.last),
 					open: 	parseFloat(data.open),
 					high: 	parseFloat(data.high),
@@ -205,25 +206,9 @@ Datafeeds.UDFCompatibleDatafeed.prototype.calculateHistoryDepth = function(perio
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback, firstDataRequest) {
 	var that = this;
-	var url;
-	var rangeStartDate 	= moment.unix(rangeStartDate);
-	var rangeEndDate 	= moment.unix(rangeEndDate);
-	if (resolution == 'D') {
-		// url = 'https://tsupetot.com/api/history2';
-		// url = 'https://arbitrage.ph/charthisto/';
-		// if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
-		// 	url = 'https://arbitrage.ph/charthisto/';
-		// } else {
-		url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
-		// }
-		
-		rangeStartDate = rangeStartDate.format('YYYY-MM-DD');
-		rangeEndDate = rangeEndDate.format('YYYY-MM-DD');
-	} else {
-		url = 'https://tsupetot.com/api/intraday';
-		rangeStartDate = rangeStartDate.format('YYYY-MM-DD HH:mm:00');
-		rangeEndDate = rangeEndDate.format('YYYY-MM-DD HH:mm:00');
-	}
+	var url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
+	var rangeStartDate = moment.unix(rangeStartDate).format('YYYY-MM-DD');
+	var rangeEndDate = moment.unix(rangeEndDate).format('YYYY-MM-DD');
 	var params = {
 		symbol: symbolInfo.ticker.toUpperCase(),
 		// firstDataRequest: firstDataRequest,

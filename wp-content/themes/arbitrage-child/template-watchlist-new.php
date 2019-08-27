@@ -1039,7 +1039,7 @@ input.subbuttons {
 .condition-params > div select#condition-list {
     color: #fff;
     display: block;
-    width: 95%;
+    width: 100%;
     padding: 5px 10px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1058,14 +1058,14 @@ input.subbuttons {
     background: #11273e;
     border: 1px solid #1e3554 !important;
     padding: 5px 10px;
-    width: 95%;
+    width: 100%;
     border-radius: 25px;
     min-height: 33px;
 }
 .addtolist {
     margin-bottom: 0px !important;
     text-align: right;
-    margin-right: 12px;
+    margin-right: 0;
 }
 .dbaseitem .dinfodata {
     width: 84%;
@@ -1128,9 +1128,10 @@ h2.watchtitle {
 }
 .dmodaleditwatch .modal-header h5 {
     color: #fff !important;
-    line-height: 1em;
     margin: 0;
-    padding: 0;
+    line-height: 1em;
+    padding: 0 10px;
+    font-size: 21px;
 }
 .dmodaleditwatch .modal-header {
     padding: 10px;
@@ -1150,12 +1151,6 @@ h2.watchtitle {
 .dmodaleditwatch .modal-header {
     padding: 0;
 }
-.dmodaleditwatch .modal-header h5 {
-    line-height: 1em;
-    padding-bottom: 0;
-}
-
-
 .dssinner .dleftpart {
     width: 20%;
     float: left;

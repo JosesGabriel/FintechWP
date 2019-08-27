@@ -205,25 +205,9 @@ Datafeeds.UDFCompatibleDatafeed.prototype.calculateHistoryDepth = function(perio
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback, firstDataRequest) {
 	var that = this;
-	var url;
-	var rangeStartDate 	= moment.unix(rangeStartDate);
-	var rangeEndDate 	= moment.unix(rangeEndDate);
-	if (resolution == 'D') {
-		// url = 'https://tsupetot.com/api/history2';
-		// url = 'https://arbitrage.ph/charthisto/';
-		// if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
-		// 	url = 'https://arbitrage.ph/charthisto/';
-		// } else {
-		url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
-		// }
-		
-		rangeStartDate = rangeStartDate.format('YYYY-MM-DD');
-		rangeEndDate = rangeEndDate.format('YYYY-MM-DD');
-	} else {
-		url = 'https://tsupetot.com/api/intraday';
-		rangeStartDate = rangeStartDate.format('YYYY-MM-DD HH:mm:00');
-		rangeEndDate = rangeEndDate.format('YYYY-MM-DD HH:mm:00');
-	}
+	var url = 'https://data-api.arbitrage.ph/api/v1/charts/history';
+	var rangeStartDate = moment.unix(rangeStartDate).format('YYYY-MM-DD');
+	var rangeEndDate = moment.unix(rangeEndDate).format('YYYY-MM-DD');
 	var params = {
 		symbol: symbolInfo.ticker.toUpperCase(),
 		// firstDataRequest: firstDataRequest,

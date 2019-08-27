@@ -73,7 +73,7 @@ jQuery(function(){
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
         
-         <?php
+         <?php 
 				  $i=0;
 				  foreach ($finallist as $key => $value) { ?>
 		                <ul>

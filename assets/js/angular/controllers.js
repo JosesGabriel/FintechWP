@@ -369,7 +369,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayValue'] = abbr_format(stock['value']);
             stock['weekYearLow'] = price_format(stock['weekyearlow']);
             stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
-            stock['displayMarketCap'] = abbr_format(stock.marketcap);
+            stock['displayMarketCap'] = abbr_format(stock.marketcap).toUpperCase();
             return stock;
         });
 
@@ -474,8 +474,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         // UPDATE STOCK
         var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
         if (found.length) {
-            var current_stock = $scope.stocks.indexOf(found[0]);
-            $scope.stocks[current_stock] = Object.assign(current_stock, stock);
+            var current_stock_index = $scope.stocks.indexOf(found[0]);
+            $scope.stocks[current_stock_index] = Object.assign($scope.stocks[current_stock_index], stock);
         } else $scope.stocks.push(stock);
         $scope.count = $scope.stocks.reduce( function(a, b) {
             if (b.change < 0) {

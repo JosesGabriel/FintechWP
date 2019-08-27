@@ -1038,27 +1038,24 @@ input.subbuttons {
     margin-bottom: 10px;
 }
 .condition-params > div select#condition-list {
-    background: #2b405b;
-    color: #fff;
-    border: 0 none !important;
     color: #fff;
     display: block;
     width: 95%;
     padding: 5px 10px;
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none;
     border-radius: 25px;
     min-height: 33px;
-
+    background: #11273e;
+    border: 1px solid #1e3554 !important;
 }
 .box-portlet-content [type=button], [type=reset], [type=submit], button:hover {
     background-color: #123;
 }
 .condition-freq input#condition_frequency {
-    background: #2b405b;
-    border: 1px solid #32465a;
     color: #fff;
+    background: #11273e;
+    border: 1px solid #1e3554 !important;
     padding: 5px 10px;
     width: 95%;
     border-radius: 25px;

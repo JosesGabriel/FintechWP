@@ -1306,7 +1306,7 @@ h2.watchtitle {
 }
 .innerdeliver.innerdeliver-editstock {
     padding: 5px 0px 5px 0;
-    text-align: right;
+    text-align: left;
 }
 
     /* Enter Trade Form */

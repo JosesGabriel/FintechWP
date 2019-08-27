@@ -2991,6 +2991,6 @@ h2.terms-padding:after {
 	padding: 0 7px;
 }
 .add-params {
-	background: none;
+	background: none !important;
 }
 </style>

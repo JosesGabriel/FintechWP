@@ -185,7 +185,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 				curl_close($curl); /*temp-disabled-end */
 			?>
-			var dstockinfo = JSON.parse('<?php echo $dwatchinfo; ?>');
+			var dstockinfo = JSON.stringify('<?php echo $dwatchinfo; ?>');
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			console.log(dstockinfo);
 	

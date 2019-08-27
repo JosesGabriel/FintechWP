@@ -44,24 +44,28 @@ get_header('dashboard');
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2 class="terms-padding">Contact Us</h2>
 
-		<div class="inner-content inner-content--contact">
-			<form action="" class="contact--form" id="contact--form">
+		<div class="inner-content inner-content--contact row">
+			<form action="" class="contact--form col-md-6" id="contact--form">
 				<div class="form-group">
 					<label for="contact--textField__name" class="contact--label">Name</label>
-					<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name">
+					<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name" placeholder="Enter your name">
 				</div>
 				<div class="form-group">
 					<label for="contact--textField__email" class="contact--label">Email</label>
-					<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email">
+					<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email" placeholder="Enter your email address">
 				</div>
 				<div class="form-group">
 					<label for="contact--textField__message" class="contact--label">Message</label>
-					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form"></textarea>
+					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to here that from you."></textarea>
 				</div>
 				<div class="flex-box">
 					<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
 				</div>
 			</form>
+			<div class="quote col-md-6">
+				<h4 class="quote-f01">It’s about time.</h4>
+				<span class="quote-f1">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
+			</div>
 		</div>
 	</div>
 </div>

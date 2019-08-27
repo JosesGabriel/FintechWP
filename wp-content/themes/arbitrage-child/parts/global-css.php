@@ -2968,10 +2968,30 @@ h2.terms-padding:after {
     margin: 0 5px;
 }
 .mc-background {
-	background-color: #142b46;
-    border-radius: 15px;
+	/* background-color: #142b46; */
+	border-radius: 15px;
+    background: #0c1f33 !important;
 }
 .dclosetab.addwatchtab.active {
     margin: 3px 8px;
+}
+.dpaste {
+	min-height: 86px;
+}
+.condition-padding {
+	padding-left: 0;
+}
+.condition-notif {
+	margin: 0;
+	font-size: 13px;
+}
+#canceladd {
+	padding: 4px 9px !important;
+}
+.edit-stocks-padding {
+	padding: 0 7px;
+}
+.add-params {
+	background: none !important;
 }
 </style>

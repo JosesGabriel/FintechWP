@@ -67,9 +67,6 @@ jQuery(function(){
             <strong>See more</strong>
         </div>
     </div>
-        <div class="to-bottom-title">
-            <a href="#" class="to-view-more">View all trending stocks</a>
-        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style type="text/css">

@@ -1871,6 +1871,7 @@ h2.watchtitle {
             <?php get_template_part('parts/sidebar', 'alert'); ?>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
+                
                                                             <div class="addwatchs">
                                                                 <div class="stats-watch">Statistics</div>
                                                                 <hr class="style14 style15" style="width: 100% !important;margin-bottom: 4px !important;margin-top: 4px !important;text-align: center;">

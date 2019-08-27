@@ -231,8 +231,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<div class="chartjs">
                                                                                 <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span>
 																				
-                                                                                	<!--<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
-																					 </div>-->
+                                                                                	<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
+																					</div>
 																				
                                                                                 </div>
 																			</div>
@@ -551,8 +551,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			#$dhistofronold = curl_exec($curl);
             #curl_close($curl); 
             
+            $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+            echo "CHART HISTORY :::::: " . $charthistory;
+            $chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE';
+            echo "CHART INTRA DAY :::::: " . $chartintraday;
+
+
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='.working_days_ago('20').'&to=2019-08-20');
+            curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
             curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $response = curl_exec($curl);
@@ -573,8 +579,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			if ($currentTime >= $startTime && $currentTime <= $endTime) {
 			  	$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
-				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE' );
+                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dintrabase = curl_exec($curl);
 				curl_close($curl);
 

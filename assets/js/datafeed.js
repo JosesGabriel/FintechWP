@@ -74,6 +74,7 @@ var DataProvider = (function () {
 					volume: parseFloat(data.volume),
 				};
 				subscriber.listener(lastBar);
+				console.log('DataPulseProvider: websocket:pse-chart', lastBar);
 			}
 		});
         socket.on('reconnect', function() {

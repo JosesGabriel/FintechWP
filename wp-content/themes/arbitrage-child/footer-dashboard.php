@@ -185,6 +185,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 				$jsonstocklist = curl_exec($curl);
+				$jsonstocklist = json_decode($jsonstocklist);
+				$jsonstocklist = json_encode($jsonstocklist);
 				curl_close($curl);
 				
 			?>

@@ -790,11 +790,11 @@ select#stockname {
                     <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
-                    <div class="arb_calcbox_left">Stoploss</div>
+                    <!-- <div class="arb_calcbox_left">Stoploss</div>
                     <div class="arb_calcbox_right lockedd">
                         <input class="input-locked number" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
                         <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
-                    </div>
+                    </div> -->
 
                     <div class="arb_clear smlspc"></div>
                     <div class="arb_calcbox_left">Take Profit Price</div>

@@ -648,7 +648,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 .submitform {
     text-align: right;
-    margin-top: -30px;
+    margin-top: 0;
     float: right;
 }
 .dclosetab {
@@ -1043,7 +1043,7 @@ input.subbuttons {
     border-radius: 25px;
     min-height: 33px;
     background: #11273e;
-    border: 1px solid #1e3554 !important;
+    border: none;
     font-size: 13px;
 }
 .box-portlet-content [type=button], [type=reset], [type=submit], button:hover {

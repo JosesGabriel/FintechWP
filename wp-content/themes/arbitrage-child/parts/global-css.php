@@ -2984,4 +2984,7 @@ h2.terms-padding:after {
 	margin: 0;
 	font-size: 13px;
 }
+#canceladd {
+	padding: 3px 9px !important;
+}
 </style>

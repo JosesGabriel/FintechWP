@@ -2971,4 +2971,7 @@ h2.terms-padding:after {
 	background-color: #142b46;
     border-radius: 15px;
 }
+.dclosetab.addwatchtab.active {
+    margin: 3px 8px;
+}
 </style>

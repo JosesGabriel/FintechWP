@@ -328,7 +328,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                     <div class="col-md-6">
                                                                                                         <div class="condition-params">
                                                                                                             <div class="condition-type">
-                                                                                                                <label class="label--margin">Conditions</label>
+                                                                                                                <!-- <label class="label--margin">Conditions</label> -->
                                                                                                                 <select id="condition-list">
                                                                                                                     <option value="">Select Conditions</option>
                                                                                                                     <option style="<?php echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
@@ -337,11 +337,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                                 </select>
                                                                                                             </div>
                                                                                                             <div class="condition-freq">
-                                                                                                                <label class="label--margin">Condition Frequency</label>
-                                                                                                                <input type="number" id="condition_frequency" name="confreq">
+                                                                                                                <!-- <label class="label--margin">Condition Frequency</label> -->
+                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Condition Frequency">
                                                                                                             </div>
                                                                                                             <div class="addtolist">
-                                                                                                                <button class="add-params">Add Parameters</button>
+                                                                                                                <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -396,7 +396,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                             <input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
                                                                                                             <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                                                             <input type="hidden" name="subtype" value="editdata">
-                                                                                                            <button class="editmenow" data-tochange="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">Change</button>
+                                                                                                            <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">Change</button>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -475,7 +475,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                         </div>
                                                                         <div class="condition-freq">
                                                                             <!-- <label>Condition Frequency</label> -->
-                                                                            <input type="number" id="condition_frequency" name="confreq">
+                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Condition Frequency">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
@@ -1025,6 +1025,10 @@ input.subbuttons {
     display: inline-block;
     margin-right: 10px;
 }
+.innerdeliver.innerdeliver-addstock ul li:first-child {
+    display: inline-block;
+    margin-right: 0;
+}
 .innerdeliver ul li input[type="checkbox"] {
     margin-right: 5px;
     vertical-align: middle;
@@ -1296,7 +1300,7 @@ h2.watchtitle {
 }
 
 .innerdeliver.innerdeliver-addstock {
-    padding: 5px 0px 11px 0;
+    padding: 5px 5px 11px 0;
     text-align: right;
     margin-top: -31px;
 }
@@ -1756,7 +1760,7 @@ h2.watchtitle {
     }
 
     .editmenow {
-        color: white;
+        /* color: white;
         cursor: pointer;
         display: inline-block;
         border-radius: 25px;
@@ -1766,7 +1770,9 @@ h2.watchtitle {
         font-family: 'Nunito', sans-serif;
         color: #6583a8;
         background: none !important;
-        line-height: 2;
+        line-height: 2; */
+        margin: 5px 0 15px 0;
+        cursor: pointer;
     }
     .eventnone {
         cursor: pointer;

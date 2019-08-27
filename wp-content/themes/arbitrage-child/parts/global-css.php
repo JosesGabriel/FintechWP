@@ -2990,4 +2990,7 @@ h2.terms-padding:after {
 .edit-stocks-padding {
 	padding: 0 7px;
 }
+.add-params {
+	background: none;
+}
 </style>

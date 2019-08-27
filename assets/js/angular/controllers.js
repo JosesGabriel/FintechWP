@@ -449,6 +449,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             displayValue: abbr_format(data.value),
         }
 
+        // UPDATE STOCK
+        var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
+        var current_stock_index = null;
+        if (found.length) {
+            current_stock_index = $scope.stocks.indexOf(found[0]);
+            $scope.stocks[current_stock_index] = Object.assign($scope.stocks[current_stock_index], stock);
+        } else $scope.stocks.push(stock);
+
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
             if ($scope.$parent.settings.chart == '1') {
                 beep();
@@ -469,14 +477,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             if ($scope.transactions.length > 20) {
                 $scope.transactions.pop();
             }
-            $scope.stock = stock;
+
+            if (current_stock_index) {
+                $scope.stock = $scope.stocks[current_stock_index];
+            } else {
+                $scope.stock = stock;
+            }
         }
-        // UPDATE STOCK
-        var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
-        if (found.length) {
-            var current_stock_index = $scope.stocks.indexOf(found[0]);
-            $scope.stocks[current_stock_index] = Object.assign($scope.stocks[current_stock_index], stock);
-        } else $scope.stocks.push(stock);
+        
         $scope.count = $scope.stocks.reduce( function(a, b) {
             if (b.change < 0) {
                 a.losers = ++a.losers || 1;

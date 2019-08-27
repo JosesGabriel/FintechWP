@@ -2955,7 +2955,7 @@ h2.terms-padding:after {
 	padding-top: 4px;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    background: linear-gradient(to right, #F44336 33%, #E91E63 43%, #2196F3 49%, #8BC355 54%, #FFEB3B 84%, #FF9800 100%);
+	background: linear-gradient(to right, #71F29F 22%, #B5DC5D 60%);
     font-weight: 900 !important;
 }
 .button-media-container {
@@ -2970,5 +2970,8 @@ h2.terms-padding:after {
 .mc-background {
 	background-color: #142b46;
     border-radius: 15px;
+}
+.dclosetab.addwatchtab.active {
+    margin: 3px 8px;
 }
 </style>

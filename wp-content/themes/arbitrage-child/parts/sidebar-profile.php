@@ -41,7 +41,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
           </div>
           <div class="right-image">
 
-                  <div class="onto-user-name true-name">
+                  <div class="onto-user-name">
                     <!-- <a href="<?php //echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php // echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">
                       <?php // echo um_user('first_name') . " " . um_user('last_name'); ?>

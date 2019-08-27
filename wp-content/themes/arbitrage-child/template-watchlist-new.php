@@ -1001,6 +1001,7 @@ input.subbuttons {
     line-height: 1em;
     font-size: 18px;
     padding-bottom: 3px;
+    padding-top: 0;
     font-weight: 500 !important;
 }
 .dpricechange .curchange {

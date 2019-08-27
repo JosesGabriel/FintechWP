@@ -66,7 +66,7 @@ var DataProvider = (function () {
 			if (that._subscribers.hasOwnProperty(listenerGuid)) {
 				var subscriber = that._subscribers[listenerGuid];
 				var lastBar = {
-					time: 	parseFloat(moment(data.timestamp).format('x')),
+					time: 	parseFloat(data.timestamp * 1000),
 					close: 	parseFloat(data.last),
 					open: 	parseFloat(data.open),
 					high: 	parseFloat(data.high),

@@ -2082,14 +2082,6 @@ input.dpos::placeholder, input.dpri::placeholder {
 .tobottomsit {
 	margin: 30px 0px 30px 2px;
 }
-.noSelect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
 span.totalcost {
 	font-size: 26px;
 	font-weight: 200;

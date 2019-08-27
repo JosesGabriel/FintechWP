@@ -545,14 +545,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		if ($havemeta) {
 		foreach ($havemeta as $key => $value) {    
             // get stcok history
-			/*$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			$dhistofronold = curl_exec($curl);
-            curl_close($curl);*/
+			#$curl = curl_init();
+			#curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
+			#curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			#$dhistofronold = curl_exec($curl);
+            #curl_close($curl); 
             
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='.working_days_ago('20').'&to=2019-08-20");
+            curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='.working_days_ago('20').'&to=2019-08-20');
             curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $response = curl_exec($curl);

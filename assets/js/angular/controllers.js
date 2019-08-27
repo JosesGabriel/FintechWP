@@ -369,6 +369,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayValue'] = abbr_format(stock['value']);
             stock['weekYearLow'] = price_format(stock['weekyearlow']);
             stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
+            stock['displayMarketCap'] = abbr_format(stock.marketcap);
             return stock;
         });
 
@@ -454,7 +455,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 if (stock.change > 0){changicotogreen();}
 				if (stock.change < 0){changicotored();}
             }
-            setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
+            setTitle(stock.symbol, price_format(stock.last), number_format(stock.changepercentage, '0.00'));
             var transaction = {
                 symbol: stock.symbol,
                 price:  price_format(stock.last),

@@ -56,7 +56,7 @@ get_header('dashboard');
 				</div>
 				<div class="form-group">
 					<label for="contact--textField__message" class="contact--label">Message</label>
-					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to here that from you."></textarea>
+					<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to hear that from you."></textarea>
 				</div>
 				<div class="flex-box">
 					<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>

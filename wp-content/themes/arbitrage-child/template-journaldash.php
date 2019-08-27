@@ -1817,7 +1817,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<select name="inpt_data_stock" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
 																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
-																										<option value="" data-xinfo='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
 																									<?php endforeach; ?>
 																								</select>
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
@@ -4483,6 +4483,20 @@ if ($getdstocks && $getdstocks != '') {
 					// swal("Your imaginary file is safe!");
 				}
 			});
+		});
+
+		jQuery("#inpt_data_select_stock").on('change', function() {
+			var datts = this.value;
+			var dstocks = $.parseJSON(datts);
+			console.log(dstocks);
+
+			jQuery("input[name='inpt_data_currprice']").val(dstocks.last);
+			jQuery("input[name='inpt_data_change']").val(dstocks.change);
+			jQuery("input[name='inpt_data_open']").val(dstocks.open);
+			jQuery("input[name='inpt_data_low']").val(dstocks.low);
+			jQuery("input[name='inpt_data_high']").val(dstocks.low);
+			jQuery("input[name='inpt_data_volume']").val(dstocks.low);
+			jQuery("input[name='inpt_data_value']").val(dstocks.low);
 		});
 
 

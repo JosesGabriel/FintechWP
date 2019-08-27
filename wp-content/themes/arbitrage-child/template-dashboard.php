@@ -967,8 +967,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<div class="right-dashboard-part-inner">
 
 					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
-
-					<?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'traders'); ?>
                     

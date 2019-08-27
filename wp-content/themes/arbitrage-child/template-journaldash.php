@@ -1803,7 +1803,7 @@ if ($getdstocks && $getdstocks != '') {
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
 																				</div>
-																				<form action="/journal" method="post">
+																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
 																						<div class="entr_col">
 																							<div class="groupinput fctnlhdn">

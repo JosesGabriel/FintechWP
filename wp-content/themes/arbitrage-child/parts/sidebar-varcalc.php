@@ -330,6 +330,15 @@
     text-align: right;
 }
 
+select#stockname {
+    background: #4e6a85;
+    color: #fff;
+    border: 0 none;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 0 !important;
+}
+
 </style>
 
 <div class="arb_calcbox varcalc">
@@ -604,7 +613,21 @@
         }
 
         // $dequityp = 0;
+        
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE' );
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $dwatchinfo = curl_exec($curl);
+        curl_close($curl);
+
+        $dwatchinfo = json_decode($dwatchinfo);
+        
+
     ?>
+    <!-- <pre>
+        <?php print_r($dwatchinfo); ?>
+    </pre> -->
     <div class="bkcalcboxess container-fluid ">
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">
@@ -619,8 +642,15 @@
 
                         <div class="arb_calcbox_right">
 
-                            <input name="stockname" id="stockname" type="text" value="BDO" style="width: 85%; text-align: left;">
-
+                            <!-- <input name="stockname" id="stockname" type="text" value="BDO" style="width: 85%; text-align: left;"> -->
+                            <div class="dselecton">
+                                <select name="stockname" id="stockname">
+                                    <option value="0">Select a Stock</option>
+                                    <?php foreach($dwatchinfo->data as $dwkey => $dwvalue): ?>
+                                        <option value="<?php echo $dwvalue->last; ?>"><?php echo $dwvalue->symbol; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="arb_clear smlspc"></div>
@@ -809,6 +839,10 @@
 
 	jQuery(document).ready(function(){
 
+        jQuery("#stockname").on('change', function() {
+            console.log(this.value);
+            jQuery("#currentprice").val(this.value);
+        });
 		
 
 		jQuery("#currentprice, #portalloc, #portsize, #risktoler, #targetprof, #idenentryprice, #targetprof, #noofshare").keyup(function(){exevarclc();});

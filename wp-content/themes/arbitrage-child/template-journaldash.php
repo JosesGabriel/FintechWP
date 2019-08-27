@@ -1785,7 +1785,113 @@ if ($getdstocks && $getdstocks != '') {
                                                         		</div>
                                                         		<div class="dbuttonenter">
                                                         			<form action="" method="post">
-                                                        				<input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn">
+                                                        				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
+																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">BUY</a>
+																		<div class="hideformodal">
+																			<div class="entertrade" id="entertrade_mtrade">
+																				<div class="entr_ttle_bar">
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
+																				</div>
+																				<form action="/journal" method="post">
+																				<div class="entr_wrapper_top">
+																						<div class="entr_col">
+																							<div class="groupinput fctnlhdn">
+																								<label style="width:100%">Buy Date:</label>
+																								<input type="hidden" name="inpt_data_buymonth" value="<?php echo date('F'); ?>">
+																								<input type="hidden" name="inpt_data_buyday" style="width:32px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('j'); ?>">
+																								<input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
+																							</div>
+																							<div class="groupinput midd lockedd"><label>Stock</label>
+																							<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly>
+																							<i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Buy Power</label>
+																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																							<i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																						</div>
+																						<div class="entr_col">
+																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																						</div>
+																						<div class="entr_col">
+																							<div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd">
+																								<?php
+																									// $dboard = 0;
+																									// if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
+																									// 	$dboard = 1000000;
+																									// } elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
+																									// 	$dboard = 100000;
+																									// } elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
+																									// 	$dboard = 10000;
+																									// } elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
+																									// 	$dboard = 1000;
+																									// } elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
+																									// 	$dboard = 100;
+																									// } elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
+																									// 	$dboard = 10;
+																									// } elseif ($dstockinfo->last >= 1000) {
+																									// 	$dboard = 5;
+																									// } 
+																									$dboard = 0;
+																								?>
+																								<label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="<?php echo $dboard; ?>" readonly>
+																								<i class="fa fa-lock" aria-hidden="true"></i>
+
+																								<input type="hidden" id="inpt_data_boardlot_get" value="<?php echo $dboard; ?>">
+																							</div>
+																						</div>
+																						<div class="entr_clear"></div>
+																				</div>
+																				<div class="entr_wrapper_mid">
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_strategy" class="rnd">
+																								<option value="" selected>Select Strategy</option>
+																								<option value="Bottom Picking">Bottom Picking</option>
+																								<option value="Breakout Play">Breakout Play</option>
+																								<option value="Trend Following">Trend Following</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_tradeplan" class="rnd">
+																								<option value="" selected>Select Trade Plan</option>
+																								<option value="Day Trade">Day Trade</option>
+																								<option value="Swing Trade">Swing Trade</option>
+																								<option value="Investment">Investment</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_emotion" class="rnd">
+																								<option value="" selected>Select Emotion</option>
+																								<option value="Nuetral">Neutral</option>
+																								<option value="Greedy">Greedy</option>
+																								<option value="Fearful">Fearful</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="groupinput">
+																						<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+																						<!-- <div>this is it</div> -->
+																					</div>
+																					<div class="groupinput">
+																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																						<input type="hidden" value="Live" name="inpt_data_status">
+																						<input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
+																					</div>
+																					</div>
+																				</form>
+																			</div>
+																		</div>
                                                         			</form>
                                                         		</div>
                                                         	</div>
@@ -3692,7 +3798,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>

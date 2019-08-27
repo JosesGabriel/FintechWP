@@ -358,7 +358,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="<?php echo $value['dcondition_entry_price']; ?>">
 																																<input type="hidden" id="" name="dconnumber_entry_price" value="<?php echo $value['dconnumber_entry_price']; ?>">
-																																<button class="closemebutton">X</button>
+																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
 																															</div>
 																														</li>
 																													<?php endif ?>
@@ -371,7 +371,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="<?php echo $value['dcondition_take_profit_point']; ?>">
 																																<input type="hidden" id="" name="dconnumber_take_profit_point" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
-																																<button class="closemebutton">X</button>
+																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
 																															</div>
 																														</li>
 																													<?php endif ?>
@@ -384,7 +384,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																															<div class="closetab">
 																																<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="<?php echo $value['dcondition_stop_loss_point']; ?>">
 																																<input type="hidden" id="" name="dconnumber_stop_loss_point" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
-																																<button class="closemebutton">X</button>
+																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
 																															</div>
 																														</li>
 																													<?php endif ?>
@@ -1770,7 +1770,7 @@ h2.watchtitle {
         cursor: pointer;
     }
     button#submitmenow, button#canceladd {
-        padding: 4px 9px;
+        padding: 4px 9px !important;
     }
     /* button#submitmenow, button#canceladd {
         color: white;

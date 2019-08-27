@@ -1926,7 +1926,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                                    <div class="entr_clear"></div>
 
 																			                            </div>
-																			                            <div class="entr_wrapper_mid">
+																			                            <div>
 																			                                <div>
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">

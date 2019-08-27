@@ -184,13 +184,34 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-				$jsonstocklist = curl_exec($curl);
-				$jsonstocklist = json_decode($jsonstocklist);
-				$jsonstocklist = json_encode($jsonstocklist);
+				$response = curl_exec($curl);
 				curl_close($curl);
+
+				if ($response !== false) {
+					$response = json_decode($response);
+
+					$arraymode = $response->data;
+					$dstock = strtolower($_GET['query']);
+		
+					// add params
+					$newinfo = [];
+					foreach ($arraymode as $addvalskey => $addvalsvalue) {
+						$addvalsvalue->full_name = $addvalsvalue->symbol;
+						array_push($newinfo,$addvalsvalue);
+					}
+		
+					$listofitems = [];
+					foreach ($newinfo as $key => $value) {
+						if (strpos(strtolower($value->symbol), $dstock) !== false) {
+							array_push($listofitems, $value);
+						}
+					}
+					$jsonstocklist = json_encode($newinfo);
+				}	
 				
 			?>
 			var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
+			dstockinfo = JSON.stringify(dstockinfo);
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
 	

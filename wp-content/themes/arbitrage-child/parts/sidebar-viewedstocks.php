@@ -73,15 +73,15 @@ jQuery(function(){
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
         
-         <?php
+         <?php /*
 				  $i=0;
-				  foreach ($finallist as $key => $value) { ?>
+				  foreach ($finallist as $key => $value) { */?>
 		                <ul>
-				            <li class="even">
+				            <!-- <li class="even">
 				                <span><?php echo $value['stock']; ?></span>
 				                <a href="https://arbitrage.ph/chart/<?php echo $value['stock']; ?>"><div class="dstocknm"><?php echo $value['stnamename']; ?></div><p><?php echo $value['count']; ?>  are monitoring this</p></a>
-				            </li>
-<!-- 				            <li class="odd">
+				            </li> -->
+				        <li class="odd">
 				                <span>MRC</span>
 				                <a href="#">MRC Allied, Inc. <br><p>31 Following</p></a>
 				            </li>
@@ -114,13 +114,13 @@ jQuery(function(){
 				                    <span>STI</span>
 				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>332 Following</p></a>
 				                </li>
-				            </div> -->
+				            </div>
 				        </ul>
 						
 			  <?php
-					  $i++;
-					  if($i==5) break;
-				  } 
+				// 	  $i++;
+				// 	  if($i==5) break;
+				//   } 
 			  ?>
 
     </div>

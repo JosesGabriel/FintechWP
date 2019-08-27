@@ -294,8 +294,10 @@ foreach ( $wallposts->posts as $post ) {
 	um_fetch_user( $author_id );
 
 	//if ($count % 5 == 0 && $count != 0) {
-	if ($adscount == 5 ) {
+	if ($adscount == 5) {
+
 		$adscount = 0;
+
 		?>
 
             	<div class="um-activity-widget hala-user-wall" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">
@@ -317,7 +319,7 @@ foreach ( $wallposts->posts as $post ) {
                                 <span class="um-activity-metadata">
             
                                     <a href="#">
-                                        Advertisementasdas
+                                        Advertisement
                                     </a>
             
                                 </span>
@@ -347,6 +349,8 @@ foreach ( $wallposts->posts as $post ) {
                 </div>
 
 		<?php
+	}else{
+		$adscount++;
 	}
 
 	?>
@@ -909,7 +913,7 @@ foreach ( $wallposts->posts as $post ) {
 
 	</div>
 
-<?php $count++; $adscount++; ?>
+<?php $count++; ?>
 
 <?php } ?>
 

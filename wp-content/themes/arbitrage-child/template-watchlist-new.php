@@ -317,7 +317,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																						<div class="instumentinner">
 																							<div class="row">
 																								<div class="col-md-8">
-																									<div class="innerdeliver">
+																									<div class="innerdeliver innerdeliver-editstock">
 																										<ul>
 																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin">Website Popup</label></li>
 																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin">SMS Notification</label></li>
@@ -456,7 +456,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																</div> -->
 															</div>
 															<div class="">
-																<div class="innerdeliver">
+																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>
 																		<li><input type="checkbox" name="delivery_type[]" value="web-notif"><label class="condition-notif">Website Popup</label></li>
 																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
@@ -1297,10 +1297,14 @@ h2.watchtitle {
     margin-bottom: 30px;
 }
 
-.innerdeliver {
+.innerdeliver.innerdeliver-addstock {
     padding: 5px 0px 11px 0;
     text-align: right;
     margin-top: -31px;
+}
+.innerdeliver.innerdeliver-editstock {
+    padding: 5px 0px 11px 0;
+    text-align: right;
 }
 
     /* Enter Trade Form */

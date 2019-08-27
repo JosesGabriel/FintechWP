@@ -2987,4 +2987,7 @@ h2.terms-padding:after {
 #canceladd {
 	padding: 4px 9px !important;
 }
+.edit-stocks-padding {
+	padding: 0 7px;
+}
 </style>

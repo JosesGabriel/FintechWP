@@ -309,99 +309,97 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	          <span aria-hidden="true">&times;</span>
 																	        </button>
 																	      </div>
-																	      <div class="modal-body">
+																	      <div class="modal-body edit-stocks-padding">
 																	        <div class="">
 																				<div class="editme">
 																					<form method="post" action="#" id="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">
 																						<input type="hidden" name="stockname" value="<?php echo $value['stockname']; ?>">
 																						<div class="instumentinner">
 																							<div class="row">
-																								<div class="col-md-8">
+																								<div class="col-md-12">
 																									<div class="innerdeliver innerdeliver-editstock">
 																										<ul>
-																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin">Website Popup</label></li>
-																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin">SMS Notification</label></li>
+																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
+																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>
 																										</ul>
 																									</div>
 																								</div>
-																								<div class="col-md-12">
-																									<div class="row">
-																										<div class="col-md-6">
-																											<div class="condition-params">
-																												<div class="condition-type">
-																													<label class="label--margin">Conditions</label>
-																													<select id="condition-list">
-																														<option value="">Select Conditions</option>
-																														<option style="<?php echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
-																														<option style="<?php echo ($value['dcondition_take_profit_point'] == 'take_profit_point' ? 'display: none;' : ''); ?>" value="take_profit_point">Take Profit Point</option>
-																														<option style="<?php echo ($value['dcondition_stop_loss_point'] == 'stop_loss_point' ? 'display: none;' : ''); ?>" value="stop_loss_point">Stop Loss Point</option>
-																													</select>
-																												</div>
-																												<div class="condition-freq">
-																													<label class="label--margin">Condition Frequency</label>
-																													<input type="number" id="condition_frequency" name="confreq">
-																												</div>
-																												<div class="addtolist">
-																													<button class="add-params">Add Parameters</button>
-																												</div>
-																											</div>
-																										</div>
-																										<div class="col-md-6">
-																											<div class="dpaste">
-																												<ul class="listofinfo">
-																													<?php if (isset($value['dcondition_entry_price'])): ?>
-																														<li class="dbaseitem">
-																															<div class="dinfodata">
-																																<div class="dcondition"><?php echo $value['dcondition_entry_price']; ?></div>
-																																<div class="dfreq"><?php echo $value['dconnumber_entry_price']; ?></div>
-																															</div>
-																															<div class="closetab">
-																																<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="<?php echo $value['dcondition_entry_price']; ?>">
-																																<input type="hidden" id="" name="dconnumber_entry_price" value="<?php echo $value['dconnumber_entry_price']; ?>">
-																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-																															</div>
-																														</li>
-																													<?php endif ?>
-																													<?php if (isset($value['dcondition_take_profit_point'])): ?>
-																														<li class="dbaseitem">
-																															<div class="dinfodata">
-																																<div class="dcondition"><?php echo $value['dcondition_take_profit_point']; ?></div>
-																																<div class="dfreq"><?php echo $value['dconnumber_take_profit_point']; ?></div>
-																															</div>
-																															<div class="closetab">
-																																<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="<?php echo $value['dcondition_take_profit_point']; ?>">
-																																<input type="hidden" id="" name="dconnumber_take_profit_point" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
-																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-																															</div>
-																														</li>
-																													<?php endif ?>
-																													<?php if (isset($value['dcondition_stop_loss_point'])): ?>
-																														<li class="dbaseitem">
-																															<div class="dinfodata">
-																																<div class="dcondition"><?php echo $value['dcondition_stop_loss_point']; ?></div>
-																																<div class="dfreq"><?php echo $value['dconnumber_stop_loss_point']; ?></div>
-																															</div>
-																															<div class="closetab">
-																																<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="<?php echo $value['dcondition_stop_loss_point']; ?>">
-																																<input type="hidden" id="" name="dconnumber_stop_loss_point" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
-																																<button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-																															</div>
-																														</li>
-																													<?php endif ?>
-																													
-																												</ul>
-																											</div>
-																										</div>
-																										<div class="col-md-12">
-																											<div class="submitform">
-																												<input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
-																												<input type="hidden" name="isticked" value="<?php echo time(); ?>">
-																												<input type="hidden" name="subtype" value="editdata">
-																												<button class="editmenow" data-tochange="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">Change</button>
-																											</div>
-																										</div>
-																									</div>
-																								</div>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-6">
+                                                                                                        <div class="condition-params">
+                                                                                                            <div class="condition-type">
+                                                                                                                <label class="label--margin">Conditions</label>
+                                                                                                                <select id="condition-list">
+                                                                                                                    <option value="">Select Conditions</option>
+                                                                                                                    <option style="<?php echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
+                                                                                                                    <option style="<?php echo ($value['dcondition_take_profit_point'] == 'take_profit_point' ? 'display: none;' : ''); ?>" value="take_profit_point">Take Profit Point</option>
+                                                                                                                    <option style="<?php echo ($value['dcondition_stop_loss_point'] == 'stop_loss_point' ? 'display: none;' : ''); ?>" value="stop_loss_point">Stop Loss Point</option>
+                                                                                                                </select>
+                                                                                                            </div>
+                                                                                                            <div class="condition-freq">
+                                                                                                                <label class="label--margin">Condition Frequency</label>
+                                                                                                                <input type="number" id="condition_frequency" name="confreq">
+                                                                                                            </div>
+                                                                                                            <div class="addtolist">
+                                                                                                                <button class="add-params">Add Parameters</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-6">
+                                                                                                        <div class="dpaste">
+                                                                                                            <ul class="listofinfo">
+                                                                                                                <?php if (isset($value['dcondition_entry_price'])): ?>
+                                                                                                                    <li class="dbaseitem">
+                                                                                                                        <div class="dinfodata">
+                                                                                                                            <div class="dcondition"><?php echo $value['dcondition_entry_price']; ?></div>
+                                                                                                                            <div class="dfreq"><?php echo $value['dconnumber_entry_price']; ?></div>
+                                                                                                                        </div>
+                                                                                                                        <div class="closetab">
+                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="<?php echo $value['dcondition_entry_price']; ?>">
+                                                                                                                            <input type="hidden" id="" name="dconnumber_entry_price" value="<?php echo $value['dconnumber_entry_price']; ?>">
+                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
+                                                                                                                        </div>
+                                                                                                                    </li>
+                                                                                                                <?php endif ?>
+                                                                                                                <?php if (isset($value['dcondition_take_profit_point'])): ?>
+                                                                                                                    <li class="dbaseitem">
+                                                                                                                        <div class="dinfodata">
+                                                                                                                            <div class="dcondition"><?php echo $value['dcondition_take_profit_point']; ?></div>
+                                                                                                                            <div class="dfreq"><?php echo $value['dconnumber_take_profit_point']; ?></div>
+                                                                                                                        </div>
+                                                                                                                        <div class="closetab">
+                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="<?php echo $value['dcondition_take_profit_point']; ?>">
+                                                                                                                            <input type="hidden" id="" name="dconnumber_take_profit_point" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
+                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
+                                                                                                                        </div>
+                                                                                                                    </li>
+                                                                                                                <?php endif ?>
+                                                                                                                <?php if (isset($value['dcondition_stop_loss_point'])): ?>
+                                                                                                                    <li class="dbaseitem">
+                                                                                                                        <div class="dinfodata">
+                                                                                                                            <div class="dcondition"><?php echo $value['dcondition_stop_loss_point']; ?></div>
+                                                                                                                            <div class="dfreq"><?php echo $value['dconnumber_stop_loss_point']; ?></div>
+                                                                                                                        </div>
+                                                                                                                        <div class="closetab">
+                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="<?php echo $value['dcondition_stop_loss_point']; ?>">
+                                                                                                                            <input type="hidden" id="" name="dconnumber_stop_loss_point" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
+                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
+                                                                                                                        </div>
+                                                                                                                    </li>
+                                                                                                                <?php endif ?>
+                                                                                                                
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-12">
+                                                                                                        <div class="submitform">
+                                                                                                            <input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
+                                                                                                            <input type="hidden" name="isticked" value="<?php echo time(); ?>">
+                                                                                                            <input type="hidden" name="subtype" value="editdata">
+                                                                                                            <button class="editmenow" data-tochange="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">Change</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
 																							</div>
 																						</div>
 																					</form>
@@ -1303,7 +1301,7 @@ h2.watchtitle {
     margin-top: -31px;
 }
 .innerdeliver.innerdeliver-editstock {
-    padding: 5px 0px 11px 0;
+    padding: 5px 0px 5px 0;
     text-align: right;
 }
 

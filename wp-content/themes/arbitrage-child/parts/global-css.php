@@ -2994,4 +2994,11 @@ h2.terms-padding:after {
 .add-params {
 	background: none !important;
 }
+input#searchlogs {
+	color: #fff !important;
+    background: #11273e !important;
+	border: 1px solid #1e3554 !important;
+	height: 32px;
+    margin-top: -6px;
+}
 </style>

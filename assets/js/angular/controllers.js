@@ -474,7 +474,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         // UPDATE STOCK
         var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
         if (found.length) {
-            $scope.stocks[$scope.stocks.indexOf(found[0])] = stock;
+            var current_stock = $scope.stocks.indexOf(found[0]);
+            $scope.stocks[current_stock] = Object.assign(current_stock, stock);
         } else $scope.stocks.push(stock);
         $scope.count = $scope.stocks.reduce( function(a, b) {
             if (b.change < 0) {

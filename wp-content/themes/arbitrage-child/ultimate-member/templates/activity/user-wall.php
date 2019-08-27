@@ -292,7 +292,7 @@ foreach ( $wallposts->posts as $post ) {
 
 	um_fetch_user( $author_id );
 
-	if ($count % 6 == 0 && $count != 0) {
+	if ($count % 5 == 0 && $count != 0) {
 		?>
 
             	<div class="um-activity-widget hala-user-wall" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">

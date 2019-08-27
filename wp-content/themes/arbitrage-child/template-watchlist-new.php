@@ -1003,9 +1003,10 @@ input.subbuttons {
     text-align: right;
 }
 .dpricechange .curprice {
-    font-size: 24px;
     line-height: 1em;
-    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 3px;
+    font-weight: 500 !important;
 }
 .dpricechange .curchange {
     font-size: 15px;
@@ -1675,11 +1676,6 @@ h2.watchtitle {
 		font-size: 13px;
 		font-weight: 300;
 	}
-    .dpricechange .curprice {
-		font-size: 18px;
-		padding-bottom: 3px;
-		font-weight: 500 !important;
-    }
     span.curprice {
         display: inline-block;
         margin: 0 3px 0 8px;
@@ -1699,10 +1695,9 @@ h2.watchtitle {
     }
     .wlttlstockvals {
 		display: block;
-		width: 100%;
-		/* border-bottom: 1px solid #1e3554; */
-        /* margin: 0 16px; */
-        /* padding: 0px 0px 9px; */
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     #page-container {

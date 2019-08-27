@@ -663,6 +663,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     display: block;
     box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
     background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
+    margin: 0;
 }
 .side-header .right-image .onto-user-name {
     margin-bottom: 0 !important;

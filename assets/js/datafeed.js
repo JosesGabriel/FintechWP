@@ -71,10 +71,8 @@ var DataProvider = (function () {
 					open: 	parseFloat(data.open),
 					high: 	parseFloat(data.high),
 					low: 	parseFloat(data.low),
+					volume: parseFloat(data.volume),
 				};
-				if (data.volume) {
-					lastBar.volume = parseFloat(data.volume);
-				}
 				subscriber.listener(lastBar);
 			}
 		});

@@ -1839,29 +1839,9 @@ if ($getdstocks && $getdstocks != '') {
 																							<div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd">
-																								<?php
-																									// $dboard = 0;
-																									// if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
-																									// 	$dboard = 1000000;
-																									// } elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
-																									// 	$dboard = 100000;
-																									// } elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
-																									// 	$dboard = 10000;
-																									// } elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
-																									// 	$dboard = 1000;
-																									// } elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
-																									// 	$dboard = 100;
-																									// } elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
-																									// 	$dboard = 10;
-																									// } elseif ($dstockinfo->last >= 1000) {
-																									// 	$dboard = 5;
-																									// } 
-																									$dboard = 0;
-																								?>
-																								<label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="<?php echo $dboard; ?>" readonly>
+																								<label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
 																								<i class="fa fa-lock" aria-hidden="true"></i>
-
-																								<input type="hidden" id="inpt_data_boardlot_get" value="<?php echo $dboard; ?>">
+																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
 																							</div>
 																						</div>
 																						<div class="entr_clear"></div>
@@ -4489,14 +4469,35 @@ if ($getdstocks && $getdstocks != '') {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
 			console.log(dstocks);
+			
 
-			jQuery("input[name='inpt_data_currprice']").val(dstocks.last);
-			jQuery("input[name='inpt_data_change']").val(dstocks.change);
-			jQuery("input[name='inpt_data_open']").val(dstocks.open);
-			jQuery("input[name='inpt_data_low']").val(dstocks.low);
-			jQuery("input[name='inpt_data_high']").val(dstocks.low);
-			jQuery("input[name='inpt_data_volume']").val(dstocks.low);
-			jQuery("input[name='inpt_data_value']").val(dstocks.low);
+			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
+			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
+			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
+			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
+			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
+			jQuery("input[name='inpt_data_volume']").val((dstocks.volume).toFixed(2));
+			jQuery("input[name='inpt_data_value']").val((dstocks.value).toFixed(2));
+
+			// board lot
+			var dboard = 0;
+			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
+				dboard = 1000000;
+			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
+				dboard = 100000;
+			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
+				dboard = 10000;
+			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
+				dboard = 1000;
+			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
+				dboard = 100;
+			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
+				dboard = 10;
+			} else if (dstocks.last >= 1000) {
+				dboard = 5;
+			} 
+
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 		});
 
 

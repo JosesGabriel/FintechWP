@@ -1788,6 +1788,17 @@ if ($getdstocks && $getdstocks != '') {
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
 																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">BUY</a>
 																		<div class="hideformodal">
+																			<?php
+																				$curl = curl_init();
+																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE");
+																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+																				$dstocksonme = curl_exec($curl);
+																				curl_close($curl);
+
+																				$dstocksonme = json_decode($dstocksonme);
+
+																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
@@ -1802,8 +1813,15 @@ if ($getdstocks && $getdstocks != '') {
 																								<input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Stock</label>
-																							<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly>
-																							<i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+																								<select name="inpt_data_stock" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
+																									<option value="">Select Stocks</option>
+																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																										<option value="" data-xinfo='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+																									<?php endforeach; ?>
+																								</select>
+																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>

@@ -455,7 +455,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 if (stock.change > 0){changicotogreen();}
 				if (stock.change < 0){changicotored();}
             }
-            setTitle(stock.symbol, price_format(stock.last), number_format(stock.changepercentage, '0.00'));
+            setTitle(stock.symbol, stock.displayLast, stock.displayChange);
             var transaction = {
                 symbol: stock.symbol,
                 price:  price_format(stock.last),

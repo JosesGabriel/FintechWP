@@ -296,7 +296,7 @@ foreach ( $wallposts->posts as $post ) {
 	//if ($count % 5 == 0 && $count != 0) {
 	if ($adscount == 5) {
 
-		$adscount = 0;
+		$adscount = -5;
 
 		?>
 

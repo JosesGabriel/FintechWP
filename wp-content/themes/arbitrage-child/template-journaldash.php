@@ -4352,7 +4352,6 @@ if ($getdstocks && $getdstocks != '') {
 			})
 			.then((willDelete) => {
 				if (willDelete) {
-					swal("Poof! Your imaginary file has been deleted!");
 					jQuery(this).parents(".dloglist").addClass("housed");
 					jQuery(".deleteformitem").find("#todelete").val(dlogid);
 					jQuery(".deleteformitem").submit();

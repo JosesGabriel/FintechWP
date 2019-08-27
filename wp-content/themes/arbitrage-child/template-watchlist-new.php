@@ -1092,13 +1092,11 @@ li.dbaseitem {
 }
 button#submitmenow,
 button#canceladd {
-   color: white;
-
+    color: white;
     cursor: pointer;
-
     display: inline-block;
     background-color: #11273e;
-    padding: 4px 14px;
+    padding: 4px 14px !important;
     border-radius: 25px;
 }
 ul.listofinfo {
@@ -1770,6 +1768,9 @@ h2.watchtitle {
     }
     .eventnone {
         cursor: pointer;
+    }
+    button#submitmenow, button#canceladd {
+        padding: 4px 9px;
     }
     /* button#submitmenow, button#canceladd {
         color: white;

@@ -189,34 +189,18 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				if ($response !== false) {
 					$response = json_decode($response);
-
-					$arraymode = $response->data;
-					$dstock = strtolower($_GET['query']);
-		
-					// add params
-					$newinfo = [];
-					foreach ($arraymode as $addvalskey => $addvalsvalue) {
-						$addvalsvalue->full_name = $addvalsvalue->symbol;
-						array_push($newinfo,$addvalsvalue);
-					}
-		
-					$listofitems = [];
-					foreach ($newinfo as $key => $value) {
-						if (strpos(strtolower($value->symbol), $dstock) !== false) {
-							array_push($listofitems, $value);
-						}
-					}
-					$jsonstocklist = json_encode($newinfo);
+					$jsonstocklist = json_encode($response);
 				}	
 				
 			?>
-			var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
-			dstockinfo = JSON.stringify(dstockinfo);
+			//var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
+			var stocklist = <?php echo $jsonstocklist; ?> ;
+				
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
 	
 			// TODO Fix: this is causing front end errors
-			 jQuery.each(dstockinfo.data, function( index, value ) {
+			 jQuery.each(stocklist.data, function( index, value ) {
 				//console.log(value.symbol);
 			 	jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 			 });

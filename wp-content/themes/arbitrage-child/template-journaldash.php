@@ -2465,7 +2465,8 @@ if ($getdstocks && $getdstocks != '') {
                                                             foreach ($listmonth as $lomkey => $lomvalue) {
                                                                 $formonthperc .= '{';
                                                                 $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
-                                                                $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
                                                                 $formonthperc .= '},';
                                                             }
 
@@ -3297,7 +3298,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($volumes as $dvolkey => $dvolvalue) {
                                                             $dailyvolumes .= '{';
                                                             $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                            $dailyvolumes .= '"column-1": '.$dvolvalue.'';
+                                                            $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
                                                             $dailyvolumes .= '},';
                                                         }
 
@@ -3305,7 +3306,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($values as $dvalkey => $dvalvalue) {
                                                             $dailyvalues .= '{';
                                                             $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                            $dailyvalues .= '"column-1": '.$dvalvalue.'';
+                                                            $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
                                                             $dailyvalues .= '},';
                                                         }
                                                     ?>
@@ -5106,11 +5107,6 @@ if ($getdstocks && $getdstocks != '') {
 				}
 			],
 			"allLabels": [],
-			"balloon": {
-				"fixedPosition": false
-				"fontSize": 10,
-				"showBullet": true
-			},
 			"titles": [],
 			"dataProvider": [<?php echo $dailyvolumes; ?>]
 		}

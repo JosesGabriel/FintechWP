@@ -113,5 +113,13 @@ get_header('dashboard');
 		}, 1500);
 	});
 </script>
+<style>
+	.container .sub-container {
+		padding: 50px 15% 0px 15%;
+	}
+	.contact--form{
+		padding-left: 0;
+	}
+</style>
 
 <?php get_footer();

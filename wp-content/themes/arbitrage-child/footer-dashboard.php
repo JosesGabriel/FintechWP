@@ -206,7 +206,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							array_push($listofitems, $value);
 						}
 					}
-					$jsonstocklist = json_encode($listofitems);
+					$jsonstocklist = json_encode($newinfo);
 				}	
 				
 			?>

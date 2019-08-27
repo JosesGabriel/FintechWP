@@ -182,7 +182,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				/*curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');*/
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dwatchinfo = curl_exec($curl);
-				echo 'JSON::::::     ' . $dwatchinfo;
+				
 				curl_close($curl); /*temp-disabled-end */
 			?>
 			var dstockinfo = JSON.parse('<?php echo $dwatchinfo; ?>');

@@ -169,7 +169,7 @@ get_header('dashboard');
 			</form>
 			<div class="quote col-md-6">
 				<h4 class="quote-f01">It’s about time.</h4>
-				<span class="quote-f1">We’ve been waiting for you to contact us.</span>
+				<span class="quote-f1">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
 			</div>
 		</div>
 	</div>

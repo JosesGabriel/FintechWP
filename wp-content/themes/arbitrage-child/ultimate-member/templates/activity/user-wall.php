@@ -317,7 +317,7 @@ foreach ( $wallposts->posts as $post ) {
                                 <span class="um-activity-metadata">
             
                                     <a href="#">
-                                        Advertisement
+                                        Advertisementasdas
                                     </a>
             
                                 </span>

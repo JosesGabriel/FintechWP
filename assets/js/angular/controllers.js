@@ -369,6 +369,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayValue'] = abbr_format(stock['value']);
             stock['weekYearLow'] = price_format(stock['weekyearlow']);
             stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
+            stock['displayMarketCap'] = abbr_format(stock.marketcap);
             return stock;
         });
 

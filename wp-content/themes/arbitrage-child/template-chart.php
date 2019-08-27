@@ -1603,7 +1603,7 @@
                                                         <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
                                                         <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.displayChange}}%)</span>
                                                     </span>
-                                                    <small class="arb_markcap">Market Capitalization: 23.5B</small>
+                                                    <small class="arb_markcap">Market Capitalization: {{stock.displayMarketCap}}</small>
                                                 </div>
                                             </div>
                                         </div>

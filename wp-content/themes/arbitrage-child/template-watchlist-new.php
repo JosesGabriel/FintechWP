@@ -84,15 +84,15 @@ if (isset($_GET['remove'])) {
 #    array_reverse($havemeta);
 #}
 
-#function working_days_ago($days) {
-#    $count = 0;
-#    $day = strtotime('-2 day');
-#    while ($count < $days || date('N', $day) > 5) {
-#       $count++;
-#       $day = strtotime('-1 day', $day);
-#    }
-#    return date('Y-m-d', $day);
-#}
+function working_days_ago($days) {
+    $count = 0;
+    $day = strtotime('-2 day');
+    while ($count < $days || date('N', $day) > 5) {
+       $count++;
+       $day = strtotime('-1 day', $day);
+    }
+    return date('Y-m-d', $day);
+}
 
 $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
@@ -540,16 +540,23 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		var app = angular.module('arbitrage_wl', ['nvd3']);
 		<?php
         
-        $printout = 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20');
+        
 
 		if ($havemeta) {
 		foreach ($havemeta as $key => $value) {    
             // get stcok history
-			$curl = curl_init();
+			/*$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			$dhistofronold = curl_exec($curl);
-			curl_close($curl);
+            curl_close($curl);*/
+            
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='.working_days_ago('20').'&to=2019-08-20");
+            curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $response = curl_exec($curl);
+            curl_close($curl);
 
 			$dhistoforchart = json_decode($dhistofronold);
 
@@ -585,7 +592,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			?>
 
 
-            console.log(<?php echo $printout; ?>);
+            
 
 
 		app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {

@@ -178,17 +178,17 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			<?php /* temp-disabled-start */
 				$curl = curl_init();
-				/*curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');*/
+				//curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
 				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dwatchinfo = curl_exec($curl);
-				echo 'JSON::::::     ' + $dwatchinfo;
+				
 				curl_close($curl); /*temp-disabled-end */
 			?>
 			var dstockinfo = JSON.parse('<?php echo $dwatchinfo; ?>');
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			console.log(dstockinfo);
-			//console.log(JSON.parse(dstockinfo));
+	
 			// TODO Fix: this is causing front end errors
 			 jQuery.each(dstockinfo.data, function( index, value ) {
 				//console.log(value.symbol);

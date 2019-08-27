@@ -2968,8 +2968,9 @@ h2.terms-padding:after {
     margin: 0 5px;
 }
 .mc-background {
-	background-color: #142b46;
-    border-radius: 15px;
+	/* background-color: #142b46; */
+	border-radius: 15px;
+    background: #0c1f33 !important;
 }
 .dclosetab.addwatchtab.active {
     margin: 3px 8px;

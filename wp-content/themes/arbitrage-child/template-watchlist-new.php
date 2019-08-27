@@ -1130,18 +1130,22 @@ h2.watchtitle {
     color: #fff !important;
     margin: 0;
     line-height: 1em;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     font-size: 21px;
 }
 .dmodaleditwatch .modal-header {
     padding: 10px;
+    background-color: #34495e;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 13px;
 }
 .dmodaleditwatch .modal-header button.close {
-    padding: 10px 20px;
+    padding: 0;
     color: #fff;
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 39px;
+    right: 41px;
     background: none;
 }
 .dmodaleditwatch .modal-header {

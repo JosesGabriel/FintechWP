@@ -57,6 +57,19 @@ jQuery(function(){
 				            </div>
 				        </ul>
     </div>
+    <div class="to-bottom-seemore" style="display: inline-flex;">
+        <i class="fas fa-sort-down" style="
+        font-size: 16px;
+        margin-right: 3px;
+        vertical-align: initial;
+    "></i>
+        <div class="see-more-btn">
+            <strong>See more</strong>
+        </div>
+    </div>
+        <div class="to-bottom-title">
+            <a href="#" class="to-view-more">View all trending stocks</a>
+        </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style type="text/css">

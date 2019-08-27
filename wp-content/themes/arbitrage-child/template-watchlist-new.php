@@ -436,7 +436,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<div class="">
 															<div class="dselectstockname">
 																<div class="dropdown ddropconts">
-																	<button id="myDropdown" class="dropbtn">Select a Stock</button>
+																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
 																	<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<input type="text" placeholder="Search.." id="myInput">
@@ -463,43 +463,41 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</ul>
 																</div>
 															</div>
-															<div class="col-md-12">
-																<div class="row">
-																	<div class="col-md-6">
-																		<div class="condition-params">
-																			<div class="condition-type">
-																				<!-- <label>Conditions</label> -->
-																				<select id="condition-list">
-																					<option value="">Select Conditions</option>
-																					<option value="entry_price">Entry Price</option>
-																					<option value="take_profit_point">Take Profit Point</option>
-																					<option value="stop_loss_point">Stop Loss Point</option>
-																				</select>
-																			</div>
-																			<div class="condition-freq">
-																				<!-- <label>Condition Frequency</label> -->
-																				<input type="number" id="condition_frequency" name="confreq">
-																			</div>
-																			<div class="addtolist">
-																				<button class="add-params">Add Parameters</button>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="col-md-6">
-																		<div class="dpaste">
-																			<ul class="listofinfo"></ul>
-																		</div>
-																	</div>
-																	<div class="col-md-12">
-																		<div class="submitform">
-																			<input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
-																			<input type="hidden" name="isticked" value="<?php echo time(); ?>">
-																			<button id="canceladd">Cancel</button>
-																			<button id="submitmenow">Submit</button>
-																		</div>
-																	</div>
-																</div>
-															</div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="condition-params">
+                                                                        <div class="condition-type">
+                                                                            <!-- <label>Conditions</label> -->
+                                                                            <select id="condition-list">
+                                                                                <option value="">Select Conditions</option>
+                                                                                <option value="entry_price">Entry Price</option>
+                                                                                <option value="take_profit_point">Take Profit Point</option>
+                                                                                <option value="stop_loss_point">Stop Loss Point</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="condition-freq">
+                                                                            <!-- <label>Condition Frequency</label> -->
+                                                                            <input type="number" id="condition_frequency" name="confreq">
+                                                                        </div>
+                                                                        <div class="addtolist">
+                                                                            <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="dpaste">
+                                                                        <ul class="listofinfo"></ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="submitform">
+                                                                        <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
+                                                                        <input type="hidden" name="isticked" value="<?php echo time(); ?>">
+                                                                        <button id="canceladd">Cancel</button>
+                                                                        <button id="submitmenow">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 														</div>
 													</div>
 												</form>
@@ -837,7 +835,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 
 /* Dropdown Button */
-.dropbtn {
+/* .dropbtn {
     display: inline-block;
     background-color: #11273e;
     border-radius: 25px;
@@ -847,7 +845,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     font-family: 'Nunito', sans-serif;
     color: #6583a8;
     background: none !important;
-}
+} */
 
 /* Dropdown button on hover & focus */
 .dropbtn:hover, .dropbtn:focus {
@@ -1048,12 +1046,14 @@ input.subbuttons {
     min-height: 33px;
     background: #11273e;
     border: 1px solid #1e3554 !important;
+    font-size: 13px;
 }
 .box-portlet-content [type=button], [type=reset], [type=submit], button:hover {
     background-color: #123;
 }
 .condition-freq input#condition_frequency {
     color: #fff;
+    font-size: 13px;
     background: #11273e;
     border: 1px solid #1e3554 !important;
     padding: 5px 10px;
@@ -1770,7 +1770,7 @@ h2.watchtitle {
     .eventnone {
         cursor: pointer;
     }
-    button#submitmenow, button#canceladd {
+    /* button#submitmenow, button#canceladd {
         color: white;
         cursor: pointer;
         display: inline-block;
@@ -1782,8 +1782,8 @@ h2.watchtitle {
         color: #6583a8;
         background: none !important;
         line-height: 2;
-    }
-    .addtolist button.add-params {
+    } */
+    /* .addtolist button.add-params {
         color: white;
         cursor: pointer;
         display: inline-block;
@@ -1795,7 +1795,7 @@ h2.watchtitle {
         color: #6583a8;
         background: none !important;
         line-height: 2;
-    }
+    } */
     .dropbtn:hover, .dropbtn:focus {
         /*color: white;
         cursor: pointer;

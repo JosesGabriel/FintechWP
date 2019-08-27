@@ -543,8 +543,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		foreach ($havemeta as $key => $value) {
 
 
-
-			// get stcok history
+            $printout = 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20');
+            
+            
+            // get stcok history
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -583,6 +585,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 			?>
+
+            
+            console.log(<?php echo $printout; ?>);
+
+
 		app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
 			$scope.options = {
 					chart: {

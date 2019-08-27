@@ -162,7 +162,7 @@
 
             ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;">></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
 
             ditem += "</ul>";
 
@@ -228,11 +228,12 @@
                         var nscost = parseFloat(dprice) * parseFloat(dposition)
                         totalcost += nscost;
 
-                        costfee += nscost + parseFloat(getfee(totalcost));
-
+                        costfee += parseFloat(nscost) + parseFloat(getfee(nscost));
                         // console.log("fees: "+parseFloat(getfee(totalcost)));
 
                     }
+
+                    
 
 
 

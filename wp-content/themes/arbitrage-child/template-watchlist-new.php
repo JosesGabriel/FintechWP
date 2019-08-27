@@ -818,7 +818,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     padding: 6px 8px;
 }
 .condition-params {
-    border-right: 1px solid #1e3554;
+    border-right: none;
     margin-right: -15px;
 }
 /* #canceladd {
@@ -1044,7 +1044,7 @@ input.subbuttons {
     border-radius: 25px;
     min-height: 33px;
     background: #11273e;
-    border: none;
+    border: 1px solid #1e3554 !important;
     font-size: 13px;
 }
 .box-portlet-content [type=button], [type=reset], [type=submit], button:hover {

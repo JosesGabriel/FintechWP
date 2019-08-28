@@ -2870,18 +2870,6 @@ li.dspecitem div div {
 	margin: 0 130px;
 	margin-top: 20px;
 }
-.inner-content--contact::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-	font-size: 12px;
-}
-.inner-content--contact::-moz-placeholder { /* Firefox 19+ */
-	font-size: 12px;
-}
-.inner-content--contact:-ms-input-placeholder { /* IE 10+ */
-	font-size: 12px;
-}
-.inner-content--contact:-moz-placeholder { /* Firefox 18- */
-	font-size: 12px;
-}
 .fa-percentage {
 	margin-left: 1px;
 }

@@ -179,6 +179,24 @@ jQuery(function(){
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: #142c46 !important;
   }
+
+  .nvd3 .nv-axis line {
+    display: none;
+  }
+
+  .nvd3 .nv-axis path.domain {
+    display: none;
+  }
+
+  .negative > line {
+    stroke: #d62728 !important;
+  }
+  
+  .positive > line {
+    stroke: #2ca02c !important;
+  }
+
+
 </style>
 <?php
   // $dwatchinfo = null;

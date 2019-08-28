@@ -151,7 +151,7 @@ get_header('dashboard');
 
 		<div class="inner-content inner-content--contact row">
 			<form action="" class="contact--form" id="contact--form">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="quote">
 						<h4 class="quote-f01">It’s about time.</h4>
 						<span class="quote-f1">We've been waiting for you to reach us.</span>
@@ -165,7 +165,7 @@ get_header('dashboard');
 						<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email" placeholder="Where can we email you back?">
 					</div>
 				</div>
-				<div class="quote2 col-md-6">
+				<div class="quote2 col-md-12">
 					<div class="form-group">
 						<label for="contact--textField__message" class="contact--label">Message *</label>
 						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to hear that from you."></textarea>

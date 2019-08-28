@@ -274,12 +274,12 @@ jQuery(function(){
 
                         <?php } ?>
 
-              <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
+             <!-- <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
-                </div> 
+                </div> -->
 
                   <?php else: ?>
                   <div class="to-content-part">

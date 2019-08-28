@@ -72,7 +72,7 @@ jQuery(function(){
 <script>
 $(document).ready(function(){
 	$('.button-toggle-content').on('click', function(){
-		$('.stocks-hidden-content').toggle('fast');
+		$('.watched-hidden-content').toggle('fast');
 	});
 });
 </script>

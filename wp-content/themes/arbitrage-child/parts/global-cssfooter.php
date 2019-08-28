@@ -130,6 +130,8 @@
 	}
 	.quote-f1 {
 		color: #fff;
+		margin-bottom: 10px;
+    	display: inline-block;
 	}
 	.quote2 {
 		text-align: left;

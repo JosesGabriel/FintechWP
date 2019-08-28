@@ -1685,33 +1685,33 @@ if ($getdstocks && $getdstocks != '') {
 
 <!-- Delete Data -->
 <?php
-print_r($_POST);
+
     if (isset($_POST) && strtolower($_POST['deletedata']) == 'reset') {
 
 		
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
-
+		// print_r($dlistofstocks);
         // Delete Live Trade
-        // foreach ($dlistofstocks as $delkey => $delvalue) {
-        //     update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-        //     delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+        foreach ($dlistofstocks as $delkey => $delvalue) {
+            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
+            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
 
-        //     // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
-        //     // print_r($dsotcksss);
-        // }
-        // delete_user_meta(get_current_user_id(), '_trade_list');
+            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+            // print_r($dsotcksss);
+        }
+        delete_user_meta(get_current_user_id(), '_trade_list');
 
-        // // delete all trade logs
-        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-        //     echo $delpostvalue['id'].'~';
-        //     wp_delete_post($delpostvalue['id'], true);
-        // }
+        // delete all trade logs
+        foreach ($alltradelogs as $delpostkey => $delpostvalue) {
+            echo $delpostvalue['id'].'~';
+            wp_delete_post($delpostvalue['id'], true);
+        }
 
         // delete ledger
-        // $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
 
-        // wp_redirect('/journal');
-        // exit;
+        wp_redirect('/journal');
+        exit;
     }
 ?>
 <!-- Delete Data -->

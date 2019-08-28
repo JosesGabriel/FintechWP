@@ -220,7 +220,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
-																				<div class="curprice">&#8369; .. <?php echo $dinstall['data']->last; ?></div>
+																				<div class="curprice">&#8369; .. <?php echo $dinstall['data'][0]->last; ?></div>
 																				<?php if (strpos($dinstall['data'][0]->changepercentage, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo $dinstall['data'][0]->changepercentage; ?>%</div>
 																				<?php else: ?>

@@ -1,6 +1,6 @@
 <div class="latest-news">
     <div class="to-top-title">Bulletins
-            <div class="to-top-dropdown"><i class="fas fa-chevron-circle-down"></i></div>
+        <!-- <div class="to-top-dropdown"><i class="fas fa-chevron-circle-down"></i></div> -->
     </div>
     
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 0px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">

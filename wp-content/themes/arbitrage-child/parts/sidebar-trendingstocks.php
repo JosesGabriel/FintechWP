@@ -21,14 +21,14 @@ jQuery(function(){
 // });
 // });
 jQuery(document).ready(function(){
-jQuery("#show_hide").click(function () {
-    jQuery(".hide-show").toggle('slow');
-        if(jQuery("#show_hide").hasClass('isopen')){
-            jQuery("#show_hide").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
-            jQuery(".hide-show").slideUp( "slow" );
+jQuery(".stocks-hidden-content").click(function () {
+    jQuery(".trend-content-hidden").toggle('slow');
+        if(jQuery(".stocks-hidden-content").hasClass('isopen')){
+            jQuery(".stocks-hidden-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
+            jQuery(".trend-content-hidden").slideUp( "slow" );
         }else {
-            jQuery("#show_hide").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
-            jQuery(".hide-show").slideDown( "slow" );
+            jQuery(".stocks-hidden-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
+            jQuery(".trend-content-hidden").slideDown( "slow" );
           }
     });
 });
@@ -137,7 +137,7 @@ jQuery("#show_hide").click(function () {
             ?>
             <?php foreach ($finaltopstocks as $lfstkey => $lfstvalue) { ?>
 
-                <?php echo ($countss == 6 ? '<div class="hide-show">' : ''); ?>
+                <?php echo ($countss == 6 ? '<div class="hide-show trend-content-hidden">' : ''); ?>
                 <li class="even <?php echo $countss; ?>">
                     <span><?php echo $lfstvalue['stock']; ?></span>
                     <a href="#"><?php echo ucwords($lfstvalue['stnamename']); ?> <br><p><?php echo $lfstvalue['following']; ?> Hits</p></a>
@@ -187,7 +187,7 @@ jQuery("#show_hide").click(function () {
 
 <?php if($numinarrat != 0 ) { ?>
 
-    <div class="see-more-btn" id="show_hide">
+    <div class="see-more-btn stocks-hidden-content" id="show_hide">
         <i class="fas fa-sort-down" id="fa-up" style="
             font-size: 13px;
             margin-right: 3px;

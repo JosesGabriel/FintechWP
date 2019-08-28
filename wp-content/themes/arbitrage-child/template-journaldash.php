@@ -1393,7 +1393,9 @@ get_header('dashboard');
         $tradeinfo = [];
         $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-        $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+		$tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+		
+		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
         
         $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
@@ -1414,6 +1416,10 @@ get_header('dashboard');
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
         $tradeinfo['status'] = $_POST['inpt_data_status'];
+
+		// print_r($stocksinfo);
+
+		// exit;
 
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -1465,7 +1471,7 @@ get_header('dashboard');
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
             ));
 
-        // wp_redirect( '/chart/'.$tradeinfo['stock'] );
+        wp_redirect( '/chart/'.$tradeinfo['stock'] );
         wp_redirect('/journal');
         exit;
     }
@@ -1784,9 +1790,9 @@ if ($getdstocks && $getdstocks != '') {
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
-                                                        			<form action="" method="post">
+                                                        			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">BUY</a>
+																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				$curl = curl_init();
@@ -1814,12 +1820,13 @@ if ($getdstocks && $getdstocks != '') {
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Stock</label>
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-																								<select name="inpt_data_stock" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
+																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
 																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
 																									<?php endforeach; ?>
 																								</select>
+																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
@@ -1884,13 +1891,13 @@ if ($getdstocks && $getdstocks != '') {
 																					<div class="groupinput">
 																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																						<input type="hidden" value="Live" name="inpt_data_status">
-																						<input type="submit" class="dloadform green modal-button-confirm" value="Confirm Trade">
+																						<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
 																					</div>
 																					</div>
 																				</form>
 																			</div>
 																		</div>
-                                                        			</form>
+                                                        			<!-- </form> -->
                                                         		</div>
                                                         	</div>
                                                             </div>
@@ -4498,10 +4505,13 @@ if ($getdstocks && $getdstocks != '') {
 			} 
 
 			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 		});
 
 		jQuery(".dloadform").click(function(e){
 			console.log("form into");
+			jQuery(".dentertrade").submit();
+
 		});
 
 

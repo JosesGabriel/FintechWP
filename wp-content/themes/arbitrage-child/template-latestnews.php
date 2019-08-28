@@ -932,7 +932,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                 <div class="nws-containersss">
                 	<div class="nws-inner">
                 		<div class="container">
-		                		<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
+		                		<?php get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
 		                		<div class="adsbygoogle">
 								<div class="box-portlet row" style="padding: 5px 13%;">
 									<div class="tte-spons col-md-2">

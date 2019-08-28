@@ -149,8 +149,8 @@ get_header('dashboard');
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2 class="terms-padding">We're here</h2>
 
-		<div class="inner-content inner-content--contact row">
-			<form action="" class="contact--form" id="contact--form">
+		<div class="inner-content inner-content--contact">
+			<form action="" class="contact--form row" id="contact--form">
 				<div class="col-md-12">
 					<div class="quote">
 						<h4 class="quote-f01">It’s about time.</h4>
@@ -168,7 +168,7 @@ get_header('dashboard');
 				<div class="quote2 col-md-12">
 					<div class="form-group">
 						<!-- <label for="contact--textField__message" class="contact--label">Message *</label> -->
-						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to hear that from you."></textarea>
+						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="The team is all ears. You can share with us what you think about Arbitrage or if there is anything you need help from us. We're also interested with Space and Cosmos. Either way, we're always here for a good chat."></textarea>
 					</div>
 					<div class="flex-box">
 						<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>

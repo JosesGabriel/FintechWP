@@ -161,6 +161,11 @@ $(document).ready(function(){
         padding: 0px 0px 8px 16px;
         font-size: 12px !important;
         font-weight: 300 !important;
+        cursor: pointer;
+        color: #d8d8d8 !important;
+    }
+    .see-more-btn, .see-more-btn a {
+        color: #d8d8d8 !important;
     }
     .hide-show {
         display: none;
@@ -169,10 +174,6 @@ $(document).ready(function(){
         float: left;
         width: 27%;
         padding: 21px 0px !important;
-    }
-    .to-bottom-seemore {
-        cursor: pointer;
-        color: #999999 !important;
     }
     .top-stock .to-content-part {
         padding-bottom: 0 !important;

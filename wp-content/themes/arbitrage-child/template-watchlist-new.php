@@ -156,7 +156,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	// get current price and increase/decrease percentage
 																	$curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list?symbol=' . $value['stockname'] . '&stock-exchange=PSE');
+                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE&symbol='.$value['stockname']);
                                                                     curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																	$dwatchinfo = curl_exec($curl);
@@ -220,11 +220,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
-																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
-																				<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-																					<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<div class="curprice">&#8369;<?php echo $dinstall['data'][0]->last; ?></div>
+																				<?php if (strpos($dinstall['data'][0]->changepercentage, '-') !== false): ?>
+																					<div class="curchange onred"><?php echo $dinstall['data'][0]->changepercentage; ?>%</div>
 																				<?php else: ?>
-																					<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																					<div class="curchange ongreen">+<?php echo $dinstall['data'][0]->changepercentage; ?>%</div>
 																				<?php endif; ?>
 																		</div>
 																		</div>

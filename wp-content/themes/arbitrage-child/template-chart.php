@@ -1973,7 +1973,7 @@
                                                                             <div style="width: 0; height: 0; overflow: hidden; display: block;">
                                                                                 <input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>
                                                                             </div>
-                                                                            <div class="ditemone">{{::stock.symbol}}</div>
+                                                                            <div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
                                                                         </td>
                                                                         <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
                                                                         <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>

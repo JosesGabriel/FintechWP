@@ -7,7 +7,7 @@ jQuery(function(){
   };
   var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
   var dcount = 0;
-  jQuery('.top-stocks .to-content-part ul .even span').each(function(index,el){
+  jQuery('.top-stocks .to-content-part ul .even span, .top-stocks .to-content-part ul .odd span').each(function(index,el){
     if (dcount == '10') {dcount = 0; }
     jQuery(el).css('border-color',colors[dcount]);
     dcount++;
@@ -57,8 +57,18 @@ jQuery(function(){
 				            </div>
 				        </ul>
     </div>
+    <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
+        <i class="fas fa-sort-down" style="
+        font-size: 16px;
+        margin-right: 3px;
+        vertical-align: initial;
+    "></i>
+        <div class="see-more-btn button-toggle-content">
+            <strong>See more</strong>
+        </div>
+    </div> -->
     <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
-        <div class="see-more-btn button-toggle-content" id="show_hide">
+        <div class="see-more-btn button-toggle-content">
             <i class="fas fa-sort-down" id="fa-up" style="
                 font-size: 13px;
                 margin-right: 3px;
@@ -78,16 +88,16 @@ jQuery(function(){
 // 		$('.watched-hidden-content').toggle();
 // 	});
 // });
-jQuery(document).ready(function(){
-jQuery(".button-toggle-content").click(function () {
-    jQuery(".trend-content-hidden").toggle('slow');
-        if(jQuery(".button-toggle-content").hasClass('isopen')){
-            jQuery(".button-toggle-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
-            jQuery(".trend-content-hidden").slideUp( "slow" );
+$(document).ready(function(){
+    $(".button-toggle-content").click(function () {
+        $(".watched-hidden-content").toggle('slow');
+        if($(".button-toggle-content").hasClass('isopen')){
+            $(".button-toggle-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
+            $(".watched-hidden-content").slideUp( "slow" );
         }else {
-            jQuery(".button-toggle-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
-            jQuery(".trend-content-hidden").slideDown( "slow" );
-          }
+            $(".button-toggle-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
+            $(".watched-hidden-content").slideDown( "slow" );
+        }
     });
 });
 </script>
@@ -151,6 +161,11 @@ jQuery(".button-toggle-content").click(function () {
         padding: 0px 0px 8px 16px;
         font-size: 12px !important;
         font-weight: 300 !important;
+        cursor: pointer;
+        color: #d8d8d8 !important;
+    }
+    .see-more-btn, .see-more-btn a {
+        color: #d8d8d8 !important;
     }
     .hide-show {
         display: none;
@@ -159,10 +174,6 @@ jQuery(".button-toggle-content").click(function () {
         float: left;
         width: 27%;
         padding: 21px 0px !important;
-    }
-    .to-bottom-seemore {
-        cursor: pointer;
-        color: #999999 !important;
     }
     .top-stock .to-content-part {
         padding-bottom: 0 !important;

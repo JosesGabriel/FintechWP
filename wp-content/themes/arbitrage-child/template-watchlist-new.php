@@ -155,7 +155,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																<?php
 																	// get current price and increase/decrease percentage
 																	$curl = curl_init();
-																	curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
+                                                                    //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
+                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list?symbol=' . $value['stockname'] . '&stock-exchange=PSE');
+                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																	$dwatchinfo = curl_exec($curl);
 																	curl_close($curl);
@@ -229,7 +231,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		<div class="col-md-12">
 																			 <div class="dchart">
 																				<div class="chartjs">
-                                                                                <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span>
+                                                                               <!-- <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span> -->
 																				
                                                                                 	<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
 																					</div>
@@ -550,9 +552,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			#curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			#$dhistofronold = curl_exec($curl);
             #curl_close($curl); 
-            
+
             $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
-            echo "CHART HISTORY :::::: " . $charthistory;
+            echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
             $chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE';
             echo "CHART INTRA DAY :::::: " . $chartintraday;
 

@@ -153,7 +153,7 @@ get_header('dashboard');
 			<div class="col-md-6">
 				<div class="quote">
 					<h4 class="quote-f01">It’s about time.</h4>
-					<span class="quote-f1">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
+					<span class="quote-f1">We've been waiting for you to reach us.</span>
 				</div>
 				<form action="" class="contact--form" id="contact--form">
 					<div class="form-group">

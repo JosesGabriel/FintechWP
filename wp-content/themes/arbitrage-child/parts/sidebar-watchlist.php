@@ -76,28 +76,28 @@ if (typeof angular !== 'undefined') {
 
       }
 
-      $currentTime = (new DateTime())->modify('+1 day');
-      $startTime = new DateTime('15:30');
-      $endTime = (new DateTime('09:00'))->modify('+1 day');
+      //$currentTime = (new DateTime())->modify('+1 day');
+      //$startTime = new DateTime('15:30');
+      //$endTime = (new DateTime('09:00'))->modify('+1 day');
 
 
 
-      if ($currentTime >= $startTime && $currentTime <= $endTime) {
+     // if ($currentTime >= $startTime && $currentTime <= $endTime) {
           // $curl = curl_init();
           // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
           // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
           // $dintrabase = curl_exec($curl);
           // curl_close($curl);
 
-        $dintraforchart = json_decode($dintrabase);
-          if (isset($dintraforchart->o)) {
-            $open = end($dintraforchart->o);
-            $high = end($dintraforchart->h);
-            $low = end($dintraforchart->l);
+      //  $dintraforchart = json_decode($dintrabase);
+      //    if (isset($dintraforchart->o)) {
+      //      $open = end($dintraforchart->o);
+      //      $high = end($dintraforchart->h);
+      //      $low = end($dintraforchart->l);
 
-            $dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-          }
-      }
+      //      $dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+      //    }
+      //}
 	?>
 	// console.log("<?php echo working_days_ago('9'); ?>");
 

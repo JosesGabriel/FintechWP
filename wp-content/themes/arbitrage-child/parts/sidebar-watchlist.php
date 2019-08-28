@@ -65,6 +65,7 @@ if (typeof angular !== 'undefined') {
       curl_close($curl);
 
       $dhistoforchart = json_decode($dhistofronold);
+      $dhistoforchart = $dhistoforchart->data;
 
       $dhistoflist = "";
       $counter = 0;

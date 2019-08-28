@@ -73,11 +73,11 @@ jQuery(function(){
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-	$('.button-toggle-content').on('click', function(){
-		$('.watched-hidden-content').toggle();
-	});
-});
+// $(document).ready(function(){
+// 	$('.button-toggle-content').on('click', function(){
+// 		$('.watched-hidden-content').toggle();
+// 	});
+// });
 jQuery(document).ready(function(){
 jQuery(".button-toggle-content").click(function () {
     jQuery(".trend-content-hidden").toggle('slow');

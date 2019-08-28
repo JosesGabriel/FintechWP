@@ -164,7 +164,7 @@ $(document).ready(function(){
         cursor: pointer;
         color: #d8d8d8 !important;
     }
-    .see-more-btn {
+    .see-more-btn, .see-more-btn a {
         color: #d8d8d8 !important;
     }
     .hide-show {

@@ -1685,30 +1685,33 @@ if ($getdstocks && $getdstocks != '') {
 
 <!-- Delete Data -->
 <?php
-    if (isset($_POST) && $_POST['deletedata'] == 'Reset') {
+print_r($_POST);
+    if (isset($_POST) && strtolower($_POST['deletedata']) == 'reset') {
+
+		
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
         // Delete Live Trade
-        foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+        // foreach ($dlistofstocks as $delkey => $delvalue) {
+        //     update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
+        //     delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
 
-            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
-            // print_r($dsotcksss);
-        }
-        delete_user_meta(get_current_user_id(), '_trade_list');
+        //     // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+        //     // print_r($dsotcksss);
+        // }
+        // delete_user_meta(get_current_user_id(), '_trade_list');
 
-        // delete all trade logs
-        foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-            echo $delpostvalue['id'].'~';
-            wp_delete_post($delpostvalue['id'], true);
-        }
+        // // delete all trade logs
+        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
+        //     echo $delpostvalue['id'].'~';
+        //     wp_delete_post($delpostvalue['id'], true);
+        // }
 
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        // $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
 
-        wp_redirect('/journal');
-        exit;
+        // wp_redirect('/journal');
+        // exit;
     }
 ?>
 <!-- Delete Data -->
@@ -1786,7 +1789,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                 <div class="dltbutton">
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post" class="resetform">
-                                                        				<input type="submit" name="deletedata" value="Reset" class="delete-data-btn resetdata">
+																		<input type="hidden" name="deletedata" value="reset">
+                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
@@ -4566,7 +4570,15 @@ if ($getdstocks && $getdstocks != '') {
 				title: "Are you sure?",
 				text: "Once deleted, you will not be able to recover your Journal Data!",
 				icon: "warning",
-				buttons: true
+				buttons: true,
+				dangerMode: true,
+			}).then((willDelete) => {
+			if (willDelete) {
+				console.log("here");
+				jQuery('.resetform').submit();
+			} else {
+				// swal("Your imaginary file is safe!");
+			}
 			});
 		});
 

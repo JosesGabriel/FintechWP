@@ -58,7 +58,7 @@ if (typeof angular !== 'undefined') {
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
       $dhistofronold = curl_exec($curl);
       curl_close($curl);
-      
+
       $dhistoforchart = json_decode($dhistofronold);
 
       $dhistoflist = "";
@@ -234,6 +234,7 @@ jQuery(function(){
                           <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
+                                ...
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
                           </div>

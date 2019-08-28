@@ -156,7 +156,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	// get current price and increase/decrease percentage
 																	$curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list?symbol=' . $value['stockname'] . '&stock-exchange=PSE');
+                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE&symbol='.$value['stockname']);
                                                                     curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																	$dwatchinfo = curl_exec($curl);
@@ -220,11 +220,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
-																				<div class="curprice">&#8369;<?php echo $dinstall['stock'][0]->price->amount; ?></div>
-																				<?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-																					<div class="curchange onred"><?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																				<div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
+																				<?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
+																					<div class="curchange onred"><?php echo $dinstall['data']->changepercentage; ?>%</div>
 																				<?php else: ?>
-																					<div class="curchange ongreen">+<?php echo $dinstall['stock'][0]->percent_change; ?>%</div>
+																					<div class="curchange ongreen">+<?php echo $dinstall['data']->changepercentage; ?>%</div>
 																				<?php endif; ?>
 																		</div>
 																		</div>
@@ -543,8 +543,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 </div>
 
-<?php get_footer('dashboard'); ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
     if (typeof angular !== 'undefined') {
 		var app = angular.module('arbitrage_wl', ['nvd3']);
@@ -562,19 +565,20 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             #curl_close($curl); 
 
             $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
-            echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
+            //echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
             $chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE';
-            echo "CHART INTRA DAY :::::: " . $chartintraday;
+            //echo "CHART INTRA DAY :::::: " . $chartintraday;
 
 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
             curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            $response = curl_exec($curl);
+            $dhistofronold = curl_exec($curl);
             curl_close($curl);
 
 			$dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
 
 			$dhistoflist = "";
 			$counter = 0;
@@ -583,26 +587,26 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				$counter++;
 			}
 
-			$currentTime = (new DateTime())->modify('+1 day');
-			$startTime = new DateTime('15:30');
-			$endTime = (new DateTime('09:00'))->modify('+1 day');
+			// $currentTime = (new DateTime())->modify('+1 day');
+			// $startTime = new DateTime('15:30');
+			// $endTime = (new DateTime('09:00'))->modify('+1 day');
 
-			if ($currentTime >= $startTime && $currentTime <= $endTime) {
-			  	$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE' );
-                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				$dintrabase = curl_exec($curl);
-				curl_close($curl);
+			// if ($currentTime >= $startTime && $currentTime <= $endTime) {
+			//   	$curl = curl_init();
+			// 	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE' );
+            //     curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+            //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			// 	$dintrabase = curl_exec($curl);
+			// 	curl_close($curl);
 
-				$dintraforchart = json_decode($dintrabase);
+			// 	$dintraforchart = json_decode($dintrabase);
 
-				$open = end($dintraforchart->o);
-				$high = end($dintraforchart->h);
-				$low = end($dintraforchart->l);
+			// 	$open = end($dintraforchart->o);
+			// 	$high = end($dintraforchart->h);
+			// 	$low = end($dintraforchart->l);
 
-				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-			}
+			// 	$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+			// }
 
 
 
@@ -1943,3 +1947,4 @@ h2.watchtitle {
 	margin: 1.25em 0 0 auto;
 }
 </style>
+<?php get_footer('dashboard'); ?>

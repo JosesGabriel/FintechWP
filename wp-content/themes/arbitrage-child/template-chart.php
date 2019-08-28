@@ -1388,748 +1388,775 @@
 						color: #e64c3c;
 					}
 				</style>
-		<div class="vertical-box-row">
-			<div class="vertical-box-cell">
-				<div class="vertical-box-inner-cell">
-					<div style="height:100%" data-height="100%" ng-controller="chart">
-						<div class="vertical-box">		
-                            <div class="vertical-box-column mobilefull" style="position: relative; height: 100%;">
-                                <div class="vertical-box" style="height: 100%;">
-                                    <div class="vertical-box-row" style="height: 100%;">
-                                        <div class="vertical-box-cell" style="height: 100%;">
-                                            <div class="vertical-box-inner-cell" ng-controller="tradingview" style="height: 100%;">
-                                                <div id="tv_chart_container"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="vertical-box-column width-250 mobileinithide" id="right-sidebar" ng-show="settings.right">
-                                <div class="showsidemobile">
-                                    <i class="fa fa-outdent" aria-hidden="true"></i>
-                                    <i class="fa fa-indent" aria-hidden="true"></i>
-                                </div>
-                                <div class="closesidebar">
-                                    <a href="#"><img src="<?php echo get_home_url(); ?>/svg/close_verysmall.svg"></a>
-                                </div>
-                                <div class="opensidebar">
-                                    <a href="#"><img src="<?php echo get_home_url(); ?>/svg/open_verysmall.svg"></a>
-                                </div>
+				<div class="vertical-box-row">
+					<div class="vertical-box-cell">
+						<div class="vertical-box-inner-cell">
+							<div style="height:100%" data-height="100%" ng-controller="chart">
+								<div class="vertical-box">		
+									<div class="vertical-box-column mobilefull" style="position: relative; height: 100%;">
+										<div class="vertical-box" style="height: 100%;">
+											<div class="vertical-box-row" style="height: 100%;">
+												<div class="vertical-box-cell" style="height: 100%;">
+													<div class="vertical-box-inner-cell" ng-controller="tradingview" style="height: 100%;">
+														<div id="tv_chart_container"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div class="vertical-box-column width-250 mobileinithide" id="right-sidebar" ng-show="settings.right">
+										<div class="showsidemobile">
+											<i class="fa fa-outdent" aria-hidden="true"></i>
+											<i class="fa fa-indent" aria-hidden="true"></i>
+										</div>
 
-                                <div class="vertical-box">
-                                    <div class="vertical-box-row ">
-                                        <div class="vertical-box-cell">
-                                            <div class="vertical-box-inner-cell">
-                                                <div class="vertical-box">
-                                                    <div class="vertical-box-column">
-                                                        <div class="vertical-box">
-                                                            <div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
-                                                                <div id="stock-details" style="display:block" ng-show="stock">
-																	<div class="arb_buysell">
-																		<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																		<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+										<div class="closesidebar">
+											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/close_verysmall.svg"></a>
+										</div>
+
+										<div class="opensidebar">
+											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/open_verysmall.svg"></a>
+										</div>
+
+										<div class="vertical-box">
+											<div class="vertical-box-row ">
+												<div class="vertical-box-cell">
+													<div class="vertical-box-inner-cell">
+														<div class="vertical-box">
+															<div class="vertical-box-column">
+																<div class="vertical-box">
+																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
+																		<div id="stock-details" style="display:block" ng-show="stock">
+																			<div class="arb_buysell">
+																				<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
+																				<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																			</div>
+
+																			<div class="hideformodal">  
+																				<div class="entertrade" style="display:none" id="entertrade">
+																					<?php
+																						$dbaseaccount = 0;
+																						foreach ($dledger as $dbaseledgekey => $dbaseledgevalue) {
+																							if ($dbaseledgevalue->trantype == "deposit" || $dbaseledgevalue->trantype == "selling") {
+																								$dbaseaccount = $dbaseaccount + $dbaseledgevalue->tranamount;
+																							} else {
+																								$dbaseaccount = $dbaseaccount - $dbaseledgevalue->tranamount;
+																							}
+																						}
+																					?>
+
+																					<div class="entr_ttle_bar">
+																						<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
+																					</div>
+
+																					<form action="/journal" method="post">
+																						<div class="entr_wrapper_top">
+																							<div class="entr_col">
+																								<div class="groupinput fctnlhdn">   
+																								<label style="width:100%">Buy Date:</label>
+																								<select name="inpt_data_buymonth" style="width:90px;">
+																									<option value="<?php echo date("F"); ?>" selected><?php echo date("F"); ?></option>
+																									<option value="">- - -</option>
+																									<option value="January">January</option>
+																									<option value="Febuary">Febuary</option>
+																									<option value="March">March</option>
+																									<option value="April">April</option>
+																									<option value="May">May</option>
+																									<option value="June">June</option>
+																									<option value="July">July</option>
+																									<option value="August">August</option>
+																									<option value="September">September</option>
+																									<option value="October">October</option>
+																									<option value="November">November</option>
+																									<option value="December">December</option>
+																								</select>
+																								<input type="text" name="inpt_data_buyday" style="width:32px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("j"); ?>">
+																								<input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
+																								</div>
+
+																								<div class="groupinput midd lockedd"><label>Stock</label>
+																								<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
+																								<i class="fa fa-lock" aria-hidden="true"></i></div>
+
+																								<div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
+																								<div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
+																								<div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							</div>
+
+																							<div class="entr_col">
+																								<div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="{{stock.displayChange}}%" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd"><label>Open</label><input type="text" name="inpt_data_open" value="{{stock.displayOpen}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="{{stock.displayLow}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="{{stock.displayHigh}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							</div>
+
+																							<div class="entr_col">
+																								<div class="groupinput midd lockedd"><label>Volume</label><input type="text" name="inpt_data_volume" value="{{stock.volume | abbr}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd"><label>Value</label><input type="text" name="inpt_data_value" value="{{stock.displayValue}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd lockedd">
+																									<label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="inpt_data_boardlot" value="" readonly>
+																									<i class="fa fa-lock" aria-hidden="true"></i>
+																									<input type="hidden" id="inpt_data_boardlot_get" value="{{stock.displayLast}}">
+																								</div>
+																								<script>
+																									$(document).ready(function() {
+																										$( ".arb_buy" ).hover(function() {
+																											var boardlotget = $("#inpt_data_boardlot_get").val();
+																											if ( boardlotget >= 0.0001 && boardlotget <= 0.0099){
+																													$("#inpt_data_boardlot").val(1000000);
+																											} else if ( boardlotget >= 0.01 && boardlotget <= 0.049){
+																													$("#inpt_data_boardlot").val(100000);
+																											} else if ( boardlotget >= 0.05 && boardlotget <= 0.495){
+																													$("#inpt_data_boardlot").val(10000);
+																											} else if ( boardlotget >= 0.5 && boardlotget <= 4.99){
+																													$("#inpt_data_boardlot").val(1000);
+																											} else if ( boardlotget >= 5 && boardlotget <= 49.95){
+																													$("#inpt_data_boardlot").val(100);
+																											} else if ( boardlotget >= 50 && boardlotget <= 999.5){
+																													$("#inpt_data_boardlot").val(10);
+																											} else if ( boardlotget >= 1000){
+																													$("#inpt_data_boardlot").val(5);
+																											}
+																											var getthestocksym = $('#inpt_data_stock').val();
+																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
+																										});
+																									<?php 
+																										$getcururl = $_SERVER['REQUEST_URI'];
+																										if ($getcururl == "/chart/"){ 
+																									?>
+																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/pleaseselect.html");
+																										$( ".ng-scope" ).click(function() {
+																											var getthestocksym = $('#inpt_data_stock').val();
+																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
+																										});
+																									<?php
+																										} else {
+																											$remchrt = str_replace("/chart/", "", $getcururl);
+																											$getfsymb = str_replace("/", "", $remchrt); 
+																									?>
+																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/<?php echo $getfsymb; ?>");
+																										$( ".ng-scope" ).click(function() {
+																											var getthestocksym = $('#inpt_data_stock').val();
+																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
+																										});
+																									<?php } ?>
+																									});
+																								</script>
+																							</div>
+
+																							<div class="entr_clear"></div>
+																						</div>
+
+																						<div class="derrormes" style="color: #f44336;"></div>
+
+																						<div class="entr_wrapper_mid">
+																							<div class="entr_col">
+																								<div class="groupinput selectonly">
+																									<select name="inpt_data_strategy" class="rnd">
+																										<option value="" selected>Select Strategy</option>
+																										<option value="Bottom Picking">Bottom Picking</option>
+																										<option value="Breakout Play">Breakout Play</option>
+																										<option value="Trend Following">Trend Following</option>
+																									</select>
+																								</div>
+																							</div>
+
+																							<div class="entr_col">
+																								<div class="groupinput selectonly">
+																									<select name="inpt_data_tradeplan" class="rnd">
+																										<option value="" selected>Select Trade Plan</option>
+																										<option value="Day Trade">Day Trade</option>
+																										<option value="Swing Trade">Swing Trade</option>
+																										<option value="Investment">Investment</option>
+																									</select>
+																								</div>
+																							</div>
+
+																							<div class="entr_col">
+																								<div class="groupinput selectonly">
+																									<select name="inpt_data_emotion" class="rnd">
+																										<option value="" selected>Select Emotion</option>
+																										<option value="Nuetral">Neutral</option>
+																										<option value="Greedy">Greedy</option>
+																										<option value="Fearful">Fearful</option>
+																									</select>
+																								</div>
+																							</div>
+
+																							<div class="groupinput">
+																								<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+																								<iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
+																							</div>
+
+																							<div class="groupinput">
+																								<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right; margin-right: 20px;">
+																								<input type="hidden" value="Live" name="inpt_data_status">
+																								<input type="submit" class="confirmtrd green" style="outline: none;" value="Confirm Trade">
+																							</div>
+																						</div>
+																					</form>
+																				</div> 
+																			</div>
+
+																			<div style="padding: 3px 5px 5px 40px; margin-bottom: 2px;" id="sval" class="sd_border_btm">
+																				<div class="arb_stock_name"><!-- STOCK NAME -->
+																					<i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
+																					<div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden; 
+																					text-overflow: ellipsis;">{{stock_details[stock.symbol].description}}</div>
+																					<div class="figures" style="margin-top: 0; overflow: visible; white-space: nowrap;">
+																						<span style="
+																							font-size: 25px;
+																							font-weight: bold;
+																							letter-spacing: -1px;" class="text-default">{{stock.displayLast}}</span>
+																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0}" style="
+																							font-size: 14px;
+																							line-height: 1.42857143;">
+																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
+																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.displayChange}}%)</span>
+																						</span>
+																						<small class="arb_markcap">Market Capitalization: {{stock.displayMarketCap}}</small>
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="border-default" style="min-height: 77px;">
+																				<div style="float: left; width: 50%;">
+																					<table class="table table-condensed m-b-0 ">
+																						<tbody style="font-size: 10px;">
+																							<tr>
+																								<td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Previous</td>
+																								<td style="border-top: none; font-weight: bold; padding: 5px;" class="text-default"><strong>{{stock.displayPrevious}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Low</td>
+																								<td style="font-weight: bold; padding: 5px;" class="" changediv="stock.low"><strong ng-class="{'text-green': stock.low > stock.previous, 'text-red': stock.low < stock.previous}">{{stock.displayLow}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkLow</td>
+																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow | price}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Volume</td>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase text-default" changediv="stock.volume"><strong>{{stock.volume | abbr}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Trades</td>
+																								<td style="font-weight: bold; padding: 5px;" class="text-default" changediv="stock.trades"><strong>{{stock.trades | numeraljs: '0,0'}}</strong></td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</div>
+																				
+																				<div style="float: left; width: 50%;">
+																					<table class="table table-condensed m-b-0 sd_border_btm">
+																						<tbody style="font-size: 10px;">
+																							<tr>
+																								<td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Open</td>
+																								<td style="border-top: none; font-weight: bold; padding: 5px;"><strong ng-class="{'text-green': stock.open > stock.previous, 'text-red': stock.open < stock.previous}">{{stock.displayOpen}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">High</td>
+																								<td style="font-weight: bold; padding: 5px;" changediv="stock.high"><strong ng-class="{'text-green': stock.high > stock.previous, 'text-red': stock.high < stock.previous}">{{stock.displayHigh}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkHigh</td>
+																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearHigh > stock.last, 'text-red': stock.weekYearHigh < stock.last}">{{stock.weekYearHigh | price}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Value</td>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase text-default" changediv="stock.value"><strong>{{stock.displayValue}}</strong></td>
+																							</tr>
+																							<tr>
+																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Average</td>
+																								<td style="font-weight: bold; padding: 5px;" changediv="stock.average"><strong ng-class="{'text-green': stock.average > stock.previous, 'text-red': stock.average < stock.previous}">{{stock.displayAverage}}</strong></td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</div>
+
+																				<div class="clearfix"></div>
+																			</div>
+																		</div>
+
+																		<div class="arb_logo_placehldr">
+																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/logo.png" style="vertical-align:baseline">RBITRAGE</h2>
+																		</div>
 																	</div>
-                                         <div class="hideformodal">  
-                                            <div class="entertrade" style="display:none" id="entertrade">
-                                            	<?php
-                                            		$dbaseaccount = 0;
-                                            		foreach ($dledger as $dbaseledgekey => $dbaseledgevalue) {
-                                            			if ($dbaseledgevalue->trantype == "deposit" || $dbaseledgevalue->trantype == "selling") {
-                                            				$dbaseaccount = $dbaseaccount + $dbaseledgevalue->tranamount;
-                                            			} else {
-                                            				$dbaseaccount = $dbaseaccount - $dbaseledgevalue->tranamount;
-                                            			}
-                                            		}
-                                            	?>
-                                                <div class="entr_ttle_bar">
-                                                    <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
-                                                </div>
-                                                <form action="/journal" method="post">
-                                                	<div class="entr_wrapper_top">
-                                                        <div class="entr_col">
-                                                            <div class="groupinput fctnlhdn">   
-                                                              <label style="width:100%">Buy Date:</label>
-                                                              <select name="inpt_data_buymonth" style="width:90px;">
-                                                                  <option value="<?php echo date("F"); ?>" selected><?php echo date("F"); ?></option>
-                                                                  <option value="">- - -</option>
-                                                                  <option value="January">January</option>
-                                                                  <option value="Febuary">Febuary</option>
-                                                                  <option value="March">March</option>
-                                                                  <option value="April">April</option>
-                                                                  <option value="May">May</option>
-                                                                  <option value="June">June</option>
-                                                                  <option value="July">July</option>
-                                                                  <option value="August">August</option>
-                                                                  <option value="September">September</option>
-                                                                  <option value="October">October</option>
-                                                                  <option value="November">November</option>
-                                                                  <option value="December">December</option>
-                                                              </select>
-                                                              <input type="text" name="inpt_data_buyday" style="width:32px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("j"); ?>">
-                                                              <input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
-                                                            </div>
 
-                                                            <div class="groupinput midd lockedd"><label>Stock</label>
-                                                            <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
-                                                            <i class="fa fa-lock" aria-hidden="true"></i></div>
+																	<?php /*?> Bullish & Beasish <?php */
+																		$link = $_SERVER['REQUEST_URI'];
+																		$link_array = explode('/',$link);
+																		$dxlink = array_filter($link_array);
+																		$page = end($dxlink);
 
-                                                            <div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
-                                                            <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
-                                                            <div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                        </div>
+																		$dsentilist = get_post_meta( 504, '_sentiment_'.$page.'_list', true );
+																		/* temp-disabled
+																		if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
+																			// echo "already voted";
+																			// get the page sentiment
+																			$dpullbear = get_post_meta( 504, '_sentiment_'.$page.'_bear', true );
+																			$dpullbull = get_post_meta( 504, '_sentiment_'.$page.'_bull', true );
 
-                                                        <div class="entr_col">
-                                                            <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="{{stock.displayChange}}%" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd"><label>Open</label><input type="text" name="inpt_data_open" value="{{stock.displayOpen}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="{{stock.displayLow}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="{{stock.displayHigh}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                        </div>
+																			$curl = curl_init();	
+																			curl_setopt($curl, CURLOPT_URL, 'https://marketdepth.pse.tools/api/market-depth?symbol='.$page );
+																			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+																			$dwatchinfo = curl_exec($curl);
+																			curl_close($curl);
 
-                                                        <div class="entr_col">
-                                                            <div class="groupinput midd lockedd"><label>Volume</label><input type="text" name="inpt_data_volume" value="{{stock.volume | abbr}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd"><label>Value</label><input type="text" name="inpt_data_value" value="{{stock.displayValue}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                                                            <div class="groupinput midd lockedd">
-                                                                <label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="inpt_data_boardlot" value="" readonly>
-                                                                <i class="fa fa-lock" aria-hidden="true"></i>
-                                                                <input type="hidden" id="inpt_data_boardlot_get" value="{{stock.displayLast}}">
-                                                            </div>
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    $( ".arb_buy" ).hover(function() {
-                                                                          var boardlotget = $("#inpt_data_boardlot_get").val();
-                                                                          if ( boardlotget >= 0.0001 && boardlotget <= 0.0099){
-                                                                                $("#inpt_data_boardlot").val(1000000);
-                                                                          } else if ( boardlotget >= 0.01 && boardlotget <= 0.049){
-                                                                                $("#inpt_data_boardlot").val(100000);
-                                                                          } else if ( boardlotget >= 0.05 && boardlotget <= 0.495){
-                                                                                $("#inpt_data_boardlot").val(10000);
-                                                                          } else if ( boardlotget >= 0.5 && boardlotget <= 4.99){
-                                                                                $("#inpt_data_boardlot").val(1000);
-                                                                          } else if ( boardlotget >= 5 && boardlotget <= 49.95){
-                                                                                $("#inpt_data_boardlot").val(100);
-                                                                          } else if ( boardlotget >= 50 && boardlotget <= 999.5){
-                                                                                $("#inpt_data_boardlot").val(10);
-                                                                          } else if ( boardlotget >= 1000){
-                                                                                $("#inpt_data_boardlot").val(5);
-                                                                          }
-                                                                          var getthestocksym = $('#inpt_data_stock').val();
-                                                                          $('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
-                                                                    });
-                                                                <?php 
-																	$getcururl = $_SERVER['REQUEST_URI'];
-																	if ($getcururl == "/chart/"){ 
-																?>
-                                                                    $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/pleaseselect.html");
-                                                                    $( ".ng-scope" ).click(function() {
-                                                                        var getthestocksym = $('#inpt_data_stock').val();
-                                                                        $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
-																	});
-																<?php
-                                                                	} else {
-																		$remchrt = str_replace("/chart/", "", $getcururl);
-																		$getfsymb = str_replace("/", "", $remchrt); 
-																?>
-                                                                    $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/<?php echo $getfsymb; ?>");
-                                                                    $( ".ng-scope" ).click(function() {
-                                                                        var getthestocksym = $('#inpt_data_stock').val();
-                                                                        $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
-                                                                    });
-                                                                <?php } ?>
-                                                                });
-                                                            </script>
-                                                        </div>
+																			$dstockidepthinfo = json_decode($dwatchinfo);
+																			$dfinfodp = $dstockidepthinfo->data;
 
-                                                        <div class="entr_clear"></div>
-                                                	</div>
+																			$dbidvol = ($dpullbear != "" ? $dpullbear : 0);
+																			$daskvol = ($dpullbull != "" ? $dpullbull : 0);
+																			foreach ($dfinfodp as $dpinfokey => $dpinfovalue) {
+																				$dbidvol += $dpinfovalue->bid_volume;
+																				$daskvol += $dpinfovalue->ask_volume;
+																			}
 
-                                                	<div class="derrormes" style="color: #f44336;"></div>
+																			$totalvols = $dbidvol + $daskvol;
+																			$percbid = ($dbidvol / $totalvols) * 100;
+																			$percask = ($daskvol / $totalvols) * 100;
 
-													<div class="entr_wrapper_mid">
-														<div class="entr_col">
-															<div class="groupinput selectonly">
-																<select name="inpt_data_strategy" class="rnd">
-																	<option value="" selected>Select Strategy</option>
-																	<option value="Bottom Picking">Bottom Picking</option>
-																	<option value="Breakout Play">Breakout Play</option>
-																	<option value="Trend Following">Trend Following</option>
-																</select>
+																			
+
+																		} else {
+																			// echo "go vote";
+																			$percbid = 0;
+																			$percask = 0;
+																		} temp-disabled */
+
+																		
+
+																		// echo $dpullbull." - ".$dpullbear;
+
+																	?>
+
+																	<div class="regsentiment">
+																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 67px;overflow: hidden;">
+																			<div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
+																				<span class="bullbearsents_label">Register your sentiments</span>
+																				<a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>
+																				<div class="dbaronchart" style="width: <?php echo ($percbid > 0 ? '70' : ''); ?>%;">
+																					<div class="bbs_bull_bar" style="width: <?php echo $percbid; ?>%;">
+																						<div class="bbs_bull_bar_inner"></div>
+																						<span style="<?php echo ($percbid > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percbid,2); ?>%</span>
+																					</div>
+																					<div class="bbs_bear_bar" style="width: <?php echo $percask; ?>%;">
+																						<div class="bbs_bear_bar_inner"></div>
+																						<span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percask,2); ?>%</span>
+																					</div>
+																				</div>
+																				<a href="#" class="bbs_bear"><img src="<?php echo $homeurlgen; ?>/svg/ico_bearish_no_ring.svg"></a>
+																			</div>
+																			
+																			
+																			<div class="arb_clear"></div>
+																		</div>
+																	</div>
+
+																	<?php /*?> Market Depth & Transactions <?php */?>
+
+																	<div class="vertical-box-row" style="height: 138px; overflow:hidden; display: block; padding: 5px 0 0 0;">
+																		<ul class="nav nav-tabs" style="border-radius: 0;">
+																			<li class="active">
+																				<a href="#tab-marketepth" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
+																					<small>Bids & Asks</small>
+																				</a>
+																			</li>
+																			<li>
+																				<a href="#tab-transaxtions" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
+																					<small>Time & Trades</small>
+																				</a>
+																			</li>
+																		</ul>
+
+																		<div class="vertical-box-cell">
+																			<div class="vertical-box-inner-cell">
+																				<div class="vertical-box">
+																					<div class="vertical-box-column">
+																						<!--Market Depth-->
+																						<div class="vertical-box tab-pane fade in active" id="tab-marketepth">
+																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
+																								<col width="8">
+																								<col width="17%">
+																								<col width="16.67%">
+																								<col width="16.67%">
+																								<col width="16.67%">
+																								<col width="16.67%">
+																								<thead>
+																									<tr>
+																										<th class="border-default text-default text-center" style="padding: 3px 9px 3px 0 !important;">#</th>
+																										<th class="border-default text-default text-left" style="padding: 3px !important;">VOL</th>
+																										<th class="border-default text-default text-left" style="padding: 3px !important;">BID</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">ASK</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">VOL</th>
+																										<th class="border-default text-default text-right" style="padding: 3px 12px 3px 3px !important;">#</th>
+																									</tr>
+																								</thead>
+																							</table>
+																							<div class="vertical-box-row">
+																								<div class="vertical-box-cell">
+																									<div class="vertical-box-inner-cell">
+																										<div data-scrollbar="true" data-height="90%" class="">
+																											<div class="table-responsive">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:97%">
+																													<col width="16.67%">
+																													<col width="16.67%">
+																													<col width="16.67%">
+																													<col width="16.67%">
+																													<col width="16.67%">
+																													<col width="16.67%">
+																													<tbody>
+																														<tr ng-repeat="bidask in marketdepth | orderBy: 'index' | limitTo: 20 track by bidask.index">
+																															<td class="text-center" change="bidask.bid_count"><span>{{bidask.bid_count > 0 ? bidask.bid_count : ''}}</span></td>
+																															<td class="text-left text-uppercase" change="bidask.bid_volume"><span>{{bidask.bid_volume > 0 ? (bidask.bid_volume | abbr) : ''}}</span></td>
+																															<td class="text-left" ng-class="{'text-green': bidask.bid_price > stock.previous, 'text-red': bidask.bid_price < stock.previous}" change="bidask.bid_price"><strong>{{bidask.bid_price > 0 ? (bidask.bid_price | price) : ''}}</strong></td>
+																															<td class="text-right" ng-class="{'text-green': bidask.ask_price > stock.previous, 'text-red': bidask.ask_price < stock.previous}" change="bidask.ask_volume"><strong>{{bidask.ask_price > 0 ? (bidask.ask_price | price) : ''}}</strong></td>
+																															<td class="text-right text-uppercase" change="bidask.ask_volume"><span>{{bidask.ask_volume > 0 ? (bidask.ask_volume | abbr) : ''}}</span></td>
+																															<td class="text-right" style="padding-right: 12px !important;" change="bidask.ask_count"><span>{{bidask.ask_count > 0 ? bidask.ask_count : ''}}</span></td>
+																														</tr>
+																														<tr ng-show="marketdepth.length == 0"><td colspan="5" align="center"><br /><br />Please select a stock</td></tr>
+																													</tbody>
+																												</table>
+																											</div>
+																											<!-- <div ng-show="marketdepth.length != 0"> -->
+																											<!-- </div> -->
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+
+																						<!-- Transactions -->
+																						<div class="vertical-box tab-pane fade" id="tab-transaxtions">
+																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
+																								<col width="20%">
+																								<col width="20%">
+																								<col width="20%">
+																								<col width="20%">
+																								<col width="20%">
+																								<thead>
+																									<tr>
+																										<th class="border-default text-default" style="padding: 3px !important;">TIME</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">VOLUME</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">PRICE</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">BUYER</th>
+																										<th class="border-default text-default text-right" style="padding: 3px !important;">SELLER</th>
+																									</tr>
+																								</thead>
+																							</table>
+
+																							<div class="vertical-box-row">
+																								<div class="vertical-box-cell">
+																									<div class="vertical-box-inner-cell">
+																										<div data-scrollbar="true" data-height="100%" class="">
+																											<div class="table-responsive">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+																													<col width="20%">
+																													<col width="20%">
+																													<col width="20%">
+																													<col width="20%">
+																													<col width="20%">
+																													<tbody>
+																														<tr ng-repeat="transaction in transactions">
+																														<td class="text-default text-left" nowrap="nowrap">{{::transaction.time}}</td>
+																														<td style="font-weight: bold;" class="text-default text-right text-uppercase" nowrap="nowrap">{{::transaction.shares | abbr}}</td>
+																														<td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="::{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price | price}}</strong></td>
+																														<td class="text-default text-right" nowrap="nowrap">{{::transaction.buyer | trim: 4}}</td>
+																														<td style="padding-right: 10px;" class="text-default text-right" nowrap="nowrap">{{::transaction.seller | trim: 4}}</td>
+																														</tr>
+																														<tr ng-show="transactions.length == 0"><td colspan="5" align="center"><br />No recent transactions</td></tr>
+																													</tbody>
+																												</table>
+																											</div>
+																											<!-- <div ng-show="marketdepth.length != 0"> -->
+																											<!-- </div> -->
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<?php /*?> Bid/Ask Bar <?php */?>
+
+																	<div class="arb_padding_5 b0 bidaskbar">
+																		<span class="bidaskbar_btn">Bid/Ask Bar: <span>Top Five</span> <i class="fa ng-scope fa-caret-down"></i></span>
+
+																		<div class="bidaskbar_opt">
+																			<ul>
+																				<li><a href="#" data-istype="topfive" class="topfive">Top Five</a></li>
+																				<li><a href="#" data-istype="fullbar" class="fullbar">Full Depth</a></li>
+																			</ul>
+																			<script>
+																				$(document).ready(function() {
+																					$( ".bidaskbar_opt .topfive" ).click(function() {
+																					$( ".bidaskbar_btn span" ).html("Top Five");
+																					});
+																					$( ".bidaskbar_opt .fullbar" ).click(function() {
+																					$( ".bidaskbar_btn span" ).html("Full Depth");
+																					});
+																				});
+																			</script>
+																		</div>
+
+																		<div class="arb_bar topfive">
+																			<div class="greybarbg">
+																				<div class="arb_bar_green" style="width:{{bidperc}}%">&nbsp;</div>
+																				<div class="arb_bar_red" style="width:{{askperc}}%">&nbsp;</div>
+																			</div>
+																			<div class="arb_clear"></div>
+																			<div class="dlabels">
+																				<div class="buyers">
+																					<span style="font-weight: normal;color: #c9ccce;">BUYERS</span> {{bidperc | number : 2}}%
+																				</div>
+																				<div class="sellers">
+																					{{askperc | number : 2}}% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>
+																				</div>
+																			</div>
+																			<div class="arb_clear"></div>
+																		</div>
+
+																		<div class="arb_bar fullbar" style="display: none">
+																			<div class="arb_bar_green" style="width:{{fullbidperc}}%">&nbsp;</div>
+																			<div class="arb_bar_red" style="width:{{fullaskperc}}%">&nbsp;</div>
+																			<div class="arb_clear"></div>
+																			<div class="dlabels">
+																				<div class="buyers">
+																					<span style="font-weight: normal;color: #c9ccce;">BUYERS</span> {{fullbidperc | number : 2}}%
+																				</div>
+																				<div class="sellers">
+																					{{fullaskperc | number : 2}}% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>
+																				</div>
+																			</div>
+																			<div class="arb_clear"></div>
+																		</div>
+																	</div>
+
+																	<?php /*?> All stocks / Watchlist <?php */?>
+
+																	<div class="fixbrdebtm"></div>
+
+																	<div class="vertical-box-row allstocksbox" style="border-bottom-width:6px;">
+																		<ul class="nav nav-tabs" style="border-radius: 0;">
+																			<li class="active">
+																				<a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
+																					<small style="text-transform: uppercase;">All Stocks</small>
+																				</a>
+																			</li>
+																			<li class="">
+																				<a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
+																					<small style="text-transform: uppercase;">Watchlist</small>
+																				</a>
+																			</li>
+																		</ul>
+
+																		<div style="clear:both"></div>
+
+																		<div class="vertical-box">
+																			<div class="vertical-box-row">
+																				<div class="vertical-box-cell">
+																					<div class="tab-content vertical-box-inner-cell" style="background-color: transparent; border-radius: 0; padding: 0; margin-bottom: 0;">
+																						<div data-scrollbar="true" data-height="100%" style="height: 100%;">
+																							<div class="vertical-box tab-pane fade in active" id="allstock">
+																								<table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
+																									<thead>
+																										<tr>
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
+																												STOCK
+																												<i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																											</th>
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
+																												LAST
+																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																											</th>
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
+																												CHANGE
+																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																											</th>
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
+																												VALUE
+																												<i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																											</th>
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
+																												TRADES
+																												<i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																											</th>
+																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
+																												<a ng-if="watchlists[watchlist] != 'stocks' && watchlists[watchlist] != 'new' && watchlist != 'Default Watchlist'" href="javascript:void(0);" ng-click="deleteWatchlist(watchlist)" class="text-red-darker" title="Delete Watchlist"><i class="fa fa-fw fa-trash"></i></a>
+																											</th><?php */?>
+																										</tr>
+																									</thead>
+																								</table>
+
+																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%">
+																									<tbody>
+																										<tr 
+																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
+																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
+																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-default': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											change-alt="stock"
+																											style="font-weight: bold;" 
+																											>
+																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
+																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
+																													<input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>
+																												</div>
+																												<div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
+																											</td>
+																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
+																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
+																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
+																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.trades | numeraljs:'0,0'}}</td>
+																											<?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">
+																												<a ng-if="watchlists[watchlist] == 'stocks'" href="javascript:void(0);" ng-click="addToWatchlist(stock.symbol)" class="text-default"><i class="fa fa-fw fa-plus"></i></a>
+																												<a ng-if="watchlists[watchlist] != 'stocks'" href="javascript:void(0);" ng-click="removeFromWatchlist(watchlists[watchlist], stock.symbol)" class="text-red-darker" title="Remove Stock"><i class="fa fa-fw fa-trash"></i></a>
+																											</td><?php */?>
+																										</tr>
+																										<tr ng-if="watchlists[watchlist].length == 0">
+																											<td colspan="5" align="center">No Data Found</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</div>
+
+																							<div class="vertical-box tab-pane fade" id="watchlists">
+																								<div class="arb_watchlst_cont">
+																									<table>
+																										<thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
+																											<tr>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Stock</th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Day Range</th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Price</th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Change</th>
+																											</tr>
+																										</thead>
+																										<?php
+																											/* temp-disabled
+																											$curl = curl_init();
+																											curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+																											curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+																											$dwatchinfo = curl_exec($curl);
+																											curl_close($curl);
+																											$genstockinfo = json_decode($dwatchinfo);
+																											$stockinfo = $genstockinfo->data;
+																											temp-disabled */
+																										?>
+																										<tbody>
+																											<?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
+																											<?php if ($havemeta): ?>
+																											
+																											<?php foreach ($havemeta as $key => $value) { ?>
+																											<?php
+
+																												$dstock = $value['stockname'];
+																												$dprice = $stockinfo->$dstock->last;
+																												$dchange = $stockinfo->$dstock->change;
+																												?>
+																												<tr class="tr-background">
+																													<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
+																													<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $stockinfo->$dstock->low, 2, '.', ',' ); ?> ~ <?php echo number_format( $stockinfo->$dstock->high, 2, '.', ',' ); ?></td>
+																													<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
+																														<?php if ($dchange > 0): ?>
+																															<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+																														<?php else: ?>
+																															<div class="chred-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+																														<?php endif ?>
+																													</td>
+																													<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">
+																														<?php if ($dchange > 0): ?>
+																															<div class="chgreen"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
+																														<?php else: ?>
+																															<div class="chred"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
+																														<?php endif ?>
+																														
+																													</td>
+																												</tr>
+																											<?php } ?>
+																											<?php endif ?>
+
+																										</tbody>
+																									</table>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
 															</div>
-														</div>
-
-														<div class="entr_col">
-															<div class="groupinput selectonly">
-																<select name="inpt_data_tradeplan" class="rnd">
-																	<option value="" selected>Select Trade Plan</option>
-																	<option value="Day Trade">Day Trade</option>
-																	<option value="Swing Trade">Swing Trade</option>
-																	<option value="Investment">Investment</option>
-																</select>
-															</div>
-														</div>
-
-														<div class="entr_col">
-															<div class="groupinput selectonly">
-																<select name="inpt_data_emotion" class="rnd">
-																	<option value="" selected>Select Emotion</option>
-																	<option value="Nuetral">Neutral</option>
-																	<option value="Greedy">Greedy</option>
-																	<option value="Fearful">Fearful</option>
-																</select>
-															</div>
-														</div>
-
-														<div class="groupinput">
-															<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
-															<iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
-														</div>
-
-														<div class="groupinput">
-															<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right; margin-right: 20px;">
-															<input type="hidden" value="Live" name="inpt_data_status">
-															<input type="submit" class="confirmtrd green" style="outline: none;" value="Confirm Trade">
 														</div>
 													</div>
-                                                </form>
-                                            </div> 
-                                        </div>
-                                        <div style="padding: 3px 5px 5px 40px; margin-bottom: 2px;" id="sval" class="sd_border_btm">
-                                            <div class="arb_stock_name"><!-- STOCK NAME -->
-                                                <i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
-                                                <div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden; 
-                                                text-overflow: ellipsis;">{{stock_details[stock.symbol].description}}</div>
-                                                <div class="figures" style="margin-top: 0; overflow: visible; white-space: nowrap;">
-                                                    <span style="
-                                                        font-size: 25px;
-                                                        font-weight: bold;
-                                                        letter-spacing: -1px;" class="text-default">{{stock.displayLast}}</span>
-                                                    <span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0}" style="
-                                                        font-size: 14px;
-                                                        line-height: 1.42857143;">
-                                                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
-                                                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.displayChange}}%)</span>
-                                                    </span>
-                                                    <small class="arb_markcap">Market Capitalization: {{stock.displayMarketCap}}</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="border-default" style="min-height: 77px;">
-                                            <div style="float: left; width: 50%;">
-                                                <table class="table table-condensed m-b-0 ">
-                                                    <tbody style="font-size: 10px;">
-                                                        <tr>
-                                                            <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Previous</td>
-                                                            <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-default"><strong>{{stock.displayPrevious}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Low</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class="" changediv="stock.low"><strong ng-class="{'text-green': stock.low > stock.previous, 'text-red': stock.low < stock.previous}">{{stock.displayLow}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkLow</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow | price}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Volume</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase text-default" changediv="stock.volume"><strong>{{stock.volume | abbr}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Trades</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-default" changediv="stock.trades"><strong>{{stock.trades | numeraljs: '0,0'}}</strong></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div style="float: left; width: 50%;">
-                                                <table class="table table-condensed m-b-0 sd_border_btm">
-                                                    <tbody style="font-size: 10px;">
-                                                        <tr>
-                                                            <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Open</td>
-                                                            <td style="border-top: none; font-weight: bold; padding: 5px;"><strong ng-class="{'text-green': stock.open > stock.previous, 'text-red': stock.open < stock.previous}">{{stock.displayOpen}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">High</td>
-                                                            <td style="font-weight: bold; padding: 5px;" changediv="stock.high"><strong ng-class="{'text-green': stock.high > stock.previous, 'text-red': stock.high < stock.previous}">{{stock.displayHigh}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkHigh</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearHigh > stock.last, 'text-red': stock.weekYearHigh < stock.last}">{{stock.weekYearHigh | price}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Value</td>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase text-default" changediv="stock.value"><strong>{{stock.displayValue}}</strong></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Average</td>
-                                                            <td style="font-weight: bold; padding: 5px;" changediv="stock.average"><strong ng-class="{'text-green': stock.average > stock.previous, 'text-red': stock.average < stock.previous}">{{stock.displayAverage}}</strong></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                                        <div class="arb_logo_placehldr">
-                                                            <h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/logo.png" style="vertical-align:baseline">RBITRAGE</h2>
-                                                        </div>
-                                                    </div>
-                                                    <?php /*?> Bullish & Beasish <?php */
-                                                        $link = $_SERVER['REQUEST_URI'];
-													    $link_array = explode('/',$link);
-													    $dxlink = array_filter($link_array);
-													    $page = end($dxlink);
-
-													    $dsentilist = get_post_meta( 504, '_sentiment_'.$page.'_list', true );
-													    /* temp-disabled
-														if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
-													    	// echo "already voted";
-													    	// get the page sentiment
-														    $dpullbear = get_post_meta( 504, '_sentiment_'.$page.'_bear', true );
-															$dpullbull = get_post_meta( 504, '_sentiment_'.$page.'_bull', true );
-
-															$curl = curl_init();	
-															curl_setopt($curl, CURLOPT_URL, 'https://marketdepth.pse.tools/api/market-depth?symbol='.$page );
-															curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-															$dwatchinfo = curl_exec($curl);
-															curl_close($curl);
-
-															$dstockidepthinfo = json_decode($dwatchinfo);
-															$dfinfodp = $dstockidepthinfo->data;
-
-															$dbidvol = ($dpullbear != "" ? $dpullbear : 0);
-															$daskvol = ($dpullbull != "" ? $dpullbull : 0);
-															foreach ($dfinfodp as $dpinfokey => $dpinfovalue) {
-																$dbidvol += $dpinfovalue->bid_volume;
-																$daskvol += $dpinfovalue->ask_volume;
-															}
-
-															$totalvols = $dbidvol + $daskvol;
-															$percbid = ($dbidvol / $totalvols) * 100;
-															$percask = ($daskvol / $totalvols) * 100;
-
-															
-
-													    } else {
-													    	// echo "go vote";
-													    	$percbid = 0;
-													    	$percask = 0;
-													    } temp-disabled */
-
-													    
-
-														// echo $dpullbull." - ".$dpullbear;
-
-                                                        ?>
-                                                            <div class="regsentiment">
-                                                            	<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 67px;overflow: hidden;">
-	                                                                <div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
-	                                                                    <span class="bullbearsents_label">Register your sentiments</span>
-	                                                                    <a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>
-	                                                                    <div class="dbaronchart" style="width: <?php echo ($percbid > 0 ? '70' : ''); ?>%;">
-	                                                                        <div class="bbs_bull_bar" style="width: <?php echo $percbid; ?>%;">
-	                                                                            <div class="bbs_bull_bar_inner"></div>
-	                                                                            <span style="<?php echo ($percbid > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percbid,2); ?>%</span>
-	                                                                        </div>
-	                                                                        <div class="bbs_bear_bar" style="width: <?php echo $percask; ?>%;">
-	                                                                            <div class="bbs_bear_bar_inner"></div>
-	                                                                            <span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percask,2); ?>%</span>
-	                                                                        </div>
-	                                                                    </div>
-	                                                                    <a href="#" class="bbs_bear"><img src="<?php echo $homeurlgen; ?>/svg/ico_bearish_no_ring.svg"></a>
-	                                                                </div>
-	                                                                
-	                                                                
-	                                                                <div class="arb_clear"></div>
-	                                                            </div>
-                                                            </div>
-                                                            <?php /*?> Market Depth & Transactions <?php */?>
-                                                            <div class="vertical-box-row" style="height: 138px; overflow:hidden; display: block; padding: 5px 0 0 0;">
-                                                                <ul class="nav nav-tabs" style="border-radius: 0;">
-                                                                    <li class="active">
-                                                                        <a href="#tab-marketepth" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
-                                                                            <small>Bids & Asks</small>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#tab-transaxtions" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
-                                                                            <small>Time & Trades</small>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                                <div class="vertical-box-cell">
-                                                                    <div class="vertical-box-inner-cell">
-                                                                        <div class="vertical-box">
-                                                                            <div class="vertical-box-column">
-                                                                                <!--Market Depth-->
-                                                                                <div class="vertical-box tab-pane fade in active" id="tab-marketepth">
-                                                                                    <table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
-                                                                                        <col width="8">
-                                                                                        <col width="17%">
-                                                                                        <col width="16.67%">
-                                                                                        <col width="16.67%">
-                                                                                        <col width="16.67%">
-                                                                                        <col width="16.67%">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th class="border-default text-default text-center" style="padding: 3px 9px 3px 0 !important;">#</th>
-                                                                                                <th class="border-default text-default text-left" style="padding: 3px !important;">VOL</th>
-                                                                                                <th class="border-default text-default text-left" style="padding: 3px !important;">BID</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">ASK</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">VOL</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px 12px 3px 3px !important;">#</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                    </table>
-                                                                                    <div class="vertical-box-row">
-                                                                                        <div class="vertical-box-cell">
-                                                                                            <div class="vertical-box-inner-cell">
-                                                                                                <div data-scrollbar="true" data-height="90%" class="">
-                                                                                                    <div class="table-responsive">
-                                                                                                        <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:97%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <col width="16.67%">
-                                                                                                            <tbody>
-                            <tr ng-repeat="bidask in marketdepth | orderBy: 'index' | limitTo: 20 track by bidask.index">
-                                <td class="text-center" change="bidask.bid_count"><span>{{bidask.bid_count > 0 ? bidask.bid_count : ''}}</span></td>
-                                <td class="text-left text-uppercase" change="bidask.bid_volume"><span>{{bidask.bid_volume > 0 ? (bidask.bid_volume | abbr) : ''}}</span></td>
-                                <td class="text-left" ng-class="{'text-green': bidask.bid_price > stock.previous, 'text-red': bidask.bid_price < stock.previous}" change="bidask.bid_price"><strong>{{bidask.bid_price > 0 ? (bidask.bid_price | price) : ''}}</strong></td>
-                                <td class="text-right" ng-class="{'text-green': bidask.ask_price > stock.previous, 'text-red': bidask.ask_price < stock.previous}" change="bidask.ask_volume"><strong>{{bidask.ask_price > 0 ? (bidask.ask_price | price) : ''}}</strong></td>
-                                <td class="text-right text-uppercase" change="bidask.ask_volume"><span>{{bidask.ask_volume > 0 ? (bidask.ask_volume | abbr) : ''}}</span></td>
-                                <td class="text-right" style="padding-right: 12px !important;" change="bidask.ask_count"><span>{{bidask.ask_count > 0 ? bidask.ask_count : ''}}</span></td>
-                            </tr>
-                            <tr ng-show="marketdepth.length == 0"><td colspan="5" align="center"><br /><br />Please select a stock</td></tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </div>
-                                                                                                                                                                            <!-- <div ng-show="marketdepth.length != 0"> -->
-                                                                                                    <!-- </div> -->
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- Transactions -->
-                                                                                <div class="vertical-box tab-pane fade" id="tab-transaxtions">
-                                                                                    <table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
-                                                                                        <col width="20%">
-                                                                                        <col width="20%">
-                                                                                        <col width="20%">
-                                                                                        <col width="20%">
-                                                                                        <col width="20%">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th class="border-default text-default" style="padding: 3px !important;">TIME</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">VOLUME</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">PRICE</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">BUYER</th>
-                                                                                                <th class="border-default text-default text-right" style="padding: 3px !important;">SELLER</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                    </table>
-                                                                                    <div class="vertical-box-row">
-                                                                                        <div class="vertical-box-cell">
-                                                                                            <div class="vertical-box-inner-cell">
-                                                                                                <div data-scrollbar="true" data-height="100%" class="">
-                                                                                                    <div class="table-responsive">
-                                                                                                        <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
-                                                                                                            <col width="20%">
-                                                                                                            <col width="20%">
-                                                                                                            <col width="20%">
-                                                                                                            <col width="20%">
-                                                                                                            <col width="20%">
-                                                                                                            <tbody>
-                            <tr ng-repeat="transaction in transactions">
-                            <td class="text-default text-left" nowrap="nowrap">{{::transaction.time}}</td>
-                            <td style="font-weight: bold;" class="text-default text-right text-uppercase" nowrap="nowrap">{{::transaction.shares | abbr}}</td>
-                            <td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="::{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price | price}}</strong></td>
-                            <td class="text-default text-right" nowrap="nowrap">{{::transaction.buyer | trim: 4}}</td>
-                            <td style="padding-right: 10px;" class="text-default text-right" nowrap="nowrap">{{::transaction.seller | trim: 4}}</td>
-                            </tr>
-                            <tr ng-show="transactions.length == 0"><td colspan="5" align="center"><br />No recent transactions</td></tr>
-                                                                                                            </tbody>
-                                                                                                        </table>
-                                                                                                    </div>
-                                                                                                                                                                            <!-- <div ng-show="marketdepth.length != 0"> -->
-                                                                                                    <!-- </div> -->
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <?php /*?> Bid/Ask Bar <?php */?>
-                                                            <div class="arb_padding_5 b0 bidaskbar">
-                                                                <span class="bidaskbar_btn">Bid/Ask Bar: <span>Top Five</span> <i class="fa ng-scope fa-caret-down"></i></span>
-                                                                <div class="bidaskbar_opt">
-                                                                    <ul>
-                                                                        <li><a href="#" data-istype="topfive" class="topfive">Top Five</a></li>
-                                                                        <li><a href="#" data-istype="fullbar" class="fullbar">Full Depth</a></li>
-                                                                    </ul>
-                                                                    <script>
-                                                                        $(document).ready(function() {
-                                                                            $( ".bidaskbar_opt .topfive" ).click(function() {
-                                                                              $( ".bidaskbar_btn span" ).html("Top Five");
-                                                                            });
-                                                                            $( ".bidaskbar_opt .fullbar" ).click(function() {
-                                                                              $( ".bidaskbar_btn span" ).html("Full Depth");
-                                                                            });
-                                                                        });
-                                                                    </script>
-                                                                </div>
-                                                                <div class="arb_bar topfive">
-                                                                    <div class="greybarbg">
-                                                                        <div class="arb_bar_green" style="width:{{bidperc}}%">&nbsp;</div>
-                                                                        <div class="arb_bar_red" style="width:{{askperc}}%">&nbsp;</div>
-                                                                    </div>
-                                                                    <div class="arb_clear"></div>
-                                                                    <div class="dlabels">
-                                                                        <div class="buyers">
-                                                                            <span style="font-weight: normal;color: #c9ccce;">BUYERS</span> {{bidperc | number : 2}}%
-                                                                        </div>
-                                                                        <div class="sellers">
-                                                                            {{askperc | number : 2}}% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="arb_clear"></div>
-                                                                </div>
-                                                                <div class="arb_bar fullbar" style="display: none">
-                                                                    <div class="arb_bar_green" style="width:{{fullbidperc}}%">&nbsp;</div>
-                                                                    <div class="arb_bar_red" style="width:{{fullaskperc}}%">&nbsp;</div>
-                                                                    <div class="arb_clear"></div>
-                                                                    <div class="dlabels">
-                                                                        <div class="buyers">
-                                                                            <span style="font-weight: normal;color: #c9ccce;">BUYERS</span> {{fullbidperc | number : 2}}%
-                                                                        </div>
-                                                                        <div class="sellers">
-                                                                            {{fullaskperc | number : 2}}% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="arb_clear"></div>
-                                                                </div>
-                                                            </div>
-                                                            <?php /*?> All stocks / Watchlist <?php */?>
-                                                            <div class="fixbrdebtm"></div>
-                                                            <div class="vertical-box-row allstocksbox" style="border-bottom-width:6px;">
-                                                            <ul class="nav nav-tabs" style="border-radius: 0;">
-                                                                <li class="active">
-                                                                    <a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
-                                                                        <small style="text-transform: uppercase;">All Stocks</small>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="">
-                                                                    <a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
-                                                                        <small style="text-transform: uppercase;">Watchlist</small>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                            <div style="clear:both"></div>
-                                                                <div class="vertical-box">
-                                        <div class="vertical-box-row">
-                                            <div class="vertical-box-cell">
-                                                <div class="tab-content vertical-box-inner-cell" style="background-color: transparent; border-radius: 0; padding: 0; margin-bottom: 0;">
-                                                    <div data-scrollbar="true" data-height="100%" style="height: 100%;">
-                                                        <div class="vertical-box tab-pane fade in active" id="allstock">
-                                                            <table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
-                                                                            STOCK
-                                                                            <i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
-                                                                        </th>
-                                                                        <th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
-                                                                            LAST
-                                                                            <i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
-                                                                        </th>
-                                                                        <th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
-                                                                            CHANGE
-                                                                            <i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
-                                                                        </th>
-                                                                        <th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
-                                                                            VALUE
-                                                                            <i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
-                                                                        </th>
-                                                                        <th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
-                                                                            TRADES
-                                                                            <i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
-                                                                        </th>
-                                                                        <?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
-                                                                            <a ng-if="watchlists[watchlist] != 'stocks' && watchlists[watchlist] != 'new' && watchlist != 'Default Watchlist'" href="javascript:void(0);" ng-click="deleteWatchlist(watchlist)" class="text-red-darker" title="Delete Watchlist"><i class="fa fa-fw fa-trash"></i></a>
-                                                                        </th><?php */?>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
-                                                            <table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%">
-                                                                <tbody>
-                                                                    <tr 
-                                                                        ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
-                                                                        ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-                                                                        ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-default': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
-                                                                        change-alt="stock"
-                                                                        style="font-weight: bold;" 
-                                                                        >
-                                                                        <td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
-                                                                            <div style="width: 0; height: 0; overflow: hidden; display: block;">
-                                                                                <input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>
-                                                                            </div>
-                                                                            <div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
-                                                                        </td>
-                                                                        <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
-                                                                        <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
-                                                                        <td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
-                                                                        <td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.trades | numeraljs:'0,0'}}</td>
-                                                                        <?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">
-                                                                            <a ng-if="watchlists[watchlist] == 'stocks'" href="javascript:void(0);" ng-click="addToWatchlist(stock.symbol)" class="text-default"><i class="fa fa-fw fa-plus"></i></a>
-                                                                            <a ng-if="watchlists[watchlist] != 'stocks'" href="javascript:void(0);" ng-click="removeFromWatchlist(watchlists[watchlist], stock.symbol)" class="text-red-darker" title="Remove Stock"><i class="fa fa-fw fa-trash"></i></a>
-                                                                        </td><?php */?>
-                                                                    </tr>
-                                                                    <tr ng-if="watchlists[watchlist].length == 0">
-                                                                        <td colspan="5" align="center">No Data Found</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="vertical-box tab-pane fade" id="watchlists">
-                                                            <div class="arb_watchlst_cont">
-                                                            	<table>
-                                                            		<thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
-                                                            			<tr>
-	                                                            			<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Stock</th>
-	                                                            			<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Day Range</th>
-	                                                            			<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Price</th>
-	                                                            			<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Change</th>
-	                                                            		</tr>
-                                                            		</thead>
-                                                            		<?php
-																		/* temp-disabled
-																		$curl = curl_init();
-																		curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-																		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-																		$dwatchinfo = curl_exec($curl);
-																		curl_close($curl);
-																		$genstockinfo = json_decode($dwatchinfo);
-																		$stockinfo = $genstockinfo->data;
-																		temp-disabled */
-																	?>
-                                                            		<tbody>
-                                                            			
-                                                            			<?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
-                                                            			<?php if ($havemeta): ?>
-                                                            				
-                                                            			
-                                                            			<?php foreach ($havemeta as $key => $value) { ?>
-																		<?php
-
-																			$dstock = $value['stockname'];
-																			$dprice = $stockinfo->$dstock->last;
-																			$dchange = $stockinfo->$dstock->change;
-																			?>
-																			<tr class="tr-background">
-		                                                            			<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
-		                                                            			<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $stockinfo->$dstock->low, 2, '.', ',' ); ?> ~ <?php echo number_format( $stockinfo->$dstock->high, 2, '.', ',' ); ?></td>
-		                                                            			<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
-		                                                            				<?php if ($dchange > 0): ?>
-		                                                            					<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
-		                                                            				<?php else: ?>
-		                                                            					<div class="chred-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
-		                                                            				<?php endif ?>
-		                                                            			</td>
-		                                                            			<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">
-		                                                            				<?php if ($dchange > 0): ?>
-		                                                            					<div class="chgreen"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
-		                                                            				<?php else: ?>
-		                                                            					<div class="chred"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
-		                                                            				<?php endif ?>
-		                                                            				
-		                                                            			</td>
-		                                                            		</tr>
-																		<?php } ?>
-																		<?php endif ?>
-
-                                                            		</tbody>
-                                                            		
-                                                            		
-                                                            	</table>
-                                                            </div>
-                                                        </div>
-                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>	
-                            
-                            <div class="chartlocker"></div>
-					
+												</div>
+											</div>
+										</div>
+									</div>	
+										
+									<div class="chartlocker"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<!-- begin theme-panel -->
-<div class="theme-panel">
-    <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn" style="border: 1px solid #ccc; border-right: none; display: none;"><i class="fa fa-cog"></i></a>
-    <div class="theme-panel-content">
-        <h5 class="m-t-0">Settings</h5>
-        <div class="row m-t-10">
-            <div class="col-md-5 control-label double-line">Chart</div>
-            <div class="col-md-7">
-                <select name="header-styling" class="form-control input-sm" ng-model="settings.chart" ng-change="updateSettings('chart')">
-                    <option value="1">Volume On</option>
-                    <option value="0">Mute</option>
-                </select>
-            </div>
-        </div>
-        <?php /* ?>
-        <div class="row m-t-10">
-            <div class="col-md-5 control-label double-line">Chat</div>
-            <div class="col-md-7">
-                <select name="header-styling" class="form-control input-sm" ng-model="settings.chat" ng-change="updateSettings('chat')">
-                    <option value="1">Volume On</option>
-                    <option value="0">Mute</option>
-                </select>
-            </div>
-        </div>
-        <?php */ ?>
-        <div class="row m-t-10">
-            <div class="col-md-5 control-label double-line">Disclosure</div>
-            <div class="col-md-7">
-                <select name="sidebar-styling" class="form-control input-sm" ng-model="settings.disclosure" ng-change="updateSettings('disclosure')">
-                    <option value="1">Show</option>
-                    <option value="0">Disable</option>
-                </select>
-            </div>
-        </div>
-        <div class="row m-t-10">
-            <div class="col-md-12">
-                <button type="button" class="btn btn-inverse btn-block btn-sm" data-click="theme-panel-expand">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end theme-panel -->		<!-- end #content -->
+		<!-- end #content -->
+
+		<!-- begin theme-panel -->
+		<div class="theme-panel">
+			<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn" style="border: 1px solid #ccc; border-right: none; display: none;"><i class="fa fa-cog"></i></a>
+			<div class="theme-panel-content">
+				<h5 class="m-t-0">Settings</h5>
+				<div class="row m-t-10">
+					<div class="col-md-5 control-label double-line">Chart</div>
+					<div class="col-md-7">
+						<select name="header-styling" class="form-control input-sm" ng-model="settings.chart" ng-change="updateSettings('chart')">
+							<option value="1">Volume On</option>
+							<option value="0">Mute</option>
+						</select>
+					</div>
+				</div>
+				<?php /* ?>
+				<div class="row m-t-10">
+					<div class="col-md-5 control-label double-line">Chat</div>
+					<div class="col-md-7">
+						<select name="header-styling" class="form-control input-sm" ng-model="settings.chat" ng-change="updateSettings('chat')">
+							<option value="1">Volume On</option>
+							<option value="0">Mute</option>
+						</select>
+					</div>
+				</div>
+				<?php */ ?>
+				<div class="row m-t-10">
+					<div class="col-md-5 control-label double-line">Disclosure</div>
+					<div class="col-md-7">
+						<select name="sidebar-styling" class="form-control input-sm" ng-model="settings.disclosure" ng-change="updateSettings('disclosure')">
+							<option value="1">Show</option>
+							<option value="0">Disable</option>
+						</select>
+					</div>
+				</div>
+				<div class="row m-t-10">
+					<div class="col-md-12">
+						<button type="button" class="btn btn-inverse btn-block btn-sm" data-click="theme-panel-expand">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end theme-panel -->
 		
 	</div>
-    
+    <!-- end page container -->
+
     <div class="arbmobilebtns">
     	<ul>
         	<li></li>
@@ -2139,7 +2166,7 @@
             <li></li>
         </ul>
     </div>
-	<!-- end page container -->
+	
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
@@ -2203,339 +2230,339 @@
 		}
 		?>';
 	</script>
-<script src="/assets/js/angular/functions.js?v=1.218"></script>
-<script src="/assets/js/angular/controllers.js?v=1.228"></script>
-<script src="/assets/js/angular/directives.js?v=1.218"></script>
-<script src="/assets/js/angular/filters.js?v=1.218"></script>
-<script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-<script src="/assets/js/datafeed.js?v=1.218"></script>
-<!-- <script src="<?php // echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
-<style type="text/css">
-	#tv_chart_container {
-		width: 100% !important;
-	}
-	.tradingview-widget-container, div#tradingview_1cb87 {
-		height: 100%;
-	}
-	div#tv_chart_container_manual {
-		border: none !important;
-	}
-	.tradingview-widget-copyright {
-		display: none;
-	}
-	div#tradingview_8c000 {
-		height: 100%;
-	}
-	.nav-tabs {
-		background: #34495e;
-		padding-top: 4px;
-	}
-	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
-		font-family: "Roboto", Arial !important;
-		font-weight: normal !important;
-		padding: 0px 7px 0 3px !important;
-		border: none !important;
-	}
-	.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-		color: #fff !important;
-		background-color: #2c3e50 !important;
-		border-radius: 0;
-		padding-top:5px !important;
-	}
-	a.arb-btm-icon {
-		float: left;
-		text-align: center;
-		width: 20%;
-		font-size: 20px;
-		color: #667f98;
-		padding: 6px 0 0;
-	}
-	a.arb-btm-icon span {
-		text-align: center;
-		font-size: 11px;
-		color: #fff;
-		display:block;
-	}
-	a.arb-side-icon {
-	    text-align: center;
-	    width: 13%;
-	    font-size: 20px;
-	    color: #ffffff;
-	    padding: 4px 0 0;
-	    display: inline-block;
-	}
-	a.arb-side-icon span {
-		text-align: center;
-		font-size: 11px;
-		color: #fff;
-		display:block;
-	}
-	#stock-details, .wrapper.text-center.border-bottom-1.border-default {
-		text-align: left !important;
-	}
-	.nav-tabs .nav-item, .nav-tabs.nav-justified>li, .nav-tabs>li {
-		margin-bottom: 0;
-		width: 50%;
-		text-align: center;
-		border-radius: 6px 6px 0 0 !important;
-		overflow: hidden;
-	}
-	.nav>li>a:focus, .nav>li>a:hover,
-	.nav-tabs li:hover {border-radius:4px 4px 0 0 !important;}
-	small.arb_markcap {
-		display: block;
-		color: #ccc;
-		font-size: 12px;
-		font-weight: 300;
-	}
-	.arb_bottom_control_l {
-		float:left;
-		width:50%;
-		max-width:700px;
-	}
-	.arb_bottom_control_r {
-		float:right;
-		width:270px;
-	}
-	.arb_right_icons_trans {display:block;}
-	/*background: rgba(0,0,0,0.3);*/
-	.arb_top_ticker {display:block;}
-	.hidesidebar {
-	    width: 3px !important;
-	    /*transition: all 0.1s ease;*/
-	    border-right: 0 !important;
-		border-left: 4px solid #34495e !important;
-	}
-	svg {
-		border: 2px solid white;
-		border-radius: 20px;
-		background: black;
-	}
-	.noSelect {
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
-</style>
-<script type="text/javascript">
-	$(document).ready(function(){
-		var x = 0;
-		var y = 0;
-
-		function fees(marketval) {
-
-			//commission
-			var dpartcommission = marketval * 0.0025;
-			var dcommission = (dpartcommission > 20 ? dpartcommission : 20);
-
-			var dtax = dcommission * 0.12;
-			var dtransferfee = marketval * 0.00005;
-			var dsccp = marketval * 0.0001;
-
-			return dcommission + dtax + dtransferfee + dsccp;
+	<script src="/assets/js/angular/functions.js?v=1.218"></script>
+	<script src="/assets/js/angular/controllers.js?v=1.228"></script>
+	<script src="/assets/js/angular/directives.js?v=1.218"></script>
+	<script src="/assets/js/angular/filters.js?v=1.218"></script>
+	<script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
+	<script src="/assets/js/datafeed.js?v=1.218"></script>
+	<!-- <script src="<?php // echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
+	<style type="text/css">
+		#tv_chart_container {
+			width: 100% !important;
 		}
-		function format_number(n) {
-		  return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+		.tradingview-widget-container, div#tradingview_1cb87 {
+			height: 100%;
 		}
+		div#tv_chart_container_manual {
+			border: none !important;
+		}
+		.tradingview-widget-copyright {
+			display: none;
+		}
+		div#tradingview_8c000 {
+			height: 100%;
+		}
+		.nav-tabs {
+			background: #34495e;
+			padding-top: 4px;
+		}
+		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+			font-family: "Roboto", Arial !important;
+			font-weight: normal !important;
+			padding: 0px 7px 0 3px !important;
+			border: none !important;
+		}
+		.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+			color: #fff !important;
+			background-color: #2c3e50 !important;
+			border-radius: 0;
+			padding-top:5px !important;
+		}
+		a.arb-btm-icon {
+			float: left;
+			text-align: center;
+			width: 20%;
+			font-size: 20px;
+			color: #667f98;
+			padding: 6px 0 0;
+		}
+		a.arb-btm-icon span {
+			text-align: center;
+			font-size: 11px;
+			color: #fff;
+			display:block;
+		}
+		a.arb-side-icon {
+			text-align: center;
+			width: 13%;
+			font-size: 20px;
+			color: #ffffff;
+			padding: 4px 0 0;
+			display: inline-block;
+		}
+		a.arb-side-icon span {
+			text-align: center;
+			font-size: 11px;
+			color: #fff;
+			display:block;
+		}
+		#stock-details, .wrapper.text-center.border-bottom-1.border-default {
+			text-align: left !important;
+		}
+		.nav-tabs .nav-item, .nav-tabs.nav-justified>li, .nav-tabs>li {
+			margin-bottom: 0;
+			width: 50%;
+			text-align: center;
+			border-radius: 6px 6px 0 0 !important;
+			overflow: hidden;
+		}
+		.nav>li>a:focus, .nav>li>a:hover,
+		.nav-tabs li:hover {border-radius:4px 4px 0 0 !important;}
+		small.arb_markcap {
+			display: block;
+			color: #ccc;
+			font-size: 12px;
+			font-weight: 300;
+		}
+		.arb_bottom_control_l {
+			float:left;
+			width:50%;
+			max-width:700px;
+		}
+		.arb_bottom_control_r {
+			float:right;
+			width:270px;
+		}
+		.arb_right_icons_trans {display:block;}
+		/*background: rgba(0,0,0,0.3);*/
+		.arb_top_ticker {display:block;}
+		.hidesidebar {
+			width: 3px !important;
+			/*transition: all 0.1s ease;*/
+			border-right: 0 !important;
+			border-left: 4px solid #34495e !important;
+		}
+		svg {
+			border: 2px solid white;
+			border-radius: 20px;
+			background: black;
+		}
+		.noSelect {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var x = 0;
+			var y = 0;
 
-		$('.inpt_data_price, .inpt_data_qty').keyup(function() {
-		 	// console.log( $('.inpt_data_qty').val() );
-		 	var buyprice = $('.inpt_data_price').val().replace(/[^0-9\.]/g, '');
-		 	var buyquanti = $('.inpt_data_qty').val().replace(/[^0-9\.]/g, '');
-		 	console.log(buyprice +" ~ "+ buyquanti);
-		 	if (parseFloat(buyprice) > 0 && parseFloat(buyquanti) > 0) {
-		 		var marketvalx = parseFloat(buyprice) * parseFloat(buyquanti);
-			 	var dfees = fees(marketvalx);
+			function fees(marketval) {
 
-			 	var totalcost = marketvalx + dfees;
+				//commission
+				var dpartcommission = marketval * 0.0025;
+				var dcommission = (dpartcommission > 20 ? dpartcommission : 20);
 
-			 	$(".inpt_total_cost").val(format_number(totalcost));
-		 	} else {
-		 		$(".inpt_total_cost").val('00.00');
-		 	}
-		 	
-		});
+				var dtax = dcommission * 0.12;
+				var dtransferfee = marketval * 0.00005;
+				var dsccp = marketval * 0.0001;
 
-		
-	
-	$( ".closesidebar a" ).click(function(){
-		$( ".mobileinithide" ).addClass("hidesidebar", function(){
-		    $(".closesidebar").fadeOut("fast", function(){
-		         $(".opensidebar").fadeIn();
-		    });
-		});
-	});
-	
-	$( ".opensidebar a" ).click(function(){
-		$( ".mobileinithide" ).addClass("showsidebar", function(){
-		    $(".opensidebar").fadeOut("fast", function(){
-		        $( ".mobileinithide" ).removeClass("hidesidebar");
-		        $( ".closesidebar" ).fadeIn();
-		    });
-		});
-	});
-	
-	
-	$( ".mobileinithide .fa-outdent" ).click(function(){
-		$( ".mobileinithide" ).animate({right: "0px"},500, function(){
-			$( ".chartlocker" ).fadeIn(500);
-			$( ".mobileinithide .fa-outdent" ).fadeOut(500, function(){
-				$( ".mobileinithide .fa-indent, .arb_buysell" ).fadeIn();
+				return dcommission + dtax + dtransferfee + dsccp;
+			}
+			function format_number(n) {
+			return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+			}
+
+			$('.inpt_data_price, .inpt_data_qty').keyup(function() {
+				// console.log( $('.inpt_data_qty').val() );
+				var buyprice = $('.inpt_data_price').val().replace(/[^0-9\.]/g, '');
+				var buyquanti = $('.inpt_data_qty').val().replace(/[^0-9\.]/g, '');
+				console.log(buyprice +" ~ "+ buyquanti);
+				if (parseFloat(buyprice) > 0 && parseFloat(buyquanti) > 0) {
+					var marketvalx = parseFloat(buyprice) * parseFloat(buyquanti);
+					var dfees = fees(marketvalx);
+
+					var totalcost = marketvalx + dfees;
+
+					$(".inpt_total_cost").val(format_number(totalcost));
+				} else {
+					$(".inpt_total_cost").val('00.00');
+				}
+				
 			});
-		});
-	});
-	$( ".mobileinithide .fa-indent" ).click(function(){
-		$( ".mobileinithide" ).animate({right: "-260px"},500, function(){
-			$( ".mobileinithide .fa-indent" ).fadeOut(500, function(){
-				$( ".mobileinithide .fa-outdent, .arb_buysell" ).fadeIn();
-			});
-			$( ".chartlocker" ).fadeOut(500);
-		});
-	});
+
+			
 		
-		$(".bbs_bull, .bbs_bear").click(function(e){
-			e.preventDefault();
-			if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
-				var pathname = window.location.pathname;
-
-				$(this).parents('.bullbearsents').addClass("clickedthis");
-
-				var dbull = $(this).parents('.bullbearsents').attr('data-bull');
-				var dbear = $(this).parents('.bullbearsents').attr('data-bear');
-
-				var dclass = $(this).attr('class');
-
-				var dpathl = pathname.split("/");
-				dpathl = dpathl.filter(function(el) { return el; });
-				dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-				// console.log(dpathl);
-
-				jQuery.ajax({
-				 	method: "POST",
-					url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
-					dataType: 'json',
-					data: {
-						'action' : 'post_sentiment',
-						'stock' : dpathl,
-						'postid' : '<?php echo get_the_id(); ?>',
-						'userid' : '<?php echo $user_id; ?>',
-						'dbasebull': dbull,
-						'dbasebear': dbear,
-						'dbuttonact' : dclass
-					},
-					success: function(data) {
-					  console.log(data);
-
-					  // jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-					  // jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
-
-					  	$( ".dbaronchart" ).animate({
-							width: "70%"
-						},500, function(){
-							// $( ".bbs_bear_bar span" ).fadeIn("fast");
-						});
-
-					  	 $( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
-						  		$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
-						  });
-
-						$( ".bbs_bear_bar" ).animate({
-							width: data.dbear+"%"
-						},500, function(){
-							$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
-							$( ".bbs_bear_bar span" ).fadeIn("fast");
-						});
-
-						$( ".bbs_bull_bar" ).animate({
-							width: data.dbull+"%"
-						},500, function(){
-							$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
-							$( ".bbs_bull_bar span" ).fadeIn("fast");
-						});
-
-						$(".bullbearsents_label").html("Members sentiments");
-
-					}
+		$( ".closesidebar a" ).click(function(){
+			$( ".mobileinithide" ).addClass("hidesidebar", function(){
+				$(".closesidebar").fadeOut("fast", function(){
+					$(".opensidebar").fadeIn();
 				});
+			});
+		});
+		
+		$( ".opensidebar a" ).click(function(){
+			$( ".mobileinithide" ).addClass("showsidebar", function(){
+				$(".opensidebar").fadeOut("fast", function(){
+					$( ".mobileinithide" ).removeClass("hidesidebar");
+					$( ".closesidebar" ).fadeIn();
+				});
+			});
+		});
+		
+		
+		$( ".mobileinithide .fa-outdent" ).click(function(){
+			$( ".mobileinithide" ).animate({right: "0px"},500, function(){
+				$( ".chartlocker" ).fadeIn(500);
+				$( ".mobileinithide .fa-outdent" ).fadeOut(500, function(){
+					$( ".mobileinithide .fa-indent, .arb_buysell" ).fadeIn();
+				});
+			});
+		});
+		$( ".mobileinithide .fa-indent" ).click(function(){
+			$( ".mobileinithide" ).animate({right: "-260px"},500, function(){
+				$( ".mobileinithide .fa-indent" ).fadeOut(500, function(){
+					$( ".mobileinithide .fa-outdent, .arb_buysell" ).fadeIn();
+				});
+				$( ".chartlocker" ).fadeOut(500);
+			});
+		});
+			
+			$(".bbs_bull, .bbs_bear").click(function(e){
+				e.preventDefault();
+				if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
+					var pathname = window.location.pathname;
 
-			} else {
-				console.log('Cant Click');
+					$(this).parents('.bullbearsents').addClass("clickedthis");
+
+					var dbull = $(this).parents('.bullbearsents').attr('data-bull');
+					var dbear = $(this).parents('.bullbearsents').attr('data-bear');
+
+					var dclass = $(this).attr('class');
+
+					var dpathl = pathname.split("/");
+					dpathl = dpathl.filter(function(el) { return el; });
+					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
+					// console.log(dpathl);
+
+					jQuery.ajax({
+						method: "POST",
+						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						dataType: 'json',
+						data: {
+							'action' : 'post_sentiment',
+							'stock' : dpathl,
+							'postid' : '<?php echo get_the_id(); ?>',
+							'userid' : '<?php echo $user_id; ?>',
+							'dbasebull': dbull,
+							'dbasebear': dbear,
+							'dbuttonact' : dclass
+						},
+						success: function(data) {
+						console.log(data);
+
+						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
+
+							$( ".dbaronchart" ).animate({
+								width: "70%"
+							},500, function(){
+								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
+
+							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
+									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
+							});
+
+							$( ".bbs_bear_bar" ).animate({
+								width: data.dbear+"%"
+							},500, function(){
+								$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
+								$( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
+
+							$( ".bbs_bull_bar" ).animate({
+								width: data.dbull+"%"
+							},500, function(){
+								$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
+								$( ".bbs_bull_bar span" ).fadeIn("fast");
+							});
+
+							$(".bullbearsents_label").html("Members sentiments");
+
+						}
+					});
+
+				} else {
+					console.log('Cant Click');
+				}
+
+			});
+
+		jQuery('.inpt_data_price').keyup(function(){
+			var inputVal = jQuery(this).val().length;
+			if(inputVal != 0){
+				y = 1
+			}
+		});
+		jQuery('.inpt_data_qty').keyup(function(){
+			var inputVal2 = jQuery(this).val().length;
+			if(inputVal2 != 0){
+				x = 1
+			}
+		});
+
+		$(".confirmtrd").click(function(e){
+
+			var dbuypower = $(".input_buy_power").attr('data-dbaseval');
+			var dpurprice = $(".inpt_data_price").val().replace(/[^0-9\.]/g, '');
+			var dpurqty = $(".inpt_data_qty").val().replace(/[^0-9\.]/g, '');
+
+			console.log(dbuypower);
+			console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
+		
+			
+			if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
+				e.preventDefault();
+				$(".derrormes").text('You can only purchase a maximum of '+ numeral(dbuypower / dpurprice).format('0,0.00') +' stocks if the price is ₱'+ numeral(dpurprice).format('0,0.00')  );
+				// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
+			}else {
+				if(x == 1 && y == 1){
+				$('.chart-loader').css("display","block");
+				$(this).hide();
+			}
+			}
+		
+		});
+
+		jQuery('input.number').keyup(function (event) {
+				// skip for arrow keys
+				if (event.which >= 37 && event.which <= 40) {
+					event.preventDefault();
+				}
+
+				var currentVal = jQuery(this).val();
+				var testDecimal = testDecimals(currentVal);
+				if (testDecimal.length > 1) {
+					console.log("You cannot enter more than one decimal point");
+					currentVal = currentVal.slice(0, -1);
+				}
+				jQuery(this).val(replaceCommas(currentVal));
+
+			});
+
+			function testDecimals(currentVal) {
+				var count;
+				currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+				return count;
+			}
+
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
 			}
 
 		});
-
-	jQuery('.inpt_data_price').keyup(function(){
-		var inputVal = jQuery(this).val().length;
-		if(inputVal != 0){
-			y = 1
-		}
-	});
-	jQuery('.inpt_data_qty').keyup(function(){
-		var inputVal2 = jQuery(this).val().length;
-		if(inputVal2 != 0){
-			x = 1
-		}
-	});
-
-	$(".confirmtrd").click(function(e){
-
-		var dbuypower = $(".input_buy_power").attr('data-dbaseval');
-		var dpurprice = $(".inpt_data_price").val().replace(/[^0-9\.]/g, '');
-		var dpurqty = $(".inpt_data_qty").val().replace(/[^0-9\.]/g, '');
-
-		console.log(dbuypower);
-		console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
-	
-		
-		if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
-			e.preventDefault();
-			$(".derrormes").text('You can only purchase a maximum of '+ numeral(dbuypower / dpurprice).format('0,0.00') +' stocks if the price is ₱'+ numeral(dpurprice).format('0,0.00')  );
-            // console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
-		}else {
-			if(x == 1 && y == 1){
-			$('.chart-loader').css("display","block");
-			$(this).hide();
-		 }
-		}
-	
-	});
-
-    jQuery('input.number').keyup(function (event) {
-            // skip for arrow keys
-            if (event.which >= 37 && event.which <= 40) {
-                event.preventDefault();
-            }
-
-            var currentVal = jQuery(this).val();
-            var testDecimal = testDecimals(currentVal);
-            if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
-                currentVal = currentVal.slice(0, -1);
-            }
-            jQuery(this).val(replaceCommas(currentVal));
-
-        });
-
-        function testDecimals(currentVal) {
-            var count;
-            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-            return count;
-        }
-
-        function replaceCommas(yourNumber) {
-            var components = yourNumber.toString().split(".");
-            if (components.length === 1) 
-                components[0] = yourNumber;
-            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            if (components.length === 2)
-                components[1] = components[1].replace(/\D/g, "");
-            return components.join(".");
-        }
-
-	});
-</script>
+	</script>
 </body>
 </html>

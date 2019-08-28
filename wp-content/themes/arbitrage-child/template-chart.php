@@ -1304,97 +1304,96 @@
 	</script>
 </head>
 <body>
-<div id="preloader">
-    <div id="status">&nbsp;</div>
-    <div id="status_txt"></div>
-</div>
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+		<div id="status_txt"></div>
+	</div>
     <?php get_template_part('parts/sidebar', 'calc'); ?>
 
 	<?php get_template_part('parts/sidebar', 'varcalc'); ?>
 
 	<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
-<?php
-	$userid = get_current_user_id();
-	$dledger = $wpdb->get_results( "SELECT * FROM arby_ledger where userid = ".$userid);
-?>
-<div>
-	<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png"></a></div>
-	<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
 
-	<?php //get_template_part('parts/global', 'css'); ?>
+	<?php
+		$userid = get_current_user_id();
+		$dledger = $wpdb->get_results( "SELECT * FROM arby_ledger where userid = ".$userid);
+	?>
 
-    <div class="arb_right_icons_trans">
-		<?php /*?> Top Icons <?php */?>
-		<ul class="main-drops-chart">
-	        <a href="#" class="arb-side-icon">
-	        	<img src="<?php echo $homeurlgen; ?>/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
-	        </a>
-	        <ul id="droppouts" style="box-shadow: 0px 2px 4px 1px rgba(7, 13, 19, 0.52);display: none;">
-					<li><a href="#">Buy/Sell Calculator</a></li>
-					<li><a href="#">VAR Calculator</a></li>
-					<li><a href="#">Average Price Calculator</a></li>
-					<li><a href="<?php echo get_home_url(); ?>/multicharts/">Multichart</a></li>
+	<div>
+		<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png"></a></div>
+
+		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
+
+		<?php //get_template_part('parts/global', 'css'); ?>
+
+		<div class="arb_right_icons_trans">
+			<?php /*?> Top Icons <?php */?>
+			<ul class="main-drops-chart">
+				<a href="#" class="arb-side-icon">
+					<img src="<?php echo $homeurlgen; ?>/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
+				</a>
+				<ul id="droppouts" style="box-shadow: 0px 2px 4px 1px rgba(7, 13, 19, 0.52);display: none;">
+						<li><a href="#">Buy/Sell Calculator</a></li>
+						<li><a href="#">VAR Calculator</a></li>
+						<li><a href="#">Average Price Calculator</a></li>
+						<li><a href="<?php echo get_home_url(); ?>/multicharts/">Multichart</a></li>
+				</ul>
 			</ul>
-		</ul>
-        <a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-        <a href="<?php echo $homeurlgen; ?>/messages/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
-        <a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
-            if ( $user ) : ?>
-                <img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
-            <?php else: ?>
-                <i class="fas fa-user-tie"></i>
-            <?php endif; ?></a>
-        <div style="clear:both"></div>
-    </div>
-
-    
-</div>
+			<a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
+			<a href="<?php echo $homeurlgen; ?>/messages/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
+				if ( $user ) : ?>
+					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
+				<?php else: ?>
+					<i class="fas fa-user-tie"></i>
+				<?php endif; ?></a>
+			<div style="clear:both"></div>
+		</div>    
+	</div>
 
 	<div id="page-container" class="fade page-content-full-height page-without-sidebar" ng-controller="template">
 		<div id="content" class="content content-full-width" style="top: 40px; padding: 0;">
-		<div class="vertical-box">
-		<style type="text/css">
-			#ticker {
-				height: 60px;  
-				padding: 5px 0;
-				overflow: hidden; 
-				white-space: nowrap; 
-				padding-right: 0;
-				border-bottom: 1px solid #ccc;
-				margin-bottom: 0;
-				text-transform: uppercase;
-			}
-			.text-grey {color:#bdc3c7}
-			#ticker {
-				height: 46px;
-				padding: 5px 0;
-				overflow: hidden;
-				white-space: nowrap;
-				padding-right: 0;
-				border-bottom: 1px solid #2c3e50;
-				margin-bottom: 0;
-				text-transform: uppercase;
-			}
-			#ticker {background-color: #131722;}
-			ul.nav.navbar-nav.navbar-right {
-				background-color: #131722;
-				margin-top: -1px;
-			}
-			.fa-arrow-up {
-				color: #25ae5f;
-			}
-			.fa-arrow-down {
-				color: #e64c3c;
-			}
-		</style>
+			<div class="vertical-box">
+				<style type="text/css">
+					#ticker {
+						height: 60px;  
+						padding: 5px 0;
+						overflow: hidden; 
+						white-space: nowrap; 
+						padding-right: 0;
+						border-bottom: 1px solid #ccc;
+						margin-bottom: 0;
+						text-transform: uppercase;
+					}
+					.text-grey {color:#bdc3c7}
+					#ticker {
+						height: 46px;
+						padding: 5px 0;
+						overflow: hidden;
+						white-space: nowrap;
+						padding-right: 0;
+						border-bottom: 1px solid #2c3e50;
+						margin-bottom: 0;
+						text-transform: uppercase;
+					}
+					#ticker {background-color: #131722;}
+					ul.nav.navbar-nav.navbar-right {
+						background-color: #131722;
+						margin-top: -1px;
+					}
+					.fa-arrow-up {
+						color: #25ae5f;
+					}
+					.fa-arrow-down {
+						color: #e64c3c;
+					}
+				</style>
 		<div class="vertical-box-row">
 			<div class="vertical-box-cell">
 				<div class="vertical-box-inner-cell">
 					<div style="height:100%" data-height="100%" ng-controller="chart">
 						<div class="vertical-box">		
-	
                             <div class="vertical-box-column mobilefull" style="position: relative; height: 100%;">
-                            	
                                 <div class="vertical-box" style="height: 100%;">
                                     <div class="vertical-box-row" style="height: 100%;">
                                         <div class="vertical-box-cell" style="height: 100%;">
@@ -1404,7 +1403,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                             
                             <div class="vertical-box-column width-250 mobileinithide" id="right-sidebar" ng-show="settings.right">
@@ -1418,8 +1416,7 @@
                                 <div class="opensidebar">
                                     <a href="#"><img src="<?php echo get_home_url(); ?>/svg/open_verysmall.svg"></a>
                                 </div>
-                                
-                            
+
                                 <div class="vertical-box">
                                     <div class="vertical-box-row ">
                                         <div class="vertical-box-cell">
@@ -1429,10 +1426,10 @@
                                                         <div class="vertical-box">
                                                             <div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
                                                                 <div id="stock-details" style="display:block" ng-show="stock">
-                                                <div class="arb_buysell">
-                                                    <a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-                                                    <a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
-                                                </div>
+																	<div class="arb_buysell">
+																		<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
+																		<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																	</div>
                                          <div class="hideformodal">  
                                             <div class="entertrade" style="display:none" id="entertrade">
                                             	<?php
@@ -1444,14 +1441,12 @@
                                             				$dbaseaccount = $dbaseaccount - $dbaseledgevalue->tranamount;
                                             			}
                                             		}
-
-                                            		
                                             	?>
                                                 <div class="entr_ttle_bar">
                                                     <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
                                                 </div>
                                                 <form action="/journal" method="post">
-                                                <div class="entr_wrapper_top">
+                                                	<div class="entr_wrapper_top">
                                                         <div class="entr_col">
                                                             <div class="groupinput fctnlhdn">   
                                                               <label style="width:100%">Buy Date:</label>
@@ -1474,14 +1469,17 @@
                                                               <input type="text" name="inpt_data_buyday" style="width:32px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("j"); ?>">
                                                               <input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
                                                             </div>
+
                                                             <div class="groupinput midd lockedd"><label>Stock</label>
                                                             <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
                                                             <i class="fa fa-lock" aria-hidden="true"></i></div>
+
                                                             <div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
                                                             <div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
                                                             <div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                         </div>
+
                                                         <div class="entr_col">
                                                             <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="{{stock.displayChange}}%" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1489,6 +1487,7 @@
                                                             <div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="{{stock.displayLow}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="{{stock.displayHigh}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                         </div>
+
                                                         <div class="entr_col">
                                                             <div class="groupinput midd lockedd"><label>Volume</label><input type="text" name="inpt_data_volume" value="{{stock.volume | abbr}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                                                             <div class="groupinput midd lockedd"><label>Value</label><input type="text" name="inpt_data_value" value="{{stock.displayValue}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1519,72 +1518,80 @@
                                                                           var getthestocksym = $('#inpt_data_stock').val();
                                                                           $('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
                                                                     });
-                                                                
                                                                 <?php 
-                                                                $getcururl = $_SERVER['REQUEST_URI'];
-                                                                if ($getcururl == "/chart/"){ ?>
+																	$getcururl = $_SERVER['REQUEST_URI'];
+																	if ($getcururl == "/chart/"){ 
+																?>
                                                                     $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/pleaseselect.html");
                                                                     $( ".ng-scope" ).click(function() {
                                                                         var getthestocksym = $('#inpt_data_stock').val();
                                                                         $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
-                                                                    }); <?php
-                                                                }else{
-                                                                    $remchrt = str_replace("/chart/", "", $getcururl);
-                                                                    $getfsymb = str_replace("/", "", $remchrt); ?>
+																	});
+																<?php
+                                                                	} else {
+																		$remchrt = str_replace("/chart/", "", $getcururl);
+																		$getfsymb = str_replace("/", "", $remchrt); 
+																?>
                                                                     $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/<?php echo $getfsymb; ?>");
                                                                     $( ".ng-scope" ).click(function() {
                                                                         var getthestocksym = $('#inpt_data_stock').val();
                                                                         $('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
                                                                     });
                                                                 <?php } ?>
-                                                                
                                                                 });
                                                             </script>
                                                         </div>
+
                                                         <div class="entr_clear"></div>
-                                                </div>
-                                                <div class="derrormes" style="color: red;"></div>
-                                                <div class="entr_wrapper_mid">
-                                                    <div class="entr_col">
-                                                        <div class="groupinput selectonly">
-                                                            <select name="inpt_data_strategy" class="rnd">
-                                                                <option value="" selected>Select Strategy</option>
-                                                                <option value="Bottom Picking">Bottom Picking</option>
-                                                                <option value="Breakout Play">Breakout Play</option>
-                                                                <option value="Trend Following">Trend Following</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="entr_col">
-                                                        <div class="groupinput selectonly">
-                                                            <select name="inpt_data_tradeplan" class="rnd">
-                                                                <option value="" selected>Select Trade Plan</option>
-                                                                <option value="Day Trade">Day Trade</option>
-                                                                <option value="Swing Trade">Swing Trade</option>
-                                                                <option value="Investment">Investment</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="entr_col">
-                                                        <div class="groupinput selectonly">
-                                                            <select name="inpt_data_emotion" class="rnd">
-                                                                <option value="" selected>Select Emotion</option>
-                                                                <option value="Nuetral">Neutral</option>
-                                                                <option value="Greedy">Greedy</option>
-                                                                <option value="Fearful">Fearful</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="groupinput">
-                                                        <textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
-                                                        <iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
-                                                    </div>
-                                                    <div class="groupinput">
-                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right; margin-right: 20px;">
-                                                        <input type="hidden" value="Live" name="inpt_data_status">
-                                                        <input type="submit" class="confirmtrd green noSelect" value="Confirm Trade">
-                                                    </div>
-                                                 </div>
+                                                	</div>
+
+                                                	<div class="derrormes" style="color: #f44336;"></div>
+
+													<div class="entr_wrapper_mid">
+														<div class="entr_col">
+															<div class="groupinput selectonly">
+																<select name="inpt_data_strategy" class="rnd">
+																	<option value="" selected>Select Strategy</option>
+																	<option value="Bottom Picking">Bottom Picking</option>
+																	<option value="Breakout Play">Breakout Play</option>
+																	<option value="Trend Following">Trend Following</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="entr_col">
+															<div class="groupinput selectonly">
+																<select name="inpt_data_tradeplan" class="rnd">
+																	<option value="" selected>Select Trade Plan</option>
+																	<option value="Day Trade">Day Trade</option>
+																	<option value="Swing Trade">Swing Trade</option>
+																	<option value="Investment">Investment</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="entr_col">
+															<div class="groupinput selectonly">
+																<select name="inpt_data_emotion" class="rnd">
+																	<option value="" selected>Select Emotion</option>
+																	<option value="Nuetral">Neutral</option>
+																	<option value="Greedy">Greedy</option>
+																	<option value="Fearful">Fearful</option>
+																</select>
+															</div>
+														</div>
+
+														<div class="groupinput">
+															<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+															<iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
+														</div>
+
+														<div class="groupinput">
+															<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right; margin-right: 20px;">
+															<input type="hidden" value="Live" name="inpt_data_status">
+															<input type="submit" class="confirmtrd green" style="outline: none;" value="Confirm Trade">
+														</div>
+													</div>
                                                 </form>
                                             </div> 
                                         </div>

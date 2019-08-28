@@ -126,7 +126,10 @@
 	}
 	.quote .quote-f01 {
 		text-transform: capitalize;
-		font-weight: 600 !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+		background: linear-gradient(to right, #F44336 2%, #E91E63 10%, #2196F3 24%, #8BC34A 41%, #FFEB3B 43%, #FF9800);
+		font-weight: 700 !important;
 	}
 	.quote-f1 {
 		color: #fff;

@@ -2955,7 +2955,7 @@ h2.terms-padding:after {
 	padding-top: 4px;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-	background: linear-gradient(to right, #71F29F 22%, #B5DC5D 60%);
+	background: linear-gradient(to right, #F44336 26%, #E91E63 43%, #2196F3 50%, #8BC34A 55%, #FFEB3B 61%, #FF9800 48%);
     font-weight: 900 !important;
 }
 .button-media-container {

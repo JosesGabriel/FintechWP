@@ -235,6 +235,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				
                                                                                 	<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
 																					</div>
+                                                                                    <div class="minichartt">
+                                                                                    <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                                                                                    <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
+                                                                                        <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                                                                                    </div>
+                                                                                </div>
 																				
                                                                                 </div>
 																			</div>

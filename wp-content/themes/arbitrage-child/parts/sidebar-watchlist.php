@@ -234,7 +234,6 @@ jQuery(function(){
                           <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                                ...
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
                           </div>
@@ -361,3 +360,8 @@ jQuery(function(){
           <?php endif; ?>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">

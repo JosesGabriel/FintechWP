@@ -150,6 +150,10 @@ get_header('dashboard');
 		<h2 class="terms-padding">We're here</h2>
 
 		<div class="inner-content inner-content--contact row">
+			<div class="quote">
+				<h4 class="quote-f01">It’s about time.</h4>
+				<span class="quote-f1">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
+			</div>
 			<form action="" class="contact--form col-md-6" id="contact--form">
 				<div class="form-group">
 					<label for="contact--textField__name" class="contact--label">Name *</label>
@@ -167,9 +171,9 @@ get_header('dashboard');
 					<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
 				</div>
 			</form>
-			<div class="quote col-md-6">
-				<h4 class="quote-f01">It’s about time.</h4>
-				<span class="quote-f1">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
+			<div class="quote2 col-md-6">
+				<h4 class="quote-f02">It’s about time.</h4>
+				<span class="quote-f2">We’ve been waiting for you to contact us. Let’s talk about: Your amazing Ideas; How we can improve our service; Space and time.</span>
 			</div>
 		</div>
 	</div>

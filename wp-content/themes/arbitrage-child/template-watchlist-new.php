@@ -220,7 +220,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 
 																			<div class="dpricechange">
-																				<div class="curprice">&#8369;<?php echo $dinstall['data'][0]->last; ?></div>
+																				<div class="curprice">&#8369; .. <?php echo $dinstall['data']->last; ?></div>
 																				<?php if (strpos($dinstall['data'][0]->changepercentage, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo $dinstall['data'][0]->changepercentage; ?>%</div>
 																				<?php else: ?>
@@ -562,9 +562,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             #curl_close($curl); 
 
             $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
-            echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
+            //echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
             $chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE';
-            echo "CHART INTRA DAY :::::: " . $chartintraday;
+            //echo "CHART INTRA DAY :::::: " . $chartintraday;
 
 
             $curl = curl_init();

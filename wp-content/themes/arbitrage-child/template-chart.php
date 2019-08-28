@@ -138,10 +138,11 @@
 		}
 		.arb_right_icons_trans {
 			position: absolute;
-		    width: 164px;
+		    width: 194px;
 		    right: -54px;
 		    top: -1px;
-		    background-color: transparent;
+			padding-left: 30px;
+		    background: linear-gradient(to right, #2c3e505c 26%, #34495e 43%);
 		    z-index: 9;
 		}
 		.arb-side-icon i {

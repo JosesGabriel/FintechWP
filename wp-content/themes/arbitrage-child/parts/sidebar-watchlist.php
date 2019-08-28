@@ -187,6 +187,12 @@ jQuery(function(){
   .nvd3 .nv-axis path.domain {
     display: none;
   }
+
+  .negative > line {
+    stroke: #d62728;
+  }
+
+
 </style>
 <?php
   // $dwatchinfo = null;

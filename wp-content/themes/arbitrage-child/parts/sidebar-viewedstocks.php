@@ -57,13 +57,16 @@ jQuery(function(){
 				            </div>
 				        </ul>
     </div>
-    <div class="to-bottom-seemore" style="display: inline-flex;">
-        <i class="fas fa-sort-down" style="
-        font-size: 16px;
-        margin-right: 3px;
-        vertical-align: initial;
-    "></i>
-        <div class="see-more-btn button-toggle-content">
+    <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
+        <div class="see-more-btn button-toggle-content" id="show_hide">
+            <i class="fas fa-sort-down" id="fa-up" style="
+                font-size: 13px;
+                margin-right: 3px;
+                vertical-align: initial;
+                bottom: 0px;
+                top: -2px;
+                position: relative;
+            "></i>
             <strong>See more</strong>
         </div>
     </div>
@@ -72,8 +75,20 @@ jQuery(function(){
 <script>
 $(document).ready(function(){
 	$('.button-toggle-content').on('click', function(){
-		$('.watched-hidden-content').toggle('fast');
+		$('.watched-hidden-content').toggle();
 	});
+});
+jQuery(document).ready(function(){
+jQuery(".button-toggle-content").click(function () {
+    jQuery(".trend-content-hidden").toggle('slow');
+        if(jQuery(".button-toggle-content").hasClass('isopen')){
+            jQuery(".button-toggle-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
+            jQuery(".trend-content-hidden").slideUp( "slow" );
+        }else {
+            jQuery(".button-toggle-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
+            jQuery(".trend-content-hidden").slideDown( "slow" );
+          }
+    });
 });
 </script>
 

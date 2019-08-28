@@ -248,8 +248,8 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 			bars.push(barValue);
 		}
 		var meta = { noData: nodata };
-		if (nodata) {
-			meta.nextTime = data.nextTime;
+		if (nodata && data.nb) {
+			meta.nextTime = data.nb;
 		}
 		onDataCallback(bars, meta);
 		return;

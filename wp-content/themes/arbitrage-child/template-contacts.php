@@ -149,26 +149,26 @@ get_header('dashboard');
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2 class="terms-padding">We're here</h2>
 
-		<div class="inner-content inner-content--contact row">
-			<form action="" class="contact--form" id="contact--form">
-				<div class="col-md-6">
+		<div class="inner-content inner-content--contact">
+			<form action="" class="contact--form row" id="contact--form">
+				<div class="col-md-12">
 					<div class="quote">
 						<h4 class="quote-f01">It’s about time.</h4>
 						<span class="quote-f1">We've been waiting for you to reach us.</span>
 					</div>
 					<div class="form-group">
-						<label for="contact--textField__name" class="contact--label">Name *</label>
+						<!-- <label for="contact--textField__name" class="contact--label">Name *</label> -->
 						<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name" placeholder="What does your friends call you?">
 					</div>
 					<div class="form-group">
-						<label for="contact--textField__email" class="contact--label">Email *</label>
+						<!-- <label for="contact--textField__email" class="contact--label">Email *</label> -->
 						<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email" placeholder="Where can we email you back?">
 					</div>
 				</div>
-				<div class="quote2 col-md-6">
+				<div class="quote2 col-md-12">
 					<div class="form-group">
-						<label for="contact--textField__message" class="contact--label">Message *</label>
-						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to hear that from you."></textarea>
+						<!-- <label for="contact--textField__message" class="contact--label">Message *</label> -->
+						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="The team is all ears. We're always here for a good chat."></textarea>
 					</div>
 					<div class="flex-box">
 						<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
@@ -230,6 +230,9 @@ get_header('dashboard');
 	}
 	.contact--form{
 		padding-left: 0;
+	}
+	.inner-content {
+		padding: 30px 40px 25px 40px;
 	}
 </style>
 

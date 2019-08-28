@@ -543,9 +543,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
     if (typeof angular !== 'undefined') {
 		var app = angular.module('arbitrage_wl', ['nvd3']);
@@ -577,7 +579,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			$dhistoforchart = json_decode($dhistofronold);
             $dhistoforchart = $dhistoforchart->data;
-            
+
 			$dhistoflist = "";
 			$counter = 0;
 			for ($i=0; $i < (count($dhistoforchart->o)); $i++) {

@@ -138,10 +138,11 @@
 		}
 		.arb_right_icons_trans {
 			position: absolute;
-		    width: 164px;
+		    width: 194px;
 		    right: -54px;
-		    top: -1px;
-		    background-color: transparent;
+		    top: 2px;
+			padding-left: 30px;
+		    background: linear-gradient(to right, #2c3e505c 26%, #34495e 43%);
 		    z-index: 9;
 		}
 		.arb-side-icon i {
@@ -1915,12 +1916,12 @@
                                                             <ul class="nav nav-tabs" style="border-radius: 0;">
                                                                 <li class="active">
                                                                     <a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
-                                                                        <small>All Stocks</small>
+                                                                        <small style="text-transform: uppercase;">All Stocks</small>
                                                                     </a>
                                                                 </li>
                                                                 <li class="">
                                                                     <a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
-                                                                        <small>Watchlist</small>
+                                                                        <small style="text-transform: uppercase;">Watchlist</small>
                                                                     </a>
                                                                 </li>
                                                             </ul>

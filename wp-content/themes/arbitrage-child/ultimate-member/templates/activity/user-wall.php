@@ -294,7 +294,7 @@ foreach ( $wallposts->posts as $post ) {
 	um_fetch_user( $author_id );
 
 	//if ($count % 5 == 0 && $count != 0) {
-	if ($adscount = 5 && $count != 0) {
+	if ($adscount = 5) {
 
 		$adscount-- ;
 
@@ -349,7 +349,9 @@ foreach ( $wallposts->posts as $post ) {
                 </div>
 
 		<?php
-	}else if($adscount == 0){
+	}
+
+	if($adscount == 0){
 		$adscount = 5;
 	}
 		

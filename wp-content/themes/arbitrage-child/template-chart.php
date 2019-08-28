@@ -1915,12 +1915,12 @@
                                                             <ul class="nav nav-tabs" style="border-radius: 0;">
                                                                 <li class="active">
                                                                     <a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
-                                                                        <small>All Stocks</small>
+                                                                        <small style="text-transform: uppercase;">All Stocks</small>
                                                                     </a>
                                                                 </li>
                                                                 <li class="">
                                                                     <a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
-                                                                        <small>Watchlist</small>
+                                                                        <small style="text-transform: uppercase;">Watchlist</small>
                                                                     </a>
                                                                 </li>
                                                             </ul>

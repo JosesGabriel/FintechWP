@@ -37,7 +37,7 @@ jQuery(function(){
 				                <span>STI</span>
 				                <a href="#">STI Education System, Inc.<br><p>325 Following</p></a>
 				            </li>
-				            <div class="hide-show">
+				            <div class="hide-show watched-hidden-content">
 				                <li class="odd">
 				                    <span>FOOD</span>
 				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>326 Following</p></a>
@@ -63,12 +63,20 @@ jQuery(function(){
         margin-right: 3px;
         vertical-align: initial;
     "></i>
-        <div class="see-more-btn">
+        <div class="see-more-btn button-toggle-content">
             <strong>See more</strong>
         </div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('.button-toggle-content').on('click', function(){
+		$('.stocks-hidden-content').toggle('fast');
+	});
+});
+</script>
+
 <style type="text/css">
      .top-stocks .to-content-part ul .even span {
         border: 2px solid;

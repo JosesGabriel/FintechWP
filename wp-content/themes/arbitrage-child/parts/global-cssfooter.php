@@ -130,6 +130,18 @@
 	}
 	.quote-f1 {
 		color: #fff;
+		margin-bottom: 10px;
+    	display: inline-block;
+	}
+	.quote2 {
+		text-align: left;
+	}
+	.quote2 .quote-f02 {
+		text-transform: capitalize;
+		font-weight: 600 !important;
+	}
+	.quote-f2 {
+		color: #fff;
 	}
 	.form-control.contact--textField::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		font-weight: 300;

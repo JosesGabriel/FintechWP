@@ -1,3 +1,8 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <?php
 global $current_user;
 $user = wp_get_current_user();
@@ -52,7 +57,15 @@ if (typeof angular !== 'undefined') {
       // $dhistofronold = curl_exec($curl);
       // curl_close($curl);
 
+      $curl = curl_init();
+      curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+      curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+      $dhistofronold = curl_exec($curl);
+      curl_close($curl);
+
       $dhistoforchart = json_decode($dhistofronold);
+      $dhistoforchart = $dhistoforchart->data;
 
       $dhistoflist = "";
       $counter = 0;
@@ -64,28 +77,28 @@ if (typeof angular !== 'undefined') {
 
       }
 
-      $currentTime = (new DateTime())->modify('+1 day');
-      $startTime = new DateTime('15:30');
-      $endTime = (new DateTime('09:00'))->modify('+1 day');
+      //$currentTime = (new DateTime())->modify('+1 day');
+      //$startTime = new DateTime('15:30');
+      //$endTime = (new DateTime('09:00'))->modify('+1 day');
 
 
 
-      if ($currentTime >= $startTime && $currentTime <= $endTime) {
+     // if ($currentTime >= $startTime && $currentTime <= $endTime) {
           // $curl = curl_init();
           // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
           // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
           // $dintrabase = curl_exec($curl);
           // curl_close($curl);
 
-        $dintraforchart = json_decode($dintrabase);
-          if (isset($dintraforchart->o)) {
-            $open = end($dintraforchart->o);
-            $high = end($dintraforchart->h);
-            $low = end($dintraforchart->l);
+      //  $dintraforchart = json_decode($dintrabase);
+      //    if (isset($dintraforchart->o)) {
+      //      $open = end($dintraforchart->o);
+      //      $high = end($dintraforchart->h);
+      //      $low = end($dintraforchart->l);
 
-            $dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-          }
-      }
+      //      $dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+      //    }
+      //}
 	?>
 	// console.log("<?php echo working_days_ago('9'); ?>");
 
@@ -219,7 +232,7 @@ jQuery(function(){
                       <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 
                         <div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">
-                          <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px; top:5px;">
+                          <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">
                             <a style= "color: #fff;" href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank">
                               <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
                             </a>
@@ -261,12 +274,12 @@ jQuery(function(){
 
                         <?php } ?>
 
-              <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
+             <!-- <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
-                </div> 
+                </div> -->
 
                   <?php else: ?>
                   <div class="to-content-part">

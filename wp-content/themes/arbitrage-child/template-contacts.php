@@ -168,7 +168,7 @@ get_header('dashboard');
 				<div class="quote2 col-md-12">
 					<div class="form-group">
 						<!-- <label for="contact--textField__message" class="contact--label">Message *</label> -->
-						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="The team is all ears. You can share with us what you think about Arbitrage or if there is anything you need help from us. We're also interested with Space and Cosmos. Either way, we're always here for a good chat."></textarea>
+						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="The team is all ears. We're always here for a good chat."></textarea>
 					</div>
 					<div class="flex-box">
 						<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
@@ -230,6 +230,9 @@ get_header('dashboard');
 	}
 	.contact--form{
 		padding-left: 0;
+	}
+	.inner-content {
+		padding: 30px 40px 25px 40px;
 	}
 </style>
 

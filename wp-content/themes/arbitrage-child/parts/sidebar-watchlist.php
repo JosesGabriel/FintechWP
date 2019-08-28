@@ -183,6 +183,10 @@ jQuery(function(){
   .nvd3 .nv-axis line {
     display: none;
   }
+
+  .nvd3 .nv-axis path.domain {
+    display: none;
+  }
 </style>
 <?php
   // $dwatchinfo = null;

@@ -514,7 +514,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					<?php //get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 					

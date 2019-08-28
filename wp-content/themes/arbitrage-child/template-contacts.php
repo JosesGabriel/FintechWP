@@ -157,17 +157,17 @@ get_header('dashboard');
 						<span class="quote-f1">We've been waiting for you to reach us.</span>
 					</div>
 					<div class="form-group">
-						<label for="contact--textField__name" class="contact--label">Name *</label>
+						<!-- <label for="contact--textField__name" class="contact--label">Name *</label> -->
 						<input type="text" class="form-control contact--textField contact--textField__name" id="contact--textField__name" placeholder="What does your friends call you?">
 					</div>
 					<div class="form-group">
-						<label for="contact--textField__email" class="contact--label">Email *</label>
+						<!-- <label for="contact--textField__email" class="contact--label">Email *</label> -->
 						<input type="email" class="form-control contact--textField contact--textField__email" id="contact--textField__email" placeholder="Where can we email you back?">
 					</div>
 				</div>
 				<div class="quote2 col-md-12">
 					<div class="form-group">
-						<label for="contact--textField__message" class="contact--label">Message *</label>
+						<!-- <label for="contact--textField__message" class="contact--label">Message *</label> -->
 						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="What's on your mind, we love to hear that from you."></textarea>
 					</div>
 					<div class="flex-box">

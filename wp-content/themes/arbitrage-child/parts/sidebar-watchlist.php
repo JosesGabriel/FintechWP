@@ -219,7 +219,7 @@ jQuery(function(){
                       <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 
                         <div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">
-                          <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">
+                          <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px; top:5px;">
                             <a style= "color: #fff;" href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank">
                               <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
                             </a>

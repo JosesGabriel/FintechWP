@@ -31,30 +31,26 @@ if (typeof angular !== 'undefined') {
 	<?php
 	if ($ismetadis) {
 	foreach ($ismetadis as $key => $value) {
-
-//------------------------------------------------------------------------------------------
 		// get stcok history
-		 $curl = curl_init();
-		 curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('9') );
-		 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		 $dhistofronold = curl_exec($curl);
-		 curl_close($curl);
+		// $curl = curl_init();
+		// curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('9') );
+		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		// $dhistofronold = curl_exec($curl);
+		// curl_close($curl);
 
-		 $dhistoforchart = json_decode($dhistofronold);
+		// $dhistoforchart = json_decode($dhistofronold);
 
-		 $dhistoflist = "";
-		 for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-			$dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-		 }
+		// $dhistoflist = "";
+		// for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+		// 	$dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+		// }
 
     // get stcok history
-       //$curl = curl_init();
+      // $curl = curl_init();
       // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
-       //curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-       //$dhistofronold = curl_exec($curl);
+      // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      // $dhistofronold = curl_exec($curl);
       // curl_close($curl);
-//-------------------------------------------------------------------------------------------------
-
 
       $dhistoforchart = json_decode($dhistofronold);
 
@@ -75,15 +71,11 @@ if (typeof angular !== 'undefined') {
 
 
       if ($currentTime >= $startTime && $currentTime <= $endTime) {
-
-        //------------------------------------------------------------------------------------------
-           $curl = curl_init();
-           curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
-           curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-           $dintrabase = curl_exec($curl);
-           curl_close($curl);
-        //----------------------------------------------------------------------------------------------
-
+          // $curl = curl_init();
+          // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
+          // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+          // $dintrabase = curl_exec($curl);
+          // curl_close($curl);
 
         $dintraforchart = json_decode($dintrabase);
           if (isset($dintraforchart->o)) {
@@ -269,7 +261,7 @@ jQuery(function(){
 
                         <?php } ?>
 
-                <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
+              <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>

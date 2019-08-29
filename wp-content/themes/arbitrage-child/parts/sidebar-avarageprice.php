@@ -121,6 +121,11 @@
 
     jQuery(document).ready(function() {
 
+        function turnToDecimal(event){
+            console.log('show me baby');
+            console.log(event)
+        } 
+
         function getfee(marketvalue) {
 
             var totalfee = 0;
@@ -252,13 +257,6 @@
 
 
         });
-
-
-        function turnToDecimal(event){
-            console.log('show me baby');
-            console.log(event)
-        } 
-
 
         jQuery('input.number').keyup(function (event) {
             // skip for arrow keyssss

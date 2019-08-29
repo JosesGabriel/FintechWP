@@ -199,7 +199,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
 
-			console.log('test :::: ' + <?php echo $havemeta['stockname']; ?>);
+			console.log('test :::: ' + '<?php echo $havemeta['stockname']; ?>');
 
 
 			// TODO Fix: this is causing front end errors

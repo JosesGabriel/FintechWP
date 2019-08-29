@@ -497,6 +497,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             return a;
         }, {});
+
+        $scope.$digest();
     });
     socket.on('T', function(data) {
         var symbol = data[0];

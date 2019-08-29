@@ -288,7 +288,16 @@ function replymember(username) {
 }
 function beep() {
     var beepSound = new Audio("https://arbitrage.ph/audio/arbding.wav");
-    beepSound.play();
+    var promise = beepSound.play();
+
+    if (promise !== undefined) {
+        promise.then(_ => {
+            // Autoplay started!
+        }).catch(error => {
+            // Autoplay was prevented.
+            // Show a "Play" button so that user can start playback.
+        });
+    }
 }
 function changicotogreen() {
 	var link = document.querySelector("link[rel*='icon']") || document.createElement('link');

@@ -445,7 +445,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             displayAverage: price_format(data.average),
             displayLow: price_format(data.low),
             displayHigh: price_format(data.high),
-            displayChange: number_format(data.change, '0,0.00'),
+            displayChange: number_format(data.changepercentage, '0,0.00'),
             displayValue: abbr_format(data.value),
         }
 

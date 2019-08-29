@@ -474,7 +474,7 @@ class Activity_Main_API
             }
 
             ob_start();
-            echo '<div class="desc-note">';
+            echo '<div class="desc-note" style="color: #ffb6c1;">';
             echo nl2br($newconts);
             echo '</div><div class="desc-note1">';
             echo $has_share_link;

@@ -1007,7 +1007,7 @@ select#stockname {
 
         jQuery('input.number').keyup(function (event) {
             // skip for arrow keys
-                 // var calc
+                 // var calcsss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }

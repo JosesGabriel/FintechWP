@@ -6,8 +6,8 @@
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 0px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
         <div class="to-rss-inner">
-            <?php dynamic_sidebar( 'et_pb_widget_area_1' ); ?>
-            <div class="to-bottom-seemore" style="display: inline-flex;">
+            <?php dynamic_sidebar( 'et_pb_widget_area' ); ?>
+           <!-- <div class="to-bottom-seemore" style="display: inline-flex;"> -->
     
             <div class="see-more-btn" id="show_hide">
                 <strong style="font-size:13px;"><a href="https://arbitrage.ph/bulletins/">View all</a></strong>

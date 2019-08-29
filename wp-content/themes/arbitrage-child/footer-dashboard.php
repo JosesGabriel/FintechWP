@@ -203,15 +203,15 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 				console.log('test :::: ' + '<?php echo $value['stockname']; ?>');
-			<?php } ?>
-
-			// TODO Fix: this is causing front end errors
-			 jQuery.each(stocklist.data, function( index, value ) {
-				//console.log(value.symbol);
-				//condition here if stock is in the watchlist, do not append.
-			 	jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
-			 });
-
+				// TODO Fix: this is causing front end errors
+				jQuery.each(stocklist.data, function( index, value ) {
+					//console.log(value.symbol);
+					//condition here if stock is in the watchlist, do not append.
+					if('<?php echo $value['stockname']; ?>' !== value.symbol){
+						jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+					}	
+				});
+			 <?php } ?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 

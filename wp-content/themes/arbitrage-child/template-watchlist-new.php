@@ -532,9 +532,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 					
-					<?php //get_template_part('parts/sidebar', 'traders'); ?>
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
-                    <?php //get_template_part('parts/sidebar', 'latestnews'); ?>
+                    <?php //get_template_part('parts/sidebar', 'traders'); ?>
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 

@@ -245,11 +245,8 @@
 
         });
 
-        //jQuery('input[type=text]').on("keyup", ".number", function (e, update) {
-        jQuery('input[type=text]').keyup(function (event) {
+        jQuery('input.number').keyup(function (event) {
             // skip for arrow keyssss
-            console.log('show me anything');
-            /*
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }
@@ -261,7 +258,7 @@
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));
-            */
+            
         });
 
         function testDecimals(currentVal) {

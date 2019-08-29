@@ -170,7 +170,7 @@ body.et_cover_background {
 
 /* Links */
 a {
-	color: #ffb6c1 !important;
+	/* color: #ffb6c1 !important; */
 	text-decoration: none;
 }
 

@@ -1,5 +1,5 @@
 <div class="latest-news">
-    <div class="to-top-title">Bulletins...
+    <div class="to-top-title">Bulletins
          <div class="to-top-dropdown"><i class="fas fa-chevron-circle-down"></i></div> 
     </div>
     

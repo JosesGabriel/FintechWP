@@ -200,10 +200,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			//console.log(dstockinfo);
 
 			
-
+			$havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 			<?php foreach ($havemeta as $key => $value) { ?>
 				console.log('test :::: ' + '<?php $value['stockname']; ?>');
 			<?php } ?>
+
 			// TODO Fix: this is causing front end errors
 			 jQuery.each(stocklist.data, function( index, value ) {
 				//console.log(value.symbol);

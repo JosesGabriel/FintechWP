@@ -2069,8 +2069,18 @@
 				<?php
 
 					$dstock = $value['stockname'];
-					$dprice = $stockinfo->$value->last;
-					$dchange = $stockinfo->$dstock->change;
+
+					$dprice = 0;
+                    $dchange = 0;
+					//$dprice = $stockinfo->$dstock->last;
+					//$dchange = $stockinfo->$dstock->change;
+						foreach($stockinfo as $stkey => $stvals){
+                              if($stvals->symbol == $dstock ){
+                                $dprice = number_format( $stvals->last, 2, '.', ',' );
+                                $dchange = number_format( $stvals->change, 2, '.', ',' );
+                              }
+                          }
+
 					?>
 					<tr class="tr-background">
 						<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>

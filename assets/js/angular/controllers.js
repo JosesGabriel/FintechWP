@@ -81,7 +81,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.volume),
         };
         $scope.ticker.push(transaction);
-        if ($scope.ticker.length > 50) {
+        if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
         $scope.$digest();

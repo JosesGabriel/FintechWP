@@ -1636,7 +1636,7 @@
 																							</tr>
 																							<tr>
 																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkLow</td>
-																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow | price}}</strong></td>
+																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow}}</strong></td>
 																							</tr>
 																							<tr>
 																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Volume</td>
@@ -1663,7 +1663,7 @@
 																							</tr>
 																							<tr>
 																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkHigh</td>
-																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearHigh > stock.last, 'text-red': stock.weekYearHigh < stock.last}">{{stock.weekYearHigh | price}}</strong></td>
+																								<td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearHigh > stock.last, 'text-red': stock.weekYearHigh < stock.last}">{{stock.weekYearHigh}}</strong></td>
 																							</tr>
 																							<tr>
 																								<td style="font-weight: bold; padding: 5px;" class="text-uppercase">Value</td>

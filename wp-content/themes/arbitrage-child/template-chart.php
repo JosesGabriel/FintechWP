@@ -2558,7 +2558,8 @@
 		
 		});
 
-		jQuery('input.number').keyup(function (event) {
+		jQuery('input').on("keyup", ".number", function (event) {
+                // chart
 				// skip for arrow keys
 				if (event.which >= 37 && event.which <= 40) {
 					event.preventDefault();

@@ -77,7 +77,7 @@
 
                                         <li>
 
-                                            <span>Position</span></br>
+                                            <span>Position test</span></br>
 
                                             <input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;">
 
@@ -120,8 +120,6 @@
 						    (function($) {
 
     jQuery(document).ready(function() {
-
-
 
         function getfee(marketvalue) {
 
@@ -256,8 +254,8 @@
         });
 
    //     jQuery('input.number').keyup(function (event) {
-
-        jQuery('input').on("keyup", ".number", function (even) {
+/*
+        jQuery('input').on("keyup", ".number", function (event) {
             // skip for arrow keys
             console.log('keyup');
             if (event.which >= 37 && event.which <= 40) {
@@ -289,6 +287,8 @@
                 components[1] = components[1].replace(/\D/g, "");
             return components.join(".");
         }
+
+        */
 
     });
 

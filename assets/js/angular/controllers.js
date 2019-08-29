@@ -82,7 +82,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         };
         $scope.ticker.push(transaction);
         if ($scope.ticker.length > 50) {
-            $scope.ticker.shift();
+            $scope.ticker.pop();
         }
         $scope.$digest();
     });

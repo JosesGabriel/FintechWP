@@ -970,6 +970,7 @@ input#myInput {
     width: 100%;
     background: #11273e;
     color: #fff;
+    border: none;
 }
 .dropdown-content .listofstocks a {
     font-size: 13px;

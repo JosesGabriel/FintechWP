@@ -72,21 +72,42 @@ jQuery(".stocks-hidden-content").click(function () {
             // trending on posts
     
             // $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".strtolower($dstocknamme)."%'");
-            $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) = CURDATE()");
+            $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
             // echo "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND post_date > ".$date;
 
             $countpstock = 0;
+            $isbull = 0;
             foreach ($dsprest as $rsffkey => $rsffvalue) {
                 $dcontent = $rsffvalue->post_content;
                 if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
                     $countpstock++;
-                    // echo $dcontent."<br />";
+                }
+                // echo $rsffvalue->ID." - ";
+                $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
+                $isbull += $bull_people;
+            }
+
+            $dpresent = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= CURDATE()");
+            $todayreps = 0;
+            foreach ($dpresent as $rsffkey => $rsffvalue) {
+                $dcontent = $rsffvalue->post_content;
+                if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+                    $todayreps++;
                 }
             }
 
-            // echo $dstocknamme." - ".$countpstock."<br />";
+            // percentage
+            // 3 days back
+            $threedays = ceil($countpstock * 0.2);
+            $bulls = ceil($isbull * 0.3);
+            $tags = ceil($todayreps * 0.6);
+            $finalcount = $bulls + $threedays + $tags;
+
+            // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
-            $indls['following'] += $countpstock;
+            $indls['following'] += $finalcount;
+
+
     
     
             array_push($listofstocks, $indls);

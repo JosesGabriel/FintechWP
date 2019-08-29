@@ -188,8 +188,9 @@ jQuery(function(){
     display: none;
   }
 
-  .negative > line {
-    stroke: #d62728 !important;
+  .negative > line, .negative > rect {
+    stroke: #eb4d5c !important;
+    fill: #eb4d5c !important;
   }
 
   .positive > line {

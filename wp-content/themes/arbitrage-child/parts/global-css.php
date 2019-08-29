@@ -3001,4 +3001,8 @@ input#searchlogs {
 	height: 32px;
     margin-top: -6px;
 }
+.dselectstockname .dselected {
+	font-size: 13px;
+    margin: 6px 0 0 0;
+}
 </style>

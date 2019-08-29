@@ -226,6 +226,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
 																				<?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+
+																				<?php elseif (round($dinstall['data']->changepercentage, 2) == 0): ?>
+																					<div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+																					
+
 																				<?php else: ?>
 																					<div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 																				<?php endif; ?>
@@ -1357,9 +1362,9 @@ h2.watchtitle {
 }
 
 .innerdeliver.innerdeliver-addstock {
-    padding: 5px 5px 11px 0;
-    text-align: right;
-    margin-top: -31px;
+    padding: 7px 5px 7px 0;
+    text-align: left;
+    margin-top: 0;
 }
 .innerdeliver.innerdeliver-editstock {
     padding: 5px 0px 5px 0;

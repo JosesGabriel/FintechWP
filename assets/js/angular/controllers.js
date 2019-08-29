@@ -81,7 +81,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.volume),
         };
         $scope.ticker.push(transaction);
-        if ($scope.ticker.length > 50) {
+        if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
         $scope.$digest();
@@ -439,13 +439,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             updated_at: full_date,
 
             displayLast: price_format(data.last),
-            displayDifference: price_format(data.changepercentage, data.last),
+            displayDifference: price_format(data.change, data.last),
             displayOpen: price_format(data.open),
             displayPrevious: price_format(data.close),
             displayAverage: price_format(data.average),
             displayLow: price_format(data.low),
             displayHigh: price_format(data.high),
-            displayChange: number_format(data.change, '0,0.00'),
+            displayChange: number_format(data.changepercentage, '0,0.00'),
             displayValue: abbr_format(data.value),
         }
 
@@ -497,6 +497,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             return a;
         }, {});
+
+        $scope.$digest();
     });
     socket.on('T', function(data) {
         var symbol = data[0];

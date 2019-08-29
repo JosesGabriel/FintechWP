@@ -245,7 +245,8 @@
 
         });
 
-        jQuery('input[type=text]').on("keyup", ".number", function (e, update) {
+        //jQuery('input[type=text]').on("keyup", ".number", function (e, update) {
+        jQuery('input[type=text]').keyup(function (event) {
             // skip for arrow keyssss
             console.log('show me anything');
             /*

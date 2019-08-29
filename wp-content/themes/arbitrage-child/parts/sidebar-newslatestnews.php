@@ -1,5 +1,5 @@
 <div class="latest-news">
-    <div class="to-top-title">Bulletins<div class="to-top-dropdown"><i class="fas fa-chevron-circle-down"></i></div></div>
+    <div class="to-top-title">Bulletins ... <div class="to-top-dropdown"><i class="fas fa-chevron-circle-down"></i></div></div>
     
     <hr class="style14 style15" style="width: 92.5% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">

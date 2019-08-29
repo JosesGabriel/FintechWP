@@ -4,8 +4,8 @@ function setTitle(symbol, last, change) {
 var pricecounter = 0;
 function price_format(value, base) {
     try {
-        value = value.replaceAll(',','');
-        value = parseFloat(value);
+        value = typeof value == 'string' ? value.replaceAll(',','') : value;
+        value = parseFloat(value).toFixed(4);
     } catch(err) { }
     if (typeof base === 'object' || base == undefined) {
         base = value;
@@ -22,7 +22,8 @@ function price_format(value, base) {
     }
 }
 function number_format(value, format) {
-    return numeral(value).format(format);
+    
+    return numeral(parseFloat(value).toFixed(4)).format(format);
 }
 function abbr_format(value) {
     value = numeral(value);
@@ -288,7 +289,16 @@ function replymember(username) {
 }
 function beep() {
     var beepSound = new Audio("https://arbitrage.ph/audio/arbding.wav");
-    beepSound.play();
+    var promise = beepSound.play();
+
+    if (promise !== undefined) {
+        promise.then(_ => {
+            // Autoplay started!
+        }).catch(error => {
+            // Autoplay was prevented.
+            // Show a "Play" button so that user can start playback.
+        });
+    }
 }
 function changicotogreen() {
 	var link = document.querySelector("link[rel*='icon']") || document.createElement('link');

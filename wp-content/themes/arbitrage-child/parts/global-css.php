@@ -2813,7 +2813,7 @@ li.five a span {
     color: #d8d8d8 !important;
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
-    padding: 8px 11px 8px 97px !important;
+    padding: 8px 11px 8px 137px !important;
 }
 .dwithdrawnum.depo-input-field.sss {
 	padding: 8px 11px 8px 11px !important;
@@ -3000,5 +3000,12 @@ input#searchlogs {
 	border: 1px solid #1e3554 !important;
 	height: 32px;
     margin-top: -6px;
+}
+.dselectstockname .dselected {
+	font-size: 13px;
+    margin: 6px 0 0 0;
+}
+.dchart .chartjs .minichartt {
+    padding-top: 5px;
 }
 </style>

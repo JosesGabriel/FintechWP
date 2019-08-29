@@ -333,6 +333,7 @@
 select#stockname {
     background: #4e6a85;
     color: #fff;
+    height: 30px;
     border: 0 none;
     padding: 10px;
     display: inline-block;
@@ -958,10 +959,12 @@ select#stockname {
 
 			}			
 
+ //         var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
 
- //            var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
-             
-             var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);			
+
+            var vr_boardlot = jQuery('#boardlot').val(numeral(boardlotget_val).format('0,0.00'));			
+
+            vr_boardlot = vr_boardlot.replace(/[^0-9\.]/g, '');
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 

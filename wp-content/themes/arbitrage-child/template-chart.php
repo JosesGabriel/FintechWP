@@ -2039,50 +2039,78 @@
 																											</tr>
 																										</thead>
 																										<?php
-																											/* temp-disabled
-																											$curl = curl_init();
-																											curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-																											curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-																											$dwatchinfo = curl_exec($curl);
-																											curl_close($curl);
-																											$genstockinfo = json_decode($dwatchinfo);
-																											$stockinfo = $genstockinfo->data;
-																											temp-disabled */
+		/* temp-disabled
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$dwatchinfo = curl_exec($curl);
+		curl_close($curl);
+		$genstockinfo = json_decode($dwatchinfo);
+		$stockinfo = $genstockinfo->data;
+		temp-disabled */
+
+		  $curl = curl_init();
+		  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE' );
+		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	      $dhistofronold = curl_exec($curl);
+	      curl_close($curl);
+
+	      $dhistoforchart = json_decode($dhistofronold);
+	      $stockinfo = $dhistoforchart->data;
+
+		  $userID = $current_user->ID;
 																										?>
-																										<tbody>
-																											<?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
-																											<?php if ($havemeta): ?>
-																											
-																											<?php foreach ($havemeta as $key => $value) { ?>
-																											<?php
+			<tbody>
+				<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+				<?php if ($havemeta): ?>
+				
+				<?php foreach ($havemeta as $key => $value) { ?>
+				<?php
 
-																												$dstock = $value['stockname'];
-																												$dprice = $stockinfo->$dstock->last;
-																												$dchange = $stockinfo->$dstock->change;
-																												?>
-																												<tr class="tr-background">
-																													<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
-																													<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $stockinfo->$dstock->low, 2, '.', ',' ); ?> ~ <?php echo number_format( $stockinfo->$dstock->high, 2, '.', ',' ); ?></td>
-																													<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
-																														<?php if ($dchange > 0): ?>
-																															<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
-																														<?php else: ?>
-																															<div class="chred-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
-																														<?php endif ?>
-																													</td>
-																													<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">
-																														<?php if ($dchange > 0): ?>
-																															<div class="chgreen"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
-																														<?php else: ?>
-																															<div class="chred"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
-																														<?php endif ?>
-																														
-																													</td>
-																												</tr>
-																											<?php } ?>
-																											<?php endif ?>
+					$dstock = $value['stockname'];
+					//$dprice = $stockinfo->$dstock->last;
+					//$dchange = $stockinfo->$dstock->change;
 
-																										</tbody>
+					$dprice = 0;
+					$dchange = 0;
+
+						foreach($stockinfo as $stkey => $stvals){
+                              if($stvals->symbol == $dstock ){
+                                $dprice = $stvals->last;
+								$dchange = $stvals->change;
+								$dlow = $stvals->low;
+								$dhigh = $stvals->high;
+                              }
+                          }
+
+						
+						//echo " --- ". $dpr;
+						
+					?>
+					<tr class="tr-background">
+						<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
+						<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $dlow, 2, '.', ',' ); ?> ~ <?php echo number_format( $dhigh, 2, '.', ',' ); ?></td>
+						<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
+							<?php if ($dchange > 0): ?>
+								<div class="chgreen-price" style="text-align: right;">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+							<?php else: ?>
+								<div class="chred-price" style="text-align: right;">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+							<?php endif ?>
+						</td>
+						<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">
+							<?php if ($dchange > 0): ?>
+								<div class="chgreen"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
+							<?php else: ?>
+								<div class="chred"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
+							<?php endif ?>
+							
+						</td>
+					</tr>
+				<?php } ?>
+				<?php endif ?>
+
+			</tbody>
 																									</table>
 																								</div>
 																							</div>

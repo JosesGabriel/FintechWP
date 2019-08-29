@@ -5,7 +5,7 @@ var pricecounter = 0;
 function price_format(value, base) {
     try {
         value = value.replaceAll(',','');
-        value = parseFloat(value);
+        value = parseFloat(value).toFixed(4);
     } catch(err) { }
     if (typeof base === 'object' || base == undefined) {
         base = value;

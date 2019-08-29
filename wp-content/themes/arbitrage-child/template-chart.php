@@ -1611,7 +1611,7 @@
 																							font-size: 25px;
 																							font-weight: bold;
 																							letter-spacing: -1px;" class="text-default">{{stock.displayLast}}</span>
-																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0}" style="
+																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0}" style="
 																							font-size: 14px;
 																							line-height: 1.42857143;">
 																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
@@ -2001,7 +2001,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-default': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>

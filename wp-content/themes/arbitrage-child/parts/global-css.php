@@ -3025,4 +3025,7 @@ input#searchlogs {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #34495e;
 }
+.text-yellow {
+	color: #FFC107;
+}
 </style>

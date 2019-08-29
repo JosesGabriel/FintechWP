@@ -224,7 +224,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 																				<?php else: ?>
-																					<div class="curchange ongreen">+<?php echo $dinstall['data']->changepercentage; ?>%</div>
+																					<div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 																				<?php endif; ?>
 																		</div>
 																		</div>

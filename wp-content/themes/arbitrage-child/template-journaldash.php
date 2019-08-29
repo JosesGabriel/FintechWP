@@ -3991,7 +3991,7 @@ if ($getdstocks && $getdstocks != '') {
 																							<div class="dinitem">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85;"></div>
+																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -4013,7 +4013,7 @@ if ($getdstocks && $getdstocks != '') {
 																									<div class="dinitem">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field"></div>
+																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
 																									</div>
 																								</div>
 																							</div>

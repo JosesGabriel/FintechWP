@@ -3005,4 +3005,7 @@ input#searchlogs {
 	font-size: 13px;
     margin: 6px 0 0 0;
 }
+.dchart .chartjs .minichartt {
+    padding-top: 5px;
+}
 </style>

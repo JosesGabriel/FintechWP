@@ -198,10 +198,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
 			//console.log(dstockinfo);
-	
+
+			console.log('test :::: ' + '<?php print_r(json_encode($havemeta)); ?>');
+
+
 			// TODO Fix: this is causing front end errors
 			 jQuery.each(stocklist.data, function( index, value ) {
 				//console.log(value.symbol);
+				//condition here if stock is in the watchlist, do not append.
 			 	jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 			 });
 

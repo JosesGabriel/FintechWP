@@ -70,6 +70,9 @@ if (isset($_GET['remove'])) {
     wp_redirect( 'https://arbitrage.ph/watchlist' );
 }
 
+
+
+
 //removing date compare function as it broke the page:
 
 #function date_compare($a, $b)

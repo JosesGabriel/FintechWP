@@ -77,7 +77,7 @@
 
                                         <li>
 
-                                            <span>Position</span></br>
+                                            <span>Position test</span></br>
 
                                             <input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;">
 

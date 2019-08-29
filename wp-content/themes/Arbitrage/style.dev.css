@@ -170,6 +170,10 @@ body.et_cover_background {
 
 /* Links */
 a {
+<<<<<<< HEAD
+=======
+	/* color: #ffb6c1 !important; */
+>>>>>>> d337676c444c553f60a5631c10358defdc0201f2
 	text-decoration: none;
 }
 

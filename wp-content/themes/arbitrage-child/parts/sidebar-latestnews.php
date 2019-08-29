@@ -7,20 +7,15 @@
     <div class="to-content-part">
         <div class="to-rss-inner">
             <?php dynamic_sidebar( 'et_pb_widget_area_1' ); ?>
-           <!-- <div class="to-bottom-seemore" style="display: inline-flex;"> -->
-    
-            <div class="see-more-btn" id="show_hide">
-                <strong style="font-size:13px;"><a href="https://arbitrage.ph/bulletins/">View all</a></strong>
-            </div>
 
+            <div class="see-more-btn" style="padding: 0 0 10px 16px;">
+                <a href="https://arbitrage.ph/bulletins/">
+                    <strong style="font-size:13px;font-weight: 400;">View all</strong>
+                </a>
+            </div>
         </div>
-            <br class="clear">
         </div>
     </div>
-    <!-- <div class="to-bottom-title">
-        powerd by Google News 
-        <a href="#" class="to-view-more">View all News</a>
-    </div> -->
 </div>
 <script type="text/javascript">
 		jQuery('.srr-tab-wrap').hide();

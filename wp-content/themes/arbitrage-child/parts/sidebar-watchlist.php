@@ -191,11 +191,14 @@ jQuery(function(){
   .negative > line {
     stroke: #d62728 !important;
   }
-  
+
   .positive > line {
     stroke: #53b987 !important;
   }
-
+  .positive > rect {
+    stroke: #53b987 !important;
+    fill: #53b987 !important;
+  }
 
 </style>
 <?php

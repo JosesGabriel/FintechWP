@@ -2,7 +2,7 @@
 
 <style type="text/css">
 .number{
-    font-size: 13px;
+    font-size: 13px !important;
     text-align: right;
 }
 </style>

@@ -2079,6 +2079,8 @@
                               if($stvals->symbol == $dstock ){
                                 $dprice = $stvals->last;
 								$dchange = $stvals->change;
+								$dlow = $stvals->low;
+								$dhigh = $stvals->high;
                               }
                           }
 
@@ -2088,7 +2090,7 @@
 					?>
 					<tr class="tr-background">
 						<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
-						<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $stockinfo->$dstock->low, 2, '.', ',' ); ?> ~ <?php echo number_format( $stockinfo->$dstock->high, 2, '.', ',' ); ?></td>
+						<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $dlow, 2, '.', ',' ); ?> ~ <?php echo number_format( $dhigh, 2, '.', ',' ); ?></td>
 						<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
 							<?php if ($dchange > 0): ?>
 								<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>

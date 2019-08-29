@@ -924,7 +924,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 
 /* The search field when it gets focus/clicked on */
-#myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {outline: none;}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -936,10 +936,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  border: 1px solid #ddd;
-  z-index: 1;
+    background: #142c46;
+    border: 1px solid #1e3554;
+    min-width: 230px;
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* Links inside the dropdown */
@@ -954,7 +956,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {    
+    background-color: #18314c;
+}
 .dropdown-content .listofstocks {
     height: 120px;
     overflow-y: auto;
@@ -964,11 +968,14 @@ input#myInput {
     font-size: 13px;
     display: block;
     width: 100%;
+    background: #11273e;
+    color: #fff;
 }
 .dropdown-content .listofstocks a {
-  font-size: 13px;
-  padding: 5px 10px;
-  border-bottom: 1px solid #dddddd;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-bottom: none;
+    color: #d8d8d8;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */

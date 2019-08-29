@@ -137,6 +137,26 @@ body .um-notification-live-feed {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: #34495e;
 }
+.dropdown-content .listofstocks::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 11px;
+	background-color: #0f233a;
+}
+
+.dropdown-content .listofstocks::-webkit-scrollbar
+{
+	width: 8px;
+	border-radius: 10px;
+	background-color: none;
+}
+
+.dropdown-content .listofstocks::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #34495e;
+}
 .um-notification-header {
 	position: fixed;
     background: #152d46;

@@ -112,7 +112,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstocknames").val();
 
 				var countli = jQuery(".listofinfo li").length;
-
+				console.log(countli);
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
 						console.log('proceed with post');

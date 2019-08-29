@@ -2072,6 +2072,7 @@
 					$dprice = $stockinfo->$dstock->last;
 					$dchange = $stockinfo->$dstock->change;
 						
+						echo " --- ". $dprice;
 						
 					?>
 					<tr class="tr-background">

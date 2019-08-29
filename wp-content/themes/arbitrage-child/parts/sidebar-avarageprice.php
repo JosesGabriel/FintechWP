@@ -253,9 +253,7 @@
 
         });
 
-   //     jQuery('input.number').keyup(function (event) {
-/*
-        jQuery('input').on("keyup", ".number", function (event) {
+        jQuery('input.number').keyup(function (event) {
             // skip for arrow keys
             console.log('keyup');
             if (event.which >= 37 && event.which <= 40) {

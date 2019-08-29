@@ -461,7 +461,7 @@ jQuery(document).ready(function() {
 
 	}
 
-    jQuery('input').on("keyup", ".number", function (event) {
+    jQuery('input.number').keyup(function (event) {
         // side bar calc
         // skip for arrow keys
         if (event.which >= 37 && event.which <= 40) {

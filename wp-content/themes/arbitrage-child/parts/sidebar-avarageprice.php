@@ -245,7 +245,7 @@
 
         });
 
-        jQuery('input.number').keyup(function (event) {
+        jQuery(document).on('keyup', 'input.number', function (event) {
             // skip for arrow keyssss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();

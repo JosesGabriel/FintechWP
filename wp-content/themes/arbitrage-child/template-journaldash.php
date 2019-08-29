@@ -4709,7 +4709,7 @@ if ($getdstocks && $getdstocks != '') {
         });
         
         jQuery('input.number').keyup(function (event) {         // skip for arrow keys
-            // journal
+            // journals
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }

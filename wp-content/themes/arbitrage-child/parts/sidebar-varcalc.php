@@ -962,9 +962,9 @@ select#stockname {
  //         var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
 
 
-            var vr_boardlot = jQuery('#boardlot').val(numeral(boardlotget_val).format('0,0.00'));			
+            var vr_boardlot_tmp = jQuery('#boardlot').val(numeral(boardlotget_val).format('0,0.00'));			
 
-            vr_boardlot = vr_boardlot.replace(/[^0-9\.]/g, '');
+            var vr_boardlot = boardlotget_val;
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
@@ -1007,7 +1007,7 @@ select#stockname {
 
         jQuery('input.number').keyup(function (event) {
             // skip for arrow keys
-                 // var calc
+                 // var calcsss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }

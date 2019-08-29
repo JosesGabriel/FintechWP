@@ -256,12 +256,12 @@
 
         function turnToDecimal(event){
             console.log('show me baby');
-            console.log(event);
+            console.log(event)
         } 
 
 
         jQuery('input.number').keyup(function (event) {
-            // skip for arrow keys
+            // skip for arrow keyssss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }

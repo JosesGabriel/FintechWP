@@ -189,11 +189,11 @@ jQuery(function(){
   }
 
   .negative > line {
-    stroke: #53b987 !important;
+    stroke: #d62728 !important;
   }
   
   .positive > line {
-    stroke: #2ca02c !important;
+    stroke: #53b987 !important;
   }
 
 

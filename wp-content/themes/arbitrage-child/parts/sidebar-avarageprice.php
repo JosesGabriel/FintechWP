@@ -256,7 +256,7 @@
 
         function turnToDecimal(event){
             console.log('show me baby');
-            console.log(event);
+            console.log(event)
         } 
 
 

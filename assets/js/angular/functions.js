@@ -4,7 +4,7 @@ function setTitle(symbol, last, change) {
 var pricecounter = 0;
 function price_format(value, base) {
     try {
-        value = value.replaceAll(',','');
+        value = typeof value == 'string' ? value.replaceAll(',','') : value;
         value = parseFloat(value).toFixed(4);
     } catch(err) { }
     if (typeof base === 'object' || base == undefined) {

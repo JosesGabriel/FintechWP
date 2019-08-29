@@ -121,8 +121,6 @@
 
     jQuery(document).ready(function() {
 
-
-
         function getfee(marketvalue) {
 
             var totalfee = 0;
@@ -256,7 +254,7 @@
         });
 
    //     jQuery('input.number').keyup(function (event) {
-
+/*
         jQuery('input').on("keyup", ".number", function (event) {
             // skip for arrow keys
             console.log('keyup');
@@ -289,6 +287,8 @@
                 components[1] = components[1].replace(/\D/g, "");
             return components.join(".");
         }
+
+        */
 
     });
 

@@ -2049,10 +2049,10 @@
 		$stockinfo = $genstockinfo->data;
 		temp-disabled */
 
-		$curl = curl_init();
-	      curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&stock-exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
-	      curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
-	      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		  $curl = curl_init();
+		  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE' );
+		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	      $dhistofronold = curl_exec($curl);
 	      curl_close($curl);
 
@@ -2069,18 +2069,11 @@
 				<?php
 
 					$dstock = $value['stockname'];
-
-					$dprice = 0;
-                    $dchange = 0;
-					//$dprice = $stockinfo->$dstock->last;
-					//$dchange = $stockinfo->$dstock->change;
-						foreach($stockinfo as $stkey => $stvals){
-                              if($stvals->symbol == $dstock ){
-                                $dprice = number_format( $stvals->last, 2, '.', ',' );
-                                $dchange = number_format( $stvals->change, 2, '.', ',' );
-                              }
-                          }
-
+					$dprice = $stockinfo->$value->last;
+					$dchange = $stockinfo->$dstock->change;
+						
+						echo " --- ". $dprice;
+						
 					?>
 					<tr class="tr-background">
 						<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>

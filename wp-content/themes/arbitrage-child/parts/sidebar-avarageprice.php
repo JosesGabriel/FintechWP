@@ -286,8 +286,6 @@
             return components.join(".");
         }
 
-        */
-
     });
 
 })(jQuery);

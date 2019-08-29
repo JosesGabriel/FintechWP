@@ -2069,10 +2069,18 @@
 				<?php
 
 					$dstock = $value['stockname'];
-					$dprice = $stockinfo->$value->last;
-					$dchange = $stockinfo->$dstock->change;
+					//$dprice = $stockinfo->$dstock->last;
+					//$dchange = $stockinfo->$dstock->change;
+
+						foreach($stockinfo as $stkey => $stvals){
+                              if($stvals->symbol == $dstock ){
+                                $dpr = number_format( $stvals->last, 2, '.', ',' );
+                                $dchange = number_format( $stvals->change, 2, '.', ',' );
+                              }
+                          }
+
 						
-						echo " --- ". $dprice;
+						echo " --- ". $dpr;
 						
 					?>
 					<tr class="tr-background">

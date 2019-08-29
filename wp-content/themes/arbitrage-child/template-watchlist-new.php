@@ -70,6 +70,9 @@ if (isset($_GET['remove'])) {
     wp_redirect( 'https://arbitrage.ph/watchlist' );
 }
 
+
+
+
 //removing date compare function as it broke the page:
 
 #function date_compare($a, $b)
@@ -223,6 +226,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
 																				<?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
 																					<div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+
+																				<?php elseif (round($dinstall['data']->changepercentage, 2) == 0.00): ?>
+																					<div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+																					
+
 																				<?php else: ?>
 																					<div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 																				<?php endif; ?>
@@ -524,9 +532,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 					
-					<?php //get_template_part('parts/sidebar', 'traders'); ?>
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
-                    <?php //get_template_part('parts/sidebar', 'latestnews'); ?>
+                    <?php //get_template_part('parts/sidebar', 'traders'); ?>
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
@@ -916,7 +924,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 
 /* The search field when it gets focus/clicked on */
-#myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {outline: none;}
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -928,10 +936,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  border: 1px solid #ddd;
-  z-index: 1;
+    background: #142c46;
+    border: 1px solid #1e3554;
+    min-width: 230px;
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* Links inside the dropdown */
@@ -946,7 +956,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {    
+    background-color: #18314c;
+}
 .dropdown-content .listofstocks {
     height: 120px;
     overflow-y: auto;
@@ -956,11 +968,15 @@ input#myInput {
     font-size: 13px;
     display: block;
     width: 100%;
+    background: #11273e;
+    color: #fff;
+    border: none;
 }
 .dropdown-content .listofstocks a {
-  font-size: 13px;
-  padding: 5px 10px;
-  border-bottom: 1px solid #dddddd;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-bottom: none;
+    color: #d8d8d8;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
@@ -1354,9 +1370,9 @@ h2.watchtitle {
 }
 
 .innerdeliver.innerdeliver-addstock {
-    padding: 5px 5px 11px 0;
-    text-align: right;
-    margin-top: -31px;
+    padding: 7px 5px 7px 0;
+    text-align: left;
+    margin-top: 0;
 }
 .innerdeliver.innerdeliver-editstock {
     padding: 5px 0px 5px 0;

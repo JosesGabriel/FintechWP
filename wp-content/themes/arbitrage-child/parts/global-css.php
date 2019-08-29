@@ -644,8 +644,9 @@ span.nocont {
 	margin-top: 15px;
 }
 .latest-news {
-	background: #142c46;
 	margin-top: 15px;
+    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
+    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
 }
 .latest-news .to-top-title {
 	padding: 10px 14px 2px 14px !important
@@ -3000,5 +3001,32 @@ input#searchlogs {
 	border: 1px solid #1e3554 !important;
 	height: 32px;
     margin-top: -6px;
+}
+.dselectstockname .dselected {
+	font-size: 13px;
+    margin: 6px 0 0 0;
+}
+.dchart .chartjs .minichartt {
+    padding-top: 5px;
+}
+.dropdown-content .listofstocks::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 11px;
+	background-color: #0f233a;
+}
+
+.dropdown-content .listofstocks::-webkit-scrollbar{
+	width: 8px;
+	border-radius: 10px;
+	background-color: none;
+}
+
+.dropdown-content .listofstocks::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #34495e;
+}
+.text-yellow {
+	color: #FFC107;
 }
 </style>

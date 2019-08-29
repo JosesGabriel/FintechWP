@@ -1,34 +1,37 @@
 jQuery(document).ready(function(){
 		jQuery(".bbs_bull, .bbs_bear").click(function(e){
 			e.preventDefault();
+			var pathname = window.location.pathname;
+			console.log(pathname);
 			if (!jQuery(this).parents('.bullbearsents').hasClass('clickedthis')) {
-				var pathname = window.location.pathname;
+				
 
 				jQuery(this).parents('.bullbearsents').addClass("clickedthis");
 
 				var dclass = jQuery(this).attr('class');
 
 				var dpathl = pathname.split("/");
-				dpathl = dpathl.filter(function(el) { return el; });
-				dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-				console.log(dpathl);
+				
+				// dpathl = dpathl.filter(function(el) { return el; });
+				// dpathl = dpathl[(parseInt(dpathl.length) - 1)];
+				// console.log(dpathl);
 
-				jQuery.ajax({
-				 	method: "POST",
-					url: "<?php echo admin_url( 'admin-ajax.php' );?>",
-					dataType: 'json',
-					data: {
-						'action' : 'post_sentiment',
-						'stock' : dpathl,
-						'postid' : '<?php echo get_the_id(); ?>',
-						'userid' : '<?php echo $user_id; ?>'
-					},
-					success: function(data) {
-					  console.log(data);
+				// jQuery.ajax({
+				//  	method: "POST",
+				// 	url: "<?php echo admin_url( 'admin-ajax.php' );?>",
+				// 	dataType: 'json',
+				// 	data: {
+				// 		'action' : 'post_sentiment',
+				// 		'stock' : dpathl,
+				// 		'postid' : '<?php echo get_the_id(); ?>',
+				// 		'userid' : '<?php echo $user_id; ?>'
+				// 	},
+				// 	success: function(data) {
+				// 	  console.log(data);
 					  
 
-					}
-				});
+				// 	}
+				// });
 
 			} else {
 				console.log('Cant Click');

@@ -963,7 +963,8 @@
         
 
         jQuery('input.number').keyup(function (event) {
-            // skip for arrow keys
+            // skip for arrow kssseys
+            // var calc
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }

@@ -1611,7 +1611,7 @@
 																							font-size: 25px;
 																							font-weight: bold;
 																							letter-spacing: -1px;" class="text-default">{{stock.displayLast}}</span>
-																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0}" style="
+																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0}" style="
 																							font-size: 14px;
 																							line-height: 1.42857143;">
 																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
@@ -2001,7 +2001,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-default': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
@@ -2093,9 +2093,9 @@
 						<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $dlow, 2, '.', ',' ); ?> ~ <?php echo number_format( $dhigh, 2, '.', ',' ); ?></td>
 						<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
 							<?php if ($dchange > 0): ?>
-								<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+								<div class="chgreen-price" style="text-align: right;">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
 							<?php else: ?>
-								<div class="chred-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
+								<div class="chred-price" style="text-align: right;">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
 							<?php endif ?>
 						</td>
 						<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">
@@ -2466,7 +2466,7 @@
 					var dpathl = pathname.split("/");
 					dpathl = dpathl.filter(function(el) { return el; });
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-					// console.log(dpathl);
+					console.log(dpathl);
 
 					jQuery.ajax({
 						method: "POST",
@@ -2558,7 +2558,8 @@
 		
 		});
 
-		jQuery('input.number').keyup(function (event) {
+        jQuery('input.number').keyup(function (event) {
+                // charts
 				// skip for arrow keys
 				if (event.which >= 37 && event.which <= 40) {
 					event.preventDefault();

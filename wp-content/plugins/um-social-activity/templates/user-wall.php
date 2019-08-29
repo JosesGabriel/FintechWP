@@ -647,7 +647,9 @@ foreach ( $wallposts->posts as $post ) {
 		</div>
 
 		<style type="text/css">
-			
+			.desc-note a {
+				color: #ffb6c1;
+			}
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">

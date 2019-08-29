@@ -2087,13 +2087,9 @@
 						<td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $stockinfo->$dstock->low, 2, '.', ',' ); ?> ~ <?php echo number_format( $stockinfo->$dstock->high, 2, '.', ',' ); ?></td>
 						<td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
 							<?php if ($dchange > 0): ?>
-								<div class="chgreen-price">&#8369;<?php //echo number_format( $dprice, 2, '.', ',' ); 
-									echo $dprice;
-								?></div>
+								<div class="chgreen-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
 							<?php else: ?>
-								<div class="chred-price">&#8369;<?php //echo number_format( $dprice, 2, '.', ',' ); 
-									echo $dprice;
-								?></div>
+								<div class="chred-price">&#8369;<?php echo number_format( $dprice, 2, '.', ',' ); ?></div>
 							<?php endif ?>
 						</td>
 						<td style="padding-left: 4px !important;" ng-click="select('<?php echo $value['stockname']; ?>')">

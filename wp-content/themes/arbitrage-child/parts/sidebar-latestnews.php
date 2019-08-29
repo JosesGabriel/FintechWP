@@ -8,7 +8,7 @@
         <div class="to-rss-inner">
             <?php dynamic_sidebar( 'et_pb_widget_area_1' ); ?>
 
-            <div class="see-more-btn" style="padding: 0 0 10px 16px;">
+            <div class="see-more-btn" style="padding: 0 0 5px 16px;">
                 <a href="https://arbitrage.ph/bulletins/">
                     <strong style="font-size:13px;font-weight: 400;">View all</strong>
                 </a>

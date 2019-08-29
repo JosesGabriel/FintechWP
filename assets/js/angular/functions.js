@@ -22,7 +22,8 @@ function price_format(value, base) {
     }
 }
 function number_format(value, format) {
-    return numeral(value).format(format);
+    
+    return numeral(parseFloat(value).toFixed(4)).format(format);
 }
 function abbr_format(value) {
     value = numeral(value);

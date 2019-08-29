@@ -121,11 +121,6 @@
 
     jQuery(document).ready(function() {
 
-        function turnToDecimal(event){
-            console.log('show me baby');
-            console.log(event)
-        } 
-
         function getfee(marketvalue) {
 
             var totalfee = 0;
@@ -141,16 +136,14 @@
         };
 
         jQuery(".additems a").click(function(e) {
-            console.log("rhsdd");
             e.preventDefault();
             var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
             var ditem = "";
             ditem += '<ul class="doneitem">';
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" onkeyup="turnToDecimal(this)" placeholder="Enter Position" style="font-size: 13px;"></li>';
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" onkeyup="turnToDecimal(this)" placeholder="Enter Price" style="font-size: 13px;"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
             ditem += "</ul>";
             jQuery(".paramlist div .bodies").append(ditem).attr('data-numcount', (parseInt(dcount) + 1));
-
         });
 
         jQuery('.clearbtn a').click(function(e) {
@@ -179,10 +172,7 @@
 
             console.log(dcount);
 
-
             if (dcount > 0) {
-
-
 
                 var totalcost = 0;
 
@@ -192,10 +182,7 @@
 
                 var costfee = 0;
 
-
                 jQuery(".paramlist div .bodies ul").each(function(index) {
-
-
 
                     var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val().replace(/[^0-9\.]/g, '') : 0);
                     var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val().replace(/[^0-9\.]/g, '') : 0);
@@ -258,8 +245,10 @@
 
         });
 
-        jQuery('input.number').keyup(function (event) {
+        jQuery('input[type=text]').on("keyup", ".number", function (e, update) {
             // skip for arrow keyssss
+            console.log('show me anything');
+            /*
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }
@@ -271,7 +260,7 @@
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));
-
+            */
         });
 
         function testDecimals(currentVal) {

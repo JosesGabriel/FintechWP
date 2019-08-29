@@ -655,6 +655,28 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     }
 	</script>
 	<style>
+  .nvd3 .nv-axis line {
+    display: none;
+  }
+
+  .nvd3 .nv-axis path.domain {
+    display: none;
+  }
+
+  .negative > line, .negative > rect {
+    stroke: #eb4d5c !important;
+    fill: #eb4d5c !important;
+  }
+
+  .positive > line {
+    stroke: #53b987 !important;
+  }
+  .positive > rect {
+    stroke: #53b987 !important;
+    fill: #53b987 !important;
+  }
+
+
 .dtabspart ul li {
     color: #000;
 }

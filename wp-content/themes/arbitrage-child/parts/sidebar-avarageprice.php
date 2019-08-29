@@ -32,6 +32,7 @@
                             <li>Average Price</br><span class="totalprice">26.63</span></li>
 
                         </ul> -->
+                        
                         <ul>
                         <div>
                             <div class="arb_calcbox_left" style="margin-bottom: 10px;">Total Cost</div>

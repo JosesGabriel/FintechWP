@@ -587,26 +587,26 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				$counter++;
 			}
 
-			// $currentTime = (new DateTime())->modify('+1 day');
-			// $startTime = new DateTime('15:30');
-			// $endTime = (new DateTime('09:00'))->modify('+1 day');
+			$currentTime = (new DateTime())->modify('+1 day');
+			$startTime = new DateTime('15:30');
+			$endTime = (new DateTime('09:00'))->modify('+1 day');
 
-			// if ($currentTime >= $startTime && $currentTime <= $endTime) {
-			//   	$curl = curl_init();
-			// 	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE' );
-            //     curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
-            //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			// 	$dintrabase = curl_exec($curl);
-			// 	curl_close($curl);
+			if ($currentTime >= $startTime && $currentTime <= $endTime) {
+			  	$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&stock-exchange=PSE' );
+                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+				$dintrabase = curl_exec($curl);
+				curl_close($curl);
 
-			// 	$dintraforchart = json_decode($dintrabase);
+				$dintraforchart = json_decode($dintrabase);
 
-			// 	$open = end($dintraforchart->o);
-			// 	$high = end($dintraforchart->h);
-			// 	$low = end($dintraforchart->l);
+				$open = end($dintraforchart->o);
+				$high = end($dintraforchart->h);
+				$low = end($dintraforchart->l);
 
-			// 	$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-			// }
+				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+			}
 
 
 
@@ -655,6 +655,28 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     }
 	</script>
 	<style>
+  .nvd3 .nv-axis line {
+    display: none;
+  }
+
+  .nvd3 .nv-axis path.domain {
+    display: none;
+  }
+
+  .negative > line, .negative > rect {
+    stroke: #eb4d5c !important;
+    fill: #eb4d5c !important;
+  }
+
+  .positive > line {
+    stroke: #53b987 !important;
+  }
+  .positive > rect {
+    stroke: #53b987 !important;
+    fill: #53b987 !important;
+  }
+
+
 .dtabspart ul li {
     color: #000;
 }

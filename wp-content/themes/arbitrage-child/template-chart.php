@@ -2069,7 +2069,7 @@
 				<?php
 
 					$dstock = $value['stockname'];
-					$dprice = $stockinfo->$dstock->last;
+					$dprice = $stockinfo->$value->last;
 					$dchange = $stockinfo->$dstock->change;
 					?>
 					<tr class="tr-background">

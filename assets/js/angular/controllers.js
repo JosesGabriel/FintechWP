@@ -787,6 +787,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 chart = widget.chart();
                 console.log("its here na");
                 
+                
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
                     console.log(symbolData);
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
@@ -813,6 +814,53 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
+
+                        console.log("the stock changed");
+                        // console.log("https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
+
+                        $http({
+                            method : "POST",
+                            url : "https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                            dataType: "json",
+                            contentType: "application/json",
+                            data: {
+                                'action' : 'check_sentiment',
+                                'stock' : symbol,
+                            }
+                        }).then(function mySucces(response) {
+                            console.log(response.data);
+                            console.log(response.data.isvote);
+                            angular.element(".regsentiment").addClass('openmenow');
+                            
+
+                            // angular.element(".bullbearsents").addClass('clickedthis');
+
+                            if (response.data.isvote == "1") {
+                                // cant vote!
+                                angular.element(".bullbearsents").addClass('clickedthis');
+                                angular.element(".dbaronchart").css('width', '70%');
+                                angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
+                                angular.element(".bbs_bull_bar").find('span').show('fast');
+
+                                var dbullvalx = parseFloat(response.data.dbull);
+                                var dbearvalx = parseFloat(response.data.dbear);
+
+                                angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+
+                                angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
+                                angular.element(".bbs_bear_bar").find('span').show('fast');
+                                angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+                            } else {
+                                // can vote!
+                                angular.element(".bullbearsents").removeClass('clickedthis');
+                                angular.element(".dbaronchart").css('width', '0%');
+                                angular.element(".bbs_bull_bar").find('span').hide();
+                                angular.element(".bbs_bear_bar").find('span').hide();
+                            }
+
+                        }, function myError(error) {
+                            console.log(error);
+                        });
                         
                         $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
 
@@ -853,52 +901,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
                             $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
 
-                            console.log("the stock changed");
                             
 
-                            $http({
-                                method : "POST",
-                                url : "https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
-                                dataType: "json",
-                                contentType: "application/json",
-                                data: {
-                                    'action' : 'check_sentiment',
-                                    'stock' : symbol,
-                                }
-                            }).then(function mySucces(response) {
-                                console.log(response.data);
-                                console.log(response.data.isvote);
-                                angular.element(".regsentiment").addClass('openmenow');
-                                
-
-                                // angular.element(".bullbearsents").addClass('clickedthis');
-
-                                if (response.data.isvote == "1") {
-                                    // cant vote!
-                                    angular.element(".bullbearsents").addClass('clickedthis');
-                                    angular.element(".dbaronchart").css('width', '70%');
-                                    angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
-                                    angular.element(".bbs_bull_bar").find('span').show('fast');
-
-                                    var dbullvalx = parseFloat(response.data.dbull);
-                                    var dbearvalx = parseFloat(response.data.dbear);
-
-                                    angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
-
-                                    angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
-                                    angular.element(".bbs_bear_bar").find('span').show('fast');
-                                    angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
-                                } else {
-                                    // can vote!
-                                    angular.element(".bullbearsents").removeClass('clickedthis');
-                                    angular.element(".dbaronchart").css('width', '0%');
-                                    angular.element(".bbs_bull_bar").find('span').hide();
-                                    angular.element(".bbs_bear_bar").find('span').hide();
-                                }
-
-                            }, function myError(error) {
-                                console.log(error);
-                            });
+                            
                         });
                         socket.emit('stock', symbol, function(data) {
                             if (data.transactions) {

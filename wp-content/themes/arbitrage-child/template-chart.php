@@ -13,8 +13,9 @@
 		exit;
 	}
 	
-	/* temp-disabled
+	
 	$homeurlgen = get_home_url();
+	/* temp-disabled
 	$user_id = $user->ID;
 	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
@@ -2468,53 +2469,55 @@
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
 					console.log(dpathl);
 
-					jQuery.ajax({
-						method: "POST",
-						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
-						dataType: 'json',
-						data: {
-							'action' : 'post_sentiment',
-							'stock' : dpathl,
-							'postid' : '<?php echo get_the_id(); ?>',
-							'userid' : '<?php echo $user_id; ?>',
-							'dbasebull': dbull,
-							'dbasebear': dbear,
-							'dbuttonact' : dclass
-						},
-						success: function(data) {
-						console.log(data);
+					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
-						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
+					// jQuery.ajax({
+					// 	method: "POST",
+					// 	url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+					// 	dataType: 'json',
+					// 	data: {
+					// 		'action' : 'post_sentiment',
+					// 		'stock' : dpathl,
+					// 		'postid' : '<?php echo get_the_id(); ?>',
+					// 		'userid' : '<?php echo $user_id; ?>',
+					// 		'dbasebull': dbull,
+					// 		'dbasebear': dbear,
+					// 		'dbuttonact' : dclass
+					// 	},
+					// 	success: function(data) {
+					// 	console.log(data);
 
-							$( ".dbaronchart" ).animate({
-								width: "70%"
-							},500, function(){
-								// $( ".bbs_bear_bar span" ).fadeIn("fast");
-							});
+					// 	// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
+					// 	// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
 
-							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
-									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
-							});
+					// 		$( ".dbaronchart" ).animate({
+					// 			width: "70%"
+					// 		},500, function(){
+					// 			// $( ".bbs_bear_bar span" ).fadeIn("fast");
+					// 		});
 
-							$( ".bbs_bear_bar" ).animate({
-								width: data.dbear+"%"
-							},500, function(){
-								$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
-								$( ".bbs_bear_bar span" ).fadeIn("fast");
-							});
+					// 		$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
+					// 				$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
+					// 		});
 
-							$( ".bbs_bull_bar" ).animate({
-								width: data.dbull+"%"
-							},500, function(){
-								$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
-								$( ".bbs_bull_bar span" ).fadeIn("fast");
-							});
+					// 		$( ".bbs_bear_bar" ).animate({
+					// 			width: data.dbear+"%"
+					// 		},500, function(){
+					// 			$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
+					// 			$( ".bbs_bear_bar span" ).fadeIn("fast");
+					// 		});
 
-							$(".bullbearsents_label").html("Members sentiments");
+					// 		$( ".bbs_bull_bar" ).animate({
+					// 			width: data.dbull+"%"
+					// 		},500, function(){
+					// 			$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
+					// 			$( ".bbs_bull_bar span" ).fadeIn("fast");
+					// 		});
 
-						}
-					});
+					// 		$(".bullbearsents_label").html("Members sentiments");
+
+					// 	}
+					// });
 
 				} else {
 					console.log('Cant Click');

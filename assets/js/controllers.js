@@ -704,6 +704,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
+
+                        console.log("the stock changed");
+                            console.log("https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
                         
                         $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
 
@@ -744,7 +747,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
                             $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
 
-                            console.log("the stock changed");
                             
 
                             $http({

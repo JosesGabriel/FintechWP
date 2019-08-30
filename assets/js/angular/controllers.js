@@ -786,6 +786,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 $('#tv_chart_container').show();
                 chart = widget.chart();
                 console.log("its here na");
+                console.log(symbolData);
                 
                 
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
@@ -818,6 +819,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         console.log("the stock changed");
                         // console.log("https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
 
+                        // for register sentiments
                         $http({
                             method : "POST",
                             url : "https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
@@ -862,49 +864,49 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             console.log(error);
                         });
                         
-                        $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
+                        // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
 
                         
-                            if (response.data.success) {
-                                $scope.$parent.marketdepth = response.data.data;
-                            }
-                            $scope.$parent.bidtotal = 0;
-                            $scope.$parent.asktotal = 0;
-                            $scope.$parent.bidperc = 0;
-                            $scope.$parent.askperc = 0;
-                            var keepGoing = true;
-                            angular.forEach($scope.$parent.marketdepth, function(value, key) {
-                              if(keepGoing) {
-                                $scope.$parent.bidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-                                $scope.$parent.asktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-                                if(key == 4){
-                                  keepGoing = false;
-                                }
-                              }
-                            });
-                            $scope.$parent.bidperc = ($scope.$parent.bidtotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
-                            $scope.$parent.askperc = ($scope.$parent.asktotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
-                            console.log("asking: " +$scope.$parent.asktotal);
-                            console.log("bidding: "+$scope.$parent.bidtotal);
-                            console.log("ask persentage: "+$scope.$parent.askperc);
-                            console.log("bid percentage: "+$scope.$parent.bidperc);
-                            $scope.$parent.fullbidtotal = 0;
-                            $scope.$parent.fullasktotal = 0;
-                            $scope.$parent.fullbidperc = 0;
-                            $scope.$parent.fullaskperc = 0;
+                        //     if (response.data.success) {
+                        //         $scope.$parent.marketdepth = response.data.data;
+                        //     }
+                        //     $scope.$parent.bidtotal = 0;
+                        //     $scope.$parent.asktotal = 0;
+                        //     $scope.$parent.bidperc = 0;
+                        //     $scope.$parent.askperc = 0;
+                        //     var keepGoing = true;
+                        //     angular.forEach($scope.$parent.marketdepth, function(value, key) {
+                        //       if(keepGoing) {
+                        //         $scope.$parent.bidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
+                        //         $scope.$parent.asktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
+                        //         if(key == 4){
+                        //           keepGoing = false;
+                        //         }
+                        //       }
+                        //     });
+                        //     $scope.$parent.bidperc = ($scope.$parent.bidtotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
+                        //     $scope.$parent.askperc = ($scope.$parent.asktotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
+                        //     console.log("asking: " +$scope.$parent.asktotal);
+                        //     console.log("bidding: "+$scope.$parent.bidtotal);
+                        //     console.log("ask persentage: "+$scope.$parent.askperc);
+                        //     console.log("bid percentage: "+$scope.$parent.bidperc);
+                        //     $scope.$parent.fullbidtotal = 0;
+                        //     $scope.$parent.fullasktotal = 0;
+                        //     $scope.$parent.fullbidperc = 0;
+                        //     $scope.$parent.fullaskperc = 0;
 
-                            var keepGoing = true;
-                            angular.forEach($scope.$parent.marketdepth, function(value, key) {
-                                $scope.$parent.fullbidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-                                $scope.$parent.fullasktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-                            });
-                            $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
-                            $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
-
-                            
+                        //     var keepGoing = true;
+                        //     angular.forEach($scope.$parent.marketdepth, function(value, key) {
+                        //         $scope.$parent.fullbidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
+                        //         $scope.$parent.fullasktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
+                        //     });
+                        //     $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
+                        //     $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
 
                             
-                        });
+
+                            
+                        // });
                         socket.emit('stock', symbol, function(data) {
                             if (data.transactions) {
                                 $scope.$parent.transactions = data.transactions;

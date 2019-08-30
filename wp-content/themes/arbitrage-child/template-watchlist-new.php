@@ -1068,13 +1068,13 @@ input.subbuttons {
 }
 .dpricechange .curprice {
     line-height: 1em;
-    font-size: 18px;
+    font-size: 17px;
     padding-bottom: 3px;
     padding-top: 0;
     font-weight: 500 !important;
 }
 .dpricechange .curchange {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1em;
 }
 .dpricechange .curchange.onred {

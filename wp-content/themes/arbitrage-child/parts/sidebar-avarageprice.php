@@ -2,7 +2,7 @@
 
 <style type="text/css">
 .number{
-    font-size: 13px;
+    font-size: 13px !important;
     text-align: right;
 }
 </style>
@@ -154,9 +154,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
 
             ditem += "</ul>";
 
@@ -245,11 +245,8 @@
 
         });
 
-        //jQuery('input[type=text]').on("keyup", ".number", function (e, update) {
-        jQuery('input[type=text]').keyup(function (event) {
+        jQuery(document).on('keyup', 'input.number', function (event) {
             // skip for arrow keyssss
-            console.log('show me anything');
-            /*
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }
@@ -261,7 +258,7 @@
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));
-            */
+            
         });
 
         function testDecimals(currentVal) {

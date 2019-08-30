@@ -2,7 +2,7 @@
 
 <style type="text/css">
 .number{
-    font-size: 13px;
+    font-size: 13px !important;
     text-align: right;
 }
 </style>
@@ -77,7 +77,7 @@
 
                                         <li>
 
-                                            <span>Position</span></br>
+                                            <span>Position test</span></br>
 
                                             <input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;">
 
@@ -121,56 +121,29 @@
 
     jQuery(document).ready(function() {
 
-
-
         function getfee(marketvalue) {
 
             var totalfee = 0;
             var partcpms = marketvalue * 0.0025;
             var commission = (partcpms >= 20 ? partcpms : 20);
             var tax = commission * 0.12;
-
             var transfer = marketvalue * 0.00005;
-
             var sccp = marketvalue * 0.0001;
             // var sccp = 0;
-
-
-
             totalfee = commission + tax + transfer + sccp;
-
-
-
             return totalfee.toFixed(2);
 
         };
 
-
-
         jQuery(".additems a").click(function(e) {
-            console.log("rhsdd");
             e.preventDefault();
-
-
-
             var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
-
-
-
             var ditem = "";
-
             ditem += '<ul class="doneitem">';
-
             ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
-
             ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
-
             ditem += "</ul>";
-
-
-
             jQuery(".paramlist div .bodies").append(ditem).attr('data-numcount', (parseInt(dcount) + 1));
-
         });
 
         jQuery('.clearbtn a').click(function(e) {
@@ -181,9 +154,9 @@
 
             ditem += '<ul class="doneitem">';
 
-            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position"></li>';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
 
-            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
 
             ditem += "</ul>";
 
@@ -199,10 +172,7 @@
 
             console.log(dcount);
 
-
             if (dcount > 0) {
-
-
 
                 var totalcost = 0;
 
@@ -212,10 +182,7 @@
 
                 var costfee = 0;
 
-
                 jQuery(".paramlist div .bodies ul").each(function(index) {
-
-
 
                     var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val().replace(/[^0-9\.]/g, '') : 0);
                     var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val().replace(/[^0-9\.]/g, '') : 0);
@@ -278,9 +245,8 @@
 
         });
 
-
-        jQuery('input.number').keyup(function (event) {
-            // skip for arrow keys
+        jQuery(document).on('keyup', 'input.number', function (event) {
+            // skip for arrow keyssss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();
             }
@@ -292,7 +258,7 @@
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));
-
+            
         });
 
         function testDecimals(currentVal) {

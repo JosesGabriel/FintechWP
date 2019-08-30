@@ -532,9 +532,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 					
-					<?php //get_template_part('parts/sidebar', 'traders'); ?>
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
-                    <?php //get_template_part('parts/sidebar', 'latestnews'); ?>
+                    <?php //get_template_part('parts/sidebar', 'traders'); ?>
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
@@ -970,6 +970,7 @@ input#myInput {
     width: 100%;
     background: #11273e;
     color: #fff;
+    border: none;
 }
 .dropdown-content .listofstocks a {
     font-size: 13px;
@@ -1067,13 +1068,13 @@ input.subbuttons {
 }
 .dpricechange .curprice {
     line-height: 1em;
-    font-size: 18px;
+    font-size: 17px;
     padding-bottom: 3px;
     padding-top: 0;
     font-weight: 500 !important;
 }
 .dpricechange .curchange {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1em;
 }
 .dpricechange .curchange.onred {

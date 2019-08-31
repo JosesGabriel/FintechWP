@@ -807,7 +807,8 @@ span.nocont {
 	margin-top: 15px;
 	border-radius: 5px;
 	overflow: hidden;
-	padding-bottom: 8px; 
+	box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
+	/* padding-bottom: 8px;  */
 	/* padding: 10px 15px 15px 15px; */
 }
 .forsticky {
@@ -2770,9 +2771,9 @@ li.five a span {
     position: relative;
     display: inline-block;
     background-color: #34495e;
-    padding: 7px 32px 7px 10px !important;
+    padding: 8px 32px 10px 10px !important;
     border-radius: 5px 0 0 5px;
-    bottom: -35px;
+    bottom: -36px;
 }
 .close-depo {
 	opacity: 1;

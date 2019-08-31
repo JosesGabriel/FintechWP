@@ -665,7 +665,9 @@
 	}
 	.bullbearsents .bbs_bear,
 	.bullbearsents .bbs_bull {
-		margin:-3px 2px 0px;
+		margin: -3px 2px 0px;
+		/* position: relative;
+    	top: -47px; */
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -694,7 +696,7 @@
 		color: #FFF;
 	}
 	span.bullbearsents_label {
-		margin-bottom: -5px;
+		margin-bottom: 2px;
 	}
 	.bbs_bear_bar {margin-left:-2px; text-align:right;}
 	.bbs_bull_bar {margin-right:-2px; text-align:left;}
@@ -711,7 +713,9 @@
 	.dbaronchart {
 		display: inline-block;
 		width: 0%;
-
+		overflow: hidden;
+		left: -1px;
+		position: relative;
 	}
 	.bbs_bull_bar, .bbs_bear_bar {
 		margin-top: 11px;
@@ -845,7 +849,7 @@
 		display: block;
 		line-height: 27px;
 		left: 3px;
-		bottom: -167px;
+		bottom: -77px;
 		position: absolute;
 		background-color: #131722;
 		text-align: center;
@@ -1971,23 +1975,23 @@
 																									<thead>
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
-																												STOCK
+																												<strong>STOCK</strong>
 																												<i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
-																												LAST
+																												<strong>LAST</strong>
 																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
-																												CHANGE
+																												<strong>CHANGE</strong>
 																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
-																												VALUE
+																												<strong>VALUE</strong>
 																												<i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
-																												TRADES
+																												<strong>TRADES</strong>
 																												<i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
@@ -2471,53 +2475,53 @@
 
 					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
-					// jQuery.ajax({
-					// 	method: "POST",
-					// 	url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
-					// 	dataType: 'json',
-					// 	data: {
-					// 		'action' : 'post_sentiment',
-					// 		'stock' : dpathl,
-					// 		'postid' : '<?php echo get_the_id(); ?>',
-					// 		'userid' : '<?php echo $user_id; ?>',
-					// 		'dbasebull': dbull,
-					// 		'dbasebear': dbear,
-					// 		'dbuttonact' : dclass
-					// 	},
-					// 	success: function(data) {
-					// 	console.log(data);
+					jQuery.ajax({
+						method: "POST",
+						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						dataType: 'json',
+						data: {
+							'action' : 'post_sentiment',
+							'stock' : dpathl,
+							'postid' : '<?php echo get_the_id(); ?>',
+							'userid' : '<?php echo $user_id; ?>',
+							'dbasebull': dbull,
+							'dbasebear': dbear,
+							'dbuttonact' : dclass
+						},
+						success: function(data) {
+						console.log(data);
 
-					// 	// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-					// 	// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
 
-					// 		$( ".dbaronchart" ).animate({
-					// 			width: "70%"
-					// 		},500, function(){
-					// 			// $( ".bbs_bear_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".dbaronchart" ).animate({
+								width: "70%"
+							},500, function(){
+								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
 
-					// 		$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
-					// 				$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
-					// 		});
+							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
+									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
+							});
 
-					// 		$( ".bbs_bear_bar" ).animate({
-					// 			width: data.dbear+"%"
-					// 		},500, function(){
-					// 			$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
-					// 			$( ".bbs_bear_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".bbs_bear_bar" ).animate({
+								width: data.dbear+"%"
+							},500, function(){
+								$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
+								$( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
 
-					// 		$( ".bbs_bull_bar" ).animate({
-					// 			width: data.dbull+"%"
-					// 		},500, function(){
-					// 			$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
-					// 			$( ".bbs_bull_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".bbs_bull_bar" ).animate({
+								width: data.dbull+"%"
+							},500, function(){
+								$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
+								$( ".bbs_bull_bar span" ).fadeIn("fast");
+							});
 
-					// 		$(".bullbearsents_label").html("Members sentiments");
+							$(".bullbearsents_label").html("Members sentiments");
 
-					// 	}
-					// });
+						}
+					});
 
 				} else {
 					console.log('Cant Click');

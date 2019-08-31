@@ -261,7 +261,7 @@ $user = wp_get_current_user();
 
 if(isset($_POST['send'])){
         $email = mysqli_real_escape_string($_POST['email']);
-        echo $email;
+        print_r($email);
     }
 ?>
 

@@ -354,7 +354,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                             </div>
                                                                                                             <div class="condition-freq">
                                                                                                                 <!-- <label class="label--margin">Condition Frequency</label> -->
-                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Enter amount">
+                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                                                             </div>
                                                                                                             <div class="addtolist">
                                                                                                                 <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
@@ -491,7 +491,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                         </div>
                                                                         <div class="condition-freq">
                                                                             <!-- <label>Condition Frequency</label> -->
-                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Condition Frequency">
+                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>

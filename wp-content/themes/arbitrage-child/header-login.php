@@ -168,7 +168,13 @@ $user = wp_get_current_user();
                 </div><!-- /.inner -->
             </div><!-- /.wrap -->
         </div><!-- /.clock-item -->
-    </div><!-- /.clock -->
+	</div><!-- /.clock -->
+	<div class="notif-container row">
+        <div class="notif--subb">
+            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field">
+            <input type="button" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary">
+        </div>
+    </div>
 </div><!-- /.countdown-wrapper -->
 
 

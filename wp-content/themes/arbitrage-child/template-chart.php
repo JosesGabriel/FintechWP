@@ -667,7 +667,7 @@
 	.bullbearsents .bbs_bull {
 		/* margin: -3px 2px 0px; */
 		position: relative;
-    	top: -35px;
+    	top: -47px;
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;

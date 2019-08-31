@@ -171,7 +171,7 @@ get_header('dashboard');
 						<textarea name="" class="form-control contact--textField" id="contact--textField__message" cols="30" rows="4" form="contact--form" placeholder="The team is all ears. We're always here for a good chat."></textarea>
 					</div>
 					<div class="flex-box">
-						<button type="submit" class="arbitrage-button arbitrage-button--dark">Submit</button>
+						<button type="submit" class="arbitrage-button arbitrage-button--dark" style="outline: none;">Submit</button>
 					</div>
 				</div>
 			</form>

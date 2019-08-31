@@ -1103,6 +1103,10 @@ get_header('dashboard');
 	    border-radius: 25px;
 	    padding: 3px 9px;
 	}
+	.enter-trade-btn:hover {
+		color: white;
+		background-color: #00bcd4;
+	}
 	.dbuttondelete {
 		display: inline-block;
 		margin: 0px 5px;
@@ -1299,7 +1303,10 @@ get_header('dashboard');
     	background-color: #4e6a85 !important;
     	color: #fff !important;
     }
-
+    .number{
+        font-size: 13px !important;
+        text-align: right;
+    }
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1376,7 +1383,7 @@ get_header('dashboard');
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => $_POST['damount'], // ... and so on
+                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
             ));
         }
 
@@ -1796,7 +1803,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				$curl = curl_init();
@@ -1824,7 +1831,7 @@ if ($getdstocks && $getdstocks != '') {
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Stock</label>
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
+																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
 																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1834,7 +1841,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -2069,10 +2076,10 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -4px; text-align: left;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
-																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -3989,9 +3996,9 @@ if ($getdstocks && $getdstocks != '') {
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Enter Amount</h5>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85; text-align: right;"></div>
+																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -4708,37 +4715,37 @@ if ($getdstocks && $getdstocks != '') {
 			
         });
         
-        jQuery('input.number').keyup(function (event) {         // skip for arrow keys
-            // journals
-            if (event.which >= 37 && event.which <= 40) {
-                event.preventDefault();
-            }
+        // jQuery('input.number').keyup(function (event) {         // skip for arrow keys
+        //     // journals
+        //     if (event.which >= 37 && event.which <= 40) {
+        //         event.preventDefault();
+        //     }
 
-            var currentVal = jQuery(this).val();
-            var testDecimal = testDecimals(currentVal);
-            if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
-                currentVal = currentVal.slice(0, -1);
-            }
-            jQuery(this).val(replaceCommas(currentVal));
+        //     var currentVal = jQuery(this).val();
+        //     var testDecimal = testDecimals(currentVal);
+        //     if (testDecimal.length > 1) {
+        //         console.log("You cannot enter more than one decimal point");
+        //         currentVal = currentVal.slice(0, -1);
+        //     }
+        //     jQuery(this).val(replaceCommas(currentVal));
 
-        });
+        // });
 
-        function testDecimals(currentVal) {
-            var count;
-            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-            return count;
-        }
+        // function testDecimals(currentVal) {
+        //     var count;
+        //     currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        //     return count;
+        // }
 
-        function replaceCommas(yourNumber) {
-            var components = yourNumber.toString().split(".");
-            if (components.length === 1) 
-                components[0] = yourNumber;
-            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            if (components.length === 2)
-                components[1] = components[1].replace(/\D/g, "");
-            return components.join(".");
-        }
+        // function replaceCommas(yourNumber) {
+        //     var components = yourNumber.toString().split(".");
+        //     if (components.length === 1) 
+        //         components[0] = yourNumber;
+        //     components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        //     if (components.length === 2)
+        //         components[1] = components[1].replace(/\D/g, "");
+        //     return components.join(".");
+        // }
 
 
 	});
@@ -5622,6 +5629,40 @@ if ($getdstocks && $getdstocks != '') {
 	  }],
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
+
+    jQuery(document).on('keyup', 'input.number', function (event) {
+            // skip for arrow keyssss
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+            
+        //});
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+    });
 
 </script>
 </div>

@@ -13,8 +13,9 @@
 		exit;
 	}
 	
-	/* temp-disabled
+	
 	$homeurlgen = get_home_url();
+	/* temp-disabled
 	$user_id = $user->ID;
 	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
@@ -664,7 +665,9 @@
 	}
 	.bullbearsents .bbs_bear,
 	.bullbearsents .bbs_bull {
-		margin:-3px 2px 0px;
+		margin: -3px 2px 0px;
+		/* position: relative;
+    	top: -47px; */
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -674,7 +677,7 @@
 	}
 	.bullbearsents .bbs_bull {
 		background-color: #25ae5f;
-		padding: 6px;
+		padding: 6px 5px;
 		border-radius: 20px;
 	}
 	.bullbearsents .bbs_bull:hover {
@@ -682,7 +685,7 @@
 	}
 	.bullbearsents .bbs_bear {
 		background-color: #e64c3c;
-		padding: 6px;
+		padding: 6px 7px;
 		border-radius: 20px;
 	}
 	.bullbearsents .bbs_bear:hover {
@@ -693,7 +696,7 @@
 		color: #FFF;
 	}
 	span.bullbearsents_label {
-		margin-bottom: -5px;
+		margin-bottom: 2px;
 	}
 	.bbs_bear_bar {margin-left:-2px; text-align:right;}
 	.bbs_bull_bar {margin-right:-2px; text-align:left;}
@@ -710,7 +713,9 @@
 	.dbaronchart {
 		display: inline-block;
 		width: 0%;
-
+		overflow: hidden;
+		left: -1px;
+		position: relative;
 	}
 	.bbs_bull_bar, .bbs_bear_bar {
 		margin-top: 11px;
@@ -844,7 +849,7 @@
 		display: block;
 		line-height: 27px;
 		left: 3px;
-		bottom: -167px;
+		bottom: -77px;
 		position: absolute;
 		background-color: #131722;
 		text-align: center;
@@ -1970,23 +1975,23 @@
 																									<thead>
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
-																												STOCK
+																												<strong>STOCK</strong>
 																												<i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
-																												LAST
+																												<strong>LAST</strong>
 																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
-																												CHANGE
+																												<strong>CHANGE</strong>
 																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
-																												VALUE
+																												<strong>VALUE</strong>
 																												<i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
-																												TRADES
+																												<strong>TRADES</strong>
 																												<i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
@@ -2467,6 +2472,8 @@
 					dpathl = dpathl.filter(function(el) { return el; });
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
 					console.log(dpathl);
+
+					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
 					jQuery.ajax({
 						method: "POST",

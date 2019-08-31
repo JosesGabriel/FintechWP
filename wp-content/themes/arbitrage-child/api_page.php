@@ -19,6 +19,7 @@
 	$date = date('m/d/Y', time());
 
 	$dreturn = "";
+	$adminuser = 504; // store on the chart page
 
 	if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
@@ -31,26 +32,29 @@
 		$stockinfo = $genstockinfo->data;
 		echo json_encode(["dinfo" => $stockinfo]);
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentiment'){ // market sentiment add sentiment
+		
 		if ($_GET['stock'] != 'chart') { // if chart page valid stock
-
-			$dsentbear = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', true );
-			$dsentbull = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', true );
-			$dsentilist = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_list', true );
-			$dsentdate = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
-
+			
+			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
+			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+			$dsentdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
+			
 			if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
 				// do nothin
 				$dreturn = "Cant vote!";
 			} else{
+				
 				$dreturn = "Go for Vote ";
 				// add sentiment points
 				if ($_GET['dbuttonact'] == "bbs_bull") {
 					$finalcount = ($dsentbull != "" ? $dsentbull : 0) + 1;
-					update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
+					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
 				} else {
 					$finalcount = ($dsentbear != "" ? $dsentbear : 0) + 1;
-					update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
+					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
 				}
+				
 
 				// add user on the sentiment
 				if (is_array($dsentilist)) {
@@ -60,11 +64,12 @@
 				}
 				$dlistofusers = array();
 				
+				
 				// array_push($dsentilist, $dlistofusers);
-				update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_list', $dsentilist );
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dsentilist );
 
 				// add date
-				update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_lastupdated', $date );
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', $date );
 				$dreturn = "Success!";
 			}
 
@@ -74,9 +79,11 @@
 			// echo json_encode(["dinfo" => "error: no stock was selected"]);
 			$dreturn = "error: no stock was selected";
 		}
+		
+		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		$dpullbear = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', true );
-		$dpullbull = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', true );
+		
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
@@ -86,6 +93,8 @@
 		$dpercbear = ($dfinbear / $dtotalall) * 100;
 		$dpercbull = ($dfinbull / $dtotalall) * 100;
 
+		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+		// print_r($dsentilist);
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn]);
 		
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
@@ -135,7 +144,10 @@
 
 
 	}else { // market sentiment : check sentiment
-		$dlastupdate = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
+		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
+
+		
+		
 		$diffDays = 0;
 		if ($dlastupdate != "") {
 			$today = new DateTime(); // This object represents current date/time
@@ -150,15 +162,17 @@
 
 		
 
-		$dsentilist = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_list', true );
+		$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+		// print_r($_GET['stock']);
+
 		if ($diffDays < 0) {
 			$dlistousers = array();
 			$todaysdate = date("m/d/Y");
 
-			update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', 0 );
-			update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', 0 );
-			update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_list', $dlistousers );
-			update_post_meta( 504, '_sentiment_'.$_GET['stock'].'_lastupdated', $todaysdate );
+			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', 0 );
+			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', 0 );
+			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dlistousers );
+			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', $todaysdate );
 
 			$isvote = 0;
 
@@ -167,8 +181,8 @@
 
 		} else {
 
-			$dsentbear = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', true );
-			$dsentbull = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', true );
+			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
 			if ($dsentilist && is_array( $dsentilist ) && in_array( $user->id, $dsentilist )) {
 				$isvote = 1;
@@ -179,8 +193,8 @@
 		}
 
 		
-		$dsentbear = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bear', true );
-		$dsentbull = get_post_meta( 504, '_sentiment_'.$_GET['stock'].'_bull', true );
+		$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+		$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
 		$totsbear = (int) ($dsentbear == "" ? 0 : $dsentbear) + $_GET['isbear'];
 		$totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];

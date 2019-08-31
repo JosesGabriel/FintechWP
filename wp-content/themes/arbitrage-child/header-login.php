@@ -90,6 +90,34 @@ $user = wp_get_current_user();
 	span.um-field-checkbox-option {
 		display: none;
 	}
+	.arbitrage-button {
+		font-family: 'Roboto', sans-serif;
+		font-size: 12px;
+		color: #ffffff;
+		background: none;
+		border: 2px #fff solid;
+		height: auto;
+		border-radius: 25px;
+		padding: 3px 9px;
+	}
+	.arbitrage-button--primary {
+		border: 2px #2481bc solid;
+	}
+	.arbitrage-button--primary:hover {
+		color: #ffffff;
+		background-color: #2481bc !important;
+		transition-duration: 300ms;
+	}
+	.notif--subb {
+		margin: 0 auto;
+	}
+	input.email--field {
+		background: #11273e;
+		border: 1px solid #1e3554;
+		border-radius: 25px;
+		padding: 10px 13px;
+		width: 463px;
+	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
     <script language="javascript">

@@ -2471,53 +2471,53 @@
 
 					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
-					// jQuery.ajax({
-					// 	method: "POST",
-					// 	url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
-					// 	dataType: 'json',
-					// 	data: {
-					// 		'action' : 'post_sentiment',
-					// 		'stock' : dpathl,
-					// 		'postid' : '<?php echo get_the_id(); ?>',
-					// 		'userid' : '<?php echo $user_id; ?>',
-					// 		'dbasebull': dbull,
-					// 		'dbasebear': dbear,
-					// 		'dbuttonact' : dclass
-					// 	},
-					// 	success: function(data) {
-					// 	console.log(data);
+					jQuery.ajax({
+						method: "POST",
+						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						dataType: 'json',
+						data: {
+							'action' : 'post_sentiment',
+							'stock' : dpathl,
+							'postid' : '<?php echo get_the_id(); ?>',
+							'userid' : '<?php echo $user_id; ?>',
+							'dbasebull': dbull,
+							'dbasebear': dbear,
+							'dbuttonact' : dclass
+						},
+						success: function(data) {
+						console.log(data);
 
-					// 	// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-					// 	// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
 
-					// 		$( ".dbaronchart" ).animate({
-					// 			width: "70%"
-					// 		},500, function(){
-					// 			// $( ".bbs_bear_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".dbaronchart" ).animate({
+								width: "70%"
+							},500, function(){
+								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
 
-					// 		$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
-					// 				$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
-					// 		});
+							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
+									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
+							});
 
-					// 		$( ".bbs_bear_bar" ).animate({
-					// 			width: data.dbear+"%"
-					// 		},500, function(){
-					// 			$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
-					// 			$( ".bbs_bear_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".bbs_bear_bar" ).animate({
+								width: data.dbear+"%"
+							},500, function(){
+								$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
+								$( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
 
-					// 		$( ".bbs_bull_bar" ).animate({
-					// 			width: data.dbull+"%"
-					// 		},500, function(){
-					// 			$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
-					// 			$( ".bbs_bull_bar span" ).fadeIn("fast");
-					// 		});
+							$( ".bbs_bull_bar" ).animate({
+								width: data.dbull+"%"
+							},500, function(){
+								$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
+								$( ".bbs_bull_bar span" ).fadeIn("fast");
+							});
 
-					// 		$(".bullbearsents_label").html("Members sentiments");
+							$(".bullbearsents_label").html("Members sentiments");
 
-					// 	}
-					// });
+						}
+					});
 
 				} else {
 					console.log('Cant Click');

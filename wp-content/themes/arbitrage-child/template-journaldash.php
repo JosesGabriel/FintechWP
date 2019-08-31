@@ -3996,7 +3996,7 @@ if ($getdstocks && $getdstocks != '') {
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Enter Amount</h5>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
 																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
 																								</div>

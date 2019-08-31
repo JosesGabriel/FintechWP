@@ -677,7 +677,7 @@
 	}
 	.bullbearsents .bbs_bull {
 		background-color: #25ae5f;
-		padding: 6px;
+		padding: 6px 5px;
 		border-radius: 20px;
 	}
 	.bullbearsents .bbs_bull:hover {
@@ -685,7 +685,7 @@
 	}
 	.bullbearsents .bbs_bear {
 		background-color: #e64c3c;
-		padding: 6px;
+		padding: 6px 7px;
 		border-radius: 20px;
 	}
 	.bullbearsents .bbs_bear:hover {

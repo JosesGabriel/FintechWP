@@ -807,6 +807,7 @@ span.nocont {
 	margin-top: 15px;
 	border-radius: 5px;
 	overflow: hidden;
+	box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
 	/* padding-bottom: 8px;  */
 	/* padding: 10px 15px 15px 15px; */
 }

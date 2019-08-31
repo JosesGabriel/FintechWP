@@ -115,8 +115,14 @@ $user = wp_get_current_user();
 		background: #11273e;
 		border: 1px solid #1e3554;
 		border-radius: 25px;
-		padding: 10px 13px;
-		width: 463px;
+		padding: 10px 72px 10px 13px;
+		width: 485px;
+	}
+	.email--btn {
+		margin-left: -74px;
+		padding: 5px 10px !important;
+		top: -1px;
+		position: relative;
 	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">

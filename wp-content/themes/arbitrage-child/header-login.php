@@ -135,6 +135,7 @@ $user = wp_get_current_user();
 		height: 100%;
 		position: absolute;
 		z-index: 99;
+		display: none;
 	}
 	.success--content {
 		position: absolute;

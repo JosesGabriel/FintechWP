@@ -1103,6 +1103,10 @@ get_header('dashboard');
 	    border-radius: 25px;
 	    padding: 3px 9px;
 	}
+	.enter-trade-btn:hover {
+		color: white;
+		background-color: #00bcd4;
+	}
 	.dbuttondelete {
 		display: inline-block;
 		margin: 0px 5px;
@@ -1796,7 +1800,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn" style="border: 0px;color:#27ae60;">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				$curl = curl_init();
@@ -1824,7 +1828,7 @@ if ($getdstocks && $getdstocks != '') {
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Stock</label>
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
+																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
 																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1834,7 +1838,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -2069,10 +2073,10 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -4px; text-align: left;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
-																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>

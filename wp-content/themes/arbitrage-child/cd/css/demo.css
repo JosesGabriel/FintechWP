@@ -107,3 +107,80 @@ body {
 		top: 100% !important;
 	}
 }
+.arbitrage-button {
+	font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+    background: none;
+    border: 2px #fff solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.arbitrage-button--primary {
+	border: 2px #2481bc solid;
+}
+.arbitrage-button--primary:hover {
+	color: #ffffff;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--secondary {
+	border: 2px #9E9E9E solid;
+}
+.arbitrage-button--secondary:hover {
+	color: #ffffff;
+	background-color: #9E9E9E !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--success {
+	border: 2px #49ba6f solid;
+}
+.arbitrage-button--success:hover {
+	color: #ffffff;
+	background-color: #49ba6f !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--warning {
+	border: 2px #e77e24 solid;
+}
+.arbitrage-button--warning:hover {
+	color: #ffffff;
+	background-color: #e77e24 !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--danger {
+	border: 2px #e84c3c solid;
+}
+.arbitrage-button--danger:hover {
+	color: #ffffff;
+	background-color: #e84c3c !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--info {
+	border: 2px #874a9a solid;
+}
+.arbitrage-button--info:hover {
+	color: #ffffff;
+	background-color: #874a9a !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--dark {
+	border: 2px #2481bc solid;
+	color: #2481bc;
+}
+.arbitrage-button--dark:hover {
+	color: white;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.notif--subb {
+    margin: 0 auto;
+}
+input.email--field {
+    background: #11273e;
+    border: 1px solid #1e3554;
+    border-radius: 25px;
+    padding: 10px 13px;
+    width: 463px;
+}

@@ -626,9 +626,7 @@ select#stockname {
         
 
     ?>
-    <!-- <pre>
-        <?php print_r($dwatchinfo); ?>
-    </pre> -->
+
     <div class="bkcalcboxess container-fluid ">
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">

@@ -140,6 +140,13 @@ $user = wp_get_current_user();
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
 			jQuery(".um-field-error").html("!");
 		})
+		jQuery(document).ready(function(){
+			jQuery("#email--button").click(function(){
+				if( $("#email--input").val() >= 1 ) {
+					alert();
+				}
+			});
+		});
 		
 	</script>
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
@@ -210,8 +217,8 @@ $user = wp_get_current_user();
 	</div><!-- /.clock -->
 	<div class="notif-container row">
         <div class="notif--subb">
-            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field">
-            <input type="button" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary">
+            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input">
+            <input type="button" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
         </div>
     </div>
 </div><!-- /.countdown-wrapper -->

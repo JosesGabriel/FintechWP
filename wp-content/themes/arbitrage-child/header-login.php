@@ -109,7 +109,7 @@ $user = wp_get_current_user();
 		transition-duration: 300ms;
 	}
 	.notif--subb {
-		margin: 0 auto;
+		margin: 109px auto 0 auto;
 	}
 	input.email--field {
 		background: #11273e;

@@ -39,6 +39,7 @@ $user = wp_get_current_user();
 	<?php wp_head(); ?>
     
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>
 	<?php if (isset($_GET['b'])){ 
 		$getrand = $_GET['b'];
@@ -129,6 +130,24 @@ $user = wp_get_current_user();
 		margin-top: 20px;
 		width: 108px;
 	}
+	.form-success-email {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 99;
+	}
+	.success--content {
+		position: absolute;
+		top: 3.5%;
+		right: 50.2%;
+		transform: translate(50%,-50%);
+		background: #11273e;
+		border-radius: 5px;
+		padding: 10px 15px;
+	}
+	span.success-word {
+		color: #d8d8d8;
+	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
     <script language="javascript">
@@ -142,8 +161,9 @@ $user = wp_get_current_user();
 		})
 		jQuery(document).ready(function(){
 			jQuery("#email--button").click(function(){
-				if( $("#email--input").val() >= 1 ) {
-					alert();
+				var hasemail = jQuery("#email--input").val().length;
+				if( hasemail >= 1 ) {
+					jQuery()
 				}
 			});
 		});
@@ -152,7 +172,12 @@ $user = wp_get_current_user();
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
-	
+<div class="form-success-email">
+	<div class="success--content">
+		<!-- <i class="far fa-check-circle"></i> -->
+		<span class="success-word"> Thank you for signing up, talk to you soon!</span>
+	</div>
+</div>
 <!-- Countdown -->
 <div class="header contercontrol">
     <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>

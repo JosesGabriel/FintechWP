@@ -117,12 +117,17 @@ $user = wp_get_current_user();
 		border-radius: 25px;
 		padding: 10px 72px 10px 13px;
 		width: 485px;
+		color: #d8d8d8;
 	}
 	.email--btn {
 		margin-left: -74px;
 		padding: 5px 10px !important;
 		top: -1px;
 		position: relative;
+	}
+	.header-image {
+		margin-top: 20px;
+		width: 108px;
 	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
@@ -150,7 +155,7 @@ $user = wp_get_current_user();
 </div>
 <div class="countdown countdown-container container contercontrol">
     
-    <div class="clock row">
+    <div class="clock row" style="margin-top: 124px;">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
             <div class="wrap">
                 <div class="inner">

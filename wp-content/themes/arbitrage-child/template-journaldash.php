@@ -1103,6 +1103,10 @@ get_header('dashboard');
 	    border-radius: 25px;
 	    padding: 3px 9px;
 	}
+	.enter-trade-btn:hover {
+		color: white;
+		background-color: #00bcd4;
+	}
 	.dbuttondelete {
 		display: inline-block;
 		margin: 0px 5px;

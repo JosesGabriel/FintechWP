@@ -257,7 +257,17 @@ $user = wp_get_current_user();
      
     </div>
 </div><!-- /.countdown-wrapper -->
+	<?php
+	if(isset($_POST['send'])){
+	        $to = "gonzrock12@gmail.com";
+	        $subject = "sample";
+	        $txt = "Hello world!";
+	        $headers = "From: davin@arbitrage.ph" . "\r\n" .
+	        "CC: somebodyelse@example.com";
 
+	        mail($to,$subject,$txt,$headers);
+	    }
+	?>
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

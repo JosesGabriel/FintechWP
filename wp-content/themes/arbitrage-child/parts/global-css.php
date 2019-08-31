@@ -807,7 +807,7 @@ span.nocont {
 	margin-top: 15px;
 	border-radius: 5px;
 	overflow: hidden;
-	padding-bottom: 8px; 
+	/* padding-bottom: 8px;  */
 	/* padding: 10px 15px 15px 15px; */
 }
 .forsticky {

@@ -1824,7 +1824,7 @@ if ($getdstocks && $getdstocks != '') {
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Stock</label>
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -3px; text-align: left;width: 138px;">
+																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
 																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1834,7 +1834,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -3px;" value="<?php echo $buypower; ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>

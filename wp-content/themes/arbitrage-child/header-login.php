@@ -39,6 +39,7 @@ $user = wp_get_current_user();
 	<?php wp_head(); ?>
     
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>
 	<?php if (isset($_GET['b'])){ 
 		$getrand = $_GET['b'];
@@ -109,7 +110,7 @@ $user = wp_get_current_user();
 		transition-duration: 300ms;
 	}
 	.notif--subb {
-		margin: 0 auto;
+		margin: 109px auto 0 auto;
 	}
 	input.email--field {
 		background: #11273e;
@@ -117,12 +118,40 @@ $user = wp_get_current_user();
 		border-radius: 25px;
 		padding: 10px 72px 10px 13px;
 		width: 485px;
+		color: #d8d8d8;
 	}
 	.email--btn {
 		margin-left: -74px;
 		padding: 5px 10px !important;
 		top: -1px;
 		position: relative;
+	}
+	.header-image {
+		margin-top: 20px;
+		width: 108px;
+	}
+	.form-success-email {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 99;
+		display: none;
+	}
+	.success--content {
+		position: absolute;
+		top: 3.5%;
+		right: 50.2%;
+		transform: translate(50%,-50%);
+		background: #11273e;
+		border-radius: 5px;
+		padding: 10px 15px;
+		animation-name: fadeinLoad;
+		animation-duration: 1s;
+		animation-delay: 5s;
+		animation-fill-mode: forwards;
+	}
+	span.success-word {
+		color: #d8d8d8;
 	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
@@ -135,12 +164,25 @@ $user = wp_get_current_user();
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
 			jQuery(".um-field-error").html("!");
 		})
+		jQuery(document).ready(function(){
+			jQuery("#email--button").click(function(){
+				var hasemail = jQuery("#email--input").val().length;
+				if( hasemail >= 1 ) {
+					jQuery()
+				}
+			});
+		});
 		
 	</script>
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
-	
+<div class="form-success-email">
+	<div class="success--content">
+		<!-- <i class="far fa-check-circle"></i> -->
+		<span class="success-word"> Thank you for signing up, talk to you soon!</span>
+	</div>
+</div>
 <!-- Countdown -->
 <div class="header contercontrol">
     <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
@@ -150,7 +192,7 @@ $user = wp_get_current_user();
 </div>
 <div class="countdown countdown-container container contercontrol">
     
-    <div class="clock row">
+    <div class="clock row" style="margin-top: 124px;">
         <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
             <div class="wrap">
                 <div class="inner">
@@ -205,8 +247,8 @@ $user = wp_get_current_user();
 	</div><!-- /.clock -->
 	<div class="notif-container row">
         <div class="notif--subb">
-            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field">
-            <input type="button" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary">
+            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input">
+            <input type="button" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
         </div>
     </div>
 </div><!-- /.countdown-wrapper -->

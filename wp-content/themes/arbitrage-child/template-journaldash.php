@@ -1303,7 +1303,10 @@ get_header('dashboard');
     	background-color: #4e6a85 !important;
     	color: #fff !important;
     }
-
+    .number{
+        font-size: 13px !important;
+        text-align: right;
+    }
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -3993,9 +3996,9 @@ if ($getdstocks && $getdstocks != '') {
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Enter Amount</h5>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field" style="background: #4e6a85; text-align: right;"></div>
+																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -5626,6 +5629,40 @@ if ($getdstocks && $getdstocks != '') {
 	  }],
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
+
+    jQuery(document).on('keyup', 'input.number', function (event) {
+            // skip for arrow keyssss
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                console.log("You cannot enter more than one decimal point");
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+            
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+    });
 
 </script>
 </div>

@@ -696,7 +696,7 @@
 		color: #FFF;
 	}
 	span.bullbearsents_label {
-		margin-bottom: -5px;
+		margin-bottom: 2px;
 	}
 	.bbs_bear_bar {margin-left:-2px; text-align:right;}
 	.bbs_bull_bar {margin-right:-2px; text-align:left;}

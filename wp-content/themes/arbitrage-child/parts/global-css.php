@@ -2771,9 +2771,9 @@ li.five a span {
     position: relative;
     display: inline-block;
     background-color: #34495e;
-    padding: 7px 32px 7px 10px !important;
+    padding: 8px 32px 10px 10px !important;
     border-radius: 5px 0 0 5px;
-    bottom: -35px;
+    bottom: -36px;
 }
 .close-depo {
 	opacity: 1;

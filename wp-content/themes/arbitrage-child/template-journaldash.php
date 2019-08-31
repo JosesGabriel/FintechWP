@@ -1796,7 +1796,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				$curl = curl_init();

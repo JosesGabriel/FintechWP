@@ -849,7 +849,7 @@
 		display: block;
 		line-height: 27px;
 		left: 3px;
-		bottom: -167px;
+		bottom: -77px;
 		position: absolute;
 		background-color: #131722;
 		text-align: center;
@@ -1975,23 +1975,23 @@
 																									<thead>
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
-																												STOCK
+																												<strong>STOCK</strong>
 																												<i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
-																												LAST
+																												<strong>LAST</strong>
 																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
-																												CHANGE
+																												<strong>CHANGE</strong>
 																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
-																												VALUE
+																												<strong>VALUE</strong>
 																												<i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
-																												TRADES
+																												<strong>TRADES</strong>
 																												<i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
 																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">

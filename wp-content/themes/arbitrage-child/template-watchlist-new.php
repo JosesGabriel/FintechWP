@@ -335,7 +335,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																								<div class="col-md-12">
 																									<div class="innerdeliver innerdeliver-editstock">
 																										<ul>
-																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
+																											<li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?> checked><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
 																											<li><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>
 																										</ul>
 																									</div>
@@ -354,7 +354,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                             </div>
                                                                                                             <div class="condition-freq">
                                                                                                                 <!-- <label class="label--margin">Condition Frequency</label> -->
-                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Condition Frequency">
+                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                                                             </div>
                                                                                                             <div class="addtolist">
                                                                                                                 <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
@@ -472,7 +472,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<div class="">
 																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>
-																		<li><input type="checkbox" name="delivery_type[]" value="web-notif"><label class="condition-notif">Website Popup</label></li>
+																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
 																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
 																	</ul>
 																</div>
@@ -491,7 +491,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                         </div>
                                                                         <div class="condition-freq">
                                                                             <!-- <label>Condition Frequency</label> -->
-                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Condition Frequency">
+                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>

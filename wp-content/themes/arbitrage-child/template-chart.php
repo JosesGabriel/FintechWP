@@ -845,7 +845,7 @@
 		display: block;
 		line-height: 27px;
 		left: 3px;
-		bottom: -167px;
+		bottom: -77px;
 		position: absolute;
 		background-color: #131722;
 		text-align: center;

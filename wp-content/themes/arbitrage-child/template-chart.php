@@ -665,7 +665,9 @@
 	}
 	.bullbearsents .bbs_bear,
 	.bullbearsents .bbs_bull {
-		margin:-3px 2px 0px;
+		/* margin: -3px 2px 0px; */
+		position: relative;
+    	top: -35px;
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -711,7 +713,9 @@
 	.dbaronchart {
 		display: inline-block;
 		width: 0%;
-
+		overflow: hidden;
+		left: -1px;
+		position: relative;
 	}
 	.bbs_bull_bar, .bbs_bear_bar {
 		margin-top: 11px;

@@ -250,14 +250,19 @@ $user = wp_get_current_user();
 	
         <div class="notif--subb">
         	 <form method="post">
-	            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input">
-	            <input type="submit" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
+	            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input" required>
+	            <input type="submit" name="send" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
             </form>
         </div>
      
     </div>
 </div><!-- /.countdown-wrapper -->
+<?php
 
+if(isset($_POST['send'])){
+        
+    }
+?>
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -262,12 +262,7 @@ $user = wp_get_current_user();
 if(isset($_POST['send'])){
         $email = $_POST['email'];
        
-        global $wpdb;
-		$table = $wpdb->prefix.'arby_launch_emailnotication';
-		$data = array('user_email' => $email);
-		$format = array('%s');
-		$wpdb->insert($table,$data,$format);
-		
+       //_insert_replace_helper( $table, $data, $format, 'INSERT' );		
     }
 ?>
 

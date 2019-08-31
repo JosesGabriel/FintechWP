@@ -247,12 +247,14 @@ $user = wp_get_current_user();
 	</div><!-- /.clock -->
 	<div class="notif-container row">
 
-	 <form method="post">
+	
         <div class="notif--subb">
-            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input">
-            <input type="submit" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
+        	 <form method="post">
+	            <input type="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input">
+	            <input type="submit" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
+            </form>
         </div>
-     </form>
+     
     </div>
 </div><!-- /.countdown-wrapper -->
 

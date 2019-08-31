@@ -5644,7 +5644,7 @@ if ($getdstocks && $getdstocks != '') {
             }
             jQuery(this).val(replaceCommas(currentVal));
             
-        });
+        //});
 
         function testDecimals(currentVal) {
             var count;

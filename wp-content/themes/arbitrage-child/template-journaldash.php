@@ -1103,6 +1103,10 @@ get_header('dashboard');
 	    border-radius: 25px;
 	    padding: 3px 9px;
 	}
+	.enter-trade-btn:hover {
+		color: white;
+		background-color: #00bcd4;
+	}
 	.dbuttondelete {
 		display: inline-block;
 		margin: 0px 5px;
@@ -1796,7 +1800,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="smlbtn fancybox-inline enter-trade-btn">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				$curl = curl_init();

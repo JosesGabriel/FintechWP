@@ -135,6 +135,7 @@ $user = wp_get_current_user();
 		height: 100%;
 		position: absolute;
 		z-index: 99;
+		display: none;
 	}
 	.success--content {
 		position: absolute;
@@ -144,6 +145,10 @@ $user = wp_get_current_user();
 		background: #11273e;
 		border-radius: 5px;
 		padding: 10px 15px;
+		animation-name: fadeinLoad;
+		animation-duration: 1s;
+		animation-delay: 5s;
+		animation-fill-mode: forwards;
 	}
 	span.success-word {
 		color: #d8d8d8;

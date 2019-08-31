@@ -2044,7 +2044,7 @@ input.dpos::placeholder, input.dpri::placeholder {
 }
 .paramlist .jjaajs {
 	margin-top: 15px !important;
-	max-height: 100px !important;
+	max-height: 150px !important;
     overflow-y: auto !important;
 }
 .doneitem li span {

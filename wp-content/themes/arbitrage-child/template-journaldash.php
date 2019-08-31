@@ -1383,7 +1383,7 @@ get_header('dashboard');
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => $_POST['damount'], // ... and so on
+                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
             ));
         }
 

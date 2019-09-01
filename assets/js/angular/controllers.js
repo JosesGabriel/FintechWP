@@ -905,8 +905,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.stock = null;
                         $scope.$parent.marketdepth = [];
                         $scope.$parent.transactions = [];
-                        $scope.$parent.$digest();
                     }
+                    $scope.$parent.$digest();
+
                     var url = '/chart/' + symbol; 
                     var title = symbol + ' | Arbitrage Trading Tools';
                     document.title = title;

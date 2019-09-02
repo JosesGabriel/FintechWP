@@ -77,6 +77,9 @@
 	.text {
 		top: 56% !important;
 	}
+	.text .type-time {
+		margin-top: 7px !important;
+	}
 
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {

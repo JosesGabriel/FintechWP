@@ -42,9 +42,9 @@ jQuery(function(){
         $num = 0;
         $counter = 0;
         $stockcount = 0;
-        $stock_watched = array();
+        //$stock_watched = array();
        
-        $users = get_users( array( 'fields' => array( 'ID' ) ) );
+        //$users = get_users( array( 'fields' => array( 'ID' ) ) );
 
 
         foreach ($stockinfo as $key => $stock) {

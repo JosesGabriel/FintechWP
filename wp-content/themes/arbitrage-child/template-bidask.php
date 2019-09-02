@@ -117,7 +117,7 @@
 	}
 	.areattl {color: #ecf0f1;padding: 1px 1px 1px 3px;}
 	html, body, .vertical-box-cell tr:nth-child(odd), .vertical-box-cell tr:nth-child(even) {
-		background-color: #142b46 !important;
+		background-color: #0c1f33 !important;
 	}
 	.dbar > div {
 	    float: left;
@@ -145,7 +145,7 @@
 		width: 97%;
 	}
 	.table tr td, .ng-scope td {
-		background-color: #142b46 !important;
+		background-color: #0c1f33 !important;
 	}
 </style>
 </head>

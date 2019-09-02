@@ -470,6 +470,7 @@
 		padding: 5px;
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% transparent;
 		background-size: 50px;
+		background-color: #0c1f33;
 	}
 	iframe.bullbearframe {
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% #2b3d4f;

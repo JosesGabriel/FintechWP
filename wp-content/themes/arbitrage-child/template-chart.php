@@ -818,7 +818,7 @@
 			border-left: 5px solid #34495e;
 		}
 		.arb_buysell {
-			top: 49px;
+			top: 76px;
 			left: -78px;
 			width: 72px;
 			text-align: right;
@@ -2385,7 +2385,7 @@
 		.arb_buysell {
 			background-color: rgb(36, 42, 48);
 			position: absolute;
-			padding: 5px 30px;
+			padding: 5px 20px 5px 30px;
 			border-radius: 10px;
 		}
 		.buttons {

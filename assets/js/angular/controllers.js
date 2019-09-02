@@ -348,6 +348,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
+            stock['change_percentage'] = parseFloat(stock['changepercentage']);
             stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);
@@ -425,8 +426,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             let data = response.data;
 
             $scope.transactions = data.map(transaction => {
-                let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
-                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
                 
                 return {
                     symbol: transaction.symbol,
@@ -450,6 +450,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             last: data.prv,
             difference: data.chgpc,
             change: data.chg,
+            change_percentage: data.chgpc,
             previous: data.c,
             open: data.o,
             high: data.h,
@@ -461,7 +462,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             updated_at: full_date,
 
             displayLast: price_format(data.prv),
-            displayDifference: price_format(data.change, data.prv),
+            displayDifference: price_format(data.chg, data.prv),
             displayOpen: price_format(data.o),
             displayPrevious: price_format(data.c),
             displayAverage: price_format(data.avg),
@@ -512,8 +513,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pse-transaction', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let date = (new Date(0)).setUTCSeconds(data.t);
-            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),
@@ -898,8 +898,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 let data = response.data;
 
                                 $scope.$parent.transactions = data.map(transaction => {
-                                    let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
-                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp));
                                     
                                     return {
                                         symbol: transaction.symbol,

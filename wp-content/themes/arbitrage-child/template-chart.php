@@ -672,11 +672,11 @@
 	}
 	.bbs_bull {
 		position: absolute;
-		left: 15px;
+		left: 10px;
 	}
 	.bbs_bear {
 		position: absolute;
-		right: 15px;
+		right: 10px;
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -1996,7 +1996,7 @@
 																												<strong>LAST</strong>
 																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>
-																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change')" style="padding: 3px !important; cursor: pointer;">
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change_percentage')" style="padding: 3px !important; cursor: pointer;">
 																												<strong>CHANGE</strong>
 																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
 																											</th>

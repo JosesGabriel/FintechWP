@@ -36,7 +36,7 @@ jQuery(function(){
             $stockinfo = $jsonstocklist->data;
         }
 
-       print_r($stockinfo->symbol);
+       //print_r($stockinfo->symbol);
 
 
         $num = 0;
@@ -47,10 +47,10 @@ jQuery(function(){
         //$users = get_users( array( 'fields' => array( 'ID' ) ) );
 
 
-        foreach ($stockinfo as $key => $stock) {
+        foreach($stockinfo as $stkey => $stvals){
 
 
-                echo "stock-name->" . $stock['symbol'];
+                echo "stock-name->" . $stvals->symbol;
         
             /*foreach($users as $user_id){
 

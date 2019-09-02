@@ -36,7 +36,7 @@ jQuery(function(){
             $stockinfo = $jsonstocklist->data;
         }
 
-       print_r($stockinfo);
+       print_r($stockinfo->symbol);
 
 
         $num = 0;

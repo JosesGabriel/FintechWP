@@ -178,7 +178,7 @@ $user = wp_get_current_user();
 </head>
 <body <?php body_class(); ?>>
 	  <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
-	  
+
 <div class="form-success-email">
 	<div class="success--content">
 		<!-- <i class="far fa-check-circle"></i> -->
@@ -262,9 +262,16 @@ $user = wp_get_current_user();
 <?php
 
 if(isset($_POST['send'])){
-        $email = $_POST['email'];
-       
-       //_insert_replace_helper( $table, $data, $format, 'INSERT' );		
+      
+       	global $wpdb;
+
+       	$date = date('Y-m-d H:i:s');
+    	$tablename=$wpdb->prefix.'arby_launch_emailnotication';	
+    	$data=array('user_email' => $_POST['email'],'add_date' => $date);
+
+    	$wpdb->insert($tablename, $data);
+
+
     }
 ?>
 

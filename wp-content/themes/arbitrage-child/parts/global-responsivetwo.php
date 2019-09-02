@@ -70,7 +70,7 @@
 		margin-top: 0px !important;
 	}
 	.wrap {
-		width: 100px !important;
+		width: 200px !important;
 	}
 
 

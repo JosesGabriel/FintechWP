@@ -486,23 +486,25 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
 
     socket.on('pse-transaction', function (data) {
-        let date = (new Date(0)).setUTCSeconds(data.timestamp);
-        let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
-        let transaction = {
-            symbol: data.symbol,
-            price:  price_format(data.executed_price),
-            shares: abbr_format(data.executed_volume),
-            buyer:  data.buyer,
-            seller: data.seller,
-            time:   full_time,
-        };
-
-        $scope.transactions.unshift(transaction);
-        if ($scope.transactions.length > 20) {
-            $scope.transactions.pop();
+        if ($scope.stock && $scope.stock.symbol == data.symbol) {
+            let date = (new Date(0)).setUTCSeconds(data.timestamp);
+            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+            let transaction = {
+                symbol: data.symbol,
+                price:  price_format(data.executed_price),
+                shares: abbr_format(data.executed_volume),
+                buyer:  data.buyer,
+                seller: data.seller,
+                time:   full_time,
+            };
+    
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            
+            $scope.$digest();
         }
-        
-        $scope.$digest();
     });
 
     socket.on('T', function(data) {

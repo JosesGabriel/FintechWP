@@ -36,7 +36,7 @@ jQuery(function(){
             $stockinfo = $response->data;
         }
 
-       
+       print_r($response);
 
         $num = 0;
         $counter = 1;
@@ -47,9 +47,6 @@ jQuery(function(){
 
 
         foreach($stockinfo as $stkey => $stvals){
-
-                
-               // echo "stock-name->" . $stvals->symbol;
         
             foreach($users as $user_id){
            
@@ -66,7 +63,6 @@ jQuery(function(){
                                 }
 
                          }
-
                          
                     }
 
@@ -74,12 +70,31 @@ jQuery(function(){
                 $counter = 1;
              }
     
+             //====sort stock=========//
 
              for($i = 0; $i < $stockcount; $i++){
+                for ($j = $i + 1; $j < $stockcount; $j++) {
+                     if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
 
-                if($stock_watched[$i][0] != ''){
+                            $temp = $stock_watched[$i][0];
+                            $temp2 = $stock_watched[$i][1];
+                            $stock_watched[$i][0] = $stock_watched[$j][0];
+                            $stock_watched[$i][1] = $stock_watched[$j][1];
+                            $stock_watched[$j][0] = $temp;
+                            $stock_watched[$j][1] = $temp2;
+
+                    }
+
+                }
+
+             }
+
+
+             for($i = 0; $i < $stockcount; $i++){
+                 if($stock_watched[$i][0] != ''){
                     //echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
                 }
+
              }
         
 

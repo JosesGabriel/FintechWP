@@ -426,8 +426,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             let data = response.data;
 
             $scope.transactions = data.map(transaction => {
-                let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
-                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
                 
                 return {
                     symbol: transaction.symbol,
@@ -514,8 +513,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pse-transaction', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let date = (new Date(0)).setUTCSeconds(data.t);
-            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),

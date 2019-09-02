@@ -670,6 +670,14 @@
 		/* position: relative;
     	top: -47px; */
 	}
+	.bbs_bull {
+		position: absolute;
+		left: 15px;
+	}
+	.bbs_bear {
+		position: absolute;
+		right: 15px;
+	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
 	}

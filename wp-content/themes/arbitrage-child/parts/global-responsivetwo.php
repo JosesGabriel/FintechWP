@@ -66,6 +66,9 @@
 		overflow-y: scroll !important;
     	max-height: 1120px !important;
 	}
+	.clock {
+		margin-top: 0px !important;
+	}
 
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {

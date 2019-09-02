@@ -461,19 +461,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 				if (stock.change < 0){changicotored();}
             }
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
-            var transaction = {
-                symbol: stock.symbol,
-                price:  price_format(stock.last),
-                change: stock.change,
-                shares: abbr_format(stock.volume),
-                buyer:  "",
-                seller: "",
-                time:   full_time,
-            }
-            $scope.transactions.unshift(transaction);
-            if ($scope.transactions.length > 20) {
-                $scope.transactions.pop();
-            }
 
             if (current_stock_index) {
                 $scope.stock = $scope.stocks[current_stock_index];

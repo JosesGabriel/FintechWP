@@ -23,6 +23,9 @@ jQuery(function(){
 
         <?php 
 
+        
+
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -32,8 +35,7 @@ jQuery(function(){
 
         if ($response !== false) {
             $response = json_decode($response);
-            $jsonstocklist = json_encode($response);
-            $stockinfo = $jsonstocklist->data;
+            $stockinfo = $response->data;
         }
 
        //print_r($stockinfo->symbol);
@@ -44,22 +46,22 @@ jQuery(function(){
         $stockcount = 0;
         //$stock_watched = array();
        
-        //$users = get_users( array( 'fields' => array( 'ID' ) ) );
+        $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
 
         foreach($stockinfo as $stkey => $stvals){
 
-                echo "sddsfsdfdsf";
-                //echo "stock-name->" . $stvals->symbol;
+                
+               // echo "stock-name->" . $stvals->symbol;
         
-            /*foreach($users as $user_id){
-
+            foreach($users as $user_id){
+           
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
                  foreach ($havemeta as $key => $value) {
-                        
-                                if ($stock['stockname'] == $value['stockname']) {
-                                    $stock_watched[$stockcount][0] = $stock['stockname'];
+                    
+                                if ($stvals->symbol == $value['stockname']) {
+                                    $stock_watched[$stockcount][0] = $stvals->symbol;
                                     $stock_watched[$stockcount][1] = $counter++;
                                 }
 
@@ -68,14 +70,14 @@ jQuery(function(){
                          $counter = 0;
                     }
 
-                $stockcount++;*/
+                $stockcount++;
              }
 
-             /*for($i = 0; $i < $stockcount; $i++){
+             for($i = 0; $i < $stockcount; $i++){
 
                 echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
 
-             }*/
+             }
         
 
 

@@ -57,8 +57,10 @@ jQuery(function(){
 
                  foreach ($havemeta as $key => $value) {
                         
+                                echo $stvals->symbol;
+
                                 if ($stvals->symbol == $value['stockname']) {
-                                    $stock_watched[$stockcount][0] = $stock['stockname'];
+                                    $stock_watched[$stockcount][0] = $stvals->symbol;
                                     $stock_watched[$stockcount][1] = $counter++;
                                 }
 

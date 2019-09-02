@@ -833,7 +833,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     if (symbolData.type == 'index') {
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
-
+                    console.log("nausab ra");
                     angular.element(".arb_bullbear").show();
                     if (found.length) {
 

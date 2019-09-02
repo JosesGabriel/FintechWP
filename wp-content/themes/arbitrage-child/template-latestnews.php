@@ -796,7 +796,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					<?php get_template_part('parts/sidebar', 'profile'); ?>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 800px;">
 				<div class="center-dashboard-part-inner">
 					<div class="container">
 						<div class="row">

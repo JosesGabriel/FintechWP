@@ -2380,7 +2380,7 @@
 			border-radius: 20px;
 			background: black;
 		}
-		.draggable {
+		.arb_buysell {
 			background-color: rgb(36, 42, 48);
 			position: absolute;
 			padding: 5px 30px;

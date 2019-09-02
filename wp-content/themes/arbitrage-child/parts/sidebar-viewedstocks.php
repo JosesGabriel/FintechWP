@@ -74,6 +74,7 @@ jQuery(function(){
                     }
 
                 $stockcount++;
+                $counter = 0;
              }
 
              //echo $counter;

@@ -30,7 +30,7 @@ jQuery(function(){
             //echo $userID;
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
         foreach($users as $user_id){
-            echo $user_id->ID . "/n";
+            echo $user_id->ID . '\n';
              }
         ?>
         

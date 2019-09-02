@@ -101,7 +101,7 @@
 							<ul class="othersect">
 								<?php  $plcnt = 6; ?>
 
-								<?php $isfive = array_slice($dranks, 6, 10); ?>
+								<?php $isfive = array_slice($dranks, 4, 5); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
@@ -131,7 +131,6 @@
 												<?php 
 													echo ucwords($value['dbsname'])
 												?>
-												<?php print_r($value)?>
 												
 											</div>
 											<div class="istotal"><?php 

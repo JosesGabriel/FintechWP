@@ -107,13 +107,24 @@ jQuery(function(){
                                 <span><?php echo $stock_watched[$i][0]; ?></span>
                                 <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                             </li>
+
                     <?php
-                    //echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
+
+                     if($i == 4){
+                        echo "<div class='hide-show watched-hidden-content'>";
+                    }
+
+
+
+                   
                 }
 
              }
+
+                    echo "</div>";
             
-            ?>
+            ?>  
+
             </ul>
 
                        

@@ -23,6 +23,11 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 768px) and (max-width: 980px){
 
+	.text .val {
+		margin: 23px 0 0 0 !important;
+		font-size: 105px !important;
+	}
+
 	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;
     	width: 100% !important;

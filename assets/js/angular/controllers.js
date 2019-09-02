@@ -863,7 +863,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol)
                             .then(response => {
-                                let response = response.data;
+                                response = response.data;
                                 if (!response.success) {
                                     return;
                                 }

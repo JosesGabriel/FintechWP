@@ -107,6 +107,10 @@ body {
 	.countdown-container {
 		top: 100% !important;
 	}
+
+	.row {
+		margin-top: 328px !important;
+	}
 }
 .arbitrage-button {
 	font-family: 'Roboto', sans-serif;

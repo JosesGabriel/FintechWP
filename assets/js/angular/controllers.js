@@ -486,15 +486,15 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
 
     socket.on('pse-transaction', function (data) {
-        if ($scope.stock && $scope.stock.symbol == data.symbol) {
-            let date = (new Date(0)).setUTCSeconds(data.timestamp);
+        if ($scope.stock && $scope.stock.symbol == data.sym) {
+            let date = (new Date(0)).setUTCSeconds(data.t);
             let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
             let transaction = {
-                symbol: data.symbol,
-                price:  price_format(data.executed_price),
-                shares: abbr_format(data.executed_volume),
-                buyer:  data.buyer,
-                seller: data.seller,
+                symbol: data.sym,
+                price:  price_format(data.exp),
+                shares: abbr_format(data.exvol),
+                buyer:  data.b,
+                seller: data.s,
                 time:   full_time,
             };
     

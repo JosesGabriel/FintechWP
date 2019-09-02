@@ -297,6 +297,10 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	.clock {
+		margin-left: 40px !important;
+	}
+
 	ul.main-drop > ul {
 		right: -10px !important;
 		min-width: 375px !important;

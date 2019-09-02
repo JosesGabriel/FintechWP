@@ -45,8 +45,11 @@ jQuery(function(){
 
 
         foreach ($jsonstocklist as $key => $stock) {
+
+
+                echo "stock-name->" . $stock['stockname'];
         
-            foreach($users as $user_id){
+            /*foreach($users as $user_id){
 
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
@@ -62,15 +65,15 @@ jQuery(function(){
                          $counter = 0;
                     }
 
-                $stockcount++;
+                $stockcount++;*/
              }
 
-             for($i = 0; $i < $stockcount; $i++){
+             /*for($i = 0; $i < $stockcount; $i++){
 
                 echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
 
-             }
-
+             }*/
+        
 
 
 

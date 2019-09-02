@@ -59,9 +59,7 @@ jQuery(function(){
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
                  foreach ($havemeta as $key => $value) {
-                        
-                                echo $stvals->symbol;
-
+                    
                                 if ($stvals->symbol == $value['stockname']) {
                                     $stock_watched[$stockcount][0] = $stvals->symbol;
                                     $stock_watched[$stockcount][1] = $counter++;
@@ -77,7 +75,7 @@ jQuery(function(){
 
              for($i = 0; $i < $stockcount; $i++){
 
-                //echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
+                echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
 
              }
         

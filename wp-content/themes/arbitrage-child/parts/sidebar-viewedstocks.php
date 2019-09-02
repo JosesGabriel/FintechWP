@@ -71,13 +71,13 @@ jQuery(function(){
 
                          }
 
-                         $counter = 0;
+                         
                     }
 
                 $stockcount++;
              }
 
-             echo $counter;
+             //echo $counter;
 
              for($i = 0; $i < $stockcount; $i++){
 

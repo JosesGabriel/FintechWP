@@ -15,7 +15,10 @@ date_default_timezone_set('Asia/Manila');
 // delete_user_meta($userID, '_watchlist_instrumental');
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); // get watchlist
-
+echo "on here";
+echo "<pre>";
+print_r($havemeta);
+echo "</pre>";
 	if (isset($_POST) && !empty($_POST)) {
 
 		if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {

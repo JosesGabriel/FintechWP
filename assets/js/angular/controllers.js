@@ -66,12 +66,10 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     socket.on('connect', function(data) {
         socket.emit('subscribe','transactions');
         socket.emit('subscribe','ticker');
-        console.log('subscribe: transactions')
     });
     socket.on('reconnect', function(data) {
         socket.emit('subscribe','transactions');
         socket.emit('subscribe','ticker');
-        console.log('subscribe: transactions')
     });
     socket.on('pse-chart', function (data) {
         var transaction = {
@@ -343,7 +341,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
-    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?stock-exchange=PSE").then( function (response) {
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
@@ -406,9 +404,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 $scope.marketdepth = response;
             }
         });
-        // console.log("my symbol: "+_symbol);
+
         socket.emit('stock', _symbol, function(data) {
-            console.log(data);
             if (data.transactions) {
                 $scope.transactions = data.transactions;
             }
@@ -589,7 +586,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 $scope.marketdepth[$scope.marketdepth.indexOf(found[0])] = data;
             } else $scope.marketdepth.push(data);
         }
-        console.log('boomtick');
     });
     $scope.sortStocks = function(sort) {
         if ($scope.sort == sort) {
@@ -785,8 +781,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 // changeTheme();
                 $('#tv_chart_container').show();
                 chart = widget.chart();
-                console.log("its here na");
-                console.log(_symbol + " ~ "+ $scope.$parent.fullbidtotal + " ~ "+$scope.$parent.fullasktotal);
+
                 // for register sentiments
                 $http({
                     method : "POST",
@@ -798,8 +793,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         'stock' : _symbol,
                     }
                 }).then(function mySucces(response) {
-                    console.log(response.data);
-                    console.log(response.data.isvote);
                     angular.element(".regsentiment").addClass('openmenow');
                     
 
@@ -834,14 +827,14 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 
                 
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
-                    console.log(symbolData);
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
                     var symbol = symbolData.ticker;
                     $rootScope.selectedSymbol = $scope.$parent.selectedStock = _symbol = symbol;
                     if (symbolData.type == 'index') {
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
-                    
+
+                    console.log("stock changed");
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
@@ -860,14 +853,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $scope.$parent.dshowsentiment = '';
 
-                        console.log("the stock changed");
-                        // console.log("https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
-
-                        
-                        
                         // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
-
-                        
                         //     if (response.data.success) {
                         //         $scope.$parent.marketdepth = response.data.data;
                         //     }
@@ -920,8 +906,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.stock = null;
                         $scope.$parent.marketdepth = [];
                         $scope.$parent.transactions = [];
-                        $scope.$parent.$digest();
                     }
+                    $scope.$parent.$digest();
+
                     var url = '/chart/' + symbol; 
                     var title = symbol + ' | Arbitrage Trading Tools';
                     document.title = title;

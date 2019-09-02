@@ -260,8 +260,9 @@ $user = wp_get_current_user();
 <?php
 
 if(isset($_POST['send'])){
-        $email = mysqli_real_escape_string($_POST['email']);
-        print_r($email);
+        $email = $_POST['email'];
+       
+       //_insert_replace_helper( $table, $data, $format, 'INSERT' );		
     }
 ?>
 

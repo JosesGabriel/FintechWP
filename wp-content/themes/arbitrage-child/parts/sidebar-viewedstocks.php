@@ -82,7 +82,7 @@ jQuery(function(){
              for($i = 0; $i < $stockcount; $i++){
 
                 if($stock_watched[$i][0] != ''){
-                   // echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
+                    echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] + 1 . "</br>";
                 }
              }
         

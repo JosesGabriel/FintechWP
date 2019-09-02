@@ -99,7 +99,7 @@
 
 							</ul>
 							<ul class="othersect">
-								<?php  $plcnt = 6; ?>
+								<?php  $plcnt = 4; ?>
 
 								<?php $isfive = array_slice($dranks, 4, 5); ?>
 								<?php foreach ($isfive as $key => $value) { ?>

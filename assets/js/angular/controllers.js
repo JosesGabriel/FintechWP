@@ -898,8 +898,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 let data = response.data;
 
                                 $scope.$parent.transactions = data.map(transaction => {
-                                    let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
-                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp));
                                     
                                     return {
                                         symbol: transaction.symbol,

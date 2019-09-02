@@ -1435,8 +1435,11 @@
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
 																			<div class="arb_buysell" id="draggable_buysell">
-																				<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																				<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																				<i class="fas fa-arrows-alt"></i>
+																				<div class="buttons">
+																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																				</div>
 																			</div>
 
 																			<div class="hideformodal">  
@@ -2377,13 +2380,15 @@
 			border-radius: 20px;
 			background: black;
 		}
-		.noSelect {
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+		.draggable {
+			background-color: rgb(36, 42, 48);
+			position: absolute;
+			padding: 5px 30px;
+			border-radius: 10px;
+		}
+		.buttons {
+			border-left: 1px solid white;
+			padding-left: 3px;
 		}
 	</style>
 	<script type="text/javascript">

@@ -46,7 +46,7 @@ jQuery(function(){
        
         //$users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        echo "sddsfsdfdsf";
+       
         foreach($stockinfo as $stkey => $stvals){
 
                 echo "sddsfsdfdsf";

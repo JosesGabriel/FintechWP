@@ -2213,7 +2213,7 @@
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script>
 	$( function() {
-		$( "#draggable_buysell" ).draggable();
+		$('#draggable_buysell').draggable({cancel:false});
 	} );
 	</script>
 	<!--[if lt IE 9]>

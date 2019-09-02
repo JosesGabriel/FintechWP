@@ -491,7 +491,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         let transaction = {
             symbol: data.symbol,
             price:  price_format(data.executed_price),
-            change: stock.change,
             shares: abbr_format(data.executed_volume),
             buyer:  data.buyer,
             seller: data.seller,

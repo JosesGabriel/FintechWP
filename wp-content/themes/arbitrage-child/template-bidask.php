@@ -151,7 +151,7 @@
 </head>
 <body>
 	<div id="page-container" class="fade page-content-full-height page-without-sidebar" ng-controller="template">
-	<div class="areattl" style="margin-top: -2px;">Market Depth: <strong style="color: #FFF"><?php echo $_GET['stocksym']; ?></strong></div>
+	<div class="areattl" style="margin-top: -2px;">Market Depth: <strong style="color: #ffb6c1"><?php echo $_GET['stocksym']; ?></strong></div>
 		<div id="content" class="content content-full-width">
             <div data-scrollbar="true" data-height="100%" ng-controller="chart">
             <div class="vertical-box tab-pane fade in active" id="tab-marketepth">

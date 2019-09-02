@@ -22,15 +22,13 @@ jQuery(function(){
 
 
         <?php 
-       // global $current_user;
-        //$user = wp_get_current_user();
-        //$userID = $current_user->ID;
-
-            //$ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
-            //echo $userID;
+       
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
         foreach($users as $user_id){
-            echo $user_id->ID . '\n';
+            //echo $user_id->ID . '\n';
+
+
+
              }
         ?>
         

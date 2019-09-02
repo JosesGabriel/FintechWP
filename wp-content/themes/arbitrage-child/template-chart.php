@@ -798,10 +798,10 @@
 	tr.ng-scope:active {
 		background-color: #eb4d5c!important;
 	}
-	.dopensentiment,
+	/* .dopensentiment,
 	.openmenow > .arb_bullbear {
 		display: block !important;
-	}
+	} */
 	/* Responsive */
 	@media screen and (max-width: 767px){
 		.table-responsive {

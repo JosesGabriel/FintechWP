@@ -1434,8 +1434,10 @@
 																<div class="vertical-box">
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
-																			<div class="arb_buysell" id="draggable_buysell">
-																				<i class="fas fa-grip-vertical"></i>
+																			<div class="arb_buysell">
+																				<button class="buysell-grip-btn" id="draggable_buysell">
+																					<i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
+																				</button>
 																				<div class="buttons">
 																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
 																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
@@ -2389,6 +2391,14 @@
 		.buttons {
 			border-left: 1px solid white;
 			padding-left: 3px;
+		}
+		.buysell-grip-btn {
+			background: transparent;
+			border: 0px;
+			position: absolute;
+			left: 5px;
+			bottom: 6px;
+			outline: none;
 		}
 	</style>
 	<script type="text/javascript">

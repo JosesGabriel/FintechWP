@@ -1435,7 +1435,7 @@
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
 																			<div class="arb_buysell" id="draggable_buysell">
-																				<i class="fas fa-arrows-alt"></i>
+																				<i class="fas fa-grip-vertical"></i>
 																				<div class="buttons">
 																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
 																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
@@ -1957,12 +1957,12 @@
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
 																			<li class="active">
 																				<a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
-																					<small style="text-transform: uppercase;">All Stocks</small>
+																					<small>All Stocks</small>
 																				</a>
 																			</li>
 																			<li class="">
 																				<a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
-																					<small style="text-transform: uppercase;">Watchlist</small>
+																					<small>Watchlist</small>
 																				</a>
 																			</li>
 																		</ul>

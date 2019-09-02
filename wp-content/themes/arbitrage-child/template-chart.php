@@ -670,6 +670,14 @@
 		/* position: relative;
     	top: -47px; */
 	}
+	.bbs_bull {
+		position: absolute;
+		left: 15px;
+	}
+	.bbs_bear {
+		position: absolute;
+		right: 15px;
+	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
 	}
@@ -818,7 +826,7 @@
 			border-left: 5px solid #34495e;
 		}
 		.arb_buysell {
-			top: 49px;
+			top: 76px;
 			left: -78px;
 			width: 72px;
 			text-align: right;
@@ -1435,8 +1443,13 @@
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
 																			<div class="arb_buysell" id="draggable_buysell">
-																				<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																				<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																				<button class="buysell-grip-btn">
+																					<i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
+																				</button>
+																				<div class="buttons">
+																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																				</div>
 																			</div>
 
 																			<div class="hideformodal">  
@@ -1741,7 +1754,7 @@
 																	?>
 
 																	<div class="regsentiment">
-																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 67px;overflow: hidden;">
+																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 80px;overflow: hidden;">
 																			<div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
 																				<span class="bullbearsents_label">Register your sentiments</span>
 																				<a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>
@@ -1954,12 +1967,12 @@
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
 																			<li class="active">
 																				<a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
-																					<small style="text-transform: uppercase;">All Stocks</small>
+																					<small>All Stocks</small>
 																				</a>
 																			</li>
 																			<li class="">
 																				<a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
-																					<small style="text-transform: uppercase;">Watchlist</small>
+																					<small>Watchlist</small>
 																				</a>
 																			</li>
 																		</ul>
@@ -2208,7 +2221,7 @@
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script>
 	$( function() {
-		$( "#draggable_buysell" ).draggable();
+		$('#draggable_buysell').draggable({cancel:false});
 	} );
 	</script>
 	<!--[if lt IE 9]>
@@ -2377,13 +2390,23 @@
 			border-radius: 20px;
 			background: black;
 		}
-		.noSelect {
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+		.arb_buysell {
+			background-color: rgb(36, 42, 48);
+			position: absolute;
+			padding: 5px 20px 5px 30px;
+			border-radius: 10px;
+		}
+		.buttons {
+			border-left: 1px solid white;
+			padding-left: 3px;
+		}
+		.buysell-grip-btn {
+			background: transparent;
+			border: 0px;
+			position: absolute;
+			left: 5px;
+			bottom: 6px;
+			outline: none;
 		}
 	</style>
 	<script type="text/javascript">

@@ -71,7 +71,7 @@ jQuery(function(){
                 $counter = 1;
              }
     
-             //====sort stock=========//
+         
 
              for($i = 0; $i < $stockcount; $i++){
                 for ($j = $i + 1; $j < $stockcount; $j++) {
@@ -93,7 +93,6 @@ jQuery(function(){
 
              }
 
-             //========================================
              ?>
 
              <ul>

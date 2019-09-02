@@ -38,7 +38,7 @@
 							<ul>
 								<?php  $plcnt = 1; ?>
 
-								<?php $isfive = array_slice($dranks, 1, 3); ?>
+								<?php $isfive = array_slice($dranks, 0, 2); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
@@ -86,7 +86,7 @@
 							<ul class="othersect">
 								<?php  $plcnt = 4; ?>
 
-								<?php $isfive = array_slice($dranks, 4, 5); ?>
+								<?php $isfive = array_slice($dranks, 3, 4); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>

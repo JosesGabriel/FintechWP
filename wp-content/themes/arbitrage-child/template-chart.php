@@ -1746,7 +1746,7 @@
 																	?>
 
 																	<div class="regsentiment">
-																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 67px;overflow: hidden;">
+																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 80px;overflow: hidden;">
 																			<div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
 																				<span class="bullbearsents_label">Register your sentiments</span>
 																				<a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>

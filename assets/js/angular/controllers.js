@@ -862,8 +862,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
-
-                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol)
+                        let limit = 20;
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol + '&limit=' + limit)
                             .then(response => {
                                 response = response.data;
                                 if (!response.success) {

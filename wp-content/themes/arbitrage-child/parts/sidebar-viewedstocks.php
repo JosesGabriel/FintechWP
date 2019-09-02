@@ -23,9 +23,7 @@ jQuery(function(){
 
         <?php 
 
-        
-
-
+       
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -38,8 +36,7 @@ jQuery(function(){
             $stockinfo = $response->data;
         }
 
-       //print_r($stockinfo->symbol);
-
+       
 
         $num = 0;
         $counter = 1;
@@ -76,13 +73,12 @@ jQuery(function(){
                 $stockcount++;
                 $counter = 1;
              }
-
-             
+    
 
              for($i = 0; $i < $stockcount; $i++){
 
                 if($stock_watched[$i][0] != ''){
-                    echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
+                    //echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
                 }
              }
         

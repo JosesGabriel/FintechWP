@@ -48,10 +48,10 @@ jQuery(".stocks-hidden-content").click(function () {
     $gerdqoute = curl_exec($curl);
     curl_close($curl);
     
-
+    
     $gerdqoute = json_decode($gerdqoute);
     // $gerdqoute = $stocksdesc;
-    
+    $adminuser = 504; // store on the chart page
 
     $listofstocks = []; 
 
@@ -96,10 +96,18 @@ jQuery(".stocks-hidden-content").click(function () {
                 }
             }
 
+            $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
+            // $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
+		    $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+            ?>
+                <!-- debugs here -->
+            <?php
+            // print_r($dpullbull);
+
             // percentage
             // 3 days back
             $threedays = ceil($countpstock * 0.2);
-            $bulls = ceil($isbull * 0.3);
+            $bulls = ceil($dpullbull * 0.3);
             $tags = ceil($todayreps * 0.6);
             $finalcount = $bulls + $threedays + $tags;
 
@@ -107,7 +115,7 @@ jQuery(".stocks-hidden-content").click(function () {
     
             $indls['following'] += $finalcount;
 
-
+            
     
     
             array_push($listofstocks, $indls);

@@ -378,10 +378,6 @@ date_default_timezone_set('Asia/Manila'); ?>
     	background: #142c46;
     	margin-top: 15px;
     }
-    .latest-news {
-    	background: #142c46;
-    	margin-top: 15px;
-    }
     .latest-news .to-top-title {
 	    padding: 10px 14px 2px 14px !important
 	}

@@ -62,7 +62,6 @@
 @media only screen and (max-width: 767px){
 
 	.countdown-container {
-    	max-height: 100% !important;
     	top: 0px !important;
 	}
 	.clock {

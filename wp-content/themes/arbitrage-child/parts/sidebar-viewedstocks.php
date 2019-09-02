@@ -19,6 +19,12 @@ jQuery(function(){
     <div class="to-top-title"><strong>Most Watched Stocks</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
+
+
+        <?php 
+            $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
+            echo $ismetadis;
+        ?>
         
 		                <ul>
 				            <li class="odd">

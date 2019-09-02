@@ -298,6 +298,7 @@
 @media only screen and (max-width: 410px){
 
 	.clock {
+		margin-top: 620px !important;
 		margin-left: 40px !important;
 	}
 

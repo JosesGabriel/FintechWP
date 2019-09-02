@@ -74,6 +74,10 @@
 		width: 200px !important;
 	}
 
+	.text {
+		top: 56% !important;
+	}
+
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;

@@ -98,7 +98,7 @@ jQuery(function(){
              <ul>
              <?php
 
-             for($i = 0; $i < $stockcount; $i++){
+             for($i = 0; $i < 10; $i++){
 
                  if($stock_watched[$i][0] != ''){
 

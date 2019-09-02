@@ -84,6 +84,11 @@
     	width: 40%;
 	}
 
+	.title-header {
+		font-size: 20px !important;
+		margin-bottom: 10px;
+	}
+
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;

@@ -33,7 +33,7 @@ jQuery(function(){
         if ($response !== false) {
             $response = json_decode($response);
             $jsonstocklist = json_encode($response);
-            $stockinfo = $jsonstocklist->data;
+            $stockinfo = $response->data;
         }
 
        //print_r($stockinfo->symbol);
@@ -46,11 +46,11 @@ jQuery(function(){
        
         //$users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-       
+
         foreach($stockinfo as $stkey => $stvals){
 
-                echo "sddsfsdfdsf";
-                //echo "stock-name->" . $stvals->symbol;
+                
+                echo "stock-name->" . $stvals->symbol;
         
             /*foreach($users as $user_id){
 

@@ -22,15 +22,63 @@ jQuery(function(){
 
 
         <?php 
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        if ($response !== false) {
+            $response = json_decode($response);
+            $jsonstocklist = json_encode($response);
+        }
+
+
+        $num = 0;
+        $counter = 0;
+        $stockcount = 0;
+        $stock_watched = array();
        
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
-        foreach($users as $user_id){
-            //echo $user_id->ID . '\n';
 
 
+        foreach ($jsonstocklist as $key => $stock) {
+        
+            foreach($users as $user_id){
+
+                $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+
+                 foreach ($havemeta as $key => $value) {
+                        
+                                if ($stock['stockname'] == $value['stockname']) {
+                                    $stock_watched[$stockcount][0] = $stock['stockname'];
+                                    $stock_watched[$stockcount][1] = $counter++;
+                                }
+
+                         }
+
+                         $counter = 0;
+                    }
+
+                $stockcount++;
+             }
+
+             for($i = 0; $i < $stockcount; $i++){
+
+                echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
 
              }
+
+
+
+
+
         ?>
+
+
+
         
 		                <ul>
 				            <li class="odd">

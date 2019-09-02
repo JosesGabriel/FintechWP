@@ -834,7 +834,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
 
-                    console.log("stock changed");
+                    angular.element(".arb_bullbear").show();
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {

@@ -23,6 +23,11 @@
 /* Tablet Portrait */
 @media only screen and (min-width: 768px) and (max-width: 980px){
 
+	.text .val {
+		margin: 23px 0 0 0 !important;
+		font-size: 105px !important;
+	}
+
 	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;
     	width: 100% !important;
@@ -60,6 +65,34 @@
 
 /* Mobile */
 @media only screen and (max-width: 767px){
+
+	.countdown-container {
+    	top: 0px !important;
+	}
+	.clock {
+		margin-top: 577px !important;
+    	margin-left: 60px !important;
+	}
+	.wrap {
+		width: 200px !important;
+	}
+
+	.text {
+		top: 56% !important;
+	}
+	.text .type-time {
+		margin-top: 7px !important;
+	}
+
+	.clock-item {
+		margin: 0px 0px 0px 0px !important;
+    	width: 40%;
+	}
+
+	.title-header {
+		font-size: 20px !important;
+		margin-bottom: 10px;
+	}
 
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
@@ -268,6 +301,11 @@
 
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
+
+	.clock {
+		margin-top: 620px !important;
+		margin-left: 40px !important;
+	}
 
 	ul.main-drop > ul {
 		right: -10px !important;

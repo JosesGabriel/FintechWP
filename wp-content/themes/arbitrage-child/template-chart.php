@@ -467,9 +467,10 @@
 		height: 152px;
 		border: 1px solid #4e6a85;
 		border-radius: 5px;
-		padding: 7px 5px 0 5px;
+		padding: 5px;
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% transparent;
 		background-size: 50px;
+		background-color: #0c1f33;
 	}
 	iframe.bullbearframe {
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% #2b3d4f;
@@ -798,10 +799,10 @@
 	tr.ng-scope:active {
 		background-color: #eb4d5c!important;
 	}
-	.dopensentiment,
+	/* .dopensentiment,
 	.openmenow > .arb_bullbear {
 		display: block !important;
-	}
+	} */
 	/* Responsive */
 	@media screen and (max-width: 767px){
 		.table-responsive {
@@ -2083,7 +2084,7 @@
 						foreach($stockinfo as $stkey => $stvals){
                               if($stvals->symbol == $dstock ){
                                 $dprice = $stvals->last;
-								$dchange = $stvals->change;
+								$dchange = $stvals->changepercentage;
 								$dlow = $stvals->low;
 								$dhigh = $stvals->high;
                               }

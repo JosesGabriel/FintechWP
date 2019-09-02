@@ -18,7 +18,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		background: #0d1f33 !important;
 	}
 	.inner-main-content, .header-dashboard-inner {
-		max-width: none !important;
+		max-width: 1000px !important;
     	width: 85% !important;
 	}
 	.center-dashboard-part {
@@ -796,7 +796,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					<?php get_template_part('parts/sidebar', 'profile'); ?>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 800px;">
 				<div class="center-dashboard-part-inner">
 					<div class="container">
 						<div class="row">

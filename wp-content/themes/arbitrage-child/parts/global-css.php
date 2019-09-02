@@ -645,8 +645,7 @@ span.nocont {
 }
 .latest-news {
 	margin-top: 15px;
-    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
-    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+    background: #142c46;
 }
 .latest-news .to-top-title {
 	padding: 10px 14px 2px 14px !important
@@ -2354,11 +2353,9 @@ ul.footmore .ddot {
 	text-align: left;
 }
 .hudbadge p {
-	transform: translate(0, 13px);
 	display: block;
 	vertical-align: middle;
 	margin: 0 auto;
-	position: absolute;
 	color: #72cddd;
 	font-size: 20px;
 	font-family: 'Century Gothic';
@@ -2372,11 +2369,11 @@ ul.footmore .ddot {
 	padding: 0;
 }
 a.viewmoreplayers {
-	color: #d8d8d8;
-	font-size: 13px;
-	font-weight: 500;
-	display: block;
-	margin-top: 5px;
+	color: #d8d8d8 !important;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
 }
 .ranks h5 {
 	padding-left: 9px;

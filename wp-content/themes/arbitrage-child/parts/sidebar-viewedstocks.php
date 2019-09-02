@@ -42,7 +42,7 @@ jQuery(function(){
 
 
         $num = 0;
-        $counter = 1;
+        $counter = 0;
         $stockcount = 0;
         //$stock_watched = array();
        
@@ -66,13 +66,12 @@ jQuery(function(){
 
 
                                     $stock_watched[$stockcount][0] = $stvals->symbol;
-                                    $stock_watched[$stockcount][1] = $counter;
-                                    $counter++
+                                    $stock_watched[$stockcount][1] = $counter++;
                                 }
 
                          }
 
-                         //$counter = 0;
+                         $counter = 0;
                     }
 
                 $stockcount++;

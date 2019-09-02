@@ -36,7 +36,7 @@ jQuery(function(){
             $stockinfo = $response->data;
         }
 
-       print_r($response);
+       //print_r($response);
 
         $num = 0;
         $counter = 1;
@@ -59,6 +59,7 @@ jQuery(function(){
                                 if ($stvals->symbol == $value['stockname']) {
                                     $stock_watched[$stockcount][0] = $stvals->symbol;
                                     $stock_watched[$stockcount][1] = $counter;
+                                    $stock_watched[$stockcount][2] = $stvals->description;
                                     $counter++;
                                 }
 
@@ -78,10 +79,13 @@ jQuery(function(){
 
                             $temp = $stock_watched[$i][0];
                             $temp2 = $stock_watched[$i][1];
+                            $temp3 = $stock_watched[$i][2];
                             $stock_watched[$i][0] = $stock_watched[$j][0];
                             $stock_watched[$i][1] = $stock_watched[$j][1];
+                            $stock_watched[$i][2] = $stock_watched[$j][2];
                             $stock_watched[$j][0] = $temp;
                             $stock_watched[$j][1] = $temp2;
+                            $stock_watched[$j][2] = $temp3;
 
                     }
 
@@ -89,23 +93,31 @@ jQuery(function(){
 
              }
 
+             ?>
 
-             for($i = 0; $i < $stockcount; $i++){
+             <ul>
+             <?php
+
+             for($i = 0; $i < 10; $i++){
+
                  if($stock_watched[$i][0] != ''){
+
+                    ?>
+                            <li class="odd">
+                                <span><?php echo $stock_watched[$i][0]; ?></span>
+                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                            </li>
+                    <?php
                     //echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
                 }
 
              }
-        
+            
+            ?>
+            </ul>
 
-
-
-
-        ?>
-
-
-
-        
+                       
+                <!--
 		                <ul>
 				            <li class="odd">
 				                <span>MRC</span>
@@ -123,6 +135,8 @@ jQuery(function(){
 				                <span>STI</span>
 				                <a href="#">STI Education System, Inc.<br><p>325 Following</p></a>
 				            </li>
+
+
 				            <div class="hide-show watched-hidden-content">
 				                <li class="odd">
 				                    <span>FOOD</span>
@@ -141,7 +155,10 @@ jQuery(function(){
 				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>332 Following</p></a>
 				                </li>
 				            </div>
-				        </ul>
+
+
+
+				        </ul>  -->
     </div>
     <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
         <i class="fas fa-sort-down" style="

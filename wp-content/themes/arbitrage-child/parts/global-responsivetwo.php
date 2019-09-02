@@ -68,7 +68,7 @@
 	}
 	.clock {
 		margin-top: 577px !important;
-    	margin-left: 107px !important;
+    	margin-left: 0px !important;
 	}
 	.wrap {
 		width: 200px !important;

@@ -61,6 +61,10 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.countdown-container {
+		margin-left: 50px !important;
+	}
+
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;

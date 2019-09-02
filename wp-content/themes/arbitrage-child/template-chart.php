@@ -467,9 +467,10 @@
 		height: 152px;
 		border: 1px solid #4e6a85;
 		border-radius: 5px;
-		padding: 7px 5px 0 5px;
+		padding: 5px;
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% transparent;
 		background-size: 50px;
+		background-color: #0c1f33;
 	}
 	iframe.bullbearframe {
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% #2b3d4f;
@@ -1433,9 +1434,12 @@
 																<div class="vertical-box">
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
-																			<div class="arb_buysell">
-																				<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																				<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																			<div class="arb_buysell" id="draggable_buysell">
+																				<i class="fas fa-arrows-alt"></i>
+																				<div class="buttons">
+																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																				</div>
 																			</div>
 
 																			<div class="hideformodal">  
@@ -2083,7 +2087,7 @@
 						foreach($stockinfo as $stkey => $stvals){
                               if($stvals->symbol == $dstock ){
                                 $dprice = $stvals->last;
-								$dchange = $stvals->change;
+								$dchange = $stvals->changepercentage;
 								$dlow = $stvals->low;
 								$dhigh = $stvals->high;
                               }
@@ -2205,6 +2209,11 @@
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script>
+	$( function() {
+		$( "#draggable_buysell" ).draggable();
+	} );
+	</script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>
@@ -2371,13 +2380,15 @@
 			border-radius: 20px;
 			background: black;
 		}
-		.noSelect {
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none;
+		.arb_buysell {
+			background-color: rgb(36, 42, 48);
+			position: absolute;
+			padding: 5px 30px;
+			border-radius: 10px;
+		}
+		.buttons {
+			border-left: 1px solid white;
+			padding-left: 3px;
 		}
 	</style>
 	<script type="text/javascript">

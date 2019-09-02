@@ -38,29 +38,14 @@
 							<ul>
 								<?php  $plcnt = 0; ?>
 
-								<?php $isfive = array_slice($dranks, 0, 5); ?>
+								<?php $isfive = array_slice($dranks, 0, 3); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
 										<div class="hudbadge">
 
-										    <?php if($plcnt == 1){ ?>
-										    	<p style="color:#ffd03b;">
-										    	<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesgold.svg">
-									  		<?php }else if($plcnt == 2){ ?>
-									  			<p style="color:#d3d3d3;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgessilver.svg">
-									  		<?php }else if($plcnt == 3){ ?>
-									  			<p style="color:#da9b5c;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesbronze.svg">
-									  		<?php }else{ ?>
-									  			<p><?php echo $plcnt; ?></p>
-									  			<img src="/svg/hudbadgesblue.svg">
-									  		<?php } ?>
-									   
+											<p><?php echo $plcnt; ?></p>
+
 									   </div>
 
 									    <div class="playerscontent">
@@ -99,36 +84,23 @@
 
 							</ul>
 							<ul class="othersect">
-								<?php  $plcnt = 6; ?>
+								<?php  $plcnt = 3; ?>
 
-								<?php $isfive = array_slice($dranks, 6, 10); ?>
+								<?php $isfive = array_slice($dranks, 3, 2); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
 										<div class="hudbadge">
 
-										    <?php if($plcnt == 1){ ?>
-										    	<p style="color:#ffd03b;">
-										    	<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesgold.svg">
-									  		<?php }else if($plcnt == 2){ ?>
-									  			<p style="color:#d3d3d3;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgessilver.svg">
-									  		<?php }else if($plcnt == 3){ ?>
-									  			<p style="color:#da9b5c;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesbronze.svg">
-									  		<?php }else{ ?>
-									  			<p><?php echo $plcnt; ?></p>
-									  			<img src="/svg/hudbadgesblue.svg">
-									  		<?php } ?>
-									   
+										    <p><?php echo $plcnt; ?></p>
+								
 									   </div>
 
 									    <div class="playerscontent">
 											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+												<?php 
+													echo ucwords($value['dbsname'])
+												?>
 												
 											</div>
 											<div class="istotal"><?php 
@@ -170,7 +142,7 @@
 								jQuery(".othersect").toggle('1000');
 
 								if( $(".viewmoreplayers").text() == "View more"){
-									  $(".viewmoreplayers").text("Show less");
+									  $(".viewmoreplayers").text("Hide");
 									}
 								else{
 									 $(".viewmoreplayers").text("View more");

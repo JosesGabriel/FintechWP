@@ -117,7 +117,7 @@
 	}
 	.areattl {color: #ecf0f1;padding: 1px 1px 1px 3px;}
 	html, body, .vertical-box-cell tr:nth-child(odd), .vertical-box-cell tr:nth-child(even) {
-		background-color: #34495e !important;
+		background-color: #0c1f33 !important;
 	}
 	.dbar > div {
 	    float: left;
@@ -145,13 +145,13 @@
 		width: 97%;
 	}
 	.table tr td, .ng-scope td {
-		background-color: #34495e !important;
+		background-color: #0c1f33 !important;
 	}
 </style>
 </head>
 <body>
 	<div id="page-container" class="fade page-content-full-height page-without-sidebar" ng-controller="template">
-	<div class="areattl" style="margin-top: -2px;">Market Depth: <strong style="color: #FFF"><?php echo $_GET['stocksym']; ?></strong></div>
+	<div class="areattl" style="margin-top: -2px;">Market Depth: <strong style="color: #ffb6c1"><?php echo $_GET['stocksym']; ?></strong></div>
 		<div id="content" class="content content-full-width">
             <div data-scrollbar="true" data-height="100%" ng-controller="chart">
             <div class="vertical-box tab-pane fade in active" id="tab-marketepth">

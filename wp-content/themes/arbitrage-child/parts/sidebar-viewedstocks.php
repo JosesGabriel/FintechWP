@@ -49,8 +49,8 @@ jQuery(function(){
 
         foreach($stockinfo as $stkey => $stvals){
 
-
-                echo "stock-name->" . $stvals->symbol;
+                echo "sddsfsdfdsf";
+                //echo "stock-name->" . $stvals->symbol;
         
             /*foreach($users as $user_id){
 

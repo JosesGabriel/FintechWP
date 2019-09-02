@@ -2083,7 +2083,7 @@
 						foreach($stockinfo as $stkey => $stvals){
                               if($stvals->symbol == $dstock ){
                                 $dprice = $stvals->last;
-								$dchange = $stvals->change;
+								$dchange = $stvals->changepercentage;
 								$dlow = $stvals->low;
 								$dhigh = $stvals->high;
                               }

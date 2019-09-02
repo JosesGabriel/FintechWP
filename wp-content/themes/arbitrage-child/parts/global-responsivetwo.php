@@ -62,7 +62,9 @@
 @media only screen and (max-width: 767px){
 
 	.countdown-container {
-		margin-left: 50px !important;
+		margin-left: 67px !important;
+		overflow-y: scroll !important;
+    	max-height: 1120px !important;
 	}
 
 

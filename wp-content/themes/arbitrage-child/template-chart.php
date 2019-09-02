@@ -1434,7 +1434,7 @@
 																<div class="vertical-box">
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
-																			<div class="arb_buysell">
+																			<div class="arb_buysell" id="draggable_buysell">
 																				<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
 																				<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
 																			</div>
@@ -2206,6 +2206,11 @@
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script>
+	$( function() {
+		$( "#draggable_buysell" ).draggable();
+	} );
+	</script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>

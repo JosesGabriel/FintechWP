@@ -81,6 +81,10 @@
 		margin-top: 7px !important;
 	}
 
+	.clock-item {
+    	margin: 0px 0px 0px 0px;
+	}
+
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;

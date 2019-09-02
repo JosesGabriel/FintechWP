@@ -467,7 +467,7 @@
 		height: 152px;
 		border: 1px solid #4e6a85;
 		border-radius: 5px;
-		padding: 7px 5px 0 5px;
+		padding: 5px;
 		background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% transparent;
 		background-size: 50px;
 	}

@@ -23,6 +23,9 @@ jQuery(function(){
 
         <?php 
 
+        
+
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -43,7 +46,7 @@ jQuery(function(){
         $stockcount = 0;
         //$stock_watched = array();
        
-        //$users = get_users( array( 'fields' => array( 'ID' ) ) );
+        $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
 
         foreach($stockinfo as $stkey => $stvals){
@@ -52,7 +55,7 @@ jQuery(function(){
                // echo "stock-name->" . $stvals->symbol;
         
             foreach($users as $user_id){
-
+           
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
                  foreach ($havemeta as $key => $value) {

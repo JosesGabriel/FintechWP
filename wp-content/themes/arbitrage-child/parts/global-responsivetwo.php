@@ -82,7 +82,7 @@
 	}
 
 	.clock-item {
-    	margin: 0px 0px 0px 0px;
+    	width: 40%;
 	}
 
 

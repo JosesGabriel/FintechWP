@@ -22,6 +22,10 @@ jQuery(function(){
 
 
         <?php 
+        global $current_user;
+        $user = wp_get_current_user();
+        $userID = $current_user->ID;
+        
             $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
             echo $ismetadis;
         ?>

@@ -49,7 +49,7 @@ jQuery(function(){
         foreach ($jsonstocklist as $key => $stock) {
 
 
-                echo "stock-name->" . $stock['symbol'];
+                echo "stock-name->" . $stock->symbol;
         
             /*foreach($users as $user_id){
 

@@ -35,6 +35,8 @@ jQuery(function(){
             $jsonstocklist = json_encode($response);
         }
 
+        print_r($jsonstocklist);
+
 
         $num = 0;
         $counter = 0;

@@ -27,7 +27,7 @@ jQuery(function(){
         $userID = $current_user->ID;
 
             $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
-            print_r($ismetadis);
+            echo $userID;
         ?>
         
 		                <ul>

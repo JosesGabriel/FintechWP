@@ -1987,5 +1987,10 @@ h2.watchtitle {
 .swal2-popup .swal2-actions {
 	margin: 1.25em 0 0 auto;
 }
+.latest-news {
+	margin-top: 15px;
+    background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
+    box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+}
 </style>
 <?php get_footer('dashboard'); ?>

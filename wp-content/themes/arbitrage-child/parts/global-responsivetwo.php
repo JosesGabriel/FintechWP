@@ -61,6 +61,26 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.countdown-container {
+		overflow-y: scroll !important;
+    	max-height: 1120px !important;
+    	top: 0px !important;
+	}
+	.clock {
+		margin-top: 577px !important;
+    	margin-left: 0px !important;
+	}
+	.wrap {
+		width: 200px !important;
+	}
+
+	.text {
+		top: 56% !important;
+	}
+	.text .type-time {
+		margin-top: 7px !important;
+	}
+
 
  	.dashboard-sidebar-left-inner, .fixed-sidebar {
     	position: sticky !important;

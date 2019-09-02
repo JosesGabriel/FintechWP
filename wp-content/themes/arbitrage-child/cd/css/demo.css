@@ -105,7 +105,11 @@ body {
 	}
 
 	.countdown-container {
-		top: 100% !important;
+		margin-left: 50px !important;
+	}
+
+	.row {
+		margin-top: 328px !important;
 	}
 }
 .arbitrage-button {

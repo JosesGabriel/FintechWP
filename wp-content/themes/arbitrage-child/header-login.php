@@ -177,6 +177,8 @@ $user = wp_get_current_user();
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
+	  <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
+	  
 <div class="form-success-email">
 	<div class="success--content">
 		<!-- <i class="far fa-check-circle"></i> -->

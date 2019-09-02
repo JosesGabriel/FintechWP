@@ -63,12 +63,12 @@
 
 	.countdown-container {
 		overflow-y: scroll !important;
-    	max-height: 1120px !important;
+    	max-height: 100% !important;
     	top: 0px !important;
 	}
 	.clock {
 		margin-top: 577px !important;
-    	margin-left: 70px !important;
+    	margin-left: 60px !important;
 	}
 	.wrap {
 		width: 200px !important;

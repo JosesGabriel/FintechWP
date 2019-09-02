@@ -2371,11 +2371,11 @@ ul.footmore .ddot {
 	padding: 0;
 }
 a.viewmoreplayers {
-	color: #d8d8d8;
-	font-size: 13px;
-	font-weight: 500;
-	display: block;
-	margin-top: 5px;
+	color: #d8d8d8 !important;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 5px;
 }
 .ranks h5 {
 	padding-left: 9px;

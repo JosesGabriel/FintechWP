@@ -862,6 +862,31 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $scope.$parent.dshowsentiment = '';
 
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol)
+                            .then(response => {
+                                let response = response.data;
+                                if (!response.success) {
+                                    return;
+                                }
+
+                                let data = response.data;
+
+                                $scope.$parent.transactions = data.map(transaction => {
+                                    let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                                    
+                                    return {
+                                        symbol: transaction.symbol,
+                                        price:  price_format(transaction.executed_price),
+                                        shares: abbr_format(transaction.executed_volume),
+                                        buyer:  transaction.buyer,
+                                        seller: transaction.seller,
+                                        time:   full_time,
+                                    };                                    
+                                });
+                                $scope.$parent.$digest();
+                            });
+
                         // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
                         //     if (response.data.success) {
                         //         $scope.$parent.marketdepth = response.data.data;

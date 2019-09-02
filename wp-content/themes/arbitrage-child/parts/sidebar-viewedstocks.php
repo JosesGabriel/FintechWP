@@ -93,6 +93,7 @@ jQuery(function(){
 
              }
 
+             //========================================
              ?>
 
              <ul>
@@ -113,9 +114,6 @@ jQuery(function(){
                      if($i == 4){
                         echo "<div class='hide-show watched-hidden-content'>";
                     }
-
-
-
                    
                 }
 
@@ -128,48 +126,7 @@ jQuery(function(){
             </ul>
 
                        
-                <!--
-		                <ul>
-				            <li class="odd">
-				                <span>MRC</span>
-				                <a href="#">MRC Allied, Inc. <br><p>31 Following</p></a>
-				            </li>
-				            <li class="even">
-				                <span>ABA</span>
-				                <a href="#">AbaCore Capital Holdings, Inc.<br><p>322 Following</p></a>
-				            </li>
-				            <li class="odd">
-				                <span>FOOD</span>
-				                <a href="#">Alliance Select Food  Int’l Inc.<br><p>323 Following</p></a>
-				            </li>
-				            <li class="even">
-				                <span>STI</span>
-				                <a href="#">STI Education System, Inc.<br><p>325 Following</p></a>
-				            </li>
-
-
-				            <div class="hide-show watched-hidden-content">
-				                <li class="odd">
-				                    <span>FOOD</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>326 Following</p></a>
-				                </li>
-				                <li class="even">
-				                    <span>STI</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>323 Following</p></a>
-				                </li>
-				                <li class="odd">
-				                    <span>FOOD</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>123 Following</p></a>
-				                </li>
-				                <li class="even">
-				                    <span>STI</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>332 Following</p></a>
-				                </li>
-				            </div>
-
-
-
-				        </ul>  -->
+               
     </div>
     <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
         <i class="fas fa-sort-down" style="

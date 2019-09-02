@@ -142,7 +142,7 @@
 								jQuery(".othersect").toggle('1000');
 
 								if( $(".viewmoreplayers").text() == "View more"){
-									  $(".viewmoreplayers").text("Show less");
+									  $(".viewmoreplayers").text("Hide");
 									}
 								else{
 									 $(".viewmoreplayers").text("View more");

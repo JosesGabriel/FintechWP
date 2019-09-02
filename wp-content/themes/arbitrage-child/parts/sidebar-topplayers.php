@@ -128,7 +128,10 @@
 
 									    <div class="playerscontent">
 											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+												<?php 
+													echo ucwords($value['dbsname'])
+												?>
+												<?php print_r($value)?>
 												
 											</div>
 											<div class="istotal"><?php 

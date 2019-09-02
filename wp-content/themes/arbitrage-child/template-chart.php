@@ -672,11 +672,11 @@
 	}
 	.bbs_bull {
 		position: absolute;
-		left: 15px;
+		left: 10px;
 	}
 	.bbs_bear {
 		position: absolute;
-		right: 15px;
+		right: 10px;
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;

@@ -2353,11 +2353,9 @@ ul.footmore .ddot {
 	text-align: left;
 }
 .hudbadge p {
-	transform: translate(0, 13px);
 	display: block;
 	vertical-align: middle;
 	margin: 0 auto;
-	position: absolute;
 	color: #72cddd;
 	font-size: 20px;
 	font-family: 'Century Gothic';

@@ -348,7 +348,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
-            stock['change_percentage'] = parseFloatt(stock['changepercentage']);
+            stock['change_percentage'] = parseFloat(stock['changepercentage']);
             stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);

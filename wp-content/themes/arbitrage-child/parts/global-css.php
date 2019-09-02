@@ -2326,7 +2326,7 @@ ul.footmore .ddot {
 	overflow: hidden;
 }
 .hudbadge {
-	width: 23%;
+	/* width: 23%; */
 	display: inline-block;
 	margin: 4px 0;
 }
@@ -2353,14 +2353,14 @@ ul.footmore .ddot {
 	text-align: left;
 }
 .hudbadge p {
-	display: block;
-	vertical-align: middle;
-	margin: 0 auto;
-	color: #72cddd;
-	font-size: 20px;
-	font-family: 'Century Gothic';
-	text-align: center;
-	width: 55px;
+    display: block;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #72cddd;
+    font-size: 20px;
+    font-family: 'Century Gothic';
+    text-align: center;
+    /* width: 55px; */
 }
 .dtanks h5 {
 	color: #fffffe;

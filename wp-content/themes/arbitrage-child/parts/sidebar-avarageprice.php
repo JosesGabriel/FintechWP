@@ -201,9 +201,6 @@
 
                     }
 
-                    
-
-
 
                 });
 
@@ -240,8 +237,6 @@
                 console.log('cant calculate');
 
             }
-
-
 
         });
 

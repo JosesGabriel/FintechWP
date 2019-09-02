@@ -461,19 +461,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 				if (stock.change < 0){changicotored();}
             }
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
-            var transaction = {
-                symbol: stock.symbol,
-                price:  price_format(stock.last),
-                change: stock.change,
-                shares: abbr_format(stock.volume),
-                buyer:  "",
-                seller: "",
-                time:   full_time,
-            }
-            $scope.transactions.unshift(transaction);
-            if ($scope.transactions.length > 20) {
-                $scope.transactions.pop();
-            }
 
             if (current_stock_index) {
                 $scope.stock = $scope.stocks[current_stock_index];
@@ -497,6 +484,29 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
         $scope.$digest();
     });
+
+    socket.on('pse-transaction', function (data) {
+        if ($scope.stock && $scope.stock.symbol == data.symbol) {
+            let date = (new Date(0)).setUTCSeconds(data.timestamp);
+            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+            let transaction = {
+                symbol: data.symbol,
+                price:  price_format(data.executed_price),
+                shares: abbr_format(data.executed_volume),
+                buyer:  data.buyer,
+                seller: data.seller,
+                time:   full_time,
+            };
+    
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            
+            $scope.$digest();
+        }
+    });
+
     socket.on('T', function(data) {
         var symbol = data[0];
         data[4]  = parseFloat(data[4]);
@@ -852,6 +862,31 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
+
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol)
+                            .then(response => {
+                                response = response.data;
+                                if (!response.success) {
+                                    return;
+                                }
+
+                                let data = response.data;
+
+                                $scope.$parent.transactions = data.map(transaction => {
+                                    let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                                    
+                                    return {
+                                        symbol: transaction.symbol,
+                                        price:  price_format(transaction.executed_price),
+                                        shares: abbr_format(transaction.executed_volume),
+                                        buyer:  transaction.buyer,
+                                        seller: transaction.seller,
+                                        time:   full_time,
+                                    };                                    
+                                });
+                                $scope.$parent.$digest();
+                            });
 
                         // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
                         //     if (response.data.success) {

@@ -101,7 +101,7 @@
 							<ul class="othersect">
 								<?php  $plcnt = 6; ?>
 
-								<?php $isfive = array_slice($dranks, 6, 10); ?>
+								<?php $isfive = array_slice($dranks, 4, 5); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
@@ -110,25 +110,27 @@
 										    <?php if($plcnt == 1){ ?>
 										    	<p style="color:#ffd03b;">
 										    	<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesgold.svg">
+										    	<!-- <img src="/svg/hudbadgesgold.svg"> -->
 									  		<?php }else if($plcnt == 2){ ?>
 									  			<p style="color:#d3d3d3;">
 									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgessilver.svg">
+										    	<!-- <img src="/svg/hudbadgessilver.svg"> -->
 									  		<?php }else if($plcnt == 3){ ?>
 									  			<p style="color:#da9b5c;">
 									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesbronze.svg">
+										    	<!-- <img src="/svg/hudbadgesbronze.svg"> -->
 									  		<?php }else{ ?>
 									  			<p><?php echo $plcnt; ?></p>
-									  			<img src="/svg/hudbadgesblue.svg">
+									  			<!-- <img src="/svg/hudbadgesblue.svg"> -->
 									  		<?php } ?>
 									   
 									   </div>
 
 									    <div class="playerscontent">
 											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+												<?php 
+													echo ucwords($value['dbsname'])
+												?>
 												
 											</div>
 											<div class="istotal"><?php 

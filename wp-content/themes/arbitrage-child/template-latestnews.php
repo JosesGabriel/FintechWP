@@ -18,7 +18,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		background: #0d1f33 !important;
 	}
 	.inner-main-content, .header-dashboard-inner {
-		max-width: none !important;
+		max-width: 1000px !important;
     	width: 85% !important;
 	}
 	.center-dashboard-part {

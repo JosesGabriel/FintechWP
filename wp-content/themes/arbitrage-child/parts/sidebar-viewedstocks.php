@@ -33,6 +33,7 @@ jQuery(function(){
         if ($response !== false) {
             $response = json_decode($response);
             $jsonstocklist = json_encode($response);
+            $stockinfo = $jsonstocklist->data;
         }
 
        //print_r($jsonstocklist);
@@ -46,7 +47,7 @@ jQuery(function(){
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
 
-        foreach ($jsonstocklist as $key => $stock) {
+        foreach ($stockinfo as $key => $stock) {
 
 
                 echo "stock-name->" . $stock->symbol;

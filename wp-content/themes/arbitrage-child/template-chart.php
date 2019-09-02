@@ -1434,8 +1434,8 @@
 																<div class="vertical-box">
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
 																		<div id="stock-details" style="display:block" ng-show="stock">
-																			<div class="arb_buysell">
-																				<button class="buysell-grip-btn" id="draggable_buysell">
+																			<div class="arb_buysell" id="draggable_buysell">
+																				<button class="buysell-grip-btn">
 																					<i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
 																				</button>
 																				<div class="buttons">

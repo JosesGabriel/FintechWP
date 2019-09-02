@@ -42,7 +42,7 @@ jQuery(function(){
 
 
         $num = 0;
-        $counter = 0;
+        $counter = 1;
         $stockcount = 0;
         //$stock_watched = array();
        
@@ -74,7 +74,7 @@ jQuery(function(){
                     }
 
                 $stockcount++;
-                $counter = 0;
+                $counter = 1;
              }
 
              

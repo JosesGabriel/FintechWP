@@ -463,7 +463,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             updated_at: full_date,
 
             displayLast: price_format(data.prv),
-            displayDifference: price_format(data.change, data.prv),
+            displayDifference: price_format(data.chg, data.prv),
             displayOpen: price_format(data.o),
             displayPrevious: price_format(data.c),
             displayAverage: price_format(data.avg),

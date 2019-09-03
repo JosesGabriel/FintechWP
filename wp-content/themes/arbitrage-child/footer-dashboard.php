@@ -263,18 +263,37 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 			});
 
-			jQuery('#myDropdown').click(function(e){
+			jQuery('#myDropdown').keyup(function(e){
 				e.preventDefault();
+
+				var dtyped = jQuery(this).val();
+
+				if(jQuery(this).val().length < 1){
+					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+				}
+
 				if (jQuery(this).hasClass('disopen')) {
 					jQuery(this).removeClass('disopen');
-					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+					//jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 				} else {
 					jQuery(this).addClass('disopen');
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
 				}
+
+				jQuery(".listofstocks > a").each(function(index){
+					var istock = jQuery(this).attr('data-dstock');
+					if (istock.toLowerCase().indexOf(dtyped) >= 0) {
+						jQuery(this).show();
+					} else {
+						jQuery(this).hide();
+					}
+				});
+
+
+
 			});
 
-			jQuery( "#myInput" ).keyup(function(e) {
+			/*jQuery( "#myInput" ).keyup(function(e) {
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
@@ -287,17 +306,22 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						jQuery(this).hide();
 					}
 				});
-			});
+			});*/
 
 			jQuery('.ddropbase a').click(function(e){
+
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
+
+				jQuery('#myDropdown').val(dstock);
+				jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 
-				jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
-				jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
+				//jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
+				//jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
 
-				jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
+				//jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
 
 			});
 

@@ -868,6 +868,50 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
+
+                    // for register sentiments
+                    $http({
+                        method : "POST",
+                        url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: {
+                            'action' : 'check_sentiment',
+                            'stock' : _symbol,
+                        }
+                    }).then(function mySucces(response) {
+                        angular.element(".regsentiment").addClass('openmenow');
+                        console.log("status : " + response.data.isvote);
+
+                        // angular.element(".bullbearsents").addClass('clickedthis');
+
+                        if (response.data.isvote == "1") {
+                            // cant vote!
+                            angular.element(".bullbearsents").addClass('clickedthis');
+                            angular.element(".dbaronchart").css('width', '70%');
+                            angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
+                            angular.element(".bbs_bull_bar").find('span').show('fast');
+
+                            var dbullvalx = parseFloat(response.data.dbull);
+                            var dbearvalx = parseFloat(response.data.dbear);
+
+                            angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+
+                            angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
+                            angular.element(".bbs_bear_bar").find('span').show('fast');
+                            angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+                        } else {
+                            // can vote!
+                            angular.element(".bullbearsents").removeClass('clickedthis');
+                            angular.element(".dbaronchart").css('width', '0%');
+                            angular.element(".bbs_bull_bar").find('span').hide();
+                            angular.element(".bbs_bear_bar").find('span').hide();
+                        }
+
+                    }, function myError(error) {
+                        console.log(error);
+                    });
+                     
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {

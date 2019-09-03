@@ -31,36 +31,36 @@ var DataProvider = (function () {
     	})();
         this._subscribers = {};
         var that = this;
-        socket.on('tick', function(data) {
-        	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
-        		var subscriber = that._subscribers[data.listenerGuid];
-				var lastBar = {
-					time: 	parseFloat(moment(data.t).format('x')),
-					close: 	parseFloat(data.c),
-					open: 	parseFloat(data.o),
-					high: 	parseFloat(data.h),
-					low: 	parseFloat(data.l),
-					volume: parseInt(data.v),
-				};
-				subscriber.listener(lastBar);
-        	}
-        });
-        socket.on('tick2', function(data) {
-        	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
-        		var subscriber = that._subscribers[data.listenerGuid];
-				var lastBar = {
-					time: 	parseFloat(moment(data.t).format('x')),
-					close: 	parseFloat(data.c),
-					open: 	parseFloat(data.o),
-					high: 	parseFloat(data.h),
-					low: 	parseFloat(data.l),
-				};
-				if (data.v) {
-					lastBar.volume = parseFloat(data.v);
-				}
-				subscriber.listener(lastBar);
-        	}
-		});
+        // socket.on('tick', function(data) {
+        // 	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
+        // 		var subscriber = that._subscribers[data.listenerGuid];
+		// 		var lastBar = {
+		// 			time: 	parseFloat(moment(data.t).format('x')),
+		// 			close: 	parseFloat(data.c),
+		// 			open: 	parseFloat(data.o),
+		// 			high: 	parseFloat(data.h),
+		// 			low: 	parseFloat(data.l),
+		// 			volume: parseInt(data.v),
+		// 		};
+		// 		subscriber.listener(lastBar);
+        // 	}
+        // });
+        // socket.on('tick2', function(data) {
+        // 	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
+        // 		var subscriber = that._subscribers[data.listenerGuid];
+		// 		var lastBar = {
+		// 			time: 	parseFloat(moment(data.t).format('x')),
+		// 			close: 	parseFloat(data.c),
+		// 			open: 	parseFloat(data.o),
+		// 			high: 	parseFloat(data.h),
+		// 			low: 	parseFloat(data.l),
+		// 		};
+		// 		if (data.v) {
+		// 			lastBar.volume = parseFloat(data.v);
+		// 		}
+		// 		subscriber.listener(lastBar);
+        // 	}
+		// });
 		socket.on('psec', function (data) {
 			let listenerGuid = data.sym + '_D';
 			if (that._subscribers.hasOwnProperty(listenerGuid)) {
@@ -77,11 +77,11 @@ var DataProvider = (function () {
 				console.log('DataPulseProvider: websocket:psec', lastBar);
 			}
 		});
-        socket.on('reconnect', function() {
-        	for (var listenerGuid in that._subscribers) {
-        		socket.emit('subscribeBars2', listenerGuid);
-        	}
-        });
+        // socket.on('reconnect', function() {
+        // 	for (var listenerGuid in that._subscribers) {
+        // 		socket.emit('subscribeBars2', listenerGuid);
+        // 	}
+        // });
     }
     DataPulseProvider.prototype.subscribeBars = function (symbolInfo, resolution, newDataCallback, listenerGuid) {
     	var that = this;
@@ -89,11 +89,11 @@ var DataProvider = (function () {
             console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
             return;
         }
-        if (symbolInfo.type == 'index') {
-        	socket.emit('subscribeBars3', 'test.' + listenerGuid, that._id);
-	    } else {
-        	socket.emit('subscribeBars2', listenerGuid);
-	    }
+        // if (symbolInfo.type == 'index') {
+        // 	socket.emit('subscribeBars3', 'test.' + listenerGuid, that._id);
+	    // } else {
+        // 	socket.emit('subscribeBars2', listenerGuid);
+	    // }
         that._subscribers[listenerGuid] = {
             symbolInfo: symbolInfo,
             resolution: resolution,
@@ -102,8 +102,8 @@ var DataProvider = (function () {
         console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
     };
     DataPulseProvider.prototype.unsubscribeBars = function (listenerGuid) {
-        socket.emit('unsubscribeBars2', listenerGuid);
-        socket.emit('unsubscribeBars3', 'test.' + listenerGuid);
+        // socket.emit('unsubscribeBars2', listenerGuid);
+        // socket.emit('unsubscribeBars3', 'test.' + listenerGuid);
         delete this._subscribers[listenerGuid];
         console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
     };

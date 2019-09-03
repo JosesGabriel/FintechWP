@@ -2341,11 +2341,11 @@ ul.footmore .ddot {
     margin-bottom: 4px;
 }
 .isname {
-	font-size: 13px;
-	font-weight: 600;
-	line-height: 1.3;
-	color: #ecf0f1;
-	text-align: right;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ecf0f1;
+    text-align: left;
 }
 .istotal {
 	color: #a2adb9;
@@ -2384,11 +2384,12 @@ a.viewmoreplayers {
 	padding-bottom: 5px;
 }
 .caret {
-    font-size: 22px;
+    font-size: 20px;
     padding-right: 3px;
     line-height: 17px;
     position: absolute;
     bottom: 17px;
+    right: 4px;
 }
 .isname span {
 	float: right;
@@ -3034,11 +3035,11 @@ input#searchlogs {
 	color: #FFC107;
 }
 span.value-t {
-	display: inline-block;
-	float: right;
+    display: inline-block;
+    float: left;
 }
 span.value-p {
 	display: inline-block;
-	float: left;
+	float: right;
 }
 </style>

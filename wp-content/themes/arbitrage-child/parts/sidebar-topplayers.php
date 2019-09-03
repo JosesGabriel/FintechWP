@@ -74,6 +74,7 @@
 													<?php
 														if($finalres >= '200.00' ){
 															$thisisit = $finalres - '100.00';
+															$thisisit = $thisisit + '100.00';
 														}elseif( $finalres <= '200.00' ){
 															$thisisit = $finalres + '0';
 														}

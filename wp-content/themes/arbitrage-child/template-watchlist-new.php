@@ -447,7 +447,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<?php endif; ?>
 												</div>
 											</div>	
-											<div class="dclosetab addwatchtab ">
+											<div class="dclosetab addwatchtab " style="width: 275px;">
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
@@ -465,10 +465,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="text" class="inpt_data_price number" name="inpt_data_price">
+															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
-															<input type="text" class="inpt_data_price number" name="inpt_data_price">
+															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="">
 																<div class="innerdeliver innerdeliver-addstock">
@@ -499,10 +499,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																</div>
 															</div>-->
                                                             <div class="row">
-                                                                <div class="col-md-6 condition-padding">
+                                                                <!--<div class="col-md-6 condition-padding">
                                                                     <div class="condition-params">
                                                                         <div class="condition-type">
-                                                                            <!-- <label>Conditions</label> -->
+                                                                           
                                                                             <select id="condition-list">
                                                                                 <option value="">Select Conditions</option>
                                                                                 <option value="entry_price">Entry Price</option>
@@ -511,22 +511,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             </select>
                                                                         </div>
                                                                         <div class="condition-freq">
-                                                                            <!-- <label>Condition Frequency</label> -->
+                                                                            
                                                                             <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                                 <div class="col-md-6">
-                                                                    <div class="dpaste">
+                                                                    <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
-                                                                    </div>
-                                                                    <div class="submitform">
+                                                                    </div>-->
+                                                                    <div class="submitform" style="margin-right: -113px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
-                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary">Cancel</button>
+                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
                                                                         <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>

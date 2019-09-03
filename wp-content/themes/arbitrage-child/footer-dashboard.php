@@ -45,10 +45,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery(".um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea").keyup(function() {
 				if (jQuery(this).val() == "") {
 					jQuery(this).parents(".um-activity-comments").find(".um-activity-right").hide("slow");
-					console.log("hide button");
 				} else {
 					jQuery(this).parents(".um-activity-comments").find(".um-activity-right").show("slow");
-					console.log("show button");
 				}
 			});
 
@@ -71,14 +69,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery('.add-params').click(function(e) {
 				e.preventDefault();
-				// console.log('yes');
 
 				var dcondition = jQuery(this).parents('.condition-params').find("#condition-list").val();
 				var dnum = jQuery(this).parents('.condition-params').find('#condition_frequency').val();
 				console.log(dcondition + " ~ " + dnum);
 
 				if (dcondition != "" && dnum != "") {
-					console.log('active and going');
 					jQuery(this).parents('.condition-params').find('#condition-list option[value='+dcondition+']').hide();
 					jQuery(this).parents('.condition-params').find("#condition-list").val('');
 					jQuery(this).parents('.condition-params').find('#condition_frequency').val('')
@@ -99,12 +95,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 					jQuery(".listofinfo").append(dlisk);
 				} else {
-					console.log('fields should not be empty');
 				}
 			});
 
 			jQuery('.closemebutton').click(function(e){
-				console.log('close me');
 			});
 
 			jQuery('#submitmenow').click(function(e){
@@ -112,16 +106,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstocknames").val();
 
 				var countli = jQuery(".listofinfo li").length;
-				console.log(countli);
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
-						console.log('proceed with post');
 						jQuery("#add-watchlist-param").submit();
-					} else {
-						console.log('its blank');
 					}
-				} else {
-					console.log('please add a condition');
 				}
 			});
 
@@ -161,7 +149,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							'success'
 						).then((result) => {
 							var ditemtoremove = jQuery(this).attr('data-space');
-							// console.log(ditemtoremove);
 							window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
 						});
 					}
@@ -170,16 +157,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery('.editmenow').click(function(e){
 				e.preventDefault();
-				// console.log(jQuery(this).attr('data-tochange'));
-
 				jQuery("#"+jQuery(this).attr('data-tochange')).submit();
-
 			});
 
 			<?php /* temp-disabled-start */
-
-				//curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
-
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -193,19 +174,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}	
 				
 			?>
-			//var dstockinfo = JSON.parse('<?php echo $jsonstocklist; ?>');
 			var stocklist = <?php echo $jsonstocklist; ?> ;
-				
-			// var dlistfromphp = <?php // print_r(json_encode($dwatchdd['data'])); ?>;
-			//console.log(dstockinfo);
-
-			
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
-				//console.log('test :::: ' + '<?php echo $value['stockname']; ?>');
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
-					//console.log(value.symbol);
 					//condition here if stock is in the watchlist, do not append.
 					if('<?php echo $value['stockname']; ?>' !== value.symbol){
 						jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
@@ -305,7 +278,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
-				console.log(dtyped);
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');
@@ -355,19 +327,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		jQuery(document).on('keyup','.um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea', function(){
 		   if (jQuery(this).val() == "") {
 		   		jQuery(this).css('line-height', '30px !important');
-				jQuery(this).parents(".um-activity-comments").find(".um-activity-right").hide("slow");
-				console.log("hide button");
-				
+				jQuery(this).parents(".um-activity-comments").find(".um-activity-right").hide("slow");			
 			} else {
 				jQuery(this).parents(".um-activity-comments").find(".um-activity-right").show("slow");
-				console.log("show button");
 				jQuery(this).css('line-height', '1.3em !important');
-
 			}
 		});
 
 		jQuery(document).on('click','.closemebutton',function(e){
-			console.log('close me');
 			var drestore = jQuery(this).parents('.dbaseitem').find('#dparamcondition').val();
 			jQuery('#condition-list option[value='+drestore+']').show();
 			jQuery(this).parents('.dbaseitem').remove();

@@ -452,19 +452,24 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
-														<div class="groupinput midd lockedd"><label>Stock Code</label>
-															<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" >
+														<div class="groupinput midd"><label>Stock Code</label>
+															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<div class="dropdown-content ddropbase" style="display: none;">
+																		<input type="hidden" id="dstockname" name="stockname">
+																		<input type="text" placeholder="Search.." id="myInput">
+																		<div class="listofstocks"></div>
+																	</div>
 														</div>
 
 															<div class="dselectstockname">
-																<div class="dropdown ddropconts">
+																<!--<div class="dropdown ddropconts">
 																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
 																	<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<input type="text" placeholder="Search.." id="myInput">
 																		<div class="listofstocks"></div>
 																	</div>
-																</div>
+																</div>-->
 																<div class="dselected"></div>
 																<!-- <div class="formitem">
 																	<label>Select a Stock</label>

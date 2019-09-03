@@ -304,10 +304,8 @@
 		  var dtotalbid = 0;
 			jQuery(".ditems").each(function( index ) {
 				var dsinglebid = jQuery(this).find('.dbidnum').attr('data-bidnum');
-				console.log(dsinglebid);
 				dtotalbid += parseInt(dsinglebid);
 			});
-			console.log( dtotalbid );
 		});
 		var _stocks     = {};
 		var _admin 		= true;

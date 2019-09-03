@@ -773,15 +773,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                    });
 
 						                    var finalcost = (totalcost + parseFloat(getfee(totalcost)))/totalvolume;
-						                    console.log(getfee(totalcost));
 
 						                    jQuery(".totalcost").text((totalcost + parseFloat(getfee(totalcost))).toFixed(2));
 						                    jQuery(".totalposition").text(totalvolume);
 						                    jQuery(".totalprice").text((finalcost).toFixed(2));
 
-						                } else {
-						                    console.log('cant calculate');
-						                }
+						                } 
 						            });
 						        });
 						    })(jQuery);

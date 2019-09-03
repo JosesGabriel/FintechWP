@@ -267,7 +267,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 				if (jQuery(this).hasClass('disopen')) {
 					jQuery(this).removeClass('disopen');
-					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+					//jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 				} else {
 					jQuery(this).addClass('disopen');
 					jQuery('.ddropbase').addClass('opendrop').show('slow');

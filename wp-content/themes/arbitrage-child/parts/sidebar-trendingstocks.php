@@ -51,6 +51,7 @@ jQuery(".stocks-hidden-content").click(function () {
     
     
     $gerdqoute = json_decode($gerdqoute);
+    // print_r($gerdqoute);
     // $gerdqoute = $stocksdesc;
     $adminuser = 504; // store on the chart page
 
@@ -61,7 +62,11 @@ jQuery(".stocks-hidden-content").click(function () {
             $indls = [];
             $indls['stock'] = $dlskey;
             $dstocknamme = $dlskey;
-            $indls['stnamename'] = strtolower($stocksdesc->$dstocknamme->description);
+
+            // $dstocks = $stocksdesc->$dstocknamme->description;
+            $dstocks = $dlsvalue->description;
+            $indls['stnamename'] = strtolower($dstocks);
+            
             
             
     
@@ -100,12 +105,6 @@ jQuery(".stocks-hidden-content").click(function () {
             $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
             // $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
 		    $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
-            ?>
-                <!-- debugs here -->
-            <?php
-            // print_r($dpullbull);
-
-            // percentage
             // 3 days back
             $threedays = floor($countpstock * 0.2);
             $bulls = floor($dpullbull * 0.3);
@@ -114,7 +113,7 @@ jQuery(".stocks-hidden-content").click(function () {
 
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
-            $indls['following'] += $finalcount;
+            $indls['following'] = $finalcount;
 
             
     

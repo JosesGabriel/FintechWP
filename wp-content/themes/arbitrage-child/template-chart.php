@@ -139,11 +139,11 @@
 		}
 		.arb_right_icons_trans {
 			position: absolute;
-		    width: 194px;
+		    width: 275px;
 		    right: -54px;
 		    top: 2px;
-			padding-left: 30px;
-		    background: linear-gradient(to right, #2c3e505c 26%, #34495e 43%);
+			padding-left: 110px;
+		    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
 		    z-index: 9;
 		}
 		.arb-side-icon i {
@@ -1986,7 +1986,7 @@
 																						<div data-scrollbar="true" data-height="100%" style="height: 100%;">
 																							<div class="vertical-box tab-pane fade in active" id="allstock">
 																								<table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
-																									<thead>
+																									<thead style="position: fixed; background-color: #2c3e50">
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
 																												<strong>STOCK</strong>
@@ -2405,7 +2405,7 @@
 			border: 0px;
 			position: absolute;
 			left: 5px;
-			bottom: 10px;
+			bottom: 6px;
 			outline: none;
 		}
 	</style>

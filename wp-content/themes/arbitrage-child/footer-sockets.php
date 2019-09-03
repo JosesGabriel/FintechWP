@@ -71,7 +71,7 @@ if ($user_id !== 0) {
         // jQuery.toast(`Mentioned by ${data.sender}`)
     });
 
-    io.on('arbitrage:new_message', function (data) {]
+    io.on('arbitrage:new_message', function (data) {
         // jQuery.toast(`${data.sender} has sent a message`)
         updateVyndueNotifications(parseInt(getVyndueNotifications()) + 1)
     })

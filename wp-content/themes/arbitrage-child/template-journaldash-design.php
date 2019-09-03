@@ -4171,16 +4171,10 @@ if ($getdstocks && $getdstocks != "") {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
 
-					console.log("cant withdraw");
-				} else {
-					console.log("you may");
-				}
+				} 
 			} else {
 				e.preventDefault();
 			}
-
-
-			// console.log("here");
 		});
 	});
     </script>

@@ -35,18 +35,22 @@
 
 							?>
 
-							<ul>
+							<ul class="topsect">
 								<?php  $plcnt = 0; ?>
 
 								<?php $isfive = array_slice($dranks, 0, 3); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
-										<!-- <div class="hudbadge">
-
-											<p><?php echo $plcnt; ?></p>
-
-									   </div> -->
+										<div class="hudbadge">
+											<?php if($plcnt == 1) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top2.svg" alt="">
+											<?php }else if($plcnt == 2) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top3.svg" alt="">
+											<?php }else if($plcnt == 3) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top4.svg" alt="">
+											<?php } ?>
+									   	</div>
 
 									    <div class="playerscontent">
 											<div class="isname">
@@ -82,11 +86,13 @@
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
-										<!-- <div class="hudbadge">
-
-										    <p><?php echo $plcnt; ?></p>
-								
-									   </div> -->
+										<div class="hudbadge">
+											<?php if($plcnt == 4) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top5.svg" alt="">
+											<?php }else if($plcnt == 5) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top5.svg" alt="">
+											<?php } ?>
+									   	</div>
 
 									   <div class="playerscontent">
 											<div class="isname">

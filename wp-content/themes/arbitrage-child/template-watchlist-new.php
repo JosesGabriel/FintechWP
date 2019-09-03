@@ -210,7 +210,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<div>
+																	<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
 																	</div>
@@ -451,15 +451,25 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
+
+														<div class="groupinput midd"><label>Stock Code</label>
+															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<div class="dropdown-content ddropbase" style="display: none;">
+																		<input type="hidden" id="dstockname" name="stockname">
+																		<input type="text" placeholder="Search.." id="myInput">
+																		<div class="listofstocks"></div>
+																	</div>
+														</div>
+
 															<div class="dselectstockname">
-																<div class="dropdown ddropconts">
+																<!--<div class="dropdown ddropconts">
 																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
 																	<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<input type="text" placeholder="Search.." id="myInput">
 																		<div class="listofstocks"></div>
 																	</div>
-																</div>
+																</div>-->
 																<div class="dselected"></div>
 																<!-- <div class="formitem">
 																	<label>Select a Stock</label>
@@ -1991,6 +2001,12 @@ h2.watchtitle {
 	margin-top: 15px;
     background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
     box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+}
+.watchlist--buttons {
+    display: flex;
+}
+.watchlist--buttons a {
+    color: white;
 }
 </style>
 <?php get_footer('dashboard'); ?>

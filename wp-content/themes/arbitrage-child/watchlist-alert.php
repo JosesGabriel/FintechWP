@@ -197,11 +197,7 @@
 			    	}
 				    
 				},30000);
-			} else {
-			    console.log('time over');
 			}
-        
-
 	    });
 	})(jQuery);
 </script>

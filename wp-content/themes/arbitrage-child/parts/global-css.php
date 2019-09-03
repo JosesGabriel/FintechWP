@@ -2330,30 +2330,41 @@ ul.footmore .ddot {
 	display: inline-block;
 	margin: 4px 0;
 }
+
+.topsect {
+	padding-top: 5px;
+}
 .playerscontent {
-	width: 100%;
+	width: 83%;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     padding: 5px;
-	border-right: 2px solid #e91e63;
     /* border-radius: 5px; */
-    margin-bottom: 4px;
+    margin-bottom: 10px;
+}
+.hudbadge img {
+	height: auto;
+    width: 30px;
+    top: -3px;
+    position: relative;
+    margin-left: 2px;
 }
 .isname {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 400;
     line-height: 1.3;
     color: #ecf0f1;
     text-align: left;
+    margin-bottom: 3px;
 }
 .istotal {
-	color: #a2adb9;
-	line-height: 1;
-	font-weight: 400;
-	font-size: 13px;
-	font-family: 'Roboto', sans-serif;
-	text-align: left;
+    color: #a2adb9;
+    line-height: 1;
+    font-weight: 300;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
 }
 .hudbadge p {
     display: block;
@@ -2384,12 +2395,8 @@ a.viewmoreplayers {
 	padding-bottom: 5px;
 }
 .caret {
-    font-size: 20px;
     padding-right: 3px;
-    line-height: 17px;
-    position: absolute;
-    bottom: 17px;
-    right: 4px;
+    line-height: 0;
 }
 .isname span {
 	float: right;

@@ -23,9 +23,7 @@ jQuery(function(){
 
         <?php 
 
-        
-
-
+       
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -38,11 +36,10 @@ jQuery(function(){
             $stockinfo = $response->data;
         }
 
-       //print_r($stockinfo->symbol);
-
+       //print_r($response);
 
         $num = 0;
-        $counter = 0;
+        $counter = 1;
         $stockcount = 0;
         //$stock_watched = array();
        
@@ -50,9 +47,6 @@ jQuery(function(){
 
 
         foreach($stockinfo as $stkey => $stvals){
-
-                
-               // echo "stock-name->" . $stvals->symbol;
         
             foreach($users as $user_id){
            
@@ -60,70 +54,78 @@ jQuery(function(){
 
                  foreach ($havemeta as $key => $value) {
                     
+                        //echo $value['stockname'];
+
                                 if ($stvals->symbol == $value['stockname']) {
                                     $stock_watched[$stockcount][0] = $stvals->symbol;
-                                    $stock_watched[$stockcount][1] = $counter++;
+                                    $stock_watched[$stockcount][1] = $counter;
+                                    $stock_watched[$stockcount][2] = $stvals->description;
+                                    $counter++;
                                 }
 
                          }
-
-                         $counter = 0;
+                         
                     }
 
                 $stockcount++;
+                $counter = 1;
              }
+    
+         
 
              for($i = 0; $i < $stockcount; $i++){
+                for ($j = $i + 1; $j < $stockcount; $j++) {
+                     if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
 
-                echo "stock -> " . $stock_watched[$i][0] . " count-> " . $stock_watched[$i][1] . "</br>";
+                            $temp = $stock_watched[$i][0];
+                            $temp2 = $stock_watched[$i][1];
+                            $temp3 = $stock_watched[$i][2];
+                            $stock_watched[$i][0] = $stock_watched[$j][0];
+                            $stock_watched[$i][1] = $stock_watched[$j][1];
+                            $stock_watched[$i][2] = $stock_watched[$j][2];
+                            $stock_watched[$j][0] = $temp;
+                            $stock_watched[$j][1] = $temp2;
+                            $stock_watched[$j][2] = $temp3;
+
+                    }
+
+                }
 
              }
-        
 
+             ?>
 
+             <ul>
+             <?php
 
+             for($i = 0; $i < 10; $i++){
 
-        ?>
+                 if($stock_watched[$i][0] != ''){
 
+                    ?>
+                            <li class="odd">
+                                <span><?php echo $stock_watched[$i][0]; ?></span>
+                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                            </li>
 
+                    <?php
 
-        
-		                <ul>
-				            <li class="odd">
-				                <span>MRC</span>
-				                <a href="#">MRC Allied, Inc. <br><p>31 Following</p></a>
-				            </li>
-				            <li class="even">
-				                <span>ABA</span>
-				                <a href="#">AbaCore Capital Holdings, Inc.<br><p>322 Following</p></a>
-				            </li>
-				            <li class="odd">
-				                <span>FOOD</span>
-				                <a href="#">Alliance Select Food  Int’l Inc.<br><p>323 Following</p></a>
-				            </li>
-				            <li class="even">
-				                <span>STI</span>
-				                <a href="#">STI Education System, Inc.<br><p>325 Following</p></a>
-				            </li>
-				            <div class="hide-show watched-hidden-content">
-				                <li class="odd">
-				                    <span>FOOD</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>326 Following</p></a>
-				                </li>
-				                <li class="even">
-				                    <span>STI</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>323 Following</p></a>
-				                </li>
-				                <li class="odd">
-				                    <span>FOOD</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>123 Following</p></a>
-				                </li>
-				                <li class="even">
-				                    <span>STI</span>
-				                    <a href="#">Alliance Select Food  Int’l Inc.<br><p>332 Following</p></a>
-				                </li>
-				            </div>
-				        </ul>
+                     if($i == 4){
+                        echo "<div class='hide-show watched-hidden-content'>";
+                    }
+                   
+                }
+
+             }
+
+                    echo "</div>";
+            
+            ?>  
+
+            </ul>
+
+                       
+               
     </div>
     <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
         <i class="fas fa-sort-down" style="

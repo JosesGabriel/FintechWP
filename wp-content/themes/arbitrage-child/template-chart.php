@@ -830,7 +830,7 @@
 			left: -78px;
 			width: 72px;
 			text-align: right;
-			background-color: #2c3e50;
+			background-color: rgba(255,255,255,.15);
 		}
 		.arb_buy, .arb_sell {width: 66px; margin-bottom:5px;border-radius: 50px 0 0 50px;}
 		.vertical-box-column.mobilefull {
@@ -2405,7 +2405,7 @@
 			border: 0px;
 			position: absolute;
 			left: 5px;
-			bottom: 6px;
+			bottom: 10px;
 			outline: none;
 		}
 	</style>

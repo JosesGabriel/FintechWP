@@ -42,11 +42,11 @@
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
-										<div class="hudbadge">
+										<!-- <div class="hudbadge">
 
 											<p><?php echo $plcnt; ?></p>
 
-									   </div>
+									   </div> -->
 
 									    <div class="playerscontent">
 											<div class="isname">
@@ -59,30 +59,13 @@
 													$resres = $equityres / 100000;
 													$finalres = $resres * 100;
 													?>
-													
-													<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-													
+															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
-														<br>
-															<span style="color: #a2adb9;">
-																<?php echo number_format($finalres, 2, '.', ',') . " % "; ?>
-															</span>
+															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>
-														<br>
-														<span style="color: #25ae5f;">
-															<i class="fas fa-caret-up caret"></i>
-													<?php
-														if($finalres >= '200.00' ){
-															$thisisit = $finalres - '100.00';
-															$thisisit = $thisisit + '100.00';
-														}elseif( $finalres <= '200.00' ){
-															$thisisit = $finalres + '0';
-														}
-														echo number_format($thisisit, 2, '.', ',') . " % "; 
-													?>
-														</span>
+															<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres <= 0) { ?>
-														<br><span style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+															<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php } ?>
 											 	</div>
 											<?php ?>
@@ -99,41 +82,31 @@
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
-										<div class="hudbadge">
+										<!-- <div class="hudbadge">
 
 										    <p><?php echo $plcnt; ?></p>
 								
-									   </div>
+									   </div> -->
 
-									    <div class="playerscontent">
+									   <div class="playerscontent">
 											<div class="isname">
-												<?php 
-													echo ucwords($value['dbsname'])
-												?>
+												<?php echo ucwords($value['dbsname']) ?>
 												
 											</div>
-											<div class="istotal"><?php 
-												$totalvaluee = $value['dtotalbal'];
-												$equityres = $totalvaluee - 100000;
-												$resres = $equityres / 100000;
-												$finalres = $resres * 100;
-												?>
-												
-												<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-												
-												<?php if($finalres == 0) { ?>
-													<br><span style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', '') . " % "; ?></span>
-												<?php }elseif($finalres >= 0) {?>
-													<br><span style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php
-													if($finalres >= '200.00' ){
-														$thisisit = $finalres + '100.00';
-													}elseif( $finalres <= '200.00' ){
-														$thisisit = $finalres + '0';
-													}
-													 echo number_format($thisisit, 2, '.', '') . " % "; ?></span>
-												<?php }elseif($finalres <= 0) { ?>
-													<br><span style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', '') . " % "; ?></span>
-												<?php } ?>
+												<div class="istotal"><?php 
+													$totalvaluee = $value['dtotalbal'];
+													$equityres = $totalvaluee - 100000;
+													$resres = $equityres / 100000;
+													$finalres = $resres * 100;
+													?>
+															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
+													<?php if($finalres == 0) { ?>
+															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres >= 0) {?>
+															<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres <= 0) { ?>
+															<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php } ?>
 											 	</div>
 											<?php ?>
 										</div>

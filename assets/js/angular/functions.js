@@ -166,7 +166,6 @@ function roundUp(price) {
             numeral: '0,0.00',
         };
     }
-    console.log(format);
     return price;
 }
 function price_info(price) {

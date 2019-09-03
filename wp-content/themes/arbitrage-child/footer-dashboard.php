@@ -299,7 +299,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
 
-				console.log(dstock);
+				jQuery('#myDropdown').val(dstock);
 
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 

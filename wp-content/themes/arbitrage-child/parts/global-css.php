@@ -2339,6 +2339,10 @@ ul.footmore .ddot {
     /* border-radius: 5px; */
     margin-bottom: 4px;
 }
+.hudbadge img {
+    height: auto;
+    width: 21px;
+}
 .isname {
     font-size: 13px;
     font-weight: 600;

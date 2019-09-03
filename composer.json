@@ -1,0 +1,6 @@
+{
+    "require": {
+        "goez/socket.io-php-emitter": "^0.1.2",
+        "lcobucci/jwt": "^3.3"
+    }
+}

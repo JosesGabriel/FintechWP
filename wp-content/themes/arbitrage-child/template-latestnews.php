@@ -861,7 +861,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                 			<div class="nws-businesstitle">Business News</div>
 	                		<div class="row msbusinesstit">
 								<!-- first news -->
-				                <div class="col-md-8">
+				                <div class="col-md-8" style="padding-right: 10px;">
 				                	<div class="nws-thumbnstopimg sss" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
 					                	<div class="nws-toptitle">
 					                		<p><a href="https://news.google.com/<?php echo $link[0]; ?>" target="_blank"><?php echo (strlen($titles[0]) > 59 ? substr($titles[0], 0, 60) . '...' : $titles[0])?></a></p>
@@ -872,7 +872,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 										</div>
 							        </div>
 				                </div>
-				                <div class="col-md-4">
+				                <div class="col-md-4" style="padding-left: 0px;">
 				                	<div class="main-innertop">
 										<!-- 7 to 11 -->
 										<?php for ($topright=1; $topright <=4 ; $topright++) { ?>

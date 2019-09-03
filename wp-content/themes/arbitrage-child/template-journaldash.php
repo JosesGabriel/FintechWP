@@ -1560,15 +1560,19 @@ get_header('dashboard');
     $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
+	curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $gerdqoute = curl_exec($curl);
+    $gerdqouteone = curl_exec($curl);
     curl_close($curl);
 
-    $gerdqoute = json_decode($gerdqoute);
+    $gerdqoute = json_decode($gerdqouteone);
     // $gerdqoute = [];
 ?>
 <!-- BOF get the tradelogs -->
+<pre>
+	<?php print_r($getdstocks); ?>
+</pre>
 <?php
     $author_query = array(
         'posts_per_page' => '-1',
@@ -1632,6 +1636,7 @@ get_header('dashboard');
 
 <!-- BOF Sort LIVE Portfolio -->
 <?php
+
 if ($getdstocks && $getdstocks != '') {
     $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
@@ -1954,8 +1959,14 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             $totalmarketvalue += $dmarketvalue;
                                                                                             $dtotalcosts += $dmarketvalue + $dfees;
                                                                                             $totalquanta += $dtradeissuevalue['qty'];
-                                                                                            $intcost = $dtradeissuevalue['price'];
-                                                                                        }
+																							$intcost = $dtradeissuevalue['price'];
+																							
+																							// calculate averate price
+																						}
+																						
+																						echo "<pre>";
+																							print_r($dstocktraded['data']);
+																						echo "</pre>";
 
                                                                                         $dsellmarket = $dstockinfo->last * $dstocktraded['totalstock'];
                                                                                         $dsellfees = getjurfees($dsellmarket, 'sell');

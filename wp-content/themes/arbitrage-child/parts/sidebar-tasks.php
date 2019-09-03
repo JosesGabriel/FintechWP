@@ -2,10 +2,10 @@
 global $current_user;
 $user = wp_get_current_user();
 $userid = get_current_user_id();
-if ($_GET['ruadmin'] == "yeah"){
-  $all_meta_for_user = get_user_meta($userid);
-  print_r( $all_meta_for_user );
-}
+//if ($_GET['ruadmin'] == "yeah"){
+  //$all_meta_for_user = get_user_meta($userid);
+  //print_r( $all_meta_for_user );
+//}
 ?>
 <style>
 .todos_box ul li a {

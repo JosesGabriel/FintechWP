@@ -288,7 +288,7 @@ function replymember(username) {
     return false;
 }
 function beep() {
-    var beepSound = new Audio("https://arbitrage.ph/audio/arbding.wav");
+    var beepSound = new Audio("https://arbitrage.ph/audio/ticker.mp3");
     var promise = beepSound.play();
 
     if (promise !== undefined) {

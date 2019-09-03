@@ -461,6 +461,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 														</div>
 
+														<div class="groupinput midd"><label>Entry Price</label>
+															<input type="number" name="" id="" style="margin-left: -3px; text-align: right;" >
+														</div>
+
 															<div class="dselectstockname">
 																<div class="dropdown ddropconts">
 																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>

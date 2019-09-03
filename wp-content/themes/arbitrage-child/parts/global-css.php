@@ -2362,7 +2362,7 @@ ul.footmore .ddot {
     color: #a2adb9;
     line-height: 1;
     font-weight: 300;
-    font-size: 11px;
+    font-size: 12px;
     font-family: 'Roboto', sans-serif;
     text-align: left;
 }

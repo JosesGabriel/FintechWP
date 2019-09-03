@@ -58,9 +58,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 	<script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js" integrity="sha256-BfIfo/K+ePw1iAn4BFfrfVXmXQPAmKtqeDwVIgCFqTU=" crossorigin="anonymous"></script>
-	<!-- <script src="<?php //echo get_stylesheet_directory_uri(); ?>/popup/lib/jquery.1.11.min.js"></script>
-    <script src="<?php //echo get_stylesheet_directory_uri(); ?>/popup/js/lobibox.js"></script>
-    <script src="<?php //echo get_stylesheet_directory_uri(); ?>/popup/demo/demo.js"></script> -->
 
 	<?php
 		$dwatchdd = get_user_meta('7', '_scrp_stocks_watch', true);
@@ -71,26 +68,15 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 			jQuery(".add-post .um-activity-widget").each(function(i, obj) {
 				var baseimage = jQuery(this).find(".um-activity-ava a img").attr('src');
 				jQuery(this).find(".um-activity-ava a").css('background', 'url('+baseimage+') no-repeat center center').addClass("d_profile_image");
-			    // console.log(jQuery(this).find(".um-activity-ava a img").attr('src'));
 			});
-
-			// simpleStickySidebar('.dashboard-sidebar-left-inner', {
-			//   container: '.dashboard-sidebar-left',
-			//   topSpace: 20
-			//   bottomSpace : 20
-			// });
-
-			console.log(jQuery('.left-dashboard-part').outerHeight());
 
 			jQuery(".um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-right").hide();
 
 			jQuery(".um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea").keyup(function() {
 				if (jQuery(this).val() == "") {
 					jQuery(this).parents(".um-activity-comments").find(".um-activity-right").hide("slow");
-					console.log("hide button");
 				} else {
 					jQuery(this).parents(".um-activity-comments").find(".um-activity-right").show("slow");
-					console.log("show button");
 				}
 			});
 
@@ -136,22 +122,17 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 				
 			});
 
-
 			jQuery(".add-post .um-activity-new-post .um-activity-head").text('Share your Ideas');
 			jQuery(".add-post .um-activity-new-post .um-activity-textarea textarea").attr("placeholder", "Make a post");
 
-			// jQuery('.um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea').css('line-height', '30px !important');
-
 			jQuery('.add-params').click(function(e) {
 				e.preventDefault();
-				// console.log('yes');
 
 				var dcondition = jQuery(this).parents('.condition-params').find("#condition-list").val();
 				var dnum = jQuery(this).parents('.condition-params').find('#condition_frequency').val();
 				console.log(dcondition + " ~ " + dnum);
 
 				if (dcondition != "" && dnum != "") {
-					console.log('active and going');
 					jQuery(this).parents('.condition-params').find('#condition-list option[value='+dcondition+']').hide();
 					jQuery(this).parents('.condition-params').find("#condition-list").val('');
 					jQuery(this).parents('.condition-params').find('#condition_frequency').val('')
@@ -174,17 +155,12 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 						dlisk += "</li>";
 
 					jQuery(".listofinfo").append(dlisk);
-				} else {
-					console.log('fields should not be empty');
 				}
 			});
 
-			jQuery('.closemebutton').click(function(e){
-				console.log('close me');
-				// var drestore = jQuery(this).parents('.dbaseitem').find('#dparamcondition').val();
-				// jQuery('#condition-list option[value='+drestore+']').show();
-				// jQuery(this).parents('.dbaseitem').remove();
-			});
+			// jQuery('.closemebutton').click(function(e){
+
+			// });
 
 			jQuery('#submitmenow').click(function(e){
 				e.preventDefault();
@@ -194,16 +170,9 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
-						console.log('proceed with post');
 						jQuery("#add-watchlist-param").submit();
-					} else {
-						console.log('its blank');
 					}
-				} else {
-					console.log('please add a condition');
 				}
-
-				
 			});
 
 			jQuery('#canceladd').click(function(e){
@@ -226,7 +195,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 			jQuery('.removeItem').click(function(e){
 				e.preventDefault();
-				// console.log('hitbase');
 
 				Swal.fire({
 					title: 'Are you sure?',
@@ -244,7 +212,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 							'success'
 						).then((result) => {
 							var ditemtoremove = jQuery(this).attr('data-space');
-							// console.log(ditemtoremove);
 							window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
 						});
 					}
@@ -253,43 +220,11 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 			jQuery('.editmenow').click(function(e){
 				e.preventDefault();
-				// console.log(jQuery(this).attr('data-tochange'));
-
 				jQuery("#"+jQuery(this).attr('data-tochange')).submit();
 
 			});
 
-			// jQuery('.editItem').click(function(e){
-			// 	e.preventDefault();
-
-			// 	if (jQuery(this).hasClass('xopen')) {
-			// 		jQuery(this).parents('.watchonlist').find('.editpartme').hide();
-			// 		jQuery(this).removeClass('xopen');
-			// 		jQuery(this).text('Edit');
-			// 	} else {
-			// 		jQuery(this).parents('.watchonlist').find('.editpartme').show();
-			// 		jQuery(this).addClass('xopen');
-			// 		jQuery(this).text('Close');
-			// 	}
-			// });
-
-			<?php
-				// $curl = curl_init();
-				// curl_setopt($curl, CURLOPT_URL, 'https://pse.tools/api/stocks');
-				// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-				// $dwatchinfo = curl_exec($curl);
-				// curl_close($curl);
-			?>
-
-			// var dlistfromphp = <?php print_r(json_encode($dwatchdd['data'])); ?>;
-			// console.log(dlistfromphp.data);
-
-			// jQuery.each(dlistfromphp.data, function( index, value ) {
-			//   jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
-			// });
-
 			//FILTER AS PER TIME
-
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 
@@ -456,7 +391,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
-				console.log(dtyped);
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');
@@ -467,10 +401,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 					}
 				});
 			});
-
-
 			var ddatass = jQuery('.to-watch-data').attr("data-dhisto");
-			//console.log(ddatass);
 
 		});
 	
@@ -483,19 +414,14 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 		   if (jQuery(this).val() == "") {
 		   		jQuery(this).css('line-height', '30px !important');
 				jQuery(this).parents(".um-activity-comments").find(".um-activity-right").hide("slow");
-				console.log("hide button");
-				
-
 			} else {
 				jQuery(this).parents(".um-activity-comments").find(".um-activity-right").show("slow");
-				console.log("show button");
 				jQuery(this).css('line-height', '1.3em !important');
 
 			}
 		});
 
 		jQuery(document).on('click','.closemebutton',function(e){
-			console.log('close me');
 			var drestore = jQuery(this).parents('.dbaseitem').find('#dparamcondition').val();
 			jQuery('#condition-list option[value='+drestore+']').show();
 			jQuery(this).parents('.dbaseitem').remove();

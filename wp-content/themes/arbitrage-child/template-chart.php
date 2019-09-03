@@ -2431,7 +2431,6 @@
 			}
 
 			$('.inpt_data_price, .inpt_data_qty').keyup(function() {
-				// console.log( $('.inpt_data_qty').val() );
 				var buyprice = $('.inpt_data_price').val().replace(/[^0-9\.]/g, '');
 				var buyquanti = $('.inpt_data_qty').val().replace(/[^0-9\.]/g, '');
 				console.log(buyprice +" ~ "+ buyquanti);
@@ -2552,10 +2551,7 @@
 						}
 					});
 
-				} else {
-					console.log('Cant Click');
-				}
-
+				} 
 			});
 
 		jQuery('.inpt_data_price').keyup(function(){

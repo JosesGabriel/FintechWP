@@ -2349,7 +2349,7 @@ ul.footmore .ddot {
 	line-height: 1;
 	font-weight: 400;
 	font-size: 13px;
-	font-family: 'Century Gothic';
+	font-family: 'Roboto', sans-serif;
 	text-align: left;
 }
 .hudbadge p {

@@ -1570,9 +1570,6 @@ get_header('dashboard');
     // $gerdqoute = [];
 ?>
 <!-- BOF get the tradelogs -->
-<pre>
-	<?php print_r($getdstocks); ?>
-</pre>
 <?php
     $author_query = array(
         'posts_per_page' => '-1',
@@ -1640,9 +1637,16 @@ get_header('dashboard');
 if ($getdstocks && $getdstocks != '') {
     $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+		$stockdetails = "";
+		foreach ($gerdqoute->data as $gskey => $gsvalue) {
+			if($dstocksvalue == $gsvalue->symbol){
+				$stockdetails = $gsvalue;
+			}
+		}
         if ($dstocktraded && $dstocktraded != '') {
-            $dstockinfo = $gerdqoute->data->$dstocksvalue;
+            // $dstockinfo = $gerdqoute->data->$dstocksvalue;
+            $dstockinfo = $stockdetails;
             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
             $dsellfees = getjurfees($marketval, 'sell');
             $dtotal = $marketval - $dsellfees;
@@ -1679,8 +1683,15 @@ if ($getdstocks && $getdstocks != '') {
     $currentaloccolor = '"#f0231c",';
     if ($dtradeingfo) {
         foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-            $dinforstocl = $trinfovalue['stockname'];
-            $dstockinfo = $gerdqoute->data->$dinforstocl;
+			$stockdetails = "";
+			foreach ($gerdqoute->data as $gskey => $gsvalue) {
+				if($trinfovalue['stockname'] == $gsvalue->symbol){
+					$stockdetails = $gsvalue;
+				}
+			}
+            // $dinforstocl = $trinfovalue['stockname'];
+            // $dstockinfo = $gerdqoute->data->$dinforstocl;
+            $dstockinfo = $stockdetails;
             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
             $dsellfees = getjurfees($marketval, 'sell');
             $dtotal = $marketval - $dsellfees;
@@ -1698,7 +1709,7 @@ if ($getdstocks && $getdstocks != '') {
 <!-- Delete Data -->
 <?php
 
-    if (isset($_POST) && strtolower($_POST['deletedata']) == 'reset') {
+    if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
 
 		
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
@@ -1942,9 +1953,15 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 foreach ($getdstocks as $key => $value) {
                                                                                     $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
                                                                                     if ($dstocktraded && $dstocktraded != '') {
+																						$stockdetails = "";
+																						foreach ($gerdqoute->data as $gskey => $gsvalue) {
+																							if($value == $gsvalue->symbol){
+																								$stockdetails = $gsvalue;
+																							}
+																						}
                                                                                         // code...
 
-                                                                                        $dstockinfo = $gerdqoute->data->$value;
+                                                                                        $dstockinfo = $stockdetails;
 
                                                                                         // print_r($dstockinfo);
 

@@ -59,30 +59,34 @@
 													$resres = $equityres / 100000;
 													$finalres = $resres * 100;
 													?>
-													
-													<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-													
+													<span class="value-t">
+														<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
+													</span>
 													<?php if($finalres == 0) { ?>
 														<br>
-															<span style="color: #a2adb9;">
+															<span class="value-p" style="color: #a2adb9;">
 																<?php echo number_format($finalres, 2, '.', ',') . " % "; ?>
 															</span>
 													<?php }elseif($finalres >= 0) {?>
-														<br>
-														<span style="color: #25ae5f;">
-															<i class="fas fa-caret-up caret"></i>
-													<?php
-														if($finalres >= '200.00' ){
-															$thisisit = $finalres - '100.00';
-															$thisisit = $thisisit + '100.00';
-														}elseif( $finalres <= '200.00' ){
-															$thisisit = $finalres + '0';
-														}
-														echo number_format($thisisit, 2, '.', ',') . " % "; 
-													?>
-														</span>
+															<br>
+															<span class="value-p" style="color: #25ae5f;">
+																<i class="fas fa-caret-up caret"></i>
+																<?php
+																	if($finalres >= '200.00' ){
+																		$thisisit = $finalres - '100.00';
+																		$thisisit = $thisisit + '100.00';
+																	}elseif( $finalres <= '200.00' ){
+																		$thisisit = $finalres + '0';
+																	}
+																	echo number_format($thisisit, 2, '.', ',') . " % "; 
+																?>
+															</span>
 													<?php }elseif($finalres <= 0) { ?>
-														<br><span style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+															<br>
+															<span class="value-p" style="color: #e64c3c;">
+																<i class="fas fa-caret-down caret"></i>
+																	<?php echo number_format($finalres, 2, '.', ',') . " % "; ?>
+															</span>
 													<?php } ?>
 											 	</div>
 											<?php ?>

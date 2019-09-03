@@ -499,10 +499,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																</div>
 															</div>-->
                                                             <div class="row">
-                                                                <div class="col-md-6 condition-padding">
+                                                                <!--<div class="col-md-6 condition-padding">
                                                                     <div class="condition-params">
                                                                         <div class="condition-type">
-                                                                            <!-- <label>Conditions</label> -->
+                                                                           
                                                                             <select id="condition-list">
                                                                                 <option value="">Select Conditions</option>
                                                                                 <option value="entry_price">Entry Price</option>
@@ -511,14 +511,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             </select>
                                                                         </div>
                                                                         <div class="condition-freq">
-                                                                            <!-- <label>Condition Frequency</label> -->
+                                                                            
                                                                             <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                                 <div class="col-md-6">
                                                                     <div class="dpaste">
                                                                         <ul class="listofinfo"></ul>

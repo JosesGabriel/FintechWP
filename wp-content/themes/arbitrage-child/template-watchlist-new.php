@@ -465,10 +465,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="text" class="inpt_data_price number" name="inpt_data_price">
+															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
-															<input type="text" class="inpt_data_price number" name="inpt_data_price">
+															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="">
 																<div class="innerdeliver innerdeliver-addstock">

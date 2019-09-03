@@ -604,10 +604,9 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 	<?php if (is_front_page()){ // PWA - Add to homepage ?>
 		<script>
 		 if ('serviceWorker' in navigator) {
-			console.log("Add to homepage");
 			navigator.serviceWorker.register('serworkr.js')
 			  .then(function(reg){
-				console.log("Done!");
+
 			 }).catch(function(err) {
 				console.log("Woops... Sorry...", err)
 			});

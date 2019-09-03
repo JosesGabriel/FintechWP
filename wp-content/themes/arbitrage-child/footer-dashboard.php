@@ -300,11 +300,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				var dstock = jQuery(this).attr('data-dstock');
 
 				jQuery('#myDropdown').val(dstock);
+				jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 
-				jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
-				jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
+				//jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
+				//jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
 
 				//jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
 

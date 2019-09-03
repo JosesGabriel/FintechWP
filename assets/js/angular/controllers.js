@@ -908,6 +908,10 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                     };                                    
                                 });
                                 $scope.$parent.$digest();
+                            })
+                            .catch(response => {
+                                $scope.$parent.transactions = [];
+                                $scope.$parent.$digest();
                             });
 
                         // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {

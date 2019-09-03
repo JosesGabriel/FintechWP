@@ -881,7 +881,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
                     }).then(function mySucces(response) {
                         angular.element(".regsentiment").addClass('openmenow');
-                        
+                        console.log("status : " + response.data.isvote);
 
                         // angular.element(".bullbearsents").addClass('clickedthis');
 
@@ -911,7 +911,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }, function myError(error) {
                         console.log(error);
                     });
-                    
+                     
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {

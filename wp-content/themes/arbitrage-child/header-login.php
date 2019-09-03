@@ -263,13 +263,15 @@ $user = wp_get_current_user();
 
 if(isset($_POST['send'])){
       
-       	global $wpdb;
+		echo $_POST['email'];
+
+       	/*global $wpdb;
 
        	$date = date('Y-m-d H:i:s');
     	$tablename=$wpdb->prefix.'arby_launch_emailnotication';	
     	$data=array('user_email' => $_POST['email'],'add_date' => $date);
 
-    	$wpdb->insert($tablename, $data);
+    	$wpdb->insert($tablename, $data);*/
 
 
     }

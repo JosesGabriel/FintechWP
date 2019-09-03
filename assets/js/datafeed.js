@@ -62,20 +62,20 @@ var DataProvider = (function () {
 				subscriber.listener(lastBar);
         	}
 		});
-		socket.on('pse-chart', function (data) {
-			let listenerGuid = data.symbol + '_D';
+		socket.on('psec', function (data) {
+			let listenerGuid = data.sym + '_D';
 			if (that._subscribers.hasOwnProperty(listenerGuid)) {
 				var subscriber = that._subscribers[listenerGuid];
 				var lastBar = {
-					time: 	parseFloat(data.timestamp * 1000),
-					close: 	parseFloat(data.last),
-					open: 	parseFloat(data.open),
-					high: 	parseFloat(data.high),
-					low: 	parseFloat(data.low),
-					volume: parseFloat(data.volume),
+					time: 	parseFloat(data.t * 1000),
+					close: 	parseFloat(data.prv),
+					open: 	parseFloat(data.o),
+					high: 	parseFloat(data.h),
+					low: 	parseFloat(data.l),
+					volume: parseFloat(data.vol),
 				};
 				subscriber.listener(lastBar);
-				console.log('DataPulseProvider: websocket:pse-chart', lastBar);
+				console.log('DataPulseProvider: websocket:psec', lastBar);
 			}
 		});
         socket.on('reconnect', function() {

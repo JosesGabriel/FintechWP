@@ -71,12 +71,12 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         socket.emit('subscribe','transactions');
         socket.emit('subscribe','ticker');
     });
-    socket.on('pse-chart', function (data) {
+    socket.on('psec', function (data) {
         var transaction = {
-            symbol: data.symbol,
-            price:  price_format(data.last),
-            change: data.change,
-            shares: abbr_format(data.volume),
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol),
         };
         $scope.ticker.push(transaction);
         if ($scope.ticker.length > 150) {
@@ -348,6 +348,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
+            stock['change_percentage'] = parseFloat(stock['changepercentage']);
             stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);
@@ -414,36 +415,61 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
         });
     });
-    socket.on('pse-chart', function (data) {
-        let date = (new Date(0)).setUTCSeconds(data.timestamp);
+    let limit = 20;
+    $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
+        .then(response => {
+            response = response.data;
+            if (!response.success) {
+                return;
+            }
+
+            let data = response.data;
+
+            $scope.transactions = data.map(transaction => {
+                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
+                
+                return {
+                    symbol: transaction.symbol,
+                    price:  price_format(transaction.executed_price),
+                    shares: abbr_format(transaction.executed_volume),
+                    buyer:  transaction.buyer,
+                    seller: transaction.seller,
+                    time:   full_time,
+                };                                    
+            });
+            $scope.$digest();
+        });
+    socket.on('psec', function (data) {
+        let date = (new Date(0)).setUTCSeconds(data.t);
         let full_date = new Intl.DateTimeFormat('en-US', {dateStyle: 'medium'}).format(date);
         let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
         let stock = {
-            id: data.symbol,
-            symbol: data.symbol,
+            id: data.sym,
+            symbol: data.sym,
             date: full_date,
-            last: data.last,
-            difference: data.changepercentage,
-            change: data.change,
-            previous: data.close,
-            open: data.open,
-            high: data.high,
-            low: data.low,
-            average: data.average,
-            volume: data.volume,
-            value: data.value,
-            trades: data.trades,
+            last: data.prv,
+            difference: data.chgpc,
+            change: data.chg,
+            change_percentage: data.chgpc,
+            previous: data.c,
+            open: data.o,
+            high: data.h,
+            low: data.l,
+            average: data.avg,
+            volume: data.vol,
+            value: data.val,
+            trades: data.tr,
             updated_at: full_date,
 
-            displayLast: price_format(data.last),
-            displayDifference: price_format(data.change, data.last),
-            displayOpen: price_format(data.open),
-            displayPrevious: price_format(data.close),
-            displayAverage: price_format(data.average),
-            displayLow: price_format(data.low),
-            displayHigh: price_format(data.high),
-            displayChange: number_format(data.changepercentage, '0,0.00'),
-            displayValue: abbr_format(data.value),
+            displayLast: price_format(data.prv),
+            displayDifference: price_format(data.chg, data.prv),
+            displayOpen: price_format(data.o),
+            displayPrevious: price_format(data.c),
+            displayAverage: price_format(data.avg),
+            displayLow: price_format(data.l),
+            displayHigh: price_format(data.h),
+            displayChange: number_format(data.chgpc, '0,0.00'),
+            displayValue: abbr_format(data.val),
         }
 
         // UPDATE STOCK
@@ -486,15 +512,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
 
     socket.on('pse-transaction', function (data) {
-        if ($scope.stock && $scope.stock.symbol == data.symbol) {
-            let date = (new Date(0)).setUTCSeconds(data.timestamp);
-            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+        if ($scope.stock && $scope.stock.symbol == data.sym) {
+            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
             let transaction = {
-                symbol: data.symbol,
-                price:  price_format(data.executed_price),
-                shares: abbr_format(data.executed_volume),
-                buyer:  data.buyer,
-                seller: data.seller,
+                symbol: data.sym,
+                price:  price_format(data.exp),
+                shares: abbr_format(data.exvol),
+                buyer:  data.b,
+                seller: data.s,
                 time:   full_time,
             };
     
@@ -862,8 +887,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
-
-                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&symbol=' + symbol)
+                        let limit = 20;
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
                             .then(response => {
                                 response = response.data;
                                 if (!response.success) {
@@ -873,8 +898,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 let data = response.data;
 
                                 $scope.$parent.transactions = data.map(transaction => {
-                                    let date = (new Date(0)).setUTCSeconds(transaction.timestamp);
-                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp));
                                     
                                     return {
                                         symbol: transaction.symbol,

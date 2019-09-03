@@ -1560,7 +1560,7 @@ get_header('dashboard');
     $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $gerdqoute = curl_exec($curl);
     curl_close($curl);
@@ -1954,8 +1954,14 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             $totalmarketvalue += $dmarketvalue;
                                                                                             $dtotalcosts += $dmarketvalue + $dfees;
                                                                                             $totalquanta += $dtradeissuevalue['qty'];
-                                                                                            $intcost = $dtradeissuevalue['price'];
-                                                                                        }
+																							$intcost = $dtradeissuevalue['price'];
+																							
+																							// calculate averate price
+																						}
+																						
+																						echo "<pre>";
+																							print_r($dstocktraded['data']);
+																						echo "</pre>";
 
                                                                                         $dsellmarket = $dstockinfo->last * $dstocktraded['totalstock'];
                                                                                         $dsellfees = getjurfees($dsellmarket, 'sell');

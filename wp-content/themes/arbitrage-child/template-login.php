@@ -697,6 +697,10 @@ input#first_name-9 {
                     <?php if(isset($_GET['active'])){ ?>
 						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
                     <?php } ?>
+                    <a class="prtnr_login" id="switch_login" href="#">
+                        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
+                        <span>Login</span>
+                    </a>
                 </div>
               </div>
           </div>
@@ -712,10 +716,7 @@ input#first_name-9 {
     </a>
 </div>
 <div class="ico_posbott_login">
-    <a class="prtnr_login" id="switch_login" href="#">
-        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
-        <span>Login</span>
-    </a>
+    
 </div>
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>

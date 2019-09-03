@@ -296,9 +296,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery('.ddropbase a').click(function(e){
 
-				console.log('eeeeeeeeee');
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
+
+				console.log(dstock);
+
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 
 				jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');

@@ -46,7 +46,6 @@ var DataProvider = (function () {
         	}
         });
         socket.on('tick2', function(data) {
-        	console.log(data);
         	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
         		var subscriber = that._subscribers[data.listenerGuid];
 				var lastBar = {
@@ -266,7 +265,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.unsubscribeBars = function (listenerGu
     this._dataProvider.unsubscribeBars(listenerGuid);
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getMarks = function(symbolInfo, rangeStart, rangeEnd, onDataCallback, resolution) {
-	console.log('getMarks');
+	
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getTimescaleMarks = function(symbolInfo, rangeStart, rangeEnd, onDataCallback, resolution) {
 	var that = this;

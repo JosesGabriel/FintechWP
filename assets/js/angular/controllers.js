@@ -401,7 +401,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         });*/
         $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
             if (response.data.success) {
-                // $scope.marketdepth = response.data.data;
                 $scope.marketdepth = response;
             }
         });
@@ -868,7 +867,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     if (symbolData.type == 'index') {
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
-                    console.log("nausab ra");
                     angular.element(".arb_bullbear").show();
                     if (found.length) {
 

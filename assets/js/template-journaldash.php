@@ -3729,37 +3729,27 @@ if ($getdstocks && $getdstocks != '') {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
-														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
-															console.log('asdasdasd');
 															var inputVal = jQuery(this).val().length;													
 
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
-																console.log('tesssssss');
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
-
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
-															console.log(inputVal2);
 															if(inputVal2 != 0){
 																y = 1
 															}
 														});
-
 														$(".confirmtrd").click(function(e){
-
-															//
 															if(x == 1 && y == 1){
 																$('.chart-loader').css("display","block");
 																$(this).hide();
 															}
-
-															
 														});
 													});
 						                        </script>
@@ -4253,9 +4243,7 @@ if ($getdstocks && $getdstocks != '') {
 	jQuery(document).ready(function(){
 
 		jQuery(".deletelog").click(function(e){
-
 			var dlogid = jQuery(this).attr('data-istl');
-			console.log(dlogid);
 
 			swal({
 			title: "Are you sure?",
@@ -4282,10 +4270,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".depotincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4295,10 +4281,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".dividincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4333,17 +4317,12 @@ if ($getdstocks && $getdstocks != '') {
 					if (!jQuery(this).parents(".modal-content").find(".errormessage").length) {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
-
-					console.log("cant withdraw");
 				} else {
-					console.log("you may");
+
 				}
 			} else {
 				e.preventDefault();
 			}
-
-
-			// console.log("here");
 		});
 	});
     </script>
@@ -4607,8 +4586,6 @@ if ($getdstocks && $getdstocks != '') {
 
 	function handleInit(){
 	  chart.legend.addListener("rollOverItem", handleRollOver);
-	  /*jQuery("#chartdiv2 svg").prepend('<defs><linearGradient id="myGradient" gradientTransform="rotate(90)">
-	  <stop offset="5%" stop-color="#00e676" /><stop offset="95%" stop-color="#000000" /></linearGradient></defs>');*/
 	}
 
 	function handleRollOver(e){

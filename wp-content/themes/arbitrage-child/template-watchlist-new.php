@@ -447,7 +447,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<?php endif; ?>
 												</div>
 											</div>	
-											<div class="dclosetab addwatchtab ">
+											<div class="dclosetab addwatchtab " style="width: 275px;">
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">

@@ -462,7 +462,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														</div>
 
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="number" name="" id="" style="margin-left: -3px; text-align: right;" >
+															<input type="number" style="margin-left: -3px; text-align: right;" >
 														</div>
 
 															<div class="dselectstockname">

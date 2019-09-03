@@ -2332,10 +2332,13 @@ ul.footmore .ddot {
 }
 .playerscontent {
 	width: 100%;
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-	padding: 5px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    padding: 5px;
+	border-right: 2px solid #e91e63;
+    /* border-radius: 5px; */
+    margin-bottom: 4px;
 }
 .isname {
 	font-size: 13px;
@@ -2381,11 +2384,11 @@ a.viewmoreplayers {
 	padding-bottom: 5px;
 }
 .caret {
-    font-size: 20px;
+    font-size: 22px;
     padding-right: 3px;
     line-height: 17px;
     position: absolute;
-    bottom: 16px;
+    bottom: 17px;
 }
 .isname span {
 	float: right;

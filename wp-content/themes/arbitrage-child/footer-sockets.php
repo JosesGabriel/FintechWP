@@ -41,11 +41,7 @@ if ($user_id !== 0) {
     var io = io('https://socket.vyndue.com');
     
     io.on('connect', function (socket) {
-
         io.emit('arbitrage:connect', {user: "<?php echo $secret ?>"})
-
-        // console.log('connected');
-
     })
 
     io.on('arbitrage:logout', function (data) {
@@ -56,56 +52,42 @@ if ($user_id !== 0) {
 
     //region Friends
     io.on('arbitrage:friend_request', function (data) {
-        // console.log('arbitrage:friend_request', data)
-
-        if (data.approver.id == '<?php echo $user_id ?>') {
-            // jQuery.toast(`${data.requester.full_name} has requested to add you as a friend.`)
-        }
+        // if (data.approver.id == '') {
+        //     jQuery.toast(`${data.requester.full_name} has requested to add you as a friend.`)
+        // }
     });
 
     io.on('arbitrage:friend_approval', function (data) {
-        // console.log('arbitrage:friend_approval', data)
-
-        if (data.approver.id == '<?php echo $user_id ?>') {
-            // jQuery.toast(`${data.requester.full_name} are now friends.`)
-        } else if (data.requester.id == '<?php echo $user_id ?>') {
-            // jQuery.toast(`${data.approver.full_name} has accepted your friend request.`)
-        }
+        // if (data.approver.id == '') {
+        //     jQuery.toast(`${data.requester.full_name} are now friends.`)
+        // } else if (data.requester.id == '') {
+        //     jQuery.toast(`${data.approver.full_name} has accepted your friend request.`)
+        // }
     });
     //endregion Friends
 
     //region Vyndue
     io.on("arbitrage:mention", function (data) {
-        // console.log('arbitrage:mention', data);
-
         // jQuery.toast(`Mentioned by ${data.sender}`)
-
     });
 
-    io.on('arbitrage:new_message', function (data) {
-        // console.log('arbitrage:new_message', data)
-
+    io.on('arbitrage:new_message', function (data) {]
         // jQuery.toast(`${data.sender} has sent a message`)
-
         updateVyndueNotifications(parseInt(getVyndueNotifications()) + 1)
     })
     //endregion Vyndue
 
     //region Posts
     io.on('arbitrage:bull_post', function (data) {
-        // console.log('arbitrage:bull_post', data)
         updatePostActivity(data, data.bull_count, 'bullish')
     })
 
     io.on('arbitrage:bear_post', function (data) {
-        // console.log('arbitrage:bear_post', data)
         updatePostActivity(data, data.bear_count, 'bearish')
     })
 
     io.on('arbitrage:post_comment', function (data) {
-        // console.log('arbitrage:post_comment', data)
-
-        if (data.poster_id == <?php echo $user_id ?>) {
+        if (data.poster_id == '') {
             // jQuery.toast({
             //     text: `${data.commenter.full_name} has commented on your post`,
             //     onClick: function () {
@@ -117,7 +99,7 @@ if ($user_id !== 0) {
     //endregion Posts
 
     io.on('notifyMentionUser', function (data) {
-        // console.log('notifyMentionUser', data)
+        
     })
 
 
@@ -136,8 +118,6 @@ if ($user_id !== 0) {
                 // jQuery.toast(`${data.action_user_name} ${count_up}${$type}ed your post.`)
             }
         }
-
-        // console.log('Update post ', $count, $post.find('.um-activity-' + $type + ' .dnumof'))
     }
 </script>
 <?php

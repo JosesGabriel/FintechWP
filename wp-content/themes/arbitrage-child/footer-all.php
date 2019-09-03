@@ -1,6 +1,5 @@
 <?php
     $user_id = get_current_user_id();
-    // $uuid = arbitrage_api_get_user_uuid($user_id);
 ?>
 <script>
 (function ($) {
@@ -49,8 +48,7 @@
         $('.um-activity-publish').on('submit', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            
-            console.log('submit')
+
             var form = $(this);
             var $btn = form.find('.um-activity-post');
 
@@ -61,8 +59,6 @@
             }
 
             um_disable_post_submit( form );
-
-            // add_loading_btn($btn);
 
             var formdata = form.serializeArray();
 
@@ -91,8 +87,6 @@
                             'content'       : data.content,
                             'img_src'       : data.photo_gsc_url,
                             'img_src_url'   : data.photo_gsc_url,
-                            // 'img_src'       : form.find('input[name="_post_img"]').val(),
-                            // 'img_src_url'   : form.find('input[name="_post_img_url"]').val(),
                             'wall_id'       : formdata._wall_id,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
@@ -120,8 +114,6 @@
                             'content'       : data.content,
                             'img_src'       : data.photo_gsc_url,
                             'img_src_url'   : data.photo_gsc_url,
-                            /*'img_src'       : form.find('input[name="_post_img"]').val(),
-                            'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
                             'wall_id'       : formdata._wall_id,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
@@ -134,9 +126,6 @@
 
                         form.parents('.um-activity-body').html( widget_template( template_data ) );
                     }
-
-                    // remove_loading_btn($btn)
-                    // window.location.reload(true);
                 }
             });
         })

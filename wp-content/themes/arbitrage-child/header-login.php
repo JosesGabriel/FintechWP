@@ -284,11 +284,8 @@ if(isset($_POST['send'])){
 <script type="text/javascript">  
     $('document').ready(function() {
         'use strict';
-        
        
         const timestamp = parseInt(Date.now()/1000);
-
-        console.log(timestamp);
 
     	$('.countdown').final_countdown({
             'start': 1565338684,

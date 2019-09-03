@@ -89,8 +89,6 @@
        
         const timestamp = parseInt(Date.now()/1000);
 
-        console.log(timestamp);
-
     	$('.countdown').final_countdown({
             'start': 1565338684,
             'end': 1568595600,

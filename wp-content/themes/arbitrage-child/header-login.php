@@ -121,7 +121,7 @@ $user = wp_get_current_user();
 		color: #d8d8d8;
 	}
 	.email--btn {
-		margin-left: -74px;
+		margin-left: -90px;
 		padding: 5px 10px !important;
 		top: -1px;
 		position: relative;

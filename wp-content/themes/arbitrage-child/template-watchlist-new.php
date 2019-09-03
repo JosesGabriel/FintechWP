@@ -470,6 +470,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<div class="groupinput midd"><label>Stop Loss</label>
 															<input type="text" class="inpt_data_price number" name="inpt_data_price">
 														</div>
+														<div class="">
+																<div class="innerdeliver innerdeliver-addstock">
+																	<ul>
+																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
+																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+																	</ul>
+																</div>
+														</div>
 
 															<div class="dselectstockname">
 																<div class="dropdown ddropconts">
@@ -492,14 +500,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</select>
 																</div> -->
 															</div>
-															<div class="">
+															<!--<div class="">
 																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>
 																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
 																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
 																	</ul>
 																</div>
-															</div>
+															</div>-->
                                                             <div class="row">
                                                                 <div class="col-md-6 condition-padding">
                                                                     <div class="condition-params">

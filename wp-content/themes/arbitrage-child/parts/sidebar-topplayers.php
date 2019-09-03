@@ -82,11 +82,11 @@
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
-										<div class="hudbadge">
+										<!-- <div class="hudbadge">
 
 										    <p><?php echo $plcnt; ?></p>
 								
-									   </div>
+									   </div> -->
 
 									    <div class="playerscontent">
 											<div class="isname">

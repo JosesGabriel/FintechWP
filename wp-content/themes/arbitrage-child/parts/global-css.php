@@ -2331,7 +2331,7 @@ ul.footmore .ddot {
 	margin: 4px 0;
 }
 .playerscontent {
-	width: 90%;
+	width: 100%;
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;

@@ -1986,7 +1986,7 @@
 																						<div data-scrollbar="true" data-height="100%" style="height: 100%;">
 																							<div class="vertical-box tab-pane fade in active" id="allstock">
 																								<table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
-																									<thead>
+																									<thead style="position: fixed; background-color: #2c3e50">
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
 																												<strong>STOCK</strong>

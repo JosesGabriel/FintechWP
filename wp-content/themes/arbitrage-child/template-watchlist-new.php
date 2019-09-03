@@ -462,7 +462,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="text" class="inpt_data_price number" name="inpt_data_price">
+															<input type="number" id="condition_frequency" class="inpt_data_price number" name="confreq" placeholder="Enter Amount">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
 															<input type="text" class="inpt_data_price number" name="inpt_data_price">
@@ -479,7 +479,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																</div>
 														</div>
 
-															<div class="dselectstockname">
+															<!--<div class="dselectstockname">
 																<div class="dropdown ddropconts">
 																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
 																	<div class="dropdown-content ddropbase" style="display: none;">
@@ -489,17 +489,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																</div>
 																<div class="dselected"></div>
-																<!-- <div class="formitem">
-																	<label>Select a Stock</label>
-																	<select id="dstocknames" class="stack-list" name="stockname">
-																		<option value="">Select Stock</option>
-																		<option value="BPI">BPI</option>
-																		<option value="ALI">ALI</option>
-																		<option value="VVL">VVL</option>
-																		<option value="ICT">ICT</option>
-																	</select>
-																</div> -->
-															</div>
+															</div>-->
 															<!--<div class="">
 																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>

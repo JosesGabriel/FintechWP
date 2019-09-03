@@ -2331,14 +2331,17 @@ ul.footmore .ddot {
 	margin: 4px 0;
 }
 .playerscontent {
-	width: 100%;
+    width: 89%;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     padding: 5px;
-	border-right: 2px solid #e91e63;
     /* border-radius: 5px; */
     margin-bottom: 4px;
+}
+.hudbadge img {
+    height: auto;
+    width: 21px;
 }
 .isname {
     font-size: 13px;
@@ -2349,11 +2352,11 @@ ul.footmore .ddot {
 }
 .istotal {
 	color: #a2adb9;
-	line-height: 1;
-	font-weight: 400;
-	font-size: 13px;
-	font-family: 'Roboto', sans-serif;
-	text-align: left;
+    line-height: 1;
+    font-weight: 400;
+    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
 }
 .hudbadge p {
     display: block;
@@ -2384,12 +2387,8 @@ a.viewmoreplayers {
 	padding-bottom: 5px;
 }
 .caret {
-    font-size: 20px;
     padding-right: 3px;
-    line-height: 17px;
-    position: absolute;
-    bottom: 17px;
-    right: 4px;
+    line-height: 0;
 }
 .isname span {
 	float: right;

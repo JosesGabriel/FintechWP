@@ -143,7 +143,7 @@
 		// echo get_user_meta($userid, 'disname', true);
 
 
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'forralph'){
 		echo "dito ka ralph";
 	}else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

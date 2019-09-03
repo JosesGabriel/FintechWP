@@ -295,6 +295,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 			jQuery('.ddropbase a').click(function(e){
+
+				console.log('eeeeeeeeee');
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
@@ -302,7 +304,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
 				jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
 
-				jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
+				//jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
 
 			});
 

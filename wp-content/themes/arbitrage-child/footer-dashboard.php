@@ -263,7 +263,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 			});
 
-			jQuery('#myDropdown').click(function(e){
+			jQuery('#myDropdown').keyup(function(e){
 				e.preventDefault();
 				if (jQuery(this).hasClass('disopen')) {
 					jQuery(this).removeClass('disopen');

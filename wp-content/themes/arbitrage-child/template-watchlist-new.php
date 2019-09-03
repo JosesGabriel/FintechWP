@@ -520,9 +520,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     </div>
                                                                 </div>-->
                                                                 <div class="col-md-6">
-                                                                    <div class="dpaste">
+                                                                    <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
-                                                                    </div>
+                                                                    </div>-->
                                                                     <div class="submitform">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">

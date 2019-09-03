@@ -299,7 +299,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 																				</li>
 																			<?php endif ?>
-																			<?php if (isset($value['dcondition_take_profit_point'])): ?>
+																			<?php if (isset($value['dcondition_take_profit_point']) && $value['dconnumber_take_profit_point'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">

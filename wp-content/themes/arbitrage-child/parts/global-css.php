@@ -2335,7 +2335,7 @@ ul.footmore .ddot {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
-	padding-left: 10px;
+	padding: 5px;
 }
 .isname {
 	font-size: 13px;
@@ -2385,7 +2385,7 @@ a.viewmoreplayers {
     padding-right: 3px;
     line-height: 17px;
     position: absolute;
-    top: 0;
+    bottom: 16px;
 }
 .isname span {
 	float: right;

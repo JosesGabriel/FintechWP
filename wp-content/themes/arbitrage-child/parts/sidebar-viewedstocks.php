@@ -52,20 +52,23 @@ jQuery(function(){
            
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
-                 foreach ($havemeta as $key => $value) {
+                if($havemeta){
                     
-                        //echo $value['stockname'];
+                            foreach ($havemeta as $key => $value) {
+                            
+                                //echo $value['stockname'];
 
-                                if ($stvals->symbol == $value['stockname']) {
-                                    $stock_watched[$stockcount][0] = $stvals->symbol;
-                                    $stock_watched[$stockcount][1] = $counter;
-                                    $stock_watched[$stockcount][2] = $stvals->description;
-                                    $counter++;
-                                }
+                                        if ($stvals->symbol == $value['stockname']) {
+                                            $stock_watched[$stockcount][0] = $stvals->symbol;
+                                            $stock_watched[$stockcount][1] = $counter;
+                                            $stock_watched[$stockcount][2] = $stvals->description;
+                                            $counter++;
+                                        }
 
-                         }
+                                 }
                          
-                    }
+                         }
+                     }
 
                 $stockcount++;
                 $counter = 1;

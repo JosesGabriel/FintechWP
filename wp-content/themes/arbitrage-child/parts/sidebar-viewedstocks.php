@@ -53,7 +53,7 @@ jQuery(function(){
                 $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
 
                 if($havemeta){
-
+                    
                             foreach ($havemeta as $key => $value) {
                             
                                 //echo $value['stockname'];
@@ -78,22 +78,17 @@ jQuery(function(){
 
              for($i = 0; $i < $stockcount; $i++){
                 for ($j = $i + 1; $j < $stockcount; $j++) {
+                     if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
 
-                   if(!$stock_watched[$i][0]){
-
-                             if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
-
-                                    $temp = $stock_watched[$i][0];
-                                    $temp2 = $stock_watched[$i][1];
-                                    $temp3 = $stock_watched[$i][2];
-                                    $stock_watched[$i][0] = $stock_watched[$j][0];
-                                    $stock_watched[$i][1] = $stock_watched[$j][1];
-                                    $stock_watched[$i][2] = $stock_watched[$j][2];
-                                    $stock_watched[$j][0] = $temp;
-                                    $stock_watched[$j][1] = $temp2;
-                                    $stock_watched[$j][2] = $temp3;
-
-                            }
+                            $temp = $stock_watched[$i][0];
+                            $temp2 = $stock_watched[$i][1];
+                            $temp3 = $stock_watched[$i][2];
+                            $stock_watched[$i][0] = $stock_watched[$j][0];
+                            $stock_watched[$i][1] = $stock_watched[$j][1];
+                            $stock_watched[$i][2] = $stock_watched[$j][2];
+                            $stock_watched[$j][0] = $temp;
+                            $stock_watched[$j][1] = $temp2;
+                            $stock_watched[$j][2] = $temp3;
 
                     }
 

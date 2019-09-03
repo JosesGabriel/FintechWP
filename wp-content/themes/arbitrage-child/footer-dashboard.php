@@ -265,6 +265,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery('#myDropdown').keyup(function(e){
 				e.preventDefault();
+
+				if(jQuery(this).length == 0){
+					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+				}
+
 				if (jQuery(this).hasClass('disopen')) {
 					jQuery(this).removeClass('disopen');
 					//jQuery('.ddropbase').removeClass('opendrop').hide('slow');

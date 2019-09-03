@@ -121,7 +121,7 @@ $user = wp_get_current_user();
 		color: #d8d8d8;
 	}
 	.email--btn {
-		margin-left: -74px;
+		margin-left: -90px;
 		padding: 5px 10px !important;
 		top: -1px;
 		position: relative;
@@ -253,7 +253,7 @@ $user = wp_get_current_user();
         <div class="notif--subb">
         	 <form method="post">
 	            <input type="email" name="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input" required>
-	            <input type="submit" name="send" value="Sign up" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
+	            <input type="submit" name="send" value="Notify Me" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
             </form>
         </div>
      

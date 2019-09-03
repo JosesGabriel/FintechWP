@@ -290,7 +290,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																	<div class="dparams">
 																		<ul>
-																			<?php if (isset($value['dcondition_entry_price'])): ?>
+																			<?php if (isset($value['dcondition_entry_price']) && $value['dconnumber_entry_price'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
@@ -308,7 +308,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 																				</li>
 																			<?php endif ?>
-																			<?php if (isset($value['dcondition_stop_loss_point'])): ?>
+																			<?php if (isset($value['dcondition_stop_loss_point']) && $value['dconnumber_stop_loss_point'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">

@@ -2331,13 +2331,17 @@ ul.footmore .ddot {
 	margin: 4px 0;
 }
 .playerscontent {
-    width: 90%;
+    width: 89%;
     display: inline-block;
     position: relative;
     vertical-align: middle;
     padding: 5px;
     /* border-radius: 5px; */
     margin-bottom: 4px;
+}
+.hudbadge img {
+    height: auto;
+    width: 21px;
 }
 .isname {
     font-size: 13px;

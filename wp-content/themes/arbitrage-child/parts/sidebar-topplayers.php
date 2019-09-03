@@ -59,9 +59,7 @@
 													$resres = $equityres / 100000;
 													$finalres = $resres * 100;
 													?>
-													<span class="value-t">
-														<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-													</span>
+													<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 														<br>
 															<span class="value-p" style="color: #a2adb9;">

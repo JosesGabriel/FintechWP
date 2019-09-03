@@ -510,7 +510,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         $scope.$digest();
     });
 
-    socket.on('pse-transaction', function (data) {
+    socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
             let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
             let transaction = {

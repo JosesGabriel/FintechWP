@@ -451,6 +451,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
+
+														<div class="groupinput midd lockedd"><label>Stock Code</label>
+															<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" >
+														</div>
+
 															<div class="dselectstockname">
 																<div class="dropdown ddropconts">
 																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>

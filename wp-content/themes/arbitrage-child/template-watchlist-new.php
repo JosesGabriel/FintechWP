@@ -210,7 +210,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<div>
+																	<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
 																	</div>
@@ -1991,6 +1991,12 @@ h2.watchtitle {
 	margin-top: 15px;
     background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%) !important;
     box-shadow: -4px 4px 8px -2px rgba(4,13,23,0.7);
+}
+.watchlist--buttons {
+    display: flex;
+}
+.watchlist--buttons a {
+    color: white;
 }
 </style>
 <?php get_footer('dashboard'); ?>

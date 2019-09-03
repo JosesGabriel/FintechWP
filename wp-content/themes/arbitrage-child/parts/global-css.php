@@ -2332,17 +2332,20 @@ ul.footmore .ddot {
 }
 .playerscontent {
 	width: 100%;
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-	padding: 5px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    padding: 5px;
+	border-right: 2px solid #e91e63;
+    /* border-radius: 5px; */
+    margin-bottom: 4px;
 }
 .isname {
-	font-size: 13px;
-	font-weight: 600;
-	line-height: 1.3;
-	color: #ecf0f1;
-	text-align: right;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #ecf0f1;
+    text-align: left;
 }
 .istotal {
 	color: #a2adb9;
@@ -2385,7 +2388,8 @@ a.viewmoreplayers {
     padding-right: 3px;
     line-height: 17px;
     position: absolute;
-    bottom: 16px;
+    bottom: 17px;
+    right: 4px;
 }
 .isname span {
 	float: right;
@@ -3031,11 +3035,11 @@ input#searchlogs {
 	color: #FFC107;
 }
 span.value-t {
-	display: inline-block;
-	float: right;
+    display: inline-block;
+    float: left;
 }
 span.value-p {
 	display: inline-block;
-	float: left;
+	float: right;
 }
 </style>

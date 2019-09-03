@@ -452,7 +452,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
-														<div class="groupinput midd lockedd"><label>Stock Code</label>
+														<div class="groupinput midd"><label>Stock Code</label>
 															<input type="text" name="" id="" style="margin-left: -3px; text-align: left;" >
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">

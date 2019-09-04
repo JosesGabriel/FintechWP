@@ -15,8 +15,8 @@
 	
 	
 	$homeurlgen = get_home_url();
-	/* temp-disabled
 	$user_id = $user->ID;
+	/* temp-disabled
 	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
 	
@@ -671,12 +671,12 @@
     	top: -47px; */
 	}
 	.bbs_bull {
-		position: absolute;
-		left: 10px;
+		position: relative;
+		/* left: 10px; */
 	}
 	.bbs_bear {
-		position: absolute;
-		right: 10px;
+		position: relative;
+		/* right: 10px; */
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -1207,6 +1207,10 @@
 	.entr_wrapper_top input {
 		text-align: right;
 		padding-right: 25px !important;
+	}
+	.bbbutton-sen {
+		position: relative;
+		bottom: 46px;
 	}
     
     </style>
@@ -2015,7 +2019,7 @@
 																									</thead>
 																								</table>
 
-																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 5px;">
+																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
@@ -2531,6 +2535,8 @@
 							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
 									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
 							});
+
+							$( ".bullbearsents .bbs_bear, .bullbearsents .bbs_bull" ).addClass("bbbutton-sen");
 
 							$( ".bbs_bear_bar" ).animate({
 								width: data.dbear+"%"

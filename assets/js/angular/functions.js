@@ -309,9 +309,9 @@ function changicotogreen() {
 		var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
-		link.href = 'https://arbitrage.ph/wp-content/uploads/ultimatemember/temp/arb_fav_bigger-150x150.png';
+		link.href = 'https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-270x270.png';
 		document.getElementsByTagName('head')[0].appendChild(link);
-	}, 2000);
+	});
 }
 function changicotored() {
 	var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -323,10 +323,25 @@ function changicotored() {
 		var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
 		link.type = 'image/x-icon';
 		link.rel = 'shortcut icon';
-		link.href = 'https://arbitrage.ph/wp-content/uploads/ultimatemember/temp/arb_fav_bigger-150x150.png';
+		link.href = 'https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-270x270.png';
 		document.getElementsByTagName('head')[0].appendChild(link);
-	}, 2000);
+	});
 }
+function changicotounchanged() {
+	var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+	link.type = 'image/x-icon';
+	link.rel = 'shortcut icon';
+	link.href = 'https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-270x270.png';
+	document.getElementsByTagName('head')[0].appendChild(link);
+	setTimeout(function(){ 
+		var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+		link.type = 'image/x-icon';
+		link.rel = 'shortcut icon';
+		link.href = 'https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-270x270.png';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	});
+}
+
 function goToChart(symbol) {
     if (chart) {
         chart.setSymbol(symbol.toUpperCase());

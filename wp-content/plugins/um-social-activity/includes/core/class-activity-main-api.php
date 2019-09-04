@@ -3088,7 +3088,7 @@ class Activity_Main_API
 
                 $output['video'] = $this->get_video($post_id);
 
-                do_action('arbitrage_um_activity_after_wall_post_published', $post_id, $_POST['_wall_id']);
+                do_action('arbitrage_um_activity_after_wall_post_published', ['post_id' => $post_id, 'wall_id' => $_POST['_wall_id']]);
                 do_action('um_activity_after_wall_post_published', $post_id, get_current_user_id(), absint($_POST['_wall_id']));
             } else {
                 // Updating a current wall post

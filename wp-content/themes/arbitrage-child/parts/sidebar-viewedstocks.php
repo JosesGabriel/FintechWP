@@ -56,20 +56,22 @@ jQuery(function(){
                     
                             foreach ($havemeta as $key => $value) {
                             
-                                //echo $value['stockname'];
+                                
 
                                         if ($stvals->symbol == $value['stockname']) {
                                             $stock_watched[$stockcount][0] = $stvals->symbol;
                                             $stock_watched[$stockcount][1] = $counter;
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;
-                                            $stockcount++;
+                                           $stockcount++;
                                         }
 
                                  }
 
-                          
+                         
                          }
+                       
+
                      }
 
                 //$stockcount++;
@@ -109,7 +111,7 @@ jQuery(function(){
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != ''){
+                 if($stock_watched[$i][0] != null){
 
                     ?>
                             <li class="odd">

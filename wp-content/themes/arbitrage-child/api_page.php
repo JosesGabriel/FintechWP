@@ -6,7 +6,7 @@
 
 	// get_header();
 
-	define('WP_USE_THEMES', false);
+	// define('WP_USE_THEMES', false);
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
 
@@ -144,14 +144,14 @@
 
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'notify_me_email'){
-        
-        global $wpdb;
-        $str = stripslashes($_GET['email']);
-        $str = mysql_real_escape_string($str);
-        $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
-        echo $str;
-        $exist = $wpdb->query($checkQuery);
-        print_r($exist);
+		
+        // global $wpdb;
+        // $str = stripslashes($_GET['email']);
+        // $str = mysql_real_escape_string($str);
+        // $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
+        // echo $str;
+        // $exist = $wpdb->query($checkQuery);
+        // print_r($exist);
 
 	}else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

@@ -1212,6 +1212,9 @@
 		position: relative;
 		bottom: 46px;
 	}
+	table.dstocklistitems.table.table-condensed.m-b-0.text-inverse.border-default {
+		margin-top: 20px !important;
+	}
     
     </style>
 	<script language="javascript">
@@ -2019,7 +2022,7 @@
 																									</thead>
 																								</table>
 
-																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 5px;">
+																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
@@ -2286,7 +2289,7 @@
 		}
 		?>';
 	</script>
-	<script src="/assets/js/angular/functions.js?v=1.218"></script>
+	<script src="/assets/js/angular/functions.js?v=1.219"></script>
 	<script src="/assets/js/angular/controllers.js?v=1.228"></script>
 	<script src="/assets/js/angular/directives.js?v=1.218"></script>
 	<script src="/assets/js/angular/filters.js?v=1.218"></script>

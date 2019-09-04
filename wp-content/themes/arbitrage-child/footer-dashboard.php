@@ -287,28 +287,13 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				//var i = 0;
 				var dtyped = jQuery(this).val();
 
-					jQuery(".listofstocks > a").each(function(index){
-							var istock = jQuery(this).attr('data-dstock');
+				if(dtyped == jQuery(".listofstocks > a").text()){
 
-							var rgxp = new RegExp(dtyped, "gi");
+					var text = jQuery(".listofstocks > a").text();
+					console.log(text);
+				}
+				
 
-							if(istock.match(rgxp)){
-								
-								jQuery(".dropdown-content").append("<a href='#' data-dstock='"+ istock +"'>" + istock + "</a>");
-								//return false;
-								//i = 1;
-							}else{
-								jQuery(".listofstocks > a").remove();
-							}
-							/*if (istock.toLowerCase().indexOf(dtyped) >= 0) {
-								jQuery(this).show();
-							} else {
-								jQuery(this).hide();
-							}*/
-						});
-					//if(i == 1){
-						//return false;
-					//}
 				
 			});
 

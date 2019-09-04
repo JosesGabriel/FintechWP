@@ -94,7 +94,7 @@ jQuery(function(){
                                     $stock_watched[$j][2] = $temp3;
 
                             }
-                       // }
+                        //}
 
                 }
 

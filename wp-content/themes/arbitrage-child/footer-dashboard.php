@@ -290,9 +290,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					jQuery(".listofstocks > a").each(function(index){
 							var istock = jQuery(this).attr('data-dstock');
 
-							if(dtyped == istock){
+							var rgxp = new RegExp(dtyped, "gi");
+
+							if(istock.match(rgxp)){
 								jQuery(".listofstocks").remove();
-								jQuery(".dropdown-content").append("<div><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
+								jQuery(".dropdown-content").append("<div class='istocks'><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
 								return false;
 								i = 1;
 							}
@@ -303,7 +305,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							}*/
 						});
 					if(i == 1){
-						return false;
+						//return false;
 					}
 				
 			});

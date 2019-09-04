@@ -205,7 +205,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			array_push($dstockinfo, $infodata);
 																		
 																		}
-
+                                                                    if (is_object($dinstall['data'])):
 																?>
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
@@ -448,7 +448,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	  </div>
 																	</div>
 																</li>
-															<?php } ?>
+                                                            <?php endif; } ?>
 														</ul>
 													<?php else: ?>
 														<ul>

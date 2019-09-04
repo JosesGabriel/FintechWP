@@ -75,40 +75,19 @@ jQuery(function(){
                 $counter = 1;
              }
     
-         
-        
-             for($i = 0; $i < $stockcount; $i++){
-                for ($j = $i + 1; $j < $stockcount; $j++) {
-  
-                        //if($stock_watched[$i][1] != null){
-                             if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
+             usort($stock_watched, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
 
-                                    $temp = $stock_watched[$i][0];
-                                    $temp2 = $stock_watched[$i][1];
-                                    $temp3 = $stock_watched[$i][2];
-                                    $stock_watched[$i][0] = $stock_watched[$j][0];
-                                    $stock_watched[$i][1] = $stock_watched[$j][1];
-                                    $stock_watched[$i][2] = $stock_watched[$j][2];
-                                    $stock_watched[$j][0] = $temp;
-                                    $stock_watched[$j][1] = $temp2;
-                                    $stock_watched[$j][2] = $temp3;
-
-                            }
-                        //}
-
-                }
-
-             }
              
 
              ?>
-
              <ul>
              <?php
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != null){
+                 if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
 
                        
                                     ?>

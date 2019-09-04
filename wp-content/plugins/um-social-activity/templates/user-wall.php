@@ -292,6 +292,7 @@ foreach ( $wallposts->posts as $post ) {
 
 	um_fetch_user( $author_id );
 
+	/*
 	if ($count % 5 == 0 && $count != 0) {
 		?>
 
@@ -341,6 +342,8 @@ foreach ( $wallposts->posts as $post ) {
 
 		<?php
 	}
+	*/
+	
 
 	?>
 

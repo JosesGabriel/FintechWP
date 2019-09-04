@@ -292,6 +292,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							if(dtyped == istock){
 								jQuery(".listofstocks").remove();
 								jQuery(".dropdown-content").append("<div><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
+								return;
 							}
 							/*if (istock.toLowerCase().indexOf(dtyped) >= 0) {
 								jQuery(this).show();

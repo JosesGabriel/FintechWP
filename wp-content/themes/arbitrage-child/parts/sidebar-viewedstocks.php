@@ -80,7 +80,7 @@ jQuery(function(){
              for($i = 0; $i < $stockcount; $i++){
                 for ($j = $i + 1; $j < $stockcount; $j++) {
   
-                        if($stock_watched[$i][1]){
+                        if($stock_watched[$i][1] != ''){
                              if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
 
                                     $temp = $stock_watched[$i][0];

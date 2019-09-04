@@ -297,6 +297,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 								jQuery(".dropdown-content").append("<div class='istocks'><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
 								return false;
 								i = 1;
+							}else{
+								jQuery(".istocks").remove();
 							}
 							/*if (istock.toLowerCase().indexOf(dtyped) >= 0) {
 								jQuery(this).show();

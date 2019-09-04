@@ -63,20 +63,21 @@ jQuery(function(){
                                             $stock_watched[$stockcount][1] = $counter;
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;
+                                            $stockcount++;
                                         }
 
                                  }
 
-                           
+                          
                          }
                      }
 
-                $stockcount++;
+                //$stockcount++;
                 $counter = 1;
              }
     
          
-/*
+        /*
              for($i = 0; $i < $stockcount; $i++){
                 for ($j = $i + 1; $j < $stockcount; $j++) {
   
@@ -99,7 +100,8 @@ jQuery(function(){
                 }
 
              }
-*/
+             */
+
              ?>
 
              <ul>

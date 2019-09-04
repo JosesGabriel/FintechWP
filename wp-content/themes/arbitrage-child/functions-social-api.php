@@ -59,7 +59,7 @@ add_action('before_delete_post', function ($post_id) {
 /**
  * Create a comment in social api
  */
-add_action('wp_insert_comment', function ($comment_id, $comment) {
+add_action('wp_insert_comment', function ($comment_id) {
     $user_id = get_current_user_id();
     $user_uuid = arbitrage_api_get_user_uuid($user_id);
     $comment = get_comment($comment_id);

@@ -222,7 +222,8 @@ if ( is_user_logged_in() ) {
                     
                     $success = mail($to, $subject, $message, $headers);
 					if (!$success) {
-						echo $errorMessage = error_get_last();
+						$errorMessage = error_get_last();
+						print_r($errorMessage);
 					}
 					 ?>
                 

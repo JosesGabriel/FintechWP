@@ -64,8 +64,6 @@ jQuery(function(){
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;
                                            $stockcount++;
-                                        }else{
-                                            return null;
                                         }
 
                                  }

@@ -437,6 +437,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 beep();
 				if (stock.change > 0){changicotogreen();}
 				if (stock.change < 0){changicotored();}
+				if (stock.change = 0){changicotounchanged();}
             }
             setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
             // if ($scope.transactions.length > 0) {

@@ -484,6 +484,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 beep();
                 if (stock.change > 0){changicotogreen();}
 				if (stock.change < 0){changicotored();}
+				if (stock.change = 0){changicotounchanged();}
             }
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
 

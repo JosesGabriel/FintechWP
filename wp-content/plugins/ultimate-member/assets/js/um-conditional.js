@@ -381,7 +381,7 @@ function um_field_restore_default_value( $dom ) {
 
 		case 'checkbox':
 
-			if ( $dom.find('input[type=checkbox]:checked') == true ) {
+			if ( $dom.find('input[type=checkbox]:checked').length >= 1 ) {
 
 				$dom.find('input[type=checkbox]:checked').removeAttr('checked');
 				$dom.find('span.um-field-checkbox-state i').removeClass('um-icon-android-checkbox-outline');

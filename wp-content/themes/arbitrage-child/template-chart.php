@@ -671,12 +671,12 @@
     	top: -47px; */
 	}
 	.bbs_bull {
-		position: absolute;
-		left: 10px;
+		position: relative;
+		/* left: 10px; */
 	}
 	.bbs_bear {
-		position: absolute;
-		right: 10px;
+		position: relative;
+		/* right: 10px; */
 	}
 	.bullbearsents .bbs_bear img {
 		width:15px;
@@ -2531,6 +2531,8 @@
 							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
 									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
 							});
+
+							$( ".bullbearsents .bbs_bear, .bullbearsents .bbs_bull" ).addClass("bbbutton-sen");
 
 							$( ".bbs_bear_bar" ).animate({
 								width: data.dbear+"%"

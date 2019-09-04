@@ -19,9 +19,9 @@ get_header( 'dashboard' );
   $users = get_users($topargs);
   $newuserlist = array();
   foreach ($users as $key => $value) {
-    $userdetails['id'] = $value->id;
+    $userdetails['id'] = $value->ID;
     $userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-    $userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+    $userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
     $userdetails['user_nicename'] = $value->data->user_nicename;
 
     array_push($newuserlist, $userdetails);
@@ -119,7 +119,7 @@ get_header( 'dashboard' );
                               <div class="traider-follower">
                                 <div class="onbfdata"><?php echo $value['followers']; ?> followers </div>
                                 <div class="onbfollow">
-                                  <a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Follow</a>
+                                  <a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Follow</a>
                                 </div>
                               </div>
                             </div>

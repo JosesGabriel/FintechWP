@@ -22,9 +22,9 @@ $currentdate = date("Y-m-d", time());
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 		$userdetails['user_nicename'] = $value->data->user_nicename;
 
 		array_push($newuserlist, $userdetails);
@@ -82,7 +82,7 @@ $currentdate = date("Y-m-d", time());
 			<div class="center-dashboard-part" style="width: 100%;float:none;">
 				<div class="inner-center-dashboard">
 					<div class="generate-code">
-						<?php if ($user->id == '5'): ?>
+						<?php if ($user->ID == '5'): ?>
 							<?php include 'template-admin-stats.php';  ?>
 						<?php else: ?>
 							<?php if ($user->roles[0] == 'administrator'): ?>

@@ -9,7 +9,7 @@ if ( is_user_logged_in() ) {
 $profile_id = um_profile_id();
 $default_cover = UM()->options()->get( 'default_cover' );
 um_fetch_user($profile_id);
-$ismyprofile = ($user->id == $profile_id ? true : false);
+$ismyprofile = ($user->ID == $profile_id ? true : false);
 ?>
 	<script
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"

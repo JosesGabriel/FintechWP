@@ -15,8 +15,8 @@
 	
 	
 	$homeurlgen = get_home_url();
-	/* temp-disabled
 	$user_id = $user->ID;
+	/* temp-disabled
 	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
 	

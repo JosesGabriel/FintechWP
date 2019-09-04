@@ -1634,8 +1634,8 @@ get_header('dashboard');
 <!-- BOF Sort LIVE Portfolio -->
 <?php
 
+$dtradeingfo = [];
 if ($getdstocks && $getdstocks != '') {
-    $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
@@ -2286,7 +2286,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">₱<?php echo isset($dledger[0]) ? number_format($dledger[0]->tranamount, 2, '.', ',') : '0.00'; ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>
@@ -3280,15 +3280,18 @@ if ($getdstocks && $getdstocks != '') {
 
                                                     <!-- BOF expenses report -->
                                                     <?php
-                                                        $dlistoflivetrades = [];
-                                                        foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
-                                                            if ($dstocktraded && $dstocktraded != '') {
-                                                                foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
-                                                                    array_push($dlistoflivetrades, $dtfvalue);
-                                                                }
-                                                            }
-                                                        }
+														$dlistoflivetrades = [];
+														
+														if (is_array($getdstocks) && !empty($getdstocks)) {
+															foreach ($getdstocks as $dtdkey => $dtdvalue) {
+																$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+																if ($dstocktraded && $dstocktraded != '') {
+																	foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
+																		array_push($dlistoflivetrades, $dtfvalue);
+																	}
+																}
+															}
+														}
 
                                                         $commissions = 0;
                                                         $vat = 0;

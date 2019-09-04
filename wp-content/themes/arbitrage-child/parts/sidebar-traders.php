@@ -11,34 +11,34 @@ $userID = $current_user->ID;
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		// if (UM()->Friends_API()->api()->is_friend($value->id, $userID)) {
+		// if (UM()->Friends_API()->api()->is_friend($value->ID, $userID)) {
 		// 	// echo $value->data->display_name.' is your friend - ';
 		// } else {
 		// 	// echo $value->data->display_name." is not your friend - ";
 		// }
-		// $isfollowing = UM()->Followers_API()->api()->followed($value->id, $userID);
+		// $isfollowing = UM()->Followers_API()->api()->followed($value->ID, $userID);
 		// if ($isfollowing == "" || $isfollowing < 0 ) {
-		// 	$userdetails['id'] = $value->id;
+		// 	$userdetails['id'] = $value->ID;
 		// 	$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		// 	$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		// 	$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 		// 	$userdetails['user_nicename'] = $value->data->user_nicename;
 		// 	array_push($newuserlist, $userdetails);
 		// }
 
-		// echo UM()->Followers_API()->api()->is_friend_pending($value->id, $userID)." - ";
+		// echo UM()->Followers_API()->api()->is_friend_pending($value->ID, $userID)." - ";
 
-		if (!UM()->Friends_API()->api()->is_friend($value->id, $userID) && $value->id != $userID) {
+		if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
 			
-			if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->id, $userID) ) {
+			if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
 				// if ($pending == $userID) {
 				// 	echo $value->data->user_login." respond to request -<br />";
 				// } else {
 				// 	echo $value->data->user_login." request sent -<br />";
 				// }
 			} else {
-				$userdetails['id'] = $value->id;
+				$userdetails['id'] = $value->ID;
 				$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-				$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+				$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 				$userdetails['user_nicename'] = $value->data->user_nicename;
 				array_push($newuserlist, $userdetails);
 			}
@@ -93,9 +93,9 @@ $userID = $current_user->ID;
 									  <div class="onbfollow">
 									  		
 
-									  		<a href="#" id="mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a>
+									  		<a href="#" id="mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
 									  		
-										  <!-- <a href="#" id="mingle-btn" class="um-follow-btn mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a> -->
+										  <!-- <a href="#" id="mingle-btn" class="um-follow-btn mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 									  </div>
 								  </div>
 							  </div>

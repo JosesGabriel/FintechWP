@@ -632,11 +632,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             $dhistoforchart = $dhistoforchart->data;
 
 			$dhistoflist = "";
-			$counter = 0;
-			for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-				$dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-				$counter++;
-			}
+            $counter = 0;
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }
 
 			$currentTime = (new DateTime())->modify('+1 day');
 			$startTime = new DateTime('15:30');

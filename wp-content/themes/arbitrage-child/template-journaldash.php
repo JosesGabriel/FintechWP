@@ -2286,7 +2286,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo isset($dledger[0]) ? number_format($dledger[0]->tranamount, 2, '.', ',') : 0; ?></div>
+                                                                                                    <div class="width35">₱<?php echo isset($dledger[0]) ? number_format($dledger[0]->tranamount, 2, '.', ',') : '0.00'; ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>

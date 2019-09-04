@@ -144,14 +144,14 @@
 
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'notify_me_email'){
-		// global $wpdb;
-        // $str = stripslashes($_GET['email']);
-        // // $str = mysql_real_escape_string($str);
-        // $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
-        // echo $str;
-        // $exist = $wpdb->query($checkQuery);
-		// print_r($exist);
-		echo('69');
+		global $wpdb;
+        $str = stripslashes($_GET['email']);
+        // $str = mysql_real_escape_string($str);
+        $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
+        echo $str;
+        $exist = $wpdb->query($checkQuery);
+		print_r($exist);
+		print_r('hackdog');
 
 	}else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

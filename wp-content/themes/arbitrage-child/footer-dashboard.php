@@ -186,9 +186,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 					}	
 					i++;
+
 				});
 
-				return false;
+				return;
 
 			 <?php } ?>
 			var startTime = '9:00 AM';
@@ -294,7 +295,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
-				console.log(dtyped);
 
 				jQuery('.dropdown-content').css("display","block");
 

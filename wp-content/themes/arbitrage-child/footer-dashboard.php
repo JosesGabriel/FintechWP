@@ -287,7 +287,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				//var i = 0;
 				var dtyped = jQuery(this).val();
 
-				jQuery(".listofstocks > a").each(function(index){
+				jQuery(".listofstocks > a").each(function(){
 					//if(dtyped == jQuery(".listofstocks > a").text()){
 
 						var text = jQuery(".listofstocks > a").text();

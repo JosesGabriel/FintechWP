@@ -166,6 +166,7 @@ $user = wp_get_current_user();
 		})
 		jQuery(document).ready(function(){
 			jQuery("#email--button").click(function(){
+				alert('what');
 				var hasemail = jQuery("#email--input").val().length;
 				if( hasemail >= 1 ) {
 					jQuery()

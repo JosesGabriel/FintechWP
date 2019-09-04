@@ -341,6 +341,7 @@ function changicotounchanged() {
 		document.getElementsByTagName('head')[0].appendChild(link);
 	}, 2000);
 }
+
 function goToChart(symbol) {
     if (chart) {
         chart.setSymbol(symbol.toUpperCase());

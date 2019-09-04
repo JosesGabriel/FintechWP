@@ -69,12 +69,14 @@ if (typeof angular !== 'undefined') {
 
       $dhistoflist = "";
       $counter = 0;
-      for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-        if ($i > 3) {
-          $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-        $counter++;
-        }
 
+      if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+        for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+          if ($i > 3) {
+            $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+          $counter++;
+          }
+        }
       }
 
       //$currentTime = (new DateTime())->modify('+1 day');

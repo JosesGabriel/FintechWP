@@ -144,10 +144,9 @@
 
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'notify_me_email'){
-        
-        global $wpdb;
+		global $wpdb;
         $str = stripslashes($_GET['email']);
-        $str = mysql_real_escape_string($str);
+        // $str = mysql_real_escape_string($str);
         $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
         echo $str;
         $exist = $wpdb->query($checkQuery);

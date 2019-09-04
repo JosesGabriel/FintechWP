@@ -108,7 +108,7 @@ jQuery(function(){
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != null){
+                 //if($stock_watched[$i][0] != null){
 
                        
                                     ?>
@@ -120,7 +120,7 @@ jQuery(function(){
                                     <?php
 
                            
-                        }
+                       // }
 
                      if($i == 4){
                         echo "<div class='hide-show watched-hidden-content'>";

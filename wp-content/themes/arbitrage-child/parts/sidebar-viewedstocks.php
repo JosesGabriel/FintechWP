@@ -66,12 +66,12 @@ jQuery(function(){
                                         }
 
                                  }
-                                 
-                            $stockcount++;
+
+                           
                          }
                      }
 
-                //$stockcount++;
+                $stockcount++;
                 $counter = 1;
              }
     

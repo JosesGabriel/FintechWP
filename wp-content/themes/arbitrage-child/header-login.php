@@ -182,7 +182,7 @@ $user = wp_get_current_user();
 						success: function(data) {
 							alert('oten');
 						},
-						error: function((requestObject, error, errorThrown)) {
+						error: function(requestObject, error, errorThrown) {
 							alert(error);
 						}
 					});

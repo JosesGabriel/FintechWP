@@ -179,10 +179,11 @@ $user = wp_get_current_user();
 							'email' : email
 						},
 						success: function(data) {
-							alert('oten');
+							alert('success email');
 						},
 						error: function(requestObject, error, errorThrown) {
-							alert(error);
+							console.log(errorThrown);
+							alert('error email')
 						}
 					});
 				}

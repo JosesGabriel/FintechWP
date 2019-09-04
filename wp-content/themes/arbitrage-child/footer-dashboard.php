@@ -186,11 +186,13 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
+						
+						if (i == 0){
+							return false;
+						}
 					}	
 					
-					if (i == 0){
-						return false;
-					}
+
 
 				});
 

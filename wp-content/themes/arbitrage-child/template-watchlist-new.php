@@ -321,7 +321,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content mc-background">
+																	    <div class="modal-content mc-background" style="width: 60%">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -3280,15 +3280,18 @@ if ($getdstocks && $getdstocks != '') {
 
                                                     <!-- BOF expenses report -->
                                                     <?php
-                                                        $dlistoflivetrades = [];
-                                                        foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
-                                                            if ($dstocktraded && $dstocktraded != '') {
-                                                                foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
-                                                                    array_push($dlistoflivetrades, $dtfvalue);
-                                                                }
-                                                            }
-                                                        }
+														$dlistoflivetrades = [];
+														
+														if (is_array($getdstocks) && !empty($getdstocks)) {
+															foreach ($getdstocks as $dtdkey => $dtdvalue) {
+																$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+																if ($dstocktraded && $dstocktraded != '') {
+																	foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
+																		array_push($dlistoflivetrades, $dtfvalue);
+																	}
+																}
+															}
+														}
 
                                                         $commissions = 0;
                                                         $vat = 0;

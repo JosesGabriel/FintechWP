@@ -185,9 +185,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						jQuery('.listofstocks_' + i ).append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 					}	
 				});
-
-				i++;
-
 			 <?php } ?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';

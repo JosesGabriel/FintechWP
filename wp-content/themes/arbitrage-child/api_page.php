@@ -147,9 +147,9 @@
 		global $wpdb;
         $str = stripslashes($_GET['email']);
         // $str = mysql_real_escape_string($str);
-        $checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
-        echo $str;
-        $exist = $wpdb->query($checkQuery);
+		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
+		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
+        $exist = $wpdb->query($addQuery);
 		print_r($exist);
 		print_r('hackdog');
 

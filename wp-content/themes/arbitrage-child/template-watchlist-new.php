@@ -336,7 +336,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																						<div class="instumentinner">
 																							<div class="row">
 
-															<div class="cond-ion">							
+															<div class="cond-ion" style="margin: 15px 0px 0px 26px;">							
 																<div class="groupinput midd"><label>Entry Price</label>
 																	<input type="number" name="dconnumber_entry_price" class="inpt_data_price number" >
 																	<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">

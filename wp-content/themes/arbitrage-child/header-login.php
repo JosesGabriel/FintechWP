@@ -169,7 +169,7 @@ $user = wp_get_current_user();
 				var hasemail = jQuery("#email--input").val().length;
 				var email = jQuery("#email--input").val();
 				if( hasemail >= 1 ) {
-					alert('test');
+					alert('test icle');
 					jQuery.ajax({
 						method: "POST",
 						url: "https://arbitrage.ph/apipge/?daction=notify_me_email",
@@ -179,10 +179,11 @@ $user = wp_get_current_user();
 							'email' : email
 						},
 						success: function(data) {
-							alert('oten');
+							alert('success email');
 						},
 						error: function(requestObject, error, errorThrown) {
-							alert(error);
+							alert('error email');
+							console.log(errorThrown);
 						}
 					});
 				}

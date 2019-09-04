@@ -2550,17 +2550,17 @@ if ($getdstocks && $getdstocks != '') {
 													</div>
 													<br class="clear">
 
-                                                    <div class="_adsbygoogle">
+                                                   <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
                                                     <?php
@@ -3785,17 +3785,17 @@ if ($getdstocks && $getdstocks != '') {
 													</div>
 													<br class="clear">
 
-                                                    <div class="_adsbygoogle">
+                                                    <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 													<?php

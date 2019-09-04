@@ -64,6 +64,8 @@ if (typeof angular !== 'undefined') {
       $dhistofronold = curl_exec($curl);
       curl_close($curl);
 
+      echo 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+
       $dhistoforchart = json_decode($dhistofronold);
       $dhistoforchart = $dhistoforchart->data;
 
@@ -72,10 +74,10 @@ if (typeof angular !== 'undefined') {
 
       if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
         for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-          if ($i > 3) {
-            $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+          // if ($i > 3) {
+            $dhistoflist = '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},'.$dhistoflist ;
           $counter++;
-          }
+          // }
         }
       }
 

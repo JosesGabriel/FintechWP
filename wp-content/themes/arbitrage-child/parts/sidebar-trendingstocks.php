@@ -72,6 +72,7 @@ jQuery(".stocks-hidden-content").click(function () {
             $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
             // echo "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND post_date > ".$date;
 
+            // print_r($dsprest);
             $countpstock = 0;
             $isbull = 0;
             foreach ($dsprest as $rsffkey => $rsffvalue) {
@@ -99,9 +100,9 @@ jQuery(".stocks-hidden-content").click(function () {
             $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
             $dpullbull = $dpullbull == '' ? 0 : $dpullbull;
             // 3 days back
-            $threedays = floor($countpstock * 0.2);
-            $bulls = floor($dpullbull * 0.3);
-            $tags = floor($todayreps * 0.6);
+            $threedays = ceil($countpstock * 0.2);
+            $bulls = ceil($dpullbull * 0.3);
+            $tags = ceil($todayreps * 0.6);
             $finalcount = $bulls + $threedays + $tags;
 
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";

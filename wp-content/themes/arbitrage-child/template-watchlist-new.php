@@ -480,15 +480,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="number" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="number" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
-															<input type="number" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
 														</div>
 														<div class="">
@@ -1544,6 +1544,7 @@ h2.watchtitle {
 	    border: none;
 	    height: 27px;
 	    margin-left: -4px;
+	    padding-right: 10px;
     }
     .entr_wrapper_top {
         padding:20px 0 15px 20px;

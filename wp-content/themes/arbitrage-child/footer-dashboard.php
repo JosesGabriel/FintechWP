@@ -293,8 +293,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							var rgxp = new RegExp(dtyped, "gi");
 
 							if(istock.match(rgxp)){
-								jQuery(".listofstocks").remove();
-								jQuery(".dropdown-content").append("<div class='istocks'><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
+								jQuery(".listofstocks > a").remove();
+								jQuery(".dropdown-content").append("<a href='#' data-dstock='"+ istock +"'>" + istock + "</a>");
 								//return false;
 								//i = 1;
 							}else{

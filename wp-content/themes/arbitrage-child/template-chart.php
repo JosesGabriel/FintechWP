@@ -2019,7 +2019,7 @@
 																									</thead>
 																								</table>
 
-																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 5px;">
+																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 

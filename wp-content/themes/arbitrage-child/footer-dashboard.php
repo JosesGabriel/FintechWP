@@ -285,7 +285,20 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
 				var dtyped = jQuery(this).val();
-				
+
+					jQuery(".listofstocks > a").each(function(index){
+							var istock = jQuery(this).attr('data-dstock');
+
+							if(dtyped == istock){
+								jQuery(".listofstocks").remove();
+								jQuery(".dropdown-content").append("<div><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
+							}
+							/*if (istock.toLowerCase().indexOf(dtyped) >= 0) {
+								jQuery(this).show();
+							} else {
+								jQuery(this).hide();
+							}*/
+						});
 
 				
 			});

@@ -183,9 +183,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
 					if('<?php echo $value['stockname']; ?>' !== value.symbol){
-						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						
+						jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						i++;
 					}	
-					i++;
+					
+					if(i == 0){
+						return false;
+					}
 
 				});
 
@@ -274,8 +279,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				var dtyped = jQuery(this).val();
 				
-				jQuery('.ddropbase').css('display','block');
-				/*if(jQuery(this).val().length < 1){
+				//jQuery('.ddropbase').css('display','block');
+				if(jQuery(this).val().length < 1){
 					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 				}
 
@@ -285,7 +290,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				} else {
 					jQuery(this).addClass('disopen');
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
-				}*/
+				}
 
 			});
 
@@ -295,7 +300,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				var dtyped = jQuery(this).val();
 
-				jQuery('.dropdown-content').css("display","block");
+				//jQuery('.dropdown-content').css("display","block");
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');

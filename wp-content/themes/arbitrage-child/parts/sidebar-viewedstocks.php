@@ -62,7 +62,7 @@ jQuery(function(){
                                             $stock_watched[$stockcount][1] = $counter;
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;   
-                                            $stockcount++;  
+                                            //$stockcount++;  
                                         }
 
                                  }
@@ -71,7 +71,7 @@ jQuery(function(){
 
                      }
 
-                //$stockcount++;
+                $stockcount++;
                 $counter = 1;
              }
     
@@ -106,17 +106,21 @@ jQuery(function(){
              <ul>
              <?php
 
-             for($i = 0; $i < $stockcount; $i++){
+             for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != null){
+                 //if($stock_watched[$i][0] != null){
 
-                    ?>
-                            <li class="odd">
-                                <span><?php echo $stock_watched[$i][0]; ?></span>
-                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
-                            </li>
+                       
+                                    ?>
+                                            <li class="odd">
+                                                <span><?php echo $stock_watched[$i][0]; ?></span>
+                                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                                            </li>
 
-                    <?php
+                                    <?php
+
+                           
+                       // }
 
                      if($i == 4){
                         echo "<div class='hide-show watched-hidden-content'>";
@@ -124,7 +128,7 @@ jQuery(function(){
                    
                 }
 
-             }
+           
 
                     echo "</div>";
             

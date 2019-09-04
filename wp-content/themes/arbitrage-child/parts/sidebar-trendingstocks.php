@@ -90,6 +90,7 @@ jQuery(".stocks-hidden-content").click(function () {
                 }
                 // echo $rsffvalue->ID." - ";
                 $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
+                $bull_people = $bull_people == '' ? 0 : $bull_people;
                 $isbull += $bull_people;
             }
 

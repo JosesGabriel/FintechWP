@@ -1520,6 +1520,11 @@ h2.watchtitle {
     }
     .groupinput.midd input {
         width:138px;
+        background-color: #4e6a85;
+	    border-radius: 0 3px 3px 0;
+	    border: none;
+	    height: 27px;
+	    margin-left: -4px;
     }
     .entr_wrapper_top {
         padding:20px 0 15px 20px;

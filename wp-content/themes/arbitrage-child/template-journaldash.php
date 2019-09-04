@@ -1634,8 +1634,8 @@ get_header('dashboard');
 <!-- BOF Sort LIVE Portfolio -->
 <?php
 
+$dtradeingfo = [];
 if ($getdstocks && $getdstocks != '') {
-    $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
@@ -2286,7 +2286,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">₱<?php echo isset($dledger[0]) ? number_format($dledger[0]->tranamount, 2, '.', ',') : 0; ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>

@@ -568,8 +568,8 @@ select#stockname {
 
         $gerdqoute = json_decode($gerdqoute);
 
+        $dtradeingfo = [];
         if ($getdstocks && $getdstocks != '') {
-            $dtradeingfo = [];
             foreach ($getdstocks as $dstockskey => $dstocksvalue) {
                 $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
                 if ($dstocktraded && $dstocktraded != '') {

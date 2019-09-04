@@ -284,7 +284,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
-				var i = 0;
+				//var i = 0;
 				var dtyped = jQuery(this).val();
 
 					jQuery(".listofstocks > a").each(function(index){
@@ -295,8 +295,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							if(istock.match(rgxp)){
 								jQuery(".listofstocks").remove();
 								jQuery(".dropdown-content").append("<div class='istocks'><a href='#' data-dstock='"+ istock +"'>" + istock + "</a></div>");
-								return false;
-								i = 1;
+								//return false;
+								//i = 1;
 							}else{
 								jQuery(".istocks").remove();
 							}
@@ -306,9 +306,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 								jQuery(this).hide();
 							}*/
 						});
-					if(i == 1){
+					//if(i == 1){
 						//return false;
-					}
+					//}
 				
 			});
 

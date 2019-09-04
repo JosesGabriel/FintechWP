@@ -2843,17 +2843,17 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                                    </li>
 	                                                                                    <?php
                                                                                             $stratstrg .= '{';
-                                                                                        $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-                                                                                        $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-                                                                                        $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-                                                                                        $stratstrg .= '"colors": "#06af68",';
-                                                                                        $stratstrg .= '"colorsred": "#b7193f"';
-                                                                                        $stratstrg .= '},';
+																							$stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
+																							$stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
+																							$stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
+																							$stratstrg .= '"colors": "#06af68",';
+																							$stratstrg .= '"colorsred": "#b7193f"';
+																							$stratstrg .= '},';
 
-                                                                                        $wincharts .= '{';
-                                                                                        $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-                                                                                        $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-                                                                                        $wincharts .= '},'; ?>
+																							$wincharts .= '{';
+																							$wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
+																							$wincharts .= '"winvals": '.$statsvalue['winrate'].'';
+																							$wincharts .= '},'; ?>
                                                                                     <?php
                                                                                     } ?>
 

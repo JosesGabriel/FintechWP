@@ -104,7 +104,8 @@ jQuery(".stocks-hidden-content").click(function () {
 
             $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
             // $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
-		    $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+            $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+            $dpullbull = $dpullbull == '' ? 0 : $dpullbull;
             // 3 days back
             $threedays = floor($countpstock * 0.2);
             $bulls = floor($dpullbull * 0.3);

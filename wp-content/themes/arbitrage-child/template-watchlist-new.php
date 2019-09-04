@@ -447,7 +447,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<?php endif; ?>
 												</div>
 											</div>	
-											<div class="dclosetab addwatchtab " style="width: 275px;">
+											<div class="dclosetab addwatchtab " style="width: 271px;">
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
@@ -1519,7 +1519,7 @@ h2.watchtitle {
         width:157px;
     }
     .groupinput.midd input {
-        width:138px;
+        width:154px;
         background-color: #4e6a85;
 	    border-radius: 0 3px 3px 0;
 	    border: none;

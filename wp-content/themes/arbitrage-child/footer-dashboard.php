@@ -287,13 +287,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				//var i = 0;
 				var dtyped = jQuery(this).val();
 
-				if(dtyped == jQuery(".listofstocks > a").text()){
+				jQuery(".listofstocks > a").each(function(index){
+					//if(dtyped == jQuery(".listofstocks > a").text()){
 
-					var text = jQuery(".listofstocks > a").text();
-					console.log(text);
-				}
+						var text = jQuery(".listofstocks > a").text();
+						console.log(text);
+					//}
 				
-
+				});
 				
 			});
 

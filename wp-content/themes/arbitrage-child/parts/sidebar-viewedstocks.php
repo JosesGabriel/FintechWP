@@ -111,7 +111,7 @@ jQuery(function(){
                  if($stock_watched[$i][0] != null){
 
                         //for($j = $i; $j < 0; $j--){
-                            if($stock_watched[$i][0] != $stock_watched[$i - 1][0]){
+                            //if($stock_watched[$i][0] != $stock_watched[$i - 1][0]){
 
                            // if($stock_watched[$i][0] == $stock_watched[$j][0]){
                              //   break;
@@ -124,7 +124,7 @@ jQuery(function(){
 
                                     <?php
 
-                            }
+                           // }
                         }
 
                      if($i == 4){

@@ -63,7 +63,9 @@ jQuery(function(){
                                             $stock_watched[$stockcount][1] = $counter;
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;
-                                           
+                                           $stockcount++;
+                                        }else{
+                                            return null;
                                         }
 
                                  }
@@ -74,7 +76,7 @@ jQuery(function(){
 
                      }
 
-                $stockcount++;
+                //$stockcount++;
                 $counter = 1;
              }
     
@@ -111,7 +113,7 @@ jQuery(function(){
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != ''){
+                 if($stock_watched[$i][0] != null){
 
                     ?>
                             <li class="odd">

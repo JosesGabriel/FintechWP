@@ -273,8 +273,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
-
-				jQuery('.ddropbase').css("display","block");
+				
+				jQuery('.ddropbase').css('display','block');
 				/*if(jQuery(this).val().length < 1){
 					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 				}
@@ -294,6 +294,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
+
+				jQuery('.dropdown-content').css("display","block");
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');

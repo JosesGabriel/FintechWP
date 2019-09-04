@@ -282,6 +282,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');
+
+					var stok = jQuery(this).val();
+
+					console.log(stok);
+
 					if (istock.toLowerCase().indexOf(dtyped) >= 0) {
 						jQuery(this).show();
 						return;

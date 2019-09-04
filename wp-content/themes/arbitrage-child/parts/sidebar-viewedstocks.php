@@ -110,15 +110,21 @@ jQuery(function(){
 
                  if($stock_watched[$i][0] != null){
 
-                        if($stock_watched[$i][0] != $stock_watched[$i - 1][0]){
-                                ?>
-                                        <li class="odd">
-                                            <span><?php echo $stock_watched[$i][0]; ?></span>
-                                            <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
-                                        </li>
+                        //for($j = $i; $j < 0; $j--){
+                            if($stock_watched[$i][0] != $stock_watched[$i - 1][0]){
 
-                                <?php
+                           // if($stock_watched[$i][0] == $stock_watched[$j][0]){
+                             //   break;
+                           // } else {
+                                    ?>
+                                            <li class="odd">
+                                                <span><?php echo $stock_watched[$i][0]; ?></span>
+                                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                                            </li>
 
+                                    <?php
+
+                            }
                         }
 
                      if($i == 4){

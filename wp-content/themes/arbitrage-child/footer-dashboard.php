@@ -294,6 +294,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
+				console.log(dtyped);
 
 				jQuery('.dropdown-content').css("display","block");
 

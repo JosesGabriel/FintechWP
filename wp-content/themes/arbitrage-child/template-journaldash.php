@@ -1634,6 +1634,7 @@ get_header('dashboard');
 <!-- BOF Sort LIVE Portfolio -->
 <?php
 $dtradeingfo = [];
+$isjounalempty = false;
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
@@ -1657,7 +1658,8 @@ if ($getdstocks && $getdstocks != '') {
         }
     }
 } else {
-	
+	$isjounalempty = true;
+	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 	$dtradeingfo = [
 		[
 			'data' => [
@@ -1686,7 +1688,7 @@ if ($getdstocks && $getdstocks != '') {
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'Sample Stock',
+			'stockname' => 'SampleStock_1',
 		],
 		[
 			'data' => [
@@ -1715,7 +1717,7 @@ if ($getdstocks && $getdstocks != '') {
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'Sample Stock',
+			'stockname' => 'SampleStock_2',
 		]
 	];
 
@@ -1743,33 +1745,41 @@ if ($getdstocks && $getdstocks != '') {
 		$dledger[0]->userid = 111;
 		$dledger[0]->date = '2019-08-21';
 		$dledger[0]->trantype = 'deposit';
-		$dledger[0]->tranamount = 1000000;
+		$dledger[0]->tranamount = 100000;
 
 		$dledger[1] = new \stdClass();
 		$dledger[1]->ledid = 250;
 		$dledger[1]->userid = 111;
 		$dledger[1]->date = '2019-08-21';
 		$dledger[1]->trantype = 'deposit';
-		$dledger[1]->tranamount = 1000000;
+		$dledger[1]->tranamount = 100000;
 
 		$dledger[2] = new \stdClass();
 		$dledger[2]->ledid = 250;
 		$dledger[2]->userid = 111;
 		$dledger[2]->date = '2019-08-21';
 		$dledger[2]->trantype = 'deposit';
-		$dledger[2]->tranamount = 1000000;
+		$dledger[2]->tranamount = 100000;
 
 		$dledger[3] = new \stdClass();
 		$dledger[3]->ledid = 250;
 		$dledger[3]->userid = 111;
 		$dledger[3]->date = '2019-08-21';
 		$dledger[3]->trantype = 'deposit';
-		$dledger[3]->tranamount = 1000000;
+		$dledger[3]->tranamount = 100000;
+
+		$dledger[3] = new \stdClass();
+		$dledger[3]->ledid = 250;
+		$dledger[3]->userid = 111;
+		$dledger[3]->date = '2019-08-21';
+		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->tranamount = 100000;
 	}
 ?>
 <!-- BOF Current Allocation Data -->
 <?php
-	if($getdstocks){
+	$currentalocinfo = "";
+	if(!$isjounalempty){
 		$dequityp = $buypower;
 
 		$aloccolors = array('#f0231c', '#c01c16', '#ff9a00', '#cc7b00', '#f4c700', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
@@ -1796,10 +1806,11 @@ if ($getdstocks && $getdstocks != '') {
 			}
 		}
 	} else {
-		$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+		$dequityp = 245318.22;
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "522.48"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
+		$currentaloccolor = '"#2a4a6a","#c39f00","#069b8c"';
 	}
     
-
 ?>
 <!-- EOF Current Allocation Data -->
 
@@ -2047,9 +2058,79 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
                                                                             <?php
+																			
                                                                             if ($getdstocks) {
                                                                                 foreach ($getdstocks as $key => $value) {
-                                                                                    $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																					
+																					
+
+																					if(!$isjounalempty){
+																						$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																					} else {
+																						if($value == 'SampleStock_1'){
+																							$dstocktraded = [
+																								'data' => [
+																									[
+																										'buymonth' => 'August',
+																										'buyday' => 22,
+																										'buyyear' => 2019,
+																										'stock' => 'MBT',
+																										'price' => 100,
+																										'qty' => 5,
+																										'currprice' => 75.40,
+																										'change' => '0.40%',
+																										'open' => 75.50,
+																										'low' => 75.20,
+																										'high' => 75.80,
+																										'volume' => '957.73K',
+																										'value' => '72.29m',
+																										'boardlot' => 10,
+																										'strategy' => 'Trend Following',
+																										'tradeplan' => 'Day Trade',
+																										'emotion' => 'this is a test',
+																										'tradingnotes' => 'Trading Notes',
+																										'status' => 'Live',
+																									],
+																								],
+																								'totalstock' => 5,
+																								'aveprice' => 2228.5209688868,
+																								'totalcost' => 84225991.13847,
+																								'stockname' => 'SampleStock_1',
+																							];
+																						} else {
+																							$dstocktraded = [
+																								'data' => [
+																									[
+																										'buymonth' => 'August',
+																										'buyday' => 22,
+																										'buyyear' => 2019,
+																										'stock' => 'MBT',
+																										'price' => 90,
+																										'qty' => 600,
+																										'currprice' => 75.40,
+																										'change' => '0.40%',
+																										'open' => 75.50,
+																										'low' => 75.20,
+																										'high' => 75.80,
+																										'volume' => '957.73K',
+																										'value' => '72.29m',
+																										'boardlot' => 10,
+																										'strategy' => 'Trend Following',
+																										'tradeplan' => 'Day Trade',
+																										'emotion' => 'this is a test',
+																										'tradingnotes' => 'Trading Notes',
+																										'status' => 'Live',
+																									],
+																								],
+																								'totalstock' => 600,
+																								'aveprice' => 2228.5209688868,
+																								'totalcost' => 84225991.13847,
+																								'stockname' => 'Sample_2',
+																							];
+																						}
+																						
+																						
+																					}
                                                                                     if ($dstocktraded && $dstocktraded != '') {
 																						$stockdetails = "";
 																						foreach ($gerdqoute->data as $gskey => $gsvalue) {
@@ -2059,7 +2140,11 @@ if ($getdstocks && $getdstocks != '') {
 																						}
                                                                                         // code...
 
-                                                                                        $dstockinfo = $stockdetails;
+																						$dstockinfo = $stockdetails;
+																						if($isjounalempty){
+																							$dstockinfo = new \stdClass();
+																							$dstockinfo->last = 100.50;
+																						}
 
                                                                                         // print_r($dstockinfo);
 
@@ -2071,6 +2156,7 @@ if ($getdstocks && $getdstocks != '') {
 																						
 																						$favtotal = 0;
 																						$favvols = 0;
+																						
 
                                                                                         foreach ($dstocktraded['data'] as $dtradeissuekey => $dtradeissuevalue) {
                                                                                             $dmarketvalue = $dtradeissuevalue['price'] * $dtradeissuevalue['qty'];

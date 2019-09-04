@@ -109,6 +109,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
 						jQuery("#add-watchlist-param").submit();
+						$('.chart-loader').css("display","block");
+						$(this).hide();
 					}
 				}
 			});

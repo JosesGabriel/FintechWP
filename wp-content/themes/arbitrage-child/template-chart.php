@@ -2051,10 +2051,10 @@
 																									<table>
 																										<thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
 																											<tr>
-																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Stock</th>
-																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Day Range</th>
-																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Price</th>
-																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;">Change</th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Stock</strong></th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Day Range</strong></th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Price</strong></th>
+																												<th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Change</strong></th>
 																											</tr>
 																										</thead>
 																										<?php

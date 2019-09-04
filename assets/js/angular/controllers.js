@@ -23,21 +23,21 @@ app.controller('message-notification', function($scope, $http, $filter) {
             return a;
         }, 0);
     });
-    socket.on('message-update', function() {
-        $http.get("/welcome/threads").then( function (response) {
-            $scope.messages = response.data.data;
-            $scope.count = $scope.messages.reduce( function(a, b) {
-                if (b.status == 1) a++;
-                return a;
-            }, 0);
-        });
-    });
-    socket.on('connect', function() {
-        socket.emit('subscribe','user.' + _user_id);
-    });
-    socket.on('reconnect', function() {
-        socket.emit('subscribe','user.' + _user_id);
-    });
+    // socket.on('message-update', function() {
+    //     $http.get("/welcome/threads").then( function (response) {
+    //         $scope.messages = response.data.data;
+    //         $scope.count = $scope.messages.reduce( function(a, b) {
+    //             if (b.status == 1) a++;
+    //             return a;
+    //         }, 0);
+    //     });
+    // });
+    // socket.on('connect', function() {
+    //     socket.emit('subscribe','user.' + _user_id);
+    // });
+    // socket.on('reconnect', function() {
+    //     socket.emit('subscribe','user.' + _user_id);
+    // });
 });
 app.controller('template', function($scope, $http) {
     var settings = {
@@ -63,14 +63,14 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    socket.on('connect', function(data) {
-        socket.emit('subscribe','transactions');
-        socket.emit('subscribe','ticker');
-    });
-    socket.on('reconnect', function(data) {
-        socket.emit('subscribe','transactions');
-        socket.emit('subscribe','ticker');
-    });
+    // socket.on('connect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
+    // socket.on('reconnect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -84,43 +84,43 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         }
         $scope.$digest();
     });
-    socket.on('transaction', function(data) {
-        var change = 0;
-        if (data.flag == 0) {
-            change = 1;
-        } else if (data.flag == 1) {
-            change = -1;
-        }
-        var transaction = {
-            symbol: data.symbol,
-            price:  price_format(data.price),
-            change: change,
-            shares: abbr_format(data.volume),
-            buyer:  data.buyer.substr(0, 5).trim(),
-            seller: data.seller.substr(0, 5).trim(),
-        };
-        $scope.ticker.push(transaction);
-        if ($scope.ticker.length > 150) {
-            $scope.ticker.pop();
-        }
-        $scope.$digest();
-    });
-    socket.on('CT', function(data) {
-        var transaction = {
-            symbol: data[0],
-            price:  price_format(data[1]),
-            shares: number_format(data[2],'0,0.00') + '%',
-            buyer:  abbr_format(data[3]),
-            seller: abbr_format(data[4]),
-            flag:   data[5],
-            change: data[2],
-        }
-        $scope.ticker.push(transaction);
-        /*if ($scope.ticker.length > 50) {
-            $scope.ticker.pop();
-        }*/
-        $scope.$digest();
-    });
+    // socket.on('transaction', function(data) {
+    //     var change = 0;
+    //     if (data.flag == 0) {
+    //         change = 1;
+    //     } else if (data.flag == 1) {
+    //         change = -1;
+    //     }
+    //     var transaction = {
+    //         symbol: data.symbol,
+    //         price:  price_format(data.price),
+    //         change: change,
+    //         shares: abbr_format(data.volume),
+    //         buyer:  data.buyer.substr(0, 5).trim(),
+    //         seller: data.seller.substr(0, 5).trim(),
+    //     };
+    //     $scope.ticker.push(transaction);
+    //     if ($scope.ticker.length > 150) {
+    //         $scope.ticker.pop();
+    //     }
+    //     $scope.$digest();
+    // });
+    // socket.on('CT', function(data) {
+    //     var transaction = {
+    //         symbol: data[0],
+    //         price:  price_format(data[1]),
+    //         shares: number_format(data[2],'0,0.00') + '%',
+    //         buyer:  abbr_format(data[3]),
+    //         seller: abbr_format(data[4]),
+    //         flag:   data[5],
+    //         change: data[2],
+    //     }
+    //     $scope.ticker.push(transaction);
+    //     /*if ($scope.ticker.length > 50) {
+    //         $scope.ticker.pop();
+    //     }*/
+    //     $scope.$digest();
+    // });
     $scope.select = goToChart;
 }]);
 app.controller('psei', function($scope, $http) {  
@@ -137,20 +137,20 @@ app.controller('psei', function($scope, $http) {
     // }
     // setInterval(updatePSEI, 20000);
     // updatePSEI();
-    socket.on('connect', function(data) {
-        socket.emit('subscribeBars3', 'test.PSEI_D', 'PSEI');
-    });
-    socket.on('reconnect', function(data) {
-        socket.emit('subscribeBars3', 'test.PSEI_D', 'PSEI');
-    });
-    socket.on('tick2', function(data) {
-        if (data.listenerGuid == 'PSEI_D') {
-            $scope.psei.last = parseFloat(data.c);
-            $scope.psei.previous = parseFloat(data.p);
-            $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
-            $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
-        }
-    });
+    // socket.on('connect', function(data) {
+    //     socket.emit('subscribeBars3', 'test.PSEI_D', 'PSEI');
+    // });
+    // socket.on('reconnect', function(data) {
+    //     socket.emit('subscribeBars3', 'test.PSEI_D', 'PSEI');
+    // });
+    // socket.on('tick2', function(data) {
+    //     if (data.listenerGuid == 'PSEI_D') {
+    //         $scope.psei.last = parseFloat(data.c);
+    //         $scope.psei.previous = parseFloat(data.p);
+    //         $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
+    //         $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
+    //     }
+    // });
 });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var vm = this;
@@ -185,12 +185,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.fullaskperc = 0;
     $scope.dshowsentiment = '';
     $rootScope.selectedSymbol = $scope.selectedStock = _symbol;
-    socket.on('connect', function(data) {
-        socket.emit('stock', $scope.selectedStock);
-    });
-    socket.on('reconnect', function(data) {
-        socket.emit('stock', $scope.selectedStock);
-    });
+    // socket.on('connect', function(data) {
+    //     socket.emit('stock', $scope.selectedStock);
+    // });
+    // socket.on('reconnect', function(data) {
+    //     socket.emit('stock', $scope.selectedStock);
+    // });
     $scope.watchlistReady = false;
     $scope.selectWatchlist = function(watchlist) {
         if (watchlist == 'new') {
@@ -405,14 +405,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
         });
 
-        socket.emit('stock', _symbol, function(data) {
-            if (data.transactions) {
-                $scope.transactions = data.transactions;
-            }
-            if (data.bidask && $scope.marketdepth.length == 0) {
-                $scope.marketdepth = data.bidask;
-            }
-        });
+        // socket.emit('stock', _symbol, function(data) {
+        //     if (data.transactions) {
+        //         $scope.transactions = data.transactions;
+        //     }
+        //     if (data.bidask && $scope.marketdepth.length == 0) {
+        //         $scope.marketdepth = data.bidask;
+        //     }
+        // });
     });
     let limit = 20;
     $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
@@ -510,7 +510,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         $scope.$digest();
     });
 
-    socket.on('pse-transaction', function (data) {
+    socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
             let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
             let transaction = {
@@ -531,96 +531,96 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         }
     });
 
-    socket.on('T', function(data) {
-        var symbol = data[0];
-        data[4]  = parseFloat(data[4]);
-        data[6]  = parseFloat(data[6]);
-        data[5]  = parseFloat(data[5]);
-        data[2]  = parseFloat(data[2]);
-        data[3]  = parseFloat(data[3]);
-        data[7]  = parseFloat(data[7]);
-        data[8]  = parseFloat(data[8]);
-        data[9]  = parseFloat(data[9]);
-        data[10] = parseFloat(data[10]);
-        data[11] = parseFloat(data[11]);
-        data[12] = parseFloat(data[12]);
-        var stock = {
-            id: data[1] + '-' + symbol,
-            symbol: symbol,
-            date: data[1],
-            last: data[4],
-            difference: data[6],
-            change: data[5],
-            previous: data[2],
-            open: data[3],
-            high: data[7],
-            low: data[8],
-            average: data[9],
-            volume: data[10],
-            value: data[11],
-            trades: data[12],
-            updated_at: data[16],
-        }
-        stock['displayLast']  = price_format(stock['last']);
-        stock['displayDifference']  = price_format(stock['difference'], stock['last']);
-        stock['displayOpen']  = price_format(stock['open']);
-        stock['displayPrevious']  = price_format(stock['previous']);
-        stock['displayAverage']  = price_format(stock['average']);
-        stock['displayLow']  = price_format(stock['low']);
-        stock['displayHigh']  = price_format(stock['high']);
-        stock['displayChange']  = number_format(stock['change'], '0,0.00');
-        stock['displayValue'] = abbr_format(stock['value']);
-        if ($scope.stock && $scope.stock.symbol == stock.symbol) {
-            if ($scope.$parent.settings.chart == '1') {
-                beep();
-				if (stock.change > 0){changicotogreen();}
-				if (stock.change < 0){changicotored();}
-            }
-            setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
-            // if ($scope.transactions.length > 0) {
-                var transaction = {
-                    symbol: symbol,
-                    price:  price_format(data[4]),
-                    change: data[5],
-                    shares: abbr_format(data[13]),
-                    buyer:  data[14].substr(0, 5).trim(),
-                    seller: data[15].substr(0, 5).trim(),
-                    time:   data[16],
-                }
-                $scope.transactions.unshift(transaction);
-                if ($scope.transactions.length > 20) {
-                    $scope.transactions.pop();
-                }
-            // }
-            $scope.stock = stock;
-        }
-        // UPDATE STOCK
-        var found = $filter('filter')($scope.stocks, {symbol: symbol}, true);
-        if (found.length) {
-            $scope.stocks[$scope.stocks.indexOf(found[0])] = stock;
-        } else $scope.stocks.push(stock);
-        $scope.count = $scope.stocks.reduce( function(a, b) {
-            if (b.change < 0) {
-                a.losers = ++a.losers || 1;
-            }  
-            if (b.change === 0) {
-                a.unchanged = ++a.unchanged || 1;
-            }  
-            if (b.change > 0) {
-                a.gainers = ++a.gainers || 1;
-            }
-            return a;
-        }, {});
-    });
-    socket.on('bidask', function(data) {
-        if ($scope.marketdepth.length > 0) {
-            data.index = data.index - 1;
-            var found = $filter('filter')($scope.marketdepth, {index: data.index}, true);
-            if (found.length) {
-                $scope.marketdepth[$scope.marketdepth.indexOf(found[0])] = data;
-            } else $scope.marketdepth.push(data);
-        }
-    });
+    // socket.on('T', function(data) {
+    //     var symbol = data[0];
+    //     data[4]  = parseFloat(data[4]);
+    //     data[6]  = parseFloat(data[6]);
+    //     data[5]  = parseFloat(data[5]);
+    //     data[2]  = parseFloat(data[2]);
+    //     data[3]  = parseFloat(data[3]);
+    //     data[7]  = parseFloat(data[7]);
+    //     data[8]  = parseFloat(data[8]);
+    //     data[9]  = parseFloat(data[9]);
+    //     data[10] = parseFloat(data[10]);
+    //     data[11] = parseFloat(data[11]);
+    //     data[12] = parseFloat(data[12]);
+    //     var stock = {
+    //         id: data[1] + '-' + symbol,
+    //         symbol: symbol,
+    //         date: data[1],
+    //         last: data[4],
+    //         difference: data[6],
+    //         change: data[5],
+    //         previous: data[2],
+    //         open: data[3],
+    //         high: data[7],
+    //         low: data[8],
+    //         average: data[9],
+    //         volume: data[10],
+    //         value: data[11],
+    //         trades: data[12],
+    //         updated_at: data[16],
+    //     }
+    //     stock['displayLast']  = price_format(stock['last']);
+    //     stock['displayDifference']  = price_format(stock['difference'], stock['last']);
+    //     stock['displayOpen']  = price_format(stock['open']);
+    //     stock['displayPrevious']  = price_format(stock['previous']);
+    //     stock['displayAverage']  = price_format(stock['average']);
+    //     stock['displayLow']  = price_format(stock['low']);
+    //     stock['displayHigh']  = price_format(stock['high']);
+    //     stock['displayChange']  = number_format(stock['change'], '0,0.00');
+    //     stock['displayValue'] = abbr_format(stock['value']);
+    //     if ($scope.stock && $scope.stock.symbol == stock.symbol) {
+    //         if ($scope.$parent.settings.chart == '1') {
+    //             beep();
+	// 			if (stock.change > 0){changicotogreen();}
+	// 			if (stock.change < 0){changicotored();}
+    //         }
+    //         setTitle(stock.symbol, price_format(stock.last), number_format(stock.change, '0.00'));
+    //         // if ($scope.transactions.length > 0) {
+    //             var transaction = {
+    //                 symbol: symbol,
+    //                 price:  price_format(data[4]),
+    //                 change: data[5],
+    //                 shares: abbr_format(data[13]),
+    //                 buyer:  data[14].substr(0, 5).trim(),
+    //                 seller: data[15].substr(0, 5).trim(),
+    //                 time:   data[16],
+    //             }
+    //             $scope.transactions.unshift(transaction);
+    //             if ($scope.transactions.length > 20) {
+    //                 $scope.transactions.pop();
+    //             }
+    //         // }
+    //         $scope.stock = stock;
+    //     }
+    //     // UPDATE STOCK
+    //     var found = $filter('filter')($scope.stocks, {symbol: symbol}, true);
+    //     if (found.length) {
+    //         $scope.stocks[$scope.stocks.indexOf(found[0])] = stock;
+    //     } else $scope.stocks.push(stock);
+    //     $scope.count = $scope.stocks.reduce( function(a, b) {
+    //         if (b.change < 0) {
+    //             a.losers = ++a.losers || 1;
+    //         }  
+    //         if (b.change === 0) {
+    //             a.unchanged = ++a.unchanged || 1;
+    //         }  
+    //         if (b.change > 0) {
+    //             a.gainers = ++a.gainers || 1;
+    //         }
+    //         return a;
+    //     }, {});
+    // });
+    // socket.on('bidask', function(data) {
+    //     if ($scope.marketdepth.length > 0) {
+    //         data.index = data.index - 1;
+    //         var found = $filter('filter')($scope.marketdepth, {index: data.index}, true);
+    //         if (found.length) {
+    //             $scope.marketdepth[$scope.marketdepth.indexOf(found[0])] = data;
+    //         } else $scope.marketdepth.push(data);
+    //     }
+    // });
     $scope.sortStocks = function(sort) {
         if ($scope.sort == sort) {
             $scope.reverse = !$scope.reverse;
@@ -706,21 +706,21 @@ app.controller('disclosures', function($scope, $http, $rootScope) {
             $scope.disclosures = response.data.data;
         }
     });
-    socket.on('disclosure', function(data) {
-        if ($scope.$parent.settings.disclosure != '0') {
-            $.gritter.add({
-                title: 'Disclosure Notification',
-                text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
-                      data.template + '<br/>' +
-                      '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
-                      "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-        $scope.disclosures.unshift(data);
-    });
+    // socket.on('disclosure', function(data) {
+    //     if ($scope.$parent.settings.disclosure != '0') {
+    //         $.gritter.add({
+    //             title: 'Disclosure Notification',
+    //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
+    //                   data.template + '<br/>' +
+    //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
+    //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    //     $scope.disclosures.unshift(data);
+    // });
     $scope.goToChart = function(symbol) {
         return goToChart(symbol);
     };
@@ -868,6 +868,50 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
+
+                    // for register sentiments
+                    $http({
+                        method : "POST",
+                        url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: {
+                            'action' : 'check_sentiment',
+                            'stock' : _symbol,
+                        }
+                    }).then(function mySucces(response) {
+                        angular.element(".regsentiment").addClass('openmenow');
+                        console.log("status : " + response.data.isvote);
+
+                        // angular.element(".bullbearsents").addClass('clickedthis');
+
+                        if (response.data.isvote == "1") {
+                            // cant vote!
+                            angular.element(".bullbearsents").addClass('clickedthis');
+                            angular.element(".dbaronchart").css('width', '70%');
+                            angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
+                            angular.element(".bbs_bull_bar").find('span').show('fast');
+
+                            var dbullvalx = parseFloat(response.data.dbull);
+                            var dbearvalx = parseFloat(response.data.dbear);
+
+                            angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+
+                            angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
+                            angular.element(".bbs_bear_bar").find('span').show('fast');
+                            angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+                        } else {
+                            // can vote!
+                            angular.element(".bullbearsents").removeClass('clickedthis');
+                            angular.element(".dbaronchart").css('width', '0%');
+                            angular.element(".bbs_bull_bar").find('span').hide();
+                            angular.element(".bbs_bear_bar").find('span').hide();
+                        }
+
+                    }, function myError(error) {
+                        console.log(error);
+                    });
+                     
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
@@ -955,14 +999,14 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                             
                         // });
-                        socket.emit('stock', symbol, function(data) {
-                            if (data.transactions) {
-                                $scope.$parent.transactions = data.transactions;
-                            }
-                            if (data.bidask && $scope.marketdepth.length == 0) {
-                                $scope.$parent.marketdepth = data.bidask;
-                            }
-                        });
+                        // socket.emit('stock', symbol, function(data) {
+                        //     if (data.transactions) {
+                        //         $scope.$parent.transactions = data.transactions;
+                        //     }
+                        //     if (data.bidask && $scope.marketdepth.length == 0) {
+                        //         $scope.$parent.marketdepth = data.bidask;
+                        //     }
+                        // });
                     } else {
                         $scope.$parent.stock = null;
                         $scope.$parent.marketdepth = [];

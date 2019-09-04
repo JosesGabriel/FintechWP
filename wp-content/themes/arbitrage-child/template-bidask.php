@@ -288,12 +288,12 @@
 		var modalzindex = 10000;
     	var nightmode = localStorage.getItem('theme') == 'dark';
         var socket = io.connect('https://dev-socket-api.arbitrage.ph');
-        socket.on('reconnect', function() {
-            console.log('reconnected to websocket');
-        });
-        socket.on('disconnect', function() {
-        	console.log('You have been disconnected!');
-        });
+        // socket.on('reconnect', function() {
+        //     console.log('reconnected to websocket');
+        // });
+        // socket.on('disconnect', function() {
+        // 	console.log('You have been disconnected!');
+        // });
 		jQuery(document).ready(function() {
 			App.init();
 		    jQuery( function () {

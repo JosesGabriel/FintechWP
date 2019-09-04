@@ -290,7 +290,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																	<div class="dparams">
 																		<ul>
-																			<?php if (isset($value['dcondition_entry_price'])): ?>
+																			<?php if (isset($value['dcondition_entry_price']) && $value['dconnumber_entry_price'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
@@ -299,7 +299,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 																				</li>
 																			<?php endif ?>
-																			<?php if (isset($value['dcondition_take_profit_point'])): ?>
+																			<?php if (isset($value['dcondition_take_profit_point']) && $value['dconnumber_take_profit_point'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
@@ -308,7 +308,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 																				</li>
 																			<?php endif ?>
-																			<?php if (isset($value['dcondition_stop_loss_point'])): ?>
+																			<?php if (isset($value['dcondition_stop_loss_point']) && $value['dconnumber_stop_loss_point'] > 0 ): ?>
 																				<li>
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
@@ -447,7 +447,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<?php endif; ?>
 												</div>
 											</div>	
-											<div class="dclosetab addwatchtab ">
+											<div class="dclosetab addwatchtab " style="width: 271px;">
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
@@ -456,45 +456,56 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
-																		<input type="text" placeholder="Search.." id="myInput">
+																		<!--<input type="text" placeholder="Search.." id="myInput">-->
 																		<div class="listofstocks"></div>
 																	</div>
 														</div>
-
-															<div class="dselectstockname">
-																<!--<div class="dropdown ddropconts">
-																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
-																	<div class="dropdown-content ddropbase" style="display: none;">
-																		<input type="hidden" id="dstockname" name="stockname">
-																		<input type="text" placeholder="Search.." id="myInput">
-																		<div class="listofstocks"></div>
-																	</div>
-																</div>-->
-																<div class="dselected"></div>
-																<!-- <div class="formitem">
-																	<label>Select a Stock</label>
-																	<select id="dstocknames" class="stack-list" name="stockname">
-																		<option value="">Select Stock</option>
-																		<option value="BPI">BPI</option>
-																		<option value="ALI">ALI</option>
-																		<option value="VVL">VVL</option>
-																		<option value="ICT">ICT</option>
-																	</select>
-																</div> -->
-															</div>
-															<div class="">
+														<hr>
+														<div class="groupinput midd"><label>Entry Price</label>
+															<input type="number" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
+														</div>
+														<div class="groupinput midd"><label>Take Profit</label>
+															<input type="number" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+														</div>
+														<div class="groupinput midd"><label>Stop Loss</label>
+															<input type="number" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
+														</div>
+														<div class="">
 																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>
 																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
 																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
 																	</ul>
 																</div>
-															</div>
+														</div>
+
+															<!--<div class="dselectstockname">
+																<div class="dropdown ddropconts">
+																	<button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
+																	<div class="dropdown-content ddropbase" style="display: none;">
+																		<input type="hidden" id="dstockname" name="stockname">
+																		<input type="text" placeholder="Search.." id="myInput">
+																		<div class="listofstocks"></div>
+																	</div>
+																</div>
+																<div class="dselected"></div>
+															</div>-->
+															<!--<div class="">
+																<div class="innerdeliver innerdeliver-addstock">
+																	<ul>
+																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
+																		<li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+																	</ul>
+																</div>
+															</div>-->
                                                             <div class="row">
-                                                                <div class="col-md-6 condition-padding">
+                                                                <!--<div class="col-md-6 condition-padding">
                                                                     <div class="condition-params">
                                                                         <div class="condition-type">
-                                                                            <!-- <label>Conditions</label> -->
+                                                                           
                                                                             <select id="condition-list">
                                                                                 <option value="">Select Conditions</option>
                                                                                 <option value="entry_price">Entry Price</option>
@@ -503,22 +514,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             </select>
                                                                         </div>
                                                                         <div class="condition-freq">
-                                                                            <!-- <label>Condition Frequency</label> -->
+                                                                            
                                                                             <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
                                                                         </div>
                                                                         <div class="addtolist">
                                                                             <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div>-->
                                                                 <div class="col-md-6">
-                                                                    <div class="dpaste">
+                                                                    <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
-                                                                    </div>
-                                                                    <div class="submitform">
+                                                                    </div>-->
+                                                                    <div class="submitform" style="margin-right: -113px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
-                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary">Cancel</button>
+                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
                                                                         <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
@@ -1508,7 +1519,12 @@ h2.watchtitle {
         width:157px;
     }
     .groupinput.midd input {
-        width:138px;
+        width:154px;
+        background-color: #4e6a85;
+	    border-radius: 0 3px 3px 0;
+	    border: none;
+	    height: 27px;
+	    margin-left: -4px;
     }
     .entr_wrapper_top {
         padding:20px 0 15px 20px;

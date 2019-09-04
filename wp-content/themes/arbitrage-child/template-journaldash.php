@@ -1969,7 +1969,11 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         $dtotalcosts = 0;
                                                                                         $dselltotal = 0;
                                                                                         $intcost = 0;
-                                                                                        $totalquanta = 0;
+																						$totalquanta = 0;
+																						
+																						$favtotal = 0;
+																						$favvols = 0;
+
                                                                                         foreach ($dstocktraded['data'] as $dtradeissuekey => $dtradeissuevalue) {
                                                                                             $dmarketvalue = $dtradeissuevalue['price'] * $dtradeissuevalue['qty'];
                                                                                             $dfees = getjurfees($dmarketvalue, 'buy');
@@ -1977,19 +1981,25 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             $dtotalcosts += $dmarketvalue + $dfees;
                                                                                             $totalquanta += $dtradeissuevalue['qty'];
 																							$intcost = $dtradeissuevalue['price'];
-																							
+
+																							$favvols += $dtradeissuevalue['qty'];
+																							$favtotal += $dmarketvalue + $dfees;
 																							// calculate averate price
+																							// echo ($dmarketvalue + $dfees)."~";
 																						}
+
+																						$avrprice = $favtotal / $favvols;
 																						
-																						echo "<pre>";
-																							print_r($dstocktraded['data']);
-																						echo "</pre>";
+																						// echo $dstockinfo->last;
 
                                                                                         $dsellmarket = $dstockinfo->last * $dstocktraded['totalstock'];
                                                                                         $dsellfees = getjurfees($dsellmarket, 'sell');
-                                                                                        $dselltotal += $dsellmarket - $dsellfees;
+																						$dselltotal += $dsellmarket - $dsellfees;
+																						
+																						// echo $favtotal;
+																						$totalfixmarktcost = $favtotal;
 
-                                                                                        $totalfixmarktcost = $dstocktraded['totalstock'] * $dstocktraded['aveprice'];
+                                                                                        // $totalfixmarktcost = $dstocktraded['totalstock'] * $dstocktraded['aveprice'];
                                                                                         // $totalfinalcost = $totalfixmarktcost + getjurfees($totalfixmarktcost, 'buy');
 
                                                                                         $totalbuyfee = getjurfees($totalfixmarktcost, 'buy');
@@ -1999,11 +2009,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         $profpet = (abs($dprofit) / $totalfixmarktcost) * 100; ?>
 																	            	<li>
 		                                                                            	<div style="width:99%;">
-		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' );?></div>-->
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($dstocktraded['aveprice'], 2, '.', ','); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
@@ -3076,7 +3084,9 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
-                                                                                                $dlossing = $dlossing.$dinss;
+																								$dlossing = $dlossing.$dinss;
+																								
+																								// echo $flossvalue['dprofit']." dprof ~ ";
 
                                                                                                 $intolosschartbands .= '{';
                                                                                                 $intolosschartbands .= '"color": "#ffffff",';
@@ -3088,10 +3098,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 $intolosschartbands .= '}, {';
                                                                                                 $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
-                                                                                                $intolosschartbands .= ' "endValue": '.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').',';
+                                                                                                $intolosschartbands .= ' "endValue": '.($fwinvalue['dprofit'] != "" ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0).',';
                                                                                                 $intolosschartbands .= ' "radius": "100%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "85%",';
-                                                                                                $intolosschartbands .= ' "balloonText": "'.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').'%"';
+                                                                                                $intolosschartbands .= ' "balloonText": "'.($fwinvalue['dprofit'] != "" ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0).'%"';
                                                                                                 $intolosschartbands .= '},';
 
                                                                                                 $intolosschartlabels .= '{';

@@ -177,13 +177,24 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
+
+				var i = 0;
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
 					if('<?php echo $value['stockname']; ?>' !== value.symbol){
-						jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						
+						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						i++;
 					}	
+					
+					if (i == 0){
+						return false;
+					}
+
 				});
+
+
 			 <?php } ?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
@@ -265,19 +276,31 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			jQuery('#myDropdown').click(function(e){
 				e.preventDefault();
+
+				var dtyped = jQuery(this).val();
+				
+				//jQuery('.ddropbase').css('display','block');
+				if(jQuery(this).val().length < 1){
+					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+				}
+
 				if (jQuery(this).hasClass('disopen')) {
 					jQuery(this).removeClass('disopen');
-					jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+					//jQuery('.ddropbase').removeClass('opendrop').hide('slow');
 				} else {
 					jQuery(this).addClass('disopen');
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
 				}
+
 			});
 
-			jQuery( "#myInput" ).keyup(function(e) {
+
+			jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
+
+				//jQuery('.dropdown-content').css("display","block");
 
 				jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');
@@ -290,14 +313,19 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 			jQuery('.ddropbase a').click(function(e){
+
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
+
+				jQuery('#myDropdown').val(dstock);
+				jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+
 				jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 
-				jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
-				jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
+				//jQuery(this).parents('.ddropconts').find('#myDropdown').removeClass('disopen');
+				//jQuery(this).parents('.ddropconts').find('.ddropbase').removeClass('opendrop').hide('slow');
 
-				jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
+				//jQuery(this).parents('.dselectstockname').find(".dselected").html("Stock Selected: <span class='dstock-element'>"+dstock+"</span>");
 
 			});
 

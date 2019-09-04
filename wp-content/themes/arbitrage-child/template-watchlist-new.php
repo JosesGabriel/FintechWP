@@ -179,7 +179,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		$dwatchhisto = curl_exec($curl);
 																		curl_close($curl);
 
-																		$ddata = json_decode($dwatchhisto);
+                                                                        $ddata = json_decode($dwatchhisto);
+                                                                        
+                                                                        if (!is_array($ddata)) continue;
+
 																		$ddata = array_reverse($ddata, true);
 
 																		$dlisttrue = [];
@@ -205,10 +208,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			array_push($dstockinfo, $infodata);
 																		
 																		}
-
+                                                                    if (is_object($dinstall['data'])):
 																?>
 
-																
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
 																	<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
@@ -237,7 +239,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<?php else: ?>
 																					<div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 																				<?php endif; ?>
-																		</div>
+																		    </div>
 																		</div>
 																		<div class="col-md-12">
 																			 <div class="dchart">
@@ -336,22 +338,20 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																						<div class="instumentinner">
 																							<div class="row">
 
-															<div class="cond-ion" style="margin: 15px 0px 0px 26px;">							
-																<div class="groupinput midd"><label>Entry Price</label>
-																	<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" value="<?php echo $value['dconnumber_entry_price']; ?>" >
-																	<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
-																</div>
-																<div class="groupinput midd"><label>Take Profit</label>
-																	<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
-																	<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
-																</div>
-																<div class="groupinput midd"><label>Stop Loss</label>
-																	<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
-																	<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
-																</div>
-															</div>		
-
-
+                                                                                                <div class="cond-ion" style="margin: 15px 0px 0px 26px;">							
+                                                                                                    <div class="groupinput midd"><label>Entry Price</label>
+                                                                                                        <input type="text" name="dconnumber_entry_price" class="inpt_data_price number" value="<?php echo $value['dconnumber_entry_price']; ?>" >
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
+                                                                                                    </div>
+                                                                                                    <div class="groupinput midd"><label>Take Profit</label>
+                                                                                                        <input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+                                                                                                    </div>
+                                                                                                    <div class="groupinput midd"><label>Stop Loss</label>
+                                                                                                        <input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
+                                                                                                    </div>
+                                                                                                </div>		
 
 																								<div class="col-md-12">
 																									<div class="innerdeliver innerdeliver-editstock">
@@ -451,7 +451,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	  </div>
 																	</div>
 																</li>
-															<?php } ?>
+                                                            <?php endif; } ?>
 														</ul>
 													<?php else: ?>
 														<ul>

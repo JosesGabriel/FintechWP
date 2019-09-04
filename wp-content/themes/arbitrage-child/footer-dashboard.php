@@ -188,7 +188,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					i++;
 				});
 
-				
+				return false;
 
 			 <?php } ?>
 			var startTime = '9:00 AM';

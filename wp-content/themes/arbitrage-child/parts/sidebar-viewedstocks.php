@@ -62,7 +62,7 @@ jQuery(function(){
                                             $stock_watched[$stockcount][1] = $counter;
                                             $stock_watched[$stockcount][2] = $stvals->description;
                                             $counter++;   
-                                            $stockcount++;  
+                                            //$stockcount++;  
                                         }
 
                                  }
@@ -71,34 +71,14 @@ jQuery(function(){
 
                      }
 
-                //$stockcount++;
+                $stockcount++;
                 $counter = 1;
              }
     
-         
-        
-             for($i = 0; $i < $stockcount; $i++){
-                for ($j = $i + 1; $j < $stockcount; $j++) {
-  
-                    if(isset($stock_watched[$j])){
-                             if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
+             usort($stock_watched, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
 
-                                    $temp = $stock_watched[$i][0];
-                                    $temp2 = $stock_watched[$i][1];
-                                    $temp3 = $stock_watched[$i][2];
-                                    $stock_watched[$i][0] = $stock_watched[$j][0];
-                                    $stock_watched[$i][1] = $stock_watched[$j][1];
-                                    $stock_watched[$i][2] = $stock_watched[$j][2];
-                                    $stock_watched[$j][0] = $temp;
-                                    $stock_watched[$j][1] = $temp2;
-                                    $stock_watched[$j][2] = $temp3;
-
-                            }
-                        }
-
-                }
-
-             }
              
 
              ?>

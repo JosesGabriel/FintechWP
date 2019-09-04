@@ -2837,6 +2837,13 @@ if ($getdstocks && $getdstocks != '') {
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics
+																	<?php
+																		if($isjounalempty){
+																			$iswin = 100;
+																			$isloss = 60;
+																			$totaltrade = 160;
+																		}
+																	?>
 																</div>
                                                                 <div class="chartarea" style="margin-bottom: -3px;">
                                                                     <div id="chartdiv4a"></div>
@@ -2999,7 +3006,30 @@ if ($getdstocks && $getdstocks != '') {
                                                                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
                                                                             Strategy Statistics
                                                                         </div>
-
+																		<?php
+																			if($isjounalempty){
+																				$stratsinfo = [
+																					0 => [
+																						'dstrat' => 'Bottom Picking',
+																						'winrate' => 15,
+																						'lossrate' => 4,
+																						'trades' => 19,
+																					],
+																					1 => [
+																						'dstrat' => 'Breakout Play',
+																						'winrate' => 9,
+																						'lossrate' => 1,
+																						'trades' => 10,
+																					],
+																					2 => [
+																						'dstrat' => 'Trend Following',
+																						'winrate' => 2,
+																						'lossrate' => 8,
+																						'trades' => 10,
+																					],
+																				];
+																			}
+																		?>
                                                                 		<div class="stats-info">
                                                                             <div class="dstatstrade">
                                                                                 <ul>
@@ -3205,11 +3235,27 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             </li><?php */?>
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
+																							if($isjounalempty){
+																								$finalwinning = [
+																									0 => [
+																										'dstock' => 'Stock 3',
+																										'dprofit' => 123435
+																									],
+																									1 => [
+																										'dstock' => 'Stock 2',
+																										'dprofit' => 12343
+																									],
+																									2 => [
+																										'dstock' => 'Stock 1',
+																										'dprofit' => 1234
+																									],
+																								];
+																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#115350' : ($fwinkey == 1 ? '#0d785a' : ($fwinkey == 2 ? '#06af68' : '#00e676'))).';color: #b1e8ce;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -3261,9 +3307,26 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             </li> -->
                                                                                             <?php /*?> Losers <?php */?>
 																							<?php
+																							if($isjounalempty){
+																								$finalloss = [
+																									0 => [
+																										'dstock' => 'Stock 1',
+																										'dprofit' => -1234
+																									],
+																									1 => [
+																										'dstock' => 'Stock 2',
+																										'dprofit' => -12343
+																									],
+																									2 => [
+																										'dstock' => 'Stock 3',
+																										'dprofit' => -123435
+																									],
+																								];
+																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
-                                                                                            $intolosschartlabels = '';
+																							$intolosschartlabels = '';
+																							
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : '#ff1744'))).';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
@@ -3407,7 +3470,30 @@ if ($getdstocks && $getdstocks != '') {
 																<div class="box-portlet-header" style="padding-bottom:13px;">
 																	Emotional Statistics
 																</div>
-
+																<?php
+																	if($isjounalempty){
+																		$emotioninfo = [
+																			0 => [
+																				'emotion' => 'Neutral',
+																				'iswin' => 3,
+																				'isloss' => 4,
+																				'totaltrades' => 7
+																			],
+																			1 => [
+																				'emotion' => 'Greedy',
+																				'iswin' => 2,
+																				'isloss' => 3,
+																				'totaltrades' => 5
+																			],
+																			2 => [
+																				'emotion' => 'Fearful',
+																				'iswin' => 6,
+																				'isloss' => 1,
+																				'totaltrades' => 7
+																			],
+																		];
+																	}
+																?>
                                                                 <div class="col-md-6" style="padding-right:0;">
 
                                                                     <div class="chartarea">
@@ -5107,8 +5193,8 @@ if ($getdstocks && $getdstocks != '') {
 	// Chart 3 - Monthly Performance (Pie) - Removed requested by Ai
 	<?php
 		if($isjounalempty){
-			$iswin = 10;
-			$isloss = 6;
+			$iswin = 100;
+			$isloss = 60;
 		}
 	?>
 	// Chart 4a - Trade Statistics (chartdiv4a)
@@ -5467,7 +5553,7 @@ if ($getdstocks && $getdstocks != '') {
 			$dailyvolumes = '
 			{"category": "0","column-1": 53},
 			{"category": "1","column-1": 22},
-			{"category": "2","column-1": 400},
+			{"category": "2","column-1": 40},
 			{"category": "3","column-1": 22},
 			{"category": "4","column-1": 53},
 			{"category": "5","column-1": 54},
@@ -5565,7 +5651,32 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $dailyvolumes; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dailyvalues = '
+			{"category": "0","column-1": 53},
+			{"category": "1","column-1": 22},
+			{"category": "2","column-1": 40},
+			{"category": "3","column-1": 22},
+			{"category": "4","column-1": 53},
+			{"category": "5","column-1": 54},
+			{"category": "6","column-1": 200},
+			{"category": "7","column-1": 200},
+			{"category": "8","column-1": 123},
+			{"category": "9","column-1": 234},
+			{"category": "10","column-1": 232},
+			{"category": "11","column-1": 200},
+			{"category": "12","column-1": 180},
+			{"category": "13","column-1": 190},
+			{"category": "14","column-1": 170},
+			{"category": "15","column-1": 150},
+			{"category": "16","column-1": 120},
+			{"category": "17","column-1": 110},
+			{"category": "18","column-1": 100},
+			{"category": "19","column-1": 90},
+			{"category": "20","column-1": 80}';
+		}
+	?>
 	// Chart 8 - Daily Buy Value
 	AmCharts.makeChart("chartdiv8",
 		{
@@ -5647,7 +5758,17 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $dailyvalues; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dpercschart = '
+				{"category": "Mon","column-1": "8892.790805434","column-2": "#673ab7"},
+				{"category": "Tue","column-1": "9023","column-2": "#673ab7"},
+				{"category": "Wed","column-1": "10312.43075","column-2": "#673ab7"},
+				{"category": "Thu","column-1": "8020","column-2": "#673ab7"},
+				{"category": "Fri","column-1": "6000","column-2": "#673ab7"}
+			';
+		}
+	?>
 	// Chart 9 - Performance by Day of the Week
 	AmCharts.makeChart("chartdiv9",
 		{
@@ -5731,7 +5852,33 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $dpercschart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$gplchart = '
+				{"category": "0","column-1": "67592.53","column-2": "#673ab7"},
+				{"category": "0","column-1": "151527.98","column-2": "#673ab7"},
+				{"category": "0","column-1": "100312.43","column-2": "#673ab7"},
+				{"category": "0","column-1": "8892.79","column-2": "#673ab7"},
+				{"category": "4","column-1": "8892","column-2": "#673ab7"},
+				{"category": "5","column-1": "100312","column-2": "#673ab7"},
+				{"category": "6","column-1": "151527","column-2": "#673ab7"},
+				{"category": "7","column-1": "67592","column-2": "#673ab7"},
+				{"category": "8","column-1": "67592","column-2": "#673ab7"},
+				{"category": "9","column-1": "151527","column-2": "#673ab7"},
+				{"category": "10","column-1": "100312","column-2": "#673ab7"},
+				{"category": "11","column-1": "8892","column-2": "#673ab7"},
+				{"category": "12","column-1": "8892","column-2": "#673ab7"},
+				{"category": "13","column-1": "100312","column-2": "#673ab7"},
+				{"category": "14","column-1": "151527","column-2": "#673ab7"},
+				{"category": "15","column-1": "67592","column-2": "#673ab7"},
+				{"category": "16","column-1": "67592","column-2": "#673ab7"},
+				{"category": "17","column-1": "151527","column-2": "#673ab7"},
+				{"category": "18","column-1": "100312","column-2": "#673ab7"},
+				{"category": "19","column-1": "8892","column-2": "#673ab7"},
+				{"category": "20","column-1": "151527","column-2": "#673ab7"}
+			';
+		}
+	?>
 	// Chart 10 - Gross P&L (last 30 traiding days)
 	AmCharts.makeChart("chartdiv10",
 		{
@@ -5887,13 +6034,13 @@ if ($getdstocks && $getdstocks != '') {
 		if($isjounalempty){
 			$intowinchartbands = '
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
-			{ "color": "#0d785a", "startValue": 0, "endValue": 45, "radius": "100%", "innerRadius": "55%", "balloonText": "0%"},
+			{ "color": "#0d785a", "startValue": 0, "endValue": 45, "radius": "100%", "innerRadius": "55%", "balloonText": "45%"},
 
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
-			{ "color": "#06af68", "startValue": 0, "endValue": 65, "radius": "100%", "innerRadius": "70%", "balloonText": "0%"},
+			{ "color": "#06af68", "startValue": 0, "endValue": 65, "radius": "100%", "innerRadius": "70%", "balloonText": "65%"},
 
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
-			{ "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "0%"},';
+			{ "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
 
 			$intowinchartlabels = '
 			{"text": "Stock 1","x": "49%","y": "7%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
@@ -5922,13 +6069,13 @@ if ($getdstocks && $getdstocks != '') {
 		if($isjounalempty){
 			$intolosschartbands = '
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
-			{ "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "0%"},
+			{ "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "20%"},
 
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
-			{ "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "0%"},
+			{ "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "60%"},
 
 			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
-			{ "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "0%"},
+			{ "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "80%"},
 			';
 
 			$intolosschartlabels = '

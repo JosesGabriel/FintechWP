@@ -456,8 +456,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
+																		<?php $i = 0; ?>
 																		<!--<input type="text" placeholder="Search.." id="myInput">-->
-																		<div class="listofstocks"></div>
+																		<div class="<?php echo "listofstocks_" . $i++; ?>"></div>
 																	</div>
 														</div>
 														<hr>

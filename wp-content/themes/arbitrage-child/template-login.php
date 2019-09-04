@@ -654,8 +654,8 @@ input#first_name-9 {
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
-    	<img src="<?php echo $homeurlgen; ?>/svg/arblogo_svg.svg" style="width:54px; height:43px;">
-        <div class="rlewaylogo">ARBITRAGE <?php echo $force_show ?? ''; ?></div>
+        <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
+        <div class="rlewaylogo"> <?php echo $force_show ?? ''; ?></div>
         <div class="arb_circle_btns">
             <a class="prtnr_login" href="#">
             	<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
@@ -780,7 +780,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
-		jQuery( '<div class="forgpasslnk">Keep me sign in<span style="color: #949798;font-size: 11px;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
+		jQuery( '<div class="forgpasslnk">Keep me signed in<span style="color: #949798;font-size: 11px;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
 		jQuery(".um-register .um-field-type_password:last-child").addClass("confirmpasscls");
 		jQuery("#user_password-9").addClass("arbtriggerpass");
 		jQuery(".um-register .um-col-1").append("<div class='arb_accept'>By clicking Signing Up, you agree to our <a href='<?php echo get_home_url(); 

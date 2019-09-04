@@ -526,7 +526,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>-->
-                                                                    <div class="submitform" style="margin-right: -113px;">
+                                                                    <div class="submitform" style="margin-right: -125px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>

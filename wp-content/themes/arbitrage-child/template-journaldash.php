@@ -5015,6 +5015,11 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $currentalocinfo; ?>]
 		}
 	);
+	<?php
+		if($isjounalempty){
+			$formonthperc = '{"category": "Jan","column-1": "80"},{"category": "Feb","column-1": "60"},{"category": "Mar","column-1": "30"},{"category": "Apr","column-1": "20"},{"category": "May","column-1": "10"},{"category": "Jun","column-1": "-5"},{"category": "Jul","column-1": "-15"},{"category": "Aug","column-1": "-20"},{"category": "Sep","column-1": "-10"},{"category": "Oct","column-1": "5"},{"category": "Nov","column-1": "10"},{"category": "Dec","column-1": "15"}';
+		}
+	?>
 	// Chart 2 - Monthly Performance (Bar)
 	AmCharts.makeChart("chartdiv2",
 		{
@@ -5100,7 +5105,12 @@ if ($getdstocks && $getdstocks != '') {
 	);
 
 	// Chart 3 - Monthly Performance (Pie) - Removed requested by Ai
-
+	<?php
+		if($isjounalempty){
+			$iswin = 10;
+			$isloss = 6;
+		}
+	?>
 	// Chart 4a - Trade Statistics (chartdiv4a)
 	var chart = AmCharts.makeChart("chartdiv4a", {
 	  "type": "pie",
@@ -5156,7 +5166,11 @@ if ($getdstocks && $getdstocks != '') {
 		"enabled": false
 	  }
 	});
-
+	<?php
+		if($isjounalempty){
+			$wincharts = '{"strategy": "Bottom Picking","winvals": 15},{"strategy": "Breakout Play","winvals": 9},{"strategy": "Trend Following","winvals": 2}';
+		}
+	?>
 	// Chart 4b - Win Allocations (chartdiv4b)
 	var chart = AmCharts.makeChart("chartdiv4b", {
 	  "type": "pie",
@@ -5240,6 +5254,11 @@ if ($getdstocks && $getdstocks != '') {
 	  wedge.parentNode.appendChild(wedge);
 	}
 
+	<?php
+		if($isjounalempty){
+			$stratstrg = '{"category": "Bottom Picking","column-2": "4","Trades": "15","colors": "#06af68","colorsred": "#b7193f"},{"category": "Breakout Play","column-2": "1","Trades": "9","colors": "#06af68","colorsred": "#b7193f"},{"category": "Trend Following","column-2": "8","Trades": "2","colors": "#06af68","colorsred": "#b7193f"}';
+		}
+	?>
 	// Chart 5 - Strategy Statistics
 	AmCharts.makeChart("chartdiv5",
 {
@@ -5351,7 +5370,23 @@ if ($getdstocks && $getdstocks != '') {
 	]
 }
 	);
-
+	<?php 
+		if($isjounalempty){
+			$feeschart = '
+			{"category": "Jan","column-1": "123"},
+			{"category": "Feb","column-1": "345"},
+			{"category": "Mar","column-1": "456"},
+			{"category": "Apr","column-1": "345"},
+			{"category": "May","column-1": "123"},
+			{"category": "Jun","column-1": "23"},
+			{"category": "Jul","column-1": "6"},
+			{"category": "Aug","column-1": "36"},
+			{"category": "Sep","column-1": "403"},
+			{"category": "Oct","column-1": "50"},
+			{"category": "Nov","column-1": "30"},
+			{"category": "Dec","column-1": "60"}';
+		}
+	?>
 	// Chart 6 - Expense Report
 	AmCharts.makeChart("chartdiv6",
 		{
@@ -5427,7 +5462,32 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $feeschart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dailyvolumes = '
+			{"category": "0","column-1": 53},
+			{"category": "1","column-1": 22},
+			{"category": "2","column-1": 400},
+			{"category": "3","column-1": 22},
+			{"category": "4","column-1": 53},
+			{"category": "5","column-1": 54},
+			{"category": "6","column-1": 200},
+			{"category": "7","column-1": 200},
+			{"category": "8","column-1": 123},
+			{"category": "9","column-1": 234},
+			{"category": "10","column-1": 232},
+			{"category": "11","column-1": 200},
+			{"category": "12","column-1": 180},
+			{"category": "13","column-1": 190},
+			{"category": "14","column-1": 170},
+			{"category": "15","column-1": 150},
+			{"category": "16","column-1": 120},
+			{"category": "17","column-1": 110},
+			{"category": "18","column-1": 100},
+			{"category": "19","column-1": 90},
+			{"category": "20","column-1": 80}';
+		}
+	?>
 	// Chart 7 - Daily Buy Volume
 	AmCharts.makeChart("chartdiv7",
 		{
@@ -5756,7 +5816,11 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $gplchart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$demotsonchart = '{"category": "Neutral","column-2": "4","Trades": "3"},{"category": "Greedy","column-2": "3","Trades": "2"},{"category": "Fearful","column-2": "1","Trades": "6"},';
+		}
+	?>
 	// Chart 11 - Emotional Statistics
 	AmCharts.makeChart("chartdiv11",
 		{
@@ -5819,6 +5883,24 @@ if ($getdstocks && $getdstocks != '') {
 		}
 	);
 
+	<?php
+		if($isjounalempty){
+			$intowinchartbands = '
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
+			{ "color": "#0d785a", "startValue": 0, "endValue": 45, "radius": "100%", "innerRadius": "55%", "balloonText": "0%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
+			{ "color": "#06af68", "startValue": 0, "endValue": 65, "radius": "100%", "innerRadius": "70%", "balloonText": "0%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
+			{ "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "0%"},';
+
+			$intowinchartlabels = '
+			{"text": "Stock 1","x": "49%","y": "7%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 2","x": "49%","y": "13%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 3","x": "49%","y": "19%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",}';
+		}
+	?>
 	/* Top Stocks: Winners */
 	var gaugeChart = AmCharts.makeChart("topstockswinners", {
 	  "type": "gauge",
@@ -5835,6 +5917,26 @@ if ($getdstocks && $getdstocks != '') {
 	  }],
 	  "allLabels": [<?php echo $intowinchartlabels; ?>],
 	});
+
+	<?php
+		if($isjounalempty){
+			$intolosschartbands = '
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
+			{ "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "0%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
+			{ "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "0%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
+			{ "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "0%"},
+			';
+
+			$intolosschartlabels = '
+			{"text": "Stock 1","x": "49%","y": "7%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 2","x": "49%","y": "13%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 3","x": "49%","y": "19%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",}';
+		}
+	?>
 
 	/* Top Stocks: Losers */
 	var gaugeChart = AmCharts.makeChart("topstocksLosers", {

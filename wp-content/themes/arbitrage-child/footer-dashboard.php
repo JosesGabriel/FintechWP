@@ -263,7 +263,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 			});
 
-			jQuery('#myDropdown').keyup(function(e){
+			jQuery('#myDropdown').onclick(function(e){
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
@@ -280,19 +280,15 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
 				}
 
-				jQuery(".listofstocks > a").each(function(index){
+				/*jQuery(".listofstocks > a").each(function(index){
 					var istock = jQuery(this).attr('data-dstock');
-
-					
-
-					//if (istock.toLowerCase().indexOf(dtyped) >= 0) {
-					if (dtyped == istock){
+					if (istock.toLowerCase().indexOf(dtyped) >= 0) {
 						jQuery(this).show();
 						return;
 					} else {
 						jQuery(this).hide();
 					}
-				});
+				});*/
 
 			});
 

@@ -288,7 +288,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			});
 
-			jQuery( "#myDropdown" ).keyup(function(e) {
+			/*jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
 				//var i = 0;
 				var dtyped = jQuery(this).val();
@@ -302,9 +302,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 				});
 				
-			});
+			});*/
 
-			/*jQuery( "#myInput" ).keyup(function(e) {
+			jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
 
 				var dtyped = jQuery(this).val();
@@ -317,7 +317,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						jQuery(this).hide();
 					}
 				});
-			});*/
+			});
 
 			jQuery('.ddropbase a').click(function(e){
 

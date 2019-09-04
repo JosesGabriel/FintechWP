@@ -175,13 +175,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;
+			var i = 0;
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
 					if('<?php echo $value['stockname']; ?>' !== value.symbol){
-						jQuery('.listofstocks').append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						jQuery('.listofstocks_' + i ).append('<a href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 					}	
 				});
 			 <?php } ?>
@@ -285,7 +286,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery( "#myDropdown" ).keyup(function(e) {
 				e.preventDefault();
 				var dtyped = jQuery(this).val();
-				
+
 
 				
 			});

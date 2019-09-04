@@ -1634,8 +1634,8 @@ get_header('dashboard');
 <!-- BOF Sort LIVE Portfolio -->
 <?php
 
-$dtradeingfo = [];
 if ($getdstocks && $getdstocks != '') {
+    $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
@@ -2286,7 +2286,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo isset($dledger[0]) ? number_format($dledger[0]->tranamount, 2, '.', ',') : '0.00'; ?></div>
+                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>
@@ -2543,7 +2543,8 @@ if ($getdstocks && $getdstocks != '') {
                                                         // get lits of combi strats
                                                             $iswin = 0;
                                                             $isloss = 0;
-                                                            $totaltrade = 0;
+															$totaltrade = 0;
+															$totalprofit = 0;
                                                             foreach ($alltradelogs as $key => $value) {
                                                                 $data_sellmonth = $value['data_sellmonth'];
                                                                 $data_sellday = $value['data_sellday'];
@@ -3098,16 +3099,16 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 $intolosschartbands .= '}, {';
                                                                                                 $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
-                                                                                                $intolosschartbands .= ' "endValue": '.($fwinvalue['dprofit'] != "" ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0).',';
+                                                                                                $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
                                                                                                 $intolosschartbands .= ' "radius": "100%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "85%",';
-                                                                                                $intolosschartbands .= ' "balloonText": "'.($fwinvalue['dprofit'] != "" ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0).'%"';
+                                                                                                $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
                                                                                                 $intolosschartbands .= '},';
 
                                                                                                 $intolosschartlabels .= '{';
-                                                                                                $intolosschartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
+                                                                                                $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
                                                                                                 $intolosschartlabels .= '"x": "49%",';
-                                                                                                $intolosschartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '15' : ($fwinkey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '15' : ($flosskey == 2 ? '24' : '33'))).'%",';
                                                                                                 $intolosschartlabels .= '"size": 11,';
                                                                                                 $intolosschartlabels .= '"bold": false,';
                                                                                                 $intolosschartlabels .= '"color": "#d8d8d8",';
@@ -3280,18 +3281,15 @@ if ($getdstocks && $getdstocks != '') {
 
                                                     <!-- BOF expenses report -->
                                                     <?php
-														$dlistoflivetrades = [];
-														
-														if (is_array($getdstocks) && !empty($getdstocks)) {
-															foreach ($getdstocks as $dtdkey => $dtdvalue) {
-																$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
-																if ($dstocktraded && $dstocktraded != '') {
-																	foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
-																		array_push($dlistoflivetrades, $dtfvalue);
-																	}
-																}
-															}
-														}
+                                                        $dlistoflivetrades = [];
+                                                        foreach ($getdstocks as $dtdkey => $dtdvalue) {
+                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+                                                            if ($dstocktraded && $dstocktraded != '') {
+                                                                foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
+                                                                    array_push($dlistoflivetrades, $dtfvalue);
+                                                                }
+                                                            }
+                                                        }
 
                                                         $commissions = 0;
                                                         $vat = 0;
@@ -3559,7 +3557,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                     $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                                     $dlls['profit'] += $dprofit;
-                                                                    array_push($dlls[$ddatesvalue], $profit);
+                                                                    array_push($dlls[$ddatesvalue], $dprofit);
                                                                 }
                                                             }
                                                             array_push($dlistofpost, $dlls['profit']);

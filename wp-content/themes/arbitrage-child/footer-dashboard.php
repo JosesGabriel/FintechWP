@@ -298,7 +298,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 								//return false;
 								//i = 1;
 							}else{
-								jQuery(".istocks").remove();
+								//jQuery(".istocks").remove();
 							}
 							/*if (istock.toLowerCase().indexOf(dtyped) >= 0) {
 								jQuery(this).show();

@@ -133,7 +133,7 @@ jQuery(function(){
                    
                 }
 
-             }
+            // }
 
                     echo "</div>";
             

@@ -665,7 +665,7 @@
 		}
 		?>';
 	</script>
-<script src="/assets/js/angular/functions.js?v=1.219"></script>
+<script src="/assets/js/angular/functions.js?v=1.218"></script>
 <script src="/assets/js/angular/controllers.js?v=1.218"></script>
 <script src="/assets/js/angular/directives.js?v=1.218"></script>
 <script src="/assets/js/angular/filters.js?v=1.218"></script>

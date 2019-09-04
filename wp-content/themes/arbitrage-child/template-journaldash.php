@@ -1634,8 +1634,8 @@ get_header('dashboard');
 <!-- BOF Sort LIVE Portfolio -->
 <?php
 
+$dtradeingfo = [];
 if ($getdstocks && $getdstocks != '') {
-    $dtradeingfo = [];
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";

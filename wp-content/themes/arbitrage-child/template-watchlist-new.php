@@ -179,7 +179,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		$dwatchhisto = curl_exec($curl);
 																		curl_close($curl);
 
-																		$ddata = json_decode($dwatchhisto);
+                                                                        $ddata = json_decode($dwatchhisto);
+                                                                        
+                                                                        if (!is_array($ddata)) continue;
+
 																		$ddata = array_reverse($ddata, true);
 
 																		$dlisttrue = [];

@@ -80,7 +80,7 @@ jQuery(function(){
              for($i = 0; $i < $stockcount; $i++){
                 for ($j = $i + 1; $j < $stockcount; $j++) {
   
-                        //if($stock_watched[$i][1] != null){
+                        if(isset($stock_watched[$j])){
                              if ($stock_watched[$i][1] < $stock_watched[$j][1]) {
 
                                     $temp = $stock_watched[$i][0];
@@ -94,7 +94,7 @@ jQuery(function(){
                                     $stock_watched[$j][2] = $temp3;
 
                             }
-                        //}
+                        }
 
                 }
 
@@ -102,13 +102,12 @@ jQuery(function(){
              
 
              ?>
-
              <ul>
              <?php
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != null){
+                 if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
 
                        
                                     ?>

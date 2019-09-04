@@ -1735,11 +1735,38 @@ if ($getdstocks && $getdstocks != '') {
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
-    }
+	}
+	if(empty($dledger)){
+		$dledger = [];
+		$dledger[0] = new \stdClass();
+		$dledger[0]->ledid = 250;
+		$dledger[0]->userid = 111;
+		$dledger[0]->date = '2019-08-21';
+		$dledger[0]->trantype = 'deposit';
+		$dledger[0]->tranamount = 1000000;
+
+		$dledger[1] = new \stdClass();
+		$dledger[1]->ledid = 250;
+		$dledger[1]->userid = 111;
+		$dledger[1]->date = '2019-08-21';
+		$dledger[1]->trantype = 'deposit';
+		$dledger[1]->tranamount = 1000000;
+
+		$dledger[2] = new \stdClass();
+		$dledger[2]->ledid = 250;
+		$dledger[2]->userid = 111;
+		$dledger[2]->date = '2019-08-21';
+		$dledger[2]->trantype = 'deposit';
+		$dledger[2]->tranamount = 1000000;
+
+		$dledger[3] = new \stdClass();
+		$dledger[3]->ledid = 250;
+		$dledger[3]->userid = 111;
+		$dledger[3]->date = '2019-08-21';
+		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->tranamount = 1000000;
+	}
 ?>
-<pre>
-	<?php print_r($dledger); ?>
-</pre>
 <!-- BOF Current Allocation Data -->
 <?php
 	if($getdstocks){

@@ -109,6 +109,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
 						jQuery("#add-watchlist-param").submit();
+						$('.chart-loader').css("display","block");
+						$(this).hide();
 					}
 				}
 			});
@@ -175,10 +177,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;
+
+
+
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;
+				
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
@@ -188,14 +194,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						i++;
 					}	
 					
-					if (i == 0){
-						return false;
-					}
 
 				});
 
 
-			 <?php } ?>
+			 <?php  break;  } ?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 

@@ -321,7 +321,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content mc-background">
+																	    <div class="modal-content mc-background" style="width: 60%;">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -335,6 +335,24 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																						<input type="hidden" name="stockname" value="<?php echo $value['stockname']; ?>">
 																						<div class="instumentinner">
 																							<div class="row">
+
+															<div class="cond-ion" style="margin: 15px 0px 0px 26px;">							
+																<div class="groupinput midd"><label>Entry Price</label>
+																	<input type="number" name="dconnumber_entry_price" class="inpt_data_price number" >
+																	<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
+																</div>
+																<div class="groupinput midd"><label>Take Profit</label>
+																	<input type="number" name="dconnumber_take_profit_point" class="inpt_data_price number" >
+																	<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+																</div>
+																<div class="groupinput midd"><label>Stop Loss</label>
+																	<input type="number" name="dconnumber_stop_loss_point" class="inpt_data_price number">
+																	<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
+																</div>
+															</div>		
+
+
+
 																								<div class="col-md-12">
 																									<div class="innerdeliver innerdeliver-editstock">
 																										<ul>
@@ -462,15 +480,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="number" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="number" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
-															<input type="number" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
 														</div>
 														<div class="">
@@ -526,7 +544,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>-->
-                                                                    <div class="submitform" style="margin-right: -113px;">
+                                                                    <div class="submitform" style="margin-right: -125px;">
+                                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
@@ -1525,6 +1544,7 @@ h2.watchtitle {
 	    border: none;
 	    height: 27px;
 	    margin-left: -4px;
+	    padding-right: 10px;
     }
     .entr_wrapper_top {
         padding:20px 0 15px 20px;

@@ -111,7 +111,7 @@ jQuery(function(){
 
              for($i = 0; $i < 10; $i++){
 
-                 if($stock_watched[$i][0] != ''){
+                 if($stock_watched[$i][0] != null){
 
                     ?>
                             <li class="odd">

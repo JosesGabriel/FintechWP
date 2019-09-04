@@ -1633,9 +1633,9 @@ get_header('dashboard');
 
 <!-- BOF Sort LIVE Portfolio -->
 <?php
-
+$dtradeingfo = [];
 if ($getdstocks && $getdstocks != '') {
-    $dtradeingfo = [];
+    
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
@@ -1656,6 +1656,69 @@ if ($getdstocks && $getdstocks != '') {
             array_push($dtradeingfo, $dstocktraded);
         }
     }
+} else {
+	
+	$dtradeingfo = [
+		[
+			'data' => [
+				[
+					'buymonth' => 'August',
+					'buyday' => 22,
+					'buyyear' => 2019,
+					'stock' => 'MBT',
+					'price' => 100,
+					'qty' => 5,
+					'currprice' => 75.40,
+					'change' => '0.40%',
+					'open' => 75.50,
+					'low' => 75.20,
+					'high' => 75.80,
+					'volume' => '957.73K',
+					'value' => '72.29m',
+					'boardlot' => 10,
+					'strategy' => 'Trend Following',
+					'tradeplan' => 'Day Trade',
+					'emotion' => 'this is a test',
+					'tradingnotes' => 'Trading Notes',
+					'status' => 'Live',
+				],
+			],
+			'totalstock' => 1213228,
+			'aveprice' => 2228.5209688868,
+			'totalcost' => 84225991.13847,
+			'stockname' => 'Sample Stock',
+		],
+		[
+			'data' => [
+				[
+					'buymonth' => 'August',
+					'buyday' => 22,
+					'buyyear' => 2019,
+					'stock' => 'MBT',
+					'price' => 100,
+					'qty' => 5,
+					'currprice' => 75.40,
+					'change' => '0.40%',
+					'open' => 75.50,
+					'low' => 75.20,
+					'high' => 75.80,
+					'volume' => '957.73K',
+					'value' => '72.29m',
+					'boardlot' => 10,
+					'strategy' => 'Trend Following',
+					'tradeplan' => 'Day Trade',
+					'emotion' => 'this is a test',
+					'tradingnotes' => 'Trading Notes',
+					'status' => 'Live',
+				],
+			],
+			'totalstock' => 1213228,
+			'aveprice' => 2228.5209688868,
+			'totalcost' => 84225991.13847,
+			'stockname' => 'Sample Stock',
+		]
+	];
+
 }
 
 ?>
@@ -1674,33 +1737,41 @@ if ($getdstocks && $getdstocks != '') {
         }
     }
 ?>
+<pre>
+	<?php print_r($dledger); ?>
+</pre>
 <!-- BOF Current Allocation Data -->
 <?php
-    $dequityp = $buypower;
+	if($getdstocks){
+		$dequityp = $buypower;
 
-    $aloccolors = array('#f0231c', '#c01c16', '#ff9a00', '#cc7b00', '#f4c700', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
-    $currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-    $currentaloccolor = '"#f0231c",';
-    if ($dtradeingfo) {
-        foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-			$stockdetails = "";
-			foreach ($gerdqoute->data as $gskey => $gsvalue) {
-				if($trinfovalue['stockname'] == $gsvalue->symbol){
-					$stockdetails = $gsvalue;
+		$aloccolors = array('#f0231c', '#c01c16', '#ff9a00', '#cc7b00', '#f4c700', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
+		$currentaloccolor = '"#f0231c",';
+		if ($dtradeingfo) {
+			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+				$stockdetails = "";
+				foreach ($gerdqoute->data as $gskey => $gsvalue) {
+					if($trinfovalue['stockname'] == $gsvalue->symbol){
+						$stockdetails = $gsvalue;
+					}
 				}
+				// $dinforstocl = $trinfovalue['stockname'];
+				// $dstockinfo = $gerdqoute->data->$dinforstocl;
+				$dstockinfo = $stockdetails;
+				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+				$dsellfees = getjurfees($marketval, 'sell');
+				$dtotal = $marketval - $dsellfees;
+	
+				$dequityp += $dtotal;
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
-            // $dinforstocl = $trinfovalue['stockname'];
-            // $dstockinfo = $gerdqoute->data->$dinforstocl;
-            $dstockinfo = $stockdetails;
-            $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-            $dsellfees = getjurfees($marketval, 'sell');
-            $dtotal = $marketval - $dsellfees;
-
-            $dequityp += $dtotal;
-            $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
-            $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
-        }
-    }
+		}
+	} else {
+		$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+	}
+    
 
 ?>
 <!-- EOF Current Allocation Data -->

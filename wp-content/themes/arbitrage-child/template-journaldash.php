@@ -1916,6 +1916,11 @@ if ($getdstocks && $getdstocks != '') {
                                                         			</form>
                                                         		</div>
                                                         	</div> -->
+															<?php if($isjounalempty): ?>
+																<div>
+																	this is just a sample data
+																</div>
+															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio
                                                                 <div class="dltbutton">
@@ -3526,10 +3531,10 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                                </li>
 																					<?php
                                                                                     $demotsonchart .= '{';
-                                                        $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-                                                        $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-                                                        $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-                                                        $demotsonchart .= '},'; ?>
+																					$demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+																					$demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+																					$demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+																					$demotsonchart .= '},'; ?>
 																					<?php if ($emtkey >= 4) {
                                                             break;
                                                         } ?>
@@ -3662,7 +3667,15 @@ if ($getdstocks && $getdstocks != '') {
 																</div>
                                                                 <div class="box-portlet-content" style="padding-top: 0; padding-left:0; padding-bottom:0;">
                                                                     <div class="col-md-4" style="padding-right:0;">
-
+																			<?php
+																				if($isjounalempty){
+																					$commissions = 12345.6;
+																					$vat = 2342.5;
+																					$transfer_fee = 1234;
+																					$sccp = 124;
+																					$sales_tax = 223;
+																				}
+																			?>
 																			<div class="inner-portlet" style="margin-top:20px;">
                                                                                     <div class="stats-info">
                                                                                         <div class="dstatstrade">

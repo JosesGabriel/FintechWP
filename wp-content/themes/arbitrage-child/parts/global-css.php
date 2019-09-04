@@ -3049,4 +3049,8 @@ span.value-p {
 	display: inline-block;
 	float: right;
 }
+.bbbutton-sen {
+	position: relative;
+    bottom: 46px;
+}
 </style>

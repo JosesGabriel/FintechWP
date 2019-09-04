@@ -1208,6 +1208,10 @@
 		text-align: right;
 		padding-right: 25px !important;
 	}
+	.bbbutton-sen {
+		position: relative;
+		bottom: 46px;
+	}
     
     </style>
 	<script language="javascript">

@@ -1212,6 +1212,9 @@
 		position: relative;
 		bottom: 46px;
 	}
+	table.dstocklistitems.table.table-condensed.m-b-0.text-inverse.border-default {
+		margin-top: 20px !important;
+	}
     
     </style>
 	<script language="javascript">

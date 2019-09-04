@@ -194,7 +194,7 @@
 			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-			if ($dsentilist && is_array( $dsentilist ) && in_array( $user->id, $dsentilist )) {
+			if ($dsentilist && is_array( $dsentilist ) && in_array( $user->ID, $dsentilist )) {
 				$isvote = 1;
 			} else {
 				$isvote = 0;

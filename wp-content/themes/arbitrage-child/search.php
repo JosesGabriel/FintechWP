@@ -27,9 +27,9 @@ date_default_timezone_set('Asia/Manila');
 
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 		$userdetails['user_nicename'] = $value->data->user_nicename;
 
 		array_push($newuserlist, $userdetails);
@@ -735,11 +735,11 @@ a.um-photo-modal img {
 								                                                                        <div class="traider-follower">
 								                                                                            <div class="onbfdata"><!-- <img src="https://arbitrage.ph/svg/connection.svg" style="width: 19px;vertical-align: sub;height: 18px;"> --> <?php echo $value['followers']; ?> Connections </div>
 								                                                                            <div class="onbfollow">
-                                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->id ); ?>
-								                                                                                <!-- <a href="#" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a> -->
+                                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->ID ); ?>
+								                                                                                <!-- <a href="#" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 								                                                                            </div>
 								                                                                            <!-- <div class="onbfollow">
-								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->id; ?>">Remove</a>
+								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->ID; ?>">Remove</a>
 								                                                                            </div> -->
 								                                                                        </div>
 								                                                                    </div>
@@ -869,10 +869,10 @@ a.um-photo-modal img {
 								                                                                        <div class="traider-follower">
 								                                                                            <div class="onbfdata"><!-- <img src="https://arbitrage.ph/svg/connection.svg" style="width: 19px;vertical-align: sub;height: 18px;"> --> <?php echo $value['followers']; ?> Connections </div>
 								                                                                            <div class="onbfollow">
-								                                                                                <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a>
+								                                                                                <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
 								                                                                            </div>
 								                                                                            <!-- <div class="onbfollow">
-								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->id; ?>">Remove</a>
+								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->ID; ?>">Remove</a>
 								                                                                            </div> -->
 								                                                                        </div>
 								                                                                    </div>

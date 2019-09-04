@@ -15,7 +15,7 @@ um_fetch_user($profile_id);
 
 $myusersecret = get_user_meta($profile_id, 'user_secret', true);
 
-$ismyprofile = ($user->id == $profile_id ? true : false);
+$ismyprofile = ($user->ID == $profile_id ? true : false);
 
 
 	$topargs = array(
@@ -27,9 +27,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 
 		array_push($newuserlist, $userdetails);
 	}
@@ -1845,7 +1845,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 									<?php if(!$ismyprofile): ?>
 										<?php echo $ismyprofile; ?>
 										<!-- <li>
-											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->id; ?>">Follow</a>
+											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->ID; ?>">Follow</a>
 										</li> -->
                                         <?php if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
                                             <li>

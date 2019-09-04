@@ -189,7 +189,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				});
 
-				return;
 
 			 <?php } ?>
 			var startTime = '9:00 AM';

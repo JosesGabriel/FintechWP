@@ -174,7 +174,6 @@ $user = wp_get_current_user();
 						method: "POST",
 						url: "https://arbitrage.ph/apipge/?daction=notify_me_email",
 						// url: 'https://api2.pse.tools/api/quotes',
-						dataType: 'json',
 						data: {
 							'email' : email
 						},

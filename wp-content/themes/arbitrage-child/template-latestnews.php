@@ -920,9 +920,16 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                		</div>
 						                	</div>
 									<?php } ?>
+
+
+
+
+
 			                		</div>
 			                	</div>
-			                	<div class="nws-part col-md-4">
+
+
+			                	<div class="nws-part col-md-4" style="margin-top: 0px;">
 									<?php // get_template_part('parts/sidebar', 'ads');?>
 
 						                		<div class="nws-part">
@@ -945,8 +952,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 							                			</div>
 							                		</div>
 						                		</div>
+
+						                		<?php get_template_part('parts/sidebar', 'ads');?>
 						                	
 								</div>
+
+
 							</div>
 	                	</div>
                 	</div>
@@ -1012,7 +1023,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				            </div>
 				                <div class="row">
 								<?php for ($bottomnews=11; $bottomnews <=22 ; $bottomnews++) { ?>
-								<div class="col-md-4">
+								<div class="col-md-4" style="padding-right: 0px;">
 				                	<div class="main-innertop">
 										<div class="nws-part">
 					                		<div class="img_sep">

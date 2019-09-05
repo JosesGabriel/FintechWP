@@ -471,13 +471,27 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
+																			<?php
+																				$curl = curl_init();
+																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
+																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+																				$dstocksonme = curl_exec($curl);
+																				curl_close($curl);
+
+																				$dstocksonme = json_decode($dstocksonme);
+
+																			?>
+
+
 														<div class="groupinput midd"><label>Stock Code</label>
 															<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
-																									<option value="">Select Stocks</option>
-																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
-																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
-																									<?php endforeach; ?>
+																	<option value="">Select</option>
+																	<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																		<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+																	<?php endforeach; ?>
 															</select>
+															<input type="hidden" id="dstockname" name="stockname">
 															<!--<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >-->
 
 

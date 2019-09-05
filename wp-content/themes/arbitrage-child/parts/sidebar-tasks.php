@@ -50,6 +50,7 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
 	  <div class="to-top-title">Complete your Profile</div>
 	  <div class="to-content-part to-back-back">
 		  <div class="content-inner-part">
+            <?php echo $friendstotal; ?>
 				<ul>
                 	
                     <?php if(!$coverhphotoactive){ ?>

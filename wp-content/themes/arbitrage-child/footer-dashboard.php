@@ -160,6 +160,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('.editmenow').click(function(e){
 				e.preventDefault();
 				jQuery("#"+jQuery(this).attr('data-tochange')).submit();
+				$('.chart-loader').css("display","block");
+				$(this).hide();
 			});
 
 			<?php /* temp-disabled-start */

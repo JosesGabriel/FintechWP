@@ -922,9 +922,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 									<?php } ?>
 			                		</div>
 			                	</div>
-			                	<div class="nws-part col-md-4">
-									<?php get_template_part('parts/sidebar', 'ads');?>
-								</div>
+			                	<!--<div class="nws-part col-md-4">
+									<?php // get_template_part('parts/sidebar', 'ads');?>
+								</div>-->
 							</div>
 	                	</div>
                 	</div>

@@ -121,7 +121,7 @@ $user = wp_get_current_user();
 		color: #d8d8d8;
 	}
 	.email--btn {
-		margin-left: -90px;
+		left: -90px;
 		padding: 5px 10px !important;
 		top: -1px;
 		position: relative;
@@ -165,7 +165,7 @@ $user = wp_get_current_user();
 			jQuery(".um-field-error").html("!");
 		})
 		jQuery(document).ready(function(){
-			jQuery("#email--button").click(function(){
+			jQuery("#emailNotify__form").submit(function(){
 				var hasemail = jQuery("#email--input").val().length;
 				var email = jQuery("#email--input").val();
 				if( hasemail >= 1 ) {
@@ -267,7 +267,7 @@ $user = wp_get_current_user();
 	
         <div class="notif--subb">
 		<p style="text-align: center;color: #25ae5f;display:none;" id="email__text">Email successfully added!</p>
-        	 <form method="post">
+        	 <form method="post" id="emailNotify__form">
 	            <input type="email" name="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input" required>
 	            <input type="submit" name="send" value="Notify Me" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
             </form>

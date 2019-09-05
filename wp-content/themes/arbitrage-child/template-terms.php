@@ -16,13 +16,14 @@ $user = wp_get_current_user();
 
 
 
-get_header('dashboard');
+get_header();
 
 
 
 ?>
 
 <?php get_template_part('parts/global', 'cssfooter'); ?>
+<?php get_template_part('parts/global', 'css'); ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 

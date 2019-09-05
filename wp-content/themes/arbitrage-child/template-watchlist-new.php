@@ -493,7 +493,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	<?php// endforeach; ?>
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">-->
-															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">

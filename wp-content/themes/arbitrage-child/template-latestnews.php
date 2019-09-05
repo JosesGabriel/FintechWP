@@ -988,11 +988,11 @@ date_default_timezone_set('Asia/Manila'); ?>
 	                			<div class="col-md-4">
 				                	<div class="main-innertop klaska">
 										<div class="nws-part">
-					                		<div class="img_sep">
-					                			<div class="ccc" style="background: url('<?php echo $images[9]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
+					                		<div class="img_sep" style="width: 252px;">
+					                			<div class="ccc" style="background: url('<?php echo $images[19]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
 						                		</div>
 					                		</div>
-					                		<div class="nws-seprator">
+					                		<div class="nws-seprator" style="width: 237px;height: 231px;">
 					                			<div class="nws-title">
 					                				<p>
 					                					<strong>
@@ -1022,8 +1022,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 				                </div>
 				            </div>
 				                <div class="row">
-								<?php for ($bottomnews=11; $bottomnews <=22 ; $bottomnews++) { ?>
-								<div class="col-md-4">
+								<?php for ($bottomnews=11; $bottomnews <=19 ; $bottomnews++) { ?>
+								<div class="col-md-4" style="padding-right: 0px; margin-top: -10px;">
 				                	<div class="main-innertop">
 										<div class="nws-part">
 					                		<div class="img_sep">

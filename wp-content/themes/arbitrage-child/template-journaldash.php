@@ -582,7 +582,7 @@ get_header('dashboard');
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
 	.width60 {width: 60% !important;}
-	.width48 {width: 48% !important;}
+	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
 		width: 35% !important;

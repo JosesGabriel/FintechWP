@@ -585,12 +585,13 @@ get_header('dashboard');
 	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
-	.width60 {width: 60% !important;}
+	.width60 {width: 57% !important;color:#fff;}
 	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 35% !important;
+		width: 41% !important;
 		text-align: right;
+		color:#fff;
 	}
 	.dstatstrade ul li:hover {
 		background: rgba(10, 29, 50, 0.5);
@@ -609,7 +610,7 @@ get_header('dashboard');
 	.bulletclrd.clrg2 {background-color: #49bb79; } /* green 2 */
 	.bulletclrd.clrg3 {background-color: #a9f7ae; } /* green 3 */
 
-	.bulletclrd.clrr1 {background-color: #e64c3c; } /* red 1 */
+	.bulletclrd.clrr1 {background-color: #ff1744; } /* red 1 */
 	.bulletclrd.clrr2 {background-color: #ec5f50; } /* red 2 */
 	.bulletclrd.clrr3 {background-color: #ef7062; } /* red 3 */
 
@@ -2538,7 +2539,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="box-portlet" style="height:208px;">
+															<div class="box-portlet" style="height:202px;">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Current Allocation
 																</div>
@@ -2552,7 +2553,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                    <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
@@ -3784,7 +3785,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                     <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
@@ -5082,7 +5083,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"labelRadius": 30,
+			"radius": 50,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],

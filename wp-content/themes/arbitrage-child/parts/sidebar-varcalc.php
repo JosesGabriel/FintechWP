@@ -609,7 +609,7 @@ select#stockname {
 
                 $dequityp += $dtotal;
                 $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
-                $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
+                // $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
             }
         }
 

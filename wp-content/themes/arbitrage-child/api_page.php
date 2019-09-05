@@ -151,7 +151,7 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
         $exist = $wpdb->query($addQuery);
 		print_r($exist);
-		print_r('return');
+		print_r('returnHackdog');
 
 	}else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

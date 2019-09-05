@@ -7,6 +7,7 @@
 	// get_header();
 
 	// define('WP_USE_THEMES', false);
+	header('Content-Type: application/json');
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
 
@@ -151,7 +152,19 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
-	}else { // market sentiment : check sentiment
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
+		global $wpdb;
+		$users = get_users( array( 'fields' => array( 'ID' ) ) );
+		$listofwatchlist = [];
+		foreach($users as $user_id){
+			$invito = [];
+			$invito['userid'] = $user_id->ID;
+			$invito['stocks'] = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+			array_push($listofwatchlist, $invito);
+		}
+
+		echo json_encode($listofwatchlist);
+	} else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 
 		

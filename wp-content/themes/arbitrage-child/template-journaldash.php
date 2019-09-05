@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 260px;
+		height: 187px;
 	}
 	#chartdiv5 {
 		width: 100%;

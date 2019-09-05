@@ -5364,7 +5364,7 @@ if ($getdstocks && $getdstocks != '') {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 30,
+	"autoMarginOffset": 60,
 	"marginLeft": 10,
 	"marginRight": 10,
 	"marginTop": 20,

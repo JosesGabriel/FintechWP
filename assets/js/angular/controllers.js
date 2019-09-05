@@ -952,10 +952,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                         time:   full_time,
                                     };                                    
                                 });
-                                $scope.$parent.$digest();
                             })
                             .catch(response => {
                                 $scope.$parent.transactions = [];
+                            })
+                            .finally(() => {
                                 $scope.$parent.$digest();
                             });
 

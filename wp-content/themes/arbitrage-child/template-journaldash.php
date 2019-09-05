@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 187px;
+		height: 260px;
 	}
 	#chartdiv5 {
 		width: 100%;
@@ -5369,7 +5369,7 @@ if ($getdstocks && $getdstocks != '') {
 	"autoMarginOffset": 5,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 40,
+	"marginTop": 20,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",

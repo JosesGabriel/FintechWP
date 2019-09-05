@@ -178,12 +178,10 @@ $user = wp_get_current_user();
 							'email' : email
 						},
 						success: function(data) {
-							alert('success email');
-							console.log(data);
+							jQuery("#email__text").show();
 						},
 						error: function(requestObject, error, errorThrown) {
-							alert('error email');
-							console.log(requestObject);
+							console.log('Email error');
 							console.log(error);
 						}
 					});
@@ -269,6 +267,7 @@ $user = wp_get_current_user();
 
 	
         <div class="notif--subb">
+		<p style="text-align: center;color: #25ae5f;display:none;" id="email__text">Email successfully added!</p>
         	 <form method="post">
 	            <input type="email" name="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input" required>
 	            <input type="submit" name="send" value="Notify Me" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">

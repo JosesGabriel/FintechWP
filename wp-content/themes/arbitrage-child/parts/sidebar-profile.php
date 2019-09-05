@@ -26,6 +26,7 @@ $profilepicactive = um_profile( 'profile_photo' );
 $int = (int) preg_replace('/[^0-9]/', '', $friendstotal);
 
 echo $int;
+echo gettype($int);
  
 if($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;

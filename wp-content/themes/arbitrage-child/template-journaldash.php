@@ -536,7 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-left: 0px;
+		margin-top: -40px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -576,6 +576,9 @@ get_header('dashboard');
 	.tradelogbox {
 		max-width:450px;
 		width:100%;
+	}
+	.stats-info {
+		background: rgba(17, 34, 51, 0.4);
 	}
 
 	/* Minitable overrides */
@@ -5368,7 +5371,7 @@ if ($getdstocks && $getdstocks != '') {
 	"marginRight": 10,
 	"autoMarginOffset": 0,
 	"marginBottom": 20,
-	"marginTop": 50,
+	"marginTop": 70,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
@@ -5401,7 +5404,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#00E676",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 12,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-1",
@@ -5432,7 +5435,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#ff1744",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 12,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-2",

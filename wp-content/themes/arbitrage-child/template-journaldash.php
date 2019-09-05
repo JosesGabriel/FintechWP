@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 175px;
+		height: 220px;
 	}
 	#chartdiv5 {
 		width: 100%;
@@ -582,7 +582,7 @@ get_header('dashboard');
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
 	.width60 {width: 60% !important;}
-	.width48 {width: 48% !important;}
+	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
 		width: 35% !important;
@@ -5290,7 +5290,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 60,
+	  "radius": 90,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",

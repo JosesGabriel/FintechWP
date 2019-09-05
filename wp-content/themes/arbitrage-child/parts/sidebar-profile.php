@@ -22,7 +22,7 @@ $friendstotal =  UM()->Friends_API()->api()->count_friends($profile_id);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
-$is = int($friendstotal);
+$is = $friendstotal + 0;
 echo gettype($is);
 echo $is;
  

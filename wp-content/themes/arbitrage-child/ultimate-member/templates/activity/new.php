@@ -179,7 +179,7 @@ global $current_user;
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="Hey <?php echo esc_attr_e($user_first_name)); ?>, penny for your thoughts?"
+				          data-ph="Hey <?php echo esc_attr_e($user_first_name); ?>, penny for your thoughts?"
 				          placeholder="Hey <?php echo esc_attr_e($user_first_name)); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content">{{{data.textarea}}}</textarea>
 			</div>

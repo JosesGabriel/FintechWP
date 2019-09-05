@@ -14,7 +14,7 @@ $cdnorlocal = get_home_url();
             <div class="left-header-part">
                 <div class="left-header-inner">
                     <div class="logo-image">
-                        <a href="/"><img src="https://storage.arbitrage.ph/dev/2019/04/arb_fav_bigger.png"></a>
+                        <a href="/"><img src="<?php $cdnorlocal ?>/wp-content/uploads/2018/12/logo.png"></a>
                     </div>
                     <div class="searchbar">
                         <div class="inner-seatch">

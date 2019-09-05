@@ -589,7 +589,7 @@ get_header('dashboard');
 	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 41% !important;
+		width: 40% !important;
 		text-align: right;
 		color:#fff;
 	}

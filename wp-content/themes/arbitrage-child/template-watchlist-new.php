@@ -323,7 +323,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content mc-background" style="width: 60%;">
+																	    <div class="modal-content mc-background" style="width: 60%; height: 265px;">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -471,11 +471,33 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
+																			<?php
+																				/*$curl = curl_init();
+																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+																				$dstocksonme = curl_exec($curl);
+																				curl_close($curl);
+
+																				$dstocksonme = json_decode($dstocksonme);
+																				*/ 
+						
+																			?>
+
+
 														<div class="groupinput midd"><label>Stock Code</label>
-															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<!--<select name="stockname" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
+																	<option value="">Select</option>
+																	<?php //foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																		<option data-dstock="<?php// echo $dstvals->symbol; ?>" value='<?php //echo $dstvals->symbol; ?>'><?php //echo $dstvals->symbol; ?></option>
+																	<?php// endforeach; ?>
+															</select>
+															<input type="hidden" id="dstockname" name="stockname">-->
+															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+
+
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
-																		<!--<input type="text" placeholder="Search.." id="myInput">-->
 																		<div class="listofstocks"></div>
 																	</div>
 														</div>
@@ -712,6 +734,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
   .nvd3 .nv-axis line {
     display: none;
   }
+
+  .inpt_data_price::-webkit-input-placeholder {
+  		color: #cacdd2;
+ 	}
+
+	.input-stock::-webkit-input-placeholder {
+  		color: #cacdd2;
+	}
+
 
   .nvd3 .nv-axis path.domain {
     display: none;
@@ -1421,7 +1452,7 @@ h2.watchtitle {
     margin-top: 0;
 }
 .innerdeliver.innerdeliver-editstock {
-    padding: 5px 0px 5px 0;
+    padding: 5px 0px 5px 9px;
     text-align: left;
 }
 

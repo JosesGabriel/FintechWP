@@ -381,30 +381,30 @@ function um_field_restore_default_value( $dom ) {
 
 		case 'checkbox':
 
-			if ( $dom.find('input[type=checkbox]:checked').length >= 1 ) {
+			// if ( $dom.find('input[type=checkbox]:checked').length >= 1 ) {
 
-				$dom.find('input[type=checkbox]:checked').removeAttr('checked');
-				$dom.find('span.um-field-checkbox-state i').removeClass('um-icon-android-checkbox-outline');
-				$dom.find('span.um-field-checkbox-state i').addClass('um-icon-android-checkbox-outline-blank');
-				$dom.find('.um-field-checkbox.active').removeClass('active');
+			// 	$dom.find('input[type=checkbox]:checked').removeAttr('checked');
+			// 	$dom.find('span.um-field-checkbox-state i').removeClass('um-icon-android-checkbox-outline');
+			// 	$dom.find('span.um-field-checkbox-state i').addClass('um-icon-android-checkbox-outline-blank');
+			// 	$dom.find('.um-field-checkbox.active').removeClass('active');
 
-				if (jQuery.isArray(field.value)) {
-					jQuery.each(field.value, function (i, value) {
-						var cbox_elem = $dom.find('input[type=checkbox][value="' + value + '"]');
-						cbox_elem.attr('checked', true);
-						cbox_elem.closest('.um-field-checkbox').find('i').removeClass('um-icon-android-checkbox-outline-blank');
-						cbox_elem.closest('.um-field-checkbox').find('i').addClass('um-icon-android-checkbox-outline');
-						cbox_elem.closest('.um-field-checkbox').addClass('active');
-					});
-				} else {
-					var cbox_elem = $dom.find('input[type=checkbox][value="' + field.value + '"]');
-					cbox_elem.attr('checked', true);
-					cbox_elem.closest('.um-field-checkbox').find('i').removeClass('um-icon-android-checkbox-outline-blank');
-					cbox_elem.closest('.um-field-checkbox').find('i').addClass('um-icon-android-checkbox-outline');
-					cbox_elem.closest('.um-field-checkbox').addClass('active');
-				}
+			// 	if (jQuery.isArray(field.value)) {
+			// 		jQuery.each(field.value, function (i, value) {
+			// 			var cbox_elem = $dom.find('input[type=checkbox][value="' + value + '"]');
+			// 			cbox_elem.attr('checked', true);
+			// 			cbox_elem.closest('.um-field-checkbox').find('i').removeClass('um-icon-android-checkbox-outline-blank');
+			// 			cbox_elem.closest('.um-field-checkbox').find('i').addClass('um-icon-android-checkbox-outline');
+			// 			cbox_elem.closest('.um-field-checkbox').addClass('active');
+			// 		});
+			// 	} else {
+			// 		var cbox_elem = $dom.find('input[type=checkbox][value="' + field.value + '"]');
+			// 		cbox_elem.attr('checked', true);
+			// 		cbox_elem.closest('.um-field-checkbox').find('i').removeClass('um-icon-android-checkbox-outline-blank');
+			// 		cbox_elem.closest('.um-field-checkbox').find('i').addClass('um-icon-android-checkbox-outline');
+			// 		cbox_elem.closest('.um-field-checkbox').addClass('active');
+			// 	}
 
-			}
+			// }
 
 			break;
 		case 'radio':

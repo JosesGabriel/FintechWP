@@ -104,18 +104,18 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('#submitmenow').click(function(e){
 				e.preventDefault();
 
-
-				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstocknames").val();
-
+				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
+				
+				//var countli = jQuery(".listofinfo li").length;
 				console.log(isstock);
-				var countli = jQuery(".listofinfo li").length;
-				if (countli != 0) {
+
+				//if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
 						jQuery("#add-watchlist-param").submit();
 						$('.chart-loader').css("display","block");
 						$(this).hide();
 					}
-				}
+				//}
 			});
 
 			jQuery('#canceladd').click(function(e){

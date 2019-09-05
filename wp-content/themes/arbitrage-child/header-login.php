@@ -174,16 +174,17 @@ $user = wp_get_current_user();
 						method: "POST",
 						url: "https://arbitrage.ph/apipge/?daction=notify_me_email",
 						// url: 'https://api2.pse.tools/api/quotes',
-						dataType: 'json',
 						data: {
 							'email' : email
 						},
 						success: function(data) {
 							alert('success email');
+							console.log(data);
 						},
 						error: function(requestObject, error, errorThrown) {
 							alert('error email');
-							console.log(errorThrown);
+							console.log(requestObject);
+							console.log(error);
 						}
 					});
 				}

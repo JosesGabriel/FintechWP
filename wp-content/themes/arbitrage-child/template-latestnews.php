@@ -924,7 +924,14 @@ date_default_timezone_set('Asia/Manila'); ?>
 			                	</div>
 			                	<div class="nws-part col-md-4">
 									<?php // get_template_part('parts/sidebar', 'ads');?>
-									<div class="nws-title">
+																				<div class="col-md-6" style="padding-right: 0px;">
+						                		<div class="nws-part">
+							                		<div class="img_sep">
+							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
+									                		</div>
+							                		</div>
+							                		<div class="nws-seprator">
+							                			<div class="nws-title">
 							                				<p>
 							                					<strong>
 							                						<a href="https://news.google.com/<?php echo $link[$topright]; ?>" target="_blank">
@@ -932,10 +939,13 @@ date_default_timezone_set('Asia/Manila'); ?>
 							                					</strong>
 							                				</p>
 							                			</div>
-									<div class="nws-description">
+							                			<div class="nws-description">
 								                			<p><?php echo (strlen($desc[$topright]) > 120 ? substr($desc[$topright], 0, 120) . '...' : $desc[$topright])?></p>
 															<p><?php echo $source[$topright]; ?></p>
-							        </div>
+							                			</div>
+							                		</div>
+						                		</div>
+						                	</div>
 								</div>
 							</div>
 	                	</div>

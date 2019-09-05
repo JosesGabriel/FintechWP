@@ -22,7 +22,9 @@ $friendstotal = UM()->Friends_API()->api()->count_friends( $profile_id );
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
-if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
+echo (int)$friendstotal;
+
+if ($coverhphotoactive && $profilepicactive && intval($friendstotal) >= 2){
   $num = 100;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 66;

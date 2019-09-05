@@ -1023,7 +1023,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				            </div>
 				                <div class="row">
 								<?php for ($bottomnews=11; $bottomnews <=22 ; $bottomnews++) { ?>
-								<div class="col-md-4">
+								<div class="col-md-4" style="padding-right: 0px;">
 				                	<div class="main-innertop">
 										<div class="nws-part">
 					                		<div class="img_sep">

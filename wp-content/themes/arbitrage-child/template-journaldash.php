@@ -5081,7 +5081,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"labelRadius": 10,
+			"labelRadius": 30,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -5274,6 +5274,8 @@ if ($getdstocks && $getdstocks != '') {
 	var chart = AmCharts.makeChart("chartdiv4b", {
 	  "type": "pie",
 	  "startDuration": 0,
+	  "innerRadius": "50%",
+	  "labelRadius": 50,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,
@@ -5292,18 +5294,16 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "50%",
-	  "labelRadius": 50,
 	  "colors": [
-		// "#00e676",
-		// "#02d471",
-		// "#04c16d",
-		// "#06af68",
-		// "#089c63",
-		// "#0b7d55",
-		// "#0d6d52",
-		// "#0f5a4f",
-		// "#11484c",
+		"#00e676",
+		"#02d471",
+		"#04c16d",
+		"#06af68",
+		"#089c63",
+		"#0b7d55",
+		"#0d6d52",
+		"#0f5a4f",
+		"#11484c",
 		"#133e4a"
 	  ],
 	  "defs": {

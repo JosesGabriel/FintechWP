@@ -3088,7 +3088,7 @@ if ($getdstocks && $getdstocks != '') {
 																	</div>
                                                                     <br class="clear">
                                                                 </div>
-																<div class="col-md-4">
+																<div class="col-md-4" style="padding-left:0;">
                                                                     	<div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
                                                                         	Win Allocations
                                                                     	</div>
@@ -5366,7 +5366,7 @@ if ($getdstocks && $getdstocks != '') {
 	"rotate": true,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"autoMarginOffset": 100,
+	"autoMarginOffset": 131,
 	"autoMargins": false,
 	"marginBottom": 0,
 	"marginTop": 0,

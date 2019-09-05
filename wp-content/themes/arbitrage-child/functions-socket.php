@@ -7,13 +7,6 @@ use Goez\SocketIO\Emitter;
 
 $client = new Client();
 $emitter = new Emitter($client);
-// (new Emitter($client))
-//     // ->of('arbitrage')->emit('view_count', [
-
-//     ->emit('view_count', [
-// 		'post_id' => $id,
-// 		'views' => $views,
-//     ]);
 
 //region User
 add_action('wp_logout', function () use ($emitter) {
@@ -21,18 +14,6 @@ add_action('wp_logout', function () use ($emitter) {
     $secret = get_user_meta($user_id, 'user_secret', true);
     $emitter->emit('arbitrage:logout', ['user_secret' => $secret]);
 });
-
-// add_filter('um_user_avatar_url_filter', function ($avatar_uri) use ($emitter) {
-//     $user_id = get_current_user_id();
-//     $secret = get_user_meta($user_id, 'user_secret', true);
-
-//     $emitter->emit('arbitrage:update_avatar_url', [
-//         'user_secret' => $secret,
-//         'avatar_url' => $avatar_uri,
-//     ]);
-
-//     return $avatar_uri;
-// }, 10, 2);
 //endregion User
 
 //region Posts

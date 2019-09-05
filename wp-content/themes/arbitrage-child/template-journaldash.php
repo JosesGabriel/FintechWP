@@ -2550,17 +2550,17 @@ if ($getdstocks && $getdstocks != '') {
 													</div>
 													<br class="clear">
 
-                                                    <div class="_adsbygoogle">
+                                                   <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
                                                     <?php
@@ -3785,17 +3785,17 @@ if ($getdstocks && $getdstocks != '') {
 													</div>
 													<br class="clear">
 
-                                                    <div class="_adsbygoogle">
+                                                    <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 													<?php
@@ -4184,17 +4184,17 @@ if ($getdstocks && $getdstocks != '') {
                                                           echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
 													</div>
 
-                                                    <div class="adsbygoogle">
+                                                    <!--<div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php // echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 						                        </div>
 												<style type="text/css">
@@ -4534,17 +4534,17 @@ if ($getdstocks && $getdstocks != '') {
                                                     </div>
                                                 	<br class="clear">
 
-                                                    <div class="adsbygoogle">
+                                                    <!--<div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 						                        </div>
@@ -4552,17 +4552,17 @@ if ($getdstocks && $getdstocks != '') {
 
                                                		<div data-provide="calendar"></div>
 
-                                                    <div class="adsbygoogle">
+                                                   <!-- <div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 						                        </div>

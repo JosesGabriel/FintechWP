@@ -292,6 +292,7 @@ foreach ( $wallposts->posts as $post ) {
 
 	um_fetch_user( $author_id );
 
+	/*
 	if ($count % 5 == 0 && $count != 0) {
 		?>
 
@@ -308,7 +309,7 @@ foreach ( $wallposts->posts as $post ) {
                             <div class="um-activity-author-meta">
             
                                 <div class="um-activity-author-url">
-                                    <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platform</a>
+                                    <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platformasasdfsdfsd</a>
                                 </div>
             
                                 <span class="um-activity-metadata">
@@ -341,6 +342,8 @@ foreach ( $wallposts->posts as $post ) {
 
 		<?php
 	}
+	*/
+	
 
 	?>
 

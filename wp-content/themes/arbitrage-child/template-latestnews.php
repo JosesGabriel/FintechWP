@@ -892,12 +892,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 			                		</div>
 			                	</div>
 			                </div>
-			                <div class="row cisz" style="padding-top: 0px;">
+			                <div class="row cisz" style="padding-top: 0px; margin-top: -3px;">
 		                		<div class="hksi col-md-8">
 		                			<div class="row">
 									<!-- 1 to 6 -->
 									<?php for ($topright=5; $topright <= 8 ; $topright++) { ?>
-											<div class="col-md-6">
+											<div class="col-md-6" style="padding-right: 0px;">
 						                		<div class="nws-part">
 							                		<div class="img_sep">
 							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
@@ -934,14 +934,14 @@ date_default_timezone_set('Asia/Manila'); ?>
                 		<div class="container">
 		                		<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
 		                		<div class="adsbygoogle">
-								<div class="box-portlet row" style="padding: 5px 13%;">
-									<div class="tte-spons col-md-2">
+								<div class="box-portlet row" style="padding: 0px 0%;">
+									<!--<div class="tte-spons col-md-2">
 										<h6>Sponsor</h6>
-									</div>
+									</div>-->
 									<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
 										<!-- <small>ADVERTISEMENT</small> -->
-										<div class="adscontainer">
-										<img src="https://arbitrage.ph/ads/addsample728x90_1.png">
+										<div class="adscontainer" style="width: 900px;">
+										<img src="https://arbitrage.ph/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
 										</div>
 									</div>
 								</div>

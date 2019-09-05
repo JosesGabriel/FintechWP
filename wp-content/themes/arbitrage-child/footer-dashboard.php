@@ -183,13 +183,13 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;
 
-			console.log(stocklist);
+			
 
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;
-				
+				console.log($value['stockname']);
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.

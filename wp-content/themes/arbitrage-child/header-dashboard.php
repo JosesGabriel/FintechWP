@@ -235,7 +235,6 @@ $user = wp_get_current_user();
     <?php } ?>
     <script language="javascript">
 		jQuery(document).ready(function(e) {
-            jQuery(".add-post .um-activity-new-post .um-activity-textarea textarea").attr("placeholder", "Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?");
 			jQuery(".um-activity-new-post .um-activity-body .um-activity-textarea").append('<img class="arb_newpostimg" src="<?php 
 			echo esc_url( get_avatar_url( $user->ID ) ); ?>" alt="<?php echo ucfirst(um_user('first_name')); ?>">')
 			jQuery("#et-main-area").click(function(e){

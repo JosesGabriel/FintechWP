@@ -27,7 +27,8 @@
 
 	if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
-		curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$dwatchinfo = curl_exec($curl);
 		curl_close($curl);

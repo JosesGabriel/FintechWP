@@ -619,7 +619,7 @@
 		color: #bdc3c7;
 	}
 	.arb_logo_placehldr {
-		padding: 40px 0 0;
+		padding: 9px 0 0;
 		text-align: center;
 	}
 	.vertical-box-row>.vertical-box-cell>.vertical-box-inner-cell {
@@ -1708,7 +1708,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/23.svg" style="width:81%;;vertical-align:baseline"></h2>
+																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
 																		</div>
 																	</div>
 
@@ -1890,7 +1890,7 @@
 																														<tr ng-repeat="transaction in transactions">
 																														<td class="text-default text-left" nowrap="nowrap">{{::transaction.time}}</td>
 																														<td style="font-weight: bold;" class="text-default text-right text-uppercase" nowrap="nowrap">{{::transaction.shares | abbr}}</td>
-																														<td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price | price}}</strong></td>
+																														<td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price}}</strong></td>
 																														<td class="text-default text-right" nowrap="nowrap">{{::transaction.buyer | trim: 4}}</td>
 																														<td style="padding-right: 10px;" class="text-default text-right" nowrap="nowrap">{{::transaction.seller | trim: 4}}</td>
 																														</tr>

@@ -531,11 +531,12 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 187px;
+		height: 245px;
 	}
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
+		margin-top: -60px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -576,13 +577,16 @@ get_header('dashboard');
 		max-width:450px;
 		width:100%;
 	}
+	.stats-info {
+		background: rgba(17, 34, 51, 0.4);
+	}
 
 	/* Minitable overrides */
 	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
 	.width60 {width: 60% !important;}
-	.width48 {width: 48% !important;}
+	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
 		width: 35% !important;
@@ -2548,7 +2552,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                    <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
@@ -3005,8 +3009,8 @@ if ($getdstocks && $getdstocks != '') {
 															<div class="box-portlet">
                                                             	<style>.dstatstrade ul li div {width: 16%;}</style>
 
-                                                                <div style="padding:5px 15px;">
-                                                                	<div class="col-md-8" style="padding:0 10px 0 0">
+                                                                <div style="padding:5px 15px;" class="col-md-8">
+                                                                	<div class="col-md-12" style="padding:0 10px 0 0">
 
                                                                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
                                                                             Strategy Statistics
@@ -3040,7 +3044,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 <ul>
                                                                                     <li class="headerpart">
                                                                                         <div style="width:100%">
-                                                                                            <div style="width:150px;">Strategy</div>
+                                                                                            <div style="width:150px;text-align:left;">Strategy</div>
                                                                                             <div>Trades</div>
                                                                                             <div>Wins</div>
                                                                                             <div>Loses</div>
@@ -3055,10 +3059,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
 	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['trades']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['winrate']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['lossrate']; ?></div>
-	                                                                                            <div><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php
@@ -3082,7 +3086,12 @@ if ($getdstocks && $getdstocks != '') {
                                                                     	</div>
 
                                                                     </div>
-                                                                    <div class="col-md-4" style="padding:0">
+                                                                    <div class="col-md-12" style="padding: 0 12px 0 10px;">
+																		<div id="chartdiv5" style="padding-left: 0;"></div>
+																	</div>
+                                                                    <br class="clear">
+                                                                </div>
+																<div class="col-md-4" style="padding-left:0;">
                                                                     	<div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
                                                                         	Win Allocations
                                                                     	</div>
@@ -3106,15 +3115,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         </div>
 
                                                                     </div>
-                                                                    <br class="clear">
-
-                                                                </div>
-
-                                                                <div style="padding: 0 12px 0 10px;">
-                                                                    <div id="chartdiv5"></div>
-                                                                </div>
-																<br class="clear">
-
+                                                                
 															</div>
 														</div>
 														<br class="clear">
@@ -3783,7 +3784,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                     <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
@@ -5293,7 +5294,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 58,
+	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",
@@ -5366,10 +5367,11 @@ if ($getdstocks && $getdstocks != '') {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 5,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 40,
+	"autoMarginOffset": 0,
+	"marginBottom": 20,
+	"marginTop": 85,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
@@ -5402,7 +5404,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#00E676",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-1",
@@ -5433,7 +5435,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#ff1744",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-2",

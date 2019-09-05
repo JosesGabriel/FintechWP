@@ -336,7 +336,7 @@ jQuery(function(){
                         }
 
                         .top-traiders .to-content-part {
-                            background: #0d1f33 !important;
+                            /* background: #0d1f33 !important; */
                             padding: 15px;
                         }
 

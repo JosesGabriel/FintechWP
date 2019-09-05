@@ -921,28 +921,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                	</div>
 									<?php } ?>
 
-											<div class="col-md-6" style="padding-right: 0px;">
-						                		<div class="nws-part">
-							                		<div class="img_sep">
-							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
-									                		</div>
-							                		</div>
-							                		<div class="nws-seprator">
-							                			<div class="nws-title">
-							                				<p>
-							                					<strong>
-							                						<a href="https://news.google.com/<?php echo $link[$topright]; ?>" target="_blank">
-							                					<?php echo (strlen($titles[$topright]) > 51 ? substr($titles[$topright], 0, 51) . '...' : $titles[$topright])?></a>
-							                					</strong>
-							                				</p>
-							                			</div>
-							                			<div class="nws-description">
-								                			<p><?php echo (strlen($desc[$topright]) > 120 ? substr($desc[$topright], 0, 120) . '...' : $desc[$topright])?></p>
-															<p><?php echo $source[$topright]; ?></p>
-							                			</div>
-							                		</div>
-						                		</div>
-						                	</div>
+											
 
 
 

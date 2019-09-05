@@ -5292,7 +5292,7 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 25
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "30%",
+	  "innerRadius": "50%",
 	  "colors": [
 		"#00e676",
 		"#02d471",

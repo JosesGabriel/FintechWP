@@ -17,7 +17,7 @@
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal =  UM()->Friends_API()->api()->count_friends( $profile_id );
+$friendstotal =  intval(UM()->Friends_API()->api()->count_friends($profile_id));
 
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );

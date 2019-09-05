@@ -5292,7 +5292,7 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "50%",
+	  "innerRadius": "40%",
 	  "radius": 58,
 	  "autoMargins": false,
 	  "colors": [
@@ -5369,7 +5369,7 @@ if ($getdstocks && $getdstocks != '') {
 	"autoMarginOffset": 5,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 5,
+	"marginTop": 20,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",

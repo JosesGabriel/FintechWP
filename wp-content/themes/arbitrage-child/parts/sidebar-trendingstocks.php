@@ -45,6 +45,8 @@ jQuery(".stocks-hidden-content").click(function () {
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $gerdqoute = curl_exec($curl);
     curl_close($curl);
+
+    
     
     
     $gerdqoute = json_decode($gerdqoute);

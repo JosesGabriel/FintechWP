@@ -151,9 +151,19 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
         $exist = $wpdb->query($addQuery);
 		print_r($exist);
-		print_r('return');
+		print_r('returnHackdog');
 
-	}else { // market sentiment : check sentiment
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
+		echo "this is a test";
+		global $wpdb;
+		$users = get_users( array( 'fields' => array( 'ID' ) ) );
+		foreach($users as $user_id){
+			// echo $user_id->ID." ~ ";
+			$ismetadis = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+			print_r($ismetadis);
+		}
+
+	} else { // market sentiment : check sentiment
 		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 
 		

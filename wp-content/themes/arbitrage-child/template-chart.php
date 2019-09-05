@@ -619,7 +619,7 @@
 		color: #bdc3c7;
 	}
 	.arb_logo_placehldr {
-		padding: 45px 0 0;
+		padding: 40px 0 0;
 		text-align: center;
 	}
 	.vertical-box-row>.vertical-box-cell>.vertical-box-inner-cell {
@@ -1708,7 +1708,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/logo.png" style="vertical-align:baseline">RBITRAGE</h2>
+																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/23.svg" style="width:81%;;vertical-align:baseline"></h2>
 																		</div>
 																	</div>
 

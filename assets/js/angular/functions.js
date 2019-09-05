@@ -1,5 +1,5 @@
 function setTitle(symbol, last, change) {
-    return document.title = symbol + ': ' + last + ' (' + change + '%) | PSE Tools';
+    return document.title = symbol + ': ' + last + ' (' + change + '%) | Arbitrage Trading Platform';
 }
 var pricecounter = 0;
 function price_format(value, base) {

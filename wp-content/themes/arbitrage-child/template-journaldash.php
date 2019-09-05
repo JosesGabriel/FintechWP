@@ -2539,7 +2539,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="box-portlet" style="height:208px;">
+															<div class="box-portlet" style="height:202px;">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Current Allocation
 																</div>

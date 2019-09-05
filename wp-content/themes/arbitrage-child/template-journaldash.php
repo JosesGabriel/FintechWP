@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 260px;
+		height: 175px;
 	}
 	#chartdiv5 {
 		width: 100%;
@@ -3113,7 +3113,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 <div style="padding: 0 12px 0 10px;">
                                                                     <div id="chartdiv5"></div>
                                                                 </div>
-																<br class="clear">
+																<!-- <br class="clear"> -->
 
 															</div>
 														</div>
@@ -5293,7 +5293,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 58,
+	  "radius": 0,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",

@@ -5293,7 +5293,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "50%",
-	  "labelRadius": "15",
+	  "labelRadius": "25",
 	  "colors": [
 		"#00e676",
 		"#02d471",

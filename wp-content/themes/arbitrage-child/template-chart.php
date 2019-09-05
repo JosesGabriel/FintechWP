@@ -1890,7 +1890,7 @@
 																														<tr ng-repeat="transaction in transactions">
 																														<td class="text-default text-left" nowrap="nowrap">{{::transaction.time}}</td>
 																														<td style="font-weight: bold;" class="text-default text-right text-uppercase" nowrap="nowrap">{{::transaction.shares | abbr}}</td>
-																														<td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="::{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price | price}}</strong></td>
+																														<td style="font-weight: bold;" class="text-default text-right" nowrap="nowrap"><strong ng-class="{'text-green': transaction.price > stock.previous, 'text-red': transaction.price < stock.previous}" style="font-weight: bold;">{{::transaction.price | price}}</strong></td>
 																														<td class="text-default text-right" nowrap="nowrap">{{::transaction.buyer | trim: 4}}</td>
 																														<td style="padding-right: 10px;" class="text-default text-right" nowrap="nowrap">{{::transaction.seller | trim: 4}}</td>
 																														</tr>
@@ -1967,6 +1967,7 @@
 																	</div>
 
 																	<?php /*?> All stocks / Watchlist <?php */?>
+
 
 																	<div class="fixbrdebtm"></div>
 

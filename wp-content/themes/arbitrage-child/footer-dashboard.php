@@ -104,9 +104,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('#submitmenow').click(function(e){
 				e.preventDefault();
 
-				console.log('okkokok');
+
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstocknames").val();
 
+				console.log(isstock);
 				var countli = jQuery(".listofinfo li").length;
 				if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {

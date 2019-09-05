@@ -5367,7 +5367,6 @@ if ($getdstocks && $getdstocks != '') {
 	"marginLeft": 10,
 	"marginRight": 10,
 	"autoMarginOffset": 131,
-	"autoMargins": false,
 	"marginBottom": 0,
 	"marginTop": 0,
 	"startDuration": 1,

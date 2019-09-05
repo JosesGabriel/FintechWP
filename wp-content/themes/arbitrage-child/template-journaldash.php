@@ -536,7 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-top: -60px;
+		margin-top: -70px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -5294,7 +5294,7 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "40%",
+	  "innerRadius": "50%",
 	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [

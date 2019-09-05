@@ -5088,7 +5088,7 @@ if ($getdstocks && $getdstocks != '') {
 				<?php echo $currentaloccolor; ?>
 			],
 			"labelColorField": "#FFFFFF",
-			// "labelsEnabled": true,
+			"labelsEnabled": false,
 			"labelTickAlpha": 1,
 			"labelTickColor": "#FFFFFF",
 			"pullOutDuration": 11,
@@ -5419,7 +5419,8 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "Trades",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3
 		},
 		{
 			"alphaField": "color",
@@ -5450,7 +5451,8 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "column-2",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3
 		}
 	],
 	"guides": [],

@@ -585,11 +585,11 @@ get_header('dashboard');
 	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
-	.width60 {width: 50% !important;color:#fff;}
+	.width60 {width: 57% !important;color:#fff;}
 	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 47% !important;
+		width: 41% !important;
 		text-align: right;
 		color:#fff;
 	}

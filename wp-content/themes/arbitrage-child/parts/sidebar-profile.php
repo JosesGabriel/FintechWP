@@ -17,21 +17,26 @@
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal = UM()->Friends_API()->api()->count_friends( $profile_id );
-//$friendstotal = count($friendreqs);
-$friendstotal1 = (int)$friendstotal;
+$friendstotal =  UM()->Friends_API()->api()->count_friends( $profile_id );
+
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
-if ($coverhphotoactive && $profilepicactive && $friendstotal1 >= 2){
+
+
+    //echo "firends->total = " . $friendstotal;
+ 
+if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
+  echo $coverhphotoactive . ' ' . $profilepicactive . ' ' . $friendstotal;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 66;
-
 }else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 2)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 33;
 }else{
   $num = 0;
 }
+
+
 
 ?>
 <div class="left-user-details">

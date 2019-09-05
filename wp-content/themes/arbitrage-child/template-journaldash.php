@@ -531,12 +531,12 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 220px;
+		height: 245px;
 	}
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-left: -24px;
+		margin-top: -60px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -576,6 +576,9 @@ get_header('dashboard');
 	.tradelogbox {
 		max-width:450px;
 		width:100%;
+	}
+	.stats-info {
+		background: rgba(17, 34, 51, 0.4);
 	}
 
 	/* Minitable overrides */
@@ -3084,11 +3087,11 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                     </div>
                                                                     <div class="col-md-12" style="padding: 0 12px 0 10px;">
-																		<div id="chartdiv5"></div>
+																		<div id="chartdiv5" style="padding-left: 0;"></div>
 																	</div>
                                                                     <br class="clear">
                                                                 </div>
-																<div class="col-md-4">
+																<div class="col-md-4" style="padding-left:0;">
                                                                     	<div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
                                                                         	Win Allocations
                                                                     	</div>
@@ -5291,7 +5294,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 70,
+	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",
@@ -5364,10 +5367,11 @@ if ($getdstocks && $getdstocks != '') {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 30,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 20,
+	"autoMarginOffset": 0,
+	"marginBottom": 20,
+	"marginTop": 85,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
@@ -5400,7 +5404,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#00E676",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-1",
@@ -5431,7 +5435,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#ff1744",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-2",

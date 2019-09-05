@@ -924,7 +924,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 			                	</div>
 			                	<div class="nws-part col-md-4">
 									<?php // get_template_part('parts/sidebar', 'ads');?>
-																				<div class="col-md-6" style="padding-right: 0px;">
+
 						                		<div class="nws-part">
 							                		<div class="img_sep">
 							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
@@ -945,7 +945,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 							                			</div>
 							                		</div>
 						                		</div>
-						                	</div>
+						                	
 								</div>
 							</div>
 	                	</div>

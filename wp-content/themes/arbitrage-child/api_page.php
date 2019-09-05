@@ -146,7 +146,7 @@
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'notify_me_email'){
 		global $wpdb;
         $str = stripslashes($_POST['email']);
-        $str = mysql_real_escape_string($str);
+        // $str = mysql_real_escape_string($str);
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);

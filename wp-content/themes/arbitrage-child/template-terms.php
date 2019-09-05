@@ -10,13 +10,13 @@
 
 // get_header();
 
-global $current_user;
+// global $current_user;
 
-$user = wp_get_current_user();
+// $user = wp_get_current_user();
 
 
 
-get_header();
+// get_header();
 
 
 
@@ -276,4 +276,5 @@ get_header();
 	});
 </script>
 
-<?php get_footer();
+<?php 
+// get_footer();

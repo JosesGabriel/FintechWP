@@ -941,7 +941,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 									<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
 										<!-- <small>ADVERTISEMENT</small> -->
 										<div class="adscontainer">
-										<img src="https://arbitrage.ph/ads/addsample728x90_1.png">
+										<img src="https://arbitrage.ph/ads/addsample728x90_1.png" style="width: 782px;padding-left: 16px;">
 										</div>
 									</div>
 								</div>

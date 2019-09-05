@@ -485,7 +485,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 														<div class="groupinput midd"><label>Stock Code</label>
-															<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+															<select name="stockname" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
 																	<option value="">Select</option>
 																	<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
 																		<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>

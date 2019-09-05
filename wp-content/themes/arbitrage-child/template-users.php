@@ -1768,8 +1768,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 							   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
 
 							<?php
-
-							if (!isset( UM()->user()->cannot_edit )) {
+                           if (!isset( UM()->user()->cannot_edit ) && $user->ID == $profile_id) {
 
 								UM()->fields()->add_hidden_field( 'profile_photo' );
 

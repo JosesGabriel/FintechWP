@@ -195,6 +195,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					//condition here if stock is in the watchlist, do not append.
 					if('<?php echo $value['stockname']; ?>' !== value.symbol){
 						console.log(value.symbol);
+						console.log("test");
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					}	

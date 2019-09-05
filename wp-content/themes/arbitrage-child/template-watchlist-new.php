@@ -323,7 +323,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div>
 																	<div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																	  <div class="modal-dialog" role="document">
-																	    <div class="modal-content mc-background" style="width: 60%;">
+																	    <div class="modal-content mc-background" style="width: 60%; height: 265px;">
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -493,7 +493,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	<?php// endforeach; ?>
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">-->
-															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">
@@ -734,6 +734,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
   .nvd3 .nv-axis line {
     display: none;
   }
+
+  .inpt_data_price::-webkit-input-placeholder {
+  		color: #cacdd2;
+ 	}
+
+	.input-stock::-webkit-input-placeholder {
+  		color: #cacdd2;
+	}
+
 
   .nvd3 .nv-axis path.domain {
     display: none;
@@ -1443,7 +1452,7 @@ h2.watchtitle {
     margin-top: 0;
 }
 .innerdeliver.innerdeliver-editstock {
-    padding: 5px 0px 5px 0;
+    padding: 5px 0px 5px 9px;
     text-align: left;
 }
 

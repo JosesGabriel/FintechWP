@@ -5088,7 +5088,7 @@ if ($getdstocks && $getdstocks != '') {
 				<?php echo $currentaloccolor; ?>
 			],
 			"labelColorField": "#FFFFFF",
-			"labelsEnabled": false,
+			"labelsEnabled": true,
 			"labelTickAlpha": 1,
 			"labelTickColor": "#FFFFFF",
 			"pullOutDuration": 11,

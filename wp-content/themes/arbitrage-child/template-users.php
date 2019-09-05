@@ -1698,8 +1698,12 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 				} else {
 
-                    if 
-					if (!isset( UM()->user()->cannot_edit )) { ?>
+                    if ($user->ID != $profile_id) {
+                        ?>
+                        <div style="height:320px"></div>
+                        <?php
+                    }
+					else if (!isset( UM()->user()->cannot_edit )) { ?>
 
 						<a href="#" class="um-cover-add um-manual-trigger" data-parent=".um-cover"
 						   data-child=".um-btn-auto-width"><span class="um-cover-add-i"><i

@@ -935,7 +935,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						
 						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
-                    	<?php // get_template_part('parts/sidebar', 'profile'); ?>
+                    	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
                         <!--<div class="user-counter">
                         	 <i class="fas fa-users icon-users" aria-hidden="true"></i>

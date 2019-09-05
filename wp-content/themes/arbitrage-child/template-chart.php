@@ -2492,7 +2492,7 @@
 			});
 		});
 			
-			$(".bbs_bull, .bbs_bear").click(function(e){
+			$(".bbs_bull").click(function(e){
 				e.preventDefault();
 				if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
 					var pathname = window.location.pathname;
@@ -2509,11 +2509,83 @@
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
 					console.log(dpathl);
 
-					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
+					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
 					jQuery.ajax({
 						method: "POST",
-						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentiment&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						dataType: 'json',
+						data: {
+							'action' : 'post_sentiment',
+							'stock' : dpathl,
+							'postid' : '<?php echo get_the_id(); ?>',
+							'userid' : '<?php echo $user_id; ?>',
+							'dbasebull': dbull,
+							'dbasebear': dbear,
+							'dbuttonact' : dclass
+						},
+						success: function(data) {
+						console.log(data);
+
+						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
+						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
+
+							$( ".dbaronchart" ).animate({
+								width: "70%"
+							},500, function(){
+								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
+
+							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
+									$( ".bullbearsents_label" ).animate({marginTop: "6px"},"slow");
+							});
+
+							$( ".bullbearsents .bbs_bear, .bullbearsents .bbs_bull" ).addClass("bbbutton-sen");
+
+							$( ".bbs_bear_bar" ).animate({
+								width: data.dbear+"%"
+							},500, function(){
+								$( ".bbs_bear_bar span" ).text(data.dbear.toFixed(2)+"%");
+								$( ".bbs_bear_bar span" ).fadeIn("fast");
+							});
+
+							$( ".bbs_bull_bar" ).animate({
+								width: data.dbull+"%"
+							},500, function(){
+								$( ".bbs_bull_bar span" ).text(data.dbull.toFixed(2)+"%");
+								$( ".bbs_bull_bar span" ).fadeIn("fast");
+							});
+
+							$(".bullbearsents_label").html("Members sentiments");
+
+						}
+					});
+
+				} 
+			});
+
+			$(".bbs_bear").click(function(e){
+				e.preventDefault();
+				if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
+					var pathname = window.location.pathname;
+
+					$(this).parents('.bullbearsents').addClass("clickedthis");
+
+					var dbull = $(this).parents('.bullbearsents').attr('data-bull');
+					var dbear = $(this).parents('.bullbearsents').attr('data-bear');
+
+					var dclass = $(this).attr('class');
+
+					var dpathl = pathname.split("/");
+					dpathl = dpathl.filter(function(el) { return el; });
+					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
+					console.log(dpathl);
+
+					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
+
+					jQuery.ajax({
+						method: "POST",
+						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',

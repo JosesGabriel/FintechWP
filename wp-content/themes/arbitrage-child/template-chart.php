@@ -1708,7 +1708,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:81%;;vertical-align:baseline"></h2>
+																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
 																		</div>
 																	</div>
 

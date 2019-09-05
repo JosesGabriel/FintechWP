@@ -1708,7 +1708,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/logo.png" style="vertical-align:baseline">RBITRAGE</h2>
+																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/23.png" style="vertical-align:baseline">RBITRAGE</h2>
 																		</div>
 																	</div>
 

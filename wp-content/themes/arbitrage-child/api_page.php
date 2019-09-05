@@ -151,7 +151,7 @@
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
-		print_r($addQuery);
+		// print_r($addQuery);
 		print_r($str);
 		// print_r($exist + '69');
 

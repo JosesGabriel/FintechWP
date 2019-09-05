@@ -897,7 +897,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		                			<div class="row">
 									<!-- 1 to 6 -->
 									<?php for ($topright=5; $topright <= 8 ; $topright++) { ?>
-											<div class="col-md-6">
+											<div class="col-md-6" style="padding-right: 0px;">
 						                		<div class="nws-part">
 							                		<div class="img_sep">
 							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">

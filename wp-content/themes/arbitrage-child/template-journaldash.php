@@ -536,6 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
+		margin-left: -24px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -3040,7 +3041,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 <ul>
                                                                                     <li class="headerpart">
                                                                                         <div style="width:100%">
-                                                                                            <div style="width:150px;">Strategy</div>
+                                                                                            <div style="width:150px;text-align:left;">Strategy</div>
                                                                                             <div>Trades</div>
                                                                                             <div>Wins</div>
                                                                                             <div>Loses</div>
@@ -3055,10 +3056,10 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
 	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['trades']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['winrate']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['lossrate']; ?></div>
-	                                                                                            <div><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php
@@ -5290,7 +5291,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 70,
+	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",

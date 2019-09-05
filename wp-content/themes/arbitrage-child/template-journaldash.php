@@ -5369,7 +5369,7 @@ if ($getdstocks && $getdstocks != '') {
 	"autoMarginOffset": 5,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 20,
+	"marginTop": 40,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",

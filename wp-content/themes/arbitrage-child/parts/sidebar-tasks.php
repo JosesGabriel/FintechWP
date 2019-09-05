@@ -39,8 +39,8 @@ li.arbit-checked {
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendreqs = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal = count($friendreqs);
+$friendstotal = UM()->Friends_API()->api()->count_friends( $profile_id );
+//$friendstotal = count($friendreqs);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
@@ -50,7 +50,7 @@ if (!$coverhphotoactive || !$profilepicactive || $friendstotal < 3){ ?>
 	  <div class="to-top-title">Complete your Profile</div>
 	  <div class="to-content-part to-back-back">
 		  <div class="content-inner-part">
-            <?php //echo $friendstotal; ?>
+            <?php echo $friendstotal; ?>
 				<ul>
                 	
                     <?php if(!$coverhphotoactive){ ?>

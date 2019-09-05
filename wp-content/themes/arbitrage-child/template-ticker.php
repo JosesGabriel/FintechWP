@@ -531,9 +531,15 @@
 		color:#bdc3c7;
 	}
 	.marqueethis {
-		width:0;
+		width: calc(100% + 100px);
 		height:40px;
 		right:-100px;
+	}
+	.marqueethis > li {
+		animation: marquee 15s linear infinite;
+	}
+	.marqueethis > li:hover {
+		animation-play-state: paused;
 	}
 	.arb_custom_ticker {
 		font-size: 10px;
@@ -551,6 +557,15 @@
 		overflow: hidden; 
 		background-color:#2c3e50; 
 		text-align:left;
+	}
+
+	@keyframes marquee {
+		0% {
+			transform: translate(0, 0);
+		}
+		100% {
+			transform: translate(-100%, 0);
+		}
 	}
     </style>
     

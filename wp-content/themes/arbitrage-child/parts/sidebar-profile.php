@@ -22,7 +22,7 @@ $friendstotal = UM()->Friends_API()->api()->count_friends( $profile_id );
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
-echo (int)$friendstotal;
+echo $friendstotal;
 
 if (($coverhphotoactive && $profilepicactive && $friendstotal >= 2)){
   $num = 100;
@@ -37,7 +37,7 @@ if (($coverhphotoactive && $profilepicactive && $friendstotal >= 2)){
 $n = 0;
 for($i = 0; $i < 3; $i++){
 
-  if(intval($friendstotal) == 3){
+  if($friendstotal == 3){
     echo "firends->total = " . $friendstotal;
   }
 

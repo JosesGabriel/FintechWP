@@ -531,12 +531,12 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 220px;
+		height: 245px;
 	}
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-top: -40px;
+		margin-top: -60px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -5371,7 +5371,7 @@ if ($getdstocks && $getdstocks != '') {
 	"marginRight": 10,
 	"autoMarginOffset": 0,
 	"marginBottom": 20,
-	"marginTop": 70,
+	"marginTop": 85,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
@@ -5404,7 +5404,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#00E676",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 12,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-1",
@@ -5435,7 +5435,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#ff1744",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 12,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-2",

@@ -493,6 +493,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	<?php// endforeach; ?>
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">-->
+
 															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
 
 
@@ -500,6 +501,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<div class="listofstocks"></div>
 																	</div>
+																	
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>

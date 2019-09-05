@@ -189,7 +189,7 @@
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 
 		if(isset($_GET['stock'])){
-			$dinfstock = $_GET['stock'];
+			$dinfstock = strtoupper($_GET['stock']);
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
@@ -199,7 +199,8 @@
 			curl_close($curl);
 
 			$trades = json_decode($response);
-    		$trades = $trades->data;
+			$trades = $trades->data;
+			
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
@@ -210,6 +211,8 @@
 
 			$dstock = json_decode($getstocks);
 			$dstock = $dstock->data;
+
+			
 			
 
 			// get prices
@@ -241,7 +244,7 @@
 
 			$dlast = $dstock->open;
 			
-			echo  "Open: ".$dlast." | ";
+			// echo  "Open: ".$dlast." | ";
 		
 			$isbullbear = [];
 			$isbullbear['bear'] = [];
@@ -263,7 +266,7 @@
 				return $b['price'] <=> $a['price'];
 			});
 
-			print_r($isbullbear);
+			// print_r($isbullbear);
 
 			$weight = [.90, .80, .70, .60, .50, .40, .30]; // the rest is 20%
 

@@ -494,7 +494,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">-->
 
-															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
+															<input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">
@@ -505,12 +505,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
 															<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
-															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
+															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point" autocomplete="off">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
 															<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">

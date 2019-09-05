@@ -27,7 +27,7 @@ $profilepicactive = um_profile( 'profile_photo' );
  
 if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
-  echo $coverhphotoactive . ' ' . $profilepicactive . ' ' . $friendstotal;
+  
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 66;
 }else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 2)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 2)){

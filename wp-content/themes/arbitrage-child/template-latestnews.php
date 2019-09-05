@@ -892,7 +892,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 			                		</div>
 			                	</div>
 			                </div>
-			                <div class="row cisz" style="padding-top: 0px;">
+			                <div class="row cisz" style="padding-top: 0px; margin-top: -3px;">
 		                		<div class="hksi col-md-8">
 		                			<div class="row">
 									<!-- 1 to 6 -->

@@ -3005,8 +3005,8 @@ if ($getdstocks && $getdstocks != '') {
 															<div class="box-portlet">
                                                             	<style>.dstatstrade ul li div {width: 16%;}</style>
 
-                                                                <div style="padding:5px 15px;">
-                                                                	<div class="col-md-8" style="padding:0 10px 0 0">
+                                                                <div style="padding:5px 15px;" class="col-md-8">
+                                                                	<div class="col-md-12" style="padding:0 10px 0 0">
 
                                                                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
                                                                             Strategy Statistics
@@ -3082,7 +3082,12 @@ if ($getdstocks && $getdstocks != '') {
                                                                     	</div>
 
                                                                     </div>
-                                                                    <div class="col-md-4" style="padding:0">
+                                                                    <div class="col-md-12" style="padding: 0 12px 0 10px;">
+																		<div id="chartdiv5"></div>
+																	</div>
+                                                                    <br class="clear">
+                                                                </div>
+																<div class="col-md-4">
                                                                     	<div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
                                                                         	Win Allocations
                                                                     	</div>
@@ -3106,15 +3111,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         </div>
 
                                                                     </div>
-                                                                    <br class="clear">
-
-                                                                </div>
-
-                                                                <div style="padding: 0 12px 0 10px;">
-                                                                    <div id="chartdiv5"></div>
-                                                                </div>
-																<!-- <br class="clear"> -->
-
+                                                                
 															</div>
 														</div>
 														<br class="clear">

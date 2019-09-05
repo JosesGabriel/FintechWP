@@ -17,11 +17,11 @@
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendreqs = UM()->Friends_API()->api()->friend_reqs_sent( $profile_id );
+$friendreqs = UM()->Friends_API()->api()->count_friends( $profile_id );
 $friendstotal = count($friendreqs);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
-if ($coverhphotoactive && $profilepicactive && $friendstotal > 3){
+if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal > 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal > 3) || ($coverhphotoactive && $profilepicactive && $friendstotal < 3)){
   $num = 66;

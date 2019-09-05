@@ -104,7 +104,7 @@ $user = wp_get_current_user();
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
 						  data-ph="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
-				          placeholder="<?php esc_attr_e( 'What\'s on your mind2?','um-activity' ); ?>"
+				          placeholder="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content"></textarea>
 				<hr class="style14 style15">
 			</div>
@@ -179,8 +179,8 @@ $user = wp_get_current_user();
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
-				          placeholder="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
+				          data-ph="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
+				          placeholder="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content">{{{data.textarea}}}</textarea>
 			</div>
 

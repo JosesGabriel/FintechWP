@@ -472,12 +472,19 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<div class="">
 
 														<div class="groupinput midd"><label>Stock Code</label>
-															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
-															<div class="dropdown-content ddropbase" style="display: none;">
+															<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+																									<option value="">Select Stocks</option>
+																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+																									<?php endforeach; ?>
+															</select>
+															<!--<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >-->
+
+
+															<!--<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
-																		<!--<input type="text" placeholder="Search.." id="myInput">-->
 																		<div class="listofstocks"></div>
-																	</div>
+																	</div>-->
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>

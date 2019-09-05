@@ -5294,7 +5294,7 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "40%",
+	  "innerRadius": "50%",
 	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [

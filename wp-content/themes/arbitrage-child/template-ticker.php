@@ -534,13 +534,14 @@
 		width: calc(100% + 100px);
 		height:40px;
 		right:-100px;
+		text-align: right;
 	}
-	.marqueethis > li {
+	/* .marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
 	.marqueethis > li:hover {
 		animation-play-state: paused;
-	}
+	} */
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;

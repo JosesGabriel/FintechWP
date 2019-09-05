@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 187px;
+		height: 175px;
 	}
 	#chartdiv5 {
 		width: 100%;
@@ -3113,7 +3113,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 <div style="padding: 0 12px 0 10px;">
                                                                     <div id="chartdiv5"></div>
                                                                 </div>
-																<br class="clear">
+																<!-- <br class="clear"> -->
 
 															</div>
 														</div>
@@ -5293,7 +5293,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 58,
+	  "radius": 0,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",
@@ -5366,10 +5366,10 @@ if ($getdstocks && $getdstocks != '') {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 5,
+	"autoMarginOffset": 30,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 0,
+	"marginTop": 20,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",

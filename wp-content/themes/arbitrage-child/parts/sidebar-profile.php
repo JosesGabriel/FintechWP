@@ -24,7 +24,7 @@ $profilepicactive = um_profile( 'profile_photo' );
 
 echo $friendstotal;
 echo gettype($friendstotal);
-echo intval($friendstotal);
+echo floatval($friendstotal);
  
 if($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;

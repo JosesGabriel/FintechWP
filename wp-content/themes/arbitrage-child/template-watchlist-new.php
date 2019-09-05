@@ -735,8 +735,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     display: none;
   }
 
-  .input-stock::-webkit-input-placeholder {
-  		color: white;
+  .input-stock, .inpt_data_price::-webkit-input-placeholder {
+  		color: grey;
 	}
 
 

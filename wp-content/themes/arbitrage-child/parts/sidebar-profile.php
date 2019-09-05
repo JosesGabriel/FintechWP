@@ -18,20 +18,31 @@
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
 $friendstotal = UM()->Friends_API()->api()->count_friends( $profile_id );
-//$friendstotal = count($friendreqs);
-$friendstotal1 = (int)$friendstotal;
+
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
-if ($coverhphotoactive && $profilepicactive && $friendstotal1 >= 2){
+
+if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 66;
-
 }else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 2)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 33;
 }else{
   $num = 0;
 }
+
+ echo "total = " . $friendstotal;
+$n = 0;
+for($i = 0; $i < 3; $i++){
+
+  if(intval($friendstotal) >= 2){
+    echo "firends->total = " . $friendstotal;
+  }
+
+}
+
+
 
 ?>
 <div class="left-user-details">

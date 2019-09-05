@@ -105,11 +105,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
-				var stok = jQuery('#dstockname').val();
-
-				console.log(isstock + ' -' + stok);
+				
 				var countli = jQuery(".listofinfo li").length;
 				if (countli != 0) {
+
+					console.log(isstock);
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
 						jQuery("#add-watchlist-param").submit();
 						$('.chart-loader').css("display","block");

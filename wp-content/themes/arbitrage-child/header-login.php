@@ -183,7 +183,8 @@ $user = wp_get_current_user();
 						},
 						error: function(requestObject, error, errorThrown) {
 							alert('error email');
-							console.log(errorThrown);
+							console.log(requestObject);
+							console.log(error);
 						}
 					});
 				}

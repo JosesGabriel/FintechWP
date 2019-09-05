@@ -536,7 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-top: -60px;
+		margin-top: -70px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -5083,12 +5083,12 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"radius": 35,
+			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
 			"labelColorField": "#FFFFFF",
-			"labelsEnabled": true,
+			"labelsEnabled": false,
 			"labelTickAlpha": 1,
 			"labelTickColor": "#FFFFFF",
 			"pullOutDuration": 11,
@@ -5294,7 +5294,7 @@ if ($getdstocks && $getdstocks != '') {
 		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "40%",
+	  "innerRadius": "50%",
 	  "radius": 80,
 	  "autoMargins": false,
 	  "colors": [
@@ -5419,7 +5419,9 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "Trades",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		},
 		{
 			"alphaField": "color",
@@ -5450,7 +5452,9 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "column-2",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		}
 	],
 	"guides": [],

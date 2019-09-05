@@ -36,7 +36,7 @@
 		$genstockinfo = json_decode($dwatchinfo);
 		$stockinfo = $genstockinfo->data;
 		echo json_encode(["dinfo" => $stockinfo]);
-	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentiment'){ // market sentiment add sentiment
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbear'){ // market sentiment add sentiment
 		
 		
 		if ($_GET['stock'] != 'chart') { // if chart page valid stock
@@ -57,17 +57,17 @@
 				$dreturn = "Go for Vote ";
 				// add sentiment points
 				$whatchanged = "";
-				if (strtolower(strip_tags($_GET['dbuttonact'])) == "bbs_bull") {
-					$finalcount = ($dsentbull != "" ? $dsentbull : 0) + 1;
-					$dsentbull = ($dsentbull != "" ? $dsentbull : 0) + 1;
-					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
-					$whatchanged = "bull";
-				} else {
+				// if (strtolower(strip_tags($_GET['dbuttonact'])) == "bbs_bull") {
+				// 	$finalcount = ($dsentbull != "" ? $dsentbull : 0) + 1;
+				// 	$dsentbull = ($dsentbull != "" ? $dsentbull : 0) + 1;
+				// 	update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
+				// 	$whatchanged = "bull";
+				// } else {
 					$finalcount = ($dsentbear != "" ? $dsentbear : 0) + 1;
 					$dsentbear = ($dsentbear != "" ? $dsentbear : 0) + 1;
 					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
 					$whatchanged = "bear";
-				}
+				// }
 				
 
 				// add user on the sentiment
@@ -111,7 +111,84 @@
 		// print_r($dsentilist);
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
-	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbull'){ // market sentiment add sentiment
+		
+		
+		if ($_GET['stock'] != 'chart') { // if chart page valid stock
+			
+			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
+			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+			$dsentdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
+
+			// echo $_GET['dbuttonact'];
+			// exit;
+			
+			if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
+				// do nothin
+				$dreturn = "Cant vote!";
+			} else{
+				
+				$dreturn = "Go for Vote ";
+				// add sentiment points
+				$whatchanged = "";
+				// if (strtolower(strip_tags($_GET['dbuttonact'])) == "bbs_bull") {
+					$finalcount = ($dsentbull != "" ? $dsentbull : 0) + 1;
+					$dsentbull = ($dsentbull != "" ? $dsentbull : 0) + 1;
+					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
+					$whatchanged = "bull";
+				// } else {
+				// 	$finalcount = ($dsentbear != "" ? $dsentbear : 0) + 1;
+				// 	$dsentbear = ($dsentbear != "" ? $dsentbear : 0) + 1;
+				// 	update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
+				// 	$whatchanged = "bear";
+				// }
+				
+
+				// add user on the sentiment
+				if (is_array($dsentilist)) {
+					array_push($dsentilist, get_current_user_id());
+				} else {
+					$dsentilist = [get_current_user_id()];
+				}
+				$dlistofusers = array();
+				
+				
+				// array_push($dsentilist, $dlistofusers);
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dsentilist );
+
+				// add date
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', $date );
+				$dreturn = "Success!";
+			}
+
+			// echo json_encode(["dinfo" => "you selected".$_GET['stock']]);
+			
+		} else {
+			// echo json_encode(["dinfo" => "error: no stock was selected"]);
+			$dreturn = "error: no stock was selected";
+		}
+		
+		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
+
+		
+
+		$dfinbear = $dpullbear + $_GET['dbasebear'];
+		$dfinbull = $dpullbull + $_GET['dbasebull'];
+
+		$dtotalall = $dfinbear + $dfinbull;
+
+		$dpercbear = ($dfinbear / $dtotalall) * 100;
+		$dpercbull = ($dfinbull / $dtotalall) * 100;
+
+		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+		// print_r($dsentilist);
+		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
+		
+	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
+		echo "market sentiment here";
+ 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";
 		  	$the_site = "https://www.marketwatch.com/story/shocks-and-surprises-could-damage-all-major-economies-warns-swiss-hedge-fund-manager-2019-04-29?mod=hp_investing";
 		    $the_tag = "div"; 

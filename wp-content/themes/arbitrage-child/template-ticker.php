@@ -555,36 +555,6 @@
     </style>
     
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-	<script language="javascript">
-	
-		jQuery(document).ready(function() {
-			forevertickerinit();
-			function forevertickerinit() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
-			}
-			function foreverticker() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
-			}
-		});
-		
-    window.onload=function(){
-
-		(function countdown(remaining) {
-			if(remaining === 0)
-				jQuery(".arb_top_ticker").fadeOut("slow",function(){
-					location.reload(true);
-				});
-				document.getElementById('countdown').innerHTML = remaining;
-				setTimeout(function(){ countdown(remaining - 1); }, 1000);
-		})(<?php echo rand(100,180); ?>);
-
-    }
-		
-    </script>
 </head>
 <body>
 <div class="arb_top_ticker">
@@ -599,7 +569,6 @@
         </ul>
     </div>
 </div>
-<div id="countdown" style="color:#2c3e50"></div>
 	
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

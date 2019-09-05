@@ -19,6 +19,9 @@
 	date_default_timezone_set('Asia/Manila');
 	$date = date('m/d/Y', time());
 
+
+	// echo "user id: ".get_current_user_id();
+
 	$dreturn = "";
 	$adminuser = 504; // store on the chart page
 
@@ -33,6 +36,7 @@
 		$stockinfo = $genstockinfo->data;
 		echo json_encode(["dinfo" => $stockinfo]);
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentiment'){ // market sentiment add sentiment
+		
 		
 		if ($_GET['stock'] != 'chart') { // if chart page valid stock
 			

@@ -6,6 +6,7 @@ if ( is_user_logged_in() ) {
     wp_redirect( 'https://arbitrage.ph/login/', 301 );
     exit;
 }
+$user_first_name = get_user_meta( $user->ID, 'first_name', true );
 $profile_id = um_profile_id();
 $default_cover = UM()->options()->get( 'default_cover' );
 um_fetch_user($profile_id);
@@ -17,7 +18,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 <?php
 global $current_user;
-$user = wp_get_current_user();
   if (!is_page(26)){ 
 	  	$user_id = $user->ID;
 		if(isset($_POST['check_user_share_input'])){
@@ -103,8 +103,8 @@ $user = wp_get_current_user();
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-						  data-ph="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
-				          placeholder="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
+						  data-ph="Hey <?php echo esc_attr_e($user_first_name); ?>, penny for your thoughts?"
+				          placeholder="Hey <?php echo esc_attr_e($user_first_name); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content"></textarea>
 				<hr class="style14 style15">
 			</div>
@@ -179,8 +179,8 @@ $user = wp_get_current_user();
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
-				          placeholder="Hey <?php echo esc_attr_e(ucfirst(um_user('first_name'))); ?>, penny for your thoughts?"
+				          data-ph="Hey <?php echo esc_attr_e($user_first_name)); ?>, penny for your thoughts?"
+				          placeholder="Hey <?php echo esc_attr_e($user_first_name)); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content">{{{data.textarea}}}</textarea>
 			</div>
 

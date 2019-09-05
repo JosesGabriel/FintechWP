@@ -563,9 +563,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     </div>
                                                                 </div>-->
                                                                 <div class="col-md-6">
-                                                                    <!--<div class="dpaste">
+                                                                    <div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
-                                                                    </div>-->
+                                                                    </div>
                                                                     <div class="submitform" style="margin-right: -125px;">
                                                                     	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">

@@ -148,10 +148,8 @@
         $str = stripslashes($_POST['email']);
         // $str = mysql_real_escape_string($str);
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
-		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";$exist = $wpdb->query($addQuery);
-		print_r($addQuery);
-		// print_r($str);
-		// print_r($exist + '69');
+		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
+		$exist = $wpdb->query($addQuery);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		echo "this is a test";

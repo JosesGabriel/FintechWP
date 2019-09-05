@@ -536,7 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-left: -24px;
+		margin-left: 0px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -3084,7 +3084,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                     </div>
                                                                     <div class="col-md-12" style="padding: 0 12px 0 10px;">
-																		<div id="chartdiv5"></div>
+																		<div id="chartdiv5" style="padding-left: 0;"></div>
 																	</div>
                                                                     <br class="clear">
                                                                 </div>
@@ -5364,10 +5364,12 @@ if ($getdstocks && $getdstocks != '') {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 0,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 20,
+	"autoMarginOffset": 100,
+	"autoMargins": false,
+	"marginBottom": 0,
+	"marginTop": 0,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",

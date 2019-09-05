@@ -17,14 +17,17 @@
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal1 =  UM()->Friends_API()->api()->count_friends($profile_id);
+$friendstotal =  UM()->Friends_API()->api()->count_friends($profile_id);
 
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
 
-$friendstotal = (int) preg_replace('/[^0-9]/', '', $friendstotal1);
+$int = (int) preg_replace('/[^0-9]/', '', $friendstotal);
 
+echo $int;
+echo gettype($int);
+ 
 if($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
   

@@ -5275,7 +5275,7 @@ if ($getdstocks && $getdstocks != '') {
 	  "type": "pie",
 	  "startDuration": 0,
 	  "innerRadius": "50%",
-	  "labelRadius": 20,
+	  "labelRadius": 0,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,

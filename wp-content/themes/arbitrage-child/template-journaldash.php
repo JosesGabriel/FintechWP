@@ -5293,7 +5293,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "50%",
-	  "labelRadius": "25",
+	//   "labelRadius": "90",
 	  "colors": [
 		"#00e676",
 		"#02d471",
@@ -5309,8 +5309,8 @@ if ($getdstocks && $getdstocks != '') {
 	  "defs": {
 		"filter": [{
 		  "id": "shadow",
-		  "width": "200%",
-		  "height": "200%",
+		  "width": "100%",
+		  "height": "100%",
 		  "feOffset": {
 			"result": "offOut",
 			"in": "SourceAlpha",

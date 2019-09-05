@@ -921,12 +921,14 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                	</div>
 									<?php } ?>
 
-											
+
 
 
 
 			                		</div>
 			                	</div>
+
+
 			                	<div class="nws-part col-md-4" style="margin-top: 0px;">
 									<?php // get_template_part('parts/sidebar', 'ads');?>
 
@@ -950,6 +952,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 							                			</div>
 							                		</div>
 						                		</div>
+
+						                		<?php get_template_part('parts/sidebar', 'ads');?>
 						                	
 								</div>
 

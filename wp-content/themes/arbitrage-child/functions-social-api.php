@@ -8,11 +8,12 @@ add_action('arbitrage_um_activity_after_wall_post_updated', 'arbitrage_social_po
 function arbitrage_social_post_api_create($data) {
     extract($data);
     $user_id = get_current_user_id();
+    $wall_id = $user_id == $wall_id ? 0 : arbitrage_api_get_user_uuid($wall_id);
     $account_user_id = arbitrage_api_get_user_uuid($user_id);
     $social_post_id = get_post_meta($post_id, 'social_api_post_id', true);
 
     $data = [
-        'wall_id' => 0,
+        'wall_id' => $wall_id,
         'user_id' => $account_user_id,
         'content' => $_POST['_post_content'],
         'visibility' => 'public',

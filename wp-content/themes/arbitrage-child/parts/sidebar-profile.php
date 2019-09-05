@@ -32,7 +32,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 0;
 }
 
-
+ echo "total = " . $friendstotal;
 $n = 0;
 for($i = 0; $i < 3; $i++){
 

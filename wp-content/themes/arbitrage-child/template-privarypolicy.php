@@ -12,6 +12,8 @@ get_header();
 ?>
 <?php get_template_part('parts/global', 'cssfooter'); ?>
 
+<?php get_template_part('parts/global', 'css'); ?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -221,4 +223,5 @@ get_header();
 </script>
 
 
-<?php get_footer();
+<?php 
+get_footer();

@@ -4,10 +4,10 @@
 	*/
 
 // get_header();
-// global $current_user;
-// $user = wp_get_current_user();
+global $current_user;
+$user = wp_get_current_user();
 
-// get_header('dashboard');
+get_header();
 
 ?>
 <?php get_template_part('parts/global', 'cssfooter'); ?>
@@ -221,4 +221,4 @@
 </script>
 
 
-<?php /*get_footer();*/
+<?php get_footer();

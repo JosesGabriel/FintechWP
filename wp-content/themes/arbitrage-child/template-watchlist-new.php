@@ -472,14 +472,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<div class="">
 
 																			<?php
-																				/*$curl = curl_init();
+																				$curl = curl_init();
 																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 																				$dstocksonme = curl_exec($curl);
 																				curl_close($curl);
 
-																				$dstocksonme = json_decode($dstocksonme); */
+																				$dstocksonme = json_decode($dstocksonme); 
 				
 																			?>
 

@@ -5224,7 +5224,7 @@ if ($getdstocks && $getdstocks != '') {
 	  "fontFamily": "Roboto",
 	  "fontSize": 11,
 	  "color": "#d8d8d8",
-	  "innerRadius": "70%",
+	  "innerRadius": "50%",
 	  "colors": [
 		"#25ae5f",
 		"#d04234"

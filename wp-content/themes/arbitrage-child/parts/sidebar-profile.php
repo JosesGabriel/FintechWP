@@ -36,7 +36,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
 $n = 0;
 for($i = 0; $i < 3; $i++){
 
-  if($friendstotal >= 2){
+  if(intval($friendstotal) >= 2){
     echo "firends->total = " . $friendstotal;
   }
 

@@ -205,7 +205,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 
 
-			 <?php  break;  } ?>
+			 <?php  break; } ?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 

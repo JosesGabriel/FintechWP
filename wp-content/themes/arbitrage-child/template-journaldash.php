@@ -585,11 +585,11 @@ get_header('dashboard');
 	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
-	.width60 {width: 50% !important;color:#fff;}
+	.width60 {width: 57% !important;color:#fff;}
 	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 47% !important;
+		width: 40% !important;
 		text-align: right;
 		color:#fff;
 	}
@@ -1787,9 +1787,9 @@ if ($getdstocks && $getdstocks != '') {
 	if(!$isjounalempty){
 		$dequityp = $buypower;
 
-		$aloccolors = array('#f0231c', '#c01c16', '#ff9a00', '#cc7b00', '#f4c700', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#e91e63', '#9c27b0', '#1d75bd', '#f0df3c', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#f0231c",';
+		$currentaloccolor = '"#e91e63",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
 				$stockdetails = "";
@@ -1813,7 +1813,7 @@ if ($getdstocks && $getdstocks != '') {
 	} else {
 		$dequityp = 245318.22;
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "522.48"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
-		$currentaloccolor = '"#2a4a6a","#c39f00","#069b8c"';
+		$currentaloccolor = '"#009688","#03A9F4","#00e676"';
 	}
     
 ?>
@@ -2539,7 +2539,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="box-portlet" style="height:208px;">
+															<div class="box-portlet" style="height:202px;">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Current Allocation
 																</div>
@@ -5083,7 +5083,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"labelRadius": 30,
+			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -5419,7 +5419,9 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "Trades",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		},
 		{
 			"alphaField": "color",
@@ -5450,7 +5452,9 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "column-2",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		}
 	],
 	"guides": [],

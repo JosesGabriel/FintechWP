@@ -471,8 +471,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
-																			<?php
-																				/*$curl = curl_init();
+																			<?php /*
+																				$curl = curl_init();
 																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
 																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -480,37 +480,37 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				curl_close($curl);
 
 																				$dstocksonme = json_decode($dstocksonme);
-																				*/ 
+																				*/
 						
 																			?>
 
 
 														<div class="groupinput midd"><label>Stock Code</label>
-															<!--<select name="stockname" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
+															<!--<select name="stockname" data-dstock="<?php// echo $dstvals->symbol; ?>" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
 																	<option value="">Select</option>
 																	<?php //foreach($dstocksonme->data as $dstkey => $dstvals): ?>
-																		<option data-dstock="<?php// echo $dstvals->symbol; ?>" value='<?php //echo $dstvals->symbol; ?>'><?php //echo $dstvals->symbol; ?></option>
-																	<?php// endforeach; ?>
+																		<option data-dstock="<?php// echo $dstvals->symbol; ?>" value='<?php //echo $dstvals->symbol; ?>'><?php// echo $dstvals->symbol; ?></option>
+																	<?php //endforeach; ?>
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">-->
 
-															<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
+															<input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<div class="listofstocks"></div>
 																	</div>
-																	
+
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>
-															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount">
+															<input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
 															<input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
 														</div>
 														<div class="groupinput midd"><label>Take Profit</label>
-															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount">
-															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+															<input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
+															<input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point" autocomplete="off">
 														</div>
 														<div class="groupinput midd"><label>Stop Loss</label>
 															<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">

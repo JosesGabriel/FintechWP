@@ -5081,7 +5081,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"labelRadius": 30,
+			"labelRadius": 10,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -5275,7 +5275,7 @@ if ($getdstocks && $getdstocks != '') {
 	  "type": "pie",
 	  "startDuration": 0,
 	  "innerRadius": "50%",
-	  "labelRadius": 50,
+	  "labelRadius": 5,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,

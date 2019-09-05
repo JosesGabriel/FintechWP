@@ -17,7 +17,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 <?php
 global $current_user;
-$user = wp_get_current_user();
   if (!is_page(26)){ 
 	  	$user_id = $user->ID;
 		if(isset($_POST['check_user_share_input'])){

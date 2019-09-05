@@ -536,7 +536,7 @@ get_header('dashboard');
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
-		margin-top: -29px;
+		margin-top: -40px;
 	}
 	#chartdiv6 {
 		width: 100%;

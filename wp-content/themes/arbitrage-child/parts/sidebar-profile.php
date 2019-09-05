@@ -17,13 +17,13 @@
 
 $profile_id = um_profile_id();
 // $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal =  UM()->Friends_API()->api()->friend_reqs( $profile_id );
+$friendstotal =  UM()->Friends_API()->api()->count_friends( $profile_id );
 
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
 
-    echo "firends->total = " . $friendstotal;
+    //echo "firends->total = " . $friendstotal;
  
 if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;

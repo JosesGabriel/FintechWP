@@ -87,7 +87,7 @@ $user = wp_get_current_user();
 	<form action="" method="post"  enctype="multipart/form-data" class="um-activity-publish" id="publishImage">
 		<input type="hidden" name="action" id="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" id="_post_id" value="0" />
-		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( $user_id ); ?>" />
+		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( um_profile_id() ); ?>" />
 		<input type="hidden" name="_post_img" value="" />
 		<input type="hidden" name="_post_img_url" value="" />
 
@@ -171,7 +171,7 @@ $user = wp_get_current_user();
 	<form action="" method="post" class="um-activity-publish">
 		<input type="hidden" name="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" value="{{{data.post_id}}}" />
-		<input type="hidden" name="_wall_id" value="<?php echo esc_attr( $user_id ); ?>" />
+		<input type="hidden" name="_wall_id" value="<?php echo esc_attr( um_profile_id() ); ?>" />
 		<input type="hidden" name="_post_img" value="{{{data._photo}}}" />
 		<input type="hidden" name="_post_img_url" value="{{{data._photo_url}}}" />
 

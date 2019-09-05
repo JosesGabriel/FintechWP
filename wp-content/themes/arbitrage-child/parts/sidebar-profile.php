@@ -35,7 +35,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 0;
 }
 
-
+echo $coverhphotoactive . ' ' . $profilepicactive . ' ' . $friendstotal;
 
 ?>
 <div class="left-user-details">

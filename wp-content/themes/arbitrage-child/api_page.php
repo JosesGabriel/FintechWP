@@ -40,6 +40,9 @@
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 			$dsentdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
+
+			// echo $_GET['dbuttonact'];
+			// exit;
 			
 			if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
 				// do nothin
@@ -48,12 +51,17 @@
 				
 				$dreturn = "Go for Vote ";
 				// add sentiment points
-				if ($_GET['dbuttonact'] == "bbs_bull") {
+				$whatchanged = "";
+				if (strtolower(strip_tags($_GET['dbuttonact'])) == "bbs_bull") {
 					$finalcount = ($dsentbull != "" ? $dsentbull : 0) + 1;
+					$dsentbull = ($dsentbull != "" ? $dsentbull : 0) + 1;
 					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', $finalcount );
+					$whatchanged = "bull";
 				} else {
 					$finalcount = ($dsentbear != "" ? $dsentbear : 0) + 1;
+					$dsentbear = ($dsentbear != "" ? $dsentbear : 0) + 1;
 					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
+					$whatchanged = "bear";
 				}
 				
 
@@ -96,7 +104,7 @@
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		// print_r($dsentilist);
-		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn]);
+		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";
@@ -157,9 +165,11 @@
 		$users = get_users( array( 'fields' => array( 'ID' ) ) );
 		$listofwatchlist = [];
 		foreach($users as $user_id){
+			$user_info = get_userdata($user_id->ID);
 			$invito = [];
 			$invito['userid'] = $user_id->ID;
 			$invito['stocks'] = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+			$invito['email'] = $user_info->user_email;
 			array_push($listofwatchlist, $invito);
 		}
 

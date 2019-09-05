@@ -494,13 +494,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															</select>
 															<input type="hidden" id="dstockname" name="stockname">
 
-															<!--<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >
+															<!--<input type="text" class="input-stock" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: right;" >-->
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<div class="listofstocks"></div>
-																	</div>-->
+																	</div>
 
 														</div>
 														<hr>

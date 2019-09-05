@@ -589,7 +589,7 @@ get_header('dashboard');
 	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 41% !important;
+		width: 40% !important;
 		text-align: right;
 		color:#fff;
 	}
@@ -5083,7 +5083,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"radius": 50,
+			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],

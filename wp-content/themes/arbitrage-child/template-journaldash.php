@@ -531,7 +531,7 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 175px;
+		height: 220px;
 	}
 	#chartdiv5 {
 		width: 100%;
@@ -5290,7 +5290,7 @@ if ($getdstocks && $getdstocks != '') {
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "40%",
-	  "radius": 60,
+	  "radius": 90,
 	  "autoMargins": false,
 	  "colors": [
 		"#00e676",

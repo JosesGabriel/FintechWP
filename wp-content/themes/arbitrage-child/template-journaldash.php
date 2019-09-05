@@ -1789,7 +1789,7 @@ if ($getdstocks && $getdstocks != '') {
 
 		$aloccolors = array('#e91e63', '#9c27b0', '#1d75bd', '#f0df3c', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#f0231c",';
+		$currentaloccolor = '"#e91e63",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
 				$stockdetails = "";

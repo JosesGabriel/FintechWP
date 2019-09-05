@@ -935,9 +935,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 		                		<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
 		                		<div class="adsbygoogle">
 								<div class="box-portlet row" style="padding: 5px 13%;">
-									<div class="tte-spons col-md-2">
+									<!--<div class="tte-spons col-md-2">
 										<h6>Sponsor</h6>
-									</div>
+									</div>-->
 									<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
 										<!-- <small>ADVERTISEMENT</small> -->
 										<div class="adscontainer">

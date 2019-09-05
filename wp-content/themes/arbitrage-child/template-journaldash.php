@@ -5281,7 +5281,7 @@ if ($getdstocks && $getdstocks != '') {
 	  "marginTop": 0,
 	  "marginLeft": 0,
 	  "marginRight": 0,
-	  "labelsEnabled": true,
+	  "labelsEnabled": false,
 	  "addClassNames": true,
 	  "fontFamily": "Roboto",
 	  "fontSize": 11,

@@ -73,7 +73,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	    transition: all .5s ease-in-out !important;
 	}
 
-/*	.right-dashboard-part{
+    /*	.right-dashboard-part{
 	    float: left;
 	    width: 27%;
 	    padding: 10px 0px !important;
@@ -1698,6 +1698,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 				} else {
 
+                    if 
 					if (!isset( UM()->user()->cannot_edit )) { ?>
 
 						<a href="#" class="um-cover-add um-manual-trigger" data-parent=".um-cover"

@@ -5289,11 +5289,11 @@ if ($getdstocks && $getdstocks != '') {
 		"autoMargins":false,
 		"color": "#d8d8d8",
 		"align": "center",
-		"valueWidth": 25
+		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
 	  "innerRadius": "50%",
-	  "labelRadius": 30,
+	//   "labelRadius": 30,
 	  "colors": [
 		"#00e676",
 		"#02d471",

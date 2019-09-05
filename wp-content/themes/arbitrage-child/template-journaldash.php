@@ -2552,7 +2552,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                    <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
@@ -3784,7 +3784,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
                                                     <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">

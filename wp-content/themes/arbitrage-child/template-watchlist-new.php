@@ -429,7 +429,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                         </div>
                                                                                                     </div>-->
                                                                                                     <div class="col-md-12">
-                                                                                                        <div class="submitform">
+                                                                                                        <div class="submitform" style="margin-left: 84px;">
                                                                                                             <input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
                                                                                                             <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                                                             <input type="hidden" name="subtype" value="editdata">

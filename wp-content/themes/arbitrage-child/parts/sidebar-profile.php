@@ -40,7 +40,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
               </a>
           </div>
           <div class="right-image">
-
+                  <?php echo $friendstotal; ?>
                   <div class="onto-user-name">
                     <!-- <a href="<?php //echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php // echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">

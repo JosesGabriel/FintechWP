@@ -4,13 +4,14 @@
 	*/
 
 // get_header();
-// global $current_user;
-// $user = wp_get_current_user();
+global $current_user;
+$user = wp_get_current_user();
 
-// get_header();
+get_header();
 
 ?>
 <?php get_template_part('parts/global', 'cssfooter'); ?>
+
 <?php get_template_part('parts/global', 'css'); ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -223,4 +224,4 @@
 
 
 <?php 
-// get_footer();
+get_footer();

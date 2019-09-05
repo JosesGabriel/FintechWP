@@ -23,8 +23,10 @@ $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
   $num = 100;
+  echo $num;
 }else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 66;
+
 }else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 2)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 2)){
   $num = 33;
 }else{
@@ -40,7 +42,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
               </a>
           </div>
           <div class="right-image">
-                  <?php echo $friendstotal; ?>
+
                   <div class="onto-user-name">
                     <!-- <a href="<?php //echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php // echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">

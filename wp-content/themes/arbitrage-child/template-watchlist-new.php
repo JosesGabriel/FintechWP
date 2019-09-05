@@ -485,20 +485,20 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 														<div class="groupinput midd"><label>Stock Code</label>
-															<!--<select name="stockname" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
+															<select name="stockname" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
 																	<option value="">Select</option>
-																	<?php //foreach($dstocksonme->data as $dstkey => $dstvals): ?>
-																		<option value='<?php// echo $dstvals->symbol; ?>'><?php// echo $dstvals->symbol; ?></option>
-																	<?php //endforeach; ?>
+																	<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																		<option data-dstock="<?php echo $dstvals->symbol; ?>" value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
+																	<?php endforeach; ?>
 															</select>
-															<input type="hidden" id="dstockname" name="stockname">-->
-															<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
+															<input type="hidden" id="dstockname" name="stockname">
+															<!--<input type="text" name="" id="myDropdown" placeholder="Search.." style="margin-left: -3px; text-align: left;" >
 
 
 															<div class="dropdown-content ddropbase" style="display: none;">
 																		<input type="hidden" id="dstockname" name="stockname">
 																		<div class="listofstocks"></div>
-																	</div>
+																	</div>-->
 														</div>
 														<hr>
 														<div class="groupinput midd"><label>Entry Price</label>

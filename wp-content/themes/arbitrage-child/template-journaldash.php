@@ -5420,7 +5420,8 @@ if ($getdstocks && $getdstocks != '') {
 			"valueField": "Trades",
 			"xField": "color",
 			"yField": "color",
-			"cornerRadiusTop": 3
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		},
 		{
 			"alphaField": "color",
@@ -5452,7 +5453,8 @@ if ($getdstocks && $getdstocks != '') {
 			"valueField": "column-2",
 			"xField": "color",
 			"yField": "color",
-			"cornerRadiusTop": 3
+			"cornerRadiusTop": 3,
+			"cornerRadiusBottom": 0
 		}
 	],
 	"guides": [],

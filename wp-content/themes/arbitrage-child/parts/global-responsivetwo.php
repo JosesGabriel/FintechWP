@@ -75,6 +75,7 @@
 	}
 	.wrap {
 		width: 200px !important;
+		margin-bottom: -30px !important;
 	}
 
 	.text {

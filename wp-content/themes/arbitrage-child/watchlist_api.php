@@ -45,9 +45,9 @@ function getSMS(){
         $usermetas = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
         echo $user_id->ID . ' : ';
         foreach($usermetas as $usermeta){
-            echo $usermeta['stockname'];
+            echo $usermeta['stockname'] . '<br>';
         }
-
+        echo '<br>';
     }
 
     

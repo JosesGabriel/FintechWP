@@ -1321,7 +1321,7 @@ get_header('dashboard');
 		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 		bottom: 0;
-		font-size: 2.4em;
+		font-size: 2em;
 	}
 	.sampleData__overlay {
 		position: fixed;

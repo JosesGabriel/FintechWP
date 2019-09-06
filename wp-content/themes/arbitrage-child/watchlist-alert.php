@@ -58,7 +58,7 @@
 	        function checkwatchlist() {
 	        	var dlistofstocks = <?php echo $ismetadis; ?>;
 	        	jQuery.ajax({
-				 	method: "POST",
+				 	method: "GET",
 					url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE",
 					
 					// url: 'https://api2.pse.tools/api/quotes',

@@ -19,7 +19,7 @@
 
         widget_template = wp.template( 'um-activity-widget' );
         template_data = {
-            'content'       : $form.find('[name="_post_content"]').val(),
+            'content'       : '<div class="desc-note">' + $form.find('[name="_post_content"]').val() + '</div>',
             'img_src'       : $form.find('input[name="_post_img"]').val(),
             'img_src_url'   : $form.find('input[name="_post_img_url"]').val(),
             'wall_id'       : $form.find('input[name="_wall_id"]').val(),

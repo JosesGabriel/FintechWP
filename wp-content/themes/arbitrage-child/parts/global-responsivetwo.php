@@ -74,7 +74,7 @@
 	input.email--field {
 		width: 325px !important;
     	margin-left: 64px !important;
-    	padding: 10px 69px 10px 10px !important;
+    	padding: 10px 83px 10px 10px !important;
     	font-size: 10px !important;
 	}
 

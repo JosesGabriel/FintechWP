@@ -323,8 +323,12 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	.notif--subb {
+    	margin: -10px auto 0px -24px !important;
+	}
+
 	.clock {
-		margin-top: 523px !important;
+		margin-top: 400px !important;
 		margin-left: 40px !important;
 	}
 

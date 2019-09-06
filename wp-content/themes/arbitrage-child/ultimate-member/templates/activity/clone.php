@@ -5,7 +5,7 @@ um_fetch_user( $user_ID );
 
 date_default_timezone_set("Asia/Manila");
 
-$wall_id = get_post_field( 'post_author', $post );
+$wall_id = get_post_meta( $post->ID, '_wall_id', true );
 //======================================================================
 
 

@@ -1210,7 +1210,7 @@
 	}
 	.bbbutton-sen {
 		position: relative;
-		bottom: 46px;
+		bottom: 13px;
 	}
 	table.dstocklistitems.table.table-condensed.m-b-0.text-inverse.border-default {
 		margin-top: 20px !important;

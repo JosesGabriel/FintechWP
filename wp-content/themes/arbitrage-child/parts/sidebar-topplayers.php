@@ -101,6 +101,7 @@
 
 												<?php 
 													$uname = $value['dbsname'];
+													echo strlen($uname);
 													if (strlen($uname) > 17){
 												      		echo substr($uname, 0, 10) . "..."; 
 												  		}else{

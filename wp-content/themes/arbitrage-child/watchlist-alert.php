@@ -3,7 +3,8 @@
 	$ismetadis = json_encode($ismetadis);
 
 	$curl = curl_init();	
-	curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+	#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$dwatchinfo = curl_exec($curl);
 	curl_close($curl);
@@ -59,6 +60,7 @@
 	        	jQuery.ajax({
 				 	method: "POST",
 					url: "https://arbitrage.ph/apipge/?daction=watchlistval",
+					
 					// url: 'https://api2.pse.tools/api/quotes',
 					dataType: 'json',
 					data: {

@@ -1835,7 +1835,7 @@ if ($getdstocks && $getdstocks != '') {
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "522.48"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "62182.90"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
 		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
 	}
     
@@ -2110,7 +2110,7 @@ if ($getdstocks && $getdstocks != '') {
 																										'buyyear' => 2019,
 																										'stock' => 'MBT',
 																										'price' => 100,
-																										'qty' => 5,
+																										'qty' => 620,
 																										'currprice' => 75.40,
 																										'change' => '0.40%',
 																										'open' => 75.50,
@@ -2126,7 +2126,7 @@ if ($getdstocks && $getdstocks != '') {
 																										'status' => 'Live',
 																									],
 																								],
-																								'totalstock' => 5,
+																								'totalstock' => 620,
 																								'aveprice' => 2228.5209688868,
 																								'totalcost' => 84225991.13847,
 																								'stockname' => 'SampleStock_1',

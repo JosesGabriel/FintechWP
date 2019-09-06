@@ -205,15 +205,15 @@
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		
+		$dtradd = json_decode(gettrades($_GET['stock']));
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
 
-		$dtotalall = $dfinbear + $dfinbull;
+		$dtotalall = $dfinbear + $dfinbull + ($dtradd->bear + $dtradd->bull);
 
-		$dpercbear = ($dfinbear / $dtotalall) * 100;
-		$dpercbull = ($dfinbull / $dtotalall) * 100;
+		$dpercbear = (($dfinbear + $dtradd->bear) / $dtotalall) * 100;
+		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		// print_r($dsentilist);
@@ -425,10 +425,14 @@
 		$totsbear = (int) ($dsentbear == "" ? 0 : $dsentbear) + $_GET['isbear'];
 		$totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];
 
-		$totalitem = $totsbear + $totsbull;
 
-		$bearperc = ($totsbear / $totalitem) * 100;
-		$bullperc = ($totsbull / $totalitem) * 100;
+		$dtradd = json_decode(gettrades($_GET['stock']));
+
+
+		$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+
+		$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
+		$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
 		
 		echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		

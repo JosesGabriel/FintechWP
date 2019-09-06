@@ -2126,7 +2126,7 @@ if ($getdstocks && $getdstocks != '') {
 																										'status' => 'Live',
 																									],
 																								],
-																								'totalstock' => 5,
+																								'totalstock' => 620,
 																								'aveprice' => 2228.5209688868,
 																								'totalcost' => 84225991.13847,
 																								'stockname' => 'SampleStock_1',

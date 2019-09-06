@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Philippine Stock Exchange Platform" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
 	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
 <?php
 	elegant_description();

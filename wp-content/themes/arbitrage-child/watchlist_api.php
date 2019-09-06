@@ -7,7 +7,6 @@
 	header('Content-Type: application/json');
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
-
     date_default_timezone_set("Asia/Manila");
     
 
@@ -34,20 +33,40 @@ function getSMS(){
 
     global $wpdb;
     $users = get_users( array( 'fields' => array( 'ID' ) ) );
-    $listofwatchlist = [];
-    foreach($users as $user_id){
-        #$user_info = get_userdata($user_id->ID);
-        #get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-        #echo json_encode($user_info);
-        #echo $user_info->user_email;
 
+    foreach($users as $user_id){
         #get user meta per ID
         $usermetas = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-        echo $user_id->ID . ' : ';
-        foreach($usermetas as $usermeta){
-            echo $usermeta['stockname'] . '<br>';
+        $userphone = get_user_meta($user_id->ID, 'cpnum', true);
+        #do not even do anything if the user does not have cpnum:
+        if(!is_null($userphone)){    
+            foreach($usermetas as $usermeta){
+                #get stock name and stock values for comparison
+                $stockname = $usermeta['stockname'];
+                $entryprice = $usermeta['dconnumber_entry_price'];
+                $takeprofitpoint = $usermeta['dconnumber_take_profit_point'];
+                $stoplosspoint = $usermeta['dconnumber_stop_loss_point'];
+
+                #get PSE data
+                $curl = curl_init();
+                curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+                $response = curl_exec($curl);
+                curl_close($curl);
+
+                $dstock = json_decode($getstocks);
+                $dstock = $dstock->data;
+                
+                $last_price = $dstock->last;
+
+                #start comparing :
+
+                
+
+            }
         }
-        echo '<br>';
+
     }
 
     

@@ -67,7 +67,7 @@
 @media only screen and (max-width: 767px){
 
 	.notif--subb {
-    	margin: 0px auto 0 auto !important;
+    	margin: 35px auto 0 auto !important;
     
 	}
 

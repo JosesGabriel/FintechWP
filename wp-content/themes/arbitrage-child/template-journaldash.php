@@ -5434,8 +5434,6 @@ if ($getdstocks && $getdstocks != '') {
 			"valueField": "Trades",
 			"xField": "color",
 			"yField": "color",
-			"cornerRadiusTop": 3,
-			"cornerRadiusBottom": 0
 		},
 		{
 			"alphaField": "color",
@@ -5468,7 +5466,6 @@ if ($getdstocks && $getdstocks != '') {
 			"xField": "color",
 			"yField": "color",
 			"cornerRadiusTop": 3,
-			"cornerRadiusBottom": 0
 		}
 	],
 	"guides": [],
@@ -6043,7 +6040,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineThickness": 0,
 					"title": "Losses",
 					"type": "column",
-					"valueField": "column-2"
+					"valueField": "column-2",
+					"cornerRadiusTop": 3,
 				}
 			],
 			"guides": [],

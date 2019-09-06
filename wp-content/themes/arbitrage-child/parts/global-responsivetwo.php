@@ -327,6 +327,14 @@
     	margin: 20px auto 0px -24px !important;
 	}
 
+	input.email--field {
+    	margin-left: 55px !important;
+	}
+
+	.email--btn {
+    	left: 302px !important;
+	}
+
 	.clock {
 		margin-top: 400px !important;
 		margin-left: 40px !important;

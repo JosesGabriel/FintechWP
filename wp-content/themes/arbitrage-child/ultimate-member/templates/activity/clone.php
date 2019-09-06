@@ -1,12 +1,9 @@
-<?php global $user_ID, $post; ?>
-
-<?php um_fetch_user( $user_ID ); ?>
-
-<?php date_default_timezone_set("Asia/Manila"); ?>
-
-
-
 <?php 
+global $user_ID, $post;
+
+um_fetch_user( $user_ID );
+
+date_default_timezone_set("Asia/Manila");
 
 $wall_id = get_post_field( 'post_author', $post );
 //======================================================================

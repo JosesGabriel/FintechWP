@@ -473,7 +473,7 @@ a.add-btn {
 	display:block;
 }
 .drop-over-post {
-	color: #6583a8;
+	color: #6583a8 !important;
 	font-size: 20px;
 	margin-top: 7px;
 	margin-right: 7px;
@@ -1019,7 +1019,7 @@ time.srr-date div {
 	border: none;
 }
 .dcontent-wrap {
-	padding-left: 18px;
+	padding-left: 0;
 }
 .popname ul {
 	margin: 0;

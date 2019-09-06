@@ -66,11 +66,31 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.notif--subb {
+    	margin: 35px auto 0 auto !important;
+    
+	}
+
+	input.email--field {
+		width: 325px !important;
+    	margin-left: 64px !important;
+    	padding: 10px 83px 10px 10px !important;
+    	font-size: 10px !important;
+	}
+
+	.email--btn {
+		position: relative !important;
+    	font-size: 12px !important;
+    	left: 309px !important;
+    	padding: 4px 9px !important;
+    	top: -30px !important;
+	}
+
 	.countdown-container {
-    	top: 0px !important;
+    	top: 10px !important;
 	}
 	.clock {
-		margin-top: 523px !important;
+		margin-top: 413px !important;
     	margin-left: 60px !important;
 	}
 	.wrap {
@@ -303,8 +323,20 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	.notif--subb {
+    	margin: 20px auto 0px -24px !important;
+	}
+
+	input.email--field {
+    	margin-left: 55px !important;
+	}
+
+	.email--btn {
+    	left: 302px !important;
+	}
+
 	.clock {
-		margin-top: 523px !important;
+		margin-top: 400px !important;
 		margin-left: 40px !important;
 	}
 
@@ -417,6 +449,25 @@
 
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
+
+	.notif--subb {
+    	margin: 30px auto 0px -41px !important;
+	}
+
+	input.email--field {
+	    width: 302px !important;
+	    margin-left: 64px !important;
+	    padding: 10px 83px 10px 10px !important;
+	    font-size: 10px !important;
+	}
+
+	.email--btn {
+	    position: relative !important;
+	    font-size: 12px !important;
+	    left: 287px !important;
+	    padding: 4px 9px !important;
+	    top: -30px !important;
+	}
 
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		left: -135px !important;

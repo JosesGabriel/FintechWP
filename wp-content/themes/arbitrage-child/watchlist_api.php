@@ -38,7 +38,8 @@ function getSMS(){
     foreach($users as $user_id){
         $user_info = get_userdata($user_id->ID);
         #get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-        echo json_encode($user_info);
+        #echo json_encode($user_info);
+        echo $user_info->user_email;
 
     }
 

@@ -165,8 +165,7 @@ $user = wp_get_current_user();
 			jQuery(".um-field-error").html("!");
 		})
 		jQuery(document).ready(function(){
-			jQuery("#emailNotify__form").submit(function(e){
-				e.preventDefault();
+			jQuery("#emailNotify__form").submit(function(){
 				var hasemail = jQuery("#email--input").val().length;
 				var email = jQuery("#email--input").val();
 				if( hasemail >= 1 ) {

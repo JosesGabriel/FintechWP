@@ -162,7 +162,7 @@ $user = wp_get_current_user();
 			jQuery("#preloader").delay(400).fadeOut("slow");
 			jQuery(".um-field-checkbox-option").html("");
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
-			jQuery(".um-field-error").html("!");
+			// jQuery(".um-field-error").html("!");
 		})
 		jQuery(document).ready(function(){
 			jQuery("#emailNotify__form").submit(function(){

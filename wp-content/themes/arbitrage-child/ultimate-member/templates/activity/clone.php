@@ -1,12 +1,11 @@
-<?php global $user_ID, $post; ?>
-
-<?php um_fetch_user( $user_ID ); ?>
-
-<?php date_default_timezone_set("Asia/Manila"); ?>
-
-
-
 <?php 
+global $user_ID, $post;
+
+um_fetch_user( $user_ID );
+
+date_default_timezone_set("Asia/Manila");
+
+$wall_id = get_post_meta( $post->ID, '_wall_id', true );
 //======================================================================
 
 
@@ -175,8 +174,7 @@
 				<# if ( data.content.trim().length > 0 ) { #>
 
 				<div class="um-activity-bodyinner-txt">
-					<div class="dcontent-wrap">{{{data.content}}}
-					</div>
+					{{{data.content}}}
 				</div>
 
 				<# } #>

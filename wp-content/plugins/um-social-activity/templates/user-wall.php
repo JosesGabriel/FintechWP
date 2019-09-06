@@ -550,7 +550,7 @@ foreach ( $wallposts->posts as $post ) {
 						
 						<?php //echo $newconts; ?>
 
-						<div class="desc-note" style="padding-right:16px;">
+						<div class="desc-note">
 							<?php echo $um_activity_post; ?>
 						</div>
 						<div class="desc-note1">

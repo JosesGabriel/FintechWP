@@ -3210,8 +3210,14 @@ class Activity_Main_API
 
             $output['has_text_video'] = get_post_meta($post_id, '_video_url', true);
 
-            if (isset($_POST['_wall_id'])) {
+            if (isset($_POST['_wall_id']) && absint($_POST['_wall_id']) > 0) {
                 $output['wall_id'] = $_POST['_wall_id'];
+
+                um_fetch_user($output['wall_id']);
+
+                $output['wall_user_name'] = um_user( 'display_name' );
+                $output['wall_user_url'] = um_user_profile_url();
+                
             }
         }
 

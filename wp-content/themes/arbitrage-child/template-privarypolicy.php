@@ -7,7 +7,7 @@
 global $current_user;
 $user = wp_get_current_user();
 
-get_header();
+get_header('dashboard');
 
 ?>
 <?php get_template_part('parts/global', 'cssfooter'); ?>

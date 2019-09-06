@@ -14,6 +14,7 @@ function arbitrage_social_post_api_create($data) {
 
     $data = [
         'wall_id' => $wall_id,
+        'wall_type' => ($wall_id === 0 ? '' : 'user'),
         'user_id' => $account_user_id,
         'content' => $_POST['_post_content'],
         'visibility' => 'public',

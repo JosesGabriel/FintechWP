@@ -926,7 +926,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         console.log("dmspart");
                         console.log(response);
                     }, function myError(error) {
+                        console.log("derrorpart");
                         console.log(error);
+                        
                     });
                      
                     if (found.length) {

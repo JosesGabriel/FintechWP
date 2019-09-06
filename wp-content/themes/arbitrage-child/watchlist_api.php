@@ -14,7 +14,7 @@
 $action = $_GET['action'];
 
 switch($action){
-    case 'getSMS':
+    case 'get_notifs':
         getSMS();
     break;
     default:
@@ -22,9 +22,37 @@ switch($action){
 }
 
 function getSMS(){
-echo 'get SMS';
-}
+    #get List of users and their meta: 
 
+   /* $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/apipge/?daction=userwatchlist');
+    curl_setopt($curl, CURLOPT_RESOLVE, ['arbitrage.ph:443:34.92.99.210']);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $usersmeta = curl_exec($curl);
+    curl_close($curl);
+    echo $usersmeta; */
+
+    global $wpdb;
+    $users = get_users( array( 'fields' => array( 'ID' ) ) );
+    $listofwatchlist = [];
+    foreach($users as $user_id){
+        #$user_info = get_userdata($user_id->ID);
+        #get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+        #echo json_encode($user_info);
+        #echo $user_info->user_email;
+
+        #get user meta per ID
+        $usermetas = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+        echo $user_id->ID . ' : ';
+        foreach($usermetas as $usermeta){
+            echo $usermeta['stockname'] . '<br>';
+        }
+        echo '<br>';
+    }
+
+    
+
+}
 
 
 ?>    

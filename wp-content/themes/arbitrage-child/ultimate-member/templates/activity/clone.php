@@ -1,12 +1,10 @@
-<?php global $user_ID, $post; ?>
-
-<?php um_fetch_user( $user_ID ); ?>
-
-<?php date_default_timezone_set("Asia/Manila"); ?>
-
-
-
 <?php 
+global $user_ID, $post;
+
+um_fetch_user( $user_ID );
+
+date_default_timezone_set("Asia/Manila");
+
 //======================================================================
 
 
@@ -76,21 +74,13 @@
 
 						<# if ( data.wall_id != data.user_id ) { #>
 
-						<?php if ( ! empty( $wall_id ) && $wall_id != $user_ID ) {
-
-							um_fetch_user( $wall_id ); ?>
-
 							<i class="um-icon-forward"></i>
 
-							<a href="<?php esc_attr( um_user_profile_url() ) ?>" class="um-link">
+							<a href="{{{data.wall_user_url}}}" class="um-link">
 
-								<?php echo um_user( 'display_name' ) ?>
+								{{{data.wall_user_name}}}
 
 							</a>
-
-						<?php um_fetch_user( $user_ID );
-
-						} ?>
 
 						<# } #>
 
@@ -175,8 +165,7 @@
 				<# if ( data.content.trim().length > 0 ) { #>
 
 				<div class="um-activity-bodyinner-txt">
-					<div class="dcontent-wrap">{{{data.content}}}
-					</div>
+					{{{data.content}}}
 				</div>
 
 				<# } #>

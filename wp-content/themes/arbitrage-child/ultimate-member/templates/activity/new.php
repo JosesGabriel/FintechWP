@@ -88,6 +88,8 @@ global $current_user;
 		<input type="hidden" name="action" id="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" id="_post_id" value="0" />
 		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( um_profile_id() ); ?>" />
+		<input type="hidden" name="_wall_user_name" value="<?php echo um_user( 'display_name' ) ?>" />
+		<input type="hidden" name="_wall_user_url" value="<?php echo um_user_profile_url() ?>" />
 		<input type="hidden" name="_post_img" value="" />
 		<input type="hidden" name="_post_img_url" value="" />
 

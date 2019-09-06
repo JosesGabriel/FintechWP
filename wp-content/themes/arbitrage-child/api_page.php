@@ -25,6 +25,114 @@
 	$dreturn = "";
 	$adminuser = 504; // store on the chart page
 
+	function gettrades($stockname){
+		$dinfstock = strtoupper($stockname);
+
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$response = curl_exec($curl);
+			curl_close($curl);
+
+			$trades = json_decode($response);
+			$trades = $trades->data;
+			
+
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$getstocks = curl_exec($curl);
+			curl_close($curl);
+
+			$dstock = json_decode($getstocks);
+			$dstock = $dstock->data;
+
+			
+			
+
+			// get prices
+			$listofprices = [];
+			foreach ($trades as $key => $value) {
+				array_push($listofprices, number_format($value->executed_price, 2, ".", ","));
+			}
+			$newpricelist = array_values(array_unique($listofprices));
+
+			// get volumes
+			$pricevols = [];
+			foreach ($newpricelist as $pricekey => $pricevalue) {
+				$intprice = [];
+				$intprice['price'] = $pricevalue;
+				// $intprice['volumes'] = [];
+				$intprice['totalvolumes'] = 0;
+				foreach ($trades as $gvkey => $gvvalue) {
+					if($pricevalue == number_format($gvvalue->executed_price, 2, ".", ",")){
+						// array_push($intprice['volumes'], round($gvvalue->executed_volume));
+						$intprice['totalvolumes'] += round($gvvalue->executed_volume);
+					}
+				}
+				array_push($pricevols, $intprice);
+			}
+
+
+
+			// sort as per bull / bear
+
+			$dlast = $dstock->open;
+			
+			// echo  "Open: ".$dlast." | ";
+		
+			$isbullbear = [];
+			$isbullbear['bear'] = [];
+			$isbullbear['bull'] = [];
+			foreach ($pricevols as $bbkey => $bbvalue) {
+				$bbvalue['price'] = str_replace(",", "", $bbvalue['price']);
+				if($bbvalue['price'] >= $dlast){
+					array_push($isbullbear['bull'], $bbvalue);
+				} else {
+					array_push($isbullbear['bear'], $bbvalue);
+				}
+			}
+
+			usort($isbullbear['bear'], function($a, $b) {
+				return $a['price'] <=> $b['price'];
+			});
+
+			usort($isbullbear['bull'], function($a, $b) {
+				return $b['price'] <=> $a['price'];
+			});
+
+			// print_r($isbullbear);
+
+			$weight = [.90, .80, .70, .60, .50, .40, .30]; // the rest is 20%
+
+			// compute bear/bull
+
+			$totalbear = 0;
+			foreach ($isbullbear['bear'] as $bearkey => $bearvalue) {
+				// echo $bearvalue['totalvolumes']." - ".(isset($weight[$bearkey]) ? $weight[$bearkey] : 20)." / ".$bearvalue['totalvolumes'] * (isset($weight[$bearkey]) ? $weight[$bearkey] : .20)." | ";
+				$totalbear += $bearvalue['totalvolumes'] * (isset($weight[$bearkey]) ? $weight[$bearkey] : 20);
+			}
+
+			$totalbull = 0;
+			foreach ($isbullbear['bull'] as $bullkey => $bullvalue) {
+				// echo $bullvalue['totalvolumes']." - ".(isset($weight[$bullkey]) ? $weight[$bullkey] : 20)." / ".$bullvalue['totalvolumes'] * (isset($weight[$bullkey]) ? $weight[$bullkey] : .20)." | ";
+				$totalbull += $bullvalue['totalvolumes'] * (isset($weight[$bullkey]) ? $weight[$bullkey] : 20);
+			}
+
+			// get percentage
+
+			$totalperc = $totalbear + $totalbull;
+
+			$percbull = number_format(($totalbull / $totalperc) * 100, 2, ".", ",");
+			$percbear = number_format(($totalbear / $totalperc) * 100, 2, ".", ",");
+
+			// echo "Bull: ".$percbull . " ~ Bear : ". $percbear; 
+
+			return json_encode(['bull' => $totalbull, 'bear' => $totalbear]);
+	}
+
 	if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
 		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
@@ -188,116 +296,7 @@
 		
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 
-		if(isset($_GET['stock'])){
-			$dinfstock = strtoupper($_GET['stock']);
-
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			$response = curl_exec($curl);
-			curl_close($curl);
-
-			$trades = json_decode($response);
-			$trades = $trades->data;
-			
-
-			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			$getstocks = curl_exec($curl);
-			curl_close($curl);
-
-			$dstock = json_decode($getstocks);
-			$dstock = $dstock->data;
-
-			
-			
-
-			// get prices
-			$listofprices = [];
-			foreach ($trades as $key => $value) {
-				array_push($listofprices, number_format($value->executed_price, 2, ".", ","));
-			}
-			$newpricelist = array_values(array_unique($listofprices));
-
-			// get volumes
-			$pricevols = [];
-			foreach ($newpricelist as $pricekey => $pricevalue) {
-				$intprice = [];
-				$intprice['price'] = $pricevalue;
-				// $intprice['volumes'] = [];
-				$intprice['totalvolumes'] = 0;
-				foreach ($trades as $gvkey => $gvvalue) {
-					if($pricevalue == number_format($gvvalue->executed_price, 2, ".", ",")){
-						// array_push($intprice['volumes'], round($gvvalue->executed_volume));
-						$intprice['totalvolumes'] += round($gvvalue->executed_volume);
-					}
-				}
-				array_push($pricevols, $intprice);
-			}
-
-
-
-			// sort as per bull / bear
-
-			$dlast = $dstock->open;
-			
-			// echo  "Open: ".$dlast." | ";
-		
-			$isbullbear = [];
-			$isbullbear['bear'] = [];
-			$isbullbear['bull'] = [];
-			foreach ($pricevols as $bbkey => $bbvalue) {
-				$bbvalue['price'] = str_replace(",", "", $bbvalue['price']);
-				if($bbvalue['price'] >= $dlast){
-					array_push($isbullbear['bull'], $bbvalue);
-				} else {
-					array_push($isbullbear['bear'], $bbvalue);
-				}
-			}
-
-			usort($isbullbear['bear'], function($a, $b) {
-				return $a['price'] <=> $b['price'];
-			});
-
-			usort($isbullbear['bull'], function($a, $b) {
-				return $b['price'] <=> $a['price'];
-			});
-
-			// print_r($isbullbear);
-
-			$weight = [.90, .80, .70, .60, .50, .40, .30]; // the rest is 20%
-
-			// compute bear/bull
-
-			$totalbear = 0;
-			foreach ($isbullbear['bear'] as $bearkey => $bearvalue) {
-				// echo $bearvalue['totalvolumes']." - ".(isset($weight[$bearkey]) ? $weight[$bearkey] : 20)." / ".$bearvalue['totalvolumes'] * (isset($weight[$bearkey]) ? $weight[$bearkey] : .20)." | ";
-				$totalbear += $bearvalue['totalvolumes'] * (isset($weight[$bearkey]) ? $weight[$bearkey] : 20);
-			}
-
-			$totalbull = 0;
-			foreach ($isbullbear['bull'] as $bullkey => $bullvalue) {
-				// echo $bullvalue['totalvolumes']." - ".(isset($weight[$bullkey]) ? $weight[$bullkey] : 20)." / ".$bullvalue['totalvolumes'] * (isset($weight[$bullkey]) ? $weight[$bullkey] : .20)." | ";
-				$totalbull += $bullvalue['totalvolumes'] * (isset($weight[$bullkey]) ? $weight[$bullkey] : 20);
-			}
-
-			// get percentage
-
-			$totalperc = $totalbear + $totalbull;
-
-			$percbull = number_format(($totalbull / $totalperc) * 100, 2, ".", ",");
-			$percbear = number_format(($totalbear / $totalperc) * 100, 2, ".", ",");
-
-			// echo "Bull: ".$percbull . " ~ Bear : ". $percbear; 
-
-			echo json_encode(['bull' => $percbull, 'bear' => $percbear]);
-
-
-		}
-
+			echo gettrades($_GET['stock']);
 
  	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";

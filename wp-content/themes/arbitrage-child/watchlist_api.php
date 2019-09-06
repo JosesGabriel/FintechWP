@@ -43,7 +43,7 @@ function getSMS(){
 
         #get user meta per ID
         $usermeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-        echo $usermeta['stockname'];
+        echo json_encode($usermeta['8']['stockname']);
 
     }
 

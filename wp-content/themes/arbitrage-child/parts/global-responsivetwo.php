@@ -443,7 +443,7 @@
 @media only screen and (max-width: 320px){
 
 	.notif--subb {
-    	margin: -10px auto 0px -41px !important;
+    	margin: 30px auto 0px -41px !important;
 	}
 
 	input.email--field {

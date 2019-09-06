@@ -71,6 +71,21 @@
     
 	}
 
+	input.email--field {
+		width: 325px !important;
+    	margin-left: 64px !important;
+    	padding: 10px 69px 10px 10px !important;
+    	font-size: 10px !important;
+	}
+
+	.email--btn {
+		position: relative !important;
+    	font-size: 12px !important;
+    	left: 309px !important;
+    	padding: 4px 9px !important;
+    	top: -30px !important;
+	}
+
 	.countdown-container {
     	top: 0px !important;
 	}

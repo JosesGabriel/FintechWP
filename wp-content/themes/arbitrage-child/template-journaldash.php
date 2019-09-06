@@ -1799,7 +1799,7 @@ if ($getdstocks && $getdstocks != '') {
 	$currentalocinfo = "";
 	if(!$isjounalempty){
 		$dequityp = $buypower;
-		$aloccolors = array('#e91e63', '#FFC107', '#f0df3c', '#06af68', '#f44336', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#e91e63', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
 		$currentaloccolor = '"#e91e63",';
 		if ($dtradeingfo) {
@@ -1825,7 +1825,7 @@ if ($getdstocks && $getdstocks != '') {
 	} else {
 		$dequityp = 245318.22;
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "522.48"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
-		$currentaloccolor = '"#e91e63","#06af68","#f0df3c","#f44336","#FFC107"';
+		$currentaloccolor = '"#e91e63","#f0df3c","#06af68","#f44336","#FFC107"';
 	}
     
 ?>

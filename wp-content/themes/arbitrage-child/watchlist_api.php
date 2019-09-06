@@ -4,5 +4,5 @@
 	* Template page for Watchlist Page Platform
     */
     
-
+echo 'Hello World';
 ?>    

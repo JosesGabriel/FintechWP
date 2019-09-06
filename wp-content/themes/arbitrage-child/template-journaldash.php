@@ -1314,7 +1314,7 @@ get_header('dashboard');
     }
 	.sampleData__notification {
 		bottom: 0;
-		font-size: 3em;
+		font-size: 2.4em;
 	}
 	.sampleData__overlay {
 		position: fixed;
@@ -1324,6 +1324,8 @@ get_header('dashboard');
 		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
 		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		width: 100%;
+		height: 100%;
 	}
 </style>
 

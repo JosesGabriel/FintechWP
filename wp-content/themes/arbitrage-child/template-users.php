@@ -1901,7 +1901,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
-                        <?php get_template_part('parts/sidebar', 'traders'); ?>
+                        
 
 					</div>
 				</div>
@@ -1986,6 +1986,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
+                    <?php get_template_part('parts/sidebar', 'traders'); ?>
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>

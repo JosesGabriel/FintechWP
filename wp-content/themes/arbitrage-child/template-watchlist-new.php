@@ -669,7 +669,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			$startTime = new DateTime('15:30');
 			$endTime = (new DateTime('06:00'))->modify('+1 day');
 
-			if ($currentTime >= $startTime && $currentTime <= $endTime) {
+			//if ($currentTime >= $startTime && $currentTime <= $endTime) {
 			  	$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
                 curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -684,7 +684,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				$low = end($dintraforchart->l);
 
 				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-			}
+			//}
 
 
 

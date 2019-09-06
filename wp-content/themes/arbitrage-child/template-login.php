@@ -737,17 +737,31 @@ div#um-shortcode-social-133 a.um-button.um-button-facebook:hover {
 	border-color: #324d84 !important;
 }
 .um-field-error {
-    position: absolute;
+    /* position: absolute; */
     padding: 6px 9px;
     font-size: 11px;
     line-height: normal !important;
-    margin: 12px 0 13px;
-    top: -9px;
-    right: 3px;
-    border-radius: 25px;
-    width: 27px !important;
+    margin: 0 0 5px;
+    margin-top: -7px;
+    /* right: 3px; */
+    border-radius: 3px;
+    width: 100% !important;
     text-align: center !important;
     font-weight: bold !important;
+    background: #C74A4A;
+
+}
+.um-field-error:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -0.75em;
+    top: -14px;
+    left: 50%;
+    box-sizing: border-box;
+    border: 7px solid black;
+    border-color: transparent transparent #c74a4a transparent;
 }
 .um-field-arrow {
     display:none;

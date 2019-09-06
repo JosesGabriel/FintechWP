@@ -62,8 +62,10 @@
 													$equityres = $totalvaluee - 100000;
 													$resres = $equityres / 100000;
 													$finalres = $resres * 100;
+
 													?>
 															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
+															<span class="profit_loss"><?php echo number_format($equityres, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>

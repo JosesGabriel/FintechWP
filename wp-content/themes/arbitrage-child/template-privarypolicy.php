@@ -4,8 +4,8 @@
 	*/
 
 // get_header();
-global $current_user;
-$user = wp_get_current_user();
+// global $current_user;
+// $user = wp_get_current_user();
 
 get_header();
 

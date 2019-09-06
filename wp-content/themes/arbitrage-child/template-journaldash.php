@@ -5298,16 +5298,16 @@ if ($getdstocks && $getdstocks != '') {
 	  "radius": 75,
 	  "autoMargins": false,
 	  "colors": [
-		"#00e676",
-		"#02d471",
-		"#04c16d",
-		"#06af68",
-		"#089c63",
-		"#0b7d55",
-		"#0d6d52",
-		"#0f5a4f",
-		"#11484c",
-		"#133e4a"
+		"#FFC107",
+		"#CDDC39",
+		"#4CAF50",
+		"#00BCD4",
+		"#2196F3",
+		"#673AB7",
+		"#E91E63",
+		"#FF9800",
+		"#FFEB3B",
+		"#8BC34A"
 	  ],
 	  "defs": {
 		"filter": [{

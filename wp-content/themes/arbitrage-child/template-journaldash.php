@@ -5298,6 +5298,7 @@ if ($getdstocks && $getdstocks != '') {
 	  "radius": 75,
 	  "autoMargins": false,
 	  "colors": [
+		"#FF5722",
 		"#FFC107",
 		"#CDDC39",
 		"#4CAF50",

@@ -87,7 +87,7 @@
 	}
 
 	.countdown-container {
-    	top: 0px !important;
+    	top: 10px !important;
 	}
 	.clock {
 		margin-top: 413px !important;
@@ -460,7 +460,7 @@
 	    padding: 4px 9px !important;
 	    top: -30px !important;
 	}
-	
+
 	.um-11.um .um-profile-photo a.um-profile-photo-img {
 		left: -135px !important;
 	}

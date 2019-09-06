@@ -14,7 +14,7 @@
 $action = $_GET['action'];
 
 switch($action){
-    case 'getSMS':
+    case 'get_notifs':
         getSMS();
     break;
     default:

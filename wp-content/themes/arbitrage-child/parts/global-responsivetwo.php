@@ -70,7 +70,7 @@
     	top: 0px !important;
 	}
 	.clock {
-		margin-top: 577px !important;
+		margin-top: 523px !important;
     	margin-left: 60px !important;
 	}
 	.wrap {
@@ -304,7 +304,7 @@
 @media only screen and (max-width: 410px){
 
 	.clock {
-		margin-top: 577px !important;
+		margin-top: 523px !important;
 		margin-left: 40px !important;
 	}
 

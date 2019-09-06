@@ -54,7 +54,18 @@
 
 									    <div class="playerscontent">
 											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+												<?php 
+												//echo ucwords($value['dbsname']) 
+
+													$uname = $value['dbsname'];
+													if (strlen($uname) > 17){
+												      		echo substr($uname, 0, 17) . "..."; 
+												  		}else{
+												  			echo $uname;
+												  		}
+																							
+
+												?>
 												
 											</div>
 												<div class="istotal"><?php 
@@ -101,11 +112,10 @@
 
 												<?php 
 													$uname = $value['dbsname'];
-													echo strlen($uname);
 													if (strlen($uname) > 17){
-												      		echo substr($uname, 0, 10) . "..."; 
+												      		echo substr($uname, 0, 17) . "..."; 
 												  		}else{
-												  			//echo ucwords($uname)
+												  			echo $uname;
 												  		}
 													//echo ucwords($value['dbsname']) 
 

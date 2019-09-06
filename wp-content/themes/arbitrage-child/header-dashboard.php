@@ -15,7 +15,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Philippine Stock Exchange Platform" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
 	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	<link rel="manifest" href="/manifest.json">     

@@ -16,27 +16,26 @@
 
 
 $profile_id = um_profile_id();
-// $friendstotalinit = UM()->Friends_API()->api()->count_friends( $profile_id );
-$friendstotal =  UM()->Friends_API()->api()->count_friends( $profile_id );
 
+ $friendstotal1 = UM()->Friends_API()->api()->count_friends( $profile_id );
+//$friendreqs = UM()->Friends_API()->api()->friend_reqs_sent( $profile_id );
+
+$friendstotal = (int) preg_replace('/[^0-9]/', '', $friendstotal1);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
 
 
-    //echo "firends->total = " . $friendstotal;
- 
-if ($coverhphotoactive && $profilepicactive && $friendstotal >= 2){
+
+
+if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
   $num = 100;
-  echo $coverhphotoactive . ' ' . $profilepicactive . ' ' . $friendstotal;
-}else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && $profilepicactive && $friendstotal < 2)){
+}else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && $profilepicactive && $friendstotal < 3)){
   $num = 66;
-}else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 2) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 2)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 2)){
+}else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 3)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 3)){
   $num = 33;
 }else{
   $num = 0;
 }
-
-
 
 ?>
 <div class="left-user-details">

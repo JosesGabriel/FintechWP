@@ -67,7 +67,7 @@
 						'action' : 'my_custom_action'
 					},
 					success: function(data) {
-					  // console.log(data.dinfo);
+					   console.log(data.dinfo);
 					  var allinfordata = data.dinfo;
 					  $.each(dlistofstocks, function(index, dinfo){
 					  	var istockname = dinfo.stockname;

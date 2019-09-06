@@ -3209,6 +3209,10 @@ class Activity_Main_API
             $output['has_oembed'] = $has_oEmbed;
 
             $output['has_text_video'] = get_post_meta($post_id, '_video_url', true);
+
+            if (isset($_POST['_wall_id'])) {
+                $output['wall_id'] = $_POST['_wall_id'];
+            }
         }
 
         $output = json_encode($output);

@@ -130,7 +130,7 @@
 
 			// echo "Bull: ".$percbull . " ~ Bear : ". $percbear; 
 
-			return json_encode(['bull' => $percbull, 'bear' => $percbear]);
+			return json_encode(['bull' => $totalbull, 'bear' => $totalbear]);
 	}
 
 	if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices

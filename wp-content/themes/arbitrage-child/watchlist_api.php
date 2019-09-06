@@ -15,6 +15,7 @@ $action = $_GET['action'];
 
 switch($action){
     case 'getSMS':
+        getSMS();
     break;
     default:
     echo 'no action';

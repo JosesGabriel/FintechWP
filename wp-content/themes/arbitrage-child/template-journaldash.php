@@ -1935,8 +1935,8 @@ if ($getdstocks && $getdstocks != '') {
                                                         	</div> -->
 															<?php if($isjounalempty): ?>
 																<div class="sampleData__overlay"></div>
-																<div class="sampleData__notification">
-																	Trading analytics display here. It requires at least one complete trading data.
+																<div class="sampleData__notification sampleData__overlay">
+																	Trading analytics display here. <br> It requires at least one complete trading data.
 																</div>
 															<?php endif; ?>
                                                             <div class="box-portlet-header">

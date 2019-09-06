@@ -5299,16 +5299,16 @@ if ($getdstocks && $getdstocks != '') {
 	  "autoMargins": false,
 	  "colors": [
 		"#f44336",
-		"#E91E63",
-		"#9C27B0",
-		"#4CAF50",
-		"#00BCD4",
-		"#2196F3",
-		"#673AB7",
-		"#E91E63",
-		"#FF9800",
-		"#FFEB3B",
-		"#8BC34A"
+		"#FFC107",
+		"#06af68"
+		// "#4CAF50",
+		// "#00BCD4",
+		// "#2196F3",
+		// "#673AB7",
+		// "#E91E63",
+		// "#FF9800",
+		// "#FFEB3B",
+		// "#8BC34A"
 	  ],
 	  "defs": {
 		"filter": [{

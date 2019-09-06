@@ -473,7 +473,7 @@ a.add-btn {
 	display:block;
 }
 .drop-over-post {
-	color: #6583a8;
+	color: #6583a8 !important;
 	font-size: 20px;
 	margin-top: 7px;
 	margin-right: 7px;

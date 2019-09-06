@@ -912,6 +912,22 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }, function myError(error) {
                         console.log(error);
                     });
+
+                    $http({
+                        method : "POST",
+                        url : "https://arbitrage.ph/apipge/?daction=marketsentiment&stock="+_symbol,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: {
+                            'action' : 'check_sentiment',
+                            'stock' : _symbol,
+                        }
+                    }).then(function mySucces(response) {
+                        console.log("dmspart");
+                        console.log(response);
+                    }, function myError(error) {
+                        console.log(error);
+                    });
                      
                     if (found.length) {
 

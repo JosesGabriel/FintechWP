@@ -1312,6 +1312,28 @@ get_header('dashboard');
         font-size: 13px !important;
         text-align: right;
     }
+	.sampleData__notification {
+		position: fixed;
+		z-index: 10;
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,1+100 */
+		background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		bottom: 0;
+		font-size: 2.4em;
+	}
+	.sampleData__overlay {
+		position: fixed;
+		z-index: 10;
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,1+100 */
+		background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+		width: 100%;
+		height: 100%;
+	}
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -1786,10 +1808,9 @@ if ($getdstocks && $getdstocks != '') {
 	$currentalocinfo = "";
 	if(!$isjounalempty){
 		$dequityp = $buypower;
-
-		$aloccolors = array('#e91e63', '#9c27b0', '#1d75bd', '#f0df3c', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#e91e63",';
+		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
 				$stockdetails = "";
@@ -1813,7 +1834,7 @@ if ($getdstocks && $getdstocks != '') {
 	} else {
 		$dequityp = 245318.22;
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "522.48"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
-		$currentaloccolor = '"#009688","#03A9F4","#00e676"';
+		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
 	}
     
 ?>
@@ -1922,8 +1943,9 @@ if ($getdstocks && $getdstocks != '') {
                                                         		</div>
                                                         	</div> -->
 															<?php if($isjounalempty): ?>
-																<div>
-																	this is just a sample data
+																<div class="sampleData__overlay"></div>
+																<div class="sampleData__notification">
+																	Trading analytics display here. <br> It requires at least one complete trading data.
 																</div>
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
@@ -5028,7 +5050,7 @@ if ($getdstocks && $getdstocks != '') {
     				}else{
     					$('.s-logs' + i).remove();
     					if(!$('#norecords').hasClass('s-logs')){
-    						$('.dstatstrade ul').append("<li class='s-logs' id='norecords'><div>No records found.</div></li>");
+    						$('.dstatstrade1 ul').append("<li class='s-logs' id='norecords'><div>No records found.</div></li>");
     					}
     				}
 
@@ -5298,16 +5320,17 @@ if ($getdstocks && $getdstocks != '') {
 	  "radius": 75,
 	  "autoMargins": false,
 	  "colors": [
-		"#00e676",
-		"#02d471",
-		"#04c16d",
-		"#06af68",
-		"#089c63",
-		"#0b7d55",
-		"#0d6d52",
-		"#0f5a4f",
-		"#11484c",
-		"#133e4a"
+		"#f44336",
+		"#FFC107",
+		"#06af68"
+		// "#4CAF50",
+		// "#00BCD4",
+		// "#2196F3",
+		// "#673AB7",
+		// "#E91E63",
+		// "#FF9800",
+		// "#FFEB3B",
+		// "#8BC34A"
 	  ],
 	  "defs": {
 		"filter": [{
@@ -5421,7 +5444,6 @@ if ($getdstocks && $getdstocks != '') {
 			"xField": "color",
 			"yField": "color",
 			"cornerRadiusTop": 3,
-			"cornerRadiusBottom": 0
 		},
 		{
 			"alphaField": "color",
@@ -5454,7 +5476,6 @@ if ($getdstocks && $getdstocks != '') {
 			"xField": "color",
 			"yField": "color",
 			"cornerRadiusTop": 3,
-			"cornerRadiusBottom": 0
 		}
 	],
 	"guides": [],
@@ -6018,7 +6039,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineAlpha": 0,
 					"title": "Wins",
 					"type": "column",
-					"valueField": "Trades"
+					"valueField": "Trades",
+					"cornerRadiusTop": 3,
 				},
 				{
 					"balloonText": "[[title]]: [[value]]",
@@ -6029,7 +6051,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineThickness": 0,
 					"title": "Losses",
 					"type": "column",
-					"valueField": "column-2"
+					"valueField": "column-2",
+					"cornerRadiusTop": 3,
 				}
 			],
 			"guides": [],

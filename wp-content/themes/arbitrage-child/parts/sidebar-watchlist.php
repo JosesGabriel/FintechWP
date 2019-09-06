@@ -333,6 +333,7 @@ jQuery(function(){
 
                         .dplusbutton {
                             color: #fff;
+                            padding: 30px 0px 22px 0px;
                         }
 
                         .top-traiders .to-content-part {

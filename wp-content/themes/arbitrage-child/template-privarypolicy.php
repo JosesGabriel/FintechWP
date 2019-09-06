@@ -4,8 +4,8 @@
 	*/
 
 // get_header();
-global $current_user;
-$user = wp_get_current_user();
+// global $current_user;
+// $user = wp_get_current_user();
 
 get_header();
 
@@ -201,7 +201,15 @@ get_header();
 		<div class="c-footer-arbitrage">Copyright © 2019 Arbitrage</div>
 	</div>
 </div>
-
+<style>
+	.wavey-bottom-bg {
+		top: 343px;
+	}
+	div#et-main-area {
+		top: -20px;
+		position: relative;
+	}
+</style>
 <script>
 	$(document).ready(function(){
 		$(".media-facebook").hover(function(){

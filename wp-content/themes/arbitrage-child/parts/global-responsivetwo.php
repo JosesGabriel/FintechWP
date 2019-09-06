@@ -66,15 +66,26 @@
 /* Mobile */
 @media only screen and (max-width: 767px){
 
+	.notif--subb {
+    	margin: 0px auto 0 auto !important;
+    
+	}
+
+	input.email--field {
+		width: 325px !important;
+    	margin-left: 64px !important;
+	}
+
 	.countdown-container {
     	top: 0px !important;
 	}
 	.clock {
-		margin-top: 577px !important;
+		margin-top: 413px !important;
     	margin-left: 60px !important;
 	}
 	.wrap {
 		width: 200px !important;
+		margin-bottom: -30px !important;
 	}
 
 	.text {
@@ -303,7 +314,7 @@
 @media only screen and (max-width: 410px){
 
 	.clock {
-		margin-top: 620px !important;
+		margin-top: 523px !important;
 		margin-left: 40px !important;
 	}
 

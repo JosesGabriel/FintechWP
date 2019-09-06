@@ -71,6 +71,11 @@
     
 	}
 
+	input.email--field {
+		width: 325px !important;
+    	margin-left: 64px !important;
+	}
+
 	.countdown-container {
     	top: 0px !important;
 	}

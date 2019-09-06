@@ -24,13 +24,26 @@ switch($action){
 function getSMS(){
     #get List of users and their meta: 
 
-    $curl = curl_init();
+   /* $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/apipge/?daction=userwatchlist');
     curl_setopt($curl, CURLOPT_RESOLVE, ['arbitrage.ph:443:34.92.99.210']);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $usersmeta = curl_exec($curl);
     curl_close($curl);
-    echo $usersmeta;
+    echo $usersmeta; */
+
+    global $wpdb;
+    $users = get_users( array( 'fields' => array( 'ID' ) ) );
+    $listofwatchlist = [];
+    foreach($users as $user_id){
+        $user_info = get_userdata($user_id->ID);
+        #get_user_meta($user_id->ID, '_watchlist_instrumental', true);
+        echo json_encode($user_info);
+
+    }
+
+    
+
 }
 
 

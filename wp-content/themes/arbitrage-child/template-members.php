@@ -625,7 +625,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		border: none;
 	}
 	.dcontent-wrap {
-		padding-left: 18px;
+		padding-left: 0;
 	}
 	.popname ul {
 	    margin: 0;

@@ -324,7 +324,7 @@
 @media only screen and (max-width: 410px){
 
 	.notif--subb {
-    	margin: -10px auto 0px -24px !important;
+    	margin: 20px auto 0px -24px !important;
 	}
 
 	.clock {

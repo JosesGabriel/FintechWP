@@ -280,7 +280,7 @@
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		$dtradd = gettrades($_GET['stock']);
+		$dtradd = json_decode(gettrades($_GET['stock']));
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];

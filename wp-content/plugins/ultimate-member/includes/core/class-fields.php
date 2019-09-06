@@ -354,20 +354,20 @@ if ( ! class_exists( 'um\core\Fields' ) ) {
 		function field_error( $text, $force_show = false ) {
 			if ($force_show) {
 				$output = '<div class="um-field-error"><span class="um-field-arrow"><i class="um-faicon-caret-up"></i></span>' . $text . '</div>';
-				print_r ($text);
+				// print_r ($text);
 				
 				return $output;
 			}
 			if (isset( $this->set_id ) && UM()->form()->processing == $this->set_id) {
 				$output = '<div class="um-field-error"><span class="um-field-arrow"><i class="um-faicon-caret-up"></i></span>' . $text . '</div>';
-				print_r ($text);
+				// print_r ($text);
 			} else {
 				$output = 'aksjdnasdkasd';
 			}
 			
 			if (!UM()->form()->processing) {
 				$output = '<div class="um-field-error"><span class="um-field-arrow"><i class="um-faicon-caret-up"></i></span>' . $text . '</div>';
-				print_r ($text);
+				// print_r ($text);
 			}
 
 			return $output;

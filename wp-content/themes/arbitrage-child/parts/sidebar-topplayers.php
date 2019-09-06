@@ -102,7 +102,7 @@
 												<?php 
 													$uname = $value['dbsname'];
 													if (strlen($uname) > 17){
-												      		echo substr($uname, 0,17) . "..."; 
+												      		echo substr($uname, 0, 10) . "..."; 
 												  		}else{
 												  			echo $uname;
 												  		}

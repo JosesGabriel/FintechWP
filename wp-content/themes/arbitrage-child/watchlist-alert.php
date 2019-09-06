@@ -68,13 +68,14 @@
 						'action' : 'my_custom_action'
 					},
 					success: function(data) {
-					   console.log(data.data);
+					   #console.log(data.data);
 					  var allinfordata = data.data;
-					  $.each(dlistofstocks, function(index, data){
-					  	var istockname = data.stockname;
+					  $.each(dlistofstocks, function(index, dinfo){
+					  	var istockname = dinfo.stockname;
 					  	var dstockdd;
 					  	
 					  	$.each(allinfordata, function(xindex, xdinfo){
+							console.log(allinfordata.symbol);
 					  		if (xdinfo.symbol == istockname) {
 					  			dstockdd = xdinfo;
 					  		}
@@ -82,7 +83,7 @@
 					  	var dstockval = parseFloat(dstockdd.last);
 
 
-					  	if ("dcondition_entry_price" in dinfo) {
+					  	if ("dcondition_entry_price" in data) {
 					  		if (parseFloat(dinfo.dconnumber_entry_price) == dstockval.toFixed(2)) {
 					  			// jQuery("#entry_price").attr("data-stock", istockname).attr("data-price", dstockval.toFixed(2)).trigger('click');
 					  			// console.log(istockname+' Entery price has been hit');

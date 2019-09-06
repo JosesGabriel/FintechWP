@@ -362,7 +362,7 @@ if ( ! class_exists( 'um\core\Fields' ) ) {
 				$output = '<div class="um-field-error"><span class="um-field-arrow"><i class="um-faicon-caret-up"></i></span>' . $text . '</div>';
 				// print_r ($text);
 			} else {
-				$output = 'aksjdnasdkasd';
+				$output = '';
 			}
 			
 			if (!UM()->form()->processing) {

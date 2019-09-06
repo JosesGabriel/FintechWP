@@ -3,7 +3,8 @@
 	$ismetadis = json_encode($ismetadis);
 
 	$curl = curl_init();	
-	curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+	#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
+	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$dwatchinfo = curl_exec($curl);
 	curl_close($curl);
@@ -56,22 +57,25 @@
 
 	        function checkwatchlist() {
 	        	var dlistofstocks = <?php echo $ismetadis; ?>;
+				console.log('test output');
 	        	jQuery.ajax({
-				 	method: "POST",
-					url: "https://arbitrage.ph/apipge/?daction=watchlistval",
+				 	method: "GET",
+					url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE",
+					
 					// url: 'https://api2.pse.tools/api/quotes',
 					dataType: 'json',
 					data: {
 						'action' : 'my_custom_action'
 					},
 					success: function(data) {
-					  // console.log(data.dinfo);
-					  var allinfordata = data.dinfo;
+					   //console.log(data.data);
+					  var allinfordata = data.data;
 					  $.each(dlistofstocks, function(index, dinfo){
 					  	var istockname = dinfo.stockname;
 					  	var dstockdd;
 					  	
 					  	$.each(allinfordata, function(xindex, xdinfo){
+							console.log(allinfordata.symbol);
 					  		if (xdinfo.symbol == istockname) {
 					  			dstockdd = xdinfo;
 					  		}
@@ -79,7 +83,7 @@
 					  	var dstockval = parseFloat(dstockdd.last);
 
 
-					  	if ("dcondition_entry_price" in dinfo) {
+					  	if ("dcondition_entry_price" in data) {
 					  		if (parseFloat(dinfo.dconnumber_entry_price) == dstockval.toFixed(2)) {
 					  			// jQuery("#entry_price").attr("data-stock", istockname).attr("data-price", dstockval.toFixed(2)).trigger('click');
 					  			// console.log(istockname+' Entery price has been hit');

@@ -19,10 +19,12 @@
 
         widget_template = wp.template( 'um-activity-widget' );
         template_data = {
-            'content'       : $form.find('[name="_post_content"]').val(),
+            'content'       : '<div class="desc-note">' + $form.find('[name="_post_content"]').val() + '</div>',
             'img_src'       : $form.find('input[name="_post_img"]').val(),
             'img_src_url'   : $form.find('input[name="_post_img_url"]').val(),
             'wall_id'       : $form.find('input[name="_wall_id"]').val(),
+            'wall_user_name': $form.find('input[name="_wall_user_name"]').val(),
+            'wall_user_url' : $form.find('input[name="_wall_user_url"]').val(),
             'user_id'       : user_id,
             'post_id'       : temporary_id,
             'post_url'      : '',
@@ -88,6 +90,8 @@
                             'img_src'       : data.photo_gsc_url,
                             'img_src_url'   : data.photo_gsc_url,
                             'wall_id'       : formdata._wall_id,
+                            'wall_user_name': data.wall_user_name,
+                            'wall_user_url' : data.wall_user_url,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
                             'post_url'      : data.permalink,
@@ -115,6 +119,8 @@
                             'img_src'       : data.photo_gsc_url,
                             'img_src_url'   : data.photo_gsc_url,
                             'wall_id'       : formdata._wall_id,
+                            'wall_user_name': data.wall_user_name,
+                            'wall_user_url' : data.wall_user_url,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
                             'post_url'      : data.permalink,

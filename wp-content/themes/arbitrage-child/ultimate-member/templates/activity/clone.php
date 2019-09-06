@@ -174,8 +174,7 @@ $wall_id = get_post_meta( $post->ID, '_wall_id', true );
 				<# if ( data.content.trim().length > 0 ) { #>
 
 				<div class="um-activity-bodyinner-txt">
-					<div class="dcontent-wrap">{{{data.content}}}
-					</div>
+					{{{data.content}}}
 				</div>
 
 				<# } #>

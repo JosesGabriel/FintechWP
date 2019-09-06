@@ -381,7 +381,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	</script>
 
 	  <?php /* temp-disabled-start */ 
-	  #include 'watchlist-alert.php'; 
+	  include 'watchlist-alert.php'; 
 	  /*temp-disabled-end */ ?>
 
 </body>

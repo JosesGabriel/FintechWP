@@ -7,7 +7,7 @@
 	// get_header();
 
 	// define('WP_USE_THEMES', false);
-	header('Content-Type: application/json');
+	// header('Content-Type: application/json');
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
 
@@ -280,7 +280,7 @@
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		
+		$dtradd = gettrades($_GET['stock']);
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
@@ -292,7 +292,10 @@
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		// print_r($dsentilist);
-		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
+
+		
+
+		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $dtradd['bull'], 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 

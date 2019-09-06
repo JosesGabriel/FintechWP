@@ -57,9 +57,10 @@
 
 	        function checkwatchlist() {
 	        	var dlistofstocks = <?php echo $ismetadis; ?>;
+				console.log('test output');
 	        	jQuery.ajax({
-				 	method: "POST",
-					url: "https://arbitrage.ph/apipge/?daction=watchlistval",
+				 	method: "GET",
+					url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE",
 					
 					// url: 'https://api2.pse.tools/api/quotes',
 					dataType: 'json',
@@ -67,8 +68,8 @@
 						'action' : 'my_custom_action'
 					},
 					success: function(data) {
-					  // console.log(data.dinfo);
-					  var allinfordata = data.dinfo;
+					   console.log(data.data);
+					  var allinfordata = data.data;
 					  $.each(dlistofstocks, function(index, dinfo){
 					  	var istockname = dinfo.stockname;
 					  	var dstockdd;

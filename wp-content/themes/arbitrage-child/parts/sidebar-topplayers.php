@@ -115,7 +115,7 @@
 													if (strlen($uname) > 17){
 												      		echo substr($uname, 0, 17) . "..."; 
 												  		}else{
-												  			echo $uname;
+												  			echo ucwords($uname);
 												  		}
 													//echo ucwords($value['dbsname']) 
 

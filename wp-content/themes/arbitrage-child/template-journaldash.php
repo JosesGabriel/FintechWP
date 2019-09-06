@@ -1835,7 +1835,7 @@ if ($getdstocks && $getdstocks != '') {
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "62182.90"},{"category" : "Sample Stock 2", "column-1" : "54159.30"},';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
 		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
 	}
     

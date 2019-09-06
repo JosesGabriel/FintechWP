@@ -1313,6 +1313,13 @@ get_header('dashboard');
         text-align: right;
     }
 	.sampleData__notification {
+		position: fixed;
+		z-index: 10;
+		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,1+100 */
+		background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 		bottom: 0;
 		font-size: 2.4em;
 	}
@@ -1937,7 +1944,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         	</div> -->
 															<?php if($isjounalempty): ?>
 																<div class="sampleData__overlay"></div>
-																<div class="sampleData__notification sampleData__overlay">
+																<div class="sampleData__notification">
 																	Trading analytics display here. <br> It requires at least one complete trading data.
 																</div>
 															<?php endif; ?>

@@ -70,8 +70,8 @@
 					success: function(data) {
 					   console.log(data.data);
 					  var allinfordata = data.data;
-					  $.each(dlistofstocks, function(index, dinfo){
-					  	var istockname = dinfo.stockname;
+					  $.each(dlistofstocks, function(index, data){
+					  	var istockname = data.stockname;
 					  	var dstockdd;
 					  	
 					  	$.each(allinfordata, function(xindex, xdinfo){

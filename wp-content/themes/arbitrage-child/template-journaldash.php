@@ -5434,6 +5434,7 @@ if ($getdstocks && $getdstocks != '') {
 			"valueField": "Trades",
 			"xField": "color",
 			"yField": "color",
+			"cornerRadiusTop": 3,
 		},
 		{
 			"alphaField": "color",
@@ -6029,7 +6030,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineAlpha": 0,
 					"title": "Wins",
 					"type": "column",
-					"valueField": "Trades"
+					"valueField": "Trades",
+					"cornerRadiusTop": 3,
 				},
 				{
 					"balloonText": "[[title]]: [[value]]",

@@ -473,7 +473,7 @@ foreach ( $wallposts->posts as $post ) {
 						<?php }
 
 
-					/*
+					
 						if ( $author_id != get_current_user_id() ) { ?>
 
 							<!--<span class="sep"></span>-->
@@ -488,7 +488,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							</a>
 
-						<?php }  */ ?>
+						<?php }  ?>
 
 						
 

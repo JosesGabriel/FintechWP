@@ -54,7 +54,19 @@
 
 									    <div class="playerscontent">
 											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+
+												<?php 
+													$uname = ucwords($value['dbsname']);
+
+													if (strlen($uname > 17){
+														echo substr($uname, 0,17) . "...";
+													}else{
+														echo $uname; 
+													}
+													
+													//echo ucwords($value['dbsname']) 
+
+												?>
 												
 											</div>
 												<div class="istotal"><?php 
@@ -65,7 +77,7 @@
 
 													?>
 															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-															<span class="profit_loss" style="float:right;margin-left: 20px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#e64c3c; float:right;margin-left: 20px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>

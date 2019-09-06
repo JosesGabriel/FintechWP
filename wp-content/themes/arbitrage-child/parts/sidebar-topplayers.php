@@ -53,7 +53,7 @@
 									   	</div>
 
 									    <div class="playerscontent">
-											<div class="isname">
+											<div class="isname" style="width: 114px;">
 												<?php 
 												//echo ucwords($value['dbsname']) 
 
@@ -76,7 +76,7 @@
 
 													?>
 															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-															<span class="profit_loss" style="float:right;margin-left: 20px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 55px;position: absolute;top: 7px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>
@@ -108,14 +108,14 @@
 									   	</div>
 
 									   <div class="playerscontent">
-											<div class="isname">
+											<div class="isname" style="width: 114px;">
 
 												<?php 
 													$uname = $value['dbsname'];
 													if (strlen($uname) > 17){
 												      		echo substr($uname, 0, 17) . "..."; 
 												  		}else{
-												  			echo $uname;
+												  			echo ucwords($uname);
 												  		}
 													//echo ucwords($value['dbsname']) 
 
@@ -133,7 +133,7 @@
 													?>
 															<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
 													<?php  if($equityres != 0) { ?>
-															<span class="profit_loss" style="float:right;margin-left: 20px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 55px;position: absolute;top: 7px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
 														<?php } ?>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>

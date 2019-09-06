@@ -7,7 +7,7 @@
 	// get_header();
 
 	// define('WP_USE_THEMES', false);
-	// header('Content-Type: application/json');
+	header('Content-Type: application/json');
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
 
@@ -285,10 +285,10 @@
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
 
-		$dtotalall = $dfinbear + $dfinbull;
+		$dtotalall = $dfinbear + $dfinbull + ($dtradd->bear + $dtradd->bull);
 
-		$dpercbear = ($dfinbear / $dtotalall) * 100;
-		$dpercbull = ($dfinbull / $dtotalall) * 100;
+		$dpercbear = (($dfinbear + $dtradd->bear) / $dtotalall) * 100;
+		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		// print_r($dsentilist);

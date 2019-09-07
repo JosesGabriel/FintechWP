@@ -670,8 +670,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			$endTime = (new DateTime('06:00'))->modify('+1 day');
 
 			//if ($currentTime >= $startTime && $currentTime <= $endTime) {
+
 			  	$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
+				//curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
+
+			  	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+
                 curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dintrabase = curl_exec($curl);
@@ -684,6 +688,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				$low = end($dintraforchart->l);
 
 				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
+
+
 			//}
 
 
@@ -731,7 +737,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		}
         ?>
     }
+
 	</script>
+
 	<style>
   .nvd3 .nv-axis line {
     display: none;

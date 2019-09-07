@@ -150,11 +150,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}	
 				
 			?>
-			var stocklist = <?php echo $jsonstocklist; ?> ;
+			var stocklist = <?php echo $jsonstocklist; ?> ;	
 
-			
-
-			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+			<?php //$havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 
 			<?php //foreach ($havemeta as $key => $value) { ?>
 

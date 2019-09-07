@@ -190,7 +190,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				var i = 0;
 
-				console.log($havemeta);
+				//console.log($havemeta);
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.

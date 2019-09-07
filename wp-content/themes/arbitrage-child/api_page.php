@@ -7,7 +7,7 @@
 	// get_header();
 
 	// define('WP_USE_THEMES', false);
-	header('Content-Type: application/json');
+	// header('Content-Type: application/json');
 	global $wp, $wp_query, $wp_the_query, $wp_rewrite, $wp_did_header;
 	require(getcwd().'/wp-load.php');
 
@@ -50,6 +50,8 @@
 		$dlast = $dstock->open;
 
 		print_r($trades);
+
+
 	}
 	function gettrades($stockname){
 		$dinfstock = strtoupper($stockname);

@@ -61,7 +61,7 @@
 			}
 		}
 
-		echo json_encode(['bear' => $beartrades, 'bull' => $bulltrades]);
+		return json_encode(['bear' => $beartrades, 'bull' => $bulltrades]);
 
 
 	}

@@ -51,6 +51,10 @@
 		
 		$dlast = $dstock->open;
 
+		echo "<pre>";
+		print_r($trades);
+		echo "</pre>";
+
 		$bulltrades = 0;
 		$beartrades = 0;
 		foreach ($trades as $key => $value) {

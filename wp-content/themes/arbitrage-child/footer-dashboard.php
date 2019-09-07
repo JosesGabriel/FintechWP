@@ -367,8 +367,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 			});
 
-			jQuery('.ddropbase a').click(function(e){
-			//jQuery('.listofstocks > a').click(function(e){
+			//jQuery('.ddropbase a').click(function(e){
+			jQuery('.listofstocks > a').on('click', function(e){
 
 				console.log('click me');
 

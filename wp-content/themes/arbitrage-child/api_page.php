@@ -54,7 +54,7 @@
 		$bulltrades = 0;
 		$beartrades = 0;
 		foreach ($trades as $key => $value) {
-			if($dlast > $value->executed_price){
+			if($dlast > number_format($value->executed_price, 2, ".", ",")){
 				$bulltrades++;
 			} else {
 				$beartrades++;

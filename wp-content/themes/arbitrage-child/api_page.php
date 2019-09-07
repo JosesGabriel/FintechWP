@@ -52,13 +52,13 @@
 		$dlast = $dstock->open;
 
 		echo "<pre>";
-		print_r($trades);
+		print_r($dlast);
 		echo "</pre>";
 
 		$bulltrades = 0;
 		$beartrades = 0;
 		foreach ($trades as $key => $value) {
-			if($dlast > number_format($value->executed_price, 2, ".", ",")){
+			if($dlast >= number_format($value->executed_price, 4, ".", ",")){
 				$bulltrades++;
 			} else {
 				$beartrades++;

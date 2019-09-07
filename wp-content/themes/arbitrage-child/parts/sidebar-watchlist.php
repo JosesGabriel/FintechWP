@@ -254,6 +254,7 @@ jQuery(function(){
 
                         ?>
 
+              <?php if($value['stockname'] != null) {  ?>
 
                       <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 
@@ -263,6 +264,8 @@ jQuery(function(){
                               <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
                             </a>
                           </div>
+
+
                           <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
@@ -298,7 +301,9 @@ jQuery(function(){
                       </div>
 
 
-                        <?php } ?>
+                        <?php }
+
+                         } ?>
 
              <!-- <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
                             <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>

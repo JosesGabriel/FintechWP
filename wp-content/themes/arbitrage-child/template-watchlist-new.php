@@ -640,9 +640,20 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			#$dhistofronold = curl_exec($curl);
             #curl_close($curl);
 
-            $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+
+
+
+
+           // $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+
+
+
+
             //echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
-            $chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE';
+
+            //$chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE';
+
+            
             //echo "CHART INTRA DAY :::::: " . $chartintraday;
 
 

@@ -368,7 +368,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 			//jQuery('.ddropbase a').click(function(e){
-			jQuery('.ddropbase a').on('click', function(e){
+			jQuery(document).on('click','.ddropbase a',function(e){
 
 				console.log('click me');
 

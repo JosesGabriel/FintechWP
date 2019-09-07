@@ -50,13 +50,18 @@
 
 		
 		$dlast = $dstock->open;
-		echo "<pre>";
-		print_r($trades);
-		echo "</pre>";
 
+		$bulltrades = 0;
+		$beartrades = 0;
 		foreach ($trades as $key => $value) {
-			# code...
+			if($dlast > $value->executed_price){
+				$bulltrades++;
+			} else {
+				$beartrades++;
+			}
 		}
+
+		echo json_encode(['bears' => $beartrades, 'bulls' => $bulltrades]);
 
 
 	}

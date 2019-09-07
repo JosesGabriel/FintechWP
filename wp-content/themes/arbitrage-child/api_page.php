@@ -24,7 +24,33 @@
 
 	$dreturn = "";
 	$adminuser = 504; // store on the chart page
+	function getpointtrades($stockname){
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$response = curl_exec($curl);
+		curl_close($curl);
 
+		$trades = json_decode($response);
+		$trades = $trades->data;
+		
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$getstocks = curl_exec($curl);
+		curl_close($curl);
+
+		$dstock = json_decode($getstocks);
+		$dstock = $dstock->data;
+
+		
+		$dlast = $dstock->open;
+
+		print_r($trades);
+	}
 	function gettrades($stockname){
 		$dinfstock = strtoupper($stockname);
 
@@ -50,7 +76,7 @@
 			$dstock = $dstock->data;
 
 			
-			
+			$dlast = $dstock->open;
 
 			// get prices
 			$listofprices = [];
@@ -59,6 +85,8 @@
 			}
 			$newpricelist = array_values(array_unique($listofprices));
 
+			$bullcounts = 0;
+			$bearcounts = 0;
 			// get volumes
 			$pricevols = [];
 			foreach ($newpricelist as $pricekey => $pricevalue) {
@@ -79,7 +107,7 @@
 
 			// sort as per bull / bear
 
-			$dlast = $dstock->open;
+			
 			
 			// echo  "Open: ".$dlast." | ";
 		
@@ -299,7 +327,7 @@
 		
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 
-			echo gettrades($_GET['stock']);
+			echo getpointtrades($_GET['stock']);
 
  	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";

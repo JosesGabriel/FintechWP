@@ -51,9 +51,9 @@
 		
 		$dlast = $dstock->open;
 
-		echo "<pre>";
-		print_r($dlast);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($dlast);
+		// echo "</pre>";
 
 		$bulltrades = 0;
 		$beartrades = 0;

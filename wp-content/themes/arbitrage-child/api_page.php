@@ -26,7 +26,7 @@
 	$adminuser = 504; // store on the chart page
 	function getpointtrades($stockname){
 		$dinfstock = strtoupper($stockname);
-		
+
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
 		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -50,8 +50,13 @@
 
 		
 		$dlast = $dstock->open;
-
+		echo "<pre>";
 		print_r($trades);
+		echo "</pre>";
+
+		foreach ($trades as $key => $value) {
+			# code...
+		}
 
 
 	}

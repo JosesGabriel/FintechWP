@@ -167,6 +167,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				$(this).hide();
 			});
 
+
+
+
 			<?php /* temp-disabled-start */
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
@@ -206,6 +209,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 
 			 <?php  break; } ?>
+
+
+
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 

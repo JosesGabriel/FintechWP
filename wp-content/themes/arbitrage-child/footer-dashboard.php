@@ -105,6 +105,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				e.preventDefault();
 
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
+
+				console.log(isstock);
 				
 				//var countli = jQuery(".listofinfo li").length;
 				console.log(isstock);

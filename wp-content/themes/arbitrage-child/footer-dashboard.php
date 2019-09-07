@@ -153,11 +153,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 
-			<?php 
-					echo $havemeta;
-			//foreach ($havemeta as $key => $value) { ?>
+			<?php foreach ($havemeta as $key => $value) { ?>
 
-				console.log(<?php echo $havemeta; ?>); 
+				<?php echo $value['stockname']; ?>
+
+			<?php } ?>
 
 				var i = 0;
 

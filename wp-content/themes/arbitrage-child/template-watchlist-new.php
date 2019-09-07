@@ -653,7 +653,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             //$chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE';
 
-            
+
             //echo "CHART INTRA DAY :::::: " . $chartintraday;
 
 
@@ -669,6 +669,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			$dhistoflist = "";
             $counter = 0;
+
+
             if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
                 for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
                     $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
@@ -676,6 +678,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                 }
             }
 
+            /*
 			$currentTime = (new DateTime())->modify('+1 day');
 			$startTime = new DateTime('15:30');
 			$endTime = (new DateTime('06:00'))->modify('+1 day');
@@ -698,7 +701,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				$dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
 
 
-			}
+			}*/
 
 
 

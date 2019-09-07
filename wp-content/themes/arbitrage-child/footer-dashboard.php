@@ -135,7 +135,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				jQuery(".dtabcontent > div").removeClass('active').hide('slow');
 				jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
 
-				console.log('tesssssss');
 
 			<?php /* temp-disabled-start */
 				$curl = curl_init();
@@ -153,7 +152,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;
 
-
+			console.log(stocklist);
 
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 			<?php foreach ($havemeta as $key => $value) { ?>

@@ -156,10 +156,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); 
 
-				print_r($havemeta);
+				echo $havemeta;
 
 			?>
-			
+
 			<?php foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;

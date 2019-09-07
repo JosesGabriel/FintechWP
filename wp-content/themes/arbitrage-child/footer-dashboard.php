@@ -151,13 +151,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
 
-			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
-
-			<?php 
-					echo $havemeta;
-			//foreach ($havemeta as $key => $value) { ?>
-
-				console.log(<?php echo $havemeta; ?>); 
+			<?php // $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 
 				var i = 0;
 
@@ -172,10 +166,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					//}	
 					
 
-				});
-
-
-			 
+				});	 
 
 
 			});

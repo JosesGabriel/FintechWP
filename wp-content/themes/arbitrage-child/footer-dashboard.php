@@ -39,7 +39,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 
-
 			jQuery(".um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-right").hide();
 
 			jQuery(".um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea").keyup(function() {
@@ -152,9 +151,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			?>
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
 
-			<?php //$havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 
-			<?php //foreach ($havemeta as $key => $value) { ?>
+			<?php 
+					echo $havemeta;
+			//foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;
 
@@ -163,7 +164,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					//condition here if stock is in the watchlist, do not append.
 					//if('<?php echo $value['stockname']; ?>' !== value.symbol){			
 						console.log(value.symbol);
-						console.log("test");
+						//console.log("test");
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					//}	
@@ -172,8 +173,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 
 
-			 <?php // break; } ?>
-
+			 
 
 
 			});

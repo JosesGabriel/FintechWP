@@ -306,15 +306,15 @@ jQuery(function(){
                          } ?>
 
              <!-- <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
-                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                            <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
+                            <a href="https://arbitrage.ph/chart/<?php// echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                            <div ng-controller="minichartarb<?php// echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
                 </div> -->
 
                   <?php else: ?>
                   <div class="to-content-part">
-                      <a href="https://arbitrage.ph/watchlist/">
+                    <a href="https://arbitrage.ph/watchlist/">
                         <div class="dplusbutton" style="text-align: center; color: #6583a8">
                             <div class="dplsicons" style="font-size: 36px;margin-bottom: 11px;">
                               <i class="fa fa-plus-circle" style="color: #6583a8;"></i>

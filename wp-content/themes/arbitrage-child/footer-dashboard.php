@@ -134,7 +134,52 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('.addwatch').click(function(e){
 				jQuery(".dtabcontent > div").removeClass('active').hide('slow');
 				jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
+
+
+
+			<?php /* temp-disabled-start */
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				$response = curl_exec($curl);
+				curl_close($curl);
+
+				if ($response !== false) {
+					$response = json_decode($response);
+					$jsonstocklist = json_encode($response);
+				}	
+				
+			?>
+			var stocklist = <?php echo $jsonstocklist; ?> ;
+
+
+
+			<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+			<?php foreach ($havemeta as $key => $value) { ?>
+
+				var i = 0;
+
+				// TODO Fix: this is causing front end errors
+				jQuery.each(stocklist.data, function( index, value ) {
+					//condition here if stock is in the watchlist, do not append.
+					if('<?php echo $value['stockname']; ?>' !== value.symbol){			
+						console.log(value.symbol);
+						console.log("test");
+						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						i++;
+					}	
+					
+
+				});
+
+
+			 <?php  break; } ?>
+
+
+
 			});
+
 
 			jQuery('.removeItem').click(function(e){
 				e.preventDefault();

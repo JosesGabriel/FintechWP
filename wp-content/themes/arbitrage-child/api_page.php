@@ -427,6 +427,8 @@
 
 
 		$dtradd = json_decode(gettrades($_GET['stock']));
+		
+		print_r($dtradd);
 
 
 		$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);

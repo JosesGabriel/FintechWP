@@ -370,6 +370,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 				}
 			});
+			jQuery("#cpsubmitbtn").click(function(){
+				$("#modal-phonenum").modal('hide');
+				//save cpnum meta 
+			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){
 				e.preventDefault();

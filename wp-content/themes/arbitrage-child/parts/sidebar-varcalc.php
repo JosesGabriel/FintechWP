@@ -55,6 +55,11 @@
 	margin-top:3px;
 
 }
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
+
+}
 
 .arb_calcbox h3 {
 
@@ -237,6 +242,11 @@
     background: #4e6a85 !important;
 
 }
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
+
+}
 
 .arb_calcbox input[type="text"] {
 
@@ -262,6 +272,10 @@
 
 	border-radius: 0 5px 5px 0;
 
+}
+
+.arb_calcbox input[type="text"]::placeholder {
+    color: white;
 }
 
 .sublbl.after {
@@ -691,7 +705,7 @@ select#stockname {
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="text" class="number" value="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
                             <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>
@@ -778,15 +792,15 @@ select#stockname {
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" value="0" style="width:80%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" placeholder="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" placeholder="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" placeholder="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <!-- <div class="arb_clear smlspc"></div> -->
 
                     <!-- <div class="arb_calcbox_left">Stoploss</div>

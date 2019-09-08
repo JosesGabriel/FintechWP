@@ -89,7 +89,7 @@
                             'content'       : data.content,
                             'img_src'       : data.photo_gsc_url,
                             'img_src_url'   : data.photo_gsc_url,
-                            'wall_id'       : formdata._wall_id,
+                            'wall_id'       : data.wall_id,
                             'wall_user_name': data.wall_user_name,
                             'wall_user_url' : data.wall_user_url,
                             'user_id'       : data.user_id,

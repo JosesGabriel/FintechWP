@@ -63,9 +63,9 @@ function getSMS(){
                 #start comparing :
 
                 #sample JSON data:
-                $userlist = =array("1","2","3");
+                $userlist = array("1","2","3");
                 $jsonoutput = [];
-                array_push
+              
             }
         }
 

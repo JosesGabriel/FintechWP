@@ -1,5 +1,5 @@
 <div class="alert-handler">
-	<?php /* ?><div class="noti-message">
+	<?php ?><div class="noti-message">
 		<div class="vertical-align">
 			<a class="cont-logo">
 				<span style="border: 2px solid #f44336 !important;">IRC</span>
@@ -17,5 +17,5 @@
 			</div>
 		</div>
 	</div>
-	<?php */ ?>
+	<?php  ?>
 </div> 

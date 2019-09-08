@@ -373,7 +373,13 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 			jQuery("#cpsubmitbtn").click(function(){
 				var cpnum = $("#txtcpnum").val();
-				console.log(cpnum);
+				jQuery.ajax({
+					method: "get",
+					url: "/watchlist?addcp=" + cpnum,
+					success: function(data){
+						console.log("Success");
+					}
+				});
 					
 				$("#modal-phonenum").modal('hide'); 
 			});

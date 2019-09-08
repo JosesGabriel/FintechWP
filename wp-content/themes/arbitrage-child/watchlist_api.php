@@ -59,7 +59,7 @@ function getSMS(){
                 $dstock = $dstock->data;
                 
                 $last_price = $dstock->last;
-
+                echo $$dstock;
                 #start comparing :
 
                 #sample JSON data:

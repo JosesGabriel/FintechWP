@@ -33,7 +33,7 @@ function getSMS(){
 
     global $wpdb;
     $users = get_users( array( 'fields' => array( 'ID' ) ) );
-    $result = array();
+    $result = [];
     
     foreach($users as $user_id){
         #get user meta per ID
@@ -41,15 +41,16 @@ function getSMS(){
         $userphone = get_user_meta($user_id->ID, 'cpnum', true);
         #do not even do anything if the user does not have cpnum:
         if(!is_null($userphone)){    
-            $userdata = array("ID" => $user_id->ID, "phone" => $userphone);
-            array_push($result,$userdata);
+            $userdata = [];
+            $userdata["ID"] = $user_id->ID;
+            $userdata["Phone"] = $userphone;
             foreach($usermetas as $usermeta){
                 #get stock name and stock values for comparison
                 $stockname = $usermeta['stockname'];
                 $entryprice = $usermeta['dconnumber_entry_price'];
                 $takeprofitpoint = $usermeta['dconnumber_take_profit_point'];
                 $stoplosspoint = $usermeta['dconnumber_stop_loss_point'];
-
+               
                 #get PSE data
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$stockname);
@@ -70,7 +71,7 @@ function getSMS(){
                 $jsonoutput = [];
               
             }
-
+            array_push($result,$userdata);
         }
 
     }

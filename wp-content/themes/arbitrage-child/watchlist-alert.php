@@ -69,11 +69,11 @@
 						success: function(data){
 							console.log(stockname);
 							//console.log(data.data);
-							var stockdata = data.data;
+							var stockdata = data;
 							$.each(stockdata, function(index,stockinfo){
 								//start comparing now
 								//var stocklastvalue = stockinfo.last;
-								console.log(stockinfo);
+								console.log(stockinfo.last);
 
 							});
 						}

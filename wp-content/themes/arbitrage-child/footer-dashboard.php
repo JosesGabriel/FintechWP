@@ -374,11 +374,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 					if(phonenum == "nocp"){
 						console.log("no phonenum");
+						$('#modal-phonenum').modal('show');
 					}
-					console.log("here");
-					console.log(<?php echo $userid; ?>);
-				}else{
-					console.log("not here");
+				
 				}
 			});
 			//jQuery('.ddropbase a').click(function(e){

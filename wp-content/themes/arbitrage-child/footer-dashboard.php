@@ -156,7 +156,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function(index, value) {
 					//condition here if stock is in the watchlist, do not append.
-					//if('<?php echo $value['stockname']; ?>' !== value.symbol){
+					//if('<?php //echo $value['stockname']; ?>' !== value.symbol){
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					//}	

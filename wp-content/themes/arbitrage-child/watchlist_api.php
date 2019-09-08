@@ -94,8 +94,8 @@ function getSMS(){
               
             }
             #push userdata to array
-            $result["data"] = $userdata;
-            //array_push($result,$userdata);
+            //$result["data"] = $userdata;
+            array_push($result["data"],$userdata);
         }
 
     }

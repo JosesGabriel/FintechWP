@@ -68,7 +68,14 @@
 						},
 						success: function(data){
 							console.log(stockname);
-							console.log(data.data);
+							//console.log(data.data);
+							var stockdata = data.data;
+							$.each(stockdata, function(index,stockinfo){
+								//start comparing now
+								var stocklastvalue = stockinfo.last;
+								console.log(stocklastvalue);
+
+							});
 						}
 					});
 				});

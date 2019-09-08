@@ -64,14 +64,84 @@
 						url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
 						dataType: 'json',
 						success: function(data){
-							console.log(stockname);
-							console.log(data.data.last);
-							var stockdata = data;
-							$.each(stockdata, function(index,stockinfo){
-								//start comparing now
-								//console.log(stockinfo.data.last);
+							//console.log(stockname);
+							//console.log(data.data.last);
+							var stocklastdata = parseFloat(data.data.last);
 
-							});
+							//compare now
+
+							//Entry Price
+							if ("dcondition_entry_price" in dinfo) {
+								if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
+									var dslert = '<div class="noti-message">';
+										dslert += '<div class="vertical-align">';
+											dslert += '<a class="cont-logo">';
+												dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+											dslert += '</a>';
+											dslert += '<div class="md-rightside">';
+												dslert += '<a class="cont-bodymessage">';
+													dslert += 'Buy Now! <br>';
+													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+													
+												dslert += '</a>';
+												dslert += '<div class="op-btnchart">';
+													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-close xclsbtn">Close</div>';
+												dslert += '</div>';
+											dslert += '</div>';
+										dslert += '</div>';
+									dslert += '</div>';
+									jQuery(".alert-handler").append(dslert);
+								}
+							}
+							//stoplosspoint
+							if ("dcondition_stop_loss_point" in dinfo) {
+								if (parseFloat(dinfo.dcondition_stop_loss_point) > stocklastdata.toFixed(2)) {
+									var dslert = '<div class="noti-message">';
+										dslert += '<div class="vertical-align">';
+											dslert += '<a class="cont-logo">';
+												dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+											dslert += '</a>';
+											dslert += '<div class="md-rightside">';
+												dslert += '<a class="cont-bodymessage">';
+													dslert += 'Sell Now and Stop your loss! <br>';
+													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+													
+												dslert += '</a>';
+												dslert += '<div class="op-btnchart">';
+													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-close xclsbtn">Close</div>';
+												dslert += '</div>';
+											dslert += '</div>';
+										dslert += '</div>';
+									dslert += '</div>';
+									jQuery(".alert-handler").append(dslert);
+								}
+							}
+							//takeprofit
+							if ("dcondition_take_profit_point" in dinfo) {
+								if (parseFloat(dinfo.dcondition_take_profit_point) < stocklastdata.toFixed(2)) {
+									var dslert = '<div class="noti-message">';
+										dslert += '<div class="vertical-align">';
+											dslert += '<a class="cont-logo">';
+												dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+											dslert += '</a>';
+											dslert += '<div class="md-rightside">';
+												dslert += '<a class="cont-bodymessage">';
+													dslert += 'Sell Now and Secure your Profit! <br>';
+													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+													
+												dslert += '</a>';
+												dslert += '<div class="op-btnchart">';
+													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-close xclsbtn">Close</div>';
+												dslert += '</div>';
+											dslert += '</div>';
+										dslert += '</div>';
+									dslert += '</div>';
+									jQuery(".alert-handler").append(dslert);
+								}
+							}	
 						}
 					});
 				});

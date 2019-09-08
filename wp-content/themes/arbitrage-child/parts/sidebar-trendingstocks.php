@@ -74,7 +74,6 @@ jQuery(".stocks-hidden-content").click(function () {
             $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
             // echo "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND post_date > ".$date;
 
-            // print_r($dsprest);
             $countpstock = 0;
             $isbull = 0;
             foreach ($dsprest as $rsffkey => $rsffvalue) {

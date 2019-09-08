@@ -154,73 +154,73 @@ function sentiment_callback() {
 }
 
 
-add_shortcode('testme', 'recent_posts_function');
-function recent_posts_function() {
-  //  $ismetadis = get_user_meta(get_current_user_id(), '_watchlist_instrumental', true);
+// add_shortcode('testme', 'recent_posts_function');
+// function recent_posts_function() {
+//   //  $ismetadis = get_user_meta(get_current_user_id(), '_watchlist_instrumental', true);
 
-  // 	$dlistoftada = [];
-  // 	$newtickerme = [];
+//   // 	$dlistoftada = [];
+//   // 	$newtickerme = [];
 
-  // 	if ($ismetadis) {
-  // 		foreach ($ismetadis as $value) {
-		// 	$dlisrofalert = [];
-		// 	$dlisrofalert['stock'] = $value['stockname'];
-		// 	$dlisrofalert['alerts'] = [];
+//   // 	if ($ismetadis) {
+//   // 		foreach ($ismetadis as $value) {
+// 		// 	$dlisrofalert = [];
+// 		// 	$dlisrofalert['stock'] = $value['stockname'];
+// 		// 	$dlisrofalert['alerts'] = [];
 
-		// 	$curl = curl_init();
-		// 	curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-		// 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		// 	$dwatchinfo = curl_exec($curl);
-		// 	curl_close($curl);
+// 		// 	$curl = curl_init();
+// 		// 	curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
+// 		// 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+// 		// 	$dwatchinfo = curl_exec($curl);
+// 		// 	curl_close($curl);
 
-		// 	$dstockinfo = json_decode($dwatchinfo);
+// 		// 	$dstockinfo = json_decode($dwatchinfo);
 
-		// 	foreach ($dstockinfo->stock as $stockvalue) {
-		// 		$dlisrofalert['current_price'] = $stockvalue->price->amount;
-		// 		if (isset($value['dconnumber_entry_price'])) {
-		// 			if ($value['dconnumber_entry_price'] == $stockvalue->price->amount) {
-		// 				array_push($dlisrofalert['alerts'], 'entry_price');
-		// 			}
-		// 		}
+// 		// 	foreach ($dstockinfo->stock as $stockvalue) {
+// 		// 		$dlisrofalert['current_price'] = $stockvalue->price->amount;
+// 		// 		if (isset($value['dconnumber_entry_price'])) {
+// 		// 			if ($value['dconnumber_entry_price'] == $stockvalue->price->amount) {
+// 		// 				array_push($dlisrofalert['alerts'], 'entry_price');
+// 		// 			}
+// 		// 		}
 				
-		// 		if (isset($value['dconnumber_take_profit_point'])) {
-		// 			if ($value['dconnumber_take_profit_point'] < $stockvalue->price->amount) {
-		// 				array_push($dlisrofalert['alerts'], 'take_profit_point');
-		// 			}
-		// 		}
+// 		// 		if (isset($value['dconnumber_take_profit_point'])) {
+// 		// 			if ($value['dconnumber_take_profit_point'] < $stockvalue->price->amount) {
+// 		// 				array_push($dlisrofalert['alerts'], 'take_profit_point');
+// 		// 			}
+// 		// 		}
 
-		// 		if (isset($value['dconnumber_stop_loss_point'])) {
-		// 			if ($value['dconnumber_stop_loss_point'] > $stockvalue->price->amount) {
-		// 			// if ('15' > $stockvalue->price->amount) {
-		// 				array_push($dlisrofalert['alerts'], 'stop_loss_point');
-		// 			}
-		// 		}
-		// 	}
+// 		// 		if (isset($value['dconnumber_stop_loss_point'])) {
+// 		// 			if ($value['dconnumber_stop_loss_point'] > $stockvalue->price->amount) {
+// 		// 			// if ('15' > $stockvalue->price->amount) {
+// 		// 				array_push($dlisrofalert['alerts'], 'stop_loss_point');
+// 		// 			}
+// 		// 		}
+// 		// 	}
 
 			
 
-		// 	// if (!empty($dlisrofalert['alerts'])) {
-		// 		if ($value['isticked'] >= strtotime('-10 minutes')) {
-		// 			$value['isticked'] = time();
-		// 			array_push($dlistoftada, $dlisrofalert);
-		// 			array_push($newtickerme, $value);
-		// 			// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $havemeta);
-		// 		} else {
-		// 			array_push($newtickerme, $value);
-		// 		}
+// 		// 	// if (!empty($dlisrofalert['alerts'])) {
+// 		// 		if ($value['isticked'] >= strtotime('-10 minutes')) {
+// 		// 			$value['isticked'] = time();
+// 		// 			array_push($dlistoftada, $dlisrofalert);
+// 		// 			array_push($newtickerme, $value);
+// 		// 			// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $havemeta);
+// 		// 		} else {
+// 		// 			array_push($newtickerme, $value);
+// 		// 		}
 				
-		// 	// }
-		// }
-		// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $newtickerme);
+// 		// 	// }
+// 		// }
+// 		// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $newtickerme);
 
-  // 	}
+//   // 	}
 	
 
-  // 	// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $newtickerme);
-  //  	print_r($ismetadis);
-  //  	print_r($newtickerme);
+//   // 	// update_user_meta(get_current_user_id(), '_watchlist_instrumental', $newtickerme);
+//   //  	print_r($ismetadis);
+//   //  	print_r($newtickerme);
 
-}
+// }
 
 
 add_action( 'show_user_profile', 'extra_user_profile_fields' );

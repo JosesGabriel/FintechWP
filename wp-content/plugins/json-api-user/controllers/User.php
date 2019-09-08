@@ -878,8 +878,6 @@ $user_info = get_userdata(  $user_id );
   'comment_approved' => $comment_status,
    );
 
-//print_r($data);
-
  $comment_id = wp_insert_comment($data);
  
  return array(

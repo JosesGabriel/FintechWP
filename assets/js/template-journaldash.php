@@ -1449,10 +1449,6 @@ get_header('dashboard');
 <!-- BOF SELL trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Log') {
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
-
         $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
@@ -1662,7 +1658,6 @@ if ($getdstocks && $getdstocks != '') {
             delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
 
             // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
-            // print_r($dsotcksss);
         }
         delete_user_meta(get_current_user_id(), '_trade_list');
 
@@ -1791,8 +1786,6 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         // code...
 
                                                                                         $dstockinfo = $gerdqoute->data->$value;
-
-                                                                                        // print_r($dstockinfo);
 
                                                                                         $totalmarketvalue = 0;
                                                                                         $dtotalcosts = 0;
@@ -2075,12 +2068,6 @@ if ($getdstocks && $getdstocks != '') {
                                                         }
 
                                                     ?>
-                                                    <!-- <pre>
-														<?php print_r($dtotalpl); ?>
-													</pre> -->
-													<!-- <pre>
-														<?php print_r($dlistofsells); ?>
-													</pre> -->
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -2459,9 +2446,6 @@ if ($getdstocks && $getdstocks != '') {
                                                             </div>
                                                         </div>
 
-                                                        <!-- <pre>
-                                                        	<?php print_r($alltradelogs); ?>
-                                                        </pre> -->
 														<div class="col-md-5">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">

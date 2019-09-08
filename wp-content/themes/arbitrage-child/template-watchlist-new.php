@@ -287,9 +287,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																		</div>
 																		<br style="clear:both;">
 																	</div> -->
-                                                                    <!-- wathlist phone number modal -->         
 
 
+                                                                    <!-- wathlist phone number modal -->        
                                                                 	<div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
@@ -306,7 +306,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																						<div class="dinnerform">
 																							<div class="dinitem">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone Number</h5>
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
+																									<div class="dninput"><input type="text" name="dcellnum" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -338,10 +338,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			</div>
 																		</div>
 																	</div>
-
-
-
                                                                     <!-- wathlist phone number modal -->             
+
+
+
 																	<div class="dparams">
 																		<ul>
 																			<?php if (isset($value['dcondition_entry_price']) && $value['dconnumber_entry_price'] > 0 ): ?>

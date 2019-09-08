@@ -65,11 +65,11 @@
 						dataType: 'json',
 						success: function(data){
 							console.log(stockname);
-							//console.log(data.data);
+							console.log(data.data.last);
 							var stockdata = data;
 							$.each(stockdata, function(index,stockinfo){
 								//start comparing now
-								console.log(stockinfo.data.last);
+								//console.log(stockinfo.data.last);
 
 							});
 						}

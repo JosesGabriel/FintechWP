@@ -88,7 +88,6 @@ if (typeof angular !== 'undefined') {
           }
       }
 	?>
-	// console.log("<?php echo working_days_ago('9'); ?>");
 
 	app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
 		$scope.options = {

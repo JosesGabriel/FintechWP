@@ -93,7 +93,7 @@ $userID = $current_user->ID;
 									  <div class="onbfollow">
 									  		
 
-									  		<a href="#" id="mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
+									  		<a href="#" id="mingle-btn" style="border: 1.3px solid #e77e24;" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
 									  		
 										  <!-- <a href="#" id="mingle-btn" class="um-follow-btn mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 									  </div>

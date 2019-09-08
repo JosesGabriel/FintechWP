@@ -19,10 +19,7 @@ date_default_timezone_set('Asia/Manila');
 $staticstock = '["2GO","8990P","AAA","AB","ABA","ABC","ABG","ABS","ABSP","AC","ACE","ACPA","ACPB1","ACPB2","ACR","AEV","AGI","ALCO","ALCPB","ALHI","ALI","ALL","ANI","ANS","AP","APC","APL","APO","APX","AR","ARA","AT","ATI","ATN","ATNB","AUB","BC","BCB","BCOR","BCP","BDO","BEL","BH","BHI","BKR","BLFI","BLOOM","BMM","BPI","BRN","BSC","CA","CAB","CAT","CDC","CEB","CEI","CEU","CHI","CHIB","CHP","CIC","CIP","CLC","CLI","CNPF","COAL","COL","COSCO","CPG","CPM","CPV","CPVB","CROWN","CSB","CYBR","DAVIN","DD","DDPR","DELM","DFNN","DIZ","DMC","DMCP","DMPA1","DMPA2","DMW","DNA","DNL","DTEL","DWC","EAGLE","ECP","EDC","EEI","EG","EIBA","EIBB","ELI","EMP","EURO","EVER","EW","FAF","FB","FBP","FBP2","FDC","FERRO","FEU","FFI","FGEN","FGENF","FGENG","FIN","FJP","FJPB","FLI","FMETF","FNI","FOOD","FPH","FPHP","FPHPC","FPI","FYN","FYNB","GEO","GERI","GLO","GLOPA","GLOPP","GMA7","GMAP","GPH","GREEN","GSMI","GTCAP","GTPPA","GTPPB","H2O","HDG","HI","HLCM","HOUSE","HVN","I","ICT","IDC","IMI","IMP","IND","ION","IPM","IPO","IRC","IS","ISM","JAS","JFC","JGS","JOH","KEP","KPH","KPHB","LAND","LBC","LC","LCB","LFM","LIHC","LMG","LOTO","LPZ","LR","LRP","LRW","LSC","LTG","M-O","MA","MAB","MAC","MACAY","MAH","MAHB","MARC","MAXS","MB","MBC","MBT","MED","MEG","MER","MFC","MFIN","MG","MGH","MHC","MJC","MJIC","MPI","MRC","MRP","MRSGI","MVC","MWC","MWIDE","MWP","NI","NIKL","NOW","NRCP","NXGEN","OM","OPM","OPMB","ORE","OV","PA","PAL","PAX","PBB","PBC","PCOR","PCP","PERC","PGOLD","PHA","PHC","PHEN","PHES","PHN","PIP","PIZZA","PLC","PMPC","PMT","PNB","PNC","PNX","PNX3A","PNX3B","PNXP","POPI","PORT","PPC","PPG","PRC","PRF2A","PRF2B","PRIM","PRMX","PRO","PSB","PSE","PSEI","PTC","PTT","PX","PXP","RCB","RCI","REG","RFM","RLC","RLT","ROCK","ROX","RRHI","RWM","SBS","SCC","SECB","SEVN","SFI","SFIP","SGI","SGP","SHLPH","SHNG","SLF","SLI","SM","SMC","SMC2A","SMC2B","SMC2C","SMC2D","SMC2E","SMC2F","SMC2G","SMC2H","SMC2I","SMCP1","SMPH","SOC","SPC","SPM","SRDC","SSI","SSP","STI","STN","STR","SUN","SVC","T","TBGI","TECB2","TECH","TEL","TFC","TFHI","TLII","TLJJ","TUGS","UBP","UNI","UPM","URC","V","VITA","VLL","VMC","VUL","VVT","WEB","WIN","WLCON","WPI","X","ZHI"]';
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
-// echo "on here";
-// echo "<pre>";
-// print_r($havemeta);
-// echo "</pre>";
+
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
@@ -73,7 +70,10 @@ if (isset($_GET['remove'])) {
     wp_redirect( 'https://arbitrage.ph/watchlist' );
 }
 
-
+if(isset($_GET['addcp'])){
+    $cpnum = $_GET['addcp'];
+    add_user_meta( $userID, 'cpnum', $cpnum, true);
+}
 
 
 //removing date compare function as it broke the page:
@@ -143,6 +143,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 											</ul>
 										</div> -->
 										<h2 class="watchtitle">Watchlist</h2>
+                                        <button class="btn btn-primary btn-sm" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none !important">
 									</div>
 									<div class="box-portlet-content">
 										<div class="dtabcontent">
@@ -289,56 +290,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div> -->
 
 
-                                                                    <!-- wathlist phone number modal -->        
-                                                                	<div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-																			<div class="modal-content">
-																				<div class="modal-header header-depo">
-																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add a Cellphone Number</h5>
-																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																						<i class="fas fa-times modal-btn-close-deposit"></i>
-																					</button>
-																				</div>
-																				<hr class="style14 style15">
-																				<form action="/watchlist" method="post" class="add-funds-show depotincome">
-																				<div class="modal-body depo-body">
-																					<div class="dmainform">
-																						<div class="dinnerform">
-																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone Number</h5>
-																									<div class="dninput"><input type="text" name="dcellnum" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-
-																					<div class="modal-footer footer-depo">
-																						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
-																						<input type="hidden" name="istype" value="deposit">
-																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
-																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
-																					</div>
-																				</form>
-																				<form action="/watchlist" method="post" class="add-funds-shows dividincome" style="display: none;">
-																						<div class="modal-body depo-body">
-																							<div class="dmainform">
-																								<div class="dinnerform">
-																									<div class="dinitem">
-																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																						<div class="modal-footer footer-depo">
-																						</div>
-																				</form>
-																			</div>
-																		</div>
-																	</div>
-                                                                    <!-- wathlist phone number modal -->             
+                                                              
 
 
 
@@ -519,6 +471,43 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 												</div>
 											</div>	
 											<div class="dclosetab addwatchtab " style="width: 271px;">
+
+
+                                                <!-- wathlist phone number modal -->    
+                                                <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+																			<div class="modal-content">
+																				<div class="modal-header header-depo">
+																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Cellphone Number</h5>
+																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+																						<i class="fas fa-times modal-btn-close-deposit"></i>
+																					</button>
+																				</div>
+																				<hr class="style14 style15">
+																				<form action="/watchlist" method="post" class="add-funds-show depotincome">
+																				<div class="modal-body depo-body">
+																					<div class="dmainform">
+																						<div class="dinnerform">
+																							<div class="dinitem">
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
+																									<div class="dninput"><input type="text" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+
+																					<div class="modal-footer footer-depo">
+																						<a href="#" id="cpsubmitbtn" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
+																					</div>
+																				</form>
+
+																			</div>
+																		</div>
+																	</div>
+                                                <!-- wathlist phone number modal -->    
+
+
+
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">
@@ -2087,6 +2076,9 @@ h2.watchtitle {
 	background-color: #142b46;
 	border-radius: 15px;
 	width: 500px;
+}
+.modal-content {
+		background: #142c46;
 }
 .swal2-text, .swal2-title {
 	color: #fff !important;

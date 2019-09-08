@@ -133,10 +133,10 @@ get_header('dashboard');
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
+    	color: #e77e24;
 	}
 	#removes-btn {
 		border-radius: 26px !important;
@@ -1493,9 +1493,9 @@ get_header('dashboard');
 <!-- BOF SELL trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Log') {
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
 
         $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
@@ -2156,8 +2156,6 @@ if ($getdstocks && $getdstocks != '') {
 																							$dstockinfo->last = 100.50;
 																						}
 
-                                                                                        // print_r($dstockinfo);
-
                                                                                         $totalmarketvalue = 0;
                                                                                         $dtotalcosts = 0;
                                                                                         $dselltotal = 0;
@@ -2454,12 +2452,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         }
 
                                                     ?>
-                                                    <!-- <pre>
-														<?php print_r($dtotalpl); ?>
-													</pre> -->
-													<!-- <pre>
-														<?php print_r($dlistofsells); ?>
-													</pre> -->
+
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -2840,9 +2833,6 @@ if ($getdstocks && $getdstocks != '') {
                                                             </div>
                                                         </div>
 
-                                                        <!-- <pre>
-                                                        	<?php print_r($alltradelogs); ?>
-                                                        </pre> -->
 														<div class="col-md-5">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
@@ -4251,7 +4241,6 @@ if ($getdstocks && $getdstocks != '') {
 														jQuery('.textfield-buyprice').keyup(function(){
 															
 															var inputVal = jQuery(this).val().length;													
-                                                            console.log(inputVal);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
@@ -4263,7 +4252,6 @@ if ($getdstocks && $getdstocks != '') {
 
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
-															console.log(inputVal2);
 															if(inputVal2 != 0){
 																y = 1
 															}
@@ -4787,7 +4775,6 @@ if ($getdstocks && $getdstocks != '') {
 		//jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
-			console.log(dlogid);
 
 			swal({
 			title: "Are you sure?",
@@ -4801,17 +4788,13 @@ if ($getdstocks && $getdstocks != '') {
 					jQuery(this).parents(".dloglist").addClass("housed");
 					jQuery(".deleteformitem").find("#todelete").val(dlogid);
 					jQuery(".deleteformitem").submit();
-				} else {
-					// swal("Your imaginary file is safe!");
-				}
+				} 
 			});
 		});
 
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
-			console.log(dstocks);
-			
 
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
@@ -4844,7 +4827,6 @@ if ($getdstocks && $getdstocks != '') {
 		});
 
 		jQuery(".dloadform").click(function(e){
-			console.log("form into");
 			jQuery(".dentertrade").submit();
 
 		});
@@ -4853,9 +4835,6 @@ if ($getdstocks && $getdstocks != '') {
 		//$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");
-
-  			//console.log('toggle click!');
-
 		//});
 
 		jQuery(".depotbutton").click(function(e){
@@ -4864,10 +4843,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".depotincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4877,10 +4854,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".dividincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4905,10 +4880,7 @@ if ($getdstocks && $getdstocks != '') {
 				dangerMode: true,
 			}).then((willDelete) => {
 			if (willDelete) {
-				console.log("here");
 				jQuery('.resetform').submit();
-			} else {
-				// swal("Your imaginary file is safe!");
 			}
 			});
 		});
@@ -4923,28 +4895,19 @@ if ($getdstocks && $getdstocks != '') {
 					if (!jQuery(this).parents(".modal-content").find(".errormessage").length) {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
-
-					console.log("cant withdraw");
-				} else {
-					console.log("you may");
 				}
 			} else {
 				e.preventDefault();
 			}
-
-
-			// console.log("here");
 		});
 
 		jQuery(".dmoveto").click(function(e){
 			e.preventDefault();
 			// ptchangenum
-			// console.log("southboys");
 			// jQuery("#ptchangenum").submit();
 			var dnumsec = jQuery("#ptchangenum").find("#ptnum").val();
-			console.log(dnumsec);
 			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
-				console.log("cant go");
+
 			} else {
 				jQuery("#ptchangenum").submit();
 			}
@@ -4953,12 +4916,10 @@ if ($getdstocks && $getdstocks != '') {
 		jQuery(".lddmoveto").click(function(e){
 			e.preventDefault();
 			// ptchangenum
-			// console.log("southboys");
 			// jQuery("#ptchangenum").submit();
 			var dnumsec = jQuery("#ldchangenum").find("#ldnum").val();
-			console.log(dnumsec);
 			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
-				console.log("cant go");
+
 			} else {
 				jQuery("#ldchangenum").submit();
 			}
@@ -4985,7 +4946,6 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var td =  $(".tdata").text().length
-    			console.log("keyword=>"+ keyword);
     			var tcolor;
     			for(var i = 0; i < totalrow; i++){
     				var tdata = $('#tdata' + i).text();
@@ -4999,14 +4959,11 @@ if ($getdstocks && $getdstocks != '') {
     				var tpercent = $('#tpercent' + i).text();
     				var dprofit = $('#dprofit' + i).val();
     				var deletelog = $('#deletelog' + i).val();
-    				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
     				//if(keyword == tdata){
     				var rgxp = new RegExp(keyword, "gi");
 
     				if (tdata.match(rgxp)) {
-
-    					console.log("success");
 
 		    				if(dprofit > 0 ){
 		    					tcolor = 'txtgreen';
@@ -5048,7 +5005,6 @@ if ($getdstocks && $getdstocks != '') {
         //     var currentVal = jQuery(this).val();
         //     var testDecimal = testDecimals(currentVal);
         //     if (testDecimal.length > 1) {
-        //         console.log("You cannot enter more than one decimal point");
         //         currentVal = currentVal.slice(0, -1);
         //     }
         //     jQuery(this).val(replaceCommas(currentVal));
@@ -6134,7 +6090,6 @@ if ($getdstocks && $getdstocks != '') {
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

@@ -38,9 +38,9 @@ $currentdate = date("Y-m-d", time());
 	
 
 	if (isset($_POST) && !empty($_POST)):
-		echo "<pre>";
-			print_r($_POST);
-		echo "</pre>";
+		// echo "<pre>";
+		// 	print_r($_POST);
+		// echo "</pre>";
 		if (isset($_POST['dtype']) && $_POST['dtype'] == 'change_from_user') {
 			echo 'here';
 			 update_user_meta( get_current_user_id(), 'refforuser', $_POST['drefcodehere'] );

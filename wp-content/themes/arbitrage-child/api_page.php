@@ -51,10 +51,6 @@
 		
 		$dlast = $dstock->open;
 
-		// echo "<pre>";
-		// print_r($dlast);
-		// echo "</pre>";
-
 		$bulltrades = 0;
 		$beartrades = 0;
 		foreach ($trades as $key => $value) {
@@ -148,8 +144,6 @@
 			usort($isbullbear['bull'], function($a, $b) {
 				return $b['price'] <=> $a['price'];
 			});
-
-			// print_r($isbullbear);
 
 			$weight = [.90, .80, .70, .60, .50, .40, .30]; // the rest is 20%
 
@@ -262,7 +256,6 @@
 		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($dsentilist);
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbull'){ // market sentiment add sentiment
@@ -336,11 +329,7 @@
 		$dpercbear = (($dfinbear + $dtradd->bear) / $dtotalall) * 100;
 		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
-		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($dsentilist);
-
-		
-
+		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );		
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $dtradd->bull, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
@@ -435,7 +424,6 @@
 		
 
 		$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($_GET['stock']);
 
 		if ($diffDays < 0) {
 			$dlistousers = array();
@@ -474,9 +462,6 @@
 
 		$dtradd = json_decode(getpointtrades($_GET['stock']));
 		
-		// print_r($dtradd);
-
-
 		$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
 
 		$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;

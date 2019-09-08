@@ -842,9 +842,6 @@
 
             var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/[^0-9\.]/g, '');
 
-            console.log('vr_idenentryprice');
-            console.log(vr_idenentryprice);
-
 			var vr_risktoler = jQuery('#risktoler').val();
 
 			var vr_targetprof = jQuery('#targetprof').val();
@@ -860,10 +857,6 @@
 			var vr_takeprofitpricetot2 = Number(vr_idenentryprice) + Number(vr_takeprofitpricetot1);
 
             //var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2))
-
-            console.log('Take Profit Price');
-            console.log(vr_takeprofitpricetot2.toFixed(2));
-            console.log(numeral(vr_takeprofitpricetot2).format('0,0.00'));
 
             var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2));
 
@@ -929,13 +922,7 @@
 
 			}			
 
-
-            console.log('boardlotget_val');
-            console.log(boardlotget_val);
-
 			var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);
-
-			
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
@@ -972,7 +959,6 @@
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

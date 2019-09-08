@@ -238,13 +238,8 @@ $cdnorlocal = get_home_url();
                     jQuery('.um-notification-live-count.countx_max').html("9+");
                 }
                 // var counter = count = $(".um-notification-live-count.counter").empty();
-                // console.log('pre if', counter, count, event.target)
                 // var numbercount = '10';
                 // var count = counter;
-                
-                // console.log('after', count);
-                
-                
             });
     </script>
 </header>

@@ -70,7 +70,7 @@ function getSMS(){
               
             }
             $output = json_encode($result);
-            echo $result;
+            echo $output;
         }
 
     }

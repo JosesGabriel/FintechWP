@@ -70,6 +70,7 @@
 					success: function(data) {
 					   //console.log(data.data);
 					  var allinfordata = data.data;
+					  console.log("test in alertsß");
 					  $.each(dlistofstocks, function(index, dinfo){
 					  	var istockname = dinfo.stockname;
 					  	var dstockdd;

@@ -2261,12 +2261,6 @@
 		var modalzindex = 10000;
 		var nightmode = localStorage.getItem('theme') == 'dark';
         var socket = io.connect('https://dev-socket-api.arbitrage.ph');
-        socket.on('reconnect', function() {
-            console.log('reconnected to websocket');
-        });
-        socket.on('disconnect', function() {
-        	console.log('You have been disconnected!');
-        });
 		$(document).ready(function() {
 			App.init();
 		    $( function () {
@@ -2441,7 +2435,7 @@
 			$('.inpt_data_price, .inpt_data_qty').keyup(function() {
 				var buyprice = $('.inpt_data_price').val().replace(/[^0-9\.]/g, '');
 				var buyquanti = $('.inpt_data_qty').val().replace(/[^0-9\.]/g, '');
-				console.log(buyprice +" ~ "+ buyquanti);
+
 				if (parseFloat(buyprice) > 0 && parseFloat(buyquanti) > 0) {
 					var marketvalx = parseFloat(buyprice) * parseFloat(buyquanti);
 					var dfees = fees(marketvalx);
@@ -2507,9 +2501,6 @@
 					var dpathl = pathname.split("/");
 					dpathl = dpathl.filter(function(el) { return el; });
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-					console.log(dpathl);
-
-					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
 					jQuery.ajax({
 						method: "POST",
@@ -2525,7 +2516,6 @@
 							'dbuttonact' : dclass
 						},
 						success: function(data) {
-						console.log(data);
 
 						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
 						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
@@ -2579,9 +2569,6 @@
 					var dpathl = pathname.split("/");
 					dpathl = dpathl.filter(function(el) { return el; });
 					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-					console.log(dpathl);
-
-					console.log("<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,);
 
 					jQuery.ajax({
 						method: "POST",
@@ -2597,7 +2584,6 @@
 							'dbuttonact' : dclass
 						},
 						success: function(data) {
-						console.log(data);
 
 						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
 						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
@@ -2653,16 +2639,11 @@
 
 			var dbuypower = $(".input_buy_power").attr('data-dbaseval');
 			var dpurprice = $(".inpt_data_price").val().replace(/[^0-9\.]/g, '');
-			var dpurqty = $(".inpt_data_qty").val().replace(/[^0-9\.]/g, '');
-
-			console.log(dbuypower);
-			console.log(dpurprice+"x"+dpurqty+"="+(parseFloat(dpurprice) * parseFloat(dpurqty)));
-		
+			var dpurqty = $(".inpt_data_qty").val().replace(/[^0-9\.]/g, '');		
 			
 			if (parseFloat(dbuypower) < (parseFloat(dpurprice) * parseFloat(dpurqty))) {
 				e.preventDefault();
 				$(".derrormes").text('You can only purchase a maximum of '+ numeral(dbuypower / dpurprice).format('0,0.00') +' stocks if the price is ₱'+ numeral(dpurprice).format('0,0.00')  );
-				// console.log('You can only purchase a maximum of '+parseInt(dbuypower / dpurprice)+' stocks if the price is 	₱'+dpurprice);
 			}else {
 				if(x == 1 && y == 1){
 				$('.chart-loader').css("display","block");
@@ -2682,7 +2663,6 @@
 				var currentVal = jQuery(this).val();
 				var testDecimal = testDecimals(currentVal);
 				if (testDecimal.length > 1) {
-					console.log("You cannot enter more than one decimal point");
 					currentVal = currentVal.slice(0, -1);
 				}
 				jQuery(this).val(replaceCommas(currentVal));

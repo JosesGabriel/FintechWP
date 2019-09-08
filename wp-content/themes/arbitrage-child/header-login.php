@@ -180,8 +180,7 @@ $user = wp_get_current_user();
 							jQuery("#email__text").show();
 						},
 						error: function(requestObject, error, errorThrown) {
-							console.log('Email error');
-							console.log(error);
+
 						}
 					});
 				}

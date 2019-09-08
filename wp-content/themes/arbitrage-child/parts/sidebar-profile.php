@@ -175,7 +175,6 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                 jQuery('.true-name a').hide();
                 jQuery('.show-name').show();
                 jQuery('.trading-name').text('Displaying trading name');
-                console.log('checked');
 
                 jQuery.ajax({
                     method: "GET",
@@ -190,7 +189,6 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }
@@ -201,7 +199,6 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                 jQuery('.true-name a').show();
                 jQuery('.show-name').hide();
                 jQuery('.trading-name').text('Displaying real name');
-                console.log('unchecked');
 
                 jQuery.ajax({
                     method: "GET",
@@ -216,7 +213,6 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }

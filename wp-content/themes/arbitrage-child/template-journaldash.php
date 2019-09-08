@@ -4260,7 +4260,6 @@ if ($getdstocks && $getdstocks != '') {
 														jQuery('.textfield-buyprice').keyup(function(){
 															
 															var inputVal = jQuery(this).val().length;													
-                                                            console.log(inputVal);
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
@@ -4272,7 +4271,6 @@ if ($getdstocks && $getdstocks != '') {
 
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
-															console.log(inputVal2);
 															if(inputVal2 != 0){
 																y = 1
 															}
@@ -4796,7 +4794,6 @@ if ($getdstocks && $getdstocks != '') {
 		//jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
-			console.log(dlogid);
 
 			swal({
 			title: "Are you sure?",
@@ -4819,8 +4816,6 @@ if ($getdstocks && $getdstocks != '') {
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
-			console.log(dstocks);
-			
 
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
@@ -4853,7 +4848,6 @@ if ($getdstocks && $getdstocks != '') {
 		});
 
 		jQuery(".dloadform").click(function(e){
-			console.log("form into");
 			jQuery(".dentertrade").submit();
 
 		});
@@ -4863,8 +4857,6 @@ if ($getdstocks && $getdstocks != '') {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");
 
-  			//console.log('toggle click!');
-
 		//});
 
 		jQuery(".depotbutton").click(function(e){
@@ -4873,10 +4865,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".depotincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4886,10 +4876,8 @@ if ($getdstocks && $getdstocks != '') {
 
 			if(dinputinfo != ""){
 				jQuery(".dividincome").submit();
-				console.log("its not empty");
 			} else {
 				swal("field should not be empty");
-				console.log("it is empty");	
 			}
 		});
 
@@ -4914,11 +4902,8 @@ if ($getdstocks && $getdstocks != '') {
 				dangerMode: true,
 			}).then((willDelete) => {
 			if (willDelete) {
-				console.log("here");
 				jQuery('.resetform').submit();
-			} else {
-				// swal("Your imaginary file is safe!");
-			}
+			} 
 			});
 		});
 
@@ -4932,28 +4917,19 @@ if ($getdstocks && $getdstocks != '') {
 					if (!jQuery(this).parents(".modal-content").find(".errormessage").length) {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
-
-					console.log("cant withdraw");
-				} else {
-					console.log("you may");
 				}
 			} else {
 				e.preventDefault();
 			}
-
-
-			// console.log("here");
 		});
 
 		jQuery(".dmoveto").click(function(e){
 			e.preventDefault();
 			// ptchangenum
-			// console.log("southboys");
 			// jQuery("#ptchangenum").submit();
 			var dnumsec = jQuery("#ptchangenum").find("#ptnum").val();
-			console.log(dnumsec);
 			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
-				console.log("cant go");
+
 			} else {
 				jQuery("#ptchangenum").submit();
 			}
@@ -4962,12 +4938,10 @@ if ($getdstocks && $getdstocks != '') {
 		jQuery(".lddmoveto").click(function(e){
 			e.preventDefault();
 			// ptchangenum
-			// console.log("southboys");
 			// jQuery("#ptchangenum").submit();
 			var dnumsec = jQuery("#ldchangenum").find("#ldnum").val();
-			console.log(dnumsec);
 			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
-				console.log("cant go");
+
 			} else {
 				jQuery("#ldchangenum").submit();
 			}
@@ -4994,7 +4968,6 @@ if ($getdstocks && $getdstocks != '') {
     			//var tdata = new Array($('.tdata').text());
     			//var tdata = [];
     			var td =  $(".tdata").text().length
-    			console.log("keyword=>"+ keyword);
     			var tcolor;
     			for(var i = 0; i < totalrow; i++){
     				var tdata = $('#tdata' + i).text();
@@ -5008,14 +4981,11 @@ if ($getdstocks && $getdstocks != '') {
     				var tpercent = $('#tpercent' + i).text();
     				var dprofit = $('#dprofit' + i).val();
     				var deletelog = $('#deletelog' + i).val();
-    				console.log(tdata + ' - ' + '-total - row' + totalrow);
 
     				//if(keyword == tdata){
     				var rgxp = new RegExp(keyword, "gi");
 
     				if (tdata.match(rgxp)) {
-
-    					console.log("success");
 
 		    				if(dprofit > 0 ){
 		    					tcolor = 'txtgreen';
@@ -5057,7 +5027,6 @@ if ($getdstocks && $getdstocks != '') {
         //     var currentVal = jQuery(this).val();
         //     var testDecimal = testDecimals(currentVal);
         //     if (testDecimal.length > 1) {
-        //         console.log("You cannot enter more than one decimal point");
         //         currentVal = currentVal.slice(0, -1);
         //     }
         //     jQuery(this).val(replaceCommas(currentVal));
@@ -6143,7 +6112,6 @@ if ($getdstocks && $getdstocks != '') {
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

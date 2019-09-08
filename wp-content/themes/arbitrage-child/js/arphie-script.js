@@ -2,7 +2,6 @@ jQuery(document).ready(function(){
 		jQuery(".bbs_bull, .bbs_bear").click(function(e){
 			e.preventDefault();
 			var pathname = window.location.pathname;
-			console.log(pathname);
 			if (!jQuery(this).parents('.bullbearsents').hasClass('clickedthis')) {
 				
 
@@ -14,7 +13,6 @@ jQuery(document).ready(function(){
 				
 				// dpathl = dpathl.filter(function(el) { return el; });
 				// dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-				// console.log(dpathl);
 
 				// jQuery.ajax({
 				//  	method: "POST",
@@ -27,16 +25,10 @@ jQuery(document).ready(function(){
 				// 		'userid' : '<?php echo $user_id; ?>'
 				// 	},
 				// 	success: function(data) {
-				// 	  console.log(data);
-					  
-
 				// 	}
 				// });
 
-			} else {
-				console.log('Cant Click');
 			}
-
 		});
 
 		jQuery( ".bbs_bull, .bbs_bear" ).click(function() {

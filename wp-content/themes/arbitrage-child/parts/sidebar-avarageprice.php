@@ -170,8 +170,6 @@
 
             var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
 
-            console.log(dcount);
-
             if (dcount > 0) {
 
                 var totalcost = 0;
@@ -197,26 +195,14 @@
                         totalcost += nscost;
 
                         costfee += parseFloat(nscost) + parseFloat(getfee(nscost));
-                        // console.log("fees: "+parseFloat(getfee(totalcost)));
-
                     }
 
 
                 });
 
-                //console.log("totalvol: "+totalvolume);
-                //console.log("totalprice: "+totalprice);
-                //console.log("totalcost: "+totalcost);
-                //console.log("costfee: "+costfee);
-
                 // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
                 var finalcost = costfee / totalvolume;
 
-                // console.log("finalcost: "+finalcost);
-
-
-                
-                
                 jQuery("#totalcost").val(numeral(costfee).format('0,0.00'));
 
                 jQuery("#totalposition").val(numeral(totalvolume).format('0,0.00'));
@@ -232,10 +218,6 @@
                 */
 
 
-            } else {
-
-                console.log('cant calculate');
-
             }
 
         });
@@ -249,7 +231,6 @@
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

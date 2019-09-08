@@ -363,9 +363,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				if(this.value == "sms-notif"){
 					//get phone meta
 					//var userid = <?php echo get_current_user_id(); ?>
-					//var phonenum = <?php echo get_user_meta($userid, 'disname', true); ?>
+					//var phonenum = <?php echo get_user_meta(get_current_user_id(), 'cpnum', true); ?>
 					console.log("here");
 					console.log(<?php echo $userid; ?>);
+				}else{
+					console.log("not here");
 				}
 			});
 			//jQuery('.ddropbase a').click(function(e){

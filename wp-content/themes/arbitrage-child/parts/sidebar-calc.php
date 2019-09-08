@@ -471,7 +471,6 @@ jQuery(document).ready(function() {
         var currentVal = jQuery(this).val();
         var testDecimal = testDecimals(currentVal);
         if (testDecimal.length > 1) {
-            console.log("You cannot enter more than one decimal point");
             currentVal = currentVal.slice(0, -1);
         }
         jQuery(this).val(replaceCommas(currentVal));

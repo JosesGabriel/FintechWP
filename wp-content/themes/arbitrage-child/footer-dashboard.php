@@ -71,7 +71,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				var dcondition = jQuery(this).parents('.condition-params').find("#condition-list").val();
 				var dnum = jQuery(this).parents('.condition-params').find('#condition_frequency').val();
-				console.log(dcondition + " ~ " + dnum);
 
 				if (dcondition != "" && dnum != "") {
 					jQuery(this).parents('.condition-params').find('#condition-list option[value='+dcondition+']').hide();
@@ -106,7 +105,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
 				
 				//var countli = jQuery(".listofinfo li").length;
-				console.log(isstock);
 
 				//if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
@@ -158,9 +156,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function(index, value) {
 					//condition here if stock is in the watchlist, do not append.
-					//if('<?php echo $value['stockname']; ?>' !== value.symbol){			
-						//console.log(value.symbol);
-						//console.log("test");
+					//if('<?php echo $value['stockname']; ?>' !== value.symbol){
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					//}	
@@ -226,14 +222,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;
-
-				//console.log($havemeta);
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
-					if('<?php echo $value['stockname']; ?>' !== value.symbol){			
-						console.log(value.symbol);
-						console.log("test");
+					if('<?php echo $value['stockname']; ?>' !== value.symbol){
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					}	
@@ -373,8 +365,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					?>";
 
 					if(phonenum == "nocp"){
-						console.log("no phonenum");
-						
 						$('#btnphonetrigger').click();
 					}
 				
@@ -382,9 +372,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){
-
-				console.log('click me');
-
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
 

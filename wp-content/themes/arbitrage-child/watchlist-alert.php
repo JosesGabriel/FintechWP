@@ -51,13 +51,11 @@
 			    
 			    var minutes = Number(time.match(/:(\d+)/)[1]);
 			    hours = hours*100+minutes;
-			    // console.log(time +" - "+hours);
 			    return hours;
 			}
 
 			function newwatchlist(){
 				var usermetas = <?php echo $ismetadis; ?>;
-				//console.log(usermetas);
 				$.each(usermetas, function(index, dinfo){
 					var stockname = dinfo.stockname;
 					jQuery.ajax({
@@ -65,18 +63,13 @@
 						url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
 						dataType: 'json',
 						success: function(data){
-							console.log(stockname);
-							//console.log(data.data.last);
 							var stocklastdata = parseFloat(data.data.last);
 							
 							//compare now
 
 							//Entry Price
-							console.log(dinfo.dconnumber_entry_price);
-							console.log(dinfo.dconnumber_stop_loss_point);
-							console.log(dinfo.dconnumber_take_profit_point);
+
 								if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
-									console.log("Entry Price Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';
@@ -102,7 +95,6 @@
 							//stoplosspoint
 							
 								if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
-									console.log("Stop Loss Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';
@@ -127,7 +119,6 @@
 							//takeprofit
 							
 								if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
-									console.log("Take Profit Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';

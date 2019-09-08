@@ -839,7 +839,6 @@ select#stockname {
 	jQuery(document).ready(function(){
 
         jQuery("#stockname").on('change', function() {
-            console.log(this.value);
             jQuery("#currentprice").val(this.value);
         });
 		
@@ -919,9 +918,6 @@ select#stockname {
      //       var boardlotget_var = $("#idenentryprice").val();
            
                var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
-           
-            //    console.log('emman sucks');
-            // console.log(boardlotget_var);
 
                boardlotget_var = parseFloat(boardlotget_var);
 
@@ -979,10 +975,6 @@ select#stockname {
             var slotmultiplier = Math.floor(sharestobuy / blots);
             var finalstocks = blots * slotmultiplier;
 
-            console.log(sharestobuy);
-
-                
-
 			// var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
 			var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
 
@@ -1013,7 +1005,6 @@ select#stockname {
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

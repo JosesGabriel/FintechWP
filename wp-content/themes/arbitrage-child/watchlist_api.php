@@ -47,7 +47,7 @@ function getSMS(){
             foreach($usermetas as $usermeta){
                 #get stock name and stock values for comparison
                 $stockname = $usermeta['stockname'];
-
+                $userdata["Stock"] = $stockname;
                 #get PSE data
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$stockname);
@@ -63,30 +63,30 @@ function getSMS(){
                 #start comparing :
 
                 #entry price 
-                $userdata["Entry Message"] = '';
+                $userdata[$stockname . " Entry Message"] = '';
                 if(!empty($usermeta['dconnumber_entry_price'])){
                     $entryprice = floatval($usermeta['dconnumber_entry_price']);
                     if($last_price == $entryprice){
                         #add data and message to array
-                        $userdata["Entry Message"] = 'Buy Now! Current price is now ₱' . $last_price;
+                        $userdata[$stockname . " Entry Message"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
                     }
                 }
                 #stop loss point
-                $userdata["StopLoss Message"] = '';
+                $userdata[$stockname . " StopLoss Message"] = '';
                 if(!empty($usermeta['dconnumber_take_profit_point'])){
                     $stoplosspoint = floatval($usermeta['dconnumber_stop_loss_point']);
                     if($last_price < $stoplosspoint){
                         #add data and message to array
-                        $userdata["StopLoss Message"] = 'Sell Now and Stop your Loss! Current price is now ₱' . $last_price;
+                        $userdata[$stockname . " StopLoss Message"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
                     }
                 }
                 #take profit point
-                $userdata["TakeProfit Message"] = '';
+                $userdata[$stockname . " TakeProfit Message"] = '';
                 if(!empty($usermeta['dconnumber_stop_loss_point'])){
                     $takeprofitpoint = floatval($usermeta['dconnumber_take_profit_point']);
                     if($last_price > $takeprofitpoint){
                         #add data and message to array
-                        $userdata["TakeProfit Message"] = 'Sell Now and Secure you Profit! Current price is now ₱' . $last_price;
+                        $userdata[$stockname . " TakeProfit Message"] = 'Sell Now and Secure you Profit! ' . $stockname . ' Current price is now ₱' . $last_price;
                     }    
                 }
 

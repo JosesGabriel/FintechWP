@@ -365,13 +365,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					?>";
 
 					if(phonenum == "nocp"){
+						console.log('here');
 						$("#modal-phonenum").modal('show'); 
 					}
 				
 				}
 			});
 			jQuery("#cpsubmitbtn").click(function(){
-				var cpnum = $("#txtcpnum").val;
+				var cpnum = $("#txtcpnum").val();
 				console.log(cpnum);
 					
 				$("#modal-phonenum").modal('hide'); 

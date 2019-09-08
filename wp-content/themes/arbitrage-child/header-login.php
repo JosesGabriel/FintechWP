@@ -315,8 +315,8 @@ if(isset($_POST['send'])){
 	
 <?php 
 	if(isset($_GET['active'])){
-		  $all_meta_for_user = get_user_meta( $_GET['active'] );
-		  print_r( $all_meta_for_user );
+		//   $all_meta_for_user = get_user_meta( $_GET['active'] );
+		//   print_r( $all_meta_for_user );
 	}
 ?>
 <?php /* Global CSS Overrides  get_template_part('parts/global', 'css'); */ ?>

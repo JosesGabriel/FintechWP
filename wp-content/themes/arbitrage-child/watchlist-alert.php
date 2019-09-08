@@ -70,11 +70,9 @@
 							console.log(stockname);
 							//console.log(data.data);
 							var stockdata = data;
-							$.each(stockdata, function(index,stockinfo){
+							$.each(stockdata.data, function(index,stockinfo){
 								//start comparing now
-								
-								
-								console.log(stockinfo.message);
+								console.log(stockinfo.last);
 
 							});
 						}

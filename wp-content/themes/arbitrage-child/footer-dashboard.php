@@ -371,11 +371,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				
 				}
 			});
-			jQuery("#smscheckboxli").click(function(){
-				console.log("LI clicked");
-			});
 			jQuery("#cpsubmitbtn").click(function(){
-				var cpnum = $("#txtcpnum").val;
+				var cpnum = $("#txtcpnum").val();
 				console.log(cpnum);
 					
 				$("#modal-phonenum").modal('hide'); 

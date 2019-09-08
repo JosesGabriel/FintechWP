@@ -2109,6 +2109,9 @@ h2.watchtitle {
 	border-radius: 15px;
 	width: 500px;
 }
+.modal-content {
+		background: #142c46;
+}
 .swal2-text, .swal2-title {
 	color: #fff !important;
 }

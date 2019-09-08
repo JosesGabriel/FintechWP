@@ -264,6 +264,10 @@
 
 }
 
+.arb_calcbox input[type="text"]::placeholder {
+    color: white;
+}
+
 .sublbl.after {
 
 	display:inline-block;

@@ -222,7 +222,7 @@ h2.search-permalink {
 
 #mingle-btn {
     border-radius: 26px !important;
-    border: 1.3px solid #6583a8!important;
+    border: 1.3px solid #e77e24 !important;
     padding: 5px 20px !important;
     font-family: 'Nunito', sans-serif;
     color: #6583a8;

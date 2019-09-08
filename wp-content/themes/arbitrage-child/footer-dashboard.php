@@ -371,8 +371,16 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}
 			});
 			jQuery("#cpsubmitbtn").click(function(){
-				$("#modal-phonenum").modal('hide');
-				//save cpnum meta 
+				var cpnum = $("#txtcpnum").val;
+				jQuery.ajax({
+					method: "GET",
+					url: "https://arbitrage.ph/watchlist/?addcp=" + cpnum,
+					success: function(data){
+						console.log("CP num saved!");
+					}
+				});		
+					
+				$("#modal-phonenum").modal('hide'); 
 			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){

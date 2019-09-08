@@ -140,7 +140,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 											</ul>
 										</div> -->
 										<h2 class="watchtitle">Watchlist</h2>
-                                        <button class="btn btn-primary btn-sm" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" >
+                                        <button class="btn btn-primary btn-sm" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none !important">
 									</div>
 									<div class="box-portlet-content">
 										<div class="dtabcontent">
@@ -287,37 +287,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div> -->
 
 
-                                                                    <!-- wathlist phone number modal -->    
-                                                                  <!--<button class="btn btn-primary btn-lg" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none;" > -->
-                                                                	<div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-																			<div class="modal-content">
-																				<div class="modal-header header-depo">
-																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add a Cellphone Number</h5>
-																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																						<i class="fas fa-times modal-btn-close-deposit"></i>
-																					</button>
-																				</div>
-																				<hr class="style14 style15">
-																				<form action="/watchlist" method="post" class="">
-																				<div class="modal-body depo-body">
-																					<div class="dmainform">
-																						<div class="dinnerform">
-																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone Number</h5>
-																									<div class="dninput"><input type="text" name="dcellnum" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-
-																					<div class="modal-footer footer-depo">
-																					</div>
-																				</form>
-																			</div>
-																		</div>
-																	</div> 
-                                                                    <!-- wathlist phone number modal -->             
+                                                              
 
 
 
@@ -498,6 +468,42 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 												</div>
 											</div>	
 											<div class="dclosetab addwatchtab " style="width: 271px;">
+
+
+                                                                <!-- wathlist phone number modal -->    
+                                                                  <!--<button class="btn btn-primary btn-lg" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none;" > -->
+                                                                  <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+																			<div class="modal-content">
+																				<div class="modal-header header-depo">
+																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add a Cellphone Number</h5>
+																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+																						<i class="fas fa-times modal-btn-close-deposit"></i>
+																					</button>
+																				</div>
+																				<hr class="style14 style15">
+																				<form action="/watchlist" method="post" class="add-funds-show depotincome">
+																				<div class="modal-body depo-body">
+																					<div class="dmainform">
+																						<div class="dinnerform">
+																							<div class="dinitem">
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone Number</h5>
+																									<div class="dninput"><input type="text" name="dcellnum" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+
+																					<div class="modal-footer footer-depo">
+																					</div>
+																				</form>
+																			</div>
+																		</div>
+																	</div> 
+                                                                    <!-- wathlist phone number modal -->    
+
+
+
 												<form method="post" action="" id="add-watchlist-param">
 													<div class="instumentinner">
 														<div class="">

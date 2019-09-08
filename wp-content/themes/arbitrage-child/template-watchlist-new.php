@@ -470,13 +470,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 											<div class="dclosetab addwatchtab " style="width: 271px;">
 
 
-                                                                <!-- wathlist phone number modal -->    
-                                                                  <!--<button class="btn btn-primary btn-lg" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none;" > -->
-                                                                  <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <!-- wathlist phone number modal -->    
+                                                <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
-																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add a Cellphone Number</h5>
+																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Cellphone Number</h5>
 																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
 																						<i class="fas fa-times modal-btn-close-deposit"></i>
 																					</button>
@@ -487,20 +486,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone Number</h5>
-																									<div class="dninput"><input type="text" name="dcellnum" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
+																									<div class="dninput"><input type="text" name="cpnum" class="depo-input-field" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
 																					</div>
 
 																					<div class="modal-footer footer-depo">
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
 																					</div>
 																				</form>
+
 																			</div>
 																		</div>
-																	</div> 
-                                                                    <!-- wathlist phone number modal -->    
+																	</div>
+                                                <!-- wathlist phone number modal -->    
 
 
 
@@ -2072,6 +2073,9 @@ h2.watchtitle {
 	background-color: #142b46;
 	border-radius: 15px;
 	width: 500px;
+}
+.modal-content {
+		background: #142c46;
 }
 .swal2-text, .swal2-title {
 	color: #fff !important;

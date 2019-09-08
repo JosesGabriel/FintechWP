@@ -372,7 +372,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}
 			});
 			jQuery("#cpsubmitbtn").click(function(){
-				$("#frmcpnum").submit();
 				var cpnum = $("#txtcpnum").val();
 				console.log(cpnum);
 					

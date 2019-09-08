@@ -143,7 +143,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 											</ul>
 										</div> -->
 										<h2 class="watchtitle">Watchlist</h2>
-                                        <button class="btn btn-primary btn-sm" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none !important">
+                                       
 									</div>
 									<div class="box-portlet-content">
 										<div class="dtabcontent">

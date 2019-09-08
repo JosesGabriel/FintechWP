@@ -365,7 +365,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					?>";
 
 					if(phonenum == "nocp"){
-						$('#btnphonetrigger').click();
+						$("#modal-phonenum").modal('show'); 
 					}
 				
 				}

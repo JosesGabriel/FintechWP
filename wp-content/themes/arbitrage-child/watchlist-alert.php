@@ -54,9 +54,7 @@
 			    // console.log(time +" - "+hours);
 			    return hours;
 			}
-			function testnotif(){
-				<?php echo do_shortcode('[ultimatemember_notice id="3345"]'); ?>
-			}
+
 			function newwatchlist(){
 				var usermetas = <?php echo $ismetadis; ?>;
 				//console.log(usermetas);
@@ -179,7 +177,7 @@
 			    //in between these two times
 			    //checkwatchlist();
 				newwatchlist();
-				testnotif();
+	
 			    $counts = 1;
 			    setInterval(function(){
 			    	$counts++;
@@ -187,7 +185,7 @@
 			    	if ($counts <= 1) {
 			    		//checkwatchlist();
 						newwatchlist();
-						testnotif();
+				
 			    	}
 				    
 				},30000);

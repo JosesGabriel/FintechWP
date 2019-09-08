@@ -41,8 +41,8 @@ function getSMS(){
         $userphone = get_user_meta($user_id->ID, 'cpnum', true);
         #do not even do anything if the user does not have cpnum:
         if(!is_null($userphone)){    
-            array_push($result,$user_id->ID);
-            array_push($result,$userphone);
+            $userdata = array("ID" => $user_id->ID, "phone" => $userphone);
+            array_push($result,$userdata);
             foreach($usermetas as $usermeta){
                 #get stock name and stock values for comparison
                 $stockname = $usermeta['stockname'];

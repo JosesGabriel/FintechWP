@@ -32,14 +32,14 @@ function getSMS(){
     echo $usersmeta; */
 
     global $wpdb;
-    $users = get_users( array( 'fields' => array( 'ID' ) ) );
+    $users = get_users( array( 'fields' => array( 'ID', 'user_email' ) ) );
     $result = [];
     
     foreach($users as $user_id){
         #get user meta per ID
         $usermetas = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
         $userphone = get_user_meta($user_id->ID, 'cpnum', true);
-
+        $useremail = $user_id->user_email;
         #do not include users whow do not have watchlist items
         if(!empty($usermetas)){
             #do not even do anything if the user does not have cpnum:
@@ -47,6 +47,7 @@ function getSMS(){
                 $userdata = [];
                 $userdata["ID"] = $user_id->ID;
                 $userdata["Phone"] = $userphone;
+                $userdata["Email"] = $useremail;
                 foreach($usermetas as $usermeta){
                     $stockdata = [];
                     #get stock name and stock values for comparison

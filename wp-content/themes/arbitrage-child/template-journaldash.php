@@ -1945,10 +1945,10 @@ if ($getdstocks && $getdstocks != '') {
                                                         		</div>
                                                         	</div> -->
 															<?php if($isjounalempty): ?>
-																<div class="sampleData__overlay"></div>
+																<!-- <div class="sampleData__overlay"></div>
 																<div class="sampleData__notification">
 																	Trading analytics display here. <br> It requires at least one complete trading data.
-																</div>
+																</div> -->
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio

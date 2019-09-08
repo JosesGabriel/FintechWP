@@ -73,6 +73,7 @@
 							//Entry Price
 							if ("dcondition_entry_price" in dinfo) {
 								if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
+									console.log("Entry Price Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';
@@ -92,11 +93,13 @@
 										dslert += '</div>';
 									dslert += '</div>';
 									jQuery(".alert-handler").append(dslert);
+
 								}
 							}
 							//stoplosspoint
 							if ("dcondition_stop_loss_point" in dinfo) {
 								if (parseFloat(dinfo.dcondition_stop_loss_point) > stocklastdata.toFixed(2)) {
+									console.log("Stop Loss Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';
@@ -121,6 +124,7 @@
 							//takeprofit
 							if ("dcondition_take_profit_point" in dinfo) {
 								if (parseFloat(dinfo.dcondition_take_profit_point) < stocklastdata.toFixed(2)) {
+									console.log("Take Profit Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
 											dslert += '<a class="cont-logo">';

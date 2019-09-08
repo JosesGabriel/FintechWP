@@ -58,7 +58,19 @@
 				var usermetas = <?php echo $ismetadis; ?>;
 				console.log(usermetas);
 				$.each(usermetas, function(index, dinfo){
-					
+					var stockname = dinfo.stockname;
+					jQuery.ajax({
+						method: "get",
+						url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
+						dataType: 'json',
+						data:{
+							'action' : 'my_custom_action'
+						},
+						success: function(data){
+							console.log(stockname);
+							console.log(data.data);
+						}
+					});
 				});
 
 			}

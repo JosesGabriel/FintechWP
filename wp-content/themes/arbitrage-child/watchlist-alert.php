@@ -56,7 +56,7 @@
 			}
 			function(testnotif){
 				global $um_notifications;
-				<?php echo [ultimatemember_notice id="3345"]; ?>
+				
 			}
 			function newwatchlist(){
 				var usermetas = <?php echo $ismetadis; ?>;

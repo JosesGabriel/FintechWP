@@ -131,7 +131,7 @@ get_header( 'dashboard' );
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
     	color: #6583a8;
@@ -1340,9 +1340,9 @@ get_header( 'dashboard' );
 <?php
 	if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 
-		echo "<pre>";
-			print_r($_POST);
-		echo "</pre>";
+		// echo "<pre>";
+		// 	print_r($_POST);
+		// echo "</pre>";
 
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
 		$user_idd = $curuserid;

@@ -130,7 +130,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 				var dcondition = jQuery(this).parents('.condition-params').find("#condition-list").val();
 				var dnum = jQuery(this).parents('.condition-params').find('#condition_frequency').val();
-				console.log(dcondition + " ~ " + dnum);
 
 				if (dcondition != "" && dnum != "") {
 					jQuery(this).parents('.condition-params').find('#condition-list option[value='+dcondition+']').hide();
@@ -240,10 +239,8 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 				// 		'action' : 'my_custom_action'
 				// 	},
 				// 	success: function(data) {
-				// 	  console.log(data);
 				// 	  	jQuery.each(data, function(mainindex, mainvalue){
 				// 	  		jQuery.each(mainvalue.alerts, function(index, value){
-				// 		  		console.log(value);
 				// 		  		if (value == 'entry_price') {
 				// 		  			jQuery("#entry_price").attr("data-stock", mainvalue.stock).attr("data-price", mainvalue.current_price).trigger('click');
 				// 		  		}
@@ -270,7 +267,6 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 				var minutes = Number(time.match(/:(\d+)/)[1]);
 				hours = hours*100+minutes;
-				console.log(time +" - "+hours);
 				return hours;
 			}
 
@@ -306,11 +302,9 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 			// 				'action' : 'my_custom_action'
 			// 			},
 			// 			success: function(data) {
-			// 			  console.log(data);
 			// 			  // if (!jQuery.isEmptyObject(data.alerts)) {	
 			// 			  	jQuery.each(data, function(mainindex, mainvalue){
 			// 			  		jQuery.each(mainvalue.alerts, function(index, value){
-			// 				  		console.log(value);
 			// 				  		if (value == 'entry_price') {
 			// 				  			jQuery("#entry_price").attr("data-stock", mainvalue.stock).attr("data-price", mainvalue.current_price).trigger('click');
 			// 				  		}

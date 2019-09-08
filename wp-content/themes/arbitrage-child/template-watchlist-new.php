@@ -484,7 +484,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<form action="/watchlist" method="post" class="add-funds-show depotincome">
+																				<form action="/watchlist" method="post" id="frmcpnum" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">

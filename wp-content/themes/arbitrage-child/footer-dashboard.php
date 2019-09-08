@@ -360,8 +360,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 			jQuery('input[type="checkbox"]').click(function(){
-				console.log(this.id);
-
+				console.log(jQuery(this));
 			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){

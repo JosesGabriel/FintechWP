@@ -66,6 +66,8 @@ function getSMS(){
                 //echo 'Stockname: ' . $stockname . " Last: " . $last_price . " <br>";
                 #start comparing :
 
+                #entry price 
+                echo $entryprice . "\n";
                 #sample JSON data:
                 $userlist = array("1","2","3");
                 $jsonoutput = [];
@@ -77,7 +79,7 @@ function getSMS(){
     }
 
     $output = json_encode($result);
-    echo $output; 
+    //echo $output; 
 
 }
 

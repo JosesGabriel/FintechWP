@@ -1525,7 +1525,9 @@ get_header('dashboard');
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => get_current_user_id(),
+				'data_userid' => get_current_user_id(),
+				
+				'trade_type' => 'virtual'
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
@@ -1578,9 +1580,19 @@ get_header('dashboard');
 <?php
     $author_query = array(
         'posts_per_page' => '-1',
-        'post_status' => 'publish',
-        'meta_key' => 'data_userid',
-        'meta_value' => get_current_user_id(),
+		'post_status' => 'publish',
+		'meta_query' => array(
+			array(
+				'key'     => 'data_userid',
+				'value'   => get_current_user_id(),
+			),
+			array(
+				'key'     => 'trade_type',
+				'value'   => 'virtual',
+			),
+		),
+        // 'meta_key' => 'data_userid',
+        // 'meta_value' => get_current_user_id(),
     );
     $author_posts = new WP_Query($author_query);
 ?>
@@ -3806,8 +3818,19 @@ if ($getdstocks && $getdstocks != '') {
                                                             'date_query' => array(
                                                                 'after' => date('Y-m-d', strtotime('-20 days')),
                                                             ),
-                                                            'meta_key' => 'data_userid',
-                                                            'meta_value' => get_current_user_id(),
+                                                            // 'meta_key' => 'data_userid',
+															// 'meta_value' => get_current_user_id(),
+															
+															'meta_query' => array(
+																array(
+																	'key'     => 'data_userid',
+																	'value'   => get_current_user_id(),
+																),
+																array(
+																	'key'     => 'trade_type',
+																	'value'   => 'virtual',
+																),
+															),
                                                         );
                                                         $posts = get_posts($args);
 

@@ -358,9 +358,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					}
 				});
 			});
-			
+
 			jQuery('input[type="checkbox"]').click(function(){
 				console.log("gwapo");
+			});
+			jQuery('#smspop').click(function(){
+				console.log("gwapo daw");
 			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){

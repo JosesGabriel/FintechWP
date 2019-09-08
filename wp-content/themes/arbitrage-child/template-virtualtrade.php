@@ -1951,7 +1951,7 @@ if ($getdstocks && $getdstocks != '') {
 																</div>
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
-                                                                Live Portfolio
+                                                                Virtual Trades
                                                                 <div class="dltbutton">
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post" class="resetform">

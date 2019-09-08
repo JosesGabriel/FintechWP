@@ -471,7 +471,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
                                                 <!-- wathlist phone number modal -->    
-                                                <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">

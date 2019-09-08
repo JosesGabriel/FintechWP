@@ -372,13 +372,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 			jQuery("#cpsubmitbtn").click(function(){
 				var cpnum = $("#txtcpnum").val;
-				jQuery.ajax({
-					method: "GET",
-					url: "https://arbitrage.ph/watchlist/?addcp=" + cpnum,
-					success: function(data){
-						console.log("CP num saved!");
-					}
-				});		
+				console.log(cpnum);
 					
 				$("#modal-phonenum").modal('hide'); 
 			});

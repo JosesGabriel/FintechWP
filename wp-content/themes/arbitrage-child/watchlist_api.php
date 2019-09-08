@@ -55,7 +55,7 @@ function getSMS(){
                 $response = curl_exec($curl);
                 curl_close($curl);
 
-                $dstock = json_decode($getstocks);
+                $dstock = json_decode($response);
                 $dstock = $dstock->data;
                 
                 $last_price = $dstock->last;

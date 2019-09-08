@@ -56,7 +56,7 @@ $userID = $current_user->ID;
 	$toptraiders = array_reverse($newuserlist);
 
 ?>
-<div class="top-traiders">
+<div class="top-traiders" style="margin-top: 10px;">
   <div class="top-traiders-inner">
 	  <div class="to-top-title">Who to Mingle</div>
 	  <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">

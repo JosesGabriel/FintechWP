@@ -178,7 +178,7 @@
 					  		}
 					  	});
 					  	var dstockval = parseFloat(dstockdd.last);
-
+						console.log(dinfo);  
 
 					  	if ("dcondition_entry_price" in dinfo) {
 					  		if (parseFloat(dinfo.dconnumber_entry_price) == dstockval.toFixed(2)) {

@@ -74,7 +74,7 @@
 								//start comparing now
 								
 								
-								console.log(stockinfo);
+								console.log(stockinfo.data);
 
 							});
 						}

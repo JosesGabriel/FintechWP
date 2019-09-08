@@ -363,8 +363,16 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				if(this.value == "sms-notif"){
 					//get phone meta
 
-					var phonenum = <?php echo get_user_meta(get_current_user_id(), 'cpnum', true); ?> ;
-					if(phonenum == ""){
+					var phonenum = "<?php 
+					$usercp = get_user_meta(get_current_user_id(), 'cpnum', true);
+					if($usercp == ""){
+						echo "nocp";
+					}else{
+						echo $usercp;
+					} 
+					?> ";
+
+					if(phonenum == "nocp"){
 						console.log("no phonenum");
 					}
 					console.log("here");

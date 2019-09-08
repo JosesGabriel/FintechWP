@@ -72,9 +72,9 @@
 							var stockdata = data;
 							$.each(stockdata, function(index,stockinfo){
 								//start comparing now
-								var stocklastvalue = data.data[index].last;
 								
-								console.log(stocklastvalue);
+								
+								console.log(stockinfo);
 
 							});
 						}

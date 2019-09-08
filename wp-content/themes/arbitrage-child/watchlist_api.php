@@ -34,15 +34,15 @@ function getSMS(){
     global $wpdb;
     $users = get_users( array( 'fields' => array( 'ID' ) ) );
     $result = array();
-    array_push($result,$users);
+    
     foreach($users as $user_id){
         #get user meta per ID
         $usermetas = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
         $userphone = get_user_meta($user_id->ID, 'cpnum', true);
         #do not even do anything if the user does not have cpnum:
         if(!is_null($userphone)){    
-            
-            //array_push($result,$userphone);
+            array_push($result,$user_id->ID);
+            array_push($result,$userphone);
             foreach($usermetas as $usermeta){
                 #get stock name and stock values for comparison
                 $stockname = $usermeta['stockname'];
@@ -70,13 +70,13 @@ function getSMS(){
                 $jsonoutput = [];
               
             }
-            $output = json_encode($result);
-            echo $output;
+
         }
 
     }
 
-    
+    $output = json_encode($result);
+    echo $output; 
 
 }
 

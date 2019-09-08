@@ -289,7 +289,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	</div> -->
 
 
-                                                                    <!-- wathlist phone number modal -->        
+                                                                    <!-- wathlist phone number modal -->    
+                                                                    <button class="btn btn-primary btn-lg" id="btnphonetrigger" data-toggle="modal" data-target="#modal-phonenum" style="display:none;" >    
                                                                 	<div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
@@ -300,7 +301,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<form action="/watchlist" method="post" class="add-funds-show depotincome">
+																				<form action="/watchlist" method="post" class="">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
@@ -313,27 +314,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 
 																					<div class="modal-footer footer-depo">
-																						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
-																						<input type="hidden" name="istype" value="deposit">
-																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
-																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
-																				</form>
-																				<form action="/watchlist" method="post" class="add-funds-shows dividincome" style="display: none;">
-																						<div class="modal-body depo-body">
-																							<div class="dmainform">
-																								<div class="dinnerform">
-																									<div class="dinitem">
-																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																						<div class="modal-footer footer-depo">
-																						</div>
 																				</form>
 																			</div>
 																		</div>

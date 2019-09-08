@@ -1772,7 +1772,7 @@
 																					</div>
 																					<div class="bbs_bear_bar" style="width: <?php echo $percask; ?>%;">
 																						<div class="bbs_bear_bar_inner"></div>
-																						<span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percask,2); ?>%</span>
+																						<span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%; position: relative; right: 24px;"><?php echo number_format($percask,2); ?>%</span>
 																					</div>
 																				</div>
 																				<a href="#" class="bbs_bear"><img src="<?php echo $homeurlgen; ?>/svg/ico_bearish_no_ring.svg"></a>

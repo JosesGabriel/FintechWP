@@ -56,7 +56,7 @@
 			}
 			function newwatchlist(){
 				var usermetas = <?php echo $ismetadis; ?>;
-				console.log(usermetas);
+				//console.log(usermetas);
 				$.each(usermetas, function(index, dinfo){
 					var stockname = dinfo.stockname;
 					jQuery.ajax({
@@ -72,8 +72,8 @@
 							var stockdata = data.data;
 							$.each(stockdata, function(index,stockinfo){
 								//start comparing now
-								var stocklastvalue = stockinfo.last;
-								console.log(stocklastvalue);
+								//var stocklastvalue = stockinfo.last;
+								console.log(stockinfo);
 
 							});
 						}

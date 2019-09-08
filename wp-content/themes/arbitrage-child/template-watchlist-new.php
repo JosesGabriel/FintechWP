@@ -494,7 +494,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</div>
 
 																					<div class="modal-footer footer-depo">
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
+																						<a href="#" id="cpsubmitbtn" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
 																					</div>
 																				</form>
 

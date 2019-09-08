@@ -362,6 +362,11 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('input[type="checkbox"]').click(function(){
 				if(this.value == "sms-notif"){
 					//get phone meta
+
+					var phonenum = <?php echo get_user_meta(get_current_user_id(), 'cpnum', true); ?>
+					if(phonenum == ""){
+						$.("#modal-phonenum").show;
+					}
 					console.log("here");
 					console.log(<?php echo $userid; ?>);
 				}else{

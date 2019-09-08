@@ -54,13 +54,20 @@
 			    // console.log(time +" - "+hours);
 			    return hours;
 			}
+			function newwatchlist(){
+				var usermetas = <?php echo $ismetadis; ?>;
+				console.log(usermetas);
+				$.each(usermetas, function(index, dinfo){
+					
+				});
 
+			}
 	        function checkwatchlist() {
 	        	var dlistofstocks = <?php echo $ismetadis; ?>;
 				console.log(dlistofstocks);
 	        	jQuery.ajax({
 				 	method: "GET",
-					url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE",
+					url: "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=",
 					
 					// url: 'https://api2.pse.tools/api/quotes',
 					dataType: 'json',
@@ -188,17 +195,19 @@
 
 
 	        var startTime = '09:30 AM';
-			var endTime = '06:30 PM';
+			var endTime = '11:30 PM';
 			var curr_time = getval();
 			if (get24Hr(curr_time) > get24Hr(startTime) && get24Hr(curr_time) < get24Hr(endTime)) {
 			    //in between these two times
-			    checkwatchlist();
+			    //checkwatchlist();
+				newwatchlist();
 			    $counts = 1;
 			    setInterval(function(){
 			    	$counts++;
 			    	removealerts();
 			    	if ($counts <= 1) {
-			    		checkwatchlist();
+			    		//checkwatchlist();
+						newwatchlist();
 			    	}
 				    
 				},30000);

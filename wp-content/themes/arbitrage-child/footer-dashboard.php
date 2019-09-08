@@ -364,7 +364,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					//get phone meta
 					//var userid = <?php echo get_current_user_id(); ?>
 					//var phonenum = <?php echo get_user_meta($userid, 'disname', true); ?>
-					console.log(echo $userid; );
+					console.log(<?php echo $userid; ?>);
 				}
 			});
 			//jQuery('.ddropbase a').click(function(e){

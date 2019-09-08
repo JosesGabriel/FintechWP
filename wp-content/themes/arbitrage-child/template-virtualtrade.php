@@ -1749,35 +1749,35 @@ if ($getdstocks && $getdstocks != '') {
 		$dledger[0]->ledid = 250;
 		$dledger[0]->userid = 111;
 		$dledger[0]->date = '2019-08-21';
-		$dledger[0]->trantype = 'deposit';
+		$dledger[0]->trantype = 'virtual_sample';
 		$dledger[0]->tranamount = 100000;
 
 		$dledger[1] = new \stdClass();
 		$dledger[1]->ledid = 250;
 		$dledger[1]->userid = 111;
 		$dledger[1]->date = '2019-08-21';
-		$dledger[1]->trantype = 'deposit';
+		$dledger[1]->trantype = 'virtual_sample';
 		$dledger[1]->tranamount = 100000;
 
 		$dledger[2] = new \stdClass();
 		$dledger[2]->ledid = 250;
 		$dledger[2]->userid = 111;
 		$dledger[2]->date = '2019-08-21';
-		$dledger[2]->trantype = 'deposit';
+		$dledger[2]->trantype = 'virtual_sample';
 		$dledger[2]->tranamount = 100000;
 
 		$dledger[3] = new \stdClass();
 		$dledger[3]->ledid = 250;
 		$dledger[3]->userid = 111;
 		$dledger[3]->date = '2019-08-21';
-		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->trantype = 'virtual_sample';
 		$dledger[3]->tranamount = 100000;
 
 		$dledger[3] = new \stdClass();
 		$dledger[3]->ledid = 250;
 		$dledger[3]->userid = 111;
 		$dledger[3]->date = '2019-08-21';
-		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->trantype = 'virtual_sample';
 		$dledger[3]->tranamount = 100000;
 	}
 ?>

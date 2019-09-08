@@ -1552,7 +1552,6 @@ if ($getdstocks && $getdstocks != "") {
 			delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
 
 			// $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
-			// print_r($dsotcksss);
 		}
 		delete_user_meta(get_current_user_id(), '_trade_list');
 
@@ -1954,12 +1953,6 @@ if ($getdstocks && $getdstocks != "") {
 
 
                                                 	?>
-                                                    <!-- <pre>
-														<?php print_r($dtotalpl); ?>
-													</pre> -->
-													<!-- <pre>
-														<?php print_r($dlistofsells); ?>
-													</pre> -->
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -2343,9 +2336,6 @@ if ($getdstocks && $getdstocks != "") {
                                                             </div>
                                                         </div>
 
-                                                        <!-- <pre>
-                                                        	<?php print_r($alltradelogs); ?>
-                                                        </pre> -->
 														<div class="col-md-5">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">

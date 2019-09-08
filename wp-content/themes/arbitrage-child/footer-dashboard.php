@@ -370,7 +370,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					}else{
 						echo $usercp;
 					} 
-					?> ";
+					?>";
 
 					if(phonenum == "nocp"){
 						console.log("no phonenum");

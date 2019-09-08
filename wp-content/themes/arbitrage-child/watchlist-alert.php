@@ -72,8 +72,8 @@
 
 							//Entry Price
 							console.log(dinfo.dconnumber_entry_price);
-							console.log(dinfo.dcondition_stop_loss_point);
-							console.log(dinfo.dcondition_take_profit_point);
+							console.log(dinfo.dconnumber_stop_loss_point);
+							console.log(dinfo.dconnumber_take_profit_point);
 								if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
 									console.log("Entry Price Condition Hit");
 									var dslert = '<div class="noti-message">';
@@ -100,7 +100,7 @@
 							
 							//stoplosspoint
 							
-								if (parseFloat(dinfo.dcondition_stop_loss_point) > stocklastdata.toFixed(2)) {
+								if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
 									console.log("Stop Loss Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
@@ -125,7 +125,7 @@
 							
 							//takeprofit
 							
-								if (parseFloat(dinfo.dcondition_take_profit_point) < stocklastdata.toFixed(2)) {
+								if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
 									console.log("Take Profit Condition Hit");
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';

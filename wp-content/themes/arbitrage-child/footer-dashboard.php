@@ -364,6 +364,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					//get phone meta
 					//var userid = <?php echo get_current_user_id(); ?>
 					//var phonenum = <?php echo get_user_meta($userid, 'disname', true); ?>
+					console.log("here");
 					console.log(<?php echo $userid; ?>);
 				}
 			});

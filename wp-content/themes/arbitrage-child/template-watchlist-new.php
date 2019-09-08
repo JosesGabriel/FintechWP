@@ -484,13 +484,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<form action="/watchlist" method="post" id="frmcpnum" class="add-funds-show depotincome">
+																				<form action="/watchlist" method="GET" id="frmcpnum" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
 																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
-																									<div class="dninput"><input type="text" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
+																									<div class="dninput"><input type="text" id="txtcpnum" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
 																								</div>
 																							</div>
 																						</div>

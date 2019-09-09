@@ -1678,68 +1678,67 @@ if ($getdstocks && $getdstocks != '') {
 	
 	if($author_posts->have_posts()){
 		$isjounalempty = true;
-		$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
-	$dtradeingfo = [
-		[
-			'data' => [
-				[
-					'buymonth' => 'August',
-					'buyday' => 22,
-					'buyyear' => 2019,
-					'stock' => 'MBT',
-					'price' => 100,
-					'qty' => 5,
-					'currprice' => 75.40,
-					'change' => '0.40%',
-					'open' => 75.50,
-					'low' => 75.20,
-					'high' => 75.80,
-					'volume' => '957.73K',
-					'value' => '72.29m',
-					'boardlot' => 10,
-					'strategy' => 'Trend Following',
-					'tradeplan' => 'Day Trade',
-					'emotion' => 'this is a test',
-					'tradingnotes' => 'Trading Notes',
-					'status' => 'Live',
+		$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+		$dtradeingfo = [
+			[
+				'data' => [
+					[
+						'buymonth' => 'August',
+						'buyday' => 22,
+						'buyyear' => 2019,
+						'stock' => 'MBT',
+						'price' => 100,
+						'qty' => 5,
+						'currprice' => 75.40,
+						'change' => '0.40%',
+						'open' => 75.50,
+						'low' => 75.20,
+						'high' => 75.80,
+						'volume' => '957.73K',
+						'value' => '72.29m',
+						'boardlot' => 10,
+						'strategy' => 'Trend Following',
+						'tradeplan' => 'Day Trade',
+						'emotion' => 'this is a test',
+						'tradingnotes' => 'Trading Notes',
+						'status' => 'Live',
+					],
 				],
+				'totalstock' => 1213228,
+				'aveprice' => 2228.5209688868,
+				'totalcost' => 84225991.13847,
+				'stockname' => 'SampleStock_1',
 			],
-			'totalstock' => 1213228,
-			'aveprice' => 2228.5209688868,
-			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
-		],
-		[
-			'data' => [
-				[
-					'buymonth' => 'August',
-					'buyday' => 22,
-					'buyyear' => 2019,
-					'stock' => 'MBT',
-					'price' => 100,
-					'qty' => 5,
-					'currprice' => 75.40,
-					'change' => '0.40%',
-					'open' => 75.50,
-					'low' => 75.20,
-					'high' => 75.80,
-					'volume' => '957.73K',
-					'value' => '72.29m',
-					'boardlot' => 10,
-					'strategy' => 'Trend Following',
-					'tradeplan' => 'Day Trade',
-					'emotion' => 'this is a test',
-					'tradingnotes' => 'Trading Notes',
-					'status' => 'Live',
+			[
+				'data' => [
+					[
+						'buymonth' => 'August',
+						'buyday' => 22,
+						'buyyear' => 2019,
+						'stock' => 'MBT',
+						'price' => 100,
+						'qty' => 5,
+						'currprice' => 75.40,
+						'change' => '0.40%',
+						'open' => 75.50,
+						'low' => 75.20,
+						'high' => 75.80,
+						'volume' => '957.73K',
+						'value' => '72.29m',
+						'boardlot' => 10,
+						'strategy' => 'Trend Following',
+						'tradeplan' => 'Day Trade',
+						'emotion' => 'this is a test',
+						'tradingnotes' => 'Trading Notes',
+						'status' => 'Live',
+					],
 				],
-			],
-			'totalstock' => 1213228,
-			'aveprice' => 2228.5209688868,
-			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
-		]
-	];
+				'totalstock' => 1213228,
+				'aveprice' => 2228.5209688868,
+				'totalcost' => 84225991.13847,
+				'stockname' => 'SampleStock_2',
+			]
+		];
 	} else {
 		$isjounalempty = false;
 	}

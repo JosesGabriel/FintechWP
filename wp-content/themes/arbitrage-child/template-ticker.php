@@ -536,12 +536,78 @@
 		right: 0;
 		text-align: right;
 	}
-	/* .marqueethis > li {
+	/*.marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
 	.marqueethis > li:hover {
 		animation-play-state: paused;
-	} */
+	}*/
+	.arb_custom_ticker {
+		font-size: 10px;
+		line-height: 12px;
+		padding: 0; 
+		display:block !important;
+		margin-bottom: 0; 
+		position:absolute;
+		overflow:hidden; 
+	}
+	.arb_custom_ticker li {text-align:right;}
+	.arb_custom_ticker_wrapper {
+		height:40px;
+		position: relative;
+		overflow: hidden; 
+		background-color:#2c3e50; 
+		text-align:left;
+	}
+    /*
+	@keyframes marquee {
+		0% {
+			transform: translate(0, 0);
+		}
+		100% {
+			transform: translate(-100%, 0);
+		}
+	}
+    */
+    </style>
+    
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
+<!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
+<script>
+	jQuery(document).ready(function() {
+			forevertickerinit();
+			function forevertickerinit() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
+					foreverticker();
+				});
+			}
+			function foreverticker() {
+                console.log('working..');
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
+					forevertickerinit();
+				});
+			}
+		});
+		
+    window.onload=function(){
+
+		(function countdown(remaining) {
+			if(remaining === 0)
+				jQuery(".arb_top_ticker").fadeOut("slow",function(){
+					location.reload(true);
+				});
+				document.getElementById('countdown').innerHTML = remaining;
+				setTimeout(function(){ countdown(remaining - 1); }, 1000);
+		})(<?php echo rand(100,180); ?>);
+	}
+</script>
+<style>
+	.marqueethis {
+		width:0;
+		height:40px;
+		right:-100px;
+	}
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;
@@ -560,21 +626,13 @@
 		text-align:left;
 	}
 
-	@keyframes marquee {
-		0% {
-			transform: translate(0, 0);
-		}
-		100% {
-			transform: translate(-100%, 0);
-		}
-	}
-    </style>
-    
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+</style>
+<!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 </head>
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+        <span style="display:none">{{speed}}</span>
         <ul ng-attr-data-speed="speed" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
@@ -650,7 +708,7 @@
 <script src="/assets/js/angular/directives.js?v=1.218"></script>
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-<script src="/assets/js/datafeed.js?v=1.218"></script>'
+<script src="/assets/js/datafeed.js?v=2.218"></script>'
 <script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
 <script>
 $(".arb_custom_ticker").hover(function() {

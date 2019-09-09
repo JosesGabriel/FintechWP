@@ -164,7 +164,7 @@ jQuery(".stocks-hidden-content").click(function () {
                     <a href="#"><?php echo $lfstvalue['stnamename']; ?> <br>
                     <p><?php
                         echo $lfstvalue['following'];
-                        $trendnumber = strlen($lfstvalue['following']);
+                        $trendnumber = $lfstvalue['following'];
 
                         if($trendnumber == 1){
                             echo " Hit";

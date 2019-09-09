@@ -1,9 +1,11 @@
 <?php
     /*
-    * Template Name: Journal Design
+    * Template Name: Virtual Trade
     */
 
 // get_header();
+// Ralph Was Here 
+// Trading Journal
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
@@ -131,10 +133,10 @@ get_header('dashboard');
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
+    	color: #e77e24;
 	}
 	#removes-btn {
 		border-radius: 26px !important;
@@ -478,6 +480,9 @@ get_header('dashboard');
 		margin-bottom: 0;
 		text-align: center !important;
 	}
+	.dstatstrade ul li.headerpart.headerpart-tradelogs {
+		text-align: left !important;
+	}
 	.dstatstrade ul li {
 		line-height: 150%;
 		padding: 5px 5px 5px 15px;
@@ -526,11 +531,12 @@ get_header('dashboard');
 	}
 	#chartdiv4b {
 		width: 100%;
-		height: 260px;
+		height: 245px;
 	}
 	#chartdiv5 {
 		width: 100%;
 		height: 260px;
+		margin-top: -70px;
 	}
 	#chartdiv6 {
 		width: 100%;
@@ -571,17 +577,21 @@ get_header('dashboard');
 		max-width:450px;
 		width:100%;
 	}
+	.stats-info {
+		background: rgba(17, 34, 51, 0.4);
+	}
 
 	/* Minitable overrides */
 	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 	.widthfull {width: 100% !important;}
 	.widthhalf {width: 50% !important;}
-	.width60 {width: 60% !important;}
-	.width48 {width: 48% !important;}
+	.width60 {width: 57% !important;color:#fff;}
+	.width48 {width: 49% !important;}
 	.width40 {width: 40% !important;}
 	.width35 {
-		width: 35% !important;
+		width: 40% !important;
 		text-align: right;
+		color:#fff;
 	}
 	.dstatstrade ul li:hover {
 		background: rgba(10, 29, 50, 0.5);
@@ -600,7 +610,7 @@ get_header('dashboard');
 	.bulletclrd.clrg2 {background-color: #49bb79; } /* green 2 */
 	.bulletclrd.clrg3 {background-color: #a9f7ae; } /* green 3 */
 
-	.bulletclrd.clrr1 {background-color: #e64c3c; } /* red 1 */
+	.bulletclrd.clrr1 {background-color: #ff1744; } /* red 1 */
 	.bulletclrd.clrr2 {background-color: #ec5f50; } /* red 2 */
 	.bulletclrd.clrr3 {background-color: #ef7062; } /* red 3 */
 
@@ -631,7 +641,7 @@ get_header('dashboard');
 		border-radius: 3px 0 0 3px;
 		margin-bottom: 0;
 	}
-	.groupinput input[type="text"] {
+	.groupinput input[type="text"], .groupinput input[type="number"] {
 		display: inline-block;
 		border-radius: 0 3px 3px 0;
 		width: 172px;
@@ -670,8 +680,7 @@ get_header('dashboard');
 		border: #27ae60 solid 2px !important;
 	    background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -694,8 +703,7 @@ get_header('dashboard');
 	input[type="submit"].red {
 		background: none;
 	    line-height: 29px;
-	    font-weight: bold;
-	    font-size: 12px;
+	    font-size: 14px;
 	    padding: 0 12px;
 	    border-radius: 25px;
 	    color: #fff;
@@ -777,15 +785,18 @@ get_header('dashboard');
 	}
 	.groupinput.midd input {
 		width:138px;
+		text-align: right;
+		padding-right: 20px;
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
 		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
-		padding: 20px 0 15px 20px;
+		padding: 20px 0 2px 20px;
 		background-color: #142b46;
 		border-radius: 4px;
+		min-height: 230px;
 	}
 	.entr_wrapper_bot {
 		padding:25px 0 25px 25px;
@@ -797,8 +808,8 @@ get_header('dashboard');
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #142b46;
-		padding: 0 13px;
+		background-color: #34495e;
+		padding: 12px;
 		border-radius: 4px;
 	}
 	.entr_ttle_bar img {
@@ -807,7 +818,7 @@ get_header('dashboard');
 		margin: 0 7px 0 0;
 	}
 	.entr_ttle_bar strong {
-		font-size: 17px;
+		font-size: 14px;
 		line-height: 1;
 		text-transform: uppercase;
 		display: inline-block;
@@ -842,11 +853,11 @@ get_header('dashboard');
 		margin: -1px 0 0px 5px;
 	}
 	span.datestamp_header {
-		color: #a1adb5;
-		display: block;
-		vertical-align: middle;
-		margin: 0;
 		font-size: 12px;
+		color: #a1adb5;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 0 0 0px 10px;
 	}
 
 	.fctnlhdn {
@@ -855,11 +866,13 @@ get_header('dashboard');
 		position:absolute;
 		z-index:-1;
 	}
-
+	.fa-lock {
+		color: white;
+	}
 	/* Popup Overrides */
 	div#fancybox-content {
-		border-color: #142c46 !important;
-		background: #142c46 !important;
+		border-color: #0c1f33 !important;
+		background: #0c1f33 !important;
 	}
 	#fancybox-outer {
 		background: #2c3e50 !important;
@@ -923,9 +936,7 @@ get_header('dashboard');
 	}
 	a.smlbtn.blue {
 		line-height: 19px;
-		padding: 0;
-		width: 23px;
-		height: 23px;
+		padding: 1.5px 6.63px;
 		text-align: center;
 		border: 2px solid #3597d3;
 		background-color: transparent;
@@ -1001,7 +1012,7 @@ get_header('dashboard');
 		clear:both;
 	}
 	.darkbgpadd {
-		background-color: #11273e;
+		background-color: #4e6a85;
 		padding: 11px 12px;
 		border-radius: 6px;
 		width: 100%;
@@ -1030,14 +1041,14 @@ get_header('dashboard');
 	}
 	.onelnetrd {
 		line-height: 25px;
-		background: #11273e;
+		background: #4e6a85;
 		margin: 0 0 9px 0;
 		border-radius: 6px;
 	}
 	.modal-notes-ftitle {
 		display: inline-block;
 		line-height: 30px;
-		background-color: rgba(78, 106, 133, 0.47843137254901963);
+		background-color: #34495e;
 		padding: 0 0 0 10px;
 		border-radius: 5px 0 0 5px;
 	}
@@ -1048,7 +1059,7 @@ get_header('dashboard');
 	span.modal-notes-result {
 		float: right;
 		line-height: 20px;
-		background-color: #11273e;
+		background: none;
 		border: none;
 		color: #ecf0f1;
 		font-family: 'Roboto', sans-serif;
@@ -1096,6 +1107,10 @@ get_header('dashboard');
 	    height: auto;
 	    border-radius: 25px;
 	    padding: 3px 9px;
+	}
+	.enter-trade-btn:hover {
+		color: white;
+		background-color: #00bcd4;
 	}
 	.dbuttondelete {
 		display: inline-block;
@@ -1233,15 +1248,13 @@ get_header('dashboard');
 		border-radius: 40px;
 	}
 	.buy-order--submit {
-		padding-top: 16px;
-		padding-right: 5px;
+		position: relative;
+		left: 580px;
 	}
 	.modal-button-confirm {
 		position: relative;
-		left: 595px;
-	}
-
-	.dledinner ul {
+		left: 565px;
+	}.dledinner ul {
 		margin: 0;
 		padding: 0;
 		text-align: right;
@@ -1253,6 +1266,10 @@ get_header('dashboard');
 		border: 1px solid #5d7ca0;
 		padding: 5px 9px;
 		border-radius: 20px;
+	}
+	.selltrade--align input {
+		text-align: right;
+		padding-right: 20px !important;
 	}
     .arb_wdrw{
         display:block;
@@ -1279,13 +1296,29 @@ get_header('dashboard');
         padding: 0px 10px 0px 10px !important;
         text-align: right;
     }
+
+    .search-tlogs {
+    	width: 150px;
+    	float: right;
+    }
+
+    .search-logs{
+    	border-radius: 30px;
+    	height: 25px;
+    	background-color: #4e6a85 !important;
+    	color: #fff !important;
+    }
+    .number{
+        font-size: 13px !important;
+        text-align: right;
+    }
 </style>
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
 <?php get_template_part('parts/sidebar', 'varcalc'); ?>
 <?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 <?php
-    function getfees($funmarketval, $funtype)
+    function getjurfees($funmarketval, $funtype)
     {
         // Commissions
         $dpartcommission = $funmarketval * 0.0025;
@@ -1351,15 +1384,15 @@ get_header('dashboard');
     }
     if (isset($_POST['istype'])) {
         if ($_POST['damount'] > 0) {
-            $wpdb->insert('arby_ledger', array(
+            $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => $_POST['damount'], // ... and so on
+                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
             ));
         }
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1372,10 +1405,16 @@ get_header('dashboard');
         $tradeinfo = [];
         $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-        $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+		$tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+		
+		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
+        
+        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
         $tradeinfo['price'] = $_POST['inpt_data_price'];
+        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
@@ -1390,9 +1429,13 @@ get_header('dashboard');
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
         $tradeinfo['status'] = $_POST['inpt_data_status'];
 
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+		// print_r($stocksinfo);
+
+		// exit;
+
+        $dlistofstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
-            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+            $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], true);
             if ($dstocktraded && $dstocktraded != '') {
                 array_push($dstocktraded['data'], $tradeinfo);
                 $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $_POST['inpt_data_qty'];
@@ -1401,13 +1444,13 @@ get_header('dashboard');
                 $totalquanta = 0;
                 foreach ($dstocktraded['data'] as $ddatakey => $ddatavalue) {
                     $dmarkvval = $ddatavalue['price'] * $ddatavalue['qty'];
-                    $dfees = getfees($dmarkvval, 'buy');
+                    $dfees = getjurfees($dmarkvval, 'buy');
                     $totalprice += $dmarkvval + $dfees;
                     $totalquanta += $ddatavalue['qty'];
                 }
                 $dstocktraded['aveprice'] = ($totalprice / $totalquanta);
 
-                update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $dstocktraded);
+                update_user_meta(get_current_user_id(), 'virtual_trade_'.$tradeinfo['stock'], $dstocktraded);
             }
         } else {
             $finaldata = [];
@@ -1415,9 +1458,9 @@ get_header('dashboard');
             array_push($finaldata['data'], $tradeinfo);
             $finaldata['totalstock'] = $_POST['inpt_data_qty'];
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
-            $dfees = getfees($dmarkvval, 'buy');
+            $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
-            update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $finaldata);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$tradeinfo['stock'], $finaldata);
 
             if (!$dlistofstocks) {
                 $djournstocks = array($tradeinfo['stock']);
@@ -1425,22 +1468,23 @@ get_header('dashboard');
                 $djournstocks = $dlistofstocks;
                 array_push($djournstocks, $tradeinfo['stock']);
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
+            update_user_meta(get_current_user_id(), 'virtual_trade_list', $djournstocks);
         }
         $dtotalpurchse = $_POST['inpt_data_price'] * $_POST['inpt_data_qty'];
         echo $dtotalpurchse;
 
         $stockcost = ($_POST['inpt_data_price'] * $_POST['inpt_data_qty']);
-        $purchasefee = getfees($stockcost, 'buy');
+        $purchasefee = getjurfees($stockcost, 'buy');
 
-        $wpdb->insert('arby_ledger', array(
+        $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => date('Y-m-d'),
                 'trantype' => 'purchase',
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
             ));
 
-        wp_redirect('/chart/'.$tradeinfo['stock']);
+        wp_redirect( '/chart/'.$tradeinfo['stock'] );
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1449,7 +1493,11 @@ get_header('dashboard');
 <!-- BOF SELL trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Log') {
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
+
+        $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
         $data_postid = $_POST['inpt_data_postid'];
@@ -1477,61 +1525,74 @@ get_header('dashboard');
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => get_current_user_id(),
+				'data_userid' => get_current_user_id(),
+				
+				'trade_type' => 'virtual'
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
 
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
-            $dlisroflive = get_user_meta(get_current_user_id(), '_trade_list', true);
+            $dlisroflive = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
                 if ($rmvalue == $_POST['inpt_data_stock']) {
                     unset($dlisroflive[$rmkey]);
-                    delete_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock']);
+                    delete_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock']);
                 }
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $dlisroflive);
+            update_user_meta(get_current_user_id(), 'virtual_trade_list', $dlisroflive);
         } else {
             // Update existing data.
 
-            update_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
         $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
-        $purchasefee = getfees($stockcost, 'sell');
+        $purchasefee = getjurfees($stockcost, 'sell');
 
-        $wpdb->insert('arby_ledger', array(
+        $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => date('Y-m-d'),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
             ));
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
 <!-- EOF SELL trades -->
 <?php
-    $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+    $getdstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
 
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
+	curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $gerdqoute = curl_exec($curl);
+    $gerdqouteone = curl_exec($curl);
     curl_close($curl);
 
-    $gerdqoute = json_decode($gerdqoute);
+    $gerdqoute = json_decode($gerdqouteone);
     // $gerdqoute = [];
 ?>
 <!-- BOF get the tradelogs -->
 <?php
     $author_query = array(
         'posts_per_page' => '-1',
-        'post_status' => 'publish',
-        'meta_key' => 'data_userid',
-        'meta_value' => get_current_user_id(),
+		'post_status' => 'publish',
+		'meta_query' => array(
+			array(
+				'key'     => 'data_userid',
+				'value'   => get_current_user_id(),
+			),
+			array(
+				'key'     => 'trade_type',
+				'value'   => 'virtual',
+			),
+		),
+        // 'meta_key' => 'data_userid',
+        // 'meta_value' => get_current_user_id(),
     );
     $author_posts = new WP_Query($author_query);
 ?>
@@ -1589,14 +1650,23 @@ get_header('dashboard');
 
 <!-- BOF Sort LIVE Portfolio -->
 <?php
+$dtradeingfo = [];
+$isjounalempty = false;
 if ($getdstocks && $getdstocks != '') {
-    $dtradeingfo = [];
+    
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+		$dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$dstocksvalue, true);
+		$stockdetails = "";
+		foreach ($gerdqoute->data as $gskey => $gsvalue) {
+			if($dstocksvalue == $gsvalue->symbol){
+				$stockdetails = $gsvalue;
+			}
+		}
         if ($dstocktraded && $dstocktraded != '') {
-            $dstockinfo = $gerdqoute->data->$dstocksvalue;
+            // $dstockinfo = $gerdqoute->data->$dstocksvalue;
+            $dstockinfo = $stockdetails;
             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-            $dsellfees = getfees($marketval, 'sell');
+            $dsellfees = getjurfees($marketval, 'sell');
             $dtotal = $marketval - $dsellfees;
 
             $dstocktraded['totalcost'] = $dtotal;
@@ -1604,6 +1674,70 @@ if ($getdstocks && $getdstocks != '') {
             array_push($dtradeingfo, $dstocktraded);
         }
     }
+} else {
+	$isjounalempty = true;
+	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+	$dtradeingfo = [
+		[
+			'data' => [
+				[
+					'buymonth' => 'August',
+					'buyday' => 22,
+					'buyyear' => 2019,
+					'stock' => 'MBT',
+					'price' => 100,
+					'qty' => 5,
+					'currprice' => 75.40,
+					'change' => '0.40%',
+					'open' => 75.50,
+					'low' => 75.20,
+					'high' => 75.80,
+					'volume' => '957.73K',
+					'value' => '72.29m',
+					'boardlot' => 10,
+					'strategy' => 'Trend Following',
+					'tradeplan' => 'Day Trade',
+					'emotion' => 'this is a test',
+					'tradingnotes' => 'Trading Notes',
+					'status' => 'Live',
+				],
+			],
+			'totalstock' => 1213228,
+			'aveprice' => 2228.5209688868,
+			'totalcost' => 84225991.13847,
+			'stockname' => 'SampleStock_1',
+		],
+		[
+			'data' => [
+				[
+					'buymonth' => 'August',
+					'buyday' => 22,
+					'buyyear' => 2019,
+					'stock' => 'MBT',
+					'price' => 100,
+					'qty' => 5,
+					'currprice' => 75.40,
+					'change' => '0.40%',
+					'open' => 75.50,
+					'low' => 75.20,
+					'high' => 75.80,
+					'volume' => '957.73K',
+					'value' => '72.29m',
+					'boardlot' => 10,
+					'strategy' => 'Trend Following',
+					'tradeplan' => 'Day Trade',
+					'emotion' => 'this is a test',
+					'tradingnotes' => 'Trading Notes',
+					'status' => 'Live',
+				],
+			],
+			'totalstock' => 1213228,
+			'aveprice' => 2228.5209688868,
+			'totalcost' => 84225991.13847,
+			'stockname' => 'SampleStock_2',
+		]
+	];
+
 }
 
 ?>
@@ -1611,7 +1745,7 @@ if ($getdstocks && $getdstocks != '') {
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = get_current_user_id();
-    $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+    $dledger = $wpdb->get_results('SELECT * FROM arby_virtual_ledger where userid = '.$duseridmo);
 
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
@@ -1620,46 +1754,100 @@ if ($getdstocks && $getdstocks != '') {
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
-    }
+	}
+	if(empty($dledger)){
+		$dledger = [];
+		$dledger[0] = new \stdClass();
+		$dledger[0]->ledid = 250;
+		$dledger[0]->userid = 111;
+		$dledger[0]->date = '2019-08-21';
+		$dledger[0]->trantype = 'virtual_sample';
+		$dledger[0]->tranamount = 100000;
+
+		$dledger[1] = new \stdClass();
+		$dledger[1]->ledid = 250;
+		$dledger[1]->userid = 111;
+		$dledger[1]->date = '2019-08-21';
+		$dledger[1]->trantype = 'virtual_sample';
+		$dledger[1]->tranamount = 100000;
+
+		$dledger[2] = new \stdClass();
+		$dledger[2]->ledid = 250;
+		$dledger[2]->userid = 111;
+		$dledger[2]->date = '2019-08-21';
+		$dledger[2]->trantype = 'virtual_sample';
+		$dledger[2]->tranamount = 100000;
+
+		$dledger[3] = new \stdClass();
+		$dledger[3]->ledid = 250;
+		$dledger[3]->userid = 111;
+		$dledger[3]->date = '2019-08-21';
+		$dledger[3]->trantype = 'virtual_sample';
+		$dledger[3]->tranamount = 100000;
+
+		$dledger[3] = new \stdClass();
+		$dledger[3]->ledid = 250;
+		$dledger[3]->userid = 111;
+		$dledger[3]->date = '2019-08-21';
+		$dledger[3]->trantype = 'virtual_sample';
+		$dledger[3]->tranamount = 100000;
+	}
 ?>
 <!-- BOF Current Allocation Data -->
 <?php
-    $dequityp = $buypower;
-
-    $aloccolors = array('#f0231c', '#c01c16', '#ff9a00', '#cc7b00', '#f4c700', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
-    $currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-    $currentaloccolor = '"#f0231c",';
-    if ($dtradeingfo) {
-        foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-            $dinforstocl = $trinfovalue['stockname'];
-            $dstockinfo = $gerdqoute->data->$dinforstocl;
-            $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-            $dsellfees = getfees($marketval, 'sell');
-            $dtotal = $marketval - $dsellfees;
-
-            $dequityp += $dtotal;
-            $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
-            $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
-        }
-    }
-
+	$currentalocinfo = "";
+	if(!$isjounalempty){
+		$dequityp = $buypower;
+		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
+		$currentaloccolor = '"#f44235",';
+		if ($dtradeingfo) {
+			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+				$stockdetails = "";
+				foreach ($gerdqoute->data as $gskey => $gsvalue) {
+					if($trinfovalue['stockname'] == $gsvalue->symbol){
+						$stockdetails = $gsvalue;
+					}
+				}
+				// $dinforstocl = $trinfovalue['stockname'];
+				// $dstockinfo = $gerdqoute->data->$dinforstocl;
+				$dstockinfo = $stockdetails;
+				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+				$dsellfees = getjurfees($marketval, 'sell');
+				$dtotal = $marketval - $dsellfees;
+	
+				$dequityp += $dtotal;
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
+			}
+		}
+	} else {
+		$dequityp = 245318.22;
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
+		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
+	}
+    
 ?>
 <!-- EOF Current Allocation Data -->
 
 
 <!-- Delete Data -->
 <?php
-    if (isset($_POST) && $_POST['deletedata'] == 'Reset') {
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
+    if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
+
+		
+        $dlistofstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
+		// print_r($dlistofstocks);
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue, '');
+            delete_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue);
 
-            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+            // $dsotcksss = get_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue, true);
+            // print_r($dsotcksss);
         }
-        delete_user_meta(get_current_user_id(), '_trade_list');
+        delete_user_meta(get_current_user_id(), 'virtual_trade_list');
 
         // delete all trade logs
         foreach ($alltradelogs as $delpostkey => $delpostvalue) {
@@ -1668,9 +1856,9 @@ if ($getdstocks && $getdstocks != '') {
         }
 
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        $wpdb->get_results('delete from arby_virtual_ledger where userid = '.get_current_user_id());
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1714,6 +1902,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                     <div class="liveportfoliobox">
                                                         <div class="box-portlet">
+
                                                         	<?php
                                                                 function date_lvp_sort($a, $b)
                                                                 {
@@ -1738,23 +1927,135 @@ if ($getdstocks && $getdstocks != '') {
                                                             ?>
                                                         	<!-- <div class="dltbutton">
                                                         		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
+                                                        			<form action="/virtual-trades" method="post">
                                                         				<input type="submit" name="deletedata" value="Reset">
                                                         			</form>
                                                         		</div>
                                                         	</div> -->
+															<?php if($isjounalempty): ?>
+																<!-- <div class="sampleData__overlay"></div>
+																<div class="sampleData__notification">
+																	Trading analytics display here. <br> It requires at least one complete trading data.
+																</div> -->
+															<?php endif; ?>
                                                             <div class="box-portlet-header">
-                                                                Live Portfolio
+                                                                Virtual Trades
                                                                 <div class="dltbutton">
                                                         		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post" class="resetform">
-                                                        				<input type="submit" name="deletedata" value="Reset" class="delete-data-btn resetdata">
+                                                        			<form action="/virtual-trades" method="post" class="resetform">
+																		<input type="hidden" name="deletedata" value="reset">
+                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
-                                                        			<form action="" method="post">
-                                                        				<input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn">
-                                                        			</form>
+                                                        			<!-- <form action="/virtual-trades" method="post"> -->
+                                                        				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
+																		<div class="hideformodal">
+																			<?php
+																				$curl = curl_init();
+																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
+																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+																				$dstocksonme = curl_exec($curl);
+																				curl_close($curl);
+
+																				$dstocksonme = json_decode($dstocksonme);
+
+																			?>
+																			<div class="entertrade" id="entertrade_mtrade">
+																				<div class="entr_ttle_bar">
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
+																				</div>
+																				<form action="/virtual-trades" method="post" class="dentertrade">
+																				<div class="entr_wrapper_top">
+																						<div class="entr_col">
+																							<div class="groupinput fctnlhdn">
+																								<label style="width:100%">Buy Date:</label>
+																								<input type="hidden" name="inpt_data_buymonth" value="<?php echo date('F'); ?>">
+																								<input type="hidden" name="inpt_data_buyday" style="width:32px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('j'); ?>">
+																								<input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
+																							</div>
+																							<div class="groupinput midd lockedd"><label>Stock</label>
+																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+																									<option value="">Select Stocks</option>
+																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+																									<?php endforeach; ?>
+																								</select>
+																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+																							</div>
+																							<div class="groupinput midd lockedd"><label>Buy Power</label>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																						</div>
+																						<div class="entr_col">
+																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																						</div>
+																						<div class="entr_col">
+																							<div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd">
+																								<label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
+																								<i class="fa fa-lock" aria-hidden="true"></i>
+																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
+																							</div>
+																						</div>
+																						<div class="entr_clear"></div>
+																				</div>
+																				<div class="entr_wrapper_mid">
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_strategy" class="rnd">
+																								<option value="" selected>Select Strategy</option>
+																								<option value="Bottom Picking">Bottom Picking</option>
+																								<option value="Breakout Play">Breakout Play</option>
+																								<option value="Trend Following">Trend Following</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_tradeplan" class="rnd">
+																								<option value="" selected>Select Trade Plan</option>
+																								<option value="Day Trade">Day Trade</option>
+																								<option value="Swing Trade">Swing Trade</option>
+																								<option value="Investment">Investment</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="entr_col">
+																						<div class="groupinput selectonly">
+																							<select name="inpt_data_emotion" class="rnd">
+																								<option value="" selected>Select Emotion</option>
+																								<option value="Nuetral">Neutral</option>
+																								<option value="Greedy">Greedy</option>
+																								<option value="Fearful">Fearful</option>
+																							</select>
+																						</div>
+																					</div>
+																					<div class="groupinput">
+																						<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+																						<!-- <div>this is it</div> -->
+																					</div>
+																					<div class="groupinput">
+																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																						<input type="hidden" value="Live" name="inpt_data_status">
+																						<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
+																					</div>
+																					</div>
+																				</form>
+																			</div>
+																		</div>
+                                                        			<!-- </form> -->
                                                         		</div>
                                                         	</div>
                                                             </div>
@@ -1779,65 +2080,160 @@ if ($getdstocks && $getdstocks != '') {
                                                                                 </div>
                                                                             </li>
                                                                             <?php
+																			
                                                                             if ($getdstocks) {
                                                                                 foreach ($getdstocks as $key => $value) {
-                                                                                    $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																					
+																					
+
+																					if(!$isjounalempty){
+																						$dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$value, true);
+																					} else {
+																						if($value == 'SampleStock_1'){
+																							$dstocktraded = [
+																								'data' => [
+																									[
+																										'buymonth' => 'August',
+																										'buyday' => 22,
+																										'buyyear' => 2019,
+																										'stock' => 'MBT',
+																										'price' => 100,
+																										'qty' => 620,
+																										'currprice' => 75.40,
+																										'change' => '0.40%',
+																										'open' => 75.50,
+																										'low' => 75.20,
+																										'high' => 75.80,
+																										'volume' => '957.73K',
+																										'value' => '72.29m',
+																										'boardlot' => 10,
+																										'strategy' => 'Trend Following',
+																										'tradeplan' => 'Day Trade',
+																										'emotion' => 'this is a test',
+																										'tradingnotes' => 'Trading Notes',
+																										'status' => 'Live',
+																									],
+																								],
+																								'totalstock' => 620,
+																								'aveprice' => 2228.5209688868,
+																								'totalcost' => 84225991.13847,
+																								'stockname' => 'SampleStock_1',
+																							];
+																						} else {
+																							$dstocktraded = [
+																								'data' => [
+																									[
+																										'buymonth' => 'August',
+																										'buyday' => 22,
+																										'buyyear' => 2019,
+																										'stock' => 'MBT',
+																										'price' => 90,
+																										'qty' => 600,
+																										'currprice' => 75.40,
+																										'change' => '0.40%',
+																										'open' => 75.50,
+																										'low' => 75.20,
+																										'high' => 75.80,
+																										'volume' => '957.73K',
+																										'value' => '72.29m',
+																										'boardlot' => 10,
+																										'strategy' => 'Trend Following',
+																										'tradeplan' => 'Day Trade',
+																										'emotion' => 'this is a test',
+																										'tradingnotes' => 'Trading Notes',
+																										'status' => 'Live',
+																									],
+																								],
+																								'totalstock' => 600,
+																								'aveprice' => 2228.5209688868,
+																								'totalcost' => 84225991.13847,
+																								'stockname' => 'Sample_2',
+																							];
+																						}
+																						
+																						
+																					}
                                                                                     if ($dstocktraded && $dstocktraded != '') {
+																						$stockdetails = "";
+																						foreach ($gerdqoute->data as $gskey => $gsvalue) {
+																							if($value == $gsvalue->symbol){
+																								$stockdetails = $gsvalue;
+																							}
+																						}
                                                                                         // code...
 
-                                                                                        $dstockinfo = $gerdqoute->data->$value;
+																						$dstockinfo = $stockdetails;
+																						if($isjounalempty){
+																							$dstockinfo = new \stdClass();
+																							$dstockinfo->last = 100.50;
+																						}
 
                                                                                         $totalmarketvalue = 0;
                                                                                         $dtotalcosts = 0;
                                                                                         $dselltotal = 0;
                                                                                         $intcost = 0;
-                                                                                        $totalquanta = 0;
+																						$totalquanta = 0;
+																						
+																						$favtotal = 0;
+																						$favvols = 0;
+																						
+
                                                                                         foreach ($dstocktraded['data'] as $dtradeissuekey => $dtradeissuevalue) {
                                                                                             $dmarketvalue = $dtradeissuevalue['price'] * $dtradeissuevalue['qty'];
-                                                                                            $dfees = getfees($dmarketvalue, 'buy');
+                                                                                            $dfees = getjurfees($dmarketvalue, 'buy');
                                                                                             $totalmarketvalue += $dmarketvalue;
                                                                                             $dtotalcosts += $dmarketvalue + $dfees;
                                                                                             $totalquanta += $dtradeissuevalue['qty'];
-                                                                                            $intcost = $dtradeissuevalue['price'];
-                                                                                        }
+																							$intcost = $dtradeissuevalue['price'];
+
+																							$favvols += $dtradeissuevalue['qty'];
+																							$favtotal += $dmarketvalue + $dfees;
+																							// calculate averate price
+																							// echo ($dmarketvalue + $dfees)."~";
+																						}
+
+																						$avrprice = $favtotal / $favvols;
+																						
+																						// echo $dstockinfo->last;
 
                                                                                         $dsellmarket = $dstockinfo->last * $dstocktraded['totalstock'];
-                                                                                        $dsellfees = getfees($dsellmarket, 'sell');
-                                                                                        $dselltotal += $dsellmarket - $dsellfees;
+                                                                                        $dsellfees = getjurfees($dsellmarket, 'sell');
+																						$dselltotal += $dsellmarket - $dsellfees;
+																						
+																						// echo $favtotal;
+																						$totalfixmarktcost = $favtotal;
 
-                                                                                        $totalfixmarktcost = $dstocktraded['totalstock'] * $dstocktraded['aveprice'];
-                                                                                        // $totalfinalcost = $totalfixmarktcost + getfees($totalfixmarktcost, 'buy');
+                                                                                        // $totalfixmarktcost = $dstocktraded['totalstock'] * $dstocktraded['aveprice'];
+                                                                                        // $totalfinalcost = $totalfixmarktcost + getjurfees($totalfixmarktcost, 'buy');
 
-                                                                                        $totalbuyfee = getfees($totalfixmarktcost, 'buy');
+                                                                                        $totalbuyfee = getjurfees($totalfixmarktcost, 'buy');
                                                                                         $totalfinalcost = $totalfixmarktcost - $totalbuyfee;
 
                                                                                         $dprofit = ($dselltotal - $totalfixmarktcost);
                                                                                         $profpet = (abs($dprofit) / $totalfixmarktcost) * 100; ?>
 																	            	<li>
 		                                                                            	<div style="width:99%;">
-		                                                                                    <?php /*?><div data-invest="<?php echo $intcost; ?>" style="width:4%"><?php echo $key + 1; ?></div><?php */?>
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <!--<div style="width:11%">&#8369;<?php //echo number_format( $dstocktraded['aveprice'], 2, '.', ',' );?></div>-->
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($dstocktraded['aveprice'], 2, '.', ','); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
-		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?>">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->
-		                                                                                     <div style="width:11%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?>"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
+		                                                                                     <div style="width:11%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
 		                                                                                        <div class="hideformodal">
-		                                                                                        	<div class="selltrade" id="selltrade_<?php echo $value; ?>">
+		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
 																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																			                            </div>
 
-																			                            <form action="/journal" method="post">
+																			                            <form action="/virtual-trades" method="post">
 
 																			                            <div class="entr_wrapper_top">
 
@@ -1865,7 +2261,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                                            </div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock"
-																			                                        value="<?php echo $value; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
 																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -1883,10 +2279,10 @@ if ($getdstocks && $getdstocks != '') {
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="text" name="inpt_data_sellprice"></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
 
-																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="text" name="inpt_data_qty"
-																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>"></div>
+																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
+																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
 																			                                   </div>
 
 																			                                    <div class="entr_clear"></div>
@@ -1898,7 +2294,7 @@ if ($getdstocks && $getdstocks != '') {
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm trade">
+																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
 																			                             </div>
@@ -1910,7 +2306,7 @@ if ($getdstocks && $getdstocks != '') {
 																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
-																	                                    <form action="/journal" method="post">
+																	                                    <form action="/virtual-trades" method="post">
 																	                                    <div class="entr_wrapper_top">
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput fctnlhdn">
@@ -1920,13 +2316,13 @@ if ($getdstocks && $getdstocks != '') {
 																	                                                  <input type="hidden" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
 																	                                                </div>
 																	                                                <div class="groupinput midd lockedd"><label>Stock</label>
-																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -4px;" value="<?php echo $value; ?>" readonly>
+																	                                                <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -4px; text-align: left;" value="<?php echo $value; ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd"><label>Buy Power</label>
-																	                                                <input type="text" name="input_buy_product" id="input_buy_product" style="margin-left: -4px;" value="<?php echo $buypower; ?>" readonly>
+																	                                                <input type="text" name="input_buy_product" id="input_buy_product" class="number" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																	                                                <i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice" required></div>
-																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity" required></div>
+																	                                                <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																	                                                <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value="&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -2000,7 +2396,7 @@ if ($getdstocks && $getdstocks != '') {
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
+																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																	                                            <input type="hidden" value="Live" name="inpt_data_status">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
@@ -2060,7 +2456,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getfees($selprice, 'sell');
+                                                                    $sellfee = getjurfees($selprice, 'sell');
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
@@ -2068,6 +2464,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         }
 
                                                     ?>
+
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -2147,7 +2544,7 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 														<div class="col-md-5">
-															<div class="box-portlet" style="height:208px;">
+															<div class="box-portlet" style="height:202px;">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Current Allocation
 																</div>
@@ -2161,19 +2558,19 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
-                                                    <div class="_adsbygoogle">
+                                                   <!-- <div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
                                                     <?php
@@ -2187,7 +2584,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 if ($atlvalue['data_sellmonth'] == $monfvalue) {
                                                                     $sellprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_sell_price']);
                                                                     $projectprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_avr_price']);
-                                                                    $sellfee = getfees($sellprice, 'sell');
+                                                                    $sellfee = getjurfees($sellprice, 'sell');
 
                                                                     $istotal = ($sellprice - $sellfee) - $projectprice;
                                                                     $dinpart['performance'] += $istotal;
@@ -2210,7 +2607,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($alltradelogs as $atlkey => $tmvalue) {
                                                             $sellprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_sell_price']);
                                                             $projectprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_avr_price']);
-                                                            $sellfee = getfees($sellprice, 'sell');
+                                                            $sellfee = getjurfees($sellprice, 'sell');
 
                                                             $istotal = ($sellprice - $sellfee) - $projectprice;
 
@@ -2248,7 +2645,7 @@ if ($getdstocks && $getdstocks != '') {
 
                                                                 $dsellprice = $ssvalue['data_sell_price'] * $ssvalue['data_quantity'];
                                                                 $dbaseprice = $sbp * $ssvalue['data_quantity'];
-                                                                $sellfee = getfees($dsellprice, 'sell');
+                                                                $sellfee = getjurfees($dsellprice, 'sell');
 
                                                                 $isprofit = ($dsellprice - $sellfee) - $dbaseprice;
 
@@ -2345,7 +2742,8 @@ if ($getdstocks && $getdstocks != '') {
                                                         // get lits of combi strats
                                                             $iswin = 0;
                                                             $isloss = 0;
-                                                            $totaltrade = 0;
+															$totaltrade = 0;
+															$totalprofit = 0;
                                                             foreach ($alltradelogs as $key => $value) {
                                                                 $data_sellmonth = $value['data_sellmonth'];
                                                                 $data_sellday = $value['data_sellday'];
@@ -2366,7 +2764,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 $soldplace = $data_quantity * $data_sell_price;
                                                                 $baseprice = $data_quantity * $data_dprice;
 
-                                                                $sellfee = getfees($soldplace, 'sell');
+                                                                $sellfee = getjurfees($soldplace, 'sell');
 
                                                                 //profit or loss
                                                                 $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2409,7 +2807,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         $soldplace = $data_quantity * $data_sell_price;
                                                                         $baseprice = $data_quantity * $data_dprice;
 
-                                                                        $sellfee = getfees($soldplace, 'sell');
+                                                                        $sellfee = getjurfees($soldplace, 'sell');
 
                                                                         //profit or loss
                                                                         $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2425,7 +2823,8 @@ if ($getdstocks && $getdstocks != '') {
                                                             foreach ($listmonth as $lomkey => $lomvalue) {
                                                                 $formonthperc .= '{';
                                                                 $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
-                                                                $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
                                                                 $formonthperc .= '},';
                                                             }
 
@@ -2450,6 +2849,13 @@ if ($getdstocks && $getdstocks != '') {
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics
+																	<?php
+																		if($isjounalempty){
+																			$iswin = 100;
+																			$isloss = 60;
+																			$totaltrade = 160;
+																		}
+																	?>
 																</div>
                                                                 <div class="chartarea" style="margin-bottom: -3px;">
                                                                     <div id="chartdiv4a"></div>
@@ -2546,7 +2952,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         $soldplace = $data_quantity * $data_sell_price;
                                                                         $baseprice = $data_quantity * $data_dprice;
 
-                                                                        $sellfee = getfees($soldplace, 'sell');
+                                                                        $sellfee = getjurfees($soldplace, 'sell');
 
                                                                         //profit or loss
                                                                         $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2606,19 +3012,42 @@ if ($getdstocks && $getdstocks != '') {
 															<div class="box-portlet">
                                                             	<style>.dstatstrade ul li div {width: 16%;}</style>
 
-                                                                <div style="padding:5px 15px;">
-                                                                	<div class="col-md-8" style="padding:0 10px 0 0">
+                                                                <div style="padding:5px 15px;" class="col-md-8">
+                                                                	<div class="col-md-12" style="padding:0 10px 0 0">
 
                                                                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
                                                                             Strategy Statistics
                                                                         </div>
-
+																		<?php
+																			if($isjounalempty){
+																				$stratsinfo = [
+																					0 => [
+																						'dstrat' => 'Bottom Picking',
+																						'winrate' => 15,
+																						'lossrate' => 4,
+																						'trades' => 19,
+																					],
+																					1 => [
+																						'dstrat' => 'Breakout Play',
+																						'winrate' => 9,
+																						'lossrate' => 1,
+																						'trades' => 10,
+																					],
+																					2 => [
+																						'dstrat' => 'Trend Following',
+																						'winrate' => 2,
+																						'lossrate' => 8,
+																						'trades' => 10,
+																					],
+																				];
+																			}
+																		?>
                                                                 		<div class="stats-info">
                                                                             <div class="dstatstrade">
                                                                                 <ul>
                                                                                     <li class="headerpart">
                                                                                         <div style="width:100%">
-                                                                                            <div style="width:150px;">Strategy</div>
+                                                                                            <div style="width:150px;text-align:left;">Strategy</div>
                                                                                             <div>Trades</div>
                                                                                             <div>Wins</div>
                                                                                             <div>Loses</div>
@@ -2633,25 +3062,25 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
 	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['trades']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['winrate']; ?></div>
-	                                                                                            <div><?php echo $statsvalue['lossrate']; ?></div>
-	                                                                                            <div><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php
                                                                                             $stratstrg .= '{';
-                                                                                        $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-                                                                                        $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-                                                                                        $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-                                                                                        $stratstrg .= '"colors": "#06af68",';
-                                                                                        $stratstrg .= '"colorsred": "#b7193f"';
-                                                                                        $stratstrg .= '},';
+																							$stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
+																							$stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
+																							$stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
+																							$stratstrg .= '"colors": "#06af68",';
+																							$stratstrg .= '"colorsred": "#b7193f"';
+																							$stratstrg .= '},';
 
-                                                                                        $wincharts .= '{';
-                                                                                        $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-                                                                                        $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-                                                                                        $wincharts .= '},'; ?>
+																							$wincharts .= '{';
+																							$wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
+																							$wincharts .= '"winvals": '.$statsvalue['winrate'].'';
+																							$wincharts .= '},'; ?>
                                                                                     <?php
                                                                                     } ?>
 
@@ -2660,7 +3089,12 @@ if ($getdstocks && $getdstocks != '') {
                                                                     	</div>
 
                                                                     </div>
-                                                                    <div class="col-md-4" style="padding:0">
+                                                                    <div class="col-md-12" style="padding: 0 12px 0 10px;">
+																		<div id="chartdiv5" style="padding-left: 0;"></div>
+																	</div>
+                                                                    <br class="clear">
+                                                                </div>
+																<div class="col-md-4" style="padding-left:0;">
                                                                     	<div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
                                                                         	Win Allocations
                                                                     	</div>
@@ -2684,15 +3118,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                         </div>
 
                                                                     </div>
-                                                                    <br class="clear">
-
-                                                                </div>
-
-                                                                <div style="padding: 0 12px 0 10px;">
-                                                                    <div id="chartdiv5"></div>
-                                                                </div>
-																<br class="clear">
-
+                                                                
 															</div>
 														</div>
 														<br class="clear">
@@ -2735,7 +3161,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     //profit or loss
                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -2818,11 +3244,27 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             </li><?php */?>
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
+																							if($isjounalempty){
+																								$finalwinning = [
+																									0 => [
+																										'dstock' => 'Stock 3',
+																										'dprofit' => 123435
+																									],
+																									1 => [
+																										'dstock' => 'Stock 2',
+																										'dprofit' => 12343
+																									],
+																									2 => [
+																										'dstock' => 'Stock 1',
+																										'dprofit' => 1234
+																									],
+																								];
+																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#115350' : ($fwinkey == 1 ? '#0d785a' : ($fwinkey == 2 ? '#06af68' : '#00e676'))).';color: #b1e8ce;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2874,15 +3316,34 @@ if ($getdstocks && $getdstocks != '') {
                                                                                             </li> -->
                                                                                             <?php /*?> Losers <?php */?>
 																							<?php
+																							if($isjounalempty){
+																								$finalloss = [
+																									0 => [
+																										'dstock' => 'Stock 1',
+																										'dprofit' => -1234
+																									],
+																									1 => [
+																										'dstock' => 'Stock 2',
+																										'dprofit' => -12343
+																									],
+																									2 => [
+																										'dstock' => 'Stock 3',
+																										'dprofit' => -123435
+																									],
+																								];
+																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
-                                                                                            $intolosschartlabels = '';
+																							$intolosschartlabels = '';
+																							
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : '#ff1744'))).';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
-                                                                                                $dlossing = $dlossing.$dinss;
+																								$dlossing = $dlossing.$dinss;
+																								
+																								// echo $flossvalue['dprofit']." dprof ~ ";
 
                                                                                                 $intolosschartbands .= '{';
                                                                                                 $intolosschartbands .= '"color": "#ffffff",';
@@ -2894,16 +3355,16 @@ if ($getdstocks && $getdstocks != '') {
                                                                                                 $intolosschartbands .= '}, {';
                                                                                                 $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
-                                                                                                $intolosschartbands .= ' "endValue": '.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').',';
+                                                                                                $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
                                                                                                 $intolosschartbands .= ' "radius": "100%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "85%",';
-                                                                                                $intolosschartbands .= ' "balloonText": "'.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').'%"';
+                                                                                                $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
                                                                                                 $intolosschartbands .= '},';
 
                                                                                                 $intolosschartlabels .= '{';
-                                                                                                $intolosschartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
+                                                                                                $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
                                                                                                 $intolosschartlabels .= '"x": "49%",';
-                                                                                                $intolosschartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '15' : ($fwinkey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '15' : ($flosskey == 2 ? '24' : '33'))).'%",';
                                                                                                 $intolosschartlabels .= '"size": 11,';
                                                                                                 $intolosschartlabels .= '"bold": false,';
                                                                                                 $intolosschartlabels .= '"color": "#d8d8d8",';
@@ -2987,7 +3448,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     //profit or loss
                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -3018,7 +3479,30 @@ if ($getdstocks && $getdstocks != '') {
 																<div class="box-portlet-header" style="padding-bottom:13px;">
 																	Emotional Statistics
 																</div>
-
+																<?php
+																	if($isjounalempty){
+																		$emotioninfo = [
+																			0 => [
+																				'emotion' => 'Neutral',
+																				'iswin' => 3,
+																				'isloss' => 4,
+																				'totaltrades' => 7
+																			],
+																			1 => [
+																				'emotion' => 'Greedy',
+																				'iswin' => 2,
+																				'isloss' => 3,
+																				'totaltrades' => 5
+																			],
+																			2 => [
+																				'emotion' => 'Fearful',
+																				'iswin' => 6,
+																				'isloss' => 1,
+																				'totaltrades' => 7
+																			],
+																		];
+																	}
+																?>
                                                                 <div class="col-md-6" style="padding-right:0;">
 
                                                                     <div class="chartarea">
@@ -3051,10 +3535,10 @@ if ($getdstocks && $getdstocks != '') {
 	                                                                                </li>
 																					<?php
                                                                                     $demotsonchart .= '{';
-                                                        $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-                                                        $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-                                                        $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-                                                        $demotsonchart .= '},'; ?>
+																					$demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+																					$demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+																					$demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+																					$demotsonchart .= '},'; ?>
 																					<?php if ($emtkey >= 4) {
                                                             break;
                                                         } ?>
@@ -3078,7 +3562,7 @@ if ($getdstocks && $getdstocks != '') {
                                                     <?php
                                                         $dlistoflivetrades = [];
                                                         foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+                                                            $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$dtdvalue, true);
                                                             if ($dstocktraded && $dstocktraded != '') {
                                                                 foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
                                                                     array_push($dlistoflivetrades, $dtfvalue);
@@ -3187,7 +3671,15 @@ if ($getdstocks && $getdstocks != '') {
 																</div>
                                                                 <div class="box-portlet-content" style="padding-top: 0; padding-left:0; padding-bottom:0;">
                                                                     <div class="col-md-4" style="padding-right:0;">
-
+																			<?php
+																				if($isjounalempty){
+																					$commissions = 12345.6;
+																					$vat = 2342.5;
+																					$transfer_fee = 1234;
+																					$sccp = 124;
+																					$sales_tax = 223;
+																				}
+																			?>
 																			<div class="inner-portlet" style="margin-top:20px;">
                                                                                     <div class="stats-info">
                                                                                         <div class="dstatstrade">
@@ -3254,7 +3746,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($volumes as $dvolkey => $dvolvalue) {
                                                             $dailyvolumes .= '{';
                                                             $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                            $dailyvolumes .= '"column-1": '.$dvolvalue.'';
+                                                            $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
                                                             $dailyvolumes .= '},';
                                                         }
 
@@ -3262,7 +3754,7 @@ if ($getdstocks && $getdstocks != '') {
                                                         foreach ($values as $dvalkey => $dvalvalue) {
                                                             $dailyvalues .= '{';
                                                             $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                            $dailyvalues .= '"column-1": '.$dvalvalue.'';
+                                                            $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
                                                             $dailyvalues .= '},';
                                                         }
                                                     ?>
@@ -3295,19 +3787,19 @@ if ($getdstocks && $getdstocks != '') {
 															</div>
 														</div>
 													</div>
-													<br class="clear">
+													<!-- <br class="clear"> -->
 
-                                                    <div class="_adsbygoogle">
+                                                    <!--<div class="_adsbygoogle">
 														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
 
 															<div class="box-portlet-content" style="padding:0;">
                                                             	<?php /*?><small>ADVERTISEMENT</small><?php */?>
 																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 													<?php
@@ -3326,8 +3818,19 @@ if ($getdstocks && $getdstocks != '') {
                                                             'date_query' => array(
                                                                 'after' => date('Y-m-d', strtotime('-20 days')),
                                                             ),
-                                                            'meta_key' => 'data_userid',
-                                                            'meta_value' => get_current_user_id(),
+                                                            // 'meta_key' => 'data_userid',
+															// 'meta_value' => get_current_user_id(),
+															
+															'meta_query' => array(
+																array(
+																	'key'     => 'data_userid',
+																	'value'   => get_current_user_id(),
+																),
+																array(
+																	'key'     => 'trade_type',
+																	'value'   => 'virtual',
+																),
+															),
                                                         );
                                                         $posts = get_posts($args);
 
@@ -3348,11 +3851,11 @@ if ($getdstocks && $getdstocks != '') {
                                                                     $soldplace = $dquantity * $dsellprice;
                                                                     $baseprice = $dquantity * $dbuyprice;
 
-                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                     $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                                     $dlls['profit'] += $dprofit;
-                                                                    array_push($dlls[$ddatesvalue], $profit);
+                                                                    array_push($dlls[$ddatesvalue], $dprofit);
                                                                 }
                                                             }
                                                             array_push($dlistofpost, $dlls['profit']);
@@ -3375,7 +3878,7 @@ if ($getdstocks && $getdstocks != '') {
                                                             $soldplace = $dquantity * $dsellprice;
                                                             $baseprice = $dquantity * $dbuyprice;
 
-                                                            $sellfee = getfees($soldplace, 'sell');
+                                                            $sellfee = getjurfees($soldplace, 'sell');
 
                                                             $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                             $instrade['profit'] = $dprofit;
@@ -3438,7 +3941,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                 $soldplace = $dquantity * $dsellprice;
                                                                 $baseprice = $dquantity * $dbuyprice;
 
-                                                                $sellfee = getfees($soldplace, 'sell');
+                                                                $sellfee = getjurfees($soldplace, 'sell');
 
                                                                 $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
                                                                 $indays['profit'] += $dprofit;
@@ -3493,28 +3996,49 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Tradelogs
+																<div class="headright" style="display:none;">
+																	<form action="" method="get" id="ptchangenum">
+																		<input type="number" id="ptnum" name="ptnum">
+																		<input type="hidden" name="pt" value="1">
+																		<a href="#" class="dmoveto">Go</a>
+																	</form>
+																</div>
+
+																<div class="search-tlogs">
+																	<form action="" method="get">
+																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
+																	</form>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
-                                                                    <div class="dstatstrade overridewidth">
+                                                                    <div class="dstatstrade overridewidth dstatstrade1">
                                                                         <ul>
-                                                                        	<li class="headerpart">
+                                                                        	<li class="headerpart headerpart-tradelogs">
                                                                             	<div style="width:100%;">                                                                                	
-                                                                                    <div style="width:70px">Date</div>
-                                                                                    <div style="width:60px">Stocks</div>
-                                                                                    <div style="width:65px">Volume</div>
-                                                                                    <div style="width:70px">Ave. Price</div>
-                                                                                    <div style="width:95px">Buy Value</div>
-                                                                                    <div style="width:65px">Sell Price</div>
-                                                                                    <div style="width:95px">Sell Value</div>
-                                                                                    <div style="width:85px">Profit/Loss</div>
-                                                                                    <div style="width:30px">%</div>
-                                                                                    <div style="width:38px; text-align:right">Notes</div>
-																					<div style="width:20px">&nbsp;</div>
+                                                                                    <div style="width:65px">Date</div>
+                                                                                    <div style="width:45px">Stocks</div>
+                                                                                    <div style="width:55px" class="table-title-live">Volume</div>
+                                                                                    <div style="width:65px" class="table-title-live">Ave. Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Buy Value</div>
+                                                                                    <div style="width:65px" class="table-title-live">Sell Price</div>
+                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:80px" class="table-title-live">Profit/Loss</div>
+                                                                                    <div style="width:65px" class="table-title-live">%</div>
+                                                                                    <div style="width:65px; text-align:center">Action</div>
                                                                                 </div>
                                                                             </li>
+                                                                            
+                                                                           <!-- <li class="s-logs" style="display: none;">
+
+	                                                                            		                                                                            	
+	                                                                            	
+                                                                            </li>-->
+
 																			<?php
-                                                                                $paginate = 5;
+                                                                                // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
+                                                                                // echo  $_GET['ptnum'];
+                                                                                $paginate = 20;
                                                                                 $count = 1;
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
@@ -3549,6 +4073,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     wp_reset_postdata();
                                                                                 }
 
+                                                                                $tnum = 0;
+
                                                                                 foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
                                                                                     $data_sellmonth = $tlvalue['data_sellmonth'];
                                                                                     $data_sellday = $tlvalue['data_sellday'];
@@ -3564,7 +4090,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $soldplace = $data_quantity * $data_sell_price;
                                                                                     $baseprice = $data_quantity * $data_dprice;
 
-                                                                                    $sellfee = getfees($soldplace, 'sell');
+                                                                                    $sellfee = getjurfees($soldplace, 'sell');
 
                                                                                     //profit or loss
                                                                                     $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
@@ -3573,25 +4099,45 @@ if ($getdstocks && $getdstocks != '') {
                                                                                     $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
                                                                                     $totalprofit += $dprofit;
                                                                             ?>
+
+                                                             				<!--<li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
+	                                                                            	<?php 
+	                                                                            		//$text = (isset($_POST['keyword']));
+	                                                                            		//echo $text;
+
+	                                                                            	
+	                                                                            	?>
+                                                                            </li>-->
+                                                                     	<input type="hidden" id="<?php echo 'dprofit' . $tnum; ?>" value="<?php echo $dprofit; ?>">
+
+
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
+
 																				<div style="width:99%;">
-																					<div style="width:70px"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:60px"><?php echo $data_stock; ?></div>
-																					<div style="width:65px"><?php echo $data_quantity; ?></div>
-																					<div style="width:70px">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
-																					<div style="width:95px">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
-																					<div style="width:65px">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:95px">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
-																					<div style="width:85px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
-																					<div style="width:30px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
-																					<div style="width:38px; text-align:right">
+																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:35px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
-																							<i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+																							<i class="fas fa-clipboard"></i>
 																						</a>
 																					</div>
-																					<div style="width:20px"><a class="deletelog" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;padding: 10px;">x</a></div>
+																					<input type="hidden" id="<?php echo 'deletelog' . $tnum; ?>" value="<?php echo $tlvalue['id']; ?>">
+																					<div style="width:25px">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+																							<i class="fas fa-eraser"></i>
+																						</a>
+																					</div>
 																				</div>
-
+																				<?php  $tnum++; ?>
 																				<div class="hidethis">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
@@ -3604,8 +4150,8 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>
@@ -3621,6 +4167,7 @@ if ($getdstocks && $getdstocks != '') {
 																			</li>
 																					
 																			<?php endforeach; ?>
+																		<input type="hidden" name="hsearchlogs" value="<?php echo $tnum; ?>" >
                                                                         </ul>
                                                                     </div>
 																	<div class="deleteform">
@@ -3632,10 +4179,10 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="pginner">
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
-                                                                                ?>
-																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                                                                    ?>
+																					<li><a href="/virtual-trades/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
-                                                                            } ?>
+                                                                                } ?>
 																			</ul>
 																		</div>
 																	</div>	
@@ -3652,17 +4199,17 @@ if ($getdstocks && $getdstocks != '') {
                                                           echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
 													</div>
 
-                                                    <div class="adsbygoogle">
+                                                    <!--<div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php // echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 						                        </div>
 												<style type="text/css">
@@ -3713,27 +4260,35 @@ if ($getdstocks && $getdstocks != '') {
 															jQuery('.add-funds-show').hide();
 															jQuery('.add-funds-shows').show();
 														});
+														// jQuery('td[name=tcol1]')
 														jQuery('.textfield-buyprice').keyup(function(){
+															
 															var inputVal = jQuery(this).val().length;													
-
 															if(inputVal != 0){
 																$('.confirmtrd').prop('disabled', false);
 																 x = 1;
+
 															}else{
 																$('.confirmtrd').prop('disabled', true);
 															}
 														});
+
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
 															if(inputVal2 != 0){
 																y = 1
 															}
 														});
+
 														$(".confirmtrd").click(function(e){
+
+															//
 															if(x == 1 && y == 1){
 																$('.chart-loader').css("display","block");
 																$(this).hide();
 															}
+
+															
 														});
 													});
 						                        </script>
@@ -3744,10 +4299,17 @@ if ($getdstocks && $getdstocks != '') {
 
                                                             <div class="box-portlet-header">
                                                                 Ledger
+																<div class="headright" style="display:none;">
+																	<form action="" method="get" id="ldchangenum">
+																		<input type="number" id="ldnum" name="ldnum">
+																		<input type="hidden" name="ld" value="1">
+																		<a href="#" class="lddmoveto">Go</a>
+																	</form>
+																</div>
                                                                 	<div class="button" style="float: right;">
-                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="deposit-btn">Add funds</a>
+                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
                                                                 	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
+																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
 																			<div class="modal-content">
 																				<div class="modal-header header-depo">
 																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
@@ -3756,18 +4318,22 @@ if ($getdstocks && $getdstocks != '') {
 																					</button>
 																				</div>
 																				<hr class="style14 style15">
-																				<div class="button-funds">
-																					<a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--primary" style="float: right;">Deposit Funds</a>
+																				<div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+																					<select class="rnd" name="" id="" style="z-index: 20;">
+																						<option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+																						<option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+																					</select>
+																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
+																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
 																				</div>
-																				<form action="/journal" method="post" class="add-funds-show depotincome">
+																				<form action="/virtual-trades" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
 																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel">Deposit</h5>
+																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
 																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field" style="text-align: right;"></div>
+																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
 																								</div>
 																							</div>
 																						</div>
@@ -3778,18 +4344,18 @@ if ($getdstocks && $getdstocks != '') {
 																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																						<input type="hidden" name="istype" value="deposit">
 																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary">Deposit</a>
+																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>
-																				<form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
+																				<form action="/virtual-trades" method="post" class="add-funds-shows dividincome" style="display: none;">
 																						<div class="modal-body depo-body">
 																							<div class="dmainform">
 																								<div class="dinnerform">
 																									<div class="dinitem">
 																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
 																										<!-- <div class="dnlabel">Amount</div> -->
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" placeholder="Please enter amount" class="depo-input-field" style="text-align: right;"></div>
+																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3798,7 +4364,7 @@ if ($getdstocks && $getdstocks != '') {
 																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
 																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
 																							<input type="hidden" name="istype" value="dividend">
-																							<input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary">
+																							<!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
 																							<a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
 																							<!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
 																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
@@ -3808,11 +4374,11 @@ if ($getdstocks && $getdstocks != '') {
 																		</div>
 																	</div>
 																	<?php if ($dbaseaccount > 0): ?>
-																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="withdraw-btn">Withdraw</a>
+																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">
-																					<form action="/journal" method="post">
+																					<form action="/virtual-trades" method="post">
 																						<div class="modal-header header-depo">
 																							<h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
 																							<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
@@ -3825,7 +4391,7 @@ if ($getdstocks && $getdstocks != '') {
 																								<div class="dinnerform">
 																									<div class="dinitem arb_wdrw">
 																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input type="number" style="padding: 0px 11px 0px 11px !important;" class="dwithdrawnum depo-input-field sss" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
 																									</div>
 																								</div>
 																							</div>
@@ -3905,7 +4471,8 @@ if ($getdstocks && $getdstocks != '') {
                                                                             </li>
 																			
                                                                             <?php
-                                                                                $numofitems = 2;
+                                                                                // $numofitems = (isset($_GET['ldnum']) && @$_GET['ldnum'] != "" ? 1 : $_GET['ldnum']);
+                                                                                $numofitems = 20;
                                                                                 $ldcount = 1;
                                                                                 $ldpages = 1;
                                                                                 $listledger = [];
@@ -3966,7 +4533,7 @@ if ($getdstocks && $getdstocks != '') {
 																			<ul>
 																				<?php for ($i = 1; $i <= $ldpages; ++$i) {
                                                                                     ?>
-																					<li><a href="/journal/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+																					<li><a href="/virtual-trades/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
                                                                                 } ?>
 																			</ul>
@@ -3980,17 +4547,17 @@ if ($getdstocks && $getdstocks != '') {
                                                     </div>
                                                 	<br class="clear">
 
-                                                    <div class="adsbygoogle">
+                                                    <!--<div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 						                        </div>
@@ -3998,17 +4565,17 @@ if ($getdstocks && $getdstocks != '') {
 
                                                		<div data-provide="calendar"></div>
 
-                                                    <div class="adsbygoogle">
+                                                   <!-- <div class="adsbygoogle">
 														<div class="box-portlet">
 
 															<div class="box-portlet-content">
                                                             	<small>ADVERTISEMENT</small>
 																<div class="adscontainer">
-                                                                	<img src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
+                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
                                                                 </div>
 															</div>
 														</div>
-													</div>
+													</div>-->
 													<br class="clear">
 
 						                        </div>
@@ -4226,7 +4793,10 @@ if ($getdstocks && $getdstocks != '') {
     });
 	jQuery(document).ready(function(){
 
-		jQuery(".deletelog").click(function(e){
+		$(document).on("click", ".deletelog", function() {
+
+		//jQuery(".deletelog").click(function(e){
+
 			var dlogid = jQuery(this).attr('data-istl');
 
 			swal({
@@ -4238,15 +4808,57 @@ if ($getdstocks && $getdstocks != '') {
 			})
 			.then((willDelete) => {
 				if (willDelete) {
-					swal("Poof! Your imaginary file has been deleted!");
 					jQuery(this).parents(".dloglist").addClass("housed");
 					jQuery(".deleteformitem").find("#todelete").val(dlogid);
 					jQuery(".deleteformitem").submit();
-				} else {
-					// swal("Your imaginary file is safe!");
-				}
+				} 
 			});
 		});
+
+		jQuery("#inpt_data_select_stock").on('change', function() {
+			var datts = this.value;
+			var dstocks = $.parseJSON(datts);
+
+			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
+			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
+			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
+			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
+			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
+			jQuery("input[name='inpt_data_volume']").val((dstocks.volume).toFixed(2));
+			jQuery("input[name='inpt_data_value']").val((dstocks.value).toFixed(2));
+
+			// board lot
+			var dboard = 0;
+			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
+				dboard = 1000000;
+			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
+				dboard = 100000;
+			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
+				dboard = 10000;
+			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
+				dboard = 1000;
+			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
+				dboard = 100;
+			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
+				dboard = 10;
+			} else if (dstocks.last >= 1000) {
+				dboard = 5;
+			} 
+
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
+		});
+
+		jQuery(".dloadform").click(function(e){
+			jQuery(".dentertrade").submit();
+
+		});
+
+
+		//$(document).on("click", ".fancybox-inline", function() {
+			//e.preventDefault();
+  			//$(this).toggleClass("tradelogbox");
+		//});
 
 		jQuery(".depotbutton").click(function(e){
 			
@@ -4287,7 +4899,12 @@ if ($getdstocks && $getdstocks != '') {
 				title: "Are you sure?",
 				text: "Once deleted, you will not be able to recover your Journal Data!",
 				icon: "warning",
-				buttons: true
+				buttons: true,
+				dangerMode: true,
+			}).then((willDelete) => {
+			if (willDelete) {
+				jQuery('.resetform').submit();
+			}
 			});
 		});
 
@@ -4301,13 +4918,139 @@ if ($getdstocks && $getdstocks != '') {
 					if (!jQuery(this).parents(".modal-content").find(".errormessage").length) {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
-				} else {
-
 				}
 			} else {
 				e.preventDefault();
 			}
 		});
+
+		jQuery(".dmoveto").click(function(e){
+			e.preventDefault();
+			// ptchangenum
+			// jQuery("#ptchangenum").submit();
+			var dnumsec = jQuery("#ptchangenum").find("#ptnum").val();
+			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
+
+			} else {
+				jQuery("#ptchangenum").submit();
+			}
+		});
+
+		jQuery(".lddmoveto").click(function(e){
+			e.preventDefault();
+			// ptchangenum
+			// jQuery("#ptchangenum").submit();
+			var dnumsec = jQuery("#ldchangenum").find("#ldnum").val();
+			if(parseInt(dnumsec) <= 0 || dnumsec.length === 0 ){
+
+			} else {
+				jQuery("#ldchangenum").submit();
+			}
+		});
+
+
+		jQuery('.search-logs').on('keyup', function () {
+
+			var totalrow = $('input[name="hsearchlogs"]').val();
+
+			if($(this).val().length < 1) {
+        		jQuery('.dloglist').css("display","block");
+        		for(var x = 0; x < totalrow; x++){
+        			jQuery('.s-logs'+ x).remove();
+        		}
+        		$('.s-logs').remove();
+        		 
+    		}else {
+    			jQuery('.dloglist').css("display","none");
+    			jQuery('.s-logs').css("display","block");
+    			var keyword = $(this).val();
+    				
+    			var tdate = $('.tdate').text();
+    			//var tdata = new Array($('.tdata').text());
+    			//var tdata = [];
+    			var td =  $(".tdata").text().length
+    			var tcolor;
+    			for(var i = 0; i < totalrow; i++){
+    				var tdata = $('#tdata' + i).text();
+    				var tdate = $('#tdate' + i).text();
+    				var tquantity = $('#tquantity' + i).text();
+    				var tavprice = $('#tavprice' + i).text();
+    				var tbvalue = $('#tbvalue' + i).text();
+    				var tsellprice = $('#tsellprice' + i).text();
+    				var tsellvalue = $('#tsellvalue' + i).text();
+    				var tploss = $('#tploss' + i).text();
+    				var tpercent = $('#tpercent' + i).text();
+    				var dprofit = $('#dprofit' + i).val();
+    				var deletelog = $('#deletelog' + i).val();
+
+    				//if(keyword == tdata){
+    				var rgxp = new RegExp(keyword, "gi");
+
+    				if (tdata.match(rgxp)) {
+
+		    				if(dprofit > 0 ){
+		    					tcolor = 'txtgreen';
+		    				}else{
+		    					tcolor = 'txtred';
+		    				}
+		    			
+		    			if($('#logrows-'+ i).hasClass('s-logs'+ i)){
+		    				$('.s-logs').remove();
+		    				return;
+
+		    			}else{
+
+		    				$('.dstatstrade1 ul').append(
+		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
+		    					$('.s-logs').remove();
+		    			}
+		    					
+    				}else{
+    					$('.s-logs' + i).remove();
+    					if(!$('#norecords').hasClass('s-logs')){
+    						$('.dstatstrade1 ul').append("<li class='s-logs' id='norecords'><div>No records found.</div></li>");
+    					}
+    				}
+
+    			}
+    			
+
+    		}	
+			
+        });
+        
+        // jQuery('input.number').keyup(function (event) {         // skip for arrow keys
+        //     // journals
+        //     if (event.which >= 37 && event.which <= 40) {
+        //         event.preventDefault();
+        //     }
+
+        //     var currentVal = jQuery(this).val();
+        //     var testDecimal = testDecimals(currentVal);
+        //     if (testDecimal.length > 1) {
+        //         currentVal = currentVal.slice(0, -1);
+        //     }
+        //     jQuery(this).val(replaceCommas(currentVal));
+
+        // });
+
+        // function testDecimals(currentVal) {
+        //     var count;
+        //     currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        //     return count;
+        // }
+
+        // function replaceCommas(yourNumber) {
+        //     var components = yourNumber.toString().split(".");
+        //     if (components.length === 1) 
+        //         components[0] = yourNumber;
+        //     components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        //     if (components.length === 2)
+        //         components[1] = components[1].replace(/\D/g, "");
+        //     return components.join(".");
+        // }
+
+
 	});
     </script>
 
@@ -4319,7 +5062,7 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"labelRadius": 10,
+			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -4349,11 +5092,14 @@ if ($getdstocks && $getdstocks != '') {
 				"valueWidth": 55
 			},
 			"titles": [],
-			"dataProvider": [
-				<?php echo $currentalocinfo; ?>
-			]
+			"dataProvider": [<?php echo $currentalocinfo; ?>]
 		}
 	);
+	<?php
+		if($isjounalempty){
+			$formonthperc = '{"category": "Jan","column-1": "80"},{"category": "Feb","column-1": "60"},{"category": "Mar","column-1": "30"},{"category": "Apr","column-1": "20"},{"category": "May","column-1": "10"},{"category": "Jun","column-1": "-5"},{"category": "Jul","column-1": "-15"},{"category": "Aug","column-1": "-20"},{"category": "Sep","column-1": "-10"},{"category": "Oct","column-1": "5"},{"category": "Nov","column-1": "10"},{"category": "Dec","column-1": "15"}';
+		}
+	?>
 	// Chart 2 - Monthly Performance (Bar)
 	AmCharts.makeChart("chartdiv2",
 		{
@@ -4439,7 +5185,12 @@ if ($getdstocks && $getdstocks != '') {
 	);
 
 	// Chart 3 - Monthly Performance (Pie) - Removed requested by Ai
-
+	<?php
+		if($isjounalempty){
+			$iswin = 100;
+			$isloss = 60;
+		}
+	?>
 	// Chart 4a - Trade Statistics (chartdiv4a)
 	var chart = AmCharts.makeChart("chartdiv4a", {
 	  "type": "pie",
@@ -4456,8 +5207,8 @@ if ($getdstocks && $getdstocks != '') {
 	  "color": "#d8d8d8",
 	  "innerRadius": "50%",
 	  "colors": [
-		"#ffffff",
-		"#000000"
+		"#00E676",
+		"#ff1744"
 	  ],
 	  "defs": {
 		"filter": [{
@@ -4495,7 +5246,11 @@ if ($getdstocks && $getdstocks != '') {
 		"enabled": false
 	  }
 	});
-
+	<?php
+		if($isjounalempty){
+			$wincharts = '{"strategy": "Bottom Picking","winvals": 15},{"strategy": "Breakout Play","winvals": 9},{"strategy": "Trend Following","winvals": 2}';
+		}
+	?>
 	// Chart 4b - Win Allocations (chartdiv4b)
 	var chart = AmCharts.makeChart("chartdiv4b", {
 	  "type": "pie",
@@ -4515,21 +5270,24 @@ if ($getdstocks && $getdstocks != '') {
 		"autoMargins":false,
 		"color": "#d8d8d8",
 		"align": "center",
-		"valueWidth": 25
+		"valueWidth": 35
 	  },
 	  "color": "#d8d8d8",
-	  "innerRadius": "30%",
+	  "innerRadius": "50%",
+	  "radius": 75,
+	  "autoMargins": false,
 	  "colors": [
-		"#00e676",
-		"#02d471",
-		"#04c16d",
-		"#06af68",
-		"#089c63",
-		"#0b7d55",
-		"#0d6d52",
-		"#0f5a4f",
-		"#11484c",
-		"#133e4a"
+		"#f44336",
+		"#FFC107",
+		"#06af68"
+		// "#4CAF50",
+		// "#00BCD4",
+		// "#2196F3",
+		// "#673AB7",
+		// "#E91E63",
+		// "#FF9800",
+		// "#FFEB3B",
+		// "#8BC34A"
 	  ],
 	  "defs": {
 		"filter": [{
@@ -4570,6 +5328,8 @@ if ($getdstocks && $getdstocks != '') {
 
 	function handleInit(){
 	  chart.legend.addListener("rollOverItem", handleRollOver);
+	  /*jQuery("#chartdiv2 svg").prepend('<defs><linearGradient id="myGradient" gradientTransform="rotate(90)">
+	  <stop offset="5%" stop-color="#00e676" /><stop offset="95%" stop-color="#000000" /></linearGradient></defs>');*/
 	}
 
 	function handleRollOver(e){
@@ -4577,16 +5337,22 @@ if ($getdstocks && $getdstocks != '') {
 	  wedge.parentNode.appendChild(wedge);
 	}
 
+	<?php
+		if($isjounalempty){
+			$stratstrg = '{"category": "Bottom Picking","column-2": "4","Trades": "15","colors": "#06af68","colorsred": "#b7193f"},{"category": "Breakout Play","column-2": "1","Trades": "9","colors": "#06af68","colorsred": "#b7193f"},{"category": "Trend Following","column-2": "8","Trades": "2","colors": "#06af68","colorsred": "#b7193f"}';
+		}
+	?>
 	// Chart 5 - Strategy Statistics
 	AmCharts.makeChart("chartdiv5",
 {
 	"type": "serial",
 	"categoryField": "category",
 	"rotate": true,
-	"autoMarginOffset": 5,
 	"marginLeft": 10,
 	"marginRight": 10,
-	"marginTop": 5,
+	"autoMarginOffset": 0,
+	"marginBottom": 20,
+	"marginTop": 85,
 	"startDuration": 1,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
@@ -4619,7 +5385,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#00E676",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-1",
@@ -4633,7 +5399,8 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "Trades",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
 		},
 		{
 			"alphaField": "color",
@@ -4650,7 +5417,7 @@ if ($getdstocks && $getdstocks != '') {
 			"fillAlphas": 1,
 			"fillColors": "#ff1744",
 			"fillColorsField": "color",
-			"fixedColumnWidth": 10,
+			"fixedColumnWidth": 15,
 			"gapField": "color",
 			"highField": "color",
 			"id": "AmGraph-2",
@@ -4664,7 +5431,8 @@ if ($getdstocks && $getdstocks != '') {
 			"type": "column",
 			"valueField": "column-2",
 			"xField": "color",
-			"yField": "color"
+			"yField": "color",
+			"cornerRadiusTop": 3,
 		}
 	],
 	"guides": [],
@@ -4688,7 +5456,23 @@ if ($getdstocks && $getdstocks != '') {
 	]
 }
 	);
-
+	<?php 
+		if($isjounalempty){
+			$feeschart = '
+			{"category": "Jan","column-1": "123"},
+			{"category": "Feb","column-1": "345"},
+			{"category": "Mar","column-1": "456"},
+			{"category": "Apr","column-1": "345"},
+			{"category": "May","column-1": "123"},
+			{"category": "Jun","column-1": "23"},
+			{"category": "Jul","column-1": "6"},
+			{"category": "Aug","column-1": "36"},
+			{"category": "Sep","column-1": "403"},
+			{"category": "Oct","column-1": "50"},
+			{"category": "Nov","column-1": "30"},
+			{"category": "Dec","column-1": "60"}';
+		}
+	?>
 	// Chart 6 - Expense Report
 	AmCharts.makeChart("chartdiv6",
 		{
@@ -4764,7 +5548,32 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $feeschart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dailyvolumes = '
+			{"category": "0","column-1": 53},
+			{"category": "1","column-1": 22},
+			{"category": "2","column-1": 40},
+			{"category": "3","column-1": 22},
+			{"category": "4","column-1": 53},
+			{"category": "5","column-1": 54},
+			{"category": "6","column-1": 200},
+			{"category": "7","column-1": 200},
+			{"category": "8","column-1": 123},
+			{"category": "9","column-1": 234},
+			{"category": "10","column-1": 232},
+			{"category": "11","column-1": 200},
+			{"category": "12","column-1": 180},
+			{"category": "13","column-1": 190},
+			{"category": "14","column-1": 170},
+			{"category": "15","column-1": 150},
+			{"category": "16","column-1": 120},
+			{"category": "17","column-1": 110},
+			{"category": "18","column-1": 100},
+			{"category": "19","column-1": 90},
+			{"category": "20","column-1": 80}';
+		}
+	?>
 	// Chart 7 - Daily Buy Volume
 	AmCharts.makeChart("chartdiv7",
 		{
@@ -4838,16 +5647,36 @@ if ($getdstocks && $getdstocks != '') {
 				}
 			],
 			"allLabels": [],
-			"balloon": {
-				"fixedPosition": false,
-				"fontSize": 10,
-				"showBullet": true
-			},
 			"titles": [],
 			"dataProvider": [<?php echo $dailyvolumes; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dailyvalues = '
+			{"category": "0","column-1": 53},
+			{"category": "1","column-1": 22},
+			{"category": "2","column-1": 40},
+			{"category": "3","column-1": 22},
+			{"category": "4","column-1": 53},
+			{"category": "5","column-1": 54},
+			{"category": "6","column-1": 200},
+			{"category": "7","column-1": 200},
+			{"category": "8","column-1": 123},
+			{"category": "9","column-1": 234},
+			{"category": "10","column-1": 232},
+			{"category": "11","column-1": 200},
+			{"category": "12","column-1": 180},
+			{"category": "13","column-1": 190},
+			{"category": "14","column-1": 170},
+			{"category": "15","column-1": 150},
+			{"category": "16","column-1": 120},
+			{"category": "17","column-1": 110},
+			{"category": "18","column-1": 100},
+			{"category": "19","column-1": 90},
+			{"category": "20","column-1": 80}';
+		}
+	?>
 	// Chart 8 - Daily Buy Value
 	AmCharts.makeChart("chartdiv8",
 		{
@@ -4929,7 +5758,17 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $dailyvalues; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$dpercschart = '
+				{"category": "Mon","column-1": "8892.790805434","column-2": "#673ab7"},
+				{"category": "Tue","column-1": "9023","column-2": "#673ab7"},
+				{"category": "Wed","column-1": "10312.43075","column-2": "#673ab7"},
+				{"category": "Thu","column-1": "8020","column-2": "#673ab7"},
+				{"category": "Fri","column-1": "6000","column-2": "#673ab7"}
+			';
+		}
+	?>
 	// Chart 9 - Performance by Day of the Week
 	AmCharts.makeChart("chartdiv9",
 		{
@@ -5013,7 +5852,33 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $dpercschart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$gplchart = '
+				{"category": "0","column-1": "67592.53","column-2": "#673ab7"},
+				{"category": "0","column-1": "151527.98","column-2": "#673ab7"},
+				{"category": "0","column-1": "100312.43","column-2": "#673ab7"},
+				{"category": "0","column-1": "8892.79","column-2": "#673ab7"},
+				{"category": "4","column-1": "8892","column-2": "#673ab7"},
+				{"category": "5","column-1": "100312","column-2": "#673ab7"},
+				{"category": "6","column-1": "151527","column-2": "#673ab7"},
+				{"category": "7","column-1": "67592","column-2": "#673ab7"},
+				{"category": "8","column-1": "67592","column-2": "#673ab7"},
+				{"category": "9","column-1": "151527","column-2": "#673ab7"},
+				{"category": "10","column-1": "100312","column-2": "#673ab7"},
+				{"category": "11","column-1": "8892","column-2": "#673ab7"},
+				{"category": "12","column-1": "8892","column-2": "#673ab7"},
+				{"category": "13","column-1": "100312","column-2": "#673ab7"},
+				{"category": "14","column-1": "151527","column-2": "#673ab7"},
+				{"category": "15","column-1": "67592","column-2": "#673ab7"},
+				{"category": "16","column-1": "67592","column-2": "#673ab7"},
+				{"category": "17","column-1": "151527","column-2": "#673ab7"},
+				{"category": "18","column-1": "100312","column-2": "#673ab7"},
+				{"category": "19","column-1": "8892","column-2": "#673ab7"},
+				{"category": "20","column-1": "151527","column-2": "#673ab7"}
+			';
+		}
+	?>
 	// Chart 10 - Gross P&L (last 30 traiding days)
 	AmCharts.makeChart("chartdiv10",
 		{
@@ -5098,7 +5963,11 @@ if ($getdstocks && $getdstocks != '') {
 			"dataProvider": [<?php echo $gplchart; ?>]
 		}
 	);
-
+	<?php
+		if($isjounalempty){
+			$demotsonchart = '{"category": "Neutral","column-2": "4","Trades": "3"},{"category": "Greedy","column-2": "3","Trades": "2"},{"category": "Fearful","column-2": "1","Trades": "6"},';
+		}
+	?>
 	// Chart 11 - Emotional Statistics
 	AmCharts.makeChart("chartdiv11",
 		{
@@ -5127,7 +5996,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineAlpha": 0,
 					"title": "Wins",
 					"type": "column",
-					"valueField": "Trades"
+					"valueField": "Trades",
+					"cornerRadiusTop": 3,
 				},
 				{
 					"balloonText": "[[title]]: [[value]]",
@@ -5138,7 +6008,8 @@ if ($getdstocks && $getdstocks != '') {
 					"lineThickness": 0,
 					"title": "Losses",
 					"type": "column",
-					"valueField": "column-2"
+					"valueField": "column-2",
+					"cornerRadiusTop": 3,
 				}
 			],
 			"guides": [],
@@ -5161,6 +6032,24 @@ if ($getdstocks && $getdstocks != '') {
 		}
 	);
 
+	<?php
+		if($isjounalempty){
+			$intowinchartbands = '
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
+			{ "color": "#0d785a", "startValue": 0, "endValue": 45, "radius": "100%", "innerRadius": "55%", "balloonText": "45%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
+			{ "color": "#06af68", "startValue": 0, "endValue": 65, "radius": "100%", "innerRadius": "70%", "balloonText": "65%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
+			{ "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
+
+			$intowinchartlabels = '
+			{"text": "Stock 1","x": "49%","y": "7%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 2","x": "49%","y": "13%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 3","x": "49%","y": "19%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",}';
+		}
+	?>
 	/* Top Stocks: Winners */
 	var gaugeChart = AmCharts.makeChart("topstockswinners", {
 	  "type": "gauge",
@@ -5178,6 +6067,26 @@ if ($getdstocks && $getdstocks != '') {
 	  "allLabels": [<?php echo $intowinchartlabels; ?>],
 	});
 
+	<?php
+		if($isjounalempty){
+			$intolosschartbands = '
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
+			{ "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "20%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
+			{ "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "60%"},
+
+			{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
+			{ "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "80%"},
+			';
+
+			$intolosschartlabels = '
+			{"text": "Stock 1","x": "49%","y": "7%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 2","x": "49%","y": "13%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",},
+			{"text": "Stock 3","x": "49%","y": "19%","size": 11,"bold": false,"color": "#d8d8d8","align": "right",}';
+		}
+	?>
+
 	/* Top Stocks: Losers */
 	var gaugeChart = AmCharts.makeChart("topstocksLosers", {
 	  "type": "gauge",
@@ -5194,6 +6103,39 @@ if ($getdstocks && $getdstocks != '') {
 	  }],
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
+
+    jQuery(document).on('keyup', 'input.number', function (event) {
+            // skip for arrow keyssss
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+            
+        //});
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+    });
 
 </script>
 </div>

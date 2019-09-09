@@ -468,7 +468,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 			  .then(function(reg){
 
 			 }).catch(function(err) {
-				console.log("Woops... Sorry...", err)
+				
 			});
 		 }
 		</script>
@@ -477,5 +477,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 
 <div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>
+
 </body>
 </html>

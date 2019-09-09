@@ -1,12 +1,10 @@
 (function($) {
     jQuery(document).ready(function() {
 //     	let r = Math.random().toString(36).substring(7);
-// console.log("random", r);
 
 		jQuery("#gencode").click(function(e){
 			e.preventDefault();
 			var rnum = Math.random().toString(36).substr(2, 8);
-			console.log(rnum);
 
 			jQuery(this).parents(".dgencode").find(".dcodegenerated").text(rnum).show('slow');
 			jQuery(this).parents(".dgencode").find(".dcode").val(rnum);

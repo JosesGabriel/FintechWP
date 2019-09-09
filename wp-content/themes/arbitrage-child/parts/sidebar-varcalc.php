@@ -55,6 +55,11 @@
 	margin-top:3px;
 
 }
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
+
+}
 
 .arb_calcbox h3 {
 
@@ -237,6 +242,11 @@
     background: #4e6a85 !important;
 
 }
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
+
+}
 
 .arb_calcbox input[type="text"] {
 
@@ -262,6 +272,10 @@
 
 	border-radius: 0 5px 5px 0;
 
+}
+
+.arb_calcbox input[type="text"]::placeholder {
+    color: white;
 }
 
 .sublbl.after {
@@ -691,7 +705,7 @@ select#stockname {
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="text" class="number" value="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
                             <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>
@@ -778,15 +792,15 @@ select#stockname {
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>
-                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" value="0" style="width:80%;" tabindex="4"></div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" placeholder="0" style="width:80%;" tabindex="4"></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Risk Tolerance</div>
-                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" value="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" placeholder="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <div class="arb_clear smlspc"></div>
 
                     <div class="arb_calcbox_left">Target Profit</div>
-                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" value="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" placeholder="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
                     <!-- <div class="arb_clear smlspc"></div> -->
 
                     <!-- <div class="arb_calcbox_left">Stoploss</div>
@@ -839,7 +853,6 @@ select#stockname {
 	jQuery(document).ready(function(){
 
         jQuery("#stockname").on('change', function() {
-            console.log(this.value);
             jQuery("#currentprice").val(this.value);
         });
 		
@@ -919,9 +932,6 @@ select#stockname {
      //       var boardlotget_var = $("#idenentryprice").val();
            
                var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
-           
-            //    console.log('emman sucks');
-            // console.log(boardlotget_var);
 
                boardlotget_var = parseFloat(boardlotget_var);
 
@@ -979,10 +989,6 @@ select#stockname {
             var slotmultiplier = Math.floor(sharestobuy / blots);
             var finalstocks = blots * slotmultiplier;
 
-            console.log(sharestobuy);
-
-                
-
 			// var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
 			var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
 
@@ -1013,7 +1019,6 @@ select#stockname {
             var currentVal = jQuery(this).val();
             var testDecimal = testDecimals(currentVal);
             if (testDecimal.length > 1) {
-                console.log("You cannot enter more than one decimal point");
                 currentVal = currentVal.slice(0, -1);
             }
             jQuery(this).val(replaceCommas(currentVal));

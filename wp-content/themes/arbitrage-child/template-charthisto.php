@@ -5,9 +5,6 @@
     */
     
 
-    // echo "<pre>";
-    //     print_r($_GET);
-    // echo "</pre>";
     header('Content-Type: application/json');
     if(isset($_GET['symbol'])){
         $myfile = fopen("https://arbitrage.ph/data/".strtolower($_GET['symbol']).".json", "r") or die("Unable to open file!");

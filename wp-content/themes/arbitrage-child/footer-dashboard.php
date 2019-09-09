@@ -39,7 +39,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 
-
 			jQuery(".um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-right").hide();
 
 			jQuery(".um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea").keyup(function() {
@@ -72,7 +71,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 				var dcondition = jQuery(this).parents('.condition-params').find("#condition-list").val();
 				var dnum = jQuery(this).parents('.condition-params').find('#condition_frequency').val();
-				console.log(dcondition + " ~ " + dnum);
 
 				if (dcondition != "" && dnum != "") {
 					jQuery(this).parents('.condition-params').find('#condition-list option[value='+dcondition+']').hide();
@@ -107,7 +105,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
 				
 				//var countli = jQuery(".listofinfo li").length;
-				console.log(isstock);
 
 				//if (countli != 0) {
 					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
@@ -134,7 +131,42 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('.addwatch').click(function(e){
 				jQuery(".dtabcontent > div").removeClass('active').hide('slow');
 				jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
+
+
+			<?php /* temp-disabled-start */
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				$response = curl_exec($curl);
+				curl_close($curl);
+
+				if ($response !== false) {
+					$response = json_decode($response);
+					$jsonstocklist = json_encode($response);
+				}	
+				
+			?>
+			var stocklist = <?php echo $jsonstocklist; ?> ;	
+
+			<?php // $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+
+				var i = 0;
+
+				// TODO Fix: this is causing front end errors
+				jQuery.each(stocklist.data, function(index, value) {
+					//condition here if stock is in the watchlist, do not append.
+					//if('<?php //echo $value['stockname']; ?>' !== value.symbol){
+						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+						i++;
+					//}	
+					
+
+				});	 
+
+
 			});
+
 
 			jQuery('.removeItem').click(function(e){
 				e.preventDefault();
@@ -168,6 +200,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			});
 
 			<?php /* temp-disabled-start */
+			/*
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
 				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
@@ -189,14 +222,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			<?php foreach ($havemeta as $key => $value) { ?>
 
 				var i = 0;
-
-				
 				// TODO Fix: this is causing front end errors
 				jQuery.each(stocklist.data, function( index, value ) {
 					//condition here if stock is in the watchlist, do not append.
-					if('<?php echo $value['stockname']; ?>' !== value.symbol){			
-						console.log(value.symbol);
-						console.log("test");
+					if('<?php echo $value['stockname']; ?>' !== value.symbol){
 						jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
 						i++;
 					}	
@@ -205,7 +234,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 
 
-			 <?php  break; } ?>
+			 <?php  break; }  */?>
 			var startTime = '9:00 AM';
 		    var endTime = '3:30 PM';
 
@@ -322,8 +351,40 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 			});
 
-			jQuery('.ddropbase a').click(function(e){
+			jQuery('input[type="checkbox"]').click(function(){
+				if(this.value == "sms-notif"){
+					//get phone meta
 
+					var phonenum = "<?php 
+					$usercp = get_user_meta(get_current_user_id(), 'cpnum', true);
+					if($usercp == ""){
+						echo "nocp";
+					}else{
+						echo $usercp;
+					} 
+					?>";
+
+					if(phonenum == "nocp"){
+						console.log('here');
+						$("#modal-phonenum").modal('show'); 
+					}
+				
+				}
+			});
+			jQuery("#cpsubmitbtn").click(function(){
+				var cpnum = $("#txtcpnum").val();
+				jQuery.ajax({
+					method: "get",
+					url: "/watchlist?addcp=" + cpnum,
+					success: function(data){
+						console.log("Success");
+					}
+				});
+					
+				$("#modal-phonenum").modal('hide'); 
+			});
+			//jQuery('.ddropbase a').click(function(e){
+			jQuery(document).on('click','.ddropbase a',function(e){
 				e.preventDefault();
 				var dstock = jQuery(this).attr('data-dstock');
 

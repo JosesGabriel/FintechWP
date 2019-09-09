@@ -24,7 +24,47 @@
 
 	$dreturn = "";
 	$adminuser = 504; // store on the chart page
+	function getpointtrades($stockname){
+		$dinfstock = strtoupper($stockname);
 
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$response = curl_exec($curl);
+		curl_close($curl);
+
+		$trades = json_decode($response);
+		$trades = $trades->data;
+		
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$getstocks = curl_exec($curl);
+		curl_close($curl);
+
+		$dstock = json_decode($getstocks);
+		$dstock = $dstock->data;
+
+		
+		$dlast = $dstock->open;
+
+		$bulltrades = 0;
+		$beartrades = 0;
+		foreach ($trades as $key => $value) {
+			if(number_format($value->executed_price, 4, ".", ",") > $dlast){
+				$bulltrades++;
+			} else {
+				$beartrades++;
+			}
+		}
+
+		return json_encode(['bear' => $beartrades, 'bull' => $bulltrades]);
+
+
+	}
 	function gettrades($stockname){
 		$dinfstock = strtoupper($stockname);
 
@@ -50,7 +90,7 @@
 			$dstock = $dstock->data;
 
 			
-			
+			$dlast = $dstock->open;
 
 			// get prices
 			$listofprices = [];
@@ -59,6 +99,8 @@
 			}
 			$newpricelist = array_values(array_unique($listofprices));
 
+			$bullcounts = 0;
+			$bearcounts = 0;
 			// get volumes
 			$pricevols = [];
 			foreach ($newpricelist as $pricekey => $pricevalue) {
@@ -79,7 +121,7 @@
 
 			// sort as per bull / bear
 
-			$dlast = $dstock->open;
+			
 			
 			// echo  "Open: ".$dlast." | ";
 		
@@ -102,8 +144,6 @@
 			usort($isbullbear['bull'], function($a, $b) {
 				return $b['price'] <=> $a['price'];
 			});
-
-			// print_r($isbullbear);
 
 			$weight = [.90, .80, .70, .60, .50, .40, .30]; // the rest is 20%
 
@@ -205,7 +245,7 @@
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		$dtradd = json_decode(gettrades($_GET['stock']));
+		$dtradd = json_decode(getpointtrades($_GET['stock']));
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
@@ -216,7 +256,6 @@
 		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($dsentilist);
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbull'){ // market sentiment add sentiment
@@ -280,7 +319,7 @@
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-		$dtradd = json_decode(gettrades($_GET['stock']));
+		$dtradd = json_decode(getpointtrades($_GET['stock']));
 
 		$dfinbear = $dpullbear + $_GET['dbasebear'];
 		$dfinbull = $dpullbull + $_GET['dbasebull'];
@@ -290,16 +329,12 @@
 		$dpercbear = (($dfinbear + $dtradd->bear) / $dtotalall) * 100;
 		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
-		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($dsentilist);
-
-		
-
+		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );		
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $dtradd->bull, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
 		
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 
-			echo gettrades($_GET['stock']);
+			echo getpointtrades($_GET['stock']);
 
  	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";
@@ -389,7 +424,6 @@
 		
 
 		$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-		// print_r($_GET['stock']);
 
 		if ($diffDays < 0) {
 			$dlistousers = array();
@@ -426,9 +460,8 @@
 		$totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];
 
 
-		$dtradd = json_decode(gettrades($_GET['stock']));
-
-
+		$dtradd = json_decode(getpointtrades($_GET['stock']));
+		
 		$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
 
 		$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;

@@ -108,10 +108,10 @@ date_default_timezone_set('Asia/Manila'); ?>
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
+    	color: #e77e24;
 	}
 	#removes-btn {
 		border-radius: 26px !important;

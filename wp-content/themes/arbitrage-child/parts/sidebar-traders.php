@@ -56,7 +56,7 @@ $userID = $current_user->ID;
 	$toptraiders = array_reverse($newuserlist);
 
 ?>
-<div class="top-traiders">
+<div class="top-traiders" style="margin-top: 10px;">
   <div class="top-traiders-inner">
 	  <div class="to-top-title">Who to Mingle</div>
 	  <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
@@ -93,7 +93,7 @@ $userID = $current_user->ID;
 									  <div class="onbfollow">
 									  		
 
-									  		<a href="#" id="mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
+									  		<a href="#" id="mingle-btn" style="border: 1.3px solid #e77e24;" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
 									  		
 										  <!-- <a href="#" id="mingle-btn" class="um-follow-btn mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 									  </div>

@@ -72,7 +72,7 @@ date_default_timezone_set("Asia/Manila");
 
 						</a>
 
-						<# if ( data.wall_id != data.user_id ) { #>
+						<# if ( data.wall_id != data.user_id && data.wall_id && data.user_id ) { #>
 
 							<i class="um-icon-forward"></i>
 

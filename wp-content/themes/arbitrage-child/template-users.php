@@ -1892,6 +1892,11 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	.inner-placeholder {
 		padding-top: 0 !important;
 	}
+    .dashboard-sidebar-left-inner {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+    }
 </style>
 	<div class="inner-placeholder">
 		<div class="inner-main-content userprofilepage">

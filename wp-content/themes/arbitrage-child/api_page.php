@@ -411,7 +411,7 @@
 
 			$user = get_user_by( 'email', $_GET['toverify'] );
 
-			print_r($user);
+			print_r($user->data->ID);
 			// $wpdb->query($addQuery);
 
 

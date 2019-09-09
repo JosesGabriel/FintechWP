@@ -649,53 +649,36 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         $('#select-' + symbol).focus();
     };
     // TODO: ANGULARJS NATIVE TIMEOUT
-    // function updateMarketDepth(force) {
-    //     if ($scope.stock) {
-    //         $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + $scope.stock.symbol).then(function (response) {
-    //             if (force && response.data.success) {
-    //                 $scope.marketdepth = response.data.data;
-    //                 return;
-    //             }
-    //             if (response.data.success && $scope.marketdepth.length) {
-    //                 for (var i = 5; i < response.data.data.length; i++) {
-    //                     var bidask = response.data.data[i];
-    //                     var found = $filter('filter')($scope.marketdepth, {index: bidask.index}, true);
-    //                     if (found.length) {
-    //                         $scope.marketdepth[$scope.marketdepth.indexOf(found[0])] = bidask;
-    //                     } else $scope.marketdepth.push(bidask);
-    //                 }
-    //             }
-    //         });
-    //         $scope.bidtotal = 0;
-    //         $scope.asktotal = 0;
-    //         $scope.bidperc = 0;
-    //         $scope.askperc = 0;
-    //         var keepGoing = true;
-    //         angular.forEach($scope.marketdepth, function(value, key) {
-    //           if(keepGoing) {
-    //             $scope.bidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-    //             $scope.asktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-    //             if(key == 4){
-    //               keepGoing = false;
-    //             }
-    //           }
-    //         });
-    //         $scope.bidperc = ($scope.bidtotal / ($scope.bidtotal + $scope.asktotal)) * 100;
-    //         $scope.askperc = ($scope.asktotal / ($scope.bidtotal + $scope.asktotal)) * 100;
-    //         $scope.fullbidtotal = 0;
-    //         $scope.fullasktotal = 0;
-    //         $scope.fullbidperc = 0;
-    //         $scope.fullaskperc = 0;
-    //         angular.forEach($scope.marketdepth, function(value, key) {
-    //             $scope.fullbidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-    //             $scope.fullasktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-    //         });
-    //         $scope.fullbidperc = ($scope.fullbidtotal / ($scope.fullbidtotal + $scope.fullasktotal)) * 100;
-    //         $scope.fullaskperc = ($scope.fullasktotal / ($scope.fullbidtotal + $scope.fullasktotal)) * 100;
+    function updateMarketDepth(force) {
+        if ($scope.stock) {
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+                .then(function (response) {
+                    if (response.data.success) {
+                        let data = response.data.data;
 
-    //     }
-    // }
-	// setInterval(updateMarketDepth, 5000);
+                        $scope.fullaskperc = data.ask_total_percent;
+                        $scope.fullasktotal = data.ask_total;
+                        $scope.fullbidperc = data.bid_total_percent;
+                        $scope.fullbidtotal = data.bid_total;
+
+                    }
+                });
+
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+                .then(function (response) {
+                    if (response.data.success) {
+                        let data = response.data.data;
+
+                        $scope.askperc = data.ask_total_percent;
+                        $scope.asktotal = data.ask_total;
+                        $scope.bidperc = data.bid_total_percent;
+                        $scope.bidtotal = data.bid_total;
+
+                    }
+                });
+        }
+    }
+	setInterval(updateMarketDepth, 5000);
 }]);
 app.controller('disclosures', function($scope, $http, $rootScope) {
     $scope.$watch('$root.stockList', function () {
@@ -977,46 +960,32 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             .finally(() => {
                                 $scope.$parent.$digest();
                             });
+                        
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+                            .then(function (response) {
+                                if (response.data.success) {
+                                    let data = response.data.data;
 
-                        // $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
-                        //     if (response.data.success) {
-                        //         $scope.$parent.marketdepth = response.data.data;
-                        //     }
-                        //     $scope.$parent.bidtotal = 0;
-                        //     $scope.$parent.asktotal = 0;
-                        //     $scope.$parent.bidperc = 0;
-                        //     $scope.$parent.askperc = 0;
-                        //     var keepGoing = true;
-                        //     angular.forEach($scope.$parent.marketdepth, function(value, key) {
-                        //       if(keepGoing) {
-                        //         $scope.$parent.bidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-                        //         $scope.$parent.asktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-                        //         if(key == 4){
-                        //           keepGoing = false;
-                        //         }
-                        //       }
-                        //     });
-                        //     $scope.$parent.bidperc = ($scope.$parent.bidtotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
-                        //     $scope.$parent.askperc = ($scope.$parent.asktotal / ($scope.$parent.bidtotal + $scope.$parent.asktotal)) * 100;
-                        //     console.log("asking: " +$scope.$parent.asktotal);
-                        //     console.log("bidding: "+$scope.$parent.bidtotal);
-                        //     console.log("ask persentage: "+$scope.$parent.askperc);
-                        //     console.log("bid percentage: "+$scope.$parent.bidperc);
-                        //     $scope.$parent.fullbidtotal = 0;
-                        //     $scope.$parent.fullasktotal = 0;
-                        //     $scope.$parent.fullbidperc = 0;
-                        //     $scope.$parent.fullaskperc = 0;
+                                    $scope.$parent.fullaskperc = data.ask_total_percent;
+                                    $scope.$parent.fullasktotal = data.ask_total;
+                                    $scope.$parent.fullbidperc = data.bid_total_percent;
+                                    $scope.$parent.fullbidtotal = data.bid_total;
 
-                        //     var keepGoing = true;
-                        //     angular.forEach($scope.$parent.marketdepth, function(value, key) {
-                        //         $scope.$parent.fullbidtotal += (!value.bid_volume ? 0 : parseInt(value.bid_volume));
-                        //         $scope.$parent.fullasktotal += (!value.ask_volume ? 0 : parseInt(value.ask_volume));
-                        //     });
-                        //     $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
-                        //     $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
+                                }
+                            });
 
-                            
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
+                            .then(function (response) {
+                                if (response.data.success) {
+                                    let data = response.data.data;
 
+                                    $scope.$parent.askperc = data.ask_total_percent;
+                                    $scope.$parent.asktotal = data.ask_total;
+                                    $scope.$parent.bidperc = data.bid_total_percent;
+                                    $scope.$parent.bidtotal = data.bid_total;
+
+                                }
+                            });
                             
                         // });
                         // socket.emit('stock', symbol, function(data) {

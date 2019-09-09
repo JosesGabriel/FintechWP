@@ -62,7 +62,7 @@ jQuery(".stocks-hidden-content").click(function () {
 
             // $dstocks = $stocksdesc->$dstocknamme->description;
             $dstocks = $dlsvalue->description;
-            $indls['stnamename'] = strtolower($dstocks);
+            $indls['stnamename'] = $dstocks;
             $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
             $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
             $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);

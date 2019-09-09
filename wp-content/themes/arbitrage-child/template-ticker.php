@@ -531,9 +531,9 @@
 		color:#bdc3c7;
 	}
 	.marqueethis {
-		width: calc(100% + 100px);
+		width: 150%;
 		height:40px;
-		right:-100px;
+		right: 0;
 		text-align: right;
 	}
 	/* .marqueethis > li {
@@ -646,7 +646,7 @@
 		?>';
 	</script>
 <script src="/assets/js/angular/functions.js?v=1.219"></script>
-<script src="/assets/js/angular/controllers.js?v=1.218"></script>
+<script src="/assets/js/angular/controllers.js?v=2.218"></script>
 <script src="/assets/js/angular/directives.js?v=1.218"></script>
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>

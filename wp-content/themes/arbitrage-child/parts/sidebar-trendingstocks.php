@@ -62,7 +62,7 @@ jQuery(".stocks-hidden-content").click(function () {
 
             // $dstocks = $stocksdesc->$dstocknamme->description;
             $dstocks = $dlsvalue->description;
-            $indls['stnamename'] = strtolower($dstocks);
+            $indls['stnamename'] = $dstocks;
             $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
             $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
             $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
@@ -105,11 +105,12 @@ jQuery(".stocks-hidden-content").click(function () {
             $bulls = ceil($dpullbull * 0.3);
             $tags = ceil($todayreps * 0.6);
             $finalcount = $bulls + $threedays + $tags;
+            $stocksscount = $countpstock + $dpullbull + $todayreps;
 
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
             $indls['following'] = $finalcount;
-            if($countpstock > 0 && $dpullbull > 0 && $todayreps > 0){
+            if($finalcount > 0){
                 array_push($listofstocks, $indls);
             }
             

@@ -953,7 +953,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 							                		</div>
 						                		</div>
 
-						                		<?php get_template_part('parts/sidebar', 'ads');?>
+						                		<?php //get_template_part('parts/sidebar', 'ads');?>
 						                	
 								</div>
 
@@ -966,19 +966,23 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<div class="nws-inner">
                 		<div class="container">
 		                		<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
-		                		<div class="adsbygoogle">
-								<div class="box-portlet row" style="padding: 0px 0%;">
+
+
+
+		             <!--   	<div class="adsbygoogle">
+								<div class="box-portlet row" style="padding: 0px 0%;">-->
 									<!--<div class="tte-spons col-md-2">
 										<h6>Sponsor</h6>
 									</div>-->
-									<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
+								<!--	<div class="box-portlet-content col-md-10" style="padding: 0 !important;">-->
 										<!-- <small>ADVERTISEMENT</small> -->
-										<div class="adscontainer" style="width: 900px;">
+									<!--	<div class="adscontainer" style="width: 900px;">
 										<img src="https://arbitrage.ph/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>-->
+
                 			<!-- <div class="nws-businesstitle">Market News</div> -->
 
                 			<!-- ========================================= Second section =============================================== -->

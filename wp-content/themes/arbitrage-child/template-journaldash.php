@@ -1660,6 +1660,9 @@ get_header('dashboard');
 <?php
 $dtradeingfo = [];
 $isjounalempty = false;
+
+
+
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
@@ -1748,6 +1751,15 @@ if ($getdstocks && $getdstocks != '') {
 
 }
 
+$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+if($issampledata){
+	$isjounalempty = false;
+	// echo "no smaple";
+} else {
+	$isjounalempty = true;
+	// echo "with sample";
+}
+
 ?>
 <!-- EOF Sort LIVE Portfolio -->
 <!-- BOF Ledger Data -->
@@ -1763,7 +1775,9 @@ if ($getdstocks && $getdstocks != '') {
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
 	}
-	if(empty($dledger)){
+	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+
+	if(empty($issampledata)){
 		$dledger = [];
 		$dledger[0] = new \stdClass();
 		$dledger[0]->ledid = 250;
@@ -1862,6 +1876,7 @@ if ($getdstocks && $getdstocks != '') {
             wp_delete_post($delpostvalue['id'], true);
         }
 
+		update_user_meta(get_current_user_id(), 'issampleactivated', 'no');
         // delete ledger
         $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
 

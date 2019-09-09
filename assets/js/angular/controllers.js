@@ -63,6 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
+    $scope.speed = 2000;
     // socket.on('connect', function(data) {
     //     socket.emit('subscribe','transactions');
     //     socket.emit('subscribe','ticker');
@@ -79,9 +80,19 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol),
         };
         $scope.ticker.push(transaction);
+        
+        if($scope.ticker.length <= 50){
+            $scope.speed = 3000;
+        }elseif($scope.ticker.length <= 100){
+            $scope.speed = 1500;
+        }elseif($scope.ticker.length >= 100){
+            $scope.speed = 500;
+        }
+
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
+        
         $scope.$digest();
     });
     // socket.on('transaction', function(data) {

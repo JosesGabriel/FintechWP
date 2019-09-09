@@ -1662,13 +1662,7 @@ $dtradeingfo = [];
 $isjounalempty = false;
 
 
-$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
 
-if($issampledata){
-	echo "no smaple";
-} else {
-	echo "with sample";
-}
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
@@ -1755,6 +1749,15 @@ if ($getdstocks && $getdstocks != '') {
 		]
 	];
 
+}
+
+$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+if($issampledata){
+	$isjounalempty = false;
+	// echo "no smaple";
+} else {
+	$isjounalempty = true;
+	// echo "with sample";
 }
 
 ?>

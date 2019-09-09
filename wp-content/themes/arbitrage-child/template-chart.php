@@ -1037,6 +1037,9 @@
 	input#risktoler, input#targetprof {
 		margin-right: 8px;
 	}
+	.bbs_bear_bar span {
+		float: right;
+	}
 
 	.halfts::-webkit-scrollbar
 	{

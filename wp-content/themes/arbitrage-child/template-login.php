@@ -688,9 +688,9 @@ input#first_name-9 {
           <div class="signup-form" style="display: none;">
               <div class="row" style="margin:0;">
                 <div class="left-login-form-inner">
-                	<?php if(isset($_GET['active'])){ ?>
+                	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
-                    <?php } ?>
+                    <?php //} ?>
                     <!-- <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                    -->
                     <a class="prtnr_login" id="switch_login" href="#">

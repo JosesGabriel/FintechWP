@@ -1687,6 +1687,17 @@ if ($getdstocks && $getdstocks != '') {
     }
 } else {
 	$isjounalempty = true;
+	
+	
+
+}
+
+$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+if($issampledata){
+	$isjounalempty = false;
+	// echo "no smaple";
+} else {
+	$isjounalempty = true;
 	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 	$dtradeingfo = [
 		[
@@ -1748,15 +1759,6 @@ if ($getdstocks && $getdstocks != '') {
 			'stockname' => 'SampleStock_2',
 		]
 	];
-
-}
-
-$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
-if($issampledata){
-	$isjounalempty = false;
-	// echo "no smaple";
-} else {
-	$isjounalempty = true;
 	// echo "with sample";
 }
 

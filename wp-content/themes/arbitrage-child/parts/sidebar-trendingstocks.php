@@ -110,7 +110,7 @@ jQuery(".stocks-hidden-content").click(function () {
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
             $indls['following'] = $finalcount;
-            if($stocksscount > 0){
+            if($finalcount > 1){
                 array_push($listofstocks, $indls);
             }
             

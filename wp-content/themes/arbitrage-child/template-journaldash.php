@@ -1660,6 +1660,15 @@ get_header('dashboard');
 <?php
 $dtradeingfo = [];
 $isjounalempty = false;
+
+
+$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+
+if($issampledata){
+	echo "no smaple";
+} else {
+	echo "with sample";
+}
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
@@ -1862,6 +1871,7 @@ if ($getdstocks && $getdstocks != '') {
             wp_delete_post($delpostvalue['id'], true);
         }
 
+		update_user_meta(get_current_user_id(), 'issampleactivated', 'no');
         // delete ledger
         $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
 

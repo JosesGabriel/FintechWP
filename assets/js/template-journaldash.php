@@ -3271,7 +3271,7 @@ if ($getdstocks && $getdstocks != '') {
 														<div class="col-md-6" style="padding-right: 0;">
 															<div class="box-portlet">
 																<div class="box-portlet-header">
-																	Daily Buy Volume<br />
+																	Buy Volume<br />
                                                                     <!--<span>For the last 20 trading days</span>-->
                                                                     <span>Last 20 Trades</span>
 																</div>
@@ -3284,7 +3284,7 @@ if ($getdstocks && $getdstocks != '') {
 														<div class="col-md-6">
 															<div class="box-portlet">
 																<div class="box-portlet-header">
-																	Daily Buy Value<br />
+																	Buy Value<br />
                                                                     <!--<span>For the last 20 trading days</span>-->
                                                                     <span>Last 20 Trades</span>
 																</div>

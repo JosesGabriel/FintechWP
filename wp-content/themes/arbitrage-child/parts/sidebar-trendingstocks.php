@@ -109,8 +109,10 @@ jQuery(".stocks-hidden-content").click(function () {
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
             $indls['following'] = $finalcount;
-
-            array_push($listofstocks, $indls);
+            if($countpstock > 0 && $dpullbull > 0 && $todayreps > 0){
+                array_push($listofstocks, $indls);
+            }
+            
         }
     }
 

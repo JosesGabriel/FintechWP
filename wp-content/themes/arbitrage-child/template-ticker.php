@@ -536,12 +536,12 @@
 		right: 0;
 		text-align: right;
 	}
-	/* .marqueethis > li {
+	.marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
 	.marqueethis > li:hover {
 		animation-play-state: paused;
-	} */
+	}
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;

@@ -163,14 +163,17 @@ jQuery(".stocks-hidden-content").click(function () {
                     <span><?php echo $lfstvalue['stock']; ?></span>
                     <a href="#"><?php echo $lfstvalue['stnamename']; ?> <br>
                     <p><?php
-                         echo $lfstvalue['following'];
-                         
-                         if(strlen($lfstvalue['following']) == 1){
+                        echo $lfstvalue['following'];
+                        $trendnumber = $lfstvalue['following'];
+
+                        if($trendnumber == 1){
                             echo " Hit";
-                        }else{
+                        }else if($trendnumber >= 2){
+                            echo " Hits";
+                        }else if($trendnumber == 0){
                             echo " Hits";
                         }
-                        ?> </p></a>
+                        ?></p></a>
                 </li>
                 <?php echo ($countss == $numinarrat ? '</div>' : ''); ?>
                  <?php $countss++; ?>

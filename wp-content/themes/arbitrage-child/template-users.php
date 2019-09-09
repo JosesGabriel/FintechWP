@@ -15,7 +15,7 @@ um_fetch_user($profile_id);
 
 $myusersecret = get_user_meta($profile_id, 'user_secret', true);
 
-$ismyprofile = ($user->id == $profile_id ? true : false);
+$ismyprofile = ($user->ID == $profile_id ? true : false);
 
 
 	$topargs = array(
@@ -27,9 +27,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 
 		array_push($newuserlist, $userdetails);
 	}
@@ -73,7 +73,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	    transition: all .5s ease-in-out !important;
 	}
 
-/*	.right-dashboard-part{
+    /*	.right-dashboard-part{
 	    float: left;
 	    width: 27%;
 	    padding: 10px 0px !important;
@@ -166,7 +166,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
     	color: #6583a8;
@@ -420,14 +420,6 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
     	padding: 5px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    display: block;
 	    padding: 11px 10px;
@@ -1018,14 +1010,6 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
             padding: 5px;
         }
         .um-activity-dialog.um-activity-tool-dialog {display:none;}
-        .side-content ul li a {
-            display: block;
-            color: #ecf0f1;
-            padding: 7px 15px 7px 5px;
-            font-size: 13px;
-            font-family: Roboto, sans-serif;
-            font-weight: 500;
-        }
         .top-stocks .to-content-part ul li a {
             display: block;
             padding: 11px 10px;
@@ -1257,7 +1241,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
             font-size: 12px;
             color: #fffffe;
             font-family: 'Roboto', sans-serif !important;
-            padding-left: 4px;
+            padding-left: 12px;
             font-weight: 500;
         }
         div.uimob800 .um-account-side li a span.um-account-icontip {
@@ -1569,9 +1553,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
             font-size: 13px !important;
             /* display: none; */
             position: absolute !important;
-            right: -1px !important;
+            right: -1px;
             background: #142c46 !important;
-            min-width: 200px !important;
+            min-width: 200px;
             text-align: left !important;
             margin-top: 9px !important;
             border: none !important;
@@ -1644,8 +1628,13 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
     
     </script>
 <?php } ?>
-
-<div id="main-content" class="ondashboardpage id<?php echo $profile_id; ?>">
+<?php
+    if(!$ismyprofile && isset($_GET['profiletab']) && isset($_GET['um_action'])){
+        wp_redirect( "https://arbitrage.ph/user/".um_user('user_login') );
+        exit;
+    }
+?>
+<div id="main-content" class="ondashboardpage id<?php echo $profile_id; ?> <?php echo $ismyprofile; ?>">
 	<div class="container">
 	<div class="the_user_top_page">
 		<div class="um um-profile <?php echo (isset($_GET['um_action']) && $_GET['um_action'] == 'edit' ? 'um-editing' : 'um-viewing'); ?> um-11 um-role-administrator uimob800 topbannerprofile">
@@ -1709,7 +1698,12 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 				} else {
 
-					if (!isset( UM()->user()->cannot_edit )) { ?>
+                    if ($user->ID != $profile_id) {
+                        ?>
+                        <div style="height:320px"></div>
+                        <?php
+                    }
+					else if (!isset( UM()->user()->cannot_edit )) { ?>
 
 						<a href="#" class="um-cover-add um-manual-trigger" data-parent=".um-cover"
 						   data-child=".um-btn-auto-width"><span class="um-cover-add-i"><i
@@ -1770,12 +1764,11 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 						<div class="um-profile-photo" data-user_id="<?php echo um_profile_id(); ?>">
 
-							<a href="<?php echo um_user_profile_url(); ?>"  class="um-profile-photo-img"
+							<a class="um-profile-photo-img"
 							   title="<?php echo um_user( 'display_name' ); ?>"><?php echo $overlay . get_avatar( um_user( 'ID' ), $default_size ); ?></a>
 
 							<?php
-
-							if (!isset( UM()->user()->cannot_edit )) {
+                           if (!isset( UM()->user()->cannot_edit ) && $user->ID == $profile_id) {
 
 								UM()->fields()->add_hidden_field( 'profile_photo' );
 
@@ -1856,7 +1849,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 									<?php if(!$ismyprofile): ?>
 										<?php echo $ismyprofile; ?>
 										<!-- <li>
-											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->id; ?>">Follow</a>
+											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->ID; ?>">Follow</a>
 										</li> -->
                                         <?php if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
                                             <li>
@@ -1899,22 +1892,44 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	.inner-placeholder {
 		padding-top: 0 !important;
 	}
+    .dashboard-sidebar-left-inner {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 44px;
+    }
 </style>
+    <?php get_template_part('parts/sidebar', 'calc'); ?>
+    <?php get_template_part('parts/sidebar', 'varcalc'); ?>
+    <?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+
 	<div class="inner-placeholder">
 		<div class="inner-main-content userprofilepage">
-			<div class="left-dashboard-part">
+			<div class="left-dashboard-part" id="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
-                        <?php get_template_part('parts/sidebar', 'traders'); ?>
-
 					</div>
 				</div>
 			</div>
 
-			<div class="center-dashboard-part">
+<?php 
+
+	if($_GET['um_action'] == 'edit'){
+		?>
+		<div class="center-dashboard-part" style="max-width: 900px;">
+		<?php
+	}
+	else{ 
+		?>
+		<div class="center-dashboard-part">
+		<?php
+	}
+
+?>
+
+			<!--<div class="center-dashboard-part">-->
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php
@@ -1978,6 +1993,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
+                    <?php get_template_part('parts/sidebar', 'traders'); ?>
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>
@@ -1989,6 +2005,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 </div> <!-- #main-content -->
 <style type="text/css">
+    .arb_calcbox {
+        top: 0;
+    }
 	#main-content {
 	    background-color: #0d1f33 !important;
 	}
@@ -2137,4 +2156,4 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 											<!-- <li class="nine"><a href="#">Traders</a></li> -->
 <?php
 
-get_footer('general');
+get_footer();

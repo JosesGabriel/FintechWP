@@ -3,6 +3,8 @@
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
+include 'functions-accounts-api.php';
+include 'functions-social-api.php';
 
 function my_theme_enqueue_styles()
 {
@@ -259,6 +261,7 @@ function vyndue_user_update($user_id, $old_user_data)
 {
     //region get users
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
     //endregion get users
 
     //region data validation
@@ -277,8 +280,7 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'email' => $user->user_email,
         'first_name' => $user->first_name,
         'last_name' => $user->last_name,
@@ -302,14 +304,14 @@ function vyndue_password_update($post)
 {
     $user_id = get_current_user_id();
     $user = get_userdata($user_id);
+    $user_uuid = arbitrage_api_get_user_uuid($user_id);
 
     $data = http_build_query([
         'email_id' => $user->user_email,
         'password' => $_POST['user_password'],
     ]);
 
-    arbitrage_api_curl('api/user/update', [
-        'id' => arbitrage_api_get_user_uuid($user_id),
+    arbitrage_api_curl("api/users/$user_uuid/update", [
         'password' => $_POST['user_password'],
     ]);
 
@@ -365,7 +367,6 @@ add_action('wp_enqueue_scripts', 'ab_exclusions', 100);
 // [bartag foo="foo-value"]
 
 
-
 function getfriendsbyat( $atts ) {
 	$a = shortcode_atts( array(
 		'userid' => 0
@@ -408,3 +409,31 @@ add_action('wp_ajax_nopriv_get_friends', 'getfriendsbyat');
 * 05-07-2019
 */
 /* temp-disabled-start require_once get_stylesheet_directory() . '/apyc/init.php'; */
+
+/**
+ * Upload to Google Cloud Storage
+ * 
+ * @see https://developer.wordpress.org/reference/hooks/wp_handle_upload/
+ */
+add_filter('wp_handle_upload', function ($upload) {
+    $file = $upload['file'];
+    $type = $upload['type'];
+    $info = pathinfo($file);
+    $filename = $info['basename'];
+
+    $file_data = new CURLFILE($file, $type, $filename);
+    $data = [
+        'file' => $file_data,
+    ];
+
+    $response = arbitrage_api_curl_multipart('api/storage/upload', $data, 'POST');
+
+    // if the response fails, use wp's upload url
+    $upload['gcs_url'] = $upload['url'];
+
+    if ($response !== false) {
+        $upload['gcs_url'] = $response['file']['url'];
+    }
+
+    return $upload;
+}, 90, 1);

@@ -9,12 +9,14 @@ if ( is_user_logged_in() ) {
 $profile_id = um_profile_id();
 $default_cover = UM()->options()->get( 'default_cover' );
 um_fetch_user($profile_id);
-$ismyprofile = ($user->id == $profile_id ? true : false);
+$ismyprofile = ($user->ID == $profile_id ? true : false);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
+	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	<link rel="manifest" href="/manifest.json">     
 	<meta name="msapplication-TileColor" content="#142c46">
@@ -25,6 +27,15 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 	  src="https://code.jquery.com/jquery-3.4.1.min.js"
 	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 	  crossorigin="anonymous"></script>
+	<script>
+		window.onload = function() {
+			if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+				$('#vyndue--link').attr("target","_blank");
+				$('#vyndue--link').attr("href","https://vyndue.com");
+				window.close();
+			}
+		}
+	</script>
 <?php
 global $current_user;
 $user = wp_get_current_user();
@@ -45,6 +56,7 @@ $user = wp_get_current_user();
 				die();
 			}
 		}
+		arbitrage_api_verify_user($user_id);
 		/* if($checksharing == "shared"){
 		}elseif($checksharing == "verified"){
 		}elseif(!$checksharing){
@@ -223,7 +235,6 @@ $user = wp_get_current_user();
     <?php } ?>
     <script language="javascript">
 		jQuery(document).ready(function(e) {
-            jQuery(".add-post .um-activity-new-post .um-activity-textarea textarea").attr("placeholder", "Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?");
 			jQuery(".um-activity-new-post .um-activity-body .um-activity-textarea").append('<img class="arb_newpostimg" src="<?php 
 			echo esc_url( get_avatar_url( $user->ID ) ); ?>" alt="<?php echo ucfirst(um_user('first_name')); ?>">')
 			jQuery("#et-main-area").click(function(e){
@@ -244,7 +255,8 @@ $user = wp_get_current_user();
 
 <div class="slidecloseoverlay" id="slidecloseoverlay"></div>
 <div class="left-slide-trigger" id="left-slide-trigger"></div>
-<div class="right-slide-trigger" id="right-slide-trigger"></div>
+<div class="right-slidecloseoverlay" id="right-slidecloseoverlay"></div>
+<!--<div class="right-slide-trigger" id="right-slide-trigger"></div>-->
 <div class="top-slide-trigger" id="top-slide-trigger"></div>
 		
 <?php

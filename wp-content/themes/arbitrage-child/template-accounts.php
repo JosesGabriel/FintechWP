@@ -19,9 +19,9 @@ get_header( 'dashboard' );
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 		$userdetails['user_nicename'] = $value->data->user_nicename;
 
 		array_push($newuserlist, $userdetails);
@@ -170,7 +170,7 @@ get_header( 'dashboard' );
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
     	color: #6583a8;
@@ -422,14 +422,6 @@ get_header( 'dashboard' );
     	padding: 5px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    display: block;
 	    padding: 11px 10px;
@@ -492,7 +484,7 @@ get_header( 'dashboard' );
 	    text-transform: uppercase;
 	}
 	.latest-news .to-content-part {
-		height: 379px;
+		height: 279px;
 	}
 	.srr-tab-wrap li {
     	margin: 0px 5px 0 0!important;
@@ -656,7 +648,7 @@ get_header( 'dashboard' );
 		font-size: 12px;
 		color: #fffffe;
 		font-family: 'Roboto', sans-serif !important;
-		padding-left: 4px;
+		padding-left: 12px;
 		font-weight: 500;
 	}
 	div.uimob800 .um-account-side li a span.um-account-icontip {
@@ -1035,7 +1027,7 @@ get_header( 'dashboard' );
 		jQuery('.um-faicon-trash-o').html('<img src="https://arbitrage.ph/svg/garbage1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-trash-o').removeClass('um-faicon-trash-o');
 
-		jQuery(".um-field-nickname").find(".um-field-label label").text('Traiding Name');
+		jQuery(".um-field-nickname").find(".um-field-label label").text('Trading Name');
 	});
 
 
@@ -1056,7 +1048,7 @@ get_header( 'dashboard' );
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 936px;">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php //echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>

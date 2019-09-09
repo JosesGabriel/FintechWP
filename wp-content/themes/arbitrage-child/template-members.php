@@ -108,10 +108,10 @@ date_default_timezone_set('Asia/Manila'); ?>
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
+    	color: #e77e24;
 	}
 	#removes-btn {
 		border-radius: 26px !important;
@@ -218,7 +218,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		display:block;
 	}
 	.drop-over-post {
-		color: #6583a8;
+		color: #6583a8 !important;
 		font-size: 20px;
 		margin-top: 7px;
     	margin-right: 7px;
@@ -342,14 +342,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 		display:none;
 		right: 9px;
     	top: 24px;
-	}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
 	}
 	.top-stocks {
 		margin-bottom: 15px !important;
@@ -633,7 +625,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		border: none;
 	}
 	.dcontent-wrap {
-		padding-left: 18px;
+		padding-left: 0;
 	}
 	.popname ul {
 	    margin: 0;
@@ -963,12 +955,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 						
-                        <?php get_template_part('parts/sidebar', 'tasks'); ?>
+                        <?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-
+						<?php //get_template_part('parts/sidebar', 'traders'); ?>
+						
 					</div>
-
-                    <?php get_template_part('parts/sidebar', 'traders'); ?>
+                    
 				</div>
 			</div>
 			<div class="center-dashboard-part">
@@ -989,25 +981,26 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
 					<?php get_template_part('parts/sidebar', 'watchlist'); ?>
-					</div>
-					<?php get_template_part('parts/sidebar', 'topplayers'); ?>
+					
+					<?php //get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>
+                    <div class="forsticky">
+                    <?php // get_template_part('parts/sidebar', 'ads'); ?>
+
+                    <?php get_template_part('parts/sidebar', 'footer'); ?>
+                	</div>
 				</div>
 
-				<div class="banner-try">
+				<?php /*?><div class="banner-try">
 					<div class="to-top-title">Sponsored <div class="to-top-create">Create ads</div>
-						<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;/* margin: 5px 0px !important; */">
+						<hr class="style14 style15" style="width: 100% !important;margin-bottom: 9px !important;margin-top: 5px !important;">
                     </div>
                         <div class="cont-try-premium">
                         <img src="<?php echo get_home_url(); ?>/svg/try-primium.jpg">
                     </div>
-				</div>
+				</div><?php */?>
 
-                <div class="forsticky">
-                    <?php // get_template_part('parts/sidebar', 'ads'); ?>
-
-                    <?php get_template_part('parts/sidebar', 'footer'); ?>
-                </div>
+                
                 <br class="clear">
 			</div>
 

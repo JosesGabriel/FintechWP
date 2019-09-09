@@ -315,11 +315,11 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
-		background-color:#2c3e50;
+		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
 		padding: 20px 0 15px 20px;
-		background-color: #34495e;
+		background-color: #142b46;
 		border-radius: 4px;
 	}
 	.entr_wrapper_bot {
@@ -332,7 +332,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #34495e;
+		background-color: #142b46;
 		padding: 12px;
 		border-radius: 4px;
 	}
@@ -788,7 +788,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
                                             <div class="groupinput selectonly">
                                                 <select name="inpt_data_emotion" class="rnd">
                                                     <option value="" selected>Select Emotion</option>
-                                                    <option value="Nuetral">Nuetral</option>
+                                                    <option value="Nuetral">Neutral</option>
                                                     <option value="Greedy">Greedy</option>
                                                     <option value="Fearful">Fearful</option>
                                                 </select>

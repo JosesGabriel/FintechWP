@@ -1,6 +1,5 @@
 <?php
     $user_id = get_current_user_id();
-    // $uuid = arbitrage_api_get_user_uuid($user_id);
 ?>
 <script>
 (function ($) {
@@ -20,10 +19,12 @@
 
         widget_template = wp.template( 'um-activity-widget' );
         template_data = {
-            'content'       : $form.find('[name="_post_content"]').val(),
+            'content'       : '<div class="desc-note">' + $form.find('[name="_post_content"]').val() + '</div>',
             'img_src'       : $form.find('input[name="_post_img"]').val(),
             'img_src_url'   : $form.find('input[name="_post_img_url"]').val(),
             'wall_id'       : $form.find('input[name="_wall_id"]').val(),
+            'wall_user_name': $form.find('input[name="_wall_user_name"]').val(),
+            'wall_user_url' : $form.find('input[name="_wall_user_url"]').val(),
             'user_id'       : user_id,
             'post_id'       : temporary_id,
             'post_url'      : '',
@@ -49,8 +50,7 @@
         $('.um-activity-publish').on('submit', function (e) {
             e.stopPropagation();
             e.preventDefault();
-            
-            console.log('submit')
+
             var form = $(this);
             var $btn = form.find('.um-activity-post');
 
@@ -61,8 +61,6 @@
             }
 
             um_disable_post_submit( form );
-
-            // add_loading_btn($btn);
 
             var formdata = form.serializeArray();
 
@@ -89,11 +87,11 @@
                         widget_template = wp.template( 'um-activity-widget' );
                         template_data = {
                             'content'       : data.content,
-                            'img_src'       : data.photo_orig_base,
-                            'img_src_url'   : data.photo_orig_url,
-                            // 'img_src'       : form.find('input[name="_post_img"]').val(),
-                            // 'img_src_url'   : form.find('input[name="_post_img_url"]').val(),
-                            'wall_id'       : formdata._wall_id,
+                            'img_src'       : data.photo_gsc_url,
+                            'img_src_url'   : data.photo_gsc_url,
+                            'wall_id'       : data.wall_id,
+                            'wall_user_name': data.wall_user_name,
+                            'wall_user_url' : data.wall_user_url,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
                             'post_url'      : data.permalink,
@@ -118,11 +116,11 @@
                         widget_template = wp.template( 'um-activity-post' );
                         template_data = {
                             'content'       : data.content,
-                            'img_src'       : data.photo_orig_base,
-                            'img_src_url'   : data.photo_orig_url,
-                            /*'img_src'       : form.find('input[name="_post_img"]').val(),
-                            'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
+                            'img_src'       : data.photo_gsc_url,
+                            'img_src_url'   : data.photo_gsc_url,
                             'wall_id'       : formdata._wall_id,
+                            'wall_user_name': data.wall_user_name,
+                            'wall_user_url' : data.wall_user_url,
                             'user_id'       : data.user_id,
                             'post_id'       : data.postid,
                             'post_url'      : data.permalink,
@@ -134,24 +132,7 @@
 
                         form.parents('.um-activity-body').html( widget_template( template_data ) );
                     }
-
-                    // remove_loading_btn($btn)
-                    // window.location.reload(true);
                 }
-            });
-
-            // Social wall cloud
-            var file    = document.querySelector('input[type=file]').files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            fetch('https://dev-api.arbitrage.ph/api/storage/upload', { method: 'POST', body: formData })
-            .then(res => res.json())
-            .then(json => {
-                let imgUrl = JSON.stringify(json.data.file.url)
-                alert(imgUrl)
-                let updateQuery = "UPDATE im_message SET message = " + fileURL + " WHERE im_message.m_id = " + msg_id + ";";
-                mysqlCon2.execute(updateQuery);
-
             });
         })
     })

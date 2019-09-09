@@ -6,7 +6,7 @@
 	<form action="" method="post" class="um-activity-publish">
 		<input type="hidden" name="action" id="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" id="_post_id" value="0" />
-		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( $user_id ); ?>" />
+		<input type="hidden" name="_wall_id" id="_wall_id" value="<?php echo esc_attr( um_profile_id() ); ?>" />
 		<input type="hidden" name="_post_img" value="" />
 		<input type="hidden" name="_post_img_url" value="" />
 
@@ -22,8 +22,8 @@
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
-				          placeholder="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
+				          data-ph="Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?"
+				          placeholder="Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content"></textarea>
 				<hr class="style14 style15">
 			</div>
@@ -90,7 +90,7 @@
 	<form action="" method="post" class="um-activity-publish">
 		<input type="hidden" name="action" value="um_activity_publish" />
 		<input type="hidden" name="_post_id" value="{{{data.post_id}}}" />
-		<input type="hidden" name="_wall_id" value="<?php echo esc_attr( $user_id ); ?>" />
+		<input type="hidden" name="_wall_id" value="<?php echo esc_attr( um_profile_id() ); ?>" />
 		<input type="hidden" name="_post_img" value="{{{data._photo}}}" />
 		<input type="hidden" name="_post_img_url" value="{{{data._photo_url}}}" />
 
@@ -98,8 +98,8 @@
 
 			<div class="um-activity-textarea">
 				<textarea data-photoph="<?php esc_attr_e( 'Say something about this photo', 'um-activity' ); ?>"
-				          data-ph="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
-				          placeholder="<?php esc_attr_e( 'What\'s on your mind?','um-activity' ); ?>"
+				          data-ph="Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?"
+				          placeholder="Hey <?php echo ucfirst(um_user('first_name')); ?>, penny for your thoughts?"
 				          class="um-activity-textarea-elem" name="_post_content">{{{data.textarea}}}</textarea>
 			</div>
 

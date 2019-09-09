@@ -33,6 +33,13 @@
 # ignore everything in the root except the "wp-content" directory.
 /*
 !wp-content/
+!assets/
+assets/*
+!assets/js/
+
+# track composer
+!composer.json
+!composer.lock
 
 # ignore all files starting with .
 .*

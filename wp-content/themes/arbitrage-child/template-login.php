@@ -4,6 +4,7 @@
 	*/
 // get_header();'
 $homeurlgen = get_home_url();
+
 if ( is_user_logged_in() ) {
 	header("Location: ".$homeurlgen."/");
 	die();
@@ -653,8 +654,8 @@ input#first_name-9 {
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
-    	<img src="<?php echo $homeurlgen; ?>/svg/arblogo_svg.svg" style="width:54px; height:43px;">
-        <div class="rlewaylogo">ARBITRAGE <?php echo $force_show ?? ''; ?></div>
+        <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
+        <div class="rlewaylogo"> <?php echo $force_show ?? ''; ?></div>
         <div class="arb_circle_btns">
             <a class="prtnr_login" href="#">
             	<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
@@ -675,11 +676,9 @@ input#first_name-9 {
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
                     <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
-                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
+                    <!-- <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
-					<?php if(isset($_GET['active'])){ ?>
-						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
-                    <?php } ?>
+				-->
                 </div>
                 
             </div>
@@ -689,13 +688,15 @@ input#first_name-9 {
           <div class="signup-form" style="display: none;">
               <div class="row" style="margin:0;">
                 <div class="left-login-form-inner">
-                	<?php if(isset($_GET['active'])){ ?>
+                	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
-                    <?php } ?>
-                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
-                    <?php if(isset($_GET['active'])){ ?>
-						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
-                    <?php } ?>
+                    <?php //} ?>
+                    <!-- <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
+                   -->
+                    <a class="prtnr_login" id="switch_login" href="#">
+                        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
+                        <span>Login</span>
+                    </a>
                 </div>
               </div>
           </div>
@@ -711,10 +712,7 @@ input#first_name-9 {
     </a>
 </div>
 <div class="ico_posbott_login">
-    <a class="prtnr_login" id="switch_login" href="#">
-        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
-        <span>Login</span>
-    </a>
+    
 </div>
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
@@ -735,17 +733,31 @@ div#um-shortcode-social-133 a.um-button.um-button-facebook:hover {
 	border-color: #324d84 !important;
 }
 .um-field-error {
-    position: absolute;
+    /* position: absolute; */
     padding: 6px 9px;
     font-size: 11px;
     line-height: normal !important;
-    margin: 12px 0 13px;
-    top: -9px;
-    right: 3px;
-    border-radius: 25px;
-    width: 27px !important;
+    margin: 0 0 5px;
+    margin-top: -7px;
+    /* right: 3px; */
+    border-radius: 3px;
+    width: 100% !important;
     text-align: center !important;
     font-weight: bold !important;
+    background: #C74A4A;
+
+}
+.um-field-error:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: -0.75em;
+    top: -14px;
+    left: 50%;
+    box-sizing: border-box;
+    border: 7px solid black;
+    border-color: transparent transparent #c74a4a transparent;
 }
 .um-field-arrow {
     display:none;
@@ -757,11 +769,29 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
+.contercontrol {display:none !important;}
+	
+	<?php if (isset($_GET['active'])){ ?>
+		/* Countdown disabled */
+		.contercontrol {display:none !important;}
+	<?php }else{ ?>
+		/* Countdown */
+		/* #page-container {display: none;}
+		.um-social-login-overlay, #preloader, html {background-image: none !important;}
+		html, .home body.et_cover_background {
+			background-color: #0b1927 !important;
+		}
+		.text .val {
+			margin: -11px 0 0 0;
+			padding: 0;
+		} */
+	<?php } ?>
+	
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
-		jQuery( '<div class="forgpasslnk">Keep me sign in<span style="color: #949798;font-size: 11px;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
+		jQuery( '<div class="forgpasslnk">Keep me signed in<span style="color: #949798;font-size: 11px;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
 		jQuery(".um-register .um-field-type_password:last-child").addClass("confirmpasscls");
 		jQuery("#user_password-9").addClass("arbtriggerpass");
 		jQuery(".um-register .um-col-1").append("<div class='arb_accept'>By clicking Signing Up, you agree to our <a href='<?php echo get_home_url(); 
@@ -848,4 +878,5 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 		
 	});
 </script>
+
 <?php get_footer();

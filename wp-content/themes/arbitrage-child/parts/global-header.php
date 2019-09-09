@@ -14,7 +14,7 @@ $cdnorlocal = get_home_url();
             <div class="left-header-part">
                 <div class="left-header-inner">
                     <div class="logo-image">
-                        <a href="/"><img src="<?php $cdnorlocal ?>/wp-content/uploads/2018/12/logo.png"></a>
+                        <a href="/"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a>
                     </div>
                     <div class="searchbar">
                         <div class="inner-seatch">
@@ -87,7 +87,7 @@ $cdnorlocal = get_home_url();
                     <div class="dmessagepart" <?php if(is_page(2457)){ ?>style="padding-right:0;"<?php } ?>>
                     	<?php if(!is_page(2457)){ ?>
                             <div class="dmessagepart-wrap" data-show-always="1">
-                                <a href="https://arbitrage.ph/vyndue/"><img src="<?php echo $cdnorlocal; ?>/svg/ico_messager_white.svg" style="width: 18px;display: inline-block;vertical-align: top;margin-top:3px"></a>
+                                <a href="https://arbitrage.ph/vyndue/"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top:3px"></a>
                                 <span class="vyndue-notification" style="display: none;">0</span>
                             </div>
                         <?php } ?>
@@ -98,6 +98,7 @@ $cdnorlocal = get_home_url();
                             <div class="header-image">
                                 <div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>') no-repeat center center;">&nbsp;</div>
                             </div>
+                            
                         </div>
                         <ul id="droppouts" style="">
                             <li><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
@@ -105,11 +106,21 @@ $cdnorlocal = get_home_url();
                             <hr class="style14 style15">
                             <li class="onto-last-element"><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>
                         </ul>
+                        
                     </ul>
+        
+                     <div class="right-slider-menu" >
+                        <img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/menu.svg" width="22px">
+                    </div>
+                    <div id="right-menu" class="right-slider-menu1"></div>
+
                     <div class="opennotification">
                         <div class="notifinnerbase">
                         </div>
                     </div>
+
+                   
+
                 </div>
             </div>
             <br class="clear">
@@ -181,7 +192,7 @@ $cdnorlocal = get_home_url();
         });
 
         jQuery(document).ready(function(){
-            jQuery(".ddropinner ul li:first-child, ul.main-drops > ul li:first-child").on("click", function () {
+            jQuery(".seven.calc-menu-buysell, ul.main-drops > ul li:first-child").on("click", function () {
                 event.stopPropagation();
                  var openthis = jQuery("#showplease").hasClass("dropthiss");
                  if ( openthis ) {
@@ -190,12 +201,12 @@ $cdnorlocal = get_home_url();
                 jQuery("#toghandle").show().addClass("dropthiss");
                 }
             });
-            jQuery(".ddropinner ul li:nth-child(2), ul.main-drops > ul li:nth-child(2)").on("click", function () {
+            jQuery(".seven.calc-menu-var, ul.main-drops > ul li:nth-child(2)").on("click", function () {
                 event.stopPropagation();
                 jQuery("#toghandlings").show().addClass("dropthiss");
 
             });
-            jQuery(".ddropinner ul li:nth-child(3), ul.main-drops > ul li:nth-child(3)").on("click", function () {
+            jQuery(".seven.calc-menu-avprice, ul.main-drops > ul li:nth-child(3)").on("click", function () {
                 event.stopPropagation();
                 jQuery("#toghandlingers").show().addClass("dropthiss");
             });
@@ -227,13 +238,8 @@ $cdnorlocal = get_home_url();
                     jQuery('.um-notification-live-count.countx_max').html("9+");
                 }
                 // var counter = count = $(".um-notification-live-count.counter").empty();
-                // console.log('pre if', counter, count, event.target)
                 // var numbercount = '10';
                 // var count = counter;
-                
-                // console.log('after', count);
-                
-                
             });
     </script>
 </header>

@@ -385,7 +385,7 @@ function ctp_switch() {
 endif; // catchids_switch
 
 $options = catchids_get_options();
-//print_r($options); die();
+
 if( 1 == $options['theme_plugin_tabs'] ) {
 	/* Adds Catch Themes tab in Add theme page and Themes by Catch Themes in Customizer's change theme option. */
 	if( ! class_exists( 'CatchThemesThemePlugin' ) && ! function_exists( 'add_our_plugins_tab' ) ) {

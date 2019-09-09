@@ -295,6 +295,9 @@ if ( ! class_exists( 'um\core\Files' ) ) {
 			$output = UM()->uploader()->resize_image( $image_path, $src, $key, $user_id, $coord );
 			UM()->uploader()->replace_upload_dir = false;
 
+			// add custom filter
+			$output = apply_filters('um_ajax_resize_image', $output);
+
 			delete_option( "um_cache_userdata_{$user_id}" );
 
 			wp_send_json_success( $output );

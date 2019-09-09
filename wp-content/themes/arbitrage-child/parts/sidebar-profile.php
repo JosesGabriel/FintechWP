@@ -13,6 +13,30 @@
   } else {
     $name = "";
   }
+
+
+$profile_id = um_profile_id();
+
+ $friendstotal1 = UM()->Friends_API()->api()->count_friends( $profile_id );
+//$friendreqs = UM()->Friends_API()->api()->friend_reqs_sent( $profile_id );
+
+$friendstotal = (int) preg_replace('/[^0-9]/', '', $friendstotal1);
+$coverhphotoactive = um_profile( 'cover_photo' );
+$profilepicactive = um_profile( 'profile_photo' );
+
+
+
+
+if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
+  $num = 100;
+}else if((!$coverhphotoactive && $profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && $profilepicactive && $friendstotal < 3)){
+  $num = 66;
+}else if((!$coverhphotoactive && !$profilepicactive && $friendstotal >= 3) || ($coverhphotoactive && !$profilepicactive && $friendstotal < 3)|| (!$coverhphotoactive && $profilepicactive && $friendstotal < 3)){
+  $num = 33;
+}else{
+  $num = 0;
+}
+
 ?>
 <div class="left-user-details">
   <div class="left-user-details-inner">
@@ -23,7 +47,7 @@
           </div>
           <div class="right-image">
 
-                  <div class="onto-user-name true-name">
+                  <div class="onto-user-name">
                     <!-- <a href="<?php //echo get_home_url(); ?>/user/<?php // echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php // echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">
                       <?php // echo um_user('first_name') . " " . um_user('last_name'); ?>
@@ -54,6 +78,24 @@
 	  <?php
 	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
+
+    <div class="side-completenessbox">
+    <?php if($num != 100) { ?>
+          <small style="float: left;"><?php echo $num; ?>% complete</small>
+          <small style="float:right;font-size: 14px !important;margin-top: -4px;" class="info-circle">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+            <!--<img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/info-icon.svg" width="10%" style="
+    float: right;
+    margin-top: -12px;">-->
+          </small>
+          <div class="profile-progress" style="clear: both;">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #71f29f 12%, #b5dc5d 89%);"></div>
+          </div>
+    <?php } ?>
+      <?php get_template_part('parts/sidebar', 'tasks'); ?>
+    </div>
+
+
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
               <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
@@ -62,34 +104,44 @@
 					  <img src="<?php echo get_home_url(); ?>/svg/openleftpanel_al.svg">
 					</a>
           		  </li><?php */?>
-				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">	<span>Social Wall</span></a></li>
-                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart.svg">
+				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
+                  <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-2.svg">
 					  <span>Interactive Chart</span></a></li>
-                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1.svg">
+                  <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-2.svg">
 					  <span>Trading Journal</span></a></li>
-                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5.svg">
+                  <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5-2.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="five"><a href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/ico_messager_blue.svg">
-					  <span>Vyndue Messenger</span></a></li>
-                  <li class="six dpowerdown">
+                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-4.svg" class="icon-game">
+            <span>Games</span></a></li>
+                  <li class="five"><a id="vyndue--link" href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
+            <span>Vyndue</span></a></li>
+            
+            <div class="m-separator"></div>
+            <span class="menu-title-calc">Power Tools</span>
+                  <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-3.svg">
+            <span>Buy/Sell Calculators</span></a></li>
+                  <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-3.svg">
+            <span>VAR Calculator</span></a></li>
+                  <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-3.svg">
+            <span>Average Price Calculator</span></a></li>
+                  <li class="seven calc-menu-multichart"><a href="/multicharts/"><img src="<?php echo get_home_url(); ?>/svg/statistics-3.svg">
+            <span>Multichart</span></a></li>
+                  <!-- <li class="six dpowerdown isopened">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">
-						<span>Power Tools</span>
-                    	<span><i class="fas fa-ellipsis-h sddropps"></i></a></span>
-						<span>
-							<div class="ddroplace">
-							  <div class="ddropinner">
-								<ul>
-								  <li><a>Buy/Sell Calculators</a></li>
-								  <li><a>VAR Calculator</a></li>
-								  <li><a>Average Price Calculator</a></li>
-								</ul>
-							  </div>
-							</div>
-						</span>
-                  </li>
-                  <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">
-					  <span>Games</span></a>
-				  </li>
+                      <span>Power Tools</span>
+                        <span><i class="fas fa-ellipsis-h sddropps"></i></a></span>
+                      <span>
+                        <div class="ddroplace">
+                          <div class="ddropinner">
+                          <ul>
+                            <li><a>Buy/Sell Calculators</a></li>
+                            <li><a>VAR Calculator</a></li>
+                            <li><a>Average Price Calculator</a></li>
+                          </ul>
+                          </div>
+                        </div>
+                      </span>
+                  </li> -->
 				  <?php /*?><li class="eight slideleft showonmobonly">
 					<a href="#">
 					  <img src="<?php echo get_home_url(); ?>/svg/slideleft.svg">
@@ -123,7 +175,6 @@
                 jQuery('.true-name a').hide();
                 jQuery('.show-name').show();
                 jQuery('.trading-name').text('Displaying trading name');
-                console.log('checked');
 
                 jQuery.ajax({
                     method: "GET",
@@ -138,7 +189,6 @@
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }
@@ -149,7 +199,6 @@
                 jQuery('.true-name a').show();
                 jQuery('.show-name').hide();
                 jQuery('.trading-name').text('Displaying real name');
-                console.log('unchecked');
 
                 jQuery.ajax({
                     method: "GET",
@@ -164,23 +213,37 @@
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }
         });
 
-        jQuery('.dpowerdown').click(function(e){
-          e.preventDefault();
+        if(jQuery('.um-profile').hasClass('topbannerprofile')){
+          jQuery('.side-completenessbox').css("display","none");
+        }else{
+          jQuery('.side-completenessbox').css("display","block");
+        }
 
-          if (jQuery(this).hasClass('isopened')) {
-            jQuery(this).removeClass('isopened');
-            jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').hide('fast');
-          }else{
-            jQuery(this).addClass('isopened');
-            jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').show('fast');
+        jQuery('.info-circle').click(function(){
+
+          if($('.todos_box').css('display') == 'none'){
+              jQuery('.todos_box').slideDown();
+          }else {
+              jQuery('.todos_box').slideUp();
           }
         });
+
+        // jQuery('.dpowerdown').click(function(e){
+        //   e.preventDefault();
+
+        //   if (jQuery(this).hasClass('isopened')) {
+        //     jQuery(this).removeClass('isopened');
+        //     jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').hide('fast');
+        //   }else{
+        //     jQuery(this).addClass('isopened');
+        //     jQuery(this).closest('.dpowerdown').find('.ddroplace').addClass('openme').show('fast');
+        //   }
+        // });
 	  
     });
 
@@ -349,4 +412,13 @@ input:checked + .slider:before {
   .true-name a:hover {
     text-decoration: none;
   }
+
+  .info-circle:hover {
+    cursor: pointer;
+  }
+
+  .side-completenessbox {
+    margin-top: 10px;
+  }
+
 </style>

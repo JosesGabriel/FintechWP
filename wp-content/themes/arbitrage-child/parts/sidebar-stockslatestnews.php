@@ -107,9 +107,7 @@ jQuery(document).ready(function(e) {
         background: #fff;
     }
 </style>
-<!-- <pre>
-    <?php print_r($finaltopstocks); ?>
-</pre> -->
+
 <div class="top-stocks" style="margin-bottom: 15px;">
   <div class="nws-mktbulletin">Market Bulletin</div>
     <div class="to-top-title" style="padding-top:2px"><p>Trending Stocks</p></div>

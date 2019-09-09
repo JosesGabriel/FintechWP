@@ -27,9 +27,9 @@ date_default_timezone_set('Asia/Manila');
 
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->id;
+		$userdetails['id'] = $value->ID;
 		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->id );
+		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 		$userdetails['user_nicename'] = $value->data->user_nicename;
 
 		array_push($newuserlist, $userdetails);
@@ -222,7 +222,7 @@ h2.search-permalink {
 
 #mingle-btn {
     border-radius: 26px !important;
-    border: 1.3px solid #6583a8!important;
+    border: 1.3px solid #e77e24 !important;
     padding: 5px 20px !important;
     font-family: 'Nunito', sans-serif;
     color: #6583a8;
@@ -331,19 +331,6 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     background: transparent;
     border-radius: 0 0 5px 5px;
     /*padding: 10px 0px;*/
-}
-.side-content ul li a {
-    display: block;
-    color: #ecf0f1;
-    padding: 7px 15px 7px 5px;
-    font-size: 13px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 400;
-}
-.side-content ul li a:hover {
-    background: #3a5168;
-    text-decoration: none;
-    border-radius: 4px;
 }
 ul.main-drop {
     position: relative;
@@ -748,11 +735,11 @@ a.um-photo-modal img {
 								                                                                        <div class="traider-follower">
 								                                                                            <div class="onbfdata"><!-- <img src="https://arbitrage.ph/svg/connection.svg" style="width: 19px;vertical-align: sub;height: 18px;"> --> <?php echo $value['followers']; ?> Connections </div>
 								                                                                            <div class="onbfollow">
-                                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->id ); ?>
-								                                                                                <!-- <a href="#" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a> -->
+                                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->ID ); ?>
+								                                                                                <!-- <a href="#" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 								                                                                            </div>
 								                                                                            <!-- <div class="onbfollow">
-								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->id; ?>">Remove</a>
+								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->ID; ?>">Remove</a>
 								                                                                            </div> -->
 								                                                                        </div>
 								                                                                    </div>
@@ -882,10 +869,10 @@ a.um-photo-modal img {
 								                                                                        <div class="traider-follower">
 								                                                                            <div class="onbfdata"><!-- <img src="https://arbitrage.ph/svg/connection.svg" style="width: 19px;vertical-align: sub;height: 18px;"> --> <?php echo $value['followers']; ?> Connections </div>
 								                                                                            <div class="onbfollow">
-								                                                                                <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->id; ?>">Mingle</a>
+								                                                                                <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
 								                                                                            </div>
 								                                                                            <!-- <div class="onbfollow">
-								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->id; ?>">Remove</a>
+								                                                                                <a href="#" id="removes-btn" class="add-friend-btn um-button um-alt" data-user_id1="<?php //echo $value['id']; ?>" data-user_id2="<?php //echo $user->ID; ?>">Remove</a>
 								                                                                            </div> -->
 								                                                                        </div>
 								                                                                    </div>
@@ -1007,7 +994,7 @@ a.um-photo-modal img {
 
 					  <?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
-                       <?php get_template_part('parts/sidebar', 'ads'); ?>
+                       <?php // get_template_part('parts/sidebar', 'ads'); ?>
 	
 
 				</div>

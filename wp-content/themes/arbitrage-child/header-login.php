@@ -1,8 +1,15 @@
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
-<html <?php language_attributes(); ?>>
-<head>
+<html <?php language_attributes(); ?>><head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
+	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+	
+	<?php // Countdown ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
+	
+	
 	
 <?php
 global $current_user;
@@ -32,6 +39,7 @@ $user = wp_get_current_user();
 	<?php wp_head(); ?>
     
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>
 	<?php if (isset($_GET['b'])){ 
 		$getrand = $_GET['b'];
@@ -83,6 +91,71 @@ $user = wp_get_current_user();
 	span.um-field-checkbox-option {
 		display: none;
 	}
+	.arbitrage-button {
+		font-family: 'Roboto', sans-serif;
+		font-size: 12px;
+		color: #ffffff;
+		background: none;
+		border: 2px #fff solid;
+		height: auto;
+		border-radius: 25px;
+		padding: 3px 9px;
+	}
+	.arbitrage-button--primary {
+		border: 2px #2481bc solid;
+	}
+	.arbitrage-button--primary:hover {
+		color: #ffffff;
+		background-color: #2481bc !important;
+		transition-duration: 300ms;
+	}
+	.notif--subb {
+		margin: 109px auto 0 auto;
+	}
+	input.email--field {
+		background: #11273e;
+		border: 1px solid #1e3554;
+		border-radius: 25px;
+		padding: 10px 72px 10px 13px;
+		width: 485px;
+		color: #d8d8d8;
+	}
+	.email--btn {
+		left: -90px;
+		padding: 5px 10px !important;
+		top: -1px;
+		position: relative;
+	}
+	.header-image {
+		margin-top: 20px;
+		width: 108px;
+	}
+	.form-success-email {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: 99;
+		display: none;
+	}
+	.success--content {
+		position: absolute;
+		top: 3.5%;
+		right: 50.2%;
+		transform: translate(50%,-50%);
+		background: #11273e;
+		border-radius: 5px;
+		padding: 10px 15px;
+		animation-name: fadeinLoad;
+		animation-duration: 1s;
+		animation-delay: 5s;
+		animation-fill-mode: forwards;
+	}
+	span.success-word {
+		color: #d8d8d8;
+	}
+	.contercontrol {
+		display:none;
+	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
     <script language="javascript">
@@ -92,17 +165,160 @@ $user = wp_get_current_user();
 			jQuery("#preloader").delay(400).fadeOut("slow");
 			jQuery(".um-field-checkbox-option").html("");
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
-			jQuery(".um-field-error").html("!");
+			// jQuery(".um-field-error").html("!");
 		})
+		jQuery(document).ready(function(){
+			jQuery("#emailNotify__form").submit(function(){
+				var hasemail = jQuery("#email--input").val().length;
+				var email = jQuery("#email--input").val();
+				if( hasemail >= 1 ) {
+					jQuery.ajax({
+						method: "POST",
+						url: "https://arbitrage.ph/apipge/?daction=notify_me_email",
+						// url: 'https://api2.pse.tools/api/quotes',
+						data: {
+							'email' : email
+						},
+						success: function(data) {
+							jQuery("#email__text").show();
+						},
+						error: function(requestObject, error, errorThrown) {
+
+						}
+					});
+				}
+			});
+		});
 		
 	</script>
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
+	  <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
+
+<div class="form-success-email">
+	<div class="success--content">
+		<!-- <i class="far fa-check-circle"></i> -->
+		<span class="success-word"> Thank you for signing up, talk to you soon!</span>
+	</div>
+</div>
+<!-- Countdown -->
+<div class="header contercontrol">
+    <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
+</div>
+<div class="title-header contercontrol">
+       <center> COMING SOON</center>
+</div>
+<div class="countdown countdown-container container contercontrol">
+    
+    <div class="clock row" style="margin-top: 124px;">
+        <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-days" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-days type-time">DAYS</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-hours" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-hours type-time">HOURS</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-minutes" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-minutes type-time">MINUTES</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-seconds" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-seconds type-time">SECONDS</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+	</div><!-- /.clock -->
+	<div class="notif-container row">
+
+	
+        <div class="notif--subb">
+		<p style="text-align: center;color: #25ae5f;display:none;" id="email__text">Email successfully added!</p>
+        	 <form method="post" id="emailNotify__form">
+	            <input type="email" name="email" placeholder="Place your email here to be notified when we launch" class="email--field" id="email--input" required>
+	            <input type="submit" name="send" value="Notify Me" class="email--btn arbitrage-button arbitrage-button--primary" id="email--button">
+            </form>
+        </div>
+     
+    </div>
+</div><!-- /.countdown-wrapper -->
+<?php
+
+if(isset($_POST['send'])){
+      
+		echo $_POST['email'];
+
+       	/*global $wpdb;
+
+       	$date = date('Y-m-d H:i:s');
+    	$tablename=$wpdb->prefix.'arby_launch_emailnotication';	
+    	$data=array('user_email' => $_POST['email'],'add_date' => $date);
+
+    	$wpdb->insert($tablename, $data);*/
+
+
+    }
+?>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
+<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script>
+<script type="text/javascript">  
+    $('document').ready(function() {
+        'use strict';
+       
+        const timestamp = parseInt(Date.now()/1000);
+
+    	$('.countdown').final_countdown({
+            'start': 1565338684,
+            'end': 1568595600,
+            'now': timestamp     
+        });
+    });
+</script>
+	
+	
+	
 <?php 
 	if(isset($_GET['active'])){
-		  $all_meta_for_user = get_user_meta( $_GET['active'] );
-		  print_r( $all_meta_for_user );
+		//   $all_meta_for_user = get_user_meta( $_GET['active'] );
+		//   print_r( $all_meta_for_user );
 	}
 ?>
 <?php /* Global CSS Overrides  get_template_part('parts/global', 'css'); */ ?>

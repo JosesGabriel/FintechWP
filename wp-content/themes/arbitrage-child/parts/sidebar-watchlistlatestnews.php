@@ -88,7 +88,6 @@ if (typeof angular !== 'undefined') {
           }
       }
 	?>
-	// console.log("<?php echo working_days_ago('9'); ?>");
 
 	app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
 		$scope.options = {
@@ -308,7 +307,7 @@ jQuery(function(){
 
         </div>
     </div>
-</div>
+  <!--</div>-->
 </div>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
                   <script type="text/javascript">

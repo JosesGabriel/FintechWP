@@ -396,6 +396,8 @@ class Activity_Main_API
             }
         }
 
+        $has_share_link = get_post_meta( $post_id, '_shared_link', true ); 
+
         if (trim($content) != '') {
             if ($this->get_action_type($post_id) == 'status') {
                 $content = $this->shorten_string($content);
@@ -411,7 +413,7 @@ class Activity_Main_API
 
             $content = trim($content);
 
-            $content = $this->hashtag_links($content);
+            // $content = $this->hashtag_links($content);
 
             // strip avatars
 
@@ -471,7 +473,23 @@ class Activity_Main_API
                 }
             }
 
-            return nl2br($newconts);
+            ob_start();
+            echo '<div class="desc-note">';
+            echo nl2br($newconts);
+            echo '</div><div class="desc-note1">';
+            echo $has_share_link;
+            echo '</div>';
+            $contents = ob_get_contents();
+            ob_end_clean();
+            return nl2br($contents);
+        } else if ($has_share_link) {
+            ob_start();
+            echo '<div class="desc-note"></div><div class="desc-note1">';
+            echo $has_share_link;
+            echo '</div>';
+            $contents = ob_get_contents();
+            ob_end_clean();
+            return nl2br($contents);
         }
 
         return '';
@@ -615,7 +633,6 @@ class Activity_Main_API
         } else {
             $content = '<span class="post-meta sdfsdfsdf ons2"><a href="{post_url}" target="_blank" class="dmeta"><div class="closerff"><div class="cls-inner">{post_title} {post_excerpt} {post_domain}</div></div>{post_image}</a></span>';
         }
-
         if (isset($tags['description'])) {
             if (isset($tags['image_width']) && $tags['image_width'] <= 400) {
                 $content = str_replace('{post_excerpt}', '', $content);
@@ -679,10 +696,16 @@ class Activity_Main_API
 					}
 				}
 				$images = array_values(array_filter($images));
-			}
+            }
+            // if images array is empty, do not display
+			if(empty($images)){
+                //$content = str_replace('{post_image}', '', $content);
+                $content = str_replace('{post_image}', '<span class="post-image"><span class="postImageBlur" style="background: url(https://storage.arbitrage.ph/dev/2019/08/39930ca8-no-image-found-01.jpg);background-size: cover;background-repeat: no-repeat;"><img src="https://storage.arbitrage.ph/dev/2019/08/39930ca8-no-image-found-01.jpg" class="inpostimage" /></span></span>', $content);
+            }else{
+                $content = str_replace('{post_image}', '<span class="post-image"><span class="postImageBlur" style="background: url(' .$images[0]. ');background-size: cover;background-repeat: no-repeat;"><img src="' . $images[0] . '" class="inpostimage" /></span></span>', $content);
+            }
 			
 			
-			$content = str_replace('{post_image}', '<span class="post-image"><span class="postImageBlur" style="background: url(' .$images[0]. ');background-size: cover;background-repeat: no-repeat;"><img src="' . $images[0] . '" class="inpostimage" /></span></span>', $content);
 
 
         // }
@@ -1794,7 +1817,7 @@ class Activity_Main_API
 
         $content = ob_get_clean();
 
-        echo $content;
+        echo trim($content);
 
         die();
     }
@@ -3033,6 +3056,9 @@ class Activity_Main_API
                     $photo_uri = um_is_file_owner($_post_img, get_current_user_id()) ? $_post_img : false;
 
                     update_post_meta($post_id, '_photo', $photo_uri);
+                    
+                    // add gcs url
+                    update_post_meta($post_id, '_photo_gcs_url', $_post_img_url);
 
                     $filename = wp_basename($photo_uri);
 
@@ -3051,6 +3077,9 @@ class Activity_Main_API
                     $output['photo_orig_url'] = UM()->uploader()->get_upload_base_url() . get_current_user_id() . '/' . $filename;
 
                     $output['photo_orig_base'] = wp_basename($output['photo_orig_url']);
+
+                    // add gcs url to output
+                    $output['photo_gsc_url'] = $_post_img_url;
                 }
 
                 $output['postid'] = $post_id;
@@ -3059,6 +3088,7 @@ class Activity_Main_API
 
                 $output['video'] = $this->get_video($post_id);
 
+                do_action('arbitrage_um_activity_after_wall_post_published', ['post_id' => $post_id, 'wall_id' => $_POST['_wall_id']]);
                 do_action('um_activity_after_wall_post_published', $post_id, get_current_user_id(), absint($_POST['_wall_id']));
             } else {
                 // Updating a current wall post
@@ -3116,6 +3146,10 @@ class Activity_Main_API
                         UM()->uploader()->move_temporary_files(get_current_user_id(), ['_photo' => $photo_uri], true);
 
                         update_post_meta($post_id, '_photo', $photo_uri);
+                        
+                        // add gcs url
+                        update_post_meta($post_id, '_photo_gcs_url', $_post_img_url);
+
 
                         $filename = wp_basename($photo_uri);
 
@@ -3139,6 +3173,9 @@ class Activity_Main_API
                     $output['photo_orig_url'] = UM()->uploader()->get_upload_base_url() . get_current_user_id() . '/' . $filename;
 
                     $output['photo_orig_base'] = wp_basename($output['photo_orig_url']);
+                    
+                    // add gcs url to output
+                    $output['photo_gsc_url'] = $_post_img_url;
                 } else {
                     $photo_uri = get_post_meta($post_id, '_photo', true);
 
@@ -3159,6 +3196,7 @@ class Activity_Main_API
 
                 $output['video'] = $this->get_video($post_id);
 
+                do_action('arbitrage_um_activity_after_wall_post_updated', ['post_id' => $post_id, 'wall_id' => $_POST['_wall_id']]);
                 do_action('um_activity_after_wall_post_updated', $post_id, get_current_user_id(), absint($_POST['_wall_id']));
             }
 
@@ -3171,6 +3209,16 @@ class Activity_Main_API
             $output['has_oembed'] = $has_oEmbed;
 
             $output['has_text_video'] = get_post_meta($post_id, '_video_url', true);
+
+            if (isset($_POST['_wall_id']) && absint($_POST['_wall_id']) > 0) {
+                $output['wall_id'] = $_POST['_wall_id'];
+
+                um_fetch_user($output['wall_id']);
+
+                $output['wall_user_name'] = um_user( 'display_name' );
+                $output['wall_user_url'] = um_user_profile_url();
+                
+            }
         }
 
         $output = json_encode($output);

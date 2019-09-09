@@ -18,7 +18,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		background: #0d1f33 !important;
 	}
 	.inner-main-content, .header-dashboard-inner {
-		max-width: none !important;
+		max-width: 1000px !important;
     	width: 85% !important;
 	}
 	.center-dashboard-part {
@@ -145,7 +145,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
     	color: #6583a8;
@@ -352,14 +352,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    height: 41px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    font-size: 12px;
 	    color: #ecf0f1;
@@ -804,7 +796,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					<?php get_template_part('parts/sidebar', 'profile'); ?>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 800px;">
 				<div class="center-dashboard-part-inner">
 					<div class="container">
 						<div class="row">
@@ -869,7 +861,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                 			<div class="nws-businesstitle">Business News</div>
 	                		<div class="row msbusinesstit">
 								<!-- first news -->
-				                <div class="col-md-8">
+				                <div class="col-md-8" style="padding-right: 10px;">
 				                	<div class="nws-thumbnstopimg sss" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
 					                	<div class="nws-toptitle">
 					                		<p><a href="https://news.google.com/<?php echo $link[0]; ?>" target="_blank"><?php echo (strlen($titles[0]) > 59 ? substr($titles[0], 0, 60) . '...' : $titles[0])?></a></p>
@@ -880,7 +872,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 										</div>
 							        </div>
 				                </div>
-				                <div class="col-md-4">
+				                <div class="col-md-4" style="padding-left: 0px;">
 				                	<div class="main-innertop">
 										<!-- 7 to 11 -->
 										<?php for ($topright=1; $topright <=4 ; $topright++) { ?>
@@ -900,12 +892,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 			                		</div>
 			                	</div>
 			                </div>
-			                <div class="row cisz">
+			                <div class="row cisz" style="padding-top: 0px; margin-top: -3px;">
 		                		<div class="hksi col-md-8">
 		                			<div class="row">
 									<!-- 1 to 6 -->
 									<?php for ($topright=5; $topright <= 8 ; $topright++) { ?>
-											<div class="col-md-6">
+											<div class="col-md-6" style="padding-right: 0px;">
 						                		<div class="nws-part">
 							                		<div class="img_sep">
 							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
@@ -928,11 +920,44 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                		</div>
 						                	</div>
 									<?php } ?>
+
+
+
+
+
 			                		</div>
 			                	</div>
-			                	<div class="nws-part col-md-4">
-									<?php get_template_part('parts/sidebar', 'ads');?>
+
+
+			                	<div class="nws-part col-md-4" style="margin-top: 0px;">
+									<?php // get_template_part('parts/sidebar', 'ads');?>
+
+						                		<div class="nws-part">
+							                		<div class="img_sep">
+							                			<div class="ccc" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
+									                		</div>
+							                		</div>
+							                		<div class="nws-seprator">
+							                			<div class="nws-title">
+							                				<p>
+							                					<strong>
+							                						<a href="https://news.google.com/<?php echo $link[$topright]; ?>" target="_blank">
+							                					<?php echo (strlen($titles[$topright]) > 51 ? substr($titles[$topright], 0, 51) . '...' : $titles[$topright])?></a>
+							                					</strong>
+							                				</p>
+							                			</div>
+							                			<div class="nws-description">
+								                			<p><?php echo (strlen($desc[$topright]) > 120 ? substr($desc[$topright], 0, 120) . '...' : $desc[$topright])?></p>
+															<p><?php echo $source[$topright]; ?></p>
+							                			</div>
+							                		</div>
+						                		</div>
+
+						                		<?php //get_template_part('parts/sidebar', 'ads');?>
+						                	
 								</div>
+
+
 							</div>
 	                	</div>
                 	</div>
@@ -941,19 +966,23 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<div class="nws-inner">
                 		<div class="container">
 		                		<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); ?>
-		                		<div class="adsbygoogle">
-								<div class="box-portlet row" style="padding: 5px 13%;">
-									<div class="tte-spons col-md-2">
+
+
+
+		             <!--   	<div class="adsbygoogle">
+								<div class="box-portlet row" style="padding: 0px 0%;">-->
+									<!--<div class="tte-spons col-md-2">
 										<h6>Sponsor</h6>
-									</div>
-									<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
+									</div>-->
+								<!--	<div class="box-portlet-content col-md-10" style="padding: 0 !important;">-->
 										<!-- <small>ADVERTISEMENT</small> -->
-										<div class="adscontainer">
-										<img src="https://arbitrage.ph/ads/addsample728x90_1.png">
+									<!--	<div class="adscontainer" style="width: 900px;">
+										<img src="https://arbitrage.ph/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
 										</div>
 									</div>
 								</div>
-							</div>
+							</div>-->
+
                 			<!-- <div class="nws-businesstitle">Market News</div> -->
 
                 			<!-- ========================================= Second section =============================================== -->
@@ -963,11 +992,11 @@ date_default_timezone_set('Asia/Manila'); ?>
 	                			<div class="col-md-4">
 				                	<div class="main-innertop klaska">
 										<div class="nws-part">
-					                		<div class="img_sep">
-					                			<div class="ccc" style="background: url('<?php echo $images[9]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
+					                		<div class="img_sep" style="width: 252px;">
+					                			<div class="ccc" style="background: url('<?php echo $images[19]; ?>');background-position: center center;background-size: 100% auto;background-repeat: no-repeat;">
 						                		</div>
 					                		</div>
-					                		<div class="nws-seprator">
+					                		<div class="nws-seprator" style="width: 237px;height: 231px;">
 					                			<div class="nws-title">
 					                				<p>
 					                					<strong>
@@ -997,8 +1026,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 				                </div>
 				            </div>
 				                <div class="row">
-								<?php for ($bottomnews=11; $bottomnews <=22 ; $bottomnews++) { ?>
-								<div class="col-md-4">
+								<?php for ($bottomnews=11; $bottomnews <=19 ; $bottomnews++) { ?>
+								<div class="col-md-4" style="padding-right: 0px; margin-top: -10px;">
 				                	<div class="main-innertop">
 										<div class="nws-part">
 					                		<div class="img_sep">

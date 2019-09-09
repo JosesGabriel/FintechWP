@@ -131,7 +131,7 @@ get_header( 'dashboard' );
 	}
 	#mingle-btn {
 		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
+		border: 1.3px solid #e77e24 !important;
     	padding: 5px 14px !important;
     	font-family: 'Nunito', sans-serif;
     	color: #6583a8;
@@ -330,14 +330,6 @@ get_header( 'dashboard' );
     	padding: 5px;
 	}
 	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks .to-content-part ul li a {
 	    display: block;
 	    padding: 11px 10px;
@@ -787,11 +779,11 @@ get_header( 'dashboard' );
 	}
 	.entr_wrapper_top {
 		padding:20px 0 15px 20px;
-		background-color:#2c3e50;
+		background-color:#0c1f33;
 	}
 	.entr_wrapper_mid {
 		padding: 20px 0 15px 20px;
-		background-color: #34495e;
+		background-color: #142b46;
 		border-radius: 4px;
 	}
 	.entr_wrapper_bot {
@@ -804,7 +796,7 @@ get_header( 'dashboard' );
 		margin:0;
 	}
 	.entr_ttle_bar {
-		background-color: #34495e;
+		background-color: #142b46;
 		padding: 12px;
 		border-radius: 4px;
 	}
@@ -1348,9 +1340,9 @@ get_header( 'dashboard' );
 <?php
 	if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 
-		echo "<pre>";
-			print_r($_POST);
-		echo "</pre>";
+		// echo "<pre>";
+		// 	print_r($_POST);
+		// echo "</pre>";
 
 		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
 		$user_idd = $curuserid;
@@ -1560,7 +1552,6 @@ if ($getdstocks && $getdstocks != "") {
 			delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
 
 			// $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
-			// print_r($dsotcksss);
 		}
 		delete_user_meta(get_current_user_id(), '_trade_list');
 
@@ -1588,11 +1579,11 @@ if ($getdstocks && $getdstocks != "") {
 					<div class="dashboard-sidebar-left-inner">
 
                     	<?php echo get_template_part( 'parts/sidebar', 'profile' ); ?>
-
+                    	 <?php get_template_part('parts/sidebar', 'traders'); ?>
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part">
+			<div class="center-dashboard-part" style="max-width: 900px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>
@@ -1724,8 +1715,8 @@ if ($getdstocks && $getdstocks != "") {
 		                                                                                    <div style="width:11%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>">&#8369;<?php echo number_format( $dprofit, 2, '.', ',' ); ?></div>
 		                                                                                    <div style="width:9%" class="<?php echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart'); ?>"><?php echo ($dprofit < 0 ? '-' : '') ?><?php echo number_format( $profpet, 2, '.', ',' ); ?>%</div>
 		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
-		                                                                                        <a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green">BUY</a>
-		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red">SELL</a>
+		                                                                                        <a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
+		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
 		                                                                                        <div class="hideformodal">
 		                                                                                        	<div class="selltrade" id="selltrade_<?php echo $value; ?>">
 
@@ -1885,7 +1876,7 @@ if ($getdstocks && $getdstocks != "") {
 																	                                            <div class="groupinput selectonly">
 																	                                                <select name="inpt_data_emotion" class="rnd">
 																	                                                    <option value="" selected>Select Emotion</option>
-																	                                                    <option value="Nuetral">Nuetral</option>
+																	                                                    <option value="Nuetral">Neutral</option>
 																	                                                    <option value="Greedy">Greedy</option>
 																	                                                    <option value="Fearful">Fearful</option>
 																	                                                </select>
@@ -1962,12 +1953,6 @@ if ($getdstocks && $getdstocks != "") {
 
 
                                                 	?>
-                                                    <!-- <pre>
-														<?php print_r($dtotalpl); ?>
-													</pre> -->
-													<!-- <pre>
-														<?php print_r($dlistofsells); ?>
-													</pre> -->
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -2351,9 +2336,6 @@ if ($getdstocks && $getdstocks != "") {
                                                             </div>
                                                         </div>
 
-                                                        <!-- <pre>
-                                                        	<?php print_r($alltradelogs); ?>
-                                                        </pre> -->
 														<div class="col-md-5">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
@@ -3957,6 +3939,8 @@ if ($getdstocks && $getdstocks != "") {
 				</div>
 			</div>
 
+
+
 			<br class="clear">
 		</div>
 	</div>
@@ -4177,16 +4161,10 @@ if ($getdstocks && $getdstocks != "") {
 						jQuery(this).parents(".modal-content").find(".dinitem").append('<div class="errormessage">You cant exceed by ₱'+$dbuypower+'</div>');
 					}
 
-					console.log("cant withdraw");
-				} else {
-					console.log("you may");
-				}
+				} 
 			} else {
 				e.preventDefault();
 			}
-
-
-			// console.log("here");
 		});
 	});
     </script>

@@ -335,7 +335,7 @@ include_once(get_theme_file_path().'/ab-functions.php');
                                     <select name="inpt_data_emotion" class="rnd">
                                         <option value="<?php echo get_post_meta(get_the_ID(), 'data_emotion', true); ?>" selected>
 										Emotion: <?php echo get_post_meta(get_the_ID(), 'data_emotion', true); ?></option>
-                                        <option value="Nuetral">Nuetral</option>
+                                        <option value="Nuetral">Neutral</option>
                                         <option value="Greedy">Greedy</option>
                                         <option value="Fearful">Fearful</option>
                                     </select>

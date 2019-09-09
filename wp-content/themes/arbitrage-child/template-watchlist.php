@@ -15,7 +15,10 @@ date_default_timezone_set('Asia/Manila');
 // delete_user_meta($userID, '_watchlist_instrumental');
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); // get watchlist
-
+echo "on here";
+echo "<pre>";
+print_r($havemeta);
+echo "</pre>";
 	if (isset($_POST) && !empty($_POST)) {
 
 		if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
@@ -1032,11 +1035,11 @@ h2.watchtitle {
     }
     .entr_wrapper_top {
         padding:20px 0 15px 20px;
-        background-color:#2c3e50;
+        background-color:#0c1f33;
     }
     .entr_wrapper_mid {
         padding: 20px 0 15px 20px;
-        background-color: #34495e;
+        background-color: #142b46;
         border-radius: 4px;
     }
     .entr_wrapper_bot {
@@ -1049,7 +1052,7 @@ h2.watchtitle {
         margin:0;
     }
     .entr_ttle_bar {
-        background-color: #34495e;
+        background-color: #142b46;
         padding: 12px;
         border-radius: 4px;
     }
@@ -1871,6 +1874,7 @@ h2.watchtitle {
             <?php get_template_part('parts/sidebar', 'alert'); ?>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
+                
                                                             <div class="addwatchs">
                                                                 <div class="stats-watch">Statistics</div>
                                                                 <hr class="style14 style15" style="width: 100% !important;margin-bottom: 4px !important;margin-top: 4px !important;text-align: center;">
@@ -1907,7 +1911,7 @@ h2.watchtitle {
         jQuery(".addwatch").addClass('eventnone');
     <?php }else{ ?>
         jQuery(".addwatch").removeClass('eventnone');
-    <?php }?>
+    <?php } ?>
 </script>
 
 <?php

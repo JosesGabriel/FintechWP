@@ -14,17 +14,17 @@
 
 }
 
-.lockedd i.fa.fa-lock {
+/* .lockedd i.fa.fa-lock {
 
     top: 7px;
 
     position: absolute;
 
-    right: 14px;
+    right: 1px;
 
     font-size: 14px;
 
-    color: #ecf0f1;
+    color: #ecf0f1; */
 
 }
 
@@ -53,6 +53,11 @@
 	width:90%;
 
 	margin-top:3px;
+
+}
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
 
 }
 
@@ -212,7 +217,7 @@
 
     line-height: 30px;
 
-    background-color: rgba(78, 106, 133, 0.47843137254901963);
+    background-color: #34495e;
 
     padding: 0 0 0 10px;
 
@@ -234,7 +239,12 @@
 
     line-height: 20px;
 
-    background: #11273e !important;
+    background: #4e6a85 !important;
+
+}
+.arb_calcbox input[type="number"]::placeholder {
+
+    color: white;
 
 }
 
@@ -248,7 +258,7 @@
 
     line-height: 20px;
 
-    background-color: #11273e;
+    background-color: #4e6a85;
 
     border: none;
 
@@ -262,6 +272,10 @@
 
 	border-radius: 0 5px 5px 0;
 
+}
+
+.arb_calcbox input[type="text"]::placeholder {
+    color: white;
 }
 
 .sublbl.after {
@@ -288,7 +302,7 @@
 
 	border-radius:0;
 
-	background-color: #11273e;
+	background-color: #4e6a85;
 
 }
 
@@ -321,198 +335,107 @@
 	cursor:not-allowed;
 
 }
+.lockedd i.fa.fa-lock.lock__icon--position {
+    right: 1px;
+}
+
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+
+select#stockname {
+    background: #4e6a85;
+    color: #fff;
+    height: 30px;
+    border: 0 none;
+    padding: 3px;
+    display: inline-block;
+    border-radius: 0 6px 6px 0 !important;
+}
 
 </style>
 
 <div class="arb_calcbox varcalc">
 
-<div class="bkcalcboxess">
+<!-- <div class="bkcalcboxess">
 
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
-
     
-
-    <div class="halfts">
-
-
-
-    <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Stock Name</div>
-
-        <div class="arb_calcbox_right">
-
-            <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
+    <div class="halfts" style="width: 50%">
+        <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
 
         
 
-        <div class="arb_calcbox_left">Current Price</div>
+            <div class="arb_calcbox_left">Stock Name</div>
 
-        <div class="arb_calcbox_right">
+            <div class="arb_calcbox_right">
 
-            <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="padbott"></div>
-
-    
-
-    <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Portfolio Size</div>
-
-        <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Portfolio Allocation</div>
-
-        <div class="arb_calcbox_right">
-
-            <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><div class="sublbl after">%</div>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Position Size</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="posisize" id="posisize" type="text" value="0" style="width:85%;">
-
-        	<i class="fa fa-lock" aria-hidden="true"></i>
+                <input name="stockname" id="stockname" type="text" value="BDO" style="width:95%;">
 
             </div>
 
-        <div class="arb_clear smlspc"></div>
+            <div class="arb_clear smlspc"></div>
 
-        
+            
 
-    	<div class="padbott"></div>
+            <div class="arb_calcbox_left">Current Price</div>
 
-    
+            <div class="arb_calcbox_right">
 
-    <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
-
-    
-
-        <div class="arb_calcbox_left">Identified Entry Price</div>
-
-        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Risk Tolerance</div>
-
-        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Target Profit</div>
-
-        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Stoploss</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><div class="sublbl after">%</div>
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Take Profit Price</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Stoploss Price</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
-
-        
-
-        <div class="arb_calcbox_left">Value at Risk</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
+                <input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1">
 
             </div>
 
-        <div class="arb_clear smlspc"></div>
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="padbott"></div>
 
         
 
-        <div class="arb_calcbox_left">Upside</div>
-
-        <div class="arb_calcbox_right lockedd">
-
-        	<div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
-
-            <i class="fa fa-lock" aria-hidden="true"></i>
-
-        </div>
-
-        <div class="arb_clear smlspc"></div>
+        <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
 
         
 
-        <div class="padbott"></div>
+            <div class="arb_calcbox_left">Portfolio Size</div>
 
-    
+            <div class="arb_calcbox_right"><input name="portsize" id="portsize" type="number" value="0" style="width:95%;" tabindex="2"></div>
 
-    <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="arb_calcbox_left">Portfolio Allocation</div>
+
+            <div class="arb_calcbox_right">
+
+                <input name="portalloc" id="portalloc" type="number" value="0" style="width:85%; border-radius:0;" tabindex="3"><i class="fas fa-percentage" aria-hidden="true"></i>
+
+            </div>
+
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="arb_calcbox_left">Position Size</div>
+
+            <div class="arb_calcbox_right lockedd">
+
+                <input name="posisize" id="posisize" type="text" value="0" style="width:85%;">
+
+                <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+
+                </div>
+
+            <div class="arb_clear smlspc"></div>
+
+            
+
+            <div class="padbott"></div>
+        
+        <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
 
     
 
@@ -522,7 +445,7 @@
 
         	<input name="boardlot" id="boardlot" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -536,7 +459,7 @@
 
         	<input name="noofshare" id="noofshare" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -550,7 +473,7 @@
 
         	<input name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;">
 
-            <i class="fa fa-lock" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
 
         </div>
 
@@ -568,18 +491,370 @@
 
         </div>
 
-        
-
     </div>
 
-</div>
+    <div >
+        <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
+        <div class="arb_calcbox_left">Identified Entry Price</div>
+        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
+        <div class="arb_clear smlspc"></div>
 
+        <div class="arb_calcbox_left">Risk Tolerance</div>
+        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:85%; border-radius:0;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Target Profit</div>
+        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:85%; border-radius:0;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Stoploss</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="stoploss" id="stoploss" type="text" value="0" style="width:75%; border-radius:0;"><i class="fas fa-percentage" aria-hidden="true"></i>
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+        <div class="arb_calcbox_left">Take Profit Price</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="takeprofitprice" id="takeprofitprice" type="text" value="0" style="width:85%;">
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Stoploss Price</div>
+        <div class="arb_calcbox_right lockedd">
+        	<input name="stoplossprice" id="stoplossprice" type="text" value="0" style="width:85%;">
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Value at Risk</div>
+        <div class="arb_calcbox_right lockedd">
+        	<div class="sublbl before">₱</div><input name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:77%;">
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+            </div>
+
+        <div class="arb_clear smlspc"></div>
+
+        <div class="arb_calcbox_left">Upside</div>
+        <div class="arb_calcbox_right lockedd">
+        	<div class="sublbl before">₱</div><input name="upside" id="upside" type="text" value="0" style="width:77%;">
+            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+        </div>
+
+        <div class="arb_clear smlspc"></div>
+        <div class="padbott"></div>
+    </div>        
+</div> -->
+    <?php
+
+        function getfees($funmarketval, $funtype)
+        {
+            // Commissions
+            $dpartcommission = $funmarketval * 0.0025;
+            $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
+            // TAX
+            $dtax = $dcommission * 0.12;
+            // Transfer Fee
+            $dtransferfee = $funmarketval * 0.00005;
+            // SCCP
+            $dsccp = $funmarketval * 0.0001;
+            $dsell = $funmarketval * 0.006;
+
+            if ($funtype == 'buy') {
+                $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
+            } else {
+                $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+            }
+
+            return $dall;
+        }
+
+        $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $gerdqoute = curl_exec($curl);
+        curl_close($curl);
+
+        $gerdqoute = json_decode($gerdqoute);
+
+        $dtradeingfo = [];
+        if ($getdstocks && $getdstocks != '') {
+            foreach ($getdstocks as $dstockskey => $dstocksvalue) {
+                $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+                if ($dstocktraded && $dstocktraded != '') {
+                    $dstockinfo = $gerdqoute->data->$dstocksvalue;
+                    $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+                    $dsellfees = getfees($marketval, 'sell');
+                    $dtotal = $marketval - $dsellfees;
+
+                    $dstocktraded['totalcost'] = $dtotal;
+                    $dstocktraded['stockname'] = $dstocksvalue;
+                    array_push($dtradeingfo, $dstocktraded);
+                }
+            }
+        }
+
+        $duseridmo = get_current_user_id();
+        $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+
+        $buypower = 0;
+        foreach ($dledger as $getbuykey => $getbuyvalue) {
+            if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+                $buypower = $buypower + $getbuyvalue->tranamount;
+            } else {
+                $buypower = $buypower - $getbuyvalue->tranamount;
+            }
+        }
+
+        $dequityp = $buypower;
+
+        if ($dtradeingfo) {
+            foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+                $dinforstocl = $trinfovalue['stockname'];
+                $dstockinfo = $gerdqoute->data->$dinforstocl;
+                $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+                $dsellfees = getfees($marketval, 'sell');
+                $dtotal = $marketval - $dsellfees;
+
+                $dequityp += $dtotal;
+                $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+                // $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
+            }
+        }
+
+        // $dequityp = 0;
+        
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $dwatchinfo = curl_exec($curl);
+        curl_close($curl);
+
+        $dwatchinfo = json_decode($dwatchinfo);
+        
+
+    ?>
+
+    <div class="bkcalcboxess container-fluid ">
+    <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="halfts">
+                    <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
+
+                    
+
+                        <div class="arb_calcbox_left">Stock Name</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <!-- <input name="stockname" id="stockname" type="text" value="BDO" style="width: 85%; text-align: left;"> -->
+                            <div class="dselecton">
+                                <select name="stockname" id="stockname">
+                                    <option value="0">Select a Stock</option>
+                                    <?php foreach($dwatchinfo->data as $dwkey => $dwvalue): ?>
+                                        <option value="<?php echo $dwvalue->last; ?>"><?php echo $dwvalue->symbol; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Current Price</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <input name="currentprice" id="currentprice" type="text" value="0" class="number" style="width: 85%;" tabindex="1" readonly>
+                            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="padbott"></div>
+
+                    
+
+                    <div class="allcaps varsecttl"><strong>Portfolio Planning</strong></div>
+
+                    
+
+                        <div class="arb_calcbox_left">Portfolio Size</div>
+
+                        <div class="arb_calcbox_right">
+                            <input name="portsize" id="portsize" class="number" type="text" value="<?php echo number_format($dequityp, 2, '.', ','); ?>" style="width: 85%;" tabindex="2" readonly>
+                            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Portfolio Allocation</div>
+
+                        <div class="arb_calcbox_right">
+
+                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius: 0 5px 5px 0; margin-right: 0;" tabindex="3">
+                            <i class="fas fa-percentage" aria-hidden="true"></i>
+
+                        </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="arb_calcbox_left">Position Size</div>
+
+                        <div class="arb_calcbox_right lockedd">
+
+                            <input class="input-locked number" name="posisize" id="posisize" type="text" value="0" style="width:85%;" disabled>
+
+                            <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+
+                            </div>
+
+                        <div class="arb_clear smlspc"></div>
+
+                        
+
+                        <div class="padbott"></div>
+                    
+                    <div class="allcaps varsecttl"><strong>Position Sizing & RRR</strong></div>
+
+                
+
+                    <div class="arb_calcbox_left">Board Lot</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input class="input-locked number" name="boardlot" id="boardlot" type="text" value="0" style="width:85%;" disabled>
+
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="arb_calcbox_left">No of Shares to Buy</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input class="input-locked number" name="noofshare" id="noofshare" type="text" value="0" style="width:85%;" disabled>
+
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="arb_calcbox_left">Risk to Reward Ratio</div>
+
+                    <div class="arb_calcbox_right lockedd">
+
+                        <input class="input-locked number" name="risktoreward" id="risktoreward" type="text" value="0" style="width:85%;" disabled>
+
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    
+
+                    <div class="padbott"></div>
+
+                    
+
+                    <div style="display:none;">Boardlot (Tmp - dynamic on chart)
+[]
+                    <input name="inpt_data_boardlot_get_" id="inpt_data_boardlot_get_" type="text" class="number" value="30" style="width:100%;">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="halfts">
+                    <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
+                    <div class="arb_calcbox_left">Identified Entry Price</div>
+                    <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="text" class="number" placeholder="0" style="width:80%;" tabindex="4"></div>
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Risk Tolerance</div>
+                    <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="text" class="number" placeholder="0" style="width:80%;" tabindex="5"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Target Profit</div>
+                    <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="text" class="number" placeholder="0" style="width:80%;" tabindex="6"><i class="fas fa-percentage" aria-hidden="true"></i></div>
+                    <!-- <div class="arb_clear smlspc"></div> -->
+
+                    <!-- <div class="arb_calcbox_left">Stoploss</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input class="input-locked number" name="stoploss" id="stoploss" type="text" value="0" style="width:80%;" disabled><i class="fas fa-percentage" aria-hidden="true"></i>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                    </div> -->
+
+                    <div class="arb_clear smlspc"></div>
+                    <div class="arb_calcbox_left">Take Profit Price</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input class="input-locked" name="takeprofitprice" id="takeprofitprice" type="text" class="number" value="0" style="width:80%;" disabled>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Stoploss Price</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <input class="input-locked" name="stoplossprice" id="stoplossprice" type="text" class="number" value="0" style="width:80%;" disabled>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Value at Risk</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <div class="sublbl before">₱</div><input class="input-locked number" name="valueatrisk" id="valueatrisk" type="text" value="0" style="width:66%;" disabled>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                        </div>
+
+                    <div class="arb_clear smlspc"></div>
+
+                    <div class="arb_calcbox_left">Upside</div>
+                    <div class="arb_calcbox_right lockedd">
+                        <div class="sublbl before" >₱</div><input class="input-locked number" name="upside" id="upside" type="text" value="0" style="width:66%;" disabled>
+                        <i class="fa fa-lock lock__icon--position" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="arb_clear smlspc"></div>
+                    <div class="padbott"></div>
+                </div>  
+            </div>
+        </div>
+    </div>
 </div>
 
 <script language="javascript">
 
 	jQuery(document).ready(function(){
 
+        jQuery("#stockname").on('change', function() {
+            jQuery("#currentprice").val(this.value);
+        });
 		
 
 		jQuery("#currentprice, #portalloc, #portsize, #risktoler, #targetprof, #idenentryprice, #targetprof, #noofshare").keyup(function(){exevarclc();});
@@ -592,33 +867,32 @@
 
 			/* ENTER STOCK DETAILS */
 
-			var vr_currentprice = jQuery('#currentprice').val(); // 12.5
+			var vr_currentprice = jQuery('#currentprice').val().replace(/[^0-9\.]/g, ''); // 12.5
 
-			
-
+	
 			/* PORTFOLIO PLANNING */
 
-			var vr_portsize = jQuery('#portsize').val(); // 100,000
+			var vr_portsize = jQuery('#portsize').val().replace(/[^0-9\.]/g, ''); // 100,000
 
-			var vr_portalloc = jQuery('#portalloc').val(); // 30
+			var vr_portalloc = jQuery('#portalloc').val().replace(/[^0-9\.]/g, ''); // 30
 
 			var vr_portallocdeci = Number(vr_portalloc) / 100; 
 
 			var vr_posisizemin = Math.round(Number(vr_portallocdeci) * Number(vr_portsize));
 
-			jQuery('#posisize').val(vr_posisizemin);
+			jQuery('#posisize').val(numeral(vr_posisizemin).format('0,0.00'));
 
 			
 
 			/* TRADE PLANNING */
 
-			var vr_idenentryprice = jQuery('#idenentryprice').val();
+            var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/[^0-9\.]/g, '');
 
-			var vr_risktoler = jQuery('#risktoler').val();
+			var vr_risktoler = jQuery('#risktoler').val().replace(/[^0-9\.]/g, '');
 
-			var vr_targetprof = jQuery('#targetprof').val();
+			var vr_targetprof = jQuery('#targetprof').val().replace(/[^0-9\.]/g, '');
 
-			var vr_stoploss = jQuery('#stoploss').val(vr_risktoler);
+			var vr_stoploss = jQuery('#stoploss').val(numeral(vr_risktoler).format('0,0.00'));
 
 			
 
@@ -628,7 +902,7 @@
 
 			var vr_takeprofitpricetot2 = Number(vr_idenentryprice) + Number(vr_takeprofitpricetot1);
 
-			var vr_takeprofitprice = jQuery('#takeprofitprice').val(vr_takeprofitpricetot2.toFixed(2));
+            var vr_takeprofitprice = jQuery('#takeprofitprice').val(numeral(vr_takeprofitpricetot2).format('0,0.00'));
 
 			
 
@@ -636,29 +910,32 @@
 
 			var vr_stoplosspricetot2 = Number(vr_idenentryprice) - Number(vr_stoplosspricetot1);
 
-			var vr_stoplossprice = jQuery('#stoplossprice').val(vr_stoplosspricetot2.toFixed(2));
-
+			var vr_stoplossprice = jQuery('#stoplossprice').val(numeral(vr_stoplosspricetot2).format('0,0.00'));
 			
 
 			var vr_valueatrisk1 = Number(vr_risktoler) / 100;
 
 			var vr_valueatrisk2 = Number(vr_posisizemin) * Number(vr_valueatrisk1)
 
-			var vr_valueatrisk = jQuery('#valueatrisk').val(vr_valueatrisk2);
+			var vr_valueatrisk = jQuery('#valueatrisk').val(numeral(vr_valueatrisk2).format('0,0.00'));
 
 			
 
 			var vr_upsidetot = Number(vr_posisizemin) * Number(vr_takeprofitpricetot0);
 
-			var vr_upside = jQuery('#upside').val(vr_upsidetot);
+			var vr_upside = jQuery('#upside').val(numeral(vr_upsidetot).format('0,0.00'));
 
 			
 
 			/* POSITION SIZING & RRR */
 
-			var boardlotget_var = $("#inpt_data_boardlot_get_").val();
+     //       var boardlotget_var = $("#idenentryprice").val();
+           
+               var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
 
-			var boardlotget_val
+               boardlotget_var = parseFloat(boardlotget_var);
+
+            var boardlotget_val;
 
 			if ( boardlotget_var >= 0.0001 && boardlotget_var <= 0.0099){
 
@@ -690,29 +967,78 @@
 
 			}			
 
-			var vr_boardlot = jQuery('#boardlot').val(boardlotget_val);
+ //         var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
 
-			
+
+            var vr_boardlot_tmp = jQuery('#boardlot').val(numeral(boardlotget_val).format('0,0.00'));			
+
+            var vr_boardlot = boardlotget_val;
 
 			var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
 
-			var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+            var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
 
-			var vr_noofshare = jQuery('#noofshare').val(vr_noofsharetot2);
+                vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
 
-			
+
+            // var numofshares = vr_posisizemin / 
+            
+            var blots = parseFloat(boardlotget_val);
+            var sharestobuy = Math.floor(vr_posisizemin / vr_idenentryprice);
+            
+            var slotmultiplier = Math.floor(sharestobuy / blots);
+            var finalstocks = blots * slotmultiplier;
+
+			// var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+			var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
+
+            
 
 			var vr_risktorewardtot1 = Number(vr_valueatrisk2) / Number(vr_valueatrisk2);
 
 			var vr_risktorewardtot2 = Number(vr_upsidetot) / Number(vr_valueatrisk2);
 
-			var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+            var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+
+                vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
 
 			var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
 
 			
 
-		}
+        }
+        
+
+        jQuery('input.number').keyup(function (event) {
+            // skip for arrow keys
+                 // var calcsss
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 
 	});
 

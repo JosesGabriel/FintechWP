@@ -154,11 +154,11 @@ textarea.darktheme {
 }
 .entr_wrapper_top {
 	padding:20px 0 15px 20px;
-	background-color:#2c3e50;
+	background-color:#0c1f33;
 }
 .entr_wrapper_mid {
     padding: 20px 0 15px 20px;
-    background-color: #34495e;
+    background-color: #142b46;
     border-radius: 4px;
 }
 .entr_wrapper_bot {
@@ -171,7 +171,7 @@ textarea.darktheme {
 	margin:0;
 }
 .entr_ttle_bar {
-    background-color: #34495e;
+    background-color: #142b46;
     padding: 12px;
 	border-radius: 4px;
 }
@@ -357,7 +357,7 @@ a.smlbtn.green:hover {
                         <input type="text" name="inpt_data_buyyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date("Y"); ?>">
                         </div>
                     
-                    <div class="groupinput midd"><label>Stock</label><input type="text" name="inpt_data_stock"></div>
+                    <div class="groupinput midd"><label>Stock</label><input type="text" name="inpt_data_stock" style="text-align: left;"></div>
                     <div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price"></div>
                     <div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty"></div>
                 </div>
@@ -407,7 +407,7 @@ a.smlbtn.green:hover {
                 <div class="groupinput selectonly">
                     <select name="inpt_data_emotion" class="rnd">
                         <option value="" selected>Select Emotion</option>
-                        <option value="Nuetral">Nuetral</option>
+                        <option value="Nuetral">Neutral</option>
                         <option value="Greedy">Greedy</option>
                         <option value="Fearful">Fearful</option>
                     </select>
@@ -419,6 +419,7 @@ a.smlbtn.green:hover {
             </div>
             
             <div class="groupinput">
+                <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
             	<input type="hidden" value="Live" name="inpt_data_status">
             	<input type="submit" class="confirmtrd green" value="Confirm Trade">
             </div>
@@ -684,7 +685,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
                                         </div>
                                     
                                     <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock" 
-                                    value="<?php echo get_post_meta(get_the_ID(), 'data_stock', true); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                                    value="<?php echo get_post_meta(get_the_ID(), 'data_stock', true); ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
                                     
                                     <div class="groupinput midd lockedd"><label>Buy Price</label><input type="text" name="inpt_data_price"
                                     value="<?php echo get_post_meta(get_the_ID(), 'data_price', true); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>

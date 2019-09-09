@@ -222,7 +222,7 @@
 }
 .um-activity-widget .um-activity-foot.status a,
 .um-activity-widget .um-activity-foot.status i {
-    color: #fff !important;
+    /* color: #fff !important; */
 }
 .um-activity-widget .um-activity-foot .um-activity-bullish.active a {
     /*color: red !important;*/
@@ -471,19 +471,6 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     border-radius: 0 0 5px 5px;
     /*padding: 10px 0px;*/
 }
-.side-content ul li a {
-    display: block;
-    color: #ecf0f1;
-    padding: 7px 15px 7px 5px;
-    font-size: 13px;
-    font-family: Roboto, sans-serif;
-    font-weight: 400;
-}
-.side-content ul li a:hover {
-    background: #3a5168;
-    text-decoration: none;
-    border-radius: 4px;
-}
 ul.main-drop {
     position: relative;
 }
@@ -665,7 +652,7 @@ body header#main-header {
     color: #d8d8d8;
     width: 100%;
     border-radius: 0;
-    height: 30px;
+    height: 25px !important;
     font-size: 13px;
 }
 .on-footer-right {
@@ -2382,6 +2369,7 @@ hr.style11 {
 .top-stocks .to-content-part {
 }
 
+
 .um-activity-widget div.um-activity-textarea textarea,
 .um-activity-widget div.um-activity-textarea textarea:hover,
 .um-activity-widget div.um-activity-textarea textarea:focus {
@@ -2448,3 +2436,6 @@ hr.style11 {
     border-width: 10px;
     margin-left: -36px;
     }
+.totabs active {
+    color: red;
+}

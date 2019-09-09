@@ -35,61 +35,55 @@
 
 							?>
 
-							<ul>
+							<ul class="topsect">
 								<?php  $plcnt = 0; ?>
 
-								<?php $isfive = array_slice($dranks, 0, 5); ?>
+								<?php $isfive = array_slice($dranks, 0, 3); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
 										<div class="hudbadge">
-
-										    <?php if($plcnt == 1){ ?>
-										    	<p style="color:#ffd03b;">
-										    	<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesgold.svg">
-									  		<?php }else if($plcnt == 2){ ?>
-									  			<p style="color:#d3d3d3;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgessilver.svg">
-									  		<?php }else if($plcnt == 3){ ?>
-									  			<p style="color:#da9b5c;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesbronze.svg">
-									  		<?php }else{ ?>
-									  			<p><?php echo $plcnt; ?></p>
-									  			<img src="/svg/hudbadgesblue.svg">
-									  		<?php } ?>
-									   
-									   </div>
+											<?php if($plcnt == 1) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top2.svg" alt="">
+											<?php }else if($plcnt == 2) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top3.svg" alt="">
+											<?php }else if($plcnt == 3) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top4.svg" alt="">
+											<?php } ?>
+									   	</div>
 
 									    <div class="playerscontent">
-											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
-												
-											</div>
-											<div class="istotal"><?php 
-												$totalvaluee = $value['dtotalbal'];
-												$equityres = $totalvaluee - 100000;
-												$resres = $equityres / 100000;
-												$finalres = $resres * 100;
+											<div class="isname" style="width: 114px;">
+												<?php 
+												//echo ucwords($value['dbsname']) 
+
+													$uname = $value['dbsname'];
+													if (strlen($uname) > 15){
+												      		echo substr($uname, 0, 15) . ".."; 
+												  		}else{
+												  			echo ucwords($uname);
+												  		}
+																							
+
 												?>
 												
-												<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-												
-												<?php if($finalres == 0) { ?>
-													<br><span style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
-												<?php }elseif($finalres >= 0) {?>
-													<br><span style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php
-													if($finalres >= '200.00' ){
-														$thisisit = $finalres + '100.00';
-													}elseif( $finalres <= '200.00' ){
-														$thisisit = $finalres + '0';
-													}
-													 echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
-												<?php }elseif($finalres <= 0) { ?>
-													<br><span style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
-												<?php } ?>
+											</div>
+												<div class="istotal"><?php 
+													$totalvaluee = $value['dtotalbal'];
+													$equityres = $totalvaluee - 100000;
+													$resres = $equityres / 100000;
+													$finalres = $resres * 100;
+
+													?>
+													<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 55px;position: absolute;top: 7px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+													<?php if($finalres == 0) { ?>
+															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres >= 0) {?>
+															<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres <= 0) { ?>
+															<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php } ?>
 											 	</div>
 											<?php ?>
 										</div>
@@ -99,60 +93,53 @@
 
 							</ul>
 							<ul class="othersect">
-								<?php  $plcnt = 6; ?>
+								<?php  $plcnt = 3; ?>
 
-								<?php $isfive = array_slice($dranks, 6, 10); ?>
+								<?php $isfive = array_slice($dranks, 3, 2); ?>
 								<?php foreach ($isfive as $key => $value) { ?>
 									<?php $plcnt++; ?>
 									<li>
 										<div class="hudbadge">
+											<?php if($plcnt == 4) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top5.svg" alt="">
+											<?php }else if($plcnt == 5) { ?>
+												<img src="<?php echo get_home_url(); ?>/svg/top5.svg" alt="">
+											<?php } ?>
+									   	</div>
 
-										    <?php if($plcnt == 1){ ?>
-										    	<p style="color:#ffd03b;">
-										    	<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesgold.svg">
-									  		<?php }else if($plcnt == 2){ ?>
-									  			<p style="color:#d3d3d3;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgessilver.svg">
-									  		<?php }else if($plcnt == 3){ ?>
-									  			<p style="color:#da9b5c;">
-									  			<?php echo $plcnt; ?></p>
-										    	<img src="/svg/hudbadgesbronze.svg">
-									  		<?php }else{ ?>
-									  			<p><?php echo $plcnt; ?></p>
-									  			<img src="/svg/hudbadgesblue.svg">
-									  		<?php } ?>
-									   
-									   </div>
+									   <div class="playerscontent">
+											<div class="isname" style="width: 114px;">
 
-									    <div class="playerscontent">
-											<div class="isname">
-												<?php echo ucwords($value['dbsname']) ?>
+												<?php 
+													$uname = $value['dbsname'];
+													if (strlen($uname) > 15){
+												      		echo substr($uname, 0, 15) . ".."; 
+												  		}else{
+												  			echo ucwords($uname);
+												  		}
+													//echo ucwords($value['dbsname']) 
+
+
+												?>
+
+
 												
 											</div>
-											<div class="istotal"><?php 
-												$totalvaluee = $value['dtotalbal'];
-												$equityres = $totalvaluee - 100000;
-												$resres = $equityres / 100000;
-												$finalres = $resres * 100;
-												?>
-												
-												<?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?>
-												
-												<?php if($finalres == 0) { ?>
-													<br><span style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', '') . " % "; ?></span>
-												<?php }elseif($finalres >= 0) {?>
-													<br><span style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php
-													if($finalres >= '200.00' ){
-														$thisisit = $finalres + '100.00';
-													}elseif( $finalres <= '200.00' ){
-														$thisisit = $finalres + '0';
-													}
-													 echo number_format($thisisit, 2, '.', '') . " % "; ?></span>
-												<?php }elseif($finalres <= 0) { ?>
-													<br><span style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', '') . " % "; ?></span>
-												<?php } ?>
+												<div class="istotal"><?php 
+													$totalvaluee = $value['dtotalbal'];
+													$equityres = $totalvaluee - 100000;
+													$resres = $equityres / 100000;
+													$finalres = $resres * 100;
+													?>
+													<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 55px;position: absolute;top: 7px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+													<?php if($finalres == 0) { ?>
+															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres >= 0) {?>
+															<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
+													<?php }elseif($finalres <= 0) { ?>
+															<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+													<?php } ?>
 											 	</div>
 											<?php ?>
 										</div>
@@ -170,7 +157,7 @@
 								jQuery(".othersect").toggle('1000');
 
 								if( $(".viewmoreplayers").text() == "View more"){
-									  $(".viewmoreplayers").text("Show less");
+									  $(".viewmoreplayers").text("Hide");
 									}
 								else{
 									 $(".viewmoreplayers").text("View more");

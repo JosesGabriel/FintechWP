@@ -1,0 +1,191 @@
+html, body {
+	height: 100%;
+}
+
+@font-face {
+font-family: "CustomFont";
+src: url("../fonts/Digital-7.ttf") format('truetype'), 
+	 url("https://www.1001fonts.com/digital-7-font.html"),
+	 url("../fonts/digital-7-webfont.woff") format('woff');
+}
+
+html {
+	/*background-image: url('../img/sample.jpg');*/
+	background-color: #0b1927;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;	
+}
+
+body {
+	background-color: #0b1927;
+	/*background-image: url('../img/pattern.png');*/
+	background-position: center;
+	background-repeat: repeat;
+	font-family: 'Raleway', 'Arial', sans-serif;
+}
+
+.countdown-container {
+	position: relative;
+	top: 25%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+
+}
+
+.clock-item .inner {
+	height: 0px;
+	padding-bottom: 100%;
+	position: relative;	
+	width: 100%;
+}
+
+.clock-canvas {
+	border-radius: 50%;
+	height: 0px;
+	padding-bottom: 100%;
+	background-image: url('../img/Asset 2.png');
+   	background-size: 98% 98%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.text {
+	color: #fff;	
+	font-size: 30px;
+	/*font-weight: bold;*/	
+	margin-top: -100px;
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+	width: 100%;
+}
+
+.text .val {
+	font-size: 150px;
+	font-family: 'CustomFont', sans-serif;
+	color: #0084ff;
+}
+
+.title-header {
+	color: #0084ff;
+	font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 20px;
+}
+
+.text .type-time {
+	font-size: 20px;
+	margin-top: 35px;
+}
+
+.header-image {
+	margin-top: 20px;
+	width: 108px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.clock-item {
+		margin-bottom: 30px;		
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.clock-item {
+		margin: 0px 0px 0px 0px;
+	}
+
+	.clock-item .inner {
+		width: 50% !important;
+	}
+
+	.text .val {
+		font-size: 65px !important;
+	}
+
+	.countdown-container {
+		margin-left: 50px !important;
+	}
+
+	.row {
+		margin-top: 328px !important;
+	}
+}
+.arbitrage-button {
+	font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+    background: none;
+    border: 2px #fff solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.arbitrage-button--primary {
+	border: 2px #2481bc solid;
+}
+.arbitrage-button--primary:hover {
+	color: #ffffff;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--secondary {
+	border: 2px #9E9E9E solid;
+}
+.arbitrage-button--secondary:hover {
+	color: #ffffff;
+	background-color: #9E9E9E !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--success {
+	border: 2px #49ba6f solid;
+}
+.arbitrage-button--success:hover {
+	color: #ffffff;
+	background-color: #49ba6f !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--warning {
+	border: 2px #e77e24 solid;
+}
+.arbitrage-button--warning:hover {
+	color: #ffffff;
+	background-color: #e77e24 !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--danger {
+	border: 2px #e84c3c solid;
+}
+.arbitrage-button--danger:hover {
+	color: #ffffff;
+	background-color: #e84c3c !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--info {
+	border: 2px #874a9a solid;
+}
+.arbitrage-button--info:hover {
+	color: #ffffff;
+	background-color: #874a9a !important;
+	transition-duration: 300ms;
+}
+.arbitrage-button--dark {
+	border: 2px #2481bc solid;
+	color: #2481bc;
+}
+.arbitrage-button--dark:hover {
+	color: white;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.notif--subb {
+    margin: 0 auto;
+}
+input.email--field {
+    background: #11273e;
+    border: 1px solid #1e3554;
+    border-radius: 25px;
+    padding: 10px 13px;
+    width: 463px;
+}

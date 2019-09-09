@@ -14,7 +14,9 @@
 	width: 90%;
 	margin-top: 3px;
 }
-
+.arb_calcbox input[type="number"]::placeholder {
+	color: white;
+}
 .arb_calcbox h3 {
 	font-size: 17px;
 	padding-bottom: 0;
@@ -52,6 +54,8 @@
 .arb_calcbox_righting {
 	float: right;
 	width: 40%;
+	padding-top: 16px;
+	padding-right: 5px;
 }
 
 .padbott {
@@ -163,45 +167,96 @@
 	padding-bottom: 3px;
     display: block;
 }
+.rightAlignCal {
+	float: right;
+	margin-right: 25px;
+}
+.amtdtls{
+    float:right;
+}
+.lblbcl{
+    margin-left:15px;
+}
+.number{
+    font-size: 13px;
+    text-align: right;
+}
 </style>
 <div class="arb_calcbox">
 <div class="bkcalcbox">
 	<span><span class="toborderbotcalc"><strong>Buy/Sell</strong> Calculator</span><i class="fas fa-times toclassclose"></i></span>
-	<div class="arb_calcshares" style="padding-top: 5px;padding-bottom: 12px;"><span class="arb_xjz bit_asda"><strong>Number of Shares: </strong></span>
-		<input name="numofshares" id="numofshares" class="_fottns" type="number" value="0" style="width:100%;">
+	<div style="padding-top: 10px;padding-bottom: 12px;">
+		<div class="arb_calcbox_left">Number of Shares: </div>
+		<div class="arb_calcbox_right">
+			<input name="numofshares" id="numofshares" class="_fottns number" type="text" placeholder="0" style="width:100%;">
+		</div>
 	</div>
 	<div class="arb_calcbox_lefting">
-		<div class="arb_buyprice padbott"><span class="arb_xjz bit_asda"><strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"></div>
-		<div class="arb_buyvalue padbott arb_xjz">Value: ₱<span id="buyvalue">0.00</span></div>
-		<div class="arb_buyfees padbott arb_xjz">
-			Fees: ₱<span id="buyfees">0.00</span> <small class="smlinline"> - see details</small>
+	<div class="arb_dvdr"></div>
+		<div class="padbott"><span class=" bit_asda">
+		<!-- <strong>Buy Price:</strong></span> <input name="buyprice" id="buyprice" class="_fottns" type="number" value="0"> -->
+		<div class="arb_calcbox_left">Buy Price: </div>
+		<div class="arb_calcbox_right">
+			<input name="buyprice" id="buyprice" type="text" class="number" placeholder="0" style="width:80%;">
+		</div>
+		</div>
+		<div class="arb_buyvalue padbott" style="padding-top: 30px;">
+			<span class="lblbcl">Value: </span>
+			<span class="rightAlignCal">₱ <span id="buyvalue">0.00</span></span>
+		</div>
+		<div class="arb_buyfees padbott ">
+			<span class="lblbcl">Fees: </span>
+			<span class="rightAlignCal">
+				<i class="fas fa-info-circle" title="view more..."  style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="buyfees">0.00</span>
+			</span>
+			
 			<div class="feedetails_buy">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
-				<small>Commission: ₱<span id="buycommadjst">0.00</span></small>
-				<small>Value Added Tax: ₱<span id="buyvatfix">0.00</span></small>
-				<small>Transfer Fee: ₱<span id="buypsetffix">0.00</span></small>
-				<small>SCCP: ₱<span id="buysccpfix">0.00</span></small>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
+				<small>Commission: <span class="amtdtls">₱<span id="buycommadjst">0.00</span></span></small>
+				<small>Value Added Tax: <span class="amtdtls">₱<span id="buyvatfix">0.00</span></span></small>
+				<small>Transfer Fee: <span class="amtdtls">₱<span id="buypsetffix">0.00</span></span></small>
+				<small>SCCP: <span class="amtdtls">₱<span id="buysccpfix">0.00</span></span></small>
 			</div>
 		</div>
-		<div class="arb_buytotal padbott arb_xjz">Buy Total: <span id="buytotal">0.00</span></div>
+		<div class="arb_buytotal padbott ">
+		<span class="lblbcl">Buy Total: </span>
+		<span class="rightAlignCal" id="buytotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
-		<div class="arb_sellprice padbott"><span class="arb_xjz bit_asda"><strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"></div>
-		<div class="arb_sellvalue padbott arb_xjz">Value: ₱<span id="sellvalue">0.00</span></div>
-		<div class="arb_sellfees padbott arb_xjz">
-			Fees: ₱<span id="sellfees">0.00</span> <small class="smlinline"> - see details</small>
+		<div class="padbott"><span class=" bit_asda">
+			<!-- <strong>Sell Price:</strong></span> <input name="sellprice" id="sellprice" class="_fottns" type="number" value="0"> -->
+			<div class="arb_calcbox_left">Sell Price: </div>
+			<div class="arb_calcbox_right">
+				<input name="sellprice" id="sellprice" class="_fottns number" type="text" style="width:80%;" placeholder="0">
+			</div>
+		</div>
+		<div class="arb_sellvalue padbott " style="padding-top: 30px;">
+			<span class="lblbcl">Value: </span>
+				<span class="rightAlignCal">₱ <span id="sellvalue">0.00</span></div>
+			</span>
+		<div class="arb_sellfees padbott ">
+			<span class="lblbcl">Fees: </span>
+			<span class="rightAlignCal">
+			<i class="fas fa-info-circle" title="view more..." style="padding-right: 5px; cursor:pointer;"></i> ₱ <span id="sellfees">0.00</span>
+			</span>
+			
 			<div class="feedetails_sell">
-				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;">close</small></div>
-				<small>Commission: ₱<span id="sellcommadjst">0.00</span></small>
-				<small>Value Added Tax: ₱<span id="sellvatfix">0.00</span></small>
-				<small>Transfer Fee: ₱<span id="sellpsetffix">0.00</span></small>
-				<small>SCCP: ₱<span id="sellsccpfix">0.00</span></small>
-				<small>Sales Tax: ₱<span id="sellsaletxfix">0.00</span></small>
+				<div class="clcbxttl">Fees<small class="smlinline" style="float:right;"><i class="fas fa-times-circle"></i></small></div>
+				<small>Commission: <span class="amtdtls">₱<span id="sellcommadjst">0.00</span></span></small>
+				<small>Value Added Tax: <span class="amtdtls">₱<span id="sellvatfix">0.00</span></span></small>
+				<small>Transfer Fee: <span class="amtdtls">₱<span id="sellpsetffix">0.00</span></span></small>
+				<small>SCCP: <span class="amtdtls">₱<span id="sellsccpfix">0.00</span></span></small>
+				<small>Sales Tax: <span class="amtdtls">₱<span id="sellsaletxfix">0.00</span></span></small>
 			</div>
 		</div>
-		<div class="arb_selltotal arb_xjz">Sell Total: <span id="selltotal">0.00</span></div>
+		<div class="arb_selltotal ">
+		<span class="lblbcl">Sell Total: </span>
+		<span class="rightAlignCal" id="selltotal">0.00</span></div>
 		<div class="arb_dvdr"></div>
-		<div class="arbnetprofit padbott arb_xjz">
-			<span class="textchangecolor"><strong>Net Profit: ₱<span id="arbnetprofitf">0.00</span> (<span id="arbperctg">0</span>%)</strong></span>
+		<div class="arbnetprofit padbott ">
+			<span class="textchangecolor lblbcl"><strong>Net Profit: 
+			<span class="rightAlignCal">
+				₱<span id="arbnetprofitf">0.00</span> (<span id="arbperctg">0</span>%)</strong></span>
+			</span>
 		</div>
 	</div>
 	<div class="arb_calcbox_righting">
@@ -286,12 +341,12 @@ jQuery(document).ready(function() {
 
 	function execlc() {
 
-		var vrnumofshares = document.getElementById("numofshares").value;
+		var vrnumofshares = document.getElementById("numofshares").value.replace(/[^0-9\.]/g, '');
 
 		/* Buy */
-		var vrbuyprice = document.getElementById("buyprice").value;
+		var vrbuyprice = document.getElementById("buyprice").value.replace(/[^0-9\.]/g, '');
 		var vrbuyvalue = Math.round(vrnumofshares * vrbuyprice);
-		jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
+        jQuery("#buyvalue").html(numeral(vrbuyvalue).format('0,0.00'));
 
 		/* Buy Fees */
 		var vrbuycommcheck = vrbuyvalue * 0.0025;
@@ -301,13 +356,13 @@ jQuery(document).ready(function() {
 		} else {
 			vrbuycommadjst = vrbuyvalue * 0.0025;
 		}
-		jQuery("#buycommadjst").html(numeral(vrbuycommadjst).format('0,0.0000'));
+		jQuery("#buycommadjst").html(numeral(vrbuycommadjst).format('0,0.00'));
 		var vrbuyvatfix = vrbuycommadjst * 0.12;
-		jQuery("#buyvatfix").html(numeral(vrbuyvatfix).format('0,0.0000'));
+		jQuery("#buyvatfix").html(numeral(vrbuyvatfix).format('0,0.00'));
 		var vrbuypsetffix = vrbuyvalue * 0.00005;
-		jQuery("#buypsetffix").html(numeral(vrbuypsetffix).format('0,0.0000'));
+		jQuery("#buypsetffix").html(numeral(vrbuypsetffix).format('0,0.00'));
 		var vrbuysccpfix = vrbuyvalue * 0.0001;
-		jQuery("#buysccpfix").html(numeral(vrbuysccpfix).format('0,0.0000'));
+		jQuery("#buysccpfix").html(numeral(vrbuysccpfix).format('0,0.00'));
 
 		/* Buy Totals */
 		var vrbuyfees = vrbuycommadjst + vrbuyvatfix + vrbuypsetffix + vrbuysccpfix;
@@ -315,8 +370,10 @@ jQuery(document).ready(function() {
 		var vrbuytotal = vrbuyfees + vrbuyvalue;
 		jQuery("#buytotal").html(numeral(vrbuytotal).format('0,0.00'));
 
-		/* Sell */
-		var vrsellprice = document.getElementById("sellprice").value;
+        /* Sell */
+        // var vrsellprice = document.getElementById("sellprice").value.replace(/\D/g,'');
+		var vrsellprice = document.getElementById("sellprice").value.replace(/[^0-9\.]/g, '');
+
 		var vrsellvalue = Math.round(vrnumofshares * vrsellprice);
 		jQuery("#sellvalue").html(numeral(vrsellvalue).format('0,0.00'));
 
@@ -328,15 +385,15 @@ jQuery(document).ready(function() {
 		} else {
 			vrsellcommadjst = vrsellvalue * 0.0025;
 		}
-		jQuery("#sellcommadjst").html(numeral(vrsellcommadjst).format('0,0.0000'));
+		jQuery("#sellcommadjst").html(numeral(vrsellcommadjst).format('0,0.00'));
 		var vrsellvatfix = vrsellcommadjst * 0.12;
-		jQuery("#sellvatfix").html(numeral(vrsellvatfix).format('0,0.0000'));
+		jQuery("#sellvatfix").html(numeral(vrsellvatfix).format('0,0.00'));
 		var vrsellpsetffix = vrsellvalue * 0.00005;
-		jQuery("#sellpsetffix").html(numeral(vrsellpsetffix).format('0,0.0000'));
+		jQuery("#sellpsetffix").html(numeral(vrsellpsetffix).format('0,0.00'));
 		var vrsellsccpfix = vrsellvalue * 0.0001;
-		jQuery("#sellsccpfix").html(numeral(vrsellsccpfix).format('0,0.0000'));
+		jQuery("#sellsccpfix").html(numeral(vrsellsccpfix).format('0,0.00'));
 		var vrsellsaletxfix = vrsellvalue * 0.006;
-		jQuery("#sellsaletxfix").html(numeral(vrsellsaletxfix).format('0,0.0000'));
+		jQuery("#sellsaletxfix").html(numeral(vrsellsaletxfix).format('0,0.00'));
 
 		/* Sell Totals */
 		var vrsellfees = vrsellcommadjst + vrsellvatfix + vrsellpsetffix + vrsellsccpfix + vrsellsaletxfix;
@@ -405,6 +462,39 @@ jQuery(document).ready(function() {
 		jQuery("#negbrkevn200").html(numeral(vrnegbrkevn2002).format('0,0.00'));
 
 	}
+
+    jQuery('input.number').keyup(function (event) {
+        // side bar calcsss
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        var currentVal = jQuery(this).val();
+        var testDecimal = testDecimals(currentVal);
+        if (testDecimal.length > 1) {
+            currentVal = currentVal.slice(0, -1);
+        }
+        jQuery(this).val(replaceCommas(currentVal));
+
+    });
+
+    function testDecimals(currentVal) {
+        var count;
+        currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        return count;
+    }
+
+    function replaceCommas(yourNumber) {
+        var components = yourNumber.toString().split(".");
+        if (components.length === 1) 
+            components[0] = yourNumber;
+        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (components.length === 2)
+            components[1] = components[1].replace(/\D/g, "");
+        return components.join(".");
+    }
+
 });
 </script>
 

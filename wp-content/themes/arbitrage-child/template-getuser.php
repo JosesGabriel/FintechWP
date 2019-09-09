@@ -33,8 +33,6 @@
 			$userproflink = get_user_meta( $userId, 'um_user_profile_url_slug_user_login', true ); 
 			$userproflink;
 
-			// print_r( $all_meta_for_user );
-
 			// header("Location: ".$gethomeurl."/user/".$userproflink."/"); 
 			// exit();
 		}

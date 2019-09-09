@@ -24,7 +24,7 @@
           </div>
           <div class="right-image">
 
-                  <div class="onto-user-name true-name">
+                  <div class="onto-user-name">
                     <a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>" style="color:#fffffe; <?php echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">
                       <?php echo um_user('first_name') . " " . um_user('last_name'); ?>
                     </a>
@@ -92,12 +92,10 @@
                 jQuery('.true-name a').hide();
                 jQuery('.show-name').show();
                 jQuery('.trading-name').text('Displaying trading name');
-                console.log('checked');
 
                 jQuery.ajax({
                     method: "GET",
                     url: "https://arbitrage.ph/apipge/?daction=changeto&toname=tn",
-                    // url: 'https://api2.pse.tools/api/quotes',
                     dataType: 'json',
                     data: {
                     'action' : 'my_custom_action'
@@ -107,7 +105,6 @@
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }
@@ -118,12 +115,10 @@
                 jQuery('.true-name a').show();
                 jQuery('.show-name').hide();
                 jQuery('.trading-name').text('Displaying real name');
-                console.log('unchecked');
 
                 jQuery.ajax({
                     method: "GET",
                     url: "https://arbitrage.ph/apipge/?daction=changeto&toname=rn",
-                    // url: 'https://api2.pse.tools/api/quotes',
                     dataType: 'json',
                     data: {
                     'action' : 'my_custom_action'
@@ -133,7 +128,6 @@
                         jQuery(".dslideapps").show();
                         jQuery(".spinmenow").hide();
 
-                        console.log(data);
                     }
                 });
             }

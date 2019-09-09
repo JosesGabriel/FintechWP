@@ -130,13 +130,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	.active {
 
 	}
-	#mingle-btn {
-		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
-    	padding: 5px 14px !important;
-    	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
-	}
 	#removes-btn {
 		border-radius: 26px !important;
 		border: 1.3px solid #6583a8 !important;
@@ -289,15 +282,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    margin-top: 10px !important;
 	    margin-bottom: 3px !important;
 	}
-	.um-activity-new-post .um-activity-foot .um-activity-right a {
-	    border-radius: 26px !important;
-	    border: 1.3px solid #6583a8 !important;
-	    padding: 0px 17px !important;
-	    font-family: 'Nunito', sans-serif;
-	    color: #6583a8;
-	    background-color: none !important;
-	    background: none !important;
-	}
 	.um-activity-left .um-activity-actions {
 		display: none !important;
 	}
@@ -318,12 +302,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 	    margin-left: 17px;/*
 	    background: #142c46;*/
 	    display: inline-block;
-	}
-	.top-traiders .to-content-part .trader-item .traider-image {
-	    width: 20%;
-	    display: inline-block;
-	    margin-top: 5px;
-	    margin-right: 12px;
 	}
 	.um-activity-widget .upload {
 		padding: 9px 10px;
@@ -372,14 +350,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 		right: 9px;
     	top: 24px;
 	}
-	.side-content ul li a {
-	    display: block;
-	    color: #ecf0f1;
-	    padding: 7px 15px 7px 5px;
-	    font-size: 13px;
-	    font-family: Roboto, sans-serif;
-	    font-weight: 500;
-	}
 	.top-stocks {
 		margin-bottom: 15px !important;
 	}
@@ -405,10 +375,6 @@ date_default_timezone_set('Asia/Manila'); ?>
     	margin-top: 9px;
     }
     .watch-list {
-    	background: #142c46;
-    	margin-top: 15px;
-    }
-    .latest-news {
     	background: #142c46;
     	margin-top: 15px;
     }
@@ -576,9 +542,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 	ul.main-drop > ul {
 	    font-size: 13px !important;
 	    position: absolute !important;
-	    right: -1px !important;
+	    right: -1px;
 	    background: #142c46 !important;
-	    min-width: 200px !important;
+	    min-width: 200px;
 	    text-align: left !important;
 	    margin-top: 9px !important;
 	    border: none !important; 
@@ -675,7 +641,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		border: none;
 	}
 	.dcontent-wrap {
-		padding-left: 18px;
+		padding-left: 0;
 	}
 	.popname ul {
 	    margin: 0;
@@ -940,6 +906,20 @@ date_default_timezone_set('Asia/Manila'); ?>
 	.um-form textarea {
 		line-height: 18px;
 	}
+	.user-counter {
+		font-size: 15px;
+    	margin-left: 6px;
+	}
+	.usercounter {
+		font-size: 12px;
+	}
+	.icon-users {
+		background: green;
+    	padding: 5px 4px;
+    	border-radius: 50%;
+    	margin-right: 5px;
+	}
+
 </style>
 <?php get_template_part('parts/global', 'css'); ?>
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -952,18 +932,26 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="left-dashboard-part" id="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
+						
+						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-                        
-                        <?php get_template_part('parts/sidebar', 'traders'); ?>
-                        
+
+                        <!--<div class="user-counter">
+                        	 <i class="fas fa-users icon-users" aria-hidden="true"></i>
+                        	 <span class="usercounter"><?php // $result = count_users(); echo $result['total_users']; ?> Members</span>
+                        </div>-->
+
 					</div>
 				</div>
 			</div>
 			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php //echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
+						<?php //echo $userID; ?>
+						<?php echo do_shortcode('[ultimatemember_activity]'); ?>
+						<?php // echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
+						<?php // echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$_GET['wall_post'].'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>
 						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 						the_content();
 						endwhile; else: ?>
@@ -975,15 +963,17 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-                	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'traders'); ?>
                     
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
                     <?php get_template_part('parts/sidebar', 'watchlist'); ?>
 
+                    <?php get_template_part('parts/sidebar', 'topplayers'); ?>
+
                     <?php get_template_part('parts/sidebar', 'alert'); ?>
-					
-					<?php // get_template_part('parts/sidebar', 'ads'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 

@@ -688,9 +688,9 @@ input#first_name-9 {
           <div class="signup-form" style="display: none;">
               <div class="row" style="margin:0;">
                 <div class="left-login-form-inner">
-                	<?php if(isset($_GET['active'])){ ?>
+                	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
-                    <?php } ?>
+                    <?php //} ?>
                     <!-- <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                    -->
                     <a class="prtnr_login" id="switch_login" href="#">
@@ -769,13 +769,14 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
+.contercontrol {display:none !important;}
 	
 	<?php if (isset($_GET['active'])){ ?>
 		/* Countdown disabled */
 		.contercontrol {display:none !important;}
 	<?php }else{ ?>
 		/* Countdown */
-		#page-container {display: none;}
+		/* #page-container {display: none;}
 		.um-social-login-overlay, #preloader, html {background-image: none !important;}
 		html, .home body.et_cover_background {
 			background-color: #0b1927 !important;
@@ -783,7 +784,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 		.text .val {
 			margin: -11px 0 0 0;
 			padding: 0;
-		}
+		} */
 	<?php } ?>
 	
 </style> 

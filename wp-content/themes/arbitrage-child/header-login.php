@@ -153,6 +153,9 @@ $user = wp_get_current_user();
 	span.success-word {
 		color: #d8d8d8;
 	}
+	.contercontrol {
+		display:none;
+	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
     <script language="javascript">

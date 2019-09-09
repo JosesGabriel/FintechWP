@@ -1675,13 +1675,12 @@ if ($getdstocks && $getdstocks != '') {
         }
     }
 } else {
-	// if(){
-	// 	$isjounalempty = false;
-	// } else {
-	// 	$isjounalempty = true;
-	// }
-
-	print_r($author_posts);
+	
+	if(!empty($author_posts)){
+		$isjounalempty = false;
+	} else {
+		$isjounalempty = true;
+	}
 	$isjounalempty = true;
 	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 	$dtradeingfo = [

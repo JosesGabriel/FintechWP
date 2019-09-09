@@ -365,14 +365,23 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					?>";
 
 					if(phonenum == "nocp"){
-						$('#btnphonetrigger').click();
+						console.log('here');
+						$("#modal-phonenum").modal('show'); 
 					}
 				
 				}
 			});
 			jQuery("#cpsubmitbtn").click(function(){
-				$("#modal-phonenum").modal('hide');
-				//save cpnum meta 
+				var cpnum = $("#txtcpnum").val();
+				jQuery.ajax({
+					method: "get",
+					url: "/watchlist?addcp=" + cpnum,
+					success: function(data){
+						console.log("Success");
+					}
+				});
+					
+				$("#modal-phonenum").modal('hide'); 
 			});
 			//jQuery('.ddropbase a').click(function(e){
 			jQuery(document).on('click','.ddropbase a',function(e){

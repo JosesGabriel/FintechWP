@@ -1384,7 +1384,7 @@ get_header('dashboard');
     }
     if (isset($_POST['istype'])) {
         if ($_POST['damount'] > 0) {
-            $wpdb->insert('arby_ledger', array(
+            $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
@@ -1392,7 +1392,7 @@ get_header('dashboard');
             ));
         }
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1429,9 +1429,13 @@ get_header('dashboard');
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
         $tradeinfo['status'] = $_POST['inpt_data_status'];
 
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+		// print_r($stocksinfo);
+
+		// exit;
+
+        $dlistofstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
-            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+            $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], true);
             if ($dstocktraded && $dstocktraded != '') {
                 array_push($dstocktraded['data'], $tradeinfo);
                 $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $_POST['inpt_data_qty'];
@@ -1446,7 +1450,7 @@ get_header('dashboard');
                 }
                 $dstocktraded['aveprice'] = ($totalprice / $totalquanta);
 
-                update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $dstocktraded);
+                update_user_meta(get_current_user_id(), 'virtual_trade_'.$tradeinfo['stock'], $dstocktraded);
             }
         } else {
             $finaldata = [];
@@ -1456,7 +1460,7 @@ get_header('dashboard');
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
             $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
-            update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $finaldata);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$tradeinfo['stock'], $finaldata);
 
             if (!$dlistofstocks) {
                 $djournstocks = array($tradeinfo['stock']);
@@ -1464,7 +1468,7 @@ get_header('dashboard');
                 $djournstocks = $dlistofstocks;
                 array_push($djournstocks, $tradeinfo['stock']);
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
+            update_user_meta(get_current_user_id(), 'virtual_trade_list', $djournstocks);
         }
         $dtotalpurchse = $_POST['inpt_data_price'] * $_POST['inpt_data_qty'];
         echo $dtotalpurchse;
@@ -1472,7 +1476,7 @@ get_header('dashboard');
         $stockcost = ($_POST['inpt_data_price'] * $_POST['inpt_data_qty']);
         $purchasefee = getjurfees($stockcost, 'buy');
 
-        $wpdb->insert('arby_ledger', array(
+        $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => date('Y-m-d'),
                 'trantype' => 'purchase',
@@ -1480,7 +1484,7 @@ get_header('dashboard');
             ));
 
         wp_redirect( '/chart/'.$tradeinfo['stock'] );
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1493,7 +1497,7 @@ get_header('dashboard');
         // print_r($_POST);
         // echo '</pre>';
 
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+        $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
         $data_postid = $_POST['inpt_data_postid'];
@@ -1521,44 +1525,46 @@ get_header('dashboard');
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => get_current_user_id(),
+				'data_userid' => get_current_user_id(),
+				
+				'trade_type' => 'virtual'
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
 
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
-            $dlisroflive = get_user_meta(get_current_user_id(), '_trade_list', true);
+            $dlisroflive = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
                 if ($rmvalue == $_POST['inpt_data_stock']) {
                     unset($dlisroflive[$rmkey]);
-                    delete_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock']);
+                    delete_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock']);
                 }
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $dlisroflive);
+            update_user_meta(get_current_user_id(), 'virtual_trade_list', $dlisroflive);
         } else {
             // Update existing data.
 
-            update_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
         $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
         $purchasefee = getjurfees($stockcost, 'sell');
 
-        $wpdb->insert('arby_ledger', array(
+        $wpdb->insert('arby_virtual_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => date('Y-m-d'),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
             ));
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
 <!-- EOF SELL trades -->
 <?php
-    $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+    $getdstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
 
     $curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
@@ -1574,9 +1580,19 @@ get_header('dashboard');
 <?php
     $author_query = array(
         'posts_per_page' => '-1',
-        'post_status' => 'publish',
-        'meta_key' => 'data_userid',
-        'meta_value' => get_current_user_id(),
+		'post_status' => 'publish',
+		'meta_query' => array(
+			array(
+				'key'     => 'data_userid',
+				'value'   => get_current_user_id(),
+			),
+			array(
+				'key'     => 'trade_type',
+				'value'   => 'virtual',
+			),
+		),
+        // 'meta_key' => 'data_userid',
+        // 'meta_value' => get_current_user_id(),
     );
     $author_posts = new WP_Query($author_query);
 ?>
@@ -1639,7 +1655,7 @@ $isjounalempty = false;
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+		$dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
 		foreach ($gerdqoute->data as $gskey => $gsvalue) {
 			if($dstocksvalue == $gsvalue->symbol){
@@ -1659,68 +1675,76 @@ if ($getdstocks && $getdstocks != '') {
         }
     }
 } else {
-	$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
-	$dtradeingfo = [
-		[
-			'data' => [
-				[
-					'buymonth' => 'August',
-					'buyday' => 22,
-					'buyyear' => 2019,
-					'stock' => 'MBT',
-					'price' => 100,
-					'qty' => 5,
-					'currprice' => 75.40,
-					'change' => '0.40%',
-					'open' => 75.50,
-					'low' => 75.20,
-					'high' => 75.80,
-					'volume' => '957.73K',
-					'value' => '72.29m',
-					'boardlot' => 10,
-					'strategy' => 'Trend Following',
-					'tradeplan' => 'Day Trade',
-					'emotion' => 'this is a test',
-					'tradingnotes' => 'Trading Notes',
-					'status' => 'Live',
+	
+	if($author_posts->have_posts()){
+		echo "inempty mouse";
+		$isjounalempty = false;
+	} else {
+		echo "empty mouse";
+		$isjounalempty = true;
+		$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+		$dtradeingfo = [
+			[
+				'data' => [
+					[
+						'buymonth' => 'August',
+						'buyday' => 22,
+						'buyyear' => 2019,
+						'stock' => 'MBT',
+						'price' => 100,
+						'qty' => 5,
+						'currprice' => 75.40,
+						'change' => '0.40%',
+						'open' => 75.50,
+						'low' => 75.20,
+						'high' => 75.80,
+						'volume' => '957.73K',
+						'value' => '72.29m',
+						'boardlot' => 10,
+						'strategy' => 'Trend Following',
+						'tradeplan' => 'Day Trade',
+						'emotion' => 'this is a test',
+						'tradingnotes' => 'Trading Notes',
+						'status' => 'Live',
+					],
 				],
+				'totalstock' => 1213228,
+				'aveprice' => 2228.5209688868,
+				'totalcost' => 84225991.13847,
+				'stockname' => 'SampleStock_1',
 			],
-			'totalstock' => 1213228,
-			'aveprice' => 2228.5209688868,
-			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
-		],
-		[
-			'data' => [
-				[
-					'buymonth' => 'August',
-					'buyday' => 22,
-					'buyyear' => 2019,
-					'stock' => 'MBT',
-					'price' => 100,
-					'qty' => 5,
-					'currprice' => 75.40,
-					'change' => '0.40%',
-					'open' => 75.50,
-					'low' => 75.20,
-					'high' => 75.80,
-					'volume' => '957.73K',
-					'value' => '72.29m',
-					'boardlot' => 10,
-					'strategy' => 'Trend Following',
-					'tradeplan' => 'Day Trade',
-					'emotion' => 'this is a test',
-					'tradingnotes' => 'Trading Notes',
-					'status' => 'Live',
+			[
+				'data' => [
+					[
+						'buymonth' => 'August',
+						'buyday' => 22,
+						'buyyear' => 2019,
+						'stock' => 'MBT',
+						'price' => 100,
+						'qty' => 5,
+						'currprice' => 75.40,
+						'change' => '0.40%',
+						'open' => 75.50,
+						'low' => 75.20,
+						'high' => 75.80,
+						'volume' => '957.73K',
+						'value' => '72.29m',
+						'boardlot' => 10,
+						'strategy' => 'Trend Following',
+						'tradeplan' => 'Day Trade',
+						'emotion' => 'this is a test',
+						'tradingnotes' => 'Trading Notes',
+						'status' => 'Live',
+					],
 				],
-			],
-			'totalstock' => 1213228,
-			'aveprice' => 2228.5209688868,
-			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
-		]
-	];
+				'totalstock' => 1213228,
+				'aveprice' => 2228.5209688868,
+				'totalcost' => 84225991.13847,
+				'stockname' => 'SampleStock_2',
+			]
+		];
+	}
+	
 
 }
 
@@ -1729,7 +1753,7 @@ if ($getdstocks && $getdstocks != '') {
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = get_current_user_id();
-    $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+    $dledger = $wpdb->get_results('SELECT * FROM arby_virtual_ledger where userid = '.$duseridmo);
 
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
@@ -1745,35 +1769,35 @@ if ($getdstocks && $getdstocks != '') {
 		$dledger[0]->ledid = 250;
 		$dledger[0]->userid = 111;
 		$dledger[0]->date = '2019-08-21';
-		$dledger[0]->trantype = 'deposit';
+		$dledger[0]->trantype = 'virtual_sample';
 		$dledger[0]->tranamount = 100000;
 
 		$dledger[1] = new \stdClass();
 		$dledger[1]->ledid = 250;
 		$dledger[1]->userid = 111;
 		$dledger[1]->date = '2019-08-21';
-		$dledger[1]->trantype = 'deposit';
+		$dledger[1]->trantype = 'virtual_sample';
 		$dledger[1]->tranamount = 100000;
 
 		$dledger[2] = new \stdClass();
 		$dledger[2]->ledid = 250;
 		$dledger[2]->userid = 111;
 		$dledger[2]->date = '2019-08-21';
-		$dledger[2]->trantype = 'deposit';
+		$dledger[2]->trantype = 'virtual_sample';
 		$dledger[2]->tranamount = 100000;
 
 		$dledger[3] = new \stdClass();
 		$dledger[3]->ledid = 250;
 		$dledger[3]->userid = 111;
 		$dledger[3]->date = '2019-08-21';
-		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->trantype = 'virtual_sample';
 		$dledger[3]->tranamount = 100000;
 
 		$dledger[3] = new \stdClass();
 		$dledger[3]->ledid = 250;
 		$dledger[3]->userid = 111;
 		$dledger[3]->date = '2019-08-21';
-		$dledger[3]->trantype = 'deposit';
+		$dledger[3]->trantype = 'virtual_sample';
 		$dledger[3]->tranamount = 100000;
 	}
 ?>
@@ -1821,16 +1845,17 @@ if ($getdstocks && $getdstocks != '') {
     if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
 
 		
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
-
+        $dlistofstocks = get_user_meta(get_current_user_id(), 'virtual_trade_list', true);
+		// print_r($dlistofstocks);
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+            update_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue, '');
+            delete_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue);
 
-            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+            // $dsotcksss = get_user_meta(get_current_user_id(), 'virtual_trade_'.$delvalue, true);
+            // print_r($dsotcksss);
         }
-        delete_user_meta(get_current_user_id(), '_trade_list');
+        delete_user_meta(get_current_user_id(), 'virtual_trade_list');
 
         // delete all trade logs
         foreach ($alltradelogs as $delpostkey => $delpostvalue) {
@@ -1839,9 +1864,9 @@ if ($getdstocks && $getdstocks != '') {
         }
 
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        $wpdb->get_results('delete from arby_virtual_ledger where userid = '.get_current_user_id());
 
-        wp_redirect('/journal');
+        wp_redirect('/virtual-trades');
         exit;
     }
 ?>
@@ -1910,7 +1935,7 @@ if ($getdstocks && $getdstocks != '') {
                                                             ?>
                                                         	<!-- <div class="dltbutton">
                                                         		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
+                                                        			<form action="/virtual-trades" method="post">
                                                         				<input type="submit" name="deletedata" value="Reset">
                                                         			</form>
                                                         		</div>
@@ -1925,13 +1950,13 @@ if ($getdstocks && $getdstocks != '') {
                                                                 Virtual Trades
                                                                 <div class="dltbutton">
                                                         		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post" class="resetform">
+                                                        			<form action="/virtual-trades" method="post" class="resetform">
 																		<input type="hidden" name="deletedata" value="reset">
                                                         				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
-                                                        			<!-- <form action="/journal" method="post"> -->
+                                                        			<!-- <form action="/virtual-trades" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
 																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
@@ -1950,7 +1975,7 @@ if ($getdstocks && $getdstocks != '') {
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
 																				</div>
-																				<form action="/journal" method="post" class="dentertrade">
+																				<form action="/virtual-trades" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
 																						<div class="entr_col">
 																							<div class="groupinput fctnlhdn">
@@ -2070,7 +2095,7 @@ if ($getdstocks && $getdstocks != '') {
 																					
 
 																					if(!$isjounalempty){
-																						$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																						$dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$value, true);
 																					} else {
 																						if($value == 'SampleStock_1'){
 																							$dstocktraded = [
@@ -2216,7 +2241,7 @@ if ($getdstocks && $getdstocks != '') {
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																			                            </div>
 
-																			                            <form action="/journal" method="post">
+																			                            <form action="/virtual-trades" method="post">
 
 																			                            <div class="entr_wrapper_top">
 
@@ -2289,7 +2314,7 @@ if ($getdstocks && $getdstocks != '') {
 																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
                                                                                         echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
-																	                                    <form action="/journal" method="post">
+																	                                    <form action="/virtual-trades" method="post">
 																	                                    <div class="entr_wrapper_top">
 																	                                            <div class="entr_col">
 																	                                                <div class="groupinput fctnlhdn">
@@ -3545,7 +3570,7 @@ if ($getdstocks && $getdstocks != '') {
                                                     <?php
                                                         $dlistoflivetrades = [];
                                                         foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+                                                            $dstocktraded = get_user_meta(get_current_user_id(), 'virtual_trade_'.$dtdvalue, true);
                                                             if ($dstocktraded && $dstocktraded != '') {
                                                                 foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
                                                                     array_push($dlistoflivetrades, $dtfvalue);
@@ -3801,8 +3826,19 @@ if ($getdstocks && $getdstocks != '') {
                                                             'date_query' => array(
                                                                 'after' => date('Y-m-d', strtotime('-20 days')),
                                                             ),
-                                                            'meta_key' => 'data_userid',
-                                                            'meta_value' => get_current_user_id(),
+                                                            // 'meta_key' => 'data_userid',
+															// 'meta_value' => get_current_user_id(),
+															
+															'meta_query' => array(
+																array(
+																	'key'     => 'data_userid',
+																	'value'   => get_current_user_id(),
+																),
+																array(
+																	'key'     => 'trade_type',
+																	'value'   => 'virtual',
+																),
+															),
                                                         );
                                                         $posts = get_posts($args);
 
@@ -4152,7 +4188,7 @@ if ($getdstocks && $getdstocks != '') {
 																			<ul>
 																				<?php for ($i = 1; $i <= $dpage; ++$i) {
                                                                                     ?>
-																					<li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+																					<li><a href="/virtual-trades/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
                                                                                 } ?>
 																			</ul>
@@ -4298,7 +4334,7 @@ if ($getdstocks && $getdstocks != '') {
 																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
 																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
 																				</div>
-																				<form action="/journal" method="post" class="add-funds-show depotincome">
+																				<form action="/virtual-trades" method="post" class="add-funds-show depotincome">
 																				<div class="modal-body depo-body">
 																					<div class="dmainform">
 																						<div class="dinnerform">
@@ -4320,7 +4356,7 @@ if ($getdstocks && $getdstocks != '') {
 																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
 																					</div>
 																				</form>
-																				<form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
+																				<form action="/virtual-trades" method="post" class="add-funds-shows dividincome" style="display: none;">
 																						<div class="modal-body depo-body">
 																							<div class="dmainform">
 																								<div class="dinnerform">
@@ -4350,7 +4386,7 @@ if ($getdstocks && $getdstocks != '') {
 																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
 																				<div class="modal-content">
-																					<form action="/journal" method="post">
+																					<form action="/virtual-trades" method="post">
 																						<div class="modal-header header-depo">
 																							<h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
 																							<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
@@ -4505,7 +4541,7 @@ if ($getdstocks && $getdstocks != '') {
 																			<ul>
 																				<?php for ($i = 1; $i <= $ldpages; ++$i) {
                                                                                     ?>
-																					<li><a href="/journal/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+																					<li><a href="/virtual-trades/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 																				<?php
                                                                                 } ?>
 																			</ul>

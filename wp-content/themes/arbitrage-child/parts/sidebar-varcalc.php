@@ -349,9 +349,9 @@ select#stockname {
     color: #fff;
     height: 30px;
     border: 0 none;
-    padding: 10px;
+    padding: 3px;
     display: inline-block;
-    border-radius: 0 !important;
+    border-radius: 0 6px 6px 0 !important;
 }
 
 </style>
@@ -645,7 +645,7 @@ select#stockname {
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">
             
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
 
@@ -705,7 +705,7 @@ select#stockname {
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius: 0 5px 5px 0; margin-right: 0;" tabindex="3">
                             <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>
@@ -788,7 +788,7 @@ select#stockname {
 
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>

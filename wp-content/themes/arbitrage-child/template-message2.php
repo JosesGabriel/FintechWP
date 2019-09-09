@@ -142,7 +142,7 @@ get_header( 'dashboard' );
 <script src="/assets/js/angular/directives.js?v=1.218"></script>
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-<script src="/assets/js/datafeed.js?v=1.218"></script>
+<script src="/assets/js/datafeed.js?v=2.218"></script>
 
 <?php
 

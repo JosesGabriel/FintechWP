@@ -412,10 +412,11 @@
 			$user = get_user_by( 'email', $_GET['toverify'] );
 
 			print_r($user->data->ID);
-			// $wpdb->query($addQuery);
+			$sqltoadd = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$user->data->ID."','check_user_share','verified')";
 
+			echo "user ".$_GET['toverify']." with ID [".$user->data->ID."] is verified";
 
-			echo $_GET['toverify'];
+		
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 

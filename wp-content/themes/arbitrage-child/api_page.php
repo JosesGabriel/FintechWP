@@ -411,7 +411,7 @@
 
 			$user = get_user_by( 'email', $_GET['toverify'] );
 
-			print_r($user->data->ID);
+			// print_r($user->data->ID);
 			$sqltoadd = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$user->data->ID."','check_user_share','verified')";
 
 			echo "user ".$_GET['toverify']." with ID [".$user->data->ID."] is verified";

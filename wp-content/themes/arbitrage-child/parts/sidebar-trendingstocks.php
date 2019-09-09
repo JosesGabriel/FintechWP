@@ -162,11 +162,11 @@ jQuery(".stocks-hidden-content").click(function () {
                     <p><?php
                          echo $lfstvalue['following'];
                          
-                         if(strlen($lfstvalue['following']) <= 1){
-                            print_r("Hit");
-                        }else{
-                            print_r("Hits");
-                        }
+                        //  if(strlen($lfstvalue['following']) <= 1){
+                        //     print_r("Hit");
+                        // }else{
+                        //     print_r("Hits");
+                        // }
                         ?> </p></a>
                 </li>
                 <?php echo ($countss == $numinarrat ? '</div>' : ''); ?>

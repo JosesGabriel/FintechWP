@@ -349,9 +349,9 @@ select#stockname {
     color: #fff;
     height: 30px;
     border: 0 none;
-    padding: 10px;
+    padding: 3px;
     display: inline-block;
-    border-radius: 0 !important;
+    border-radius: 0 6px 6px 0 !important;
 }
 
 </style>

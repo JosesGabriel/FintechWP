@@ -725,9 +725,13 @@
 		overflow: hidden;
 		left: -1px;
 		position: relative;
+		height: 31px;
 	}
 	.bbs_bull_bar, .bbs_bear_bar {
 		margin-top: 11px;
+	}
+	.bbs_bull_bar {
+		float: left;
 	}
 	#preloader {
 		position: absolute;

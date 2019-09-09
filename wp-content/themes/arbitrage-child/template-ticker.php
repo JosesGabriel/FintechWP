@@ -536,12 +536,12 @@
 		right: 0;
 		text-align: right;
 	}
-	/* .marqueethis > li {
+	/*.marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
 	.marqueethis > li:hover {
 		animation-play-state: paused;
-	} */
+	}*/
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;
@@ -577,12 +577,12 @@
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1000, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1000, "linear", function() {
 					forevertickerinit();
 				});
 			}

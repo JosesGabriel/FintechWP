@@ -494,9 +494,9 @@
 
 					shortcode = '[ultimatemember_wall user_id="' + attributes.user_id + '"';
 
-					if( attributes.hashtag !== undefined ) {
-						shortcode = shortcode + ' hashtag="' + attributes.hashtag + '"';
-					}
+					// if( attributes.hashtag !== undefined ) {
+					// 	shortcode = shortcode + ' hashtag="' + attributes.hashtag + '"';
+					// }
 
 					if( attributes.wall_post !== undefined ) {
 						shortcode = shortcode + ' wall_post="' + attributes.wall_post + '"';

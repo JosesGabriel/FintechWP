@@ -960,7 +960,32 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             .finally(() => {
                                 $scope.$parent.$digest();
                             });
+                        
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+                            .then(function (response) {
+                                if (response.data.success) {
+                                    let data = response.data.data;
 
+                                    $scope.$parent.fullaskperc = data.ask_total_percent;
+                                    $scope.$parent.fullasktotal = data.ask_total;
+                                    $scope.$parent.fullbidperc = data.bid_total_percent;
+                                    $scope.$parent.fullbidtotal = data.bid_total;
+
+                                }
+                            });
+
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
+                            .then(function (response) {
+                                if (response.data.success) {
+                                    let data = response.data.data;
+
+                                    $scope.$parent.askperc = data.ask_total_percent;
+                                    $scope.$parent.asktotal = data.ask_total;
+                                    $scope.$parent.bidperc = data.bid_total_percent;
+                                    $scope.$parent.bidtotal = data.bid_total;
+
+                                }
+                            });
                             
                         // });
                         // socket.emit('stock', symbol, function(data) {

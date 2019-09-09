@@ -1687,6 +1687,17 @@ if ($getdstocks && $getdstocks != '') {
     }
 } else {
 	$isjounalempty = true;
+	
+	
+
+}
+
+$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+if($issampledata){
+	$isjounalempty = false;
+	// echo "no smaple";
+} else {
+	$isjounalempty = true;
 	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 	$dtradeingfo = [
 		[
@@ -1748,15 +1759,6 @@ if ($getdstocks && $getdstocks != '') {
 			'stockname' => 'SampleStock_2',
 		]
 	];
-
-}
-
-$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
-if($issampledata){
-	$isjounalempty = false;
-	// echo "no smaple";
-} else {
-	$isjounalempty = true;
 	// echo "with sample";
 }
 
@@ -1775,7 +1777,9 @@ if($issampledata){
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
 	}
-	if(empty($dledger)){
+	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+
+	if(empty($issampledata)){
 		$dledger = [];
 		$dledger[0] = new \stdClass();
 		$dledger[0]->ledid = 250;
@@ -1816,7 +1820,7 @@ if($issampledata){
 <!-- BOF Current Allocation Data -->
 <?php
 	$currentalocinfo = "";
-	if(!$isjounalempty){
+	if(!empty($issampledata)){
 		$dequityp = $buypower;
 		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';

@@ -83,16 +83,16 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         
         if($scope.ticker.length <= 50){
             $scope.speed = 3000;
-        }elseif($scope.ticker.length <= 100){
+        }else if($scope.ticker.length <= 100){
             $scope.speed = 1500;
-        }elseif($scope.ticker.length >= 100){
+        }else if($scope.ticker.length >= 100){
             $scope.speed = 500;
         }
 
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
-        
+
         $scope.$digest();
     });
     // socket.on('transaction', function(data) {

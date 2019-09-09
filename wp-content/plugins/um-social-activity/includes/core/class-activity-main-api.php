@@ -413,7 +413,7 @@ class Activity_Main_API
 
             $content = trim($content);
 
-            $content = $this->hashtag_links($content);
+            // $content = $this->hashtag_links($content);
 
             // strip avatars
 

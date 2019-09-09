@@ -577,12 +577,12 @@
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1000, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
-				jQuery('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1000, "linear", function() {
 					forevertickerinit();
 				});
 			}

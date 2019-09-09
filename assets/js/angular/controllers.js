@@ -701,7 +701,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 });
         }
     }
-	setInterval(updateMarketDepth, 5000);
+	setInterval(updateMarketDepth, 15000);
 }]);
 app.controller('disclosures', function($scope, $http, $rootScope) {
     $scope.$watch('$root.stockList', function () {

@@ -725,9 +725,13 @@
 		overflow: hidden;
 		left: -1px;
 		position: relative;
+		height: 31px;
 	}
 	.bbs_bull_bar, .bbs_bear_bar {
 		margin-top: 11px;
+	}
+	.bbs_bull_bar {
+		float: left;
 	}
 	#preloader {
 		position: absolute;
@@ -994,7 +998,7 @@
 	.bkcalcboxess {
 	    padding: 20px 20px 20px 20px;
 	    color: #fff;
-	    max-width: 550px;
+	    max-width: 611px;
 	    border-radius: 5px;
 	    margin: 0 auto;
 	    width: 100%;
@@ -1025,7 +1029,7 @@
 		background: linear-gradient(#11273e,#24405f);
 	}
 	.halfts {
-	    height: 40em;
+	    /* height: 40em; */
 	    overflow: auto;
 	}
 	.halfts::-webkit-scrollbar-track
@@ -1033,6 +1037,12 @@
 		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 		border-radius: 11px;
 		background-color: #0f121d;
+	}
+	input#risktoler, input#targetprof {
+		margin-right: 8px;
+	}
+	.bbs_bear_bar span {
+		float: right;
 	}
 
 	.halfts::-webkit-scrollbar

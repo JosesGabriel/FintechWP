@@ -705,7 +705,7 @@ select#stockname {
 
                         <div class="arb_calcbox_right">
 
-                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius:0; margin-right: 0;" tabindex="3">
+                            <input name="portalloc" id="portalloc" type="text" class="number" placeholder="0" style="width:85%; border-radius: 0 5px 5px 0; margin-right: 0;" tabindex="3">
                             <i class="fas fa-percentage" aria-hidden="true"></i>
 
                         </div>

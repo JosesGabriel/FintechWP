@@ -163,7 +163,7 @@ jQuery(".stocks-hidden-content").click(function () {
                          echo $lfstvalue['following'];
                          
                          if(strlen($lfstvalue['following']) == 1){
-                            $hitword = $lfstvalue['following'];
+                            $hitword = "Hit";
                          }
                         ?> <?php $hitword?></p></a>
                 </li>

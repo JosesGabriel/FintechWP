@@ -1678,10 +1678,7 @@ if ($getdstocks && $getdstocks != '') {
 	
 	if($author_posts->have_posts()){
 		$isjounalempty = true;
-	} else {
-		$isjounalempty = false;
-	}
-	$isjounalempty = true;
+		$isjounalempty = true;
 	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 	$dtradeingfo = [
 		[
@@ -1743,6 +1740,10 @@ if ($getdstocks && $getdstocks != '') {
 			'stockname' => 'SampleStock_2',
 		]
 	];
+	} else {
+		$isjounalempty = false;
+	}
+	
 
 }
 

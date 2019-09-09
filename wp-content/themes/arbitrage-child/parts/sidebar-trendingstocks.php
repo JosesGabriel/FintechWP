@@ -165,9 +165,11 @@ jQuery(".stocks-hidden-content").click(function () {
                     <p><?php
                          echo $lfstvalue['following'];
                          
-                         if(strlen($lfstvalue['following']) == 1){
+                        if(strlen($lfstvalue['following']) == 1){
                             echo " Hit";
-                        }else{
+                        }else if(strlen($lfstvalue['following']) >= 2){
+                            echo " Hits";
+                        }else if(strlen($lfstvalue['following']) == 0){
                             echo " Hits";
                         }
                         ?> </p></a>

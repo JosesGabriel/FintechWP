@@ -1898,6 +1898,10 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
         top: 44px;
     }
 </style>
+    <?php get_template_part('parts/sidebar', 'calc'); ?>
+    <?php get_template_part('parts/sidebar', 'varcalc'); ?>
+    <?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+
 	<div class="inner-placeholder">
 		<div class="inner-main-content userprofilepage">
 			<div class="left-dashboard-part" id="left-dashboard-part">
@@ -1905,8 +1909,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 					<div class="dashboard-sidebar-left-inner">
 
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
-
-                        
 
 					</div>
 				</div>

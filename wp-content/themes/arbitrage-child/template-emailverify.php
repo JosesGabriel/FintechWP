@@ -218,7 +218,7 @@ if ( is_user_logged_in() ) {
                     $headers = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                     $headers .= 'To: '.get_user_meta( $user_id, "first_name", true ).' <'.$email.'>' . "\r\n";
-                    $headers .= 'From: Arbitrage Team <noreply@arbitrage.ph>';
+                    $headers .= 'From: Arbitrage Team <no-reply@arbitrage.ph>';
                     
                     $success = mail($to, $subject, $message, $headers);
 					if (!$success) {

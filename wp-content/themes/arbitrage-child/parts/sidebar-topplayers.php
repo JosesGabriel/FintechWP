@@ -58,8 +58,8 @@
 												//echo ucwords($value['dbsname']) 
 
 													$uname = $value['dbsname'];
-													if (strlen($uname) > 17){
-												      		echo substr($uname, 0, 17) . "..."; 
+													if (strlen($uname) > 12){
+												      		echo substr($uname, 0, 12) . "..."; 
 												  		}else{
 												  			echo ucwords($uname);
 												  		}
@@ -112,8 +112,8 @@
 
 												<?php 
 													$uname = $value['dbsname'];
-													if (strlen($uname) > 17){
-												      		echo substr($uname, 0, 17) . "..."; 
+													if (strlen($uname) > 12){
+												      		echo substr($uname, 0, 12) . "..."; 
 												  		}else{
 												  			echo ucwords($uname);
 												  		}

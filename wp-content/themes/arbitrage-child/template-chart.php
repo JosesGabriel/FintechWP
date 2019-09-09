@@ -1371,7 +1371,7 @@
 				</ul>
 			</ul>
 			<a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/messages/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
@@ -1797,12 +1797,12 @@
 
 																	<div class="vertical-box-row" style="height: 138px; overflow:hidden; display: block; padding: 5px 0 0 0;">
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
-																			<li class="active">
+																			<li>
 																				<a href="#tab-marketepth" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Bids & Asks</small>
 																				</a>
 																			</li>
-																			<li>
+																			<li class="active">
 																				<a href="#tab-transaxtions" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Time & Trades</small>
 																				</a>
@@ -1814,7 +1814,7 @@
 																				<div class="vertical-box">
 																					<div class="vertical-box-column">
 																						<!--Market Depth-->
-																						<div class="vertical-box tab-pane fade in active" id="tab-marketepth">
+																						<div class="vertical-box tab-pane fade" id="tab-marketepth">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
 																								<col width="8">
 																								<col width="17%">
@@ -1867,7 +1867,7 @@
 																						</div>
 
 																						<!-- Transactions -->
-																						<div class="vertical-box tab-pane fade" id="tab-transaxtions">
+																						<div class="vertical-box tab-pane fade in active" id="tab-transaxtions">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
 																								<col width="20%">
 																								<col width="20%">
@@ -2299,7 +2299,7 @@
 	<script src="/assets/js/angular/directives.js?v=1.218"></script>
 	<script src="/assets/js/angular/filters.js?v=1.218"></script>
 	<script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-	<script src="/assets/js/datafeed.js?v=1.218"></script>
+	<script src="/assets/js/datafeed.js?v=2.218"></script>
 	<!-- <script src="<?php // echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
 	<style type="text/css">
 		#tv_chart_container {

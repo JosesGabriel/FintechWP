@@ -63,6 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
+    $scope.speed = 2000;
     // socket.on('connect', function(data) {
     //     socket.emit('subscribe','transactions');
     //     socket.emit('subscribe','ticker');
@@ -79,9 +80,19 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol),
         };
         $scope.ticker.push(transaction);
+        
+        if($scope.ticker.length <= 50){
+            $scope.speed = 3000;
+        }else if($scope.ticker.length <= 100){
+            $scope.speed = 1500;
+        }else if($scope.ticker.length >= 100){
+            $scope.speed = 500;
+        }
+
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
+
         $scope.$digest();
     });
     // socket.on('transaction', function(data) {
@@ -662,6 +673,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                         $scope.fullbidtotal = data.bid_total;
 
                     }
+                })
+                .catch(function (response) {
+                    $scope.fullaskperc = 0;
+                    $scope.fullasktotal = 0;
+                    $scope.fullbidperc = 0;
+                    $scope.fullbidtotal = 0;
                 });
 
             $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
@@ -675,6 +692,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                         $scope.bidtotal = data.bid_total;
 
                     }
+                })
+                .catch(function (response) {
+                    $scope.askperc = 0;
+                    $scope.asktotal = 0;
+                    $scope.bidperc = 0;
+                    $scope.bidtotal = 0;
                 });
         }
     }
@@ -972,6 +995,12 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                     $scope.$parent.fullbidtotal = data.bid_total;
 
                                 }
+                            })
+                            .catch(function(response) {
+                                $scope.$parent.fullaskperc = 0;
+                                $scope.$parent.fullasktotal = 0;
+                                $scope.$parent.fullbidperc = 0;
+                                $scope.$parent.fullbidtotal = 0;
                             });
 
                         $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
@@ -985,6 +1014,12 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                     $scope.$parent.bidtotal = data.bid_total;
 
                                 }
+                            })
+                            .catch(function (response) {
+                                $scope.$parent.askperc = 0;
+                                $scope.$parent.asktotal = 0;
+                                $scope.$parent.bidperc = 0;
+                                $scope.$parent.bidtotal = 0;
                             });
                             
                         // });

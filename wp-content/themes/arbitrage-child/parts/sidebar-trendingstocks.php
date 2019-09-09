@@ -62,7 +62,7 @@ jQuery(".stocks-hidden-content").click(function () {
 
             // $dstocks = $stocksdesc->$dstocknamme->description;
             $dstocks = $dlsvalue->description;
-            $indls['stnamename'] = strtolower($dstocks);
+            $indls['stnamename'] = $dstocks;
             $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
             $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
             $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
@@ -105,12 +105,15 @@ jQuery(".stocks-hidden-content").click(function () {
             $bulls = ceil($dpullbull * 0.3);
             $tags = ceil($todayreps * 0.6);
             $finalcount = $bulls + $threedays + $tags;
+            $stocksscount = $countpstock + $dpullbull + $todayreps;
 
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
             $indls['following'] = $finalcount;
-
-            array_push($listofstocks, $indls);
+            if($finalcount > 0){
+                array_push($listofstocks, $indls);
+            }
+            
         }
     }
 
@@ -158,7 +161,7 @@ jQuery(".stocks-hidden-content").click(function () {
                 <?php echo ($countss == 6 ? '<div class="hide-show trend-content-hidden">' : ''); ?>
                 <li class="even <?php echo $countss; ?>">
                     <span><?php echo $lfstvalue['stock']; ?></span>
-                    <a href="#"><?php echo ucwords($lfstvalue['stnamename']); ?> <br>
+                    <a href="#"><?php echo $lfstvalue['stnamename']; ?> <br>
                     <p><?php
                          echo $lfstvalue['following'];
                          

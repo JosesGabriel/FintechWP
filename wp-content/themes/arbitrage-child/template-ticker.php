@@ -531,9 +531,9 @@
 		color:#bdc3c7;
 	}
 	.marqueethis {
-		width: calc(100% + 100px);
+		width: 150%;
 		height:40px;
-		right:-100px;
+		right: 0;
 		text-align: right;
 	}
 	/* .marqueethis > li {

@@ -84,6 +84,11 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         }
         $scope.$digest();
     });
+    $scope.$watch(function () {
+        return !angular.element('.arb_custom_ticker > li').is(':visible');
+    }, function (el) {
+        el.remove();
+    });
     // socket.on('transaction', function(data) {
     //     var change = 0;
     //     if (data.flag == 0) {

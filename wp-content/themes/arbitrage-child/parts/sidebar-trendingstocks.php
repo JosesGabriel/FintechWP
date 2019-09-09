@@ -105,11 +105,12 @@ jQuery(".stocks-hidden-content").click(function () {
             $bulls = ceil($dpullbull * 0.3);
             $tags = ceil($todayreps * 0.6);
             $finalcount = $bulls + $threedays + $tags;
+            $stocksscount = $countpstock + $dpullbull + $todayreps;
 
             // echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
     
             $indls['following'] = $finalcount;
-            if($countpstock > 0 && $dpullbull > 0 && $todayreps > 0){
+            if($stocksscount){
                 array_push($listofstocks, $indls);
             }
             

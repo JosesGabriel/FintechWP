@@ -158,7 +158,7 @@ jQuery(".stocks-hidden-content").click(function () {
                 <?php echo ($countss == 6 ? '<div class="hide-show trend-content-hidden">' : ''); ?>
                 <li class="even <?php echo $countss; ?>">
                     <span><?php echo $lfstvalue['stock']; ?></span>
-                    <a href="#"><?php echo ucwords($lfstvalue['stnamename']); ?> <br>
+                    <a href="#"><?php echo $lfstvalue['stnamename']; ?> <br>
                     <p><?php
                          echo $lfstvalue['following'];
                          

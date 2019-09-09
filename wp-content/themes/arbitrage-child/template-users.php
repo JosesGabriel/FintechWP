@@ -2005,6 +2005,9 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 </div> <!-- #main-content -->
 <style type="text/css">
+    .arb_calcbox {
+        top: 0;
+    }
 	#main-content {
 	    background-color: #0d1f33 !important;
 	}

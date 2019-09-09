@@ -405,69 +405,76 @@
 
 		echo json_encode($listofwatchlist);
 	} else { // market sentiment : check sentiment
-		$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 
-		
-		
-		$diffDays = 0;
-		if ($dlastupdate != "") {
-			$today = new DateTime(); // This object represents current date/time
-			$today->setTime( 0, 0, 0 ); // reset time part, to prevent partial comparison
-
-			$match_date = DateTime::createFromFormat( "m/d/Y", $dlastupdate );
-			$match_date->setTime( 0, 0, 0 ); // reset time part, to prevent partial comparison
-
-			$diff = $today->diff( $match_date );
-			$diffDays = (integer)$diff->format( "%R%a" ); // Extract days count in interval
-		}
-
-		
-
-		$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
-
-		if ($diffDays < 0) {
-			$dlistousers = array();
-			$todaysdate = date("m/d/Y");
-
-			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', 0 );
-			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', 0 );
-			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dlistousers );
-			update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', $todaysdate );
-
-			$isvote = 0;
-
-			// echo json_encode(["dbear" => 0, 'dbull' => 0, 'isvote' => $isvote, 'islastupdate' => $todaysdate]);
-
-
+		if(isset($_GET['toverify'])){
+			echo $_GET['toverify'];
 		} else {
+			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 
+		
+		
+			$diffDays = 0;
+			if ($dlastupdate != "") {
+				$today = new DateTime(); // This object represents current date/time
+				$today->setTime( 0, 0, 0 ); // reset time part, to prevent partial comparison
+
+				$match_date = DateTime::createFromFormat( "m/d/Y", $dlastupdate );
+				$match_date->setTime( 0, 0, 0 ); // reset time part, to prevent partial comparison
+
+				$diff = $today->diff( $match_date );
+				$diffDays = (integer)$diff->format( "%R%a" ); // Extract days count in interval
+			}
+
+			
+
+			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
+
+			if ($diffDays < 0) {
+				$dlistousers = array();
+				$todaysdate = date("m/d/Y");
+
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', 0 );
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', 0 );
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dlistousers );
+				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', $todaysdate );
+
+				$isvote = 0;
+
+				// echo json_encode(["dbear" => 0, 'dbull' => 0, 'isvote' => $isvote, 'islastupdate' => $todaysdate]);
+
+
+			} else {
+
+				$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
+				$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
+
+				if ($dsentilist && is_array( $dsentilist ) && in_array( $user->ID, $dsentilist )) {
+					$isvote = 1;
+				} else {
+					$isvote = 0;
+				}
+				
+			}
+
+			
 			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
-			if ($dsentilist && is_array( $dsentilist ) && in_array( $user->ID, $dsentilist )) {
-				$isvote = 1;
-			} else {
-				$isvote = 0;
-			}
+			$totsbear = (int) ($dsentbear == "" ? 0 : $dsentbear) + $_GET['isbear'];
+			$totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];
+
+
+			$dtradd = json_decode(getpointtrades($_GET['stock']));
 			
+			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+
+			$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
+			$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
+			
+			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}
 
 		
-		$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
-		$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
-
-		$totsbear = (int) ($dsentbear == "" ? 0 : $dsentbear) + $_GET['isbear'];
-		$totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];
-
-
-		$dtradd = json_decode(getpointtrades($_GET['stock']));
-		
-		$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
-
-		$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
-		$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
-		
-		echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		
 	}
 

@@ -433,7 +433,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
-				<?php //if ( $author_id == get_current_user_id() ) { ?>
+				<?php if ( $author_id == get_current_user_id() ) { ?>
 
 					<a href="#" class="um-activity-ticon um-activity-start-dialog" data-role="um-activity-tool-dialog">
 
@@ -441,7 +441,7 @@ foreach ( $wallposts->posts as $post ) {
 
 					</a>
 
-				<?php// } ?>
+				<?php } ?>
 
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
@@ -476,7 +476,7 @@ foreach ( $wallposts->posts as $post ) {
 					
 						if ( $author_id != get_current_user_id() ) { ?>
 
-							<!--<span class="sep"></span>-->
+							<span class="sep"></span>
 
 							<a href="#" class="um-activity-report <?php if ( UM()->Activity_API()->api()->reported( $post->ID ) ) echo 'flagged'; ?>"
 
@@ -497,9 +497,6 @@ foreach ( $wallposts->posts as $post ) {
 
 
 				<?php } ?>
-
-
-
 
 			</div>
 

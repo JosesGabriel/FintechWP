@@ -476,7 +476,7 @@ foreach ( $wallposts->posts as $post ) {
 					
 						if ( $author_id != get_current_user_id() ) { ?>
 
-							<!--<span class="sep"></span>-->
+							<span class="sep"></span>
 
 							<a href="#" class="um-activity-report <?php if ( UM()->Activity_API()->api()->reported( $post->ID ) ) echo 'flagged'; ?>"
 

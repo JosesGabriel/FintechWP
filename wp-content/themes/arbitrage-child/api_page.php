@@ -412,11 +412,13 @@
 			$user = get_user_by( 'email', $_GET['toverify'] );
 
 			$results = $wpdb->get_results("select * from arby_usermeta where user_id = '".$user->data->ID."' and meta_key = 'check_user_share'");
-			print_r($results);
-			$sqltoadd = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$user->data->ID."','check_user_share','verified')";
-			// $wpdb->query($sqltoadd);
-			echo "user ".$_GET['toverify']." with ID [".$user->data->ID."] is verified";
-
+			if(empty($results)){
+				$sqltoadd = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$user->data->ID."','check_user_share','verified')";
+				$wpdb->query($sqltoadd);
+				echo "user ".$_GET['toverify']." with ID [".$user->data->ID."] is verified";
+			} else {
+				echo $_GET['toverify']." is already verified";
+			}
 		
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

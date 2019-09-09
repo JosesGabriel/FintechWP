@@ -163,10 +163,9 @@ jQuery(".stocks-hidden-content").click(function () {
                          echo $lfstvalue['following'];
                          
                          if(strlen($lfstvalue['following']) == 1){
-                            print_r($lfstvalue['following']);
-
+                            $hitword = "Hit";
                          }
-                        ?> Hits</p></a>
+                        ?> <?php $hitword?></p></a>
                 </li>
                 <?php echo ($countss == $numinarrat ? '</div>' : ''); ?>
                  <?php $countss++; ?>

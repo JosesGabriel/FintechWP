@@ -1895,7 +1895,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
     .dashboard-sidebar-left-inner {
         position: sticky;
         position: -webkit-sticky;
-        top: 0;
+        top: 44px;
     }
 </style>
 	<div class="inner-placeholder">

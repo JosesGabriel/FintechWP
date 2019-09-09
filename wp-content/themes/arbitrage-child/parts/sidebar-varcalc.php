@@ -645,7 +645,7 @@ select#stockname {
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
         <div class="row">
             
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Enter Stock Details</strong></div>
 
@@ -788,7 +788,7 @@ select#stockname {
 
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div class="halfts">
                     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
                     <div class="arb_calcbox_left">Identified Entry Price</div>

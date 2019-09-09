@@ -1775,7 +1775,9 @@ if($issampledata){
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
 	}
-	if(empty($dledger)){
+	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+
+	if(empty($issampledata)){
 		$dledger = [];
 		$dledger[0] = new \stdClass();
 		$dledger[0]->ledid = 250;

@@ -407,6 +407,14 @@
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){
+			global $wpdb;
+
+			$user = get_user_by( 'email', $_GET['toverify'] );
+
+			print_r($user);
+			// $wpdb->query($addQuery);
+
+
 			echo $_GET['toverify'];
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

@@ -1676,10 +1676,10 @@ if ($getdstocks && $getdstocks != '') {
     }
 } else {
 	
-	if(!empty($author_posts)){
-		$isjounalempty = false;
-	} else {
+	if($author_posts->have_posts()){
 		$isjounalempty = true;
+	} else {
+		$isjounalempty = false;
 	}
 	$isjounalempty = true;
 	$getdstocks = ['SampleStock_1', 'SampleStock_2'];

@@ -87,8 +87,10 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.$watch(function () {
         return document.querySelectorAll('.arb_custom_ticker > li');
     }, function (el) {
-        if (el[0].getBoundingClientRect() < 0) {
-            el[0].remove();
+        if (el.length > 0) {
+            if (el[0].getBoundingClientRect() < 0) {
+                el[0].remove();
+            }
         }
     });
     // socket.on('transaction', function(data) {

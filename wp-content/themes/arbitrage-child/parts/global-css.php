@@ -2884,7 +2884,7 @@ li.dspecitem div div {
 	margin-top: 20px;
 }
 .fa-percentage {
-	margin-left: 1px;
+	margin-left: 2px;
 }
 p.content-meta-date {
     text-align: center;

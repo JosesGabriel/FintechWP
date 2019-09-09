@@ -1334,7 +1334,6 @@
 	<?php get_template_part('parts/sidebar', 'varcalc'); ?>
 
 	<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
-	<?php get_template_part('parts/global', 'css'); ?>
 
 	<?php
 		$userid = get_current_user_id();

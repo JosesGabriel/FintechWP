@@ -1677,6 +1677,10 @@ if ($getdstocks && $getdstocks != '') {
 } else {
 	
 	if($author_posts->have_posts()){
+		echo "inempty mouse";
+		$isjounalempty = false;
+	} else {
+		echo "empty mouse";
 		$isjounalempty = true;
 		$getdstocks = ['SampleStock_1', 'SampleStock_2'];
 		$dtradeingfo = [
@@ -1739,8 +1743,6 @@ if ($getdstocks && $getdstocks != '') {
 				'stockname' => 'SampleStock_2',
 			]
 		];
-	} else {
-		$isjounalempty = false;
 	}
 	
 

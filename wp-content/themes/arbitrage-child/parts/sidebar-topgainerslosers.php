@@ -103,11 +103,11 @@ $(document).ready(function(){
     }
 
     .gain {
-        color: green;
+        color: green !important;
     }
 
     .loss {
-        color: red;
+        color: red !important;
     }
 
     .top-stocks .to-content-part ul .even a{

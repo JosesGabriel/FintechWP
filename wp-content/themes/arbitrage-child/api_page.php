@@ -390,7 +390,7 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
-    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'run_batch_verification'){
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
         global $wpdb;
 

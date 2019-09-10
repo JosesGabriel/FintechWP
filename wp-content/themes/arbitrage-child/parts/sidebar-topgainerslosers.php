@@ -30,7 +30,7 @@
     <div class="top-stocks">
     <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers" style="display: none;">
+    <div class="to-content-part gainers">
 
              <ul>
                        <?php for($j=0; $j < 5; $j++) {?> 
@@ -45,7 +45,7 @@
     </div>
     <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part losers" style="display: none;">
+    <div class="to-content-part losers">
 
     <?php 
         usort($stock, function($a, $b) {

@@ -120,6 +120,7 @@ $user = wp_get_current_user();
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css" integrity="sha256-Qc3yyFhqacL9loe3ItFKo9WaSdTwZhpZRMYBvEpR2Cw=" crossorigin="anonymous" />
 	<link href="https://arbitrage.ph/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css">
 	<script type="text/javascript">
 			$(".ms-ctn .ms-sel-ctn").append("<i class='fas fa-search'></i>");
 	</script>

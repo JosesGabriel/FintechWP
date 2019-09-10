@@ -1,0 +1,120 @@
+
+/* BOF Trending Stocks */
+    .fa-sort-down {
+        color: #d8d8d8;
+    }
+    .fa-sort-up {
+        color: #d8d8d8;
+    }
+    .see-more-btn strong {
+        color: #d8d8d8;
+    }
+    .see-more-btn i {
+        color: #d8d8d8;
+    }
+    .top-stocks .to-content-part ul .even span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+    }
+    .top-stocks .to-content-part ul .even a{
+        width: 75%;
+    }
+    .top-stocks .to-content-part ul .odd a{
+        width: 75%;
+    }
+
+    .top-stocks .to-content-part ul .even {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+    }
+    .watch-list-inner .to-content-part .even tr:last-child {
+        border-bottom: none !important;
+
+    }
+    .watch-list-inner .to-content-part {
+        padding-top: 0 !important;
+    }
+    .top-stocks {
+        background-color: #142c46;
+
+    }
+    .top-stocks .to-top-title {
+        padding-top: 10px !important;
+        padding-left: 15px !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 7px !important;
+    }
+    .to-bottom-seemore {
+        padding: 0px 0px 8px 16px;
+        font-size: 12px !important;
+        font-weight: 300 !important;
+    }
+    .hide-show {
+        display: none;
+    }
+    .right-dashboard-part {
+        float: left;
+        width: 27%;
+        padding: 21px 0px !important;
+    }
+    .to-bottom-seemore {
+        cursor: pointer;
+        font-weight: 500;
+    }
+    .top-stock .to-content-part {
+        padding-bottom: 0 !important;
+    }
+    .top-stocks .to-content-part ul li a {
+        padding: 2px 10px !important;
+    }
+    .top-stocks .to-content-part ul .even a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part ul .odd a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part {
+        padding-bottom: 0 !important;
+    min-height: 126px;
+    }
+    .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {
+        top: 17px !important;
+        bottom: 8px !important;
+        position: relative !important;
+    }
+/* EOF Trending Stocks */
+
+/* BOF footer styles */
+html {margin-top: 0 !important;}
+#wpadminbar {display:none !important;}
+body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
+.et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
+/* EOF footer styles */

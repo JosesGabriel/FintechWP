@@ -24,8 +24,8 @@
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#email_pass_reset").submit(function(){
+	jQuery(document).ready(function(){
+		jQuery("#email_pass_reset").submit(function(){
                 var hasemailinfo = jQuery("#email_info").val().length;
                 var emailinfo = jQuery("#email_info").val();
                 if( hasemailinfo >= 1 ) {

@@ -99,6 +99,10 @@ $(document).ready(function(){
     .gainers:hover {
         cursor: pointer;
     }
+
+    .losers:hover {
+        cursor: pointer;
+    }
        
     .top-stocks .to-content-part ul .even {
         display: inline-flex;

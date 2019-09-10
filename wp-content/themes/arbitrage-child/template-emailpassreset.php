@@ -46,7 +46,7 @@
                 
                 var email = jQuery("#email_info").val();
                 console.log(email);
-                let url = "https://arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
+                let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {
                     "async": true,
                     "crossDomain": true,

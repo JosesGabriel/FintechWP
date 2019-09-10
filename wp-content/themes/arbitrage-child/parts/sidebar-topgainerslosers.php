@@ -1,11 +1,4 @@
-
-<div class="top-stocks">
-    <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
-    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers" style="display: none;">
-
-
-        <?php 
+<?php 
 
        
         $curl = curl_init();
@@ -25,23 +18,29 @@
 
             $stock[$i][0] = $stvals->symbol;
             $stock[$i][1] = $stvals->changepercentage;
+            $stock[$i][2] = $stvals->description;
             $i++;
         }
              usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
             });
 
-             ?>
+?>
+    
+    <div class="top-stocks">
+    <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
+    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+    <div class="to-content-part gainers" style="display: none;">
+
              <ul>
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
-                                <?php echo $stock[$j][1]; ?><br>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p><?php echo $stock[$j][1]; ?> %</p></a>
                             </li>
                         <?php } ?>
             </ul>
-
-                       
+                      
                
     </div>
     <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
@@ -58,7 +57,7 @@
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
-                                <?php echo $stock[$j][1]; ?><br>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p><?php echo $stock[$j][1]; ?> %</p></a>
                             </li>
                         <?php } ?>
             </ul>

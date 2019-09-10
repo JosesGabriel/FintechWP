@@ -8,11 +8,11 @@
 		exit;
 	}
 
-	$profile_id = um_profile_id();
-	$default_cover = UM()->options()->get( 'default_cover' );
-	um_fetch_user($profile_id);
+	// $profile_id = um_profile_id();
+	// $default_cover = UM()->options()->get( 'default_cover' );
+	// um_fetch_user($profile_id);
 
-	$ismyprofile = ($user->ID == $profile_id ? true : false);
+	// $ismyprofile = ($user->ID == $profile_id ? true : false);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">

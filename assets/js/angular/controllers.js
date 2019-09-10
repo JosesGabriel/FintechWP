@@ -376,7 +376,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayLow']  = price_format(stock['low']);
             stock['displayHigh']  = price_format(stock['high']);
             stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
-            stock['displayValue'] = abbr_format(stock['value']);
+            stock['displayValue'] = abbr_format(stock['value']).toUpperCase();
             stock['weekYearLow'] = price_format(stock['weekyearlow']);
             stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
             stock['displayMarketCap'] = abbr_format(stock.marketcap).toUpperCase();
@@ -965,8 +965,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 let data = response.data;
 
                                 $scope.$parent.transactions = data.map(transaction => {
-                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp));
-                                    
+                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
+
                                     return {
                                         symbol: transaction.symbol,
                                         price:  price_format(transaction.executed_price),

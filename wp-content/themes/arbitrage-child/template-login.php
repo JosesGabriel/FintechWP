@@ -676,9 +676,11 @@ input#first_name-9 {
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
                     <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
-                    <!-- <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
+                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
-				-->
+					<?php if(isset($_GET['active'])){ ?>
+						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
+                    <?php } ?>
                 </div>
                 
             </div>

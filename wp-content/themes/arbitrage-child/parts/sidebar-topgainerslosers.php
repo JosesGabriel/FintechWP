@@ -2,7 +2,7 @@
 <div class="top-stocks">
     <div class="to-top-title"><strong>Top Gainers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers" style="display: none;">
+    <div class="to-content-part gainers">
 
 
         <?php 
@@ -100,9 +100,7 @@ $(document).ready(function(){
         cursor: pointer;
     }
 
-    .losers:hover {
-        cursor: pointer;
-    }
+
        
     .top-stocks .to-content-part ul .even {
         display: inline-flex;

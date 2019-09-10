@@ -57,6 +57,7 @@
                 $.ajax(settings).done(function (response) {
                     let res = response.data;
                     console.log(res);
+                    alert("Success!!!")
                 });
                 
                 event.preventDefault();

@@ -10,7 +10,7 @@ if ( is_user_logged_in() ) {
 }
 global $current_user;
 $user = wp_get_current_user();
-get_header('login');
+get_header();
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>

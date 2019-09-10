@@ -46,18 +46,24 @@
     </div>
     <div class="to-top-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+    <div class="to-content-part">
 
+    <?php 
+        usort($stock, function($a, $b) {
+                return $a[1] <=> $b[1];
+            });
+    ?>
 
-    <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
-        <i class="fas fa-sort-down" style="
-        font-size: 16px;
-        margin-right: 3px;
-        vertical-align: initial;
-    "></i>
-        <div class="see-more-btn button-toggle-content">
-            <strong>See more</strong>
-        </div>
-    </div> -->
+             <ul>
+                       <?php for($j=0; $j < 5; $j++) {?> 
+                            <li class="odd">
+                                <span><?php echo $stock[$j][0]; ?></span>
+                                <?php echo $stock[$j][1]; ?><br>
+                            </li>
+                        <?php } ?>
+            </ul>
+
+    </div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

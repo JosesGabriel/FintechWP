@@ -76,7 +76,7 @@
 
 													?>
 													<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 26px;position: absolute;top: 7px;width: 85px;text-align: right;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px;width: 100px;text-align: right;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>
@@ -132,7 +132,7 @@
 													$finalres = $resres * 100;
 													?>
 													<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 42px;position: absolute;top: 7px; text-align: right;width: 76px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+															<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px; text-align: right;width: 100px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
 													<?php if($finalres == 0) { ?>
 															<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
 													<?php }elseif($finalres >= 0) {?>

@@ -801,6 +801,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 		?>/terms/' class='fancybox-iframe'>Terms</a> & <a href='<?php echo get_home_url(); ?>/policies/' class='fancybox-iframe'>Policies</a></div>");
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
+		jQuery(".um-col-alt-b a.um-link-alt").hide();
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

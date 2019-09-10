@@ -26,21 +26,21 @@
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
 <script type="text/javascript">
-    function getExistingEmail(email, callback) {
-        let url = "https://arbitrage.ph/apipge/?daction=email_is_existing"+email;
-        let settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": url,
-            "method": "GET",
-            "dataType": 'json'
-        };
-        $.ajax(settings).done(function (response) {
-            let res = response.data;
-            callback(res);
+    // function getExistingEmail(email, callback) {
+    //     let url = "https://arbitrage.ph/apipge/?daction=email_is_existing"+email;
+    //     let settings = {
+    //         "async": true,
+    //         "crossDomain": true,
+    //         "url": url,
+    //         "method": "GET",
+    //         "dataType": 'json'
+    //     };
+    //     $.ajax(settings).done(function (response) {
+    //         let res = response.data;
+    //         callback(res);
             
-        });
-    }
+    //     });
+    // }
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
                 

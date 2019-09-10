@@ -770,7 +770,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
 .um-col-alt-b {
-    display: none;
+    display: none !important;
 }
 .contercontrol {display:none !important;}
 

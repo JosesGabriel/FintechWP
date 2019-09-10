@@ -395,7 +395,7 @@
 		$emailstr = stripslashes($_GET['email']);
 		
 
-		return emplode($emailstr);
+		return json_encode($emailstr);
 
 		// Search if email is existing
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
@@ -409,13 +409,13 @@
 			$n = rand(0, $alphaLength);
 			$pass[] = $alphabet[$n];
 		}
-		return emplode($pass);
+		return json_encode($pass);
 
 		// update users password to new temp password
-		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
+		$updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
 
 		// send email include all created credentials
-
+		
 		// return to user success
 
 

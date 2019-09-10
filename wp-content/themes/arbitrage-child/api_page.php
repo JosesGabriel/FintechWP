@@ -391,9 +391,10 @@
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
-		$return = [];
-		return ['test'];
 		$emailstr = stripslashes($_GET['email']);
+
+		return json_encode($emailstr);
+
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
 		$exist = $wpdb->query($addQuery);
 

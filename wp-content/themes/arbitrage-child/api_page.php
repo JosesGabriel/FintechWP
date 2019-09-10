@@ -390,6 +390,12 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'run_batch_verification'){
+
+        global $wpdb;
+
+        die('hello');
+
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;
 		$users = get_users( array( 'fields' => array( 'ID' ) ) );
@@ -424,7 +430,7 @@
 				}
 			}
 
-			
+
 		
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

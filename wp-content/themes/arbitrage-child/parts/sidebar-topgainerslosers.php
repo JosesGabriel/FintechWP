@@ -103,7 +103,7 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers:hover {
+    .to-content-part .gainers:hover {
         cursor: pointer;
     }
        

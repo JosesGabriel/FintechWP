@@ -245,7 +245,7 @@ $(document).ready(function(){
         margin-bottom: 0;
     }
     .top-stocks .to-content-part ul .odd a p{
-        color: #999999 !important;
+        color: #999999;
         margin-bottom: 0;
     }
     .top-stocks .to-content-part {

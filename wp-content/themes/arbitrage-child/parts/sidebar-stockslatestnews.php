@@ -245,7 +245,7 @@ jQuery(document).ready(function(e) {
         margin-bottom: 0;
     }
     .top-stocks .to-content-part ul .odd a p{
-        color: #999999 !important;
+        color: #999999;
         margin-bottom: 0;
     }
     .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {

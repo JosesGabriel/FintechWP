@@ -30,13 +30,13 @@
     <div class="top-stocks">
     <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers" style="display: none;">
+    <div class="to-content-part gainers">
 
              <ul>
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p class="gain"><?php echo $stock[$j][1]; ?> %</p></a>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987;"><?php echo $stock[$j][1]; ?>%</p></a>
                             </li>
                         <?php } ?>
             </ul>
@@ -45,7 +45,7 @@
     </div>
     <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part losers" style="display: none;">
+    <div class="to-content-part losers">
 
     <?php 
         usort($stock, function($a, $b) {
@@ -57,7 +57,7 @@
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p class="loss"><?php echo $stock[$j][1]; ?> %</p></a>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
                             </li>
                         <?php } ?>
             </ul>
@@ -102,14 +102,7 @@ $(document).ready(function(){
         border-radius: 25px;
     }
 
-    .gain {
-        color: green;
-    }
 
-    .loss {
-        color: red;
-    }
-    
     .top-stocks .to-content-part ul .even a{
         width: 75%;
         color: #fff;
@@ -189,7 +182,6 @@ $(document).ready(function(){
         margin-bottom: 0;
     }
     .top-stocks .to-content-part ul .odd a p{
-        color: #999999 !important;
         margin-bottom: 0;
     }
     .top-stocks .to-content-part {

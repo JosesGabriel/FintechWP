@@ -385,9 +385,39 @@
 		global $wpdb;
         $str = stripslashes($_POST['email']);
         // $str = mysql_real_escape_string($str);
+		
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
+
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
+		global $wpdb;
+		$emailstr = stripslashes($_GET['email']);
+		
+
+		return emplode($emailstr);
+
+		// Search if email is existing
+		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
+		$exist = $wpdb->query($addQuery);
+
+		// create random temp password
+		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+		$pass = array(); //remember to declare $pass as an array
+		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+		for ($i = 0; $i < 8; $i++) {
+			$n = rand(0, $alphaLength);
+			$pass[] = $alphabet[$n];
+		}
+		return emplode($pass);
+
+		// update users password to new temp password
+		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
+
+		// send email include all created credentials
+
+		// return to user success
+
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
@@ -426,8 +456,6 @@
 					echo $_GET['toverify']." is already verified";
 				}
 			}
-
-
 		
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

@@ -12,20 +12,5 @@
   fbq('init', '594260294422186');
   fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=594260294422186&ev=PageView&noscript=1"
-/></noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=594260294422186&ev=PageView&noscript=1"/></noscript>
 <!-- End Facebook Pixel Code -->
-
-<?php /*?><!-- Rich Partners Start -->
-<script src="https://richinfo.co/js/rp.js"></script>
-<script>
-(function() {
-    RichPartners.init({
-        "pubid": "108057",
-        "siteid": "62992",
-        "niche": "58"
-    });
-})();
-</script>
-<!-- Rich Partners End --><?php */?>

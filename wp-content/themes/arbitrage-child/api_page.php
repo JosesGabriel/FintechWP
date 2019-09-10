@@ -415,9 +415,9 @@
 		$updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
 
 		// send email include all created credentials
-		
-		// return to user success
 
+		// return to user success
+		return;
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 

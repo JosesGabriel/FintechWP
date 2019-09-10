@@ -49,25 +49,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		    	var dauto = false;
 		    	var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50', '#ffeb3b'];
 		    	var arraylimit = colors.length - 1;
-
-				// var typingTimer;                //timer identifier
-				// var doneTypingInterval = 500;  //time in ms, 5 second for example
-				// var $input = $('.um-activity-textarea textarea');
-
-				// $input.on('keyup', function () {
-				// 	clearTimeout(typingTimer);
-				// 	typingTimer = setTimeout(doneTyping, doneTypingInterval);
-				// });
-
-				// //on keydown, clear the countdown 
-				// $input.on('keydown', function () {
-				// 	clearTimeout(typingTimer);
-				// });
-
-				//var loopfriends;
-				//jQuery('.um-activity-textarea textarea').on('keydown', function (e) {
-					//clearTimeout(loopfriends);
-				//});
 				var loopfriends;
 				jQuery('.um-activity-textarea textarea').on('keydown', function (e) {
 					clearTimeout(loopfriends);
@@ -170,11 +151,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				    	jQuery(this).parent().find(".popname").remove();
 				    }
 				});
-
-				
-
-
-///=======comment tagging area========//
 		
 
 		jQuery(this).on('keyup','.um-activity-comment-textarea', function(e){
@@ -287,43 +263,42 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		  	});
 			
 
-///===========================///
 
 
-				$(".um-activity-new-post .um-activity-textarea .tagging_cont").on("click", ".cgitem", function(){
-					jQuery(this).hide("slow");
-					var textval = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
-					var did = jQuery(this).attr('data-id');
-					var isname = jQuery(this).text();
-					var dtextareas = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
-					var res = dtextareas.split(" ");
+			$(".um-activity-new-post .um-activity-textarea .tagging_cont").on("click", ".cgitem", function(){
+				jQuery(this).hide("slow");
+				var textval = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
+				var did = jQuery(this).attr('data-id');
+				var isname = jQuery(this).text();
+				var dtextareas = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
+				var res = dtextareas.split(" ");
 
-					var dlastitem = res[res.length-1];
+				var dlastitem = res[res.length-1];
 
-					var dfinalname = isname.replace(' ', '_').toLowerCase();
+				var dfinalname = isname.replace(' ', '_').toLowerCase();
 
-					var n = dtextareas.lastIndexOf("@");
+				var n = dtextareas.lastIndexOf("@");
 
-					var comm = dtextareas.slice(0, n);
-					// format information as per data
-					//var dreplaceditem = dtextareas.replace(dlastitem, '@'+did+'_'+dfinalname);
-					var dreplaceditem = comm + '@'+did+'_'+dfinalname;
+				var comm = dtextareas.slice(0, n);
+				// format information as per data
+				//var dreplaceditem = dtextareas.replace(dlastitem, '@'+did+'_'+dfinalname);
+				var dreplaceditem = comm + '@'+did+'_'+dfinalname;
 
-					jQuery(this).parents('.um-activity-textarea').find('textarea').val(dreplaceditem).focus();
-				});
+				jQuery(this).parents('.um-activity-textarea').find('textarea').val(dreplaceditem).focus();
+			});
 
-				jQuery(".um-activity-textarea").on("click", ".popname ul li", function(){
-				    var dsaid = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
-				    var res = dsaid.split(" ");
-				    var newdesc = dsaid.replace(res[res.length-1], '$'+jQuery(this).text());
-				    jQuery(this).parents('.um-activity-textarea').find('textarea').val(newdesc);
-				    jQuery(this).parents('.um-activity-textarea').find(".popname").remove();
-				});
-				
-		    });
+			jQuery(".um-activity-textarea").on("click", ".popname ul li", function(){
+				var dsaid = jQuery(this).parents('.um-activity-textarea').find('textarea').val();
+				var res = dsaid.split(" ");
+				var newdesc = dsaid.replace(res[res.length-1], '$'+jQuery(this).text());
+				jQuery(this).parents('.um-activity-textarea').find('textarea').val(newdesc);
+				jQuery(this).parents('.um-activity-textarea').find(".popname").remove();
+			});
+			
+		});
 	 
-		})(jQuery);
-	</script>
+	})(jQuery);
+</script>
 
 <?php get_footer('all') ?>
 
@@ -432,27 +407,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 <?php } ?>
 
-
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<?php /*?><script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script><?php */?>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-<?php /*?><script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD1qzYu4IMXmAkDCwiyIzz5ybYlMpByISY",
-    authDomain: "arbitrage-2b99e.firebaseapp.com",
-    databaseURL: "https://arbitrage-2b99e.firebaseio.com",
-    projectId: "arbitrage-2b99e",
-    storageBucket: "arbitrage-2b99e.appspot.com",
-    messagingSenderId: "890289614246",
-    appId: "1:890289614246:web:09ab58b35d23c549"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script><?php */?>
 
 <?php if ( is_user_logged_in() ) { ?>
 	<?php if (is_front_page()){ // PWA - Add to homepage ?>

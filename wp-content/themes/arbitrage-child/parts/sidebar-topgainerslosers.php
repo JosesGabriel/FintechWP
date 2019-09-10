@@ -19,48 +19,6 @@
             $response = json_decode($response);
             $stockinfo = $response->data;
         }
-
-        $num = 0;
-        $counter = 1;
-        $stockcount = 0;
-        //$stock_watched = array();
-       
-        $users = get_users( array( 'fields' => array( 'ID' ) ) );
-
-
-        foreach($stockinfo as $stkey => $stvals){
-        
-            foreach($users as $user_id){
-           
-                $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-
-                if($havemeta){
-                    
-                            foreach ($havemeta as $key => $value) {        
-                                
-
-                                        if ($stvals->symbol == $value['stockname']) {
-                                            $stock_watched[$stockcount][0] = $stvals->symbol;
-                                            $stock_watched[$stockcount][1] = $counter;
-                                            $stock_watched[$stockcount][2] = $stvals->description;
-                                            $counter++;   
-                                            //$stockcount++;  
-                                        }
-
-                                 }
-
-                         }       
-
-                     }
-
-                $stockcount++;
-                $counter = 1;
-             }
-    
-             usort($stock_watched, function($a, $b) {
-                return $b[1] <=> $a[1];
-            });
-
              
 
              ?>

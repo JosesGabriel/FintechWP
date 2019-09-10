@@ -1,31 +1,13 @@
 <?php
-global $current_user;
-$user = wp_get_current_user();
-$userID = $current_user->ID;
+	global $current_user;
+	$user = wp_get_current_user();
+	$userID = $current_user->ID;
 	$topargs = array(
 		'role'          =>  '',
-		// 'meta_key'      =>  'account_status',
-		// 'meta_value'    =>  'approved'
 	);
-
 	$users = get_users($topargs);
 	$newuserlist = array();
 	foreach ($users as $key => $value) {
-		// if (UM()->Friends_API()->api()->is_friend($value->ID, $userID)) {
-		// 	// echo $value->data->display_name.' is your friend - ';
-		// } else {
-		// 	// echo $value->data->display_name." is not your friend - ";
-		// }
-		// $isfollowing = UM()->Followers_API()->api()->followed($value->ID, $userID);
-		// if ($isfollowing == "" || $isfollowing < 0 ) {
-		// 	$userdetails['id'] = $value->ID;
-		// 	$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		// 	$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
-		// 	$userdetails['user_nicename'] = $value->data->user_nicename;
-		// 	array_push($newuserlist, $userdetails);
-		// }
-
-		// echo UM()->Followers_API()->api()->is_friend_pending($value->ID, $userID)." - ";
 
 		if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
 			
@@ -43,11 +25,6 @@ $userID = $current_user->ID;
 				array_push($newuserlist, $userdetails);
 			}
 		}
-
-		
-
-
-		
 	}
 
 	usort($newuserlist, function($a, $b) {
@@ -80,22 +57,13 @@ $userID = $current_user->ID;
 							  <div class="traider-details">
 							  	<?php $unametype = get_user_meta($value['id'], 'disname', true); ?>
 								  <div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>">
-								  	<?php if ($unametype == "" || $unametype == "rn") { ?>
-								  		<?php //echo $value['displayname']; ?>
-								  		<?php echo $first_name." ".$last_name; ?>
-								  	<?php } else { ?>
-								  		<?php echo $nickname; ?>
-								  	<?php } ?>
+								  	<?php echo ($unametype == "" || $unametype == "rn" ? $first_name." ".$last_name : $nickname); ?>
 								  </a>
 								  <div class="login"></div>
 								  </div>
 								  <div class="traider-follower">
 									  <div class="onbfollow">
-									  		
-
 									  		<a href="#" id="mingle-btn" style="border: 1.3px solid #e77e24;" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
-									  		
-										  <!-- <a href="#" id="mingle-btn" class="um-follow-btn mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a> -->
 									  </div>
 								  </div>
 							  </div>
@@ -114,34 +82,6 @@ $userID = $current_user->ID;
 		  	  </div>
 
 		  </div>
-
-		  
-		  
 	  </div>
-
-	 
   </div>
-
-  
 </div>
-<style type="text/css">
-	.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt {
-		border-radius: 26px !important;
-		border: 2px solid #e77e24 !important;
-		padding: 5px 14px !important;
-		font-family: 'Nunito', sans-serif;
-		color: #e77e24 !important;
-	}
-	a.um-friend-btn.um-button.um-alt {
-		border-radius: 26px !important;
-		border: 2px solid #e77e24 !important;
-		padding: 5px 14px !important;
-		font-family: 'Nunito', sans-serif;
-		color: #e77e24 !important;
-	}
-	a.um-friend-btn.um-button.um-alt:hover, 
-	.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt:hover {
-		background: #e77e24 !important;
-		color: #fff !important;
-	}
-</style>

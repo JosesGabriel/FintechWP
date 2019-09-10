@@ -42,3 +42,18 @@
 
     });
 // EOF top players
+
+// BOF Bullitins
+    jQuery('.srr-tab-wrap').hide();
+    jQuery('.to-top-dropdown').click(function(){
+        event.stopPropagation();
+        jQuery('.srr-tab-wrap').toggle();
+    });
+    
+    jQuery(document).on("click", function () {
+        jQuery(".srr-tab-wrap").hide();
+    });
+    jQuery(document).on("click", function () {
+        jQuery(".closehideme").hide();
+    });
+// EOF Bullitins

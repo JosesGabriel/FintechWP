@@ -4,12 +4,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <?php
-global $current_user;
-$user = wp_get_current_user();
-$userID = $current_user->ID;
+  global $current_user;
+  $user = wp_get_current_user();
+  $userID = $current_user->ID;
 
-$ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
-
+  $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
 
 ?>
 <script>
@@ -27,7 +26,6 @@ if (typeof angular !== 'undefined') {
       $dhistofronold = curl_exec($curl);
       curl_close($curl);
 
-      // echo 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
 
       $dhistoforchart = json_decode($dhistofronold);
       $dhistoforchart = $dhistoforchart->data;

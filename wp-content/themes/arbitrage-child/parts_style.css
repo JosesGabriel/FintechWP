@@ -214,3 +214,78 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
     }
     
 /* EOF Watchlist */
+
+/* BOF Trades  */
+    .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt {
+        border-radius: 26px !important;
+        border: 2px solid #e77e24 !important;
+        padding: 5px 14px !important;
+        font-family: 'Nunito', sans-serif;
+        color: #e77e24 !important;
+    }
+    a.um-friend-btn.um-button.um-alt {
+        border-radius: 26px !important;
+        border: 2px solid #e77e24 !important;
+        padding: 5px 14px !important;
+        font-family: 'Nunito', sans-serif;
+        color: #e77e24 !important;
+    }
+    a.um-friend-btn.um-button.um-alt:hover, 
+    .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt:hover {
+        background: #e77e24 !important;
+        color: #fff !important;
+    }
+/* EOF Trades  */
+
+/* BOF Bullitins */
+    .to-top-dropdown {
+        float: right;
+        font-size: 12px;
+        color: #fffffe;
+        line-height: 1.7;
+        cursor: pointer;
+    }
+    div#show_hide {
+        margin-left: 0;
+        margin-bottom: 3px;
+    }
+/* EOF Bullitins */
+
+/* BOF Sidebar Footer */
+    .showmore {
+        display: block !important;
+    }
+    .nobar {
+        cursor: pointer;    
+    }
+    .closehideme {
+        padding-bottom: 5px;
+        box-shadow: rgba(7, 13, 19, 0.52) 0px 2px 4px 1px;
+        background: rgb(20, 44, 70) !important;
+        border: none !important;
+        border-radius: 5px;
+        left: 6px;
+        bottom: -111px;
+        padding-top: 5px;
+    }
+    .closehideme:before {
+        top: -31%;
+        left: 67%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: rgb(20, 44, 70);
+        border-width: 15px;
+        margin-left: -30px;
+    }
+    .closehideme:after {
+        display: none;
+    }
+    ul.closehideme > li:hover {
+        background: #11273e;
+        border-radius: 4px;
+    }
+/* EOF Sidebar Footer */

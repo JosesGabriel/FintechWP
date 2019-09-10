@@ -9,7 +9,7 @@
 
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
@@ -19,40 +19,24 @@
             $response = json_decode($response);
             $stockinfo = $response->data;
         }
+        $i = 0;
+
+        foreach($stockinfo as $stkey => $stvals){
+
+            $stock[$i] = $stvals->symbol;
+            $change[$i] = $stvals->change;
+            $i++;
+        }
              
 
              ?>
              <ul>
-             <?php
-
-             for($i = 0; $i < 10; $i++){
-
-                 if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
-
-                       
-                                    ?>
-                                            <li class="odd">
-                                                <span><?php echo $stock_watched[$i][0]; ?></span>
-                                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
-                                            </li>
-
-                                    <?php
-
-                           
-                        }
-
-                     if($i == 4){
-                        echo "<div class='hide-show watched-hidden-content'>";
-                    }
-                   
-                }
-
-           
-
-                    echo "</div>";
-            
-            ?>  
-
+                       <?php for($j=0; $j < 5; $j++) {?> 
+                            <li class="odd">
+                                <span><?php echo $stock[$j]; ?></span>
+                                <a href="#"><?php echo $change[$j]; ?><br><p><?php //echo $stock_watched[$i][1]; ?> Following</p></a>
+                            </li>
+                        <?php } ?>
             </ul>
 
                        

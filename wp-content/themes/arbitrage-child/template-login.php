@@ -769,8 +769,11 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
+.um-col-alt-b a.um-link-alt {
+    display: none !important;
+}
 .contercontrol {display:none !important;}
-	
+
 	<?php if (isset($_GET['active'])){ ?>
 		/* Countdown disabled */
 		.contercontrol {display:none !important;}
@@ -791,13 +794,14 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
-		jQuery( '<div class="forgpasslnk">Keep me signed in<span style="color: #949798;font-size: 11px;">&nbsp;&nbsp;|&nbsp;&nbsp;</span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
+		jQuery( '<div class="forgpasslnk"><span style="color: #949798;font-size: 11px;"></span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
 		jQuery(".um-register .um-field-type_password:last-child").addClass("confirmpasscls");
 		jQuery("#user_password-9").addClass("arbtriggerpass");
 		jQuery(".um-register .um-col-1").append("<div class='arb_accept'>By clicking Signing Up, you agree to our <a href='<?php echo get_home_url(); 
 		?>/terms/' class='fancybox-iframe'>Terms</a> & <a href='<?php echo get_home_url(); ?>/policies/' class='fancybox-iframe'>Policies</a></div>");
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
+		jQuery(".um-col-alt-b a.um-link-alt").hide();
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

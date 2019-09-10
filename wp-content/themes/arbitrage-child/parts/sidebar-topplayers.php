@@ -29,37 +29,22 @@
 					<?php $plcnt++; ?>
 					<li>
 						<div class="hudbadge">
-							<?php if($plcnt == 1) { ?>
-								<img src="<?php echo get_home_url(); ?>/svg/top2.svg" alt="">
-							<?php }else if($plcnt == 2) { ?>
-								<img src="<?php echo get_home_url(); ?>/svg/top3.svg" alt="">
-							<?php }else if($plcnt == 3) { ?>
-								<img src="<?php echo get_home_url(); ?>/svg/top4.svg" alt="">
-							<?php } ?>
+							<img src="<?php echo get_home_url(); ?>/svg/<?php echo ($plcnt == 1 ? "top2" : ($plcnt == 2 ? "top3" : "top4")); ?>.svg" alt="">
 						</div>
 
 						<div class="playerscontent">
-							<div class="isname" style="width: 102px;">
-								<?php 
-								//echo ucwords($value['dbsname']) 
-
-									$uname = $value['dbsname'];
-									if (strlen($uname) > 12){
-											echo substr($uname, 0, 12) . ".."; 
-										}else{
-											echo ucwords($uname);
-										}
-																			
-
-								?>
-								
-							</div>
-								<div class="istotal"><?php 
-									$totalvaluee = $value['dtotalbal'];
-									$equityres = $totalvaluee - 100000;
-									$resres = $equityres / 100000;
-									$finalres = $resres * 100;
-
+								<div class="isname" style="width: 102px;">
+									<?php 
+										$uname = $value['dbsname'];
+										echo (strlen($uname) > 12 ? substr($uname, 0, 12) . ".." : ucwords($uname));
+									?>
+								</div>
+								<div class="istotal">
+									<?php 
+										$totalvaluee = $value['dtotalbal'];
+										$equityres = $totalvaluee - 100000;
+										$resres = $equityres / 100000;
+										$finalres = $resres * 100;
 									?>
 									<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
 											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px;width: 100px;text-align: right;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>

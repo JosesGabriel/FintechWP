@@ -4,8 +4,8 @@
 	*/
 
 // get_header();
-$setrand = rand(1,12);
-$get_bgfimage = "loginbg".$setrand.".jpg";
+// $setrand = rand(1,12);
+// $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
 <style>/* Overrides */
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,900');

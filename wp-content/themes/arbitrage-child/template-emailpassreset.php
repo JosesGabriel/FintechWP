@@ -3,7 +3,7 @@
 	* Template Name: Email Pass Confirmation
 	*/
 
-get_header();
+get_header('Login');
 // $setrand = rand(1,12);
 // $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>

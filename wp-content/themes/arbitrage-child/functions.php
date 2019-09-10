@@ -437,3 +437,9 @@ add_filter('wp_handle_upload', function ($upload) {
 
     return $upload;
 }, 90, 1);
+
+add_action( 'um_after_save_registration_details', 'my_after_save_registration_details', 10, 2 );
+function my_after_save_registration_details( $user_id, $submitted ) {
+    $sqltoadd = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$user_id."','check_user_share','verified')";
+	$wpdb->query($sqltoadd);
+}

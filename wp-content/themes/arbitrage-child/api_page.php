@@ -394,7 +394,7 @@
 
         global $wpdb;
 
-        die('hello');
+        die('hello ralph');
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;

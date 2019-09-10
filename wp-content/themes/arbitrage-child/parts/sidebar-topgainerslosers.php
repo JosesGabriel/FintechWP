@@ -103,11 +103,7 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers:hover {
-        cursor: pointer;
-    }
-
-    .losers:hover {
+    .gainers:hover, .losers:hover {
         cursor: pointer;
     }
 

@@ -96,7 +96,7 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .to-content-part .gainers:hover {
+    .gainers:hover {
         cursor: pointer;
     }
        

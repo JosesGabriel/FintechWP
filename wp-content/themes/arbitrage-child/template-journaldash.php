@@ -1779,8 +1779,8 @@ if($issampledata){
 	}
 	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
 	if(empty($dledger)){
-		wp_redirect('/journal');
-        exit;
+		// wp_redirect('/journal');
+        // exit;
 	}
 	if(empty($issampledata)){
 		$dledger = [];

@@ -41,6 +41,9 @@ assets/*
 !composer.json
 !composer.lock
 
+# track app.yaml
+!app.yaml
+
 # ignore all files starting with .
 .*
 

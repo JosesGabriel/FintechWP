@@ -1,0 +1,291 @@
+
+/* BOF Trending Stocks */
+    .fa-sort-down {
+        color: #d8d8d8;
+    }
+    .fa-sort-up {
+        color: #d8d8d8;
+    }
+    .see-more-btn strong {
+        color: #d8d8d8;
+    }
+    .see-more-btn i {
+        color: #d8d8d8;
+    }
+    .top-stocks .to-content-part ul .even span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+    }
+    .top-stocks .to-content-part ul .even a{
+        width: 75%;
+    }
+    .top-stocks .to-content-part ul .odd a{
+        width: 75%;
+    }
+
+    .top-stocks .to-content-part ul .even {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+    }
+    .watch-list-inner .to-content-part .even tr:last-child {
+        border-bottom: none !important;
+
+    }
+    .watch-list-inner .to-content-part {
+        padding-top: 0 !important;
+    }
+    .top-stocks {
+        background-color: #142c46;
+
+    }
+    .top-stocks .to-top-title {
+        padding-top: 10px !important;
+        padding-left: 15px !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 7px !important;
+    }
+    .to-bottom-seemore {
+        padding: 0px 0px 8px 16px;
+        font-size: 12px !important;
+        font-weight: 300 !important;
+    }
+    .hide-show {
+        display: none;
+    }
+    .right-dashboard-part {
+        float: left;
+        width: 27%;
+        padding: 21px 0px !important;
+    }
+    .to-bottom-seemore {
+        cursor: pointer;
+        font-weight: 500;
+    }
+    .top-stock .to-content-part {
+        padding-bottom: 0 !important;
+    }
+    .top-stocks .to-content-part ul li a {
+        padding: 2px 10px !important;
+    }
+    .top-stocks .to-content-part ul .even a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part ul .odd a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part {
+        padding-bottom: 0 !important;
+    min-height: 126px;
+    }
+    .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {
+        top: 17px !important;
+        bottom: 8px !important;
+        position: relative !important;
+    }
+/* EOF Trending Stocks */
+
+/* BOF footer styles */
+html {margin-top: 0 !important;}
+#wpadminbar {display:none !important;}
+body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
+.et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
+/* EOF footer styles */
+
+/* BOF Watchlist */
+    .to-watch-data {
+        border-bottom: #1e3554 solid 1px;
+        /*display: table-cell;
+        vertical-align: middle;*/
+        min-height: 76px;/*
+        background: #123;*/
+    }
+    .to-watch-data.to-stock {
+        display: inline-block !important;
+    }
+    /* .to-watch-data.minichartt {
+
+    } */
+    .to-watch-data.dbox-cont {
+        display: inline-block !important;
+    }
+    .to-watch-data:last-child {
+        border-bottom: none;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #142c46 !important;
+    }
+
+    .nvd3 .nv-axis line {
+        display: none;
+    }
+
+    .nvd3 .nv-axis path.domain {
+        display: none;
+    }
+
+    .negative > line, .negative > rect {
+        stroke: #eb4d5c !important;
+        fill: #eb4d5c !important;
+    }
+
+    .positive > line {
+        stroke: #53b987 !important;
+    }
+    .positive > rect {
+        stroke: #53b987 !important;
+        fill: #53b987 !important;
+    }
+
+
+    .dplsicon {
+        display: none !important;
+
+    }
+    .side-header {
+        border-bottom: none  !important;
+    }
+    .dplusbutton {
+        color: #fff;
+        padding: 30px 0px 22px 0px;
+    }
+    .top-traiders .to-content-part {
+        /* background: #0d1f33 !important; */
+        padding: 15px;
+    }
+    .side-content {
+        background: rgba(44, 62, 80, 0) !important;
+        border-radius: 0px 0px 5px 5px !important;
+        padding: 3px 0px 0px 0px !important;
+    }
+
+    .side-content ul li {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    .watch-list {
+        background: #142c46 !important;
+        margin-top: 11px !important;
+    }
+    .adsbygoogle {
+        background: #142c46;
+        display: block !important;
+        margin-top: 15px;
+        border-radius: 5px;
+        overflow: hidden;
+        padding-bottom: 8px;
+        /* padding: 10px 15px 15px 15px; */
+    }
+    .adsbygoogle .to-top-title {
+        padding-top: 6px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 0;
+        margin-bottom: 5px;
+    }
+    .see-more-btn a:hover {
+        text-decoration: none !important;
+    }
+    
+/* EOF Watchlist */
+
+/* BOF Trades  */
+    .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt {
+        border-radius: 26px !important;
+        border: 2px solid #e77e24 !important;
+        padding: 5px 14px !important;
+        font-family: 'Nunito', sans-serif;
+        color: #e77e24 !important;
+    }
+    a.um-friend-btn.um-button.um-alt {
+        border-radius: 26px !important;
+        border: 2px solid #e77e24 !important;
+        padding: 5px 14px !important;
+        font-family: 'Nunito', sans-serif;
+        color: #e77e24 !important;
+    }
+    a.um-friend-btn.um-button.um-alt:hover, 
+    .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a.um-friend-pending-btn.um-button.um-alt:hover {
+        background: #e77e24 !important;
+        color: #fff !important;
+    }
+/* EOF Trades  */
+
+/* BOF Bullitins */
+    .to-top-dropdown {
+        float: right;
+        font-size: 12px;
+        color: #fffffe;
+        line-height: 1.7;
+        cursor: pointer;
+    }
+    div#show_hide {
+        margin-left: 0;
+        margin-bottom: 3px;
+    }
+/* EOF Bullitins */
+
+/* BOF Sidebar Footer */
+    .showmore {
+        display: block !important;
+    }
+    .nobar {
+        cursor: pointer;    
+    }
+    .closehideme {
+        padding-bottom: 5px;
+        box-shadow: rgba(7, 13, 19, 0.52) 0px 2px 4px 1px;
+        background: rgb(20, 44, 70) !important;
+        border: none !important;
+        border-radius: 5px;
+        left: 6px;
+        bottom: -111px;
+        padding-top: 5px;
+    }
+    .closehideme:before {
+        top: -31%;
+        left: 67%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: rgb(20, 44, 70);
+        border-width: 15px;
+        margin-left: -30px;
+    }
+    .closehideme:after {
+        display: none;
+    }
+    ul.closehideme > li:hover {
+        background: #11273e;
+        border-radius: 4px;
+    }
+/* EOF Sidebar Footer */

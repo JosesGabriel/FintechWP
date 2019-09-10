@@ -1,0 +1,190 @@
+
+<div class="top-stocks">
+    <div class="to-top-title"><strong>Top Gainers</strong></div>
+    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+    <div class="to-content-part gainers" style="display: none;">
+
+
+        <?php 
+
+       
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        if ($response !== false) {
+            $response = json_decode($response);
+            $stockinfo = $response->data;
+        }
+        $i = 0;
+
+        foreach($stockinfo as $stkey => $stvals){
+
+            $stock[$i][0] = $stvals->symbol;
+            $stock[$i][1] = $stvals->change;
+            $i++;
+        }
+             usort($stock, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
+
+             ?>
+             <ul>
+                       <?php for($j=0; $j < 5; $j++) {?> 
+                            <li class="odd">
+                                <span><?php echo $stock[$j][0]; ?></span>
+                                <?php echo $stock[$j][1]; ?><br>
+                            </li>
+                        <?php } ?>
+            </ul>
+
+                       
+               
+    </div>
+    <div class="to-top-title"><strong>Top Losers</strong></div>
+    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+    <div class="to-content-part losers" style="display: none;">
+
+    <?php 
+        usort($stock, function($a, $b) {
+                return $a[1] <=> $b[1];
+            });
+    ?>
+
+             <ul>
+                       <?php for($j=0; $j < 5; $j++) {?> 
+                            <li class="odd">
+                                <span><?php echo $stock[$j][0]; ?></span>
+                                <?php echo $stock[$j][1]; ?><br>
+                            </li>
+                        <?php } ?>
+            </ul>
+
+    </div>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+    $(".gainers").click(function () {
+        console.log('daddsdsds');
+    });
+});
+</script>
+
+<style type="text/css">
+     .top-stocks .to-content-part ul .even span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block; 
+        border-radius: 25px;
+    }
+    .top-stocks .to-content-part ul .even a{
+        width: 75%;
+        color: #fff;
+        font-weight: 500;
+    }
+    .top-stocks .to-content-part ul .odd a{
+        width: 75%;
+    }
+
+    .gainers:hover {
+        cursor: pointer;
+    }
+       
+    .top-stocks .to-content-part ul .even {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd {
+        display: inline-flex;
+        text-overflow: ellipsis;
+        width: 98%;
+        padding: 7px;
+        padding-left: 11px;
+    }
+    .top-stocks .to-content-part ul .odd span {
+        border: 2px solid;
+        height: 42px;
+        width: 42px;
+        line-height: 40px;
+        font-size: 11px !important;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+    }
+    .watch-list-inner .to-content-part .even tr:last-child {
+        border-bottom: none !important;
+    }
+   .top-stocks {
+    background-color: #142b46;
+}
+    .top-stocks .to-top-title {
+        padding-top: 10px !important;
+        padding-left: 15px !important;
+        padding-bottom: 0 !important;
+    }
+    .to-bottom-seemore {
+        padding: 0px 0px 8px 16px;
+        font-size: 12px !important;
+        font-weight: 300 !important;
+        cursor: pointer;
+        color: #d8d8d8 !important;
+    }
+    .see-more-btn, .see-more-btn a {
+        color: #d8d8d8 !important;
+    }
+    .hide-show {
+        display: none;
+    }
+    .right-dashboard-part {
+        float: left;
+        width: 27%;
+        padding: 21px 0px !important;
+    }
+    .top-stock .to-content-part {
+        padding-bottom: 0 !important;
+    }
+    .top-stocks .to-content-part ul li a {
+        padding: 2px 10px !important;
+    }
+    .top-stocks .to-content-part ul .even a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part ul .odd a p{
+        color: #999999 !important;
+        margin-bottom: 0;
+    }
+    .top-stocks .to-content-part {
+        padding-bottom: 0 !important;
+    }
+    .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {
+        top: 17px !important;
+        bottom: 8px !important;
+        position: relative !important;
+    }
+
+	.to-content-part {
+	    background: #142c46;
+	    padding:4px;
+	}
+
+	hr.style14.style13 {
+    display: none;
+}
+
+
+
+</style>

@@ -892,7 +892,7 @@
 <script src="<?php echo $cdnorlocal; ?>/assets/js/angular/directives.js?v=1.218"></script>
 <script src="<?php echo $cdnorlocal; ?>/assets/js/angular/filters.js?v=1.218"></script>
 <script src="<?php echo $cdnorlocal; ?>/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-<script src="<?php echo $cdnorlocal; ?>/assets/js/datafeed.js?v=1.218"></script>
+<script src="<?php echo $cdnorlocal; ?>/assets/js/datafeed.js?v=2.218"></script>
 <!-- <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
 <style type="text/css">
 	#tv_chart_container {

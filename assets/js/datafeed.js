@@ -74,7 +74,7 @@ var DataProvider = (function () {
 					volume: parseFloat(data.vol),
 				};
 				subscriber.listener(lastBar);
-				console.log('DataPulseProvider: websocket:psec', lastBar);
+				// console.log('DataPulseProvider: websocket:psec', lastBar);
 			}
 		});
         // socket.on('reconnect', function() {
@@ -86,7 +86,7 @@ var DataProvider = (function () {
     DataPulseProvider.prototype.subscribeBars = function (symbolInfo, resolution, newDataCallback, listenerGuid) {
     	var that = this;
         if (that._subscribers.hasOwnProperty(listenerGuid)) {
-            console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
+            // console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
             return;
         }
         // if (symbolInfo.type == 'index') {
@@ -99,13 +99,13 @@ var DataProvider = (function () {
             resolution: resolution,
             listener: newDataCallback,
         };
-        console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
+        // console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
     };
     DataPulseProvider.prototype.unsubscribeBars = function (listenerGuid) {
         // socket.emit('unsubscribeBars2', listenerGuid);
         // socket.emit('unsubscribeBars3', 'test.' + listenerGuid);
         delete this._subscribers[listenerGuid];
-        console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
+        // console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
     };
     return DataPulseProvider;
 }());
@@ -175,8 +175,6 @@ Datafeeds.UDFCompatibleDatafeed.prototype.resolveSymbol = function(symbolName, o
 			currency_code: 'PH',
 		}
 		if (_stocks[symbolName]) {
-
-			console
 			postProcessedData.minmov 		= 1;
 			postProcessedData.description 	= _stocks[symbolName].description;
 			postProcessedData.type 			= _stocks[symbolName].type;
@@ -223,7 +221,6 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 	that._send(url, params).done(function(sxdata) {
 		
 		var data = sxdata.data;
-		console.log(data);
 		var nodata = data.s === 'no_data';
 		if (data.s !== 'ok' && ! nodata) {
 			onErrorCallback(data.s);
@@ -253,8 +250,8 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		onDataCallback(bars, meta);
 		return;
 	}).fail( function(arg) {
-		console.warn(['getBars(): HTTP error', arg]);
-		onErrorCallback('network error: ' + JSON.stringify(arg));
+		// console.warn(['getBars(): HTTP error', arg]);
+		// onErrorCallback('network error: ' + JSON.stringify(arg));
 		return;
 	});
 };

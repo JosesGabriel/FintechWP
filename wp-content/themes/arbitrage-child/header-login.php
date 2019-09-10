@@ -1,5 +1,15 @@
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
 <html <?php language_attributes(); ?>><head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-147416476-1');
+	</script>
+	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
 	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
@@ -152,6 +162,9 @@ $user = wp_get_current_user();
 	}
 	span.success-word {
 		color: #d8d8d8;
+	}
+	.contercontrol {
+		display:none;
 	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">

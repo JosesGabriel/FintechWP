@@ -994,7 +994,7 @@ a.um-photo-modal img {
 
 					  <?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
-                       <?php get_template_part('parts/sidebar', 'ads'); ?>
+                       <?php // get_template_part('parts/sidebar', 'ads'); ?>
 	
 
 				</div>

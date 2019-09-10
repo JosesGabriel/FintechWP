@@ -1371,7 +1371,7 @@
 				</ul>
 			</ul>
 			<a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/messages/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
@@ -2299,7 +2299,7 @@
 	<script src="/assets/js/angular/directives.js?v=1.218"></script>
 	<script src="/assets/js/angular/filters.js?v=1.218"></script>
 	<script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
-	<script src="/assets/js/datafeed.js?v=1.218"></script>
+	<script src="/assets/js/datafeed.js?v=2.218"></script>
 	<!-- <script src="<?php // echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
 	<style type="text/css">
 		#tv_chart_container {

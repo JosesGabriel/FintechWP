@@ -1,6 +1,6 @@
 
 <div class="top-stocks">
-    <div class="to-top-title"><strong>Top Gainers</strong></div>
+    <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part gainers" style="display: none;">
 
@@ -24,7 +24,7 @@
         foreach($stockinfo as $stkey => $stvals){
 
             $stock[$i][0] = $stvals->symbol;
-            $stock[$i][1] = $stvals->change;
+            $stock[$i][1] = $stvals->changepercentage;
             $i++;
         }
              usort($stock, function($a, $b) {
@@ -44,7 +44,7 @@
                        
                
     </div>
-    <div class="to-top-title"><strong>Top Losers</strong></div>
+    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part losers" style="display: none;">
 
@@ -70,9 +70,24 @@
 <script>
 
 $(document).ready(function(){
-    $(".gainers").click(function () {
-        console.log('daddsdsds');
+    $(".gainers-title").click(function () {
+        
+        if($('.gainers').css('display') == 'none'){
+            $('.gainers').slideDown();
+        }else {
+             $('.gainers').slideUp();
+        }
     });
+
+    $(".losers-title").click(function () {
+        
+        if($('.losers').css('display') == 'none'){
+            $('.losers').slideDown();
+        }else {
+             $('.losers').slideUp();
+        }
+    });
+
 });
 </script>
 
@@ -96,9 +111,11 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers:hover {
+    .gainers-title:hover, .losers-title:hover {
         cursor: pointer;
     }
+
+
        
     .top-stocks .to-content-part ul .even {
         display: inline-flex;

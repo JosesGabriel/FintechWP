@@ -64,7 +64,7 @@ if (typeof angular !== 'undefined') {
       $dhistofronold = curl_exec($curl);
       curl_close($curl);
 
-      echo 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+      // echo 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
 
       $dhistoforchart = json_decode($dhistofronold);
       $dhistoforchart = $dhistoforchart->data;

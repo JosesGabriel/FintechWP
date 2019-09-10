@@ -1,10 +1,7 @@
 <?php
-$user = wp_get_current_user();
-$cdnorlocal = get_home_url();
+    $user = wp_get_current_user();
+    $cdnorlocal = get_home_url();
 ?>
-<script type="text/javascript">
-    
-</script>
 <header id="main-header" class="dashboard-header">
     <div class="header-dashboard">
         <div class="header-dashboard-inner">

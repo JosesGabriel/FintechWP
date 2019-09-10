@@ -3,10 +3,11 @@
 	* Template Name: Email Pass Confirmation
 	*/
 
-// get_header();
+get_header();
 // $setrand = rand(1,12);
 // $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
+
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <div class="ondashboardpage_login">
@@ -49,4 +50,4 @@
 	});
 </script>
 
-<?php //get_footer();
+<?php get_footer();

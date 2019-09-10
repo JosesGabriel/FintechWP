@@ -130,9 +130,9 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
     .to-watch-data.to-stock {
         display: inline-block !important;
     }
-    .to-watch-data.minichartt {
+    /* .to-watch-data.minichartt {
 
-    }
+    } */
     .to-watch-data.dbox-cont {
         display: inline-block !important;
     }

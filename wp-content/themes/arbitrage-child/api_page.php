@@ -391,9 +391,10 @@
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
-		$emailstr = stripslashes($_POST['email']);
+		$return = [];
+		return ['test'];
+		$emailstr = stripslashes($_GET['email']);
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
-		// $addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){

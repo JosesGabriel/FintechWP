@@ -26,3 +26,19 @@
         });
     });
 // EOF Trending Stocks
+
+
+// BOF top players
+    jQuery(".othersect").hide();
+    jQuery(".viewmoreplayers").click(function(){
+        jQuery(".othersect").toggle('1000');
+
+        if( $(".viewmoreplayers").text() == "View more"){
+                $(".viewmoreplayers").text("Hide");
+            }
+        else{
+                $(".viewmoreplayers").text("View more");
+        }	 							
+
+    });
+// EOF top players

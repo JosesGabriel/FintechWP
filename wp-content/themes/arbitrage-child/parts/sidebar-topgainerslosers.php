@@ -71,8 +71,12 @@
 
 $(document).ready(function(){
     $(".gainers-title").click(function () {
-        console.log('daddsdsds');
-        $('.gainers').slideDown();
+        
+        if($('.gainers').css('display') == 'none'){
+            $('.gainers').slideDown();
+        }else {
+             $('.gainers').slideUp();
+        }
     });
 });
 </script>

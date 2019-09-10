@@ -44,7 +44,7 @@
                        
                
     </div>
-    <div class="to-top-title"><strong>Top Losers</strong></div>
+    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part losers" style="display: none;">
 
@@ -96,7 +96,7 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers-title:hover {
+    .gainers-title:hover, .losers-title:hover {
         cursor: pointer;
     }
 

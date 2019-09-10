@@ -654,12 +654,18 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
         <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
+        <form id="pass-reset">
+            <Label>Old Password</Label>
+            <input type="text" required class="pass-info">
 
-        
-        <div class="login-form-wrapper">
-            <div class="login-form">
-            </div>
-        </div>
+            <Label>New Password</Label>
+            <input type="text" required class="pass-info">
+
+            <Label>Confirm New Password</Label>
+            <input type="text" required class="pass-info">
+
+            <input type="button" value="Update Password" id="pass-btn-info">
+        </form>
     </div>
 </div>
 

@@ -376,7 +376,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             stock['displayLow']  = price_format(stock['low']);
             stock['displayHigh']  = price_format(stock['high']);
             stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
-            stock['displayValue'] = abbr_format(stock['value']);
+            stock['displayValue'] = abbr_format(stock['value']).toUpperCase();
             stock['weekYearLow'] = price_format(stock['weekyearlow']);
             stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
             stock['displayMarketCap'] = abbr_format(stock.marketcap).toUpperCase();

@@ -109,7 +109,7 @@ $(document).ready(function(){
     .loss {
         color: red;
     }
-    
+
     .top-stocks .to-content-part ul .even a{
         width: 75%;
         color: #fff;
@@ -189,7 +189,6 @@ $(document).ready(function(){
         margin-bottom: 0;
     }
     .top-stocks .to-content-part ul .odd a p{
-        color: #999999 !important;
         margin-bottom: 0;
     }
     .top-stocks .to-content-part {

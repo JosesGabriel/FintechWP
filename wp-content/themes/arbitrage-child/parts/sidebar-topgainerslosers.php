@@ -103,10 +103,9 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers:hover, .losers:hover {
+    .gainers:hover {
         cursor: pointer;
     }
-
        
     .top-stocks .to-content-part ul .even {
         display: inline-flex;

@@ -57,7 +57,6 @@
                 $.ajax(settings).done(function (response) {
                     let res = response.data;
                     console.log(res);
-                    
                 });
                 
                 event.preventDefault();

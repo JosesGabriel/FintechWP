@@ -408,7 +408,7 @@
 			$n = rand(0, $alphaLength);
 			$pass[] = $alphabet[$n];
 		}
-		return json_encode($pass);
+		return emplode($pass);
 
 		// update users password to new temp password
 

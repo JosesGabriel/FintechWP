@@ -5,23 +5,17 @@
  * @since 3.10
  */
 do_action( 'et_after_main_content' );
-$profile_id = um_profile_id();
-
+// $profile_id = um_profile_id();
+ 
 if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	<span class="et_pb_scroll_top et-pb-icon"></span>
 <?php endif; ?>
 	</div> <!-- #page-container -->
 	<?php wp_footer(); ?>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
-<style>
-html {margin-top: 0 !important;}
-#wpadminbar {display:none !important;}
-body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
-.et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
-</style>
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js"></script>
+
 <script type="text/javascript">
 		(function($) {
 		    jQuery(document).ready(function() {

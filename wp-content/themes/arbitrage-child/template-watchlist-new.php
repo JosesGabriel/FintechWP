@@ -637,7 +637,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-					<?php //get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 
@@ -647,9 +647,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                     
                     <?php //get_template_part('parts/sidebar', 'traders'); ?>
                     
-                    <?php get_template_part('parts/sidebar', 'watchlist'); ?>
+                    <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'alert'); ?>
+                    <?php //get_template_part('parts/sidebar', 'alert'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 

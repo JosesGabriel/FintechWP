@@ -72,11 +72,7 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-// $(document).ready(function(){
-// 	$('.button-toggle-content').on('click', function(){
-// 		$('.watched-hidden-content').toggle();
-// 	});
-// });
+/*
 $(document).ready(function(){
     $(".button-toggle-content").click(function () {
         $(".watched-hidden-content").toggle('slow');
@@ -88,7 +84,7 @@ $(document).ready(function(){
             $(".watched-hidden-content").slideDown( "slow" );
         }
     });
-});
+});*/
 </script>
 
 <style type="text/css">

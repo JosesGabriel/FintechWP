@@ -78,6 +78,16 @@ $(document).ready(function(){
              $('.gainers').slideUp();
         }
     });
+
+    $(".losers-title").click(function () {
+        
+        if($('.losers').css('display') == 'none'){
+            $('.losers').slideDown();
+        }else {
+             $('.losers').slideUp();
+        }
+    });
+
 });
 </script>
 

@@ -23,20 +23,20 @@
 
         foreach($stockinfo as $stkey => $stvals){
 
-            $stock[$i] = $stvals->symbol;
-            $change[$i] = $stvals->change;
+            $stock[$i][0] = $stvals->symbol;
+            $stock[$i][1] = $stvals->change;
             $i++;
         }
-             usort($change, function($a, $b) {
+             usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
-            });  
+            });
 
              ?>
              <ul>
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
-                                <span><?php echo $stock[$j]; ?></span>
-                                <?php echo $change[$j]; ?><br>
+                                <span><?php echo $stock[$j][0]; ?></span>
+                                <?php echo $stock[$j][1]; ?><br>
                             </li>
                         <?php } ?>
             </ul>

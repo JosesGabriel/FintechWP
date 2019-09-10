@@ -133,7 +133,7 @@ get_header();
 	</div>
 <div class="container">
 	<div class="sub-container" style="width: 100%; text-align: justify;">
-		<h2>Privacy Policyy</h2>
+		<h2>Privacy Policy</h2>
 
 		<p class="content-meta-date">Last updated: April 8, 2019</p>
 		<div class="inner-content">

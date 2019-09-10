@@ -1,8 +1,8 @@
 
 <div class="top-stocks">
-    <div class="to-top-title"><strong>Top Gainers</strong></div>
+    <div class="to-top-title gainers-title"><strong>Top Gainers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers">
+    <div class="to-content-part gainers" style="display: none;">
 
 
         <?php 
@@ -96,7 +96,7 @@ $(document).ready(function(){
         width: 75%;
     }
 
-    .gainers:hover {
+    .gainers-title:hover {
         cursor: pointer;
     }
 

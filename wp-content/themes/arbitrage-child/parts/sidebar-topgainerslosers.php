@@ -68,19 +68,7 @@
             <strong>See more</strong>
         </div>
     </div> -->
-    <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
-        <div class="see-more-btn button-toggle-content">
-            <i class="fas fa-sort-down" id="fa-up" style="
-                font-size: 13px;
-                margin-right: 3px;
-                vertical-align: initial;
-                bottom: 0px;
-                top: -2px;
-                position: relative;
-            "></i>
-            <strong>See more</strong>
-        </div>
-    </div>
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>

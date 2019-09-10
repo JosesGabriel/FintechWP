@@ -16,6 +16,16 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 <script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+<script>
+	window.onload = function() {
+		if ( /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+			$('#vyndue--link').attr("target","_blank");
+			$('#vyndue--link').attr("href","https://vyndue.com");
+			window.close();
+		}
+	}
+</script>
 
 <script type="text/javascript">
 		(function($) {

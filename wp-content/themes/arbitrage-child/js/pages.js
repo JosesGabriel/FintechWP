@@ -4,4 +4,6 @@ jQuery(document).ready(function(e) {
     jQuery("#et-main-area").click(function(e){
         jQuery(".dropdown_tools, .dropdown_user").hide('slow');	
     });
+
+    $(".ms-ctn .ms-sel-ctn").append("<i class='fas fa-search'></i>");
 });

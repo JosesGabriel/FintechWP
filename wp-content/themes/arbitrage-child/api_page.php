@@ -392,9 +392,7 @@
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
-        global $wpdb;
-
-        die('hello ralph');
+        echo json_encode(['heekodsadsa']);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;

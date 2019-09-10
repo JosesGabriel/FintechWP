@@ -64,9 +64,6 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
-	<script type="text/javascript">
-			
-	</script>
 	<?php if (isset($_GET['arbitaction']) && $_GET['arbitaction'] == "editphoto"): ?>
 	<script>
 		jQuery(document).ready(function () {
@@ -86,6 +83,11 @@
     <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
+<script>
+	jQuery(document).ready(function(e) {
+		jQuery(".um-activity-new-post .um-activity-body .um-activity-textarea").append('<img class="arb_newpostimg" src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" alt="<?php echo ucfirst(um_user('first_name')); ?>">');
+	});
+</script>
 <?php
 	$product_tour_enabled = et_builder_is_product_tour_enabled();
 	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>

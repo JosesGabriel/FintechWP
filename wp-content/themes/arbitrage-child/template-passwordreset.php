@@ -3,7 +3,7 @@
 	* Template Name: Password Confirmation
 	*/
 
-get_header();
+// get_header();
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
@@ -757,4 +757,4 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	});
 </script>
 
-<?php get_footer();
+<?php //get_footer();

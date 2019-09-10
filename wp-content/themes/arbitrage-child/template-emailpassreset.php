@@ -26,7 +26,8 @@
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery("#email_pass_reset").submit(function(){
+		jQuery("#email_pass_reset").click(function(event){
+                
                 var hasemailinfo = jQuery("#email_info").val().length;
                 var emailinfo = jQuery("#email_info").val();
                 if( hasemailinfo >= 1 ) {
@@ -37,12 +38,13 @@
                             'mail' : emailinfo
                         },
                         success: function(data) {
-                            alert("Sucess")
+                            alert("Sucess");
                         },
                         error: function(requestObject, error, errorThrown) {
                         }
                     });
                 }
+                event.preventDefault();
             });
 	});
 </script>

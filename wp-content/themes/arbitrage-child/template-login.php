@@ -769,8 +769,11 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
+.um-col-alt-b {
+    display: none;
+}
 .contercontrol {display:none !important;}
-	
+
 	<?php if (isset($_GET['active'])){ ?>
 		/* Countdown disabled */
 		.contercontrol {display:none !important;}

@@ -411,7 +411,8 @@
 		return json_encode($pass);
 
 		// update users password to new temp password
-		
+		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
+
 		// send email include all created credentials
 
 		// return to user success
@@ -454,8 +455,6 @@
 					echo $_GET['toverify']." is already verified";
 				}
 			}
-
-
 		
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );

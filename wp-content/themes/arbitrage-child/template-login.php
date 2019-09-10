@@ -769,7 +769,7 @@ body, #page-container {background-color: transparent !important;}
 div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-size: 22px;
 }
-.um-col-alt-b {
+.um-col-alt-b a.um-link-alt {
     display: none !important;
 }
 .contercontrol {display:none !important;}

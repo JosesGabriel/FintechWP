@@ -641,7 +641,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'topgainerslosers'); ?>
+                     <?php get_template_part('parts/sidebar', 'topgainerslosers'); ?>
 					
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
@@ -649,7 +649,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'alert'); ?>
+                    <?php //get_template_part('parts/sidebar', 'alert'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 

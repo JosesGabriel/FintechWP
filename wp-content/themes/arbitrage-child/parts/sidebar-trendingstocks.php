@@ -1,53 +1,14 @@
-<script type="text/javascript">
-jQuery(function(){
-
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-  var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
-  var dcount = 0;
-  jQuery('.top-stocks .to-content-part ul .even span, .top-stocks .to-content-part ul .odd span').each(function(index,el){
-    if (dcount == '10') {dcount = 0; }
-    jQuery(el).css('border-color',colors[dcount]);
-    dcount++;
-  });
-});
-
-
-// jQuery(document).ready(function(){
-//   jQuery(".see-more-btn").click(function(){
-//     jQuery(".hide-show").toggle(function(){
-//   });
-// });
-// });
-jQuery(document).ready(function(){
-jQuery(".stocks-hidden-content").click(function () {
-    jQuery(".trend-content-hidden").toggle('slow');
-        if(jQuery(".stocks-hidden-content").hasClass('isopen')){
-            jQuery(".stocks-hidden-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
-            jQuery(".trend-content-hidden").slideUp( "slow" );
-        }else {
-            jQuery(".stocks-hidden-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
-            jQuery(".trend-content-hidden").slideDown( "slow" );
-          }
-    });
-});
-
-
-</script>
 <?php
     global $wpdb;
 
     $date = date('Y-m-d', time());
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
     curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $gerdqoute = curl_exec($curl);
     curl_close($curl);
-
-    
-    
     
     $gerdqoute = json_decode($gerdqoute);
     $adminuser = 504; // store on the chart page
@@ -60,43 +21,45 @@ jQuery(".stocks-hidden-content").click(function () {
             $indls['stock'] = $dlskey;
             $dstocknamme = $dlskey;
 
-            // $dstocks = $stocksdesc->$dstocknamme->description;
             $dstocks = $dlsvalue->description;
             $indls['stnamename'] = $dstocks;
-            $dpullbear = get_post_meta( 504, '_sentiment_'.$dlskey.'_bear', true );
-            $dpullbull = get_post_meta( 504, '_sentiment_'.$dlskey.'_bull', true );
+            $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bear', true );
+            $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bull', true );
             $indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
-            // $indls['following'] = ($dpullbear != "" ? $dpullbear : 0) + ($dpullbull != "" ? $dpullbull : 0);
-    
-            // trending on posts
-    
-            // $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".strtolower($dstocknamme)."%'");
+            
             $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
-            // echo "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND post_date > ".$date;
 
-            $countpstock = 0;
+            $todayreps = 0; // today
+            $countpstock = 0; // 3 days back
             $isbull = 0;
             foreach ($dsprest as $rsffkey => $rsffvalue) {
                 $dcontent = $rsffvalue->post_content;
                 if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
-                    $countpstock++;
+                    if(date("Y-m-d", strtotime($rsffvalue->post_date)) == $date){
+                        $todayreps++;
+                    } else {
+                        $countpstock++;
+                    }
+                    
                 }
                 // echo $rsffvalue->ID." - ";
-                $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
-                $bull_people = $bull_people == '' ? 0 : $bull_people;
-                $isbull += $bull_people;
+                // $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
+                // $bull_people = $bull_people == '' ? 0 : $bull_people;
+                // $isbull += $bull_people;
             }
 
-            $dpresent = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= CURDATE()");
-            $todayreps = 0;
-            foreach ($dpresent as $rsffkey => $rsffvalue) {
-                $dcontent = $rsffvalue->post_content;
-                if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
-                    $todayreps++;
-                }
-            }
 
-            $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
+            //get rodat
+            // $dpresent = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= CURDATE()");
+            // $todayreps = 0;
+            // foreach ($dpresent as $rsffkey => $rsffvalue) {
+            //     $dcontent = $rsffvalue->post_content;
+            //     if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+            //         $todayreps++;
+            //     }
+            // }
+
+            // $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
             // $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
             $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
             $dpullbull = $dpullbull == '' ? 0 : $dpullbull;
@@ -239,116 +202,4 @@ jQuery(".stocks-hidden-content").click(function () {
         <a href="#" class="to-view-more">View all trending stocks</a>
     </div> -->
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<style type="text/css">
-    .fa-sort-down {
-        color: #d8d8d8;
-    }
-    .fa-sort-up {
-        color: #d8d8d8;
-    }
-    .see-more-btn strong {
-        color: #d8d8d8;
-    }
-    .see-more-btn i {
-        color: #d8d8d8;
-    }
-    .top-stocks .to-content-part ul .even span {
-        border: 2px solid;
-        height: 42px;
-        width: 42px;
-        line-height: 40px;
-        font-size: 11px !important;
-        text-align: center;
-        display: block;
-        border-radius: 25px;
-    }
-    .top-stocks .to-content-part ul .even a{
-        width: 75%;
-    }
-    .top-stocks .to-content-part ul .odd a{
-        width: 75%;
-    }
-
-    .top-stocks .to-content-part ul .even {
-        display: inline-flex;
-        text-overflow: ellipsis;
-        width: 98%;
-        padding: 7px;
-        padding-left: 11px;
-    }
-    .top-stocks .to-content-part ul .odd {
-        display: inline-flex;
-        text-overflow: ellipsis;
-        width: 98%;
-        padding: 7px;
-        padding-left: 11px;
-    }
-    .top-stocks .to-content-part ul .odd span {
-        border: 2px solid;
-        height: 42px;
-        width: 42px;
-        line-height: 40px;
-        font-size: 11px !important;
-        text-align: center;
-        display: block;
-        border-radius: 25px;
-    }
-    .watch-list-inner .to-content-part .even tr:last-child {
-        border-bottom: none !important;
-
-    }
-    .watch-list-inner .to-content-part {
-        padding-top: 0 !important;
-    }
-    .top-stocks {
-        background-color: #142c46;
-
-    }
-    .top-stocks .to-top-title {
-        padding-top: 10px !important;
-        padding-left: 15px !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 7px !important;
-    }
-    .to-bottom-seemore {
-        padding: 0px 0px 8px 16px;
-        font-size: 12px !important;
-        font-weight: 300 !important;
-    }
-    .hide-show {
-        display: none;
-    }
-    .right-dashboard-part {
-        float: left;
-        width: 27%;
-        padding: 21px 0px !important;
-    }
-    .to-bottom-seemore {
-        cursor: pointer;
-        font-weight: 500;
-    }
-    .top-stock .to-content-part {
-        padding-bottom: 0 !important;
-    }
-    .top-stocks .to-content-part ul li a {
-        padding: 2px 10px !important;
-    }
-    .top-stocks .to-content-part ul .even a p{
-        color: #999999 !important;
-        margin-bottom: 0;
-    }
-    .top-stocks .to-content-part ul .odd a p{
-        color: #999999 !important;
-        margin-bottom: 0;
-    }
-    .top-stocks .to-content-part {
-        padding-bottom: 0 !important;
-      min-height: 126px;
-    }
-    .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {
-        top: 17px !important;
-        bottom: 8px !important;
-        position: relative !important;
-    }
-</style>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->

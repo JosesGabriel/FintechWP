@@ -102,7 +102,12 @@ $(document).ready(function(){
     .top-stocks .to-content-part ul .odd a{
         width: 75%;
     }
-    
+
+    .gainers:hover, .losers:hover {
+        cursor: pointer;
+    }
+
+       
     .top-stocks .to-content-part ul .even {
         display: inline-flex;
         text-overflow: ellipsis;

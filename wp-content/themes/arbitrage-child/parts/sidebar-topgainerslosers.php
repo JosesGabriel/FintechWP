@@ -70,8 +70,9 @@
 <script>
 
 $(document).ready(function(){
-    $(".gainers").click(function () {
+    $(".gainers-title").click(function () {
         console.log('daddsdsds');
+        $('.gainers').slideDown();
     });
 });
 </script>

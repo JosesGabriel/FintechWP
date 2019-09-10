@@ -24,7 +24,7 @@
         foreach($stockinfo as $stkey => $stvals){
 
             $stock[$i][0] = $stvals->symbol;
-            $stock[$i][1] = $stvals->change;
+            $stock[$i][1] = $stvals->changepercentage;
             $i++;
         }
              usort($stock, function($a, $b) {

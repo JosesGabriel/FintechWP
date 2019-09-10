@@ -393,8 +393,9 @@
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
 		$emailstr = stripslashes($_GET['email']);
+		
 
-		return json_encode($emailstr);
+		return emplode($emailstr);
 
 		// Search if email is existing
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
@@ -408,7 +409,7 @@
 			$n = rand(0, $alphaLength);
 			$pass[] = $alphabet[$n];
 		}
-		return json_encode($pass);
+		return emplode($pass);
 
 		// update users password to new temp password
 		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";

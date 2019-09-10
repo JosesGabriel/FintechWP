@@ -34,7 +34,7 @@
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j]; ?></span>
-                                <a href="#"><?php echo $change[$j]; ?><br><p><?php //echo $stock_watched[$i][1]; ?> Following</p></a>
+                                <?php echo $change[$j]; ?><br>
                             </li>
                         <?php } ?>
             </ul>

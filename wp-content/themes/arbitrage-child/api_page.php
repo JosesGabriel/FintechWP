@@ -3,7 +3,7 @@
 	* Template Name: API Page
 	* Template page for Watchlist Page Platform
 	*/
-
+    die('balakajan!');
 	// get_header();
 
 	// define('WP_USE_THEMES', false);

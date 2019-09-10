@@ -118,3 +118,99 @@ html {margin-top: 0 !important;}
 body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
 .et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
 /* EOF footer styles */
+
+/* BOF Watchlist */
+    .to-watch-data {
+        border-bottom: #1e3554 solid 1px;
+        /*display: table-cell;
+        vertical-align: middle;*/
+        min-height: 76px;/*
+        background: #123;*/
+    }
+    .to-watch-data.to-stock {
+        display: inline-block !important;
+    }
+    .to-watch-data.minichartt {
+
+    }
+    .to-watch-data.dbox-cont {
+        display: inline-block !important;
+    }
+    .to-watch-data:last-child {
+        border-bottom: none;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #142c46 !important;
+    }
+
+    .nvd3 .nv-axis line {
+        display: none;
+    }
+
+    .nvd3 .nv-axis path.domain {
+        display: none;
+    }
+
+    .negative > line, .negative > rect {
+        stroke: #eb4d5c !important;
+        fill: #eb4d5c !important;
+    }
+
+    .positive > line {
+        stroke: #53b987 !important;
+    }
+    .positive > rect {
+        stroke: #53b987 !important;
+        fill: #53b987 !important;
+    }
+
+
+    .dplsicon {
+        display: none !important;
+
+    }
+    .side-header {
+        border-bottom: none  !important;
+    }
+    .dplusbutton {
+        color: #fff;
+        padding: 30px 0px 22px 0px;
+    }
+    .top-traiders .to-content-part {
+        /* background: #0d1f33 !important; */
+        padding: 15px;
+    }
+    .side-content {
+        background: rgba(44, 62, 80, 0) !important;
+        border-radius: 0px 0px 5px 5px !important;
+        padding: 3px 0px 0px 0px !important;
+    }
+
+    .side-content ul li {
+        background: rgba(255, 255, 255, 0) !important;
+    }
+    .watch-list {
+        background: #142c46 !important;
+        margin-top: 11px !important;
+    }
+    .adsbygoogle {
+        background: #142c46;
+        display: block !important;
+        margin-top: 15px;
+        border-radius: 5px;
+        overflow: hidden;
+        padding-bottom: 8px;
+        /* padding: 10px 15px 15px 15px; */
+    }
+    .adsbygoogle .to-top-title {
+        padding-top: 6px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 0;
+        margin-bottom: 5px;
+    }
+    .see-more-btn a:hover {
+        text-decoration: none !important;
+    }
+    
+/* EOF Watchlist */

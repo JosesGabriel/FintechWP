@@ -27,7 +27,9 @@
             $change[$i] = $stvals->change;
             $i++;
         }
-             
+             usort($change, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });  
 
              ?>
              <ul>

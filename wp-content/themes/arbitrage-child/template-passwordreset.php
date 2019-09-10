@@ -2,18 +2,12 @@
 	/*
 	* Template Name: Password Confirmation
 	*/
-$homeurlgen = get_home_url();
 
-if ( is_user_logged_in() ) {
-	header("Location: ".$homeurlgen."/");
-	die();
-}
-global $current_user;
-$user = wp_get_current_user();
 get_header();
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
+<?php get_template_part('parts/global', 'css'); ?>
 <style>/* Overrides */
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
     body, html {overflow: hidden !important;}

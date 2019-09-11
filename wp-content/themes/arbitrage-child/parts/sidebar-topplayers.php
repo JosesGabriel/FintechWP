@@ -9,6 +9,7 @@
 
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );
+				curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dranks = curl_exec($curl);
 				curl_close($curl);

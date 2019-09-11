@@ -393,7 +393,7 @@
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
 		$emailstr = stripslashes($_GET['email']);
-		// echo "test";
+		echo $emailstr;
 
 		return json_encode($emailstr);
 

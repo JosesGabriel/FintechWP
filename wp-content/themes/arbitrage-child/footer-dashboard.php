@@ -136,7 +136,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			<?php /* temp-disabled-start */
 				$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-				// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:109.199.140.243']);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec($curl);
 				curl_close($curl);
@@ -147,6 +147,15 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}	
 				
 			?>
+			
+			$.ajax({
+				url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
+				type: 'GET',
+				dataType: 'json', // added data type
+				success: function(res) {
+					console.log(res);
+				}
+			});
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
 
 			<?php // $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>

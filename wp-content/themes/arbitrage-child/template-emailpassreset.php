@@ -20,6 +20,12 @@
 
             <input type="submit" value="Reset" id="email_btn_info">
         </form>
+        <form action="mailto:you@yourdmainhere.com" method="post" enctype="text/plain" >
+            FirstName:<input type="text" name="FirstName">
+            Email:<input type="text" name="Email">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
     </div>
 </div>
 

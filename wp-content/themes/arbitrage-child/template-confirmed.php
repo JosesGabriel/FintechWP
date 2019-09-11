@@ -1,6 +1,6 @@
 <?php
 	/*
-	* Template Name: Email Pass Confirmation
+	* Template Name: Password Confirmed
 	*/
 
 // get_header();

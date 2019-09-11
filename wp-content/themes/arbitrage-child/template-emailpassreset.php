@@ -713,10 +713,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
     // }
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-                
+                let origin   = window.location.origin;
                 let email = jQuery("#email_info").val();
                 // console.log(email);
-                let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
+                let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {
                     "async": true,
                     "crossDomain": true,

@@ -28,7 +28,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		curl_close($curl);
@@ -39,7 +39,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
 		curl_close($curl);
@@ -69,7 +69,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
 			curl_close($curl);
@@ -80,7 +80,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
 			curl_close($curl);
@@ -441,7 +441,7 @@
 		<div class="em-container" style="-webkit-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); -moz-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53);">
 			<div class="em-content-handler">
 				<div class="em-content-center" style="margin: 0 39px; padding-bottom: 45px; padding-top: 67px;">
-					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;">We received a request to reset the password for your account. Your new password is indicated below.</div>
+					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;color: #142c46;">We received a request to reset the password for your account. Your new password is indicated below.</div>
 					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="'.$homeurlgen.'">'. $passgen .'</a>
 					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;color: #142c46;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
 					<div class="greet-container" style="font-weight: 500;color: #142c46;">
@@ -516,7 +516,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
-		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 

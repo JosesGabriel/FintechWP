@@ -20,6 +20,7 @@
             $stock[$i][0] = $stvals->symbol;
             $stock[$i][1] = $stvals->changepercentage;
             $stock[$i][2] = $stvals->description;
+            $stock[$i][3] = $stvals->lastupdatetime;
             $i++;
         }
              usort($stock, function($a, $b) {

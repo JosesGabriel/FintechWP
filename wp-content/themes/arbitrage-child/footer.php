@@ -87,7 +87,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							}
 					?>
 		        	var counx = 0;
-					var usersall = '<?php echo json_encode($newuserlist); ?>';
+					var usersall = `<?php echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
 
 							jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont")

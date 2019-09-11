@@ -392,6 +392,7 @@
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
+		$homeurlgen = get_home_url();
 		$emailstr = stripslashes($_GET['email']);
 		echo $emailstr ."\n";
 		// return json_encode($emailstr);
@@ -418,17 +419,17 @@
 		$subject = 'Password Reset Confirmation';
 		$message = '
 		<div class="container" style="width: 100%; font-family: "Roboto", sans-serif; color: #142c46;">
-		<div class="em-head" style="padding: 23px 0px 23px 31px; background-color: #142c46; background-image: url("https://arbitrage.ph/email-templates/email-template/lines.png"); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="https://arbitrage.ph/email-templates/email-template/logo.png" /></div>
-		<div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;">{site_name} <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
+		<div class="em-head" style="padding: 23px 0px 23px 31px; background-color: #142c46; background-image: url("'.$homeurlgen.'/email-templates/email-template/lines.png"); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="'.$homeurlgen.'/email-templates/email-template/logo.png" /></div>
+		<div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;color: #142c46;">Arbitrage <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
 		<div class="em-container" style="-webkit-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); -moz-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53);">
 			<div class="em-content-handler">
 				<div class="em-content-center" style="margin: 0 39px; padding-bottom: 45px; padding-top: 67px;">
-					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;">We received a request to reset the password for your account. Your new password is indicated below.</div>
-					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="{login_url}">'. $passgen .'</a>
-					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
-					<div class="greet-container" style="font-weight: 500;">
-						<div class="em-greet sss" style="margin-top: 52px; font-size: 15px;">Thank you!</div>
-						<div class="em-greet-name" style="font-size: 15px;">The <a href="{site_url}">{site_name}</a> Team</div>
+					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;color: #142c46;">We received a request to reset the password for your account. Your new password is indicated below.</div>
+					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="'.$homeurlgen.'">'. $passgen .'</a>
+					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;color: #142c46;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
+					<div class="greet-container" style="font-weight: 500;color: #142c46;">
+						<div class="em-greet sss" style="margin-top: 52px; font-size: 15px;color: #142c46;">Thank you!</div>
+						<div class="em-greet-name" style="font-size: 15px;color: #142c46;">The <a href="'.$homeurlgen.'">Arbitrage</a> Team</div>
 					</div>
 				</div>
 			</div>
@@ -452,9 +453,44 @@
 
         die('test test');
 
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'socialwall'){
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'whotomingle'){
 
-        echo do_shortcode('[ultimatemember_activity]');
+        // global $current_user;
+		// $user = wp_get_current_user();
+		$userID = $current_user->ID;
+		$topargs = array(
+			'role'          =>  '',
+		);
+		$users = get_users($topargs);
+		$newuserlist = array();
+		foreach ($users as $key => $value) {
+
+			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
+				
+				if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
+					// if ($pending == $userID) {
+					// 	echo $value->data->user_login." respond to request -<br />";
+					// } else {
+					// 	echo $value->data->user_login." request sent -<br />";
+					// }
+				} else {
+					$userdetails['currentuser'] = $userID;
+					$userdetails['id'] = $value->ID;
+					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+					$userdetails['user_nicename'] = $value->data->user_nicename;
+					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+					array_push($newuserlist, $userdetails);
+				}
+			}
+		}
+
+		usort($newuserlist, function($a, $b) {
+			return $a['followers'] <=> $b['followers'];
+		});
+		$toptraiders = array_reverse($newuserlist);
+		$toptraiders = array_slice($toptraiders, 0, 3);
+		echo json_encode($toptraiders);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;

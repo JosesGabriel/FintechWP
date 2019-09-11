@@ -6,6 +6,8 @@
 // get_header();
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
+
+$homeurlgen = get_home_url();
 ?>
 
 <div class="ondashboardpage_login">
@@ -16,7 +18,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
             <span class="label_pls">Please enter your email address below</span><br>
             <input type="email" required class="email-info" id="email_info"><br>
 
-            <input type="submit" value="Reset" id="email_btn_info">
+            <input type="submit" value="Reset" id="email_btn_info" onClick="window.location.href='<?php echo $homeurlgen; ?>/password-confirmed/'">
         </form>
     </div>
 </div>
@@ -713,10 +715,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
     // }
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-                
+                let origin   = window.location.origin;
                 let email = jQuery("#email_info").val();
                 // console.log(email);
-                let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
+                let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {
                     "async": true,
                     "crossDomain": true,

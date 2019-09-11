@@ -393,7 +393,7 @@
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
 		$emailstr = stripslashes($_GET['email']);
-		echo $emailstr;
+		echo $emailstr ."\n";
 		// return json_encode($emailstr);
 
 		// Search if email is existing
@@ -410,7 +410,7 @@
 		echo $passgen;
 
 		// update users password to new temp password
-		$updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
+		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
 
 		// send email include all created credentials
 

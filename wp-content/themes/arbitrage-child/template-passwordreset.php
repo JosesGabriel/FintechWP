@@ -647,7 +647,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
             padding-top: 14%;
         }
     }
-    .email-info {
+    .pass-info {
         background: rgba(255,255,255,0.3);
         outline: none !important;
         color: #fff;

@@ -1,5 +1,5 @@
 <?php 
-
+        header('Access-Control-Allow-Origin: *');
        
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");

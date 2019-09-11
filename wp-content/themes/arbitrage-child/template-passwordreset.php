@@ -701,6 +701,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 
             <Label>Confirm New Password</Label>
             <input type="text" required class="pass-info" id="new_onf_old">
+            <br>
 
             <input type="submit" value="Update Password" id="pass_btn_info">
         </form>

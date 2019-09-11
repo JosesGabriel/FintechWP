@@ -40,7 +40,7 @@
                        <?php for($j=0; $j < 5; $j++) {?> 
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo date_format($stock[$j][3], 'Y-m-d'); ?><p></a>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo date_format($stock[$j][3], 'Y-m-d') . ' - ' .  $stock[$j][3]; ?><p></a>
                             </li>
                         <?php } ?>
             </ul>

@@ -43,7 +43,7 @@ $( document ).ready(function() {
                 toappendme += '<div class="traider-inner">';
                 toappendme += '<div class="traider-image">';
                 toappendme += '<div class="circle-frame" style="border:2px solid rgba(101, 131, 168, 0.4196078431372549);padding: 4px !important;border-radius: 50%;width: 47px;height: 47px;">';
-                toappendme += '<div class="side-image" style="background: url("'+value.profpic+'") no-repeat center center;">&nbsp;</div>';
+                toappendme += '<div class="side-image" style="background: url('+value.profpic+') no-repeat center center;">&nbsp;</div>';
                 toappendme += '</div>';
                 toappendme += '</div>';
                 toappendme += '<div class="traider-details">';

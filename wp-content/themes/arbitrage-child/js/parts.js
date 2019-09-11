@@ -232,3 +232,339 @@ jQuery(document).ready(function() {
 
 });
 // EOF Sidebar Calc
+
+// BOF Var Calc
+jQuery(document).ready(function(){
+
+    jQuery("#stockname").on('change', function() {
+        jQuery("#currentprice").val(this.value);
+    });
+    
+
+    jQuery("#currentprice, #portalloc, #portsize, #risktoler, #targetprof, #idenentryprice, #targetprof, #noofshare").keyup(function(){exevarclc();});
+
+    jQuery("#currentprice, #portalloc, #portsize, #risktoler, #targetprof, #idenentryprice, #targetprof, #noofshare").click(function(){exevarclc();});
+
+    
+
+    function exevarclc(){
+
+        /* ENTER STOCK DETAILS */
+
+        var vr_currentprice = jQuery('#currentprice').val().replace(/[^0-9\.]/g, ''); // 12.5
+
+
+        /* PORTFOLIO PLANNING */
+
+        var vr_portsize = jQuery('#portsize').val().replace(/[^0-9\.]/g, ''); // 100,000
+
+        var vr_portalloc = jQuery('#portalloc').val().replace(/[^0-9\.]/g, ''); // 30
+
+        var vr_portallocdeci = Number(vr_portalloc) / 100; 
+
+        var vr_posisizemin = Math.round(Number(vr_portallocdeci) * Number(vr_portsize));
+
+        jQuery('#posisize').val(numeral(vr_posisizemin).format('0,0.00'));
+
+        
+
+        /* TRADE PLANNING */
+
+        var vr_idenentryprice = jQuery('#idenentryprice').val().replace(/[^0-9\.]/g, '');
+
+        var vr_risktoler = jQuery('#risktoler').val().replace(/[^0-9\.]/g, '');
+
+        var vr_targetprof = jQuery('#targetprof').val().replace(/[^0-9\.]/g, '');
+
+        var vr_stoploss = jQuery('#stoploss').val(numeral(vr_risktoler).format('0,0.00'));
+
+        
+
+        var vr_takeprofitpricetot0 = Number(vr_targetprof) / 100;
+
+        var vr_takeprofitpricetot1 = Number(vr_idenentryprice) * Number(vr_takeprofitpricetot0);
+
+        var vr_takeprofitpricetot2 = Number(vr_idenentryprice) + Number(vr_takeprofitpricetot1);
+
+        var vr_takeprofitprice = jQuery('#takeprofitprice').val(numeral(vr_takeprofitpricetot2).format('0,0.00'));
+
+        
+
+        var vr_stoplosspricetot1 = Number(vr_risktoler) / 100;
+
+        var vr_stoplosspricetot2 = Number(vr_idenentryprice) - Number(vr_stoplosspricetot1);
+
+        var vr_stoplossprice = jQuery('#stoplossprice').val(numeral(vr_stoplosspricetot2).format('0,0.00'));
+        
+
+        var vr_valueatrisk1 = Number(vr_risktoler) / 100;
+
+        var vr_valueatrisk2 = Number(vr_posisizemin) * Number(vr_valueatrisk1)
+
+        var vr_valueatrisk = jQuery('#valueatrisk').val(numeral(vr_valueatrisk2).format('0,0.00'));
+
+        
+
+        var vr_upsidetot = Number(vr_posisizemin) * Number(vr_takeprofitpricetot0);
+
+        var vr_upside = jQuery('#upside').val(numeral(vr_upsidetot).format('0,0.00'));
+
+        
+
+        /* POSITION SIZING & RRR */
+
+ //       var boardlotget_var = $("#idenentryprice").val();
+       
+           var boardlotget_var = $("#idenentryprice").val().replace(/[^0-9\.]/g, '');
+
+           boardlotget_var = parseFloat(boardlotget_var);
+
+        var boardlotget_val;
+
+        if ( boardlotget_var >= 0.0001 && boardlotget_var <= 0.0099){
+
+            boardlotget_val = 1000000
+
+        } else if ( boardlotget_var >= 0.01 && boardlotget_var <= 0.049){
+
+            boardlotget_val = 100000
+
+        } else if ( boardlotget_var >= 0.05 && boardlotget_var <= 0.495){
+
+            boardlotget_val = 10000
+
+        } else if ( boardlotget_var >= 0.5 && boardlotget_var <= 4.99){
+
+            boardlotget_val = 1000
+
+        } else if ( boardlotget_var >= 5 && boardlotget_var <= 49.95){
+
+            boardlotget_val = 100
+
+        } else if ( boardlotget_var >= 50 && boardlotget_var <= 999.5){
+
+            boardlotget_val = 10
+
+        } else if ( boardlotget_var >= 1000){
+
+            boardlotget_val = 5
+
+        }			
+
+//         var vr_boardlot = jQuery('#boardlot').val().replace(/[^0-9\.]/g, '');			
+
+
+        var vr_boardlot_tmp = jQuery('#boardlot').val(numeral(boardlotget_val).format('0,0.00'));			
+
+        var vr_boardlot = boardlotget_val;
+
+        var vr_noofsharetot1 = Number(vr_posisizemin) / Number(boardlotget_val);
+
+        var vr_noofsharetot2 = Math.round(Number(vr_noofsharetot1) / Number(vr_idenentryprice));
+
+            vr_noofsharetot2 = Number.isNaN(vr_noofsharetot2) ? 0 : vr_noofsharetot2;
+
+
+        // var numofshares = vr_posisizemin / 
+        
+        var blots = parseFloat(boardlotget_val);
+        var sharestobuy = Math.floor(vr_posisizemin / vr_idenentryprice);
+        
+        var slotmultiplier = Math.floor(sharestobuy / blots);
+        var finalstocks = blots * slotmultiplier;
+
+        // var vr_noofshare = jQuery('#noofshare').val(numeral(vr_noofsharetot2).format('0,0.00'));
+        var vr_noofshare = jQuery('#noofshare').val(numeral(finalstocks).format('0,0.00'));
+
+        
+
+        var vr_risktorewardtot1 = Number(vr_valueatrisk2) / Number(vr_valueatrisk2);
+
+        var vr_risktorewardtot2 = Number(vr_upsidetot) / Number(vr_valueatrisk2);
+
+        var vr_risktorewardfmt = vr_risktorewardtot1 + ":" + vr_risktorewardtot2;
+
+            vr_risktorewardfmt = Number.isNaN(vr_risktorewardtot1) || Number.isNaN(vr_risktorewardtot2) ? 0 : vr_risktorewardfmt;
+
+        var vr_risktoreward = jQuery('#risktoreward').val(vr_risktorewardfmt);	
+
+        
+
+    }
+    
+
+    jQuery('input.number').keyup(function (event) {
+        // skip for arrow keys
+             // var calcsss
+        if (event.which >= 37 && event.which <= 40) {
+            event.preventDefault();
+        }
+
+        var currentVal = jQuery(this).val();
+        var testDecimal = testDecimals(currentVal);
+        if (testDecimal.length > 1) {
+            currentVal = currentVal.slice(0, -1);
+        }
+        jQuery(this).val(replaceCommas(currentVal));
+    });
+
+    function testDecimals(currentVal) {
+        var count;
+        currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+        return count;
+    }
+
+    function replaceCommas(yourNumber) {
+        var components = yourNumber.toString().split(".");
+        if (components.length === 1) 
+            components[0] = yourNumber;
+        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (components.length === 2)
+            components[1] = components[1].replace(/\D/g, "");
+        return components.join(".");
+    }
+
+});
+// EOF Var Calc
+
+// BOF average price 
+(function($) {
+
+    jQuery(document).ready(function() {
+
+        function getfee(marketvalue) {
+
+            var totalfee = 0;
+            var partcpms = marketvalue * 0.0025;
+            var commission = (partcpms >= 20 ? partcpms : 20);
+            var tax = commission * 0.12;
+            var transfer = marketvalue * 0.00005;
+            var sccp = marketvalue * 0.0001;
+            // var sccp = 0;
+            totalfee = commission + tax + transfer + sccp;
+            return totalfee.toFixed(2);
+
+        };
+
+        jQuery(".additems a").click(function(e) {
+            e.preventDefault();
+            var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
+            var ditem = "";
+            ditem += '<ul class="doneitem">';
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
+            ditem += "</ul>";
+            jQuery(".paramlist div .bodies").append(ditem).attr('data-numcount', (parseInt(dcount) + 1));
+        });
+
+        jQuery('.clearbtn a').click(function(e) {
+            jQuery("#totalcost, #totalposition, #averageprice").val(0);
+            jQuery(".paramlist div .bodies").empty();
+
+            var ditem = "";
+
+            ditem += '<ul class="doneitem">';
+
+            ditem += '<li style="margin-top: 5px;margin-right: 3px;"><input type="text" class="dpos number" placeholder="Enter Position" style="font-size: 13px;"></li>';
+
+            ditem += '<li style="margin-top: 5px;"><input type="text" class="dpri number" placeholder="Enter Price" style="font-size: 13px;"></li>';
+
+            ditem += "</ul>";
+
+            jQuery(".paramlist div .bodies").append(ditem).attr('data-numcount', 1);
+
+        });
+
+        jQuery('.calculate a').click(function(e) {
+
+            e.preventDefault();
+
+            var dcount = jQuery(".paramlist div .bodies").attr('data-numcount');
+
+            if (dcount > 0) {
+
+                var totalcost = 0;
+
+                var totalprice = 0;
+
+                var totalvolume = 0;
+
+                var costfee = 0;
+
+                jQuery(".paramlist div .bodies ul").each(function(index) {
+
+                    var dposition = (jQuery(this).find('.dpos').val() != "" ? jQuery(this).find('.dpos').val().replace(/[^0-9\.]/g, '') : 0);
+                    var dprice = (jQuery(this).find('.dpri').val() != "" ? jQuery(this).find('.dpri').val().replace(/[^0-9\.]/g, '') : 0);
+
+                    if (dposition > 0 && dprice > 0) {
+
+                        totalvolume += parseFloat(dposition);
+
+                        totalprice += parseFloat(dprice);
+
+                        var nscost = parseFloat(dprice) * parseFloat(dposition)
+                        totalcost += nscost;
+
+                        costfee += parseFloat(nscost) + parseFloat(getfee(nscost));
+                    }
+
+
+                });
+
+                // var finalcost = (totalcost + parseFloat(getfee(totalcost))) / totalvolume;
+                var finalcost = costfee / totalvolume;
+
+                jQuery("#totalcost").val(numeral(costfee).format('0,0.00'));
+
+                jQuery("#totalposition").val(numeral(totalvolume).format('0,0.00'));
+
+                jQuery("#averageprice").val(numeral(finalcost).format('0,0.00'));
+
+                /*
+                jQuery("#totalcost").val(parseFloat(costfee).toFixed(2));
+
+                jQuery("#totalposition").val(totalvolume);
+
+                jQuery("#averageprice").val((finalcost).toFixed(2));
+                */
+
+
+            }
+
+        });
+
+        jQuery(document).on('keyup', 'input.number', function (event) {
+            // skip for arrow keyssss
+            if (event.which >= 37 && event.which <= 40) {
+                event.preventDefault();
+            }
+
+            var currentVal = jQuery(this).val();
+            var testDecimal = testDecimals(currentVal);
+            if (testDecimal.length > 1) {
+                currentVal = currentVal.slice(0, -1);
+            }
+            jQuery(this).val(replaceCommas(currentVal));
+            
+        });
+
+        function testDecimals(currentVal) {
+            var count;
+            currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+            return count;
+        }
+
+        function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
+
+    });
+
+})(jQuery);
+// EOF average price 

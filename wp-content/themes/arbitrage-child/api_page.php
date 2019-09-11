@@ -452,6 +452,94 @@
 
         die('test test');
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
+		global $wpdb;
+
+		$date = date('Y-m-d', time());
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
+		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$gerdqoute = curl_exec($curl);
+		curl_close($curl);
+		
+		$gerdqoute = json_decode($gerdqoute);
+		$adminuser = 504; // store on the chart page
+
+		
+
+		if ($gerdqoute) {
+			$listofstocks = []; 
+			foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
+				$indls = [];
+				$indls['stock'] = $dlskey;
+				$dstocknamme = $dlskey;
+
+				$dstocks = $dlsvalue->description;
+				$indls['stnamename'] = $dstocks;
+				
+				$dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
+
+				$todayreps = 0; // today
+				$countpstock = 0; // 3 days back
+				$isbull = 0;
+				foreach ($dsprest as $rsffkey => $rsffvalue) {
+					$dcontent = $rsffvalue->post_content;
+					if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+						if(date("Y-m-d", strtotime($rsffvalue->post_date)) == $date){
+							$todayreps++;
+						} else {
+							$countpstock++;
+						}
+						
+					}
+				}
+				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+				$dpullbull = $dpullbull == '' ? 0 : $dpullbull;
+				// 3 days back
+				$threedays = ceil($countpstock * 0.2);
+				$bulls = ceil($dpullbull * 0.3);
+				$tags = ceil($todayreps * 0.6);
+				$finalcount = $bulls + $threedays + $tags;
+				$stocksscount = $countpstock + $dpullbull + $todayreps;
+
+		
+				$indls['following'] = $finalcount;
+				if($finalcount > 0){
+					array_push($listofstocks, $indls);
+				}
+				
+			}
+
+			function date_compare($a, $b)
+			{
+				$t1 = $a['following'];
+				$t2 = $b['following'];
+				return $t1 - $t2;
+			}
+			usort($listofstocks, 'date_compare');
+			$drevdds = array_reverse($listofstocks);
+
+			$maxitems = 10;
+			$finaltopstocks = [];
+			foreach ($drevdds as $fnskey => $fnsvalue) {
+				if ($fnskey + 1 > $maxitems) {
+					break;
+				}
+				array_push($finaltopstocks, $fnsvalue);
+
+			}
+
+			echo json_encode($finaltopstocks);
+			die;
+		} else {
+			echo "no stock selected";
+		}
+
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;
 		$users = get_users( array( 'fields' => array( 'ID' ) ) );

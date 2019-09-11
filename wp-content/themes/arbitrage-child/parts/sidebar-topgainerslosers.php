@@ -14,6 +14,8 @@
         }
         $i = 0;
 
+print_r($stockinfo);
+
         foreach($stockinfo as $stkey => $stvals){
 
             $stock[$i][0] = $stvals->symbol;

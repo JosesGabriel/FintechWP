@@ -51,11 +51,13 @@ $( document ).ready(function() {
                 toappendme += '<div class="login"></div>';
                 toappendme += '</div>';
                 toappendme += '<div class="traider-follower">';
-                toappendme += '<div class="onbfollow"><a href="#" id="mingle-btn" style="border: 1.3px solid #e77e24;" class="um-friend-btn um-button um-alt outmingle" data-user_id1="'+value.id+'" data-user_id2="3">Mingle</a></div>';
+                toappendme += '<div class="onbfollow"><a href="#" id="mingle-btn" style="border: 1.3px solid #e77e24;" class="um-friend-btn um-button um-alt outmingle" data-user_id1="'+value.id+'" data-user_id2="'+value.currentuser+'">Mingle</a></div>';
                 toappendme += '</div>';
                 toappendme += '</div>';
                 toappendme += '</div>';
                 toappendme += '</div>';
+
+                $(".top-recommended-people").append(toappendme);
 
             });
         },

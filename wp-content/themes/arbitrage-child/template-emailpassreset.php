@@ -711,10 +711,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
             
     //     });
     // }
-	$(document).ready(function(){
-		$("#email_pass_reset").click(function(event){
+	jQuery(document).ready(function(){
+		jQuery("#email_pass_reset").click(function(event){
                 
-                var email = $("#email_info").val();
+                var email = jQuery("#email_info").val();
                 // console.log(email);
                 let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {

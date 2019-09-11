@@ -82,7 +82,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 						foreach ($users as $key => $value) {
 								$userdetails['id'] = $value->ID;
 								$userdata = get_userdata($value->ID);
-								$userdetails['displayname'] = htmlentities($userdata->first_name) .  " " . htmlentities($userdata->last_name);
+								$userdetails['displayname'] = htmlentities($userdata->first_name, ENT_QUOTES) .  " " . htmlentities($userdata->last_name, ENT_QUOTES);
 								array_push($newuserlist, $userdetails);
 							}
 					?>

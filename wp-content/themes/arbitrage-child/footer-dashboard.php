@@ -147,8 +147,14 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}	
 				
 			?>
-			$.get( "https://data-api.arbitrage.ph/api/v1/stocks/list", function( data ) {
-				console.log(data);
+			
+			$.ajax({
+				url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
+				type: 'GET',
+				dataType: 'json', // added data type
+				success: function(res) {
+					console.log(res);
+				}
 			});
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
 

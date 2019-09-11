@@ -725,8 +725,8 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                     "dataType": 'json'
                 };
                 $.ajax(settings).done(function (response) {
-                    let res = response.data;
-                    console.log(res);
+                    // let res = response.data;
+                    console.log(response);
                     alert("Success!!!")
                 });
                 

@@ -452,6 +452,43 @@
 
         die('test test');
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'whotomingle'){
+
+        // global $current_user;
+		// $user = wp_get_current_user();
+		$userID = $current_user->ID;
+		$topargs = array(
+			'role'          =>  '',
+		);
+		$users = get_users($topargs);
+		$newuserlist = array();
+		foreach ($users as $key => $value) {
+
+			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
+				
+				if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
+					// if ($pending == $userID) {
+					// 	echo $value->data->user_login." respond to request -<br />";
+					// } else {
+					// 	echo $value->data->user_login." request sent -<br />";
+					// }
+				} else {
+					$userdetails['id'] = $value->ID;
+					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+					$userdetails['user_nicename'] = $value->data->user_nicename;
+					array_push($newuserlist, $userdetails);
+				}
+			}
+		}
+
+		usort($newuserlist, function($a, $b) {
+			return $a['followers'] <=> $b['followers'];
+		});
+		$toptraiders = array_reverse($newuserlist);
+		$toptraiders = array_slice($toptraiders, 0, 3);
+		echo json_encode($toptraiders);
+
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;
 

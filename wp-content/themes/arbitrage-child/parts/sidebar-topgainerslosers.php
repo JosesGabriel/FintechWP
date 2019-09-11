@@ -15,20 +15,13 @@
         }
         $i = 0;
 
-        $today = date("Y-m-d");
-
         foreach($stockinfo as $stkey => $stvals){
 
-            $newDate = date("Y-m-d", strtotime($stvals->lastupdatetime;));
-
-            if($today == $newDate){
-                    $stock[$i][0] = $stvals->symbol;
-                    $stock[$i][1] = $stvals->changepercentage;
-                    $stock[$i][2] = $stvals->description;
-                    //$stock[$i][3] = $stvals->lastupdatetime;
-                    $i++;
-            }
-
+            $stock[$i][0] = $stvals->symbol;
+            $stock[$i][1] = $stvals->changepercentage;
+            $stock[$i][2] = $stvals->description;
+            $stock[$i][3] = $stvals->lastupdatetime;
+            $i++;
         }
              usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];

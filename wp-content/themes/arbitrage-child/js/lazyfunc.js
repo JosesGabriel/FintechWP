@@ -37,7 +37,7 @@ $( document ).ready(function() {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            $(".social-wall-part").append(res);
+            $(".social-wall-part").html(res);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status);

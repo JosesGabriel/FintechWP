@@ -18,7 +18,7 @@ $homeurlgen = get_home_url();
             <span class="label_pls">Please enter your email address below</span><br>
             <input type="email" required class="email-info" id="email_info"><br>
 
-            <input type="submit" value="Reset" id="email_btn_info" onClick="window.location.href='<?php echo $homeurlgen; ?>/password-confirmed/?active'">
+            <input type="submit" value="Reset" id="email_btn_info">
         </form>
     </div>
 </div>
@@ -713,9 +713,9 @@ $homeurlgen = get_home_url();
             
     //     });
     // }
+
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-            if(jQuery("#email_info").val().length >= 1){
                 let origin = window.location.origin;
                 let email = jQuery("#email_info").val();
                 // console.log(email);
@@ -734,8 +734,29 @@ $homeurlgen = get_home_url();
                 });
                 
                 event.preventDefault();
-            }
+            
             });
+        jQuery("#email_pass_reset").click(function(event){
+            // let origin = window.location.origin;
+            // let email = jQuery("#email_info").val();
+            // // console.log(email);
+            // let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
+            // let settings = {
+            //     "async": true,
+            //     "crossDomain": true,
+            //     "url": url,
+            //     "method": "GET",
+            //     "dataType": 'json'
+            // };
+            // $.ajax(settings).done(function (response) {
+            //     // let res = response.data;
+            //     console.log(response);
+            //     alert("Success!!!")
+            // });
+            
+            event.preventDefault();
+        
+        });
 	});
 </script>
 

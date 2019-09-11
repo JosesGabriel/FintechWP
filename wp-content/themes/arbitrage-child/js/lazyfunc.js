@@ -35,7 +35,7 @@ $( document ).ready(function() {
     $.ajax({
         url: "https://dev-v1.arbitrage.ph/apipge/?daction=socialwall",
         type: 'GET',
-        // dataType: 'json', // added data type
+        dataType: 'html', // added data type
         success: function(res) {
             $(".social-wall-part").html(res);
         },

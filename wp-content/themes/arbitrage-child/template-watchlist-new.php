@@ -181,6 +181,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	// get stcok history
 																		$curl = curl_init();
 																		curl_setopt($curl, CURLOPT_URL, 'http://pseapi.com/api/Stock/'.$value['stockname'].'/');
+
+																		 curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+																		
 																		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																		$dwatchhisto = curl_exec($curl);
 																		curl_close($curl);

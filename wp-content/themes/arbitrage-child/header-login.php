@@ -18,7 +18,8 @@
 	<?php // Countdown ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
-	
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
 	
 	
 <?php
@@ -56,22 +57,7 @@ $user = wp_get_current_user();
 		$get_bgfimage = "loginbg".$getrand.".jpg";?>
 		html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;background-size: cover;}
 	<?php } ?>
-    html {margin-top: 0 !important;}
-    #wpadminbar {
-        display: none !important;
-        z-index: -1 !important;
-    }
-	#preloader {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: #354960;
-		z-index: 999999;
-		height: 120%;
-	}
-	#status {
+    #status {
 		width: 50px;
 		height: 50px;
 		position: absolute;
@@ -82,89 +68,6 @@ $user = wp_get_current_user();
 		background-repeat: no-repeat;
 		background-position: center;
 		margin: -25px 0 0 -25px;
-	}
-	#status_txt {
-		width:100%;
-		position: absolute;
-		top:50%;
-		left:0;
-		z-index:99;
-		color:#fff;
-		text-align:center;
-		font-size:11px;
-	}
-	.page-template-template-login a:hover {
-		color:#FFFFFF;
-		text-decoration: underline;
-	}
-	body, #page-container {background-color: transparent !important;}
-	span.um-field-checkbox-option {
-		display: none;
-	}
-	.arbitrage-button {
-		font-family: 'Roboto', sans-serif;
-		font-size: 12px;
-		color: #ffffff;
-		background: none;
-		border: 2px #fff solid;
-		height: auto;
-		border-radius: 25px;
-		padding: 3px 9px;
-	}
-	.arbitrage-button--primary {
-		border: 2px #2481bc solid;
-	}
-	.arbitrage-button--primary:hover {
-		color: #ffffff;
-		background-color: #2481bc !important;
-		transition-duration: 300ms;
-	}
-	.notif--subb {
-		margin: 109px auto 0 auto;
-	}
-	input.email--field {
-		background: #11273e;
-		border: 1px solid #1e3554;
-		border-radius: 25px;
-		padding: 10px 72px 10px 13px;
-		width: 485px;
-		color: #d8d8d8;
-	}
-	.email--btn {
-		left: -90px;
-		padding: 5px 10px !important;
-		top: -1px;
-		position: relative;
-	}
-	.header-image {
-		margin-top: 20px;
-		width: 108px;
-	}
-	.form-success-email {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		z-index: 99;
-		display: none;
-	}
-	.success--content {
-		position: absolute;
-		top: 3.5%;
-		right: 50.2%;
-		transform: translate(50%,-50%);
-		background: #11273e;
-		border-radius: 5px;
-		padding: 10px 15px;
-		animation-name: fadeinLoad;
-		animation-duration: 1s;
-		animation-delay: 5s;
-		animation-fill-mode: forwards;
-	}
-	span.success-word {
-		color: #d8d8d8;
-	}
-	.contercontrol {
-		display:none;
 	}
     </style>
     <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
@@ -201,10 +104,10 @@ $user = wp_get_current_user();
 		});
 		
 	</script>
-    <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
+    <?php /* Global Header Scritps */ //get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
-	  <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
+	  <?php /* Responsive 2 */ //get_template_part('parts/global', 'responsivetwo'); ?>
 
 <div class="form-success-email">
 	<div class="success--content">

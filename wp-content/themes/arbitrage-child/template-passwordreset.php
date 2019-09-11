@@ -657,12 +657,9 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         border: none !important;
         padding: 8px 15px;
         width: 200px;
+        margin: 6px 0 10px;
     }
-    span.label_pls {
-        display: inline-block;
-        margin: 26px 0 16px;
-    }
-    input#email_btn_info {
+    input#pass_btn_info {
         background: none;
         border-radius: 50px;
         border: 1.5px solid #fffffe;
@@ -671,11 +668,22 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         cursor: pointer;
         margin: 13px 0;
     }
-    input#email_btn_info:hover {
+    input#pass_btn_info:hover {
         background: linear-gradient(to right, #2098f9, #9eefb4);
         border: 1.5px solid #51bade;
         background-repeat: no-repeat;
         overflow: hidden !important;
+    }
+    span.label_pls {
+        display: inline-block;
+        margin: 26px 0 16px;
+    }
+    .container_pass {
+        display: inline-block;
+    }
+    label {
+        display: block;
+        text-align: center;
     }
 </style>
 
@@ -683,13 +691,16 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	<div class="ondashboardpage_login_inner">
         <div class="container_pass">
         <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
+        <br>
+        <br>
+        <br>
         <form id="pass-reset">
 
-            <Label>New Password</Label><br>
-            <input type="text" required class="pass-info" id="new_old"><br>
+            <Label>New Password</Label>
+            <input type="text" required class="pass-info" id="new_old">
 
-            <Label>Confirm New Password</Label><br>
-            <input type="text" required class="pass-info" id="new_onf_old"><br>
+            <Label>Confirm New Password</Label>
+            <input type="text" required class="pass-info" id="new_onf_old">
 
             <input type="submit" value="Update Password" id="pass_btn_info">
         </form>

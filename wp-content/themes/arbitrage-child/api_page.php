@@ -409,7 +409,7 @@
 			$pass[] = $alphabet[$n];
 		}
 		echo $pass;
-		// return json_encode($pass);
+		return emplode($pass);
 
 		// update users password to new temp password
 		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";

@@ -75,13 +75,13 @@ $user = wp_get_current_user();
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
     <script language="javascript">
 	
-		jQuery(window).load(function() {
+		jQuery(window).on('load', function(){
 			jQuery("#status, #status_txt").fadeOut();
 			jQuery("#preloader").delay(400).fadeOut("slow");
 			jQuery(".um-field-checkbox-option").html("");
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
 			// jQuery(".um-field-error").html("!");
-		})
+		});
 		jQuery(document).ready(function(){
 			jQuery("#emailNotify__form").submit(function(){
 				var hasemail = jQuery("#email--input").val().length;

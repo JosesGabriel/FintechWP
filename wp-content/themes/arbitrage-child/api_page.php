@@ -477,6 +477,7 @@
 					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
 					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 					$userdetails['user_nicename'] = $value->data->user_nicename;
+					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
 					array_push($newuserlist, $userdetails);
 				}
 			}

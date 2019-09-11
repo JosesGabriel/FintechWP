@@ -110,7 +110,7 @@ jQuery(document).ready(function(){
         if ( openthis ) {
             jQuery("#toghandle").hide().removeClass("dropthiss");
         } else {
-        jQuery("#toghandle").show().addClass("dropthiss");
+            jQuery("#toghandle").show().addClass("dropthiss");
         }
     });
     jQuery(".seven.calc-menu-var, ul.main-drops > ul li:nth-child(2)").on("click", function () {

@@ -185,6 +185,7 @@ a.for_pass:hover {
 	<?php } ?>
 	
 </style> 
+
 <script type="text/javascript">
 	jQuery(document).ready(function(){
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');

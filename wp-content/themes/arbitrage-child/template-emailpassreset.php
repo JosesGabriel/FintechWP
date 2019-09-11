@@ -183,9 +183,9 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         background-color: #354960 !important;
     }
     html, body, div#page-container, div#et-main-area {height: 100%;}
-    /* .um-social-login-overlay, #preloader,
+    /* .um-social-login-overlay, #preloader, */
     html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
-    #preloader {background-size: cover;} */
+    /* #preloader {background-size: cover;} */
     html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
     .ondashboardpage_login {
         display: table;
@@ -714,7 +714,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
                 
-                var email = jQuery("#email_info").val();
+                let email = jQuery("#email_info").val();
                 // console.log(email);
                 let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {

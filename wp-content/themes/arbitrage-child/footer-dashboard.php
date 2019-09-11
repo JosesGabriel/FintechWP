@@ -147,6 +147,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				}	
 				
 			?>
+			$.get( "https://data-api.arbitrage.ph/api/v1/stocks/list", function( data ) {
+				console.log(data);
+			});
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
 
 			<?php // $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>

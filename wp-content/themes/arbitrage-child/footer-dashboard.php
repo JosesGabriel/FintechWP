@@ -154,6 +154,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				dataType: 'json', // added data type
 				success: function(res) {
 					console.log(res);
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.log(xhr.status);
+					console.log(thrownError);
 				}
 			});
 			var stocklist = <?php echo $jsonstocklist; ?> ;	

@@ -398,7 +398,6 @@
 
 		// Search if email is existing
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
-		$exist = $wpdb->query($checkQuery);
 
 		// create random temp password
 		function password_generate($chars) 

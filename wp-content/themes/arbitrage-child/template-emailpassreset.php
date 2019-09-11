@@ -658,6 +658,25 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         padding: 8px 15px;
         width: 200px;
     }
+    span.label_pls {
+        display: inline-block;
+        margin: 26px 0 16px;
+    }
+    input#email_btn_info {
+        background: none;
+        border-radius: 50px;
+        border: 1.5px solid #fffffe;
+        padding: 7px 31px;
+        color: #fff;
+        cursor: pointer;
+        margin: 13px 0;
+    }
+    input#email_btn_info:hover {
+        background: linear-gradient(to right, #2098f9, #9eefb4);
+        border: 1.5px solid #51bade;
+        background-repeat: no-repeat;
+        overflow: hidden !important;
+    }
 </style>
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -668,7 +687,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         <form id="email_pass_reset">
 
             <span>Please enter your email address below</span><br>
-            <input type="email" required class="email-info" id="email_info">
+            <input type="email" required class="email-info" id="email_info"><br>
 
             <input type="submit" value="Reset" id="email_btn_info">
         </form>

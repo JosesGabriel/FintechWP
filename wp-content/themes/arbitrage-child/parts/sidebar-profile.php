@@ -105,56 +105,56 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
   jQuery(document).ready(function(){
 
-        jQuery('input[type="checkbox"]').click(function(){
-            if(jQuery(this).is(":checked")){
-                jQuery(".dslideapps").hide();
-                jQuery(".spinmenow").show();
+        // jQuery('input[type="checkbox"]').click(function(){
+        //     if(jQuery(this).is(":checked")){
+        //         jQuery(".dslideapps").hide();
+        //         jQuery(".spinmenow").show();
 
-                jQuery('.true-name a').hide();
-                jQuery('.show-name').show();
-                jQuery('.trading-name').text('Displaying trading name');
+        //         jQuery('.true-name a').hide();
+        //         jQuery('.show-name').show();
+        //         jQuery('.trading-name').text('Displaying trading name');
 
-                jQuery.ajax({
-                    method: "GET",
-                    url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=tn",
-                    // url: 'https://api2.pse.tools/api/quotes',
-                    dataType: 'json',
-                    data: {
-                    'action' : 'my_custom_action'
-                    },
-                    success: function(data) {
+        //         jQuery.ajax({
+        //             method: "GET",
+        //             url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=tn",
+        //             // url: 'https://api2.pse.tools/api/quotes',
+        //             dataType: 'json',
+        //             data: {
+        //             'action' : 'my_custom_action'
+        //             },
+        //             success: function(data) {
 
-                        jQuery(".dslideapps").show();
-                        jQuery(".spinmenow").hide();
+        //                 jQuery(".dslideapps").show();
+        //                 jQuery(".spinmenow").hide();
 
-                    }
-                });
-            }
-            else if(jQuery(this).is(":not(:checked)")){
-                jQuery(".dslideapps").hide();
-                jQuery(".spinmenow").show();
+        //             }
+        //         });
+        //     }
+        //     else if(jQuery(this).is(":not(:checked)")){
+        //         jQuery(".dslideapps").hide();
+        //         jQuery(".spinmenow").show();
 
-                jQuery('.true-name a').show();
-                jQuery('.show-name').hide();
-                jQuery('.trading-name').text('Displaying real name');
+        //         jQuery('.true-name a').show();
+        //         jQuery('.show-name').hide();
+        //         jQuery('.trading-name').text('Displaying real name');
 
-                jQuery.ajax({
-                    method: "GET",
-                    url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=rn",
-                    // url: 'https://api2.pse.tools/api/quotes',
-                    dataType: 'json',
-                    data: {
-                    'action' : 'my_custom_action'
-                    },
-                    success: function(data) {
+        //         jQuery.ajax({
+        //             method: "GET",
+        //             url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=rn",
+        //             // url: 'https://api2.pse.tools/api/quotes',
+        //             dataType: 'json',
+        //             data: {
+        //             'action' : 'my_custom_action'
+        //             },
+        //             success: function(data) {
 
-                        jQuery(".dslideapps").show();
-                        jQuery(".spinmenow").hide();
+        //                 jQuery(".dslideapps").show();
+        //                 jQuery(".spinmenow").hide();
 
-                    }
-                });
-            }
-        });
+        //             }
+        //         });
+        //     }
+        // });
 
         if(jQuery('.um-profile').hasClass('topbannerprofile')){
           jQuery('.side-completenessbox').css("display","none");

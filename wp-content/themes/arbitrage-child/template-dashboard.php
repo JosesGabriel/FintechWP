@@ -11,7 +11,7 @@ $userID = $current_user->ID;
 get_header( 'dashboard' );
 date_default_timezone_set('Asia/Manila'); ?>
 
-<?php get_template_part('parts/global', 'css'); ?>
+<?php //get_template_part('parts/global', 'css'); ?>
 <?php get_template_part('parts/sidebar', 'calc'); ?>
 <?php get_template_part('parts/sidebar', 'varcalc'); ?>
 <?php get_template_part('parts/sidebar', 'avarageprice'); ?>

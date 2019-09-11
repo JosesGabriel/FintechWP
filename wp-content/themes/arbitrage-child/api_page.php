@@ -453,8 +453,20 @@
         die('test test');
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
+		global $wpdb;
 
-		echo "trending stocks";
+		$date = date('Y-m-d', time());
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$gerdqoute = curl_exec($curl);
+		curl_close($curl);
+		
+		$gerdqoute = json_decode($gerdqoute);
+
+		echo json_encode($gerdqoute);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;

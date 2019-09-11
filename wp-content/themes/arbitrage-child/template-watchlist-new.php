@@ -164,7 +164,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	$curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
                                                                     curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
-                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+
+                                                                    //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+
+                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+        															curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																	$dwatchinfo = curl_exec($curl);
 																	curl_close($curl);

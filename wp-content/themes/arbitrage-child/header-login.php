@@ -72,7 +72,7 @@ $user = wp_get_current_user();
 	}
     </style>
 	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
     <script language="javascript">
 	
 		jQuery(window).load(function() {

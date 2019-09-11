@@ -83,6 +83,16 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;
 }
+a.for_pass {
+    display: block;
+    padding: 0px 0 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #737373;
+}
+a.for_pass:hover {
+    text-decoration: none;
+}
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
@@ -108,7 +118,6 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
                     <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
-                    <div class="forgpasslnk"><span style="color: #949798;font-size: 11px;"></span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
 					<?php if(isset($_GET['active'])){ ?>
@@ -187,6 +196,7 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='<?php echo $homeurlgen; ?>/password-email/' class='for_pass'>Forgot your password?</a>");
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

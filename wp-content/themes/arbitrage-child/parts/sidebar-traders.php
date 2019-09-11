@@ -39,6 +39,12 @@
 	  <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
 	  <div class="to-content-part to-back-back">
 		  <div class="content-inner-part">
+			  <div class="top-recommended-people">
+			  	<div id="preloader" class="trendingpreloader">
+					<div id="status">&nbsp;</div>
+					<div id="status_txt"></div>
+				</div>
+			  </div>
 			  <?php
 				  $i=0;
 				  foreach ($toptraiders as $key => $value) { ?>

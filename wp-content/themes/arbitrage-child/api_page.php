@@ -473,6 +473,7 @@
 					// 	echo $value->data->user_login." request sent -<br />";
 					// }
 				} else {
+					$userdetails['currentuser'] = $userID;
 					$userdetails['id'] = $value->ID;
 					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
 					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );

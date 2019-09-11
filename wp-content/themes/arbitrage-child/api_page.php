@@ -393,23 +393,21 @@
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
 		$emailstr = stripslashes($_GET['email']);
-		
-
-		return emplode($emailstr);
+		echo $emailstr ."\n";
+		// return json_encode($emailstr);
 
 		// Search if email is existing
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
-		$exist = $wpdb->query($addQuery);
+		$exist = $wpdb->query($checkQuery);
 
 		// create random temp password
-		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$pass = array(); //remember to declare $pass as an array
-		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-		for ($i = 0; $i < 8; $i++) {
-			$n = rand(0, $alphaLength);
-			$pass[] = $alphabet[$n];
+		function password_generate($chars) 
+		{
+		  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+		  return substr(str_shuffle($data), 0, $chars);
 		}
-		return emplode($pass);
+		$passgen = password_generate(8)."\n";
+		echo $passgen;
 
 		// update users password to new temp password
 		// $updatepass = "UPDATE arby_users SET user_pass = '$pass' WHERE user_email = '$emailstr'";
@@ -417,7 +415,7 @@
 		// send email include all created credentials
 
 		// return to user success
-
+		return;
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 

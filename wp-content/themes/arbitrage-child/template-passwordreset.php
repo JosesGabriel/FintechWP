@@ -685,10 +685,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         <form id="pass-reset">
 
             <Label>New Password</Label><br>
-            <input type="text" required class="pass-info" id="new_old">
+            <input type="text" required class="pass-info" id="new_old"><br>
 
             <Label>Confirm New Password</Label><br>
-            <input type="text" required class="pass-info" id="new_onf_old">
+            <input type="text" required class="pass-info" id="new_onf_old"><br>
 
             <input type="submit" value="Update Password" id="pass_btn_info">
         </form>

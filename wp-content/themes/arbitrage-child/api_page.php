@@ -468,8 +468,99 @@
 		curl_close($curl);
 		
 		$gerdqoute = json_decode($gerdqoute);
+		$adminuser = 504; // store on the chart page
 
-		echo json_encode($gerdqoute);
+		
+
+		if ($gerdqoute) {
+			$listofstocks = []; 
+			foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
+				$indls = [];
+				$indls['stock'] = $dlskey;
+				$dstocknamme = $dlskey;
+
+				$dstocks = $dlsvalue->description;
+				$indls['stnamename'] = $dstocks;
+				$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bear', true );
+				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bull', true );
+				$indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
+				
+				$dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
+
+				$todayreps = 0; // today
+				$countpstock = 0; // 3 days back
+				$isbull = 0;
+				foreach ($dsprest as $rsffkey => $rsffvalue) {
+					$dcontent = $rsffvalue->post_content;
+					if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+						if(date("Y-m-d", strtotime($rsffvalue->post_date)) == $date){
+							$todayreps++;
+						} else {
+							$countpstock++;
+						}
+						
+					}
+					// echo $rsffvalue->ID." - ";
+					// $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
+					// $bull_people = $bull_people == '' ? 0 : $bull_people;
+					// $isbull += $bull_people;
+				}
+
+
+				//get rodat
+				// $dpresent = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= CURDATE()");
+				// $todayreps = 0;
+				// foreach ($dpresent as $rsffkey => $rsffvalue) {
+				//     $dcontent = $rsffvalue->post_content;
+				//     if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+				//         $todayreps++;
+				//     }
+				// }
+
+				// $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
+				// $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
+				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+				$dpullbull = $dpullbull == '' ? 0 : $dpullbull;
+				// 3 days back
+				$threedays = ceil($countpstock * 0.2);
+				$bulls = ceil($dpullbull * 0.3);
+				$tags = ceil($todayreps * 0.6);
+				$finalcount = $bulls + $threedays + $tags;
+				$stocksscount = $countpstock + $dpullbull + $todayreps;
+
+				// echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
+		
+				$indls['following'] = $finalcount;
+				if($finalcount > 0){
+					array_push($listofstocks, $indls);
+				}
+				
+			}
+
+			function date_compare($a, $b)
+			{
+				$t1 = $a['following'];
+				$t2 = $b['following'];
+				return $t1 - $t2;
+			}
+			usort($listofstocks, 'date_compare');
+			$drevdds = array_reverse($listofstocks);
+
+			$maxitems = 10;
+			$finaltopstocks = [];
+			foreach ($drevdds as $fnskey => $fnsvalue) {
+				if ($fnskey + 1 > $maxitems) {
+					break;
+				}
+				array_push($finaltopstocks, $fnsvalue);
+
+			}
+
+			echo json_encode($finaltopstocks);
+			die;
+		} else {
+			echo "no stock selected";
+		}
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;

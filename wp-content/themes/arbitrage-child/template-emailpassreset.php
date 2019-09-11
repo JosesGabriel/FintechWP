@@ -18,7 +18,7 @@ $homeurlgen = get_home_url();
             <span class="label_pls">Please enter your email address below</span><br>
             <input type="email" required class="email-info" id="email_info"><br>
 
-            <input type="submit" value="Reset" id="email_btn_info" onClick="window.location.href='<?php echo $homeurlgen; ?>/password-confirmed/'">
+            <input type="submit" value="Reset" id="email_btn_info" onClick="window.location.href='<?php echo $homeurlgen; ?>/password-confirmed/?active'">
         </form>
     </div>
 </div>

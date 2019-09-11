@@ -13,6 +13,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
 
         <span class="label_pls">You have successfully reset you password!</span><br>
+        <a class="backto-login" href="<?php echo $homeurlgen; ?>/password-confirmed/">Back to login</a>
 
         </form>
     </div>

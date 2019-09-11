@@ -694,7 +694,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         overflow: hidden !important;
     }
 </style>
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     // function getExistingEmail(email, callback) {
     //     let url = "https://arbitrage.ph/apipge/?daction=email_is_existing"+email;

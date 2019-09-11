@@ -115,6 +115,10 @@
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
       <!-- <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span> -->
+        <div id="preloader" class="trendingpreloader">
+            <div id="status">&nbsp;</div>
+            <div id="status_txt"></div>
+        </div>
         <ul class="trendingme">
             <div class="hide-show trend-content-hidden"></div>
         </ul>
@@ -122,7 +126,7 @@
 
     <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
 
-<?php if($numinarrat != 0 ) { ?>
+<?php //if($numinarrat != 0 ) { ?>
 
     <div class="see-more-btn stocks-hidden-content" id="show_hide">
         <i class="fas fa-sort-down" id="fa-up" style="
@@ -136,7 +140,7 @@
         <strong>See more</strong>
     </div>
     
-<?php } ?>
+<?php //} ?>
 
 </div>
     <!-- <div class="to-bottom-title">

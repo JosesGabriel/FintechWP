@@ -6,11 +6,12 @@ $( document ).ready(function() {
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {
+                $(".trendingpreloader").hide();
                 console.log(res);
                 $.each(res, function( index, value ) {
                     var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
                     $toappend = '<li class="even '+index+'">';
-                    $toappend += '<span style="border-color: rgb('+colors[index]+');">'+value.stock+'</span>';
+                    $toappend += '<span style="border-color: '+colors[index]+';">'+value.stock+'</span>';
                     $toappend += '<a href="#">'+value.stnamename+'<br>';
                     $toappend += '<p>'+value.following+' Hits</p></a>';
                     $toappend += '</li>';
@@ -28,7 +29,7 @@ $( document ).ready(function() {
             }
         });
     
-    }, 2000);
+    }, 1000);
 
     
 });

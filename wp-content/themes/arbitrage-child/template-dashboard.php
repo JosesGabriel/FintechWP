@@ -33,7 +33,8 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php echo do_shortcode('[ultimatemember_activity]'); ?>
+						<div class="social-wall-part"></div>
+						<?php //echo do_shortcode('[ultimatemember_activity]'); ?>
 						<?php //if ( have_posts() ) : while ( have_posts() ) : the_post();
 						//the_content();
 						//endwhile; else: ?>

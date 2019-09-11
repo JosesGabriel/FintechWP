@@ -452,6 +452,10 @@
 
         die('test test');
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'socialwall'){
+
+        echo do_shortcode('[ultimatemember_activity]');
+
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;
 

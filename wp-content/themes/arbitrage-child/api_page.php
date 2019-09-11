@@ -481,9 +481,6 @@
 
 				$dstocks = $dlsvalue->description;
 				$indls['stnamename'] = $dstocks;
-				$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bear', true );
-				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dlskey.'_bull', true );
-				$indls['spnf'] = ($dpullbear != "" ? $dpullbear : 0) .'+'. ($dpullbull != "" ? $dpullbull : 0);
 				
 				$dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
 
@@ -500,25 +497,7 @@
 						}
 						
 					}
-					// echo $rsffvalue->ID." - ";
-					// $bull_people = get_post_meta($rsffvalue->ID, '_bullish', true);
-					// $bull_people = $bull_people == '' ? 0 : $bull_people;
-					// $isbull += $bull_people;
 				}
-
-
-				//get rodat
-				// $dpresent = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= CURDATE()");
-				// $todayreps = 0;
-				// foreach ($dpresent as $rsffkey => $rsffvalue) {
-				//     $dcontent = $rsffvalue->post_content;
-				//     if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
-				//         $todayreps++;
-				//     }
-				// }
-
-				// $dsentdate = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_lastupdated', true );
-				// $dpullbear = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bear', true );
 				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
 				$dpullbull = $dpullbull == '' ? 0 : $dpullbull;
 				// 3 days back
@@ -528,7 +507,6 @@
 				$finalcount = $bulls + $threedays + $tags;
 				$stocksscount = $countpstock + $dpullbull + $todayreps;
 
-				// echo $dstocknamme.": ".$threedays." - ".$bulls." - ".$tags." | ";
 		
 				$indls['following'] = $finalcount;
 				if($finalcount > 0){

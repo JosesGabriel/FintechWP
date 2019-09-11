@@ -108,6 +108,7 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
                     <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
+                    <div class="forgpasslnk"><span style="color: #949798;font-size: 11px;"></span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
 					<?php if(isset($_GET['active'])){ ?>

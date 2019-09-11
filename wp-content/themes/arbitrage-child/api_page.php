@@ -423,7 +423,7 @@
 			<div class="em-content-handler">
 				<div class="em-content-center" style="margin: 0 39px; padding-bottom: 45px; padding-top: 67px;">
 					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;">We received a request to reset the password for your account. Your new password is indicated below.</div>
-					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="{login_url}">Reset your password</a>
+					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="{login_url}">'. $passgen .'</a>
 					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
 					<div class="greet-container" style="font-weight: 500;">
 						<div class="em-greet sss" style="margin-top: 52px; font-size: 15px;">Thank you!</div>

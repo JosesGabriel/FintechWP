@@ -715,7 +715,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		$("#email_pass_reset").click(function(event){
                 
                 var email = $("#email_info").val();
-                console.log(email);
+                // console.log(email);
                 let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {
                     "async": true,

@@ -115,7 +115,11 @@
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
       <!-- <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 30px;"></i><br>Waiting for API</span> -->
+        <ul class="trendingme">
+            <div class="hide-show trend-content-hidden"></div>
+        </ul>
         <ul>
+            
             <?php
                 $countss = 1;
                 // $numinarrat = count($lfstkey);

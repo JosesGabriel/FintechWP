@@ -434,7 +434,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		</script>
 	<?php } ?>
 <?php } ?>
-
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lazyfunc.js?<?php echo time(); ?>"></script>
 
 <div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>
 

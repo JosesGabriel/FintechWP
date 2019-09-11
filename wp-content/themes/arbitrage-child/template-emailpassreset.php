@@ -20,6 +20,10 @@ $homeurlgen = get_home_url();
 
             <input type="submit" value="Reset" id="email_btn_info">
         </form>
+        <div class="confirmed_cont">
+            <span class="label_pls">You have successfully reset you password!</span><br>
+            <a class="backto-login" href="<?php echo $homeurlgen; ?>/password-confirmed/">Back to login</a>
+        </div>
     </div>
 </div>
 
@@ -715,6 +719,7 @@ $homeurlgen = get_home_url();
     // }
 
 	jQuery(document).ready(function(){
+        jQuery(".confirmed_cont").hide();
 		jQuery("#email_pass_reset").click(function(event){
                 let origin = window.location.origin;
                 let email = jQuery("#email_info").val();
@@ -736,23 +741,12 @@ $homeurlgen = get_home_url();
                 event.preventDefault();
             
             });
-        jQuery("#email_pass_reset").click(function(event){
-            // let origin = window.location.origin;
-            // let email = jQuery("#email_info").val();
-            // // console.log(email);
-            // let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
-            // let settings = {
-            //     "async": true,
-            //     "crossDomain": true,
-            //     "url": url,
-            //     "method": "GET",
-            //     "dataType": 'json'
-            // };
-            // $.ajax(settings).done(function (response) {
-            //     // let res = response.data;
-            //     console.log(response);
-            //     alert("Success!!!")
-            // });
+        jQuery("#email_btn_info").click(function(event){
+            let hasvalueemail = jQuery("#email_info").val().length;
+            if(hasvalueemail >= 1){
+                jQuery("#email_pass_reset").hide();
+                jQuery(".confirmed_cont").show();
+            }
             
             event.preventDefault();
         

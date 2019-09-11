@@ -711,7 +711,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
-<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		// $("#pass_btn_info").submit(function(){

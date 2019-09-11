@@ -12,6 +12,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 <?php endif; ?>
 	</div> <!-- #page-container -->
 	<?php wp_footer(); ?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>

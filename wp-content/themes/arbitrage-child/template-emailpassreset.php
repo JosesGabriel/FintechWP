@@ -715,7 +715,8 @@ $homeurlgen = get_home_url();
     // }
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-                let origin   = window.location.origin;
+            if(jQuery("#email_info").val().length >= 1){
+                let origin = window.location.origin;
                 let email = jQuery("#email_info").val();
                 // console.log(email);
                 let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
@@ -733,6 +734,7 @@ $homeurlgen = get_home_url();
                 });
                 
                 event.preventDefault();
+            }
             });
 	});
 </script>

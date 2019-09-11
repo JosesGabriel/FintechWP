@@ -652,7 +652,7 @@ input#first_name-9 {
         <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
         <form id="email_pass_reset">
 
-            <span>Please enter your email address below</span>
+            <span>Please enter your email address below</span><br>
             <input type="email" required class="email-info" id="email_info">
 
             <input type="submit" value="Reset" id="email_btn_info">

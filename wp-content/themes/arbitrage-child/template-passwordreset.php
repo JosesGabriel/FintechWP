@@ -684,10 +684,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
         <form id="pass-reset">
 
-            <Label>New Password</Label>
+            <Label>New Password</Label><br>
             <input type="text" required class="pass-info" id="new_old">
 
-            <Label>Confirm New Password</Label>
+            <Label>Confirm New Password</Label><br>
             <input type="text" required class="pass-info" id="new_onf_old">
 
             <input type="submit" value="Update Password" id="pass_btn_info">

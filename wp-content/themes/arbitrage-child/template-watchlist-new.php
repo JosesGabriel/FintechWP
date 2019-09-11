@@ -154,8 +154,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<ul>
 															<li class="addwatch">
 																<div class="dplusbutton">
-																	<div class="dplsicon"><i class="fa fa-plus-circle"></i></div>
 																	<div class="dplstext">Add watchlist</div>
+																	<div class="dplsicon"><i class="fa fa-plus-circle"></i></div>
 																</div>
 															</li>
 															<?php foreach ($havemeta as $key => $value) { ?>

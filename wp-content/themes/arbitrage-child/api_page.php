@@ -486,7 +486,7 @@
 			return $a['followers'] <=> $b['followers'];
 		});
 		$toptraiders = array_reverse($newuserlist);
-		$toptraiders = array_slice($toptraiders, 3);
+		$toptraiders = array_slice($toptraiders, 0, 3);
 		echo json_encode($toptraiders);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){

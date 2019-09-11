@@ -7,7 +7,23 @@
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
-<style>/* Overrides */
+
+<div class="ondashboardpage_login">
+	<div class="ondashboardpage_login_inner">
+        <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
+        <form id="email_pass_reset">
+
+            <span class="label_pls">Please enter your email address below</span><br>
+            <input type="email" required class="email-info" id="email_info"><br>
+
+            <input type="submit" value="Reset" id="email_btn_info">
+        </form>
+    </div>
+</div>
+
+
+<div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
+<style>
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
     body, html {overflow: hidden !important;}
     .um-form input[type=text], .um-form input[type=tel], .um-form input[type=number], .um-form input[type=password] {
@@ -678,22 +694,6 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         overflow: hidden !important;
     }
 </style>
-
-<div class="ondashboardpage_login">
-	<div class="ondashboardpage_login_inner">
-        <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
-        <form id="email_pass_reset">
-
-            <span class="label_pls">Please enter your email address below</span><br>
-            <input type="email" required class="email-info" id="email_info"><br>
-
-            <input type="submit" value="Reset" id="email_btn_info">
-        </form>
-    </div>
-</div>
-
-
-<div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     // function getExistingEmail(email, callback) {

@@ -398,7 +398,6 @@
 
 		// Search if email is existing
 		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
-		$exist = $wpdb->query($checkQuery);
 
 		// create random temp password
 		function password_generate($chars) 
@@ -408,9 +407,11 @@
 		}
 		$passgen = password_generate(8)."\n";
 		echo $passgen;
+		$passhash = wp_hash_password( $passgen );
 
 		// update users password to new temp password
-		$updatepass = "UPDATE arby_users SET user_pass = '$passgen' WHERE user_email = '$emailstr'";
+		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
+		$exist = $wpdb->query($updatepass);
 
 		// send email include all created credentials
 		$to = $emailstr;

@@ -21,7 +21,7 @@ $homeurlgen = get_home_url();
             <input type="submit" value="Reset" id="email_btn_info">
         </form>
         <div class="confirmed_cont">
-            <span class="label_pls">You have successfully reset you password!</span><br>
+            <span class="label_pls">You have successfully reset you password! Please see you email.</span><br>
             <a class="backto-login" href="<?php echo $homeurlgen; ?>/password-confirmed/">Back to login</a>
         </div>
     </div>

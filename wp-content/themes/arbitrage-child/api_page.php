@@ -390,7 +390,7 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
-    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_one'){
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_manual'){
 		global $wpdb;
         $emailstr = stripslashes($_GET['email']);
         

@@ -289,3 +289,186 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
         border-radius: 4px;
     }
 /* EOF Sidebar Footer */
+
+/* BOF Sidebar Calc */
+    .arb_calcbox input[type="number"] {
+        border: 0;
+        border-radius: 4px;
+        padding: 5px 6px;
+        background-color: #4e6a85;
+        border: 1px solid #4e6a85;
+        color: #ecf0f1;
+        font-family: 'Roboto', sans-serif;
+        display: block;
+        width: 90%;
+        margin-top: 3px;
+    }
+    .arb_calcbox input[type="number"]::placeholder {
+        color: white;
+    }
+    .arb_calcbox h3 {
+        font-size: 17px;
+        padding-bottom: 0;
+        font-weight: normal;
+    }
+
+    .arb_calcbox h3 strong {
+        text-transform: uppercase;
+    }
+
+    .arb_calcbox h4 {
+        font-size: 15px;
+        padding-bottom: 0;
+        font-weight: normal;
+    }
+
+    .arb_calcbox h4 strong {
+        text-transform: uppercase;
+    }
+
+    .arb_calcbox small {
+        font-size: 11px;
+        display: block;
+    }
+
+    .arb_clear {
+        clear: both;
+    }
+
+    .arb_calcbox_lefting {
+        float: left;
+        width: 60%;
+    }
+
+    .arb_calcbox_righting {
+        float: right;
+        width: 40%;
+        padding-top: 16px;
+        padding-right: 5px;
+    }
+
+    .padbott {
+        padding-bottom: 5px;
+    }
+
+    .arb_buyfees,
+    .arb_sellfees {
+        position: relative;
+    }
+
+    .feedetails_sell,
+    .feedetails_buy {
+        display: none;
+    }
+
+    .feedetails_sell,
+    .feedetails_buy {
+        position: absolute;
+        left: -1px;
+        top: 0;
+        padding: 12px;
+        border-radius: 5px;
+        background-color: #2b3d4f;
+        width: 90%;
+    }
+
+    .smlinline {
+        display: inline-block !important;
+        vertical-align: text-top;
+        cursor: pointer;
+    }
+
+    .clcbxttl {
+        border-bottom: 1px solid #4e6a85;
+        margin-top: -5px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    .arb_dvdr {
+        border-bottom: 1px solid #1e3554 !important;
+        width: 75%;
+        margin: 8px 12px;
+        padding-left: 10px;
+    }
+
+    .arb_breakeven {
+        width: 100%;
+        margin: 4px 0 0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .arbredtxt {
+        color: #e64c3c;
+    }
+
+    .arbgreentxt {
+        color: #25ae5f;
+    }
+
+    .alleft {
+        float: left
+    }
+
+    .alright {
+        float: right
+    }
+
+    .arbleveling {
+        padding: 3px 7px 3px;
+        line-height: 20px;
+    }
+
+    .banner-try {
+        background: #142c46;
+        border-radius: 5px;
+        padding-bottom: 12px;
+        margin-top: 15px;
+        display: none;
+    }
+
+    .banner-try .to-top-title {
+        padding-top: 10px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .adsbygoogle .to-top-title {
+        padding-top: 6px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 0;
+        margin-bottom: 5px;
+    }
+
+    .cont-try-premium {
+        padding: 0 14px;
+    }
+
+    .to-top-create {
+        float: right;
+        color: #6583a8;
+    }
+    .bit_asda {
+        padding-bottom: 3px;
+        display: block;
+    }
+    .rightAlignCal {
+        float: right;
+        margin-right: 25px;
+    }
+    .amtdtls{
+        float:right;
+    }
+    .lblbcl{
+        margin-left:15px;
+    }
+    .number{
+        font-size: 13px;
+        text-align: right;
+    }
+/* EOF Sidebar Calc */
+

@@ -16,7 +16,7 @@ jQuery(document).ready(function(){
 });
 
 jQuery(document).ready(function(e) {
-    jQuery(".inner-seatch input[type='text']").val("     <?php if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
+    jQuery(".inner-seatch input[type='text']").val("Search");
     jQuery(".inner-seatch input[type='text']").click(function(s){
         s.preventDefault();
         jQuery(".inner-seatch input[type='text']").val("");

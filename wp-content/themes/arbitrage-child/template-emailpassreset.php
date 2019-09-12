@@ -22,10 +22,10 @@ $homeurlgen = get_home_url();
 	gtag('config', 'UA-147416476-1');
     </script>
     
-    <link rel="icon" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-150x150.png" sizes="32x32" />
-    <link rel="icon" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" sizes="192x192" />
-    <link rel="apple-touch-icon-precomposed" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" />
-    <meta name="msapplication-TileImage" content="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-300x300.png" />
+    <link rel="icon" href="<?php echo $homeurlgen ?>/wp-content/uploads/2019/04/arb_fav_bigger-150x150.png" sizes="32x32" />
+    <link rel="icon" href="<?php echo $homeurlgen ?>/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo $homeurlgen ?>/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" />
+    <meta name="msapplication-TileImage" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/04/arb_fav_bigger-300x300.png" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -749,6 +749,7 @@ $homeurlgen = get_home_url();
         .on('submit', '#email_pass_reset', function (e) {
             
             var email = jQuery("#email_info").val();
+            var hasvalemail = jQuery("#email_info").val().length;
             // console.log(email);
             var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
             jQuery.ajax({

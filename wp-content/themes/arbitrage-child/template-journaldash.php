@@ -3307,10 +3307,10 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "#00e676",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').',';
+                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
                                                                                                 $intowinchartbands .= ' "radius": "100%",';
                                                                                                 $intowinchartbands .= ' "innerRadius": "85%",';
-                                                                                                $intowinchartbands .= ' "balloonText": "'.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').'%"';
+                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';

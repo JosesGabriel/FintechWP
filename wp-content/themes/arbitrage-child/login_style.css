@@ -311,7 +311,8 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
     top: -3px !important;
 }
 .um-login .um-col-alt .um-center {margin-top: -5px !important;}
-.um-login .um-col-alt .um-center,
+.um-login .um-col-alt .um-center:before{
+}
 
 .um-register .um-col-alt .um-center:before {
   content: '';
@@ -344,7 +345,6 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
   margin: -2px;
   border-radius: inherit;
   background: linear-gradient(to right, #2098f9, #9eefb4);
@@ -357,7 +357,6 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
   margin: -2px;
   border-radius: inherit;
   background: linear-gradient(to right, #2098f9, #9eefb4);

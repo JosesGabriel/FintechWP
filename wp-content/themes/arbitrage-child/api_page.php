@@ -419,7 +419,7 @@
 		  return substr(str_shuffle($data), 0, $chars);
 		}
 		$passgen = password_generate(8)."\n";
-		echo $passgen;
+		// echo $passgen;
 		$passhash = wp_hash_password( $passgen );
 
 		// update users password to new temp password
@@ -457,9 +457,11 @@
 		$success = mail($to, $subject, $message, $headers);
 		if (!$success) {
 			$errorMessage = error_get_last();
+
+			return json_encode(['status' => 500, 'success' => false]);
 		}
 		// return to user success
-		return;
+		return json_encode(['status' => 200, 'success' => true]);
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 

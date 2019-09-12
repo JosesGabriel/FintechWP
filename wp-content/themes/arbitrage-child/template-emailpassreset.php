@@ -24,6 +24,7 @@ $homeurlgen = get_home_url();
             <span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
             <a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
         </div>
+        <div class="error_message"><span class="label_pls"></span></div>
     </div>
 </div>
 
@@ -733,26 +734,25 @@ $homeurlgen = get_home_url();
 		jQuery("#email_pass_reset").click(function(event){
                 var hasvalueemail = jQuery("#email_info").val().length;
                     if(hasvalueemail >= 1){
-                        jQuery(".confirmed_cont").show();
-                        jQuery(".email_pass_reset").hide();
                         // let origin = window.location.origin;
                         var email = jQuery("#email_info").val();
                         // console.log(email);
-                        var url = "https://<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
-                        var settings = {
-                            "async": true,
-                            "crossDomain": true,
-                            "url": url,
-                            "method": "GET",
-                            "dataType": 'json'
-                        };
-                        jQuery.ajax(settings).done(function (response) {
-                            // let res = response.data;
-                            console.log(response);
-                            alert("Success!!!")
-                            
-                        });
-                        
+                        var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+                        jQuery.ajax({
+                            'url': url,
+                            'method': 'GET',
+                            'data': '',
+                            'dataType': 'json',
+                            'success': function (response) {
+                                if (response.success) {
+                                    jQuery(".confirmed_cont").show();
+                                    jQuery(".email_pass_reset").hide();
+                                    return;
+                                }
+                                jQuery('.error_message').show();
+                                return;
+                            }
+                        })
                         event.preventDefault();
                     }
             });

@@ -3259,7 +3259,7 @@
         font-weight: 500;
     }
     .side-content-inner {
-        margin-top: 10px !important;
+        margin-top: 0 !important;
     }
     .site-header {
         padding-bottom: 0px !important;

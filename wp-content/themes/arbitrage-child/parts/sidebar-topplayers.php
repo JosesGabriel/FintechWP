@@ -8,10 +8,10 @@
         if (!is_numeric($n)) return false;
 
         // now filter it;
-        if ($n > 1000000000000) return round(($n/1000000000000), 2).' Trillion';
-        elseif ($n > 1000000000) return round(($n/1000000000), 2).' Billion';
-        elseif ($n > 1000000) return round(($n/1000000), 2).' Million';
-        elseif ($n > 1000) return round(($n/1000), 2).' Thousand';
+        if ($n > 1000000000000) return round(($n/1000000000000), 2).' T';
+        elseif ($n > 1000000000) return round(($n/1000000000), 2).' B';
+        elseif ($n > 1000000) return round(($n/1000000), 2).' M';
+        elseif ($n > 1000) return round(($n/1000), 2).' K';
 
         return number_format($n);
     }

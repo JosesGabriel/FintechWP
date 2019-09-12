@@ -2038,7 +2038,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-green': stock.displayLast > 0, 'text-red': stock.displayChange < 0, 'text-red': stock.displayLast < 0, 'text-yellow': stock.displayChange == 0, 'text-yellow': stock.displayLast < 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>

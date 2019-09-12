@@ -3307,10 +3307,10 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "#00e676",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').',';
+                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
                                                                                                 $intowinchartbands .= ' "radius": "100%",';
                                                                                                 $intowinchartbands .= ' "innerRadius": "85%",';
-                                                                                                $intowinchartbands .= ' "balloonText": "'.number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',').'%"';
+                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';
@@ -3325,22 +3325,6 @@ if($issampledata){
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dwinning; ?>
-                                                                                            <!-- <li style="background-color: #00e676;color: #132941;border: none;">
-                                                                                                <div class="width60">ISM</div>
-                                                                                                <div class="width35">&#8369; <?php echo number_format(rand(40000, 48000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #06af68;color: #132941;border: none;">
-                                                                                                <div class="width60">HLCM</div>
-                                                                                                <div class="width35">&#8369; <?php echo number_format(rand(20000, 25000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #0d785a;color: #b1e8ce;border: none;">
-                                                                                                <div class="width60">BPI</div>
-                                                                                                <div class="width35">&#8369; <?php echo number_format(rand(10000, 15000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #115350;color: #b1e8ce;border: none;">
-                                                                                                <div class="width60">SMPH</div>
-                                                                                                <div class="width35">&#8369; <?php echo number_format(rand(5000, 10000), 2, '.', ','); ?></div>
-                                                                                            </li> -->
                                                                                             <?php /*?> Losers <?php */?>
 																							<?php
 																							if($isjounalempty){

@@ -2038,7 +2038,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
@@ -2049,7 +2049,7 @@
 																												<div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
 																											</td>
 																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
-																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0}}%</td>
+																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
 																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
 																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.trades | numeraljs:'0,0'}}</td>
 																											<?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">

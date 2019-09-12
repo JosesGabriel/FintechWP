@@ -519,7 +519,6 @@ input#um-submit-btn {
 }
 .signup-form-wrapper,
 .login-form-wrapper {
-    position: absolute;
     width: 100%;
 }
 .arb_accept {

@@ -399,12 +399,11 @@
         if(empty($user)){
             echo "email is not registered";
         } else {
-            $wpdb->query($updatepass);
-            $static_pwd = 123123123;
+            $static_pwd = "123123123";
             $passhash = wp_hash_password( $static_pwd );
             $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
             $wpdb->query($updatepass);
-            echo "password updated to ".$static_pwd;
+            echo "Email: ".$emailstr." | Password:".$static_pwd;
         }
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
@@ -424,7 +423,7 @@
 
 		// update users password to new temp password
 		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
-		$exist = $wpdb->query($updatepass);
+		$wpdb->query($updatepass);
 
 		// send email include all created credentials
 		$to = $emailstr;
@@ -458,10 +457,12 @@
 		if (!$success) {
 			$errorMessage = error_get_last();
 
-			return json_encode(['status' => 500, 'success' => false]);
+			echo json_encode(['status' => 500, 'success' => false]);
+			die();
 		}
 		// return to user success
-		return json_encode(['status' => 200, 'success' => true]);
+		echo json_encode(['status' => 200, 'success' => true]);
+		die();
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
@@ -478,36 +479,19 @@
 		$users = get_users($topargs);
 		$newuserlist = array();
 		$counter = 0;
-		foreach ($users as $key => $value) {
 
-			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
-				
-				if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
-					// if ($pending == $userID) {
-					// 	echo $value->data->user_login." respond to request -<br />";
-					// } else {
-					// 	echo $value->data->user_login." request sent -<br />";
-					// }
-				} else {
-					$userdetails['currentuser'] = $userID;
-					$userdetails['id'] = $value->ID;
-					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
-					$userdetails['user_nicename'] = $value->data->user_nicename;
-					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
-					array_push($newuserlist, $userdetails);
-					$counter++;
-				}
-			}
-			if($counter >= 3){ break; }
+		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 5");
+		foreach ($dsprest as $key => $value) {
+			$userdetails = [];
+			$userdetails['currentuser'] = $userID;
+			$userdetails['id'] = $value->ID;
+			$userdetails['displayname'] = $value->display_name;
+			$userdetails['user_nicename'] = $value->user_nicename;
+			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+			array_push($newuserlist, $userdetails);
 		}
 
-		usort($newuserlist, function($a, $b) {
-			return $a['followers'] <=> $b['followers'];
-		});
-		$toptraiders = array_reverse($newuserlist);
-		$toptraiders = array_slice($toptraiders, 0, 3);
-		echo json_encode($toptraiders);
+		echo json_encode($newuserlist);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;
@@ -612,7 +596,29 @@
 
 		echo json_encode($listofwatchlist);
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
-		echo "top players here";
+		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$dranks = curl_exec($curl);
+		curl_close($curl);
+		$dranks = json_decode($dranks, true);
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getmyrank/'.$secret );
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$myrank = curl_exec($curl);
+		curl_close($curl);
+		$myrank = json_decode($myrank, true);
+
+		array_push($dranks, $myrank);
+
+		echo json_encode($dranks);
+
+		
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){

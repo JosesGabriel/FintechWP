@@ -20,7 +20,7 @@
 
                             <script>
                                 jQuery(document).ready(function(e) {
-                                    jQuery(".inner-seatch input[type='text']").val("     <?php if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
+                                    jQuery(".inner-seatch input[type='text']").val("<?php if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
                                 });
                             </script>
 							

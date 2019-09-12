@@ -50,6 +50,22 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+.um-login .um-col-alt .um-center {
+    display: inline-block;
+    margin: 10px 10px 0;
+    text-align: center;
+    align-items: center;
+    width: 190px;
+    height: 36px;
+    position: relative;
+    box-sizing: border-box;
+    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+    background-clip: padding-box; 
+	border: solid 2px transparent;
+    border-radius: 35px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
 .login-submit {
     display: inline-block;
     margin: 15px 10px 0;
@@ -87,11 +103,12 @@ a.for_pass {
     display: block;
     padding: 0px 0 20px;
     font-size: 12px;
-    text-align: center;
-    color: #737373;
+	text-align: center;
+	color: #fff;
 }
 a.for_pass:hover {
-    text-decoration: none;
+	text-decoration: none;
+	color: #d8d8d8;
 }
 </style>
 <div class="ondashboardpage_login">
@@ -196,7 +213,7 @@ a.for_pass:hover {
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='<?php echo $homeurlgen; ?>/password-email/?active' class='for_pass'>Forgot your password?</a>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='<?php echo $homeurlgen; ?>/password-email/' class='for_pass'>Forgot your password?</a>");
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

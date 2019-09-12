@@ -424,7 +424,7 @@
     }
     .dplsicon {
         display: inline-block !important;
-        float: center;
+        /* float: center; */
     }
     .dplsicon a {
         color: #fff
@@ -3325,7 +3325,7 @@
     }
     .dplsicon {
         display: inline-block !important;
-        float: right;
+        /* float: right; */
     }
     .dplsicon a {
         color: #fff

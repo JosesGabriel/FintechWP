@@ -19,14 +19,14 @@
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
 
 		gtag('config', 'UA-147416476-1');
-	</script> -->
+	</script>
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />

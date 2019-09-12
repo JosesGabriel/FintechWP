@@ -4,6 +4,16 @@ $( document ).ready(function() {
         
     
     // }, 1000);
+    $.ajax({
+        url: '/apipge/?daction=sidebar-bulletin',
+        type: 'GET',
+        dataType: 'json',
+        success: function(res) {
+            if (res.success) {
+                $('.right-dashboard-part .latest-news .to-rss-inner').prepend(res.data);
+            }
+        }
+    });
 
     $.ajax({
         url: "/apipge/?daction=trendingstocks",

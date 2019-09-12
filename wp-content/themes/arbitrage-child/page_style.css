@@ -2357,6 +2357,7 @@
         color: #ecf0f1;
         text-align: left;
         margin-bottom: 3px;
+        text-transform: capitalize;
     }
     .istotal {
         color: #a2adb9;

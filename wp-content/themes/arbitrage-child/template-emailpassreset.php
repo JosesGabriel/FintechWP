@@ -758,8 +758,8 @@ $homeurlgen = get_home_url();
                 'dataType': 'json',
                 'success': function (response) {
                     if (response.success) {
-                        jQuery(".confirmed_cont").show();
                         jQuery(".email_pass_reset").hide();
+                        jQuery(".confirmed_cont").show();
                         return;
                     }
                     jQuery('.error_message').show();

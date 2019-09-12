@@ -478,36 +478,52 @@
 		$users = get_users($topargs);
 		$newuserlist = array();
 		$counter = 0;
-		foreach ($users as $key => $value) {
 
-			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
+		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 3");
+
+		print_r($dsprest);
+		
+		// foreach ($dsprest as $key => $value) {
+		// 	$userdetails = [];
+		// 	$userdetails['currentuser'] = $userID;
+		// 	$userdetails['id'] = $value->ID;
+		// 	$userdetails['displayname'] = $value['display_name'];
+		// 	$userdetails['user_nicename'] = $value['user_nicename'];
+		// 	$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+		// 	array_push($newuserlist, $userdetails);
+		// }
+
+		// foreach ($users as $key => $value) {
+
+		// 	if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
 				
-				if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
-					// if ($pending == $userID) {
-					// 	echo $value->data->user_login." respond to request -<br />";
-					// } else {
-					// 	echo $value->data->user_login." request sent -<br />";
-					// }
-				} else {
-					$userdetails['currentuser'] = $userID;
-					$userdetails['id'] = $value->ID;
-					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
-					$userdetails['user_nicename'] = $value->data->user_nicename;
-					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
-					array_push($newuserlist, $userdetails);
-					$counter++;
-				}
-			}
-			if($counter >= 3){ break; }
-		}
+		// 		if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
+		// 			// if ($pending == $userID) {
+		// 			// 	echo $value->data->user_login." respond to request -<br />";
+		// 			// } else {
+		// 			// 	echo $value->data->user_login." request sent -<br />";
+		// 			// }
+		// 		} else {
+		// 			$userdetails['currentuser'] = $userID;
+		// 			$userdetails['id'] = $value->ID;
+		// 			$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+		// 			$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+		// 			$userdetails['user_nicename'] = $value->data->user_nicename;
+		// 			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+		// 			array_push($newuserlist, $userdetails);
+		// 			$counter++;
+		// 		}
+		// 	}
+		// 	if($counter >= 3){ break; }
+		// }
 
-		usort($newuserlist, function($a, $b) {
-			return $a['followers'] <=> $b['followers'];
-		});
-		$toptraiders = array_reverse($newuserlist);
-		$toptraiders = array_slice($toptraiders, 0, 3);
-		echo json_encode($toptraiders);
+		// usort($newuserlist, function($a, $b) {
+		// 	return $a['followers'] <=> $b['followers'];
+		// });
+		// $toptraiders = array_reverse($newuserlist);
+		// $toptraiders = array_slice($toptraiders, 0, 3);
+
+		echo json_encode($dsprest);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;

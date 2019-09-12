@@ -125,17 +125,21 @@
 								?>
 								
 							</div>
-								<div class="istotal"><?php 
+									<?php 
 									$totalvaluee = $value['dtotalbal'];
 									$equityres = $totalvaluee - 100000;
 									$resres = $equityres / 100000;
 									$finalres = $resres * 100;
 									?>
+							<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px; text-align: right;width: 65px;font-size: 13px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
+											?></span>
+
+								<div class="istotal">
+									
 									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee); //number_format($totalvaluee, 2, '.', ','); 
 
 									?></span>
-											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 73px;position: absolute;top: 7px; text-align: right;width: 64px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
-											?></span>
+											
 									<?php if($finalres == 0) { ?>
 											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 
 											?></span>

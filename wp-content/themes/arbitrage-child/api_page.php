@@ -480,15 +480,15 @@
 		$counter = 0;
 
 		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 3");
-		foreach ($dsprest as $key => $value) {
-			$userdetails = [];
-			$userdetails['currentuser'] = $userID;
-			$userdetails['id'] = $value->ID;
-			$userdetails['displayname'] = $value['display_name'];
-			$userdetails['user_nicename'] = $value['user_nicename'];
-			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
-			array_push($newuserlist, $userdetails);
-		}
+		// foreach ($dsprest as $key => $value) {
+		// 	$userdetails = [];
+		// 	$userdetails['currentuser'] = $userID;
+		// 	$userdetails['id'] = $value->ID;
+		// 	$userdetails['displayname'] = $value['display_name'];
+		// 	$userdetails['user_nicename'] = $value['user_nicename'];
+		// 	$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+		// 	array_push($newuserlist, $userdetails);
+		// }
 
 		// foreach ($users as $key => $value) {
 
@@ -520,7 +520,7 @@
 		// $toptraiders = array_reverse($newuserlist);
 		// $toptraiders = array_slice($toptraiders, 0, 3);
 
-		echo json_encode($newuserlist);
+		echo json_encode($dsprest);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;

@@ -15,18 +15,25 @@
         }
         $i = 0;
 
+        $today = date('Y-m-d');
+
         foreach($stockinfo as $stkey => $stvals){
 
             //$time = $stvals->lastupdatetime;
             //$new_date = date('Y-m-d H:i:s', $stvals->lastupdatetime);   
-            $new_date = date('Y-m-d H:i:s', strtotime($stvals->lastupdatetime));
+            $new_date = date('Y-m-d', strtotime($stvals->lastupdatetime));
 
-            $stock[$i][0] = $stvals->symbol;
-            $stock[$i][1] = $stvals->changepercentage;
-            $stock[$i][2] = $stvals->description;
-            $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
-            $i++;
+                if($today == $new_date){
+
+                    $stock[$i][0] = $stvals->symbol;
+                    $stock[$i][1] = $stvals->changepercentage;
+                    $stock[$i][2] = $stvals->description;
+                    $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
+                    $i++;            
+                }
         }
+
+
              usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
             });

@@ -75,14 +75,14 @@
 
 					?></span>
 									<?php if($finalres == 0) { ?>
-											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres); //number_format($finalres, 2, '.', ',') . " % "; 
+											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . "%"; //number_format($finalres, 2, '.', ',') . " % "; 
 											?></span>
 									<?php }elseif($finalres >= 0) {?>
-											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';} echo nice_number($thisisit);//number_format($thisisit, 2, '.', ',') . " % "; 
+											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';} echo nice_number($thisisit) . "%";//number_format($thisisit, 2, '.', ',') . " % "; 
 											?></span>
 									<?php }elseif($finalres <= 0) { ?>
 											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i>
-												<?php echo nice_number($finalres); //number_format($finalres, 2, '.', ',') . " % "; 
+												<?php echo nice_number($finalres) . "%"; //number_format($finalres, 2, '.', ',') . " % "; 
 											?></span>
 									<?php } ?>
 								</div>
@@ -135,14 +135,14 @@
 											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px; text-align: right;width: 100px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
 											?></span>
 									<?php if($finalres == 0) { ?>
-											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres); //number_format($finalres, 2, '.', ',') . " % "; 
+											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . "%"; //number_format($finalres, 2, '.', ',') . " % "; 
 											?></span>
 									<?php }elseif($finalres >= 0) {?>
-											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo nice_number($thisisit);//number_format($thisisit, 2, '.', ',') . " % "; 
+											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo nice_number($thisisit) . "%";//number_format($thisisit, 2, '.', ',') . " % "; 
 											?></span>
 									<?php }elseif($finalres <= 0) { ?>
 											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i>
-												<?php echo nice_number($finalres);//number_format($finalres, 2, '.', ',') . " % "; 
+												<?php echo nice_number($finalres) . "%";//number_format($finalres, 2, '.', ',') . " % "; 
 												?></span>
 									<?php } ?>
 								</div>

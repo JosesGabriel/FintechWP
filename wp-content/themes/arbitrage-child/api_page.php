@@ -480,6 +480,9 @@
 		$counter = 0;
 
 		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 3");
+
+		print_r($dsprest);
+		
 		// foreach ($dsprest as $key => $value) {
 		// 	$userdetails = [];
 		// 	$userdetails['currentuser'] = $userID;

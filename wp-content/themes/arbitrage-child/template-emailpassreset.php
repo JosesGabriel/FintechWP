@@ -707,6 +707,9 @@ $homeurlgen = get_home_url();
         font-weight: 500;
         text-decoration: none;
     }
+    a.backto-login {
+        color: #c8c8c8;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">

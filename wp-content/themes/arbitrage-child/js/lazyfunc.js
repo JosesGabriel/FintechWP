@@ -82,7 +82,7 @@ $( document ).ready(function() {
                             ranker += '<div class="hudbadge"><img src="https://dev-v1.arbitrage.ph/svg/top'+value.myrank+'.svg" alt=""></div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'
-                            ranker += '<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px;width: 65px;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
+                            ranker += '<span class="profit_loss" style="color: #24a65d;float: right;position: absolute;top: 4px;width: 95%;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
                             ranker += '<div class="istotal">';
                             ranker += '<span class="value-t"> ₱ '+value.bttotal+'</span>';
                             ranker += '<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i>'+value.btperc+' %</span>';
@@ -95,7 +95,7 @@ $( document ).ready(function() {
                             ranker += '<div class="hudbadge"><img src="https://dev-v1.arbitrage.ph/svg/top4.svg" alt=""></div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'
-                            ranker += '<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px;width: 65px;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
+                            ranker += '<span class="profit_loss" style="color: #24a65d;float: right;position: absolute;top: 4px;width: 95%;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
                             ranker += '<div class="istotal">';
                             ranker += '<span class="value-t"> ₱ '+value.bttotal+'</span>';
                             ranker += '<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i>'+value.btperc+' %</span>';
@@ -107,10 +107,11 @@ $( document ).ready(function() {
                 } else {
                     if(value.myrank > 5){
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge">'+value.myrank+'</div>'
+                            ranker += '<div class="hudbadge"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
+                            // ranker += '<div class="hudbadge">'+value.myrank+'</div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'
-                            ranker += '<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px;width: 65px;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
+                            ranker += '<span class="profit_loss" style="color: #24a65d;float: right;position: absolute;top: 4px;width: 95%;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
                             ranker += '<div class="istotal">';
                             ranker += '<span class="value-t"> ₱ '+value.bttotal+'</span>';
                             ranker += '<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i>'+value.btperc+' %</span>';

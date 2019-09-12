@@ -618,7 +618,7 @@
 
 		echo json_encode($dranks);
 
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletion'){
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
 
 		dynamic_sidebar( 'et_pb_widget_area_1' );
 		

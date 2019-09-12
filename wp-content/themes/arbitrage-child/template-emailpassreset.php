@@ -699,6 +699,9 @@ $homeurlgen = get_home_url();
         background-repeat: no-repeat;
         overflow: hidden !important;
     }
+    .confirmed_cont {
+        display: none;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -719,7 +722,6 @@ $homeurlgen = get_home_url();
     // }
 
 	jQuery(document).ready(function(){
-        jQuery(".confirmed_cont").hide();
 		jQuery("#email_pass_reset").click(function(event){
             
                 // let origin = window.location.origin;

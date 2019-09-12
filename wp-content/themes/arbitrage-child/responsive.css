@@ -325,6 +325,11 @@
 	.top-traiders .to-content-part .trader-item .traider-image {
 		margin-right: 0 !important;
 	}
+
+	.signup-form-wrapper, .login-form-wrapper {
+		top: -231px !important;
+	}
+
 }
 /* Mobile Smaller */
 @media only screen and (max-width: 414px){

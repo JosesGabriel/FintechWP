@@ -22,7 +22,7 @@ $homeurlgen = get_home_url();
         </form>
         <div class="confirmed_cont">
             <span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
-            <a class="backto-login" href="<?php echo $homeurlgen; ?>/password-confirmed/">Back to login</a>
+            <a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
         </div>
     </div>
 </div>
@@ -702,6 +702,11 @@ $homeurlgen = get_home_url();
     .confirmed_cont {
         display: none;
     }
+    a.backto-login {
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -730,7 +735,7 @@ $homeurlgen = get_home_url();
                         // let origin = window.location.origin;
                         let email = jQuery("#email_info").val();
                         // console.log(email);
-                        let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
+                        let url = "https://<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
                         let settings = {
                             "async": true,
                             "crossDomain": true,

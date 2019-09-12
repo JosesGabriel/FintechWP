@@ -60,7 +60,9 @@ $gerdqoute = json_decode($gerdqoute);
 $dstockinfo = $gerdqoute->data;
 
 ?>
-
+<pre>
+    <?php print_r($dstockinfo); ?>
+</pre>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,600i" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -779,8 +781,12 @@ a.um-photo-modal img {
                                                                                 <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                                     <?php
                                                                                         $dstock = get_the_title();
+                                                                                        $key = array_search($dstock, array_column($dstockinfo, 'user_secret'));
+
                                                                                         $price = $dstockinfo->$dstock->last;
                                                                                         $change = $dstockinfo->$dstock->change;
+
+
 
                                                                                         $dsubtitle = get_post_meta( get_the_id(), 'stock_subtitle', true );
                                                                                     ?>

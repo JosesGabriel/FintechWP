@@ -2049,7 +2049,7 @@
 																												<div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
 																											</td>
 																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
-																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0}}%</td>
+																											<td align="left" ng-click="select(stock.symbol)" ng-class="{{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0}}" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
 																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
 																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.trades | numeraljs:'0,0'}}</td>
 																											<?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">

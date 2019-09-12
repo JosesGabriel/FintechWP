@@ -400,7 +400,7 @@
             echo "email is not registered";
         } else {
             $wpdb->query($updatepass);
-            $static_pwd = 123456789;
+            $static_pwd = 123123123;
             $passhash = wp_hash_password( $static_pwd );
             $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
             $wpdb->query($updatepass);

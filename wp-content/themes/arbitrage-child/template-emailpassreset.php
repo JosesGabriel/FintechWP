@@ -20,7 +20,13 @@ $homeurlgen = get_home_url();
 	gtag('js', new Date());
 
 	gtag('config', 'UA-147416476-1');
-	</script>
+    </script>
+    
+    <link rel="icon" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-150x150.png" sizes="32x32" />
+    <link rel="icon" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-250x250.png" />
+    <meta name="msapplication-TileImage" content="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/04/arb_fav_bigger-300x300.png" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -756,11 +762,11 @@ $homeurlgen = get_home_url();
                         jQuery(".email_pass_reset").hide();
                         return;
                     }
-                    e.preventDefault();
                     jQuery('.error_message').show();
                     return;
                 }
             })
+            e.preventDefault();
         });
     </script>
 </body>

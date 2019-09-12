@@ -74,7 +74,7 @@ $( document ).ready(function() {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            $(".dranks .trendingpreloader").hide();
+            $(".ranks .trendingpreloader").hide();
             $.each(res, function( index, value ) {
                 if(value.myrank <= 3){
                     var ranker = '<li>'
@@ -88,7 +88,7 @@ $( document ).ready(function() {
                         ranker += '</div>';
                         ranker += '</div>';
                     ranker += '</li>';
-                    $(".dranks > .topsect").before(ranker);
+                    $(".ranks .topsect").before(ranker);
                 } else if(value.myrank >= 4 && value.myrank <= 5) {
                     var ranker = '<li>'
                         ranker += '<div class="hudbadge"><img src="https://dev-v1.arbitrage.ph/svg/top4.svg" alt=""></div>'
@@ -101,7 +101,7 @@ $( document ).ready(function() {
                         ranker += '</div>';
                         ranker += '</div>';
                     ranker += '</li>';
-                    $(".dranks > .topsect").append(ranker);
+                    $(".ranks .topsect").append(ranker);
                 } else {
                     var ranker = '<li>'
                         ranker += '<div class="hudbadge">'+value.myrank+'</div>'
@@ -114,7 +114,7 @@ $( document ).ready(function() {
                         ranker += '</div>';
                         ranker += '</div>';
                     ranker += '</li>';
-                    $(".dranks > .myrank").append(ranker);
+                    $(".ranks .myrank").append(ranker);
                 }
             });
         },

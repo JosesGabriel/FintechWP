@@ -731,15 +731,15 @@ $homeurlgen = get_home_url();
 
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-                let hasvalueemail = jQuery("#email_info").val().length;
+                var hasvalueemail = jQuery("#email_info").val().length;
                     if(hasvalueemail >= 1){
                         jQuery(".confirmed_cont").show();
                         jQuery(".email_pass_reset").hide();
                         // let origin = window.location.origin;
-                        let email = jQuery("#email_info").val();
+                        var email = jQuery("#email_info").val();
                         // console.log(email);
-                        let url = "https://<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
-                        let settings = {
+                        var url = "https://<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+                        var settings = {
                             "async": true,
                             "crossDomain": true,
                             "url": url,

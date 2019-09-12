@@ -477,6 +477,7 @@
 		);
 		$users = get_users($topargs);
 		$newuserlist = array();
+		$counter = 0;
 		foreach ($users as $key => $value) {
 
 			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
@@ -495,8 +496,10 @@
 					$userdetails['user_nicename'] = $value->data->user_nicename;
 					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
 					array_push($newuserlist, $userdetails);
+					$counter++;
 				}
 			}
+			if($counter >= 3){ break; }
 		}
 
 		usort($newuserlist, function($a, $b) {
@@ -689,9 +692,14 @@
 			$dtradd = json_decode(getpointtrades($_GET['stock']));
 			
 			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+			
+			$bearperc = 0;
+			$bullperc = 0;
 
-			$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
-			$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
+			if ($totalitem != 0) {
+				$bearperc = ($totsbear + $dtradd->bear) != 0 ? (($totsbear + $dtradd->bear) / $totalitem) * 100 : 0;
+				$bullperc = ($totsbull + $dtradd->bull) != 0 ? (($totsbull + $dtradd->bull) / $totalitem) * 100 : 0;
+			}
 			
 			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}

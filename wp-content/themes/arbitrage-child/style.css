@@ -2350,7 +2350,8 @@ hr.style13 {
     height: 1px;
     width: 98%;
     background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-bottom: .6rem !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 hr.style12 {
     border: 0;

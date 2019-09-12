@@ -103,11 +103,12 @@ a.for_pass {
     display: block;
     padding: 0px 0 20px;
     font-size: 12px;
-    text-align: center;
-    color: #737373;
+	text-align: center;
+	color: #fff;
 }
 a.for_pass:hover {
-    text-decoration: none;
+	text-decoration: none;
+	color: #d8d8d8;
 }
 </style>
 <div class="ondashboardpage_login">

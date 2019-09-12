@@ -7,7 +7,7 @@ $( document ).ready(function() {
     $.ajax({
         url: '/apipge/?daction=sidebar-bulletin',
         type: 'GET',
-        dataType: 'html',
+        dataType: 'json',
         success: function(res) {
             if (res.success) {
                 $('.right-dashboard-part .latest-news .to-rss-inner').prepend(res.data);

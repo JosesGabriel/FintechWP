@@ -116,9 +116,12 @@
                             <div class="dselecton">
                                 <select name="stockname" id="stockname">
                                     <option value="0">Select a Stock</option>
-                                    <?php foreach($dwatchinfo->data as $dwkey => $dwvalue): ?>
+                                    <?php 
+                                        if ($dwatchinfo):
+                                        foreach($dwatchinfo->data as $dwkey => $dwvalue): 
+                                    ?>
                                         <option value="<?php echo $dwvalue->last; ?>"><?php echo $dwvalue->symbol; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; endif; ?>
                                 </select>
                             </div>
                         </div>

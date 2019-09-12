@@ -594,7 +594,6 @@
 
 		echo json_encode($listofwatchlist);
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
-		echo $current_user->ID;
 		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
 		
 		$curl = curl_init();
@@ -604,7 +603,7 @@
 		$dranks = curl_exec($curl);
 		curl_close($curl);
 		$dranks = json_decode($dranks, true);
-		echo 'https://game.arbitrage.ph/api/getmyrank/'.$secret;
+		
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getmyrank/'.$secret );
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -613,7 +612,9 @@
 		curl_close($curl);
 		$myrank = json_decode($myrank, true);
 
-		print_r($myrank);
+		array_push($dranks, $myrank);
+
+		print_r($dranks);
 
 		
 	} else { // market sentiment : check sentiment

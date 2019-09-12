@@ -399,12 +399,11 @@
         if(empty($user)){
             echo "email is not registered";
         } else {
-            $wpdb->query($updatepass);
-            $static_pwd = 123123123;
+            $static_pwd = "123123123";
             $passhash = wp_hash_password( $static_pwd );
             $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
             $wpdb->query($updatepass);
-            echo "password updated to ".$static_pwd;
+            echo "Email: ".$emailstr." | Password:".$static_pwd;
         }
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
@@ -489,36 +488,6 @@
 			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
 			array_push($newuserlist, $userdetails);
 		}
-
-		// foreach ($users as $key => $value) {
-
-		// 	if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
-				
-		// 		if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
-		// 			// if ($pending == $userID) {
-		// 			// 	echo $value->data->user_login." respond to request -<br />";
-		// 			// } else {
-		// 			// 	echo $value->data->user_login." request sent -<br />";
-		// 			// }
-		// 		} else {
-		// 			$userdetails['currentuser'] = $userID;
-		// 			$userdetails['id'] = $value->ID;
-		// 			$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		// 			$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
-		// 			$userdetails['user_nicename'] = $value->data->user_nicename;
-		// 			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
-		// 			array_push($newuserlist, $userdetails);
-		// 			$counter++;
-		// 		}
-		// 	}
-		// 	if($counter >= 3){ break; }
-		// }
-
-		// usort($newuserlist, function($a, $b) {
-		// 	return $a['followers'] <=> $b['followers'];
-		// });
-		// $toptraiders = array_reverse($newuserlist);
-		// $toptraiders = array_slice($toptraiders, 0, 3);
 
 		echo json_encode($newuserlist);
 
@@ -626,6 +595,21 @@
 		echo json_encode($listofwatchlist);
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
 		echo "top players here";
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$dranks = curl_exec($curl);
+		curl_close($curl);
+
+		$dranks = json_decode($dranks, true);
+
+		function sortrank($a, $b) { return $b['dtotalbal'] - $a['dtotalbal']; }
+
+		usort($dranks, 'sortrank');
+
+		
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){

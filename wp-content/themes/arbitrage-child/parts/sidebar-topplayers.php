@@ -8,11 +8,11 @@
         if (!is_numeric($n)) return false;
 
         // now filter it;
-        if ($n > 1000000000000000) return round(($n/1000000000000000), 2).' Quad';
-        elseif ($n > 1000000000000) return round(($n/1000000000000), 2).' T';
-        elseif ($n > 1000000000) return round(($n/1000000000), 2).' B';
-        elseif ($n > 1000000) return round(($n/1000000), 2).' M';
-        elseif ($n > 1000) return round(($n/1000), 2).' K';
+        if ($n > 1000000000000000) return round(($n/1000000000000000), 2).'Quad';
+        elseif ($n > 1000000000000) return round(($n/1000000000000), 2).'T';
+        elseif ($n > 1000000000) return round(($n/1000000000), 2).'B';
+        elseif ($n > 1000000) return round(($n/1000000), 2).'M';
+        elseif ($n > 1000) return round(($n/1000), 2).'K';
 
         return number_format($n);
     }
@@ -37,10 +37,6 @@
 				curl_close($curl);
 
 				$dranks = json_decode($dranks, true);
-
-				function sortrank($a, $b) { return $b['dtotalbal'] - $a['dtotalbal']; }
-
-				usort($dranks, 'sortrank');
 
 			?>
 

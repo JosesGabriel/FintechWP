@@ -213,7 +213,7 @@ a.for_pass:hover {
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='<?php echo $homeurlgen; ?>/password-email/?active' class='for_pass'>Forgot your password?</a>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='<?php echo $homeurlgen; ?>/password-email/' class='for_pass'>Forgot your password?</a>");
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

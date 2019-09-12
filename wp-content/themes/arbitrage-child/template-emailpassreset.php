@@ -749,6 +749,7 @@ $homeurlgen = get_home_url();
         .on('submit', '#email_pass_reset', function (e) {
             
             var email = jQuery("#email_info").val();
+            var hasvalemail = jQuery("#email_info").val().length;
             // console.log(email);
             var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
             jQuery.ajax({

@@ -8,8 +8,7 @@ $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 
 $homeurlgen = get_home_url();
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -741,6 +741,7 @@ $homeurlgen = get_home_url();
 
         })
         .on('submit', '#email_pass_reset', function (e) {
+            e.preventDefault();
             var email = jQuery("#email_info").val();
             // console.log(email);
             var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;

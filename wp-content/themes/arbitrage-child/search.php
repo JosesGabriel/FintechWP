@@ -61,7 +61,7 @@ $dstockinfo = $gerdqoute->data;
 
 ?>
 <pre>
-    <?php print_r($dstockinfo); ?>
+    <?php //print_r($dstockinfo); ?>
 </pre>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,600i" rel="stylesheet">
@@ -781,7 +781,9 @@ a.um-photo-modal img {
                                                                                 <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                                     <?php
                                                                                         $dstock = get_the_title();
-                                                                                        $key = array_search($dstock, array_column($dstockinfo, 'user_secret'));
+                                                                                        $key = array_search($dstock, array_column($dstockinfo, 'symbol'));
+
+                                                                                        echo $key." - ";
 
                                                                                         $price = $dstockinfo->$dstock->last;
                                                                                         $change = $dstockinfo->$dstock->change;

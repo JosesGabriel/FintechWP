@@ -49,6 +49,7 @@ $homeurlgen = get_home_url();
 
                     <input type="submit" value="Reset" id="email_btn_info">
                 </form>
+            </div>
             <div class="confirmed_cont">
                 <span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
                 <a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>

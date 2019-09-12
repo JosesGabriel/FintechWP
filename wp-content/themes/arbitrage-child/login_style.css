@@ -436,6 +436,10 @@ input#username_b {
 	margin-bottom:0; 
 	color:#fff;
 	font-size:12px;
+	display: none;
+}
+.um.um-shortcode-social {
+	display: none;
 }
 .um-button-facebook span {
     display: none;

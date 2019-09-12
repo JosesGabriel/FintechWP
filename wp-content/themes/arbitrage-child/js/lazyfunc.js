@@ -88,7 +88,7 @@ $( document ).ready(function() {
                         ranker += '</div>';
                         ranker += '</div>';
                     ranker += '</li>';
-                    $(".ranks .topsect").before(ranker);
+                    $(".ranks .topsect").append(ranker);
                 } else if(value.myrank >= 4 && value.myrank <= 5) {
                     var ranker = '<li>'
                         ranker += '<div class="hudbadge"><img src="https://dev-v1.arbitrage.ph/svg/top4.svg" alt=""></div>'
@@ -101,7 +101,7 @@ $( document ).ready(function() {
                         ranker += '</div>';
                         ranker += '</div>';
                     ranker += '</li>';
-                    $(".ranks .topsect").append(ranker);
+                    $(".ranks .othersect").append(ranker);
                 } else {
                     var ranker = '<li>'
                         ranker += '<div class="hudbadge">'+value.myrank+'</div>'

@@ -692,9 +692,14 @@
 			$dtradd = json_decode(getpointtrades($_GET['stock']));
 			
 			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+			
+			$bearperc = 0;
+			$bullperc = 0;
 
-			$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
-			$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
+			if ($totalitem != 0) {
+				$bearperc = ($totsbear + $dtradd->bear) != 0 ? (($totsbear + $dtradd->bear) / $totalitem) * 100 : 0;
+				$bullperc = ($totsbull + $dtradd->bull) != 0 ? (($totsbull + $dtradd->bull) / $totalitem) * 100 : 0;
+			}
 			
 			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}

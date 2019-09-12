@@ -603,7 +603,7 @@
 		$dranks = curl_exec($curl);
 		curl_close($curl);
 		$dranks = json_decode($dranks, true);
-		
+		echo 'https://game.arbitrage.ph/api/getmyrank/'.$secret;
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getmyrank/'.$secret );
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);

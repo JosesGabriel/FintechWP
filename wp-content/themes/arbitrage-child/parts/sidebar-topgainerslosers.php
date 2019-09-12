@@ -41,7 +41,7 @@
 ?>
     
     <div class="top-stocks">
-    <div class="to-top-title gainers-title"><strong>Top Gainers <em>as of today</em></strong></div>
+    <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part gainers">
 
@@ -58,7 +58,7 @@
                       
                
     </div>
-    <div class="to-top-title losers-title"><strong>Top Losers <em>as of today</em></strong></div>
+    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part losers">
 

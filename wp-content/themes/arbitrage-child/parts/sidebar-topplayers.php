@@ -58,7 +58,7 @@
 								<div class="isname" style="width: 120px;">
 									<?php 
 										$uname = $value['dbsname'];
-										echo (strlen($uname) > 12 ? substr($uname, 0, 12) . ".." : ucwords($uname));
+										echo (strlen($uname) > 15 ? substr($uname, 0, 15) . ".." : ucwords($uname));
 									?>
 								</div>
 								<div class="istotal">
@@ -113,8 +113,8 @@
 
 								<?php 
 									$uname = $value['dbsname'];
-									if (strlen($uname) > 13){
-											echo substr($uname, 0, 13) . ".."; 
+									if (strlen($uname) > 15){
+											echo substr($uname, 0, 15) . ".."; 
 										}else{
 											echo ucwords($uname);
 										}

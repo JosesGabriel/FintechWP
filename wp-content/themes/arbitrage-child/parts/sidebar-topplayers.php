@@ -62,6 +62,8 @@
 										echo (strlen($uname) > 15 ? substr($uname, 0, 15) . ".." : ucwords($uname));
 									?>
 								</div>
+								<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px;width: 65px;text-align: right;font-size: 13px;"><?php echo " ₱ " . nice_number($equityres);?></span>
+
 								<div class="istotal">
 									<?php 
 										$totalvaluee = $value['dtotalbal'];
@@ -72,9 +74,7 @@
 									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee);//number_format($totalvaluee, 2, '.', ','); 
 
 									?></span>
-				<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 73px;position: absolute;top: 7px;width: 64px;text-align: right;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
-
-					?></span>
+				
 									<?php if($finalres == 0) { ?>
 											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 
 											?></span>

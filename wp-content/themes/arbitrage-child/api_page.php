@@ -605,9 +605,7 @@
 
 		$dranks = json_decode($dranks, true);
 
-		function sortrank($a, $b) { return $b['dtotalbal'] - $a['dtotalbal']; }
-
-		usort($dranks, 'sortrank');
+		print_r($dranks);
 
 		
 	} else { // market sentiment : check sentiment

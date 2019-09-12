@@ -8,7 +8,8 @@
         if (!is_numeric($n)) return false;
 
         // now filter it;
-        if ($n > 1000000000000) return round(($n/1000000000000), 2).' T';
+        if ($n > 1000000000000000) return round(($n/1000000000000000), 2).' Quad';
+        elseif ($n > 1000000000000) return round(($n/1000000000000), 2).' T';
         elseif ($n > 1000000000) return round(($n/1000000000), 2).' B';
         elseif ($n > 1000000) return round(($n/1000000), 2).' M';
         elseif ($n > 1000) return round(($n/1000), 2).' K';

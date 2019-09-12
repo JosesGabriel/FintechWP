@@ -18,7 +18,8 @@
         foreach($stockinfo as $stkey => $stvals){
 
             //$time = $stvals->lastupdatetime;
-            $new_date = date('Y-m-d H:i:s', $stvals->lastupdatetime);   
+            //$new_date = date('Y-m-d H:i:s', $stvals->lastupdatetime);   
+            $new_date = date('Y-m-d H:i:s', strtotime($stvals->lastupdatetime));
 
             $stock[$i][0] = $stvals->symbol;
             $stock[$i][1] = $stvals->changepercentage;

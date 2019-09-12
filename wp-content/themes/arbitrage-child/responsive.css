@@ -330,6 +330,11 @@
 		top: -231px !important;
 	}
 
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 70px !important;
+	}
+
 }
 /* Mobile Smaller */
 @media only screen and (max-width: 414px){
@@ -660,6 +665,11 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 45px !important;
+	}
+
 	.notif--subb {
     	margin: 20px auto 0px -24px !important;
 	}
@@ -786,6 +796,11 @@
 
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
+
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 17px !important;
+	}
 
 	.notif--subb {
     	margin: 30px auto 0px -41px !important;

@@ -424,7 +424,7 @@
 
 		// update users password to new temp password
 		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
-		$exist = $wpdb->query($updatepass);
+		$wpdb->query($updatepass);
 
 		// send email include all created credentials
 		$to = $emailstr;

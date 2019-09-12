@@ -731,7 +731,6 @@ $homeurlgen = get_home_url();
 
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-            jQuery("#email_btn_info").click(function(event){
                 let hasvalueemail = jQuery("#email_info").val().length;
                     if(hasvalueemail >= 1){
                         jQuery(".confirmed_cont").show();
@@ -754,7 +753,6 @@ $homeurlgen = get_home_url();
                         
                         event.preventDefault();
                     }
-                });
             });
         // jQuery("#email_btn_info").click(function(event){
         //     let hasvalueemail = jQuery("#email_info").val().length;

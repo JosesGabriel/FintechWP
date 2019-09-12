@@ -50,6 +50,22 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+.um-login .um-col-alt .um-center {
+    display: inline-block;
+    margin: 10px 10px 0;
+    text-align: center;
+    align-items: center;
+    width: 190px;
+    height: 36px;
+    position: relative;
+    box-sizing: border-box;
+    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+    background-clip: padding-box; 
+	border: solid 2px transparent;
+    border-radius: 35px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
 .login-submit {
     display: inline-block;
     margin: 15px 10px 0;

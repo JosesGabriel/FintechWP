@@ -67,18 +67,19 @@ $( document ).ready(function() {
         }
     });
 
-    // $.ajax({
-    //     url: "https://dev-v1.arbitrage.ph/apipge/?daction=socialwall",
-    //     type: 'GET',
-    //     dataType: 'html', // added data type
-    //     success: function(res) {
-    //         $(".social-wall-part").html(res);
-    //     },
-    //     error: function (xhr, ajaxOptions, thrownError) {
-    //         console.log(xhr.status);
-    //         console.log(thrownError);
-    //     }
-    // });
+    $.ajax({
+        url: "/apipge/?daction=topplayers",
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function(res) {
+            $(".trendingpreloader").hide();
+            
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
 
     
 });

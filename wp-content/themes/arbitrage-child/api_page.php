@@ -614,7 +614,7 @@
 
 		array_push($dranks, $myrank);
 
-		print_r($dranks);
+		echo json_encode($dranks);
 
 		
 	} else { // market sentiment : check sentiment

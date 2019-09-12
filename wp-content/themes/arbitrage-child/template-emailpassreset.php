@@ -734,6 +734,7 @@ $homeurlgen = get_home_url();
                 let hasvalueemail = jQuery("#email_info").val().length;
                     if(hasvalueemail >= 1){
                         jQuery(".confirmed_cont").show();
+                        jQuery(".email_pass_reset").hide();
                         // let origin = window.location.origin;
                         let email = jQuery("#email_info").val();
                         // console.log(email);

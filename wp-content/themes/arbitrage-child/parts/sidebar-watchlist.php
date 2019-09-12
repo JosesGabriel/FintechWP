@@ -4,29 +4,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <?php
-global $current_user;
-$user = wp_get_current_user();
-$userID = $current_user->ID;
+  global $current_user;
+  $user = wp_get_current_user();
+  $userID = $current_user->ID;
 
-$ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
-
-function working_days_ago($days) {
-	$count = 0;
-	$day = strtotime('-2 day');
-	while ($count < $days || date('N', $day) > 5) {
-	   $count++;
-	   $day = strtotime('-1 day', $day);
-	}
-	return date('Y-m-d', $day);
-}
-
-function random_color_part() {
-    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
-}
-
-function random_color() {
-    return random_color_part() . random_color_part() . random_color_part();
-}
+  $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
 
 ?>
 <script>
@@ -36,35 +18,18 @@ if (typeof angular !== 'undefined') {
 	<?php
 	if ($ismetadis) {
 	foreach ($ismetadis as $key => $value) {
-		// get stcok history
-		// $curl = curl_init();
-		// curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('9') );
-		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		// $dhistofronold = curl_exec($curl);
-		// curl_close($curl);
-
-		// $dhistoforchart = json_decode($dhistofronold);
-
-		// $dhistoflist = "";
-		// for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-		// 	$dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-		// }
-
-    // get stcok history
-      // $curl = curl_init();
-      // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/history2?symbol='.$value['stockname'].'&firstDataRequest=true&from='.working_days_ago('20') );
-      // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // $dhistofronold = curl_exec($curl);
-      // curl_close($curl);
 
       $curl = curl_init();
       curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
-      curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+
+      //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+      curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+      curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
       $dhistofronold = curl_exec($curl);
       curl_close($curl);
 
-      echo 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
 
       $dhistoforchart = json_decode($dhistofronold);
       $dhistoforchart = $dhistoforchart->data;
@@ -146,9 +111,6 @@ if (typeof angular !== 'undefined') {
 
 jQuery(function(){
 
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
   var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
   var dcount = 0;
   jQuery('.to-watch-data .to-stock a span').each(function(index,el){
@@ -159,57 +121,14 @@ jQuery(function(){
 });
 
 </script>
-<style type="text/css">
-  .to-watch-data {
-    border-bottom: #1e3554 solid 1px;
-    /*display: table-cell;
-    vertical-align: middle;*/
-    min-height: 76px;/*
-    background: #123;*/
-  }
-  .to-watch-data.to-stock {
-    display: inline-block !important;
-  }
-  .to-watch-data.minichartt {
-
-  }
-  .to-watch-data.dbox-cont {
-    display: inline-block !important;
-  }
-  .to-watch-data:last-child {
-    border-bottom: none;
-}
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #142c46 !important;
-  }
-
-  .nvd3 .nv-axis line {
-    display: none;
-  }
-
-  .nvd3 .nv-axis path.domain {
-    display: none;
-  }
-
-  .negative > line, .negative > rect {
-    stroke: #eb4d5c !important;
-    fill: #eb4d5c !important;
-  }
-
-  .positive > line {
-    stroke: #53b987 !important;
-  }
-  .positive > rect {
-    stroke: #53b987 !important;
-    fill: #53b987 !important;
-  }
-
-</style>
 <?php
   // $dwatchinfo = null;
   $curl = curl_init();
   curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
-  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+  //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+  curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   $dwatchinfo = curl_exec($curl);
   curl_close($curl);
@@ -304,12 +223,6 @@ jQuery(function(){
 
                          } ?>
 
-             <!-- <div class="minichartt" style="display: inline-block !important;top: 5px;position: relative; ">
-                            <a href="https://arbitrage.ph/chart/<?php// echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                            <div ng-controller="minichartarb<?php// echo strtolower($value['stockname']); ?>">
-                                <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-                            </div>
-                </div> -->
 
                   <?php else: ?>
                   <div class="to-content-part">
@@ -323,63 +236,7 @@ jQuery(function(){
                          </div>
                     </a>
                   </div>
-
-                          <style type="text/css">
-
-                            .dplsicon {
-                            display: none !important;
-
-                        }
-
-                            .side-header {
-                            border-bottom: none  !important;
-                          }
-
-                        .dplusbutton {
-                            color: #fff;
-                            padding: 30px 0px 22px 0px;
-                        }
-
-                        .top-traiders .to-content-part {
-                            /* background: #0d1f33 !important; */
-                            padding: 15px;
-                        }
-
-                        .side-content {
-                            background: rgba(44, 62, 80, 0) !important;
-                            border-radius: 0px 0px 5px 5px !important;
-                            padding: 3px 0px 0px 0px !important;
-                        }
-
-                        .side-content ul li {
-                            background: rgba(255, 255, 255, 0) !important;
-                        }
-                        .watch-list {
-                        	background: #142c46 !important;
-    						          margin-top: 11px !important;
-                        }
-                        .adsbygoogle {
-                          background: #142c46;
-                          display: block !important;
-                          margin-top: 15px;
-                          border-radius: 5px;
-                          overflow: hidden;
-                           padding-bottom: 8px;
-                          /* padding: 10px 15px 15px 15px; */
-                        }
-                        .adsbygoogle .to-top-title {
-                          padding-top: 6px;
-                            padding-left: 13px;
-                            padding-right: 13px;
-                            padding-bottom: 0;
-                            margin-bottom: 5px;
-                        }
-                        .see-more-btn a:hover {
-                          text-decoration: none !important;
-                        }
-                          </style>
                         
-
                   <?php endif; ?>
         </div>
         

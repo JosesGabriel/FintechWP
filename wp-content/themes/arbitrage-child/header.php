@@ -13,7 +13,8 @@
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
+	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
+	<meta property="og:image" content="<?php echo $homeurlgen ?><?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
 <?php
 	elegant_description();
 	elegant_keywords();
@@ -28,6 +29,7 @@
 	do_action( 'et_head_meta' );
 
 	$template_directory_uri = get_template_directory_uri();
+	$homeurlgen = get_home_url();
 ?>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php wp_head(); ?>

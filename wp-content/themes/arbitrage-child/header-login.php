@@ -12,7 +12,8 @@
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta property="og:image" content="https://storage.arbitrage.ph/dev/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
+	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
+	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	
 	<?php // Countdown ?>
@@ -47,7 +48,8 @@ $user = wp_get_current_user();
 	</script>
 
 	<?php wp_head(); ?>
-    
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>
@@ -56,22 +58,7 @@ $user = wp_get_current_user();
 		$get_bgfimage = "loginbg".$getrand.".jpg";?>
 		html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;background-size: cover;}
 	<?php } ?>
-    html {margin-top: 0 !important;}
-    #wpadminbar {
-        display: none !important;
-        z-index: -1 !important;
-    }
-	#preloader {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: #354960;
-		z-index: 999999;
-		height: 120%;
-	}
-	#status {
+    #status {
 		width: 50px;
 		height: 50px;
 		position: absolute;
@@ -83,100 +70,18 @@ $user = wp_get_current_user();
 		background-position: center;
 		margin: -25px 0 0 -25px;
 	}
-	#status_txt {
-		width:100%;
-		position: absolute;
-		top:50%;
-		left:0;
-		z-index:99;
-		color:#fff;
-		text-align:center;
-		font-size:11px;
-	}
-	.page-template-template-login a:hover {
-		color:#FFFFFF;
-		text-decoration: underline;
-	}
-	body, #page-container {background-color: transparent !important;}
-	span.um-field-checkbox-option {
-		display: none;
-	}
-	.arbitrage-button {
-		font-family: 'Roboto', sans-serif;
-		font-size: 12px;
-		color: #ffffff;
-		background: none;
-		border: 2px #fff solid;
-		height: auto;
-		border-radius: 25px;
-		padding: 3px 9px;
-	}
-	.arbitrage-button--primary {
-		border: 2px #2481bc solid;
-	}
-	.arbitrage-button--primary:hover {
-		color: #ffffff;
-		background-color: #2481bc !important;
-		transition-duration: 300ms;
-	}
-	.notif--subb {
-		margin: 109px auto 0 auto;
-	}
-	input.email--field {
-		background: #11273e;
-		border: 1px solid #1e3554;
-		border-radius: 25px;
-		padding: 10px 72px 10px 13px;
-		width: 485px;
-		color: #d8d8d8;
-	}
-	.email--btn {
-		left: -90px;
-		padding: 5px 10px !important;
-		top: -1px;
-		position: relative;
-	}
-	.header-image {
-		margin-top: 20px;
-		width: 108px;
-	}
-	.form-success-email {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		z-index: 99;
-		display: none;
-	}
-	.success--content {
-		position: absolute;
-		top: 3.5%;
-		right: 50.2%;
-		transform: translate(50%,-50%);
-		background: #11273e;
-		border-radius: 5px;
-		padding: 10px 15px;
-		animation-name: fadeinLoad;
-		animation-duration: 1s;
-		animation-delay: 5s;
-		animation-fill-mode: forwards;
-	}
-	span.success-word {
-		color: #d8d8d8;
-	}
-	.contercontrol {
-		display:none;
-	}
     </style>
-    <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
+	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
     <script language="javascript">
 	
-		jQuery(window).load(function() {
+		jQuery(window).on('load', function(){
 			jQuery("#status, #status_txt").fadeOut();
 			jQuery("#preloader").delay(400).fadeOut("slow");
 			jQuery(".um-field-checkbox-option").html("");
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
 			// jQuery(".um-field-error").html("!");
-		})
+		});
 		jQuery(document).ready(function(){
 			jQuery("#emailNotify__form").submit(function(){
 				var hasemail = jQuery("#email--input").val().length;
@@ -201,10 +106,10 @@ $user = wp_get_current_user();
 		});
 		
 	</script>
-    <?php /* Global Header Scritps */ get_template_part('parts/global', 'scripts'); ?>
+    <?php /* Global Header Scritps */ //get_template_part('parts/global', 'scripts'); ?>
 </head>
 <body <?php body_class(); ?>>
-	  <?php /* Responsive 2 */ get_template_part('parts/global', 'responsivetwo'); ?>
+	  <?php /* Responsive 2 */ //get_template_part('parts/global', 'responsivetwo'); ?>
 
 <div class="form-success-email">
 	<div class="success--content">
@@ -306,7 +211,7 @@ if(isset($_POST['send'])){
 ?>
 
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
 <script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script>
 <script type="text/javascript">  

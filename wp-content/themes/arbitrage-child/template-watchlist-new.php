@@ -154,8 +154,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<ul>
 															<li class="addwatch">
 																<div class="dplusbutton">
-																	<div class="dplsicon"><i class="fa fa-plus-circle"></i></div>
 																	<div class="dplstext">Add watchlist</div>
+																	<div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
 																</div>
 															</li>
 															<?php foreach ($havemeta as $key => $value) { ?>
@@ -164,7 +164,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	$curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
                                                                     curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
-                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+
+                                                                    //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+
+                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+        															curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																	$dwatchinfo = curl_exec($curl);
 																	curl_close($curl);
@@ -176,6 +181,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	// get stcok history
 																		$curl = curl_init();
 																		curl_setopt($curl, CURLOPT_URL, 'http://pseapi.com/api/Stock/'.$value['stockname'].'/');
+
+																		 curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
 																		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 																		$dwatchhisto = curl_exec($curl);
 																		curl_close($curl);
@@ -515,7 +523,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<?php /*
 																				$curl = curl_init();
 																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 																				$dstocksonme = curl_exec($curl);
 																				curl_close($curl);
@@ -637,9 +645,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-					<?php //get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					<?php /////get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
                     <?php get_template_part('parts/sidebar', 'viewedstocks'); ?>
+
+                     <?php get_template_part('parts/sidebar', 'topgainerslosers'); ?>
 					
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
                     
@@ -647,7 +657,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'alert'); ?>
+                    <?php //get_template_part('parts/sidebar', 'alert'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
@@ -700,7 +710,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
-            curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+
+            //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+            curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+        	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $dhistofronold = curl_exec($curl);
             curl_close($curl);
@@ -728,7 +742,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			  	$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
-                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dintrabase = curl_exec($curl);
 				curl_close($curl);

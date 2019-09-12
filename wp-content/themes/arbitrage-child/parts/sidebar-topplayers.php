@@ -38,10 +38,6 @@
 
 				$dranks = json_decode($dranks, true);
 
-				function sortrank($a, $b) { return $b['dtotalbal'] - $a['dtotalbal']; }
-
-				usort($dranks, 'sortrank');
-
 			?>
 
 			<ul class="topsect">

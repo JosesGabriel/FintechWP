@@ -783,7 +783,7 @@ a.um-photo-modal img {
                                                                                         $dstock = get_the_title();
                                                                                         $key = array_search($dstock, array_column($dstockinfo, 'symbol'));
 
-                                                                                        echo $key." - ";
+                                                                                        echo $dstockinfo[$key]->last." - ";
 
                                                                                         $price = $dstockinfo->$dstock->last;
                                                                                         $change = $dstockinfo->$dstock->change;

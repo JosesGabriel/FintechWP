@@ -477,6 +477,7 @@
 		);
 		$users = get_users($topargs);
 		$newuserlist = array();
+		$counter = 0;
 		foreach ($users as $key => $value) {
 
 			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
@@ -495,8 +496,10 @@
 					$userdetails['user_nicename'] = $value->data->user_nicename;
 					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
 					array_push($newuserlist, $userdetails);
+					$counter++;
 				}
 			}
+			if($counter >= 3){ break; }
 		}
 
 		usort($newuserlist, function($a, $b) {

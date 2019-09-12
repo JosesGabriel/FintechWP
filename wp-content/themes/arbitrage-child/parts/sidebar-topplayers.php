@@ -58,7 +58,7 @@
 								<div class="isname" style="width: 120px;">
 									<?php 
 										$uname = $value['dbsname'];
-										echo (strlen($uname) > 12 ? substr($uname, 0, 12) . ".." : ucwords($uname));
+										echo (strlen($uname) > 15 ? substr($uname, 0, 15) . ".." : ucwords($uname));
 									?>
 								</div>
 								<div class="istotal">
@@ -71,7 +71,7 @@
 									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee);//number_format($totalvaluee, 2, '.', ','); 
 
 									?></span>
-				<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 79px;position: absolute;top: 7px;width: 64px;text-align: right;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
+				<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 73px;position: absolute;top: 7px;width: 64px;text-align: right;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
 
 					?></span>
 									<?php if($finalres == 0) { ?>
@@ -113,8 +113,8 @@
 
 								<?php 
 									$uname = $value['dbsname'];
-									if (strlen($uname) > 13){
-											echo substr($uname, 0, 13) . ".."; 
+									if (strlen($uname) > 15){
+											echo substr($uname, 0, 15) . ".."; 
 										}else{
 											echo ucwords($uname);
 										}
@@ -132,7 +132,7 @@
 									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee); //number_format($totalvaluee, 2, '.', ','); 
 
 									?></span>
-											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 79px;position: absolute;top: 7px; text-align: right;width: 64px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
+											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 73px;position: absolute;top: 7px; text-align: right;width: 64px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
 											?></span>
 									<?php if($finalres == 0) { ?>
 											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 

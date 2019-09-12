@@ -19,8 +19,7 @@
 	<?php // Countdown ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
+	
 	
 	
 <?php
@@ -49,7 +48,8 @@ $user = wp_get_current_user();
 	</script>
 
 	<?php wp_head(); ?>
-    
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>

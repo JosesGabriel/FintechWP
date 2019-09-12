@@ -723,26 +723,30 @@ $homeurlgen = get_home_url();
 
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-            
-                // let origin = window.location.origin;
-                let email = jQuery("#email_info").val();
-                // console.log(email);
-                let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
-                let settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": url,
-                    "method": "GET",
-                    "dataType": 'json'
-                };
-                $.ajax(settings).done(function (response) {
-                    // let res = response.data;
-                    console.log(response);
-                    alert("Success!!!")
+            jQuery("#email_btn_info").click(function(event){
+                let hasvalueemail = jQuery("#email_info").val().length;
+                    if(hasvalueemail >= 1){
+                        jQuery(".confirmed_cont").show();
+                        // let origin = window.location.origin;
+                        let email = jQuery("#email_info").val();
+                        // console.log(email);
+                        let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
+                        let settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": url,
+                            "method": "GET",
+                            "dataType": 'json'
+                        };
+                        $.ajax(settings).done(function (response) {
+                            // let res = response.data;
+                            console.log(response);
+                            alert("Success!!!")
+                        });
+                        
+                        event.preventDefault();
+                    }
                 });
-                
-                event.preventDefault();
-            
             });
         // jQuery("#email_btn_info").click(function(event){
         //     let hasvalueemail = jQuery("#email_info").val().length;

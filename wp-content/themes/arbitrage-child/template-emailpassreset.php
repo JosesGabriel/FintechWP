@@ -714,59 +714,29 @@ $homeurlgen = get_home_url();
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-    // function getExistingEmail(email, callback) {
-    //     let url = "https://arbitrage.ph/apipge/?daction=email_is_existing"+email;
-    //     let settings = {
-    //         "async": true,
-    //         "crossDomain": true,
-    //         "url": url,
-    //         "method": "GET",
-    //         "dataType": 'json'
-    //     };
-    //     $.ajax(settings).done(function (response) {
-    //         let res = response.data;
-    //         callback(res);
-            
-    //     });
-    // }
-
 	jQuery(document).ready(function(){
-		jQuery("#email_pass_reset").click(function(event){
-                var hasvalueemail = jQuery("#email_info").val().length;
-                    if(hasvalueemail >= 1){
-                        // let origin = window.location.origin;
-                        var email = jQuery("#email_info").val();
-                        // console.log(email);
-                        var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
-                        jQuery.ajax({
-                            'url': url,
-                            'method': 'GET',
-                            'data': '',
-                            'dataType': 'json',
-                            'success': function (response) {
-                                if (response.success) {
-                                    jQuery(".confirmed_cont").show();
-                                    jQuery(".email_pass_reset").hide();
-                                    return;
-                                }
-                                jQuery('.error_message').show();
-                                return;
-                            }
-                        })
-                        event.preventDefault();
-                    }
-            });
-        // jQuery("#email_btn_info").click(function(event){
-        //     let hasvalueemail = jQuery("#email_info").val().length;
-        //     if(hasvalueemail >= 1){
-        //         jQuery("#email_pass_reset").hide();
-        //         jQuery(".confirmed_cont").show();
-        //     }
-            
-        //     event.preventDefault();
-        
-        // });
-	});
+
+	})
+    .on('submit', '#email_pass_reset', function (e) {
+        var email = jQuery("#email_info").val();
+        // console.log(email);
+        var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+        jQuery.ajax({
+            'url': url,
+            'method': 'GET',
+            'data': '',
+            'dataType': 'json',
+            'success': function (response) {
+                if (response.success) {
+                    jQuery(".confirmed_cont").show();
+                    jQuery(".email_pass_reset").hide();
+                    return;
+                }
+                jQuery('.error_message').show();
+                return;
+            }
+        })
+    });
 </script>
 
 <?php //get_footer();

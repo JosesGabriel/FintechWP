@@ -18,8 +18,12 @@ $homeurlgen = get_home_url();
             <span class="label_pls">Please enter your email address below</span><br>
             <input type="email" required class="email-info" id="email_info"><br>
 
-            <input type="submit" value="Reset" id="email_btn_info" onClick="window.location.href='<?php echo $homeurlgen; ?>/password-confirmed/'">
+            <input type="submit" value="Reset" id="email_btn_info">
         </form>
+        <div class="confirmed_cont">
+            <span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
+            <a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
+        </div>
     </div>
 </div>
 
@@ -695,6 +699,17 @@ $homeurlgen = get_home_url();
         background-repeat: no-repeat;
         overflow: hidden !important;
     }
+    .confirmed_cont {
+        display: none;
+    }
+    a.backto-login {
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+    }
+    a.backto-login {
+        color: #c8c8c8;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -713,29 +728,44 @@ $homeurlgen = get_home_url();
             
     //     });
     // }
+
 	jQuery(document).ready(function(){
 		jQuery("#email_pass_reset").click(function(event){
-            if(jQuery("#email_info").val().length >= 1){
-                let origin = window.location.origin;
-                let email = jQuery("#email_info").val();
-                // console.log(email);
-                let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
-                let settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": url,
-                    "method": "GET",
-                    "dataType": 'json'
-                };
-                $.ajax(settings).done(function (response) {
-                    // let res = response.data;
-                    console.log(response);
-                    alert("Success!!!")
+            jQuery("#email_btn_info").click(function(event){
+                let hasvalueemail = jQuery("#email_info").val().length;
+                    if(hasvalueemail >= 1){
+                        jQuery(".confirmed_cont").show();
+                        // let origin = window.location.origin;
+                        let email = jQuery("#email_info").val();
+                        // console.log(email);
+                        let url = "https://<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+                        let settings = {
+                            "async": true,
+                            "crossDomain": true,
+                            "url": url,
+                            "method": "GET",
+                            "dataType": 'json'
+                        };
+                        $.ajax(settings).done(function (response) {
+                            // let res = response.data;
+                            console.log(response);
+                            alert("Success!!!")
+                        });
+                        
+                        event.preventDefault();
+                    }
                 });
-                
-                event.preventDefault();
-            }
             });
+        // jQuery("#email_btn_info").click(function(event){
+        //     let hasvalueemail = jQuery("#email_info").val().length;
+        //     if(hasvalueemail >= 1){
+        //         jQuery("#email_pass_reset").hide();
+        //         jQuery(".confirmed_cont").show();
+        //     }
+            
+        //     event.preventDefault();
+        
+        // });
 	});
 </script>
 

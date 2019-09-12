@@ -41,13 +41,14 @@ $homeurlgen = get_home_url();
     <div class="ondashboardpage_login">
         <div class="ondashboardpage_login_inner">
             <img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:102px;">
-            <form id="email_pass_reset">
+            <div class="email_pass_reset_cont">
+                <form id="email_pass_reset">
 
-                <span class="label_pls">Please enter your email address below</span><br>
-                <input type="email" required class="email-info" id="email_info"><br>
+                    <span class="label_pls">Please enter your email address below</span><br>
+                    <input type="email" required class="email-info" id="email_info"><br>
 
-                <input type="submit" value="Reset" id="email_btn_info">
-            </form>
+                    <input type="submit" value="Reset" id="email_btn_info">
+                </form>
             <div class="confirmed_cont">
                 <span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
                 <a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
@@ -758,7 +759,7 @@ $homeurlgen = get_home_url();
                 'dataType': 'json',
                 'success': function (response) {
                     if (response.success) {
-                        jQuery(".email_pass_reset").hide();
+                        jQuery(".email_pass_reset_cont").hide();
                         jQuery(".confirmed_cont").show();
                         return;
                     }

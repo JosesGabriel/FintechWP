@@ -608,6 +608,8 @@
 		}
 
 		echo json_encode($listofwatchlist);
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+		echo "top players here";
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){

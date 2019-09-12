@@ -6,7 +6,7 @@ $( document ).ready(function() {
     // }, 1000);
 
     $.ajax({
-        url: "https://dev-v1.arbitrage.ph/apipge/?daction=trendingstocks",
+        url: "/apipge/?daction=trendingstocks",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
@@ -33,7 +33,7 @@ $( document ).ready(function() {
     });
 
     $.ajax({
-        url: "https://dev-v1.arbitrage.ph/apipge/?daction=whotomingle",
+        url: "/apipge/?daction=whotomingle",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
@@ -47,7 +47,7 @@ $( document ).ready(function() {
                 toappendme += '</div>';
                 toappendme += '</div>';
                 toappendme += '<div class="traider-details">';
-                toappendme += '<div class="traider-name"><a href="https://arbitrage.ph/user/'+value.user_nicename+'">'+value.displayname+'</a>';
+                toappendme += '<div class="traider-name"><a href="/user/'+value.user_nicename+'">'+value.displayname+'</a>';
                 toappendme += '<div class="login"></div>';
                 toappendme += '</div>';
                 toappendme += '<div class="traider-follower">';

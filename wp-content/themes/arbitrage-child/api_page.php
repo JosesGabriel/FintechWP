@@ -618,6 +618,9 @@
 
 		echo json_encode($dranks);
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletion'){
+
+		dynamic_sidebar( 'et_pb_widget_area_1' );
 		
 	} else { // market sentiment : check sentiment
 

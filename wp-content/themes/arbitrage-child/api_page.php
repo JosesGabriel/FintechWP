@@ -594,7 +594,8 @@
 
 		echo json_encode($listofwatchlist);
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
-		$secret = get_user_meta( $current_user->ID, 'um_user_secret_key', true );
+		echo $current_user->ID;
+		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
 		
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );

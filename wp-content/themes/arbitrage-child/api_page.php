@@ -418,12 +418,12 @@
 		  return substr(str_shuffle($data), 0, $chars);
 		}
 		$passgen = password_generate(8)."\n";
-		echo $passgen;
+		// echo $passgen;
 		$passhash = wp_hash_password( $passgen );
 
 		// update users password to new temp password
 		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
-		$exist = $wpdb->query($updatepass);
+		$wpdb->query($updatepass);
 
 		// send email include all created credentials
 		$to = $emailstr;
@@ -456,9 +456,11 @@
 		$success = mail($to, $subject, $message, $headers);
 		if (!$success) {
 			$errorMessage = error_get_last();
+
+			return json_encode(['status' => 500, 'success' => false]);
 		}
 		// return to user success
-		return;
+		return json_encode(['status' => 200, 'success' => true]);
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
@@ -474,34 +476,50 @@
 		);
 		$users = get_users($topargs);
 		$newuserlist = array();
-		foreach ($users as $key => $value) {
+		$counter = 0;
 
-			if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
-				
-				if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
-					// if ($pending == $userID) {
-					// 	echo $value->data->user_login." respond to request -<br />";
-					// } else {
-					// 	echo $value->data->user_login." request sent -<br />";
-					// }
-				} else {
-					$userdetails['currentuser'] = $userID;
-					$userdetails['id'] = $value->ID;
-					$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-					$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
-					$userdetails['user_nicename'] = $value->data->user_nicename;
-					$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
-					array_push($newuserlist, $userdetails);
-				}
-			}
+		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 3");
+		foreach ($dsprest as $key => $value) {
+			$userdetails = [];
+			$userdetails['currentuser'] = $userID;
+			$userdetails['id'] = $value->ID;
+			$userdetails['displayname'] = $value->display_name;
+			$userdetails['user_nicename'] = $value->user_nicename;
+			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+			array_push($newuserlist, $userdetails);
 		}
 
-		usort($newuserlist, function($a, $b) {
-			return $a['followers'] <=> $b['followers'];
-		});
-		$toptraiders = array_reverse($newuserlist);
-		$toptraiders = array_slice($toptraiders, 0, 3);
-		echo json_encode($toptraiders);
+		// foreach ($users as $key => $value) {
+
+		// 	if (!UM()->Friends_API()->api()->is_friend($value->ID, $userID) && $value->ID != $userID) {
+				
+		// 		if ( $pending = UM()->Friends_API()->api()->is_friend_pending( $value->ID, $userID) ) {
+		// 			// if ($pending == $userID) {
+		// 			// 	echo $value->data->user_login." respond to request -<br />";
+		// 			// } else {
+		// 			// 	echo $value->data->user_login." request sent -<br />";
+		// 			// }
+		// 		} else {
+		// 			$userdetails['currentuser'] = $userID;
+		// 			$userdetails['id'] = $value->ID;
+		// 			$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+		// 			$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+		// 			$userdetails['user_nicename'] = $value->data->user_nicename;
+		// 			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+		// 			array_push($newuserlist, $userdetails);
+		// 			$counter++;
+		// 		}
+		// 	}
+		// 	if($counter >= 3){ break; }
+		// }
+
+		// usort($newuserlist, function($a, $b) {
+		// 	return $a['followers'] <=> $b['followers'];
+		// });
+		// $toptraiders = array_reverse($newuserlist);
+		// $toptraiders = array_slice($toptraiders, 0, 3);
+
+		echo json_encode($newuserlist);
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
 		global $wpdb;
@@ -605,6 +623,8 @@
 		}
 
 		echo json_encode($listofwatchlist);
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+		echo "top players here";
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){
@@ -684,9 +704,14 @@
 			$dtradd = json_decode(getpointtrades($_GET['stock']));
 			
 			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+			
+			$bearperc = 0;
+			$bullperc = 0;
 
-			$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
-			$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
+			if ($totalitem != 0) {
+				$bearperc = ($totsbear + $dtradd->bear) != 0 ? (($totsbear + $dtradd->bear) / $totalitem) * 100 : 0;
+				$bullperc = ($totsbull + $dtradd->bull) != 0 ? (($totsbull + $dtradd->bull) / $totalitem) * 100 : 0;
+			}
 			
 			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}

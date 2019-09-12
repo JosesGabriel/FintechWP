@@ -1,27 +1,3 @@
-<!DOCTYPE html><!-- Bidvertiser2000920 -->
-<html <?php language_attributes(); ?>><head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-147416476-1');
-	</script>
-	
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta property="og:image" content="https://<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
-	<!-- <meta property="og:image" content="https://dev-v1.arbitrage.ph/wp-content/themes/arbitrage-child/images/ogimage_mage.png" /> -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
-	
-	<?php // Countdown ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
-	
-	
-	
 <?php
 global $current_user;
 $user = wp_get_current_user();
@@ -40,7 +16,27 @@ $user = wp_get_current_user();
 	$template_directory_uri = get_template_directory_uri();
 	$homeurlgen = get_home_url();
 ?>
+<!DOCTYPE html><!-- Bidvertiser2000920 -->
+<html <?php language_attributes(); ?>><head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
+	gtag('config', 'UA-147416476-1');
+	</script>
+	
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
+	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
+	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+	
+	<?php // Countdown ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<script type="text/javascript">

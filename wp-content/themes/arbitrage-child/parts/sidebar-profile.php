@@ -37,7 +37,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
   <div class="left-user-details-inner">
       <div class="side-header">
           <div class="left-image">
-              <a href="<?php echo get_home_url(); ?>/user/<?php echo $value['user_nicename']; ?>"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $userid ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
+              <a href="<?php echo get_home_url(); ?>/user/"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $userid ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
               </a>
           </div>
           <div class="right-image">

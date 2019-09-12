@@ -1,3 +1,25 @@
+<?php
+
+    function nice_number($n) {
+        // first strip any formatting;
+        $n = (0+str_replace(",", "", $n));
+
+        // is this a number?
+        if (!is_numeric($n)) return false;
+
+        // now filter it;
+        if ($n > 1000000000000000) return round(($n/1000000000000000), 2).' Quad';
+        elseif ($n > 1000000000000) return round(($n/1000000000000), 2).' T';
+        elseif ($n > 1000000000) return round(($n/1000000000), 2).' B';
+        elseif ($n > 1000000) return round(($n/1000000), 2).' M';
+        elseif ($n > 1000) return round(($n/1000), 2).' K';
+
+        return number_format($n);
+    }
+
+
+?>
+
 <div class="dtanks">
 
 	<h5>Top Players</h5>
@@ -34,27 +56,36 @@
 						</div>
 
 						<div class="playerscontent">
-								<div class="isname" style="width: 102px;">
+								<div class="isname" style="width: 120px;">
 									<?php 
 										$uname = $value['dbsname'];
-										echo (strlen($uname) > 12 ? substr($uname, 0, 12) . ".." : ucwords($uname));
+										echo (strlen($uname) > 15 ? substr($uname, 0, 15) . ".." : ucwords($uname));
 									?>
 								</div>
-								<div class="istotal">
-									<?php 
+								<?php 
 										$totalvaluee = $value['dtotalbal'];
 										$equityres = $totalvaluee - 100000;
 										$resres = $equityres / 100000;
 										$finalres = $resres * 100;
 									?>
-									<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px;width: 100px;text-align: right;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+								<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px;width: 65px;text-align: right;font-size: 13px;"><?php echo " ₱ " . nice_number($equityres);?></span>
+
+								<div class="istotal">
+									
+									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee);//number_format($totalvaluee, 2, '.', ','); 
+
+									?></span>
+				
 									<?php if($finalres == 0) { ?>
-											<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 
+											?></span>
 									<?php }elseif($finalres >= 0) {?>
-											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';} echo nice_number($thisisit) . " %";//number_format($thisisit, 2, '.', ',') . " % "; 
+											?></span>
 									<?php }elseif($finalres <= 0) { ?>
-											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i>
+												<?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 
+											?></span>
 									<?php } ?>
 								</div>
 							<?php ?>
@@ -80,37 +111,45 @@
 						</div>
 
 						<div class="playerscontent">
-							<div class="isname" style="width: 102px;">
+							<div class="isname" style="width: 120px;">
 
 								<?php 
 									$uname = $value['dbsname'];
-									if (strlen($uname) > 13){
-											echo substr($uname, 0, 13) . ".."; 
+									if (strlen($uname) > 15){
+											echo substr($uname, 0, 15) . ".."; 
 										}else{
 											echo ucwords($uname);
 										}
 									//echo ucwords($value['dbsname']) 
 
-
 								?>
-
-
 								
 							</div>
-								<div class="istotal"><?php 
+									<?php 
 									$totalvaluee = $value['dtotalbal'];
 									$equityres = $totalvaluee - 100000;
 									$resres = $equityres / 100000;
 									$finalres = $resres * 100;
 									?>
-									<span class="value-t"><?php echo " ₱ " . number_format($totalvaluee, 2, '.', ','); ?></span>
-											<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 3px;position: absolute;top: 7px; text-align: right;width: 100px;"><?php echo " ₱ " . number_format($equityres, 2, '.', ','); ?></span>
+							<span class="profit_loss" style="color:#24a65d;float:right;margin-left: 123px;position: absolute;top: 4px; text-align: right;width: 65px;font-size: 13px;"><?php echo " ₱ " . nice_number($equityres); //number_format($equityres, 2, '.', ','); 
+											?></span>
+
+								<div class="istotal">
+									
+									<span class="value-t"><?php echo " ₱ " . nice_number($totalvaluee); //number_format($totalvaluee, 2, '.', ','); 
+
+									?></span>
+											
 									<?php if($finalres == 0) { ?>
-											<span class="value-p" style="color: #a2adb9;"><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #a2adb9;"><?php echo nice_number($finalres) . " %"; //number_format($finalres, 2, '.', ',') . " % "; 
+											?></span>
 									<?php }elseif($finalres >= 0) {?>
-											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo number_format($thisisit, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #25ae5f;"><i class="fas fa-caret-up caret"></i><?php if($finalres >= '200.00' ){$thisisit = $finalres - '100.00';$thisisit = $thisisit + '100.00';}elseif( $finalres <= '200.00' ){$thisisit = $finalres + '0';}echo nice_number($thisisit) . " %";//number_format($thisisit, 2, '.', ',') . " % "; 
+											?></span>
 									<?php }elseif($finalres <= 0) { ?>
-											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i><?php echo number_format($finalres, 2, '.', ',') . " % "; ?></span>
+											<span class="value-p" style="color: #e64c3c;"><i class="fas fa-caret-down caret"></i>
+												<?php echo nice_number($finalres) . " %";//number_format($finalres, 2, '.', ',') . " % "; 
+												?></span>
 									<?php } ?>
 								</div>
 							<?php ?>

@@ -6,6 +6,16 @@
  */
 do_action( 'et_after_main_content' );
 // $profile_id = um_profile_id();
+
+$users = get_users(['role' => '']);
+$newuserlist = array();
+foreach ($users as $key => $value) {
+	$userdetails['id'] = $value->ID;
+	$userdata = get_userdata($value->ID);
+	$userdetails['user_login'] = $value->user_login;
+	$userdetails['displayname'] = htmlentities($userdata->first_name .  " " . $userdata->last_name, ENT_QUOTES);
+	array_push($newuserlist, $userdetails);
+}
  
 if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	<span class="et_pb_scroll_top et-pb-icon"></span>
@@ -72,20 +82,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		        		jQuery(this).parent().find(".popname").remove();
 		        		return;
 		        	}
-					<?php			
-						$topargs = array(
-							'role'          =>  '',
-						);
-					
-						$users = get_users($topargs);
-						$newuserlist = array();
-						foreach ($users as $key => $value) {
-								$userdetails['id'] = $value->ID;
-								$userdata = get_userdata($value->ID);
-								$userdetails['displayname'] = str_replace("'", "", $userdata->first_name) .  " " . htmlentities($userdata->last_name, ENT_QUOTES);
-								array_push($newuserlist, $userdetails);
-							}
-					?>
 		        	var counx = 0;
 					var usersall = `<?php echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
@@ -169,27 +165,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 					
 					var comment_id = jQuery(this).attr('data-reply_to');
-
-								
-					<?php
-							
-						$topargs = array(
-							'role'          =>  '',
-							
-						);
-					
-						$users = get_users($topargs);
-						$newuserlist = array();
-						foreach ($users as $key => $value) {
-								$userdetails['id'] = $value->ID;
-								$userdata = get_userdata($value->ID);
-								$userdetails['user_login'] = $value->user_login;
-								$userdetails['displayname'] = $userdata->first_name .  " " . $userdata->last_name;
-								array_push($newuserlist, $userdetails);
-							}
-					?>
 		        	var counx = 0;
-					var usersall = '<?php echo json_encode($newuserlist); ?>';
+					var usersall = `<?php echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
 									
 		        	if (e.which == 52) { dauto = true; }

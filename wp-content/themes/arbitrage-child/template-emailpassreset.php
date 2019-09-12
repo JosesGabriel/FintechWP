@@ -721,10 +721,11 @@ $homeurlgen = get_home_url();
 	jQuery(document).ready(function(){
         jQuery(".confirmed_cont").hide();
 		jQuery("#email_pass_reset").click(function(event){
-                let origin = window.location.origin;
+            
+                // let origin = window.location.origin;
                 let email = jQuery("#email_info").val();
                 // console.log(email);
-                let url = "https://"+origin+"/apipge/?daction=email_pass_reset&email="+email;
+                let url = "https://dev-v1.arbitrage.ph/apipge/?daction=email_pass_reset&email="+email;
                 let settings = {
                     "async": true,
                     "crossDomain": true,
@@ -741,16 +742,16 @@ $homeurlgen = get_home_url();
                 event.preventDefault();
             
             });
-        jQuery("#email_btn_info").click(function(event){
-            let hasvalueemail = jQuery("#email_info").val().length;
-            if(hasvalueemail >= 1){
-                jQuery("#email_pass_reset").hide();
-                jQuery(".confirmed_cont").show();
-            }
+        // jQuery("#email_btn_info").click(function(event){
+        //     let hasvalueemail = jQuery("#email_info").val().length;
+        //     if(hasvalueemail >= 1){
+        //         jQuery("#email_pass_reset").hide();
+        //         jQuery(".confirmed_cont").show();
+        //     }
             
-            event.preventDefault();
+        //     event.preventDefault();
         
-        });
+        // });
 	});
 </script>
 

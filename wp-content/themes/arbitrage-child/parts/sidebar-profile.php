@@ -69,8 +69,8 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
-              <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
-				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
+              <ul style="margin-top: 0; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
+				  <li class="one" style="margin-top: 3px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-2.svg">
 					  <span>Interactive Chart</span></a></li>
                   <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-2.svg">

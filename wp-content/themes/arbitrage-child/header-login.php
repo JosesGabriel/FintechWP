@@ -12,7 +12,7 @@
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta property="og:image" content="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
+	<meta property="og:image" content="https://<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
 	<!-- <meta property="og:image" content="https://dev-v1.arbitrage.ph/wp-content/themes/arbitrage-child/images/ogimage_mage.png" /> -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	

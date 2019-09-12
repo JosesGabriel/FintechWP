@@ -17,12 +17,13 @@
 
         foreach($stockinfo as $stkey => $stvals){
 
-            $time = $stvals->lastupdatetime;
+            //$time = $stvals->lastupdatetime;
+            $new_date = date('Y-m-d H:i:s', $stvals->lastupdatetime);   
 
             $stock[$i][0] = $stvals->symbol;
             $stock[$i][1] = $stvals->changepercentage;
             $stock[$i][2] = $stvals->description;
-            $stock[$i][3] = $stvals->lastupdatetime;
+            $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
             $i++;
         }
              usort($stock, function($a, $b) {
@@ -41,7 +42,7 @@
                             <li class="odd">
                                 <span><?php echo $stock[$j][0]; ?></span>
 
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
+                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p> <?php echo $stock[$j][3]; ?></p></a>
 
                             </li>
                         <?php } ?>

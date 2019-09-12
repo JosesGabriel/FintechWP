@@ -753,7 +753,6 @@ $homeurlgen = get_home_url();
                     if (response.success) {
                         jQuery(".confirmed_cont").show();
                         jQuery(".email_pass_reset").hide();
-                        return;
                     }
                     jQuery('.error_message').show();
                     return;

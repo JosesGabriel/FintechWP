@@ -403,7 +403,7 @@
             $passhash = wp_hash_password( $static_pwd );
             $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
             $wpdb->query($updatepass);
-            echo "Email: ".$emailstr." <br /> Password:".$static_pwd;
+            echo "Email: ".$emailstr." | Password:".$static_pwd;
         }
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){

@@ -457,10 +457,12 @@
 		if (!$success) {
 			$errorMessage = error_get_last();
 
-			return json_encode(['status' => 500, 'success' => false]);
+			echo json_encode(['status' => 500, 'success' => false]);
+			die();
 		}
 		// return to user success
-		return json_encode(['status' => 200, 'success' => true]);
+		echo json_encode(['status' => 200, 'success' => true]);
+		die();
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
@@ -614,7 +616,7 @@
 
 		array_push($dranks, $myrank);
 
-		print_r($dranks);
+		echo json_encode($dranks);
 
 		
 	} else { // market sentiment : check sentiment

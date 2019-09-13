@@ -591,7 +591,7 @@
 		});
 		
     window.onload=function(){
-
+        console.log('this is run');
 		(function countdown(remaining) {
 			if(remaining === 0)
 				jQuery(".arb_top_ticker").fadeOut("slow",function(){

@@ -2202,7 +2202,9 @@ if($issampledata){
 																								$stockdetails = $gsvalue;
 																							}
 																						}
-                                                                                        // code...
+																						// code...
+																						
+																						print_r($stockdetails);
 
 																						$dstockinfo = $stockdetails;
 																						if($isjounalempty){

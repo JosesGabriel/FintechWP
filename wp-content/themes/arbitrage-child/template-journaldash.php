@@ -2204,7 +2204,7 @@ if($issampledata){
 																						}
 																						// code...
 																						
-																						print_r($stockdetails);
+																						// print_r($stockdetails);
 
 																						$dstockinfo = $stockdetails;
 																						if($isjounalempty){

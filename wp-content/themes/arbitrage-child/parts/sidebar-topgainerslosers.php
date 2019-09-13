@@ -38,12 +38,12 @@
 
 
         for($s = 0; $s < 5; $s++){
-                    $stock[$s][0] = $stvals->symbol;
-                    $stock[$s][1] = $stvals->changepercentage;
-                    $stock[$s][2] = $stvals->description;
+                    $stock1[$s][0] = $stvals->symbol;
+                    $stock1[$s][1] = $stvals->changepercentage;
+                    $stock1[$s][2] = $stvals->description;
         }
 
-            usort($stock, function($a, $b) {
+            usort($stock1, function($a, $b) {
                 return $b[1] <=> $a[1];
             });
 
@@ -57,9 +57,9 @@
                      <ul>
                                <?php for($j=0; $j < 5; $j++) {?> 
                                     <li class="odd">
-                                        <span><?php echo $stock[$j][0]; ?></span>
+                                        <span><?php echo $stock1[$j][0]; ?></span>
 
-                                        <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$j][3]; ?></p></a>
+                                        <a href="#"><?php echo $stock1[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock1[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock1[$j][3]; ?></p></a>
 
                                     </li>
                                 <?php } ?>

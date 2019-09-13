@@ -105,6 +105,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		font-size: 12px;
 		text-align: center;
 		color: #fff;
+		cursor: pointer;
 	}
 	span.for_pass:hover {
 		text-decoration: none;
@@ -136,7 +137,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		</div>
 		<div class="confirmed_cont">
 			<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
-			<a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
+			<a class="backto-login" href>Back to login</a>
 		</div>
 		<div class="error_message"><span class="label_pls"></span></div>
 		
@@ -267,6 +268,13 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery("#switch_signup").click(function(){
 			jQuery(".login-form").fadeOut(300, function(){
 				jQuery(".signup-form").fadeIn(800);
+			});
+			
+			jQuery(".email_pass_reset_cont").fadeOut(300, function(){
+			});
+			jQuery(".confirmed_cont").fadeOut(300, function(){
+			});
+			jQuery(".error_message").fadeOut(300, function(){
 			});
 			
 			jQuery(".ico_posbott_signup").fadeOut(300, function(){

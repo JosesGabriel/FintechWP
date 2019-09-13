@@ -11,6 +11,7 @@ header("Expires: 0");
 // Trading Journal
 global $current_user;
 $user = wp_get_current_user();
+date_default_timezone_set('Asia/Manila');
 get_header('dashboard');
 
 echo $user->ID ." versis ". $user->ID;
@@ -684,15 +685,6 @@ if($issampledata){
 																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
-																				// $curl = curl_init();
-																				// curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
-																				// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
-																				// curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-																				// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-																				// $dstocksonme = curl_exec($curl);
-																				// curl_close($curl);
-
-																				// $dstocksonme = json_decode($dstocksonme);
 																				
 																				usort($gerdqoute->data, function($a, $b) {
 																					return $a->symbol <=> $b->symbol;
@@ -702,7 +694,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -968,8 +960,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
-                                                                                        echo date('F j, Y g:i a'); ?></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1042,8 +1033,7 @@ if($issampledata){
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
-                                                                                        echo date('F j, Y g:i a'); ?></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -2757,22 +2747,23 @@ if($issampledata){
                                                                                 $dlisttrade = [];
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
-                                                                                        $author_posts->the_post();
-                                                                                        $dlisttrade[$dpage][$count]['id'] = get_the_ID();
-                                                                                        $dlisttrade[$dpage][$count]['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
+																						$author_posts->the_post();
+																						$tradelogid = get_the_ID();
+                                                                                        $dlisttrade[$dpage][$count]['id'] = $tradelogid;
+                                                                                        $dlisttrade[$dpage][$count]['data_stock'] = get_post_meta($tradelogid, 'data_stock', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta($tradelogid, 'data_sellmonth', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta($tradelogid, 'data_sellday', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta($tradelogid, 'data_sellyear', true);
 
-                                                                                        $data_dprice = get_post_meta(get_the_ID(), 'data_dprice', true);
+                                                                                        $data_dprice = get_post_meta($tradelogid, 'data_dprice', true);
                                                                                         $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $data_dprice);
 
-                                                                                        $dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta($tradelogid, 'data_sell_price', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta($tradelogid, 'data_quantity', true);
 
-                                                                                        $data_trade_info = get_post_meta(get_the_ID(), 'data_trade_info', true);
+                                                                                        $data_trade_info = get_post_meta($tradelogid, 'data_trade_info', true);
                                                                                         $dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($data_trade_info);
-                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta(get_the_ID(), 'data_avr_price', true);
+                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta($tradelogid, 'data_avr_price', true);
 
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
@@ -2907,7 +2898,6 @@ if($issampledata){
 
 													<div class="totalpl">
 														 <p>Total Profit/Loss as of <?php
-                                                         date_default_timezone_set('Asia/Manila');
                                                           echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
 													</div>
 

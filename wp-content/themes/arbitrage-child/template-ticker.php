@@ -631,9 +631,9 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-    <ul class="list-inline">
+    <ul class="list-inline marqueethis">
             <li ng-repeat="transaction in ticker">
-                {{transaction.price}}
+                 {{::transaction.price}}
             </li>
         </ul>
     </div>

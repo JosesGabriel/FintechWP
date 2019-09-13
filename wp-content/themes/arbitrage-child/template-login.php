@@ -99,14 +99,14 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		-webkit-transition: all 0.5s ease;
 		transition: all 0.5s ease;
 	}
-	a.for_pass {
+	span.for_pass {
 		display: block;
 		padding: 0px 0 20px;
 		font-size: 12px;
 		text-align: center;
 		color: #fff;
 	}
-	a.for_pass:hover {
+	span.for_pass:hover {
 		text-decoration: none;
 		color: #d8d8d8;
 	}
@@ -227,7 +227,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<a href='' class='for_pass'>Forgot your password?</a>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<span class='for_pass'>Forgot your password?</span>");
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){

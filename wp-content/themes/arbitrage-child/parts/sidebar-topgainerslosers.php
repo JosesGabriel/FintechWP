@@ -23,16 +23,16 @@
            
             $new_date = date('Y-m-d', strtotime($stvals->lastupdatetime));
 
-              
+              if($today == $new_date){
                     $stock[$i][0] = $stvals->symbol;
                     $stock[$i][1] = $stvals->changepercentage;
                     $stock[$i][2] = $stvals->description;
                     $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
                     $i++;            
-               
+               }
         }
 
-        usort($stock, function($a, $b) {
+       /* usort($stock, function($a, $b) {
             return new DateTime($b[3]) <=> new DateTime($a[3]);
         });
 
@@ -43,9 +43,9 @@
                     $stock1[$s][2] = $stock[$s][2];
                     $stock1[$s][3] = $stock[$s][3];
            
-        }
+        }*/
 
-            usort($stock1, function($a, $b) {
+            usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
             });
 
@@ -59,9 +59,9 @@
                      <ul>
                                <?php for($j=0; $j < 5; $j++) {?> 
                                     <li class="odd">
-                                        <span><?php echo $stock1[$j][0]; ?></span>
+                                        <span><?php echo $stock[$j][0]; ?></span>
 
-                                        <a href="#"><?php echo $stock1[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock1[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock1[$j][3]; ?></p></a>
+                                        <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$j][3]; ?></p></a>
 
                                     </li>
                                 <?php } ?>

@@ -589,6 +589,18 @@
 				});
 			}
 		});
+		
+    window.onload=function(){
+
+		(function countdown(remaining) {
+			if(remaining === 0)
+				jQuery(".arb_top_ticker").fadeOut("slow",function(){
+					location.reload(true);
+				});
+				document.getElementById('countdown').innerHTML = remaining;
+				setTimeout(function(){ countdown(remaining - 1); }, 1000);
+		})(<?php echo rand(100,180); ?>);
+	}
 </script>
 <style>
 	.marqueethis {

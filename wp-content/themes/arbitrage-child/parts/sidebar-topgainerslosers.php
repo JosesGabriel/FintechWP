@@ -15,8 +15,9 @@
             $stockinfo = $response->data;
         }
         $i = 0;
-
+        $y = 0;
         $today = date('Y-m-d');
+        $yesterday = date('Y-m-d', strtotime( '-1 days' ) );
 
         foreach($stockinfo as $stkey => $stvals){
           
@@ -28,6 +29,12 @@
                     $stock[$i][2] = $stvals->description;
                     $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
                     $i++;            
+               }elseif ($yesterday == $new_date) {
+                    $stocky[$y][0] = $stvals->symbol;
+                    $stocky[$y][1] = $stvals->changepercentage;
+                    $stocky[$y][2] = $stvals->description;
+                    $stocky[$y][3] =  $new_date; //$stvals->lastupdatetime;
+                    $y++;            
                }
         }
 
@@ -43,6 +50,9 @@
                     $stock1[$s][3] = $stock[$s][3];
            
         }*/
+             usort($stocky, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
 
             usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
@@ -69,7 +79,16 @@
                                         </li>
 
 
-                                <?php } 
+                                <?php } elseif ($stocky[$j][1] != null) { ?>
+                                        <li class="odd">
+                                            <span><?php echo $stocky[$j][0]; ?></span>
+
+                                            <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
+
+                                        </li>
+
+                                    <?php
+                                        }
                                     }
                                  ?>
                     </ul>
@@ -89,6 +108,10 @@
                 usort($stock, function($a, $b) {
                         return $a[1] <=> $b[1];
                     });
+
+                usort($stocky, function($a, $b) {
+                        return $a[1] <=> $b[1];
+                    });
             ?>
 
                      <ul>
@@ -100,7 +123,13 @@
                                         <span><?php echo $stock[$j][0]; ?></span>
                                         <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
                                     </li>
-                                <?php } 
+                                <?php }elseif ($stocky[$j][1] != null) { ?>
+                                    <li class="odd">
+                                        <span><?php echo $stocky[$j][0]; ?></span>
+                                        <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
+                                    </li>
+                                    <?php
+                                        } 
                                     }
                                 ?>
                     </ul>

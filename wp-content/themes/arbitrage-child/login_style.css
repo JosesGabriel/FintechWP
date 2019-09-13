@@ -745,28 +745,33 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 }
 .contercontrol {display:none !important;}
 .email-info {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.3) !important;
     outline: none !important;
-    color: #fff;
+    color: #fff !important;
     font-size: 12px;
     border-radius: 50px;
     font-family: "Roboto", Arial;
     border: none !important;
-    padding: 8px 15px;
+    padding: 8px 15px !important;
     width: 200px;
 }
 span.label_pls {
     display: inline-block;
-    margin: 26px 0 16px;
+    margin: 10px 0 10px;
+    color: #d8d8d8;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
 }
 input#email_btn_info {
     background: none;
     border-radius: 50px;
-    border: 1.5px solid #fffffe;
+    border: 1.5px solid #51bade;
     padding: 7px 31px;
     color: #fff;
     cursor: pointer;
     margin: 13px 0;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
 }
 input#email_btn_info:hover {
     background: linear-gradient(to right, #2098f9, #9eefb4);
@@ -778,10 +783,14 @@ input#email_btn_info:hover {
     display: none;
 }
 a.backto-login {
-    color: #fff;
-    font-weight: 500;
-    text-decoration: none;
+    color: #fff !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
 }
-a.backto-login {
-    color: #c8c8c8;
+.email_pass_reset_cont {
+    display: none;
+}
+.error_message {
+    display: none;
 }

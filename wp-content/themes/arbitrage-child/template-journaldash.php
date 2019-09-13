@@ -13,7 +13,7 @@ global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
 
-echo $user->ID ." versis ". get_current_user_id();
+echo $user->ID ." versis ". $user->ID;
 
 
 ?>
@@ -107,7 +107,7 @@ echo $user->ID ." versis ". get_current_user_id();
 		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
         if ($dxammount > 0) {
             $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
                 'tranamount' =>  $dxammount// ... and so on
@@ -155,9 +155,9 @@ echo $user->ID ." versis ". get_current_user_id();
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 		 
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+        $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
-            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+            $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
             if ($dstocktraded && $dstocktraded != '') {
                 array_push($dstocktraded['data'], $tradeinfo);
                 $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $stockquantity;
@@ -172,7 +172,7 @@ echo $user->ID ." versis ". get_current_user_id();
                 }
                 $dstocktraded['aveprice'] = ($totalprice / $totalquanta);
 
-                update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $dstocktraded);
+                update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $dstocktraded);
             }
         } else {
             $finaldata = [];
@@ -182,7 +182,7 @@ echo $user->ID ." versis ". get_current_user_id();
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
             $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
-            update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $finaldata);
+            update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $finaldata);
 
             if (!$dlistofstocks) {
                 $djournstocks = array($tradeinfo['stock']);
@@ -190,7 +190,7 @@ echo $user->ID ." versis ". get_current_user_id();
                 $djournstocks = $dlistofstocks;
                 array_push($djournstocks, $tradeinfo['stock']);
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
+            update_user_meta($user->ID, '_trade_list', $djournstocks);
         }
         $dtotalpurchse = $butstockprice * $stockquantity;
         echo $dtotalpurchse;
@@ -199,7 +199,7 @@ echo $user->ID ." versis ". get_current_user_id();
         $purchasefee = getjurfees($stockcost, 'buy');
 
         $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => date('Y-m-d'),
                 'trantype' => 'purchase',
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
@@ -219,7 +219,7 @@ echo $user->ID ." versis ". get_current_user_id();
         // print_r($_POST);
         // echo '</pre>';
 
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+        $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
         $data_postid = $_POST['inpt_data_postid'];
@@ -247,32 +247,32 @@ echo $user->ID ." versis ". get_current_user_id();
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => get_current_user_id(),
+                'data_userid' => $user->ID,
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
 
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
-            $dlisroflive = get_user_meta(get_current_user_id(), '_trade_list', true);
+            $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
                 if ($rmvalue == $_POST['inpt_data_stock']) {
                     unset($dlisroflive[$rmkey]);
-                    delete_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock']);
+                    delete_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock']);
                 }
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $dlisroflive);
+            update_user_meta($user->ID, '_trade_list', $dlisroflive);
         } else {
             // Update existing data.
 
-            update_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
+            update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
         $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
         $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => date('Y-m-d'),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
@@ -284,7 +284,7 @@ echo $user->ID ." versis ". get_current_user_id();
 ?>
 <!-- EOF SELL trades -->
 <?php
-    $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+    $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 
     $curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
@@ -303,7 +303,7 @@ echo $user->ID ." versis ". get_current_user_id();
         'posts_per_page' => '-1',
         'post_status' => 'publish',
         'meta_key' => 'data_userid',
-        'meta_value' => get_current_user_id(),
+        'meta_value' => $user->ID,
     );
     $author_posts = new WP_Query($author_query);
 ?>
@@ -316,22 +316,23 @@ echo $user->ID ." versis ". get_current_user_id();
     $alltradelogs = [];
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
-            $author_posts->the_post();
+			$author_posts->the_post();
+			$tradeid = get_the_ID();
             $tradeitems = [];
-            $tradeitems['id'] = get_the_ID();
-            $tradeitems['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
-            $tradeitems['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
-            $tradeitems['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
+            $tradeitems['id'] = $tradeid;
+            $tradeitems['data_sellmonth'] = get_post_meta($tradeid, 'data_sellmonth', true);
+            $tradeitems['data_sellday'] = get_post_meta($tradeid, 'data_sellday', true);
+            $tradeitems['data_sellyear'] = get_post_meta($tradeid, 'data_sellyear', true);
 
-            $tradeitems['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
-            $tradeitems['data_dprice'] = get_post_meta(get_the_ID(), 'data_dprice', true);
+            $tradeitems['data_stock'] = get_post_meta($tradeid, 'data_stock', true);
+            $tradeitems['data_dprice'] = get_post_meta($tradeid, 'data_dprice', true);
 
-            $tradeitems['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
-            $tradeitems['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
-            $tradeitems['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
+            $tradeitems['data_sell_price'] = get_post_meta($tradeid, 'data_sell_price', true);
+            $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
+            $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
 
-            $data_avr_price = get_post_meta(get_the_ID(), 'data_avr_price', true);
-            $dlistofinfo = json_decode(get_post_meta(get_the_ID(), 'data_trade_info', true));
+            $data_avr_price = get_post_meta($tradeid, 'data_avr_price', true);
+            $dlistofinfo = json_decode(get_post_meta($tradeid, 'data_trade_info', true));
 
             $trade_plans = [];
             $strategy_plans = [];
@@ -369,7 +370,7 @@ $isjounalempty = false;
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+		$dstocktraded = get_user_meta($user->ID, '_trade_'.$dstocksvalue, true);
 		$stockdetails = "";
 		foreach ($gerdqoute->data as $gskey => $gsvalue) {
 			if($dstocksvalue == $gsvalue->symbol){
@@ -395,7 +396,7 @@ if ($getdstocks && $getdstocks != '') {
 
 }
 
-$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+$issampledata = get_user_meta($user->ID, 'issampleactivated', true);
 if($issampledata){
 	$isjounalempty = false;
 	// echo "no smaple";
@@ -469,7 +470,7 @@ if($issampledata){
 <!-- EOF Sort LIVE Portfolio -->
 <!-- BOF Ledger Data -->
 <?php
-    $duseridmo = get_current_user_id();
+    $duseridmo = $user->ID;
 	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
 	
     $buypower = 0;
@@ -480,7 +481,7 @@ if($issampledata){
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
 	}
-	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+	// $issampledata = get_user_meta($user->ID, 'issampleactivated', true);
 	if(empty($dledger)){
 		// wp_redirect('/journal');
         // exit;
@@ -567,16 +568,16 @@ if($issampledata){
     if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
 
 		
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+        $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
 
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+            update_user_meta($user->ID, '_trade_'.$delvalue, '');
+            delete_user_meta($user->ID, '_trade_'.$delvalue);
 
-            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+            // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta(get_current_user_id(), '_trade_list');
+        delete_user_meta($user->ID, '_trade_list');
 
         // delete all trade logs
         foreach ($alltradelogs as $delpostkey => $delpostvalue) {
@@ -584,9 +585,9 @@ if($issampledata){
             wp_delete_post($delpostvalue['id'], true);
         }
 
-		update_user_meta(get_current_user_id(), 'issampleactivated', 'no');
+		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        $wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
 
         wp_redirect('/journal');
         exit;
@@ -683,19 +684,20 @@ if($issampledata){
 																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
 																		<div class="hideformodal">
 																			<?php
-																				$curl = curl_init();
-																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
-																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
-																				curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-																				$dstocksonme = curl_exec($curl);
-																				curl_close($curl);
+																				// $curl = curl_init();
+																				// curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
+																				// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+																				// curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+																				// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+																				// $dstocksonme = curl_exec($curl);
+																				// curl_close($curl);
 
-																				$dstocksonme = json_decode($dstocksonme);
-																				usort($dstocksonme->data, function($a, $b) {
+																				// $dstocksonme = json_decode($dstocksonme);
+																				
+																				usort($gerdqoute->data, function($a, $b) {
 																					return $a->symbol <=> $b->symbol;
 																				});
-																				$listosstocks = $dstocksonme->data;
+																				$listosstocks = $gerdqoute->data;
 
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
@@ -715,7 +717,7 @@ if($issampledata){
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
 																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
-																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																									<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
 																									<?php endforeach; ?>
 																								</select>
@@ -822,7 +824,7 @@ if($issampledata){
 																					
 
 																					if(!$isjounalempty){
-																						$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																						$dstocktraded = get_user_meta($user->ID, '_trade_'.$value, true);
 																					} else {
 																						if($value == 'SampleStock_1'){
 																							$dstocktraded = [
@@ -2283,7 +2285,7 @@ if($issampledata){
                                                     <?php
                                                         $dlistoflivetrades = [];
                                                         foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+                                                            $dstocktraded = get_user_meta($user->ID, '_trade_'.$dtdvalue, true);
                                                             if ($dstocktraded && $dstocktraded != '') {
                                                                 foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
                                                                     array_push($dlistoflivetrades, $dtfvalue);
@@ -2540,7 +2542,7 @@ if($issampledata){
                                                                 'after' => date('Y-m-d', strtotime('-20 days')),
                                                             ),
                                                             'meta_key' => 'data_userid',
-                                                            'meta_value' => get_current_user_id(),
+                                                            'meta_value' => $user->ID,
                                                         );
                                                         $posts = get_posts($args);
 
@@ -2629,7 +2631,7 @@ if($issampledata){
                                                                     'relation' => 'AND',
                                                                     array(
                                                                         'key' => 'data_userid',
-                                                                        'value' => get_current_user_id(),
+                                                                        'value' => $user->ID,
                                                                         'compare' => 'like',
                                                                     ),
                                                                     array(

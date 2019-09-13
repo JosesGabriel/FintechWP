@@ -105,6 +105,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		font-size: 12px;
 		text-align: center;
 		color: #fff;
+		cursor: pointer;
 	}
 	span.for_pass:hover {
 		text-decoration: none;
@@ -267,6 +268,9 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery("#switch_signup").click(function(){
 			jQuery(".login-form").fadeOut(300, function(){
 				jQuery(".signup-form").fadeIn(800);
+			});
+			
+			jQuery(".email_pass_reset_cont").fadeOut(300, function(){
 			});
 			
 			jQuery(".ico_posbott_signup").fadeOut(300, function(){

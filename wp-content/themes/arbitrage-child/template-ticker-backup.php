@@ -583,7 +583,7 @@
 				});
 			}
 			function foreverticker() {
-                console.log('working on it..');
+                console.log('working..');
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					forevertickerinit();
 				});
@@ -591,7 +591,7 @@
 		});
 		
     window.onload=function(){
-        console.log('this is run');
+
 		(function countdown(remaining) {
 			if(remaining === 0)
 				jQuery(".arb_top_ticker").fadeOut("slow",function(){

@@ -1989,6 +1989,10 @@ if($issampledata){
 																				curl_close($curl);
 
 																				$dstocksonme = json_decode($dstocksonme);
+																				usort($dstocksonme->data, function($a, $b) {
+																					return $a['symbol'] <=> $b['symbol'];
+																				});
+																				$listosstocks = $dstocksonme->data;
 
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">

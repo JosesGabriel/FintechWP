@@ -218,7 +218,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	
 </style> 
 <script type="text/javascript">
-	jQuery(document).ready(function(){   a.um-button.um-alt.um-button-social.um-button-facebook
+	jQuery(document).ready(function(){ 
 		$(".login-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".login-form-wrapper .ordash");
 		$(".signup-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".signup-form-wrapper .ordash");
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');

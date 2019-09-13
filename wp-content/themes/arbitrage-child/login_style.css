@@ -782,11 +782,11 @@ input#email_btn_info:hover {
 .confirmed_cont {
     display: none;
 }
-span.backto-login {
-    color: #fff;
-    font-weight: 500;
+a.backto-login {
+    color: #fff !important;
+    font-weight: 500 !important;
     text-decoration: none !important;
-    font-size: 12px;
+    font-size: 12px !important;
 }
 .email_pass_reset_cont {
     display: none;

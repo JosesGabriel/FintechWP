@@ -137,7 +137,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		</div>
 		<div class="confirmed_cont">
 			<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
-			<a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
+			<a class="backto-login" href>Back to login</a>
 		</div>
 		<div class="error_message"><span class="label_pls"></span></div>
 		

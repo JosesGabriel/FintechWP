@@ -1424,6 +1424,9 @@ get_header('dashboard');
 
 
 <!-- BOF BUY trades -->
+<pre>
+	<?php print_r($_POST); ?>
+</pre>
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
         $tradeinfo = [];
@@ -1503,8 +1506,8 @@ get_header('dashboard');
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
             ));
 
-        wp_redirect( '/chart/'.$tradeinfo['stock'] );
-        wp_redirect('/journal');
+        // wp_redirect( '/chart/'.$tradeinfo['stock'] );
+        // wp_redirect('/journal');
         exit;
     }
 ?>
@@ -1767,8 +1770,8 @@ if($issampledata){
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = get_current_user_id();
-    $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
-
+	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
         if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
@@ -1983,11 +1986,16 @@ if($issampledata){
 																				$curl = curl_init();
 																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
 																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+																				curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 																				$dstocksonme = curl_exec($curl);
 																				curl_close($curl);
 
 																				$dstocksonme = json_decode($dstocksonme);
+																				usort($dstocksonme->data, function($a, $b) {
+																					return $a->symbol <=> $b->symbol;
+																				});
+																				$listosstocks = $dstocksonme->data;
 
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
@@ -4852,8 +4860,14 @@ if($issampledata){
 		});
 
 		jQuery(".dloadform").click(function(e){
-			jQuery(".dentertrade").submit();
-
+			e.preventDefault();
+			var dstock = $(".dentertrade #inpt_data_select_stock").val();
+			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
+			if(dstock != "" && dbuypower > 0){
+				jQuery(".dentertrade").submit();
+			} else {
+				console.log("dont add trade");
+			}
 		});
 
 

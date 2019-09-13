@@ -23,67 +23,80 @@
            
             $new_date = date('Y-m-d', strtotime($stvals->lastupdatetime));
 
-                //if($today == $new_date){
-
+              
                     $stock[$i][0] = $stvals->symbol;
                     $stock[$i][1] = $stvals->changepercentage;
                     $stock[$i][2] = $stvals->description;
                     $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
                     $i++;            
-                //}
+               
         }
 
         usort($stock, function($a, $b) {
-            return new DateTime($a[3]) <=> new DateTime($b[3]);
+            return new DateTime($b[3]) <=> new DateTime($a[3]);
         });
 
+        $s = 0
+        while($today == $stock[$s][3] ) { //for($s = 0; $s < 5; $s++){
+                    $stock1[$s][0] = $stock[$s][0];
+                    $stock1[$s][1] = $stock[$s][1];
+                    $stock1[$s][2] = $stock[$s][2];
+                    $stock1[$s][3] = $stock[$s][3];
+            $s++;
+        }
 
-            // usort($stock, function($a, $b) {
-             //   return $b[1] <=> $a[1];
-           // });
+            usort($stock1, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
 
 ?>
     
     <div class="top-stocks">
-    <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
-    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part gainers">
+            <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
+            <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+            <div class="to-content-part gainers">
 
-             <ul>
-                       <?php for($j=0; $j < 5; $j++) {?> 
-                            <li class="odd">
-                                <span><?php echo $stock[$j][0]; ?></span>
+                     <ul>
+                               <?php for($j=0; $j < 5; $j++) {?> 
+                                    <li class="odd">
+                                        <span><?php echo $stock1[$j][0]; ?></span>
 
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo stock[$j][3]; ?></p></a>
+                                        <a href="#"><?php echo $stock1[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock1[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock1[$j][3]; ?></p></a>
 
-                            </li>
-                        <?php } ?>
-            </ul>
-                      
-               
-    </div>
-    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
-    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
-    <div class="to-content-part losers">
-
-    <?php 
-        usort($stock, function($a, $b) {
-                return $a[1] <=> $b[1];
-            });
-    ?>
-
-             <ul>
-                       <?php for($j=0; $j < 5; $j++) {?> 
-                            <li class="odd">
-                                <span><?php echo $stock[$j][0]; ?></span>
-                                <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
-                            </li>
-                        <?php } ?>
-            </ul>
-
-    </div>
+                                    </li>
+                                <?php } ?>
+                    </ul>
+                              
+                       
+            </div>
+            
 
 </div>
+<div class="top-stocks">
+
+    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
+            <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+            <div class="to-content-part losers">
+
+            <?php 
+                usort($stock, function($a, $b) {
+                        return $a[1] <=> $b[1];
+                    });
+            ?>
+
+                     <ul>
+                               <?php for($j=0; $j < 5; $j++) {?> 
+                                    <li class="odd">
+                                        <span><?php echo $stock[$j][0]; ?></span>
+                                        <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
+                                    </li>
+                                <?php } ?>
+                    </ul>
+
+            </div>
+    
+</div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 

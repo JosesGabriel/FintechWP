@@ -108,6 +108,10 @@
                 usort($stock, function($a, $b) {
                         return $a[1] <=> $b[1];
                     });
+
+                usort($stocky, function($a, $b) {
+                        return $a[1] <=> $b[1];
+                    });
             ?>
 
                      <ul>
@@ -119,7 +123,13 @@
                                         <span><?php echo $stock[$j][0]; ?></span>
                                         <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
                                     </li>
-                                <?php } 
+                                <?php }elseif ($stocky[$j][1] != null) { ?>
+                                    <li class="odd">
+                                        <span><?php echo $stocky[$j][0]; ?></span>
+                                        <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
+                                    </li>
+                                    <?php
+                                        } 
                                     }
                                 ?>
                     </ul>

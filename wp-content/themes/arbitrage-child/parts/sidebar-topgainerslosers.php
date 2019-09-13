@@ -37,7 +37,13 @@
         });
 
 
-             usort($stock, function($a, $b) {
+        for($s = 0; $s < 5; $s++){
+                    $stock[$s][0] = $stvals->symbol;
+                    $stock[$s][1] = $stvals->changepercentage;
+                    $stock[$s][2] = $stvals->description;
+        }
+
+            usort($stock, function($a, $b) {
                 return $b[1] <=> $a[1];
             });
 

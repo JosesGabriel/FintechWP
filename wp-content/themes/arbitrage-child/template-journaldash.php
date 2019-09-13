@@ -1452,7 +1452,11 @@ get_header('dashboard');
         $tradeinfo['tradeplan'] = $_POST['inpt_data_tradeplan'];
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
-        $tradeinfo['status'] = $_POST['inpt_data_status'];
+		$tradeinfo['status'] = $_POST['inpt_data_status'];
+		echo "<pre>";
+			print_r($tradeinfo);
+		echo "</pre>";
+		exit;
 
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {

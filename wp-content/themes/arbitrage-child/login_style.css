@@ -824,7 +824,7 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
     display: none;
 }
 .um-social-login-overlay {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7) !important;
 }
 .um-social-login-wrap {
     border: none !important;
@@ -845,6 +845,6 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
 .um-social-login-wrap .um-col-alt {
     margin: 4px 0 4px;
 }
-.um-register .um-col-alt .um-center:before {
+.um-social-login-wrap .um-register .um-col-alt .um-center:before {
     z-index: 0;
 }

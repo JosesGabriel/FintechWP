@@ -744,3 +744,44 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     display: none !important;
 }
 .contercontrol {display:none !important;}
+.email-info {
+    background: rgba(255,255,255,0.3);
+    outline: none !important;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50px;
+    font-family: "Roboto", Arial;
+    border: none !important;
+    padding: 8px 15px;
+    width: 200px;
+}
+span.label_pls {
+    display: inline-block;
+    margin: 26px 0 16px;
+}
+input#email_btn_info {
+    background: none;
+    border-radius: 50px;
+    border: 1.5px solid #fffffe;
+    padding: 7px 31px;
+    color: #fff;
+    cursor: pointer;
+    margin: 13px 0;
+}
+input#email_btn_info:hover {
+    background: linear-gradient(to right, #2098f9, #9eefb4);
+    border: 1.5px solid #51bade;
+    background-repeat: no-repeat;
+    overflow: hidden !important;
+}
+.confirmed_cont {
+    display: none;
+}
+a.backto-login {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+}
+a.backto-login {
+    color: #c8c8c8;
+}

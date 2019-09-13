@@ -13,7 +13,7 @@ global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
 
-echo $user ." versis ". get_current_user_id();
+echo $user->ID ." versis ". get_current_user_id();
 
 
 ?>

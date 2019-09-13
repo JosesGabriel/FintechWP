@@ -1508,7 +1508,7 @@ get_header('dashboard');
             ));
 
         // wp_redirect( '/chart/'.$tradeinfo['stock'] );
-        // wp_redirect('/journal');
+        wp_redirect('/journal');
         exit;
     }
 ?>

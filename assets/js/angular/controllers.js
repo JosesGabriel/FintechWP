@@ -79,6 +79,8 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             change: data.chg,
             shares: abbr_format(data.vol),
         };
+        console.log('from controller');
+        console.log(transaction);
         $scope.ticker.push(transaction);
         
         if($scope.ticker.length <= 50){

@@ -1432,6 +1432,7 @@ header("Expires: 0");
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
 
 		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
+		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
 
         $tradeinfo = [];
         $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
@@ -1441,8 +1442,8 @@ header("Expires: 0");
 		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
         
-        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
-		$tradeinfo['price'] = $_POST['inpt_data_price'];
+        // $_POST['inpt_data_price'] = $butstockprice;
+		$tradeinfo['price'] = $butstockprice;
         // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $stockquantity;
 
@@ -1497,10 +1498,10 @@ header("Expires: 0");
             }
             update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
         }
-        $dtotalpurchse = $_POST['inpt_data_price'] * $stockquantity;
+        $dtotalpurchse = $butstockprice * $stockquantity;
         echo $dtotalpurchse;
 
-        $stockcost = ($_POST['inpt_data_price'] * $stockquantity);
+        $stockcost = ($butstockprice * $stockquantity);
         $purchasefee = getjurfees($stockcost, 'buy');
 
         $wpdb->insert('arby_ledger', array(

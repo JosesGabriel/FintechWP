@@ -19,8 +19,7 @@
         $today = date('Y-m-d');
 
         foreach($stockinfo as $stkey => $stvals){
-
-           
+          
             $new_date = date('Y-m-d', strtotime($stvals->lastupdatetime));
 
               if($today == $new_date){
@@ -57,14 +56,22 @@
             <div class="to-content-part gainers">
 
                      <ul>
-                               <?php for($j=0; $j < 5; $j++) {?> 
-                                    <li class="odd">
-                                        <span><?php echo $stock[$j][0]; ?></span>
+                               <?php for($j=0; $j < 5; $j++) {
 
-                                        <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$j][3]; ?></p></a>
+                                     if($stock[$j][1] != null){
+                                            ?> 
 
-                                    </li>
-                                <?php } ?>
+                                        <li class="odd">
+                                            <span><?php echo $stock[$j][0]; ?></span>
+
+                                            <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
+
+                                        </li>
+
+
+                                <?php } 
+                                    }
+                                 ?>
                     </ul>
                               
                        
@@ -85,12 +92,17 @@
             ?>
 
                      <ul>
-                               <?php for($j=0; $j < 5; $j++) {?> 
+                               <?php for($j=0; $j < 5; $j++) {
+
+                                 if($stock[$j][1] != null){
+                                        ?> 
                                     <li class="odd">
                                         <span><?php echo $stock[$j][0]; ?></span>
                                         <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p></a>
                                     </li>
-                                <?php } ?>
+                                <?php } 
+                                    }
+                                ?>
                     </ul>
 
             </div>

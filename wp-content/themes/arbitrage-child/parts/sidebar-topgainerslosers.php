@@ -37,7 +37,7 @@
         });
 
         
-       for($s = 0; $s < 5; $s++){
+       for($s = 0; $s < 10; $s++){
                     $stock1[$s][0] = $stock[$s][0];
                     $stock1[$s][1] = $stock[$s][1];
                     $stock1[$s][2] = $stock[$s][2];

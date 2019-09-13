@@ -79,7 +79,7 @@
                                         </li>
 
 
-                                <?php } else { ?>
+                                <?php } elseif ($stocky[$j][1] != null) { ?>
                                         <li class="odd">
                                             <span><?php echo $stocky[$j][0]; ?></span>
 

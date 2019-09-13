@@ -36,12 +36,13 @@
             return new DateTime($b[3]) <=> new DateTime($a[3]);
         });
 
-
-        for($s = 0; $s < 5; $s++){
+        $s = 0
+        while($today == $stock[$i][3] ) { //for($s = 0; $s < 5; $s++){
                     $stock1[$s][0] = $stock[$s][0];
                     $stock1[$s][1] = $stock[$s][1];
                     $stock1[$s][2] = $stock[$s][2];
                     $stock1[$s][3] = $stock[$s][3];
+            $s++;
         }
 
             usort($stock1, function($a, $b) {

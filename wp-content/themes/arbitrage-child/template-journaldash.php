@@ -883,19 +883,8 @@ if($issampledata){
 																						
 																					}
                                                                                     if ($dstocktraded && $dstocktraded != '') {
-																						$stockdetails = "";
-																						foreach ($gerdqoute->data as $gskey => $gsvalue) {
-																							if($value == $gsvalue->symbol){
-																								$stockdetails = $gsvalue;
-																							}
-																						}
-
 																						$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
-
-																						print_r($gerdqoute->data[$key]);
-																						// code...
-																						
-																						// print_r($stockdetails);
+																						$stockdetails = $gerdqoute->data[$key];
 
 																						$dstockinfo = $stockdetails;
 																						if($isjounalempty){

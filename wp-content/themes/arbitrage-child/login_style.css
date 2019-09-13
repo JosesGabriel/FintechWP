@@ -833,6 +833,7 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
     background: #142c46;
     border: 5px !important;
     border-radius: 5px !important;
+    padding: 12px;
 }
 .um-row._um_row_1.um-customized-row {
     background: none !important;

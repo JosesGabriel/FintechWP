@@ -99,14 +99,14 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		-webkit-transition: all 0.5s ease;
 		transition: all 0.5s ease;
 	}
-	a.for_pass {
+	span.for_pass {
 		display: block;
 		padding: 0px 0 20px;
 		font-size: 12px;
 		text-align: center;
 		color: #fff;
 	}
-	a.for_pass:hover {
+	span.for_pass:hover {
 		text-decoration: none;
 		color: #d8d8d8;
 	}

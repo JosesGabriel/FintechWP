@@ -1990,7 +1990,7 @@ if($issampledata){
 
 																				$dstocksonme = json_decode($dstocksonme);
 																				usort($dstocksonme->data, function($a, $b) {
-																					return $a['symbol'] <=> $b['symbol'];
+																					return $a->symbol <=> $b->symbol;
 																				});
 																				$listosstocks = $dstocksonme->data;
 

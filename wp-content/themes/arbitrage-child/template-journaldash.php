@@ -4860,8 +4860,10 @@ if($issampledata){
 			e.preventDefault();
 			var dstock = $(".dentertrade #inpt_data_select_stock").val();
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
-			if(!empty(dstock) && dbuypower > 0){
+			if(dstock != "" && dbuypower > 0){
 				jQuery(".dentertrade").submit();
+			} else {
+				console.log("dont add trade");
 			}
 		});
 

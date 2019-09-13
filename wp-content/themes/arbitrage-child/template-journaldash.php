@@ -9,6 +9,9 @@
 global $current_user;
 $user = wp_get_current_user();
 get_header('dashboard');
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0");
 
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -1407,12 +1410,13 @@ get_header('dashboard');
         exit;
     }
     if (isset($_POST['istype'])) {
-        if ($_POST['damount'] > 0) {
+		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
+        if ($dxammount > 0) {
             $wpdb->insert('arby_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
+                'tranamount' =>  $dxammount// ... and so on
             ));
         }
 
@@ -1426,6 +1430,9 @@ get_header('dashboard');
 <!-- BOF BUY trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
+
+		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
+
         $tradeinfo = [];
         $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
@@ -1437,7 +1444,7 @@ get_header('dashboard');
         $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
 		$tradeinfo['price'] = $_POST['inpt_data_price'];
         // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
-        $tradeinfo['qty'] = str_replace(",", "", $_POST['inpt_data_qty']);
+        $tradeinfo['qty'] = $stockquantity;
 
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
@@ -1452,17 +1459,13 @@ get_header('dashboard');
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
-		echo "<pre>";
-			print_r($tradeinfo);
-		echo "</pre>";
-		exit;
-
+		 
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
             $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
             if ($dstocktraded && $dstocktraded != '') {
                 array_push($dstocktraded['data'], $tradeinfo);
-                $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $_POST['inpt_data_qty'];
+                $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $stockquantity;
 
                 $totalprice = 0;
                 $totalquanta = 0;
@@ -1480,7 +1483,7 @@ get_header('dashboard');
             $finaldata = [];
             $finaldata['data'] = [];
             array_push($finaldata['data'], $tradeinfo);
-            $finaldata['totalstock'] = $_POST['inpt_data_qty'];
+            $finaldata['totalstock'] = $stockquantity;
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
             $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
@@ -1494,10 +1497,10 @@ get_header('dashboard');
             }
             update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
         }
-        $dtotalpurchse = $_POST['inpt_data_price'] * $_POST['inpt_data_qty'];
+        $dtotalpurchse = $_POST['inpt_data_price'] * $stockquantity;
         echo $dtotalpurchse;
 
-        $stockcost = ($_POST['inpt_data_price'] * $_POST['inpt_data_qty']);
+        $stockcost = ($_POST['inpt_data_price'] * $stockquantity);
         $purchasefee = getjurfees($stockcost, 'buy');
 
         $wpdb->insert('arby_ledger', array(

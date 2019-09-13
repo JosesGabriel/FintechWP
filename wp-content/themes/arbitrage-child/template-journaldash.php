@@ -372,12 +372,8 @@ if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
 		$dstocktraded = get_user_meta($user->ID, '_trade_'.$dstocksvalue, true);
-		$stockdetails = "";
-		foreach ($gerdqoute->data as $gskey => $gsvalue) {
-			if($dstocksvalue == $gsvalue->symbol){
-				$stockdetails = $gsvalue;
-			}
-		}
+		$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+		$stockdetails = $gerdqoute->data[$key];
         if ($dstocktraded && $dstocktraded != '') {
             // $dstockinfo = $gerdqoute->data->$dstocksvalue;
             $dstockinfo = $stockdetails;
@@ -535,14 +531,8 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$stockdetails = "";
-				foreach ($gerdqoute->data as $gskey => $gsvalue) {
-					if($trinfovalue['stockname'] == $gsvalue->symbol){
-						$stockdetails = $gsvalue;
-					}
-				}
-				// $dinforstocl = $trinfovalue['stockname'];
-				// $dstockinfo = $gerdqoute->data->$dinforstocl;
+				$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
 				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
 				$dsellfees = getjurfees($marketval, 'sell');
@@ -1059,21 +1049,21 @@ if($issampledata){
 																	                                                <div class="groupinput midd lockedd">
 																	                                                	<?php
                                                                                                                             $dboard = 0;
-                                                                                        if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
-                                                                                            $dboard = 1000000;
-                                                                                        } elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
-                                                                                            $dboard = 100000;
-                                                                                        } elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
-                                                                                            $dboard = 10000;
-                                                                                        } elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
-                                                                                            $dboard = 1000;
-                                                                                        } elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
-                                                                                            $dboard = 100;
-                                                                                        } elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
-                                                                                            $dboard = 10;
-                                                                                        } elseif ($dstockinfo->last >= 1000) {
-                                                                                            $dboard = 5;
-                                                                                        } ?>
+																															if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
+																																$dboard = 1000000;
+																															} elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
+																																$dboard = 100000;
+																															} elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
+																																$dboard = 10000;
+																															} elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
+																																$dboard = 1000;
+																															} elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
+																																$dboard = 100;
+																															} elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
+																																$dboard = 10;
+																															} elseif ($dstockinfo->last >= 1000) {
+																																$dboard = 5;
+																															} ?>
 																	                                                    <label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="<?php echo $dboard; ?>" readonly>
 																	                                                    <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -1215,15 +1205,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                                                                    <div class="width35">
-                                                                                                    	<?php
-                                                                                                            if ($dtotalpl > 0) {
-                                                                                                                echo number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',');
-                                                                                                            } else {
-                                                                                                                echo '0.00';
-                                                                                                            }
-
-                                                                                                        ?>%</div>
+                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',') : '0.00');?>%</div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>
@@ -1280,19 +1262,6 @@ if($issampledata){
 															</div>
 														</div>
 													</div>
-													<!-- <br class="clear"> -->
-
-                                                   <!-- <div class="_adsbygoogle">
-														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
-
-															<div class="box-portlet-content" style="padding:0;">
-                                                            	<?php /*?><small>ADVERTISEMENT</small><?php */?>
-																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
 													<br class="clear">
 
                                                     <?php

@@ -4858,10 +4858,13 @@ if($issampledata){
 
 		jQuery(".dloadform").click(function(e){
 			e.preventDefault();
-			$dstock = $(".dentertrade #inpt_data_select_stock").val();
-			console.log($dstock);
-			// jQuery(".dentertrade").submit();
-
+			var dstock = $(".dentertrade #inpt_data_select_stock").val();
+			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
+			if(dstock != "" && dbuypower > 0){
+				jQuery(".dentertrade").submit();
+			} else {
+				console.log("dont add trade");
+			}
 		});
 
 

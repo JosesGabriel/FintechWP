@@ -889,6 +889,10 @@ if($issampledata){
 																								$stockdetails = $gsvalue;
 																							}
 																						}
+
+																						$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+
+																						print_r($gerdqoute->data[$key]);
 																						// code...
 																						
 																						// print_r($stockdetails);

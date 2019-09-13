@@ -1503,7 +1503,7 @@ get_header('dashboard');
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
             ));
 
-        wp_redirect( '/chart/'.$tradeinfo['stock'] );
+        // wp_redirect( '/chart/'.$tradeinfo['stock'] );
         wp_redirect('/journal');
         exit;
     }

@@ -1436,7 +1436,7 @@ get_header('dashboard');
         
         $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
 		$tradeinfo['price'] = $_POST['inpt_data_price'];
-        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
+        // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = str_replace(",", "", $_POST['inpt_data_qty']);
 
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];

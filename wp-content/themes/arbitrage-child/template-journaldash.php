@@ -4857,7 +4857,10 @@ if($issampledata){
 		});
 
 		jQuery(".dloadform").click(function(e){
-			jQuery(".dentertrade").submit();
+			e.preventDefault();
+			$dstock = $(".dentertrade #inpt_data_select_stock").val();
+			console.log($dstock);
+			// jQuery(".dentertrade").submit();
 
 		});
 

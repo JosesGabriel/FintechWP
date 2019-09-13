@@ -172,10 +172,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
                     <?php } ?>
 
-                    <a class="prtnr_login" id="switch_login" href="#">
-                        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
-                        <span>Login</span>
-                    </a>
+                    
                 </div>
               </div>
           </div>
@@ -191,7 +188,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
     </a>
 </div>
 <div class="ico_posbott_login">
-    
+	<a class="prtnr_login" id="switch_login" href="#">
+		<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
+		<span>Login</span>
+	</a>
 </div>
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
@@ -240,14 +240,13 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 				jQuery(".hidefromreset").fadeIn(400);
 			});
 		});
-		
+
 		jQuery(".for_pass").click(function(){
-			jQuery(".arb_circle_btns").fadeOut(400, function(){
-				jQuery(".login-form").fadeIn(400, function(){
-					jQuery(".ico_posbott_signup").fadeIn(400);
-				});
+			jQuery(".login-form").fadeOut(300, function(){
+				jQuery(".email_pass_reset_cont").fadeIn(400);
 			});
 		});
+
 
 		jQuery(".prtnr_login").click(function(){
 			jQuery(".arb_circle_btns").fadeOut(400, function(){
@@ -314,7 +313,30 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 			popupWindow = window.open(url,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 		}
 		
-	});
+	})
+	.on('submit', '#email_pass_reset', function (e) {
+            
+            var email = jQuery("#email_info").val();
+            var hasvalemail = jQuery("#email_info").val().length;
+            // console.log(email);
+            var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+            jQuery.ajax({
+                'url': url,
+                'method': 'GET',
+                'data': '',
+                'dataType': 'json',
+                'success': function (response) {
+                    if (response.success) {
+                        jQuery(".email_pass_reset_cont").hide();
+                        jQuery(".confirmed_cont").show();
+                        return;
+                    }
+                    jQuery('.error_message').show();
+                    return;
+                }
+            })
+            e.preventDefault();
+        });;
 </script>
 
 <?php get_footer();

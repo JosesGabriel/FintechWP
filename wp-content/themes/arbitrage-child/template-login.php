@@ -16,100 +16,100 @@ $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
 <style>/* Overrides */
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
-html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
-.forgotpass-wrapper .um-col-alt .um-center {
-    display: inline-block;
-    margin: 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.um-register .um-col-alt .um-center {
-    display: inline-block;
-    margin: 10px 10px 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.um-login .um-col-alt .um-center {
-    display: inline-block;
-    margin: 10px 10px 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.login-submit {
-    display: inline-block;
-    margin: 15px 10px 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.prtnr_signup,
-.prtnr_login {
-	display:inline-block;
-	margin:20px 10px 0;
-	text-align:center;
-	align-items: center;
-	width: 50px;
-	height: 50px;
-	position: relative;
-	box-sizing: border-box;
-	background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-	background-clip: padding-box; 
-	border: solid 2px transparent;
-	border-radius: 35px;
-	-webkit-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-}
-a.for_pass {
-    display: block;
-    padding: 0px 0 20px;
-    font-size: 12px;
-	text-align: center;
-	color: #fff;
-}
-a.for_pass:hover {
-	text-decoration: none;
-	color: #d8d8d8;
-}
+	@import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
+	html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
+	.forgotpass-wrapper .um-col-alt .um-center {
+		display: inline-block;
+		margin: 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.um-register .um-col-alt .um-center {
+		display: inline-block;
+		margin: 10px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.um-login .um-col-alt .um-center {
+		display: inline-block;
+		margin: 10px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.login-submit {
+		display: inline-block;
+		margin: 15px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.prtnr_signup,
+	.prtnr_login {
+		display:inline-block;
+		margin:20px 10px 0;
+		text-align:center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	a.for_pass {
+		display: block;
+		padding: 0px 0 20px;
+		font-size: 12px;
+		text-align: center;
+		color: #fff;
+	}
+	a.for_pass:hover {
+		text-decoration: none;
+		color: #d8d8d8;
+	}
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">

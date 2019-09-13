@@ -1424,9 +1424,6 @@ get_header('dashboard');
 
 
 <!-- BOF BUY trades -->
-<pre>
-	<?php print_r($_POST); ?>
-</pre>
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
         $tradeinfo = [];

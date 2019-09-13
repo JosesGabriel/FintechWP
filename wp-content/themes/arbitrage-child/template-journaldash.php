@@ -322,7 +322,10 @@ echo $user->ID ." versis ". $user->ID;
 
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
-			print_r($postmetas);
+			
+
+			$key = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+			print_r($postmetas[$key]);
 
             $tradeitems = [];
             $tradeitems['id'] = $tradeid;

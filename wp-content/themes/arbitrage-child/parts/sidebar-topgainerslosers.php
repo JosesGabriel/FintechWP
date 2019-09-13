@@ -41,6 +41,7 @@
                     $stock1[$s][0] = $stock[$s][0];
                     $stock1[$s][1] = $stock[$s][1];
                     $stock1[$s][2] = $stock[$s][2];
+                    $stock1[$s][3] = $stock[$s][3];
         }
 
             usort($stock1, function($a, $b) {

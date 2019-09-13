@@ -1407,12 +1407,13 @@ get_header('dashboard');
         exit;
     }
     if (isset($_POST['istype'])) {
-        if ($_POST['damount'] > 0) {
+		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
+        if ($dxammount > 0) {
             $wpdb->insert('arby_ledger', array(
                 'userid' => get_current_user_id(),
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
+                'tranamount' =>  $dxammount// ... and so on
             ));
         }
 

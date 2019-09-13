@@ -153,13 +153,13 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
 					<?php #if(isset($_GET['active'])){ ?>
-						<?php echo do_shortcode('[ultimatemember_social_login id=3218]');?>
+						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
                     <?php #} ?>
                 </div>
                 
             </div>
         </div>
-						---        test   ---
+					
       <div class="signup-form-wrapper">
           <div class="signup-form" style="display: none;">
               <div class="row" style="margin:0;">
@@ -170,7 +170,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                     
                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     <?php #if(isset($_GET['active'])){ ?>
-						<?php echo do_shortcode('[ultimatemember_social_login id=3218]');?>
+						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
                     <?php #} ?>
 
                     

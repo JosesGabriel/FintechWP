@@ -1989,6 +1989,10 @@ if($issampledata){
 																				curl_close($curl);
 
 																				$dstocksonme = json_decode($dstocksonme);
+																				usort($dstocksonme->data, function($a, $b) {
+																					return $a->symbol <=> $b->symbol;
+																				});
+																				$listosstocks = $dstocksonme->data;
 
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
@@ -4853,7 +4857,10 @@ if($issampledata){
 		});
 
 		jQuery(".dloadform").click(function(e){
-			jQuery(".dentertrade").submit();
+			e.preventDefault();
+			$dstock = $(".dentertrade #inpt_data_select_stock").val();
+			console.log($dstock);
+			// jQuery(".dentertrade").submit();
 
 		});
 

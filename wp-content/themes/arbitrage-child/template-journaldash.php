@@ -1768,7 +1768,11 @@ if($issampledata){
 <?php
     $duseridmo = get_current_user_id();
     $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
-
+?>
+	<pre>
+		<?php print_r($dledger); ?>
+	</pre>
+<?php
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
         if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {

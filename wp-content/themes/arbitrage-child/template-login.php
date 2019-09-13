@@ -159,7 +159,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 
             </div>
         </div>
-    
+						---        test   ---
       <div class="signup-form-wrapper">
           <div class="signup-form" style="display: none;">
               <div class="row" style="margin:0;">

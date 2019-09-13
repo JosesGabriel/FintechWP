@@ -1424,9 +1424,6 @@ get_header('dashboard');
 
 
 <!-- BOF BUY trades -->
-<pre>
-	<?php print_r($_POST); ?>
-</pre>
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
         $tradeinfo = [];
@@ -1438,9 +1435,9 @@ get_header('dashboard');
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
         
         $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
-        $tradeinfo['price'] = $_POST['inpt_data_price'];
+		$tradeinfo['price'] = $_POST['inpt_data_price'];
         $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
-        $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+        $tradeinfo['qty'] = str_replace(",", "", $_POST['inpt_data_qty']);
 
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
@@ -1454,7 +1451,11 @@ get_header('dashboard');
         $tradeinfo['tradeplan'] = $_POST['inpt_data_tradeplan'];
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
-        $tradeinfo['status'] = $_POST['inpt_data_status'];
+		$tradeinfo['status'] = $_POST['inpt_data_status'];
+		echo "<pre>";
+			print_r($tradeinfo);
+		echo "</pre>";
+		exit;
 
         $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -1507,7 +1508,7 @@ get_header('dashboard');
             ));
 
         // wp_redirect( '/chart/'.$tradeinfo['stock'] );
-        // wp_redirect('/journal');
+        wp_redirect('/journal');
         exit;
     }
 ?>

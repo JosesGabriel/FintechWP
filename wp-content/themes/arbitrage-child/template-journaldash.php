@@ -1853,7 +1853,7 @@ if($issampledata){
 				$dsellfees = getjurfees($marketval, 'sell');
 				$dtotal = $marketval - $dsellfees;
 	
-				$dequityp += $dtotal;
+				$dequityp += $trinfovalue['totalcost'];
 				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}

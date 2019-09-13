@@ -823,3 +823,27 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
 .um-icon-ios-close-empty {
     display: none;
 }
+.um-social-login-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+.um-social-login-wrap {
+    border: none !important;
+}
+.um-social-login-wrap .um.um-register.um-err {
+    background: #142c46;
+    border: 5px !important;
+    border-radius: 5px !important;
+}
+.um-row._um_row_1.um-customized-row {
+    background: none !important;
+    border: none !important;
+}
+.um-social-login-wrap .arb_accept {
+    display: none;
+}
+.um-social-login-wrap .um-col-alt {
+    margin: 4px 0 4px;
+}
+.um-register .um-col-alt .um-center:before {
+    z-index: 0;
+}

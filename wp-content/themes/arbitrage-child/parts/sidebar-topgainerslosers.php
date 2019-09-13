@@ -38,9 +38,9 @@
 
 
         for($s = 0; $s < 5; $s++){
-                    $stock1[$s][0] = $stvals->symbol;
-                    $stock1[$s][1] = $stvals->changepercentage;
-                    $stock1[$s][2] = $stvals->description;
+                    $stock1[$s][0] = $stock[$s][0];
+                    $stock1[$s][1] = $stock[$s][1];
+                    $stock1[$s][2] = $stock[$s][2];
         }
 
             usort($stock1, function($a, $b) {

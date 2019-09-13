@@ -757,7 +757,10 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 }
 span.label_pls {
     display: inline-block;
-    margin: 26px 0 16px;
+    margin: 10px 0 10px;
+    color: #d8d8d8;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
 }
 input#email_btn_info {
     background: none;
@@ -779,13 +782,11 @@ input#email_btn_info:hover {
 .confirmed_cont {
     display: none;
 }
-a.backto-login {
+span.backto-login {
     color: #fff;
     font-weight: 500;
-    text-decoration: none;
-}
-a.backto-login {
-    color: #c8c8c8;
+    text-decoration: none !important;
+    font-size: 12px;
 }
 .email_pass_reset_cont {
     display: none;

@@ -272,6 +272,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 			
 			jQuery(".email_pass_reset_cont").fadeOut(300, function(){
 			});
+			jQuery(".confirmed_cont").fadeOut(300, function(){
+			});
+			jQuery(".error_message").fadeOut(300, function(){
+			});
 			
 			jQuery(".ico_posbott_signup").fadeOut(300, function(){
 				jQuery(".ico_posbott_login").fadeIn(300);

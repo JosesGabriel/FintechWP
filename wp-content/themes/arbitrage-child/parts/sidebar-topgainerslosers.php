@@ -34,7 +34,7 @@
         }
 
         usort($stock, function($a, $b) {
-            return new DateTime($a[3]) <=> new DateTime($b[3]);
+            return new DateTime($b[3]) <=> new DateTime($a[3]);
         });
 
 

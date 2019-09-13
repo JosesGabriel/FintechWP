@@ -100,7 +100,7 @@ function getSMS(){
                 }
                 #push userdata to array
                 array_push($result,$userdata);
-                #gwapo ko
+                #gwapo ko ambot lng
             #}
         }
     }

@@ -252,7 +252,6 @@ echo $user->ID ." versis ". $user->ID;
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
-
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -2521,10 +2520,19 @@ if($issampledata){
                                                             $dlls['profit'] = 0;
                                                             foreach ($posts as $dpostkey => $dpostvalue) {
                                                                 if ($ddatesvalue == date('Y-m-d', strtotime($dpostvalue->post_date))) {
-                                                                    $dsellprice = get_post_meta($dpostvalue->ID, 'data_sell_price', true);
-                                                                    $dbuyprice = get_post_meta($dpostvalue->ID, 'data_dprice', true);
-                                                                    $dquantity = get_post_meta($dpostvalue->ID, 'data_quantity', true);
-                                                                    $data_avr_price = get_post_meta($dpostvalue->ID, 'data_avr_price', true);
+																	$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
+
+																	$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																	$dsellprice = $postmetas[$data_sell_price]->meta_value;
+																	
+																	$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+																	$dbuyprice = $postmetas[$data_dprice]->meta_value;
+																	
+																	$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+																	$dquantity = $postmetas[$data_quantity]->meta_value;
+																	
+																	$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+                                                                    $data_avr_price = $postmetas[$data_avr_price]->meta_value;
 
                                                                     $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                                     // get prices
@@ -2547,11 +2555,19 @@ if($issampledata){
                                                         foreach ($posts as $dpostkey => $dpostvalue) {
                                                             $instrade = [];
                                                             $instrade['count'] = $counter;
+															$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
 
-                                                            $dsellprice = get_post_meta($dpostvalue->ID, 'data_sell_price', true);
-                                                            $dbuyprice = get_post_meta($dpostvalue->ID, 'data_dprice', true);
-                                                            $dquantity = get_post_meta($dpostvalue->ID, 'data_quantity', true);
-                                                            $data_avr_price = get_post_meta($dpostvalue->ID, 'data_avr_price', true);
+															$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+															$dsellprice = $postmetas[$data_sell_price]->meta_value;
+															
+															$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+															$dbuyprice = $postmetas[$data_dprice]->meta_value;
+															
+															$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+															$dquantity = $postmetas[$data_quantity]->meta_value;
+															
+															$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+															$data_avr_price = $postmetas[$data_avr_price]->meta_value;
 
                                                             $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                             // get prices
@@ -2611,10 +2627,24 @@ if($issampledata){
                                                             );
                                                             $dinfobase = get_posts($tuespostargs);
                                                             foreach ($dinfobase as $xdsskey => $xdssvalue) {
-                                                                $dsellprice = get_post_meta($xdssvalue->ID, 'data_sell_price', true);
-                                                                $dbuyprice = get_post_meta($xdssvalue->ID, 'data_dprice', true);
-                                                                $dquantity = get_post_meta($xdssvalue->ID, 'data_quantity', true);
-                                                                $data_avr_price = get_post_meta($xdssvalue->ID, 'data_avr_price', true);
+																$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$xdssvalue->ID);
+
+																$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																$dsellprice = $postmetas[$data_sell_price]->meta_value;
+																
+																$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+																$dbuyprice = $postmetas[$data_dprice]->meta_value;
+																
+																$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+																$dquantity = $postmetas[$data_quantity]->meta_value;
+																
+																$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+																$data_avr_price = $postmetas[$data_avr_price]->meta_value;
+
+                                                                // $dsellprice = get_post_meta($xdssvalue->ID, 'data_sell_price', true);
+                                                                // $dbuyprice = get_post_meta($xdssvalue->ID, 'data_dprice', true);
+                                                                // $dquantity = get_post_meta($xdssvalue->ID, 'data_quantity', true);
+                                                                // $data_avr_price = get_post_meta($xdssvalue->ID, 'data_avr_price', true);
 
                                                                 $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                                 // get prices
@@ -2727,21 +2757,36 @@ if($issampledata){
                                                                                     while ($author_posts->have_posts()) {
 																						$author_posts->the_post();
 																						$tradelogid = get_the_ID();
-                                                                                        $dlisttrade[$dpage][$count]['id'] = $tradelogid;
-                                                                                        $dlisttrade[$dpage][$count]['data_stock'] = get_post_meta($tradelogid, 'data_stock', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta($tradelogid, 'data_sellmonth', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta($tradelogid, 'data_sellday', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta($tradelogid, 'data_sellyear', true);
+																						$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradelogid);
 
-                                                                                        $data_dprice = get_post_meta($tradelogid, 'data_dprice', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $data_dprice);
+																						$dlisttrade[$dpage][$count]['id'] = $tradelogid;
+																						
+																						$data_stock = array_search('data_stock', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_stock'] = $postmetas[$data_stock]->meta_value;
+																						
+																						$data_sellmonth = array_search('data_sellmonth', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellmonth'] = $postmetas[$data_sellmonth]->meta_value;
+																						
+																						$data_sellday = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellday'] = $postmetas[$data_sellday]->meta_value;
+																						
+																						$data_sellyear = array_search('data_sellyear', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = $postmetas[$data_sellyear]->meta_value;
 
-                                                                                        $dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta($tradelogid, 'data_sell_price', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta($tradelogid, 'data_quantity', true);
+																						$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $postmetas[$data_dprice]->meta_value);
 
-                                                                                        $data_trade_info = get_post_meta($tradelogid, 'data_trade_info', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($data_trade_info);
-                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta($tradelogid, 'data_avr_price', true);
+																						$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sell_price'] = $postmetas[$data_sell_price]->meta_value;
+																						
+																						$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = $postmetas[$data_quantity]->meta_value;
+
+																						$data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($postmetas[$data_trade_info]->meta_value);
+																						
+																						$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = $postmetas[$data_avr_price]->meta_value;
 
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {

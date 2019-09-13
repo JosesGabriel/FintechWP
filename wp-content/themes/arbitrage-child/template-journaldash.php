@@ -1424,6 +1424,9 @@ get_header('dashboard');
 
 
 <!-- BOF BUY trades -->
+<pre>
+	<?php print_r($_POST); ?>
+</pre>
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
         $tradeinfo = [];
@@ -1504,7 +1507,7 @@ get_header('dashboard');
             ));
 
         // wp_redirect( '/chart/'.$tradeinfo['stock'] );
-        wp_redirect('/journal');
+        // wp_redirect('/journal');
         exit;
     }
 ?>

@@ -785,3 +785,9 @@ a.backto-login {
 a.backto-login {
     color: #c8c8c8;
 }
+.email_pass_reset_cont {
+    display: none;
+}
+.error_message {
+    display: none;
+}

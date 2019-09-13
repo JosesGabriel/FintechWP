@@ -436,7 +436,6 @@ input#username_b {
 	margin-bottom:0; 
 	color:#fff;
 	font-size:12px;
-	display: none;
 }
 .um.um-shortcode-social {
 	display: none;
@@ -792,5 +791,35 @@ a.backto-login {
     display: none;
 }
 .error_message {
+    display: none;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook {
+    display: block;
+    width: 49px;
+    border-radius: 50px !important;
+    background: none !important;
+    border: 2px solid #4267b2 !important;
+    margin: 22px auto 0;
+    padding: 16px 0 !important;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook:hover {
+    background: #4267b2 !important;
+    border: 2px solid #4267b2 !important;
+}
+.um-button-facebook i{
+    margin: 0;
+    font-size: 25px;
+    top: -5px;
+    color: #fff;
+}
+.um-field-label label {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    font-weight: bold;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+}
+.um-icon-ios-close-empty {
     display: none;
 }

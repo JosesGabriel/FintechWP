@@ -694,9 +694,9 @@ input#first_name-9 {
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
                     <?php } ?>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
-      
-                    <?php echo do_shortcode('[ultimatemember_social_login id=3218]');?>
- 
+                   
+						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
+          
                     <a class="prtnr_login" id="switch_login" href="#">
                         <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
                         <span>Login</span>

@@ -219,6 +219,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
+		$("a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".ordash");
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
 		jQuery( '<div class="forgpasslnk"><span style="color: #949798;font-size: 11px;"></span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
 		jQuery(".um-register .um-field-type_password:last-child").addClass("confirmpasscls");

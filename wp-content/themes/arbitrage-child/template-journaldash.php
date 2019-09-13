@@ -9,7 +9,7 @@ header("Expires: 0");
 // get_header();
 // Ralph Was Here 
 // Trading Journal
-global $current_user;
+global $current_user, $wpdb;
 $user = wp_get_current_user();
 date_default_timezone_set('Asia/Manila');
 get_header('dashboard');
@@ -319,6 +319,11 @@ echo $user->ID ." versis ". $user->ID;
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
 			$tradeid = get_the_ID();
+
+			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
+
+			print_r($postmetas);
+
             $tradeitems = [];
             $tradeitems['id'] = $tradeid;
             $tradeitems['data_sellmonth'] = get_post_meta($tradeid, 'data_sellmonth', true);
@@ -330,7 +335,7 @@ echo $user->ID ." versis ". $user->ID;
 
             $tradeitems['data_sell_price'] = get_post_meta($tradeid, 'data_sell_price', true);
             $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
-            $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
+            // $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
 
             $data_avr_price = get_post_meta($tradeid, 'data_avr_price', true);
             $dlistofinfo = json_decode(get_post_meta($tradeid, 'data_trade_info', true));

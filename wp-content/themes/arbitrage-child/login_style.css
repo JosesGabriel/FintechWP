@@ -436,7 +436,6 @@ input#username_b {
 	margin-bottom:0; 
 	color:#fff;
 	font-size:12px;
-	display: none;
 }
 .um.um-shortcode-social {
 	display: none;
@@ -793,4 +792,16 @@ a.backto-login {
 }
 .error_message {
     display: none;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook {
+    display: inline-block;
+    width: 49px;
+    border-radius: 50px !important;
+    background: none !important;
+    border: 2px solid #4267b2 !important;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook .um-button i{
+    margin: 0;
+    font-size: 25px;
+    top: -5px;
 }

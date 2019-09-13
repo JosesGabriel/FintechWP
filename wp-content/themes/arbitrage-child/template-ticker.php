@@ -631,7 +631,11 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-        
+    <ul ng-attr-data-speed="speed" class="list-inline marqueethis arb_custom_ticker">
+            <li ng-repeat="transaction in ticker">
+                {{::transaction.price}}
+            </li>
+        </ul>
     </div>
 </div>
 	

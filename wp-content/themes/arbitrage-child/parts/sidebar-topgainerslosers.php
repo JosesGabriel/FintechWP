@@ -23,14 +23,13 @@
            
             $new_date = date('Y-m-d', strtotime($stvals->lastupdatetime));
 
-                //if($today == $new_date){
-
+              
                     $stock[$i][0] = $stvals->symbol;
                     $stock[$i][1] = $stvals->changepercentage;
                     $stock[$i][2] = $stvals->description;
                     $stock[$i][3] =  $new_date; //$stvals->lastupdatetime;
                     $i++;            
-                //}
+               
         }
 
         usort($stock, function($a, $b) {
@@ -38,9 +37,9 @@
         });
 
 
-            // usort($stock, function($a, $b) {
-             //   return $b[1] <=> $a[1];
-           // });
+             usort($stock, function($a, $b) {
+                return $b[1] <=> $a[1];
+            });
 
 ?>
     
@@ -66,7 +65,7 @@
 
 </div>
 <div class="top-stocks">
-    
+
     <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part losers">

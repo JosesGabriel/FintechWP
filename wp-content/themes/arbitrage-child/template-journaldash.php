@@ -319,29 +319,37 @@ echo $user->ID ." versis ". $user->ID;
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
 			$tradeid = get_the_ID();
-
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
-			
-
-			$key = array_search('data_sellday', array_column($postmetas, 'meta_key'));
-			print_r($postmetas[$key]);
-
-            $tradeitems = [];
+			$tradeitems = [];
             $tradeitems['id'] = $tradeid;
-            $tradeitems['data_sellmonth'] = get_post_meta($tradeid, 'data_sellmonth', true);
-            $tradeitems['data_sellday'] = get_post_meta($tradeid, 'data_sellday', true);
-            $tradeitems['data_sellyear'] = get_post_meta($tradeid, 'data_sellyear', true);
 
-            $tradeitems['data_stock'] = get_post_meta($tradeid, 'data_stock', true);
-            $tradeitems['data_dprice'] = get_post_meta($tradeid, 'data_dprice', true);
+			$data_sellmonth = array_search('data_sellmonth', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sellmonth'] = $postmetas[$data_sellmonth]->meta_value;
+			
+			$data_sellday = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sellday'] = $postmetas[$data_sellday]->meta_value;
+			
+			$data_sellyear = array_search('data_sellyear', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_sellyear'] = $postmetas[$data_sellyear]->meta_value;
 
-            $tradeitems['data_sell_price'] = get_post_meta($tradeid, 'data_sell_price', true);
-            $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
+			$data_stock = array_search('data_stock', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_stock'] = $postmetas[$data_stock]->meta_value;
+			
+			$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_dprice'] = $postmetas[$data_dprice]->meta_value;
+
+			$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sell_price'] = $postmetas[$data_sell_price]->meta_value;
+			
+			$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_quantity'] = $postmetas[$data_quantity]->meta_value;
             // $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
-
-            $data_avr_price = get_post_meta($tradeid, 'data_avr_price', true);
-            $dlistofinfo = json_decode(get_post_meta($tradeid, 'data_trade_info', true));
+			$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+			$data_avr_price = $postmetas[$data_avr_price]->meta_value;
+			
+			$data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+            $dlistofinfo = json_decode($postmetas[$data_trade_info]->meta_value);
 
             $trade_plans = [];
             $strategy_plans = [];

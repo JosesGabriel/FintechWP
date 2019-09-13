@@ -812,3 +812,14 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
     top: -5px;
     color: #fff;
 }
+.um-field-label label {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    font-weight: bold;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+}
+.um-icon-ios-close-empty {
+    display: none;
+}

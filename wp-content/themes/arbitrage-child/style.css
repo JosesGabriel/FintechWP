@@ -647,7 +647,7 @@ body header#main-header {
 }
 .searchbar input[type="text"] {
     border: 0 none;
-    padding: 5px 10px 5px 10px !important;
+    padding: 5px 10px 5px 23px !important;
     background: #4e6a85;
     color: #d8d8d8;
     width: 100%;

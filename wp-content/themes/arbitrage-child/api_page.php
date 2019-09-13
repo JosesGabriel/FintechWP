@@ -480,7 +480,7 @@
 		$newuserlist = array();
 		$counter = 0;
 
-		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 3");
+		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 5");
 		foreach ($dsprest as $key => $value) {
 			$userdetails = [];
 			$userdetails['currentuser'] = $userID;
@@ -618,6 +618,15 @@
 
 		echo json_encode($dranks);
 
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
+
+		ob_start();
+		dynamic_sidebar( 'et_pb_widget_area_1' );
+		$content = ob_get_contents();
+		ob_end_clean();
+
+		echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
+		die();
 		
 	} else { // market sentiment : check sentiment
 

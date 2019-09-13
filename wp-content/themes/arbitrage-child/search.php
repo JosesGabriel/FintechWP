@@ -49,8 +49,10 @@ function random_color() {
 }
 
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes');
+curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
+curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 $gerdqoute = curl_exec($curl);
 curl_close($curl);
 
@@ -58,7 +60,9 @@ $gerdqoute = json_decode($gerdqoute);
 $dstockinfo = $gerdqoute->data;
 
 ?>
-
+<pre>
+    <?php //print_r($dstockinfo); ?>
+</pre>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,600i" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -777,8 +781,11 @@ a.um-photo-modal img {
                                                                                 <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                                     <?php
                                                                                         $dstock = get_the_title();
-                                                                                        $price = $dstockinfo->$dstock->last;
-                                                                                        $change = $dstockinfo->$dstock->change;
+                                                                                        $key = array_search($dstock, array_column($dstockinfo, 'symbol'));
+                                                                                        $price = $dstockinfo[$key]->last;
+                                                                                        $change = $dstockinfo[$key]->change;
+
+
 
                                                                                         $dsubtitle = get_post_meta( get_the_id(), 'stock_subtitle', true );
                                                                                     ?>

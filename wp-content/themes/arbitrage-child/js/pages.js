@@ -35,7 +35,7 @@ jQuery(document).ready(function(e) {
         jQuery("i.fa.fa-search").animate({
             right: "88%"
         },500, function(){
-            jQuery(".inner-seatch input[type='text']").val("     Search");
+            jQuery(".inner-seatch input[type='text']").val("Search");
         });
     });
 

@@ -125,25 +125,20 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 <span>Sign Up</span>
             </a>
         </div>
-        
-		<div class="ondashboardpage_login">
-			<div class="ondashboardpage_login_inner">
-				<div class="email_pass_reset_cont">
-					<form id="email_pass_reset">
+		<div class="email_pass_reset_cont">
+			<form id="email_pass_reset">
 
-						<span class="label_pls">Please enter your email address below</span><br>
-						<input type="email" required class="email-info" id="email_info"><br>
+				<span class="label_pls">Please enter your email address below</span><br>
+				<input type="email" required class="email-info" id="email_info"><br>
 
-						<input type="submit" value="Reset" id="email_btn_info">
-					</form>
-				</div>
-				<div class="confirmed_cont">
-					<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
-					<a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
-				</div>
-				<div class="error_message"><span class="label_pls"></span></div>
-			</div>
+				<input type="submit" value="Reset" id="email_btn_info">
+			</form>
 		</div>
+		<div class="confirmed_cont">
+			<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
+			<a class="backto-login" href="<?php echo $homeurlgen; ?>">Back to login</a>
+		</div>
+		<div class="error_message"><span class="label_pls"></span></div>
 		
         <div class="login-form-wrapper">
             <div class="login-form" style="display: none;">

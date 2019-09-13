@@ -164,7 +164,7 @@
 		top: -39px !important;
 		padding: 15px 0px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 40% !important;
+		width: 50% !important;
 		max-width: 512px !important;
 		height: auto !important;
 	}
@@ -325,6 +325,16 @@
 	.top-traiders .to-content-part .trader-item .traider-image {
 		margin-right: 0 !important;
 	}
+
+	.signup-form-wrapper, .login-form-wrapper {
+		top: -231px !important;
+	}
+
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 70px !important;
+	}
+
 }
 /* Mobile Smaller */
 @media only screen and (max-width: 414px){
@@ -367,7 +377,7 @@
 	}
 
 	.right-dashboard-part-inner, .fixed-rightsidebar, .ads1, .ontofooter {
-		width: 210px !important;
+		width: 260px !important;
 	}
 
 
@@ -655,6 +665,11 @@
 /* Mobile Smaller */
 @media only screen and (max-width: 410px){
 
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 45px !important;
+	}
+
 	.notif--subb {
     	margin: 20px auto 0px -24px !important;
 	}
@@ -781,6 +796,11 @@
 
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
+
+	.signup-form {
+		position: absolute !important;
+		margin: -325px 17px !important;
+	}
 
 	.notif--subb {
     	margin: 30px auto 0px -41px !important;

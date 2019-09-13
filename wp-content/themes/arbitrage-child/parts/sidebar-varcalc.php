@@ -88,7 +88,7 @@
         
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $dwatchinfo = curl_exec($curl);
         curl_close($curl);
@@ -116,9 +116,12 @@
                             <div class="dselecton">
                                 <select name="stockname" id="stockname">
                                     <option value="0">Select a Stock</option>
-                                    <?php foreach($dwatchinfo->data as $dwkey => $dwvalue): ?>
+                                    <?php 
+                                        if ($dwatchinfo):
+                                        foreach($dwatchinfo->data as $dwkey => $dwvalue): 
+                                    ?>
                                         <option value="<?php echo $dwvalue->last; ?>"><?php echo $dwvalue->symbol; ?></option>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; endif; ?>
                                 </select>
                             </div>
                         </div>

@@ -16,73 +16,101 @@ $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
 <style>/* Overrides */
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
-html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
-.forgotpass-wrapper .um-col-alt .um-center {
-    display: inline-block;
-    margin: 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.um-register .um-col-alt .um-center {
-    display: inline-block;
-    margin: 10px 10px 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.login-submit {
-    display: inline-block;
-    margin: 15px 10px 0;
-    text-align: center;
-    align-items: center;
-    width: 190px;
-    height: 36px;
-    position: relative;
-    box-sizing: border-box;
-    background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-    background-clip: padding-box; 
-	border: solid 2px transparent;
-    border-radius: 35px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.prtnr_signup,
-.prtnr_login {
-	display:inline-block;
-	margin:20px 10px 0;
-	text-align:center;
-	align-items: center;
-	width: 50px;
-	height: 50px;
-	position: relative;
-	box-sizing: border-box;
-	background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
-	background-clip: padding-box; 
-	border: solid 2px transparent;
-	border-radius: 35px;
-	-webkit-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-}
+	@import url('https://fonts.googleapis.com/css?family=Raleway:400,900');
+	html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
+	.forgotpass-wrapper .um-col-alt .um-center {
+		display: inline-block;
+		margin: 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.um-register .um-col-alt .um-center {
+		display: inline-block;
+		margin: 10px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.um-login .um-col-alt .um-center {
+		display: inline-block;
+		margin: 10px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.login-submit {
+		display: inline-block;
+		margin: 15px 10px 0;
+		text-align: center;
+		align-items: center;
+		width: 190px;
+		height: 36px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	.prtnr_signup,
+	.prtnr_login {
+		display:inline-block;
+		margin:20px 10px 0;
+		text-align:center;
+		align-items: center;
+		width: 50px;
+		height: 50px;
+		position: relative;
+		box-sizing: border-box;
+		background: url(<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimage; ?>) 50% 0 no-repeat transparent fixed;
+		background-clip: padding-box; 
+		border: solid 2px transparent;
+		border-radius: 35px;
+		-webkit-transition: all 0.5s ease;
+		transition: all 0.5s ease;
+	}
+	span.for_pass {
+		display: block;
+		padding: 0px 0 20px;
+		font-size: 12px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+	}
+	span.for_pass:hover {
+		text-decoration: none;
+		color: #d8d8d8;
+	}
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
@@ -98,7 +126,21 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
                 <span>Sign Up</span>
             </a>
         </div>
-        
+		<div class="email_pass_reset_cont">
+			<form id="email_pass_reset">
+
+				<span class="label_pls">Please enter your email address below</span><br>
+				<input type="email" required class="email-info" id="email_info"><br>
+
+				<input type="submit" value="Reset" id="email_btn_info">
+			</form>
+		</div>
+		<div class="confirmed_cont">
+			<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
+			<a class="backto-login" href>Back to login</a>
+		</div>
+		<div class="error_message"><span class="label_pls"></span></div>
+		
         <div class="login-form-wrapper">
             <div class="login-form" style="display: none;">
                 
@@ -131,10 +173,7 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 						<?php echo do_shortcode('[ultimatemember_social_login id=133]');?>
                     <?php } ?>
 
-                    <a class="prtnr_login" id="switch_login" href="#">
-                        <img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
-                        <span>Login</span>
-                    </a>
+                    
                 </div>
               </div>
           </div>
@@ -150,7 +189,10 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
     </a>
 </div>
 <div class="ico_posbott_login">
-    
+	<a class="prtnr_login" id="switch_login" href="#">
+		<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
+		<span>Login</span>
+	</a>
 </div>
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
@@ -186,6 +228,7 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<span class='for_pass'>Forgot your password?</span>");
 		
 		/* jQuery(".showpassreset").click(function(){
 			jQuery(".hidefromreset").fadeOut(400, function(){
@@ -198,7 +241,14 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 				jQuery(".hidefromreset").fadeIn(400);
 			});
 		});
-		
+
+		jQuery(".for_pass").click(function(){
+			jQuery(".login-form").fadeOut(300, function(){
+				jQuery(".email_pass_reset_cont").fadeIn(400);
+			});
+		});
+
+
 		jQuery(".prtnr_login").click(function(){
 			jQuery(".arb_circle_btns").fadeOut(400, function(){
 				jQuery(".login-form").fadeIn(400, function(){
@@ -218,6 +268,13 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 		jQuery("#switch_signup").click(function(){
 			jQuery(".login-form").fadeOut(300, function(){
 				jQuery(".signup-form").fadeIn(800);
+			});
+			
+			jQuery(".email_pass_reset_cont").fadeOut(300, function(){
+			});
+			jQuery(".confirmed_cont").fadeOut(300, function(){
+			});
+			jQuery(".error_message").fadeOut(300, function(){
 			});
 			
 			jQuery(".ico_posbott_signup").fadeOut(300, function(){
@@ -264,7 +321,30 @@ html {background: url("<?php echo $homeurlgen; ?>/images/<?php echo $get_bgfimag
 			popupWindow = window.open(url,'popUpWindow','height=500,width=500,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 		}
 		
-	});
+	})
+	.on('submit', '#email_pass_reset', function (e) {
+            
+            var email = jQuery("#email_info").val();
+            var hasvalemail = jQuery("#email_info").val().length;
+            // console.log(email);
+            var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
+            jQuery.ajax({
+                'url': url,
+                'method': 'GET',
+                'data': '',
+                'dataType': 'json',
+                'success': function (response) {
+                    if (response.success) {
+                        jQuery(".email_pass_reset_cont").hide();
+                        jQuery(".confirmed_cont").show();
+                        return;
+                    }
+                    jQuery('.error_message').show();
+                    return;
+                }
+            })
+            e.preventDefault();
+        });;
 </script>
 
 <?php get_footer();

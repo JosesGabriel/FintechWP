@@ -647,7 +647,7 @@ body header#main-header {
 }
 .searchbar input[type="text"] {
     border: 0 none;
-    padding: 5px 10px 5px 10px !important;
+    padding: 5px 10px 5px 23px !important;
     background: #4e6a85;
     color: #d8d8d8;
     width: 100%;
@@ -2350,7 +2350,8 @@ hr.style13 {
     height: 1px;
     width: 98%;
     background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-bottom: .6rem !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 hr.style12 {
     border: 0;

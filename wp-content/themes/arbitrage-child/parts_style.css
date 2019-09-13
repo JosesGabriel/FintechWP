@@ -860,3 +860,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
       margin-top: 10px;
     }
 /* EOF sidebar */
+
+.top-stocks #preloader,
+.top-recommended-people #preloader,
+.ranks #preloader{
+    margin-top: 25px;
+    background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
+    background-size: 50px;
+    height: 60px;
+}

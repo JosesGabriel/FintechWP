@@ -26,7 +26,8 @@ jQuery(function(){
        
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         curl_close($curl);
@@ -39,10 +40,8 @@ jQuery(function(){
         $num = 0;
         $counter = 1;
         $stockcount = 0;
-        //$stock_watched = array();
-       
+        //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
-
 
         foreach($stockinfo as $stkey => $stvals){
         
@@ -54,7 +53,6 @@ jQuery(function(){
                     
                             foreach ($havemeta as $key => $value) {        
                                 
-
                                         if ($stvals->symbol == $value['stockname']) {
                                             $stock_watched[$stockcount][0] = $stvals->symbol;
                                             $stock_watched[$stockcount][1] = $counter;

@@ -583,7 +583,7 @@
 				});
 			}
 			function foreverticker() {
-                console.log('working..');
+                console.log('working on it..');
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					forevertickerinit();
 				});
@@ -625,7 +625,6 @@
 		background-color:#2c3e50; 
 		text-align:left;
 	}
-
 </style>
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 </head>

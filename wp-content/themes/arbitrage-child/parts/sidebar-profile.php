@@ -1,13 +1,13 @@
 <?php
 
 	global $current_user;
-	$user = wp_get_current_user();
+	// $user = wp_get_current_user();
     $userid = get_current_user_id();
 
   $unametype = get_user_meta($userid, 'disname', true);
 
   // echo $unametype;
-  $name = ($unametype == "" || $unametype == 'rn' ? um_user('first_name') . " " . um_user('last_name') : "" );
+  // $name = ($unametype == "" || $unametype == 'rn' ? um_user('first_name') . " " . um_user('last_name') : "" );
 
 
 $profile_id = um_profile_id();
@@ -37,7 +37,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
   <div class="left-user-details-inner">
       <div class="side-header">
           <div class="left-image">
-              <a href="<?php echo get_home_url(); ?>/user/<?php echo $value['user_nicename']; ?>"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
+              <a href="<?php echo get_home_url(); ?>/user/"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $userid ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
               </a>
           </div>
           <div class="right-image">
@@ -50,7 +50,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
           </div>
       </div>
 	  <?php
-	  	$dusersecret = get_user_meta($userid, 'user_secret', true);
+	  	//$dusersecret = get_user_meta($userid, 'user_secret', true);
 	  ?>
 
     <div class="side-completenessbox">
@@ -69,8 +69,8 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
-              <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
-				  <li class="one" style="margin-top: 8px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
+              <ul style="margin-top: 0; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
+				  <li class="one" style="margin-top: 3px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-2.svg">
 					  <span>Interactive Chart</span></a></li>
                   <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1-2.svg">
@@ -105,56 +105,56 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
   jQuery(document).ready(function(){
 
-        jQuery('input[type="checkbox"]').click(function(){
-            if(jQuery(this).is(":checked")){
-                jQuery(".dslideapps").hide();
-                jQuery(".spinmenow").show();
+        // jQuery('input[type="checkbox"]').click(function(){
+        //     if(jQuery(this).is(":checked")){
+        //         jQuery(".dslideapps").hide();
+        //         jQuery(".spinmenow").show();
 
-                jQuery('.true-name a').hide();
-                jQuery('.show-name').show();
-                jQuery('.trading-name').text('Displaying trading name');
+        //         jQuery('.true-name a').hide();
+        //         jQuery('.show-name').show();
+        //         jQuery('.trading-name').text('Displaying trading name');
 
-                jQuery.ajax({
-                    method: "GET",
-                    url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=tn",
-                    // url: 'https://api2.pse.tools/api/quotes',
-                    dataType: 'json',
-                    data: {
-                    'action' : 'my_custom_action'
-                    },
-                    success: function(data) {
+        //         jQuery.ajax({
+        //             method: "GET",
+        //             url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=tn",
+        //             // url: 'https://api2.pse.tools/api/quotes',
+        //             dataType: 'json',
+        //             data: {
+        //             'action' : 'my_custom_action'
+        //             },
+        //             success: function(data) {
 
-                        jQuery(".dslideapps").show();
-                        jQuery(".spinmenow").hide();
+        //                 jQuery(".dslideapps").show();
+        //                 jQuery(".spinmenow").hide();
 
-                    }
-                });
-            }
-            else if(jQuery(this).is(":not(:checked)")){
-                jQuery(".dslideapps").hide();
-                jQuery(".spinmenow").show();
+        //             }
+        //         });
+        //     }
+        //     else if(jQuery(this).is(":not(:checked)")){
+        //         jQuery(".dslideapps").hide();
+        //         jQuery(".spinmenow").show();
 
-                jQuery('.true-name a').show();
-                jQuery('.show-name').hide();
-                jQuery('.trading-name').text('Displaying real name');
+        //         jQuery('.true-name a').show();
+        //         jQuery('.show-name').hide();
+        //         jQuery('.trading-name').text('Displaying real name');
 
-                jQuery.ajax({
-                    method: "GET",
-                    url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=rn",
-                    // url: 'https://api2.pse.tools/api/quotes',
-                    dataType: 'json',
-                    data: {
-                    'action' : 'my_custom_action'
-                    },
-                    success: function(data) {
+        //         jQuery.ajax({
+        //             method: "GET",
+        //             url: "<?php echo get_home_url(); ?>/apipge/?daction=changeto&toname=rn",
+        //             // url: 'https://api2.pse.tools/api/quotes',
+        //             dataType: 'json',
+        //             data: {
+        //             'action' : 'my_custom_action'
+        //             },
+        //             success: function(data) {
 
-                        jQuery(".dslideapps").show();
-                        jQuery(".spinmenow").hide();
+        //                 jQuery(".dslideapps").show();
+        //                 jQuery(".spinmenow").hide();
 
-                    }
-                });
-            }
-        });
+        //             }
+        //         });
+        //     }
+        // });
 
         if(jQuery('.um-profile').hasClass('topbannerprofile')){
           jQuery('.side-completenessbox').css("display","none");

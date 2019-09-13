@@ -47,7 +47,7 @@
          * Overrides the wall post submit function in 
          * wp-content/plugins/um-social-activity/assets/js/um-activity.js line 407
          */
-        $('.um-activity-publish').on('submit', function (e) {
+        $('.ondashboardpage').on('submit', '.um-activity-publish', function (e) {
             e.stopPropagation();
             e.preventDefault();
 

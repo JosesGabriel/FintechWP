@@ -2038,7 +2038,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
@@ -2088,7 +2088,8 @@
 
 		  $curl = curl_init();
 		  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
-		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.25.248.104']);
+		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+		  curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 		  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	      $dhistofronold = curl_exec($curl);
 	      curl_close($curl);

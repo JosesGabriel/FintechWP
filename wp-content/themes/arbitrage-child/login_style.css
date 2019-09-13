@@ -311,7 +311,8 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
     top: -3px !important;
 }
 .um-login .um-col-alt .um-center {margin-top: -5px !important;}
-.um-login .um-col-alt .um-center,
+.um-login .um-col-alt .um-center:before{
+}
 
 .um-register .um-col-alt .um-center:before {
   content: '';
@@ -337,6 +338,17 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
   border-radius: inherit;
   background: linear-gradient(to right, #2098f9, #9eefb4);
 }
+.um-login .um-col-alt .um-center:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -2px;
+  border-radius: inherit;
+  background: linear-gradient(to right, #2098f9, #9eefb4);
+}
 .um-login .um-col-alt .um-center:before,
 .login-submit:before {
   content: '';
@@ -345,10 +357,13 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
   margin: -2px;
   border-radius: inherit;
   background: linear-gradient(to right, #2098f9, #9eefb4);
+  z-index: -1;
+}
+.um-login .um-col-alt .um-center > .um-login .um-col-alt .um-center:before, .login-submit:before {
+  z-index: 0;
 }
 .login-submit:hover {
 	border-color: #fff;
@@ -421,6 +436,10 @@ input#username_b {
 	margin-bottom:0; 
 	color:#fff;
 	font-size:12px;
+	display: none;
+}
+.um.um-shortcode-social {
+	display: none;
 }
 .um-button-facebook span {
     display: none;
@@ -500,7 +519,6 @@ input#um-submit-btn {
 }
 .signup-form-wrapper,
 .login-form-wrapper {
-    position: absolute;
     width: 100%;
 }
 .arb_accept {
@@ -726,3 +744,53 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     display: none !important;
 }
 .contercontrol {display:none !important;}
+.email-info {
+    background: rgba(255,255,255,0.3) !important;
+    outline: none !important;
+    color: #fff !important;
+    font-size: 12px;
+    border-radius: 50px;
+    font-family: "Roboto", Arial;
+    border: none !important;
+    padding: 8px 15px !important;
+    width: 200px;
+}
+span.label_pls {
+    display: inline-block;
+    margin: 10px 0 10px;
+    color: #d8d8d8;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+input#email_btn_info {
+    background: none;
+    border-radius: 50px;
+    border: 1.5px solid #51bade;
+    padding: 7px 31px;
+    color: #fff;
+    cursor: pointer;
+    margin: 13px 0;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+input#email_btn_info:hover {
+    background: linear-gradient(to right, #2098f9, #9eefb4);
+    border: 1.5px solid #51bade;
+    background-repeat: no-repeat;
+    overflow: hidden !important;
+}
+.confirmed_cont {
+    display: none;
+}
+a.backto-login {
+    color: #fff !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+}
+.email_pass_reset_cont {
+    display: none;
+}
+.error_message {
+    display: none;
+}

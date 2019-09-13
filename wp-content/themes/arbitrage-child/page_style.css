@@ -424,7 +424,7 @@
     }
     .dplsicon {
         display: inline-block !important;
-        float: center;
+        /* float: center; */
     }
     .dplsicon a {
         color: #fff
@@ -2335,7 +2335,7 @@
         padding-top: 5px;
     }
     .playerscontent {
-        width: 83%;
+        width: 86%;
         display: inline-block;
         position: relative;
         vertical-align: middle;
@@ -2357,6 +2357,7 @@
         color: #ecf0f1;
         text-align: left;
         margin-bottom: 3px;
+        text-transform: capitalize;
     }
     .istotal {
         color: #a2adb9;
@@ -3259,7 +3260,7 @@
         font-weight: 500;
     }
     .side-content-inner {
-        margin-top: 10px !important;
+        margin-top: 0 !important;
     }
     .site-header {
         padding-bottom: 0px !important;
@@ -3325,7 +3326,7 @@
     }
     .dplsicon {
         display: inline-block !important;
-        float: right;
+        /* float: right; */
     }
     .dplsicon a {
         color: #fff

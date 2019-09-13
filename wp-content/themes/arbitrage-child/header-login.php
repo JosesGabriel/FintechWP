@@ -1,28 +1,3 @@
-<!DOCTYPE html><!-- Bidvertiser2000920 -->
-<html <?php language_attributes(); ?>><head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-147416476-1');
-	</script>
-	
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta property="og:image" content="https://dev-v1.arbitrage.ph/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" />
-	<!-- <meta property="og:image" content="https://dev-v1.arbitrage.ph/wp-content/themes/arbitrage-child/images/ogimage_mage.png" /> -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
-	
-	<?php // Countdown ?>
-	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
-	
-	
 <?php
 global $current_user;
 $user = wp_get_current_user();
@@ -41,7 +16,27 @@ $user = wp_get_current_user();
 	$template_directory_uri = get_template_directory_uri();
 	$homeurlgen = get_home_url();
 ?>
+<!DOCTYPE html><!-- Bidvertiser2000920 -->
+<html <?php language_attributes(); ?>><head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
+	gtag('config', 'UA-147416476-1');
+	</script>
+	
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
+	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
+	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+	
+	<?php // Countdown ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/css/demo.css">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 	<script type="text/javascript">
@@ -49,7 +44,8 @@ $user = wp_get_current_user();
 	</script>
 
 	<?php wp_head(); ?>
-    
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<style>
@@ -71,16 +67,17 @@ $user = wp_get_current_user();
 		margin: -25px 0 0 -25px;
 	}
     </style>
-    <link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
+	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
     <script language="javascript">
 	
-		jQuery(window).load(function() {
+		jQuery(window).on('load', function(){
 			jQuery("#status, #status_txt").fadeOut();
 			jQuery("#preloader").delay(400).fadeOut("slow");
 			jQuery(".um-field-checkbox-option").html("");
 			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
 			// jQuery(".um-field-error").html("!");
-		})
+		});
 		jQuery(document).ready(function(){
 			jQuery("#emailNotify__form").submit(function(){
 				var hasemail = jQuery("#email--input").val().length;
@@ -210,7 +207,7 @@ if(isset($_POST['send'])){
 ?>
 
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
 <script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
 <script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script>
 <script type="text/javascript">  

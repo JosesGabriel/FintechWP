@@ -35,7 +35,7 @@ jQuery(document).ready(function(e) {
         jQuery("i.fa.fa-search").animate({
             right: "88%"
         },500, function(){
-            jQuery(".inner-seatch input[type='text']").val("     Search");
+            jQuery(".inner-seatch input[type='text']").val("Search");
         });
     });
 
@@ -110,7 +110,7 @@ jQuery(document).ready(function(){
         if ( openthis ) {
             jQuery("#toghandle").hide().removeClass("dropthiss");
         } else {
-        jQuery("#toghandle").show().addClass("dropthiss");
+            jQuery("#toghandle").show().addClass("dropthiss");
         }
     });
     jQuery(".seven.calc-menu-var, ul.main-drops > ul li:nth-child(2)").on("click", function () {

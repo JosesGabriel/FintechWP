@@ -36,7 +36,7 @@
             return new DateTime($b[3]) <=> new DateTime($a[3]);
         });
 
-        $s = 0
+        
        for($s = 0; $s < 5; $s++){
                     $stock1[$s][0] = $stock[$s][0];
                     $stock1[$s][1] = $stock[$s][1];

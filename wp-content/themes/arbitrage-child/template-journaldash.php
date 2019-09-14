@@ -882,8 +882,32 @@ if($issampledata){
                                                                                         </div>
                                                                                 </form>
                                                                         </div>
-                                                                    <div class="tab-pane  testss" id="tabwithdraw">
-
+                                                                    <div class="tab-pane  testss" id="tabwithdraw">                                                                                                        <form action="/journal" method="post">
+                                                                                        <div class="modal-header header-depo">
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
+                                                                                            <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+                                                                                            <i class="fas fa-times modal-btn-close-deposit"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15">
+                                                                                        <div class="modal-body depo-body">
+                                                                                            <div class="dmainform-withraw">
+                                                                                                <div class="dinnerform">
+                                                                                                    <div class="dinitem arb_wdrw">
+                                                                                                        <div class="dnlabel arb_wdrw_left">Please enter your amount</div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer footer-depo">
+                                                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                                                            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                            <input type="hidden" name="istype" value="withraw">
+                                                                                            <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
+                                                                                            <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                        </div>
+                                                                                    </form>
                                                                     </div>    
 
                                                                 </div><!---------------------->

@@ -563,8 +563,8 @@ if($issampledata){
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},{"category" : "Sample Stock 3", "column-1" : "59760.32"},{"category" : "Sample Stock 4", "column-1" : "59760.32"},{"category" : "Sample Stock 5", "column-1" : "59760.32"},{"category" : "Sample Stock 6", "column-1" : "59760.32"}';
-		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500","#00AAFF","#CC0066","#33FF99"';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},{"category" : "Sample Stock 3", "column-1" : "59760.32"}';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF2B66","#FFB700","#CEF500","#FF5500","#00AAFF","#CC0066","#33FF99"';
 	}
     
 ?>
@@ -2121,8 +2121,8 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
-																								ksort($finalwinning);
 																							}
+																							arsort($finalwinning);
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
@@ -2178,8 +2178,8 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
-																								asort($finalloss);
 																							}
+																							sort($finalloss);
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';

@@ -1374,3 +1374,15 @@ input.enter-trade-btn:hover {
 #chartdiv1 .amcharts-chart-div svg {
     overflow: visible !important;
 }
+.swal-button--cancel:active {
+    background-color: #9e9e9e !important;
+}
+.swal-button--cancel:focus {
+    box-shadow: none;
+}
+.swal-button--danger:not([disabled]):hover {
+    background-color: #00bcd4 !important;
+}
+.swal-button--danger:focus {
+    box-shadow: none;
+}

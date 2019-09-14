@@ -164,7 +164,7 @@ jQuery(function(){
                           foreach($stockinfo as $stkey => $stvals){
                               if($stvals->symbol == $dstock ){
                                 $dprice = number_format( $stvals->last, 2, '.', ',' );
-                                $dchange = number_format( $stvals->change, 2, '.', ',' );
+                                $dchange = number_format( $stvals->changepercentage, 2, '.', ',' );
                               }
                           }
                          

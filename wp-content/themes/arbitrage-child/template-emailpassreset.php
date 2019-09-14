@@ -713,7 +713,9 @@ $homeurlgen = get_home_url();
         }
         span.label_pls {
             display: inline-block;
-            margin: 26px 0 16px;
+            margin: 15px 0 10px;
+            color: #d8d8d8;
+            font-size: 12px;
         }
         input#email_btn_info {
             background: none;

@@ -43,12 +43,14 @@ function getSMS(){
         #do not include users whow do not have watchlist items
         if(!empty($usermetas)){
             #do not even do anything if the user does not have cpnum:
-            #if(!empty($userphone)){    
+            if(!empty($userphone)){    
                 $userdata = [];
                 $userdata["ID"] = $user_id->ID;
                 $userdata["Phone"] = $userphone;
                 $userdata["Email"] = $useremail;
+                $userdata["Stocks"] = [];
                 foreach($usermetas as $usermeta){
+                    if($usermeta['stockname'] != null){
                     $stockdata = [];
                     #get stock name and stock values for comparison
                     $stockname = $usermeta['stockname'];
@@ -64,44 +66,49 @@ function getSMS(){
                     $dstock = json_decode($response);
                     $dstock = $dstock->data;
                     $last_price = floatval($dstock->last);
-
                     #start comparing :
 
                     #entry price 
-                    $stockdata["Entry Message"] = '';
+                    
                     if(!empty($usermeta['dconnumber_entry_price'])){
                         $entryprice = floatval($usermeta['dconnumber_entry_price']);
                         if($last_price == $entryprice){
                             #add data and message to array
-                            $stockdata[$stockname . " Entry Message"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
+                            $stockdata["EntryMessage"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
+                        }else{
+                            $stockdata["EntryMessage"] = "";
                         }
                     }
                     #stop loss point
-                    $stockdata["StopLoss Message"] = '';
+                    //$stockdata["StopLoss Message"] = '';
                     if(!empty($usermeta['dconnumber_take_profit_point'])){
                         $stoplosspoint = floatval($usermeta['dconnumber_stop_loss_point']);
                         if($last_price < $stoplosspoint){
                             #add data and message to array
-                            $stockdata[$stockname . " StopLoss Message"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
+                            $stockdata["StopLossMessage"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
+                        }else{
+                            $stockdata["StopLossMessage"] = "";
                         }
                     }
                     #take profit point
-                    $stockdata["TakeProfit Message"] = '';
+                   // $stockdata["TakeProfit Message"] = '';
                     if(!empty($usermeta['dconnumber_stop_loss_point'])){
                         $takeprofitpoint = floatval($usermeta['dconnumber_take_profit_point']);
                         if($last_price > $takeprofitpoint){
                             #add data and message to array
-                            $stockdata["TakeProfit Message"] = 'Sell Now and Secure you Profit! ' . $stockname . ' Current price is now ₱' . $last_price;
-                        }    
+                            $stockdata["TakeProfitMessage"] = 'Sell Now and Secure you Profit! ' . $stockname . ' Current price is now ₱' . $last_price;
+                        }else{
+                            $stockdata["TakeProfitMessage"] = "";
+                        }
                     }
                     #push stockdata to userdata
-                    array_push($userdata,$stockdata);
-                
+                    array_push($userdata["Stocks"],$stockdata);
+                    }
                 }
                 #push userdata to array
                 array_push($result,$userdata);
-                #gwapo ko
-            #}
+                #gwapo ko ambot lng
+            }
         }
     }
 

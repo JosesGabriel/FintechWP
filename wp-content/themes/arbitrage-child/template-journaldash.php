@@ -3389,8 +3389,8 @@ if($issampledata){
 
 
     <script type="text/javascript">
-	$( function() {
-		$( "#buySell__date-picker" ).datepicker();
+	jQuery( function() {
+		jQuery( "#buySell__date-picker" ).datepicker();
 	} );
 
         function editEvent(event) {

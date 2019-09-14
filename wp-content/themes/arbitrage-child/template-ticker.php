@@ -588,7 +588,7 @@
 				});
 			}
 			function foreverticker() {
-                console.log('working..');
+                //console.log('working..');
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
 					forevertickerinit();
 				});

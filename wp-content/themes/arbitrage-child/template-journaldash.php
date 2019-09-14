@@ -547,7 +547,7 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+				$key = array_search($trinfovalue['stockname'], array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
 				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
@@ -555,7 +555,7 @@ if($issampledata){
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $trinfovalue['totalcost'];
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dstockinfo->last, 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}

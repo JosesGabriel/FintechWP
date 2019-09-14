@@ -32,6 +32,8 @@ echo $user->ID ." versis ". $user->ID;
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
@@ -688,7 +690,7 @@ if($issampledata){
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				
@@ -845,7 +847,7 @@ if($issampledata){
                                                                                         <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                                                                         <input type="hidden" name="istype" value="deposit">
                                                                                         <!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
+                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 12px;font-weight: 300; padding: 3px 14px;">Deposit</a>
                                                                                         <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                     </div>
                                                                                 </form>
@@ -883,7 +885,7 @@ if($issampledata){
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left" style="font-size: 13px;font-weight: 300;">Enter Amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -1111,7 +1113,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="text" id="buySell__date-picker"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -3389,6 +3391,9 @@ if($issampledata){
 
 
     <script type="text/javascript">
+	jQuery( function() {
+		jQuery( "#buySell__date-picker" ).datepicker();
+	} );
 
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');

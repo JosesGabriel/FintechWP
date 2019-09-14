@@ -814,16 +814,6 @@ if($issampledata){
                                                                                         <?php endif; ?>
                                                                                     </ul>
                                                                                 </span> 
-
-
-                                                                                 <!--   <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>-->
-
-                                                                            <!------------------------------------------------------ ----->
-                                                                           <!-- <?php //if ($dbaseaccount > 0): ?>
-                                                                                    <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
-
-                                                                                <?php// endif; ?> -->
-                                                                            <!------------------------------------------------------------>
                                                                                     <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
@@ -889,11 +879,11 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15">
                                                                                         <div class="modal-body depo-body">
-                                                                                            <div class="dmainform-withraw">
+                                                                                            <div class="dmainform-withraw" style="margin-top: 28px;">
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left">Enter amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" step="0.01" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>

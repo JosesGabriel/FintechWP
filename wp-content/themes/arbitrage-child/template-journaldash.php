@@ -2122,12 +2122,12 @@ if($issampledata){
 																									],
 																								];
 																							}
-																							asort($finalwinning);
+																							krsort($finalwinning);
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2185,7 +2185,7 @@ if($issampledata){
 																							$intolosschartlabels = '';
 																							
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : '#ff1744'))).';color: #132941;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : '#ff1744'))).';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';

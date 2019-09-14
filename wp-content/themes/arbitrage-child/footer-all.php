@@ -136,8 +136,7 @@
             });
         })
     })
-    $('.um-notification-live-feed').on('click', '.um-notification', function (e) {
-        e.stopPropagation();
+    $('.um-notification-ajax').on('click', '.um-notification', function (e) {
         e.preventDefault();
         var $this = $(this)
 

@@ -702,7 +702,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -3397,15 +3397,22 @@ if($issampledata){
 		jQuery(".buySell__date-picker").attr('max',currentDate);
 		jQuery(".buySell__date-picker").attr('value',currentDate);
 
-        function editEvent(event) {
-        jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
-        jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
-        jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
-        jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
-        jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-        jQuery('#event-modal').modal();
-    }
 
+
+        function editEvent(event) {
+			jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
+			jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
+			jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
+			jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
+			jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+			jQuery('#event-modal').modal();
+			
+
+		}
+
+		function getObject(event){
+			console.log(event);
+		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 

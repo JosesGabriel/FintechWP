@@ -807,10 +807,11 @@ if($issampledata){
                                                                                         <li class="active">
                                                                                             <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
                                                                                         </li>
+                                                                                        <?php if ($dbaseaccount > 0): ?>
                                                                                         <li>
                                                                                             <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
                                                                                         </li>
-                                                                                        
+                                                                                        <?php endif; ?>
                                                                                     </ul>
                                                                                 </span> 
 

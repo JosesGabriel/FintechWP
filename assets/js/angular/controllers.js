@@ -65,28 +65,12 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
     
     var transaction = [
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
-             {"sym":"AC","ex":"PSE","prv":price_format(909.5),"o":913,"c":0,"chg":909.5,"chgpc":90950,"l":906.5,"h":913,"avg":909.6758,"vol":abbr_format(87080),"val":79214570,"tr":827,"t":1568433166}
+             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
+             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
+             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
+             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
+             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
+             
         ]
 
         for (i in transaction){

@@ -185,7 +185,7 @@ html, .home body.et_cover_background {
         <div class="arb_clear smlspc"></div>
         
         <div class="arb_calcbox_left">Current Price</div>
-        <div class="arb_calcbox_right"><input name="currentprice" id="currentprice" type="number" value="0" style="width:95%;" tabindex="1"></div>
+        <div class="arb_calcbox_right"><input name="currentprice" id="currentprice" type="number" step="0.01" value="0" style="width:95%;" tabindex="1"></div>
         <div class="arb_clear smlspc"></div>
         
         <div class="padbott"></div>
@@ -212,15 +212,15 @@ html, .home body.et_cover_background {
     <div class="allcaps varsecttl"><strong>Trade Planning</strong></div>
     
         <div class="arb_calcbox_left">Identified Entry Price</div>
-        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" value="0" style="width:95%;" tabindex="4"></div>
+        <div class="arb_calcbox_right"><input name="idenentryprice" id="idenentryprice" type="number" step="0.01" value="0" style="width:95%;" tabindex="4"></div>
         <div class="arb_clear smlspc"></div>
         
         <div class="arb_calcbox_left">Risk Tolerance</div>
-        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" value="0" style="width:79%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
+        <div class="arb_calcbox_right"><input name="risktoler" id="risktoler" type="number" step="0.01" value="0" style="width:79%; border-radius:0;" tabindex="5"><div class="sublbl after">%</div></div>
         <div class="arb_clear smlspc"></div>
         
         <div class="arb_calcbox_left">Target Profit</div>
-        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" value="0" style="width:79%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
+        <div class="arb_calcbox_right"><input name="targetprof" id="targetprof" type="number" step="0.01" value="0" style="width:79%; border-radius:0;" tabindex="6"><div class="sublbl after">%</div></div>
         <div class="arb_clear smlspc"></div>
         
         <div class="arb_calcbox_left">Stoploss</div>

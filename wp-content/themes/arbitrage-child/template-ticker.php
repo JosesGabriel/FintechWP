@@ -583,7 +583,7 @@
 				});
 			}
 			function foreverticker() {
-                console.log('working on it..');
+                console.log('working..');
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					forevertickerinit();
 				});
@@ -591,7 +591,7 @@
 		});
 		
     window.onload=function(){
-        console.log('this is run');
+
 		(function countdown(remaining) {
 			if(remaining === 0)
 				jQuery(".arb_top_ticker").fadeOut("slow",function(){
@@ -631,9 +631,13 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-    <ul class="list-inline marqueethis">
-            <li ng-repeat="transaction in ticker">
-                 {{::transaction.price}}
+        <span style="display:none">{{speed}}</span>
+        <ul ng-attr-data-speed="speed" class="list-inline marqueethis arb_custom_ticker">
+            <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+                <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
+                <a href="https://arbitrage.ph/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
+                <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
+                &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
             </li>
         </ul>
     </div>

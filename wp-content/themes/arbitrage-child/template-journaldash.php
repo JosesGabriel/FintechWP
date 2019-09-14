@@ -32,6 +32,8 @@ echo $user->ID ." versis ". $user->ID;
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
@@ -541,9 +543,9 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#f44235",';
+		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
 				// print_r($trinfovalue);
@@ -562,7 +564,7 @@ if($issampledata){
 	} else {
 		$dequityp = 245318.22;
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
-		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500"';
 	}
     
 ?>
@@ -688,7 +690,7 @@ if($issampledata){
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 																		<div class="hideformodal">
 																			<?php
 																				
@@ -700,7 +702,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -723,7 +725,7 @@ if($issampledata){
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -799,7 +801,7 @@ if($issampledata){
                                                                     <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary" style="padding: 5px 10px;font-weight: 400;">Fund</a>
                                                                     <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-                                                                            <div class="modal-content">
+                                                                            <div class="modal-content modalfund">
                                                                                 <div class="modal-header header-depo">
 
                                                                                  <span class="fundtabs" id="funds"> 
@@ -807,22 +809,13 @@ if($issampledata){
                                                                                         <li class="active">
                                                                                             <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
                                                                                         </li>
+                                                                                        <?php if ($dbaseaccount > 0): ?>
                                                                                         <li>
                                                                                             <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
                                                                                         </li>
-                                                                                        
+                                                                                        <?php endif; ?>
                                                                                     </ul>
                                                                                 </span> 
-
-
-                                                                                 <!--   <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>-->
-
-                                                                            <!------------------------------------------------------ ----->
-                                                                           <!-- <?php //if ($dbaseaccount > 0): ?>
-                                                                                    <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
-
-                                                                                <?php// endif; ?> -->
-                                                                            <!------------------------------------------------------------>
                                                                                     <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
@@ -854,7 +847,7 @@ if($issampledata){
                                                                                         <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                                                                         <input type="hidden" name="istype" value="deposit">
                                                                                         <!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
+                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 12px;font-weight: 300; padding: 3px 14px;">Deposit</a>
                                                                                         <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                     </div>
                                                                                 </form>
@@ -884,15 +877,15 @@ if($issampledata){
                                                                     <div class="tab-pane" id="tabwithdraw">                                                                                                        
                                                                         <form action="/journal" method="post">
                                                                                         <div class="modal-header header-depo">
-                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel"></h5>
                                                                                         </div>
                                                                                         <hr class="style14 style15">
                                                                                         <div class="modal-body depo-body">
-                                                                                            <div class="dmainform-withraw">
+                                                                                            <div class="dmainform-withraw" style="margin-top: 28px;">
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
-                                                                                                        <div class="dnlabel arb_wdrw_left">Enter amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dnlabel arb_wdrw_left" style="font-size: 13px;font-weight: 300;">Enter Amount</div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="text" class="dwithdrawnum depo-input-field number" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -918,7 +911,7 @@ if($issampledata){
 
                                                               <!---------------Withdraw----------------->
                                                               <!--
-                                                            <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
                                                                                 <div class="modal-content">
                                                                                     <form action="/journal" method="post">
@@ -1120,7 +1113,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1169,7 +1162,7 @@ if($issampledata){
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" required></div>
 
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
 																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
@@ -1193,7 +1186,7 @@ if($issampledata){
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -1286,7 +1279,8 @@ if($issampledata){
 																	                                        </div>
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-																	                                            <input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="" name="isdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -3024,6 +3018,7 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    
 																				</div>
 																				<?php  $tnum++; ?>
 																				<div class="hidethis">
@@ -3038,8 +3033,8 @@ if($issampledata){
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>
@@ -3245,13 +3240,13 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:19%">Month</div>
-                                                                                    <div style="width:19%">Starting Balance</div>
+                                                                                    <div style="width:19%">Date</div>
+                                                                                    <div style="width:19%">Transaction</div>
                                                                                     <!-- <div style="width:14%">Perfomance</div> -->
                                                                                     <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Withdrawals</div>
-                                                                                    <div style="width:19%">Deposits</div>
-                                                                                    <div style="width:19%">Ending Balance</div>
+                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
                                                                             </li>
 																			
@@ -3270,14 +3265,25 @@ if($issampledata){
                                                                                     } else {
                                                                                         ++$ldcount;
                                                                                     }
-                                                                                }
-                                                                            ?>
+																				}
+
+																				foreach ($dledger as $key => $value) { ?>
+																					<li>
+																						<div style="width:99%;">
+		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
+		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+		                                                                                </div>
+																					</li>
+																			<?php }
+																			?>
+																			
 																			<?php
                                                                                 $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
                                                                                 $mstart = 0;
                                                                                 foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
                                                                                     ?>
-																					<li class="dspecitem">
+																					<li class="dspecitem" style="display:none;">
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>
@@ -3387,16 +3393,27 @@ if($issampledata){
 
 
     <script type="text/javascript">
+		var today = new Date();
+		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
+		jQuery(".buySell__date-picker").attr('max',currentDate);
+		// jQuery(".buySell__date-picker").attr('value',currentDate);
+
+
 
         function editEvent(event) {
-        jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
-        jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
-        jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
-        jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
-        jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-        jQuery('#event-modal').modal();
-    }
+			jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
+			jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
+			jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
+			jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
+			jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+			jQuery('#event-modal').modal();
+			
 
+		}
+
+		function getObject(event){
+			console.log(event.value);
+		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 

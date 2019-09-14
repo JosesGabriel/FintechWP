@@ -571,37 +571,7 @@
     
     </style>
     
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
-<!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
-<script>
-	jQuery(document).ready(function() {
-			forevertickerinit();
-			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
-					foreverticker();
-				});
-			}
-			function foreverticker() {
-                console.log('working..');
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
-					forevertickerinit();
-				});
-			}
-		});
-		
-    window.onload=function(){
-
-		(function countdown(remaining) {
-			if(remaining === 0)
-				jQuery(".arb_top_ticker").fadeOut("slow",function(){
-					location.reload(true);
-				});
-				document.getElementById('countdown').innerHTML = remaining;
-				setTimeout(function(){ countdown(remaining - 1); }, 1000);
-		})(<?php echo rand(100,180); ?>);
-	}
-</script>
 <style>
 	.marqueethis {
 		width:0;
@@ -707,18 +677,6 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
-<script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
-<script>
-$(".arb_custom_ticker").hover(function() {
-  // pause on hover
-  $(this).pause();
-}, function() {
-
-  // resume on mouse out
-  $(this).resume();
-  
-});
-</script>
 <style type="text/css">
 	#tv_chart_container {
 		width: 100% !important;

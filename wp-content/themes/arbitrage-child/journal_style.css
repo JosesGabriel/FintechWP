@@ -238,7 +238,9 @@ a.add-btn {
 hr.style15 {
     border: 0;
     height: 1px;
-    width: 96%;
+    width: 100%;
+    top: 41px;
+    position: absolute;
     background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
     margin-top: 0rem !important;
     margin-bottom: 2.5px !important;

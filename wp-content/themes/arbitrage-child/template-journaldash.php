@@ -911,7 +911,7 @@ if($issampledata){
 
                                                               <!---------------Withdraw----------------->
                                                               <!--
-                                                            <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
                                                                                 <div class="modal-content">
                                                                                     <form action="/journal" method="post">

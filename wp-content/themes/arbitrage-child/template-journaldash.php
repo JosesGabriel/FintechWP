@@ -2122,7 +2122,7 @@ if($issampledata){
 																									],
 																								];
 																							}
-																							asort($finalwinning);
+																							rsort($finalwinning);
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';

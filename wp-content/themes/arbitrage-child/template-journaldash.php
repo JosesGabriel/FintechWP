@@ -3392,7 +3392,7 @@ if($issampledata){
 
     <script type="text/javascript">
 		var today = new Date();
-		var currentDate = today.getFullYear()+'-'+("0" + today.getMonth()+1).slice(-2)+'-'+ ("0" + today.getDate()).slice(-2);	
+		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
 		jQuery("#buySell__date-picker").attr('max',currentDate);
 
         function editEvent(event) {

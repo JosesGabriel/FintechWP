@@ -572,9 +572,11 @@ img.arb_newpostimg {
     width:100%;
 }
 .stats-info {
+    
+}
+.dstatstrade ul li {
     background: rgba(17, 34, 51, 0.4);
 }
-
 /* Minitable overrides */
 .widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 .widthfull {width: 100% !important;}
@@ -618,6 +620,7 @@ img.arb_newpostimg {
 
 .dstatstrade.overridewidth ul li div {
     width: auto;
+    text-align: left;
 }
 
     /* Enter Trade Form */

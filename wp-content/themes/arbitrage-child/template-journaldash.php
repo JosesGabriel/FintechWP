@@ -32,6 +32,8 @@ echo $user->ID ." versis ". $user->ID;
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">

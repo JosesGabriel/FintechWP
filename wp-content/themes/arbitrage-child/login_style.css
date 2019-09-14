@@ -249,7 +249,7 @@ div#fancybox-content {
 	font-family:'Raleway', sans-serif;
 	font-size:20px;
 	font-weight:900;
-	padding:5px 0 20px;
+	padding:5px;
 	color:#fff;
 }
 html, .home body.et_cover_background {
@@ -269,7 +269,7 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
 }
 .ondashboardpage_login_inner {
     vertical-align: top;
-    padding-top: 5%;
+    padding-top: 0 !important;
     display: table-cell;
     text-align: center;
 	position:relative;

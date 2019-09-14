@@ -1040,6 +1040,6 @@ a.um-photo-modal img {
 
 
 <?php
-
+get_footer('all');
 get_footer('dashboard');
 

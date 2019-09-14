@@ -137,7 +137,7 @@
         })
     })
     .on('click', '.um-notification-live-feed .um-notification', function (e) {
-        var $this = $(e.target)
+        var $this = $(this)
 
         if (typeof $this.data('notification_uri') !== 'undefined') {
             location.href = $this.data('notification_uri')

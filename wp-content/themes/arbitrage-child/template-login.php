@@ -154,7 +154,11 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                     
 					<?php #if(isset($_GET['active'])){ ?>
 						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
-                    <?php #} ?>
+					<?php #} ?>
+					<a class="prtnr_signup" id="switch_signup" href="#">
+						<img src="<?php echo $homeurlgen; ?>/svg/user-plus.svg" class="signup">
+						<span>Sign Up</span>
+					</a>
                 </div>
                 
             </div>
@@ -173,7 +177,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
                     <?php #} ?>
 
-                    
+                    <a class="prtnr_login" id="switch_login" href="#">
+						<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
+						<span>Login</span>
+					</a>
                 </div>
               </div>
           </div>
@@ -183,16 +190,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 </div>
 
 <div class="ico_posbott_signup">
-    <a class="prtnr_signup" id="switch_signup" href="#">
-        <img src="<?php echo $homeurlgen; ?>/svg/user-plus.svg" class="signup">
-        <span>Sign Up</span>
-    </a>
+    
 </div>
 <div class="ico_posbott_login">
-	<a class="prtnr_login" id="switch_login" href="#">
-		<img src="<?php echo $homeurlgen; ?>/svg/user-key.svg" class="login">
-		<span>Login</span>
-	</a>
+	
 </div>
 
 <div class="arb_copy">Arbitrage &copy; <?php echo date("Y"); ?></div>
@@ -218,7 +219,9 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	
 </style> 
 <script type="text/javascript">
-	jQuery(document).ready(function(){
+	jQuery(document).ready(function(){ 
+		$(".login-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".login-form-wrapper .ordash");
+		$(".signup-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".signup-form-wrapper .ordash");
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
 		jQuery( '<div class="forgpasslnk"><span style="color: #949798;font-size: 11px;"></span><a href="<?php echo $homeurlgen; ?>/password-reset/?b=<?php echo $setrand; ?>" class="showpassreset">Forgot Password?</a></div>' ).insertAfter( ".um-login .um-field-c .um-field-checkbox" );
 		jQuery(".um-register .um-field-type_password:last-child").addClass("confirmpasscls");

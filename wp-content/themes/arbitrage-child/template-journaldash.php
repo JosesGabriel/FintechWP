@@ -546,14 +546,15 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+				// print_r($trinfovalue);
 				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
-				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+				$marketval = $dstockinfo->last * $trinfovalue['totalstock'];
 				$dsellfees = getjurfees($marketval, 'sell');
 				$dtotal = $marketval - $dsellfees;
 	
-				$dequityp += $trinfovalue['totalcost'];
+				$dequityp += $dtotal;
 				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
@@ -579,7 +580,7 @@ if($issampledata){
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
             update_user_meta($user->ID, '_trade_'.$delvalue, '');
-            delete_user_meta($user->ID, '_trade_'.$delvalue);
+            delete_user_meta($user->ID, '_trade_n  '.$delvalue);
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
@@ -806,10 +807,11 @@ if($issampledata){
                                                                                         <li class="active">
                                                                                             <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
                                                                                         </li>
+                                                                                        <?php if ($dbaseaccount > 0): ?>
                                                                                         <li>
                                                                                             <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
                                                                                         </li>
-                                                                                        
+                                                                                        <?php endif; ?>
                                                                                     </ul>
                                                                                 </span> 
 
@@ -829,19 +831,17 @@ if($issampledata){
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
-                                                                                
+                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
+                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                    </select>
+                                                                                </div>
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
                                                                                    <!-- <div class="modal-body depo-body">-->
                                                                                         <div class="dmainform">
-                                                                                            <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
-                                                                                                    </select>
-                                                                                                </div>
                                                                                             <div class="dinnerform">
-
-                                                                                                    <div class="dinitem">
+                                                                                                <div class="dinitem" style="margin: 10px;">
                                                                                                     <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
                                                                                                     <!-- <div class="dnlabel">Amount</div> -->
                                                                                                     <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
@@ -885,7 +885,7 @@ if($issampledata){
                                                                     <div class="tab-pane" id="tabwithdraw">                                                                                                        
                                                                         <form action="/journal" method="post">
                                                                                         <div class="modal-header header-depo">
-                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel"></h5>
                                                                                         </div>
                                                                                         <hr class="style14 style15">
                                                                                         <div class="modal-body depo-body">

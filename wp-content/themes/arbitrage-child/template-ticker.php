@@ -578,7 +578,8 @@
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 <script>
 	jQuery(document).ready(function() {
-			forevertickerinit();
+			/*
+            forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					foreverticker();
@@ -590,6 +591,7 @@
 					forevertickerinit();
 				});
 			}
+            */
 		});
 		
     window.onload=function(){

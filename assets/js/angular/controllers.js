@@ -77,11 +77,11 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         console.log(transaction);
         
         var transaction = [
-             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
-             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
-             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
-             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
-             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
         ]
         
         $scope.ticker.push(transaction);

@@ -65,12 +65,21 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
     
     var transaction = [
-             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
-             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
-             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
-             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
-             { symbol:"AC", prv:price_format(909.5), chg:909.5, vol:abbr_format(87080) },
-             
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+               { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },           
         ]
 
         for (i in transaction){

@@ -845,7 +845,7 @@ if($issampledata){
                                                                                         <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                                                                         <input type="hidden" name="istype" value="deposit">
                                                                                         <!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
+                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 12px;font-weight: 300; padding: 3px 14px;">Deposit</a>
                                                                                         <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                     </div>
                                                                                 </form>
@@ -883,7 +883,7 @@ if($issampledata){
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left" style="font-size: 13px;font-weight: 300;">Enter Amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>

@@ -702,7 +702,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" id="buy__date-picker"></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">

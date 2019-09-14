@@ -799,7 +799,7 @@ if($issampledata){
                                                                     <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary" style="padding: 5px 10px;font-weight: 400;">Fund</a>
                                                                     <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-                                                                            <div class="modal-content">
+                                                                            <div class="modal-content modalfund">
                                                                                 <div class="modal-header header-depo">
 
                                                                                  <span class="fundtabs" id="funds"> 
@@ -3271,8 +3271,15 @@ if($issampledata){
                                                                                     } else {
                                                                                         ++$ldcount;
                                                                                     }
-                                                                                }
-                                                                            ?>
+																				}
+																				
+																				foreach ($dmonthdata as $key => $value) {
+																					echo "<pre>";
+																					print_r($value);
+																					echo "</pre>";
+																				}
+																			?>
+																			<li></li>
 																			<?php
                                                                                 $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
                                                                                 $mstart = 0;

@@ -1843,7 +1843,7 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bid in bids | orderBy: 'index' | limitTo: 20 track by bid.index">
+																														<tr ng-repeat="bid in bids | limitTo: 20">
 																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
 																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
 																															<td class="text-left" ng-class="{'text-green': bid.bid_price > stock.previous, 'text-red': bid.bid_price < stock.previous}" change="bid.bid_price"><strong>{{bid.bid_price > 0 ? (bid.bid_price | price) : ''}}</strong></td>
@@ -1857,7 +1857,7 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="ask in asks | orderBy: 'index' | limitTo: 20 track by ask.index">
+																														<tr ng-repeat="ask in asks | limitTo: 20">
 																															<td class="text-right" ng-class="{'text-green': ask.ask_price > stock.previous, 'text-red': ask.ask_price < stock.previous}" change="ask.ask_volume"><strong>{{ask.ask_price > 0 ? (ask.ask_price | price) : ''}}</strong></td>
 																															<td class="text-right text-uppercase" change="ask.ask_volume"><span>{{ask.ask_volume > 0 ? (ask.ask_volume | abbr) : ''}}</span></td>
 																															<td class="text-right" style="padding-right: 12px !important;" change="ask.ask_count"><span>{{ask.ask_count > 0 ? ask.ask_count : ''}}</span></td>

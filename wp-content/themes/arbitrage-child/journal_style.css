@@ -1325,13 +1325,16 @@ input.enter-trade-btn:hover {
     position: relative !important;
 }
 .amChartsLegend.amcharts-legend-div {
-    overflow-y: scroll !important;
+    overflow-y: hide !important;
     position: absolute !important;
     text-align: left !important;
     width: 201.094px !important;
     height: 94px !important;
     left: 0px !important;
     top: 68px !important;
+}
+.amChartsLegend.amcharts-legend-div:hover {
+    overflow-y: scroll !important;
 }
 
 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track

@@ -517,7 +517,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
+            let full_time = (moment(data.t * 1000)).format('h:mm:ss a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),

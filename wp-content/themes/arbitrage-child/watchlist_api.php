@@ -73,7 +73,9 @@ function getSMS(){
                         $entryprice = floatval($usermeta['dconnumber_entry_price']);
                         if($last_price == $entryprice){
                             #add data and message to array
-                            $stockdata[" EntryMessage"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
+                            $stockdata["EntryMessage"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
+                        }else{
+                            $stockdata["EntryMessage"] = "";
                         }
                     }
                     #stop loss point
@@ -83,6 +85,8 @@ function getSMS(){
                         if($last_price < $stoplosspoint){
                             #add data and message to array
                             $stockdata["StopLossMessage"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
+                        }else{
+                            $stockdata["StopLossMessage"] = "";
                         }
                     }
                     #take profit point
@@ -92,7 +96,9 @@ function getSMS(){
                         if($last_price > $takeprofitpoint){
                             #add data and message to array
                             $stockdata["TakeProfitMessage"] = 'Sell Now and Secure you Profit! ' . $stockname . ' Current price is now ₱' . $last_price;
-                        }    
+                        }else{
+                            $stockdata["TakeProfitMessage"] = "";
+                        }
                     }
                     #push stockdata to userdata
                     array_push($userdata["Stocks"],$stockdata);

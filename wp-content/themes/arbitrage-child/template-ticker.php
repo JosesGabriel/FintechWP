@@ -571,9 +571,13 @@
     */
     </style>
     
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
 <script>
 	jQuery(document).ready(function() {
-			
+        $("#arb_top_ticker").animate({"left": "+=200px"}, 1000, easing) // relative value
+            
+            
 	});
 </script>
 </head>
@@ -656,6 +660,18 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
+<script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
+<script>
+$(".arb_custom_ticker").hover(function() {
+  // pause on hover
+  $(this).pause();
+}, function() {
+
+  // resume on mouse out
+  $(this).resume();
+  
+});
+</script>
 <style type="text/css">
 	#tv_chart_container {
 		width: 100% !important;

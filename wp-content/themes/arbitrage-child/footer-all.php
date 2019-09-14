@@ -136,11 +136,13 @@
             });
         })
     })
-    .on('click', '.um-notification-live-feed .um-notification', function (e) {
-        var $this = $(e.target)
+    $('.um-notification-live-feed').on('click', ' .um-notification', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var $this = $(this)
 
         if (typeof $this.data('notification_uri') !== 'undefined') {
-            location.href = $this.data('notification_uri')
+            window.location.href = $this.data('notification_uri')
         }
     })
 

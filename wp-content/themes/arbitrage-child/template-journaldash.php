@@ -834,21 +834,19 @@ if($issampledata){
                                                                                         <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
                                                                                         <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
                                                                                     </select>
-                                                                                    <!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-                                                                                    <a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
                                                                                 </div>
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
-                                                                                <div class="modal-body depo-body">
-                                                                                    <div class="dmainform">
-                                                                                        <div class="dinnerform">
-                                                                                            <div class="dinitem">
+                                                                                   <!-- <div class="modal-body depo-body">-->
+                                                                                        <div class="dmainform">
+                                                                                            <div class="dinnerform">
+                                                                                                <div class="dinitem">
                                                                                                     <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
                                                                                                     <!-- <div class="dnlabel">Amount</div> -->
                                                                                                     <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                    </div>
+                                                                                   <!-- </div>-->
 
                                                                                     <div class="modal-footer footer-depo">
                                                                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->

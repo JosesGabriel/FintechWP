@@ -826,6 +826,8 @@ if($issampledata){
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
                                                                                 </div>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
                                                                                     <select class="rnd" name="" id="" style="z-index: 20;">
@@ -879,7 +881,12 @@ if($issampledata){
                                                                                             <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                         </div>
                                                                                 </form>
+                                                                        </div>
+                                                                    <div class="tab-pane  testss" id="tabwithdraw">
 
+                                                                    </div>    
+
+                                                                </div><!---------------------->
                                                                             </div>
                                                                         </div>
                                                                     </div>

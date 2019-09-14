@@ -132,6 +132,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.$watch('$root.stockList', function () {
         $scope.stock_details = $rootScope.stockList;
     });
+    $scope.latest_trading_date = null;
     $scope.gainers      = 0;
     $scope.losers       = 0;
     $scope.unchanged    = 0;
@@ -316,6 +317,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date")
+        .then(response => {
+            if (response.data.success) {
+                $scope.latest_trading_date = new Date(response.data.data)
+            }
+        })
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);

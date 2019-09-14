@@ -269,7 +269,7 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
 }
 .ondashboardpage_login_inner {
     vertical-align: top;
-    padding-top: 5%;
+    padding-top: 0 !important;
     display: table-cell;
     text-align: center;
 	position:relative;

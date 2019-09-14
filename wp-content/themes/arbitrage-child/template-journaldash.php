@@ -546,16 +546,16 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				print_r($trinfovalue);
+				// print_r($trinfovalue);
 				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
-				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+				$marketval = $dstockinfo->last * $trinfovalue['totalstock'];
 				$dsellfees = getjurfees($marketval, 'sell');
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $dtotal;
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dstocktraded['totalstock'], 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}

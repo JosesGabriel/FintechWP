@@ -65,14 +65,25 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
     
     socket.on('psec', function (data) {
+        /*
         var transaction = {
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
             shares: abbr_format(data.vol),
         };
+        */
         console.log('from controllers agin');
         console.log(transaction);
+        
+        var transaction = [
+             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+             {"symbol":"AC", "price":"32.2", "change":"23", "shares":"231.33"},
+        ]
+        
         $scope.ticker.push(transaction);
     
         $scope.$digest();

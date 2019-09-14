@@ -723,7 +723,7 @@ if($issampledata){
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -893,7 +893,7 @@ if($issampledata){
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left">Enter amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" step="0.01" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -1170,7 +1170,7 @@ if($issampledata){
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" required></div>
 
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
 																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>

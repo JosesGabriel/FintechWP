@@ -520,28 +520,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 													<div class="instumentinner">
 														<div class="">
 
-																			<?php /*
-																				$curl = curl_init();
-																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
-																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-																				$dstocksonme = curl_exec($curl);
-																				curl_close($curl);
-
-																				$dstocksonme = json_decode($dstocksonme);
-																				*/
-						
-																			?>
-
 
 														<div class="groupinput midd"><label>Stock Code</label>
-															<!--<select name="stockname" data-dstock="<?php// echo $dstvals->symbol; ?>" id="dstockname" style="margin-left: -4px; text-align: left;width: 138px;">
-																	<option value="">Select</option>
-																	<?php //foreach($dstocksonme->data as $dstkey => $dstvals): ?>
-																		<option data-dstock="<?php// echo $dstvals->symbol; ?>" value='<?php //echo $dstvals->symbol; ?>'><?php// echo $dstvals->symbol; ?></option>
-																	<?php //endforeach; ?>
-															</select>
-															<input type="hidden" id="dstockname" name="stockname">-->
+															
 
 															<input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
 

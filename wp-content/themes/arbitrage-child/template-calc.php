@@ -782,12 +782,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 						    <h3><strong>Profit/Loss</strong> Calculator</h3>
 						    
 						    <div class="arb_calcshares" style="padding-bottom: 12px;">Number of Shares: 
-						        <input name="numofshares" id="numofshares" type="number" value="0" style="width:96%;">
+						        <input name="numofshares" id="numofshares" type="number" step="0.01" value="0" style="width:96%;">
 						    </div>
 
 						    <div class="arb_calcbox_left">
 						    
-						        <div class="arb_buyprice padbott"><strong>Buy Price:</strong> <input name="buyprice" id="buyprice" type="number" value="0"></div>
+						        <div class="arb_buyprice padbott"><strong>Buy Price:</strong> <input name="buyprice" id="buyprice" step="0.01" type="number" value="0"></div>
 						        <div class="arb_buyvalue padbott">Value: ₱<span id="buyvalue">0.00</span></div>
 						        <div class="arb_buyfees padbott">
 						            Fees: ₱<span id="buyfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>
@@ -803,7 +803,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						        
 						        <div class="arb_dvdr"></div>
 						        
-						        <div class="arb_sellprice padbott"><strong>Sell Price:</strong> <input name="sellprice" id="sellprice" type="number" value="0"></div>
+						        <div class="arb_sellprice padbott"><strong>Sell Price:</strong> <input name="sellprice" id="sellprice" step="0.01" type="number" value="0"></div>
 						        <div class="arb_sellvalue padbott">Value: ₱<span id="sellvalue">0.00</span></div>
 						        <div class="arb_sellfees padbott">
 						            Fees: ₱<span id="sellfees">0.00</span> <i class="fas fa-info-circle" style="padding-right: 5px;"></i>

@@ -2121,7 +2121,7 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
-																								asort($finalwinning);
+																								ksort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';

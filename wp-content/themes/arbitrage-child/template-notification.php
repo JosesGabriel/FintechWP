@@ -42,7 +42,7 @@ date_default_timezone_set('Asia/Manila');
 <script>
     $(document).ready(function(){
         $('.um-notifications-none').show();
-        $('.um-notifications-none').appendTo('.um-notification-ajax').remove();
+        $('.um-notifications-none').remove().appendTo('.um-notification-ajax');
         var hassclass = $('.um-notification-ajax div').hasClass('read');
         if( hassclass ) {
             $('.um-notifications-none').hide();

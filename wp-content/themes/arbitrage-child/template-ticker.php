@@ -537,7 +537,7 @@
 		text-align: right;
 	}
 	.marqueethis > li {
-		animation: marquee 15s linear infinite;
+		animation: marquee 1s linear infinite;
 	}
 	.marqueethis > li:hover {
 		animation-play-state: paused;
@@ -707,8 +707,10 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
+
 <script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
 <script>
+/*
 $(".arb_custom_ticker").hover(function() {
   // pause on hover
   $(this).pause();
@@ -718,6 +720,7 @@ $(".arb_custom_ticker").hover(function() {
   $(this).resume();
   
 });
+*/
 </script>
 <style type="text/css">
 	#tv_chart_container {

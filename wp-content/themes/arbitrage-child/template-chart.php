@@ -1843,7 +1843,7 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bid in bids | limitTo: 20 | reverse: true">
+																														<tr ng-repeat="bid in bids | limitTo: 20 | orderBy: bid.bid_price reverse: true">
 																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
 																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
 																															<td class="text-left" ng-class="{'text-green': bid.bid_price > stock.previous, 'text-red': bid.bid_price < stock.previous}" change="bid.bid_price"><strong>{{bid.bid_price > 0 ? (bid.bid_price | price) : ''}}</strong></td>

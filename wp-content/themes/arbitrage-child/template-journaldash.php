@@ -792,7 +792,7 @@ if($issampledata){
                                                         			<!-- </form> -->
                                                         		</div>
 
-                                                                <!--- Add funds -->
+                                                                <!--------- Add funds --------------------------------------->
 
                                                                 <div class="button" style="float: right;">
                                                                     <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Fund</a>
@@ -899,7 +899,7 @@ if($issampledata){
                                                                 </div>
 
 
-                                                              <!---- --->
+                                                              <!---- -------------------------------------------------------->
 
                                                         	</div>
                                                             </div>

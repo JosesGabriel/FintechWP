@@ -801,11 +801,11 @@ if($issampledata){
                                                                         <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header header-depo">
-                                                                                    <h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
+                                                                                    <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>
 
                                                                 <!------------------------------------------------------ ----->
                                                                 <?php if ($dbaseaccount > 0): ?>
-                                                                        <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>
+                                                                        <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
 
                                                                     <?php endif; ?>
                                                                 <!------------------------------------------------------------>
@@ -871,7 +871,6 @@ if($issampledata){
                                                                     </div>
 
                                                                 </div>
-
 
                                                               <!---- -------------------------------------------------------->
 

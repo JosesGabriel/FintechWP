@@ -546,7 +546,7 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+				$key = array_search($trinfovalue['stockname'], array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
 				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
@@ -1109,7 +1109,7 @@ if($issampledata){
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
 		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
-		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
 		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->

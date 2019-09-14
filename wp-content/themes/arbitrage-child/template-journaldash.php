@@ -813,20 +813,22 @@ if($issampledata){
                                                                                         
                                                                                     </ul>
                                                                                 </span> 
-                                                                                
 
-                                                                                    <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>
+
+                                                                                 <!--   <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>-->
 
                                                                             <!------------------------------------------------------ ----->
-                                                                            <?php if ($dbaseaccount > 0): ?>
+                                                                           <!-- <?php //if ($dbaseaccount > 0): ?>
                                                                                     <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
 
-                                                                                <?php endif; ?>
+                                                                                <?php// endif; ?> -->
                                                                             <!------------------------------------------------------------>
                                                                                     <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
                                                                                 </div>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
                                                                                     <select class="rnd" name="" id="" style="z-index: 20;">
@@ -880,7 +882,12 @@ if($issampledata){
                                                                                             <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                         </div>
                                                                                 </form>
+                                                                        </div>
+                                                                    <div class="tab-pane  testss" id="tabwithdraw">
 
+                                                                    </div>    
+
+                                                                </div><!---------------------->
                                                                             </div>
                                                                         </div>
                                                                     </div>

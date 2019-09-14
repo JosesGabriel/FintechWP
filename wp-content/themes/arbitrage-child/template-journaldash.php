@@ -416,7 +416,7 @@ if($issampledata){
 	// echo "no smaple";
 } else {
 	$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+	$getdstocks = ['Stock_1', 'Stock_2'];
 	$dtradeingfo = [
 		[
 			'data' => [
@@ -445,7 +445,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
+			'stockname' => 'Stock_1',
 		],
 		[
 			'data' => [
@@ -474,7 +474,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
+			'stockname' => 'Stock_2',
 		]
 	];
 	// echo "with sample";

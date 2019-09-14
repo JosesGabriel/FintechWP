@@ -546,7 +546,7 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$key = array_search($trinfovalue['stockname'], array_column($gerdqoute->data, 'symbol'));
+				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
 				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];

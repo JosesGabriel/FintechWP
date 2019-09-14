@@ -2106,8 +2106,8 @@ if($issampledata){
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
 																							
-																							asort($finalwinning);
-																							asort($finalloss);
+																							sort($finalwinning);
+																							sort($finalloss);
 																							if($isjounalempty){
 																								$finalwinning = [
 																									0 => [

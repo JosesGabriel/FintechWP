@@ -48,6 +48,7 @@ function getSMS(){
                 $userdata["ID"] = $user_id->ID;
                 $userdata["Phone"] = $userphone;
                 $userdata["Email"] = $useremail;
+                $userdata["Stocks"] = [];
                 foreach($usermetas as $usermeta){
                     $stockdata = [];
                     #get stock name and stock values for comparison
@@ -95,7 +96,7 @@ function getSMS(){
                         }    
                     }
                     #push stockdata to userdata
-                    array_push($userdata,$stockdata);
+                    array_push($userdata["Stocks"],$stockdata);
                 
                 }
                 #push userdata to array

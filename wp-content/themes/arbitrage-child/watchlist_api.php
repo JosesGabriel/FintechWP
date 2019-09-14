@@ -43,7 +43,7 @@ function getSMS(){
         #do not include users whow do not have watchlist items
         if(!empty($usermetas)){
             #do not even do anything if the user does not have cpnum:
-            #if(!empty($userphone)){    
+            if(!empty($userphone)){    
                 $userdata = [];
                 $userdata["ID"] = $user_id->ID;
                 $userdata["Phone"] = $userphone;
@@ -65,7 +65,6 @@ function getSMS(){
                     $dstock = json_decode($response);
                     $dstock = $dstock->data;
                     $last_price = floatval($dstock->last);
-
                     #start comparing :
 
                     #entry price 
@@ -102,7 +101,7 @@ function getSMS(){
                 #push userdata to array
                 array_push($result,$userdata);
                 #gwapo ko ambot lng
-            #}
+            }
         }
     }
 

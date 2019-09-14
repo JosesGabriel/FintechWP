@@ -65,7 +65,9 @@ function getSMS(){
                     $dstock = json_decode($response);
                     $dstock = $dstock->data;
                     $last_price = floatval($dstock->last);
-
+                    if($last_price = 0){
+                        continue;
+                    }
                     #start comparing :
 
                     #entry price 

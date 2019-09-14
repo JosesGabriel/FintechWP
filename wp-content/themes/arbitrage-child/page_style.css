@@ -3907,7 +3907,6 @@
     .um-notification-live-feed-inner {
         position: relative;
         height: 100%;
-        overflow: auto;
         border-bottom-color: #152d46 !important;
     }
     .um-notification-live-feed {

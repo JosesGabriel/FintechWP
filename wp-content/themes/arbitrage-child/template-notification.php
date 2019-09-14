@@ -52,5 +52,5 @@ date_default_timezone_set('Asia/Manila');
 </script>
 
 <?php
-get_footer('dashboard');
+get_footer();
 ?>

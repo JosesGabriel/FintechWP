@@ -884,7 +884,7 @@ if($issampledata){
                                                                     <div class="tab-pane" id="tabwithdraw">                                                                                                        
                                                                         <form action="/journal" method="post">
                                                                                         <div class="modal-header header-depo">
-                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel"></h5>
                                                                                         </div>
                                                                                         <hr class="style14 style15">
                                                                                         <div class="modal-body depo-body">

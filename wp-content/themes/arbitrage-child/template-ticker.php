@@ -538,8 +538,8 @@
 		text-align: right;
 	}
     */
-	.marqueethis > li {
-		animation: marquee 5s linear infinite;
+    .marqueethis > li {
+		animation: marquee 15s linear infinite;
 	}
 	/*
     .marqueethis > li:hover {

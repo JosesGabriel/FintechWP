@@ -885,7 +885,7 @@ if($issampledata){
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left" style="font-size: 13px;font-weight: 300;">Enter Amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="text" class="dwithdrawnum depo-input-field number" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>

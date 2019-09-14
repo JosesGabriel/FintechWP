@@ -4065,4 +4065,37 @@
 .notif_page_cont .center-dashboard-part {
     max-width: 100%;
 }
+.notif_page_cont .um-notification.unread:after,
+.notif_page_cont .um-notification.read:after {
+    content: '';
+    width: 103%;
+    height: 1px;
+    display: block;
+    bottom: -10px;
+    position: relative;
+    background: #152d46;
+}
+.notif_page_cont .um-notification.unread, .notif_page_cont .um-notification.read {
+    border-radius: 0;
+    border-bottom: none !important;
+}
+.notif_page_cont .um-notification-header {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.notif_page_cont .um-notification-header .um-notification-left {
+    color: #fffffe;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-transform: capitalize !important;
+}
+.notif_page_cont .um-notification-shortcode .um-notification-ajax .um-notification:hover {
+    background: #152d46 !important;
+}
+.notif_page_cont .um-notification-ajax {
+    padding: 0;
+    background: #13283e;
+    border-radius: 0 0 7px 7px;
+}
 /* EOF Notification Page */

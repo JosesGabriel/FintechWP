@@ -16,6 +16,7 @@ date_default_timezone_set('Asia/Manila');
 <div class="notif_page_cont">
     <div class="inner-placeholder">
 		<div class="inner-main-content">
+
             <div class="center-dashboard-part">
                 <div class="inner-center-dashboard">
                     <div class="notif-cont">
@@ -23,6 +24,15 @@ date_default_timezone_set('Asia/Manila');
                     </div>
                 </div>
             </div>
+            <div class="right-dashboard-part">
+				<div class="right-dashboard-part-inner">
+
+					<?php get_template_part('parts/sidebar', 'traders'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'footer'); ?>
+
+				</div>
+			</div>
         </div>
     </div>
 </div>

@@ -3391,7 +3391,9 @@ if($issampledata){
 
 
     <script type="text/javascript">
-		jQuery( "#buySell__date-picker" ).datepicker();
+		var today = new Date();
+		var currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();	
+		jQuery("#buySell__date-picker").attr('max',currentDate);
 
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');

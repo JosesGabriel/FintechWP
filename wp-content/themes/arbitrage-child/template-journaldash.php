@@ -3271,8 +3271,13 @@ if($issampledata){
                                                                                     } else {
                                                                                         ++$ldcount;
                                                                                     }
-                                                                                }
-                                                                            ?>
+																				}
+																				
+																				foreach ($dmonthdata as $key => $value) {
+																					print_r($value);
+																				}
+																			?>
+																			<li></li>
 																			<?php
                                                                                 $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
                                                                                 $mstart = 0;

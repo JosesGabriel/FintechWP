@@ -2059,7 +2059,6 @@ if($issampledata){
                                                         // usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
 														$finalwinning = [];
-														arsort($finalwinning['dprofit']);
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];
@@ -2070,7 +2069,6 @@ if($issampledata){
                                                         // usort($finalwinning, 'winningsort');
                                                         $finalloss = [];
 														$totalloss = 0;
-														asort($finalwinning['dprofit']);
                                                         foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
                                                             array_push($finalloss, $pxlossvalue);
                                                             $totalloss += $pxlossvalue['dprofit'];
@@ -2107,6 +2105,9 @@ if($issampledata){
                                                                                             </li><?php */?>
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
+																							
+																							arsort($finalwinning['dprofit']);
+																							asort($finalloss['dprofit']);
 																							if($isjounalempty){
 																								$finalwinning = [
 																									0 => [
@@ -2122,7 +2123,7 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
-																								rsort($finalwinning);
+																								// rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
@@ -2179,7 +2180,7 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
-																								sort($finalloss);
+																								// sort($finalloss);
 																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';

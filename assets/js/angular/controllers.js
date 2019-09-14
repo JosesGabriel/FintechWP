@@ -65,12 +65,12 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
     
     var transaction = [
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) }     
+             { symbol:"RAP", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"SES", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"JAE", price:price_format(909.5), change:909.5, shares:abbr_format(87080) }
+             { symbol:"CAR", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"KAR", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
+             { symbol:"EMN", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
         ]
 
         for (i in transaction){

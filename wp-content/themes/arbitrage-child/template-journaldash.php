@@ -3272,10 +3272,6 @@ if($issampledata){
                                                                                         ++$ldcount;
                                                                                     }
 																				}
-																				
-																				echo "<pre>";
-																				print_r($dledger);
-																				echo "</pre>";
 
 																				foreach ($dledger as $key => $value) { ?>
 																					<li>

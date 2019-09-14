@@ -539,7 +539,7 @@
 	}
     */
 	.marqueethis > li {
-		animation: marquee 1.4s linear infinite;
+		animation: marquee 3s linear infinite;
 	}
 	/*
     .marqueethis > li:hover {

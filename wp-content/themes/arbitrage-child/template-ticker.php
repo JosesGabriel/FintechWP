@@ -579,8 +579,8 @@
 </head>
 <body>
 <div class="arb_top_ticker">
-    <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-    <ul class="list-inline">
+    <div ng-controller="ticker">
+        <ul>
             <li ng-repeat="transaction in ticker">
                  {{::transaction.price}}
             </li>

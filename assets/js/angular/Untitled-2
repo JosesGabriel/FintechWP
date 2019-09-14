@@ -63,7 +63,15 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
+    $scope.speed = 2000;
+    // socket.on('connect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
+    // socket.on('reconnect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -71,13 +79,61 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             change: data.chg,
             shares: abbr_format(data.vol),
         };
-        console.log('from controllers agin');
+        console.log('from controller');
         console.log(transaction);
         $scope.ticker.push(transaction);
-    
+        
+        if($scope.ticker.length <= 50){
+            $scope.speed = 3000;
+        }else if($scope.ticker.length <= 100){
+            $scope.speed = 1500;
+        }else if($scope.ticker.length >= 100){
+            $scope.speed = 500;
+        }
+
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
+
         $scope.$digest();
     });
-    
+    // socket.on('transaction', function(data) {
+    //     var change = 0;
+    //     if (data.flag == 0) {
+    //         change = 1;
+    //     } else if (data.flag == 1) {
+    //         change = -1;
+    //     }
+    //     var transaction = {
+    //         symbol: data.symbol,
+    //         price:  price_format(data.price),
+    //         change: change,
+    //         shares: abbr_format(data.volume),
+    //         buyer:  data.buyer.substr(0, 5).trim(),
+    //         seller: data.seller.substr(0, 5).trim(),
+    //     };
+    //     $scope.ticker.push(transaction);
+    //     if ($scope.ticker.length > 150) {
+    //         $scope.ticker.pop();
+    //     }
+    //     $scope.$digest();
+    // });
+    // socket.on('CT', function(data) {
+    //     var transaction = {
+    //         symbol: data[0],
+    //         price:  price_format(data[1]),
+    //         shares: number_format(data[2],'0,0.00') + '%',
+    //         buyer:  abbr_format(data[3]),
+    //         seller: abbr_format(data[4]),
+    //         flag:   data[5],
+    //         change: data[2],
+    //     }
+    //     $scope.ticker.push(transaction);
+    //     /*if ($scope.ticker.length > 50) {
+    //         $scope.ticker.pop();
+    //     }*/
+    //     $scope.$digest();
+    // });
     $scope.select = goToChart;
 }]);
 app.controller('psei', function($scope, $http) {  

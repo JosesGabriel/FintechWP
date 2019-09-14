@@ -1,4 +1,7 @@
 <?php
+header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0");
     /*
     * Template Name: Journal Design
     */
@@ -6,9 +9,13 @@
 // get_header();
 // Ralph Was Here 
 // Trading Journal
-global $current_user;
+global $current_user, $wpdb;
 $user = wp_get_current_user();
+date_default_timezone_set('Asia/Manila');
 get_header('dashboard');
+
+echo $user->ID ." versis ". $user->ID;
+
 
 ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -25,1318 +32,11 @@ get_header('dashboard');
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
-
-<style type="text/css">
-	.hideformodal {
-		display:none !important;
-	}
-    .btn-tradelog {
-        border-radius: 0px;
-        margin: 10px 0px;
-        background: #273647;
-        border: 1px solid #273647;
-        font-weight: 600;
-    }
-
-    .side-header .right-image .onto-user-name {
-        margin-bottom: 5px;
-        text-transform: capitalize !important;
-    }
-
-    .onto-user-name {
-    	font-size: 13px;
-    	padding-left: 12px;
-	    color: #fffffe;
-	    padding-top: 10;
-	    margin-bottom: 0px !important;
-    }
-
-    .table{
-    	margin-bottom: 0px !important
-    }
-
-	tr.to-watch-data td {
-	    display: table-cell;
-	    vertical-align: middle;
-	    padding:12px 5px;
-	    color:#ecf0f1;
-		position:relative;
-
-	}
-	.to-watch-data {
-		border-bottom: #1e3554 solid 1px;
-	}
-	td.to-stock {
-	    margin-left:10px;
-	}
-
-	.table td, .table th {
-	    border-top:none !important;
-	}
-
-	.dbox.red {
-	    padding: 6px 7px;
-	    background: #eb4d5c;
-	    border-radius: 50px;
-	}
-
-	.dbox.green {
-	    padding: 6px 12px;
-	    background: #53b987;
-	    border-radius: 50px;
-	}
-
-	td.to-stock a {
-	    margin-left: 7px;
-	}
-	.stockperc {
-		width: 42px;
-		text-align: center;
-	}
-	.trading-name {
-		font-family: 'Nunito', sans-serif;
-	    color: #999999;
-	    font-size: 13px;
-	    padding-left: 10px;
-	}
-	.one {
-		font-weight: 500;
-	}
-	.two {
-		font-weight: 500;
-		margin-top: 13px;
-	}
-	.two a {
-		border-radius: 4px;
-	}
-	.third {
-		font-weight: 500;
-	}
-	.fourth {
-		font-weight: 500;
-	}
-	.five {
-		font-weight: 500;
-	}
-	.side-content-inner {
-	    margin-top: 10px !important;
-	}
-	.site-header {
-		padding-bottom: 0px !important;
-		margin-bottom: 22px !important;
-		padding: 0px 0px 0px 0px !important;
-	}
-	.active {
-
-	}
-	#mingle-btn {
-		border-radius: 26px !important;
-		border: 1.3px solid #e77e24 !important;
-    	padding: 5px 14px !important;
-    	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
-	}
-	#removes-btn {
-		border-radius: 26px !important;
-		border: 1.3px solid #6583a8 !important;
-    	padding: 5px 11px !important;
-    	font-family: 'Nunito', sans-serif;
-    	color: #6583a8;
-    	margin-left: 3px !important;
-	}
-	a.add-btn {
-
-	}
-	.true-name {
-		padding-left: 10px;
-		font-size: 14px;
-		font-weight: 500;
-	}
-	.following-people {
-		width: 33.3%;
-	    float: left;
-	    text-align: left;
-	    font-size: 12px;
-	    color: #999999;
-	    font-family: 'Nunito', sans-serif;
-	    display: inline-block;
-	}
-	.your-posts {
-		width: 28.3%;
-	    text-align: left;
-	    font-size: 12px;
-	    color: #999999;
-	    font-family: 'Nunito', sans-serif;
-	    display: inline-block;
-	    float: left;
-	    margin-left: 1px;
-	}
-	.your-followers {
-		width: 31.3%;
-	    text-align: left;
-	    font-size: 12px;
-	    color: #999999;
-	    font-family: 'Nunito', sans-serif;
-	    display: inline-block;
-	}
-	.num-followers {
-		font-size: 12px;
-		color: #fffffe;
-	}
-	.num-posts {
-		font-size: 12px;
-		color: #fffffe;
-	}
-	.num-following {
-		font-size: 12px;
-		color: #fffffe;
-	}
-	.top-traiders-inner {
-		padding-top: 0px;
-   		padding-left: 4px;
-	}
-	.dplsicon {
-		display: inline-block !important;
-		float: right;
-	}
-	.dplsicon a {
-		color: #fff
-	}
-	.um-activity-head {
-    	border-radius: 6px 6px 0 0;
-		padding-top:13px;
-		padding-bottom: 9px !important;
-	}
-	.um-activity-author-meta {
-		padding-top: 4px;
-    	padding-left: 11px;
-	}
-	.hidden-bttn {
-		visibility: hidden;
-	}
-	.hidden-bttn:hover {
-		cursor: pointer;
-	}
-	.traider-inner:hover .hidden-bttn{
-		visibility: visible;
-	}
-	.hidden-bttn {
-		color: black;
-		font-size: 14px;
-		float: right;
-	    color: #fff;
-	}
-	.remm-sm {
-	    display: none;
-	    margin-top: -1px;
-	    position: absolute;
-	    background-color: #f9f9f9;
-	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	    z-index: 1;
-	    right: 22px;
-	    color: #fff;
-	    background-color: #2b405b;
-	    font-size: 10px;
-	    padding: 6px 10px;
-	    border-radius: 25px;
-	}
-	.hidden-bttn:hover .remm-sm {
-		display:block;
-	}
-	.drop-over-post {
-		color: #fff;
-		font-size: 20px;
-		margin-top: 7px;
-    	margin-right: 7px;
-	}
-	.to-content-part {
-		background: none;
-	}
-	.top-stocks .to-content-part ul li.even,
-	.watch-list-inner .to-content-part ul li.even {
-	    background: none;
-	}
-	.to-content-part {
-    	background: #142c46;
-	}
-	.um-activity-widget .um-activity-foot.status {
-	    background: #142c46;
-	    padding: 9px 0px 0px 0px;
-	    border: 0 none;
-	}
-	hr.style15 {
-	    border: 0;
-	    height: 1px;
-	    width: 96%;
-	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-	    margin-top: 0rem !important;
-	    margin-bottom: 2.5px !important;
-	    display: flex;
-	}
-	hr.style11 {
-	    border: 0;
-	    height: 1px;
-	    width: 100%;
-	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-	    margin-top: 0.5rem !important;
-	    margin-bottom: 1.5px !important;
-	    display: flex;
-	}
-	hr.style10 {
-	    border: 0;
-	    height: 1px;
-	    width: 96%;
-	    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-	    margin-top: 10px !important;
-	    margin-bottom: 3px !important;
-	}
-	.top-traiders .to-content-part .trader-item .traider-image {
-	    width: 20%;
-	    display: inline-block;
-	    margin-top: 5px;
-	    margin-right: 12px;
-	}
-	.um-activity-widget .upload {
-		padding: 9px 10px;
-    	top: -4px;
-	}
-	.upload.photo-upload-cont:hover {
-		background-color: #0d1f33 !important;
-	}
-	.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
-	    background: #2d3d51;
-	    padding: 7px 6px;
-	    border-radius: 50px;
-	    -webkit-transition: all .5s ease-in-out;
-	    -moz-transition: all .5s ease-in-out;
-	    -o-transition: all .5s ease-in-out;
-	    transition: all .5s ease-in-out;
-	}
-	.um-activity-widget div.um-activity-textarea textarea,
-	.um-activity-widget div.um-activity-textarea textarea:hover,
-	.um-activity-widget div.um-activity-textarea textarea:focus {
-		height: 90px !important;
-	    border-radius: 0 !important;
-	    padding: 22px 15px 10px 65px !important;
-	}
-	img.arb_newpostimg {
-		width: 41px !important;
-	}
-	.add-post .um-activity-widget .um-activity-ava a {
-	    width: 41px;
-	    height: 41px;
-	}
-	.to-content-part {
-    	padding: 5px;
-	}
-	.um-activity-dialog.um-activity-tool-dialog {display:none;}
-	.top-stocks .to-content-part ul li a {
-	    display: block;
-	    padding: 11px 10px;
-	    font-size: 12px;
-	    color: #ecf0f1;
-	    white-space: nowrap;
-
-
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	}
-	/* Calendar Overrides */
-	/*.month-container.col-xs-3 {
-		border: none;
-		border-radius: 5px;
-		overflow: hidden;
-		background: #142c46;
-		background: -moz-linear-gradient(45deg, #0a1c31 0%, #1a3550 100%);
-		background: -webkit-linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a1c31', endColorstr='#1a3550',GradientType=1 );
-		box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
-		padding: 15px 0 0 0px;
-		height: 245px;
-		width: 23%;
-		margin: 0 15px 15px 0px;
-	}*/
-	.calendar .calendar-header table th {
-		font-size: 18px;
-		padding: 10px 10px;
-	}
-	.calendar .calendar-header table th:hover {
-		background-color: transparent !important;
-		color: #01afc8 !important;
-	}
-	.calendar .calendar-header {
-		width: 100%;
-		margin-bottom: 20px;
-		background: #142c46;
-		background: -moz-linear-gradient(45deg, #0a1c31 0%, #1a3550 100%);
-		background: -webkit-linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a1c31', endColorstr='#1a3550',GradientType=1 );
-		box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
-		border: none;
-	}
-
-	/* Journal Overrides */
-/*	.inner-placeholder {
-		padding-top: 0 !important;
-	}*/
-	.searchbar input[type="text"] {
-    	height: 26px !important;
-	}
-	.searchbar {margin-left: 3px !important;}
-	.left-dashboard-part {padding: 19px 0px 0 !important;}
-	.oncommonsidebar .post-content {
-		padding: 0 0 0 15px;
-	}
-	.panel-primary>.panel-heading {
-		color: #fff;
-		border: none;
-		background: transparent;
-		padding:0;
-	}
-	.journaltabs ul.nav.panel-tabs a {
-		border-bottom: 3px solid rgba(18, 40, 64, 0.5);
-	}
-	.journaltabs li {
-		width: 33.3%;
-		text-align: center;
-	}
-	.journaltabs .nav>li>a {
-		padding: 15px 0;
-		border-radius: 6px 6px 0 0;
-	}
-	.journaltabs .nav>li>a:hover,
-	.journaltabs .nav>li>a:focus {
-		background-color: rgba(18, 40, 64, 0.8);
-	}
-	.journaltabs ul.nav.panel-tabs a.active {
-		border-bottom: 3px solid #01afc8;
-		background-color: rgba(18, 40, 64, 0.5);
-		color: #fff;
-	}
-	.gain_c {
-		background-color: rgba(37, 174, 95, 0.5);
-	}
-	.gain_c:hover {
-		background-color: rgba(37, 174, 95, 1) !important;
-	}
-	.gain_c {
-		background-color: rgba(37, 174, 95, 0.5);
-	}
-	.gain_c:hover {
-		background-color: rgba(37, 174, 95, 1) !important;
-	}
-	.loss_c {
-		background-color: rgba(230, 76, 60, 0.5);
-	}
-	.loss_c:hover {
-		background-color: rgba(230, 76, 60, 1) !important;
-	}
-	.blue_c {
-		background-color: rgba(69, 166, 255,0.5);
-	}
-	.blue_c:hover {
-		background-color: rgba(69, 166, 255,1.0) !important;
-	}
-	.box-portlet {
-		border: none;
-		border-radius: 5px;
-		overflow: hidden;
-		background: #142c46;
-		background: -moz-linear-gradient(45deg, #0a1c31 0%, #1a3550 100%);
-		background: -webkit-linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a1c31', endColorstr='#1a3550',GradientType=1 );
-		box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
-	}
-	.box-portlet-header, .box-portlet-footer {
-		background: transparent;
-		font-weight: bold;
-		padding: 13px 17px 0px 17px;
-		font-size: 17px;
-		text-align: left;
-	}
-	.nav>li>a {
-		color: #999;
-	}
-	.box-portlet-content {
-		padding: 15px;
-	}
-	.panel-primary {
-		border: none;
-		background: transparent;
-	}
-	.inner-center-dashboard {margin-top: 27px;}
-	.panel-body {padding: 15px 0;}
-	.inner-portlet .inner-portlet-title {
-    	background: #213f58;
-	}
-	.dstatstrade ul li.headerpart {
-		background: rgba(36, 65, 90, 0.4) !important;
-		padding: 10px 15px;
-		margin-bottom: 0;
-		text-align: center !important;
-	}
-	.dstatstrade ul li.headerpart.headerpart-tradelogs {
-		text-align: left !important;
-	}
-	.dstatstrade ul li {
-		line-height: 150%;
-		padding: 5px 5px 5px 15px;
-		font-size: 12px;
-		border-bottom: 1px solid #18314a;
-	}
-	.inner-portlet-content {
-		font-size: 12px !important;
-		line-height: 150% !important;
-	}
-	.box_inner_adjust {
-		padding: 15px !important;
-		background-color: rgba(33, 63, 88, 0.5);
-		border-radius: 5px;
-		line-height: 180% !important;
-	}
-
-	/* AMChart */
-	.amcharts-main-div a {display:none !important;}
-	.piemp_override {
-		padding: 0px;
-		background-color: #0d1f33;
-		border-radius: 5px;
-		margin-top: 35px;
-		min-height: 215px;
-		padding-top: 9px;
-	}
-	#chartdiv1 {
-		width: 100%;
-		height: 230px;
-	}
-	#chartdiv1 .amcharts-main-div {
-		margin-top: -37px;
-	}
-	#chartdiv2 {
-		width: 100%;
-		height: 250px;
-	}
-	#chartdiv3 {
-		width: 100%;
-		height: 200px;
-	}
-	#chartdiv4a {
-		width: 100%;
-		height: 220px;
-	}
-	#chartdiv4b {
-		width: 100%;
-		height: 245px;
-	}
-	#chartdiv5 {
-		width: 100%;
-		height: 260px;
-		margin-top: -70px;
-	}
-	#chartdiv6 {
-		width: 100%;
-		height: 233px;
-	}
-	#chartdiv7 {
-		width: 100%;
-		height: 200px;
-	}
-	#chartdiv8 {
-		width: 100%;
-		height: 200px;
-	}
-	#chartdiv9 {
-		width: 100%;
-		height: 200px;
-	}
-	#chartdiv10 {
-		width: 100%;
-		height: 200px;
-	}
-	#chartdiv11 {
-		width: 100%;
-		height: 200px;
-	}
-	#topstockswinners {
-		width: 100%;
-		height: 230px;
-	}
-	#topstocksLosers {
-		width: 100%;
-		height: 230px;
-	}
-	.hidethis {
-		display:none !important;
-	}
-	.tradelogbox {
-		max-width:450px;
-		width:100%;
-	}
-	.stats-info {
-		background: rgba(17, 34, 51, 0.4);
-	}
-
-	/* Minitable overrides */
-	.widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
-	.widthfull {width: 100% !important;}
-	.widthhalf {width: 50% !important;}
-	.width60 {width: 57% !important;color:#fff;}
-	.width48 {width: 49% !important;}
-	.width40 {width: 40% !important;}
-	.width35 {
-		width: 40% !important;
-		text-align: right;
-		color:#fff;
-	}
-	.dstatstrade ul li:hover {
-		background: rgba(10, 29, 50, 0.5);
-	}
-	.inner-portlet .inner-portlet-content {
-    	padding: 0;
-	}
-	.bulletclrd {
-		border-radius: 50px;
-		height:10px;
-		width:10px;
-		display:inline-block;
-		margin-right: 5px;
-	}
-	.bulletclrd.clrg1 {background-color: #25ae5f; } /* green 1 */
-	.bulletclrd.clrg2 {background-color: #49bb79; } /* green 2 */
-	.bulletclrd.clrg3 {background-color: #a9f7ae; } /* green 3 */
-
-	.bulletclrd.clrr1 {background-color: #ff1744; } /* red 1 */
-	.bulletclrd.clrr2 {background-color: #ec5f50; } /* red 2 */
-	.bulletclrd.clrr3 {background-color: #ef7062; } /* red 3 */
-
-	.bulletclrd.clrb1 {background-color: #1590ff; } /* blue 1 */
-	.bulletclrd.clrb2 {background-color: #4faafc; } /* blue 2 */
-	.bulletclrd.clrb3 {background-color: #87c3f9; } /* blue 3 */
-
-	.bulletclrd.clrg1 {background-color: #25ae5f; } /* green 1 */
-	.bulletclrd.clrg2 {background-color: #49bb79; } /* green 2 */
-	.bulletclrd.clrg3 {background-color: #a9f7ae; } /* green 3 */
-
-	.dstatstrade.overridewidth ul li div {
-		width: auto;
-	}
-
-		/* Enter Trade Form */
-	.groupinput label {
-		display: inline-block;
-		width: 46px;
-		font-weight: 300;
-		font-size: 13px;
-		height: 27px;
-		line-height: 27px;
-		padding: 0 0 0 7px;
-		background-color: #34495e;
-		border: none;
-		color: #ecf0f1;
-		border-radius: 3px 0 0 3px;
-		margin-bottom: 0;
-	}
-	.groupinput input[type="text"], .groupinput input[type="number"] {
-		display: inline-block;
-		border-radius: 0 3px 3px 0;
-		width: 172px;
-		font-weight: 300;
-		font-size: 13px;
-		height: 27px;
-		line-height: 27px;
-		padding: 0 0 0 7px;
-		background-color: #4e6a85;
-		border: 1px solid #4e6a85;
-		color: #ecf0f1;
-		font-family: 'Roboto', sans-serif;
-		font-size: 13px;
-		font-weight: 300;
-	}
-	.groupinput select {
-		display: inline-block;
-		border-radius: 0 3px 3px 0;
-		width: 140px;
-		font-weight: 300;
-		font-size: 13px;
-		height: 27px;
-		line-height: 27px;
-		padding: 0 0 0 3px;
-		background-color: #4e6a85;
-		margin: 0 0 0 -4px;
-		border: 1px solid #4e6a85;
-		color: #ecf0f1;
-		font-family: 'Roboto', sans-serif;
-		font-size: 13px;
-		font-weight: 300;
-	}
-
-	.confirmtrd,
-	input[type="submit"].green {
-		border: #27ae60 solid 2px !important;
-	    background: none;
-	    line-height: 29px;
-	    font-size: 14px;
-	    padding: 0 12px;
-	    border-radius: 25px;
-	    color: #fff;
-	    cursor: pointer;
-	    font-family: 'Roboto', sans-serif;
-	    display: inline-block;
-	}
-	.confirmtrd:hover,
-	input[type="submit"].green:hover {
-		background-color: #e64c3c;
-		color: #fff;
-		text-decoration:none;
-		-webkit-transition: all .5s ease-in-out;
-		-moz-transition: all .5s ease-in-out;
-		-o-transition: all .5s ease-in-out;
-		transition: all .5s ease-in-out;
-		transform: scale(1.07);
-	}
-	.confirmtrd,
-	input[type="submit"].red {
-		background: none;
-	    line-height: 29px;
-	    font-size: 14px;
-	    padding: 0 12px;
-	    border-radius: 25px;
-	    color: #fff;
-	    cursor: pointer;
-	    font-family: 'Roboto', sans-serif;
-	    display: inline-block;
-	}
-	.confirmtrd:hover,
-	input[type="submit"].red:hover {
-		background-color: #e64c3c;
-		color: #fff;
-		text-decoration:none;
-		-webkit-transition: all .5s ease-in-out;
-		-moz-transition: all .5s ease-in-out;
-		-o-transition: all .5s ease-in-out;
-		transition: all .5s ease-in-out;
-		transform: scale(1.07);
-	}
-	div#fancybox-overlay {
-		background-color: rgb(0, 0, 0) !important;
-	}
-
-	.confirmtrd.green {
-		background-color: none;
-		border: 2px solid #27ae60 !important;
-	}
-	.confirmtrd.green:hover {
-		background-color: #27ae60 !important;
-		-webkit-transition: all .5s ease-in-out;
-		-moz-transition: all .5s ease-in-out;
-		-o-transition: all .5s ease-in-out;
-		transition: all .5s ease-in-out;
-		transform: scale(1.07);
-	}
-	.confirmtrd.red {
-		background-color: none;
-		border: 2px solid #e64c3c !important;
-	}
-	.confirmtrd.red:hover {
-		background-color: #e64c3c !important;
-		-webkit-transition: all .5s ease-in-out;
-		-moz-transition: all .5s ease-in-out;
-		-o-transition: all .5s ease-in-out;
-		transition: all .5s ease-in-out;
-		transform: scale(1.07);
-	}
-	.groupinput {
-		margin-bottom: 10px;
-	}
-	textarea.darktheme {
-		background-color: #4e6a85;
-		border: 1px solid #4e6a85;
-		height: 115px;
-		max-width: 448px;
-		width: 100%;
-		padding: 10px;
-		border-radius: 4px;
-		font-family: 'Roboto', sans-serif;
-		font-size: 13px;
-		font-weight: 300;
-		color: #ecf0f1;
-		margin-top: 10px;
-	}
-	.entr_col {
-		width:33%;
-		float:left;
-	}
-	.entr_clear {clear:both;}
-	.selltrade,
-	.entertrade {
-		width: 720px;
-		margin: auto;
-	}
-	.groupinput.midd label {
-		width:80px;
-	}
-	.groupinput.midd select {
-		width:157px;
-	}
-	.groupinput.midd input {
-		width:138px;
-		text-align: right;
-		padding-right: 20px;
-	}
-	.entr_wrapper_top {
-		padding:20px 0 15px 20px;
-		background-color:#0c1f33;
-	}
-	.entr_wrapper_mid {
-		padding: 20px 0 2px 20px;
-		background-color: #142b46;
-		border-radius: 4px;
-		min-height: 230px;
-	}
-	.entr_wrapper_bot {
-		padding:25px 0 25px 25px;
-		background-color:#2c3e50;
-	}
-	.rnd {border-radius:3px !important;}
-	.selectonly select {
-		width:219px;
-		margin:0;
-	}
-	.entr_ttle_bar {
-		background-color: #34495e;
-		padding: 12px;
-		border-radius: 4px;
-	}
-	.entr_ttle_bar img {
-		width: 22px;
-		vertical-align: middle;
-		margin: 0 7px 0 0;
-	}
-	.entr_ttle_bar strong {
-		font-size: 14px;
-		line-height: 1;
-		text-transform: uppercase;
-		display: inline-block;
-		font-weight: 700 !important;
-		vertical-align: middle;
-	}
-	.entr_successmsg {
-		border-radius: 3px;
-		background-color: #27ae60;
-		color: #fff;
-		padding: 4px 7px;
-		width: 100%;
-		margin: 0 auto;
-		margin-bottom: 10px;
-	}
-	span.selldot {
-		display: inline-block;
-		background-color: #e84c3c;
-		width: 10px;
-		height: 10px;
-		border-radius: 10px;
-		vertical-align: middle;
-		margin: -1px 0 0px 5px;
-	}
-	span.buydot {
-		display: inline-block;
-		background-color: #27ae60;
-		width: 10px;
-		height: 10px;
-		border-radius: 10px;
-		vertical-align: middle;
-		margin: -1px 0 0px 5px;
-	}
-	span.datestamp_header {
-		font-size: 12px;
-		color: #a1adb5;
-		display: inline-block;
-		vertical-align: middle;
-		margin: 0 0 0px 10px;
-	}
-
-	.fctnlhdn {
-		visibility:hidden;
-		opacity:0;
-		position:absolute;
-		z-index:-1;
-	}
-	.fa-lock {
-		color: white;
-	}
-	/* Popup Overrides */
-	div#fancybox-content {
-		border-color: #0c1f33 !important;
-		background: #0c1f33 !important;
-	}
-	#fancybox-outer {
-		background: #2c3e50 !important;
-		box-shadow: none !important;
-		-moz-box-shadow: none !important;
-		-webkit-box-shadow: none !important;
-		border-radius: 6px;
-		overflow: hidden;
-	}
-	#fancybox-close {top: 18px;right: 18px;}
-	.lockedd {position:relative;}
-	.lockedd i.fa.fa-lock {
-		top: 7px;
-		position: absolute;
-		right: 21px;
-		font-size: 14px;
-	}
-
-	/* Table CSS */
-	.tradelogtable {
-		width:100%;
-		margin-bottom:0;
-	}
-	.tradelogtable td {
-		padding: 2px;
-	}
-	textarea.darktheme::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-		color: #ecf0f1;
-	}
-	textarea.darktheme::-moz-placeholder { /* Firefox 19+ */
-		color: #ecf0f1;
-	}
-	textarea.darktheme:-ms-input-placeholder { /* IE 10+ */
-		color: #ecf0f1;
-	}
-	textarea.darktheme:-moz-placeholder { /* Firefox 18- */
-		color: #ecf0f1;
-	}
-	.tradelogscont {
-		background-color:#34495e;
-		max-width:1125px;
-		width:100%;
-		margin:0 auto;
-	}
-	.tradelogscont .innerr {
-		padding:25px 0;
-	}
-	a.smlbtn {
-		background-color: #e64c3c;
-		color: #fff;
-		padding: 2px 8px;
-		display: inline-block;
-		font-size: 11px;
-		border-radius: 4px;
-		font-weight: normal;
-		text-decoration:none;
-		-webkit-transition: all .1s ease-in-out;
-	    -moz-transition: all .1s ease-in-out;
-	    -o-transition: all .1s ease-in-out;
-	    transition: all .1s ease-in-out;
-	}
-	a.smlbtn.blue {
-		line-height: 19px;
-		padding: 1.5px 6.63px;
-		text-align: center;
-		border: 2px solid #3597d3;
-		background-color: transparent;
-		border-radius: 20px;
-		color: #fff;
-		font-size: 10px;
-	}
-	a.smlbtn.blue:hover {
-		background-color: #3597d3;
-		color:#FFFFFF;
-	}
-	.smlbtn.green {
-		background-color: transparent;
-		border: 2px solid #27ae60;
-		color: #ffffff;
-		margin-right: -5p;
-		line-height: 14px;
-		border-radius: 15px;
-		padding: 2px 6px 2px 6px;
-		width: 47px;
-		text-align: center;
-	}
-	a.smlbtn.green:hover {
-		background-color: #27ae60;
-		color:#FFFFFF;
-	}
-	a.smlbtn.red {
-		background-color: transparent;
-		border: 2px solid #e64c3c;
-		color: #fff;
-		margin-right: 0;
-		line-height: 14px;
-		border-radius: 15px;
-		padding: 2px 7px;
-		width: 47px;
-		text-align: center;
-	}
-	a.smlbtn.red:hover {
-		background-color: #e64c3c;
-		color:#FFFFFF;
-	}
-	a.smlbtn:hover {
-		background-color: #bb3527;
-	}
-	/* .dstatstrade ul li div {color:#fff;} */
-	.dstatstrade.overridewidth ul li div.ddetailshere,
-	.dstatstrade.overridewidth ul li div.ddetailshere .inner {
-		width: 100%;
-	}
-	.dstatstrade.overridewidth ul li div.ddetailshere table {
-	    display: block;
-	    width: 100%;
-	}
-	.dspecitem .ddetailshere {
-		display: none;
-	}
-	.txtgreen {color: #27ae60 !important;}
-	.txtred {color: #e64c3c !important;}
-	.entr_ttle_bar {color:#fff;}
-	.trdlgsbox {
-		color:#FFFFFF;
-		padding:10px;
-	}
-	.trdleft {
-		width:100%;
-		float:left;
-	}
-	.trdright {
-		width:50%;
-		float:left;
-	}
-	.trdclr {
-		clear:both;
-	}
-	.darkbgpadd {
-		background-color: #4e6a85;
-		padding: 11px 12px;
-		border-radius: 6px;
-		width: 100%;
-		max-height: 230px;
-		overflow: auto;
-	}
-	.darkbgpadd::-webkit-scrollbar-track
-	{
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-		border-radius: 11px;
-		background-color: #0f121d;
-	}
-
-	.darkbgpadd::-webkit-scrollbar
-	{
-		width: 8px;
-		border-radius: 10px;
-		background-color: none;
-	}
-
-	.darkbgpadd::-webkit-scrollbar-thumb
-	{
-		border-radius: 10px;
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-		background-color: #34495e;
-	}
-	.onelnetrd {
-		line-height: 25px;
-		background: #4e6a85;
-		margin: 0 0 9px 0;
-		border-radius: 6px;
-	}
-	.modal-notes-ftitle {
-		display: inline-block;
-		line-height: 30px;
-		background-color: #34495e;
-		padding: 0 0 0 10px;
-		border-radius: 5px 0 0 5px;
-	}
-
-	.modal-notes-ftitle strong{
-		color: #a1adb5;
-	}
-	span.modal-notes-result {
-		float: right;
-		line-height: 20px;
-		background: none;
-		border: none;
-		color: #ecf0f1;
-		font-family: 'Roboto', sans-serif;
-		margin-top: 0;
-		border-radius: 0 5px 5px 0;
-		width: 137px;
-		padding: 6px 10px 3px 10px;
-		text-align: right;
-	}
-	.modal-notes-result-toleft {
-		text-align: left !important;
-	}
-	.onelnetrd > span {
-		width:50%;
-	}
-	.dredpart {
-	    color: #e44c3c !important;
-	}
-	.dgreenpart {
-		color: #27ae60 !important;
-		text-align: right;
-	}
-	.dltbutton {
-		width: auto;
-    	float: right;
-	}
-	.delete-data-btn {
-		float: right;
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #f1f3f4;
-	    background: none;
-	    border: 2px #e91e63 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 3px 9px;
-	}
-	.enter-trade-btn {
-		float: right;
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #ffffff;
-	    background: none;
-	    border: 2px #00bcd4 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 3px 9px;
-	}
-	.enter-trade-btn:hover {
-		color: white;
-		background-color: #00bcd4;
-	}
-	.dbuttondelete {
-		display: inline-block;
-		margin: 0px 5px;
-	}
-	.dbuttonenter {
-		display: inline-block;
-		margin-right: 20px;
-	}
-	input.delete-data-btn:hover {
-	    background: #e91e63;
-	    transition: all .3s ease-out;
-	}
-	input.enter-trade-btn:hover {
-	    background: #00bcd4;
-	    transition: all .3s ease-out;
-	}
-	.dividend-btn {
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #6583a8 !important;
-	    background: none;
-	    border: 1px #6583a8 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 3px 9px 4px 9px;
-	    font-weight: 500;
-	    text-decoration: none;
-	}
-	.dividend-btn:hover {
-		color: #fff;
-		text-decoration: none;
-	    background: #123;
-	    transition: all .3s ease-out;
-	}
-	.deposit-btn {
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #6583a8 !important;
-	    background: none;
-	    border: 1px #6583a8 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 3px 9px 4px 9px;
-	    font-weight: 500;
-	    text-decoration: none;
-	    margin-right: 3px
-	}
-	.deposit-btn:hover {
-		color: #fff;
-		text-decoration: none;
-	    background: #123;
-	    transition: all .3s ease-out;
-	}
-	.deposit-modal-btn {
-		cursor: pointer;
-		z-index: 999;
-    	position: relative;
-	}
-	.deposit-modal-btn:hover {
-		text-decoration: none;
-	}
-	.withdraw-btn {
-	    font-family: 'Roboto', sans-serif;
-	    font-size: 12px;
-	    color: #6583a8 !important;
-	    background: none;
-	    border: 1px #6583a8 solid;
-	    height: auto;
-	    border-radius: 25px;
-	    padding: 3px 9px 4px 9px;
-	    font-weight: 500;
-	    text-decoration: none;
-	}
-	.withdraw-btn:hover {
-		color: #fff;
-		text-decoration: none;
-	    background: #123;
-	    transition: all .3s ease-out;
-	}
-	.modal-content {
-		background: #142c46;
-	}
-
-	/* New CSS */
-	.box-portlet-header {
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 700;
-		line-height: 18px;
-	}
-	.box-portlet-header span {
-		font-size: 13px;
-		font-weight: 300;
-		font-family: 'Roboto', Arial;
-	}
-	.dstatsemo ul li div {
-		width:19% !important;
-	}
-	.amcharts-pie-slice {
-		transform: scale(1.2);
-		transform-origin: 50% 50%;
-		transition-duration: 0.3s;
-		transition: all .3s ease-out;
-		-webkit-transition: all .3s ease-out;
-		-moz-transition: all .3s ease-out;
-		-o-transition: all .3s ease-out;
-		cursor: pointer;
-		box-shadow: 0 0 30px 0 #000;
-	}
-
-	.amcharts-pie-slice:hover {
-		transform: scale(1.3);
-		filter: url(#shadow);
-	}
-	.dstatstrade.eqpad ul li {
-		line-height: 150%;
-		padding: 5px !important;
-	}
-	.stats-info .pagination {
-		width: 100%;
-		text-align: right;
-	}
-	.stats-info .pagination ul {
-		margin:0;
-		padding:0;
-	}
-	.stats-info .pagination ul li {
-		display: inline-block;
-		margin-right: 10px;
-	}
-	.stats-info .pagination ul li a {
-		border: 1px solid #3292cc;
-		color: #fff;
-		padding: 5px 9px;
-		border-radius: 40px;
-	}
-	.buy-order--submit {
-		position: relative;
-		left: 580px;
-	}
-	.modal-button-confirm {
-		position: relative;
-		left: 565px;
-	}.dledinner ul {
-		margin: 0;
-		padding: 0;
-		text-align: right;
-	}
-	.dledinner ul li {
-
-	}
-	.dledinner ul li a {
-		border: 1px solid #5d7ca0;
-		padding: 5px 9px;
-		border-radius: 20px;
-	}
-	.selltrade--align input {
-		text-align: right;
-		padding-right: 20px !important;
-	}
-    .arb_wdrw{
-        display:block;
-    }
-    .arb_wdrw_left{
-        float: left;
-        width: 60%;
-        line-height: 30px;
-        background-color: #34495e;
-        padding: 0 0 0 10px;
-        border-radius: 5px 0 0 5px;
-    }
-    .arb_wdrw_right{
-        float: right;
-        width: 40%;
-    }
-    .arb_wdrw_right > input{
-        margin-top: 0;
-        border-radius: 0 5px 5px 0;
-        border: none;
-        display: inline-block;
-        background: #4e6a85 !important;
-        line-height: 28px;
-        padding: 0px 10px 0px 10px !important;
-        text-align: right;
-    }
-
-    .search-tlogs {
-    	width: 150px;
-    	float: right;
-    }
-
-    .search-logs{
-    	border-radius: 30px;
-    	height: 25px;
-    	background-color: #4e6a85 !important;
-    	color: #fff !important;
-    }
-    .number{
-        font-size: 13px !important;
-        text-align: right;
-    }
-	.sampleData__notification {
-		position: fixed;
-		z-index: 10;
-		right: 390px;
-		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,1+100 */
-		background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-		bottom: 0;
-		font-size: 1.4em;
-		text-align: center;
-	}
-	.sampleData__overlay {
-		position: fixed;
-		z-index: 10;
-		/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,1+100 */
-		background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
 <?php get_template_part('parts/sidebar', 'varcalc'); ?>
@@ -1407,12 +107,13 @@ get_header('dashboard');
         exit;
     }
     if (isset($_POST['istype'])) {
-        if ($_POST['damount'] > 0) {
+		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
+        if ($dxammount > 0) {
             $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => $_POST['ddate'],
                 'trantype' => $_POST['istype'],
-                'tranamount' => preg_replace("/[^0-9.]/", "", $_POST['damount']) // ... and so on
+                'tranamount' =>  $dxammount// ... and so on
             ));
         }
 
@@ -1426,6 +127,10 @@ get_header('dashboard');
 <!-- BOF BUY trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
+
+		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
+		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
+
         $tradeinfo = [];
         $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
         $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
@@ -1434,10 +139,10 @@ get_header('dashboard');
 		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
         
-        $_POST['inpt_data_price'] = number_format($_POST['inpt_data_price'],0);
-        $tradeinfo['price'] = $_POST['inpt_data_price'];
-        $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
-        $tradeinfo['qty'] = $_POST['inpt_data_qty'];
+        // $_POST['inpt_data_price'] = $butstockprice;
+		$tradeinfo['price'] = $butstockprice;
+        // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
+        $tradeinfo['qty'] = $stockquantity;
 
         $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
@@ -1451,14 +156,14 @@ get_header('dashboard');
         $tradeinfo['tradeplan'] = $_POST['inpt_data_tradeplan'];
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
-        $tradeinfo['status'] = $_POST['inpt_data_status'];
-
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+		$tradeinfo['status'] = $_POST['inpt_data_status'];
+		 
+        $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
-            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+            $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
             if ($dstocktraded && $dstocktraded != '') {
                 array_push($dstocktraded['data'], $tradeinfo);
-                $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $_POST['inpt_data_qty'];
+                $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $stockquantity;
 
                 $totalprice = 0;
                 $totalquanta = 0;
@@ -1470,17 +175,17 @@ get_header('dashboard');
                 }
                 $dstocktraded['aveprice'] = ($totalprice / $totalquanta);
 
-                update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $dstocktraded);
+                update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $dstocktraded);
             }
         } else {
             $finaldata = [];
             $finaldata['data'] = [];
             array_push($finaldata['data'], $tradeinfo);
-            $finaldata['totalstock'] = $_POST['inpt_data_qty'];
+            $finaldata['totalstock'] = $stockquantity;
             $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
             $dfees = getjurfees($dmarkvval, 'buy');
             $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
-            update_user_meta(get_current_user_id(), '_trade_'.$tradeinfo['stock'], $finaldata);
+            update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $finaldata);
 
             if (!$dlistofstocks) {
                 $djournstocks = array($tradeinfo['stock']);
@@ -1488,22 +193,22 @@ get_header('dashboard');
                 $djournstocks = $dlistofstocks;
                 array_push($djournstocks, $tradeinfo['stock']);
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $djournstocks);
+            update_user_meta($user->ID, '_trade_list', $djournstocks);
         }
-        $dtotalpurchse = $_POST['inpt_data_price'] * $_POST['inpt_data_qty'];
+        $dtotalpurchse = $butstockprice * $stockquantity;
         echo $dtotalpurchse;
 
-        $stockcost = ($_POST['inpt_data_price'] * $_POST['inpt_data_qty']);
+        $stockcost = ($butstockprice * $stockquantity);
         $purchasefee = getjurfees($stockcost, 'buy');
 
         $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => date('Y-m-d'),
                 'trantype' => 'purchase',
                 'tranamount' => $stockcost + $purchasefee, // ... and so on
             ));
 
-        wp_redirect( '/chart/'.$tradeinfo['stock'] );
+        // wp_redirect( '/chart/'.$tradeinfo['stock'] );
         wp_redirect('/journal');
         exit;
     }
@@ -1517,7 +222,7 @@ get_header('dashboard');
         // print_r($_POST);
         // echo '</pre>';
 
-        $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], true);
+        $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
         $data_postid = $_POST['inpt_data_postid'];
@@ -1545,32 +250,31 @@ get_header('dashboard');
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => get_current_user_id(),
+                'data_userid' => $user->ID,
             ),
         );
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
-
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
-            $dlisroflive = get_user_meta(get_current_user_id(), '_trade_list', true);
+            $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
                 if ($rmvalue == $_POST['inpt_data_stock']) {
                     unset($dlisroflive[$rmkey]);
-                    delete_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock']);
+                    delete_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock']);
                 }
             }
-            update_user_meta(get_current_user_id(), '_trade_list', $dlisroflive);
+            update_user_meta($user->ID, '_trade_list', $dlisroflive);
         } else {
             // Update existing data.
 
-            update_user_meta(get_current_user_id(), '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
+            update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
         $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
         $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
-                'userid' => get_current_user_id(),
+                'userid' => $user->ID,
                 'date' => date('Y-m-d'),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
@@ -1582,11 +286,12 @@ get_header('dashboard');
 ?>
 <!-- EOF SELL trades -->
 <?php
-    $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+    $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 
     $curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
 	curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $gerdqouteone = curl_exec($curl);
     curl_close($curl);
@@ -1600,7 +305,7 @@ get_header('dashboard');
         'posts_per_page' => '-1',
         'post_status' => 'publish',
         'meta_key' => 'data_userid',
-        'meta_value' => get_current_user_id(),
+        'meta_value' => $user->ID,
     );
     $author_posts = new WP_Query($author_query);
 ?>
@@ -1613,22 +318,39 @@ get_header('dashboard');
     $alltradelogs = [];
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
-            $author_posts->the_post();
-            $tradeitems = [];
-            $tradeitems['id'] = get_the_ID();
-            $tradeitems['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
-            $tradeitems['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
-            $tradeitems['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
+			$author_posts->the_post();
+			$tradeid = get_the_ID();
+			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
-            $tradeitems['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
-            $tradeitems['data_dprice'] = get_post_meta(get_the_ID(), 'data_dprice', true);
+			$tradeitems = [];
+            $tradeitems['id'] = $tradeid;
 
-            $tradeitems['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
-            $tradeitems['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
-            $tradeitems['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
+			$data_sellmonth = array_search('data_sellmonth', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sellmonth'] = $postmetas[$data_sellmonth]->meta_value;
+			
+			$data_sellday = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sellday'] = $postmetas[$data_sellday]->meta_value;
+			
+			$data_sellyear = array_search('data_sellyear', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_sellyear'] = $postmetas[$data_sellyear]->meta_value;
 
-            $data_avr_price = get_post_meta(get_the_ID(), 'data_avr_price', true);
-            $dlistofinfo = json_decode(get_post_meta(get_the_ID(), 'data_trade_info', true));
+			$data_stock = array_search('data_stock', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_stock'] = $postmetas[$data_stock]->meta_value;
+			
+			$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_dprice'] = $postmetas[$data_dprice]->meta_value;
+
+			$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+			$tradeitems['data_sell_price'] = $postmetas[$data_sell_price]->meta_value;
+			
+			$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+            $tradeitems['data_quantity'] = $postmetas[$data_quantity]->meta_value;
+            // $tradeitems['data_quantity'] = get_post_meta($tradeid, 'data_quantity', true);
+			$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+			$data_avr_price = $postmetas[$data_avr_price]->meta_value;
+			
+			$data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+            $dlistofinfo = json_decode($postmetas[$data_trade_info]->meta_value);
 
             $trade_plans = [];
             $strategy_plans = [];
@@ -1666,13 +388,9 @@ $isjounalempty = false;
 if ($getdstocks && $getdstocks != '') {
     
     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-		$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
-		$stockdetails = "";
-		foreach ($gerdqoute->data as $gskey => $gsvalue) {
-			if($dstocksvalue == $gsvalue->symbol){
-				$stockdetails = $gsvalue;
-			}
-		}
+		$dstocktraded = get_user_meta($user->ID, '_trade_'.$dstocksvalue, true);
+		$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+		$stockdetails = $gerdqoute->data[$key];
         if ($dstocktraded && $dstocktraded != '') {
             // $dstockinfo = $gerdqoute->data->$dstocksvalue;
             $dstockinfo = $stockdetails;
@@ -1692,13 +410,13 @@ if ($getdstocks && $getdstocks != '') {
 
 }
 
-$issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+$issampledata = get_user_meta($user->ID, 'issampleactivated', true);
 if($issampledata){
 	$isjounalempty = false;
 	// echo "no smaple";
 } else {
 	$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+	$getdstocks = ['Stock_1', 'Stock_2'];
 	$dtradeingfo = [
 		[
 			'data' => [
@@ -1727,7 +445,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
+			'stockname' => 'Stock_1',
 		],
 		[
 			'data' => [
@@ -1756,7 +474,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
+			'stockname' => 'Stock_2',
 		]
 	];
 	// echo "with sample";
@@ -1766,9 +484,9 @@ if($issampledata){
 <!-- EOF Sort LIVE Portfolio -->
 <!-- BOF Ledger Data -->
 <?php
-    $duseridmo = get_current_user_id();
-    $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
-
+    $duseridmo = $user->ID;
+	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
         if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
@@ -1777,7 +495,7 @@ if($issampledata){
             $buypower = $buypower - $getbuyvalue->tranamount;
         }
 	}
-	// $issampledata = get_user_meta(get_current_user_id(), 'issampleactivated', true);
+	// $issampledata = get_user_meta($user->ID, 'issampleactivated', true);
 	if(empty($dledger)){
 		// wp_redirect('/journal');
         // exit;
@@ -1825,33 +543,28 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#f44235",';
+		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$stockdetails = "";
-				foreach ($gerdqoute->data as $gskey => $gsvalue) {
-					if($trinfovalue['stockname'] == $gsvalue->symbol){
-						$stockdetails = $gsvalue;
-					}
-				}
-				// $dinforstocl = $trinfovalue['stockname'];
-				// $dstockinfo = $gerdqoute->data->$dinforstocl;
+				// print_r($trinfovalue);
+				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
+				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
-				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+				$marketval = $dstockinfo->last * $trinfovalue['totalstock'];
 				$dsellfees = getjurfees($marketval, 'sell');
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $dtotal;
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
-		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},{"category" : "Sample Stock 3", "column-1" : "59760.32"},{"category" : "Sample Stock 4", "column-1" : "59760.32"},{"category" : "Sample Stock 5", "column-1" : "59760.32"},{"category" : "Sample Stock 6", "column-1" : "59760.32"}';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500","#00AAFF","#CC0066","#33FF99"';
 	}
     
 ?>
@@ -1864,16 +577,16 @@ if($issampledata){
     if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
 
 		
-        $dlistofstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+        $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
 
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta(get_current_user_id(), '_trade_'.$delvalue, '');
-            delete_user_meta(get_current_user_id(), '_trade_'.$delvalue);
+            update_user_meta($user->ID, '_trade_'.$delvalue, '');
+            delete_user_meta($user->ID, '_trade_n  '.$delvalue);
 
-            // $dsotcksss = get_user_meta(get_current_user_id(), '_trade_'.$delvalue, true);
+            // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta(get_current_user_id(), '_trade_list');
+        delete_user_meta($user->ID, '_trade_list');
 
         // delete all trade logs
         foreach ($alltradelogs as $delpostkey => $delpostvalue) {
@@ -1881,9 +594,9 @@ if($issampledata){
             wp_delete_post($delpostvalue['id'], true);
         }
 
-		update_user_meta(get_current_user_id(), 'issampleactivated', 'no');
+		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.get_current_user_id());
+        $wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
 
         wp_redirect('/journal');
         exit;
@@ -1977,22 +690,19 @@ if($issampledata){
                                                         		<div class="dbuttonenter">
                                                         			<!-- <form action="/journal" method="post"> -->
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
-																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Enter Trade</a>
+																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 																		<div class="hideformodal">
 																			<?php
-																				$curl = curl_init();
-																				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE");
-																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
-																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-																				$dstocksonme = curl_exec($curl);
-																				curl_close($curl);
-
-																				$dstocksonme = json_decode($dstocksonme);
+																				
+																				usort($gerdqoute->data, function($a, $b) {
+																					return $a->symbol <=> $b->symbol;
+																				});
+																				$listosstocks = $gerdqoute->data;
 
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i a'); ?></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -2007,7 +717,7 @@ if($issampledata){
 																								<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
 																								<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
 																									<option value="">Select Stocks</option>
-																									<?php foreach($dstocksonme->data as $dstkey => $dstvals): ?>
+																									<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 																										<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
 																									<?php endforeach; ?>
 																								</select>
@@ -2015,7 +725,7 @@ if($issampledata){
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
@@ -2084,6 +794,158 @@ if($issampledata){
 																		</div>
                                                         			<!-- </form> -->
                                                         		</div>
+
+                                                                <!--------- Add funds --------------------------------------->
+
+                                                                <div class="button" style="float: right; margin-top: 3px;margin-left: -10px;">
+                                                                    <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary" style="padding: 5px 10px;font-weight: 400;">Fund</a>
+                                                                    <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+                                                                            <div class="modal-content modalfund">
+                                                                                <div class="modal-header header-depo">
+
+                                                                                 <span class="fundtabs" id="funds"> 
+                                                                                    <ul class="nav panel-tabs">
+                                                                                        <li class="active">
+                                                                                            <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
+                                                                                        </li>
+                                                                                        <?php if ($dbaseaccount > 0): ?>
+                                                                                        <li>
+                                                                                            <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
+                                                                                        </li>
+                                                                                        <?php endif; ?>
+                                                                                    </ul>
+                                                                                </span> 
+                                                                                    <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+                                                                                        <i class="fas fa-times modal-btn-close-deposit"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active show" id="tabdeposit">
+                                                                                <hr class="style14 style15">
+                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
+                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                                <form action="/journal" method="post" class="add-funds-show depotincome">
+                                                                                   <!-- <div class="modal-body depo-body">-->
+                                                                                        <div class="dmainform">
+                                                                                            <div class="dinnerform">
+                                                                                                <div class="dinitem" style="margin: 10px;">
+                                                                                                    <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
+                                                                                                    <!-- <div class="dnlabel">Amount</div> -->
+                                                                                                    <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                   <!-- </div>-->
+
+                                                                                    <div class="modal-footer footer-depo">
+                                                                                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                                                        <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                        <input type="hidden" name="istype" value="deposit">
+                                                                                        <!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
+                                                                                        <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 12px;font-weight: 300; padding: 3px 14px;">Deposit</a>
+                                                                                        <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                    </div>
+                                                                                </form>
+                                                                                <form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
+                                                                                        <div class="modal-body depo-body">
+                                                                                            <div class="dmainform">
+                                                                                                <div class="dinnerform">
+                                                                                                    <div class="dinitem">
+                                                                                                        <h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
+                                                                                                        <!-- <div class="dnlabel">Amount</div> -->
+                                                                                                        <div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer footer-depo">
+                                                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                                                            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                            <input type="hidden" name="istype" value="dividend">
+                                                                                            <!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
+                                                                                            <a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
+                                                                                            <!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
+                                                                                            <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                        </div>
+                                                                                </form>
+                                                                        </div>
+                                                                    <div class="tab-pane" id="tabwithdraw">                                                                                                        
+                                                                        <form action="/journal" method="post">
+                                                                                        <div class="modal-header header-depo">
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel"></h5>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15">
+                                                                                        <div class="modal-body depo-body">
+                                                                                            <div class="dmainform-withraw" style="margin-top: 28px;">
+                                                                                                <div class="dinnerform">
+                                                                                                    <div class="dinitem arb_wdrw">
+                                                                                                        <div class="dnlabel arb_wdrw_left" style="font-size: 13px;font-weight: 300;">Enter Amount</div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="text" class="dwithdrawnum depo-input-field number" style="padding: 3px 11px 3px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php //echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer footer-depo">
+                                                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                                                            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                            <input type="hidden" name="istype" value="withraw">
+                                                                                            <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
+                                                                                            <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>    
+
+                                                                                </div><!---------------------->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                              <!---- -------------------------------------------------------->
+
+                                                              <!---------------Withdraw----------------->
+                                                              <!--
+                                                                        <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                            <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
+                                                                                <div class="modal-content">
+                                                                                    <form action="/journal" method="post">
+                                                                                        <div class="modal-header header-depo">
+                                                                                            <h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
+                                                                                            <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+                                                                                            <i class="fas fa-times modal-btn-close-deposit"></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15">
+                                                                                        <div class="modal-body depo-body">
+                                                                                            <div class="dmainform-withraw">
+                                                                                                <div class="dinnerform">
+                                                                                                    <div class="dinitem arb_wdrw">
+                                                                                                        <div class="dnlabel arb_wdrw_left">Please enter your amount</div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php //echo $dbaseaccount; ?>" name="damount" placeholder="<?php// echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer footer-depo">
+                                                                                          
+                                                                                            <input type="hidden" name="ddate" value="<?php //echo date('Y-m-d'); ?>">
+                                                                                            <input type="hidden" name="istype" value="withraw">
+                                                                                            <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
+                                                                                          
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> -->
+
+                                                              <!-------------------------------->
+
                                                         	</div>
                                                             </div>
                                                             <div class="box-portlet-content">
@@ -2114,7 +976,7 @@ if($issampledata){
 																					
 
 																					if(!$isjounalempty){
-																						$dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$value, true);
+																						$dstocktraded = get_user_meta($user->ID, '_trade_'.$value, true);
 																					} else {
 																						if($value == 'SampleStock_1'){
 																							$dstocktraded = [
@@ -2181,13 +1043,8 @@ if($issampledata){
 																						
 																					}
                                                                                     if ($dstocktraded && $dstocktraded != '') {
-																						$stockdetails = "";
-																						foreach ($gerdqoute->data as $gskey => $gsvalue) {
-																							if($value == $gsvalue->symbol){
-																								$stockdetails = $gsvalue;
-																							}
-																						}
-                                                                                        // code...
+																						$key = array_search($value, array_column($gerdqoute->data, 'symbol'));
+																						$stockdetails = $gerdqoute->data[$key];
 
 																						$dstockinfo = $stockdetails;
 																						if($isjounalempty){
@@ -2256,8 +1113,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
-                                                                                        echo date('F j, Y g:i a'); ?></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -2306,7 +1162,7 @@ if($issampledata){
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" name="inpt_data_sellprice" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" required></div>
 
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
 																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
@@ -2330,8 +1186,7 @@ if($issampledata){
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila');
-                                                                                        echo date('F j, Y g:i a'); ?></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -2364,21 +1219,21 @@ if($issampledata){
 																	                                                <div class="groupinput midd lockedd">
 																	                                                	<?php
                                                                                                                             $dboard = 0;
-                                                                                        if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
-                                                                                            $dboard = 1000000;
-                                                                                        } elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
-                                                                                            $dboard = 100000;
-                                                                                        } elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
-                                                                                            $dboard = 10000;
-                                                                                        } elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
-                                                                                            $dboard = 1000;
-                                                                                        } elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
-                                                                                            $dboard = 100;
-                                                                                        } elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
-                                                                                            $dboard = 10;
-                                                                                        } elseif ($dstockinfo->last >= 1000) {
-                                                                                            $dboard = 5;
-                                                                                        } ?>
+																															if ($dstockinfo->last >= 0.0001 && $dstockinfo->last <= 0.0099) {
+																																$dboard = 1000000;
+																															} elseif ($dstockinfo->last >= 0.01 && $dstockinfo->last <= 0.049) {
+																																$dboard = 100000;
+																															} elseif ($dstockinfo->last >= 0.05 && $dstockinfo->last <= 0.495) {
+																																$dboard = 10000;
+																															} elseif ($dstockinfo->last >= 0.5 && $dstockinfo->last <= 4.99) {
+																																$dboard = 1000;
+																															} elseif ($dstockinfo->last >= 5 && $dstockinfo->last <= 49.95) {
+																																$dboard = 100;
+																															} elseif ($dstockinfo->last >= 50 && $dstockinfo->last <= 999.5) {
+																																$dboard = 10;
+																															} elseif ($dstockinfo->last >= 1000) {
+																																$dboard = 5;
+																															} ?>
 																	                                                    <label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="" value="<?php echo $dboard; ?>" readonly>
 																	                                                    <i class="fa fa-lock" aria-hidden="true"></i>
 
@@ -2424,7 +1279,8 @@ if($issampledata){
 																	                                        </div>
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-																	                                            <input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="" name="isdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -2520,15 +1376,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                                                                    <div class="width35">
-                                                                                                    	<?php
-                                                                                                            if ($dtotalpl > 0) {
-                                                                                                                echo number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',');
-                                                                                                            } else {
-                                                                                                                echo '0.00';
-                                                                                                            }
-
-                                                                                                        ?>%</div>
+                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',') : '0.00');?>%</div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>
@@ -2585,19 +1433,6 @@ if($issampledata){
 															</div>
 														</div>
 													</div>
-													<!-- <br class="clear"> -->
-
-                                                   <!-- <div class="_adsbygoogle">
-														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
-
-															<div class="box-portlet-content" style="padding:0;">
-                                                            	<?php /*?><small>ADVERTISEMENT</small><?php */?>
-																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
 													<br class="clear">
 
                                                     <?php
@@ -3286,6 +2121,7 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
+																								ksort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
@@ -3342,6 +2178,7 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
+																								asort($finalloss);
 																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
@@ -3573,7 +2410,7 @@ if($issampledata){
                                                     <?php
                                                         $dlistoflivetrades = [];
                                                         foreach ($getdstocks as $dtdkey => $dtdvalue) {
-                                                            $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dtdvalue, true);
+                                                            $dstocktraded = get_user_meta($user->ID, '_trade_'.$dtdvalue, true);
                                                             if ($dstocktraded && $dstocktraded != '') {
                                                                 foreach ($dstocktraded['data'] as $dtfkey => $dtfvalue) {
                                                                     array_push($dlistoflivetrades, $dtfvalue);
@@ -3830,7 +2667,7 @@ if($issampledata){
                                                                 'after' => date('Y-m-d', strtotime('-20 days')),
                                                             ),
                                                             'meta_key' => 'data_userid',
-                                                            'meta_value' => get_current_user_id(),
+                                                            'meta_value' => $user->ID,
                                                         );
                                                         $posts = get_posts($args);
 
@@ -3841,10 +2678,19 @@ if($issampledata){
                                                             $dlls['profit'] = 0;
                                                             foreach ($posts as $dpostkey => $dpostvalue) {
                                                                 if ($ddatesvalue == date('Y-m-d', strtotime($dpostvalue->post_date))) {
-                                                                    $dsellprice = get_post_meta($dpostvalue->ID, 'data_sell_price', true);
-                                                                    $dbuyprice = get_post_meta($dpostvalue->ID, 'data_dprice', true);
-                                                                    $dquantity = get_post_meta($dpostvalue->ID, 'data_quantity', true);
-                                                                    $data_avr_price = get_post_meta($dpostvalue->ID, 'data_avr_price', true);
+																	$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
+
+																	$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																	$dsellprice = $postmetas[$data_sell_price]->meta_value;
+																	
+																	$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+																	$dbuyprice = $postmetas[$data_dprice]->meta_value;
+																	
+																	$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+																	$dquantity = $postmetas[$data_quantity]->meta_value;
+																	
+																	$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+                                                                    $data_avr_price = $postmetas[$data_avr_price]->meta_value;
 
                                                                     $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                                     // get prices
@@ -3867,11 +2713,19 @@ if($issampledata){
                                                         foreach ($posts as $dpostkey => $dpostvalue) {
                                                             $instrade = [];
                                                             $instrade['count'] = $counter;
+															$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
 
-                                                            $dsellprice = get_post_meta($dpostvalue->ID, 'data_sell_price', true);
-                                                            $dbuyprice = get_post_meta($dpostvalue->ID, 'data_dprice', true);
-                                                            $dquantity = get_post_meta($dpostvalue->ID, 'data_quantity', true);
-                                                            $data_avr_price = get_post_meta($dpostvalue->ID, 'data_avr_price', true);
+															$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+															$dsellprice = $postmetas[$data_sell_price]->meta_value;
+															
+															$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+															$dbuyprice = $postmetas[$data_dprice]->meta_value;
+															
+															$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+															$dquantity = $postmetas[$data_quantity]->meta_value;
+															
+															$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+															$data_avr_price = $postmetas[$data_avr_price]->meta_value;
 
                                                             $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                             // get prices
@@ -3919,7 +2773,7 @@ if($issampledata){
                                                                     'relation' => 'AND',
                                                                     array(
                                                                         'key' => 'data_userid',
-                                                                        'value' => get_current_user_id(),
+                                                                        'value' => $user->ID,
                                                                         'compare' => 'like',
                                                                     ),
                                                                     array(
@@ -3931,10 +2785,24 @@ if($issampledata){
                                                             );
                                                             $dinfobase = get_posts($tuespostargs);
                                                             foreach ($dinfobase as $xdsskey => $xdssvalue) {
-                                                                $dsellprice = get_post_meta($xdssvalue->ID, 'data_sell_price', true);
-                                                                $dbuyprice = get_post_meta($xdssvalue->ID, 'data_dprice', true);
-                                                                $dquantity = get_post_meta($xdssvalue->ID, 'data_quantity', true);
-                                                                $data_avr_price = get_post_meta($xdssvalue->ID, 'data_avr_price', true);
+																$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$xdssvalue->ID);
+
+																$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																$dsellprice = $postmetas[$data_sell_price]->meta_value;
+																
+																$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+																$dbuyprice = $postmetas[$data_dprice]->meta_value;
+																
+																$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+																$dquantity = $postmetas[$data_quantity]->meta_value;
+																
+																$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+																$data_avr_price = $postmetas[$data_avr_price]->meta_value;
+
+                                                                // $dsellprice = get_post_meta($xdssvalue->ID, 'data_sell_price', true);
+                                                                // $dbuyprice = get_post_meta($xdssvalue->ID, 'data_dprice', true);
+                                                                // $dquantity = get_post_meta($xdssvalue->ID, 'data_quantity', true);
+                                                                // $data_avr_price = get_post_meta($xdssvalue->ID, 'data_avr_price', true);
 
                                                                 $dbuyprice = str_replace('₱', '', $dbuyprice);
                                                                 // get prices
@@ -4045,22 +2913,38 @@ if($issampledata){
                                                                                 $dlisttrade = [];
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
-                                                                                        $author_posts->the_post();
-                                                                                        $dlisttrade[$dpage][$count]['id'] = get_the_ID();
-                                                                                        $dlisttrade[$dpage][$count]['data_stock'] = get_post_meta(get_the_ID(), 'data_stock', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellmonth'] = get_post_meta(get_the_ID(), 'data_sellmonth', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellday'] = get_post_meta(get_the_ID(), 'data_sellday', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = get_post_meta(get_the_ID(), 'data_sellyear', true);
+																						$author_posts->the_post();
+																						$tradelogid = get_the_ID();
+																						$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradelogid);
 
-                                                                                        $data_dprice = get_post_meta(get_the_ID(), 'data_dprice', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $data_dprice);
+																						$dlisttrade[$dpage][$count]['id'] = $tradelogid;
+																						
+																						$data_stock = array_search('data_stock', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_stock'] = $postmetas[$data_stock]->meta_value;
+																						
+																						$data_sellmonth = array_search('data_sellmonth', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellmonth'] = $postmetas[$data_sellmonth]->meta_value;
+																						
+																						$data_sellday = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellday'] = $postmetas[$data_sellday]->meta_value;
+																						
+																						$data_sellyear = array_search('data_sellyear', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = $postmetas[$data_sellyear]->meta_value;
 
-                                                                                        $dlisttrade[$dpage][$count]['data_sell_price'] = get_post_meta(get_the_ID(), 'data_sell_price', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = get_post_meta(get_the_ID(), 'data_quantity', true);
+																						$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $postmetas[$data_dprice]->meta_value);
 
-                                                                                        $data_trade_info = get_post_meta(get_the_ID(), 'data_trade_info', true);
-                                                                                        $dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($data_trade_info);
-                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = get_post_meta(get_the_ID(), 'data_avr_price', true);
+																						$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sell_price'] = $postmetas[$data_sell_price]->meta_value;
+																						
+																						$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = $postmetas[$data_quantity]->meta_value;
+
+																						$data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($postmetas[$data_trade_info]->meta_value);
+																						
+																						$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = $postmetas[$data_avr_price]->meta_value;
 
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
@@ -4136,6 +3020,7 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    
 																				</div>
 																				<?php  $tnum++; ?>
 																				<div class="hidethis">
@@ -4150,8 +3035,8 @@ if($issampledata){
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>
@@ -4195,7 +3080,6 @@ if($issampledata){
 
 													<div class="totalpl">
 														 <p>Total Profit/Loss as of <?php
-                                                         date_default_timezone_set('Asia/Manila');
                                                           echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
 													</div>
 
@@ -4306,109 +3190,7 @@ if($issampledata){
 																		<a href="#" class="lddmoveto">Go</a>
 																	</form>
 																</div>
-                                                                	<div class="button" style="float: right;">
-                                                                	<a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Add funds</a>
-                                                                	<div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-																			<div class="modal-content">
-																				<div class="modal-header header-depo">
-																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
-																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																						<i class="fas fa-times modal-btn-close-deposit"></i>
-																					</button>
-																				</div>
-																				<hr class="style14 style15">
-																				<div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-																					<select class="rnd" name="" id="" style="z-index: 20;">
-																						<option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-																						<option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
-																					</select>
-																					<!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-																					<a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
-																				</div>
-																				<form action="/journal" method="post" class="add-funds-show depotincome">
-																				<div class="modal-body depo-body">
-																					<div class="dmainform">
-																						<div class="dinnerform">
-																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
-																									<!-- <div class="dnlabel">Amount</div> -->
-																									<div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-
-																					<div class="modal-footer footer-depo">
-																						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-																						<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
-																						<input type="hidden" name="istype" value="deposit">
-																						<!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
-																						<a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Deposit</a>
-																						<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
-																					</div>
-																				</form>
-																				<form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
-																						<div class="modal-body depo-body">
-																							<div class="dmainform">
-																								<div class="dinnerform">
-																									<div class="dinitem">
-																										<h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
-																										<!-- <div class="dnlabel">Amount</div> -->
-																										<div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																						<div class="modal-footer footer-depo">
-																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
-																							<input type="hidden" name="istype" value="dividend">
-																							<!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
-																							<a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
-																							<!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
-																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
-																						</div>
-																				</form>
-																			</div>
-																		</div>
-																	</div>
-																	<?php if ($dbaseaccount > 0): ?>
-																		<a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>
-																		<div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																			<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
-																				<div class="modal-content">
-																					<form action="/journal" method="post">
-																						<div class="modal-header header-depo">
-																							<h5 class="modal-title title-depo" id="exampleModalLabel">Withdraw</h5>
-																							<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																							<i class="fas fa-times modal-btn-close-deposit"></i>
-																							</button>
-																						</div>
-																						<hr class="style14 style15">
-																						<div class="modal-body depo-body">
-																							<div class="dmainform-withraw">
-																								<div class="dinnerform">
-																									<div class="dinitem arb_wdrw">
-																										<div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-																										<div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																						<div class="modal-footer footer-depo">
-																							<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-																							<input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
-																							<input type="hidden" name="istype" value="withraw">
-																							<input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
-																							<!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
-																						</div>
-																					</form>
-																				</div>
-																			</div>
-																		</div>
-																	<?php endif; ?>
-                                                                </div>
+                                                                	<!-- Add funds -->
                                                             </div>
                                                             	<?php
                                                                     function date_sort($a, $b)
@@ -4460,13 +3242,13 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:19%">Month</div>
-                                                                                    <div style="width:19%">Starting Balance</div>
+                                                                                    <div style="width:19%">Date</div>
+                                                                                    <div style="width:19%">Transaction</div>
                                                                                     <!-- <div style="width:14%">Perfomance</div> -->
                                                                                     <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Withdrawals</div>
-                                                                                    <div style="width:19%">Deposits</div>
-                                                                                    <div style="width:19%">Ending Balance</div>
+                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
                                                                             </li>
 																			
@@ -4485,14 +3267,25 @@ if($issampledata){
                                                                                     } else {
                                                                                         ++$ldcount;
                                                                                     }
-                                                                                }
-                                                                            ?>
+																				}
+
+																				foreach ($dledger as $key => $value) { ?>
+																					<li>
+																						<div style="width:99%;">
+		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
+		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+		                                                                                </div>
+																					</li>
+																			<?php }
+																			?>
+																			
 																			<?php
                                                                                 $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
                                                                                 $mstart = 0;
                                                                                 foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
                                                                                     ?>
-																					<li class="dspecitem">
+																					<li class="dspecitem" style="display:none;">
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>
@@ -4602,16 +3395,27 @@ if($issampledata){
 
 
     <script type="text/javascript">
+		var today = new Date();
+		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
+		jQuery(".buySell__date-picker").attr('max',currentDate);
+		// jQuery(".buySell__date-picker").attr('value',currentDate);
+
+
 
         function editEvent(event) {
-        jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
-        jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
-        jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
-        jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
-        jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-        jQuery('#event-modal').modal();
-    }
+			jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
+			jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
+			jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
+			jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
+			jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+			jQuery('#event-modal').modal();
+			
 
+		}
+
+		function getObject(event){
+			console.log(event.value);
+		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 
@@ -4852,8 +3656,14 @@ if($issampledata){
 		});
 
 		jQuery(".dloadform").click(function(e){
-			jQuery(".dentertrade").submit();
-
+			e.preventDefault();
+			var dstock = $(".dentertrade #inpt_data_select_stock").val();
+			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
+			if(dstock != "" && dbuypower > 0){
+				jQuery(".dentertrade").submit();
+			} else {
+				console.log("dont add trade");
+			}
 		});
 
 

@@ -410,26 +410,19 @@
 		global $wpdb;
 		$homeurlgen = get_home_url();
 		$emailstr = stripslashes($_GET['email']);
-		// return json_encode($emailstr);
-		// create random temp password
-		function password_generate($chars) 
-		{
-		  $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
-		  return substr(str_shuffle($data), 0, $chars);
-		}
-		$passgen = password_generate(8)."\n";
-		// echo $passgen;
-		$passhash = wp_hash_password( $passgen );
+		$user = get_user_by( 'email', $emailstr );
 
-		// update users password to new temp password
-		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE user_email = '$emailstr'";
+		$data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+		$passgen = substr(str_shuffle($data), 50);
+	  
+		$passhash = wp_hash_password( $passgen );
+		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
 		$wpdb->query($updatepass);
 
-		// send email include all created credentials
 		$to = $emailstr;
 		$subject = 'Password Reset Confirmation';
 		$message = '
-		<div class="container" style="width: 100%; font-family: "Roboto", sans-serif; color: #142c46;">
+		<div class="container" style="width: 100%; font-family: "Roboto, sans-serif; color: #142c46;">
 			<div class="em-head" style="padding: 23px 0px 23px 31px; background-color: #142c46; background-image: url("'.$homeurlgen.'/email-templates/email-template/lines.png"); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="'.$homeurlgen.'/email-templates/email-template/logo.png" /></div>
 			<div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;color: #142c46;">Arbitrage <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
 			<div class="em-container" style="-webkit-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); -moz-box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53); box-shadow: 0px 2px 8px -2px rgba(0,0,0,0.53);">

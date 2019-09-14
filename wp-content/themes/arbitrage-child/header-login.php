@@ -114,8 +114,9 @@ $user = wp_get_current_user();
 	</div>
 </div>
 <!-- Countdown -->
+<!--
 <div class="header contercontrol">
-    <center><img class="header-image" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
+    <center><img class="header-image" src="<?php //echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png"></center>
 </div>
 <div class="title-header contercontrol">
        <center> COMING SOON</center>
@@ -131,10 +132,10 @@ $user = wp_get_current_user();
                     <div class="text">
                         <p class="val">0</p>
                         <p class="type-days type-time">DAYS</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
             <div class="wrap">
@@ -144,10 +145,10 @@ $user = wp_get_current_user();
                     <div class="text">
                         <p class="val">0</p>
                         <p class="type-hours type-time">HOURS</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
             <div class="wrap">
@@ -157,10 +158,10 @@ $user = wp_get_current_user();
                     <div class="text">
                         <p class="val">0</p>
                         <p class="type-minutes type-time">MINUTES</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
             <div class="wrap">
@@ -170,11 +171,11 @@ $user = wp_get_current_user();
                     <div class="text">
                         <p class="val">0</p>
                         <p class="type-seconds type-time">SECONDS</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
-	</div><!-- /.clock -->
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
 	<div class="notif-container row">
 
 	
@@ -187,24 +188,8 @@ $user = wp_get_current_user();
         </div>
      
     </div>
-</div><!-- /.countdown-wrapper -->
-<?php
+</div>-->
 
-if(isset($_POST['send'])){
-      
-		echo $_POST['email'];
-
-       	/*global $wpdb;
-
-       	$date = date('Y-m-d H:i:s');
-    	$tablename=$wpdb->prefix.'arby_launch_emailnotication';	
-    	$data=array('user_email' => $_POST['email'],'add_date' => $date);
-
-    	$wpdb->insert($tablename, $data);*/
-
-
-    }
-?>
 
 
 <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->

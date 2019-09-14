@@ -249,7 +249,7 @@ div#fancybox-content {
 	font-family:'Raleway', sans-serif;
 	font-size:20px;
 	font-weight:900;
-	padding:5px 0 20px;
+	padding:5px;
 	color:#fff;
 }
 html, .home body.et_cover_background {
@@ -269,7 +269,7 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
 }
 .ondashboardpage_login_inner {
     vertical-align: top;
-    padding-top: 5%;
+    padding-top: 0 !important;
     display: table-cell;
     text-align: center;
 	position:relative;
@@ -436,7 +436,6 @@ input#username_b {
 	margin-bottom:0; 
 	color:#fff;
 	font-size:12px;
-	display: none;
 }
 .um.um-shortcode-social {
 	display: none;
@@ -744,3 +743,108 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     display: none !important;
 }
 .contercontrol {display:none !important;}
+.email-info {
+    background: rgba(255,255,255,0.3) !important;
+    outline: none !important;
+    color: #fff !important;
+    font-size: 12px;
+    border-radius: 50px;
+    font-family: "Roboto", Arial;
+    border: none !important;
+    padding: 8px 15px !important;
+    width: 200px;
+}
+span.label_pls {
+    display: inline-block;
+    margin: 10px 0 10px;
+    color: #d8d8d8;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+input#email_btn_info {
+    background: none;
+    border-radius: 50px;
+    border: 1.5px solid #51bade;
+    padding: 7px 31px;
+    color: #fff;
+    cursor: pointer;
+    margin: 13px 0;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+input#email_btn_info:hover {
+    background: linear-gradient(to right, #2098f9, #9eefb4);
+    border: 1.5px solid #51bade;
+    background-repeat: no-repeat;
+    overflow: hidden !important;
+}
+.confirmed_cont {
+    display: none;
+}
+a.backto-login {
+    color: #fff !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+}
+.email_pass_reset_cont {
+    display: none;
+}
+.error_message {
+    display: none;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook {
+    display: block;
+    width: 49px;
+    border-radius: 50px !important;
+    background: none !important;
+    border: 2px solid #4267b2 !important;
+    margin: 22px auto 0;
+    padding: 16px 0 !important;
+}
+a.um-button.um-alt.um-button-social.um-button-facebook:hover {
+    background: #4267b2 !important;
+    border: 2px solid #4267b2 !important;
+}
+.um-button-facebook i{
+    margin: 0;
+    font-size: 25px;
+    top: -5px;
+    color: #fff;
+}
+.um-field-label label {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    font-weight: bold;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+}
+.um-icon-ios-close-empty {
+    display: none;
+}
+.um-social-login-overlay {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+.um-social-login-wrap {
+    border: none !important;
+}
+.um-social-login-wrap .um.um-register.um-err {
+    background: #142c46;
+    border: 5px !important;
+    border-radius: 5px !important;
+    padding: 35px;
+}
+.um-row._um_row_1.um-customized-row {
+    background: none !important;
+    border: none !important;
+}
+.um-social-login-wrap .arb_accept {
+    display: none;
+}
+.um-social-login-wrap .um-col-alt {
+    margin: 4px 0 4px;
+}
+.um-social-login-wrap .um-register .um-col-alt .um-center:before {
+    z-index: 0;
+}

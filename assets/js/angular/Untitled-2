@@ -63,37 +63,77 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
-    var transaction = [
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) }     
-        ]
-
-        for (i in transaction){
-            $scope.ticker.push(transaction[i]);
-        }
-        
+    $scope.speed = 2000;
+    // socket.on('connect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
+    // socket.on('reconnect', function(data) {
+    //     socket.emit('subscribe','transactions');
+    //     socket.emit('subscribe','ticker');
+    // });
     socket.on('psec', function (data) {
-    
         var transaction = {
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
-            shares: abbr_format(data.vol)
+            shares: abbr_format(data.vol),
         };
-        
-        console.log('from controllers agin');
+        console.log('from controller');
         console.log(transaction);
-        
         $scope.ticker.push(transaction);
-    
+        
+        if($scope.ticker.length <= 50){
+            $scope.speed = 3000;
+        }else if($scope.ticker.length <= 100){
+            $scope.speed = 1500;
+        }else if($scope.ticker.length >= 100){
+            $scope.speed = 500;
+        }
+
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
+
         $scope.$digest();
     });
-    
+    // socket.on('transaction', function(data) {
+    //     var change = 0;
+    //     if (data.flag == 0) {
+    //         change = 1;
+    //     } else if (data.flag == 1) {
+    //         change = -1;
+    //     }
+    //     var transaction = {
+    //         symbol: data.symbol,
+    //         price:  price_format(data.price),
+    //         change: change,
+    //         shares: abbr_format(data.volume),
+    //         buyer:  data.buyer.substr(0, 5).trim(),
+    //         seller: data.seller.substr(0, 5).trim(),
+    //     };
+    //     $scope.ticker.push(transaction);
+    //     if ($scope.ticker.length > 150) {
+    //         $scope.ticker.pop();
+    //     }
+    //     $scope.$digest();
+    // });
+    // socket.on('CT', function(data) {
+    //     var transaction = {
+    //         symbol: data[0],
+    //         price:  price_format(data[1]),
+    //         shares: number_format(data[2],'0,0.00') + '%',
+    //         buyer:  abbr_format(data[3]),
+    //         seller: abbr_format(data[4]),
+    //         flag:   data[5],
+    //         change: data[2],
+    //     }
+    //     $scope.ticker.push(transaction);
+    //     /*if ($scope.ticker.length > 50) {
+    //         $scope.ticker.pop();
+    //     }*/
+    //     $scope.$digest();
+    // });
     $scope.select = goToChart;
 }]);
 app.controller('psei', function($scope, $http) {  
@@ -147,8 +187,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.bids = [];
-    $scope.asks = [];
     $scope.transactions = [];
     $scope.bidtotal = 0;
     $scope.asktotal = 0;
@@ -374,11 +412,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.watchlist = 'All Stocks';
             $scope.watchlistReady = true;
         });*/
-        // $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
-        //     if (response.data.success) {
-        //         $scope.marketdepth = response;
-        //     }
-        // });
+        $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
+            if (response.data.success) {
+                $scope.marketdepth = response;
+            }
+        });
 
         // socket.emit('stock', _symbol, function(data) {
         //     if (data.transactions) {
@@ -389,28 +427,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         //     }
         // });
     });
-    $scope.getBidsAndAsks = function (symbol) {
-        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&symbol=' + symbol)
-        .then(response => {
-            response = response.data;
-            if (!response.success) {
-                $scope.bids = [];
-                $scope.asks = [];
-                return;
-            }
-
-            $scope.bids = response.data.bids;
-            $scope.asks = response.data.asks;
-        })
-        .catch(err => {
-            $scope.bids = [];
-            $scope.asks = [];
-        })
-        .finally(() => {
-            $scope.$digest();
-        });
-    }
-    $scope.getBidsAndAsks(_symbol);
     let limit = 20;
     $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
         .then(response => {
@@ -1008,7 +1024,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.bidtotal = 0;
                             });
                             
-                        $scope.$parent.getBidsAndAsks(symbol);
                         // });
                         // socket.emit('stock', symbol, function(data) {
                         //     if (data.transactions) {

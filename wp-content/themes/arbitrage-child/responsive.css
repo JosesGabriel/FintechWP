@@ -164,7 +164,7 @@
 		top: -39px !important;
 		padding: 15px 0px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 40% !important;
+		width: 50% !important;
 		max-width: 512px !important;
 		height: auto !important;
 	}
@@ -377,7 +377,7 @@
 	}
 
 	.right-dashboard-part-inner, .fixed-rightsidebar, .ads1, .ontofooter {
-		width: 210px !important;
+		width: 260px !important;
 	}
 
 

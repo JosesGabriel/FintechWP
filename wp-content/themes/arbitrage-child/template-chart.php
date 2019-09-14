@@ -1837,24 +1837,31 @@
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
 																										<div data-scrollbar="true" data-height="90%" class="">
-																											<div class="table-responsive">
-																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:97%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
+																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bidask in marketdepth | orderBy: 'index' | limitTo: 20 track by bidask.index">
-																															<td class="text-center" change="bidask.bid_count"><span>{{bidask.bid_count > 0 ? bidask.bid_count : ''}}</span></td>
-																															<td class="text-left text-uppercase" change="bidask.bid_volume"><span>{{bidask.bid_volume > 0 ? (bidask.bid_volume | abbr) : ''}}</span></td>
-																															<td class="text-left" ng-class="{'text-green': bidask.bid_price > stock.previous, 'text-red': bidask.bid_price < stock.previous}" change="bidask.bid_price"><strong>{{bidask.bid_price > 0 ? (bidask.bid_price | price) : ''}}</strong></td>
-																															<td class="text-right" ng-class="{'text-green': bidask.ask_price > stock.previous, 'text-red': bidask.ask_price < stock.previous}" change="bidask.ask_volume"><strong>{{bidask.ask_price > 0 ? (bidask.ask_price | price) : ''}}</strong></td>
-																															<td class="text-right text-uppercase" change="bidask.ask_volume"><span>{{bidask.ask_volume > 0 ? (bidask.ask_volume | abbr) : ''}}</span></td>
-																															<td class="text-right" style="padding-right: 12px !important;" change="bidask.ask_count"><span>{{bidask.ask_count > 0 ? bidask.ask_count : ''}}</span></td>
+																														<tr ng-repeat="bid in bids | limitTo: 20">
+																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
+																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
+																															<td class="text-left" ng-class="{'text-green': bid.bid_price > stock.previous, 'text-red': bid.bid_price < stock.previous}" change="bid.bid_price"><strong>{{bid.bid_price > 0 ? (bid.bid_price | price) : ''}}</strong></td>
 																														</tr>
-																														<tr ng-show="marketdepth.length == 0"><td colspan="5" align="center"><br /><br />Please select a stock</td></tr>
+																													</tbody>
+																												</table>
+																											</div><!--
+																											--><div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<tbody>
+																														<tr ng-repeat="ask in asks | limitTo: 20">
+																															<td class="text-right" ng-class="{'text-green': ask.ask_price > stock.previous, 'text-red': ask.ask_price < stock.previous}" change="ask.volume"><strong>{{ask.ask_price > 0 ? (ask.ask_price | price) : ''}}</strong></td>
+																															<td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
+																															<td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
+																														</tr>
 																													</tbody>
 																												</table>
 																											</div>

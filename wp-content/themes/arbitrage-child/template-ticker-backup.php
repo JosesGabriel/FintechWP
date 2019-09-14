@@ -530,24 +530,18 @@
 		text-align:center;
 		color:#bdc3c7;
 	}
-    /*
 	.marqueethis {
 		width: 150%;
 		height:40px;
 		right: 0;
 		text-align: right;
 	}
-    */
-    /*
-    .marqueethis > li {
+	/*.marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
-    */
-	/*
-    .marqueethis > li:hover {
+	.marqueethis > li:hover {
 		animation-play-state: paused;
-	}
-    */
+	}*/
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;
@@ -565,31 +559,32 @@
 		background-color:#2c3e50; 
 		text-align:left;
 	}
-    
+    /*
 	@keyframes marquee {
 		0% {
 			transform: translate(0, 0);
 		}
 		100% {
-			transform: translate(-50%, 0);
+			transform: translate(-100%, 0);
 		}
 	}
-    
+    */
     </style>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 <script>
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
-                //console.log('working..');
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+                console.log('working..');
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					forevertickerinit();
 				});
 			}
@@ -636,7 +631,8 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-        <ul class="list-inline marqueethis arb_custom_ticker">
+        <span style="display:none">{{speed}}</span>
+        <ul ng-attr-data-speed="speed" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="https://arbitrage.ph/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
@@ -712,6 +708,18 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
+<script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
+<script>
+$(".arb_custom_ticker").hover(function() {
+  // pause on hover
+  $(this).pause();
+}, function() {
+
+  // resume on mouse out
+  $(this).resume();
+  
+});
+</script>
 <style type="text/css">
 	#tv_chart_container {
 		width: 100% !important;
@@ -800,4 +808,4 @@
 	.arb_top_ticker {display:block;}
 </style>
 </body>
-</html> 
+</html>

@@ -812,15 +812,15 @@ if($issampledata){
                                                                                         
                                                                                     </ul>
                                                                                 </span> 
-                                                                                
 
-                                                                                    <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>
+
+                                                                                 <!--   <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>-->
 
                                                                             <!------------------------------------------------------ ----->
-                                                                            <?php if ($dbaseaccount > 0): ?>
+                                                                           <!-- <?php //if ($dbaseaccount > 0): ?>
                                                                                     <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
 
-                                                                                <?php endif; ?>
+                                                                                <?php// endif; ?> -->
                                                                             <!------------------------------------------------------------>
                                                                                     <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>

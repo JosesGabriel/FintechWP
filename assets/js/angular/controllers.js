@@ -406,7 +406,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 return;
             }
 
-            $scope.bids = response.data.bids;
+            $scope.bids = (response.data.bids).reverse();
             $scope.asks = response.data.asks;
         })
         .catch(err => {

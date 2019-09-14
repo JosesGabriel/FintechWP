@@ -1,10 +1,11 @@
 <?php
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-header("Pragma: no-cache"); // HTTP 1.0.
-header("Expires: 0");
     /*
     * Template Name: Journal Design
-    */
+	*/
+	
+	header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
+header("Pragma: no-cache"); // HTTP 1.0.
+header("Expires: 0");
 
 // get_header();
 // Ralph Was Here 
@@ -554,7 +555,7 @@ if($issampledata){
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $trinfovalue['totalcost'];
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dstockinfo->last, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}
@@ -826,6 +827,8 @@ if($issampledata){
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
                                                                                 </div>
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
                                                                                     <select class="rnd" name="" id="" style="z-index: 20;">
@@ -879,7 +882,32 @@ if($issampledata){
                                                                                             <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                         </div>
                                                                                 </form>
+                                                                        </div>
+                                                                    <div class="tab-pane" id="tabwithdraw">                                                                                                        
+                                                                        <form action="/journal" method="post">
 
+                                                                                        <hr class="style14 style15">
+                                                                                        <div class="modal-body depo-body">
+                                                                                            <div class="dmainform-withraw">
+                                                                                                <div class="dinnerform">
+                                                                                                    <div class="dinitem arb_wdrw">
+                                                                                                        <div class="dnlabel arb_wdrw_left">Enter amount</div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer footer-depo">
+                                                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                                                                            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                            <input type="hidden" name="istype" value="withraw">
+                                                                                            <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
+                                                                                            <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>    
+
+                                                                                </div><!---------------------->
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1080,7 +1108,7 @@ if($issampledata){
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
 		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
-		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dstockinfo->last, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
 		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->

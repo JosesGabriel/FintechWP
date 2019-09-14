@@ -543,9 +543,9 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#f44235', '#f0df3c', '#06af68', '#f44336', '#FFC107', '#c47d11', '#c39f00', '#9bd241', '#7ca834', '#07c2af', '#069b8c', '#5b9fbf', '#497f99', '#345c85', '#2a4a6a', '#753684', '#5e2b6a', '#c70048', '#9f003a');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#f44235",';
+		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
 				// print_r($trinfovalue);
@@ -564,7 +564,7 @@ if($issampledata){
 	} else {
 		$dequityp = 245318.22;
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
-		$currentaloccolor = '"#f44235","#f0df3c","#06af68","#f44336","#FFC107","#e91e63"';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500"';
 	}
     
 ?>

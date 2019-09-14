@@ -996,7 +996,7 @@ a.um-photo-modal img {
 						</div>
 
 
-			<div class="right-dashboard-part" style="margin-top: 40px;">
+			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
 					  <?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
@@ -1040,6 +1040,6 @@ a.um-photo-modal img {
 
 
 <?php
-
+get_footer('all');
 get_footer('dashboard');
 

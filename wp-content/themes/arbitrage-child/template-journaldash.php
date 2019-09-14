@@ -702,7 +702,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -1279,7 +1279,8 @@ if($issampledata){
 																	                                        </div>
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-																	                                            <input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="" name="isdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -3399,17 +3400,24 @@ if($issampledata){
 		var today = new Date();
 		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
 		jQuery(".buySell__date-picker").attr('max',currentDate);
-		jQuery(".buySell__date-picker").attr('value',currentDate);
+		// jQuery(".buySell__date-picker").attr('value',currentDate);
+
+
 
         function editEvent(event) {
-        jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
-        jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
-        jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
-        jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
-        jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
-        jQuery('#event-modal').modal();
-    }
+			jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');
+			jQuery('#event-modal input[name="event-name"]').val(event ? event.name : '');
+			jQuery('#event-modal input[name="event-location"]').val(event ? event.location : '');
+			jQuery('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
+			jQuery('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+			jQuery('#event-modal').modal();
+			
 
+		}
+
+		function getObject(event){
+			console.log(event.value);
+		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 

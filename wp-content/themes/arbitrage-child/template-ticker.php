@@ -574,6 +574,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
 <script>
+/*
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {
@@ -600,12 +601,13 @@
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
 	}
+    */
 </script>
 </head>
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker">
-        <ul class="list-inline arb_custom_ticker">
+        <ul class="list-inline arb_top_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="https://arbitrage.ph/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>

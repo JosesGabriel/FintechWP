@@ -64,15 +64,45 @@ app.controller('template', function($scope, $http) {
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     
+    var transaction = [
+             {symbol:"AC", price:"32.2", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+             {symbol:"AC", price:"25.70", change:3, shares:"12.3"},
+        ]
+
+        for (i in transaction){
+            $scope.ticker.push(transaction[i]);
+        }
+        
     socket.on('psec', function (data) {
+    
         var transaction = {
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
-            shares: abbr_format(data.vol),
+            shares: abbr_format(data.vol)
         };
+        
         console.log('from controllers agin');
         console.log(transaction);
+        
         $scope.ticker.push(transaction);
     
         $scope.$digest();

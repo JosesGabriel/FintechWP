@@ -2179,7 +2179,7 @@ if($issampledata){
 																									],
 																								];
 																							}
-																							arsort($finalloss);
+																							asort($finalloss);
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';

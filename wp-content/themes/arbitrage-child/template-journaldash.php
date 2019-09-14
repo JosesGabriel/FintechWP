@@ -2121,13 +2121,13 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
-																								rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
+																								rsort($finalwinning);
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';

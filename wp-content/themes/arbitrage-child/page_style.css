@@ -4063,7 +4063,13 @@
 
 /* EOF Notification Page */
 .notif_page_cont .center-dashboard-part {
-    max-width: 100%;
+    max-width: 75%;
+}
+.notif_page_cont .top-traiders {
+    margin-top: 0 !important;
+}
+.notif_page_cont .top-recommended-people #preloader {
+    margin-bottom: 35px;
 }
 .notif_page_cont .um-notification.unread:after,
 .notif_page_cont .um-notification.read:after {
@@ -4097,5 +4103,8 @@
     padding: 0;
     background: #13283e;
     border-radius: 0 0 7px 7px;
+}
+.notif_page_cont .um-notifications-none:nth-child(1) {
+    display: none;
 }
 /* EOF Notification Page */

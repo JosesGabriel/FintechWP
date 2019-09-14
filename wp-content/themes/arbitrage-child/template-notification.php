@@ -38,7 +38,18 @@ date_default_timezone_set('Asia/Manila');
 </div>
 
 
-
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $('.um-notifications-none').show();
+        $('.um-notifications-none').appendTo('.um-notification-ajax');
+        // $('.um-notification-ajax .um-notifications-none').remove();
+        var hassclass = $('.um-notification-ajax div').hasClass('read, unread');
+        if( hassclass ) {
+            $('.um-notifications-none').hide();
+        }
+    });
+</script>
 
 <?php
 get_footer('dashboard');

@@ -69,25 +69,25 @@ function getSMS(){
                     #start comparing :
 
                     #entry price 
-                    $stockdata["Entry Message"] = '';
+                    
                     if(!empty($usermeta['dconnumber_entry_price'])){
                         $entryprice = floatval($usermeta['dconnumber_entry_price']);
                         if($last_price == $entryprice){
                             #add data and message to array
-                            $stockdata[$stockname . " Entry Message"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
+                            $stockdata[" Entry Message"] = 'Buy Now! ' . $stockname . ' Current price is now ₱' . $last_price;
                         }
                     }
                     #stop loss point
-                    $stockdata["StopLoss Message"] = '';
+                    //$stockdata["StopLoss Message"] = '';
                     if(!empty($usermeta['dconnumber_take_profit_point'])){
                         $stoplosspoint = floatval($usermeta['dconnumber_stop_loss_point']);
                         if($last_price < $stoplosspoint){
                             #add data and message to array
-                            $stockdata[$stockname . " StopLoss Message"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
+                            $stockdata["StopLoss Message"] = 'Sell Now and Stop your Loss! ' . $stockname . ' Current price is now ₱' . $last_price;
                         }
                     }
                     #take profit point
-                    $stockdata["TakeProfit Message"] = '';
+                   // $stockdata["TakeProfit Message"] = '';
                     if(!empty($usermeta['dconnumber_stop_loss_point'])){
                         $takeprofitpoint = floatval($usermeta['dconnumber_take_profit_point']);
                         if($last_price > $takeprofitpoint){

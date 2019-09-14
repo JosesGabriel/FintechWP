@@ -583,13 +583,13 @@
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
                 console.log('working..');
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
 					forevertickerinit();
 				});
 			}

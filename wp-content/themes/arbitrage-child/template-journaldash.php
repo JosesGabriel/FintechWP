@@ -3273,11 +3273,9 @@ if($issampledata){
                                                                                     }
 																				}
 																				
-																				foreach ($dmonthdata as $key => $value) {
-																					echo "<pre>";
-																					print_r($value);
-																					echo "</pre>";
-																				}
+																				echo "<pre>";
+																				print_r($dledger);
+																				echo "</pre>";
 																			?>
 																			<li></li>
 																			<?php

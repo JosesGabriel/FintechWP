@@ -800,14 +800,28 @@ if($issampledata){
                                                                         <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header header-depo">
+
+                                                                                 <span class="fundtabs" id="funds"> 
+                                                                                    <ul class="nav panel-tabs">
+                                                                                        <li class="active">
+                                                                                            <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
+                                                                                        </li>
+                                                                                        
+                                                                                    </ul>
+                                                                                </span> 
+                                                                                
+
                                                                                     <h5 class="modal-title title-depo" id="exampleModalLabel">Deposit</h5>
 
-                                                                <!------------------------------------------------------ ----->
-                                                                <?php if ($dbaseaccount > 0): ?>
-                                                                        <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
+                                                                            <!------------------------------------------------------ ----->
+                                                                            <?php if ($dbaseaccount > 0): ?>
+                                                                                    <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning" style="padding: 0px 10px;margin-top: 4px;margin-left: 56px;">Withdraw</a>
 
-                                                                    <?php endif; ?>
-                                                                <!------------------------------------------------------------>
+                                                                                <?php endif; ?>
+                                                                            <!------------------------------------------------------------>
                                                                                     <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
                                                                                         <i class="fas fa-times modal-btn-close-deposit"></i>
                                                                                     </button>
@@ -865,6 +879,7 @@ if($issampledata){
                                                                                             <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                                                                         </div>
                                                                                 </form>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>

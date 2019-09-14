@@ -4104,4 +4104,7 @@
     background: #13283e;
     border-radius: 0 0 7px 7px;
 }
+.notif_page_cont .um-notifications-none:nth-child(1) {
+    display: none;
+}
 /* EOF Notification Page */

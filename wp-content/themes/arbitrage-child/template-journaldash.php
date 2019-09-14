@@ -2047,12 +2047,12 @@ if($issampledata){
 
                                                         function sortprofits($a, $b)
                                                         {
-															return $a['dprofit'] - $b['dprofit'];
+															return $b['dprofit'] - $a['dprofit'];
                                                         }
-
+														
                                                         function winningsort($a, $b)
                                                         {
-                                                            return $a['dprofit'] - $b['dprofit'];
+															return $a['dprofit'] - $b['dprofit'];
                                                         }
 
                                                         // winning stocks

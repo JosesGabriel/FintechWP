@@ -2059,7 +2059,7 @@ if($issampledata){
                                                         // usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
 														$finalwinning = [];
-														ksort($finalwinning);
+														arsort($finalwinning);
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];

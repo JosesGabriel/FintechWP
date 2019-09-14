@@ -2059,7 +2059,7 @@ if($issampledata){
                                                         // usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
 														$finalwinning = [];
-														arsort($finalwinning);
+														arsort($finalwinning['dprofit']);
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];
@@ -2070,7 +2070,7 @@ if($issampledata){
                                                         // usort($finalwinning, 'winningsort');
                                                         $finalloss = [];
 														$totalloss = 0;
-														asort($finalwinning);
+														asort($finalwinning['dprofit']);
                                                         foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
                                                             array_push($finalloss, $pxlossvalue);
                                                             $totalloss += $pxlossvalue['dprofit'];

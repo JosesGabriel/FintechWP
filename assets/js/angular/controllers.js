@@ -70,17 +70,34 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
              {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
              {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
              {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
+             {symbol:"AC", price:"32.2", change:"23", shares:"231.33"},
         ]
-        
-        $scope.ticker.push(transaction);
 
+        for (i in transaction){
+            $scope.ticker.push(transaction[i]);
+        }
+        
     socket.on('psec', function (data) {
     
         var transaction = {
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
-            shares: abbr_format(data.vol),
+            shares: abbr_format(data.vol)
         };
         
         console.log('from controllers agin');

@@ -2121,8 +2121,8 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
-																								asort($finalwinning);
 																							}
+																							ksort($finalwinning);
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
@@ -2178,8 +2178,8 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
-																								ksort($finalloss);
 																							}
+																							asort($finalloss);
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';

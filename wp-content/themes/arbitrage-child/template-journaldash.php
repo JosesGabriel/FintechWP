@@ -1279,7 +1279,8 @@ if($issampledata){
 																	                                        </div>
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-																	                                            <input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="Live" name="inpt_data_status">
+																												<input type="hidden" value="" name="isdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -3031,8 +3032,8 @@ if($issampledata){
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
 																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>" style="color: #00ff6c !important;"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
 																							</div>
 																							<div class="trdright darkbgpadd">
 																								<div><strong>Notes:</strong></div>
@@ -3394,6 +3395,7 @@ if($issampledata){
 		var today = new Date();
 		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
 		jQuery(".buySell__date-picker").attr('max',currentDate);
+		jQuery(".buySell__date-picker").attr('value',currentDate);
 
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');

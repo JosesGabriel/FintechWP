@@ -43,7 +43,7 @@ date_default_timezone_set('Asia/Manila');
     $(document).ready(function(){
         $('.um-notifications-none').show();
         $('.um-notifications-none').appendTo('.um-notification-ajax');
-        $('.um-notification-ajax .um-notifications-none').remove();
+        // $('.um-notification-ajax .um-notifications-none').remove();
         var hassclass = $('.um-notification-ajax div').hasClass('read');
         if( hassclass ) {
             $('.um-notifications-none').hide();

@@ -538,9 +538,11 @@
 		text-align: right;
 	}
     */
+    /*
     .marqueethis > li {
 		animation: marquee 15s linear infinite;
 	}
+    */
 	/*
     .marqueethis > li:hover {
 		animation-play-state: paused;

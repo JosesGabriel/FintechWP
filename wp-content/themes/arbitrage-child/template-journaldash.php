@@ -829,18 +829,19 @@ if($issampledata){
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
-                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
-                                                                                    </select>
-                                                                                    <!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-                                                                                    <a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
-                                                                                </div>
+                                                                                
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
                                                                                    <!-- <div class="modal-body depo-body">-->
                                                                                         <div class="dmainform">
                                                                                             <div class="dinnerform">
+
+                                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+                                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
+                                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+                                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                                
                                                                                                 <div class="dinitem">
                                                                                                     <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
                                                                                                     <!-- <div class="dnlabel">Amount</div> -->

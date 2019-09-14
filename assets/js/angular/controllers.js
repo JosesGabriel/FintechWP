@@ -187,6 +187,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
+    $scope.bids = [];
+    $scope.asks = [];
     $scope.transactions = [];
     $scope.bidtotal = 0;
     $scope.asktotal = 0;
@@ -412,11 +414,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.watchlist = 'All Stocks';
             $scope.watchlistReady = true;
         });*/
-        $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
-            if (response.data.success) {
-                $scope.marketdepth = response;
-            }
-        });
+        // $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
+        //     if (response.data.success) {
+        //         $scope.marketdepth = response;
+        //     }
+        // });
 
         // socket.emit('stock', _symbol, function(data) {
         //     if (data.transactions) {
@@ -427,6 +429,28 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         //     }
         // });
     });
+    $scope.getBidsAndAsks = function (symbol) {
+        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&symbol=' + symbol)
+        .then(response => {
+            response = response.data;
+            if (!response.success) {
+                $scope.bids = [];
+                $scope.asks = [];
+                return;
+            }
+
+            $scope.bids = response.data.bids;
+            $scope.bids = response.data.asks;
+        })
+        .catch(err => {
+            $scope.bids = [];
+            $scope.asks = [];
+        })
+        .finally(() => {
+            $scope.$digest();
+        });
+    }
+    $scope.getBidsAndAsks(_symbol);
     let limit = 20;
     $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
         .then(response => {
@@ -1024,6 +1048,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.bidtotal = 0;
                             });
                             
+                        $scope.$parent.getBidsAndAsks(symbol);
                         // });
                         // socket.emit('stock', symbol, function(data) {
                         //     if (data.transactions) {

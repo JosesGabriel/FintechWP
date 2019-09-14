@@ -50,7 +50,7 @@ function getSMS(){
                 $userdata["Email"] = $useremail;
                 $userdata["Stocks"] = [];
                 foreach($usermetas as $usermeta){
-                    if(ISNULL($usermeta['stockname'])){
+                    if($usermeta['stockname'] = null){
                     $stockdata = [];
                     #get stock name and stock values for comparison
                     $stockname = $usermeta['stockname'];

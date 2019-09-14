@@ -794,9 +794,8 @@ if($issampledata){
 
                                                                 <!--------- Add funds --------------------------------------->
 
-
                                                                 <div class="button" style="float: right; margin-top: 3px;margin-left: -10px;">
-                                                                    <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary" style="padding: 5px 12px;">Fund</a>
+                                                                    <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary" style="padding: 5px 10px;font-weight: 400;">Fund</a>
                                                                     <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
                                                                             <div class="modal-content">

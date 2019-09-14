@@ -2122,7 +2122,7 @@ if($issampledata){
 																									],
 																								];
 																							}
-																							krsort($finalwinning);
+																							asort($finalwinning);
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
@@ -2179,7 +2179,7 @@ if($issampledata){
 																									],
 																								];
 																							}
-																							asort($finalloss);
+																							sort($finalloss);
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';

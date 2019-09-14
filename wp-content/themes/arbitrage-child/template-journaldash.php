@@ -546,7 +546,7 @@ if($issampledata){
 		$currentaloccolor = '"#f44235",';
 		if ($dtradeingfo) {
 			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				$key = array_search($trinfovalue['stockname'], array_column($gerdqoute->data, 'symbol'));
+				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
 				$stockdetails = $gerdqoute->data[$key];
 				$dstockinfo = $stockdetails;
 				$marketval = $dstockinfo->last * $dstocktraded['totalstock'];
@@ -554,7 +554,7 @@ if($issampledata){
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $trinfovalue['totalcost'];
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}
@@ -829,26 +829,26 @@ if($issampledata){
                                                                 <div class="tab-content">
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
-                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
-                                                                                    </select>
-                                                                                    <!-- <a class="deposit-modal-btn show-button1 arbitrage-button arbitrage-button--primary" style="float: right; font-size: 15px;">Dividend Income</a>
-                                                                                    <a class="deposit-modal-btn show-button2 arbitrage-button arbitrage-button--info" style="float: left; font-size: 15px;">Deposit Funds</a> -->
-                                                                                </div>
+                                                                                
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
-                                                                                <div class="modal-body depo-body">
-                                                                                    <div class="dmainform">
-                                                                                        <div class="dinnerform">
-                                                                                            <div class="dinitem">
+                                                                                   <!-- <div class="modal-body depo-body">-->
+                                                                                        <div class="dmainform">
+                                                                                            <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+                                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
+                                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
+                                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            <div class="dinnerform">
+
+                                                                                                    <div class="dinitem">
                                                                                                     <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
                                                                                                     <!-- <div class="dnlabel">Amount</div> -->
                                                                                                     <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                    </div>
+                                                                                   <!-- </div>-->
 
                                                                                     <div class="modal-footer footer-depo">
                                                                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
@@ -918,7 +918,7 @@ if($issampledata){
                                                               <!---- -------------------------------------------------------->
 
                                                               <!---------------Withdraw----------------->
-
+                                                              <!--
                                                             <div class="modal" id="withdrawmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                             <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0;">
                                                                                 <div class="modal-content">
@@ -935,22 +935,22 @@ if($issampledata){
                                                                                                 <div class="dinnerform">
                                                                                                     <div class="dinitem arb_wdrw">
                                                                                                         <div class="dnlabel arb_wdrw_left">Please enter your amount</div>
-                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php echo $dbaseaccount; ?>" name="damount" placeholder="<?php echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
+                                                                                                        <div class="dninput arb_wdrw_right"><input type="number" class="dwithdrawnum depo-input-field sss" style="padding: 0px 11px 0px 11px !important;" data-dpower="<?php //echo $dbaseaccount; ?>" name="damount" placeholder="<?php// echo number_format($dbaseaccount, 2, '.', ','); ?>"></div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="modal-footer footer-depo">
-                                                                                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                                                                                            <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
+                                                                                          
+                                                                                            <input type="hidden" name="ddate" value="<?php //echo date('Y-m-d'); ?>">
                                                                                             <input type="hidden" name="istype" value="withraw">
                                                                                             <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
-                                                                                            <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
+                                                                                          
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
+                                                                        </div> -->
 
                                                               <!-------------------------------->
 

@@ -576,8 +576,7 @@
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 <script>
 	jQuery(document).ready(function() {
-			/*
-            forevertickerinit();
+			forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 500, "linear", function() {
 					foreverticker();
@@ -589,7 +588,6 @@
 					forevertickerinit();
 				});
 			}
-            */
 		});
 		
     window.onload=function(){
@@ -710,6 +708,17 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
+<script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
+<script>
+$(".arb_custom_ticker").hover(function() {
+  // pause on hover
+  $(this).pause();
+}, function() {
+
+  // resume on mouse out
+  $(this).resume();
+  
+});
 </script>
 <style type="text/css">
 	#tv_chart_container {

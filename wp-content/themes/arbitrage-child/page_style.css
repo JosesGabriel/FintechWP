@@ -4060,3 +4060,9 @@
         margin-right: 5px;
     }
 /* EOF Social Dashboard */
+
+/* EOF Notification Page */
+.notif_page_cont .center-dashboard-part {
+    max-width: 100%;
+}
+/* EOF Notification Page */

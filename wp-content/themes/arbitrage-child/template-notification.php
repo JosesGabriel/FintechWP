@@ -13,10 +13,16 @@ get_header( 'dashboard' );
 date_default_timezone_set('Asia/Manila');
 
 ?>
-<div class="center-dashboard-part">
-    <div class="inner-center-dashboard">
-        <div class="notif-cont">
-            <?php echo do_shortcode('[ultimatemember_notifications]'); ?>
+<div class="notif_page_cont">
+    <div class="inner-placeholder">
+		<div class="inner-main-content">
+            <div class="center-dashboard-part">
+                <div class="inner-center-dashboard">
+                    <div class="notif-cont">
+                        <?php echo do_shortcode('[ultimatemember_notifications]'); ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

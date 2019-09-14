@@ -506,6 +506,7 @@ img.arb_newpostimg {
 #chartdiv1 {
     width: 100%;
     height: 230px;
+    overflow: visible !important;
 }
 #chartdiv1 .amcharts-main-div {
     margin-top: -37px;
@@ -1363,4 +1364,10 @@ input.enter-trade-btn:hover {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #34495e;
+}
+.amcharts-balloon-div span {
+    font-size: 10px !important;
+}
+#chartdiv1 .amcharts-chart-div svg {
+    overflow: visible !important;
 }

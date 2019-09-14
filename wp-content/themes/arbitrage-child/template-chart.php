@@ -1837,8 +1837,8 @@
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
 																										<div data-scrollbar="true" data-height="90%" class="">
-																											<div class="table-responsive">
-																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:48.5%">
+																											<div class="table-responsive" style="display: inline-block; width: 48.5%;">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<col width="8.335%">
@@ -1850,9 +1850,9 @@
 																														</tr>
 																													</tbody>
 																												</table>
-																											</div>
-																											<div class="table-responsive">
-																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:48.5%">
+																											</div><!--
+																											--><div class="table-responsive" style="display: inline-block; width: 48.5%;">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<col width="8.335%">

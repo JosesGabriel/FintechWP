@@ -2056,9 +2056,9 @@ if($issampledata){
                                                         }
 
                                                         // winning stocks
-                                                        // usort($iswinstocks, 'sortprofits');
+                                                        usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
-                                                        $finalwinning = [];
+														$finalwinning = [];
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];
@@ -2066,8 +2066,7 @@ if($issampledata){
                                                                 break;
                                                             }
                                                         }
-                                                        // usort($finalwinning, 'winningsort');
-
+                                                        usort($finalwinning, 'winningsort');
                                                         $finalloss = [];
                                                         $totalloss = 0;
                                                         foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
@@ -2121,12 +2120,12 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
+																								rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								rsort($finalwinning);
 																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';

@@ -77,7 +77,6 @@ $dstockinfo = $gerdqoute->data;
 <style type="text/css">
 
 .center-dashboard-part {
-    float: left;
     width: 70%;
     margin-top: -18px;
 }
@@ -88,7 +87,7 @@ $dstockinfo = $gerdqoute->data;
 }
 .inner-center-dashboard {
     padding: 0;
-    margin-top: 75px;
+    /* margin-top: 75px; */
 }
 .search-posts {
     display: block;
@@ -116,6 +115,7 @@ h2.search-permalink {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    padding-top: 10px;
 }
  .side-header .right-image .onto-user-meta-details {
     color: #ffffff;
@@ -493,7 +493,7 @@ span.stockdetailbox.ng-binding {
     padding: 2px 0;
 }
 
-.to-content-part.to-back-back .to-top-title {padding:5px 15px 5px 15px;}
+/* .to-content-part.to-back-back .to-top-title {padding:5px 15px 5px 15px;} */
 
 .nav>li>a {
     
@@ -996,7 +996,7 @@ a.um-photo-modal img {
 						</div>
 
 
-			<div class="right-dashboard-part" style="margin-top: 40px;">
+			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
 					  <?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
@@ -1040,6 +1040,6 @@ a.um-photo-modal img {
 
 
 <?php
-
+get_footer('all');
 get_footer('dashboard');
 

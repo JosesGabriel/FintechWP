@@ -3246,13 +3246,13 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:19%">Month</div>
-                                                                                    <div style="width:19%">Starting Balance</div>
+                                                                                    <div style="width:19%">Date</div>
+                                                                                    <div style="width:19%">Transaction</div>
                                                                                     <!-- <div style="width:14%">Perfomance</div> -->
                                                                                     <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Withdrawals</div>
-                                                                                    <div style="width:19%">Deposits</div>
-                                                                                    <div style="width:19%">Ending Balance</div>
+                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
                                                                             </li>
 																			
@@ -3276,14 +3276,24 @@ if($issampledata){
 																				echo "<pre>";
 																				print_r($dledger);
 																				echo "</pre>";
+
+																				foreach ($dledger as $key => $value) { ?>
+																					<li>
+																						<div style="width:99%;">
+		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
+		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+		                                                                                </div>
+																					</li>
+																			<?php }
 																			?>
-																			<li></li>
+																			
 																			<?php
                                                                                 $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
                                                                                 $mstart = 0;
                                                                                 foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
                                                                                     ?>
-																					<li class="dspecitem">
+																					<li class="dspecitem" style="display:none;">
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>

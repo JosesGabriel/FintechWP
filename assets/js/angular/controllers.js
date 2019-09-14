@@ -397,7 +397,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         // });
     });
     $scope.getBidsAndAsks = function (symbol) {
-        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&symbol=' + symbol)
+        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
         .then(response => {
             response = response.data;
             if (!response.success) {

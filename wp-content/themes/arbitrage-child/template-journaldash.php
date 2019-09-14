@@ -833,16 +833,15 @@ if($issampledata){
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
                                                                                    <!-- <div class="modal-body depo-body">-->
                                                                                         <div class="dmainform">
-                                                                                            <div class="dinnerform">
-
-                                                                                                <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
+                                                                                            <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
                                                                                                     <select class="rnd" name="" id="" style="z-index: 20;">
                                                                                                         <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
                                                                                                         <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
                                                                                                     </select>
                                                                                                 </div>
-                                                                                                
-                                                                                                <div class="dinitem">
+                                                                                            <div class="dinnerform">
+
+                                                                                                    <div class="dinitem">
                                                                                                     <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
                                                                                                     <!-- <div class="dnlabel">Amount</div> -->
                                                                                                     <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>

@@ -794,31 +794,6 @@ if($issampledata){
 
                                                                 <!--------- Add funds --------------------------------------->
 
-                                                              <div class="button" style="float: right;">
-                                                                    <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Fund</a>
-                                                                    <div class="modal" id="depositmods" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header header-depo">
-                                                                                    <h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
-                                                               
-                                                                                    <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-                                                                                        <i class="fas fa-times modal-btn-close-deposit"></i>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <hr class="style14 style15">
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-
-
-
-
-                                                                <!---------------------------------------------------------->
 
                                                                 <div class="button" style="float: right;">
                                                                     <a href="#" data-toggle="modal" data-target="#depositmods" class="arbitrage-button arbitrage-button--primary">Fund</a>
@@ -827,7 +802,7 @@ if($issampledata){
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header header-depo">
                                                                                     <h5 class="modal-title title-depo" id="exampleModalLabel">Add Funds</h5>
-                                                                                    
+
                                                                 <!------------------------------------------------------ ----->
                                                                 <?php if ($dbaseaccount > 0): ?>
                                                                         <a href="#" data-toggle="modal" data-target="#withdrawmods" class="arbitrage-button arbitrage-button--warning">Withdraw</a>

@@ -3391,9 +3391,7 @@ if($issampledata){
 
 
     <script type="text/javascript">
-	jQuery( function() {
 		jQuery( "#buySell__date-picker" ).datepicker();
-	} );
 
         function editEvent(event) {
         jQuery('#event-modal input[name="event-index"]').val(event ? event.id : '');

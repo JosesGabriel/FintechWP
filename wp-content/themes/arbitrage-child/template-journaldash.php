@@ -554,7 +554,7 @@ if($issampledata){
 				$dtotal = $marketval - $dsellfees;
 	
 				$dequityp += $trinfovalue['totalcost'];
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
 				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
 			}
 		}

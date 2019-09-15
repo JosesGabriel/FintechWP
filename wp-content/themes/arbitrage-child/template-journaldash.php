@@ -2154,15 +2154,15 @@ if($issampledata){
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
                                                                                                 $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '65' : ''))).'%",';
-                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '45' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';
                                                                                                 $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '15' : ($fwinkey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '14' : ($fwinkey == 2 ? '20' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';
                                                                                                 $intowinchartlabels .= '"bold": false,';
                                                                                                 $intowinchartlabels .= '"color": "#d8d8d8",';
@@ -3426,7 +3426,7 @@ if($issampledata){
 		function getObject(event){
 			console.log(event.value);
 
-			Jquery(".dtopentertrade").find("#newdate").addClass("its here");
+			jQuery(".dtopentertrade").find("#newdate").addClass("its here");
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

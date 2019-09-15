@@ -3429,7 +3429,7 @@ if($issampledata){
 		function getObject(event){
 			console.log(event.value);
 
-			jQuery(".dtopentertrade").find("#newdate").value(event.value);
+			jQuery(".dtopentertrade").find("#newdate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

@@ -2154,10 +2154,10 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
                                                                                                 $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
-                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
+                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';

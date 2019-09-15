@@ -2144,7 +2144,7 @@ if($issampledata){
 																								// { "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
 
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2c3e51' : ($fwinkey == 1 ? '#0c1e34' : ($fwinkey == 2 ? '#182a3f' : ''))).'",';
+                                                                                                $intowinchartbands .= '"color": "#ffffff",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100",';
                                                                                                 $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '63' : ''))).'%",';

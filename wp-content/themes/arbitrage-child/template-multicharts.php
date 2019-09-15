@@ -121,7 +121,7 @@ iframe {
     .chart_logo_arbitrage{
 		position: absolute;
 		z-index: 9;
-		top: 4px;
+		top: 8px;
 		left: 9px;
 	}
 </style>

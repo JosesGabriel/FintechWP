@@ -1,4 +1,15 @@
-<?php /* Template Name: Multichart Main Page */ ?><!doctype html>
+<?php
+	/* Template Name: Multichart Main Page */
+    global $current_user; 
+    $homeurlgen = get_home_url();
+	$user = wp_get_current_user();
+	if ( is_user_logged_in() ) {
+		// user is now logged in
+	} else {
+		wp_redirect( $homeurlgen, 301 );
+		exit;
+	}
+?><!doctype html>
 <html>
 <head>
 <meta charset="utf-8">

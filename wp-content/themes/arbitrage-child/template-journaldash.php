@@ -751,7 +751,8 @@ if($issampledata){
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
-																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" name="inpt_data_total_price " value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>

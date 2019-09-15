@@ -148,7 +148,7 @@ echo $user->ID ." versis ". $user->ID;
 			// wp_redirect('/journal');
 			// exit;
 			
-			echo "shouth base";
+			echo $total_stocks_price." vs ".$buypower;
 		}
 
 		exit;

@@ -1476,6 +1476,113 @@ if($issampledata){
 																</div>
 
 															</div><br class="clear">
+
+															<?php
+                                                            $months = array(
+                                                                'January',
+                                                                'February',
+                                                                'March',
+                                                                'April',
+                                                                'May',
+                                                                'June',
+                                                                'July ',
+                                                                'August',
+                                                                'September',
+                                                                'October',
+                                                                'November',
+                                                                'December',
+                                                            );
+
+                                                        // get lits of combi strats
+                                                            $iswin = 0;
+                                                            $isloss = 0;
+															$totaltrade = 0;
+															$totalprofit = 0;
+                                                            foreach ($alltradelogs as $key => $value) {
+                                                                $data_sellmonth = $value['data_sellmonth'];
+                                                                $data_sellday = $value['data_sellday'];
+                                                                $data_sellyear = $value['data_sellyear'];
+
+                                                                $data_stock = $value['data_stock'];
+                                                                $data_dprice = $value['data_dprice'];
+                                                                $data_dprice = str_replace('₱', '', $data_dprice);
+
+                                                                $data_sell_price = $value['data_sell_price'];
+                                                                $data_quantity = $value['data_quantity'];
+
+                                                                $data_trade_info = $value['data_trade_info'];
+                                                                // $data_trade_info = json_decode($data_trade_info);
+                                                                $data_avr_price = $value['data_avr_price'];
+
+                                                                // get prices
+                                                                $soldplace = $data_quantity * $data_sell_price;
+                                                                $baseprice = $data_quantity * $data_dprice;
+
+                                                                $sellfee = getjurfees($soldplace, 'sell');
+
+                                                                //profit or loss
+                                                                $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
+
+                                                                // profperc
+                                                                $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
+                                                                $totalprofit += $dprofit;
+
+                                                                ++$totaltrade;
+                                                                if ($dprofit > 0) {
+                                                                    ++$iswin;
+                                                                } else {
+                                                                    ++$isloss;
+                                                                }
+                                                            }
+
+                                                            $listmonth = [];
+                                                            foreach ($months as $ismkey => $ismvalue) {
+                                                                $innermonth = [];
+                                                                $innermonth['dmonth'] = $ismvalue;
+                                                                $innermonth['dprofit'] = 0;
+                                                                foreach ($alltradelogs as $trdkey => $trdvalue) {
+                                                                    if ($trdvalue['data_sellmonth'] == $ismvalue) {
+                                                                        $data_sellmonth = $trdvalue['data_sellmonth'];
+                                                                        $data_sellday = $trdvalue['data_sellday'];
+                                                                        $data_sellyear = $trdvalue['data_sellyear'];
+
+                                                                        $data_stock = $trdvalue['data_stock'];
+                                                                        $data_dprice = $trdvalue['data_dprice'];
+                                                                        $data_dprice = str_replace('₱', '', $data_dprice);
+
+                                                                        $data_sell_price = $trdvalue['data_sell_price'];
+                                                                        $data_quantity = $trdvalue['data_quantity'];
+
+                                                                        $data_trade_info = $trdvalue['data_trade_info'];
+                                                                        // $data_trade_info = json_decode($data_trade_info);
+                                                                        $data_avr_price = $trdvalue['data_avr_price'];
+
+                                                                        // get prices
+                                                                        $soldplace = $data_quantity * $data_sell_price;
+                                                                        $baseprice = $data_quantity * $data_dprice;
+
+                                                                        $sellfee = getjurfees($soldplace, 'sell');
+
+                                                                        //profit or loss
+                                                                        $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
+
+                                                                        // $totalprofit += $dprofit;
+                                                                        $innermonth['dprofit'] += $dprofit;
+                                                                    }
+                                                                }
+                                                                array_push($listmonth, $innermonth);
+                                                            }
+
+                                                            $formonthperc = '';
+                                                            foreach ($listmonth as $lomkey => $lomvalue) {
+                                                                $formonthperc .= '{';
+                                                                $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
+                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
+                                                                $formonthperc .= '},';
+                                                            }
+
+                                                        ?>
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics
@@ -1684,112 +1791,7 @@ if($issampledata){
                                                                 $forchart .= '},';
                                                             }
                                                         ?>
-                                                    <?php
-                                                            $months = array(
-                                                                'January',
-                                                                'February',
-                                                                'March',
-                                                                'April',
-                                                                'May',
-                                                                'June',
-                                                                'July ',
-                                                                'August',
-                                                                'September',
-                                                                'October',
-                                                                'November',
-                                                                'December',
-                                                            );
-
-                                                        // get lits of combi strats
-                                                            $iswin = 0;
-                                                            $isloss = 0;
-															$totaltrade = 0;
-															$totalprofit = 0;
-                                                            foreach ($alltradelogs as $key => $value) {
-                                                                $data_sellmonth = $value['data_sellmonth'];
-                                                                $data_sellday = $value['data_sellday'];
-                                                                $data_sellyear = $value['data_sellyear'];
-
-                                                                $data_stock = $value['data_stock'];
-                                                                $data_dprice = $value['data_dprice'];
-                                                                $data_dprice = str_replace('₱', '', $data_dprice);
-
-                                                                $data_sell_price = $value['data_sell_price'];
-                                                                $data_quantity = $value['data_quantity'];
-
-                                                                $data_trade_info = $value['data_trade_info'];
-                                                                // $data_trade_info = json_decode($data_trade_info);
-                                                                $data_avr_price = $value['data_avr_price'];
-
-                                                                // get prices
-                                                                $soldplace = $data_quantity * $data_sell_price;
-                                                                $baseprice = $data_quantity * $data_dprice;
-
-                                                                $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                //profit or loss
-                                                                $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
-
-                                                                // profperc
-                                                                $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
-                                                                $totalprofit += $dprofit;
-
-                                                                ++$totaltrade;
-                                                                if ($dprofit > 0) {
-                                                                    ++$iswin;
-                                                                } else {
-                                                                    ++$isloss;
-                                                                }
-                                                            }
-
-                                                            $listmonth = [];
-                                                            foreach ($months as $ismkey => $ismvalue) {
-                                                                $innermonth = [];
-                                                                $innermonth['dmonth'] = $ismvalue;
-                                                                $innermonth['dprofit'] = 0;
-                                                                foreach ($alltradelogs as $trdkey => $trdvalue) {
-                                                                    if ($trdvalue['data_sellmonth'] == $ismvalue) {
-                                                                        $data_sellmonth = $trdvalue['data_sellmonth'];
-                                                                        $data_sellday = $trdvalue['data_sellday'];
-                                                                        $data_sellyear = $trdvalue['data_sellyear'];
-
-                                                                        $data_stock = $trdvalue['data_stock'];
-                                                                        $data_dprice = $trdvalue['data_dprice'];
-                                                                        $data_dprice = str_replace('₱', '', $data_dprice);
-
-                                                                        $data_sell_price = $trdvalue['data_sell_price'];
-                                                                        $data_quantity = $trdvalue['data_quantity'];
-
-                                                                        $data_trade_info = $trdvalue['data_trade_info'];
-                                                                        // $data_trade_info = json_decode($data_trade_info);
-                                                                        $data_avr_price = $trdvalue['data_avr_price'];
-
-                                                                        // get prices
-                                                                        $soldplace = $data_quantity * $data_sell_price;
-                                                                        $baseprice = $data_quantity * $data_dprice;
-
-                                                                        $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                        //profit or loss
-                                                                        $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
-
-                                                                        // $totalprofit += $dprofit;
-                                                                        $innermonth['dprofit'] += $dprofit;
-                                                                    }
-                                                                }
-                                                                array_push($listmonth, $innermonth);
-                                                            }
-
-                                                            $formonthperc = '';
-                                                            foreach ($listmonth as $lomkey => $lomvalue) {
-                                                                $formonthperc .= '{';
-                                                                $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
-                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
-                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
-                                                                $formonthperc .= '},';
-                                                            }
-
-                                                        ?>
+                                                    
 
                                                     	
 													<br class="clear">

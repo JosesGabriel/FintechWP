@@ -2152,7 +2152,7 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '"endValue": "100",';
                                                                                                 $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"alpha": 0.8';
+                                                                                                $intowinchartbands .= '"alpha": 0.5';
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
@@ -2212,7 +2212,7 @@ if($issampledata){
                                                                                                 $intolosschartbands .= '"endValue": "100",';
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
-                                                                                                $intolosschartbands .= '"alpha": 0.8';
+                                                                                                $intolosschartbands .= '"alpha": 0.5';
                                                                                                 $intolosschartbands .= '}, {';
 																								$intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#B91E45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';

@@ -3686,7 +3686,7 @@ if($issampledata){
 		});
 
 		// calculate total price
-		jQuery(document).on('keyup', 'input[name="inpt_data_price"], input["inpt_data_qty"]', function (e) {
+		jQuery(document).on('keyup', 'input[name="inpt_data_price"], input[name="inpt_data_qty"]', function (e) {
 			let $price = jQuery('input[name="inpt_data_price"]');
 			let $quantity = jQuery('input["inpt_data_qty"]');
 

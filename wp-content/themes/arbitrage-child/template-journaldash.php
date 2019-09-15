@@ -1448,8 +1448,19 @@ if($issampledata){
 																	</div>
 																	<br class="clear">
 																</div>
+															<div class="box-portlet">
+                                                                <div class="box-portlet-header">
+                                                                    Monthly Performance
+                                                                </div>
+                                                                <div class="box-portlet-content" style="padding-right: 0;padding-bottom: 0;">
+                                                                    <div class="col-md-12" style="padding: 0px;">
+                                                                        <div id="chartdiv2"></div>
+                                                                    </div>
+                                                                    <br class="clear">
+                                                                </div>
 
 															</div>
+														</div>
 														</div>
 														<div class="col-md-5">
 															<div class="box-portlet" style="height:202px;">
@@ -1462,6 +1473,62 @@ if($issampledata){
 																		<br class="clear">
 																	</div>
 																</div>
+
+															</div>
+															<div class="box-portlet">
+																<div class="box-portlet-header" style="text-align:center;">
+																	Trade Statistics
+																	<?php
+																		if($isjounalempty){
+																			$iswin = 100;
+																			$isloss = 60;
+																			$totaltrade = 160;
+																		}
+																	?>
+																</div>
+                                                                <div class="chartarea col-md-6" style="margin-bottom: -3px;">
+                                                                    <div id="chartdiv4a"></div>
+                                                                </div>
+                                                                <div class="stats-info col-md-6" style="padding: 0">
+
+                                                                    <div class="" style="padding: 11px 12px 7px 0;">
+                                                                        <div class="dstatstrade eqpad">
+                                                                            <ul style="margin-bottom:0 !important;">
+
+                                                                                <li>
+                                                                                    <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
+                                                                                    <div class="width35"><?php echo $iswin; ?></div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="width60"><span class="bulletclrd clrr1"></span> Losses</div>
+                                                                                    <div class="width35"><?php echo $isloss; ?></div>
+                                                                                </li>
+
+                                                                            </ul>
+																		</div>
+																		<div class="dstatstrade eqpad">
+                                                                            <ul style="margin-bottom:0 !important;">
+
+                                                                                <li>
+                                                                                    <div class="width60">Total Trades</div>
+                                                                                    <div class="width35"><?php echo $totaltrade; ?></div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="width60"><strong>Win Rate</strong></div>
+                                                                                    <div class="width35"><strong><?php
+                                                                                        if ($iswin > 0) {
+                                                                                            echo number_format(($iswin / $totaltrade) * 100, 2, '.', ',');
+                                                                                        } else {
+                                                                                            echo '0.00';
+                                                                                        }
+                                                                                     ?>%</strong></div>
+                                                                                </li>
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
 
 															</div>
 														</div>
@@ -1513,7 +1580,6 @@ if($issampledata){
                                                             }
                                                         }
                                                     ?>
-													<div class="row monthly">
 														<?php
                                                             // get lits of combi strats
                                                             $lisfofcombi = [];
@@ -1725,83 +1791,7 @@ if($issampledata){
 
                                                         ?>
 
-                                                    	<div class="col-md-7" style="padding-right: 0;">
-                                                            <div class="box-portlet">
-                                                                <div class="box-portlet-header">
-                                                                    Monthly Performance
-                                                                </div>
-                                                                <div class="box-portlet-content" style="padding-right: 0;padding-bottom: 0;">
-                                                                    <div class="col-md-12" style="padding: 0px;">
-                                                                        <div id="chartdiv2"></div>
-                                                                    </div>
-                                                                    <br class="clear">
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-														<div class="col-md-5">
-															<div class="box-portlet">
-																<div class="box-portlet-header" style="text-align:center;">
-																	Trade Statistics
-																	<?php
-																		if($isjounalempty){
-																			$iswin = 100;
-																			$isloss = 60;
-																			$totaltrade = 160;
-																		}
-																	?>
-																</div>
-                                                                <div class="chartarea col-md-6" style="margin-bottom: -3px;">
-                                                                    <div id="chartdiv4a"></div>
-                                                                </div>
-                                                                <div class="stats-info col-md-6" style="padding: 0">
-
-                                                                    <div class="" style="padding: 11px 12px 0 0;">
-                                                                        <div class="dstatstrade eqpad">
-                                                                            <ul style="margin-bottom:0 !important;">
-
-                                                                                <li>
-                                                                                    <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
-                                                                                    <div class="width35"><?php echo $iswin; ?></div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="width60"><span class="bulletclrd clrr1"></span> Losses</div>
-                                                                                    <div class="width35"><?php echo $isloss; ?></div>
-                                                                                </li>
-
-                                                                            </ul>
-																		</div>
-																		<div class="dstatstrade eqpad">
-                                                                            <ul style="margin-bottom:0 !important;">
-
-                                                                                <li>
-                                                                                    <div class="width60">Total Trades</div>
-                                                                                    <div class="width35"><?php echo $totaltrade; ?></div>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="width60"><strong>Win Rate</strong></div>
-                                                                                    <div class="width35"><strong><?php
-                                                                                        if ($iswin > 0) {
-                                                                                            echo number_format(($iswin / $totaltrade) * 100, 2, '.', ',');
-                                                                                        } else {
-                                                                                            echo '0.00';
-                                                                                        }
-                                                                                     ?>%</strong></div>
-                                                                                </li>
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-
-															</div>
-														</div>
-
-                                                        <br class="clear">
-
-													</div>
+                                                    	
 													<br class="clear">
 
 													<!-- BOF Strategy Statistics -->

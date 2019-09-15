@@ -734,6 +734,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             goToChart(symbol);
         }, 100);
         $('#select-' + symbol).focus();
+
+        //update market depth percentage
+        $scope.updateMarketDepth()
     };
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {

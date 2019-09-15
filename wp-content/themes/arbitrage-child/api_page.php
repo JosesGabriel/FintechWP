@@ -172,7 +172,90 @@
 			return json_encode(['bull' => $totalbull, 'bear' => $totalbear]);
 	}
 
-	if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
+	if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
+		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
+		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
+
+        $tradeinfo = [];
+		$tradeinfo['buymonth'] = date('F', strtotime($_POST['newdate']));
+        $tradeinfo['buyday'] = date('d', strtotime($_POST['newdate']));
+		$tradeinfo['buyyear'] = date('Y', strtotime($_POST['newdate']));
+        $tradeinfo['stock'] = $_POST['inpt_data_stock'];
+		$tradeinfo['price'] = $butstockprice;
+        $tradeinfo['qty'] = $stockquantity;
+        $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
+        $tradeinfo['change'] = $_POST['inpt_data_change'];
+        $tradeinfo['open'] = $_POST['inpt_data_open'];
+        $tradeinfo['low'] = $_POST['inpt_data_low'];
+        $tradeinfo['high'] = $_POST['inpt_data_high'];
+        $tradeinfo['volume'] = $_POST['inpt_data_volume'];
+        $tradeinfo['value'] = $_POST['inpt_data_value'];
+        $tradeinfo['boardlot'] = $_POST['inpt_data_boardlot'];
+        $tradeinfo['strategy'] = $_POST['inpt_data_strategy'];
+        $tradeinfo['tradeplan'] = $_POST['inpt_data_tradeplan'];
+        $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
+        $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
+		$tradeinfo['status'] = $_POST['inpt_data_status'];
+		 
+		$dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
+		
+		echo json_encode([
+			'post' => $_POST,
+			'list' => $dlistofstocks,
+		]);
+		die();
+
+        if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
+            $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
+            if ($dstocktraded && $dstocktraded != '') {
+                array_push($dstocktraded['data'], $tradeinfo);
+                $dstocktraded['totalstock'] = $dstocktraded['totalstock'] + $stockquantity;
+
+                $totalprice = 0;
+                $totalquanta = 0;
+                foreach ($dstocktraded['data'] as $ddatakey => $ddatavalue) {
+                    $dmarkvval = $ddatavalue['price'] * $ddatavalue['qty'];
+                    $dfees = getjurfees($dmarkvval, 'buy');
+                    $totalprice += $dmarkvval + $dfees;
+                    $totalquanta += $ddatavalue['qty'];
+                }
+                $dstocktraded['aveprice'] = ($totalprice / $totalquanta);
+
+                update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $dstocktraded);
+            }
+        } else {
+            $finaldata = [];
+            $finaldata['data'] = [];
+            array_push($finaldata['data'], $tradeinfo);
+            $finaldata['totalstock'] = $stockquantity;
+            $dmarkvval = $tradeinfo['price'] * $tradeinfo['qty'];
+            $dfees = getjurfees($dmarkvval, 'buy');
+            $finaldata['aveprice'] = ($dmarkvval + $dfees) / $tradeinfo['qty'];
+            update_user_meta($user->ID, '_trade_'.$tradeinfo['stock'], $finaldata);
+
+            if (!$dlistofstocks) {
+                $djournstocks = array($tradeinfo['stock']);
+            } else {
+                $djournstocks = $dlistofstocks;
+                array_push($djournstocks, $tradeinfo['stock']);
+            }
+            update_user_meta($user->ID, '_trade_list', $djournstocks);
+        }
+        $dtotalpurchse = $butstockprice * $stockquantity;
+        echo $dtotalpurchse;
+
+        $stockcost = ($butstockprice * $stockquantity);
+        $purchasefee = getjurfees($stockcost, 'buy');
+
+        $wpdb->insert('arby_ledger', array(
+                'userid' => $user->ID,
+                'date' => date('Y-m-d'),
+                'trantype' => 'purchase',
+                'tranamount' => $stockcost + $purchasefee, // ... and so on
+            ));
+	}
+
+	else if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
 		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
 		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );

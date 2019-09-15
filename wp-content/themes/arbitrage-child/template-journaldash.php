@@ -3279,7 +3279,9 @@ if($issampledata){
                                                                                     }
 																				}
 
-																				foreach ($dledger as $key => $value) { ?>
+																				foreach ($dledger as $key => $value) {
+																					if($value->trantype == "deposit" || $value->trantype = "withraw"):
+																					?>
 																					<li>
 																						<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
@@ -3287,7 +3289,9 @@ if($issampledata){
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>
-																			<?php }
+																			<?php
+																					endif;
+																				}
 																			?>
 																			
 																			<?php

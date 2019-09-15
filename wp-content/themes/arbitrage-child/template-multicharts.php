@@ -14,7 +14,9 @@
 <head>
 <meta charset="utf-8">
 <title>Arbitrage | Multicharts</title>
-<link rel="shortcut icon" href="https://1948265747.rsc.cdn77.org/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
+<link rel="shortcut icon" href="https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<meta name="robots" content="noindex">
 <style>
 html, body {
 	height:100%;

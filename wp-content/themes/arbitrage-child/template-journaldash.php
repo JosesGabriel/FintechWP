@@ -1381,7 +1381,7 @@ if($issampledata){
 
                                                     ?>
 
-													<br class="clear">
+													
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -1449,6 +1449,7 @@ if($issampledata){
 																	</div>
 																	<br class="clear">
 																</div>
+															</div><br class="clear">
 															<div class="box-portlet">
                                                                 <div class="box-portlet-header">
                                                                     Monthly Performance
@@ -1475,7 +1476,7 @@ if($issampledata){
 																	</div>
 																</div>
 
-															</div>
+															</div><br class="clear">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics

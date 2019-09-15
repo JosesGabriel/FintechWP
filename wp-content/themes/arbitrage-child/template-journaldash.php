@@ -3939,7 +3939,7 @@ if($issampledata){
 				"markerSize": 14,
 				"markerType": "circle",
 				"position": "left",
-				"valueWidth": 55
+				"valueWidth": 70
 			},
 			"titles": [],
 			"dataProvider": [<?php echo $currentalocinfo; ?>]

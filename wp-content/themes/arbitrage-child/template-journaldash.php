@@ -3708,7 +3708,7 @@ if($issampledata){
 			let form = jQuery(this).serializeArray();
 
 			jQuery.ajax({
-				url: '/apipge'
+				url: '/apipge',
 				method: 'POST',
 				data: form,
 				dataType: 'json',

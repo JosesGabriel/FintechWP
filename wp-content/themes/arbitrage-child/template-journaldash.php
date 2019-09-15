@@ -2158,9 +2158,9 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';
-                                                                                                $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
+                                                                                                $intowinchartlabels .= '"text": "'. ($fwinvalue['dstock'] >= 3 ? '' : $fwinvalue['dstock']).'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($fwinkey == 0 ? '20' : '33'))).'%",';
+                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';
                                                                                                 $intowinchartlabels .= '"bold": false,';
                                                                                                 $intowinchartlabels .= '"color": "#d8d8d8",';
@@ -2218,7 +2218,7 @@ if($issampledata){
 																								$intolosschartbands .= '},';
 																								
 																								$intolosschartlabels .= '{';
-																								$intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
+																								$intolosschartlabels .= '"text": "'. ($fwinvalue['dstock'] >= 3 ? '' : $fwinvalue['dstock']).'",';
 																								$intolosschartlabels .= '"x": "49%",';
 																								$intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
 																								$intolosschartlabels .= '"size": 11,';

@@ -3693,7 +3693,7 @@ if($issampledata){
 				jQuery(".dentertrade").submit();
 			} else {
 				swal('Not enough buying power.');
-				jQuery('.chart-loader').css("display","block");
+				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
 			}
 		});

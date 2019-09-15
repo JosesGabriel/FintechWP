@@ -3426,7 +3426,7 @@ if($issampledata){
 		function getObject(event){
 			console.log(event.value);
 
-			jQuery(".dtopentertrade").find("#newdate").addClass("its here");
+			jQuery(".dtopentertrade").find("#newdate").value(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

@@ -2206,8 +2206,8 @@ if($issampledata){
 																								
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
-                                                                                                $intolosschartbands .= '{';
-																								$intolosschartbands .= '"color": "'.($flosskey == 0 ? '#B91E45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
+																								$intolosschartbands .= '{';
+																								$intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
                                                                                                 $intolosschartbands .= '"endValue": "100",';
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
@@ -2225,7 +2225,7 @@ if($issampledata){
                                                                                                 $intolosschartlabels .= '{';
                                                                                                 $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
                                                                                                 $intolosschartlabels .= '"x": "49%",';
-                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '15' : ($flosskey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
                                                                                                 $intolosschartlabels .= '"size": 11,';
                                                                                                 $intolosschartlabels .= '"bold": false,';
                                                                                                 $intolosschartlabels .= '"color": "#d8d8d8",';

@@ -252,6 +252,7 @@ echo $user->ID ." versis ". $user->ID;
 		$sellmonth = date('F', strtotime($_POST['selldate']));
 		$sellday = date('d', strtotime($_POST['selldate']));
 		$sellyear = date('Y', strtotime($_POST['selldate']));
+		$selldayname = date('l', strtotime($_POST['selldate']));
 
 		// print_r($_POST);
 		// exit;
@@ -273,7 +274,7 @@ echo $user->ID ." versis ". $user->ID;
                 'data_sellday' => $sellday,
                 'data_sellyear' => $sellyear,
 
-                'data_isdateofw' => date('l'),
+                'data_isdateofw' => $selldayname,
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
@@ -308,7 +309,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $wpdb->insert('arby_ledger', array(
                 'userid' => $user->ID,
-                'date' => date('Y-m-d'),
+                'date' => date('Y-m-d', strtotime($_POST['selldate'])),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
             ));

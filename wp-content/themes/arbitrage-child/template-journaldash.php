@@ -416,7 +416,7 @@ if($issampledata){
 	// echo "no smaple";
 } else {
 	$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+	$getdstocks = ['Stock_1', 'Stock_2'];
 	$dtradeingfo = [
 		[
 			'data' => [
@@ -445,7 +445,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
+			'stockname' => 'Stock_1',
 		],
 		[
 			'data' => [
@@ -474,7 +474,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
+			'stockname' => 'Stock_2',
 		]
 	];
 	// echo "with sample";
@@ -563,8 +563,8 @@ if($issampledata){
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
-		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500"';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},{"category" : "Sample Stock 3", "column-1" : "59760.32"}';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF2B66","#FFB700","#CEF500","#FF5500","#00AAFF","#CC0066","#33FF99"';
 	}
     
 ?>
@@ -2048,18 +2048,18 @@ if($issampledata){
 
                                                         function sortprofits($a, $b)
                                                         {
-                                                            return $a['dprofit'] - $b['dprofit'];
+															return $b['dprofit'] - $a['dprofit'];
                                                         }
-
+														
                                                         function winningsort($a, $b)
                                                         {
-                                                            return $b['dprofit'] - $a['dprofit'];
+															return $a['dprofit'] - $b['dprofit'];
                                                         }
 
                                                         // winning stocks
                                                         // usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
-                                                        $finalwinning = [];
+														$finalwinning = [];
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];
@@ -2068,9 +2068,8 @@ if($issampledata){
                                                             }
                                                         }
                                                         // usort($finalwinning, 'winningsort');
-
                                                         $finalloss = [];
-                                                        $totalloss = 0;
+														$totalloss = 0;
                                                         foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
                                                             array_push($finalloss, $pxlossvalue);
                                                             $totalloss += $pxlossvalue['dprofit'];
@@ -2107,6 +2106,7 @@ if($issampledata){
                                                                                             </li><?php */?>
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
+																							
 																							if($isjounalempty){
 																								$finalwinning = [
 																									0 => [
@@ -2122,12 +2122,13 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
+																								rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2136,15 +2137,15 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '{';
                                                                                                 $intowinchartbands .= '"color": "#ffffff",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
-                                                                                                $intowinchartbands .= '"endValue": 100,';
-                                                                                                $intowinchartbands .= '"radius": "100%",';
+                                                                                                $intowinchartbands .= '"endValue": "100%",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '50' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"innerRadius": "85%",';
                                                                                                 $intowinchartbands .= '"alpha": 0.05';
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "#00e676",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
                                                                                                 $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intowinchartbands .= ' "radius": "100%",';
+                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '50' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "innerRadius": "85%",';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
@@ -2178,6 +2179,7 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
+																								sort($finalloss);
 																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
@@ -2195,7 +2197,7 @@ if($issampledata){
                                                                                                 $intolosschartbands .= '{';
                                                                                                 $intolosschartbands .= '"color": "#ffffff",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
-                                                                                                $intolosschartbands .= '"endValue": 100,';
+                                                                                                $intolosschartbands .= '"endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
                                                                                                 $intolosschartbands .= '"radius": "100%",';
                                                                                                 $intolosschartbands .= '"innerRadius": "85%",';
                                                                                                 $intolosschartbands .= '"alpha": 0.05';
@@ -3019,6 +3021,7 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    
 																				</div>
 																				<?php  $tnum++; ?>
 																				<div class="hidethis">

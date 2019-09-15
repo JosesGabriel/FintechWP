@@ -506,6 +506,7 @@ img.arb_newpostimg {
 #chartdiv1 {
     width: 100%;
     height: 230px;
+    overflow: visible !important;
 }
 #chartdiv1 .amcharts-main-div {
     margin-top: -37px;
@@ -571,9 +572,11 @@ img.arb_newpostimg {
     width:100%;
 }
 .stats-info {
+    
+}
+.dstatstrade ul li {
     background: rgba(17, 34, 51, 0.4);
 }
-
 /* Minitable overrides */
 .widthfull, .widthhalf, .width60, .width40 {display: inline-block;}
 .widthfull {width: 100% !important;}
@@ -617,6 +620,7 @@ img.arb_newpostimg {
 
 .dstatstrade.overridewidth ul li div {
     width: auto;
+    text-align: left;
 }
 
     /* Enter Trade Form */
@@ -1363,4 +1367,22 @@ input.enter-trade-btn:hover {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #34495e;
+}
+.amcharts-balloon-div span {
+    font-size: 10px !important;
+}
+#chartdiv1 .amcharts-chart-div svg {
+    overflow: visible !important;
+}
+.swal-button--cancel:active {
+    background-color: #9e9e9e !important;
+}
+.swal-button--cancel:focus {
+    box-shadow: none;
+}
+.swal-button--danger:not([disabled]):hover {
+    background-color: #00bcd4 !important;
+}
+.swal-button--danger:focus {
+    box-shadow: none;
 }

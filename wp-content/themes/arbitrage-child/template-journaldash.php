@@ -2147,7 +2147,7 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '"color": "#ffffff",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100%",';
-                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '50' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '65' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '35' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"alpha": 0.05';
                                                                                                 $intowinchartbands .= '}, {';
@@ -3425,6 +3425,8 @@ if($issampledata){
 
 		function getObject(event){
 			console.log(event.value);
+
+			Jquery(this).parents(".entertrade").addClass("its here");
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

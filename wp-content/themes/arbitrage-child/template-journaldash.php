@@ -3711,9 +3711,9 @@ if($issampledata){
 			let price = jQuery('input[name="inpt_data_price"]').val().replace(/,/g, '');
 			// let quantity = jQuery('input[name="inpt_data_qty"]').val().replace(/,/g, '');
 			let quantity = jQuery('input[name="inpt_data_qty"]').val();
-
-			let total_price = parseFloat(price) * Math.trunc(quantity);
 			console.log(price + " ~ " + quantity);
+			let total_price = parseFloat(price) * Math.trunc(quantity);
+			
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 			
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);

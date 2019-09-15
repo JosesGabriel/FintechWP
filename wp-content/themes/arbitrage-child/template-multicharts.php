@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Arbitrage | Multicharts | <?php echo $homeurlgen; ?></title>
+<title>Arbitrage | Multicharts</title>
 <link rel="shortcut icon" href="https://1948265747.rsc.cdn77.org/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
 <style>
 html, body {

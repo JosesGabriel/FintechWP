@@ -772,7 +772,7 @@ if($issampledata){
                                                                                             <div class="groupinput midd lockedd">
 																								<label>Buy Date</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
 																								<i class="fa fa-lock" aria-hidden="true"></i>
-                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker" onchange="getObject(this);">
+                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker" onchange="selldate(this);">
 																							</div>
 
 
@@ -1145,7 +1145,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">

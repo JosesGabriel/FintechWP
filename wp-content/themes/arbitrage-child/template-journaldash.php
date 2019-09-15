@@ -706,7 +706,7 @@ if($issampledata){
 																			?>
 																			<div class="entertrade dtopentertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php /*echo date('F j, Y g:i a');*/ ?></span>
 																				</div>
 																				<form action="/journal" method="post" class="dentertrade">
 																				<div class="entr_wrapper_top">
@@ -750,6 +750,14 @@ if($issampledata){
 																								<i class="fa fa-lock" aria-hidden="true"></i>
 																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
 																							</div>
+
+                                                                                            <div class="groupinput midd lockedd">
+																								<label>Buy Date</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
+																								<i class="fa fa-lock" aria-hidden="true"></i>
+                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker" onchange="getObject(this);">
+																							</div>
+
+
 																						</div>
 																						<div class="entr_clear"></div>
 																				</div>

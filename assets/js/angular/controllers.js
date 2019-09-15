@@ -554,10 +554,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
             console.log('END PSEBD', $scope.asks);
         }
+        $scope.$digest();
     });
 
     $scope.updateBidAndAsks = function (list, data) {
-        console.log('UPDATE BIDS ASKS', list, data);
+        console.log('UPDATE BIDS ASKS', list);
         let index = list.findIndex(item => item.id == data.id)
         if (data.ty == 'a') {
             if (typeof list[index] !== 'undefined') {
@@ -581,13 +582,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
-
+        console.log('END UPDATE BIDS ASKS', list);
         return list;
     }
 
     $scope.updateBidAskCount = function (list, id, increment) {
         if (typeof list[id] !== 'undefined') {
-            list[id] += increment;
+            list[id].count += increment;
 
             if (list[id].count <= 0) {
                 delete(list[id]);

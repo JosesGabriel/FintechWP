@@ -145,13 +145,9 @@ echo $user->ID ." versis ". $user->ID;
 		$total_stocks_price = bcadd($stockquantity, $butstockprice);
 
 		if ($total_stocks_price > $buypower) {
-			// wp_redirect('/journal');
-			// exit;
-			
-			echo $total_stocks_price." vs ".$buypower;
+			wp_redirect('/journal');
+			exit;
 		}
-
-		exit;
 
         $tradeinfo = [];
         // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];

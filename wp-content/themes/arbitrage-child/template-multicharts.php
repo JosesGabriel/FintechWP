@@ -4,7 +4,8 @@
     $homeurlgen = get_home_url();
 	$user = wp_get_current_user();
 	if ( is_user_logged_in() ) {
-		// user is now logged in
+        // user is now logged in
+        echo "login oh";
 	} else {
  //       wp_redirect( $homeurlgen.'/login/', 301 );
         wp_redirect( 'https://arbitrage.ph/login/', 301 );

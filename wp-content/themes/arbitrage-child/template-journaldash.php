@@ -128,7 +128,7 @@ echo $user->ID ." versis ". $user->ID;
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
 
-		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$user->ID);
 	
 		$buypower = 0;
 		foreach ($dledger as $getbuykey => $getbuyvalue) {

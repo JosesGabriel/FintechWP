@@ -2143,7 +2143,7 @@ if($issampledata){
                                                                                             $intowinchartlabels = '';
 																							krsort($finalwinning);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#06af68' : ($fwinkey >= 3 ? '' : '#00e676')))).';color: #b1e8ce;border: none;">';
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2201,7 +2201,7 @@ if($issampledata){
 																							$intolosschartlabels = '';
 																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#732546' : ($flosskey >= 3 ? '' : '#b91e45')))).';color: #132941;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.($flosskey <= 2 ? number_format($flossvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -3703,20 +3703,7 @@ if($issampledata){
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 
-		jQuery(document).on('submit', '.dentertrade', function (e) {
-			e.preventDefault();
-			let form = jQuery(this).serializeArray();
 
-			jQuery.ajax({
-				url: '/apipge',
-				method: 'POST',
-				data: form,
-				dataType: 'json',
-				success: function (response) {
-					
-				}
-			})
-		})
 		//$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");

@@ -1231,7 +1231,7 @@ if($issampledata){
 																			                        </div>
 		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">

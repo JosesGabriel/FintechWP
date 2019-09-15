@@ -1463,7 +1463,6 @@ if($issampledata){
 
 															</div>
 														</div>
-														</div>
 														<div class="col-md-5">
 															<div class="box-portlet" style="height:202px;">
 																<div class="box-portlet-header" style="text-align:center;">

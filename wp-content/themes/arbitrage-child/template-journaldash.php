@@ -162,8 +162,8 @@ echo $user->ID ." versis ". $user->ID;
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 
-		// print_r($tradeinfo);
-		// exit;
+		print_r($tradeinfo);
+		exit;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -2192,7 +2192,7 @@ if($issampledata){
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							// krsort($finalloss);
+																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : '#ff1744'))).';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
@@ -2203,7 +2203,7 @@ if($issampledata){
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
                                                                                                 $intolosschartbands .= '{';
-                                                                                                $intolosschartbands .= '"color": "#ffffff",';
+                                                                                                $intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
                                                                                                 $intolosschartbands .= '"endValue": "100",';
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';

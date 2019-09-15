@@ -3912,7 +3912,7 @@ if($issampledata){
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"pieX": "50%",
+			"pieX": "60%",
 			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>

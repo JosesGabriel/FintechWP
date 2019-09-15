@@ -585,7 +585,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         } else if (data.ty == 'u') {
             // same as au but drop the data.id entirely and add data.idn to list
             if (typeof list[index] !== 'undefined') {
-                delete(list[index])
+                list = list.filter((item, key) => {
+                    return key != index;
+                });
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
@@ -598,7 +600,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         if (typeof list[id] !== 'undefined') {
             list[id].count += increment;
             if (list[id].count <= 0) {
-                delete(list[id]);
+                list = list.filter((item, key) => {
+                    return key != id;
+                });
             }
         }
         return list;

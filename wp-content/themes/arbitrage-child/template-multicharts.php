@@ -6,7 +6,8 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $homeurlgen.'/login/', 301 );
+ //       wp_redirect( $homeurlgen.'/login/', 301 );
+        wp_redirect( 'https://arbitrage.ph/login/', 301 );
 		exit;
     }
     $user_id = $user->ID;

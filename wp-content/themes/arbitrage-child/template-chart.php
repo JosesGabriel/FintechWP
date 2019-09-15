@@ -1374,7 +1374,7 @@
 			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
-					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
+					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
 					<i class="fas fa-user-tie"></i>
 				<?php endif; ?></a>

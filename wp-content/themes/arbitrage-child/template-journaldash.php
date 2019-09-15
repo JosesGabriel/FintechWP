@@ -128,8 +128,26 @@ echo $user->ID ." versis ". $user->ID;
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
 
+		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	
+		$buypower = 0;
+		foreach ($dledger as $getbuykey => $getbuyvalue) {
+			if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+				$buypower = $buypower + $getbuyvalue->tranamount;
+			} else {
+				$buypower = $buypower - $getbuyvalue->tranamount;
+			}
+		}
+
 		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
+
+		$total_stocks_price = bcadd($stockquantity, $butstockprice);
+
+		if ($total_stocks_price > $buypower) {
+			wp_redirect('/journal');
+        	exit;
+		}
 
         $tradeinfo = [];
         // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
@@ -3700,7 +3718,20 @@ if($issampledata){
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 
+		// jQuery(document).on('submit', '.dentertrade', function (e) {
+		// 	e.preventDefault();
+		// 	let form = jQuery(this).serializeArray();
 
+		// 	jQuery.ajax({
+		// 		url: '/apipge',
+		// 		method: 'POST',
+		// 		data: form,
+		// 		dataType: 'json',
+		// 		success: function (response) {
+					
+		// 		}
+		// 	})
+		// })
 		//$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");

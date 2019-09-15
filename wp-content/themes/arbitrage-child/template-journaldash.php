@@ -4979,7 +4979,7 @@ if($issampledata){
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
 
-    jQuery(document).on('keyup', 'input.number', function (event) {
+    jQuery(document).on('keyup change', 'input.number', function (event) {
             // skip for arrow keyssss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();

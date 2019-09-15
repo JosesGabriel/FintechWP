@@ -749,8 +749,8 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
-																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="enterdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="enterdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">

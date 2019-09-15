@@ -1843,10 +1843,10 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bid in bids | limitTo: 20 | orderBy: '-bid_price'">
+																														<tr ng-repeat="bid in bids | limitTo: 20 | orderBy: '-price'">
 																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
 																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
-																															<td class="text-left" ng-class="{'text-green': bid.bid_price > stock.previous, 'text-red': bid.bid_price < stock.previous}" change="bid.bid_price"><strong>{{bid.bid_price > 0 ? (bid.bid_price | price) : ''}}</strong></td>
+																															<td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
 																														</tr>
 																													</tbody>
 																												</table>
@@ -1858,7 +1858,7 @@
 																													<col width="8.335%">
 																													<tbody>
 																														<tr ng-repeat="ask in asks | limitTo: 20">
-																															<td class="text-right" ng-class="{'text-green': ask.ask_price > stock.previous, 'text-red': ask.ask_price < stock.previous}" change="ask.volume"><strong>{{ask.ask_price > 0 ? (ask.ask_price | price) : ''}}</strong></td>
+																															<td class="text-right" ng-class="{'text-green': ask.price > stock.previous, 'text-red': ask.price < stock.previous}" change="ask.volume"><strong>{{ask.price > 0 ? (ask.price | price) : ''}}</strong></td>
 																															<td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
 																															<td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
 																														</tr>

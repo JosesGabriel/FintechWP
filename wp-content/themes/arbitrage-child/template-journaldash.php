@@ -132,9 +132,13 @@ echo $user->ID ." versis ". $user->ID;
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
 
         $tradeinfo = [];
-        $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
-        $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-		$tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+        // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
+        // $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
+		// $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+
+		$tradeinfo['buymonth'] = date('F', strtotime($_POST['newdate']));
+        $tradeinfo['buyday'] = date('d', strtotime($_POST['newdate']));
+		$tradeinfo['buyyear'] = date('Y', strtotime($_POST['newdate']));
 		
 		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];

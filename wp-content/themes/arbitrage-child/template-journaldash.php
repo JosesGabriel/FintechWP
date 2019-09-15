@@ -2207,20 +2207,20 @@ if($issampledata){
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
                                                                                                 $intolosschartbands .= '{';
-                                                                                                $intolosschartbands .= '"color": "#ffffff",';
+																								$intolosschartbands .= '"color": "'.($flosskey == 0 ? '#B91E45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
-                                                                                                $intolosschartbands .= '"endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
-                                                                                                $intolosschartbands .= '"radius": "100%",';
-                                                                                                $intolosschartbands .= '"innerRadius": "85%",';
-                                                                                                $intolosschartbands .= '"alpha": 0.05';
+                                                                                                $intolosschartbands .= '"endValue": "100",';
+                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                $intolosschartbands .= '"alpha": 0.8';
                                                                                                 $intolosschartbands .= '}, {';
-                                                                                                $intolosschartbands .= ' "color": "#00e676",';
+																								$intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#B91E45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
                                                                                                 $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
-                                                                                                $intolosschartbands .= ' "radius": "100%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "85%",';
+                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
                                                                                                 $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
-                                                                                                $intolosschartbands .= '},';
+																								$intolosschartbands .= '},';
 
                                                                                                 $intolosschartlabels .= '{';
                                                                                                 $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';

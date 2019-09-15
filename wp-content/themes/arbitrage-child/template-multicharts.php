@@ -244,7 +244,25 @@ iframe {
 	ul.main-drops-chart > ul li:last-child {
 	    border-bottom-left-radius: 4px !important;
 	    border-bottom-right-radius: 4px !important;
-	}   
+	}  
+    .arb_right_icons_trans {
+			position: absolute;
+		    width: 275px;
+		    right: -54px;
+		    top: 2px;
+			padding-left: 110px;
+		    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
+		    z-index: 9;
+		}
+		.arb-side-icon i {
+			border: none;
+			border-radius: 100%;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 16px;
+			background-color: rgba(44, 62, 80,0.8);
+		} 
 </style>
 </head>
 

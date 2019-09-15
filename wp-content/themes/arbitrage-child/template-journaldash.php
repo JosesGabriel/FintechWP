@@ -249,8 +249,12 @@ echo $user->ID ." versis ". $user->ID;
         $user_namee = $current_user->user_login;
 		$data_postid = $_POST['inpt_data_postid'];
 		
-		print_r($_POST);
-		exit;
+		$sellmonth = date('F', strtotime($_POST['selldate']));
+		$sellday = date('d', strtotime($_POST['selldate']));
+		$sellyear = date('Y', strtotime($_POST['selldate']));
+
+		// print_r($_POST);
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -261,9 +265,13 @@ echo $user->ID ." versis ". $user->ID;
             'post_category' => array(19, 20),
             'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
             'meta_input' => array(
-                'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-                'data_sellday' => $_POST['inpt_data_sellday'],
-                'data_sellyear' => $_POST['inpt_data_sellyear'],
+                // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
+                // 'data_sellday' => $_POST['inpt_data_sellday'],
+				// 'data_sellyear' => $_POST['inpt_data_sellyear'],
+				
+				'data_sellmonth' => $sellmonth,
+                'data_sellday' => $sellday,
+                'data_sellyear' => $sellyear,
 
                 'data_isdateofw' => date('l'),
 

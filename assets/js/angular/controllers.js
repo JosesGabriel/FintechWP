@@ -545,16 +545,20 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
      */
      socket.on('psebd', function (data) {
         console.log('PSEBD', data);
-        if (data.ov == 'B') {
-            // bid
-            $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
-            console.log('END PSEBD', $scope.bids);
-        } else if (data.ov == 'S') {
-            // ask
-            $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
-            console.log('END PSEBD', $scope.asks);
+
+        if ($scope.selectedStock == data.sym) {
+            if (data.ov == 'B') {
+                // bid
+                $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+                $scope.bids = $filter('orderBy')($scope.bids, '-price');
+                console.log('END PSEBD', $scope.bids);
+            } else if (data.ov == 'S') {
+                // ask
+                $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
+                console.log('END PSEBD', $scope.asks);
+            }
+            $scope.$digest();
         }
-        $scope.$digest();
     });
 
     $scope.updateBidAndAsks = function (list, data) {

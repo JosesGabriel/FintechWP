@@ -203,8 +203,8 @@ iframe {
 	ul.main-drops-chart > ul {
 		font-size: 13px !important;
 	    position: absolute !important;
-		right: 139px !important;
-	    top: 37px !important;
+		right: 195px !important;
+	    top: 56px !important;
 	    background: #142c46 !important;
 	    min-width: 180px !important;
 	    text-align: left !important;

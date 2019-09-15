@@ -2162,7 +2162,7 @@ if($issampledata){
                                                                                                 $intowinchartlabels .= '{';
                                                                                                 $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '15' : ($fwinkey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '13' : ($fwinkey == 2 ? '21' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';
                                                                                                 $intowinchartlabels .= '"bold": false,';
                                                                                                 $intowinchartlabels .= '"color": "#d8d8d8",';

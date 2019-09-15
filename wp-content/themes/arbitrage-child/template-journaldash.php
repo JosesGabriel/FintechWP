@@ -132,9 +132,13 @@ echo $user->ID ." versis ". $user->ID;
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
 
         $tradeinfo = [];
-        $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
-        $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-		$tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+        // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
+        // $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
+		// $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+
+		$tradeinfo['buymonth'] = date('F', strtotime($_POST['newdate']));
+        $tradeinfo['buyday'] = date('d', strtotime($_POST['newdate']));
+		$tradeinfo['buyyear'] = date('Y', strtotime($_POST['newdate']));
 		
 		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
@@ -158,7 +162,7 @@ echo $user->ID ." versis ". $user->ID;
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 
-		print_r($_POST);
+		print_r($tradeinfo);
 		exit;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
@@ -2137,7 +2141,7 @@ if($issampledata){
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
 																								$dwinning = $dwinning.$dinss;
-																								arsort($fwinkey['dprofit']);
+																								
                                                                                                 $intowinchartbands .= '{';
                                                                                                 $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';

@@ -2137,7 +2137,7 @@ if($issampledata){
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
 																								$dwinning = $dwinning.$dinss;
-																								arsort($fwinkey);
+																								arsort($fwinkey['dprofit']);
                                                                                                 $intowinchartbands .= '{';
                                                                                                 $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';

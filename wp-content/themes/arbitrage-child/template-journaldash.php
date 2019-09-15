@@ -726,7 +726,7 @@ if($issampledata){
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php /*echo date('F j, Y g:i a');*/ ?></span>
 																				</div>
-																				<form action="/journal" method="post" class="dentertrade">
+																				<form action="/journal" method="post" class="dentertrade" autocomplete="off">
 																				<div class="entr_wrapper_top">
 																						<div class="entr_col">
 																							<div class="groupinput fctnlhdn">

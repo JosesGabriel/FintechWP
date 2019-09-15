@@ -700,7 +700,7 @@ if($issampledata){
 																				$listosstocks = $gerdqoute->data;
 
 																			?>
-																			<div class="entertrade" id="entertrade_mtrade">
+																			<div class="entertrade dtopentertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>

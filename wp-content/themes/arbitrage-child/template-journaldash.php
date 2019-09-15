@@ -736,6 +736,7 @@ if($issampledata){
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -3679,6 +3680,18 @@ if($issampledata){
 			} else {
 				console.log("dont add trade");
 			}
+		});
+
+		// calculate total price
+		jQuery(document).on('keyup', 'input[name="inpt_data_price"], input["inpt_data_qty"]', function (e) {
+			let $price = jQuery('input[name="inpt_data_price"]');
+			let $quantity = jQuery('input["inpt_data_qty"]');
+
+			let total_price = parseFloat($price.val()) * Math.trunc($quantity.val());
+			
+			total_price = isNaN(total_price) || total_price < 0 ? 0 : total_price;
+
+			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 
 

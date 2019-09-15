@@ -2166,7 +2166,7 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';
-                                                                                                $intowinchartlabels .= '"text": "'. ($fwinkey <= 3 ? $fwinvalue['dstock'] : '').'",';
+                                                                                                $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '').'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
                                                                                                 $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';

@@ -564,6 +564,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.updateBidAndAsks = function (list, data) {
         console.log('UPDATE BIDS ASKS', list);
         let index = list.findIndex(function(item){
+            console.log('FIND INDEX', item);
             return item.id == data.id
         });
         if (data.ty == 'a') {

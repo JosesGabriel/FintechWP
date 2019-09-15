@@ -1229,9 +1229,9 @@ if($issampledata){
 
 																			                            </form>
 																			                        </div>
-		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
+		                                                                                        	<div class="entertrade buyaddtrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="buydate(this);"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -1325,7 +1325,7 @@ if($issampledata){
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																												<input type="hidden" value="Live" name="inpt_data_status">
-																												<input type="hidden" value="" name="isdate">
+																												<input type="hidden" value="" name="addstockisdate" id="addstockisdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -3459,7 +3459,11 @@ if($issampledata){
 
 			jQuery(".dtopentertrade").find("#newdate").val(event.value);
 		}
+		function buydate(event){
+			console.log(event.value);
 
+			jQuery(".buyaddtrade").find("#addstockisdate").val(event.value);
+		}
 		function selldate(event){
 			console.log(event.value);
 

@@ -1,14 +1,14 @@
 <?php
 	/* Template Name: Multichart Main Page */
     global $current_user; 
-    $homeurlgen = get_home_url();
+    $url = get_home_url();
 	$user = wp_get_current_user();
 	if ( is_user_logged_in() ) {
-		// user is now logged in
+        // user is now logged in
 	} else {
-		wp_redirect( $homeurlgen, 301 );
+        wp_redirect( $url.'/login/', 301 );
 		exit;
-	}
+    }
 ?><!doctype html>
 <html>
 <head>
@@ -119,7 +119,7 @@ iframe {
 
 <body>
 <div>
-		<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="<?php echo $url; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
 		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
 
@@ -128,13 +128,13 @@ iframe {
 	   
 	</div>
 <div style="height:50%;">
-    <iframe src="https://arbitrage.ph/multicharts/chart-part-1/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
-    <iframe src="https://arbitrage.ph/multicharts/chart-part-2/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
+    <iframe src="<?php echo $url; ?>/multicharts/chart-part-1/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
+    <iframe src="<?php echo $url; ?>/multicharts/chart-part-2/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>
 <div style="clear:both"></div>
 <div style="height:50%;">
-    <iframe src="https://arbitrage.ph/multicharts/chart-part-3/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
-    <iframe src="https://arbitrage.ph/multicharts/chart-part-4/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
+    <iframe src="<?php echo $url; ?>/multicharts/chart-part-3/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
+    <iframe src="<?php echo $url; ?>/multicharts/chart-part-4/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>
 </body>
 </html>

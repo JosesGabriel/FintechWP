@@ -700,7 +700,7 @@ if($issampledata){
 																				$listosstocks = $gerdqoute->data;
 
 																			?>
-																			<div class="entertrade" id="entertrade_mtrade">
+																			<div class="entertrade dtopentertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
 																				</div>
@@ -2128,7 +2128,7 @@ if($issampledata){
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2148,14 +2148,14 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100%",';
                                                                                                 $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '65' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '35' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '45' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"alpha": 0.05';
                                                                                                 $intowinchartbands .= '}, {';
-                                                                                                $intowinchartbands .= ' "color": "#00e676",';
+                                                                                                $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
                                                                                                 $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '50' : ''))).'%",';
-                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '35' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '65' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '65' : ($fwinkey == 2 ? '45' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 

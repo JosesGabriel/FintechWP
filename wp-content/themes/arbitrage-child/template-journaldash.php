@@ -2148,14 +2148,14 @@ if($issampledata){
                                                                                                 $intowinchartbands .= ' "innerRadius": '.($fwinvalue['dprofit'] == 0 ? '20%' : ($fwinvalue['dprofit'] == 1 ? '60%' : ($fwinvalue['dprofit'] == 2 ? '80%' : ''))).'';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
-																								{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
-																								{ "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "20%"},
+																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
+																								// { "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "20%"},
 																					
-																								{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
-																								{ "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "60%"},
+																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
+																								// { "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "60%"},
 																					
-																								{"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
-																								{ "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "80%"},
+																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
+																								// { "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "80%"},
                                                                                                 $intowinchartlabels .= '{';
                                                                                                 $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';

@@ -247,7 +247,10 @@ echo $user->ID ." versis ". $user->ID;
         $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
-        $data_postid = $_POST['inpt_data_postid'];
+		$data_postid = $_POST['inpt_data_postid'];
+		
+		print_r($_POST);
+		exit;
 
         // Update journal data.
         $journalpostlog = array(

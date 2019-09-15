@@ -1734,14 +1734,14 @@ if($issampledata){
 																		}
 																	?>
 																</div>
-                                                                <div class="chartarea" style="margin-bottom: -3px;">
+                                                                <div class="chartarea col-md-6" style="margin-bottom: -3px;">
                                                                     <div id="chartdiv4a"></div>
                                                                 </div>
-                                                                <div class="stats-info" style="padding: 0">
+                                                                <div class="stats-info col-md-6" style="padding: 0">
 
-                                                                    <div class="col-md-6" style="padding: 0 5px 0 10px;">
+                                                                    <div class="" style="padding: 11px 12px 0 0;">
                                                                         <div class="dstatstrade eqpad">
-                                                                            <ul>
+                                                                            <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
@@ -1753,12 +1753,9 @@ if($issampledata){
                                                                                 </li>
 
                                                                             </ul>
-                                                                        </div>
-                                                                    </div>
-
-                                                                	<div class="col-md-6" style="padding: 0 10px 0 5px;">
-                                                                        <div class="dstatstrade eqpad">
-                                                                            <ul>
+																		</div>
+																		<div class="dstatstrade eqpad">
+                                                                            <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
                                                                                     <div class="width60">Total Trades</div>

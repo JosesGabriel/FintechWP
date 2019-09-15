@@ -2147,7 +2147,8 @@ if($issampledata){
 																								// { "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
 
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
+                                                                                                $intowinchartbands .= '"color": "#ffffff",';
+                                                                                                // $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100",';
                                                                                                 $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';

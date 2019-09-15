@@ -1121,7 +1121,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -3426,6 +3426,10 @@ if($issampledata){
 			console.log(event.value);
 
 			jQuery(".dtopentertrade").find("#newdate").val(event.value);
+		}
+
+		function selldate(event){
+			console.log(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

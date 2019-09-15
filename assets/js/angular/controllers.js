@@ -544,16 +544,20 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
      *  u => update new order
      */
      socket.on('psebd', function (data) {
+        console.log('PSEBD', data);
         if (data.ov == 'B') {
             // bid
             $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+            console.log('END PSEBD', $scope.bids);
         } else if (data.ov == 'S') {
             // ask
             $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
+            console.log('END PSEBD', $scope.asks);
         }
     });
 
     $scope.updateBidAndAsks = function (list, data) {
+        console.log('UPDATE BIDS ASKS', list, data);
         if (data.ty == 'a') {
             if (typeof list[data.id] !== 'undefined') {
                 list[data.id].count++;

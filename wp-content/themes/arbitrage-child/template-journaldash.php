@@ -1122,7 +1122,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1185,7 +1185,8 @@ if($issampledata){
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
-																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
+																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
+																												<input type="hidden" name="selldate" id="selldate">
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -2210,7 +2211,7 @@ if($issampledata){
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
                                                                                                 $intolosschartbands .= '"alpha": 0.5';
-                                                                                                $intolosschartbands .= '}, {';
+                                                                                                $intolosschartbands .= '},{';
 																								$intowinchartbands .= ' "color": "'.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
                                                                                                 $intowinchartbands .= ' "endValue": '. (($flossvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
@@ -3431,6 +3432,8 @@ if($issampledata){
 
 		function selldate(event){
 			console.log(event.value);
+
+			jQuery(".selltrade").find("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

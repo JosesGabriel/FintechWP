@@ -246,13 +246,14 @@ iframe {
 	    border-bottom-right-radius: 4px !important;
 	}  
     .arb_right_icons_trans {
-			position: absolute;
-		    width: 275px;
-		    right: -54px;
-		    top: 2px;
-			padding-left: 110px;
-		    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
-		    z-index: 9;
+        position: absolute;
+        width: 220px;
+        right: -70px;
+        top: -12px;
+        padding-left: 110px;
+        background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
+        z-index: 9;
+        height: 55px;
 		}
 		.arb-side-icon i {
 			border: none;

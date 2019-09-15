@@ -587,7 +587,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     $scope.updateBidAskCount = function (list, id, increment) {
         if (typeof list[id] !== 'undefined') {
-            list[id] += increment;
+            list[id].count += increment;
 
             if (list[id].count <= 0) {
                 delete(list[id]);

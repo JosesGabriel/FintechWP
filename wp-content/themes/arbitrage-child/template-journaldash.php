@@ -2201,17 +2201,10 @@ if($issampledata){
                                                                                                 $intolosschartbands .= '{';
                                                                                                 $intolosschartbands .= '"color": "#ffffff",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
-<<<<<<< HEAD
-                                                                                                $intolosschartbands .= '"endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
-                                                                                                $intolosschartbands .= '"radius": "100%",';
-                                                                                                $intolosschartbands .= '"innerRadius": "85%",';
-                                                                                                $intolosschartbands .= '"alpha": 0.05';
-=======
                                                                                                 $intolosschartbands .= '"endValue": "100",';
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
                                                                                                 $intolosschartbands .= '"alpha": 0.5';
->>>>>>> e2738ce7dad673d5a571992f76467939271f52bc
                                                                                                 $intolosschartbands .= '}, {';
                                                                                                 $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';

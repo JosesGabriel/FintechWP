@@ -406,8 +406,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 return;
             }
 
-            $scope.bids = Object.values(response.data.bids);
-            $scope.asks = Object.values(response.data.asks);
+            $scope.bids = response.data.bids;
+            $scope.asks = response.data.asks;
         })
         .catch(err => {
             $scope.bids = [];

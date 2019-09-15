@@ -548,6 +548,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         if (data.ov == 'B') {
             // bid
             $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+            $scope.bids = $filter('orderBy')($scope.bids, '-price');
             console.log('END PSEBD', $scope.bids);
         } else if (data.ov == 'S') {
             // ask

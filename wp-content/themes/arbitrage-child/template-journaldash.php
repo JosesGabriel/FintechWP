@@ -3692,7 +3692,9 @@ if($issampledata){
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
 			} else {
-				swal('Not enough buying power.')
+				swal('Not enough buying power.');
+				jQuery('.chart-loader').css("display","block");
+				jQuery('.confirmtrd').show();
 			}
 		});
 

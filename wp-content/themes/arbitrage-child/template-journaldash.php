@@ -3709,7 +3709,8 @@ if($issampledata){
 		// calculate total price
 		jQuery(document).on('keyup', 'input[name="inpt_data_price"], input[name="inpt_data_qty"]', function (e) {
 			let price = jQuery('input[name="inpt_data_price"]').val().replace(/,/g, '');
-			let quantity = jQuery('input[name="inpt_data_qty"]').val().replace(/,/g, '');
+			// let quantity = jQuery('input[name="inpt_data_qty"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty"]').val();
 
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			console.log(price + " ~ " + quantity);

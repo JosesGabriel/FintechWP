@@ -570,7 +570,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             if (typeof list[index] !== 'undefined') {
                 list[index].count++;
             } else {
-                list.push($scope.addToBidAskList(index, data));
+                list.push($scope.addToBidAskList(data.id, data));
             }
         } else if (data.ty == 'au') {
             // decrement data.id's count by 1, if count is zero, remove from list

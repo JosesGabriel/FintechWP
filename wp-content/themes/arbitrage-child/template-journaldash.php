@@ -2145,17 +2145,10 @@ if($issampledata){
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
                                                                                                 $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
                                                                                                 $intowinchartbands .= ' "radius": "100%",';
-                                                                                                $intowinchartbands .= ' "innerRadius": "80%",';
+                                                                                                $intowinchartbands .= ' "innerRadius": "85%",';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
-																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "55%","alpha": 0.05},
-																								// { "color": "#442946", "startValue": 0, "endValue": 20, "radius": "100%", "innerRadius": "55%", "balloonText": "20%"},
-																					
-																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "70%","alpha": 0.05},
-																								// { "color": "#732546", "startValue": 0, "endValue": 60, "radius": "100%", "innerRadius": "70%", "balloonText": "60%"},
-																					
-																								// {"color": "#ffffff","startValue": 0,"endValue": 100,"radius": "100%","innerRadius": "85%","alpha": 0.05},
-																								// { "color": "#b91e45", "startValue": 0, "endValue": 80, "radius": "100%", "innerRadius": "85%", "balloonText": "80%"},
+
                                                                                                 $intowinchartlabels .= '{';
                                                                                                 $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
@@ -2205,14 +2198,14 @@ if($issampledata){
                                                                                                 $intolosschartbands .= '"startValue": 0,';
                                                                                                 $intolosschartbands .= '"endValue": 100,';
                                                                                                 $intolosschartbands .= '"radius": "100%",';
-                                                                                                $intolosschartbands .= '"innerRadius": "80%",';
+                                                                                                $intolosschartbands .= '"innerRadius": "85%",';
                                                                                                 $intolosschartbands .= '"alpha": 0.05';
                                                                                                 $intolosschartbands .= '}, {';
                                                                                                 $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
                                                                                                 $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
                                                                                                 $intolosschartbands .= ' "radius": "100%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "80%"';
+                                                                                                $intolosschartbands .= ' "innerRadius": "85%",';
                                                                                                 $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
                                                                                                 $intolosschartbands .= '},';
 

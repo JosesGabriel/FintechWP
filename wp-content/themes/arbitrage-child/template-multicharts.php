@@ -116,14 +116,21 @@ iframe {
 		color: #fff;
 		display:block;
 	}
+    
+    /* modified */
+    .chart_logo_arbitrage{
+		position: absolute;
+		z-index: 9;
+		top: 4px;
+		left: 9px;
+	}
 </style>
 </head>
 
 <body>
 <div>
-		<div class="chart_logo_arbitrage"><a href="<?php echo $url; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
-
-		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
+        <div class="chart_logo_arbitrage"><a href="<?php echo $url; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+        <iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $url; ?>/stock-ticker/"></iframe>
 
 		<?php //get_template_part('parts/global', 'css'); ?>
 

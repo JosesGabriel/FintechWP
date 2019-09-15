@@ -554,6 +554,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
             console.log('END PSEBD', $scope.asks);
         }
+        $scope.$digest();
     });
 
     $scope.updateBidAndAsks = function (list, data) {

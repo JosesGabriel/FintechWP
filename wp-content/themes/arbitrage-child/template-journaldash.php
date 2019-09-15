@@ -2145,7 +2145,7 @@ if($issampledata){
 																								$dwinning = $dwinning.$dinss;
 																								
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
+                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#172A3F' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#2C3E51' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100",';
                                                                                                 $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';

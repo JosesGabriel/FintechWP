@@ -60,7 +60,7 @@ iframe {
 	ul.main-drops-chart > ul {
 		font-size: 13px !important;
 	    position: absolute !important;
-		right: 139px !important;
+		right: 195px !important;
 	    top: 37px !important;
 	    background: #142c46 !important;
 	    min-width: 180px !important;
@@ -263,7 +263,16 @@ iframe {
 			line-height: 30px;
 			font-size: 16px;
 			background-color: rgba(44, 62, 80,0.8);
+            
 		} 
+        .arb_proficon{
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            margin-left: -10px;
+            margin-top: -17px;
+            border-radius: 100%;
+        }
 </style>
 </head>
 
@@ -291,7 +300,7 @@ iframe {
 			<a href="<?php echo $url; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $url; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $url; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
-					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
+					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
 					<i class="fas fa-user-tie"></i>
 				<?php endif; ?></a>

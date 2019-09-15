@@ -157,6 +157,9 @@ echo $user->ID ." versis ". $user->ID;
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
+
+		print_r($_POST);
+		exit;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -2144,12 +2147,12 @@ if($issampledata){
 																								// { "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
 
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#2c3e51' : ($fwinkey == 1 ? '#0c1e34' : ($fwinkey == 2 ? '#182a3f' : ''))).'",';
+                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
-                                                                                                $intowinchartbands .= '"endValue": "100%",';
-                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '63' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '63' : ($fwinkey == 2 ? '43' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"alpha": 0.05';
+                                                                                                $intowinchartbands .= '"endValue": "100",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"alpha": 0.8';
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
@@ -2162,7 +2165,7 @@ if($issampledata){
                                                                                                 $intowinchartlabels .= '{';
                                                                                                 $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '13.5' : ($fwinkey == 2 ? '20' : '33'))).'%",';
+                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($fwinkey == 2 ? '20' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';
                                                                                                 $intowinchartlabels .= '"bold": false,';
                                                                                                 $intowinchartlabels .= '"color": "#d8d8d8",';
@@ -3426,7 +3429,7 @@ if($issampledata){
 		function getObject(event){
 			console.log(event.value);
 
-			jQuery(".dtopentertrade").find("#newdate").value(event.value);
+			jQuery(".dtopentertrade").find("#newdate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

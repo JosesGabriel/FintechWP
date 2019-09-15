@@ -406,8 +406,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                 return;
             }
 
-            $scope.bids = response.data.bids;
-            $scope.asks = response.data.asks;
+            $scope.bids = Object.values(response.data.bids);
+            $scope.asks = Object.values(response.data.asks);
         })
         .catch(err => {
             $scope.bids = [];
@@ -554,29 +554,31 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
             console.log('END PSEBD', $scope.asks);
         }
+        $scope.$digest();
     });
 
     $scope.updateBidAndAsks = function (list, data) {
         console.log('UPDATE BIDS ASKS', list, data);
+        let index = list.findIndex(item => item.id == data.id)
         if (data.ty == 'a') {
-            if (typeof list[data.id] !== 'undefined') {
-                list[data.id].count++;
+            if (typeof list[index] !== 'undefined') {
+                list[index].count++;
             } else {
-                list.push($scope.addToBidAskList(data.id, data));
+                list.push($scope.addToBidAskList(index, data));
             }
         } else if (data.ty == 'au') {
             // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, data.id, -1);
+            list = $scope.updateBidAskCount(list, index, -1);
 
             // add new data.idn to list
             list.push($scope.addToBidAskList(data.idn, data));
         } else if (data.ty == 'd') {
             // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, data.id, -1);
+            list = $scope.updateBidAskCount(list, index, -1);
         } else if (data.ty == 'u') {
             // same as au but drop the data.id entirely and add data.idn to list
-            if (typeof list[data.id] !== 'undefined') {
-                delete(list[data.id])
+            if (typeof list[index] !== 'undefined') {
+                delete(list[index])
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
@@ -586,7 +588,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     $scope.updateBidAskCount = function (list, id, increment) {
         if (typeof list[id] !== 'undefined') {
-            list[id] += increment;
+            list[id].count += increment;
 
             if (list[id].count <= 0) {
                 delete(list[id]);

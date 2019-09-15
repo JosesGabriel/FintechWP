@@ -570,18 +570,19 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         if (data.ty == 'a') {
             if (typeof list[index] !== 'undefined') {
                 list[index].count++;
+                list[index].volume += data.vol;
             } else {
                 list.push($scope.addToBidAskList(data.id, data));
             }
         } else if (data.ty == 'au') {
             // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, index, -1);
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
 
             // add new data.idn to list
             list.push($scope.addToBidAskList(data.idn, data));
         } else if (data.ty == 'd') {
             // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, index, -1);
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
         } else if (data.ty == 'u') {
             // same as au but drop the data.id entirely and add data.idn to list
             if (typeof list[index] !== 'undefined') {
@@ -595,10 +596,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         return list;
     }
 
-    $scope.updateBidAskCount = function (list, id, increment) {
+    $scope.updateBidAskCount = function (list, id, increment, volume) {
         console.log('BID ASK COUNT', list[id], id, increment);
         if (typeof list[id] !== 'undefined') {
             list[id].count += increment;
+            list[id].volume += volume * increment;
             if (list[id].count <= 0) {
                 list = list.filter((item, key) => {
                     return key != id;

@@ -2226,7 +2226,7 @@ if($issampledata){
 																								$intolosschartbands .= '},';
 																								
 																								$intolosschartlabels .= '{';
-																								$intolosschartlabels .= '"text": "'. ($fwinvalue['dstock'] >= 3 ? '' : $fwinvalue['dstock']).'",';
+																								$intolosschartlabels .= '"text": "'. $fwinvalue['dstock'] >= 3 ? '' : $fwinvalue['dstock'].'",';
 																								$intolosschartlabels .= '"x": "49%",';
 																								$intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
 																								$intolosschartlabels .= '"size": 11,';

@@ -124,6 +124,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.searchSymbols = function(searchString,
 		type: type,
 		exchange: exchange
 	}).done(function(response) {
+		console.log('RESP', response)
 		// var data = JSON.parse(response);
 		var data = response;
 		for (var i = 0; i < data.length; ++i) {

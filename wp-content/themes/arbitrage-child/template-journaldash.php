@@ -2148,8 +2148,8 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100",';
-                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"alpha": 0.3';
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';

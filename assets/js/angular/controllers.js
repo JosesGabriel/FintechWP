@@ -559,7 +559,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     $scope.updateBidAndAsks = function (list, data) {
         console.log('UPDATE BIDS ASKS', list);
-        let index = list.findIndex(item => item.id == data.id)
+        let index = list.findIndex(function(item){
+            return item.id == data.id
+        });
         if (data.ty == 'a') {
             if (typeof list[index] !== 'undefined') {
                 list[index].count++;

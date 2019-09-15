@@ -2159,7 +2159,7 @@ if($issampledata){
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                $intowinchartbands .= ' "endValue": '. ($fwinkey <= 2 ? (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ) : '').',';
                                                                                                 $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
                                                                                                 $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
@@ -2226,7 +2226,7 @@ if($issampledata){
 																								$intolosschartbands .= '},';
 																								
 																								$intolosschartlabels .= '{';
-																								$intolosschartlabels .= '"text": "'. ($flossvalue['dstock'] >= 3 ? '' : $flossvalue['dstock']) .'",';
+																								$intolosschartlabels .= '"text": "'. ($flosskey <= 2 ? $flossvalue['dstock'] : '') .'",';
 																								$intolosschartlabels .= '"x": "49%",';
 																								$intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
 																								$intolosschartlabels .= '"size": 11,';

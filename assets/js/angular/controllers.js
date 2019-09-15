@@ -718,6 +718,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         }
     }
     $scope.select = function (symbol) {
+        console.log("CLIKCED", symbol)
         $rootScope.selectedSymbol = $scope.selectedStock = _symbol = symbol;
         var found = $filter('filter')($scope.stocks, {symbol: $scope.selectedStock}, true);
         if (found.length) {

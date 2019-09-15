@@ -158,8 +158,8 @@ echo $user->ID ." versis ". $user->ID;
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 
-		// print_r($_POST);
-		// exit;
+		print_r($_POST);
+		exit;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -2132,12 +2132,12 @@ if($issampledata){
                                                                                             $intowinchartlabels = '';
 																							krsort($finalwinning);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).';color: #b1e8ce;border: none;">';
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ''))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
 																								$dwinning = $dwinning.$dinss;
-
+																								arsort($fwinkey);
                                                                                                 $intowinchartbands .= '{';
                                                                                                 $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
@@ -2188,9 +2188,9 @@ if($issampledata){
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							ksort($finalloss);
+																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : '#ff1744'))).';color: #132941;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : '#ff1744'))).';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -2198,32 +2198,31 @@ if($issampledata){
 																								
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
-																								$intolosschartbands .= '{';
-																								$intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
+                                                                                                $intolosschartbands .= '{';
+                                                                                                $intolosschartbands .= '"color": "#ffffff",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
                                                                                                 $intolosschartbands .= '"endValue": "100",';
                                                                                                 $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
                                                                                                 $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
                                                                                                 $intolosschartbands .= '"alpha": 0.5';
                                                                                                 $intolosschartbands .= '}, {';
-																								$intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#B91E45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
+                                                                                                $intolosschartbands .= ' "color": "#00e676",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
                                                                                                 $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
-                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "radius": "100%",';
+                                                                                                $intolosschartbands .= ' "innerRadius": "85%",';
                                                                                                 $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
-																								$intolosschartbands .= '},';
+                                                                                                $intolosschartbands .= '},';
 
                                                                                                 $intolosschartlabels .= '{';
                                                                                                 $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
                                                                                                 $intolosschartlabels .= '"x": "49%",';
-                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
+                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '15' : ($flosskey == 2 ? '24' : '33'))).'%",';
                                                                                                 $intolosschartlabels .= '"size": 11,';
                                                                                                 $intolosschartlabels .= '"bold": false,';
                                                                                                 $intolosschartlabels .= '"color": "#d8d8d8",';
                                                                                                 $intolosschartlabels .= '"align": "right",';
-																								$intolosschartlabels .= '},';
-																								
+                                                                                                $intolosschartlabels .= '},';
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dlossing; ?>

@@ -3295,7 +3295,7 @@ if($issampledata){
 																				}
 
 																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype = "withraw"):
+																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
 																					?>
 																					<li>
 																						<div style="width:99%;">

@@ -718,7 +718,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         }
     }
     $scope.select = function (symbol) {
-        console.log("CLIKCED", symbol)
         $rootScope.selectedSymbol = $scope.selectedStock = _symbol = symbol;
         var found = $filter('filter')($scope.stocks, {symbol: $scope.selectedStock}, true);
         if (found.length) {
@@ -1080,7 +1079,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.fullbidtotal = 0;
                             });
 
-                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
                             .then(function (response) {
                                 if (response.data.success) {
                                     let data = response.data.data;

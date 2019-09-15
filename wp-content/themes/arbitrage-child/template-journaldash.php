@@ -2130,7 +2130,7 @@ if($issampledata){
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
-																							sort($finalwinning['dprofit']);
+																							$finalwinning = sort($finalwinning['dprofit']);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
 																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).';color: #b1e8ce;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';

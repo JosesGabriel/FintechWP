@@ -674,7 +674,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                     $scope.fullbidtotal = 0;
                 });
 
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
                 .then(function (response) {
                     if (response.data.success) {
                         let data = response.data.data;

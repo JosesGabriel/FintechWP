@@ -3119,7 +3119,9 @@ if($issampledata){
 													<br class="clear">
 						                        </div>
 												<style type="text/css">
-	
+													.swal-overlay--show-modal {
+														z-index: 99999999;
+													}
 													.sss {
 														padding-right: 14px !important;
 													}

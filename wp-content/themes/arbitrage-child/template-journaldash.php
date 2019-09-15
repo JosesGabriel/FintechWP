@@ -2147,11 +2147,11 @@ if($issampledata){
 																								// { "color": "#00e676", "startValue": 0, "endValue": 90, "radius": "100%", "innerRadius": "85%", "balloonText": "90%"},';
 
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "#ffffff",';
+                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 0 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
                                                                                                 $intowinchartbands .= '"endValue": "100",';
-                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '80' : ($fwinkey == 2 ? '63' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '63' : ($fwinkey == 2 ? '43' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 0 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 2 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 0 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 2 ? '55' : ''))).'%",';
                                                                                                 $intowinchartbands .= '"alpha": 0.05';
                                                                                                 $intowinchartbands .= '}, {';
                                                                                                 $intowinchartbands .= ' "color": "'.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : ''))).'",';

@@ -1381,6 +1381,7 @@ if($issampledata){
 
                                                     ?>
 
+													<br class="clear">
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -1533,7 +1534,6 @@ if($issampledata){
 															</div>
 														</div>
 													</div>
-													<br class="clear">
 
                                                     <?php
                                                         $percaspermonth = [];

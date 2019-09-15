@@ -2230,7 +2230,8 @@ if($issampledata){
                                                                                                 $intolosschartlabels .= '"bold": false,';
                                                                                                 $intolosschartlabels .= '"color": "#d8d8d8",';
                                                                                                 $intolosschartlabels .= '"align": "right",';
-                                                                                                $intolosschartlabels .= '},';
+																								$intolosschartlabels .= '},';
+																								
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dlossing; ?>

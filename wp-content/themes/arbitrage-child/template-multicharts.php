@@ -1,20 +1,14 @@
 <?php
 	/* Template Name: Multichart Main Page */
-	global $current_user; 
+    global $current_user; 
+    $homeurlgen = get_home_url();
 	$user = wp_get_current_user();
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( 'https://arbitrage.ph/login/', 301 );
+		wp_redirect( $homeurlgen, 301 );
 		exit;
 	}
-	$user_id = $user->ID;
-	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
-	if (!$checksharing){
-		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
-		die();
-	}
-	$cdnorlocal = get_home_url();
 ?><!doctype html>
 <html>
 <head>

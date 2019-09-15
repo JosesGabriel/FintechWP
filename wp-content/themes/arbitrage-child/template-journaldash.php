@@ -3451,7 +3451,7 @@ if($issampledata){
 		function selldate(event){
 			console.log(event.value);
 
-			jQuery(".selltrade").find("#selldate").val(event.value);
+			jQuery("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

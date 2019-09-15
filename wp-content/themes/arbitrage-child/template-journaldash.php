@@ -2201,9 +2201,9 @@ if($issampledata){
 																							$intolosschartlabels = '';
 																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : '#b91e45'))).';color: #132941;border: none;">';
-                                                                                                $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
-                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#732546' : ($flosskey >= 3 ? '' : '#b91e45')))).';color: #132941;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.($flosskey <= 2 ? number_format($flossvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
 																								$dlossing = $dlossing.$dinss;
 																								

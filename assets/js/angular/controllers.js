@@ -558,7 +558,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
 
     $scope.updateBidAndAsks = function (list, data) {
-        console.log('UPDATE BIDS ASKS', list, data);
+        console.log('UPDATE BIDS ASKS', list);
         let index = list.findIndex(item => item.id == data.id)
         if (data.ty == 'a') {
             if (typeof list[index] !== 'undefined') {
@@ -582,7 +582,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
-
+        console.log('END UPDATE BIDS ASKS', list);
         return list;
     }
 

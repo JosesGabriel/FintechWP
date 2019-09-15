@@ -6,7 +6,7 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $homeurlgen, 301 );
+		wp_redirect( $homeurlgen.'/login/', 301 );
 		exit;
 	}
 ?><!doctype html>

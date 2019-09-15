@@ -3721,20 +3721,20 @@ if($issampledata){
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 
-		jQuery(document).on('submit', '.dentertrade', function (e) {
-			e.preventDefault();
-			let form = jQuery(this).serializeArray();
+		// jQuery(document).on('submit', '.dentertrade', function (e) {
+		// 	e.preventDefault();
+		// 	let form = jQuery(this).serializeArray();
 
-			jQuery.ajax({
-				url: '/apipge',
-				method: 'POST',
-				data: form,
-				dataType: 'json',
-				success: function (response) {
+		// 	jQuery.ajax({
+		// 		url: '/apipge',
+		// 		method: 'POST',
+		// 		data: form,
+		// 		dataType: 'json',
+		// 		success: function (response) {
 					
-				}
-			})
-		})
+		// 		}
+		// 	})
+		// })
 		//$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");

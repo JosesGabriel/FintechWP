@@ -3678,7 +3678,8 @@ if($issampledata){
 			e.preventDefault();
 			var dstock = $(".dentertrade #inpt_data_select_stock").val();
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
-			if(dstock != "" && dbuypower > 0){
+			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			if(dstock != "" && dbuypower > 0 && total_price > dbuypower){
 				jQuery(".dentertrade").submit();
 			} else {
 				console.log("dont add trade");

@@ -734,9 +734,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             goToChart(symbol);
         }, 100);
         $('#select-' + symbol).focus();
-
-        //update market depth percentage
-        $scope.updateMarketDepth()
     };
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {
@@ -1082,7 +1079,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.fullbidtotal = 0;
                             });
 
-                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
                             .then(function (response) {
                                 if (response.data.success) {
                                     let data = response.data.data;

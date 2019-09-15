@@ -536,6 +536,70 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         }
     });
 
+    /**
+     * Types
+     *  a => add
+     *  au => update price
+     *  d => delete
+     *  u => update new order
+     */
+     socket.on('psebd', function (data) {
+        if (data.ov == 'B') {
+            // bid
+            $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+        } else if (data.ov == 'S') {
+            // ask
+            $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
+        }
+    });
+
+    $scope.updateBidAndAsks = function (list, data) {
+        if (data.ty == 'a') {
+            if (typeof list[data.id] !== 'undefined') {
+                list[data.id].count++;
+            } else {
+                list.push($scope.addToBidAskList(data.id, data));
+            }
+        } else if (data.ty == 'au') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, data.id, -1);
+
+            // add new data.idn to list
+            list.push($scope.addToBidAskList(data.idn, data));
+        } else if (data.ty == 'd') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, data.id, -1);
+        } else if (data.ty == 'u') {
+            // same as au but drop the data.id entirely and add data.idn to list
+            if (typeof list[data.id] !== 'undefined') {
+                delete(list[data.id])
+            }
+            list.push($scope.addToBidAskList(data.idn, data));
+        }
+
+        return list;
+    }
+
+    $scope.updateBidAskCount = function (list, id, increment) {
+        if (typeof list[id] !== 'undefined') {
+            list[id] += increment;
+
+            if (list[id].count <= 0) {
+                delete(list[id]);
+            }
+        }
+        return list;
+    }
+
+    $scope.addToBidAskList = function (id, data) {
+        return {
+            'id': id,
+            'price': data.p,
+            'count': 1,
+            'volume': data.vol,
+        }
+    }
+
     // socket.on('T', function(data) {
     //     var symbol = data[0];
     //     data[4]  = parseFloat(data[4]);
@@ -674,7 +738,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                     $scope.fullbidtotal = 0;
                 });
 
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
                 .then(function (response) {
                     if (response.data.success) {
                         let data = response.data.data;

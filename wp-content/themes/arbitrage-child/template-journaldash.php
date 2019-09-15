@@ -162,8 +162,8 @@ echo $user->ID ." versis ". $user->ID;
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 
-		print_r($tradeinfo);
-		exit;
+		// print_r($tradeinfo);
+		// exit;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {

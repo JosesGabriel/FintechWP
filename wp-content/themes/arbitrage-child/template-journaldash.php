@@ -3822,7 +3822,7 @@ if($issampledata){
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-			let decnumbs = finaltotal.toFixed(2)
+			let decnumbs = finaltotal.toFixed(2);
 			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
 
 			function replaceCommas(yourNumber) {

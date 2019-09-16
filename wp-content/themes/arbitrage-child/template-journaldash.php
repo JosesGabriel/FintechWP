@@ -125,9 +125,14 @@ echo $user->ID ." versis ". $user->ID;
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
         //echo $_POST['inpt_data_status'];
-       $strategy = $_POST['inpt_data_strategy'];
-        $tradeplan = $_POST['inpt_data_tradeplan'];
-        $emotion = $_POST['inpt_data_emotion'];
+
+        $logid = $_POST['log_id'];
+
+        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+
+        echo $data_trade_info->strategy;
+
+        update_post_meta($logid,  $data_trade_info->strategy, 'Steve' );
 
         // $post = array(
         //     'strategy_plans' => $strategy, 

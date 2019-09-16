@@ -3106,8 +3106,23 @@ if($issampledata){
                                                                                                         </select>
                                                                                                         
                                                                                                     </div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+
+                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  value="Day Trade">Day Trade</option>
+                                                                                                            <option  value="Swing Trade">Swing Trade</option>
+                                                                                                            <option  value="Investment">Investment</option>
+                                                                                                    </select>
+
+                                                                                                </div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  value="Neutral">Neutral</option>
+                                                                                                            <option  value="Greedy">Greedy</option>
+                                                                                                            <option  value="Fearful">Fearful</option>
+                                                                                                    </select>
+
+                                                                                                </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
                                                                                             </div>

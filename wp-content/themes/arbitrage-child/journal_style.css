@@ -1384,3 +1384,11 @@ input.enter-trade-btn:hover {
 }
 #chartdiv1 .amcharts-chart-div {
 }
+.label_funds label, .label_funds .number {
+    background: none;
+    border: none;
+}
+.label_cost label, .label_funds .number {
+    background: none;
+    border: none;
+}

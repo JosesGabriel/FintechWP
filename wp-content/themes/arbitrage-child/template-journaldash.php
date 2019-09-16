@@ -1384,7 +1384,9 @@ if($issampledata){
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getjurfees($selprice, 'sell');
+																	$sellfee = getjurfees($selprice, 'sell');
+																	
+																	echo (($selprice - $sellfee) - $dcurprice);
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }

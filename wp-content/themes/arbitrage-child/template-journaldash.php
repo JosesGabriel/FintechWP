@@ -1956,7 +1956,8 @@ if($issampledata){
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<span class="legend_circ"></span>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
@@ -2006,7 +2007,7 @@ if($issampledata){
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout</div>
+                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
                                                                                 </li>
 
                                                                             </ul>
@@ -3090,12 +3091,12 @@ if($issampledata){
 
                                                                                 <div class="hidethis">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
-                                                                                        <div class="entr_ttle_bar" style="width: 358px;">
+                                                                                        <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-
+                                                                                           <!-- 
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
@@ -3134,6 +3135,7 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        -->
 
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

@@ -3369,7 +3369,7 @@ if($issampledata){
 
 																				$ledcount = 0;
 																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
 																						$ledcount++;
 																					?>
 																					<li>

@@ -3100,7 +3100,7 @@ if($issampledata){
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft">
                                                                                                         
                                                                                                         <?php// echo $data_trade_info[0]->strategy; ?>
-                                                                                                        <select class="rnd" name="" id="" value=" <?php echo $data_trade_info[0]->strategy; ?>">
+                                                                                                        <select class="rnd" name="" id="" value="<?php echo $data_trade_info[0]->strategy; ?>">
                                                                                                             <option  value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  value="Breakout Play">Breakout Play</option>
                                                                                                             <option  value="Trend Following">Trend Following</option>

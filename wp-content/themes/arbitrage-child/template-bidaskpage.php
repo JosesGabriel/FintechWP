@@ -42,7 +42,7 @@
     <script>
         jQuery(document).ready(function() {
             console.log('load all');
-            let url = "https://data-api.arbitrage.ph/api/v1/stocks/list";
+            let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=2&symbol=AC";
             let settings = {
                 "async": true,
                 "crossDomain": true,
@@ -61,15 +61,6 @@
 <body>
 
 
-<div>
-    <div ng-controller="bid_ask_page_data">
-        <ul>
-            <li ng-repeat="transaction in bid_ask_page_data">
-                (<strong style="font-weight: bold !important;">{{::transaction.price}}</strong>)
-            </li>
-        </ul>
-    </div>
-</div>
 
 	
 	<!-- end page container -->

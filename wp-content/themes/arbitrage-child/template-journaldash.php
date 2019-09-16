@@ -761,7 +761,7 @@ if($issampledata){
 																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd label_date">
-																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required>
 																							</div>
 																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
@@ -3706,6 +3706,12 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
+        
+        $(document).on("click", ".editlog", function() {
+
+            jQuery('.fancybox-wrap').css("width","376px");
+
+        });
 
 		$(document).on("click", ".deletelog", function() {
 

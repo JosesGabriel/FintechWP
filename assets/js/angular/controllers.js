@@ -90,6 +90,31 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     
     $scope.select = goToChart;
 }]);
+
+// ralph
+app.controller('bid_ask_page_data', ['$scope','$filter', '$http', function($scope, $filter, $http) {
+    $scope.bid_ask_page_data = [];
+    
+        var transaction = [
+             { count:1, id:2342, price:909.5, volume:8708 },
+             { count:1, id:2342, price:909.5, volume:8708 },
+             { count:1, id:2342, price:909.5, volume:8708 },
+             { count:1, id:2342, price:909.5, volume:8708 },
+             { count:1, id:2342, price:909.5, volume:8708 } 
+        ]
+
+        for (i in transaction){
+            $scope.bid_ask_page_data.push(transaction[i]);
+        }
+        
+        if ($scope.bid_ask_page_data.length > 150) {
+            $scope.ticker.pop();
+        }
+        $scope.$digest();
+    
+        $scope.select = goToChart;
+}]);
+
 app.controller('psei', function($scope, $http) {  
     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
     // function updatePSEI() {

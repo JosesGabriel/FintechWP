@@ -37,6 +37,9 @@
             background-color: #0c1f33;
             color: #fff;
         }
+        #stock_symbol{
+            margin-left: 10%;
+        }
     </style>
     <script>
         jQuery(document).ready(function() {

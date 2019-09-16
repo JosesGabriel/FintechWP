@@ -140,7 +140,7 @@
         e.stopPropagation();
         e.preventDefault();
         var $this = $(this)
-
+        console.log('click notif', $this, e);
         if (typeof $this.data('notification_uri') !== 'undefined') {
             window.location.href = $this.data('notification_uri')
         }

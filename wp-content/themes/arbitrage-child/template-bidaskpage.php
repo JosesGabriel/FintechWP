@@ -66,7 +66,8 @@
 
 </head>
 <body>
-
+<div class="box-portlet-content">
+   <div class="stats-info">
     <div id="live_portfolio" class="dstatstrade overridewidth">
         <ul>
             <li class="headerpart">
@@ -89,6 +90,8 @@
             </li>
         </ul>
     </div>
+    </div>
+</div>
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

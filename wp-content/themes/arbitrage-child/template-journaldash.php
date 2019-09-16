@@ -1386,7 +1386,7 @@ if($issampledata){
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
 																	$sellfee = getjurfees($selprice, 'sell');
 																	
-																	echo (($selprice - $sellfee) - $dcurprice)." ~ ";
+																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
@@ -2948,7 +2948,8 @@ if($issampledata){
                                                                                 $count = 1;
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
-                                                                                $dlisttrade = [];
+																				$dlisttrade = [];
+																				$trtotals = 0;
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
 																						$author_posts->the_post();
@@ -3019,7 +3020,7 @@ if($issampledata){
 
                                                                                     // profperc
                                                                                     $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
-                                                                                    $totalprofit += $dprofit;
+                                                                                    $trtotals += $dprofit;
                                                                             ?>
 
                                                              				<!--<li class="s-logs" style="display: none;">
@@ -3184,7 +3185,7 @@ if($issampledata){
 
 													<div class="totalpl">
 														 <p>Total Profit/Loss as of <?php
-                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
+                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $trtotals > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($trtotals, 2, '.', ','); ?></span></p>
 													</div>
 
                                                     <!--<div class="adsbygoogle">

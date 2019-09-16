@@ -3097,31 +3097,35 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-                                                                                        
+                                                                                            <?php 
+                                                                                            $strategy = $data_trade_info[0]->strategy; 
+                                                                                            $tradeplan = $data_trade_info[0]->tradeplan;
+                                                                                            $emotion = $data_trade_info[0]->emotion;
+                                                                                            ?>
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->strategy; ?>">
-                                                                                                            <option  value="Bottom Picking">Bottom Picking</option>
-                                                                                                            <option  value="Breakout Play">Breakout Play</option>
-                                                                                                            <option  value="Trend Following">Trend Following</option>
+                                                                                                        <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+                                                                                                            <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+                                                                                                            <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
                                                                                                         </select>
                                                                                                         
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->tradeplan; ?>">
-                                                                                                            <option  value="Day Trade">Day Trade</option>
-                                                                                                            <option  value="Swing Trade">Swing Trade</option>
-                                                                                                            <option  value="Investment">Investment</option>
+                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
                                                                                                     </select>
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->emotion; ?>">
-                                                                                                            <option  value="Neutral">Neutral</option>
-                                                                                                            <option  value="Greedy">Greedy</option>
-                                                                                                            <option  value="Fearful">Fearful</option>
+                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+                                                                                                            <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+                                                                                                            <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
                                                                                                     </select>
 
                                                                                                 </div>

@@ -138,17 +138,8 @@ echo $user->ID ." versis ". $user->ID;
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
         //update_post_meta($log_id,  'data_trade_info', $strategy);
-        //update_post_meta($log_id,  $data_trade_info[0]->strategy, 'test');
-        $metas = array( 
-            $data_trade_info[0]->strategy => $strategy,
-            $data_trade_info[0]->emotion => $emotion
-        );
-
-        foreach($metas as $key => $value) {
-            update_post_meta($log_id, $key, $value);
-        }
-
-       
+        update_post_meta($log_id,  $data_trade_info[0]->strategy, 'test');
+               
 
         wp_redirect('/journal');
         exit;

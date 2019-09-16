@@ -523,7 +523,7 @@ if($issampledata){
 	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
@@ -3092,7 +3092,8 @@ if($issampledata){
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
-                                                                                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                            <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                           
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
@@ -3135,9 +3136,9 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="onelnetrd">
-                                                                                               <span> <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update"></span>
-                                                                                            </div>
+                                                                                           
+                                                                                               <span> <input type="button" class="bntedit dloadform green modal-button-confirm" value="Update" style="left: 12px;"></span>
+                                                                                            
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
@@ -3402,7 +3403,7 @@ if($issampledata){
 																					endif;
 																				}
 																			?>
-																			<li class="footepart">
+																			<li class="headerpart">
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:8%">&nbsp;</div>
                                                                                     <div style="width:19%">&nbsp;</div>

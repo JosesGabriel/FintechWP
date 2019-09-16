@@ -53,6 +53,9 @@
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
     <link rel="stylesheet" href="/assets/plugins/gritter/css/jquery.gritter.css" />
 	<link rel="stylesheet" href="/assets/plugins/ng-embed/dist/ng-embed.min.css" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>"> 
+		<!-- Madaot calcs sa chart if dili ni iload ang duha ka css. To be refractored -->
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -1558,6 +1561,7 @@
 																											}
 																											var getthestocksym = $('#inpt_data_stock').val();
 																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
+																											console.log('joses ' + "/bidask-box/?stocksym="+getthestocksym);
 																										});
 																									<?php 
 																										$getcururl = $_SERVER['REQUEST_URI'];
@@ -2045,7 +2049,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>

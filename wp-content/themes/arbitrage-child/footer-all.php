@@ -136,10 +136,10 @@
             });
         })
     })
-    $('.um-notification-ajax').on('click', '.um-notification', function (e) {
+    $('.opennotification').on('click', '.um-notification', function (e) {
+        e.stopPropagation();
         e.preventDefault();
-        var $this = $(this)
-
+        var $this = $(this);
         if (typeof $this.data('notification_uri') !== 'undefined') {
             window.location.href = $this.data('notification_uri')
         }

@@ -2924,7 +2924,7 @@ if($issampledata){
                                                                                     <div style="width:65px" class="table-title-live">Ave. Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Buy Value</div>
                                                                                     <div style="width:65px" class="table-title-live">Sell Price</div>
-                                                                                    <div style="width:91px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:88px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:80px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:65px" class="table-title-live">%</div>
                                                                                     <div style="width:65px; text-align:center">Action</div>
@@ -3040,7 +3040,7 @@ if($issampledata){
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:91px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:88px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
 																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 																					<div style="width:56px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
 																					<div style="width:27px; text-align:center">
@@ -3055,7 +3055,7 @@ if($issampledata){
 																						</a>
 																					</div>
                                                                                     <div style="width:25px; margin-left: 2px;">
-                                                                                        <a class="editlog smlbtn-edit" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center">
                                                                                             <i class="fas fa-edit"></i>
                                                                                         </a>
                                                                                     </div>
@@ -3087,6 +3087,33 @@ if($issampledata){
 
 																					</div>
 																				</div>
+
+                                                                                <div class="hidethis">
+                                                                                    <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+                                                                                        <div class="entr_ttle_bar">
+                                                                                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                                                                                        <div class="trdlgsbox">
+
+                                                                                            <div class="trdleft">
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+                                                                                            </div>
+                                                                                            <div class="trdright darkbgpadd">
+                                                                                                <div><strong>Notes:</strong></div>
+                                                                                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+                                                                                            </div>
+
+                                                                                        <div class="trdclr"></div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
 
 																			</li>
 																					

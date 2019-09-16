@@ -3773,8 +3773,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-			let dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
+			let dboardlast = replaceCommas(dboard);
+			jQuery("input[name='inpt_data_boardlot']").val(dboardlast);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

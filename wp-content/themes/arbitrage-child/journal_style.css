@@ -521,7 +521,7 @@ img.arb_newpostimg {
 }
 #chartdiv4a {
     width: 100%;
-    height: 133px;
+    height: 212px;
 }
 #chartdiv4b {
     width: 100%;
@@ -1338,13 +1338,9 @@ input.enter-trade-btn:hover {
     position: relative !important;
 }
 .amChartsLegend.amcharts-legend-div {
-    overflow-y: hide !important;
-    position: absolute !important;
-    text-align: left !important;
-    width: 201.094px !important;
-    height: 94px !important;
-    left: 0px !important;
-    top: 68px !important;
+    display: block;
+    height: 116px !important;
+    overflow-y: hidden !important;
 }
 .amChartsLegend.amcharts-legend-div:hover {
     overflow-y: scroll !important;
@@ -1385,4 +1381,45 @@ input.enter-trade-btn:hover {
 }
 .swal-button--danger:focus {
     box-shadow: none;
+}
+#chartdiv1 .amcharts-chart-div {
+}
+.label_funds label, .label_funds input {
+    background: none !important;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
+}
+.label_funds label {
+    width: 110px !important;
+}
+.label_funds input {
+    width: 107px !important;
+    padding: 0 5px 0 0 !important;
+}
+.label_funds {
+    margin: 0;
+    height: 21px;
+}
+.label_cost label, .label_cost input {
+    background: none !important;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
+}
+.label_cost {
+    margin: 0;
+}
+.label_cost input {
+    padding: 0 5px 0 0 !important;
+}
+.groupinput.midd.label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 2px 0 3px;
+}
+.label_date {
+    margin-bottom: 3px;
 }

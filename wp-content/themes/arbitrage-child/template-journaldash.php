@@ -758,12 +758,15 @@ if($issampledata){
 																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
-																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
-																							<i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
-																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd label_date">
+																								<label>Buy Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
+																							</div>
+																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<i class="fa fa-lock" aria-hidden="true" style="display: none;"></i></div>
+																							<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -781,11 +784,7 @@ if($issampledata){
 																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
 																							</div>
 
-                                                                                            <div class="groupinput midd lockedd">
-																								<label>Buy Date</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
-																								<i class="fa fa-lock" aria-hidden="true"></i>
-                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker">
-																							</div>
+                                                                                            
 
 
 																						</div>
@@ -1606,13 +1605,13 @@ if($issampledata){
 																		}
 																	?>
 																</div>
-                                                                <div class="chartarea col-md-6" style="margin-bottom: -3px;">
+                                                                <div class="chartarea col-md-12" style="margin-bottom: -3px;">
                                                                     <div id="chartdiv4a"></div>
                                                                 </div>
-                                                                <div class="stats-info col-md-6" style="padding: 0">
+                                                                <div class="stats-info" style="padding: 0">
 
-                                                                    <div class="" style="padding: 11px 12px 7px 0;">
-                                                                        <div class="dstatstrade eqpad">
+                                                                    <div class="row" style="padding: 11px 12px 7px 12px;">
+                                                                        <div class="dstatstrade eqpad col-md-6" style="padding-right: 3px;">
                                                                             <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
@@ -1626,7 +1625,7 @@ if($issampledata){
 
                                                                             </ul>
 																		</div>
-																		<div class="dstatstrade eqpad">
+																		<div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
                                                                             <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
@@ -2925,7 +2924,7 @@ if($issampledata){
                                                                                     <div style="width:65px" class="table-title-live">Ave. Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Buy Value</div>
                                                                                     <div style="width:65px" class="table-title-live">Sell Price</div>
-                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:88px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:80px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:65px" class="table-title-live">%</div>
                                                                                     <div style="width:65px; text-align:center">Action</div>
@@ -3041,10 +3040,10 @@ if($issampledata){
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:88px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
 																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
-																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
-																					<div style="width:35px; text-align:center">
+																					<div style="width:56px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:27px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
 																						</a>
@@ -3055,6 +3054,11 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    <div style="width:25px; margin-left: 2px;">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit" style="cursor:pointer;text-align:center">
+                                                                                            <i class="fas fa-edit"></i>
+                                                                                        </a>
+                                                                                    </div>
                                                                                     
 																				</div>
 																				<?php  $tnum++; ?>
@@ -3083,6 +3087,33 @@ if($issampledata){
 
 																					</div>
 																				</div>
+
+                                                                                <div class="hidethis">
+                                                                                    <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+                                                                                        <div class="entr_ttle_bar">
+                                                                                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                                                                                        <div class="trdlgsbox">
+
+                                                                                            <div class="trdleft">
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+                                                                                            </div>
+                                                                                            <div class="trdright darkbgpadd">
+                                                                                                <div><strong>Notes:</strong></div>
+                                                                                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+                                                                                            </div>
+
+                                                                                        <div class="trdclr"></div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
 
 																			</li>
 																					
@@ -3957,7 +3988,8 @@ if($issampledata){
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
 			"pieX": "55%",
-			"radius": 80,
+			"pieY": "50%",
+			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],

@@ -2963,6 +2963,24 @@
         color: #fff;
         font-size: 12px;
     }
+
+    .editlog.smlbtn-edit {
+        line-height: 19px;
+        padding: 4px 5px 4.8px 5px;
+        width: 32px !important;
+        height: 23px;
+        border: 2px solid #66bd79;
+        background-color: transparent;
+        border-radius: 25px;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .editlog.smlbtn-edit:hover {
+        background-color: #66bd79;
+        color: #FFFFFF;
+    }
+
     .deletelog.smlbtn-delete:hover {
         background-color: #e91e63;
         color: #FFFFFF;

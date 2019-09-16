@@ -761,7 +761,7 @@ if($issampledata){
 																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd label_date">
-																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required>
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required id="journal__trade-btn--date-picker">
 																							</div>
 																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
@@ -772,7 +772,7 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -1378,7 +1378,8 @@ if($issampledata){
                                                         $dtotalpl = 0;
                                                         foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
-                                                                if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                if ($disyear == $dlogsmvalue['data_sellyear']) {
                                                                     array_push($dlistofsells, $dlogsmvalue);
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
@@ -3751,10 +3752,10 @@ if($issampledata){
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
 			var numseprvm = dstocks.volume.toFixed(2);
-			var numseprve = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.value.toFixed(2);
 			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
 			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
-
+			
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
@@ -3772,8 +3773,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboard));
+			let dboardlast = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {
@@ -3792,7 +3793,7 @@ if($issampledata){
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
-			var buySell__date = jQuery('.buySell__date-picker').val();
+			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
 			} else if (buySell__date == "") {

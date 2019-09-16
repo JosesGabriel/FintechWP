@@ -761,7 +761,7 @@ if($issampledata){
 																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd label_date">
-																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required>
 																							</div>
 																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
@@ -3093,7 +3093,7 @@ if($issampledata){
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
-                                                                                            <span><input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update"></span>
+                                                                                           
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
@@ -3136,9 +3136,9 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <!--<div class="onelnetrd">
-                                                                                               <span> <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update"></span>
-                                                                                            </div>-->
+                                                                                             <div class="trdleft">
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param-2go" style="float: right;">Update</button></div>
+                                                                                            </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
@@ -3706,6 +3706,12 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
+        
+        $(document).on("click", ".editlog", function() {
+
+            jQuery('.fancybox-wrap').css("width","376px");
+
+        });
 
 		$(document).on("click", ".deletelog", function() {
 
@@ -3770,10 +3776,15 @@ if($issampledata){
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			var buySell__date = jQuery('.buySell__date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			} else {
-				swal('Not enough buying power.');
+				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
 			}
@@ -3809,8 +3820,20 @@ if($issampledata){
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
+
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
+			let decnumbs = finaltotal.toFixed(2);
+			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
+
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
 		});
 
 		// jQuery("")

@@ -63,7 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
- /*   
+        /*
     var transaction = [
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
@@ -76,7 +76,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         for (i in transaction){
             $scope.ticker.push(transaction[i]);
         }
-  */      
+        */
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -85,11 +85,17 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol)
         };
         $scope.ticker.push(transaction);
+       
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
+
         $scope.$digest();
     });
     
     $scope.select = goToChart;
 }]);
+
 app.controller('psei', function($scope, $http) {  
     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
     // function updatePSEI() {
@@ -321,7 +327,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
-            stock['momentDate'] = moment(stock['date']);
+            stock['lastupdatetime'] = moment(stock['lastupdatetime']);
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
@@ -578,7 +584,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
-        console.log('END UPDATE BIDS ASKS', list);
         return list;
     }
 

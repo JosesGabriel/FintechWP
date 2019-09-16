@@ -867,9 +867,9 @@ if($issampledata){
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                    <select class="rnd" name="" id="selectdepotype" style="z-index: 20;">
+                                                                                        <option class="deposit-modal-btn show-button1" value="deposit">Deposit Funds</option>
+                                                                                        <option class="deposit-modal-btn show-button2" value="dividend">Dividend Income</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
@@ -3366,12 +3366,14 @@ if($issampledata){
                                                                                     }
 																				}
 
+																				$ledcount = 0;
 																				foreach ($dledger as $key => $value) {
 																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																						$ledcount++;
 																					?>
 																					<li>
 																						<div style="width:99%;">
-																							<div style="width:8%"><?php echo $key + 1; ?></div>
+																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
 																							<div style="width:19%"><?php echo $value->trantype; ?></div>
 																							<div style="width:14%"></div>

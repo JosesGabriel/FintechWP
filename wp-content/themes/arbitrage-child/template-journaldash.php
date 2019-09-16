@@ -3817,7 +3817,7 @@ if($issampledata){
 				swal('Date is required.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
-			} else {
+			} else if (total_price < dbuypower) {
 				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();

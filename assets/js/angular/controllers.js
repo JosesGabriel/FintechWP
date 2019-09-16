@@ -424,8 +424,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             let data = response.data;
 
             $scope.transactions = data.map(transaction => {
-                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
-                
+                let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
                 return {
                     symbol: transaction.symbol,
                     price:  price_format(transaction.executed_price),
@@ -440,7 +439,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     socket.on('psec', function (data) {
         let date = (new Date(0)).setUTCSeconds(data.t);
         let full_date = new Intl.DateTimeFormat('en-US', {dateStyle: 'medium'}).format(date);
-        let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
         let stock = {
             id: data.sym,
             symbol: data.sym,
@@ -512,7 +510,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('h:mm:ss a');
+            let full_time = (moment(data.t * 1000)).format('h:mm a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),

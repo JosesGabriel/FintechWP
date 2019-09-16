@@ -37,7 +37,7 @@
             background-color: #0c1f33;
             color: #fff;
         }
-        #stock_symbol{
+        #market_depth{
             margin-left: 10%;
         }
     </style>
@@ -93,7 +93,7 @@
 
 </head>
 <body>
-<h4>Market Depth: <span id="stock_symbol"></span></h4>
+<h4 id="market_depth">Market Depth: <span id="stock_symbol"></span></h4>
 <div class="container container-fluid">
   <div class="row no-gutters">
     <!-- Bid -->

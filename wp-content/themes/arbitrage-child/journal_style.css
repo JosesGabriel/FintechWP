@@ -9,6 +9,12 @@
     font-weight: 600;
 }
 
+.selecteditlog {
+    width: 157px;
+    padding: 5px 5px 5px 0px;
+    margin-left: -4px;
+}
+
 .side-header .right-image .onto-user-name {
     margin-bottom: 5px;
     text-transform: capitalize !important;

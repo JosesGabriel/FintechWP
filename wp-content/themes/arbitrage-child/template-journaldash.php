@@ -3099,7 +3099,7 @@ if($issampledata){
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd" name="" id="">
+                                                                                                        <select class="rnd" name="" id="" class="selecteditlog">
                                                                                                             <option  value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  value="Breakout Play">Breakout Play</option>
                                                                                                             <option  value="Trend Following">Trend Following</option>

@@ -1399,7 +1399,7 @@ input.enter-trade-btn:hover {
 }
 .label_funds label {
     width: 111px !important;
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Roboto', sans-serif;
 }
 .label_funds input {
@@ -1421,7 +1421,7 @@ input.enter-trade-btn:hover {
     margin: 0;
 }
 .label_cost label {
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Roboto', sans-serif;
 }
 .label_cost input {
@@ -1440,5 +1440,5 @@ input.enter-trade-btn:hover {
     font-weight: 300;
 }
 .label_date {
-    /* margin-bottom: 3px; */
+    margin-bottom: 5px;
 }

@@ -2218,7 +2218,7 @@ if($issampledata){
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							ksort($finalloss);
+																							rsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
@@ -3096,7 +3096,7 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-                                                                                           <!-- 
+                                                                                        
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
@@ -3135,7 +3135,7 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        -->
+                                                                                        
 
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3717,10 +3717,6 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
-        if ($(this).hasClass("tradelogbox")) {
-            jQuery('#fancybox-wrap').css('width','376px');
-        }     
-
 
 		$(document).on("click", ".deletelog", function() {
 

@@ -2917,9 +2917,9 @@ if($issampledata){
                                                                     <div class="dstatstrade overridewidth dstatstrade1">
                                                                         <ul>
                                                                         	<li class="headerpart headerpart-tradelogs">
-                                                                            	<div style="width:100%;">                                                                                	
+                                                                            	<div style="width:100%;">
+                                                                                    <div style="width:45px">Stocks</div>                                                                                	
                                                                                     <div style="width:65px">Date</div>
-                                                                                    <div style="width:45px">Stocks</div>
                                                                                     <div style="width:55px" class="table-title-live">Volume</div>
                                                                                     <div style="width:65px" class="table-title-live">Ave. Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Buy Value</div>
@@ -3034,8 +3034,8 @@ if($issampledata){
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
 																				<div style="width:99%;">
+                                                                                    <div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
@@ -3099,7 +3099,7 @@ if($issampledata){
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd" name="" id="">
+                                                                                                        <select class="rnd selecteditlog" name="" id="">
                                                                                                             <option  value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  value="Breakout Play">Breakout Play</option>
                                                                                                             <option  value="Trend Following">Trend Following</option>

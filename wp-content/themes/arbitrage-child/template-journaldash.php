@@ -3810,13 +3810,8 @@ if($issampledata){
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 
-			$.fn.digits = function(){ 
-				return this.each(function(){ 
-					$(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
-				})
-			}
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-			jQuery('input[name="inpt_data_total_price"]').val(finaltotal).digits();
+			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(finaltotal));
 		});
 
 		// jQuery("")

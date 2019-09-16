@@ -578,7 +578,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
-        console.log('END UPDATE BIDS ASKS', list);
         return list;
     }
 

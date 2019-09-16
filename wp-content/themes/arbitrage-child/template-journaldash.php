@@ -2915,6 +2915,14 @@ if($issampledata){
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="/journal" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+																		</form>
+																	</div>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3768,13 +3776,13 @@ if($issampledata){
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
-				dboard = 1,000,000;
+				dboard = '1,000,000';
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
-				dboard = 100,000;
+				dboard = '100,000';
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 10,000;
+				dboard = '10,000';
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1000;
+				dboard = '1,000';
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
@@ -3809,7 +3817,7 @@ if($issampledata){
 				swal('Date is required.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
-			} else {
+			} else if (total_price < dbuypower) {
 				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();

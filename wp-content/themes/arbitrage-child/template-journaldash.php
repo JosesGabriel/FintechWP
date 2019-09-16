@@ -1142,7 +1142,7 @@ if($issampledata){
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
@@ -1956,7 +1956,7 @@ if($issampledata){
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><span class="legend_circ"></span><?php echo $statsvalue['dstrat']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
@@ -2006,7 +2006,7 @@ if($issampledata){
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout</div>
+                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
                                                                                 </li>
 
                                                                             </ul>
@@ -3338,11 +3338,12 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
+                                                                                    <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
                                                                                     <div style="width:19%">Transaction</div>
-                                                                                    <!-- <div style="width:14%">Perfomance</div> -->
-                                                                                    <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <div style="width:14%">Debit</div>
+                                                                                    <div style="width:14%">Credit</div>
+                                                                                    <div style="width:19%">Balance</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3370,8 +3371,11 @@ if($issampledata){
 																					?>
 																					<li>
 																						<div style="width:99%;">
+																							<div style="width:8%"><?php echo $key + 1; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:14%"></div>
+																							<div style="width:14%"></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>

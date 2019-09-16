@@ -3136,9 +3136,9 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                           
-                                                                                               <span> <input type="button" class="bntedit modal-button-confirm" value="Update" style="left: 12px;"></span>
-                                                                                            
+                                                                                             <div class="trdleft">
+                                                                                              <div class="onelnetrd"> <span> <input type="button" class="bntedit modal-button-confirm" value="Update" style="left: 12px;"></span></div>
+                                                                                            </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
@@ -3810,7 +3810,7 @@ if($issampledata){
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
+			jQuery('input[name="inpt_data_total_price"]').val(finaltotal).replace(/,/g, '');
 		});
 
 		// jQuery("")

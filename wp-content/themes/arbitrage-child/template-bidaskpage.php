@@ -56,7 +56,7 @@
                 });
             };
             
-            getBidAsk('AC',10,function(callback){
+
                 var content_bid = [];
                 var content_ask = [];
                 var row_bid_data = jQuery('#row_bid_data');
@@ -71,7 +71,6 @@
                     row_bid_data.innerHTML(bids);
                     row_ask_data.innerHTML(asks);
                 });
-            });
 
         });
     </script>

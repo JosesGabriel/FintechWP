@@ -1391,10 +1391,10 @@ input.enter-trade-btn:hover {
     color: #afafaf;
 }
 .label_funds label {
-    width: 110px;
+    width: 110px !important;
 }
 .label_funds input {
-    width: 107px;
+    width: 107px !important;
 }
 .label_funds {
     margin: 0;

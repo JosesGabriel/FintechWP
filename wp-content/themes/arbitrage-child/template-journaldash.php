@@ -718,7 +718,7 @@ if($issampledata){
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post" class="resetform">
 																		<input type="hidden" name="deletedata" value="reset">
-                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
+                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn record">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
@@ -2914,6 +2914,14 @@ if($issampledata){
 																	<form action="" method="get">
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
+																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="/journal" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn resetdata">
+																		</form>
+																	</div>
 																</div>
                                                             </div>
                                                             <div class="box-portlet-content">

@@ -130,12 +130,13 @@ echo $user->ID ." versis ". $user->ID;
         $logid = $_POST['log_id'];
         $strategy = $_POST['data_strategy'];
 
+        echo $strategy;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
 
 
-        update_post_meta($logid,  $data_trade_info->strategy , $strategy);
+        update_post_meta($logid,  'data_trade_info' , 'strategy', $strategy);
 
         // $post = array(
         //     'strategy_plans' => $strategy, 

@@ -30,8 +30,6 @@
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
     <style type="text/css">
         body{
             background-color: #0c1f33;
@@ -83,6 +81,45 @@
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>
+        jquery(document).ready(function() {
+            
+            console.log('test run');
+
+            function getBidAsk(symbol,limit,callback){
+                let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
+                let settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": url,
+                    "method": "GET",
+                    "dataType": 'json'
+                };
+                $.ajax(settings).done(function (response) {
+                let res = response.data;
+                callback(res);
+                });
+            };
+
+            // var content_bid = [];
+            // var content_ask = [];
+            // var row_bid_data = jQuery('#row_bid_data');
+            // var row_ask_data = jQuery('#row_ask_data');
+
+            getBidAsk('AC',10,function(callback){
+                console.log('data');
+                var bids = callback.bids;
+                var asks = callback.asks;
+                console.log(bids);
+                console.log(asks);
+                // row_bid_data.innerHTML(bids);
+                // row_ask_data.innerHTML(asks);
+            });
+
+        });
+    </script>
     
 
 	<!-- end page container -->
@@ -150,41 +187,6 @@
     <script src="/assets/js/angular/filters.js?v=1.218"></script>
     <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
     <script src="/assets/js/datafeed.js?v=2.218"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <script>
-        jquery(document).ready(function() {
-            
-            function getBidAsk(symbol,limit,callback){
-                let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
-                let settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": url,
-                    "method": "GET",
-                    "dataType": 'json'
-                };
-                $.ajax(settings).done(function (response) {
-                let res = response.data;
-                callback(res);
-                });
-            };
-
-            var content_bid = [];
-            var content_ask = [];
-            var row_bid_data = jQuery('#row_bid_data');
-            var row_ask_data = jQuery('#row_ask_data');
-
-            getBidAsk('AC',10,function(callback){
-                console.log('data');
-                var bids = callback.bids;
-                var asks = callback.asks;
-                console.log(bids);
-                console.log(asks);
-                row_bid_data.innerHTML(bids);
-                row_ask_data.innerHTML(asks);
-            });
-
-        });
-    </script>
+   
 </body>
 </html> 

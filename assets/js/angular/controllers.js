@@ -321,6 +321,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
+            stock['momentDate'] = moment(stock['date']);
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);

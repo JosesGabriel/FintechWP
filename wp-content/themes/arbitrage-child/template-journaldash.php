@@ -3717,7 +3717,7 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
-        if ($(this).hasClass("tradelogbox")) {
+        if ($(this).hasClass('tradelogbox')) {
             jQuery('#fancybox-wrap').css('width','376px');
         }     
 

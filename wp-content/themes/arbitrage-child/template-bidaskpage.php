@@ -40,6 +40,12 @@
         #market_depth{
             margin-left: 10%;
         }
+        .text-green{
+            color: green;
+        }
+        .text-red{
+            color: red;
+        }
     </style>
     <script>
         jQuery(document).ready(function() {
@@ -75,6 +81,9 @@
                 getBidAsk(urlParams.get('symbol'),urlParams.get('limit'),function(callback){
                     var bids = callback.bids;
                     var asks = callback.asks;
+                    console.log(bids);
+                    console.log(asks);
+                    //var bids_style = 'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}">${ bids[i].price }
                     for(i in bids){
                         content_bids += `<tr>
                                 <td>${ bids[i].count }</td>

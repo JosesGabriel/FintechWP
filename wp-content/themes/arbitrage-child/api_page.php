@@ -704,9 +704,9 @@
 		echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
 		die();
 
-	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-posts-count') {
-		
-		$profile_id = $_GET['user-posts-count'];
+	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-posts-count' && isset($_GET['user-id'])) {
+
+		$profile_id = $_GET['user-id'];
 
 		if (!is_numeric($profile_id)) {
 			echo json_encode([

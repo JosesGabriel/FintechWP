@@ -56,8 +56,20 @@
                 callback(res);
                 });
             };
+
+            var content_bid = [];
+            var content_ask = [];
+            var row_bid_data = $('#row_bid_data');
+            var row_ask_data = $('#row_ask_data');
+
             getBidAsk('AC',10,function(callback){
-                console.log(callback);
+                console.log('data');
+                var bids = callback.bids;
+                var asks = callback.asks;
+                console.log(bids);
+                console.log(asks);
+                row_bid_data.innerHTML();
+                row_ask_data.innerHTML();
             });
 
         });
@@ -78,11 +90,11 @@
             <th scope="col">Bid</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="row_bid_data">
             <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
         </tbody>
         </table>
@@ -90,7 +102,7 @@
     <!-- Ask -->
     <div class="col-sm">
         <table class="table table-sm">
-        <thead>
+        <thead id="row_ask_data">
             <tr>
             <th scope="col">Ask</th>
             <th scope="col">Volume</th>
@@ -99,9 +111,9 @@
         </thead>
         <tbody>
             <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
         </tbody>
         </table>

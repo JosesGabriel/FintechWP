@@ -2220,7 +2220,7 @@ if($issampledata){
 																							$intolosschartlabels = '';
 																							sort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 2 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 0 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
                                                                                                 $dinss .= '<div class="width35">&#8369; '.($flosskey <= 2 ? number_format($flossvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
@@ -3130,8 +3130,8 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3">
-                                                                                                        
+                                                                                                    <textarea rows="3" style="width: 313px;">
+                                                                                                        <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
@@ -3376,7 +3376,7 @@ if($issampledata){
 																						<div style="width:99%;">
 																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-																							<div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
 																							<div style="width:14%"></div>
 																							<div style="width:14%"></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>

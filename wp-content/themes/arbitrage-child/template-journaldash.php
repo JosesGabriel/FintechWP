@@ -1384,7 +1384,9 @@ if($issampledata){
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getjurfees($selprice, 'sell');
+																	$sellfee = getjurfees($selprice, 'sell');
+																	
+																	echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
@@ -3773,8 +3775,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-			let dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
+			let dboardlast = replaceCommas(dboard);
+			jQuery("input[name='inpt_data_boardlot']").val(dboardlast);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

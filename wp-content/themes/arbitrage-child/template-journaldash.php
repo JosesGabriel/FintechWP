@@ -3018,6 +3018,11 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    <div style="width:25px">
+                                                                                        <a class="editlog smlbtn-edit" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+                                                                                            <i class="fas fa-edit"></i>
+                                                                                        </a>
+                                                                                    </div>
                                                                                     
 																				</div>
 																				<?php  $tnum++; ?>

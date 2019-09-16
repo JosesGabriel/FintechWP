@@ -10,7 +10,7 @@
 }
 
 .selecteditlog {
-    width: 169px;
+    width: 168px;
     padding: 5px 5px 5px 0px;
     margin-left: -4px;
 }
@@ -1395,30 +1395,34 @@ input.enter-trade-btn:hover {
     border: none !important;
     padding-right: 0 !important;
     color: #afafaf;
+    font-family: 'Roboto', sans-serif;
 }
 .label_funds label {
     width: 111px !important;
     font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 }
 .label_funds input {
     width: 107px !important;
     padding: 0 5px 0 0 !important;
 }
 .label_funds {
-    /* margin: 0;
-    height: 21px; */
+    margin: 0;
+    height: 21px;
 }
 .label_cost label, .label_cost input {
-    background: rgba(52, 73, 94, 0.34) !important;
+    background: none !important;
     border: none !important;
     padding-right: 0 !important;
     color: #afafaf;
+    font-family: 'Roboto', sans-serif;
 }
 .label_cost {
     margin: 0;
 }
 .label_cost label {
     font-weight: 600;
+    font-family: 'Roboto', sans-serif;
 }
 .label_cost input {
     padding: 0 5px 0 0 !important;

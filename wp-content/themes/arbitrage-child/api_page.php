@@ -766,7 +766,7 @@
 		}
 
 		ob_start();
-		echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]')
+		echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]');
 		$contents = ob_get_contents();
 		ob_end_clean();
 

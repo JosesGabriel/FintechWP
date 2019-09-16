@@ -1574,3 +1574,12 @@ span.title_logss {
     font-size: 17px;
     float: left;
 }
+i.fas.fa-close.to_closethis_rec {
+    float: right;
+    background: #000;
+    padding: 4px 7px;
+    top: -6px;
+    position: relative;
+    border-radius: 20px;
+    border: 2px solid #fff;
+}

@@ -31,7 +31,9 @@
 	<link rel="stylesheet" href="/assets/css/style.min.css" />
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
     <style type="text/css">
-
+        body{
+            background-color: #0c1f33;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>

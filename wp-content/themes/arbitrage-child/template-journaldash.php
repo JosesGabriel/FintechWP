@@ -3138,7 +3138,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #a9b2bb;">
+                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3775,8 +3775,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-			
-			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			let dboardlast = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

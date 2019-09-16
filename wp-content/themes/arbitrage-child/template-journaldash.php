@@ -3055,7 +3055,7 @@ if($issampledata){
 																						</a>
 																					</div>
                                                                                     <div style="width:25px; margin-left: 2px;">
-                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit" style="cursor:pointer;text-align:center">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center">
                                                                                             <i class="fas fa-edit"></i>
                                                                                         </a>
                                                                                     </div>

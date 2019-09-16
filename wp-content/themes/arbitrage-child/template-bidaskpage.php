@@ -90,11 +90,10 @@
 
 </head>
 <body>
-
+<h4>Market Depth: <span id="stock_symbol"></span></h4>
 <div class="container container-fluid">
   <div class="row no-gutters">
     <!-- Bid -->
-    <h3>Market Depth: <span id="stock_symbol"></span></h3>
     <div class="col-sm">
         <table class="table table-sm">
         <thead>

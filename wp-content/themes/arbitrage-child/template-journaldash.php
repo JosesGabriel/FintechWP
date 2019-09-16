@@ -3062,7 +3062,7 @@ if($issampledata){
                                                                                     
 																				</div>
 																				<?php  $tnum++; ?>
-																				<div class="hidethis">
+																				<div class="hidethis" id="hidelogs">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3088,7 +3088,7 @@ if($issampledata){
 																					</div>
 																				</div>
 
-                                                                                <div class="hidethis">
+                                                                                <div class="hidethis" id="hidelogs">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3714,6 +3714,15 @@ if($issampledata){
         });
     });
 	jQuery(document).ready(function(){
+
+
+        if(jQuery('.hidelogs').hasClass('hidethis')){
+            jQuery('.fancybox-wrap').css('width', '373px');
+        }else{
+            jQuery('.fancybox-wrap').css('width', '470px');
+        }
+       
+
 
 		$(document).on("click", ".deletelog", function() {
 

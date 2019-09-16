@@ -122,17 +122,24 @@ echo $user->ID ." versis ". $user->ID;
     }
 
 
-    if(isset($_POST['editbutton'])){
+    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
         $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array('strategy_plans' => $strategy , 'trade_plans' => $tradeplan, 'emotions' => $emotion );
+        $post = array(
+            'strategy_plans' => $strategy , 
+            'trade_plans' => $tradeplan, 
+            'emotions' => $emotion 
+        );
+
         wp_update_post($post);
         
         wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
         exit;
     }
+
+
 
 ?>
 <!-- EOF Deposit -->
@@ -301,6 +308,7 @@ echo $user->ID ." versis ". $user->ID;
                 'data_userid' => $user->ID,
             ),
         );
+
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
@@ -3230,6 +3238,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
+                                                                                                <input type="hidden" value="Edit" name="inpt_data_status">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>

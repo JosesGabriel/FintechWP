@@ -128,7 +128,7 @@ echo $user->ID ." versis ". $user->ID;
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
 
-		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$user->ID);
 	
 		$buypower = 0;
 		foreach ($dledger as $getbuykey => $getbuyvalue) {
@@ -146,7 +146,7 @@ echo $user->ID ." versis ". $user->ID;
 
 		if ($total_stocks_price > $buypower) {
 			wp_redirect('/journal');
-        	exit;
+			exit;
 		}
 
         $tradeinfo = [];
@@ -247,7 +247,15 @@ echo $user->ID ." versis ". $user->ID;
         $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
-        $data_postid = $_POST['inpt_data_postid'];
+		$data_postid = $_POST['inpt_data_postid'];
+		
+		$sellmonth = date('F', strtotime($_POST['selldate']));
+		$sellday = date('d', strtotime($_POST['selldate']));
+		$sellyear = date('Y', strtotime($_POST['selldate']));
+		$selldayname = date('l', strtotime($_POST['selldate']));
+
+		// print_r($_POST);
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -258,11 +266,15 @@ echo $user->ID ." versis ". $user->ID;
             'post_category' => array(19, 20),
             'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
             'meta_input' => array(
-                'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-                'data_sellday' => $_POST['inpt_data_sellday'],
-                'data_sellyear' => $_POST['inpt_data_sellyear'],
+                // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
+                // 'data_sellday' => $_POST['inpt_data_sellday'],
+				// 'data_sellyear' => $_POST['inpt_data_sellyear'],
+				
+				'data_sellmonth' => $sellmonth,
+                'data_sellday' => $sellday,
+                'data_sellyear' => $sellyear,
 
-                'data_isdateofw' => date('l'),
+                'data_isdateofw' => $selldayname,
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
@@ -297,7 +309,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $wpdb->insert('arby_ledger', array(
                 'userid' => $user->ID,
-                'date' => date('Y-m-d'),
+                'date' => date('Y-m-d', strtotime($_POST['selldate'])),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
             ));
@@ -749,15 +761,15 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Buy Power</label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
-																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -772,7 +784,7 @@ if($issampledata){
                                                                                             <div class="groupinput midd lockedd">
 																								<label>Buy Date</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
 																								<i class="fa fa-lock" aria-hidden="true"></i>
-                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker" onchange="getObject(this);">
+                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker">
 																							</div>
 
 
@@ -1145,7 +1157,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1217,9 +1229,9 @@ if($issampledata){
 
 																			                            </form>
 																			                        </div>
-		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
+		                                                                                        	<div class="entertrade buyaddtrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="buydate(this);"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -1313,7 +1325,7 @@ if($issampledata){
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																												<input type="hidden" value="Live" name="inpt_data_status">
-																												<input type="hidden" value="" name="isdate">
+																												<input type="hidden" value="" name="addstockisdate" id="addstockisdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -3294,7 +3306,9 @@ if($issampledata){
                                                                                     }
 																				}
 
-																				foreach ($dledger as $key => $value) { ?>
+																				foreach ($dledger as $key => $value) {
+																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					?>
 																					<li>
 																						<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
@@ -3302,7 +3316,9 @@ if($issampledata){
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>
-																			<?php }
+																			<?php
+																					endif;
+																				}
 																			?>
 																			
 																			<?php
@@ -3443,11 +3459,15 @@ if($issampledata){
 
 			jQuery(".dtopentertrade").find("#newdate").val(event.value);
 		}
+		function buydate(event){
+			console.log(event.value);
 
+			jQuery(".buyaddtrade").find("#addstockisdate").val(event.value);
+		}
 		function selldate(event){
 			console.log(event.value);
 
-			jQuery(".selltrade").find("#selldate").val(event.value);
+			jQuery("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
@@ -3703,14 +3723,14 @@ if($issampledata){
 		});
 
 		// calculate total price
-		jQuery(document).on('keyup', 'input[name="inpt_data_price"], input[name="inpt_data_qty"]', function (e) {
-			let $price = jQuery('input[name="inpt_data_price"]').val().replace(/,/g, '');
-			let $quantity = jQuery('input[name="inpt_data_qty"]').val().replace(/,/g, '');
-
-			let total_price = parseFloat($price) * Math.trunc($quantity);
-			
+		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
+			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
+			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
+			// let quantity = jQuery('#entertopdataquantity').val();
+			console.log(price + " ~ " + quantity);
+			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
-
+			
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 

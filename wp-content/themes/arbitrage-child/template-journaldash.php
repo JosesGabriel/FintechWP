@@ -3090,7 +3090,7 @@ if($issampledata){
 
                                                                                 <div class="hidethis">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
-                                                                                        <div class="entr_ttle_bar">
+                                                                                        <div class="entr_ttle_bar" style="width: 358px;">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
@@ -3129,7 +3129,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 314px;">
+                                                                                                    <textarea rows="3">
                                                                                                         
                                                                                                     </textarea>
                                                                                                 </div>

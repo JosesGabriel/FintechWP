@@ -3709,7 +3709,7 @@ if($issampledata){
         
         $(document).on("click", ".editlog", function() {
 
-            jQuery('.fancybox-wrap').css('width','376px');
+            jQuery('.fancybox-wrap').css("width","376px");
 
         });
 

@@ -3812,6 +3812,16 @@ if($issampledata){
 
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
 			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(finaltotal));
+
+			function replaceCommas(yourNumber) {
+            var components = yourNumber.toString().split(".");
+            if (components.length === 1) 
+                components[0] = yourNumber;
+            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            if (components.length === 2)
+                components[1] = components[1].replace(/\D/g, "");
+            return components.join(".");
+        }
 		});
 
 		// jQuery("")

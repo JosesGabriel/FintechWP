@@ -25,13 +25,11 @@
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400,700,900" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" />
-	<link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/assets/css/animate.min.css" />
-	<link rel="stylesheet" href="/assets/css/style.min.css" />
-	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
-    <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="/assets/css/style-chart.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
     <style type="text/css">
@@ -66,10 +64,12 @@
 
 </head>
 <body>
-
-    <div id="live_portfolio" class="dstatstrade overridewidth">
+<div class="box-portlet-content">
+    <div class="stats-info">
+    <div class="dstatstrade overridewidth dstatstrade1">
         <ul>
-            <li class="headerpart">
+            <li class="headerpart headerpart-tradelogs">
+
                 <div style="width:100%;">
                     <div style="width:7%" class="table-title-live">Stocks</div>
                     <div style="width:9%" class="table-title-live">Position</div>
@@ -89,6 +89,8 @@
             </li>
         </ul>
     </div>
+    </div>
+</div>
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

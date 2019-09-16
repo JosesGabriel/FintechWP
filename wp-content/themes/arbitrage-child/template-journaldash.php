@@ -2915,6 +2915,14 @@ if($issampledata){
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="/journal" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+																		</form>
+																	</div>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3094,6 +3102,8 @@ if($issampledata){
 																				</div>
 
                                                                                 <div class="hidethis" id="hidelogs">
+                                                                                    
+                                                                                <form method="post" action="">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3109,7 +3119,7 @@ if($issampledata){
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd selecteditlog" name="" id="">
+                                                                                                        <select class="rnd selecteditlog" name="inpt_data_strategy" id="">
                                                                                                             <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
                                                                                                             <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
@@ -3118,7 +3128,7 @@ if($issampledata){
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                     <select class="rnd selecteditlog" name="inpt_data_tradeplan" id="">
                                                                                                             <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
@@ -3126,7 +3136,7 @@ if($issampledata){
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                    <select class="rnd selecteditlog" name="inpt_data_emotion" id="">
                                                                                                             <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
                                                                                                             <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
                                                                                                             <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
@@ -3139,18 +3149,22 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param-2go" style="float: right;">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
                                                                                     </div>
+
+                                                                                </form>
+                                                                               
+
                                                                                 </div>
 
 
@@ -3762,13 +3776,13 @@ if($issampledata){
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
-				dboard = 1000000;
+				dboard = '1,000,000';
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
-				dboard = 100000;
+				dboard = '100,000';
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 10000;
+				dboard = '10,000';
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1000;
+				dboard = '1,000';
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
@@ -3776,6 +3790,9 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
+
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");
@@ -3786,9 +3803,6 @@ if($issampledata){
 					components[1] = components[1].replace(/\D/g, "");
 				return components.join(".");
 			}
-			dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
-			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 		});
 
 		jQuery(".dloadform").click(function(e){
@@ -3803,7 +3817,7 @@ if($issampledata){
 				swal('Date is required.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
-			} else if (total_price > dbuypower) {
+			} else if (total_price < dbuypower) {
 				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();

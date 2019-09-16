@@ -1093,7 +1093,24 @@ span.modal-notes-result {
     width: auto;
     float: right;
 }
+.tradelogsbutton {
+    width: auto;
+    float: right;
+    position: relative;
+    top: -3px;
+}
 .delete-data-btn {
+    float: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #f1f3f4;
+    background: none;
+    border: 2px #e91e63 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.record-data-btn {
     float: right;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
@@ -1120,6 +1137,10 @@ span.modal-notes-result {
     background-color: #00bcd4;
 }
 .dbuttondelete {
+    display: inline-block;
+    margin: 0px 5px;
+}
+.dbuttonrecord {
     display: inline-block;
     margin: 0px 5px;
 }

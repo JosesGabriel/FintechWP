@@ -58,7 +58,9 @@
                 });
             };
             console.log('test run');
-            getBidAsk('AC',10);
+            getBidAsk('AC',10,function(callback){
+                console.log(callback);
+            });
 
         });
     </script>

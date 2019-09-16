@@ -3805,14 +3805,6 @@ if($issampledata){
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
-			} else if (buySell__date == "") {
-				swal('Date is required.');
-				jQuery('.chart-loader').hide();
-				jQuery('.confirmtrd').show();
-			} else {
-				swal('Not enough funds.');
-				jQuery('.chart-loader').hide();
-				jQuery('.confirmtrd').show();
 			}
 		});
 

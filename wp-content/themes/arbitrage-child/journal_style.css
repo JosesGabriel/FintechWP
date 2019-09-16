@@ -1004,7 +1004,7 @@ a.smlbtn:hover {
     padding:10px;
 }
 .trdleft {
-    width:96%;
+    width: 336px;
     float:left;
 }
 .trdright {
@@ -1018,7 +1018,7 @@ a.smlbtn:hover {
     background-color: #4e6a85;
     padding: 11px 12px;
     border-radius: 6px;
-    width: 96%;
+    width: 336px;
     max-height: 230px;
     overflow: auto;
 }

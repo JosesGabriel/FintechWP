@@ -3806,9 +3806,10 @@ if($issampledata){
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
 			// let quantity = jQuery('#entertopdataquantity').val();
-			console.log(price + " ~ " + quantity);
+			
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
+			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 			let finaltotal = total_price + parseFloat(thetradefees(total_price, 'buy'));
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});

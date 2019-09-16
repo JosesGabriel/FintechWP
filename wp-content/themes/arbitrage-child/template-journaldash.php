@@ -523,7 +523,7 @@ if($issampledata){
 	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;

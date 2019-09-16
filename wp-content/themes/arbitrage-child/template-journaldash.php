@@ -3128,7 +3128,11 @@ if($issampledata){
                                                                                             </div>
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
-                                                                                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+                                                                                                <div>
+                                                                                                    <textarea rows="3">
+                                                                                                        
+                                                                                                    </textarea>
+                                                                                                </div>
                                                                                             </div>
 
                                                                                         <div class="trdclr"></div>

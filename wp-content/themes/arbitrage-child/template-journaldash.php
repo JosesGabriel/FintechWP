@@ -574,7 +574,8 @@ if($issampledata){
     $duseridmo = $user->ID;
 	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo.' order by ledid');
 	
-    $buypower = 0;
+	$buypower = 0;
+	$initcapital = $dledger[0]->tranamount;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
         if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
@@ -1528,7 +1529,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">₱<?php echo number_format($initcapital, 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>

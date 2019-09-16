@@ -3769,13 +3769,13 @@ if($issampledata){
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
-				dboard = 1,000,000;
+				dboard = '1,000,000';
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
-				dboard = 100,000;
+				dboard = '100,000';
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 10,000;
+				dboard = '10,000';
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1,000;
+				dboard = '1,000';
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
@@ -3804,16 +3804,8 @@ if($issampledata){
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
-			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
+			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
-			} else if (buySell__date == "") {
-				swal('Date is required.');
-				jQuery('.chart-loader').hide();
-				jQuery('.confirmtrd').show();
-			} else {
-				swal('Not enough funds.');
-				jQuery('.chart-loader').hide();
-				jQuery('.confirmtrd').show();
 			}
 		});
 

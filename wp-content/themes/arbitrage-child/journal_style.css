@@ -1388,7 +1388,7 @@ input.enter-trade-btn:hover {
     background: none !important;
     border: none !important;
     padding-right: 0 !important;
-    color: #d8d8d8;
+    color: #afafaf;
 }
 .label_funds label {
     width: 110px;
@@ -1403,7 +1403,7 @@ input.enter-trade-btn:hover {
     background: none !important;
     border: none !important;
     padding-right: 0 !important;
-    color: #d8d8d8;
+    color: #afafaf;
 }
 .label_cost {
     margin: 0;

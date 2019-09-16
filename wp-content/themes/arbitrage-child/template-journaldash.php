@@ -3809,7 +3809,7 @@ if($issampledata){
 			e.preventDefault();
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
-			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			var total_price = parseFloat(jQuery('input[name="inpt_data_total_price"]').val().replace(/,/g, ''));
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();

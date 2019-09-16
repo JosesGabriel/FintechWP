@@ -1582,4 +1582,5 @@ i.fas.fa-close.to_closethis_rec {
     position: relative;
     border-radius: 20px;
     border: 2px solid #fff;
+    cursor: pointer;
 }

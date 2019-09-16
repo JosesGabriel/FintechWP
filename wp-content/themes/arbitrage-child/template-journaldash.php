@@ -3135,8 +3135,8 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="btnupdate">
-                                                                                            <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update">
+                                                                                            <div class="onelnetrd">
+                                                                                                <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update">
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

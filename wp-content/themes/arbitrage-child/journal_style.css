@@ -1483,3 +1483,39 @@ span.legend_circ {
 .dstatstrade ul li:nth-child(4) span.legend_circ {
     background: #06af68;
 } */
+.record_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999999;
+    display: none;
+}
+.record_main {
+    width: 50%;
+    height: 300px;
+    margin: 65px auto 0;
+    background: #0c1f33;
+    border-radius: 5px;
+}
+.record_header {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+.record_head_label {
+    background: #34495e;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    vertical-align: middle;
+    padding: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

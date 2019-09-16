@@ -638,6 +638,63 @@ if($issampledata){
 ?>
 <!-- Delete Data -->
 <!-- EOF Ledger Data -->
+<div class="record_modal">
+	<div class="record_main">
+		<div class="record_header">
+			<span class="record_head_label">Record A Trade</span>
+		</div>
+		<div class="record_body">
+			<div class="col-md-6">
+				<span class="label_thisleft">Bought</span>
+				<div class="groupinput midd label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+
+			<div class="col-md-6">
+				<span class="label_thisright">Sold</span>
+				<div class="groupinput midd label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+		</div>
+		<div class="record_footer">.
+			<div class="dbuttonrecord_onmodal">
+				<form action="" method="post" class="recordform">
+					<input type="hidden" name="recorddata" value="record">
+					<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+				</form>
+			</div></div>
+	</div>
+</div>
 <div id="main-content" class="oncommonsidebar">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
@@ -2917,7 +2974,7 @@ if($issampledata){
 																</div>
 																<div class="tradelogsbutton">
 																	<div class="dbuttonrecord">
-																		<form action="/journal" method="post" class="recordform">
+																		<form action="" method="post" class="recordform">
 																			<input type="hidden" name="recorddata" value="record">
 																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 																		</form>
@@ -3943,6 +4000,10 @@ if($issampledata){
 				jQuery('.resetform').submit();
 			} 
 			});
+		});
+		jQuery('.dbuttonrecord').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').show();
 		});
 
 

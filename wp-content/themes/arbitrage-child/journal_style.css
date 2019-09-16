@@ -1552,7 +1552,7 @@ span.legend_circ {
 .record_body .groupinput.midd input {
     width: 142px;
 }
-.record_body select#inpt_data_select_stock {
+.record_body .groupinput.midd select {
     width: 143px !important;
 }
 .record_body {
@@ -1562,4 +1562,7 @@ span.legend_circ {
     display: block;
     width: 100%;
     padding: 0 15px 15px;
+}
+.record_footer {
+    margin: 0;
 }

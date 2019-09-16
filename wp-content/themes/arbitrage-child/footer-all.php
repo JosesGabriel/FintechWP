@@ -137,6 +137,7 @@
         })
     })
     $('.um-notification-ajax').on('click', '.um-notification', function (e) {
+        e.stopPropagation();
         e.preventDefault();
         var $this = $(this)
 

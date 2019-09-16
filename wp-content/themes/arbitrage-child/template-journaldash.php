@@ -136,7 +136,7 @@ echo $user->ID ." versis ". $user->ID;
 
         print_r($data_trade_info);
 
-        update_post_meta($logid,  'data_trade_info' , 'strategy', $strategy);
+        update_post_meta($logid,  $data_trade_info[0]->strategy , 'strategy');
 
         // $post = array(
         //     'strategy_plans' => $strategy, 

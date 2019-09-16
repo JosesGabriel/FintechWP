@@ -57,8 +57,8 @@
                 callback(res);
                 });
             };
-            console.log('test');
-            getBidAsk('AC',2);
+            console.log('test run');
+            getBidAsk('AC',10);
 
         });
     </script>

@@ -1442,3 +1442,19 @@ input.enter-trade-btn:hover {
 .label_date {
     margin-bottom: 5px;
 }
+span.legend_circ {
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-right: 4px;
+}
+span.legend_circ:nth-child(1) {
+    background: #ffc107;
+}
+span.legend_circ:nth-child(2) {
+    background: #06af68;
+}
+span.legend_circ:nth-child(3) {
+    background: #f44336;
+}

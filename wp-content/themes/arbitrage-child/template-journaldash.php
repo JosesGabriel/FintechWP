@@ -1956,7 +1956,8 @@ if($issampledata){
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<span class="legend_circ"></span>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
@@ -2006,7 +2007,7 @@ if($issampledata){
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout</div>
+                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
                                                                                 </li>
 
                                                                             </ul>

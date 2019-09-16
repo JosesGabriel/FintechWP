@@ -42,6 +42,18 @@
     <script>
         jQuery(document).ready(function() {
             console.log('load all');
+            let url = "https://data-api.arbitrage.ph/api/v1/stocks/list";
+            let settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": url,
+                "method": "GET",
+                "dataType": 'json'
+            };
+            $.ajax(settings).done(function (response) {
+               let res = response.data;
+               console.log(res);
+            });
         });
     </script>
 

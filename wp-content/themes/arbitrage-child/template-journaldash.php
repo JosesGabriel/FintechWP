@@ -3095,7 +3095,8 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form method="post" action="">
+                                                                                <form action="/journal/<?php echo $data_stock; ?>" method="put" class="edittlogs" autocomplete="off">
+
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3141,7 +3142,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                    <textarea rows="3" name="inpt_data_tradingnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3721,11 +3722,11 @@ if($issampledata){
 
         
         
-        $(document).on("click", ".editlog", function() {
-
-            jQuery('.fancybox-wrap').css("width","376px");
-
+        jQuery(".editmenow").click(function(e){
+            jQuery(".edittlogs").submit();
         });
+
+
 
 		$(document).on("click", ".deletelog", function() {
 

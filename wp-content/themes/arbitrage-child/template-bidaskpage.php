@@ -59,8 +59,8 @@
 
             var content_bid = [];
             var content_ask = [];
-            var row_bid_data = $('#row_bid_data');
-            var row_ask_data = $('#row_ask_data');
+            var row_bid_data = jQuery('#row_bid_data');
+            var row_ask_data = jQuery('#row_ask_data');
 
             getBidAsk('AC',10,function(callback){
                 console.log('data');

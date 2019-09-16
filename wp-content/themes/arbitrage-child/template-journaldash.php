@@ -3068,7 +3068,7 @@ if($issampledata){
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
 																						</div>
-																						<hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">
@@ -3094,7 +3094,7 @@ if($issampledata){
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
                                                                                         </div>
-                                                                                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                                                                                        <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
                                                                                         
                                                                                             <div class="trdleft">
@@ -3136,7 +3136,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="onelnetrd">
-                                                                                                <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update">
+                                                                                               <span> <input type="submit" class="bntedit dloadform green modal-button-confirm" value="Update"></span>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

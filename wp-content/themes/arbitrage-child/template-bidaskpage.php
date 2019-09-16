@@ -41,19 +41,27 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>
         jQuery(document).ready(function() {
-            console.log('load all');
-            let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=2&symbol=AC";
-            let settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": url,
-                "method": "GET",
-                "dataType": 'json'
+            
+            function getBidAsk(symbol,limit,callback){
+                console.log('load all');
+                let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
+                let settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": url,
+                    "method": "GET",
+                    "dataType": 'json'
+                };
+                $.ajax(settings).done(function (response) {
+                let res = response.data;
+                callback(res);
+                });
             };
-            $.ajax(settings).done(function (response) {
-               let res = response.data;
-               console.log(res);
+            console.log('test run');
+            getBidAsk('AC',10,function(callback){
+                console.log(callback);
             });
+
         });
     </script>
 

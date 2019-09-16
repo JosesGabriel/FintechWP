@@ -3096,7 +3096,7 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-                                                                                           <!-- 
+                                                                                        
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
@@ -3135,7 +3135,7 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        -->
+                                                                                        
 
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3369,7 +3369,7 @@ if($issampledata){
 
 																				$ledcount = 0;
 																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
 																						$ledcount++;
 																					?>
 																					<li>
@@ -3717,10 +3717,6 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
-        if ($(this).hasClass('tradelogbox')) {
-            jQuery('#fancybox-wrap').css('width','376px');
-        }     
-
 
 		$(document).on("click", ".deletelog", function() {
 

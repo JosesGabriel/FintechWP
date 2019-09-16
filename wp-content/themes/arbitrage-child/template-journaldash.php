@@ -2915,6 +2915,14 @@ if($issampledata){
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="/journal" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+																		</form>
+																	</div>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">

@@ -3768,7 +3768,7 @@ if($issampledata){
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
 				dboard = 10,000;
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1,000;
+				dboard = 1000;
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {

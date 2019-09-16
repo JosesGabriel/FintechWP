@@ -1220,7 +1220,7 @@ if($issampledata){
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																												<input type="hidden" name="selldate" id="selldate">
+																												<input type="hidden" name="selldate" class="selldate">
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -3522,7 +3522,7 @@ if($issampledata){
 		function selldate(event){
 			console.log(event.value);
 
-			jQuery("#selldate").val(event.value);
+			jQuery(".selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
@@ -3776,10 +3776,15 @@ if($issampledata){
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			var buySell__date = jQuery('.buySell__date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			} else {
-				swal('Not enough buying power.');
+				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
 			}
@@ -3817,18 +3822,9 @@ if($issampledata){
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-			var currentVal = finaltotal;
-            var testDecimal = testDecimals(currentVal);
-            if (testDecimal.length > 1) {
-                currentVal = currentVal.slice(0, -1);
-            }
-			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(currentVal));
+			let decnumbs = finaltotal.toFixed(2);
+			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
 
-			function testDecimals(currentVal) {
-				var count;
-				currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-				return count;
-			}
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");
 				if (components.length === 1) 

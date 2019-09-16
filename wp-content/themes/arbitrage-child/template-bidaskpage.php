@@ -30,8 +30,6 @@
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
     <style type="text/css">
         body{
             background-color: #0c1f33;
@@ -150,7 +148,6 @@
     <script src="/assets/js/angular/filters.js?v=1.218"></script>
     <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
     <script src="/assets/js/datafeed.js?v=2.218"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>
         jquery(document).ready(function() {
             

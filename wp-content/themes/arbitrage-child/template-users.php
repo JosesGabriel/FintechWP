@@ -2111,7 +2111,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
                 if (response.success) {
                     count = response.data.posts_count;
                 }
-                $(',profile_post_count').html(count);
+                $('.profile_post_count').html(count);
             }
         })
     });

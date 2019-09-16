@@ -3095,7 +3095,7 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form action="/journal/<?php echo $data_stock; ?>" method="put" class="edittlogs" autocomplete="off">
+                                                                                <form action="/journal/<?php echo $data_stock; ?>" method="post" class="edittlogs" autocomplete="off">
 
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">

@@ -40,7 +40,9 @@
     </style>
     <script>
         jQuery(document).ready(function() {
-            
+
+            var stock_symbol = jQuery('#stock_symbol');
+
             function getBidAsk(symbol,limit,callback){
                 let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
                 let settings = {
@@ -52,10 +54,11 @@
                 };
                 jQuery.ajax(settings).done(function (response) {
                 let res = response.data;
+                stock_symbol.html(symbol);
                 callback(res);
                 });
             };
-            
+
                 var content_bids = "";
                 var content_asks = "";
                 var row_bid_data = jQuery('#row_bid_data');
@@ -91,6 +94,7 @@
 <div class="container container-fluid">
   <div class="row no-gutters">
     <!-- Bid -->
+    <h3>Market Depth: <span id="stock_symbol"></span></h3>
     <div class="col-sm">
         <table class="table table-sm">
         <thead>

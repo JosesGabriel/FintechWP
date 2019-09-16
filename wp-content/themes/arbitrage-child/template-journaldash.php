@@ -3097,16 +3097,15 @@ if($issampledata){
                                                                                         <div class="trdlgsbox">
 
                                                                                             <div class="trdleft">
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft">
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <?php// echo $data_trade_info[0]->strategy; ?>
-                                                                                                        <select class="rnd" name="" id="" value="<?php echo $data_trade_info[0]->strategy; ?>">
+                                                                                                        <select class="rnd" name="" id="">
                                                                                                             <option  value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  value="Breakout Play">Breakout Play</option>
                                                                                                             <option  value="Trend Following">Trend Following</option>
                                                                                                         </select>
                                                                                                         
-                                                                                                    </span></div>
+                                                                                                    </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>

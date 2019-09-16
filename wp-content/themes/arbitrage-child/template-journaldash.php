@@ -652,6 +652,63 @@ if($issampledata){
 ?>
 <!-- Delete Data -->
 <!-- EOF Ledger Data -->
+<div class="record_modal">
+	<div class="record_main">
+		<div class="record_header">
+			<span class="record_head_label">Record A Trade</span>
+		</div>
+		<div class="record_body">
+			<div class="col-md-6">
+				<span class="label_thisleft">Bought</span>
+				<div class="groupinput midd rec_label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+
+			<div class="col-md-6">
+				<span class="label_thisright">Sold</span>
+				<div class="groupinput midd rec_label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+		</div>
+		<div class="record_footer">.
+			<div class="dbuttonrecord_onmodal">
+				<form action="" method="post" class="recordform">
+					<input type="hidden" name="recorddata" value="record">
+					<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+				</form>
+			</div></div>
+	</div>
+</div>
 <div id="main-content" class="oncommonsidebar">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
@@ -2929,6 +2986,14 @@ if($issampledata){
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+																		</form>
+																	</div>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
@@ -3109,7 +3174,11 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
+
                                                                                 <form method="post" class="edittlogs" autocomplete="off">
+
+
+                                                                            
 
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
@@ -3156,7 +3225,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" name="inpt_data_tradingnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3736,11 +3805,11 @@ if($issampledata){
 
         
         
-        jQuery(".editmenow").click(function(e){
-            jQuery(".edittlogs").submit();
+        $(document).on("click", ".editlog", function() {
+
+            jQuery('.fancybox-wrap').css("width","376px");
+
         });
-
-
 
 		$(document).on("click", ".deletelog", function() {
 
@@ -3816,10 +3885,18 @@ if($issampledata){
 			e.preventDefault();
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
-			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			var total_price = parseFloat(jQuery('input[name="inpt_data_total_price"]').val().replace(/,/g, ''));
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
+			} else if (total_price < dbuypower) {
+				swal('Not enough funds.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			}
 		});
 
@@ -3942,6 +4019,10 @@ if($issampledata){
 				jQuery('.resetform').submit();
 			} 
 			});
+		});
+		jQuery('.dbuttonrecord').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').show();
 		});
 
 

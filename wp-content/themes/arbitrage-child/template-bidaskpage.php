@@ -35,6 +35,7 @@
     <style type="text/css">
         body{
             background-color: #0c1f33;
+            color: #fff;
         }
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
@@ -64,33 +65,50 @@
 
 </head>
 <body>
-<div class="box-portlet-content">
-    <div class="stats-info">
-    <div class="dstatstrade overridewidth dstatstrade1">
-        <ul>
-            <li class="headerpart headerpart-tradelogs">
 
-                <div style="width:100%;">
-                    <div style="width:7%" class="table-title-live">Stocks</div>
-                    <div style="width:9%" class="table-title-live">Position</div>
-                    <div style="width:9%" class="table-title-live">Average Price</div>
-                    <div style="width:9%" class="table-title-live">Total Cost</div>
-                    <div style="width:9%" class="table-title-live">Market Value</div>
-                </div>
-            </li>
-            <li>
-                <div style="width:100%;">
-                    <div style="width:7%" class="table-cell-live"> test1 </div>
-                    <div style="width:9%" class="table-cell-live"> test2 </div>
-                    <div style="width:9%" class="table-cell-live"> test3 </div>
-                    <div style="width:9%" class="table-cell-live"> test4 </div>
-                    <div style="width:9%" class="table-cell-live"> test5 </div>
-                </div>
-            </li>
-        </ul>
+<div class="container container-fluid">
+  <div class="row no-gutters">
+    <!-- Bid -->
+    <div class="col-sm">
+        <table class="table table-sm">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Volume</th>
+            <th scope="col">Bid</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+        </tbody>
+        </table>
     </div>
+    <!-- Ask -->
+    <div class="col-sm">
+        <table class="table table-sm">
+        <thead>
+            <tr>
+            <th scope="col">Ask</th>
+            <th scope="col">Volume</th>
+            <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+        </tbody>
+        </table>
     </div>
+  </div>
 </div>
+    
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

@@ -1093,7 +1093,24 @@ span.modal-notes-result {
     width: auto;
     float: right;
 }
+.tradelogsbutton {
+    width: auto;
+    float: right;
+    position: relative;
+    top: -3px;
+}
 .delete-data-btn {
+    float: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #f1f3f4;
+    background: none;
+    border: 2px #e91e63 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.record-data-btn {
     float: right;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
@@ -1120,6 +1137,10 @@ span.modal-notes-result {
     background-color: #00bcd4;
 }
 .dbuttondelete {
+    display: inline-block;
+    margin: 0px 5px;
+}
+.dbuttonrecord {
     display: inline-block;
     margin: 0px 5px;
 }
@@ -1446,6 +1467,21 @@ input.enter-trade-btn:hover {
 .label_date {
     margin-bottom: 5px;
 }
+.groupinput.midd.rec_label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.rec_label_date {
+    /* margin-bottom: 5px; */
+}
 span.legend_circ {
     width: 10px;
     height: 10px;
@@ -1462,3 +1498,39 @@ span.legend_circ {
 .dstatstrade ul li:nth-child(4) span.legend_circ {
     background: #06af68;
 } */
+.record_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999999;
+    display: none;
+}
+.record_main {
+    width: 53%;
+    height: 300px;
+    margin: 65px auto 0;
+    background: #0c1f33;
+    border-radius: 5px;
+}
+.record_header {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+.record_head_label {
+    background: #34495e;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    vertical-align: middle;
+    padding: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

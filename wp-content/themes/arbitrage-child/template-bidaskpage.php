@@ -56,8 +56,20 @@
                 callback(res);
                 });
             };
+
+            var content_bid = [];
+            var content_ask = [];
+            var row_bid_data = jQuery('#row_bid_data');
+            var row_ask_data = jQuery('#row_ask_data');
+
             getBidAsk('AC',10,function(callback){
-                console.log(callback);
+                console.log('data');
+                var bids = callback.bids;
+                var asks = callback.asks;
+                console.log(bids);
+                console.log(asks);
+                row_bid_data.innerHTML();
+                row_ask_data.innerHTML();
             });
 
         });
@@ -70,7 +82,7 @@
   <div class="row no-gutters">
     <!-- Bid -->
     <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -78,30 +90,30 @@
             <th scope="col">Bid</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="row_bid_data">
             <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
         </tbody>
         </table>
     </div>
     <!-- Ask -->
     <div class="col-sm">
-        <table class="table table-sm table-bordered">
-        <thead>
+        <table class="table table-sm">
+        <thead id="row_ask_data">
             <tr>
-            <th scope="col">#</th>
+            <th scope="col">Ask</th>
             <th scope="col">Volume</th>
-            <th scope="col">Bid</th>
+            <th scope="col">#</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td></td>
+            <td></td>
+            <td></td>
             </tr>
         </tbody>
         </table>

@@ -120,6 +120,20 @@ echo $user->ID ." versis ". $user->ID;
         wp_redirect('/journal');
         exit;
     }
+
+
+    if(isset($_POST['editbutton'])){
+
+        $strategy = $_POST['inpt_data_strategy'];
+        $tradeplan = $_POST['inpt_data_tradeplan'];
+        $emotion = $_POST['inpt_data_emotion'];
+        $post = array('strategy' => $strategy , 'tradeplan' => $tradeplan, 'emotion' => $emotion );
+        wp_update_post($post);
+        
+        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+
 ?>
 <!-- EOF Deposit -->
 
@@ -3162,7 +3176,9 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form method="post" action="">
+
+                                                                                <form method="post" class="edittlogs" autocomplete="off">     
+
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3214,7 +3230,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param" style="float: right;">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3788,9 +3804,9 @@ if($issampledata){
 
         
         
-        $(document).on("click", ".editlog", function() {
+        $(document).on("click", ".editmenow", function() {
 
-            jQuery('.fancybox-wrap').css("width","376px");
+           jQuery('.edittlogs').submit();
 
         });
 
@@ -3821,6 +3837,8 @@ if($issampledata){
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
+
+			console.log(dstocks);
 
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));

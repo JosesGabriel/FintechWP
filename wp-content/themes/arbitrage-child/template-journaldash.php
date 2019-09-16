@@ -128,13 +128,35 @@ echo $user->ID ." versis ". $user->ID;
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
 
+		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$user->ID);
+	
+		$buypower = 0;
+		foreach ($dledger as $getbuykey => $getbuyvalue) {
+			if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+				$buypower = $buypower + $getbuyvalue->tranamount;
+			} else {
+				$buypower = $buypower - $getbuyvalue->tranamount;
+			}
+		}
+
 		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
 
+		$total_stocks_price = bcadd($stockquantity, $butstockprice);
+
+		if ($total_stocks_price > $buypower) {
+			wp_redirect('/journal');
+			exit;
+		}
+
         $tradeinfo = [];
-        $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
-        $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-		$tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+        // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
+        // $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
+		// $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
+
+		$tradeinfo['buymonth'] = date('F', strtotime($_POST['newdate']));
+        $tradeinfo['buyday'] = date('d', strtotime($_POST['newdate']));
+		$tradeinfo['buyyear'] = date('Y', strtotime($_POST['newdate']));
 		
 		// $stocksinfo = json_decode(json_encode($_POST['inpt_data_stock']));
         $tradeinfo['stock'] = $_POST['inpt_data_stock'];
@@ -225,7 +247,15 @@ echo $user->ID ." versis ". $user->ID;
         $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
-        $data_postid = $_POST['inpt_data_postid'];
+		$data_postid = $_POST['inpt_data_postid'];
+		
+		$sellmonth = date('F', strtotime($_POST['selldate']));
+		$sellday = date('d', strtotime($_POST['selldate']));
+		$sellyear = date('Y', strtotime($_POST['selldate']));
+		$selldayname = date('l', strtotime($_POST['selldate']));
+
+		// print_r($_POST);
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -236,11 +266,15 @@ echo $user->ID ." versis ". $user->ID;
             'post_category' => array(19, 20),
             'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
             'meta_input' => array(
-                'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-                'data_sellday' => $_POST['inpt_data_sellday'],
-                'data_sellyear' => $_POST['inpt_data_sellyear'],
+                // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
+                // 'data_sellday' => $_POST['inpt_data_sellday'],
+				// 'data_sellyear' => $_POST['inpt_data_sellyear'],
+				
+				'data_sellmonth' => $sellmonth,
+                'data_sellday' => $sellday,
+                'data_sellyear' => $sellyear,
 
-                'data_isdateofw' => date('l'),
+                'data_isdateofw' => $selldayname,
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
@@ -275,7 +309,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $wpdb->insert('arby_ledger', array(
                 'userid' => $user->ID,
-                'date' => date('Y-m-d'),
+                'date' => date('Y-m-d', strtotime($_POST['selldate'])),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
             ));
@@ -416,7 +450,7 @@ if($issampledata){
 	// echo "no smaple";
 } else {
 	$isjounalempty = true;
-	$getdstocks = ['SampleStock_1', 'SampleStock_2'];
+	$getdstocks = ['Stock_1', 'Stock_2'];
 	$dtradeingfo = [
 		[
 			'data' => [
@@ -445,7 +479,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_1',
+			'stockname' => 'Stock_1',
 		],
 		[
 			'data' => [
@@ -474,7 +508,7 @@ if($issampledata){
 			'totalstock' => 1213228,
 			'aveprice' => 2228.5209688868,
 			'totalcost' => 84225991.13847,
-			'stockname' => 'SampleStock_2',
+			'stockname' => 'Stock_2',
 		]
 	];
 	// echo "with sample";
@@ -563,8 +597,8 @@ if($issampledata){
 		}
 	} else {
 		$dequityp = 245318.22;
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},';
-		$currentaloccolor = '"#FF5500","#00B4C4","#FF008F","#FFB700","#CEF500","#FF5500"';
+		$currentalocinfo = '{"category" : "Cash", "column-1" : "245318.22"},{"category" : "Sample Stock 1", "column-1" : "61752.33"},{"category" : "Sample Stock 2", "column-1" : "59760.32"},{"category" : "Sample Stock 3", "column-1" : "59760.32"}';
+		$currentaloccolor = '"#FF5500","#00B4C4","#FF2B66","#FFB700","#CEF500","#FF5500","#00AAFF","#CC0066","#33FF99"';
 	}
     
 ?>
@@ -700,11 +734,11 @@ if($issampledata){
 																				$listosstocks = $gerdqoute->data;
 
 																			?>
-																			<div class="entertrade" id="entertrade_mtrade">
+																			<div class="entertrade dtopentertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
-																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="getObject(this);"></span>
+																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php /*echo date('F j, Y g:i a');*/ ?></span>
 																				</div>
-																				<form action="/journal" method="post" class="dentertrade">
+																				<form action="/journal" method="post" class="dentertrade" autocomplete="off">
 																				<div class="entr_wrapper_top">
 																						<div class="entr_col">
 																							<div class="groupinput fctnlhdn">
@@ -724,17 +758,21 @@ if($issampledata){
 																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
-																							<div class="groupinput midd lockedd"><label>Buy Power</label>
+																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																							<div class="groupinput midd label_date">
+																								<label>Buy Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
+																							</div>
+																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
-																							<i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd"><label>Buy Price</label><input type="text" name="inpt_data_price" class="textfield-buyprice number" required></div>
-																							<div class="groupinput midd"><label>Quantity</label><input type="text" name="inpt_data_qty" class="textfield-quantity number" required></div>
+																							<i class="fa fa-lock" aria-hidden="true" style="display: none;"></i></div>
+																							<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -745,6 +783,10 @@ if($issampledata){
 																								<i class="fa fa-lock" aria-hidden="true"></i>
 																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
 																							</div>
+
+                                                                                            
+
+
 																						</div>
 																						<div class="entr_clear"></div>
 																				</div>
@@ -786,6 +828,7 @@ if($issampledata){
 																					<div class="groupinput">
 																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																						<input type="hidden" value="Live" name="inpt_data_status">
+																						<input type="hidden" id="newdate" name="newdate">
 																						<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
 																					</div>
 																					</div>
@@ -1113,7 +1156,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1176,7 +1219,8 @@ if($issampledata){
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
-																			                                    <input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
+																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
+																												<input type="hidden" name="selldate" id="selldate">
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -1184,9 +1228,9 @@ if($issampledata){
 
 																			                            </form>
 																			                        </div>
-		                                                                                        	<div class="entertrade" id="entertrade_<?php echo $value; ?>">
+		                                                                                        	<div class="entertrade buyaddtrade" id="entertrade_<?php echo $value; ?>">
 																	                                    <div class="entr_ttle_bar">
-																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker"></span>
+																	                                        <strong>Enter Buy Order</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="buydate(this);"></span>
 																	                                    </div>
 																	                                    <form action="/journal" method="post">
 																	                                    <div class="entr_wrapper_top">
@@ -1280,7 +1324,7 @@ if($issampledata){
 																	                                        <div class="groupinput">
 																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																												<input type="hidden" value="Live" name="inpt_data_status">
-																												<input type="hidden" value="" name="isdate">
+																												<input type="hidden" value="" name="addstockisdate" id="addstockisdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
 																	                                        </div>
 																	                                     </div>
@@ -1348,6 +1392,7 @@ if($issampledata){
 
                                                     ?>
 
+													
 						                        	<div class="row">
 														<div class="col-md-7" style="padding-right: 0;">
 															<div class="box-portlet">
@@ -1415,6 +1460,17 @@ if($issampledata){
 																	</div>
 																	<br class="clear">
 																</div>
+															</div><br class="clear">
+															<div class="box-portlet">
+                                                                <div class="box-portlet-header">
+                                                                    Monthly Performance
+                                                                </div>
+                                                                <div class="box-portlet-content" style="padding-right: 0;padding-bottom: 0;">
+                                                                    <div class="col-md-12" style="padding: 0px;">
+                                                                        <div id="chartdiv2"></div>
+                                                                    </div>
+                                                                    <br class="clear">
+                                                                </div>
 
 															</div>
 														</div>
@@ -1430,162 +1486,9 @@ if($issampledata){
 																	</div>
 																</div>
 
-															</div>
-														</div>
-													</div>
-													<br class="clear">
+															</div><br class="clear">
 
-                                                    <?php
-                                                        $percaspermonth = [];
-                                                        foreach ($month as $monfkey => $monfvalue) {
-                                                            $dinpart = [];
-                                                            $dinpart['ismonth'] = date('M', strtotime($monfvalue));
-                                                            $dinpart['performance'] = 0;
-                                                            $dinpart['isperc'] = '';
-                                                            foreach ($alltradelogs as $atlkey => $atlvalue) {
-                                                                if ($atlvalue['data_sellmonth'] == $monfvalue) {
-                                                                    $sellprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_sell_price']);
-                                                                    $projectprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_avr_price']);
-                                                                    $sellfee = getjurfees($sellprice, 'sell');
-
-                                                                    $istotal = ($sellprice - $sellfee) - $projectprice;
-                                                                    $dinpart['performance'] += $istotal;
-                                                                    $dinpart['isperc'] = ($istotal > 0 ? 'win' : 'loss');
-                                                                }
-                                                            }
-                                                            array_push($percaspermonth, $dinpart);
-                                                        }
-
-                                                        $monthperc = '';
-                                                        foreach ($percaspermonth as $spmkey => $spmvalue) {
-                                                            $monthperc .= '{';
-                                                            $monthperc .= '"category": "'.$spmvalue['ismonth'].'",';
-                                                            $monthperc .= '"column-1": "'.$spmvalue['performance'].'"';
-                                                            $monthperc .= '},';
-                                                        }
-
-                                                        $ismpwin = 0;
-                                                        $ismplost = 0;
-                                                        foreach ($alltradelogs as $atlkey => $tmvalue) {
-                                                            $sellprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_sell_price']);
-                                                            $projectprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_avr_price']);
-                                                            $sellfee = getjurfees($sellprice, 'sell');
-
-                                                            $istotal = ($sellprice - $sellfee) - $projectprice;
-
-                                                            if ($istotal > 0) {
-                                                                ++$ismpwin;
-                                                            } else {
-                                                                ++$ismplost;
-                                                            }
-                                                        }
-                                                    ?>
-													<div class="row monthly">
-														<?php
-                                                            // get lits of combi strats
-                                                            $lisfofcombi = [];
-                                                            foreach ($alltradelogs as $sskey => $ssvalue) {
-                                                                $dinfor = [];
-
-                                                                $dinfor['stratplan'] = '';
-                                                                foreach ($ssvalue['strategy_plans'] as $stratkey => $stratvalue) {
-                                                                    if ($stratvalue != '') {
-                                                                        $dinfor['stratplan'] = $stratvalue;
-                                                                        break;
-                                                                    }
-                                                                }
-
-                                                                $dinfor['emots'] = '';
-                                                                foreach ($ssvalue['emotions'] as $emokey => $emovalue) {
-                                                                    if ($emovalue != '') {
-                                                                        $dinfor['emots'] = $emovalue;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                                $dinfor['stops'] = str_replace(' ', '_', $dinfor['stratplan']).'_'.str_replace(' ', '_', $dinfor['emots']);
-                                                                $sbp = str_replace('₱', '', $ssvalue['data_avr_price']);
-
-                                                                $dsellprice = $ssvalue['data_sell_price'] * $ssvalue['data_quantity'];
-                                                                $dbaseprice = $sbp * $ssvalue['data_quantity'];
-                                                                $sellfee = getjurfees($dsellprice, 'sell');
-
-                                                                $isprofit = ($dsellprice - $sellfee) - $dbaseprice;
-
-                                                                $dinfor['iswin'] = ($isprofit > 0 ? 'win' : 'loss');
-                                                                array_push($lisfofcombi, $dinfor);
-                                                            }
-
-                                                            // partial list of strats
-                                                            $dstrats = [];
-                                                            foreach ($lisfofcombi as $combikey => $combivalue) {
-                                                                array_push($dstrats, $combivalue['stops']);
-                                                            }
-                                                            $dstrats = array_unique($dstrats);
-
-                                                            $finaldstrats = [];
-                                                            foreach ($dstrats as $dxstrkey => $dxstrvalue) {
-                                                                $dwinls = [];
-                                                                $dwinls['wincount'] = 0;
-                                                                $dwinls['losscount'] = 0;
-                                                                $dwinls['tradecount'] = 0;
-                                                                foreach ($lisfofcombi as $fndkey => $fndvalue) {
-                                                                    if ($fndvalue['stops'] == $dxstrvalue) {
-                                                                        $dwinls['stratplan'] = $fndvalue['stratplan'];
-                                                                        $dwinls['emots'] = $fndvalue['emots'];
-                                                                        ++$dwinls['tradecount'];
-                                                                        if ($fndvalue['iswin'] == 'win') {
-                                                                            ++$dwinls['wincount'];
-                                                                        } else {
-                                                                            ++$dwinls['losscount'];
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                                array_push($finaldstrats, $dwinls);
-                                                            }
-
-                                                            function sortByOrder($a, $b)
-                                                            {
-                                                                return $b['tradecount'] - $a['tradecount'];
-                                                            }
-                                                            usort($finaldstrats, 'sortByOrder');
-
-                                                            // sort data for chart
-                                                            $dlistofstrat = [];
-                                                            foreach ($finaldstrats as $lstrkey => $lstrvalue) {
-                                                                array_push($dlistofstrat, $lstrvalue['stratplan']);
-                                                            }
-                                                            $dlistofstrat = array_unique($dlistofstrat);
-                                                            $dlistofstrat = array_filter($dlistofstrat);
-
-                                                            $dstratfinal = [];
-                                                            foreach ($dlistofstrat as $dshhkey => $dshhvalue) {
-                                                                $dstratpartial = [];
-                                                                $dstratpartial['strats'] = $dshhvalue;
-                                                                $dstratpartial['iswin'] = 0;
-                                                                $dstratpartial['isloss'] = 0;
-                                                                $dstratpartial['trade_count'] = 0;
-                                                                foreach ($finaldstrats as $dsjjkey => $dsjjvalue) {
-                                                                    if ($dshhvalue == $dsjjvalue['stratplan']) {
-                                                                        $dstratpartial['iswin'] += $dsjjvalue['wincount'];
-                                                                        $dstratpartial['isloss'] += $dsjjvalue['losscount'];
-                                                                        $dstratpartial['trade_count'] += $dsjjvalue['tradecount'];
-                                                                    }
-                                                                }
-                                                                array_push($dstratfinal, $dstratpartial);
-                                                            }
-
-                                                            $forchart = '';
-                                                            foreach ($dstratfinal as $dcdskey => $dcdsvalue) {
-                                                                $forchart .= '{';
-                                                                $forchart .= '"category": "'.$dcdsvalue['strats'].'",';
-                                                                $forchart .= '"Wins": "'.$dcdsvalue['iswin'].'",';
-                                                                $forchart .= '"Losses": "'.$dcdsvalue['isloss'].'",';
-                                                                $forchart .= '"Trades Strategy ": "'.$dcdsvalue['trade_count'].'"';
-                                                                $forchart .= '},';
-                                                            }
-                                                        ?>
-                                                    <?php
+															<?php
                                                             $months = array(
                                                                 'January',
                                                                 'February',
@@ -1691,23 +1594,6 @@ if($issampledata){
                                                             }
 
                                                         ?>
-
-                                                    	<div class="col-md-7" style="padding-right: 0;">
-                                                            <div class="box-portlet">
-                                                                <div class="box-portlet-header">
-                                                                    Monthly Performance
-                                                                </div>
-                                                                <div class="box-portlet-content" style="padding-right: 0;padding-bottom: 0;">
-                                                                    <div class="col-md-12" style="padding: 0px;">
-                                                                        <div id="chartdiv2"></div>
-                                                                    </div>
-                                                                    <br class="clear">
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-														<div class="col-md-5">
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics
@@ -1719,14 +1605,14 @@ if($issampledata){
 																		}
 																	?>
 																</div>
-                                                                <div class="chartarea" style="margin-bottom: -3px;">
+                                                                <div class="chartarea col-md-12" style="margin-bottom: -3px;">
                                                                     <div id="chartdiv4a"></div>
                                                                 </div>
                                                                 <div class="stats-info" style="padding: 0">
 
-                                                                    <div class="col-md-6" style="padding: 0 5px 0 10px;">
-                                                                        <div class="dstatstrade eqpad">
-                                                                            <ul>
+                                                                    <div class="row" style="padding: 11px 12px 7px 12px;">
+                                                                        <div class="dstatstrade eqpad col-md-6" style="padding-right: 3px;">
+                                                                            <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
@@ -1738,12 +1624,9 @@ if($issampledata){
                                                                                 </li>
 
                                                                             </ul>
-                                                                        </div>
-                                                                    </div>
-
-                                                                	<div class="col-md-6" style="padding: 0 10px 0 5px;">
-                                                                        <div class="dstatstrade eqpad">
-                                                                            <ul>
+																		</div>
+																		<div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
+                                                                            <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
                                                                                     <div class="width60">Total Trades</div>
@@ -1768,10 +1651,160 @@ if($issampledata){
 
 															</div>
 														</div>
-
-                                                        <br class="clear">
-
 													</div>
+
+                                                    <?php
+                                                        $percaspermonth = [];
+                                                        foreach ($month as $monfkey => $monfvalue) {
+                                                            $dinpart = [];
+                                                            $dinpart['ismonth'] = date('M', strtotime($monfvalue));
+                                                            $dinpart['performance'] = 0;
+                                                            $dinpart['isperc'] = '';
+                                                            foreach ($alltradelogs as $atlkey => $atlvalue) {
+                                                                if ($atlvalue['data_sellmonth'] == $monfvalue) {
+                                                                    $sellprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_sell_price']);
+                                                                    $projectprice = $atlvalue['data_quantity'] * str_replace('₱', '', $atlvalue['data_avr_price']);
+                                                                    $sellfee = getjurfees($sellprice, 'sell');
+
+                                                                    $istotal = ($sellprice - $sellfee) - $projectprice;
+                                                                    $dinpart['performance'] += $istotal;
+                                                                    $dinpart['isperc'] = ($istotal > 0 ? 'win' : 'loss');
+                                                                }
+                                                            }
+                                                            array_push($percaspermonth, $dinpart);
+                                                        }
+
+                                                        $monthperc = '';
+                                                        foreach ($percaspermonth as $spmkey => $spmvalue) {
+                                                            $monthperc .= '{';
+                                                            $monthperc .= '"category": "'.$spmvalue['ismonth'].'",';
+                                                            $monthperc .= '"column-1": "'.$spmvalue['performance'].'"';
+                                                            $monthperc .= '},';
+                                                        }
+
+                                                        $ismpwin = 0;
+                                                        $ismplost = 0;
+                                                        foreach ($alltradelogs as $atlkey => $tmvalue) {
+                                                            $sellprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_sell_price']);
+                                                            $projectprice = $tmvalue['data_quantity'] * str_replace('₱', '', $tmvalue['data_avr_price']);
+                                                            $sellfee = getjurfees($sellprice, 'sell');
+
+                                                            $istotal = ($sellprice - $sellfee) - $projectprice;
+
+                                                            if ($istotal > 0) {
+                                                                ++$ismpwin;
+                                                            } else {
+                                                                ++$ismplost;
+                                                            }
+                                                        }
+                                                    ?>
+														<?php
+                                                            // get lits of combi strats
+                                                            $lisfofcombi = [];
+                                                            foreach ($alltradelogs as $sskey => $ssvalue) {
+                                                                $dinfor = [];
+
+                                                                $dinfor['stratplan'] = '';
+                                                                foreach ($ssvalue['strategy_plans'] as $stratkey => $stratvalue) {
+                                                                    if ($stratvalue != '') {
+                                                                        $dinfor['stratplan'] = $stratvalue;
+                                                                        break;
+                                                                    }
+                                                                }
+
+                                                                $dinfor['emots'] = '';
+                                                                foreach ($ssvalue['emotions'] as $emokey => $emovalue) {
+                                                                    if ($emovalue != '') {
+                                                                        $dinfor['emots'] = $emovalue;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                                $dinfor['stops'] = str_replace(' ', '_', $dinfor['stratplan']).'_'.str_replace(' ', '_', $dinfor['emots']);
+                                                                $sbp = str_replace('₱', '', $ssvalue['data_avr_price']);
+
+                                                                $dsellprice = $ssvalue['data_sell_price'] * $ssvalue['data_quantity'];
+                                                                $dbaseprice = $sbp * $ssvalue['data_quantity'];
+                                                                $sellfee = getjurfees($dsellprice, 'sell');
+
+                                                                $isprofit = ($dsellprice - $sellfee) - $dbaseprice;
+
+                                                                $dinfor['iswin'] = ($isprofit > 0 ? 'win' : 'loss');
+                                                                array_push($lisfofcombi, $dinfor);
+                                                            }
+
+                                                            // partial list of strats
+                                                            $dstrats = [];
+                                                            foreach ($lisfofcombi as $combikey => $combivalue) {
+                                                                array_push($dstrats, $combivalue['stops']);
+                                                            }
+                                                            $dstrats = array_unique($dstrats);
+
+                                                            $finaldstrats = [];
+                                                            foreach ($dstrats as $dxstrkey => $dxstrvalue) {
+                                                                $dwinls = [];
+                                                                $dwinls['wincount'] = 0;
+                                                                $dwinls['losscount'] = 0;
+                                                                $dwinls['tradecount'] = 0;
+                                                                foreach ($lisfofcombi as $fndkey => $fndvalue) {
+                                                                    if ($fndvalue['stops'] == $dxstrvalue) {
+                                                                        $dwinls['stratplan'] = $fndvalue['stratplan'];
+                                                                        $dwinls['emots'] = $fndvalue['emots'];
+                                                                        ++$dwinls['tradecount'];
+                                                                        if ($fndvalue['iswin'] == 'win') {
+                                                                            ++$dwinls['wincount'];
+                                                                        } else {
+                                                                            ++$dwinls['losscount'];
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                array_push($finaldstrats, $dwinls);
+                                                            }
+
+                                                            function sortByOrder($a, $b)
+                                                            {
+                                                                return $b['tradecount'] - $a['tradecount'];
+                                                            }
+                                                            usort($finaldstrats, 'sortByOrder');
+
+                                                            // sort data for chart
+                                                            $dlistofstrat = [];
+                                                            foreach ($finaldstrats as $lstrkey => $lstrvalue) {
+                                                                array_push($dlistofstrat, $lstrvalue['stratplan']);
+                                                            }
+                                                            $dlistofstrat = array_unique($dlistofstrat);
+                                                            $dlistofstrat = array_filter($dlistofstrat);
+
+                                                            $dstratfinal = [];
+                                                            foreach ($dlistofstrat as $dshhkey => $dshhvalue) {
+                                                                $dstratpartial = [];
+                                                                $dstratpartial['strats'] = $dshhvalue;
+                                                                $dstratpartial['iswin'] = 0;
+                                                                $dstratpartial['isloss'] = 0;
+                                                                $dstratpartial['trade_count'] = 0;
+                                                                foreach ($finaldstrats as $dsjjkey => $dsjjvalue) {
+                                                                    if ($dshhvalue == $dsjjvalue['stratplan']) {
+                                                                        $dstratpartial['iswin'] += $dsjjvalue['wincount'];
+                                                                        $dstratpartial['isloss'] += $dsjjvalue['losscount'];
+                                                                        $dstratpartial['trade_count'] += $dsjjvalue['tradecount'];
+                                                                    }
+                                                                }
+                                                                array_push($dstratfinal, $dstratpartial);
+                                                            }
+
+                                                            $forchart = '';
+                                                            foreach ($dstratfinal as $dcdskey => $dcdsvalue) {
+                                                                $forchart .= '{';
+                                                                $forchart .= '"category": "'.$dcdsvalue['strats'].'",';
+                                                                $forchart .= '"Wins": "'.$dcdsvalue['iswin'].'",';
+                                                                $forchart .= '"Losses": "'.$dcdsvalue['isloss'].'",';
+                                                                $forchart .= '"Trades Strategy ": "'.$dcdsvalue['trade_count'].'"';
+                                                                $forchart .= '},';
+                                                            }
+                                                        ?>
+                                                    
+
+                                                    	
 													<br class="clear">
 
 													<!-- BOF Strategy Statistics -->
@@ -2047,18 +2080,18 @@ if($issampledata){
 
                                                         function sortprofits($a, $b)
                                                         {
-                                                            return $a['dprofit'] - $b['dprofit'];
+															return $b['dprofit'] - $a['dprofit'];
                                                         }
-
+														
                                                         function winningsort($a, $b)
                                                         {
-                                                            return $b['dprofit'] - $a['dprofit'];
+															return $a['dprofit'] - $b['dprofit'];
                                                         }
 
                                                         // winning stocks
                                                         // usort($iswinstocks, 'sortprofits');
                                                         $totalwin = 0;
-                                                        $finalwinning = [];
+														$finalwinning = [];
                                                         foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
                                                             array_push($finalwinning, $pxwinvalue);
                                                             $totalwin += $pxwinvalue['dprofit'];
@@ -2067,9 +2100,8 @@ if($issampledata){
                                                             }
                                                         }
                                                         // usort($finalwinning, 'winningsort');
-
                                                         $finalloss = [];
-                                                        $totalloss = 0;
+														$totalloss = 0;
                                                         foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
                                                             array_push($finalloss, $pxlossvalue);
                                                             $totalloss += $pxlossvalue['dprofit'];
@@ -2106,6 +2138,7 @@ if($issampledata){
                                                                                             </li><?php */?>
                                                                                             <?php /*?> Winners <?php */?>
 																							<?php
+																							
 																							if($isjounalempty){
 																								$finalwinning = [
 																									0 => [
@@ -2121,37 +2154,39 @@ if($issampledata){
 																										'dprofit' => 1234
 																									],
 																								];
+																								rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
                                                                                             $intowinchartbands = '';
                                                                                             $intowinchartlabels = '';
+																							krsort($finalwinning);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($fwinkey == 0 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#0d785a' : '#115350'))).';color: #b1e8ce;border: none;">';
-                                                                                                $dinss .= '<div class="width60">'.$fwinvalue['dstock'].'</div>';
-                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($fwinvalue['dprofit'], 2, '.', ',').'</div>';
+																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
-                                                                                                $dwinning = $dwinning.$dinss;
-
+																								$dwinning = $dwinning.$dinss;
+																								
                                                                                                 $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "#ffffff",';
+                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
                                                                                                 $intowinchartbands .= '"startValue": 0,';
-                                                                                                $intowinchartbands .= '"endValue": 100,';
-                                                                                                $intowinchartbands .= '"radius": "100%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "85%",';
-                                                                                                $intowinchartbands .= '"alpha": 0.05';
+                                                                                                $intowinchartbands .= '"endValue": "100",';
+                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
+                                                                                                $intowinchartbands .= '"alpha": 0.3';
                                                                                                 $intowinchartbands .= '}, {';
-                                                                                                $intowinchartbands .= ' "color": "#00e676",';
+                                                                                                $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
                                                                                                 $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intowinchartbands .= ' "radius": "100%",';
-                                                                                                $intowinchartbands .= ' "innerRadius": "85%",';
-                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
+                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
+                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
                                                                                                 $intowinchartbands .= '},';
 
                                                                                                 $intowinchartlabels .= '{';
-                                                                                                $intowinchartlabels .= '"text": "'.$fwinvalue['dstock'].'",';
+                                                                                                $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
                                                                                                 $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 0 ? '6.5' : ($fwinkey == 1 ? '15' : ($fwinkey == 2 ? '24' : '33'))).'%",';
+                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
                                                                                                 $intowinchartlabels .= '"size": 11,';
                                                                                                 $intowinchartlabels .= '"bold": false,';
                                                                                                 $intowinchartlabels .= '"color": "#d8d8d8",';
@@ -2177,45 +2212,46 @@ if($issampledata){
 																										'dprofit' => -123435
 																									],
 																								];
+																								sort($finalloss);
 																							}
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							
+																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
-                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#442946' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#b91e45' : '#ff1744'))).';color: #132941;border: none;">';
-                                                                                                $dinss .= '<div class="width60">'.$flossvalue['dstock'].'</div>';
-                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($flossvalue['dprofit'], 2, '.', ',').'</div>';
+                                                                                                $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.($flosskey <= 2 ? number_format($flossvalue['dprofit'], 2, '.', ',') : '').'</div>';
                                                                                                 $dinss .= '</li>';
 																								$dlossing = $dlossing.$dinss;
 																								
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
                                                                                                 $intolosschartbands .= '{';
-                                                                                                $intolosschartbands .= '"color": "#ffffff",';
+                                                                                                $intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
                                                                                                 $intolosschartbands .= '"startValue": 0,';
-                                                                                                $intolosschartbands .= '"endValue": 100,';
-                                                                                                $intolosschartbands .= '"radius": "100%",';
-                                                                                                $intolosschartbands .= '"innerRadius": "85%",';
-                                                                                                $intolosschartbands .= '"alpha": 0.05';
-                                                                                                $intolosschartbands .= '}, {';
-                                                                                                $intolosschartbands .= ' "color": "#00e676",';
+                                                                                                $intolosschartbands .= '"endValue": "100",';
+                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                $intolosschartbands .= '"alpha": 0.5';
+                                                                                                $intolosschartbands .= '},{';
+																								$intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
                                                                                                 $intolosschartbands .= ' "startValue": 0,';
-                                                                                                $intolosschartbands .= ' "endValue": '.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).',';
-                                                                                                $intolosschartbands .= ' "radius": "100%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "85%",';
-                                                                                                $intolosschartbands .= ' "balloonText": "'.($flossvalue['dprofit'] != "" && $totalwin != 0 ? number_format((abs($flossvalue['dprofit']) / $totalwin) * 100, 2, '.', ',') : 0).'%"';
-                                                                                                $intolosschartbands .= '},';
-
-                                                                                                $intolosschartlabels .= '{';
-                                                                                                $intolosschartlabels .= '"text": "'.$flossvalue['dstock'].'",';
-                                                                                                $intolosschartlabels .= '"x": "49%",';
-                                                                                                $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '15' : ($flosskey == 2 ? '24' : '33'))).'%",';
-                                                                                                $intolosschartlabels .= '"size": 11,';
-                                                                                                $intolosschartlabels .= '"bold": false,';
-                                                                                                $intolosschartlabels .= '"color": "#d8d8d8",';
-                                                                                                $intolosschartlabels .= '"align": "right",';
-                                                                                                $intolosschartlabels .= '},';
+                                                                                                $intolosschartbands .= ' "endValue": '. (($flossvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                $intolosschartbands .= ' "balloonText": "'. (($flossvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
+																								$intolosschartbands .= '},';
+																								
+																								$intolosschartlabels .= '{';
+																								$intolosschartlabels .= '"text": "'. ($flosskey <= 2 ? $flossvalue['dstock'] : '') .'",';
+																								$intolosschartlabels .= '"x": "49%",';
+																								$intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
+																								$intolosschartlabels .= '"size": 11,';
+																								$intolosschartlabels .= '"bold": false,';
+																								$intolosschartlabels .= '"color": "#d8d8d8",';
+																								$intolosschartlabels .= '"align": "right",';
+																								$intolosschartlabels .= '},';
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dlossing; ?>
@@ -3100,7 +3136,9 @@ if($issampledata){
 													<br class="clear">
 						                        </div>
 												<style type="text/css">
-	
+													.swal-overlay--show-modal {
+														z-index: 99999999;
+													}
 													.sss {
 														padding-right: 14px !important;
 													}
@@ -3272,7 +3310,9 @@ if($issampledata){
                                                                                     }
 																				}
 
-																				foreach ($dledger as $key => $value) { ?>
+																				foreach ($dledger as $key => $value) {
+																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					?>
 																					<li>
 																						<div style="width:99%;">
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
@@ -3280,7 +3320,9 @@ if($issampledata){
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>
-																			<?php }
+																			<?php
+																					endif;
+																				}
 																			?>
 																			
 																			<?php
@@ -3418,6 +3460,18 @@ if($issampledata){
 
 		function getObject(event){
 			console.log(event.value);
+
+			jQuery(".dtopentertrade").find("#newdate").val(event.value);
+		}
+		function buydate(event){
+			console.log(event.value);
+
+			jQuery(".buyaddtrade").find("#addstockisdate").val(event.value);
+		}
+		function selldate(event){
+			console.log(event.value);
+
+			jQuery("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
@@ -3660,16 +3714,44 @@ if($issampledata){
 
 		jQuery(".dloadform").click(function(e){
 			e.preventDefault();
-			var dstock = $(".dentertrade #inpt_data_select_stock").val();
-			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val());
-			if(dstock != "" && dbuypower > 0){
+			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
+			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
+			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
+			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
 			} else {
-				console.log("dont add trade");
+				swal('Not enough buying power.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			}
 		});
 
+		// calculate total price
+		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
+			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
+			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
+			// let quantity = jQuery('#entertopdataquantity').val();
+			console.log(price + " ~ " + quantity);
+			let total_price = parseFloat(price) * Math.trunc(quantity);
+			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
+			
+			jQuery('input[name="inpt_data_total_price"]').val(total_price);
+		});
 
+		// jQuery(document).on('submit', '.dentertrade', function (e) {
+		// 	e.preventDefault();
+		// 	let form = jQuery(this).serializeArray();
+
+		// 	jQuery.ajax({
+		// 		url: '/apipge',
+		// 		method: 'POST',
+		// 		data: form,
+		// 		dataType: 'json',
+		// 		success: function (response) {
+					
+		// 		}
+		// 	})
+		// })
 		//$(document).on("click", ".fancybox-inline", function() {
 			//e.preventDefault();
   			//$(this).toggleClass("tradelogbox");
@@ -3878,6 +3960,8 @@ if($issampledata){
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
+			"pieX": "55%",
+			"pieY": "50%",
 			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
@@ -3905,7 +3989,7 @@ if($issampledata){
 				"markerSize": 14,
 				"markerType": "circle",
 				"position": "left",
-				"valueWidth": 55
+				"valueWidth": 80
 			},
 			"titles": [],
 			"dataProvider": [<?php echo $currentalocinfo; ?>]
@@ -4920,7 +5004,7 @@ if($issampledata){
 	  "allLabels": [<?php echo $intolosschartlabels; ?>],
 	});
 
-    jQuery(document).on('keyup', 'input.number', function (event) {
+    jQuery(document).on('keyup change', 'input.number', function (event) {
             // skip for arrow keyssss
             if (event.which >= 37 && event.which <= 40) {
                 event.preventDefault();

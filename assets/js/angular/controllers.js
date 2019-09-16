@@ -70,32 +70,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-               { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-               { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
-             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },           
+             { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) }     
         ]
 
         for (i in transaction){
@@ -157,6 +132,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.$watch('$root.stockList', function () {
         $scope.stock_details = $rootScope.stockList;
     });
+    $scope.latest_trading_date = null;
     $scope.gainers      = 0;
     $scope.losers       = 0;
     $scope.unchanged    = 0;
@@ -172,6 +148,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
+    $scope.bids = [];
+    $scope.asks = [];
     $scope.transactions = [];
     $scope.bidtotal = 0;
     $scope.asktotal = 0;
@@ -339,6 +317,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
+    $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date")
+        .then(response => {
+            if (response.data.success) {
+                $scope.latest_trading_date = new Date(response.data.data)
+            }
+        })
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
@@ -397,11 +381,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.watchlist = 'All Stocks';
             $scope.watchlistReady = true;
         });*/
-        $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
-            if (response.data.success) {
-                $scope.marketdepth = response;
-            }
-        });
+        // $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
+        //     if (response.data.success) {
+        //         $scope.marketdepth = response;
+        //     }
+        // });
 
         // socket.emit('stock', _symbol, function(data) {
         //     if (data.transactions) {
@@ -412,6 +396,28 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         //     }
         // });
     });
+    $scope.getBidsAndAsks = function (symbol) {
+        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
+        .then(response => {
+            response = response.data;
+            if (!response.success) {
+                $scope.bids = [];
+                $scope.asks = [];
+                return;
+            }
+
+            $scope.bids = Object.values(response.data.bids);
+            $scope.asks = Object.values(response.data.asks);
+        })
+        .catch(err => {
+            $scope.bids = [];
+            $scope.asks = [];
+        })
+        .finally(() => {
+            $scope.$digest();
+        });
+    }
+    $scope.getBidsAndAsks(_symbol);
     let limit = 20;
     $http.get('https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
         .then(response => {
@@ -511,7 +517,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(data.t * 1000));
+            let full_time = (moment(data.t * 1000)).format('h:mm:ss a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),
@@ -529,6 +535,89 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.$digest();
         }
     });
+
+    /**
+     * Types
+     *  a => add
+     *  au => update price
+     *  d => delete
+     *  u => update new order
+     */
+     socket.on('psebd', function (data) {
+        console.log('PSEBD', data);
+
+        if ($scope.selectedStock == data.sym) {
+            if (data.ov == 'B') {
+                // bid
+                $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+                $scope.bids = $filter('orderBy')($scope.bids, '-price');
+                console.log('END PSEBD', $scope.bids);
+            } else if (data.ov == 'S') {
+                // ask
+                $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
+                console.log('END PSEBD', $scope.asks);
+            }
+            $scope.$digest();
+        }
+    });
+
+    $scope.updateBidAndAsks = function (list, data) {
+        console.log('UPDATE BIDS ASKS', list);
+        let index = list.findIndex(function(item){
+            console.log('FIND INDEX', item);
+            return item.id == data.id
+        });
+        if (data.ty == 'a') {
+            if (typeof list[index] !== 'undefined') {
+                list[index].count++;
+                list[index].volume += data.vol;
+            } else {
+                list.push($scope.addToBidAskList(data.id, data));
+            }
+        } else if (data.ty == 'au') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
+
+            // add new data.idn to list
+            list.push($scope.addToBidAskList(data.idn, data));
+        } else if (data.ty == 'd') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
+        } else if (data.ty == 'u') {
+            // same as au but drop the data.id entirely and add data.idn to list
+            if (typeof list[index] !== 'undefined') {
+                list = list.filter((item, key) => {
+                    return key != index;
+                });
+            }
+            list.push($scope.addToBidAskList(data.idn, data));
+        }
+        console.log('END UPDATE BIDS ASKS', list);
+        return list;
+    }
+
+    $scope.updateBidAskCount = function (list, id, increment, volume) {
+        console.log('BID ASK COUNT', list[id], id, increment);
+        if (typeof list[id] !== 'undefined') {
+            list[id].count += increment;
+            list[id].volume += volume * increment;
+            if (list[id].count <= 0) {
+                list = list.filter((item, key) => {
+                    return key != id;
+                });
+            }
+        }
+        return list;
+    }
+
+    $scope.addToBidAskList = function (id, data) {
+        return {
+            'id': id,
+            'price': data.p,
+            'count': 1,
+            'volume': data.vol,
+        }
+    }
 
     // socket.on('T', function(data) {
     //     var symbol = data[0];
@@ -668,7 +757,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
                     $scope.fullbidtotal = 0;
                 });
 
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
                 .then(function (response) {
                     if (response.data.success) {
                         let data = response.data.data;
@@ -990,7 +1079,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.fullbidtotal = 0;
                             });
 
-                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-five-depth?exchange=PSE&symbol=' + $scope.$parent.stock.symbol)
+                        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
                             .then(function (response) {
                                 if (response.data.success) {
                                     let data = response.data.data;
@@ -1009,6 +1098,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.bidtotal = 0;
                             });
                             
+                        $scope.$parent.getBidsAndAsks(symbol);
                         // });
                         // socket.emit('stock', symbol, function(data) {
                         //     if (data.transactions) {

@@ -6,6 +6,7 @@
 
 // get_header();
 global $current_user;
+global $wpdb;
 $user = wp_get_current_user();
 get_header( 'dashboard' );
 
@@ -1792,18 +1793,26 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 										<div class="onlabel">Peers</div>
 									</li>
 									<?php
-										$args = array(
-											'post_type' => 'um_activity',
-											'author'        =>  $profile_id,
-											'orderby'       =>  'post_date',
-											'order'         =>  'ASC',
-											'posts_per_page'	=> -1
-										);
-										$the_query = new WP_Query( $args );
-
+										// $args = array(
+										// 	'post_type' => 'um_activity',
+										// 	'author'        =>  $profile_id,
+										// 	'orderby'       =>  'post_date',
+										// 	'order'         =>  'ASC',
+										// 	'posts_per_page'	=> -1
+										// );
+										// $the_query = new WP_Query( $args );
+                                        
+                                        $posts_count = $wpdb->get_var($wpdb->prepare(
+                                            "SELECT COUNT(id) 
+                                            FROM $wpdb->posts
+                                            WHERE post_type = 'um_activity' 
+                                            AND post_author = %s
+                                            AND post_status = 'publish'",
+                                            $profile_id
+                                        ));
 									?>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $the_query->post_count; ?></a></div>
+										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $posts_count; ?></a></div>
 										<div class="onlabel">Posts</div>
 									</li>
 								</ul>

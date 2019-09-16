@@ -3811,7 +3811,7 @@ if($issampledata){
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = parseFloat(jQuery('input[name="inpt_data_total_price"]').val().replace(/,/g, ''));
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
-			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
+			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
 			} else if (buySell__date == "") {
 				swal('Date is required.');

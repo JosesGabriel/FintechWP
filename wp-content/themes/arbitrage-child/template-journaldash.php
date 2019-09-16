@@ -3402,7 +3402,7 @@ if($issampledata){
 																					endif;
 																				}
 																			?>
-																			<li class="footepart">
+																			<li class="headerpart">
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:8%">&nbsp;</div>
                                                                                     <div style="width:19%">&nbsp;</div>

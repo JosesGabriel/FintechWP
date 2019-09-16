@@ -671,7 +671,7 @@ if($issampledata){
 <div class="record_modal">
 	<div class="record_main">
 		<div class="record_header">
-			<span class="record_head_label">Record A Trade</span>
+			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
 		</div>
 		<div class="record_body row">
 			<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">

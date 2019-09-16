@@ -772,7 +772,7 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -3773,8 +3773,7 @@ if($issampledata){
 				dboard = 5;
 			} 
 			
-			var numseprbd = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(numseprbd));
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

@@ -3110,7 +3110,7 @@ if($issampledata){
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                     <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->tradeplan; ?>">
                                                                                                             <option  value="Day Trade">Day Trade</option>
                                                                                                             <option  value="Swing Trade">Swing Trade</option>
                                                                                                             <option  value="Investment">Investment</option>
@@ -3118,7 +3118,7 @@ if($issampledata){
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                    <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->emotion; ?>">
                                                                                                             <option  value="Neutral">Neutral</option>
                                                                                                             <option  value="Greedy">Greedy</option>
                                                                                                             <option  value="Fearful">Fearful</option>

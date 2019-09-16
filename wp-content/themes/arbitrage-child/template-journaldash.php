@@ -3368,6 +3368,7 @@ if($issampledata){
 																				}
 
 																				$ledcount = 0;
+																				$ledbalance = 0;
 																				foreach ($dledger as $key => $value) {
 																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
 																						$ledcount++;
@@ -3377,9 +3378,19 @@ if($issampledata){
 																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
 																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
-																							<div style="width:14%"></div>
-																							<div style="width:14%"></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+																							<div style="width:14%">₱
+																								<?php if($value->trantype == "withraw"){
+																									echo number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance - $value->tranamount;
+																								} ?>
+																							</div>
+																							<div style="width:14%">₱
+																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
+																									echo number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance + $value->tranamount;
+																								} ?>
+																							</div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
 		                                                                                </div>
 																					</li>
 																			<?php

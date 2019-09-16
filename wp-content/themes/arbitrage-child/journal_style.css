@@ -1391,7 +1391,7 @@ input.enter-trade-btn:hover {
 #chartdiv1 .amcharts-chart-div {
 }
 .label_funds label, .label_funds input {
-    background: rgba(52, 73, 94, 0.34) !important;
+    background: none !important;
     border: none !important;
     padding-right: 0 !important;
     color: #afafaf;

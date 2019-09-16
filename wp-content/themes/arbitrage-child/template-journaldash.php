@@ -3751,10 +3751,10 @@ if($issampledata){
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
 			var numseprvm = dstocks.volume.toFixed(2);
-			var numseprve = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.value.toFixed(2);
 			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
 			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
-
+			
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
@@ -3772,8 +3772,9 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboard));
+			
+			var numseprbd = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(numseprbd));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

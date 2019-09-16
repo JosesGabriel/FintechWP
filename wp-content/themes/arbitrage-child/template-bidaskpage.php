@@ -30,6 +30,9 @@
 	<link rel="stylesheet" href="/assets/css/animate.min.css" />
 	<link rel="stylesheet" href="/assets/css/style.min.css" />
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
+    <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="/assets/css/style-chart.css" rel="stylesheet" />
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
     <style type="text/css">
         body{
             background-color: #0c1f33;
@@ -46,8 +49,9 @@
 <body>
 
 
-<div ng-controller="ticker">
-        <ul>
+<div class="arb_top_ticker">
+    <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+        <ul class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
@@ -56,6 +60,7 @@
             </li>
         </ul>
     </div>
+</div>
 
 	
 	<!-- end page container -->
@@ -121,7 +126,8 @@
     <script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
     <script src="/assets/js/angular/directives.js?v=1.218"></script>
     <script src="/assets/js/angular/filters.js?v=1.218"></script>
-    <script src="/assets/js/datafeed.js?v=2.218"></script>'
+    <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
+    <script src="/assets/js/datafeed.js?v=2.218"></script>
 </style>
 </body>
 </html> 

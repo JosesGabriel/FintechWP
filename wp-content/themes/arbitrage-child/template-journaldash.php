@@ -3706,6 +3706,12 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
+        
+        $(document).on("click", ".editlog", function() {
+
+            jQuery('.fancybox-wrap').css('width','376px');
+
+        });
 
 		$(document).on("click", ".deletelog", function() {
 

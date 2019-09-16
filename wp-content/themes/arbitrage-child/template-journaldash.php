@@ -122,17 +122,26 @@ echo $user->ID ." versis ". $user->ID;
     }
 
 
-    if(isset($_POST['editbutton'])){
+    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-        $strategy = $_POST['inpt_data_strategy'];
+        echo $_POST['inpt_data_status'];
+
+       $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array('strategy_plans' => $strategy , 'trade_plans' => $tradeplan, 'emotions' => $emotion );
+        $post = array(
+            'strategy_plans' => $strategy , 
+            'trade_plans' => $tradeplan, 
+            'emotions' => $emotion 
+        );
         wp_update_post($post);
         
-        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+
+        wp_redirect('/journal');
         exit;
     }
+
+
 
 ?>
 <!-- EOF Deposit -->
@@ -301,6 +310,7 @@ echo $user->ID ." versis ". $user->ID;
                 'data_userid' => $user->ID,
             ),
         );
+
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
@@ -620,7 +630,7 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FB3640', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FB3640', '#FF2B66', '#99FF00', '#9900FF', '#FB3640', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
 		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
@@ -684,7 +694,7 @@ if($issampledata){
 <div class="record_modal">
 	<div class="record_main">
 		<div class="record_header">
-			<span class="record_head_label">Record A Trade</span>
+			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
 		</div>
 		<div class="record_body row">
 			<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
@@ -3259,6 +3269,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
+                                                                                                <input type="hidden" value="Edit" name="inpt_data_status">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
@@ -3900,15 +3911,15 @@ if($issampledata){
 			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
-			// function replaceCommas(yourNumber) {
-			// 	var components = yourNumber.toString().split(".");
-			// 	if (components.length === 1) 
-			// 		components[0] = yourNumber;
-			// 	components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-			// 	if (components.length === 2)
-			// 		components[1] = components[1].replace(/\D/g, "");
-			// 	return components.join(".");
-			// }
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
 		});
 
 		jQuery(".dloadform").click(function(e){
@@ -4053,6 +4064,10 @@ if($issampledata){
 		jQuery('.dbuttonrecord').click(function(e){
 			e.preventDefault();
 			jQuery('.record_modal').show();
+		});
+		jQuery('.to_closethis_rec').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').hide();
 		});
 
 

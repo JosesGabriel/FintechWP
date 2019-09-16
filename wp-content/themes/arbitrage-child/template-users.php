@@ -1789,7 +1789,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 							<div class="meta-details-inner">
 								<ul>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
+										<div class="oncount"><a class="profile_peers_count" href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><span class="um-ajax-count-friends">0</span></a></div>
 										<div class="onlabel">Peers</div>
 									</li>
 									<li>
@@ -2112,6 +2112,19 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
                     count = response.data.posts_count;
                 }
                 $('.profile_post_count').html(count);
+            }
+        })
+
+        $.ajax({
+            url: '',
+            method: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                let html = '<span class="um-ajax-count-friends">0</span>';
+                if (response.success) {
+                    html = response.data.peers_count;
+                }
+                $('.profile_peers_count').html(html)
             }
         })
     });

@@ -2116,7 +2116,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
         })
 
         $.ajax({
-            url: '',
+            url: '/apipge/?daction=user-peers-count&user-id=<?php echo $profile_id ?>',
             method: 'GET',
             dataType: 'json',
             success: function (response) {

@@ -3830,7 +3830,7 @@ if($issampledata){
 
 		// jQuery("")
 		jQuery('#selectdepotype').on('change', function() {
-			alert( this.value );
+			// alert( this.value );
 			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
 
 		});

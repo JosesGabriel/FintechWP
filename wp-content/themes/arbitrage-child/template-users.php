@@ -18,24 +18,24 @@ $myusersecret = get_user_meta($profile_id, 'user_secret', true);
 $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 
-	$topargs = array(
-	    'role'          =>  '',
-	);
+	// $topargs = array(
+	//     'role'          =>  '',
+	// );
 
-	$users = get_users($topargs);
-	$newuserlist = array();
-	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->ID;
-		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+	// $users = get_users($topargs);
+	// $newuserlist = array();
+	// foreach ($users as $key => $value) {
+	// 	$userdetails['id'] = $value->ID;
+	// 	$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+	// 	$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 
-		array_push($newuserlist, $userdetails);
-	}
+	// 	array_push($newuserlist, $userdetails);
+	// }
 
-	usort($newuserlist, function($a, $b) {
-	    return $a['followers'] <=> $b['followers'];
-	});
-	$toptraiders = array_reverse($newuserlist);
+	// usort($newuserlist, function($a, $b) {
+	//     return $a['followers'] <=> $b['followers'];
+	// });
+	// $toptraiders = array_reverse($newuserlist);
 ?>
 
 <style type="text/css">

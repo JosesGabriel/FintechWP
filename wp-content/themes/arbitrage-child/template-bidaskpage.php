@@ -33,6 +33,7 @@
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
     <style type="text/css">
         body{
             background-color: #0c1f33;
@@ -43,7 +44,6 @@
         jQuery(document).ready(function() {
             
             function getBidAsk(symbol,limit,callback){
-                console.log('load all');
                 let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
                 let settings = {
                     "async": true,
@@ -57,7 +57,6 @@
                 callback(res);
                 });
             };
-            console.log('test run');
             getBidAsk('AC',10,function(callback){
                 console.log(callback);
             });
@@ -68,9 +67,29 @@
 </head>
 <body>
 
+    <div id="live_portfolio" class="dstatstrade overridewidth">
+        <ul>
+            <li class="headerpart">
+                <div style="width:100%;">
+                    <div style="width:7%" class="table-title-live">Stocks</div>
+                    <div style="width:9%" class="table-title-live">Position</div>
+                    <div style="width:9%" class="table-title-live">Average Price</div>
+                    <div style="width:9%" class="table-title-live">Total Cost</div>
+                    <div style="width:9%" class="table-title-live">Market Value</div>
+                </div>
+            </li>
+            <li>
+                <div style="width:100%;">
+                    <div style="width:7%" class="table-cell-live"> test1 </div>
+                    <div style="width:9%" class="table-cell-live"> test2 </div>
+                    <div style="width:9%" class="table-cell-live"> test3 </div>
+                    <div style="width:9%" class="table-cell-live"> test4 </div>
+                    <div style="width:9%" class="table-cell-live"> test5 </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-
-	
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
@@ -136,6 +155,5 @@
     <script src="/assets/js/angular/filters.js?v=1.218"></script>
     <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
     <script src="/assets/js/datafeed.js?v=2.218"></script>
-</style>
 </body>
 </html> 

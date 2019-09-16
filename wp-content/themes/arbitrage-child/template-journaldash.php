@@ -3137,7 +3137,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param-2go">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param-2go" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

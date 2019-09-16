@@ -314,7 +314,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
-                $scope.latest_trading_date = new Date(response.data.data)
+                $scope.latest_trading_date = moment(response.data.data.date)
             }
         })
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE").then( function (response) {

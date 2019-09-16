@@ -66,8 +66,8 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="row">
+<div class="container container-fluid">
+  <div class="row no-gutters">
     <!-- Bid -->
     <div class="col-sm">
         <table class="table table-sm table-bordered">

@@ -112,14 +112,14 @@
     <!-- Ask -->
     <div class="col-sm">
         <table class="table table-sm">
-        <thead id="row_ask_data">
+        <thead>
             <tr>
             <th scope="col">Ask</th>
             <th scope="col">Volume</th>
             <th scope="col">#</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="row_ask_data">
             <tr>
             <td></td>
             <td></td>

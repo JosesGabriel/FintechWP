@@ -3715,13 +3715,7 @@ if($issampledata){
     });
 	jQuery(document).ready(function(){
 
-
-        if(jQuery('.hidelogs').hasClass('hidethis')){
-            jQuery('.fancybox-wrap').css('width', '373px');
-        }else{
-            jQuery('.fancybox-wrap').css('width', '470px');
-        }
-       
+      
 
 
 		$(document).on("click", ".deletelog", function() {

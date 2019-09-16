@@ -100,7 +100,7 @@
 
     <div class="bkcalcboxess container-fluid ">
     <span><span class="toborderbotvar"><strong>Value At Risk</strong> (VAR) Calculator</span><i class="fas fa-times toclassclosess"></i></span>
-        <div class="row">
+        <div class="row" style="display: flex;">
             
             <div class="col-md-6">
                 <div class="halfts">

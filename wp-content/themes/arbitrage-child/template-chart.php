@@ -53,6 +53,9 @@
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
     <link rel="stylesheet" href="/assets/plugins/gritter/css/jquery.gritter.css" />
 	<link rel="stylesheet" href="/assets/plugins/ng-embed/dist/ng-embed.min.css" />
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>"> 
+		<!-- Madaot calcs sa chart if dili ni iload ang duha ka css. To be refractored -->
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -1351,7 +1354,7 @@
 	?>
 
 	<div>
-		<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
 		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
 
@@ -1374,7 +1377,7 @@
 			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
-					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
+					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
 					<i class="fas fa-user-tie"></i>
 				<?php endif; ?></a>
@@ -1558,6 +1561,7 @@
 																											}
 																											var getthestocksym = $('#inpt_data_stock').val();
 																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
+																											console.log('joses ' + "/bidask-box/?stocksym="+getthestocksym);
 																										});
 																									<?php 
 																										$getcururl = $_SERVER['REQUEST_URI'];
@@ -1837,24 +1841,31 @@
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
 																										<div data-scrollbar="true" data-height="90%" class="">
-																											<div class="table-responsive">
-																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px; width:97%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
-																													<col width="16.67%">
+																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bidask in marketdepth | orderBy: 'index' | limitTo: 20 track by bidask.index">
-																															<td class="text-center" change="bidask.bid_count"><span>{{bidask.bid_count > 0 ? bidask.bid_count : ''}}</span></td>
-																															<td class="text-left text-uppercase" change="bidask.bid_volume"><span>{{bidask.bid_volume > 0 ? (bidask.bid_volume | abbr) : ''}}</span></td>
-																															<td class="text-left" ng-class="{'text-green': bidask.bid_price > stock.previous, 'text-red': bidask.bid_price < stock.previous}" change="bidask.bid_price"><strong>{{bidask.bid_price > 0 ? (bidask.bid_price | price) : ''}}</strong></td>
-																															<td class="text-right" ng-class="{'text-green': bidask.ask_price > stock.previous, 'text-red': bidask.ask_price < stock.previous}" change="bidask.ask_volume"><strong>{{bidask.ask_price > 0 ? (bidask.ask_price | price) : ''}}</strong></td>
-																															<td class="text-right text-uppercase" change="bidask.ask_volume"><span>{{bidask.ask_volume > 0 ? (bidask.ask_volume | abbr) : ''}}</span></td>
-																															<td class="text-right" style="padding-right: 12px !important;" change="bidask.ask_count"><span>{{bidask.ask_count > 0 ? bidask.ask_count : ''}}</span></td>
+																														<tr ng-repeat="bid in bids | orderBy: '-price'">
+																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
+																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
+																															<td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
 																														</tr>
-																														<tr ng-show="marketdepth.length == 0"><td colspan="5" align="center"><br /><br />Please select a stock</td></tr>
+																													</tbody>
+																												</table>
+																											</div><!--
+																											--><div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<col width="8.335%">
+																													<tbody>
+																														<tr ng-repeat="ask in asks">
+																															<td class="text-right" ng-class="{'text-green': ask.price > stock.previous, 'text-red': ask.price < stock.previous}" change="ask.volume"><strong>{{ask.price > 0 ? (ask.price | price) : ''}}</strong></td>
+																															<td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
+																															<td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
+																														</tr>
 																													</tbody>
 																												</table>
 																											</div>
@@ -2038,7 +2049,7 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>

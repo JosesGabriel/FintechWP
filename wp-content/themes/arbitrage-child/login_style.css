@@ -827,7 +827,7 @@ a.um-button.um-alt.um-button-social.um-button-facebook:hover {
     background: rgba(0, 0, 0, 0.7) !important;
 }
 .um-social-login-wrap {
-    border: none !important;
+    /* border: none !important; */
 }
 .um-social-login-wrap .um.um-register.um-err {
     background: #142c46;

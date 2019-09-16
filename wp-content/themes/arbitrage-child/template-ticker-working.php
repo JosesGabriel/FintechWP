@@ -4,15 +4,20 @@
 	* Ticker page for All
 	*/
 	global $current_user; 
-    $user = wp_get_current_user();
-    $url = get_home_url();
+	$user = wp_get_current_user();
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $url.'/login/', 301 );
+		wp_redirect( 'https://arbitrage.ph/login/', 301 );
 		exit;
 	}
 	$user_id = $user->ID;
+	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
+	if (!$checksharing){
+		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+		die();
+	}
+	$cdnorlocal = get_home_url();
 ?><!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -634,7 +639,7 @@
         <ul class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
-                <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
+                <a href="https://arbitrage.ph/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
                 &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
             </li>

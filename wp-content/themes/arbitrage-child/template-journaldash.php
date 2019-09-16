@@ -127,25 +127,19 @@ echo $user->ID ." versis ". $user->ID;
     if(isset($_POST['editbutton'])){
         //echo $_POST['inpt_data_status'];
 
-        $logid = $_POST['log_id'];
+        $log_id = $_POST['log_id'];
         $strategy = $_POST['data_strategy'];
 
         echo $strategy;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-        print_r($data_trade_info);
+        echo "<script> console.log($data_trade_info); </script>";
 
-        update_post_meta($logid,  $data_trade_info[0]->strategy , 'strategy');
+        //update_post_meta($log_id,  'data_trade_info', 'test');
+        update_post_meta($log_id,  $data_trade_info[0]->strategy, 'test');
 
-        // $post = array(
-        //     'strategy_plans' => $strategy, 
-        //     'trade_plans' => $tradeplan, 
-        //     'emotions' => $emotion 
-        // );
-
-        // wp_update_post($post);
-        
+       
 
         wp_redirect('/journal');
         exit;

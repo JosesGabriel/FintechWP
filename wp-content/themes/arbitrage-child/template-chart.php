@@ -1558,6 +1558,7 @@
 																											}
 																											var getthestocksym = $('#inpt_data_stock').val();
 																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
+																											console.log('joses ' + "/bidask-box/?stocksym="+getthestocksym);
 																										});
 																									<?php 
 																										$getcururl = $_SERVER['REQUEST_URI'];

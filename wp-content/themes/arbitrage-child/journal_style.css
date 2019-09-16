@@ -1418,8 +1418,16 @@ input.enter-trade-btn:hover {
     border: none;
     border-radius: 0 4px 4px 0;
     background: #4e6a85;
-    padding: 2px 0 3px;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 .label_date {
     margin-bottom: 3px;
+}
+.label_date input {
+
 }

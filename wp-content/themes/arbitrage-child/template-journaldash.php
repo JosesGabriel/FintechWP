@@ -3090,7 +3090,7 @@ if($issampledata){
 
                                                                                 <div class="hidethis">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
-                                                                                        <div class="entr_ttle_bar" style="width: 358px;">
+                                                                                        <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">

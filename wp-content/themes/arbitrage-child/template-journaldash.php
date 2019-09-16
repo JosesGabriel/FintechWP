@@ -3555,9 +3555,9 @@ if($issampledata){
                                                                                     <div style="width:8%">&nbsp;</div>
                                                                                     <div style="width:19%">&nbsp;</div>
                                                                                     <div style="width:19%">Total</div>
-                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
-                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
-                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <div style="width:17%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
+                                                                                    <div style="width:17%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
+                                                                                    <div style="width:17%">&nbsp;</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>

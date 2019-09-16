@@ -3371,6 +3371,8 @@ if($issampledata){
 
 																				$ledcount = 0;
 																				$ledbalance = 0;
+																				$totdebit = 0;
+																				$totcred = 0;
 																				foreach ($dledger as $key => $value) {
 																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
 																						$ledcount++;
@@ -3384,12 +3386,14 @@ if($issampledata){
 																								<?php if($value->trantype == "withraw"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance - $value->tranamount;
+																									$totdebit += $value->tranamount;
 																								} ?>
 																							</div>
 																							<div style="width:14%">
 																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance + $value->tranamount;
+																									$totcred += $value->tranamount;
 																								} ?>
 																							</div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
@@ -3399,46 +3403,18 @@ if($issampledata){
 																					endif;
 																				}
 																			?>
-																			
-																			<?php
-                                                                                $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
-                                                                                $mstart = 0;
-                                                                                foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
-                                                                                    ?>
-																					<li class="dspecitem" style="display:none;">
-		                                                                            	<div style="width:99%;">
-		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Perfomance<?php */?>15.20%</div> -->
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Profit/Loss<?php */?>₱15,199.00</div> -->
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totalwith'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totaldepo'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['isenfing'], 2, '.', ','); ?></div>
-		                                                                                </div>
-		                                                                                <div class="ddetailshere">
-		                                                                                	<div class="inner">
-		                                                                                		<ul>
-		                                                                                			<li class="dtitle">
-		                                                                                				<div style="width:99%;">
-		                                                                                					<div style="width:33%">Date</div>
-			                                                                                				<div style="width:33%">Transacrion</div>
-			                                                                                				<div style="width:33%">Amount</div>
-		                                                                                				</div>
-		                                                                                			</li>
-		                                                                                			<?php foreach ($dmdvalue['isdata'] as $dsubdkey => $dsubdvalue): ?>
-		                                                                                				<?php //if ($dsubdvalue->trantype == 'deposit' || $dsubdvalue->trantype == 'withraw'):?>
-		                                                                                					<li>
-		                                                                                						<div style="width:33%"><?php echo date('F d, Y', strtotime($dsubdvalue->date)); ?></div>
-		                                                                                						<div style="width:33%"><span class="dtrantype"><?php echo $dsubdvalue->trantype; ?></span></div>
-		                                                                                						<div style="width:33%">₱<?php echo number_format($dsubdvalue->tranamount, 2, '.', ','); ?></div>
-		                                                                                					</li>
-		                                                                                				<?php //endif?>
-	                                                                                				<?php endforeach; ?>
-		                                                                                	</div>
-		                                                                                </div>
-		                                                                            </li>
-																				<?php
-                                                                                }  ?>
+																			<li class="footepart">
+                                                                            	<div style="width:100%;">
+                                                                                    <div style="width:8%">&nbsp;</div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <div style="width:19%">Total</div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
+                                                                                </div>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
 																	<div class="dledgerpag">

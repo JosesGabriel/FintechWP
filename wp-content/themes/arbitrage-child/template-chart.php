@@ -2057,6 +2057,7 @@
 																											style="font-weight: bold;" 
 																											>
 																											<td class="hidden">{{stock.momentDate}}</td>
+																											<td class="hidden">{{latest_trading_date.isSame(stock.momentDate, 'day')}}</td>
 																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
 																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
 																													<input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>

@@ -63,7 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
+ /*   
     var transaction = [
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
@@ -76,21 +76,15 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         for (i in transaction){
             $scope.ticker.push(transaction[i]);
         }
-        
+  */      
     socket.on('psec', function (data) {
-    
         var transaction = {
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
             shares: abbr_format(data.vol)
         };
-        
-        console.log('from controllers agin');
-        console.log(transaction);
-        
         $scope.ticker.push(transaction);
-    
         $scope.$digest();
     });
     
@@ -376,7 +370,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         /*$http.get("/api/watchlists").then( function (response) {
             jQuery.extend($scope.watchlists, response.data.data);
             // $http.post("/api/watchlists", $.param({watchlists: JSON.stringify($scope.watchlists)})).then( function (response) {
-            //     console.log(response.data)
+
             // });
             $scope.watchlist = 'All Stocks';
             $scope.watchlistReady = true;
@@ -544,27 +538,21 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
      *  u => update new order
      */
      socket.on('psebd', function (data) {
-        console.log('PSEBD', data);
-
         if ($scope.selectedStock == data.sym) {
             if (data.ov == 'B') {
                 // bid
                 $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
                 $scope.bids = $filter('orderBy')($scope.bids, '-price');
-                console.log('END PSEBD', $scope.bids);
             } else if (data.ov == 'S') {
                 // ask
                 $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
-                console.log('END PSEBD', $scope.asks);
             }
             $scope.$digest();
         }
     });
 
     $scope.updateBidAndAsks = function (list, data) {
-        console.log('UPDATE BIDS ASKS', list);
         let index = list.findIndex(function(item){
-            console.log('FIND INDEX', item);
             return item.id == data.id
         });
         if (data.ty == 'a') {
@@ -592,12 +580,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             list.push($scope.addToBidAskList(data.idn, data));
         }
-        console.log('END UPDATE BIDS ASKS', list);
         return list;
     }
 
     $scope.updateBidAskCount = function (list, id, increment, volume) {
-        console.log('BID ASK COUNT', list[id], id, increment);
         if (typeof list[id] !== 'undefined') {
             list[id].count += increment;
             list[id].volume += volume * increment;
@@ -939,7 +925,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
 
                 }, function myError(error) {
-                    console.log(error);
+
                 });
                 
                 
@@ -964,7 +950,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
                     }).then(function mySucces(response) {
                         angular.element(".regsentiment").addClass('openmenow');
-                        console.log("status : " + response.data.isvote);
 
                         // angular.element(".bullbearsents").addClass('clickedthis');
 
@@ -992,7 +977,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
 
                     }, function myError(error) {
-                        console.log(error);
+
                     });
 
                     $http({
@@ -1005,11 +990,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
-                        console.log("dmspart");
-                        console.log(response);
+
                     }, function myError(error) {
-                        console.log("derrorpart");
-                        console.log(error);
                         
                     });
                      

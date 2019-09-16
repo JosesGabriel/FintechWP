@@ -1376,7 +1376,7 @@ if($issampledata){
 
                                                         $dlistofsells = [];
                                                         $dtotalpl = 0;
-                                                        foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
+                                                        // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
                                                                 // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
                                                                 if ($disyear == $dlogsmvalue['data_sellyear']) {
@@ -1384,12 +1384,14 @@ if($issampledata){
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getjurfees($selprice, 'sell');
+																	$sellfee = getjurfees($selprice, 'sell');
+																	
+																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
                                                             }
-                                                        }
+                                                        // }
 
                                                     ?>
 
@@ -2946,7 +2948,8 @@ if($issampledata){
                                                                                 $count = 1;
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
-                                                                                $dlisttrade = [];
+																				$dlisttrade = [];
+																				$trtotals = 0;
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
 																						$author_posts->the_post();
@@ -3017,7 +3020,7 @@ if($issampledata){
 
                                                                                     // profperc
                                                                                     $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
-                                                                                    $totalprofit += $dprofit;
+                                                                                    $trtotals += $dprofit;
                                                                             ?>
 
                                                              				<!--<li class="s-logs" style="display: none;">
@@ -3188,7 +3191,7 @@ if($issampledata){
 
 													<div class="totalpl">
 														 <p>Total Profit/Loss as of <?php
-                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
+                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $trtotals > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($trtotals, 2, '.', ','); ?></span></p>
 													</div>
 
                                                     <!--<div class="adsbygoogle">
@@ -3765,13 +3768,13 @@ if($issampledata){
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
-				dboard = 1000000;
+				dboard = 1,000,000;
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
-				dboard = 100000;
+				dboard = 100,000;
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 10000;
+				dboard = 10,000;
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1000;
+				dboard = 1,000;
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
@@ -3779,8 +3782,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-			let dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
+
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

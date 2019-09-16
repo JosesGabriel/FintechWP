@@ -3777,6 +3777,10 @@ if($issampledata){
 				dboard = 5;
 			} 
 
+			dboardlast = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(dboardlast);
+			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
+
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");
 				if (components.length === 1) 
@@ -3786,9 +3790,6 @@ if($issampledata){
 					components[1] = components[1].replace(/\D/g, "");
 				return components.join(".");
 			}
-			dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(dboardlast);
-			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 		});
 
 		jQuery(".dloadform").click(function(e){

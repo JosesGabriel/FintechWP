@@ -3339,7 +3339,7 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
-                                                                                    <div style="width:19%">Count</div>
+                                                                                    <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
                                                                                     <div style="width:19%">Transaction</div>
                                                                                     <div style="width:14%">Debit</div>
@@ -3372,11 +3372,11 @@ if($issampledata){
 																					?>
 																					<li>
 																						<div style="width:99%;">
-																							<div style="width:19%"><?php echo $key + 1; ?></div>
+																							<div style="width:8%"><?php echo $key + 1; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
 																							<div style="width:19%"><?php echo $value->trantype; ?></div>
-																							<div style="width:19%"></div>
-																							<div style="width:19%"></div>
+																							<div style="width:14%"></div>
+																							<div style="width:14%"></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>

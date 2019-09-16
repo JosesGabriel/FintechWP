@@ -509,7 +509,7 @@ img.arb_newpostimg {
     overflow: visible !important;
 }
 #chartdiv1 .amcharts-main-div {
-    /* margin-top: -37px; */
+    margin-top: -37px;
 }
 #chartdiv2 {
     width: 100%;

@@ -363,10 +363,15 @@ echo $user->ID ." versis ". $user->ID;
 
 <!-- BOF SORT DATA FOR JOURNAL -->
 <?php
-    $alltradelogs = [];
+	$dailyvolumes = '';
+	$dailyvalues = '';
+	$alltradelogs = [];
+	$counter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
+
+			$counter++;
 			$tradeid = get_the_ID();
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
@@ -415,7 +420,18 @@ echo $user->ID ." versis ". $user->ID;
             $tradeitems['data_trade_info'] = $dlistofinfo;
             $tradeitems['data_avr_price'] = $data_avr_price;
 
-            array_push($alltradelogs, $tradeitems);
+			array_push($alltradelogs, $tradeitems);
+			
+			$dailyvolumes .= '{';
+			$dailyvolumes .= '"category": "'.$counter.'",';
+			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
+			$dailyvolumes .= '},';
+
+			
+			$dailyvalues .= '{';
+			$dailyvalues .= '"category": "'.$counter.'",';
+			$dailyvalues .= '"column-1": '.($postmetas[$data_dprice]->meta_value != "" ? $postmetas[$data_dprice]->meta_value : 0).'';
+			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
@@ -665,7 +681,7 @@ if($issampledata){
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 						<option value="">Select Stocks</option>
 						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -686,7 +702,7 @@ if($issampledata){
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 						<option value="">Select Stocks</option>
 						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -2699,21 +2715,21 @@ if($issampledata){
                                                             array_push($values, '0');
                                                         }
 
-                                                        $dailyvolumes = '';
-                                                        foreach ($volumes as $dvolkey => $dvolvalue) {
-                                                            $dailyvolumes .= '{';
-                                                            $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                            $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
-                                                            $dailyvolumes .= '},';
-                                                        }
+                                                        // $dailyvolumes = '';
+                                                        // foreach ($volumes as $dvolkey => $dvolvalue) {
+                                                        //     $dailyvolumes .= '{';
+                                                        //     $dailyvolumes .= '"category": "'.$dvolkey.'",';
+                                                        //     $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
+                                                        //     $dailyvolumes .= '},';
+                                                        // }
 
-                                                        $dailyvalues = '';
-                                                        foreach ($values as $dvalkey => $dvalvalue) {
-                                                            $dailyvalues .= '{';
-                                                            $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                            $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
-                                                            $dailyvalues .= '},';
-                                                        }
+                                                        // $dailyvalues = '';
+                                                        // foreach ($values as $dvalkey => $dvalvalue) {
+                                                        //     $dailyvalues .= '{';
+                                                        //     $dailyvalues .= '"category": "'.$dvalkey.'",';
+                                                        //     $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
+                                                        //     $dailyvalues .= '},';
+                                                        // }
                                                     ?>
 													<br class="clear">
 													<div class="row">
@@ -3869,15 +3885,15 @@ if($issampledata){
 			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
-			function replaceCommas(yourNumber) {
-				var components = yourNumber.toString().split(".");
-				if (components.length === 1) 
-					components[0] = yourNumber;
-				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				if (components.length === 2)
-					components[1] = components[1].replace(/\D/g, "");
-				return components.join(".");
-			}
+			// function replaceCommas(yourNumber) {
+			// 	var components = yourNumber.toString().split(".");
+			// 	if (components.length === 1) 
+			// 		components[0] = yourNumber;
+			// 	components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			// 	if (components.length === 2)
+			// 		components[1] = components[1].replace(/\D/g, "");
+			// 	return components.join(".");
+			// }
 		});
 
 		jQuery(".dloadform").click(function(e){

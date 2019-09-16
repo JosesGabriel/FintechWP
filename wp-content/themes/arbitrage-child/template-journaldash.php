@@ -718,7 +718,7 @@ if($issampledata){
                                                         		<div class="dbuttondelete">
                                                         			<form action="/journal" method="post" class="resetform">
 																		<input type="hidden" name="deletedata" value="reset">
-                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn record">
+                                                        				<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
                                                         			</form>
                                                         		</div>
                                                         		<div class="dbuttonenter">
@@ -2919,7 +2919,7 @@ if($issampledata){
 																	<div class="dbuttonrecord">
 																		<form action="/journal" method="post" class="recordform">
 																			<input type="hidden" name="recorddata" value="record">
-																			<input type="submit" name="record" value="Record" class="record-data-btn resetdata">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 																		</form>
 																	</div>
 																</div>
@@ -3103,8 +3103,7 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form action="/journal/<?php echo $data_stock; ?>" method="post" class="edittlogs" autocomplete="off">
-
+                                                                                <form method="post" action="">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3150,7 +3149,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" name="inpt_data_tradingnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3730,11 +3729,11 @@ if($issampledata){
 
         
         
-        jQuery(".editmenow").click(function(e){
-            jQuery(".edittlogs").submit();
+        $(document).on("click", ".editlog", function() {
+
+            jQuery('.fancybox-wrap').css("width","376px");
+
         });
-
-
 
 		$(document).on("click", ".deletelog", function() {
 
@@ -3814,6 +3813,14 @@ if($issampledata){
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
+			} else {
+				swal('Not enough funds.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			}
 		});
 

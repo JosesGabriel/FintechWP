@@ -56,28 +56,30 @@
                 });
             };
             
-
-                var content_bid = "";
-                var content_ask;
+                var content_bids = "";
+                var content_asks = "";
                 var row_bid_data = jQuery('#row_bid_data');
                 var row_ask_data = jQuery('#row_ask_data');
 
-                getBidAsk('AC',10,function(callback){
+                getBidAsk('AC',50,function(callback){
                     var bids = callback.bids;
                     var asks = callback.asks;
-
                     for(i in bids){
-                        content_bid += `<tr>
+                        content_bids += `<tr>
                                 <td>${ bids[i].count }</td>
                                 <td>${ bids[i].volume }</td>
                                 <td>${ bids[i].price }</td>
                                 </tr>`;
                     }   
-
-                    console.log(content_bid);
-                    console.log(asks);
-                    row_bid_data.html(content_bid);
-                    row_ask_data.innerHTML(asks);
+                    for(i in asks){
+                        content_asks += `<tr>
+                                <td>${ asks[i].count }</td>
+                                <td>${ asks[i].volume }</td>
+                                <td>${ asks[i].price }</td>
+                                </tr>`;
+                    }   
+                    row_bid_data.html(content_bids);
+                    row_ask_data.html(content_asks);
                 });
 
         });

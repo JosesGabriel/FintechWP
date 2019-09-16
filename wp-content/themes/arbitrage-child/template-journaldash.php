@@ -3175,10 +3175,7 @@ if($issampledata){
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
 
-                                                                                <form method="post" class="edittlogs" autocomplete="off">
-
-
-                                                                            
+                                                                                <form method="post" class="edittlogs" autocomplete="off">     
 
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
@@ -3805,9 +3802,9 @@ if($issampledata){
 
         
         
-        $(document).on("click", ".editlog", function() {
+        $(document).on("click", ".editmenow", function() {
 
-            jQuery('.fancybox-wrap').css("width","376px");
+           jQuery('.edittlogs').submit();
 
         });
 

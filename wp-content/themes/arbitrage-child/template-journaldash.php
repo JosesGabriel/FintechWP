@@ -120,6 +120,20 @@ echo $user->ID ." versis ". $user->ID;
         wp_redirect('/journal');
         exit;
     }
+
+
+    if(isset($_POST['editbutton'])){
+
+        $strategy = $_POST['inpt_data_strategy'];
+        $tradeplan = $_POST['inpt_data_tradeplan'];
+        $emotion = $_POST['inpt_data_emotion'];
+        $post = array('strategy' => $strategy , 'tradeplan' => $tradeplan, 'emotion' => $emotion );
+        wp_update_post($post);
+        
+        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+
 ?>
 <!-- EOF Deposit -->
 
@@ -3095,7 +3109,7 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form action="/journal/<?php echo $data_stock; ?>" method="post" class="edittlogs" autocomplete="off">
+                                                                                <form method="post" class="edittlogs" autocomplete="off">
 
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
@@ -3148,7 +3162,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param" style="float: right;">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

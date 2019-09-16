@@ -3746,8 +3746,11 @@ if($issampledata){
 			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
-			jQuery("input[name='inpt_data_volume']").val(replaceCommas(dstocks.volume).toFixed(2));
-			jQuery("input[name='inpt_data_value']").val(replaceCommas(dstocks.value).toFixed(2));
+			var numseprvm = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.volume.toFixed(2);
+			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
+			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
 
 			// board lot
 			var dboard = 0;

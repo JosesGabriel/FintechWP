@@ -761,7 +761,7 @@ if($issampledata){
 																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd label_date">
-																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required>
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required id="journal__trade-btn--date-picker">
 																							</div>
 																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
@@ -772,7 +772,7 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -1378,7 +1378,8 @@ if($issampledata){
                                                         $dtotalpl = 0;
                                                         foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
-                                                                if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                if ($disyear == $dlogsmvalue['data_sellyear']) {
                                                                     array_push($dlistofsells, $dlogsmvalue);
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
@@ -3097,31 +3098,35 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-                                                                                        
+                                                                                            <?php 
+                                                                                            $strategy = $data_trade_info[0]->strategy; 
+                                                                                            $tradeplan = $data_trade_info[0]->tradeplan;
+                                                                                            $emotion = $data_trade_info[0]->emotion;
+                                                                                            ?>
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->strategy; ?>">
-                                                                                                            <option  value="Bottom Picking">Bottom Picking</option>
-                                                                                                            <option  value="Breakout Play">Breakout Play</option>
-                                                                                                            <option  value="Trend Following">Trend Following</option>
+                                                                                                        <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+                                                                                                            <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+                                                                                                            <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
                                                                                                         </select>
                                                                                                         
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->tradeplan; ?>">
-                                                                                                            <option  value="Day Trade">Day Trade</option>
-                                                                                                            <option  value="Swing Trade">Swing Trade</option>
-                                                                                                            <option  value="Investment">Investment</option>
+                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
                                                                                                     </select>
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="" id="" value="<?php echo $data_trade_info[0]->emotion; ?>">
-                                                                                                            <option  value="Neutral">Neutral</option>
-                                                                                                            <option  value="Greedy">Greedy</option>
-                                                                                                            <option  value="Fearful">Fearful</option>
+                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                            <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+                                                                                                            <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+                                                                                                            <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
                                                                                                     </select>
 
                                                                                                 </div>
@@ -3131,7 +3136,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px;">
+                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #a9b2bb;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3746,9 +3751,11 @@ if($issampledata){
 			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
-			jQuery("input[name='inpt_data_volume']").val(replaceCommas(dstocks.volume).toFixed(2));
-			jQuery("input[name='inpt_data_value']").val(replaceCommas(dstocks.value).toFixed(2));
-
+			var numseprvm = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.value.toFixed(2);
+			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
+			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
+			
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
@@ -3766,8 +3773,8 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboard));
+			let dboardlast = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {
@@ -3786,7 +3793,7 @@ if($issampledata){
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
-			var buySell__date = jQuery('.buySell__date-picker').val();
+			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
 			} else if (buySell__date == "") {

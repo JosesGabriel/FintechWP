@@ -732,6 +732,27 @@
 		]);
 		die();
 
+	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-peers-count' && isset($_GET['user-id'])) {
+
+		$profile_id = $_GET['user-id'];
+
+		if (!is_numeric($profile_id)) {
+			echo json_encode([
+				'status' => 417,
+				'success' => false,
+			]);
+			die();
+		}
+
+		$peers_count = UM()->Friends_API()->api()->count_friends( $profile_id );
+
+		echo json_encode([
+			'status' => 200,
+			'success' => true,
+			'data' => compact('peers_count'),
+		]);
+		die();
+
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){

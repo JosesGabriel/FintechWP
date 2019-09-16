@@ -1512,7 +1512,6 @@ span.legend_circ {
 }
 .record_main {
     width: 53%;
-    height: 300px;
     margin: 65px auto 0;
     background: #0c1f33;
     border-radius: 5px;
@@ -1533,4 +1532,34 @@ span.legend_circ {
     vertical-align: middle;
     padding: 15px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.label_thisright {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.label_thisleft {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.record_body .groupinput.midd input {
+    width: 142px;
+}
+.record_body select#inpt_data_select_stock {
+    width: 143px !important;
+}
+.record_body {
+    margin: 0;
+}
+.dbuttonrecord_onmodal {
+    display: block;
+    width: 100%;
+    padding: 0 15px 15px;
 }

@@ -1220,7 +1220,7 @@ if($issampledata){
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																												<input type="hidden" name="selldate" id="selldate">
+																												<input type="hidden" name="selldate" class="selldate">
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -3522,7 +3522,7 @@ if($issampledata){
 		function selldate(event){
 			console.log(event.value);
 
-			jQuery("#selldate").val(event.value);
+			jQuery(".selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();

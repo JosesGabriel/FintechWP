@@ -3129,7 +3129,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3">
+                                                                                                    <textarea rows="3" style="width: 314px;">
                                                                                                         
                                                                                                     </textarea>
                                                                                                 </div>

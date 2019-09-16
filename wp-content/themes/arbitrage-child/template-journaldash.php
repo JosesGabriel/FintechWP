@@ -3839,6 +3839,8 @@ if($issampledata){
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
 
+			console.log(dstocks);
+
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
 			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));

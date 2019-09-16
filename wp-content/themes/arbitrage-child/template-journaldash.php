@@ -867,9 +867,9 @@ if($issampledata){
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                    <select class="rnd" name="" id="selectdepotype" style="z-index: 20;">
+                                                                                        <option class="deposit-modal-btn show-button1" value="deposit">Deposit Funds</option>
+                                                                                        <option class="deposit-modal-btn show-button2" value="dividend">Dividend Income</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
@@ -1142,7 +1142,7 @@ if($issampledata){
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
@@ -1956,7 +1956,8 @@ if($issampledata){
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<!-- <span class="legend_circ"></span> -->
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
@@ -2006,7 +2007,7 @@ if($issampledata){
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout</div>
+                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
                                                                                 </li>
 
                                                                             </ul>
@@ -2217,7 +2218,7 @@ if($issampledata){
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							krsort($finalloss);
+																							sort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
@@ -3062,7 +3063,7 @@ if($issampledata){
                                                                                     
 																				</div>
 																				<?php  $tnum++; ?>
-																				<div class="hidethis">
+																				<div class="hidethis" id="hidelogs">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3088,14 +3089,14 @@ if($issampledata){
 																					</div>
 																				</div>
 
-                                                                                <div class="hidethis">
+                                                                                <div class="hidethis" id="hidelogs">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-
+                                                                                        
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
@@ -3129,11 +3130,12 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 314px;">
+                                                                                                    <textarea rows="3">
                                                                                                         
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        
 
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3337,11 +3339,12 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
+                                                                                    <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
                                                                                     <div style="width:19%">Transaction</div>
-                                                                                    <!-- <div style="width:14%">Perfomance</div> -->
-                                                                                    <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <div style="width:14%">Debit</div>
+                                                                                    <div style="width:14%">Credit</div>
+                                                                                    <div style="width:19%">Balance</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3364,13 +3367,18 @@ if($issampledata){
                                                                                     }
 																				}
 
+																				$ledcount = 0;
 																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
+																						$ledcount++;
 																					?>
 																					<li>
 																						<div style="width:99%;">
+																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:14%"></div>
+																							<div style="width:14%"></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
 		                                                                                </div>
 																					</li>
@@ -3708,6 +3716,8 @@ if($issampledata){
     });
 	jQuery(document).ready(function(){
 
+        
+
 		$(document).on("click", ".deletelog", function() {
 
 		//jQuery(".deletelog").click(function(e){
@@ -3810,8 +3820,15 @@ if($issampledata){
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
-			let finaltotal = total_price + parseFloat(thetradefees(total_price, 'buy'));
-			jQuery('input[name="inpt_data_total_price"]').val(total_price);
+			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
+		});
+
+		// jQuery("")
+		jQuery('#selectdepotype').on('change', function() {
+			// alert( this.value );
+			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
+
 		});
 
 		// jQuery(document).on('submit', '.dentertrade', function (e) {

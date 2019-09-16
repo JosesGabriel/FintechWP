@@ -45,9 +45,10 @@
         jQuery(document).ready(function() {
 
             var stock_symbol = jQuery('#stock_symbol');
-            var queryString = location.search;
+            var urlParams = new URLSearchParams(location.search);
 
-            console.log(queryString);
+            console.log(urlParams.get('symbol'));
+            console.log(urlParams.get('limit'));
 
             function getBidAsk(symbol,limit,callback){
                 let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;

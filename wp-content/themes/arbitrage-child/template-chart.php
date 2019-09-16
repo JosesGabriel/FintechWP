@@ -2045,6 +2045,10 @@
 
 																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
+																										<tr class="hidden">
+																											<td>{{latest_trading_date}}</td>
+																											<td>{{sort}}</td>
+																										</tr>
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
@@ -2052,6 +2056,7 @@
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
+																											<td class="hidden">{{stock.momentDate}}</td>
 																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
 																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
 																													<input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>

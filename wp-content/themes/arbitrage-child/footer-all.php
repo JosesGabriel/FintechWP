@@ -139,8 +139,7 @@
     $('.opennotification').on('click', '.um-notification', function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var $this = $(this)
-        console.log('click notif', $this, e);
+        var $this = $(this);
         if (typeof $this.data('notification_uri') !== 'undefined') {
             window.location.href = $this.data('notification_uri')
         }

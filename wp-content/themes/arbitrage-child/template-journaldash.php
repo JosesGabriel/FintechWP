@@ -1220,7 +1220,7 @@ if($issampledata){
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																												<input type="hidden" name="selldate" class="selldate">
+																												<input type="hidden" name="selldate" id="selldate">
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -1258,8 +1258,8 @@ if($issampledata){
 																	                                                <div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value="&#8369;<?php echo number_format($dstockinfo->high, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                            </div>
 																	                                            <div class="entr_col">
-																	                                                <div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value="<?php echo number_format($dstockinfo->volume, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
-																	                                                <div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value="<?php echo number_format($dstockinfo->value, 2, '.', ','); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																	                                                <div class="groupinput midd lockedd"><label>Volume</label><input readonly type="text" name="inpt_data_volume" value="<?php echo number_format_short($dstockinfo->volume); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																	                                                <div class="groupinput midd lockedd"><label>Value</label><input readonly type="text" name="inpt_data_value" value="<?php echo number_format_short($dstockinfo->value); ?>"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																	                                                <div class="groupinput midd lockedd">
 																	                                                	<?php
                                                                                                                             $dboard = 0;
@@ -3131,7 +3131,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px;background: #a9b2bb;">
+                                                                                                    <textarea rows="3" style="width: 313px;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
@@ -3522,7 +3522,7 @@ if($issampledata){
 		function selldate(event){
 			console.log(event.value);
 
-			jQuery(".selldate").val(event.value);
+			jQuery("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
         var dataSource = jQuery('#calendar').data('calendar').getDataSource();
@@ -3746,8 +3746,8 @@ if($issampledata){
 			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
-			jQuery("input[name='inpt_data_volume']").val((dstocks.volume).toFixed(2));
-			jQuery("input[name='inpt_data_value']").val((dstocks.value).toFixed(2));
+			jQuery("input[name='inpt_data_volume']").val(replaceCommas(dstocks.volume).toFixed(2));
+			jQuery("input[name='inpt_data_value']").val(replaceCommas(dstocks.value).toFixed(2));
 
 			// board lot
 			var dboard = 0;
@@ -3767,8 +3767,18 @@ if($issampledata){
 				dboard = 5;
 			} 
 
-			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboard));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
+
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
 		});
 
 		jQuery(".dloadform").click(function(e){

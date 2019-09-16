@@ -45,6 +45,18 @@
 </head>
 <body>
 
+
+<div ng-controller="ticker">
+        <ul>
+            <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+                <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
+                <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
+                <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
+                &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
+            </li>
+        </ul>
+    </div>
+
 	
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

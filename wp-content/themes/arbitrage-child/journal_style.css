@@ -1095,9 +1095,10 @@ span.modal-notes-result {
 }
 .tradelogsbutton {
     width: auto;
-    float: right;
+    float: left;
     position: relative;
     top: -3px;
+    margin-left: 10px;
 }
 .delete-data-btn {
     float: right;
@@ -1565,4 +1566,10 @@ span.legend_circ {
 }
 .record_footer {
     margin: 0;
+}
+span.title_logss {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 17px;
 }

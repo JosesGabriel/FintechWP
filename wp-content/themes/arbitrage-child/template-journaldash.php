@@ -3716,7 +3716,10 @@ if($issampledata){
     });
 	jQuery(document).ready(function(){
 
-      
+        
+        if ($(this).hasClass("tradelogbox")) {
+            jQuery('#fancybox-wrap').css('width','376px');
+        }     
 
 
 		$(document).on("click", ".deletelog", function() {
@@ -3823,6 +3826,13 @@ if($issampledata){
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
 			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
+		});
+
+		// jQuery("")
+		jQuery('#selectdepotype').on('change', function() {
+			alert( this.value );
+			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
+
 		});
 
 		// jQuery(document).on('submit', '.dentertrade', function (e) {

@@ -124,7 +124,9 @@ echo $user->ID ." versis ". $user->ID;
 
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-        $strategy = $_POST['inpt_data_strategy'];
+        echo $_POST['inpt_data_status'];
+
+       $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
         $post = array(
@@ -132,10 +134,10 @@ echo $user->ID ." versis ". $user->ID;
             'trade_plans' => $tradeplan, 
             'emotions' => $emotion 
         );
-
         wp_update_post($post);
         
-        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+
+        wp_redirect('/journal');
         exit;
     }
 

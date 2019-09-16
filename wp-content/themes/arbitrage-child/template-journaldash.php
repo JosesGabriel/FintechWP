@@ -134,7 +134,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-
+        print_r($data_trade_info);
 
         update_post_meta($logid,  'data_trade_info' , 'strategy', $strategy);
 

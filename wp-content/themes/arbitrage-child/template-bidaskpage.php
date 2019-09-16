@@ -64,33 +64,36 @@
 
 </head>
 <body>
-<div class="box-portlet-content">
-    <div class="stats-info">
-    <div class="dstatstrade overridewidth dstatstrade1">
-        <ul>
-            <li class="headerpart headerpart-tradelogs">
-
-                <div style="width:100%;">
-                    <div style="width:7%" class="table-title-live">Stocks</div>
-                    <div style="width:9%" class="table-title-live">Position</div>
-                    <div style="width:9%" class="table-title-live">Average Price</div>
-                    <div style="width:9%" class="table-title-live">Total Cost</div>
-                    <div style="width:9%" class="table-title-live">Market Value</div>
-                </div>
-            </li>
-            <li>
-                <div style="width:100%;">
-                    <div style="width:7%" class="table-cell-live"> test1 </div>
-                    <div style="width:9%" class="table-cell-live"> test2 </div>
-                    <div style="width:9%" class="table-cell-live"> test3 </div>
-                    <div style="width:9%" class="table-cell-live"> test4 </div>
-                    <div style="width:9%" class="table-cell-live"> test5 </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    </div>
-</div>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        </tr>
+        <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        </tr>
+        <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+        </tr>
+    </tbody>
+    </table>
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

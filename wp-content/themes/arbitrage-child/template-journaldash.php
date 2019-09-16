@@ -4063,6 +4063,10 @@ if($issampledata){
 			e.preventDefault();
 			jQuery('.record_modal').show();
 		});
+		jQuery('.to_closethis_rec').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').hide();
+		});
 
 
 		jQuery(".dwidfunds").click(function(e){

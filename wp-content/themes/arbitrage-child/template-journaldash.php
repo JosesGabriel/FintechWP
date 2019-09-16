@@ -3272,7 +3272,7 @@ if($issampledata){
                                                                                             </div>
                                                                                              <div class="trdleft">
                                                                                                 <input type="hidden" value="Edit" name="inpt_data_status">
-                                                                                                <input type="hidden" name="" value="<?php echo $data_trade_info;  ?>">
+                                                                                                <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>

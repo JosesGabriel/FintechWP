@@ -73,9 +73,9 @@
                     }   
                     for(i in asks){
                         content_asks += `<tr>
-                                <td>${ asks[i].count }</td>
-                                <td>${ asks[i].volume }</td>
                                 <td>${ asks[i].price }</td>
+                                <td>${ asks[i].volume }</td>
+                                <td>${ asks[i].count }</td>
                                 </tr>`;
                     }   
                     row_bid_data.html(content_bids);

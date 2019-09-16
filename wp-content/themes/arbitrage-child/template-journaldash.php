@@ -3481,9 +3481,9 @@ if($issampledata){
                                                                                     <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
                                                                                     <div style="width:19%">Transaction</div>
-                                                                                    <div style="width:14%">Debit</div>
-                                                                                    <div style="width:14%">Credit</div>
-                                                                                    <div style="width:19%">Balance</div>
+                                                                                    <div style="width:17%">Debit</div>
+                                                                                    <div style="width:17%">Credit</div>
+                                                                                    <div style="width:17%">Balance</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3519,21 +3519,21 @@ if($issampledata){
 																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
 																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
-																							<div style="width:14%">
+																							<div style="width:17%">
 																								<?php if($value->trantype == "withraw"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance - $value->tranamount;
 																									$totdebit += $value->tranamount;
 																								} ?>
 																							</div>
-																							<div style="width:14%">
+																							<div style="width:17%">
 																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance + $value->tranamount;
 																									$totcred += $value->tranamount;
 																								} ?>
 																							</div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
+		                                                                                    <div style="width:17%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
 		                                                                                </div>
 																					</li>
 																			<?php

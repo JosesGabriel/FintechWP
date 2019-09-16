@@ -127,7 +127,7 @@ echo $user->ID ." versis ". $user->ID;
         $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array('strategy' => $strategy , 'tradeplan' => $tradeplan, 'emotion' => $emotion );
+        $post = array('strategy_plans' => $strategy , 'trade_plans' => $tradeplan, 'emotions' => $emotion );
         wp_update_post($post);
         
         wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");

@@ -67,10 +67,11 @@
 </head>
 <body>
 <div class="box-portlet-content">
-   <div class="stats-info">
-    <div id="live_portfolio" class="dstatstrade overridewidth">
+    <div class="stats-info">
+    <div class="dstatstrade overridewidth dstatstrade1">
         <ul>
-            <li class="headerpart">
+            <li class="headerpart headerpart-tradelogs">
+
                 <div style="width:100%;">
                     <div style="width:7%" class="table-title-live">Stocks</div>
                     <div style="width:9%" class="table-title-live">Position</div>

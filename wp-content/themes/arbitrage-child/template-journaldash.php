@@ -124,17 +124,18 @@ echo $user->ID ." versis ". $user->ID;
 
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-        echo $_POST['inpt_data_status'];
-
+        //echo $_POST['inpt_data_status'];
        $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array(
-            'strategy_plans' => $strategy , 
-            'trade_plans' => $tradeplan, 
-            'emotions' => $emotion 
-        );
-        wp_update_post($post);
+
+        // $post = array(
+        //     'strategy_plans' => $strategy, 
+        //     'trade_plans' => $tradeplan, 
+        //     'emotions' => $emotion 
+        // );
+
+        // wp_update_post($post);
         
 
         wp_redirect('/journal');
@@ -189,7 +190,7 @@ echo $user->ID ." versis ". $user->ID;
         // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $stockquantity;
 
-        $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
+        $tradeinfo['currprice'] = $_POST['dloglistinpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
         $tradeinfo['low'] = $_POST['inpt_data_low'];
@@ -3270,6 +3271,7 @@ if($issampledata){
                                                                                             </div>
                                                                                              <div class="trdleft">
                                                                                                 <input type="hidden" value="Edit" name="inpt_data_status">
+                                                                                                <input type="hidden" name="" value="<?php echo $data_trade_info;  ?>">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>

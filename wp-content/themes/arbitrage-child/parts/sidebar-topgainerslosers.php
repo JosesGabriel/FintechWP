@@ -39,18 +39,7 @@
                }
         }
 
-       /* usort($stock, function($a, $b) {
-            return new DateTime($b[3]) <=> new DateTime($a[3]);
-        });
-
-        
-       for($s = 0; $s < 10; $s++){
-                    $stock1[$s][0] = $stock[$s][0];
-                    $stock1[$s][1] = $stock[$s][1];
-                    $stock1[$s][2] = $stock[$s][2];
-                    $stock1[$s][3] = $stock[$s][3];
-           
-        }*/
+       
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
             });

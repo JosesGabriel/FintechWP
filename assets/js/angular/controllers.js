@@ -63,7 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
+        /*
     var transaction = [
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
@@ -76,7 +76,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         for (i in transaction){
             $scope.ticker.push(transaction[i]);
         }
-        
+        */
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -85,34 +85,15 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol)
         };
         $scope.ticker.push(transaction);
+       
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
+
         $scope.$digest();
     });
     
     $scope.select = goToChart;
-}]);
-
-// ralph
-app.controller('bid_ask_page_data', ['$scope','$filter', '$http', function($scope, $filter, $http) {
-    $scope.bid_ask_page_data = [];
-    
-        var transaction = [
-             { count:1, id:2342, price:909.5, volume:8708 },
-             { count:1, id:2342, price:909.5, volume:8708 },
-             { count:1, id:2342, price:909.5, volume:8708 },
-             { count:1, id:2342, price:909.5, volume:8708 },
-             { count:1, id:2342, price:909.5, volume:8708 } 
-        ]
-
-        for (i in transaction){
-            $scope.bid_ask_page_data.push(transaction[i]);
-        }
-        
-        if ($scope.bid_ask_page_data.length > 150) {
-            $scope.ticker.pop();
-        }
-        $scope.$digest();
-    
-        $scope.select = goToChart;
 }]);
 
 app.controller('psei', function($scope, $http) {  

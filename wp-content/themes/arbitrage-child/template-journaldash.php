@@ -562,7 +562,7 @@ if($issampledata){
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = $user->ID;
-	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo.' order by ledid');
 	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {

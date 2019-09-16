@@ -3776,9 +3776,6 @@ if($issampledata){
 			} else if (dstocks.last >= 1000) {
 				dboard = 5;
 			} 
-			dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
-			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");
@@ -3789,6 +3786,9 @@ if($issampledata){
 					components[1] = components[1].replace(/\D/g, "");
 				return components.join(".");
 			}
+			dboardlast = dboard;
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
+			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 		});
 
 		jQuery(".dloadform").click(function(e){
@@ -3803,7 +3803,7 @@ if($issampledata){
 				swal('Date is required.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
-			} else {
+			} else if (total_price > dbuypower) {
 				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();

@@ -51,7 +51,7 @@
                     "method": "GET",
                     "dataType": 'json'
                 };
-                $.ajax(settings).done(function (response) {
+                jQuery.ajax(settings).done(function (response) {
                 let res = response.data;
                 callback(res);
                 });

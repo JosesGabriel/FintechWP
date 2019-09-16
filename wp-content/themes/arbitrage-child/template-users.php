@@ -1810,11 +1810,12 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 								<ul>
 									<?php if(!$ismyprofile): ?>
 										<?php echo $ismyprofile; ?>
-                                        <?php if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
-                                            <li>
+                                        <?php // TEMPORARILY REMOVED
+                                        //if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
+                                            <!-- <li>
                                                 <a href="https://arbitrage.ph/vyndue/?us=<?php echo $myusersecret; ?>" class="um-button um-alt" style="margin-top: -25px;">Message</a>
-                                            </li>
-                                        <?php endif; ?>
+                                            </li> -->
+                                        <?php //endif; ?>
 										<li>
 											<?php echo UM()->Friends_API()->api()->friend_button( $profile_id, get_current_user_id() ); ?>
 										</li>

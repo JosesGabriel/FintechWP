@@ -646,7 +646,7 @@ if($issampledata){
 		<div class="record_body">
 			<div class="col-md-6">
 				<span class="label_thisleft">Bought</span>
-				<div class="groupinput midd label_date">
+				<div class="groupinput midd rec_label_date">
 					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
@@ -667,7 +667,7 @@ if($issampledata){
 
 			<div class="col-md-6">
 				<span class="label_thisright">Sold</span>
-				<div class="groupinput midd label_date">
+				<div class="groupinput midd rec_label_date">
 					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>

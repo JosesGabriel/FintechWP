@@ -313,6 +313,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     }
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date")
         .then(response => {
+            console.log('latest trade', response);
             if (response.data.success) {
                 $scope.latest_trading_date = moment(response.data.data.date)
             }

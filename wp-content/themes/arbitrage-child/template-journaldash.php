@@ -3793,9 +3793,9 @@ if($issampledata){
 			let dsell = totalfees * 0.006;
 			let dall;
 			if (istype == 'buy') {
-				dall = dcommission + $dtax + $dtransferfee + $dsccp;
+				dall = dcommission + dtax + dtransferfee + dsccp;
 			} else {
-				dall = dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+				dall = dcommission + dtax + dtransferfee + dsccp + dsell;
 			}
 
 			return dall;

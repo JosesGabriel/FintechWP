@@ -703,7 +703,80 @@
 
 		echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
 		die();
+
+	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-posts-count' && isset($_GET['user-id'])) {
+
+		$profile_id = $_GET['user-id'];
+
+		if (!is_numeric($profile_id)) {
+			echo json_encode([
+				'status' => 417,
+				'success' => false,
+			]);
+			die();
+		}
+
+		$posts_count = $wpdb->get_var($wpdb->prepare(
+			"SELECT COUNT(id) 
+			FROM $wpdb->posts
+			WHERE post_type = 'um_activity' 
+			AND post_author = %s
+			AND post_status = 'publish'",
+			$profile_id
+		));
+
+		echo json_encode([
+			'status' => 200,
+			'success' => true,
+			'data' => compact('posts_count'),
+		]);
+		die();
+
+	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-peers-count' && isset($_GET['user-id'])) {
+
+		$profile_id = $_GET['user-id'];
+
+		if (!is_numeric($profile_id)) {
+			echo json_encode([
+				'status' => 417,
+				'success' => false,
+			]);
+			die();
+		}
+
+		$peers_count = UM()->Friends_API()->api()->count_friends( $profile_id );
+
+		echo json_encode([
+			'status' => 200,
+			'success' => true,
+			'data' => compact('peers_count'),
+		]);
+		die();
+
+	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-social-wall' && isset($_GET['user-id'])) {
 		
+		$profile_id = $_GET['user-id'];
+
+		if (!is_numeric($profile_id)) {
+			echo json_encode([
+				'status' => 417,
+				'success' => false,
+			]);
+			die();
+		}
+
+		ob_start();
+		echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]');
+		$contents = ob_get_contents();
+		ob_end_clean();
+
+		echo json_encode([
+			'status' => 200,
+			'success' => true,
+			'data' => compact('contents'),
+		]);
+		die();
+
 	} else { // market sentiment : check sentiment
 
 		if(isset($_GET['toverify'])){

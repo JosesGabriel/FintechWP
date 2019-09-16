@@ -120,6 +120,36 @@ echo $user->ID ." versis ". $user->ID;
         wp_redirect('/journal');
         exit;
     }
+
+
+
+
+    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+
+    //if(isset($_POST['editbutton'])){
+        //echo $_POST['inpt_data_status'];
+
+        $log_id = $_POST['log_id'];
+        $strategy = $_POST['data_strategy'];
+        $emotion = $_POST['emotion'];
+
+        echo $strategy;
+
+        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+
+        //update_post_meta($log_id,  'data_trade_info', $strategy);
+        update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+               
+
+        wp_redirect('/journal');
+        exit;
+    }
+
+
+
+
+
+
 ?>
 <!-- EOF Deposit -->
 
@@ -166,7 +196,7 @@ echo $user->ID ." versis ". $user->ID;
         // $_POST['inpt_data_qty'] = number_format($_POST['inpt_data_qty'],0);
         $tradeinfo['qty'] = $stockquantity;
 
-        $tradeinfo['currprice'] = $_POST['inpt_data_currprice'];
+        $tradeinfo['currprice'] = $_POST['dloglistinpt_data_currprice'];
         $tradeinfo['change'] = $_POST['inpt_data_change'];
         $tradeinfo['open'] = $_POST['inpt_data_open'];
         $tradeinfo['low'] = $_POST['inpt_data_low'];
@@ -287,6 +317,7 @@ echo $user->ID ." versis ". $user->ID;
                 'data_userid' => $user->ID,
             ),
         );
+
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
@@ -349,10 +380,15 @@ echo $user->ID ." versis ". $user->ID;
 
 <!-- BOF SORT DATA FOR JOURNAL -->
 <?php
-    $alltradelogs = [];
+	$dailyvolumes = '';
+	$dailyvalues = '';
+	$alltradelogs = [];
+	$buysscounter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
+
+			$buysscounter++;
 			$tradeid = get_the_ID();
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
@@ -401,11 +437,35 @@ echo $user->ID ." versis ". $user->ID;
             $tradeitems['data_trade_info'] = $dlistofinfo;
             $tradeitems['data_avr_price'] = $data_avr_price;
 
-            array_push($alltradelogs, $tradeitems);
+			array_push($alltradelogs, $tradeitems);
+			
+			$dailyvolumes .= '{';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
+			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
+			$dailyvolumes .= '},';
+
+			
+			$dailyvalues .= '{';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
+			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
+			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
-    }
+	}
+	
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');
@@ -519,11 +579,12 @@ if($issampledata){
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = $user->ID;
-	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo.' order by ledid');
 	
-    $buypower = 0;
+	$buypower = 0;
+	$initcapital = $dledger[0]->tranamount;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
@@ -577,7 +638,7 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FB3640', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FB3640', '#FF2B66', '#99FF00', '#9900FF', '#FB3640', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
 		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
@@ -638,6 +699,65 @@ if($issampledata){
 ?>
 <!-- Delete Data -->
 <!-- EOF Ledger Data -->
+<div class="record_modal">
+	<div class="record_main">
+		<div class="record_header">
+			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
+		</div>
+		<div class="record_body row">
+			<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
+				<span class="label_thisleft">Bought</span>
+				<div class="groupinput midd rec_label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+
+			<div class="col-md-6">
+				<span class="label_thisright">Sold</span>
+				<div class="groupinput midd rec_label_date">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
+				</div>
+				<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<option value="">Select Stocks</option>
+						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+				</div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+			</div>
+		</div>
+		<div class="record_footer row">
+			<div class="dbuttonrecord_onmodal">
+				<form action="" method="post" class="recordform">
+					<input type="hidden" name="recorddata" value="record">
+					<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 <div id="main-content" class="oncommonsidebar">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
@@ -758,18 +878,21 @@ if($issampledata){
 																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
-																							<div class="groupinput midd lockedd"><label>Buy Power</label>
-																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
-																							<i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
-																							<div class="groupinput midd lockedd"><label>Total Price</label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd label_date">
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required id="journal__trade-btn--date-picker">
+																							</div>
+																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
+																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
+																							<i class="fa fa-lock" aria-hidden="true" style="display: none;"></i></div>
+																							<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 																						</div>
 																						<div class="entr_col">
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -781,11 +904,7 @@ if($issampledata){
 																								<input type="hidden" id="inpt_data_boardlot_get" value="0">
 																							</div>
 
-                                                                                            <div class="groupinput midd lockedd">
-																								<label>Buy Date</label><input type="text" name="inpt_data_boardlot" id="" value="0" readonly>
-																								<i class="fa fa-lock" aria-hidden="true"></i>
-                                                                                                <input type="date" class="inpt_data_boardlot_get buySell__date-picker">
-																							</div>
+                                                                                            
 
 
 																						</div>
@@ -868,9 +987,9 @@ if($issampledata){
                                                                     <div class="tab-pane active show" id="tabdeposit">
                                                                                 <hr class="style14 style15">
                                                                                 <div class="button-funds groupinput select" style="z-index: 25; margin-bottom: 0; margin-left: 4px;">
-                                                                                    <select class="rnd" name="" id="" style="z-index: 20;">
-                                                                                        <option class="deposit-modal-btn show-button1" value="">Deposit Funds</option>
-                                                                                        <option class="deposit-modal-btn show-button2" value="">Dividend Income</option>
+                                                                                    <select class="rnd" name="" id="selectdepotype" style="z-index: 20;">
+                                                                                        <option class="deposit-modal-btn show-button1" value="deposit">Deposit Funds</option>
+                                                                                        <option class="deposit-modal-btn show-button2" value="dividend">Dividend Income</option>
                                                                                     </select>
                                                                                 </div>
                                                                                 <form action="/journal" method="post" class="add-funds-show depotincome">
@@ -1143,7 +1262,7 @@ if($issampledata){
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
@@ -1377,19 +1496,22 @@ if($issampledata){
 
                                                         $dlistofsells = [];
                                                         $dtotalpl = 0;
-                                                        foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
+                                                        // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
-                                                                if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
+                                                                if ($disyear == $dlogsmvalue['data_sellyear']) {
                                                                     array_push($dlistofsells, $dlogsmvalue);
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getjurfees($selprice, 'sell');
+																	$sellfee = getjurfees($selprice, 'sell');
+																	
+																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
                                                             }
-                                                        }
+                                                        // }
 
                                                     ?>
 
@@ -1414,7 +1536,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">₱<?php echo number_format($initcapital, 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>
@@ -1957,7 +2079,8 @@ if($issampledata){
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-	                                                                                            <div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<!-- <span class="legend_circ"></span> -->
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
@@ -2007,7 +2130,7 @@ if($issampledata){
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout</div>
+                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
                                                                                 </li>
 
                                                                             </ul>
@@ -2625,21 +2748,21 @@ if($issampledata){
                                                             array_push($values, '0');
                                                         }
 
-                                                        $dailyvolumes = '';
-                                                        foreach ($volumes as $dvolkey => $dvolvalue) {
-                                                            $dailyvolumes .= '{';
-                                                            $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                            $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
-                                                            $dailyvolumes .= '},';
-                                                        }
+                                                        // $dailyvolumes = '';
+                                                        // foreach ($volumes as $dvolkey => $dvolvalue) {
+                                                        //     $dailyvolumes .= '{';
+                                                        //     $dailyvolumes .= '"category": "'.$dvolkey.'",';
+                                                        //     $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
+                                                        //     $dailyvolumes .= '},';
+                                                        // }
 
-                                                        $dailyvalues = '';
-                                                        foreach ($values as $dvalkey => $dvalvalue) {
-                                                            $dailyvalues .= '{';
-                                                            $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                            $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
-                                                            $dailyvalues .= '},';
-                                                        }
+                                                        // $dailyvalues = '';
+                                                        // foreach ($values as $dvalkey => $dvalvalue) {
+                                                        //     $dailyvalues .= '{';
+                                                        //     $dailyvalues .= '"category": "'.$dvalkey.'",';
+                                                        //     $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
+                                                        //     $dailyvalues .= '},';
+                                                        // }
                                                     ?>
 													<br class="clear">
 													<div class="row">
@@ -2897,8 +3020,8 @@ if($issampledata){
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">
 
-                                                            <div class="box-portlet-header">
-                                                                Tradelogs
+                                                            <div class="box-portlet-header" style="padding-bottom: 20px;">
+															<span class="title_logss">Tradelogs</span>
 																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
@@ -2912,20 +3035,28 @@ if($issampledata){
 																		 <input type="text" name="searchlogs" id="searchlogs" class=" search-logs" style="padding: 0px 10px; width: 150px;font-size: 12px;" placeholder="Search logs..." >
 																	</form>
 																</div>
+																<div class="tradelogsbutton">
+																	<div class="dbuttonrecord">
+																		<form action="" method="post" class="recordform">
+																			<input type="hidden" name="recorddata" value="record">
+																			<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+																		</form>
+																	</div>
+																</div>
                                                             </div>
                                                             <div class="box-portlet-content">
                                                                 <div class="stats-info">
                                                                     <div class="dstatstrade overridewidth dstatstrade1">
                                                                         <ul>
                                                                         	<li class="headerpart headerpart-tradelogs">
-                                                                            	<div style="width:100%;">                                                                                	
+                                                                            	<div style="width:100%;">
+                                                                                    <div style="width:45px">Stocks</div>                                                                                	
                                                                                     <div style="width:65px">Date</div>
-                                                                                    <div style="width:45px">Stocks</div>
                                                                                     <div style="width:55px" class="table-title-live">Volume</div>
                                                                                     <div style="width:65px" class="table-title-live">Ave. Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Buy Value</div>
                                                                                     <div style="width:65px" class="table-title-live">Sell Price</div>
-                                                                                    <div style="width:95px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:88px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:80px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:65px" class="table-title-live">%</div>
                                                                                     <div style="width:65px; text-align:center">Action</div>
@@ -2945,7 +3076,8 @@ if($issampledata){
                                                                                 $count = 1;
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
-                                                                                $dlisttrade = [];
+																				$dlisttrade = [];
+																				$trtotals = 0;
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
 																						$author_posts->the_post();
@@ -3016,7 +3148,7 @@ if($issampledata){
 
                                                                                     // profperc
                                                                                     $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
-                                                                                    $totalprofit += $dprofit;
+                                                                                    $trtotals += $dprofit;
                                                                             ?>
 
                                                              				<!--<li class="s-logs" style="display: none;">
@@ -3035,16 +3167,16 @@ if($issampledata){
 																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
 
 																				<div style="width:99%;">
+                                                                                    <div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
-																					<div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
 																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:88px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
 																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
-																					<div style="width:65px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
-																					<div style="width:35px; text-align:center">
+																					<div style="width:56px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:27px; text-align:center">
 																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
 																							<i class="fas fa-clipboard"></i>
 																						</a>
@@ -3055,15 +3187,20 @@ if($issampledata){
 																							<i class="fas fa-eraser"></i>
 																						</a>
 																					</div>
+                                                                                    <div style="width:25px; margin-left: 2px;">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center">
+                                                                                            <i class="fas fa-edit"></i>
+                                                                                        </a>
+                                                                                    </div>
                                                                                     
 																				</div>
 																				<?php  $tnum++; ?>
-																				<div class="hidethis">
+																				<div class="hidethis" id="hidelogs">
 																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
 																						</div>
-																						<hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">
@@ -3083,6 +3220,78 @@ if($issampledata){
 
 																					</div>
 																				</div>
+
+                                                                                <div class="hidethis" id="hidelogs">
+                                                                                    
+
+                                                                                <form method="post" class="edittlogs" autocomplete="off">     
+
+                                                                                    <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+                                                                                        <div class="entr_ttle_bar">
+                                                                                            <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                           
+                                                                                        </div>
+                                                                                        <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+                                                                                        <div class="trdlgsbox">
+                                                                                            <?php 
+                                                                                            $strategy = $data_trade_info[0]->strategy; 
+                                                                                            $tradeplan = $data_trade_info[0]->tradeplan;
+                                                                                            $emotion = $data_trade_info[0]->emotion;
+                                                                                            ?>
+                                                                                            <div class="trdleft">
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
+                                                                                                        
+                                                                                                        <select class="rnd selecteditlog" name="data_strategy" id="">
+                                                                                                            <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+                                                                                                            <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+                                                                                                            <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
+                                                                                                        </select>
+                                                                                                        
+                                                                                                    </div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+
+                                                                                                     <select class="rnd selecteditlog" name="data_tradeplan" id="">
+                                                                                                            <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+                                                                                                            <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
+                                                                                                    </select>
+
+                                                                                                </div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+                                                                                                    <select class="rnd selecteditlog" name="data_emotion" id="">
+                                                                                                            <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+                                                                                                            <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+                                                                                                            <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
+                                                                                                    </select>
+
+                                                                                                </div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+                                                                                            </div>
+                                                                                            <div class="trdright darkbgpadd">
+                                                                                                <div><strong>Notes:</strong></div>
+                                                                                                <div>
+                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                        <?php echo $data_trade_info[0]->tradingnotes; ?>
+                                                                                                    </textarea>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                             <div class="trdleft">
+                                                                                                <input type="hidden" value="Edit" name="inpt_data_status">
+                                                                                                <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
+                                                                                                <input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
+                                                                                            </div>
+                                                                                        <div class="trdclr"></div>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                </form>
+                                                                               
+
+                                                                                </div>
+
 
 																			</li>
 																					
@@ -3115,7 +3324,7 @@ if($issampledata){
 
 													<div class="totalpl">
 														 <p>Total Profit/Loss as of <?php
-                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($totalprofit, 2, '.', ','); ?></span></p>
+                                                          echo date('F j, Y'); ?>: <span class="totalplscore <?php echo $trtotals > 0 ? 'txtgreen' : 'txtred'; ?>">₱<?php echo number_format($trtotals, 2, '.', ','); ?></span></p>
 													</div>
 
                                                     <!--<div class="adsbygoogle">
@@ -3279,11 +3488,12 @@ if($issampledata){
                                                                         <ul>
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
+                                                                                    <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
                                                                                     <div style="width:19%">Transaction</div>
-                                                                                    <!-- <div style="width:14%">Perfomance</div> -->
-                                                                                    <!-- <div style="width:14%">Profit/Loss</div> -->
-                                                                                    <div style="width:19%">Ammount</div>
+                                                                                    <div style="width:14%">Debit</div>
+                                                                                    <div style="width:14%">Credit</div>
+                                                                                    <div style="width:19%">Balance</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3306,60 +3516,52 @@ if($issampledata){
                                                                                     }
 																				}
 
+																				$ledcount = 0;
+																				$ledbalance = 0;
+																				$totdebit = 0;
+																				$totcred = 0;
 																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype == "withraw"):
+																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
+																						$ledcount++;
 																					?>
 																					<li>
 																						<div style="width:99%;">
+																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-		                                                                                    <div style="width:19%"><?php echo $value->trantype; ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
+																							<div style="width:14%">
+																								<?php if($value->trantype == "withraw"){
+																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance - $value->tranamount;
+																									$totdebit += $value->tranamount;
+																								} ?>
+																							</div>
+																							<div style="width:14%">
+																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
+																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance + $value->tranamount;
+																									$totcred += $value->tranamount;
+																								} ?>
+																							</div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
 		                                                                                </div>
 																					</li>
 																			<?php
 																					endif;
 																				}
 																			?>
-																			
-																			<?php
-                                                                                $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
-                                                                                $mstart = 0;
-                                                                                foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
-                                                                                    ?>
-																					<li class="dspecitem" style="display:none;">
-		                                                                            	<div style="width:99%;">
-		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Perfomance<?php */?>15.20%</div> -->
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Profit/Loss<?php */?>₱15,199.00</div> -->
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totalwith'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totaldepo'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['isenfing'], 2, '.', ','); ?></div>
-		                                                                                </div>
-		                                                                                <div class="ddetailshere">
-		                                                                                	<div class="inner">
-		                                                                                		<ul>
-		                                                                                			<li class="dtitle">
-		                                                                                				<div style="width:99%;">
-		                                                                                					<div style="width:33%">Date</div>
-			                                                                                				<div style="width:33%">Transacrion</div>
-			                                                                                				<div style="width:33%">Amount</div>
-		                                                                                				</div>
-		                                                                                			</li>
-		                                                                                			<?php foreach ($dmdvalue['isdata'] as $dsubdkey => $dsubdvalue): ?>
-		                                                                                				<?php //if ($dsubdvalue->trantype == 'deposit' || $dsubdvalue->trantype == 'withraw'):?>
-		                                                                                					<li>
-		                                                                                						<div style="width:33%"><?php echo date('F d, Y', strtotime($dsubdvalue->date)); ?></div>
-		                                                                                						<div style="width:33%"><span class="dtrantype"><?php echo $dsubdvalue->trantype; ?></span></div>
-		                                                                                						<div style="width:33%">₱<?php echo number_format($dsubdvalue->tranamount, 2, '.', ','); ?></div>
-		                                                                                					</li>
-		                                                                                				<?php //endif?>
-	                                                                                				<?php endforeach; ?>
-		                                                                                	</div>
-		                                                                                </div>
-		                                                                            </li>
-																				<?php
-                                                                                }  ?>
+																			<li class="headerpart">
+                                                                            	<div style="width:100%;">
+                                                                                    <div style="width:8%">&nbsp;</div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <div style="width:19%">Total</div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
+                                                                                </div>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
 																	<div class="dledgerpag">
@@ -3650,6 +3852,14 @@ if($issampledata){
     });
 	jQuery(document).ready(function(){
 
+        
+        
+        $(document).on("click", ".editmenow", function() {
+
+           jQuery('.edittlogs').submit();
+
+        });
+
 		$(document).on("click", ".deletelog", function() {
 
 		//jQuery(".deletelog").click(function(e){
@@ -3678,24 +3888,28 @@ if($issampledata){
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
 
+			console.log(dstocks);
+
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
 			jQuery("input[name='inpt_data_open']").val((dstocks.open).toFixed(2));
 			jQuery("input[name='inpt_data_low']").val((dstocks.low).toFixed(2));
 			jQuery("input[name='inpt_data_high']").val((dstocks.high).toFixed(2));
-			jQuery("input[name='inpt_data_volume']").val((dstocks.volume).toFixed(2));
-			jQuery("input[name='inpt_data_value']").val((dstocks.value).toFixed(2));
-
+			var numseprvm = dstocks.volume.toFixed(2);
+			var numseprve = dstocks.value.toFixed(2);
+			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
+			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
+			
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
-				dboard = 1000000;
+				dboard = '1,000,000';
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
-				dboard = 100000;
+				dboard = '100,000';
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 10000;
+				dboard = '10,000';
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
-				dboard = 1000;
+				dboard = '1,000';
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
 				dboard = 100;
 			} else if (dstocks.last >= 50 && dstocks.last <= 999.5) {
@@ -3706,32 +3920,88 @@ if($issampledata){
 
 			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
+
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
 		});
 
 		jQuery(".dloadform").click(function(e){
 			e.preventDefault();
 			var dstock = $(".dentertrade #inpt_data_select_stock").val().replace(/,/g, '');
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
-			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
-			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
+			var total_price = parseFloat(jQuery('input[name="inpt_data_total_price"]').val().replace(/,/g, ''));
+			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
+			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
-			} else {
-				swal('Not enough buying power.');
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
+			} else if (total_price < dbuypower) {
+				swal('Not enough funds.');
 				jQuery('.chart-loader').hide();
 				jQuery('.confirmtrd').show();
 			}
 		});
+
+		function thetradefees(totalfees, istype){
+			// Commissions
+			let dpartcommission = totalfees * 0.0025;
+			let dcommission = (dpartcommission > 20 ? dpartcommission : 20);
+			// TAX
+			let dtax = dcommission * 0.12;
+			// Transfer Fee
+			let dtransferfee = totalfees * 0.00005;
+			// SCCP
+			let dsccp = totalfees * 0.0001;
+			let dsell = totalfees * 0.006;
+			let dall;
+			if (istype == 'buy') {
+				dall = dcommission + dtax + dtransferfee + dsccp;
+			} else {
+				dall = dcommission + dtax + dtransferfee + dsccp + dsell;
+			}
+
+			return dall;
+		}
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
 			// let quantity = jQuery('#entertopdataquantity').val();
-			console.log(price + " ~ " + quantity);
+			
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
-			
-			jQuery('input[name="inpt_data_total_price"]').val(total_price);
+			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
+
+			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+			let decnumbs = finaltotal.toFixed(2);
+			jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
+
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
+		});
+
+		// jQuery("")
+		jQuery('#selectdepotype').on('change', function() {
+			// alert( this.value );
+			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
+
 		});
 
 		// jQuery(document).on('submit', '.dentertrade', function (e) {
@@ -3800,6 +4070,14 @@ if($issampledata){
 				jQuery('.resetform').submit();
 			} 
 			});
+		});
+		jQuery('.dbuttonrecord').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').show();
+		});
+		jQuery('.to_closethis_rec').click(function(e){
+			e.preventDefault();
+			jQuery('.record_modal').hide();
 		});
 
 
@@ -3956,9 +4234,9 @@ if($issampledata){
 			"type": "pie",
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
-			"pieX": "55%",
+			"pieX": "45%",
 			"pieY": "50%",
-			"radius": 40,
+			"radius": 50,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],

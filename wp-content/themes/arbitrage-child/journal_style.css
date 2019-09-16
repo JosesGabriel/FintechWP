@@ -9,6 +9,16 @@
     font-weight: 600;
 }
 
+.selecteditlog {
+    width: 168px;
+    padding: 5px 5px 5px 0px;
+    margin-left: -4px;
+    background: #4e6a85;
+    border: 0;
+    color: #a1adb5;
+
+}
+
 .side-header .right-image .onto-user-name {
     margin-bottom: 5px;
     text-transform: capitalize !important;
@@ -568,7 +578,7 @@ img.arb_newpostimg {
     display:none !important;
 }
 .tradelogbox {
-    max-width:450px;
+    max-width:355px;
     width:100%;
 }
 .stats-info {
@@ -998,7 +1008,7 @@ a.smlbtn:hover {
     padding:10px;
 }
 .trdleft {
-    width:100%;
+    width: 336px;
     float:left;
 }
 .trdright {
@@ -1012,7 +1022,7 @@ a.smlbtn:hover {
     background-color: #4e6a85;
     padding: 11px 12px;
     border-radius: 6px;
-    width: 100%;
+    width: 336px;
     max-height: 230px;
     overflow: auto;
 }
@@ -1083,7 +1093,25 @@ span.modal-notes-result {
     width: auto;
     float: right;
 }
+.tradelogsbutton {
+    width: auto;
+    float: left;
+    position: relative;
+    top: -3px;
+    margin-left: 10px;
+}
 .delete-data-btn {
+    float: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #f1f3f4;
+    background: none;
+    border: 2px #e91e63 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.record-data-btn {
     float: right;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
@@ -1110,6 +1138,10 @@ span.modal-notes-result {
     background-color: #00bcd4;
 }
 .dbuttondelete {
+    display: inline-block;
+    margin: 0px 5px;
+}
+.dbuttonrecord {
     display: inline-block;
     margin: 0px 5px;
 }
@@ -1383,4 +1415,172 @@ input.enter-trade-btn:hover {
     box-shadow: none;
 }
 #chartdiv1 .amcharts-chart-div {
+}
+.label_funds label, .label_funds input {
+    background: none !important;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
+    font-family: 'Roboto', sans-serif;
+}
+.label_funds label {
+    width: 111px !important;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+.label_funds input {
+    width: 107px !important;
+    padding: 0 5px 0 0 !important;
+}
+.label_funds {
+    margin: 0;
+    height: 21px;
+}
+.label_cost label, .label_cost input {
+    background: none !important;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
+    font-family: 'Roboto', sans-serif;
+}
+.label_cost {
+    margin: 0;
+}
+.label_cost label {
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+.label_cost input {
+    padding: 0 5px 0 0 !important;
+}
+.groupinput.midd.label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.label_date {
+    margin-bottom: 5px;
+}
+.groupinput.midd.rec_label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.rec_label_date {
+    /* margin-bottom: 5px; */
+}
+span.legend_circ {
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-right: 4px;
+}
+/* .dstatstrade ul li:nth-child(2) span.legend_circ {
+    background: #f44336;
+}
+.dstatstrade ul li:nth-child(3) span.legend_circ {
+    background: #ffc107;
+}
+.dstatstrade ul li:nth-child(4) span.legend_circ {
+    background: #06af68;
+} */
+.record_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999999;
+    display: none;
+}
+.record_main {
+    width: 518px;
+    margin: 65px auto 0;
+    background: #0c1f33;
+    border-radius: 5px;
+}
+.record_header {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+.record_head_label {
+    background: #34495e;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    vertical-align: middle;
+    padding: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.label_thisright {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.label_thisleft {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.record_body .groupinput.midd input {
+    width: 147px;
+}
+.record_body .groupinput.midd select {
+    width: 148px !important;
+}
+.record_body {
+    margin: 0;
+}
+.dbuttonrecord_onmodal {
+    display: block;
+    width: 100%;
+    padding: 0 15px 15px;
+}
+.record_footer {
+    margin: 0;
+}
+span.title_logss {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 17px;
+    float: left;
+}
+i.fas.fa-close.to_closethis_rec {
+    float: right;
+    background: #000;
+    padding: 4px 7px;
+    top: -6px;
+    position: relative;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    cursor: pointer;
 }

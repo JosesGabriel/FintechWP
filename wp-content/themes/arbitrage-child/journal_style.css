@@ -1338,12 +1338,9 @@ input.enter-trade-btn:hover {
     position: relative !important;
 }
 .amChartsLegend.amcharts-legend-div {
-    position: relative !important;
-    text-align: left !important;
-    width: 100% !important;
-    height: 94px !important;
-    left: unset !important;
-    top: unset !important;
+    display: block;
+    height: 116px !important;
+    overflow-y: hidden !important;
 }
 .amChartsLegend.amcharts-legend-div:hover {
     overflow-y: scroll !important;
@@ -1386,11 +1383,4 @@ input.enter-trade-btn:hover {
     box-shadow: none;
 }
 #chartdiv1 .amcharts-chart-div {
-    overflow: hidden !important;
-    position: unset !important;
-    text-align: left !important;
-    width: 100% !important;
-    height: 230px !important;
-    padding: 0px !important;
-    left: unset;
 }

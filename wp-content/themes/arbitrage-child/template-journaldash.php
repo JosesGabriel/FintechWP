@@ -1612,7 +1612,7 @@ if($issampledata){
                                                                 <div class="stats-info" style="padding: 0">
 
                                                                     <div class="row" style="padding: 11px 12px 7px 12px;">
-                                                                        <div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
+                                                                        <div class="dstatstrade eqpad col-md-6" style="padding-right: 3px;">
                                                                             <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
@@ -1626,7 +1626,7 @@ if($issampledata){
 
                                                                             </ul>
 																		</div>
-																		<div class="dstatstrade eqpad col-md-6" style="padding-right: 3px;">
+																		<div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
                                                                             <ul style="margin-bottom:0 !important;">
 
                                                                                 <li>
@@ -3957,6 +3957,7 @@ if($issampledata){
 			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
 			"innerRadius": "40%",
 			"pieX": "55%",
+			"pieY": "50%",
 			"radius": 40,
 			"colors": [
 				<?php echo $currentaloccolor; ?>

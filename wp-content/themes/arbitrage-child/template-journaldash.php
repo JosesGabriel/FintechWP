@@ -3137,7 +3137,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                            
-                                                                                               <span> <input type="button" class="bntedit dloadform green modal-button-confirm" value="Update" style="left: 12px;"></span>
+                                                                                               <span> <input type="button" class="bntedit modal-button-confirm" value="Update" style="left: 12px;"></span>
                                                                                             
                                                                                         <div class="trdclr"></div>
                                                                                         </div>

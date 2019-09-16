@@ -63,7 +63,6 @@
                 var row_ask_data = jQuery('#row_ask_data');
 
                 getBidAsk('AC',10,function(callback){
-                    console.log('data');
                     var bids = callback.bids;
                     var asks = callback.asks;
 
@@ -75,7 +74,7 @@
                                 </tr>`;
                     }   
 
-                    console.log(bids);
+                    console.log(content_bid);
                     console.log(asks);
                     row_bid_data.innerHTML(content_bid);
                     row_ask_data.innerHTML(asks);

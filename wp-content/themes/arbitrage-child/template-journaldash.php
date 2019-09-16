@@ -573,9 +573,10 @@ if($issampledata){
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = $user->ID;
-	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo.' order by ledid');
 	
-    $buypower = 0;
+	$buypower = 0;
+	$initcapital = $dledger[0]->tranamount;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
         if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
@@ -631,7 +632,7 @@ if($issampledata){
 	$currentalocinfo = "";
 	if(!empty($issampledata)){
 		$dequityp = $buypower;
-		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FF5500', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FFD500', '#FF2B66', '#99FF00', '#9900FF', '#FF5500', '#00B4C4', '#FF008F', '#FFB700');
+		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FB3640', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FB3640', '#FF2B66', '#99FF00', '#9900FF', '#FB3640', '#00B4C4', '#FF008F', '#FFB700');
 		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
 		$currentaloccolor = '"#FF5500",';
 		if ($dtradeingfo) {
@@ -1529,7 +1530,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                                                                    <div class="width35">₱<?php echo number_format($dledger[0]->tranamount, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">₱<?php echo number_format($initcapital, 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>

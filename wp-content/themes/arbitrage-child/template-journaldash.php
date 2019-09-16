@@ -430,7 +430,7 @@ echo $user->ID ." versis ". $user->ID;
 			
 			$dailyvalues .= '{';
 			$dailyvalues .= '"category": "'.$counter.'",';
-			$dailyvalues .= '"column-1": '.($postmetas[$data_dprice]->meta_value != "" ? $postmetas[$data_dprice]->meta_value : 0).'';
+			$dailyvalues .= '"column-1": '.(str_to_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_to_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
 			$dailyvalues .= '},';
         }
         wp_reset_postdata();

@@ -371,10 +371,15 @@ echo $user->ID ." versis ". $user->ID;
 
 <!-- BOF SORT DATA FOR JOURNAL -->
 <?php
-    $alltradelogs = [];
+	$dailyvolumes = '';
+	$dailyvalues = '';
+	$alltradelogs = [];
+	$buysscounter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
+
+			$buysscounter++;
 			$tradeid = get_the_ID();
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
@@ -423,11 +428,35 @@ echo $user->ID ." versis ". $user->ID;
             $tradeitems['data_trade_info'] = $dlistofinfo;
             $tradeitems['data_avr_price'] = $data_avr_price;
 
-            array_push($alltradelogs, $tradeitems);
+			array_push($alltradelogs, $tradeitems);
+			
+			$dailyvolumes .= '{';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
+			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
+			$dailyvolumes .= '},';
+
+			
+			$dailyvalues .= '{';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
+			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
+			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
-    }
+	}
+	
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');
@@ -683,7 +712,7 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 
@@ -704,12 +733,12 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 		</div>
-		<div class="record_footer">
+		<div class="record_footer row">
 			<div class="dbuttonrecord_onmodal">
 				<form action="" method="post" class="recordform">
 					<input type="hidden" name="recorddata" value="record">
@@ -2709,21 +2738,21 @@ if($issampledata){
                                                             array_push($values, '0');
                                                         }
 
-                                                        $dailyvolumes = '';
-                                                        foreach ($volumes as $dvolkey => $dvolvalue) {
-                                                            $dailyvolumes .= '{';
-                                                            $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                            $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
-                                                            $dailyvolumes .= '},';
-                                                        }
+                                                        // $dailyvolumes = '';
+                                                        // foreach ($volumes as $dvolkey => $dvolvalue) {
+                                                        //     $dailyvolumes .= '{';
+                                                        //     $dailyvolumes .= '"category": "'.$dvolkey.'",';
+                                                        //     $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
+                                                        //     $dailyvolumes .= '},';
+                                                        // }
 
-                                                        $dailyvalues = '';
-                                                        foreach ($values as $dvalkey => $dvalvalue) {
-                                                            $dailyvalues .= '{';
-                                                            $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                            $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
-                                                            $dailyvalues .= '},';
-                                                        }
+                                                        // $dailyvalues = '';
+                                                        // foreach ($values as $dvalkey => $dvalvalue) {
+                                                        //     $dailyvalues .= '{';
+                                                        //     $dailyvalues .= '"category": "'.$dvalkey.'",';
+                                                        //     $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
+                                                        //     $dailyvalues .= '},';
+                                                        // }
                                                     ?>
 													<br class="clear">
 													<div class="row">
@@ -2981,8 +3010,8 @@ if($issampledata){
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">
 
-                                                            <div class="box-portlet-header">
-                                                                Tradelogs
+                                                            <div class="box-portlet-header" style="padding-bottom: 20px;">
+															<span class="title_logss">Tradelogs</span>
 																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
@@ -3880,15 +3909,15 @@ if($issampledata){
 			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
-			function replaceCommas(yourNumber) {
-				var components = yourNumber.toString().split(".");
-				if (components.length === 1) 
-					components[0] = yourNumber;
-				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				if (components.length === 2)
-					components[1] = components[1].replace(/\D/g, "");
-				return components.join(".");
-			}
+			// function replaceCommas(yourNumber) {
+			// 	var components = yourNumber.toString().split(".");
+			// 	if (components.length === 1) 
+			// 		components[0] = yourNumber;
+			// 	components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			// 	if (components.length === 2)
+			// 		components[1] = components[1].replace(/\D/g, "");
+			// 	return components.join(".");
+			// }
 		});
 
 		jQuery(".dloadform").click(function(e){

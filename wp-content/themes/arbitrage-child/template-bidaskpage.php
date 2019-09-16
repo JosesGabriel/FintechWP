@@ -40,7 +40,7 @@
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
+        jQuery(document).ready(function() {
             
             function getBidAsk(symbol,limit,callback){
                 let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
@@ -51,25 +51,14 @@
                     "method": "GET",
                     "dataType": 'json'
                 };
-                $.ajax(settings).done(function (response) {
+                jQuery.ajax(settings).done(function (response) {
                 let res = response.data;
                 callback(res);
                 });
             };
-
-            var content_bid = [];
-            var content_ask = [];
-            var row_bid_data = $('#row_bid_data');
-            var row_ask_data = $('#row_ask_data');
-
+            
             getBidAsk('AC',10,function(callback){
-                console.log('data');
-                var bids = callback.bids;
-                var asks = callback.asks;
-                console.log(bids);
-                console.log(asks);
-                row_bid_data.innerHTML();
-                row_ask_data.innerHTML();
+                console.log(callback);
             });
 
         });

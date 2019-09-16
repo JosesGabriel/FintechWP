@@ -1789,7 +1789,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 							<div class="meta-details-inner">
 								<ul>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
+										<div class="oncount"><a class="profile_peers_count" href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><span class="um-ajax-count-friends">0</span></a></div>
 										<div class="onlabel">Peers</div>
 									</li>
 									<li>
@@ -1924,8 +1924,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 									<?php echo do_shortcode('[ultimatemember_account]'); ?>
 								</div>
                             <?php }else{ ?>
-								<div class="profile-post-content">
-									<?php echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
+								<div class="profile-post-content load-social-wall">
+									<?php //echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
 								</div>
                              <?php } ?>
                                 
@@ -2111,9 +2111,37 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
                 if (response.success) {
                     count = response.data.posts_count;
                 }
-                $(',profile_post_count').html(count);
+                $('.profile_post_count').html(count);
             }
         })
+
+        $.ajax({
+            url: '/apipge/?daction=user-peers-count&user-id=<?php echo $profile_id ?>',
+            method: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                let html = '<span class="um-ajax-count-friends">0</span>';
+                if (response.success) {
+                    html = response.data.peers_count;
+                }
+                $('.profile_peers_count').html(html)
+            }
+        })
+
+        if ($('.profile-post-content').hasClass('load-social-wall')) {
+            $.ajax({
+                url: '/apipge/?daction=user-social-wall&user-id=<?php echo $profile_id ?>',
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    let html = 'Unable to load posts.';
+                    if (response.success) {
+                        html = response.data.contents;
+                    }
+                    $('.profile-post-content').html(html);
+                }
+            })
+        }
     });
 
 })(jQuery);

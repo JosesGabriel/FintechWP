@@ -1395,6 +1395,7 @@ input.enter-trade-btn:hover {
 }
 .label_funds input {
     width: 107px !important;
+    padding: 0 5px 0 0 !important;
 }
 .label_funds {
     margin: 0;
@@ -1407,6 +1408,9 @@ input.enter-trade-btn:hover {
 }
 .label_cost {
     margin: 0;
+}
+.label_cost input {
+    padding: 0 5px 0 0 !important;
 }
 .groupinput.midd.label_date input {
     margin: 0;

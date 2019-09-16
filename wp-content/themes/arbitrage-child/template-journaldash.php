@@ -758,10 +758,10 @@ if($issampledata){
 																								<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 																								<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 																							</div>
-																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
+																							<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
 																							<div class="groupinput midd label_date">
-																								<label>Buy Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
+																								<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
 																							</div>
 																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
@@ -3780,6 +3780,27 @@ if($issampledata){
 			}
 		});
 
+		function thetradefees(totalfees, istype){
+			// Commissions
+			let dpartcommission = totalfees * 0.0025;
+			let dcommission = (dpartcommission > 20 ? dpartcommission : 20);
+			// TAX
+			let dtax = dcommission * 0.12;
+			// Transfer Fee
+			let dtransferfee = totalfees * 0.00005;
+			// SCCP
+			let dsccp = totalfees * 0.0001;
+			let dsell = totalfees * 0.006;
+			let dall;
+			if (istype == 'buy') {
+				dall = dcommission + dtax + dtransferfee + dsccp;
+			} else {
+				dall = dcommission + dtax + dtransferfee + dsccp + dsell;
+			}
+
+			return dall;
+		}
+
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
@@ -3788,7 +3809,7 @@ if($issampledata){
 			console.log(price + " ~ " + quantity);
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
-			
+			let finaltotal = total_price + parseFloat(thetradefees(total_price, 'buy'));
 			jQuery('input[name="inpt_data_total_price"]').val(total_price);
 		});
 

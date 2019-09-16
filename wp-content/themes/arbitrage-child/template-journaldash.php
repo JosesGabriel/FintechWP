@@ -2218,7 +2218,7 @@ if($issampledata){
                                                                                             $dlossing = '';
                                                                                             $intolosschartbands = '';
 																							$intolosschartlabels = '';
-																							krsort($finalloss);
+																							asort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';
                                                                                                 $dinss .= '<div class="width60">'.($flosskey <= 2 ? $flossvalue['dstock'] : '').'</div>';
@@ -3826,6 +3826,13 @@ if($issampledata){
 			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
 			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
+		});
+
+		// jQuery("")
+		jQuery('#selectdepotype').on('change', function() {
+			// alert( this.value );
+			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
+
 		});
 
 		// jQuery(document).on('submit', '.dentertrade', function (e) {

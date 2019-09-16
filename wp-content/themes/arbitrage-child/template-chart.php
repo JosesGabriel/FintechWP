@@ -2052,12 +2052,12 @@
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.momentDate, 'day')}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
-																											<td class="hidden">{{stock.momentDate}}</td>
-																											<td class="hidden">{{latest_trading_date.isSame(stock.momentDate, 'day')}}</td>
+																											<td class="hidden">{{stock.lastupdatetime}}</td>
+																											<td class="hidden">{{latest_trading_date.isSame(stock.lastupdatetime, 'day')}}</td>
 																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
 																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
 																													<input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>

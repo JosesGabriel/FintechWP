@@ -68,9 +68,9 @@
 
                     for(i in bids){
                         content_bid += `<tr>
-                                <td>${bids[i]count}</td>
-                                <td>${bids[i]volume}</td>
-                                <td>${bids[i]price}</td>
+                                <td>${ bids[i].count }</td>
+                                <td>${ bids[i].volume }</td>
+                                <td>${ bids[i].price }</td>
                                 </tr>`;
                     }   
 

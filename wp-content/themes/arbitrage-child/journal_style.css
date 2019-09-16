@@ -1391,13 +1391,15 @@ input.enter-trade-btn:hover {
     color: #afafaf;
 }
 .label_funds label {
-    width: 110px;
+    width: 110px !important;
 }
 .label_funds input {
-    width: 107px;
+    width: 107px !important;
+    padding: 0 5px 0 0 !important;
 }
 .label_funds {
     margin: 0;
+    height: 21px;
 }
 .label_cost label, .label_cost input {
     background: none !important;
@@ -1408,10 +1410,16 @@ input.enter-trade-btn:hover {
 .label_cost {
     margin: 0;
 }
+.label_cost input {
+    padding: 0 5px 0 0 !important;
+}
 .groupinput.midd.label_date input {
     margin: 0;
     border: none;
     border-radius: 0 4px 4px 0;
     background: #4e6a85;
     padding: 2px 0 3px;
+}
+.label_date {
+    margin: 0;
 }

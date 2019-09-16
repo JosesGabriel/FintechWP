@@ -63,7 +63,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
+ /*   
     var transaction = [
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
              { symbol:"AC", price:price_format(909.5), change:909.5, shares:abbr_format(87080) },
@@ -76,7 +76,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         for (i in transaction){
             $scope.ticker.push(transaction[i]);
         }
-        
+  */      
     socket.on('psec', function (data) {
     
         var transaction = {

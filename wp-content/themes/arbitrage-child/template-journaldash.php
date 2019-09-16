@@ -3766,7 +3766,7 @@ if($issampledata){
 			} else if (dstocks.last >= 0.01 && dstocks.last <= 0.049) {
 				dboard = 100,000;
 			} else if (dstocks.last >= 0.05 && dstocks.last <= 0.495) {
-				dboard = 100,00;
+				dboard = 10,000;
 			} else if (dstocks.last >= 0.5 && dstocks.last <= 4.99) {
 				dboard = 1,000;
 			} else if (dstocks.last >= 5 && dstocks.last <= 49.95) {
@@ -3777,8 +3777,7 @@ if($issampledata){
 				dboard = 5;
 			} 
 
-			dboardlast = dboard;
-			jQuery("input[name='inpt_data_boardlot']").val(dboardlast);
+			jQuery("input[name='inpt_data_boardlot']").val(dboard);
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

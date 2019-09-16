@@ -57,8 +57,8 @@
             };
             
 
-                var content_bid = [];
-                var content_ask = [];
+                var content_bid;
+                var content_ask;
                 var row_bid_data = jQuery('#row_bid_data');
                 var row_ask_data = jQuery('#row_ask_data');
 
@@ -66,9 +66,18 @@
                     console.log('data');
                     var bids = callback.bids;
                     var asks = callback.asks;
+
+                    for(i in bids){
+                        content_bid += `<tr>
+                                <td>${bids[i]count}</td>
+                                <td>${bids[i]volume}</td>
+                                <td>${bids[i]price}</td>
+                                </tr>`;
+                    }   
+
                     console.log(bids);
                     console.log(asks);
-                    row_bid_data.innerHTML(bids);
+                    row_bid_data.innerHTML(content_bid);
                     row_ask_data.innerHTML(asks);
                 });
 

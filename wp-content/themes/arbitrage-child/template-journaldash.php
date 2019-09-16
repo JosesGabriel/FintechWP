@@ -122,17 +122,24 @@ echo $user->ID ." versis ". $user->ID;
     }
 
 
-    if(isset($_POST['editbutton'])){
+    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
         $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array('strategy_plans' => $strategy , 'trade_plans' => $tradeplan, 'emotions' => $emotion );
+        $post = array(
+            'strategy_plans' => $strategy , 
+            'trade_plans' => $tradeplan, 
+            'emotions' => $emotion 
+        );
+
         wp_update_post($post);
         
         wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
         exit;
     }
+
+
 
 ?>
 <!-- EOF Deposit -->
@@ -301,6 +308,7 @@ echo $user->ID ." versis ". $user->ID;
                 'data_userid' => $user->ID,
             ),
         );
+
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
@@ -366,12 +374,12 @@ echo $user->ID ." versis ". $user->ID;
 	$dailyvolumes = '';
 	$dailyvalues = '';
 	$alltradelogs = [];
-	$counter = 0;
+	$buysscounter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
 
-			$counter++;
+			$buysscounter++;
 			$tradeid = get_the_ID();
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
@@ -423,19 +431,32 @@ echo $user->ID ." versis ". $user->ID;
 			array_push($alltradelogs, $tradeitems);
 			
 			$dailyvolumes .= '{';
-			$dailyvolumes .= '"category": "'.$counter.'",';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
 			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
 			$dailyvolumes .= '},';
 
 			
 			$dailyvalues .= '{';
-			$dailyvalues .= '"category": "'.$counter.'",';
-			$dailyvalues .= '"column-1": '.($postmetas[$data_dprice]->meta_value != "" ? $postmetas[$data_dprice]->meta_value : 0).'';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
+			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
 			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
-    }
+	}
+	
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');
@@ -691,7 +712,7 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 
@@ -712,7 +733,7 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
@@ -2989,8 +3010,8 @@ if($issampledata){
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">
 
-                                                            <div class="box-portlet-header">
-                                                                Tradelogs
+                                                            <div class="box-portlet-header" style="padding-bottom: 20px;">
+															<span class="title_logss">Tradelogs</span>
 																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">
@@ -3246,6 +3267,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
+                                                                                                <input type="hidden" value="Edit" name="inpt_data_status">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>

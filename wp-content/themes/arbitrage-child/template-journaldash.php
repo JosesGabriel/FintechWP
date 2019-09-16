@@ -3758,6 +3758,15 @@ if($issampledata){
 			jQuery("input[name='inpt_data_volume']").val(replaceCommas(numseprvm));
 			jQuery("input[name='inpt_data_value']").val(replaceCommas(numseprve));
 			
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
+			}
 			// board lot
 			var dboard = 0;
 			if (dstocks.last >= 0.0001 && dstocks.last <= 0.0099) {
@@ -3778,16 +3787,6 @@ if($issampledata){
 			dboardlast = dboard;
 			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboardlast));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
-
-			function replaceCommas(yourNumber) {
-				var components = yourNumber.toString().split(".");
-				if (components.length === 1) 
-					components[0] = yourNumber;
-				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				if (components.length === 2)
-					components[1] = components[1].replace(/\D/g, "");
-				return components.join(".");
-			}
 		});
 
 		jQuery(".dloadform").click(function(e){

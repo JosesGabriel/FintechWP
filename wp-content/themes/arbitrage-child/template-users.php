@@ -1924,8 +1924,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 									<?php echo do_shortcode('[ultimatemember_account]'); ?>
 								</div>
                             <?php }else{ ?>
-								<div class="profile-post-content load-social-wall">
-									<?php //echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
+								<div class="profile-post-content">
+									<?php echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
 								</div>
                              <?php } ?>
                                 
@@ -2128,20 +2128,20 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
             }
         })
 
-        if ($('.profile-post-content').hasClass('load-social-wall')) {
-            $.ajax({
-                url: '/apipge/?daction=user-social-wall&user-id=<?php echo $profile_id ?>',
-                method: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    let html = 'Unable to load posts.';
-                    if (response.success) {
-                        html = response.data.contents;
-                    }
-                    $('.profile-post-content').html(html);
-                }
-            })
-        }
+        // if ($('.profile-post-content').hasClass('load-social-wall')) {
+        //     $.ajax({
+        //         url: '/apipge/?daction=user-social-wall&user-id=<?php echo $profile_id ?>',
+        //         method: 'GET',
+        //         dataType: 'json',
+        //         success: function (response) {
+        //             let html = 'Unable to load posts.';
+        //             if (response.success) {
+        //                 html = response.data.contents;
+        //             }
+        //             $('.profile-post-content').html(html);
+        //         }
+        //     })
+        // }
     });
 
 })(jQuery);

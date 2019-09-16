@@ -3998,7 +3998,7 @@ if($issampledata){
 			"innerRadius": "40%",
 			"pieX": "45%",
 			"pieY": "50%",
-			"radius": 40,
+			"radius": 50,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],

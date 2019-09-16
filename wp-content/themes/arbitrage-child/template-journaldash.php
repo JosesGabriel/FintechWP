@@ -366,12 +366,12 @@ echo $user->ID ." versis ". $user->ID;
 	$dailyvolumes = '';
 	$dailyvalues = '';
 	$alltradelogs = [];
-	$counter = 0;
+	$buysscounter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
 
-			$counter++;
+			$buysscounter++;
 			$tradeid = get_the_ID();
 			$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradeid);
 
@@ -423,19 +423,32 @@ echo $user->ID ." versis ". $user->ID;
 			array_push($alltradelogs, $tradeitems);
 			
 			$dailyvolumes .= '{';
-			$dailyvolumes .= '"category": "'.$counter.'",';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
 			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
 			$dailyvolumes .= '},';
 
 			
 			$dailyvalues .= '{';
-			$dailyvalues .= '"category": "'.$counter.'",';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
 			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
 			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
-    }
+	}
+	
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');

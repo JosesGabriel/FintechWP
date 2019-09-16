@@ -3715,7 +3715,10 @@ if($issampledata){
     });
 	jQuery(document).ready(function(){
 
-      
+        
+        if ($(this).hasClass("tradelogbox")) {
+            jQuery('#fancybox-wrap').css('width','376px');
+        }     
 
 
 		$(document).on("click", ".deletelog", function() {

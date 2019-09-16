@@ -314,13 +314,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
-                $scope.latest_trading_date = new Date(response.data.data)
+                $scope.latest_trading_date = moment(response.data.data.date)
             }
         })
     $http.get("https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
+            stock['momentDate'] = moment(stock['date']);
             stock['last']       = parseFloat(stock['last']);
             stock['difference'] = parseFloat(stock['difference']);
             stock['change']     = parseFloat(stock['change']);
@@ -423,8 +424,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             let data = response.data;
 
             $scope.transactions = data.map(transaction => {
-                let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
-                
+                let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
                 return {
                     symbol: transaction.symbol,
                     price:  price_format(transaction.executed_price),
@@ -437,9 +437,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.$digest();
         });
     socket.on('psec', function (data) {
-        let date = (new Date(0)).setUTCSeconds(data.t);
-        let full_date = new Intl.DateTimeFormat('en-US', {dateStyle: 'medium'}).format(date);
-        let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(date);
+        let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {
             id: data.sym,
             symbol: data.sym,
@@ -511,7 +509,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('h:mm:ss a');
+            let full_time = (moment(data.t * 1000)).format('h:mm a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),
@@ -1024,8 +1022,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 let data = response.data;
 
                                 $scope.$parent.transactions = data.map(transaction => {
-                                    let full_time = new Intl.DateTimeFormat('en-US', {timeStyle: 'short'}).format(new Date(transaction.timestamp * 1000));
-
+                                    let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
                                     return {
                                         symbol: transaction.symbol,
                                         price:  price_format(transaction.executed_price),

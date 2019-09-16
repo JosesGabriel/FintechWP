@@ -3130,8 +3130,8 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3">
-                                                                                                        
+                                                                                                    <textarea rows="3" style="width: 313px;">
+                                                                                                        <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
@@ -3376,7 +3376,7 @@ if($issampledata){
 																						<div style="width:99%;">
 																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-																							<div style="width:19%"><?php echo $value->trantype; ?></div>
+																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
 																							<div style="width:14%"></div>
 																							<div style="width:14%"></div>
 		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>

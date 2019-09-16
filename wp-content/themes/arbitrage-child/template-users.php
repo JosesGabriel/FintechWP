@@ -18,28 +18,24 @@ $myusersecret = get_user_meta($profile_id, 'user_secret', true);
 $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 
-	$topargs = array(
-	    'role'          =>  '',
-	    // 'meta_key'      =>  'account_status',
-	    // 'meta_value'    =>  'approved'
-	);
+	// $topargs = array(
+	//     'role'          =>  '',
+	// );
 
-	$users = get_users($topargs);
-	$newuserlist = array();
-	foreach ($users as $key => $value) {
-		$userdetails['id'] = $value->ID;
-		$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
-		$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
+	// $users = get_users($topargs);
+	// $newuserlist = array();
+	// foreach ($users as $key => $value) {
+	// 	$userdetails['id'] = $value->ID;
+	// 	$userdetails['displayname'] = (!empty($value->data->display_name) ? $value->data->display_name : $value->data->user_login);
+	// 	$userdetails['followers'] = UM()->Followers_API()->api()->count_followers( $value->ID );
 
-		array_push($newuserlist, $userdetails);
-	}
+	// 	array_push($newuserlist, $userdetails);
+	// }
 
-	usort($newuserlist, function($a, $b) {
-	    return $a['followers'] <=> $b['followers'];
-	});
-	$toptraiders = array_reverse($newuserlist);
-
-	//$result = um_fetch_user(6);
+	// usort($newuserlist, function($a, $b) {
+	//     return $a['followers'] <=> $b['followers'];
+	// });
+	// $toptraiders = array_reverse($newuserlist);
 ?>
 
 <style type="text/css">
@@ -1719,20 +1715,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 				</div>
 				<div class="top-header-gear">
 					<div class="top-header-inner">
-						<?php /*?><div class="um-profile-edit um-profile-headericon um-trigger-menu-on-click">
-							<a href="#" class="um-profile-edit-a" data-toggle="tooltip" data-placement="top" title="More Settings"><i class="um-faicon-cog"></i></a>
-							<div class="um-dropdown" data-element="div.um-profile-edit" data-position="bc" data-trigger="click" style="top: 178px;width: 163px;left: 27px !important;right: auto;text-align: center;">
-								<div class="um-dropdown-b">
-									<div class="um-dropdown-arr" style="top: -15px;left: 71px;right: auto;"><i class="um-icon-arrow-up-b"></i></div>
-									<ul>
-											<li><a href="https://arbitrage.ph/user/<?php // echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
-											<li><a href="https://arbitrage.ph/account/" class="real_url">My Account</a></li>
-											<li><a href="https://arbitrage.ph/logout/" class="real_url">Logout</a></li>
-											<li><a href="#" class="um-dropdown-hide">Cancel</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><?php */?>
 					</div>
 					<div class="profile-name">
 						<div class="prof-name-inner">
@@ -1809,10 +1791,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
 										<div class="onlabel">Peers</div>
 									</li>
-									<!-- <li>
-										<div class="oncount"><?php echo UM()->Followers_API()->api()->count_followers( $profile_id ); ?></div>
-										<div class="onlabel">Followers</div>
-									</li> -->
 									<?php
 										$args = array(
 											'post_type' => 'um_activity',
@@ -1833,12 +1811,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 						</div>
 						<div class="profile-meta-data">
 							<div class="profile-meta-inner">
-								<!-- <div class="num-of-followers">
-									<div class="nof-title">Followers</div>
-									<div class="nof-title"><?php echo UM()->Followers_API()->api()->count_followers( $profile_id ); ?></div>
-								</div> -->
-								<!-- <div class="user-base-name"><?php echo um_user('full_name'); ?></div> -->
-								<!-- <div class="follow-items"><?php echo do_shortcode('[ultimatemember_followers_bar user_id="'.$profile_id.'" ]');  ?></div> -->
 								<br class="clear">
 
 							</div>
@@ -1848,9 +1820,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 								<ul>
 									<?php if(!$ismyprofile): ?>
 										<?php echo $ismyprofile; ?>
-										<!-- <li>
-											<a href="#" class="um-follow-btn um-button um-alt" data-user_id1="<?php echo $profile_id; ?>" data-user_id2="<?php echo $user->ID; ?>">Follow</a>
-										</li> -->
                                         <?php if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
                                             <li>
                                                 <a href="https://arbitrage.ph/vyndue/?us=<?php echo $myusersecret; ?>" class="um-button um-alt" style="margin-top: -25px;">Message</a>
@@ -1861,9 +1830,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 										</li>
 									<?php else: ?>
 											<?php if (isset($_GET['um_action']) && $_GET['um_action'] == 'edit'): ?>
-												<!--<li>
-													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/" class=" um-button um-alt" ">Update</a>
-												</li>-->
+
 											<?php else: ?>
 												<li>
 													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" >Edit Profile</a>
@@ -1929,16 +1896,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 ?>
 
-			<!--<div class="center-dashboard-part">-->
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php
-						//  if ( have_posts() ) : while ( have_posts() ) : the_post();
-						// the_content();
-						// endwhile; else:
-						 ?>
-						<!-- <p>Sorry, no posts matched your criteria.</p> -->
-						<?php   //endif; ?>
 					<?php
 						if (isset($_GET['getdpage']) && $_GET['getdpage'] == 'friends'):
 							?>
@@ -2148,12 +2107,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	    color: #00bcd4;
 	}
 </style>
-
-
-											<!-- <li class="six"><a href="#">Paper Trade</a></li> -->
-											<!-- <li class="seven"><a href="#">Chat</a></li> -->
-											<!-- <li class="eight"><a href="#">Groups</a></li> -->
-											<!-- <li class="nine"><a href="#">Traders</a></li> -->
 <?php
 
 get_footer();

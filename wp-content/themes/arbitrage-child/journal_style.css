@@ -1449,12 +1449,12 @@ span.legend_circ {
     display: inline-block;
     margin-right: 4px;
 }
-span.legend_circ:nth-child(1) {
+.dstatstrade ul li:nth-child(2) span.legend_circ {
     background: #ffc107;
 }
-span.legend_circ:nth-child(2) {
+.dstatstrade ul li:nth-child(3) span.legend_circ {
     background: #06af68;
 }
-span.legend_circ:nth-child(3) {
+.dstatstrade ul li:nth-child(4) span.legend_circ {
     background: #f44336;
 }

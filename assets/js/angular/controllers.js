@@ -437,8 +437,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.$digest();
         });
     socket.on('psec', function (data) {
-        let date = (new Date(0)).setUTCSeconds(data.t);
-        let full_date = new Intl.DateTimeFormat('en-US', {dateStyle: 'medium'}).format(date);
+        let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {
             id: data.sym,
             symbol: data.sym,

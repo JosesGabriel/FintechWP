@@ -5,7 +5,7 @@ Datafeeds.UDFCompatibleDatafeed = function(datafeedURL, updateFrequency) {
 	this._configuration = {
 		supports_search: true,
 		supports_group_request: false,
-		// supported_resolutions: ['1','3','5','15','30','45','60','120','180','240',"D","3D","W","M","3M","6M","12M"],
+		//supported_resolutions: ['1','3','5','15','30','45','60','120','180','240',"D","3D","W","M","3M","6M","12M"],
 		supported_resolutions: ["D","3D","W","M","3M","6M","12M"],
 		supports_marks: false,
 		supports_timescale_marks: true,
@@ -213,6 +213,11 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		resolution: '1D',
 		exchange: 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
 	};
+
+	//check for 1m resolution
+	if (resolution != 'D') {
+		params.resolution = '1m'
+	}
 	
 	// if ( ! firstDataRequest) {
 	// 	params['to'] = rangeEndDate;

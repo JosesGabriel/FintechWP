@@ -1351,7 +1351,7 @@
 	?>
 
 	<div>
-		<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
 		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
 
@@ -1374,7 +1374,7 @@
 			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
-					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" style="width: 24px;height: 24px;margin-left: 5px;" class="arb_proficon" />
+					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
 					<i class="fas fa-user-tie"></i>
 				<?php endif; ?></a>
@@ -1843,10 +1843,10 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="bid in bids | limitTo: 20">
+																														<tr ng-repeat="bid in bids | orderBy: '-price'">
 																															<td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
 																															<td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
-																															<td class="text-left" ng-class="{'text-green': bid.bid_price > stock.previous, 'text-red': bid.bid_price < stock.previous}" change="bid.bid_price"><strong>{{bid.bid_price > 0 ? (bid.bid_price | price) : ''}}</strong></td>
+																															<td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
 																														</tr>
 																													</tbody>
 																												</table>
@@ -1857,8 +1857,8 @@
 																													<col width="8.335%">
 																													<col width="8.335%">
 																													<tbody>
-																														<tr ng-repeat="ask in asks | limitTo: 20">
-																															<td class="text-right" ng-class="{'text-green': ask.ask_price > stock.previous, 'text-red': ask.ask_price < stock.previous}" change="ask.volume"><strong>{{ask.ask_price > 0 ? (ask.ask_price | price) : ''}}</strong></td>
+																														<tr ng-repeat="ask in asks">
+																															<td class="text-right" ng-class="{'text-green': ask.price > stock.previous, 'text-red': ask.price < stock.previous}" change="ask.volume"><strong>{{ask.price > 0 ? (ask.price | price) : ''}}</strong></td>
 																															<td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
 																															<td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
 																														</tr>

@@ -521,7 +521,7 @@ img.arb_newpostimg {
 }
 #chartdiv4a {
     width: 100%;
-    height: 220px;
+    height: 212px;
 }
 #chartdiv4b {
     width: 100%;
@@ -1338,13 +1338,9 @@ input.enter-trade-btn:hover {
     position: relative !important;
 }
 .amChartsLegend.amcharts-legend-div {
-    overflow-y: hide !important;
-    position: absolute !important;
-    text-align: left !important;
-    width: 201.094px !important;
-    height: 94px !important;
-    left: 0px !important;
-    top: 68px !important;
+    display: block;
+    height: 116px !important;
+    overflow-y: hidden !important;
 }
 .amChartsLegend.amcharts-legend-div:hover {
     overflow-y: scroll !important;
@@ -1373,4 +1369,18 @@ input.enter-trade-btn:hover {
 }
 #chartdiv1 .amcharts-chart-div svg {
     overflow: visible !important;
+}
+.swal-button--cancel:active {
+    background-color: #9e9e9e !important;
+}
+.swal-button--cancel:focus {
+    box-shadow: none;
+}
+.swal-button--danger:not([disabled]):hover {
+    background-color: #00bcd4 !important;
+}
+.swal-button--danger:focus {
+    box-shadow: none;
+}
+#chartdiv1 .amcharts-chart-div {
 }

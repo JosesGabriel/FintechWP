@@ -1385,10 +1385,10 @@ input.enter-trade-btn:hover {
 #chartdiv1 .amcharts-chart-div {
 }
 .label_funds label, .label_funds input {
-    background: none;
+    background: none !important;
     border: none;
 }
 .label_cost label, .label_funds input {
-    background: none;
+    background: none !important;
     border: none;
 }

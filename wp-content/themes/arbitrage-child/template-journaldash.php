@@ -2924,7 +2924,7 @@ if($issampledata){
                                                                                     <div style="width:65px" class="table-title-live">Ave. Price</div>
                                                                                     <div style="width:95px" class="table-title-live">Buy Value</div>
                                                                                     <div style="width:65px" class="table-title-live">Sell Price</div>
-                                                                                    <div style="width:91px" class="table-title-live">Sell Value</div>
+                                                                                    <div style="width:88px" class="table-title-live">Sell Value</div>
                                                                                     <div style="width:80px" class="table-title-live">Profit/Loss</div>
                                                                                     <div style="width:65px" class="table-title-live">%</div>
                                                                                     <div style="width:65px; text-align:center">Action</div>
@@ -3040,7 +3040,7 @@ if($issampledata){
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
 																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
 																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
-																					<div style="width:91px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:88px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
 																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 																					<div style="width:56px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
 																					<div style="width:27px; text-align:center">

@@ -130,7 +130,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-        echo $data_trade_info->strategy;
+
 
         update_post_meta($logid,  $data_trade_info->strategy, 'Steve' );
 
@@ -3278,6 +3278,7 @@ if($issampledata){
                                                                                              <div class="trdleft">
                                                                                                 <input type="hidden" value="Edit" name="inpt_data_status">
                                                                                                 <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
+                                                                                                <input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
                                                                                               <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>

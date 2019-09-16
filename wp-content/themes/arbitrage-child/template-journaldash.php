@@ -120,6 +120,20 @@ echo $user->ID ." versis ". $user->ID;
         wp_redirect('/journal');
         exit;
     }
+
+
+    if(isset($_POST['editbutton'])){
+
+        $strategy = $_POST['inpt_data_strategy'];
+        $tradeplan = $_POST['inpt_data_tradeplan'];
+        $emotion = $_POST['inpt_data_emotion'];
+        $post = array('strategy' => $strategy , 'tradeplan' => $tradeplan, 'emotion' => $emotion );
+        wp_update_post($post);
+        
+        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+
 ?>
 <!-- EOF Deposit -->
 
@@ -643,15 +657,15 @@ if($issampledata){
 		<div class="record_header">
 			<span class="record_head_label">Record A Trade</span>
 		</div>
-		<div class="record_body">
-			<div class="col-md-6">
+		<div class="record_body row">
+			<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
 				<span class="label_thisleft">Bought</span>
 				<div class="groupinput midd rec_label_date">
-					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 						<option value="">Select Stocks</option>
 						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -660,19 +674,19 @@ if($issampledata){
 					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
-				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 
 			<div class="col-md-6">
 				<span class="label_thisright">Sold</span>
 				<div class="groupinput midd rec_label_date">
-					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-					<select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
+					<select name="inpt_data_stock_y" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 						<option value="">Select Stocks</option>
 						<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 							<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
@@ -681,18 +695,20 @@ if($issampledata){
 					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
-				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 		</div>
-		<div class="record_footer">.
+		<div class="record_footer">
 			<div class="dbuttonrecord_onmodal">
 				<form action="" method="post" class="recordform">
 					<input type="hidden" name="recorddata" value="record">
 					<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 				</form>
-			</div></div>
+			</div>
+		</div>
 	</div>
 </div>
 <div id="main-content" class="oncommonsidebar">
@@ -3160,7 +3176,9 @@ if($issampledata){
 
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     
-                                                                                <form method="post" action="">
+
+                                                                                <form method="post" class="edittlogs" autocomplete="off">     
+
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3212,7 +3230,7 @@ if($issampledata){
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param" style="float: right;">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3786,9 +3804,9 @@ if($issampledata){
 
         
         
-        $(document).on("click", ".editlog", function() {
+        $(document).on("click", ".editmenow", function() {
 
-            jQuery('.fancybox-wrap').css("width","376px");
+           jQuery('.edittlogs').submit();
 
         });
 
@@ -3819,6 +3837,8 @@ if($issampledata){
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
+
+			console.log(dstocks);
 
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));

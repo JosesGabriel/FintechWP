@@ -64,7 +64,7 @@
 
 </head>
 <body>
-    <table class="table">
+    <table class="table table-striped table-dark table-bordered table-sm">
     <thead>
         <tr>
         <th scope="col">#</th>

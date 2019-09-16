@@ -1512,7 +1512,7 @@ span.legend_circ {
     display: none;
 }
 .record_main {
-    width: 53%;
+    width: 518px;
     margin: 65px auto 0;
     background: #0c1f33;
     border-radius: 5px;
@@ -1551,10 +1551,10 @@ span.legend_circ {
     display: block;
 }
 .record_body .groupinput.midd input {
-    width: 142px;
+    width: 147px;
 }
 .record_body .groupinput.midd select {
-    width: 143px !important;
+    width: 148px !important;
 }
 .record_body {
     margin: 0;
@@ -1582,4 +1582,5 @@ i.fas.fa-close.to_closethis_rec {
     position: relative;
     border-radius: 20px;
     border: 2px solid #fff;
+    cursor: pointer;
 }

@@ -56,9 +56,21 @@
                 });
             };
             
-            getBidAsk('AC',10,function(callback){
-                console.log(callback);
-            });
+
+                var content_bid = [];
+                var content_ask = [];
+                var row_bid_data = jQuery('#row_bid_data');
+                var row_ask_data = jQuery('#row_ask_data');
+
+                getBidAsk('AC',10,function(callback){
+                    console.log('data');
+                    var bids = callback.bids;
+                    var asks = callback.asks;
+                    console.log(bids);
+                    console.log(asks);
+                    row_bid_data.innerHTML(bids);
+                    row_ask_data.innerHTML(asks);
+                });
 
         });
     </script>

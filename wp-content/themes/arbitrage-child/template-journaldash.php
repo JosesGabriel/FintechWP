@@ -3055,7 +3055,7 @@ if($issampledata){
 																						</a>
 																					</div>
                                                                                     <div style="width:25px; margin-left: 2px;">
-                                                                                        <a href="#tradelognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit" style="cursor:pointer;text-align:center">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit" style="cursor:pointer;text-align:center">
                                                                                             <i class="fas fa-edit"></i>
                                                                                         </a>
                                                                                     </div>
@@ -3087,6 +3087,33 @@ if($issampledata){
 
 																					</div>
 																				</div>
+
+                                                                                <div class="hidethis">
+                                                                                    <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+                                                                                        <div class="entr_ttle_bar">
+                                                                                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                        </div>
+                                                                                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                                                                                        <div class="trdlgsbox">
+
+                                                                                            <div class="trdleft">
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+                                                                                            </div>
+                                                                                            <div class="trdright darkbgpadd">
+                                                                                                <div><strong>Notes:</strong></div>
+                                                                                                <div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+                                                                                            </div>
+
+                                                                                        <div class="trdclr"></div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
 
 																			</li>
 																					

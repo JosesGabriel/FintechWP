@@ -57,7 +57,7 @@
             };
             
 
-                var content_bid;
+                var content_bid = "";
                 var content_ask;
                 var row_bid_data = jQuery('#row_bid_data');
                 var row_ask_data = jQuery('#row_ask_data');

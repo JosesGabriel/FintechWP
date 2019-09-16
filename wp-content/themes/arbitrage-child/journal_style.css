@@ -1386,9 +1386,32 @@ input.enter-trade-btn:hover {
 }
 .label_funds label, .label_funds input {
     background: none !important;
-    border: none;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
 }
-.label_cost label, .label_funds input {
+.label_funds label {
+    width: 110px;
+}
+.label_funds input {
+    width: 107px;
+}
+.label_funds {
+    margin: 0;
+}
+.label_cost label, .label_cost input {
     background: none !important;
+    border: none !important;
+    padding-right: 0 !important;
+    color: #afafaf;
+}
+.label_cost {
+    margin: 0;
+}
+.groupinput.midd.label_date input {
+    margin: 0;
     border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 2px 0 3px;
 }

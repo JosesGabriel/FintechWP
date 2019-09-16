@@ -1376,7 +1376,7 @@ if($issampledata){
 
                                                         $dlistofsells = [];
                                                         $dtotalpl = 0;
-                                                        foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
+                                                        // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
                                                                 // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
                                                                 if ($disyear == $dlogsmvalue['data_sellyear']) {
@@ -1391,7 +1391,7 @@ if($issampledata){
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
                                                             }
-                                                        }
+                                                        // }
 
                                                     ?>
 

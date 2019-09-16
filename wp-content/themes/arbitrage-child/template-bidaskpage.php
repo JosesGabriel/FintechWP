@@ -76,7 +76,7 @@
 
                     console.log(content_bid);
                     console.log(asks);
-                    row_bid_data.innerHTML(content_bid);
+                    row_bid_data.html(content_bid);
                     row_ask_data.innerHTML(asks);
                 });
 

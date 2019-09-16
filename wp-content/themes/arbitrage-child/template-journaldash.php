@@ -3773,7 +3773,7 @@ if($issampledata){
 				dboard = 5;
 			} 
 			
-			jQuery("input[name='inpt_data_boardlot']").val(dboard);
+			jQuery("input[name='inpt_data_boardlot']").val(replaceCommas(dboard));
 			jQuery("input[name='inpt_data_stock']").val(dstocks.symbol);
 
 			function replaceCommas(yourNumber) {

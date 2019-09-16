@@ -127,7 +127,7 @@ echo $user->ID ." versis ". $user->ID;
         $strategy = $_POST['inpt_data_strategy'];
         $tradeplan = $_POST['inpt_data_tradeplan'];
         $emotion = $_POST['inpt_data_emotion'];
-        $post = array('strategy' => $strategy , 'tradeplan' => $tradeplan, 'emotion' => $emotion );
+        $post = array('strategy_plans' => $strategy , 'trade_plans' => $tradeplan, 'emotions' => $emotion );
         wp_update_post($post);
         
         wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
@@ -673,11 +673,11 @@ if($issampledata){
 		<div class="record_header">
 			<span class="record_head_label">Record A Trade</span>
 		</div>
-		<div class="record_body">
-			<div class="col-md-6">
+		<div class="record_body row">
+			<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
 				<span class="label_thisleft">Bought</span>
 				<div class="groupinput midd rec_label_date">
-					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
@@ -690,15 +690,15 @@ if($issampledata){
 					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
-				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 
 			<div class="col-md-6">
 				<span class="label_thisright">Sold</span>
 				<div class="groupinput midd rec_label_date">
-					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker" max="2019-09-16">
+					<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 				</div>
 				<div class="groupinput midd lockedd"><label>Stock</label>
 					<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
@@ -711,18 +711,20 @@ if($issampledata){
 					<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
-				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
+				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 		</div>
-		<div class="record_footer">.
+		<div class="record_footer row">
 			<div class="dbuttonrecord_onmodal">
 				<form action="" method="post" class="recordform">
 					<input type="hidden" name="recorddata" value="record">
 					<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 				</form>
-			</div></div>
+			</div>
+		</div>
 	</div>
 </div>
 <div id="main-content" class="oncommonsidebar">

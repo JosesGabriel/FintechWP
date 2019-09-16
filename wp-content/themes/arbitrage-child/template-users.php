@@ -1789,30 +1789,11 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 							<div class="meta-details-inner">
 								<ul>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
+										<div class="oncount"><a class="profile_peers_count" href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><span class="um-ajax-count-friends">0</span></a></div>
 										<div class="onlabel">Peers</div>
 									</li>
-									<?php
-										// $args = array(
-										// 	'post_type' => 'um_activity',
-										// 	'author'        =>  $profile_id,
-										// 	'orderby'       =>  'post_date',
-										// 	'order'         =>  'ASC',
-										// 	'posts_per_page'	=> -1
-										// );
-										// $the_query = new WP_Query( $args );
-                                        
-                                        $posts_count = $wpdb->get_var($wpdb->prepare(
-                                            "SELECT COUNT(id) 
-                                            FROM $wpdb->posts
-                                            WHERE post_type = 'um_activity' 
-                                            AND post_author = %s
-                                            AND post_status = 'publish'",
-                                            $profile_id
-                                        ));
-									?>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $posts_count; ?></a></div>
+										<div class="oncount"><a class="profile_post_count" href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity">0</a></div>
 										<div class="onlabel">Posts</div>
 									</li>
 								</ul>
@@ -2116,6 +2097,40 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	    color: #00bcd4;
 	}
 </style>
+
+<script>
+(function ($) {
+    
+    $(document).ready(function () {
+        $.ajax({
+            url: '/apipge/?daction=user-posts-count&user-id=<?php echo $profile_id ?>',
+            method: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                let count = 0;
+                if (response.success) {
+                    count = response.data.posts_count;
+                }
+                $('.profile_post_count').html(count);
+            }
+        })
+
+        $.ajax({
+            url: '',
+            method: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                let html = '<span class="um-ajax-count-friends">0</span>';
+                if (response.success) {
+                    html = response.data.peers_count;
+                }
+                $('.profile_peers_count').html(html)
+            }
+        })
+    });
+
+})(jQuery);
+</script>
 <?php
 
 get_footer();

@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="/assets/plugins/gritter/css/jquery.gritter.css" />
 	<link rel="stylesheet" href="/assets/plugins/ng-embed/dist/ng-embed.min.css" />
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>">
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

@@ -772,7 +772,7 @@ if($issampledata){
 																							<div class="groupinput midd lockedd"><label>Curr. Price</label><input readonly type="text" name="inpt_data_currprice" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Change</label><input readonly type="text" name="inpt_data_change" value="%"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>Open</label><input readonly type="text" name="inpt_data_open" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
-																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																							<div class="groupinput midd lockedd"><label>Low</label><input readonly type="text" name="inpt_data_low	" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							<div class="groupinput midd lockedd"><label>High</label><input readonly type="text" name="inpt_data_high" value=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																						</div>
 																						<div class="entr_col">
@@ -3096,7 +3096,7 @@ if($issampledata){
                                                                                         </div>
                                                                                         <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
-
+                                                                                           <!-- 
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
@@ -3130,11 +3130,12 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 314px;">
+                                                                                                    <textarea rows="3">
                                                                                                         
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        -->
 
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
@@ -3781,16 +3782,38 @@ if($issampledata){
 			}
 		});
 
+		function thetradefees(totalfees, istype){
+			// Commissions
+			let dpartcommission = totalfees * 0.0025;
+			let dcommission = (dpartcommission > 20 ? dpartcommission : 20);
+			// TAX
+			let dtax = dcommission * 0.12;
+			// Transfer Fee
+			let dtransferfee = totalfees * 0.00005;
+			// SCCP
+			let dsccp = totalfees * 0.0001;
+			let dsell = totalfees * 0.006;
+			let dall;
+			if (istype == 'buy') {
+				dall = dcommission + dtax + dtransferfee + dsccp;
+			} else {
+				dall = dcommission + dtax + dtransferfee + dsccp + dsell;
+			}
+
+			return dall;
+		}
+
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
 			// let quantity = jQuery('#entertopdataquantity').val();
-			console.log(price + " ~ " + quantity);
+			
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
-			
-			jQuery('input[name="inpt_data_total_price"]').val(total_price);
+			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
+			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
 		});
 
 		// jQuery(document).on('submit', '.dentertrade', function (e) {

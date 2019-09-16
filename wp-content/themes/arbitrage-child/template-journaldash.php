@@ -122,6 +122,8 @@ echo $user->ID ." versis ". $user->ID;
     }
 
 
+
+
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
     //if(isset($_POST['editbutton'])){
@@ -134,9 +136,7 @@ echo $user->ID ." versis ". $user->ID;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-        echo "<script> console.log($data_trade_info); </script>";
-
-        //update_post_meta($log_id,  'data_trade_info', 'test');
+        //update_post_meta($log_id,  'data_trade_info', $strategy);
         update_post_meta($log_id,  $data_trade_info[0]->strategy, 'test');
 
        
@@ -144,6 +144,9 @@ echo $user->ID ." versis ". $user->ID;
         wp_redirect('/journal');
         exit;
     }
+
+
+
 
 
 

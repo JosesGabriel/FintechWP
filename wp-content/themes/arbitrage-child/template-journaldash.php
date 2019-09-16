@@ -122,17 +122,20 @@ echo $user->ID ." versis ". $user->ID;
     }
 
 
-    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
+    if(isset($_POST['editbutton'])){
         //echo $_POST['inpt_data_status'];
 
         $logid = $_POST['log_id'];
+        $strategy = $_POST['data_strategy'];
+
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
 
 
-        update_post_meta($logid,  $data_trade_info->strategy, 'Steve' );
+        update_post_meta($logid,  $data_trade_info->strategy , $strategy);
 
         // $post = array(
         //     'strategy_plans' => $strategy, 
@@ -3240,7 +3243,7 @@ if($issampledata){
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd selecteditlog" name="inpt_data_strategy" id="">
+                                                                                                        <select class="rnd selecteditlog" name="data_strategy" id="">
                                                                                                             <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
                                                                                                             <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
@@ -3249,7 +3252,7 @@ if($issampledata){
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="inpt_data_tradeplan" id="">
+                                                                                                     <select class="rnd selecteditlog" name="data_tradeplan" id="">
                                                                                                             <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
@@ -3257,7 +3260,7 @@ if($issampledata){
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="inpt_data_emotion" id="">
+                                                                                                    <select class="rnd selecteditlog" name="data_emotion" id="">
                                                                                                             <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
                                                                                                             <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
                                                                                                             <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>

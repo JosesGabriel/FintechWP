@@ -70,7 +70,7 @@
   <div class="row no-gutters">
     <!-- Bid -->
     <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -89,12 +89,12 @@
     </div>
     <!-- Ask -->
     <div class="col-sm">
-        <table class="table table-sm table-bordered">
+        <table class="table table-sm">
         <thead>
             <tr>
-            <th scope="col">#</th>
+            <th scope="col">Ask</th>
             <th scope="col">Volume</th>
-            <th scope="col">Bid</th>
+            <th scope="col">#</th>
             </tr>
         </thead>
         <tbody>

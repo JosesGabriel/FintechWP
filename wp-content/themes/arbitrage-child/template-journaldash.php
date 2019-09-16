@@ -3091,6 +3091,8 @@ if($issampledata){
 																				</div>
 
                                                                                 <div class="hidethis" id="hidelogs">
+                                                                                    
+                                                                                <form method="post" action="">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
                                                                                             <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
@@ -3106,7 +3108,7 @@ if($issampledata){
                                                                                             <div class="trdleft">
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
                                                                                                         
-                                                                                                        <select class="rnd selecteditlog" name="" id="">
+                                                                                                        <select class="rnd selecteditlog" name="inpt_data_strategy" id="">
                                                                                                             <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
                                                                                                             <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
                                                                                                             <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
@@ -3115,7 +3117,7 @@ if($issampledata){
                                                                                                     </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="" id="">
+                                                                                                     <select class="rnd selecteditlog" name="inpt_data_tradeplan" id="">
                                                                                                             <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
                                                                                                             <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
@@ -3123,7 +3125,7 @@ if($issampledata){
 
                                                                                                 </div>
                                                                                                 <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="" id="">
+                                                                                                    <select class="rnd selecteditlog" name="inpt_data_emotion" id="">
                                                                                                             <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
                                                                                                             <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
                                                                                                             <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
@@ -3136,18 +3138,22 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
                                                                                              <div class="trdleft">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param-2go" style="float: right;">Update</button></div>
+                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-logs-param" style="float: right;">Update</button></div>
                                                                                             </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
                                                                                     </div>
+
+                                                                                </form>
+                                                                               
+
                                                                                 </div>
 
 

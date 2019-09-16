@@ -3803,8 +3803,16 @@ if($issampledata){
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = jQuery('input[name="inpt_data_total_price"]').val();
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
-			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
+			if(dstock != "" && dbuypower > 0 && total_price < dbuypower){
 				jQuery(".dentertrade").submit();
+			} else if (buySell__date == "") {
+				swal('Date is required.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
+			} else {
+				swal('Not enough funds.');
+				jQuery('.chart-loader').hide();
+				jQuery('.confirmtrd').show();
 			}
 		});
 

@@ -4078,6 +4078,34 @@
         border-radius: 50%;
         margin-right: 5px;
     }
+
+    /* Social wall */
+    /* Originally in wp-content/themes/arbitrage-child/ultimate-member/templates/activity/clone.php */
+	.um-activity-left.um-activity-actions > div .dnumof {
+		padding: 8px 0px 6px 0 !important;
+		font-weight: 400 !important;
+    	font-size: 13px !important;
+	}
+	.um-activity-widget.um-activity-new-clone.unready {
+		position: relative;
+		pointer-events: none;
+	}
+	.um-activity-widget.um-activity-new-clone.unready > :not(.arbitrage-wall-post-loader) {
+		opacity: 0.5;
+	}
+	.um-activity-widget.um-activity-new-clone.unready > .arbitrage-wall-post-loader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 50px;
+		z-index: 2;
+	}
+	.um-activity-widget:not(.unready) > .arbitrage-wall-post-loader {
+		display: none;
+    }
+    /* END Social wall */
+    
 /* EOF Social Dashboard */
 
 /* EOF Notification Page */

@@ -25,20 +25,19 @@
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400,700,900" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
+
     <style type="text/css">
         body{
             background-color: #0c1f33;
             color: #fff;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>
         jQuery(document).ready(function() {
             
@@ -57,9 +56,21 @@
                 });
             };
             
-            getBidAsk('AC',10,function(callback){
-                console.log(callback);
-            });
+
+                var content_bid = [];
+                var content_ask = [];
+                var row_bid_data = jQuery('#row_bid_data');
+                var row_ask_data = jQuery('#row_ask_data');
+
+                getBidAsk('AC',10,function(callback){
+                    console.log('data');
+                    var bids = callback.bids;
+                    var asks = callback.asks;
+                    console.log(bids);
+                    console.log(asks);
+                    row_bid_data.innerHTML(bids);
+                    row_ask_data.innerHTML(asks);
+                });
 
         });
     </script>

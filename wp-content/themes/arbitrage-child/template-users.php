@@ -1810,11 +1810,12 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 								<ul>
 									<?php if(!$ismyprofile): ?>
 										<?php echo $ismyprofile; ?>
-                                        <?php if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
-                                            <li>
+                                        <?php // TEMPORARILY REMOVED
+                                        //if(UM()->Friends_API()->api()->is_friend($profile_id, get_current_user_id())): ?>
+                                            <!-- <li>
                                                 <a href="https://arbitrage.ph/vyndue/?us=<?php echo $myusersecret; ?>" class="um-button um-alt" style="margin-top: -25px;">Message</a>
-                                            </li>
-                                        <?php endif; ?>
+                                            </li> -->
+                                        <?php //endif; ?>
 										<li>
 											<?php echo UM()->Friends_API()->api()->friend_button( $profile_id, get_current_user_id() ); ?>
 										</li>
@@ -1924,8 +1925,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 									<?php echo do_shortcode('[ultimatemember_account]'); ?>
 								</div>
                             <?php }else{ ?>
-								<div class="profile-post-content load-social-wall">
-									<?php //echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
+								<div class="profile-post-content">
+									<?php echo do_shortcode('[ultimatemember_wall user_id="'.$profile_id.'" user_wall="true" ]'); ?>
 								</div>
                              <?php } ?>
                                 
@@ -2128,20 +2129,20 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
             }
         })
 
-        if ($('.profile-post-content').hasClass('load-social-wall')) {
-            $.ajax({
-                url: '/apipge/?daction=user-social-wall&user-id=<?php echo $profile_id ?>',
-                method: 'GET',
-                dataType: 'json',
-                success: function (response) {
-                    let html = 'Unable to load posts.';
-                    if (response.success) {
-                        html = response.data.contents;
-                    }
-                    $('.profile-post-content').html(html);
-                }
-            })
-        }
+        // if ($('.profile-post-content').hasClass('load-social-wall')) {
+        //     $.ajax({
+        //         url: '/apipge/?daction=user-social-wall&user-id=<?php echo $profile_id ?>',
+        //         method: 'GET',
+        //         dataType: 'json',
+        //         success: function (response) {
+        //             let html = 'Unable to load posts.';
+        //             if (response.success) {
+        //                 html = response.data.contents;
+        //             }
+        //             $('.profile-post-content').html(html);
+        //         }
+        //     })
+        // }
     });
 
 })(jQuery);

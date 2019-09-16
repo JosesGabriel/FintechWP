@@ -1399,6 +1399,7 @@ input.enter-trade-btn:hover {
 }
 .label_funds {
     margin: 0;
+    height: 21px;
 }
 .label_cost label, .label_cost input {
     background: none !important;
@@ -1418,4 +1419,7 @@ input.enter-trade-btn:hover {
     border-radius: 0 4px 4px 0;
     background: #4e6a85;
     padding: 2px 0 3px;
+}
+.label_date {
+    margin: 0;
 }

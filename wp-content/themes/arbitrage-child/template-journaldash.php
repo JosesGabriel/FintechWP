@@ -691,7 +691,7 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
 
@@ -712,7 +712,7 @@ if($issampledata){
 					<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 				</div>
 				<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price" class="textfield-buyprice number" required></div>
-				<div class="groupinput midd" style="margin:5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
+				<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty" class="textfield-quantity number" required></div>
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
@@ -2989,8 +2989,8 @@ if($issampledata){
 						                        	<div class="tradelogsbox">
                                                         <div class="box-portlet">
 
-                                                            <div class="box-portlet-header">
-                                                                Tradelogs
+                                                            <div class="box-portlet-header" style="padding-bottom: 20px;">
+															<span class="title_logss">Tradelogs</span>
 																<div class="headright" style="display:none;">
 																	<form action="" method="get" id="ptchangenum">
 																		<input type="number" id="ptnum" name="ptnum">

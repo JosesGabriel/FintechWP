@@ -53,8 +53,9 @@
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
     <link rel="stylesheet" href="/assets/plugins/gritter/css/jquery.gritter.css" />
 	<link rel="stylesheet" href="/assets/plugins/ng-embed/dist/ng-embed.min.css" />
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>"> //Madaot calcs sa chart if dili ni iload ang duha ka css. To be refractored
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
+		<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>"> 
+		<!-- Madaot calcs sa chart if dili ni iload ang duha ka css. To be refractored -->
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -2045,13 +2046,19 @@
 
 																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
+																										<tr class="hidden">
+																											<td>{{latest_trading_date}}</td>
+																											<td>{{sort}}</td>
+																										</tr>
 																										<tr 
 																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.momentDate, 'day')}" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
 																											style="font-weight: bold;" 
 																											>
+																											<td class="hidden">{{stock.lastupdatetime}}</td>
+																											<td class="hidden">{{latest_trading_date.isSame(stock.lastupdatetime, 'day')}}</td>
 																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
 																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
 																													<input type="radio" name="selected_stock" ng-model="selectedStock" value="{{::stock.symbol}}" id="select-{{::stock.symbol}}"/>

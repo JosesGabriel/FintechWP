@@ -523,7 +523,7 @@ if($issampledata){
 	
     $buypower = 0;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
             $buypower = $buypower + $getbuyvalue->tranamount;
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
@@ -3068,7 +3068,7 @@ if($issampledata){
 																						<div class="entr_ttle_bar">
 																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
 																						</div>
-																						<hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
 																						<div class="trdlgsbox">
 
 																							<div class="trdleft">
@@ -3092,9 +3092,10 @@ if($issampledata){
                                                                                 <div class="hidethis" id="hidelogs">
                                                                                     <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                                                                                         <div class="entr_ttle_bar">
-                                                                                            <strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                            <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+                                                                                           
                                                                                         </div>
-                                                                                        <hr class="style14 style15" style="width: 93% !important;width: 93% !important;margin: 5px auto !important;">
+                                                                                        <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
                                                                                         <div class="trdlgsbox">
                                                                                         
                                                                                             <div class="trdleft">
@@ -3135,8 +3136,9 @@ if($issampledata){
                                                                                                     </textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Update">
-
+                                                                                             <div class="trdleft">
+                                                                                              <div class="onelnetrd"> <span> <input type="button" class="bntedit modal-button-confirm" value="Update" style="left: 12px;"></span></div>
+                                                                                            </div>
                                                                                         <div class="trdclr"></div>
                                                                                         </div>
 
@@ -3368,6 +3370,9 @@ if($issampledata){
 																				}
 
 																				$ledcount = 0;
+																				$ledbalance = 0;
+																				$totdebit = 0;
+																				$totcred = 0;
 																				foreach ($dledger as $key => $value) {
 																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
 																						$ledcount++;
@@ -3377,55 +3382,39 @@ if($issampledata){
 																							<div style="width:8%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
 																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
-																							<div style="width:14%"></div>
-																							<div style="width:14%"></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($value->tranamount, 2, '.', ','); ?></div>
+																							<div style="width:14%">
+																								<?php if($value->trantype == "withraw"){
+																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance - $value->tranamount;
+																									$totdebit += $value->tranamount;
+																								} ?>
+																							</div>
+																							<div style="width:14%">
+																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
+																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
+																									$ledbalance = $ledbalance + $value->tranamount;
+																									$totcred += $value->tranamount;
+																								} ?>
+																							</div>
+		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
 		                                                                                </div>
 																					</li>
 																			<?php
 																					endif;
 																				}
 																			?>
-																			
-																			<?php
-                                                                                $cuttentpageg = (isset($_GET['ld']) ? $_GET['ld'] : 1);
-                                                                                $mstart = 0;
-                                                                                foreach ($listledger[$cuttentpageg] as $dmdkey => $dmdvalue) {
-                                                                                    ?>
-																					<li class="dspecitem" style="display:none;">
-		                                                                            	<div style="width:99%;">
-		                                                                                    <div style="width:19%"><?php echo $dmdvalue['ismonth']; ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($mstart, 2, '.', ','); ?></div>
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Perfomance<?php */?>15.20%</div> -->
-		                                                                                    <!-- <div style="width:14%"><?php /*?>Profit/Loss<?php */?>₱15,199.00</div> -->
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totalwith'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['totaldepo'], 2, '.', ','); ?></div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($dmdvalue['isenfing'], 2, '.', ','); ?></div>
-		                                                                                </div>
-		                                                                                <div class="ddetailshere">
-		                                                                                	<div class="inner">
-		                                                                                		<ul>
-		                                                                                			<li class="dtitle">
-		                                                                                				<div style="width:99%;">
-		                                                                                					<div style="width:33%">Date</div>
-			                                                                                				<div style="width:33%">Transacrion</div>
-			                                                                                				<div style="width:33%">Amount</div>
-		                                                                                				</div>
-		                                                                                			</li>
-		                                                                                			<?php foreach ($dmdvalue['isdata'] as $dsubdkey => $dsubdvalue): ?>
-		                                                                                				<?php //if ($dsubdvalue->trantype == 'deposit' || $dsubdvalue->trantype == 'withraw'):?>
-		                                                                                					<li>
-		                                                                                						<div style="width:33%"><?php echo date('F d, Y', strtotime($dsubdvalue->date)); ?></div>
-		                                                                                						<div style="width:33%"><span class="dtrantype"><?php echo $dsubdvalue->trantype; ?></span></div>
-		                                                                                						<div style="width:33%">₱<?php echo number_format($dsubdvalue->tranamount, 2, '.', ','); ?></div>
-		                                                                                					</li>
-		                                                                                				<?php //endif?>
-	                                                                                				<?php endforeach; ?>
-		                                                                                	</div>
-		                                                                                </div>
-		                                                                            </li>
-																				<?php
-                                                                                }  ?>
+																			<li class="headerpart">
+                                                                            	<div style="width:100%;">
+                                                                                    <div style="width:8%">&nbsp;</div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <div style="width:19%">Total</div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
+                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
+                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <!-- <div style="width:19%">Deposits</div>
+                                                                                    <div style="width:19%">Ending Balance</div> -->
+                                                                                </div>
+                                                                            </li>
                                                                         </ul>
                                                                     </div>
 																	<div class="dledgerpag">

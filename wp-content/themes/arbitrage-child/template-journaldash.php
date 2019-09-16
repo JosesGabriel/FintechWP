@@ -760,10 +760,10 @@ if($issampledata){
 																							</div>
 																							<div class="groupinput midd"><label>Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="textfield-buyprice number" required></div>
 																							<div class="groupinput midd"><label>Quantity</label><input type="text" id="entertopdataquantity" name="inpt_data_qty" class="textfield-quantity number" required></div>
-																							<div class="groupinput midd">
+																							<div class="groupinput midd label_date">
 																								<label>Buy Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker">
 																							</div>
-																							<div class="groupinput midd lockedd label_funds"><label>Available Funds</label>
+																							<div class="groupinput midd lockedd label_funds"><label>Available Funds: </label>
 																							<input type="text" name="input_buy_product" id="input_buy_product" class="number" step="0.01" style="margin-left: -4px;" value="<?php echo number_format($buypower, 2, '.', ','); ?>" readonly>
 																							<i class="fa fa-lock" aria-hidden="true" style="display: none;"></i></div>
 																							<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>

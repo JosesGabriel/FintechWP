@@ -3830,6 +3830,13 @@ if($issampledata){
 			jQuery('input[name="inpt_data_total_price"]').val(finaltotal);
 		});
 
+		// jQuery("")
+		jQuery('#selectdepotype').on('change', function() {
+			alert( this.value );
+			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
+
+		});
+
 		// jQuery(document).on('submit', '.dentertrade', function (e) {
 		// 	e.preventDefault();
 		// 	let form = jQuery(this).serializeArray();

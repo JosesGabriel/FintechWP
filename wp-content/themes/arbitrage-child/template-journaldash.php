@@ -1384,7 +1384,9 @@ if($issampledata){
 
                                                                     $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
                                                                     $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-                                                                    $sellfee = getjurfees($selprice, 'sell');
+																	$sellfee = getjurfees($selprice, 'sell');
+																	
+																	echo (($selprice - $sellfee) - $dcurprice);
 
                                                                     $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
@@ -3136,7 +3138,7 @@ if($issampledata){
                                                                                             <div class="trdright darkbgpadd">
                                                                                                 <div><strong>Notes:</strong></div>
                                                                                                 <div>
-                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #a9b2bb;">
+                                                                                                    <textarea rows="3" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
                                                                                                         <?php echo $data_trade_info[0]->tradingnotes; ?>
                                                                                                     </textarea>
                                                                                                 </div>

@@ -830,7 +830,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 						});
 		        }
 		        if($(this).val() == 'edit'){
-		        		 $('.dmodaleditwatch').modal('show');
+		        		 var ditemtoedit = jQuery(this).attr('data-space');
+		        		 console.log(ditemtoedit);
+
+		           		$('#modal' + ditemtoedit).addClass('show');
 		        }
 
     		});

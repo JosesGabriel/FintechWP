@@ -823,8 +823,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 									'success'
 								).then((result) => {
 									var ditemtoremove = jQuery(this).attr('data-space');
-									//window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
-									window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									//window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
 								});
 							}
 						});

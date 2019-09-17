@@ -1129,6 +1129,15 @@ h2.watchtitle {
         color: #afadb3;
     }
 
+    select option {
+        background: #4e6a85;
+        color: #fff;
+    }
+
+    .modal {
+        width: 115% !important;
+    }
+
     .wlttlstockvals {
 		display: block;
         width: 100%;

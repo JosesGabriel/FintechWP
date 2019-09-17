@@ -3,13 +3,26 @@
  * Template Name: Charting API Page
  * Template page for Watchlist Page Platform
  */
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Content-Type: application/json');
+header("Cache-Control: no-cache"); 
+header("Pragma: no-cache"); 
 
 global $wpdb;
 
 $charts_table = 'arby_charting';
 $request_method = $_SERVER['REQUEST_METHOD'];
+
+function respond($success = false, $data = [], $status = 500)
+{
+    $data['status'] = $success ? 'ok' : 'error';
+    $status = $success ? 200 : $status;
+    http_response_code($status);
+    echo json_encode(array_push($data, $status));
+    die();
+}
+
 /**
  * TRADINGVIEW CHARTS
  */
@@ -57,13 +70,8 @@ if ($request_method === 'POST') {
     respond(true, [
         'id' => $wpdb->insert_id,
     ]);
+} else if ($request_method === 'GET') {
+
 }
 
-function respond($success = false, $data = [], $status = 500)
-{
-    $data['status'] = $success ? 'ok' : 'error';
-    $status = $success ? 200 : $status;
-    http_response_code($status)
-    echo json_encode(array_push($data, $status));
-    die();
-}
+respond(false, ['status' => 'No hacc ples.'], 403);

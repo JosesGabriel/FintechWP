@@ -49,6 +49,32 @@ app.controller('template', function($scope, $http) {
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     var counter = 1;
+
+
+    let transaction = [
+        { counter:1,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:2,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:3,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:4,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:5,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:6,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:7,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:8,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:9,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:10,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:11,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:12,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:13,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:14,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:15,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:16,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+    ]
+
+    for(i in transaction){i
+        $scope.ticker.push(transaction[i]);
+        ticker_data_ralph.push(transaction[i]);    
+    }
+
     socket.on('psec', function (data) {  
         var ctr = counter += 1;
         var transaction = {

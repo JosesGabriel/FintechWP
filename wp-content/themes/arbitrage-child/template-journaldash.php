@@ -3861,6 +3861,10 @@ if($issampledata){
 
 	jQuery(document).ready(function(){
 
+		jQuery(".changeselldate").change(function() {
+    		var date = $(this).val();
+			console.log(date, 'change');
+		});
         
         jQuery(".editmenow").click(function(){
         //$(document).on("click", ".editmenow", function() {

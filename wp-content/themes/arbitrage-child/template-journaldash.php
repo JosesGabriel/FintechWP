@@ -1906,7 +1906,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $initcapital) * 100), 2, '.', ',') : '0.00');?>%</div>
+                                                                                                    <div class="width35"><?php echo  ($dtotalpl < 0 ? "-" : "").number_format(((abs($dtotalpl) / $initcapital) * 100), 2, '.', ',');?>%</div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>

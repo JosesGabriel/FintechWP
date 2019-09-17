@@ -2412,6 +2412,8 @@
 		.arb_buysell {
 			background-color: rgba(215, 215, 215, .15);
 			position: absolute;
+			left: -229px;
+			top: 48px;
 			padding: 5px 20px 5px 30px;
 			border-radius: 10px;
 		}

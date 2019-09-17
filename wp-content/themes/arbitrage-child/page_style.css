@@ -4155,3 +4155,9 @@
     /* display: none; */
 }
 /* EOF Notification Page */
+
+/* EOF Chart Page */
+
+.allstocksbox .vertical-box table tbody tr td div {
+    padding-bottom: 0 !important;
+}

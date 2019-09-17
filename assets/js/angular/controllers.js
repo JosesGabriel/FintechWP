@@ -49,6 +49,30 @@ app.controller('template', function($scope, $http) {
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     var counter = 1;
+
+
+    let transaction = [
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { conter:1,symbol:AC,price:price_format(213.32), change:11, shares: abbr_format(12332) },
+    ]
+
+    $scope.ticker.push(transaction);
+    ticker_data_ralph.push(transaction);
+
     socket.on('psec', function (data) {  
         var ctr = counter += 1;
         var transaction = {

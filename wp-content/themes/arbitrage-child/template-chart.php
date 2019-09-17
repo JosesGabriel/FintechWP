@@ -2282,7 +2282,7 @@
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
-		var _client_id 	= 'arbitrage';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _username 	= '<?php echo $user->user_email; ?>';
 		var _symbol 	= '<?php 

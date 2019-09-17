@@ -3126,6 +3126,9 @@ if($issampledata){
 																			
 																			<?php
 																			// if(!empty($ismytrades)):
+
+																				print_r($ismytrades);
+																				exit;
 																				foreach ($ismytrades as $key => $value) {
 																					$marketvals = $value->tlvolume * $value->tlaverageprice;
 																					$selltotal = $value->tlvolume * $value->tlsellprice;

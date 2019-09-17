@@ -3329,10 +3329,10 @@ if($issampledata){
 			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
 			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
 
-			$totalmarket = parseFloat(price) * parseFloat(quantity);
-			$finalcost = $totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
-			console.log($finalcost.toFixed(2));
-			jQuery('input[name="inpt_data_total_bought_price"]').text($finalcost.toFixed(2));
+			let totalmarket = parseFloat(price) * parseFloat(quantity);
+			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			console.log(finalcost.toFixed(2));
+			jQuery('input[name="inpt_data_total_bought_price"]').text(finalcost.toFixed(2));
 		});
 
 

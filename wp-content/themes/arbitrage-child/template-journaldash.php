@@ -733,6 +733,12 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 
+	usort($strats, function($a, $b) {
+		return $b['trwin'] - $a['trwin'];
+	});
+
+	print_r($strats);
+
 	$intowinchartbands = '';
 	$intowinchartlabels = '';
 	$winxcount = 0;
@@ -2434,7 +2440,8 @@ if($issampledata){
                                                                                     <?php
                                                                                     // $stratstrg = '';
 																					// $wincharts = '';
-																					
+																					$winstrat = "";
+																					$loosingstrat = "";
                                                                                     foreach ($strats as $statskey => $statsvalue) {
                                                                                         ?>
                                                                                     	<li>
@@ -2447,20 +2454,6 @@ if($issampledata){
 	                                                                                            <div style="text-align: center;"><?php echo ($statsvalue['trwin'] > 0 ? number_format(($statsvalue['trwin'] / $statsvalue['trloss']) * 100, 2) : "0.0"); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
-	                                                                                    <?php
-                                                                                            // $stratstrg .= '{';
-																							// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-																							// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-																							// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-																							// $stratstrg .= '"colors": "#06af68",';
-																							// $stratstrg .= '"colorsred": "#b7193f"';
-																							// $stratstrg .= '},';
-
-																							// $wincharts .= '{';
-																							// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-																							// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-																							// $wincharts .= '},';
-																							?>
                                                                                     <?php
                                                                                     } ?>
 

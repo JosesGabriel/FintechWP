@@ -148,6 +148,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
+    $scope.enableBidsAndAsks = false;
     $scope.bids = [];
     $scope.asks = [];
     $scope.transactions = [];
@@ -398,25 +399,27 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         // });
     });
     $scope.getBidsAndAsks = function (symbol) {
-        $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
-        .then(response => {
-            response = response.data;
-            if (!response.success) {
+        if ($scope.enableBidsAndAsks) {
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
+            .then(response => {
+                response = response.data;
+                if (!response.success) {
+                    $scope.bids = [];
+                    $scope.asks = [];
+                    return;
+                }
+    
+                $scope.bids = Object.values(response.data.bids);
+                $scope.asks = Object.values(response.data.asks);
+            })
+            .catch(err => {
                 $scope.bids = [];
                 $scope.asks = [];
-                return;
-            }
-
-            $scope.bids = Object.values(response.data.bids);
-            $scope.asks = Object.values(response.data.asks);
-        })
-        .catch(err => {
-            $scope.bids = [];
-            $scope.asks = [];
-        })
-        .finally(() => {
-            $scope.$digest();
-        });
+            })
+            .finally(() => {
+                $scope.$digest();
+            });
+        }
     }
     $scope.getBidsAndAsks(_symbol);
     let limit = 20;
@@ -542,7 +545,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
      *  u => update new order
      */
      socket.on('psebd', function (data) {
-        if ($scope.selectedStock == data.sym) {
+        if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
             if (data.ov == 'B') {
                 // bid
                 $scope.bids = $scope.updateBidAndAsks($scope.bids, data);

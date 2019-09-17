@@ -70,8 +70,10 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         { counter:16,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
     ]
 
-    $scope.ticker.push(transaction);
-    ticker_data_ralph.push(transaction);
+    for(i in transaction){i
+        $scope.ticker.push(transaction[i]);
+        ticker_data_ralph.push(transaction[i]);    
+    }
 
     socket.on('psec', function (data) {  
         var ctr = counter += 1;

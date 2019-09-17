@@ -580,6 +580,7 @@ if($issampledata){
 	$dpercschart = '';
 	$gplchart = '';
 	$feeschart = '';
+	$demotsonchart = '';
 	$buysscounter = 0;
 
 	
@@ -599,6 +600,12 @@ if($issampledata){
 	// 	$feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
 	// 	$feeschart .= '},';
 	// }
+
+	// $demotsonchart .= '{';
+	// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+	// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+	// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+	// $demotsonchart .= '},';
 
 	$profits = [
 		'mon' => 0,
@@ -623,6 +630,26 @@ if($issampledata){
 		'dec' => 0
 	);
 
+	$tremo = [
+		'Neutral' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Greedy' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Fearful' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		]
+	];
+
+
+
 
 	if(!empty($ismytrades)){
 		foreach ($ismytrades as $key => $value) {
@@ -637,9 +664,11 @@ if($issampledata){
 			$dailyvalues .= '"column-1": '.($value->tlsellprice != "" ? $value->tlsellprice : 0).'';
 			$dailyvalues .= '},';
 
+			$marketvals = $value->tlvolume * $value->tlaverageprice;
 			$selltotal = $value->tlvolume * $value->tlsellprice;
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
+
 			$istrdate = date('D', strtotime($value->tldate));
 			$ismonthtrade = date('M', strtotime($value->tldate));
 
@@ -651,13 +680,19 @@ if($issampledata){
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
-
+			
+			if($profit > 0){
+				$tremo[$value->tlemotions]['trwin']++;
+			} else {
+				$tremo[$value->tlemotions]['trloss'] ++;
+			}
+			$tremo[$value->tlemotions]['total_trades']++;
 			
 			
 		}
 	}
 
-	print_r($profits);
+	print_r($tremo);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -669,9 +704,20 @@ if($issampledata){
 
 	foreach ($months as $key => $value) {
 		$feeschart .= '{';
-		$feeschart .= '"category": "'.$key.'",';
+		$feeschart .= '"category": "'.ucfirst($key).'",';
 		$feeschart .= '"column-1": "'.$value.'"';
 		$feeschart .= '},';
+	}
+
+	foreach ($tremo as $key => $value) {
+		if($value['total_trades'] > 0){
+			$demotsonchart .= '{';
+			$demotsonchart .= '"category": "'.$key.'",';
+			$demotsonchart .= '"column-2": "'.$value['trwin'].'",';
+			$demotsonchart .= '"Trades": "'.$value['trloss'].'"';
+			$demotsonchart .= '},';
+		}
+		
 	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
@@ -894,7 +940,7 @@ if($issampledata){
 					<div class="groupinput selectonly">
 						<select name="inpt_data_emotion" class="rnd">
 							<option value="" selected>Select Emotion</option>
-							<option value="Nuetral">Neutral</option>
+							<option value="Neutral">Neutral</option>
 							<option value="Greedy">Greedy</option>
 							<option value="Fearful">Fearful</option>
 						</select>
@@ -1093,7 +1139,7 @@ if($issampledata){
 																						<div class="groupinput selectonly">
 																							<select name="inpt_data_emotion" class="rnd">
 																								<option value="" selected>Select Emotion</option>
-																								<option value="Nuetral">Neutral</option>
+																								<option value="Neutral">Neutral</option>
 																								<option value="Greedy">Greedy</option>
 																								<option value="Fearful">Fearful</option>
 																							</select>
@@ -2690,7 +2736,7 @@ if($issampledata){
                                                                                     <div>Losses</div>
                                                                                     <div>Win Rate</div>
                                                                                 </li>
-																				<?php $demotsonchart = ''; ?>
+																				<?php //$demotsonchart = ''; ?>
                                                                             	<?php foreach ($emotioninfo as $emtkey => $emtvalue) {
                                                         ?>
                                                                             		<li>
@@ -2701,11 +2747,12 @@ if($issampledata){
 	                                                                                    <div><?php  echo number_format(($emtvalue['iswin'] / $emtvalue['totaltrades']) * 100, 2, '.', ''); ?>%</div>
 	                                                                                </li>
 																					<?php
-                                                                                    $demotsonchart .= '{';
-																					$demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-																					$demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-																					$demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-																					$demotsonchart .= '},'; ?>
+                                                                                    // $demotsonchart .= '{';
+																					// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+																					// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+																					// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+																					// $demotsonchart .= '},'; 
+																					?>
 																					<?php if ($emtkey >= 4) {
                                                             break;
                                                         } ?>

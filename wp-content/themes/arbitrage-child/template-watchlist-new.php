@@ -221,10 +221,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																?>
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<!--<div class="watchlist--buttons">
+																	<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	</div>-->
+																	</div>
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
@@ -801,9 +801,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
     jQuery(document).ready(function() {
 
-		    //jQuery('.editwatchlist').on('change', function(){
+		 
 		    $('.editwatchlist').change(function() {
-		        console.log($(this).val());
+
+		        //console.log($(this).val());
+		        if($(this).val() == 'delete'){
+
+		        }
 
     		});
     });

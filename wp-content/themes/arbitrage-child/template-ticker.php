@@ -598,7 +598,9 @@
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
+                    let el = $(`${ticker_data[i].counter}`).attr("data-elemet")
                     console.log(ticker_data[i].counter)
+                    console.log(el);
                 }
             }, 5000);
 

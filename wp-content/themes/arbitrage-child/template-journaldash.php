@@ -748,6 +748,48 @@ if($issampledata){
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
+			<div class="entr_wrapper_mid">
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_strategy" class="rnd">
+							<option value="" selected>Select Strategy</option>
+							<option value="Bottom Picking">Bottom Picking</option>
+							<option value="Breakout Play">Breakout Play</option>
+							<option value="Trend Following">Trend Following</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_tradeplan" class="rnd">
+							<option value="" selected>Select Trade Plan</option>
+							<option value="Day Trade">Day Trade</option>
+							<option value="Swing Trade">Swing Trade</option>
+							<option value="Investment">Investment</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_emotion" class="rnd">
+							<option value="" selected>Select Emotion</option>
+							<option value="Nuetral">Neutral</option>
+							<option value="Greedy">Greedy</option>
+							<option value="Fearful">Fearful</option>
+						</select>
+					</div>
+				</div>
+				<div class="groupinput">
+					<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+					<!-- <div>this is it</div> -->
+				</div>
+				<div class="groupinput">
+						<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+					<input type="hidden" value="Live" name="inpt_data_status">
+					<input type="hidden" id="newdate" name="newdate">
+					<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
+				</div>
+				</div>
 		</div>
 		<div class="record_footer row">
 			<div class="dbuttonrecord_onmodal">

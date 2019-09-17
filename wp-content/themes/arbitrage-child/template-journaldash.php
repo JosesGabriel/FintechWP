@@ -1475,8 +1475,18 @@ if($issampledata){
 		                                                                                     <div style="width:7%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
 		                                                                                    <div style="width:77px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
-		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
-		                                                                                        <div class="hideformodal">
+		                                                                                    <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
+																							<div style="width:27px; text-align:center">
+																								<a href="#tradelognotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																							</div>
+																							<input type="hidden" id="deletelog1" value="4394">
+																							<div style="width:25px">
+																								<a class="deletelog smlbtn-delete" data-istl="4394" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																							</div>
+																							<div style="width:25px; margin-left: 2px;">
+																								<a href="#editlognotes_<?php echo $value->tlid; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
+																							</div>
+																								<div class="hideformodal">
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">

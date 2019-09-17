@@ -285,7 +285,17 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($toparsesell, ',');
 
-		print_r($_POST);
+		$buyyinginfo = json_decode($_POST['dtradelogs']);
+
+		echo "<pre>";
+		print_r($buyyinginfo);
+		echo "</pre>";
+
+		echo "<pre>";
+		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$_POST['selldate']."','".$_POST['selldate']."','".$_POST['selldate']."','".$_POST['selldate']."',)";
+		echo "</pre>";
+
+		
 		exit;
 
         // Update journal data.

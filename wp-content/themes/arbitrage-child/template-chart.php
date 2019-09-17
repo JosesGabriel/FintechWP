@@ -1258,17 +1258,6 @@
                 $(this).parents(".bidaskbar").find("."+dtype).show();
                 $(this).parents(".bidaskbar_opt").hide();
             });
-			forevertickerinit();
-			function forevertickerinit() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
-			}
-			function foreverticker() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
-			}
 			
 			// $('.tr-background').mouseenter(function(){
 			// 	$('.tr-background').addClass('background');
@@ -1356,7 +1345,7 @@
 	<div>
 		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
-		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
+		<!-- TICKER TEMPORARILY REMOVED <iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe> -->
 
 		<?php //get_template_part('parts/global', 'css'); ?>
 
@@ -1518,9 +1507,9 @@
 																								<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
 																								<i class="fa fa-lock" aria-hidden="true"></i></div>
 
-																								<div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																								<div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
 																								<div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
+																								<div class="groupinput midd lockedd"><label>Available Funds</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																								<div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
 																							</div>
 
@@ -1840,7 +1829,7 @@
 																							<div class="vertical-box-row">
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
-																										<div data-scrollbar="true" data-height="90%" class="">
+																										<div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
 																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
 																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
@@ -1869,8 +1858,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																											<!-- <div ng-show="marketdepth.length != 0"> -->
-																											<!-- </div> -->
 																										</div>
 																									</div>
 																								</div>

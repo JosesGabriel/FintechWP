@@ -4011,18 +4011,18 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
-			// skip for arrow keys
-			if(event.which >= 37 && event.which <= 40) return;
+		// jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
+		// 	// skip for arrow keys
+		// 	if(event.which >= 37 && event.which <= 40) return;
 
-			// format number
-			jQuery(this).val(function(index, value) {
-			return value
-			.replace(/\D/g, "")
-			.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-			;
-			});
-		});
+		// 	// format number
+		// 	jQuery(this).val(function(index, value) {
+		// 	return value
+		// 	.replace(/\D/g, "")
+		// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		// 	;
+		// 	});
+		// });
 
 		// jQuery("")
 		jQuery('#selectdepotype').on('change', function() {

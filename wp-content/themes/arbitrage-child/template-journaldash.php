@@ -672,7 +672,19 @@ if($issampledata){
 		}
 	}
 
-	print_r($allstocks);
+	// winning stocks
+	$winstocks = $allstocks;
+	usort($winstocks, function($a, $b) {
+		return $a['profit'] - $b['profit'];
+	});
+
+	// lossing stocks
+	$lossing = $allstocks;
+	usort($lossing, function($a, $b) {
+		return $b['profit'] - $a['profit'];
+	});
+
+	print_r($winstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -1455,8 +1467,9 @@ if($issampledata){
 		                                                                                     <div style="width:7%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
 		                                                                                    <div style="width:77px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
-		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
-		                                                                                        <div class="hideformodal">
+		                                                                                    <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
+																							
+																								<div class="hideformodal">
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
@@ -1638,7 +1651,17 @@ if($issampledata){
 																	                                    </form>
 																	                                </div>
 		                                                                                        </div>
-		                                                                                    </div>
+																							</div>
+																							<div style="width:27px; text-align:center">
+																								<a href="" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																							</div>
+																							<!-- <input type="hidden" id="deletelog1"> -->
+																							<div style="width:25px">
+																								<a class="deletelog smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																							</div>
+																							<div style="width:25px; margin-left: 2px;">
+																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
+																							</div>
 		                                                                                   
 		                                                                                   <!-- <div style="width:40px; text-align: right;"><?php /*?>Notes<?php */?>
 		                                                                                    	<a href="#tradingnotes_JFC" class="smlbtn blue fancybox-inline">

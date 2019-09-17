@@ -3148,18 +3148,18 @@ if($issampledata){
 																							<div style="width:80px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tploss1">₱<?php echo number_format($profit, 2, ".", ","); ?></div>
 																							<div style="width:56px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tpercent1"><?php echo number_format($profitperc, 2, ".", ","); ?>%</div>
 																							<div style="width:27px; text-align:center">
-																								<a href="#tradelognotes_BLOOM" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																								<a href="#tradelognotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
 																							<input type="hidden" id="deletelog1" value="4394">
 																							<div style="width:25px">
 																								<a class="deletelog smlbtn-delete" data-istl="4394" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
-																								<a href="#editlognotes_BLOOM" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
+																								<a href="#editlognotes_<?php echo $value->tlid; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
 																							</div>
 																						</div>
 																						<div class="hidethis" id="hidelogs">
-																							<div class="tradelogbox" id="tradelognotes_BLOOM">
+																							<div class="tradelogbox" id="tradelognotes_<?php echo $value->tlid; ?>">
 																								<div class="entr_ttle_bar">
 																									<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
 																								</div>
@@ -3183,7 +3183,7 @@ if($issampledata){
 																						</div>
 																						<div class="hidethis" id="hidelogs">
 																							<form method="post" class="edittlogs">     
-																								<div class="tradelogbox" id="editlognotes_BLOOM">
+																								<div class="tradelogbox" id="editlognotes_<?php echo $value->tlid; ?>">
 																									<div class="entr_ttle_bar">
 																									<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
 																									</div>

@@ -583,30 +583,6 @@ if($issampledata){
 	$demotsonchart = '';
 	$buysscounter = 0;
 
-	
-	// foreach ($xdays as $xdaykey => $xdayvalue) {
-	// 	$basedate = date('D', strtotime($xdayvalue['dday']));
-	// 	$dpercschart .= '{';
-	// 	$dpercschart .= '"category": "'.$basedate.'",';
-	// 	$dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-	// 	$dpercschart .= '"column-2": "#673ab7"';
-	// 	$dpercschart .= '},';
-	// }
-
-	
-	// foreach ($feepermonth as $spmkey => $spmvalue) {
-	// 	$feeschart .= '{';
-	// 	$feeschart .= '"category": "'.date('M', strtotime($spmvalue['month'])).'",';
-	// 	$feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
-	// 	$feeschart .= '},';
-	// }
-
-	// $demotsonchart .= '{';
-	// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-	// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-	// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-	// $demotsonchart .= '},';
-
 	$profits = [
 		'mon' => 0,
 		'tue' => 0,
@@ -648,6 +624,8 @@ if($issampledata){
 		]
 	];
 
+	$allstocks = [];
+
 
 
 
@@ -688,11 +666,13 @@ if($issampledata){
 			}
 			$tremo[$value->tlemotions]['total_trades']++;
 			
+			$allstocks[$value->isstock]['profit'] += $profit;
+
 			
 		}
 	}
 
-	print_r($tremo);
+	print_r($allstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -713,8 +693,8 @@ if($issampledata){
 		if($value['total_trades'] > 0){
 			$demotsonchart .= '{';
 			$demotsonchart .= '"category": "'.$key.'",';
-			$demotsonchart .= '"column-2": "'.$value['trwin'].'",';
-			$demotsonchart .= '"Trades": "'.$value['trloss'].'"';
+			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
+			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
 			$demotsonchart .= '},';
 		}
 		

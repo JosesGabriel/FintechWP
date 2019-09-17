@@ -3853,8 +3853,8 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
-        jQuery(".editmenow").click(function(){
-        //$(document).on("click", ".editmenow", function() {
+        //jQuery(".editmenow").click(function(){
+        $(document).on("click", ".editmenow", function() {
 
            jQuery('.edittlogs').submit();
 

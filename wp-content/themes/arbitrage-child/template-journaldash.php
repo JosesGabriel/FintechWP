@@ -3997,7 +3997,7 @@ if($issampledata){
 			}
 		});
 		jQuery(document).on('keyup', '#sell_price--input, #qty_price--input' function (e) {
-			this.value=this.value.replace(/,/g, "");
+			$(this).val($(this).val().replace(/[,]/g, ""));
 		});
 
 		// jQuery("")

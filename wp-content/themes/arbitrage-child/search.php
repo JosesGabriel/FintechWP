@@ -106,6 +106,9 @@ $dstockinfo = $gerdqoute->data;
         margin: 0 auto;
         display: flex;
     }
+    .inner-main-content {
+        margin: 60px 0;
+    }
     .side-header .right-image .onto-user-meta-details {
         color: #ffffff;
         font-family: 'Montserrat', sans-serif;
@@ -675,8 +678,6 @@ $dstockinfo = $gerdqoute->data;
         }
 
 </style>
-
-<?php get_template_part('parts/global', 'css'); ?>
 
 <div id="main-content" class="ondashboardpage">
 	<div class="inner-placeholder">

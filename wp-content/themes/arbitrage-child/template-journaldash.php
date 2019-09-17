@@ -3007,18 +3007,12 @@ if($issampledata){
 		}
 
 		function getObject(event){
-			console.log(event.value);
-
 			jQuery(".dtopentertrade").find("#newdate").val(event.value);
 		}
 		function buydate(event){
-			console.log(event.value);
-
 			jQuery(".buyaddtrade").find("#addstockisdate").val(event.value);
 		}
 		function selldate(event){
-			console.log(event.value);
-
 			jQuery("#selldate").val(event.value);
 		}
     function deleteEvent(event) {
@@ -3205,7 +3199,6 @@ if($issampledata){
 
 		jQuery(".changeselldate").change(function() {
 			var date = $(this).val();
-			console.log(date, 'change');
 		});
         
         jQuery(".editmenow").click(function(){
@@ -3244,8 +3237,6 @@ if($issampledata){
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
-
-			console.log(dstocks);
 
 			jQuery("input[name='inpt_data_currprice']").val((dstocks.last).toFixed(2));
 			jQuery("input[name='inpt_data_change']").val((dstocks.change).toFixed(2));
@@ -3335,7 +3326,6 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
-			// console.log(finalcost.toFixed(2));
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
 			}
@@ -3350,7 +3340,6 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
-			// console.log(finalcost.toFixed(2));
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
 				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
@@ -3367,7 +3356,6 @@ if($issampledata){
 			
 			let total_price = parseFloat(price) * Math.trunc(quantity);
 			total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
-			console.log(total_price + " ~ " + thetradefees(total_price, 'buy'));
 
 			let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
 			let decnumbs = finaltotal.toFixed(2);

@@ -804,7 +804,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		 
 		    $('.editwatchlist').change(function(e) {
 
-		        //console.log($(this).val());
 		        if($(this).val() == 'delete'){
 				        e.preventDefault();
 						Swal.fire({

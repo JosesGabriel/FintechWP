@@ -37,8 +37,7 @@ $( document ).ready(function() {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
+            
         }
     });
 
@@ -72,8 +71,7 @@ $( document ).ready(function() {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
+            
         }
     });
 
@@ -137,8 +135,7 @@ $( document ).ready(function() {
             $(".ranks .trendingpreloader").hide();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
+            
         }
     });
 

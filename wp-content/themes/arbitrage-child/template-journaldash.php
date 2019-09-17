@@ -3135,7 +3135,7 @@ if($issampledata){
 																					$profit = $sellvalue - $marketvals;
 																					$profitperc = ($profit / $marketvals) * 100;
 
-																					$iswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
+																					$tliswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
 
 																					$trtotals += $profit;
 																					?>
@@ -3174,7 +3174,7 @@ if($issampledata){
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
-																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $iswin; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $tliswin; ?></span></div>
 																									</div>
 																									<div class="trdright darkbgpadd">
 																										<div><strong>Notes:</strong></div>

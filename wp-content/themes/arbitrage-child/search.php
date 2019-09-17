@@ -745,7 +745,7 @@ $dstockinfo = $gerdqoute->data;
                                                         </div>
                                                     </div>
                                                     <div class="stocks-body" style="margin-top: 10px">
-                                                        <div class="to-top-title">Stocks</div>
+                                                        <div class="to-top-title s">Stocks</div>
                                                         <?php
                                                         $args = array(
                                                             'post_type'      => 'page',
@@ -766,7 +766,7 @@ $dstockinfo = $gerdqoute->data;
                                                                 ?>
                                                                 <hr class="style14 style12">
                                                                 <div class="row col-xs-12 stock-row">
-                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/<?php echo $dstock ?>">
+                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/chart/<?php echo $dstock ?>">
                                                                         <div class="stockbox stockprice-bg-up" style="background-color: #<?php echo random_color(); ?>;">
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>
@@ -864,15 +864,15 @@ $dstockinfo = $gerdqoute->data;
                                                             <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                 <?php
                                                                     $dstock = get_the_title();
-                                                                    $price = $dstockinfo->$dstock->last;
-                                                                    $change = $dstockinfo->$dstock->change;
-
+                                                                    $key = array_search($dstock, array_column($dstockinfo, 'symbol'));
+                                                                    $price = $dstockinfo[$key]->last;
+                                                                    $change = $dstockinfo[$key]->change;
                                                                     $dsubtitle = get_post_meta( get_the_id(), 'stock_subtitle', true );
                                                                 ?>
                                                                 <hr class="style14 style12">
                                                     
                                                                 <div class="row col-xs-12 stock-row">
-                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/<?php echo $dstock ?>">
+                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/chart/<?php echo $dstock ?>">
                                                                         <div class="stockbox stockprice-bg-up" style="background-color: #<?php echo random_color(); ?>;">
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>

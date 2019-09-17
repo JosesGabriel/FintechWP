@@ -1330,7 +1330,7 @@ if($issampledata){
                                                                                     <div style="width:14%" class="table-title-live table-title-mvalue">Market Value</div>
                                                                                     <div style="width:14%" class="table-title-live table-title-profit">Profit</div>
                                                                                     <!--<div style="width:9%">Performance</div>-->
-                                                                                    <div style="width:8%" class="table-title-live table-title-performance">Perf.</div>
+                                                                                    <div style="width:7%" class="table-title-live table-title-performance">Perf.</div>
                                                                                     <div style="width:77px; text-align:center;">Action</div>
                                                                                     <!--<div style="width:45px; text-align: right;">Notes</div>-->
                                                                                 </div>
@@ -1472,7 +1472,7 @@ if($issampledata){
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
 		                                                                                    <div style="width:14%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->
-		                                                                                     <div style="width:8%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
+		                                                                                     <div style="width:7%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
 		                                                                                    <div style="width:77px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>

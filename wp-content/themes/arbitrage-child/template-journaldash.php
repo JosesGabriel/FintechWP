@@ -1056,6 +1056,14 @@ if($issampledata){
     }
 ?>
 <!-- Delete Data -->
+<?php
+																				
+	usort($gerdqoute->data, function($a, $b) {
+		return $a->symbol <=> $b->symbol;
+	});
+	$listosstocks = $gerdqoute->data;
+
+?>
 <!-- EOF Ledger Data -->
 <div class="record_modal">
 	<div class="record_main">
@@ -1242,14 +1250,7 @@ if($issampledata){
                                                         				<!-- <input type="submit" name="entertradebtn" value="Trade" class="enter-trade-btn"> -->
 																		<a href="#entertrade_mtrade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 																		<div class="hideformodal">
-																			<?php
-																				
-																				usort($gerdqoute->data, function($a, $b) {
-																					return $a->symbol <=> $b->symbol;
-																				});
-																				$listosstocks = $gerdqoute->data;
-
-																			?>
+																			
 																			<div class="entertrade dtopentertrade" id="entertrade_mtrade">
 																				<div class="entr_ttle_bar">
 																					<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php /*echo date('F j, Y g:i a');*/ ?></span>

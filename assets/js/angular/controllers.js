@@ -52,7 +52,6 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     socket.on('psec', function (data) {
         var num += 1;
         var transaction = {
-            num_id: num,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,

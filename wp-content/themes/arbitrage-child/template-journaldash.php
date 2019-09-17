@@ -711,7 +711,7 @@ if($issampledata){
 			$strats[$value->tlstrats]['total_trades']++;
 			
 			// top stocks
-			$allstocks[$value->isstock]['stockname'] += $value->isstock;
+			$allstocks[$value->isstock]['stockname'] = $value->isstock;
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
 			if(date('Y', strtotime($value->tldate)) == date('Y')){

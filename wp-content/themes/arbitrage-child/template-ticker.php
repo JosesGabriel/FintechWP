@@ -577,7 +577,8 @@
 <script>
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			forevertickerinit();
+			/*
+            forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
 					foreverticker();
@@ -589,7 +590,7 @@
 					forevertickerinit();
 				});
 			}
-
+            */
 
             setInterval(() => {
                 console.log('showme');
@@ -598,6 +599,7 @@
 
 		});
 		
+     /*   
     window.onload=function(){
 
 		(function countdown(remaining) {
@@ -608,7 +610,8 @@
 				document.getElementById('countdown').innerHTML = remaining;
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
-	}
+        */
+    }
 </script>
 <style>
 	.marqueethis {

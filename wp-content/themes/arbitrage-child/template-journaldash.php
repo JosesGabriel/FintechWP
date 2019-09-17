@@ -685,6 +685,8 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 
+	$intowinchartbands = '';
+	$intowinchartlabels = '';
 	$winxcount = 0;
 	foreach ($winstocks as $key => $value) {
 		if($value['profit'] > 0 && $winxcount < 3){
@@ -724,6 +726,8 @@ if($issampledata){
 		}
 	}
 
+	$intolosschartbands = '';
+	$intolosschartlabels = '';
 	$lossxcount = 0;
 	foreach ($lossing as $key => $value) {
 		if($value['profit'] < 0 && $lossxcount < 3){
@@ -2577,8 +2581,8 @@ if($issampledata){
 																								rsort($finalwinning);
 																							}
                                                                                             $dwinning = '';
-                                                                                            $intowinchartbands = '';
-                                                                                            $intowinchartlabels = '';
+                                                                                            // $intowinchartbands = '';
+                                                                                            // $intowinchartlabels = '';
 																							krsort($finalwinning);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {
 																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
@@ -2635,8 +2639,8 @@ if($issampledata){
 																								sort($finalloss);
 																							}
                                                                                             $dlossing = '';
-                                                                                            $intolosschartbands = '';
-																							$intolosschartlabels = '';
+                                                                                            // $intolosschartbands = '';
+																							// $intolosschartlabels = '';
 																							krsort($finalloss);
                                                                                             foreach ($finalloss as $flosskey => $flossvalue) {
                                                                                                 $dinss = '<li style="background-color: '.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ($flosskey >= 3 ? '' : '#b91e45')))).';display:'.($flosskey >= 3 ? 'none' : '').';color: #132941;border: none;">';

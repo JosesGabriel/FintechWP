@@ -583,6 +583,8 @@ if($issampledata){
 	$demotsonchart = '';
 	$stratstrg = '';
 	$wincharts = '';
+	$iswin = 0;
+	$isloss = 0;
 	$buysscounter = 0;
 
 	$profits = [
@@ -680,9 +682,11 @@ if($issampledata){
 			if($profit > 0){
 				$tremo[$value->tlemotions]['trwin']++;
 				$strats[$value->tlstrats]['trwin']++;
+				$iswin++;
 			} else {
 				$tremo[$value->tlemotions]['trloss'] ++;
 				$strats[$value->tlstrats]['trloss'] ++;
+				$isloss++;
 			}
 			$tremo[$value->tlemotions]['total_trades']++;
 			$strats[$value->tlstrats]['total_trades']++;
@@ -1960,8 +1964,8 @@ if($issampledata){
                                                             );
 
                                                         // get lits of combi strats
-                                                            $iswin = 0;
-                                                            $isloss = 0;
+                                                            // $iswin = 0;
+                                                            // $isloss = 0;
 															$totaltrade = 0;
 															$totalprofit = 0;
                                                             foreach ($alltradelogs as $key => $value) {
@@ -1994,11 +1998,11 @@ if($issampledata){
                                                                 $totalprofit += $dprofit;
 
                                                                 ++$totaltrade;
-                                                                if ($dprofit > 0) {
-                                                                    ++$iswin;
-                                                                } else {
-                                                                    ++$isloss;
-                                                                }
+                                                                // if ($dprofit > 0) {
+                                                                //     ++$iswin;
+                                                                // } else {
+                                                                //     ++$isloss;
+                                                                // }
                                                             }
 
                                                             $listmonth = [];

@@ -1858,8 +1858,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																											<!-- <div ng-show="marketdepth.length != 0"> -->
-																											<!-- </div> -->
 																										</div>
 																									</div>
 																								</div>

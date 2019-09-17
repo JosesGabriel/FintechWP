@@ -37,6 +37,26 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-147416476-1');
+	</script>
+	
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4838120237791146",
+		enable_page_level_ads: true
+		});
+	</script>
+	
 	<title>Arbitrage Trading Tools | Chart</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta name="robots" content="noindex">
@@ -1258,17 +1278,6 @@
                 $(this).parents(".bidaskbar").find("."+dtype).show();
                 $(this).parents(".bidaskbar_opt").hide();
             });
-			forevertickerinit();
-			function forevertickerinit() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
-			}
-			function foreverticker() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
-			}
 			
 			// $('.tr-background').mouseenter(function(){
 			// 	$('.tr-background').addClass('background');
@@ -1486,7 +1495,7 @@
 																					?>
 
 																					<div class="entr_ttle_bar">
-																						<strong>Enter Buy Order</strong> <span class="datestamp_header"><?php date_default_timezone_set('Asia/Manila'); echo date("F j, Y g:i a"); ?></span>
+																						<strong>Enter Buy Order</strong>
 																					</div>
 
 																					<form action="/journal" method="post">
@@ -1518,10 +1527,13 @@
 																								<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
 																								<i class="fa fa-lock" aria-hidden="true"></i></div>
 
-																								<div class="groupinput midd lockedd"><label>Buy Power</label><input type="text" class="input_buy_power" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																								<div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
 																								<div class="groupinput midd"><label>Quantity</label><input type="text" class="inpt_data_qty number" name="inpt_data_qty" required></div>
-																								<div class="groupinput midd lockedd"><label>Total Cost</label><input type="text" class="inpt_total_cost" name=""><i class="fa fa-lock" aria-hidden="true"></i></div>
+																								<div class="groupinput midd label_date">
+																									<label>Enter Date</label><input type="date" class="inpt_data_boardlot_get buySell__date-picker" required="" id="journal__trade-btn--date-picker">
+																								</div>
+																								<div class="midd lockedd"><label style="color: white;">Available Funds</label><input type="text" class="input_buy_power" style="background-color: transparent; border: 0; color: white; padding-right: 0 !important;" name="input_buy_power" data-dbaseval="<?php echo $dbaseaccount; ?>" value="<?php echo number_format( $dbaseaccount, 2, '.', ',' ); ?>" readonly></div>
+																								<div class="midd lockedd"><label style="color: white;">Total Cost</label><input type="text" class="inpt_total_cost" name="" style="background-color: transparent; border: 0; color: white; padding-right: 0 !important;"></div>
 																							</div>
 
 																							<div class="entr_col">
@@ -1628,7 +1640,7 @@
 
 																							<div class="groupinput">
 																								<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
-																								<iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
+																								<!-- <iframe class="bidaskbox" id="bidaskbox" src="<?php //echo $homeurlgen; ?>/preloader.html"></!--> -->
 																							</div>
 
 																							<div class="groupinput">
@@ -1840,7 +1852,7 @@
 																							<div class="vertical-box-row">
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
-																										<div data-scrollbar="true" data-height="90%" class="">
+																										<div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
 																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
 																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
@@ -1869,8 +1881,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																											<!-- <div ng-show="marketdepth.length != 0"> -->
-																											<!-- </div> -->
 																										</div>
 																									</div>
 																								</div>
@@ -2019,23 +2029,23 @@
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
 																												<strong>STOCK</strong>
-																												<i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																												<!-- <i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
 																												<strong>LAST</strong>
-																												<i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																												<!-- <i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change_percentage')" style="padding: 3px !important; cursor: pointer;">
 																												<strong>CHANGE</strong>
-																												<i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																												<!-- <i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
 																												<strong>VALUE</strong>
-																												<i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																												<!-- <i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
-																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px !important; cursor: pointer;">
+																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px 3px 3px 10px !important; cursor: pointer;">
 																												<strong>TRADES</strong>
-																												<i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i>
+																												<!-- <i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
 																												<a ng-if="watchlists[watchlist] != 'stocks' && watchlists[watchlist] != 'new' && watchlist != 'Default Watchlist'" href="javascript:void(0);" ng-click="deleteWatchlist(watchlist)" class="text-red-darker" title="Delete Watchlist"><i class="fa fa-fw fa-trash"></i></a>
@@ -2062,7 +2072,7 @@
 																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
 																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
 																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
-																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.trades | numeraljs:'0,0'}}</td>
+																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;padding-right: 5px !important;">{{stock.trades | numeraljs:'0,0'}}</td>
 																											<?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">
 																												<a ng-if="watchlists[watchlist] == 'stocks'" href="javascript:void(0);" ng-click="addToWatchlist(stock.symbol)" class="text-default"><i class="fa fa-fw fa-plus"></i></a>
 																												<a ng-if="watchlists[watchlist] != 'stocks'" href="javascript:void(0);" ng-click="removeFromWatchlist(watchlists[watchlist], stock.symbol)" class="text-red-darker" title="Remove Stock"><i class="fa fa-fw fa-trash"></i></a>
@@ -2254,6 +2264,11 @@
 		$('#draggable_buysell').draggable({cancel:false});
 	} );
 	</script>
+	<script>
+		var today = new Date();
+		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
+		jQuery(".buySell__date-picker").attr('max',currentDate);
+	</script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>
@@ -2292,7 +2307,7 @@
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
-		var _client_id 	= 'arbitrage';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _username 	= '<?php echo $user->user_email; ?>';
 		var _symbol 	= '<?php 
@@ -2417,6 +2432,8 @@
 		.arb_buysell {
 			background-color: rgba(215, 215, 215, .15);
 			position: absolute;
+			left: -229px;
+			top: 48px;
 			padding: 5px 20px 5px 30px;
 			border-radius: 10px;
 		}

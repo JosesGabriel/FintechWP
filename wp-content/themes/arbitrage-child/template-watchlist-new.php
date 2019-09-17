@@ -221,14 +221,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																?>
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<div class="watchlist--buttons">
-																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
+																	<!--<div class="watchlist--buttons">
+																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div> 
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	</div>
+																	</div>-->
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="s_dropdown" style="display: inline-block;"> 
+																				<select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
+										                                                <option  value="select" selected>Select</option>
+										                                                <option  value="delete">Delete</option>
+										                                                <option  value="edit">Edit</option>
+										                                        </select>
+
+																			</div>
 																			<div class="subnotif" style="display: none;">
 																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
 																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
@@ -308,8 +316,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?></span>
-																						<span class="ontoright">Php</span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
+																						
+																						</span>
+																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>
 																			<?php endif ?>
@@ -317,8 +327,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?></span>
-																						<span class="ontoright">Php</span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
+																						
+																						</span>
+																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>
 																			<?php endif ?>
@@ -326,8 +338,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?></span>
-																						<span class="ontoright">Php</span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
+																						
+																						</span>
+																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>
 																			<?php endif ?>
@@ -339,7 +353,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	          <span aria-hidden="true">&times;</span>
+																	          <span class="closemodal" aria-hidden="true">&times;</span>
 																	        </button>
 																	      </div>
 																	      <div class="modal-body edit-stocks-padding">
@@ -784,6 +798,59 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		}
         ?>
     }
+
+    jQuery(document).ready(function() {
+
+		 
+		    $('.editwatchlist').change(function(e) {
+
+		        //console.log($(this).val());
+		        if($(this).val() == 'delete'){
+				        e.preventDefault();
+						Swal.fire({
+							title: 'Are you sure?',
+							text: "You won't be able to revert this!",
+							type: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Yes, delete it!'
+						}).then((result) => {
+							if (result.value) {
+								Swal.fire(
+									'Deleted!',
+									'Your Watchlist has been deleted.',
+									'success'
+								).then((result) => {
+									var ditemtoremove = jQuery(this).attr('data-space');
+									//window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
+								});
+							}
+						});
+		        }
+		        if($(this).val() == 'edit'){
+		        		 var ditemtoedit = jQuery(this).attr('data-space');
+		        		 console.log(ditemtoedit);
+		           		$('#modal' + ditemtoedit).addClass('show');
+		        }else {
+		        	$('#modal' + ditemtoedit).removeClass('show');
+		        }
+
+    		});
+
+		   $('.closemodal').click(function(e) {
+
+		   		var ditemtoedit = jQuery(this).attr('data-space');
+
+		   		if(jQuery('.dmodaleditwatch').hasClass('show')){
+		   			console.log('remove');
+		   			jQuery('.dmodaleditwatch').removeClass('show');
+		   		}
+
+		   });
+
+    });
 
 	</script>
 

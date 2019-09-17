@@ -688,7 +688,7 @@ input[type="submit"].green {
     background: none;
     line-height: 29px;
     font-size: 14px;
-    padding: 0 12px;
+    padding: 0 12px !important;
     border-radius: 25px;
     color: #fff;
     cursor: pointer;
@@ -1095,9 +1095,10 @@ span.modal-notes-result {
 }
 .tradelogsbutton {
     width: auto;
-    float: right;
+    float: left;
     position: relative;
     top: -3px;
+    margin-left: 10px;
 }
 .delete-data-btn {
     float: right;
@@ -1277,7 +1278,7 @@ input.enter-trade-btn:hover {
 }
 .buy-order--submit {
     position: relative;
-    left: 580px;
+    left: 584px;
 }
 .modal-button-confirm {
     position: relative;
@@ -1444,6 +1445,7 @@ input.enter-trade-btn:hover {
 }
 .label_cost {
     margin: 0;
+    height: 20px;
 }
 .label_cost label {
     font-weight: 500;
@@ -1467,6 +1469,21 @@ input.enter-trade-btn:hover {
 .label_date {
     margin-bottom: 5px;
 }
+.groupinput.midd.rec_label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.rec_label_date {
+    /* margin-bottom: 5px; */
+}
 span.legend_circ {
     width: 10px;
     height: 10px;
@@ -1483,3 +1500,149 @@ span.legend_circ {
 .dstatstrade ul li:nth-child(4) span.legend_circ {
     background: #06af68;
 } */
+.record_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999999999;
+    display: none;
+}
+.record_main {
+    width: 518px;
+    margin: 65px auto 0;
+    background: #0c1f33;
+    border-radius: 5px;
+}
+.record_header {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+.record_head_label {
+    background: #34495e;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    vertical-align: middle;
+    padding: 15px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.label_thisright {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.label_thisleft {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #d8d8d8;
+    padding-bottom: 6px;
+    display: block;
+}
+.record_body .groupinput.midd input {
+    width: 147px;
+}
+.record_body .groupinput.midd select {
+    width: 148px !important;
+}
+.record_body {
+    margin: 0;
+}
+.dbuttonrecord_onmodal {
+    display: block;
+    width: 100%;
+    padding: 0 15px 15px;
+}
+.record_footer {
+    margin: 0;
+}
+span.title_logss {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 17px;
+    float: left;
+}
+i.fas.fa-close.to_closethis_rec {
+    float: right;
+    background: #000;
+    padding: 4px 7px;
+    top: -6px;
+    position: relative;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+.to-left-align {
+    text-align: right !important;
+}
+.buySell__date-picker.trade_input {
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    border: none;
+    padding: 2px 0 3px;
+    padding-right: 0 !important;
+    background: #4e6a85;
+}
+.sell_date-margin {
+    margin-bottom: 0;
+}
+input.no-padding {
+    padding-right: 3px !important;
+}
+input#sell_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 5px 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+input#qty_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 5px 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+.record_modal .selectonly select {
+    width: 152px;
+}
+.record_modal .entr_wrapper_mid {
+    padding: 10px 0 0 10px !important;
+    min-height: 172px;
+    margin: 11px auto;
+}
+.record_modal .entr_col {
+    padding-right: 10px;
+}
+.record_modal textarea.darktheme {
+    max-width: 466px;
+    margin: 0;
+}
+.record_modal .entr_col:nth-child(3) {
+    padding-right: 0 !important;
+}

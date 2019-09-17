@@ -733,11 +733,6 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 
-	usort($strats, function($a, $b) {
-		return $b['trwin'] - $a['trwin'];
-	});
-
-	print_r($strats);
 
 	$intowinchartbands = '';
 	$intowinchartlabels = '';
@@ -847,8 +842,14 @@ if($issampledata){
 			$demotsonchart .= '},';
 		}	
 	}
-
+	$winningstarts = "";
+	$lossingstrats = "";
+	$lastwin = 0;
+	$lastlose = 0;
 	foreach ($strats as $key => $value) {
+		$winningstarts = ($lastwin > $value['trwin'] ? $key : $winningstarts);
+		$lossingstrats = ($lastlose > $value['trloss'] ? $key : $lossingstrats);
+
 		$stratstrg .= '{';
 		$stratstrg .= '"category": "'.$key.'",';
 		$stratstrg .= '"column-2": "'.$value['trloss'].'",';
@@ -861,6 +862,8 @@ if($issampledata){
 		$wincharts .= '"strategy": "'.$key.'",';
 		$wincharts .= '"winvals": '.$value['trwin'].'';
 		$wincharts .= '},';
+		$lastwin = $value['trwin'];
+		$lastlose = $value['trloss'];
 	}
 
 	foreach ($profitsmonths as $key => $value) {
@@ -2480,11 +2483,11 @@ if($issampledata){
 
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrg1"></span> Winning Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Trend Following</div>
+                                                                                    <div class="width48" style="text-align: right;"><?php echo $winningstarts; ?></div>
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                                                                    <div class="width48" style="text-align: right;">Breakout Play</div>
+                                                                                    <div class="width48" style="text-align: right;"><?php echo $lossingstrats; ?></div>
                                                                                 </li>
 
                                                                             </ul>

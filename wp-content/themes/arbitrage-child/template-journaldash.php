@@ -2626,7 +2626,7 @@ if($issampledata){
 													</div>
 													<br class="clear">
 													<pre>
-														<?php print_r($tremo); ?>
+														<?php //print_r($tremo); ?>
 													</pre>
 													<?php
 													
@@ -2704,23 +2704,23 @@ if($issampledata){
 																<?php
 																	if($isjounalempty){
 																		$emotioninfo = [
-																			0 => [
+																			'Neutral' => [
 																				'emotion' => 'Neutral',
-																				'iswin' => 3,
-																				'isloss' => 4,
-																				'totaltrades' => 7
+																				'trwin' => 3,
+																				'trloss' => 4,
+																				'total_trades' => 7
 																			],
-																			1 => [
+																			'Greedy' => [
 																				'emotion' => 'Greedy',
-																				'iswin' => 2,
-																				'isloss' => 3,
-																				'totaltrades' => 5
+																				'trwin' => 2,
+																				'trloss' => 3,
+																				'total_trades' => 5
 																			],
-																			2 => [
+																			'Fearful' => [
 																				'emotion' => 'Fearful',
-																				'iswin' => 6,
-																				'isloss' => 1,
-																				'totaltrades' => 7
+																				'trwin' => 6,
+																				'trloss' => 1,
+																				'total_trades' => 7
 																			],
 																		];
 																	}
@@ -2746,27 +2746,16 @@ if($issampledata){
                                                                                     <div>Win Rate</div>
                                                                                 </li>
 																				<?php //$demotsonchart = ''; ?>
-                                                                            	<?php foreach ($emotioninfo as $emtkey => $emtvalue) {
-                                                        ?>
+                                                                            	<?php foreach ($tremo as $emtkey => $emtvalue) { ?>
                                                                             		<li>
-	                                                                                    <div><?php  echo $emtvalue['emotion']; ?></div>
-	                                                                                    <div><?php  echo $emtvalue['totaltrades']; ?></div>
-	                                                                                    <div><?php  echo $emtvalue['iswin']; ?></div>
-	                                                                                    <div><?php  echo $emtvalue['isloss']; ?></div>
-	                                                                                    <div><?php  echo number_format(($emtvalue['iswin'] / $emtvalue['totaltrades']) * 100, 2, '.', ''); ?>%</div>
+	                                                                                    <div><?php  echo $emtkey; ?></div>
+	                                                                                    <div><?php  echo $emtvalue['total_trades']; ?></div>
+	                                                                                    <div><?php  echo $emtvalue['trwin']; ?></div>
+	                                                                                    <div><?php  echo $emtvalue['trloss']; ?></div>
+	                                                                                    <div><?php  echo number_format(($emtvalue['trwin'] / $emtvalue['total_trades']) * 100, 2, '.', ''); ?>%</div>
 	                                                                                </li>
-																					<?php
-                                                                                    // $demotsonchart .= '{';
-																					// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-																					// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-																					// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-																					// $demotsonchart .= '},'; 
-																					?>
-																					<?php if ($emtkey >= 4) {
-                                                            break;
-                                                        } ?>
                                                                             	<?php
-                                                    } ?>
+                                                    							} ?>
                                                                             </ul>
                                                                         </div>
                                                                     </div>

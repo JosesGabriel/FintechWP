@@ -724,6 +724,48 @@ if($issampledata){
 		}
 	}
 
+	$lossxcount = 0;
+	foreach ($lossing as $key => $value) {
+		if($value['profit'] < 0 && $lossxcount < 3){
+
+			$profperc = (abs($value['profit']) / $value['profmarketval']) * 100;
+
+			$intolosschartbands .= '{';
+			$intolosschartbands .= '"color": "'.($lossxcount == 0 ? '#2C3E51' : ($lossxcount == 1 ? '#223448' : ($lossxcount == 2 ? '#172A3F' : ''))).'",';
+			$intolosschartbands .= '"startValue": 0,';
+			$intolosschartbands .= '"endValue": "100",';
+			$intolosschartbands .= ' "radius": "'.($lossxcount == 0 ? '100' : ($lossxcount == 1 ? '85' : ($lossxcount == 2 ? '70' : ''))).'%",';
+			$intolosschartbands .= ' "innerRadius": "'.($lossxcount == 0 ? '85' : ($lossxcount == 1 ? '70' : ($lossxcount == 2 ? '55' : ''))).'%",';
+			$intolosschartbands .= '"alpha": 0.5';
+			$intolosschartbands .= '},{';
+			$intolosschartbands .= ' "color": "'.($lossxcount == 0 ? '#b91e45' : ($lossxcount == 1 ? '#732546' : ($lossxcount == 2 ? '#442946' : ''))).'",';
+			$intolosschartbands .= ' "startValue": 0,';
+			$intolosschartbands .= ' "endValue": '. ($profperc > 0 ? number_format($profperc, 2, '.', ',') : 0.00 ).',';
+			$intolosschartbands .= ' "radius": "'.($lossxcount == 0 ? '100' : ($lossxcount == 1 ? '85' : ($lossxcount == 2 ? '70' : ''))).'%",';
+			$intolosschartbands .= ' "innerRadius": "'.($lossxcount == 0 ? '85' : ($lossxcount == 1 ? '70' : ($lossxcount == 2 ? '55' : ''))).'%",';
+			$intolosschartbands .= ' "balloonText": "'. ($profperc > 0 ? number_format($profperc, 2, '.', ',') : 0.00).'%"';
+			$intolosschartbands .= '},';
+			
+			$intolosschartlabels .= '{';
+			$intolosschartlabels .= '"text": "'. ($lossxcount <= 2 ? $key : '') .'",';
+			$intolosschartlabels .= '"x": "49%",';
+			$intolosschartlabels .= '"y": "'.($lossxcount == 0 ? '6.5' : ($lossxcount == 1 ? '13.4' : ($lossxcount == 2 ? '20' : '33'))).'%",';
+			$intolosschartlabels .= '"size": 11,';
+			$intolosschartlabels .= '"bold": false,';
+			$intolosschartlabels .= '"color": "#d8d8d8",';
+			$intolosschartlabels .= '"align": "right",';
+			$intolosschartlabels .= '},';
+			
+			$lossxcount++;
+			if($lossxcount == 3){
+				break;
+			}
+		}
+	}
+	
+
+	
+
 	
 
 
@@ -2605,31 +2647,31 @@ if($issampledata){
 																								
 																								// echo $flossvalue['dprofit']." dprof ~ ";
 
-                                                                                                $intolosschartbands .= '{';
-                                                                                                $intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
-                                                                                                $intolosschartbands .= '"startValue": 0,';
-                                                                                                $intolosschartbands .= '"endValue": "100",';
-                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
-                                                                                                $intolosschartbands .= '"alpha": 0.5';
-                                                                                                $intolosschartbands .= '},{';
-																								$intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
-                                                                                                $intolosschartbands .= ' "startValue": 0,';
-                                                                                                $intolosschartbands .= ' "endValue": '. (($flossvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
-                                                                                                $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
-                                                                                                $intolosschartbands .= ' "balloonText": "'. (($flossvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
-																								$intolosschartbands .= '},';
+                                                                                                // $intolosschartbands .= '{';
+                                                                                                // $intolosschartbands .= '"color": "'.($flosskey == 0 ? '#2C3E51' : ($flosskey == 1 ? '#223448' : ($flosskey == 2 ? '#172A3F' : ''))).'",';
+                                                                                                // $intolosschartbands .= '"startValue": 0,';
+                                                                                                // $intolosschartbands .= '"endValue": "100",';
+                                                                                                // $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                // $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                // $intolosschartbands .= '"alpha": 0.5';
+                                                                                                // $intolosschartbands .= '},{';
+																								// $intolosschartbands .= ' "color": "'.($flosskey == 0 ? '#b91e45' : ($flosskey == 1 ? '#732546' : ($flosskey == 2 ? '#442946' : ''))).'",';
+                                                                                                // $intolosschartbands .= ' "startValue": 0,';
+                                                                                                // $intolosschartbands .= ' "endValue": '. (($flossvalue['dprofit'] !=0) || $totalwin != 0 ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                // $intolosschartbands .= ' "radius": "'.($flosskey == 0 ? '100' : ($flosskey == 1 ? '85' : ($flosskey == 2 ? '70' : ''))).'%",';
+                                                                                                // $intolosschartbands .= ' "innerRadius": "'.($flosskey == 0 ? '85' : ($flosskey == 1 ? '70' : ($flosskey == 2 ? '55' : ''))).'%",';
+                                                                                                // $intolosschartbands .= ' "balloonText": "'. (($flossvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($flossvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
+																								// $intolosschartbands .= '},';
 																								
-																								$intolosschartlabels .= '{';
-																								$intolosschartlabels .= '"text": "'. ($flosskey <= 2 ? $flossvalue['dstock'] : '') .'",';
-																								$intolosschartlabels .= '"x": "49%",';
-																								$intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
-																								$intolosschartlabels .= '"size": 11,';
-																								$intolosschartlabels .= '"bold": false,';
-																								$intolosschartlabels .= '"color": "#d8d8d8",';
-																								$intolosschartlabels .= '"align": "right",';
-																								$intolosschartlabels .= '},';
+																								// $intolosschartlabels .= '{';
+																								// $intolosschartlabels .= '"text": "'. ($flosskey <= 2 ? $flossvalue['dstock'] : '') .'",';
+																								// $intolosschartlabels .= '"x": "49%",';
+																								// $intolosschartlabels .= '"y": "'.($flosskey == 0 ? '6.5' : ($flosskey == 1 ? '13.4' : ($flosskey == 2 ? '20' : '33'))).'%",';
+																								// $intolosschartlabels .= '"size": 11,';
+																								// $intolosschartlabels .= '"bold": false,';
+																								// $intolosschartlabels .= '"color": "#d8d8d8",';
+																								// $intolosschartlabels .= '"align": "right",';
+																								// $intolosschartlabels .= '},';
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dlossing; ?>

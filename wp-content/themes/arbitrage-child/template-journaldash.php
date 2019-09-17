@@ -281,8 +281,13 @@ echo $user->ID ." versis ". $user->ID;
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		// print_r($_POST);
-		// exit;
+		// for DB injection
+		// sanitize the information
+
+
+
+		print_r($_POST);
+		exit;
 
         // Update journal data.
         $journalpostlog = array(

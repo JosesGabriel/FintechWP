@@ -713,8 +713,8 @@ if($issampledata){
 		if($value['total_trades'] > 0){
 			$demotsonchart .= '{';
 			$demotsonchart .= '"category": "'.$key.'",';
-			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
-			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
+			$demotsonchart .= '"column-2": "'.$value['trwin'].'",';
+			$demotsonchart .= '"Trades": "'.$value['trloss'].'"';
 			$demotsonchart .= '},';
 		}
 		

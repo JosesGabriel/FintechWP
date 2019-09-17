@@ -842,8 +842,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		   $('.closemodal').click(function(e) {
 
 		   		var ditemtoedit = jQuery(this).attr('data-space');
-		   		console.log('remove');
 		   		if($('#modal' + ditemtoedit).hasClass('show')){
+		   			console.log('remove');
 		   			$('#modal' + ditemtoedit).removeClass('show');
 		   		}
 

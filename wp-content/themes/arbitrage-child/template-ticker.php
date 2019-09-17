@@ -589,6 +589,13 @@
 					forevertickerinit();
 				});
 			}
+
+
+            setInterval(() => {
+                console.log('showme');
+                console.log(ticker_data_ralph);
+            }, 5000);
+
 		});
 		
     window.onload=function(){

@@ -732,7 +732,7 @@ if($issampledata){
 	foreach ($lossing as $key => $value) {
 		if($value['profit'] < 0 && $lossxcount < 3){
 
-			$profperc = (abs($value['profit']) / $value['profmarketval']) * 100;
+			$lossprofperc = (abs($value['profit']) / $value['profmarketval']) * 100;
 
 			$intolosschartbands .= '{';
 			$intolosschartbands .= '"color": "'.($lossxcount == 0 ? '#2C3E51' : ($lossxcount == 1 ? '#223448' : ($lossxcount == 2 ? '#172A3F' : ''))).'",';
@@ -744,10 +744,10 @@ if($issampledata){
 			$intolosschartbands .= '},{';
 			$intolosschartbands .= ' "color": "'.($lossxcount == 0 ? '#b91e45' : ($lossxcount == 1 ? '#732546' : ($lossxcount == 2 ? '#442946' : ''))).'",';
 			$intolosschartbands .= ' "startValue": 0,';
-			$intolosschartbands .= ' "endValue": '. ($profperc > 0 ? number_format($profperc + 20, 2, '.', ',') : 0.00 ).',';
+			$intolosschartbands .= ' "endValue": '. ($lossprofperc > 0 ? number_format($lossprofperc + 20, 2, '.', ',') : 0.00 ).',';
 			$intolosschartbands .= ' "radius": "'.($lossxcount == 0 ? '100' : ($lossxcount == 1 ? '85' : ($lossxcount == 2 ? '70' : ''))).'%",';
 			$intolosschartbands .= ' "innerRadius": "'.($lossxcount == 0 ? '85' : ($lossxcount == 1 ? '70' : ($lossxcount == 2 ? '55' : ''))).'%",';
-			$intolosschartbands .= ' "balloonText": "'. ($profperc > 0 ? number_format($profperc + 20, 2, '.', ',') : 0.00).'%"';
+			$intolosschartbands .= ' "balloonText": "'. ($lossprofperc > 0 ? number_format($lossprofperc + 20, 2, '.', ',') : 0.00).'%"';
 			$intolosschartbands .= '},';
 			
 			$intolosschartlabels .= '{';

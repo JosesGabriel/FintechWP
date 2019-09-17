@@ -289,38 +289,39 @@ echo $user->ID ." versis ". $user->ID;
 		// exit;
 
         // Update journal data.
-        $journalpostlog = array(
-            // 'ID'           	=> $data_postid,
-            'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-            'post_status' => 'publish',
-            'post_author' => $user_idd,
-            'post_category' => array(19, 20),
-            'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-            'meta_input' => array(
-                // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-                // 'data_sellday' => $_POST['inpt_data_sellday'],
-				// 'data_sellyear' => $_POST['inpt_data_sellyear'],
+        // $journalpostlog = array(
+        //     // 'ID'           	=> $data_postid,
+        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
+        //     'post_status' => 'publish',
+        //     'post_author' => $user_idd,
+        //     'post_category' => array(19, 20),
+        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
+        //     'meta_input' => array(
+        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
+        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
+		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
 				
-				'data_sellmonth' => $sellmonth,
-                'data_sellday' => $sellday,
-                'data_sellyear' => $sellyear,
+		// 		'data_sellmonth' => $sellmonth,
+        //         'data_sellday' => $sellday,
+        //         'data_sellyear' => $sellyear,
 
-                'data_isdateofw' => $selldayname,
+        //         'data_isdateofw' => $selldayname,
 
-                'data_stock' => $_POST['inpt_data_stock'],
-                'data_dprice' => $_POST['inpt_data_price'],
+        //         'data_stock' => $_POST['inpt_data_stock'],
+        //         'data_dprice' => $_POST['inpt_data_price'],
 				
-                'data_sell_price' => $sellprice,
-                'data_quantity' => $sellqty,
-                'data_avr_price' => $_POST['inpt_avr_price'],
+        //         'data_sell_price' => $sellprice,
+        //         'data_quantity' => $sellqty,
+        //         'data_avr_price' => $_POST['inpt_avr_price'],
 
-                'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => $user->ID,
-            ),
-        );
+        //         'data_trade_info' => $_POST['dtradelogs'],
+        //         'data_userid' => $user->ID,
+        //     ),
+        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-        wp_insert_post($journalpostlog);
+		// wp_insert_post($journalpostlog);
+		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
@@ -345,6 +346,8 @@ echo $user->ID ." versis ". $user->ID;
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
 			));
+
+		
 
 		
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
@@ -1041,16 +1044,17 @@ if($issampledata){
         }
         delete_user_meta($user->ID, '_trade_list');
 
-        // delete all trade logs
-        foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-            echo $delpostvalue['id'].'~';
-            wp_delete_post($delpostvalue['id'], true);
-        }
+        // // delete all trade logs
+        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
+        //     echo $delpostvalue['id'].'~';
+        //     wp_delete_post($delpostvalue['id'], true);
+        // }
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
-
+		$wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
+		$deletelogs = 'delete from arby_tradelog where isuser ='.$user->ID;
+		$wpdb->query($deletelogs);
         wp_redirect('/journal');
         exit;
     }
@@ -1112,7 +1116,7 @@ if($issampledata){
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
-					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_profitloss" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				</div>
 				<div class="entr_wrapper_mid">
 					<div class="entr_col">
@@ -3332,7 +3336,26 @@ if($issampledata){
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
 			// console.log(finalcost.toFixed(2));
-			jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+			if(!isNaN(finalcost)){
+				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+			}
+			
+		});
+
+		jQuery(document).on('keyup', 'input[name="inpt_data_price_sold"], input[name="inpt_data_qty_sold"]', function (e) {
+			let boughtfinal = jQuery('input[name="inpt_data_total_bought_price"]').val().replace(/,/g, '');
+
+			let price = jQuery('input[name="inpt_data_price_sold"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty_sold"]').val().replace(/,/g, '');
+
+			let totalmarket = parseFloat(price) * parseFloat(quantity);
+			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
+			// console.log(finalcost.toFixed(2));
+			if(!isNaN(finalcost)){
+				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
+			}
+			
 		});
 
 

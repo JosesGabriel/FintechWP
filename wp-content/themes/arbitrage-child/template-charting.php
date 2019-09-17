@@ -6,6 +6,8 @@
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Content-Type: application/json');
+header("Cache-Control: no-cache"); 
+header("Pragma: no-cache"); 
 
 global $wpdb;
 
@@ -68,4 +70,8 @@ if ($request_method === 'POST') {
     respond(true, [
         'id' => $wpdb->insert_id,
     ]);
+} else if ($request_method === 'GET') {
+
 }
+
+respond(false, ['status' => 'No hacc ples.'], 403);

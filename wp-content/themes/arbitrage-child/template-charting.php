@@ -3,7 +3,8 @@
  * Template Name: Charting API Page
  * Template page for Watchlist Page Platform
  */
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Content-Type: application/json');
 
 global $wpdb;

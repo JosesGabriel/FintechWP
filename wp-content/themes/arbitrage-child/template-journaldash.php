@@ -580,6 +580,7 @@ if($issampledata){
 	$dpercschart = '';
 	$gplchart = '';
 	$feeschart = '';
+	$demotsonchart = '';
 	$buysscounter = 0;
 
 	
@@ -706,6 +707,17 @@ if($issampledata){
 		$feeschart .= '"category": "'.ucfirst($key).'",';
 		$feeschart .= '"column-1": "'.$value.'"';
 		$feeschart .= '},';
+	}
+
+	foreach ($tremo as $key => $value) {
+		if($value['total_trades'] > 0){
+			$demotsonchart .= '{';
+			$demotsonchart .= '"category": "'.$key.'",';
+			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
+			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
+			$demotsonchart .= '},';
+		}
+		
 	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
@@ -2724,7 +2736,7 @@ if($issampledata){
                                                                                     <div>Losses</div>
                                                                                     <div>Win Rate</div>
                                                                                 </li>
-																				<?php $demotsonchart = ''; ?>
+																				<?php //$demotsonchart = ''; ?>
                                                                             	<?php foreach ($emotioninfo as $emtkey => $emtvalue) {
                                                         ?>
                                                                             		<li>
@@ -2735,11 +2747,12 @@ if($issampledata){
 	                                                                                    <div><?php  echo number_format(($emtvalue['iswin'] / $emtvalue['totaltrades']) * 100, 2, '.', ''); ?>%</div>
 	                                                                                </li>
 																					<?php
-                                                                                    $demotsonchart .= '{';
-																					$demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-																					$demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-																					$demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-																					$demotsonchart .= '},'; ?>
+                                                                                    // $demotsonchart .= '{';
+																					// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+																					// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+																					// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+																					// $demotsonchart .= '},'; 
+																					?>
 																					<?php if ($emtkey >= 4) {
                                                             break;
                                                         } ?>

@@ -686,40 +686,43 @@ if($issampledata){
 	});
 
 	$winxcount = 0;
-	// foreach ($winstocks as $key => $value) {
-	// 	if($value['profit'] > 0 && $winxcount < 3){
-	// 		$intowinchartbands .= '{';
-	// 		$intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
-	// 		$intowinchartbands .= '"startValue": 0,';
-	// 		$intowinchartbands .= '"endValue": "100",';
-	// 		$intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-	// 		$intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-	// 		$intowinchartbands .= '"alpha": 0.3';
-	// 		$intowinchartbands .= '}, {';
-	// 		$intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
-	// 		$intowinchartbands .= ' "startValue": 0,';
-	// 		$intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-	// 		$intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-	// 		$intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-	// 		$intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
-	// 		$intowinchartbands .= '},';
+	foreach ($winstocks as $key => $value) {
+		if($value['profit'] > 0 && $winxcount < 3){
+
+			$profperc = (abs($value['profit']) / $value['profmarketval']) * 100;
+
+			$intowinchartbands .= '{';
+			$intowinchartbands .= '"color": "'.($winxcount == 2 ? '#2C3E51' : ($winxcount == 1 ? '#223448' : ($winxcount == 0 ? '#172A3F' : ''))).'",';
+			$intowinchartbands .= '"startValue": 0,';
+			$intowinchartbands .= '"endValue": "100",';
+			$intowinchartbands .= '"radius": "'.($winxcount == 2 ? '100' : ($winxcount == 1 ? '85' : ($winxcount == 0 ? '70' : ''))).'%",';
+			$intowinchartbands .= '"innerRadius": "'.($winxcount == 2 ? '85' : ($winxcount == 1 ? '70' : ($winxcount == 0 ? '55' : ''))).'%",';
+			$intowinchartbands .= '"alpha": 0.3';
+			$intowinchartbands .= '}, {';
+			$intowinchartbands .= ' "color": "'.($winxcount == 2 ? '#00e676' : ($winxcount == 1 ? '#06af68' : ($winxcount == 0 ? '#0d785a' : ''))).'",';
+			$intowinchartbands .= ' "startValue": 0,';
+			$intowinchartbands .= ' "endValue": '. (($profperc >= 0) ? number_format(abs($profperc), 2, '.', ',') : 0.00 ).',';
+			$intowinchartbands .= ' "radius": "'.($winxcount == 2 ? '100' : ($winxcount == 1 ? '85' : ($winxcount == 0 ? '70' : ''))).'%",';
+			$intowinchartbands .= ' "innerRadius": "'.($winxcount == 2 ? '85' : ($winxcount == 1 ? '70' : ($winxcount == 0 ? '55' : ''))).'%",';
+			$intowinchartbands .= ' "balloonText": "'. ($profperc > 0 ? number_format($profperc, 2, '.', ',') : 0.00).'%"';
+			$intowinchartbands .= '},';
 		
-	// 		$intowinchartlabels .= '{';
-	// 		$intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
-	// 		$intowinchartlabels .= '"x": "49%",';
-	// 		$intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
-	// 		$intowinchartlabels .= '"size": 11,';
-	// 		$intowinchartlabels .= '"bold": false,';
-	// 		$intowinchartlabels .= '"color": "#d8d8d8",';
-	// 		$intowinchartlabels .= '"align": "right",';
-	// 		$intowinchartlabels .= '},';
+			$intowinchartlabels .= '{';
+			$intowinchartlabels .= '"text": "'. ($winxcount <= 2 ? $key : '') .'",';
+			$intowinchartlabels .= '"x": "49%",';
+			$intowinchartlabels .= '"y": "'.($winxcount == 2 ? '6.5' : ($winxcount == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
+			$intowinchartlabels .= '"size": 11,';
+			$intowinchartlabels .= '"bold": false,';
+			$intowinchartlabels .= '"color": "#d8d8d8",';
+			$intowinchartlabels .= '"align": "right",';
+			$intowinchartlabels .= '},';
 			
-	// 		$winxcoun++;
-	// 		if($winxcount == 3){
-	// 			break;
-	// 		}
-	// 	}
-	// }
+			$winxcoun++;
+			if($winxcount == 3){
+				break;
+			}
+		}
+	}
 
 	
 
@@ -2542,31 +2545,31 @@ if($issampledata){
                                                                                                 $dinss .= '</li>';
 																								$dwinning = $dwinning.$dinss;
 																								
-                                                                                                $intowinchartbands .= '{';
-                                                                                                $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
-                                                                                                $intowinchartbands .= '"startValue": 0,';
-                                                                                                $intowinchartbands .= '"endValue": "100",';
-                                                                                                $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                $intowinchartbands .= '"alpha": 0.3';
-                                                                                                $intowinchartbands .= '}, {';
-                                                                                                $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
-                                                                                                $intowinchartbands .= ' "startValue": 0,';
-                                                                                                $intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
-                                                                                                $intowinchartbands .= '},';
+                                                                                                // $intowinchartbands .= '{';
+                                                                                                // $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
+                                                                                                // $intowinchartbands .= '"startValue": 0,';
+                                                                                                // $intowinchartbands .= '"endValue": "100",';
+                                                                                                // $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
+                                                                                                // $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
+                                                                                                // $intowinchartbands .= '"alpha": 0.3';
+                                                                                                // $intowinchartbands .= '}, {';
+                                                                                                // $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
+                                                                                                // $intowinchartbands .= ' "startValue": 0,';
+                                                                                                // $intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
+                                                                                                // $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
+                                                                                                // $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
+                                                                                                // $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
+                                                                                                // $intowinchartbands .= '},';
 
-                                                                                                $intowinchartlabels .= '{';
-                                                                                                $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
-                                                                                                $intowinchartlabels .= '"x": "49%",';
-                                                                                                $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
-                                                                                                $intowinchartlabels .= '"size": 11,';
-                                                                                                $intowinchartlabels .= '"bold": false,';
-                                                                                                $intowinchartlabels .= '"color": "#d8d8d8",';
-                                                                                                $intowinchartlabels .= '"align": "right",';
-                                                                                                $intowinchartlabels .= '},';
+                                                                                                // $intowinchartlabels .= '{';
+                                                                                                // $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
+                                                                                                // $intowinchartlabels .= '"x": "49%",';
+                                                                                                // $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
+                                                                                                // $intowinchartlabels .= '"size": 11,';
+                                                                                                // $intowinchartlabels .= '"bold": false,';
+                                                                                                // $intowinchartlabels .= '"color": "#d8d8d8",';
+                                                                                                // $intowinchartlabels .= '"align": "right",';
+                                                                                                // $intowinchartlabels .= '},';
                                                                                             }
                                                                                              ?>
 																							 <?php echo $dwinning; ?>

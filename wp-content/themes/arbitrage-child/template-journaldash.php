@@ -3332,7 +3332,10 @@ if($issampledata){
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
 			// console.log(finalcost.toFixed(2));
-			jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+			if(!isNaN(finalcost)){
+				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+			}
+			
 		});
 
 

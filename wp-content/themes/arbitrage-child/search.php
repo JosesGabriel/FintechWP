@@ -708,8 +708,8 @@ $dstockinfo = $gerdqoute->data;
                                                 <div class="tab-pane show active" id="tab1">
                                                     <div class="top-traiders">
                                                         <div class="top-traiders-inner">
-                                                            <div class="to-content-part to-back-back" style="padding-bottom: 5px">
-                                                                <div class="to-top-title">People</div>
+                                                            <div class="to-content-part to-back-back people_tab-label" style="padding-bottom: 5px">
+                                                                <div class="to-top-title people_title-label">People</div>
                                                                 <div class="content-inner-part">
                                                                     <?php
                                                                     $i=0;

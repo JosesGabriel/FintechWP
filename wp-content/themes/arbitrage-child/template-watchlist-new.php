@@ -799,6 +799,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
         ?>
     }
 
+    jQuery(document).ready(function() {
+
+		    //jQuery('.editwatchlist').on('change', function(){
+		    $('.editwatchlist').change(function() {
+		        console.log($(this).val());
+
+    		});
+    });
+
 	</script>
 
 	

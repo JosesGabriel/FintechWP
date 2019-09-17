@@ -9,13 +9,7 @@ jQuery(document).ready(function(e) {
 
 
 
-    jQuery('.editwatchlist').on('change', function(){
-
-        console.log($(this).val());
-
-    });
-
-
+    
     
 });
 

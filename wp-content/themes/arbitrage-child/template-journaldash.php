@@ -1273,7 +1273,7 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
+																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1325,8 +1325,10 @@ if($issampledata){
 																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" required></div>
 
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
-																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
-																			                                   </div>
+																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
+																													
+																													<div class="groupinput midd"><label>Sell Trade</label><input type="date" class="buySell__date-picker trade_input" onchange="selldate(this);"></div>
+																												</div>
 
 																			                                    <div class="entr_clear"></div>
 

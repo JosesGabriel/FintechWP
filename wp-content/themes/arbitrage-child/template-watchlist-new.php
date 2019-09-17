@@ -832,6 +832,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		        if($(this).val() == 'edit'){
 		        		 var ditemtoedit = jQuery(this).attr('data-space');
 		        		 console.log(ditemtoedit);
+
+		        		 $('#modal' + ditemtoedit).dialog({
+						        modal: true,
+						        autoOpen: false
+						    });
+		        		 
 		        		$('#modal' + ditemtoedit).dialog('open');
 		        }
 

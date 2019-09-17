@@ -1601,3 +1601,29 @@ i.fas.fa-close.to_closethis_rec {
 input.no-padding {
     padding-right: 3px !important;
 }
+input#sell_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 0 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+input#qty_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 0 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}

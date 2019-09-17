@@ -4003,7 +4003,7 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		$('#sell_price--inputm, #qty_price--input').keyup(function(event) {
+		$('#sell_price--input, #qty_price--input').keyup(function(event) {
 
 			// skip for arrow keys
 			if(event.which >= 37 && event.which <= 40) return;

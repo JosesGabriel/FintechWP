@@ -1273,7 +1273,8 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span>
+																											<strong>Sell Trade</strong>
+																											<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
 																			                            </div>
 
 																			                            <form action="/journal" method="post">

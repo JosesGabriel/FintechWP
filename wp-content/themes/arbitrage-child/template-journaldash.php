@@ -285,8 +285,8 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($toparsesell, ',');
 
-		// print_r($_POST);
-		// exit;
+		print_r($_POST);
+		exit;
 
         // Update journal data.
         $journalpostlog = array(

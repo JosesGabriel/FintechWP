@@ -666,6 +666,7 @@ if($issampledata){
 			$selltotal = $value->tlvolume * $value->tlsellprice;
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
+
 			$istrdate = date('D', strtotime($value->tldate));
 			$ismonthtrade = date('M', strtotime($value->tldate));
 
@@ -678,6 +679,7 @@ if($issampledata){
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
 
+			echo $profit ." -- ";
 			
 			if($profit > 0){
 				$tremo[$value->tlemotions]['trwin']++;

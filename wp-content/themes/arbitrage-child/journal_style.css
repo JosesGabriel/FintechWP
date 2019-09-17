@@ -688,7 +688,7 @@ input[type="submit"].green {
     background: none;
     line-height: 29px;
     font-size: 14px;
-    padding: 0 12px;
+    padding: 0 12px !important;
     border-radius: 25px;
     color: #fff;
     cursor: pointer;
@@ -1278,7 +1278,7 @@ input.enter-trade-btn:hover {
 }
 .buy-order--submit {
     position: relative;
-    left: 580px;
+    left: 584px;
 }
 .modal-button-confirm {
     position: relative;
@@ -1594,4 +1594,7 @@ i.fas.fa-close.to_closethis_rec {
     padding: 2px 0 3px;
     padding-right: 0 !important;
     background: #4e6a85;
+}
+.sell_date-margin {
+    margin-bottom: 0;
 }

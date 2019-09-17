@@ -1308,7 +1308,7 @@ if($issampledata){
 																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
-																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo number_format($dstocktraded['totalstock'], 2, '.', ','); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 
 																			                                    </div>
@@ -1328,14 +1328,14 @@ if($issampledata){
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
 																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
 																													
-																													<div class="groupinput midd"><label>Sell Trade</label><input type="date" class="buySell__date-picker trade_input" onchange="selldate(this);"></div>
+																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input" onchange="selldate(this);"></div>
 																												</div>
 
 																			                                    <div class="entr_clear"></div>
 
 																			                            </div>
 																			                            <div>
-																			                                <div>
+																			                                <div style="height: 36px;">
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">

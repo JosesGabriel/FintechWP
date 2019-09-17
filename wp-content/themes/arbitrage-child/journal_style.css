@@ -1598,3 +1598,6 @@ i.fas.fa-close.to_closethis_rec {
 .sell_date-margin {
     margin-bottom: 0;
 }
+input.no-padding {
+    padding-right: 3px !important;
+}

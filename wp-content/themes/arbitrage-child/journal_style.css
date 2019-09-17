@@ -1587,3 +1587,11 @@ i.fas.fa-close.to_closethis_rec {
 .to-left-align {
     text-align: right !important;
 }
+.buySell__date-picker.trade_input {
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    border: none;
+    padding: 2px 0 3px;
+    padding-right: 0 !important;
+    background: #4e6a85;
+}

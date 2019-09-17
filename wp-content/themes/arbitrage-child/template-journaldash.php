@@ -600,6 +600,12 @@ if($issampledata){
 	// 	$feeschart .= '},';
 	// }
 
+	// $demotsonchart .= '{';
+	// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+	// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+	// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+	// $demotsonchart .= '},';
+
 	$profits = [
 		'mon' => 0,
 		'tue' => 0,
@@ -622,6 +628,26 @@ if($issampledata){
 		'nov' => 0,
 		'dec' => 0
 	);
+
+	$tremo = [
+		'Neutral' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Greedy' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Fearful' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		]
+	];
+
+
 
 
 	if(!empty($ismytrades)){
@@ -652,12 +678,19 @@ if($issampledata){
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
 
+			$tremo[$value->tlemotions]['total_trades'] += 1;
+			if($profit > 0){
+				$tremo[$value->tlemotions]['trwin'] += 1;
+			} else {
+				$tremo[$value->tlemotions]['trloss'] += 1;
+			}
+
 			
 			
 		}
 	}
 
-	print_r($profits);
+	print_r($tremo);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -669,7 +702,7 @@ if($issampledata){
 
 	foreach ($months as $key => $value) {
 		$feeschart .= '{';
-		$feeschart .= '"category": "'.$key.'",';
+		$feeschart .= '"category": "'.ucfirst($key).'",';
 		$feeschart .= '"column-1": "'.$value.'"';
 		$feeschart .= '},';
 	}

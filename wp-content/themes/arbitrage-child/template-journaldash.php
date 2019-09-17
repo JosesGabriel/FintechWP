@@ -710,7 +710,7 @@ if($issampledata){
 			$intowinchartbands .= '},';
 		
 			$intowinchartlabels .= '{';
-			$intowinchartlabels .= '"text": "'. ($winxcount <= 2 ? $key : '') .'",';
+			$intowinchartlabels .= '"text": "'. $key .'",';
 			$intowinchartlabels .= '"x": "49%",';
 			$intowinchartlabels .= '"y": "'.($winxcount == 2 ? '6.5' : ($winxcount == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
 			$intowinchartlabels .= '"size": 11,';
@@ -744,14 +744,14 @@ if($issampledata){
 			$intolosschartbands .= '},{';
 			$intolosschartbands .= ' "color": "'.($lossxcount == 0 ? '#b91e45' : ($lossxcount == 1 ? '#732546' : ($lossxcount == 2 ? '#442946' : ''))).'",';
 			$intolosschartbands .= ' "startValue": 0,';
-			$intolosschartbands .= ' "endValue": '. ($lossprofperc > 0 ? number_format($lossprofperc + 20, 2, '.', ',') : 0.00 ).',';
+			$intolosschartbands .= ' "endValue": '. ($lossprofperc > 0 ? number_format($lossprofperc, 2, '.', ',') : 0.00 ).',';
 			$intolosschartbands .= ' "radius": "'.($lossxcount == 0 ? '100' : ($lossxcount == 1 ? '85' : ($lossxcount == 2 ? '70' : ''))).'%",';
 			$intolosschartbands .= ' "innerRadius": "'.($lossxcount == 0 ? '85' : ($lossxcount == 1 ? '70' : ($lossxcount == 2 ? '55' : ''))).'%",';
-			$intolosschartbands .= ' "balloonText": "'. ($lossprofperc > 0 ? number_format($lossprofperc + 20, 2, '.', ',') : 0.00).'%"';
+			$intolosschartbands .= ' "balloonText": "'. ($lossprofperc > 0 ? number_format($lossprofperc, 2, '.', ',') : 0.00).'%"';
 			$intolosschartbands .= '},';
 			
 			$intolosschartlabels .= '{';
-			$intolosschartlabels .= '"text": "'. ($lossxcount <= 2 ? $key : '') .'",';
+			$intolosschartlabels .= '"text": "'. $key .'",';
 			$intolosschartlabels .= '"x": "49%",';
 			$intolosschartlabels .= '"y": "'.($lossxcount == 0 ? '6.5' : ($lossxcount == 1 ? '13.4' : ($lossxcount == 2 ? '20' : '33'))).'%",';
 			$intolosschartlabels .= '"size": 11,';

@@ -3331,6 +3331,7 @@ if($issampledata){
 
 			$totalmarket = parseFloat(price) * parseFloat(quantity);
 			$finalcost = $totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			console.log($finalcost.toFixed(2));
 			jQuery('input[name="inpt_data_total_bought_price"]').text($finalcost.toFixed(2));
 		});
 

@@ -232,8 +232,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<div class="s_dropdown" style="display: inline-block;"> 
 																				<select class="editwatchlist" name="editstock" id="">
 										                                                <option  value="select" selected>Select</option>
-										                                                <option  value="delete"><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>">Delete</a></option>
-										                                                <option  value="edit">Edit</option>
+										                                                <option  value="delete" data-space="<?php echo $value['stockname']; ?>" >Delete</option>
+										                                                <option  value="edit" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>">Edit</option>
 										                                        </select>
 
 																			</div>

@@ -105,8 +105,6 @@ $dstockinfo = $gerdqoute->data;
     .inner-main-content, .header-dashboard-inner {
         margin: 0 auto;
         display: flex;
-        justify-content: space-between;
-        padding-top: 10px;
     }
     .side-header .right-image .onto-user-meta-details {
         color: #ffffff;
@@ -694,8 +692,7 @@ $dstockinfo = $gerdqoute->data;
                                         <div class="panel-heading">
                                             <span class="">
                                                 <ul class="nav panel-tabs">
-                                                    <li class="ggmenu active"><a href="#tab1" data-toggle="tab" class="active show">
-                                                        <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">All</span></a></a></li>
+                                                    <li class="ggmenu active"><a href="#tab1" data-toggle="tab" class="active show"><span style="padding-left: 3px;font-size: 13px;color: #fffffe;">All</span></a></li>
                                                     <li class="ggmenu"><a href="#tab2" data-toggle="tab"><span style="padding-left: 3px;font-size: 13px;color: #fffffe;">People</span></a></li>
                                                     <li class="ggmenu"><a href="#tab3" data-toggle="tab" class=""><span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Stocks</span></a></li>
                                                     <li class="ggmenu"><a href="#tab4" data-toggle="tab" class=""><span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Posts</span></a></li>

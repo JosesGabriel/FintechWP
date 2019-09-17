@@ -229,7 +229,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	<div class="row">
 																		<div class="wlttlstockvals">
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
-																			<div class="s_dropdown"> 
+																			<div class="s_dropdown" style="display: inline-block;"> 
 																				<select class="editwatchlist" name="editstock" id="">
 										                                                <option  value="select" selected>Select</option>
 										                                                <option  value="delete">Delete</option>

@@ -577,7 +577,29 @@ if($issampledata){
 
 	$dailyvolumes = '';
 	$dailyvalues = '';
+	$dpercschart = '';
 	$buysscounter = 0;
+
+	
+	// foreach ($xdays as $xdaykey => $xdayvalue) {
+	// 	$basedate = date('D', strtotime($xdayvalue['dday']));
+	// 	$dpercschart .= '{';
+	// 	$dpercschart .= '"category": "'.$basedate.'",';
+	// 	$dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
+	// 	$dpercschart .= '"column-2": "#673ab7"';
+	// 	$dpercschart .= '},';
+	// }
+
+	$profits = [
+		'monday' => 0,
+		'tuesday' => 0,
+		'wednesday' => 0,
+		'thursday' => 0,
+		'friday' => 0,
+	];
+
+
+
 	if(!empty($ismytrades)){
 		foreach ($ismytrades as $key => $value) {
 			$dailyvolumes .= '{';
@@ -590,8 +612,19 @@ if($issampledata){
 			$dailyvalues .= '"category": "'.$buysscounter.'",';
 			$dailyvalues .= '"column-1": '.($value->tlsellprice != "" ? $value->tlsellprice : 0).'';
 			$dailyvalues .= '},';
+
+			$selltotal = $value->tlvolume * $value->tlsellprice;
+			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
+			$profit = $sellvalue - $marketvals;
+
+			$istrdate = date('l', strtotime($value->tldate));
+
+			$profits[$istrdate] += $profit;
+			
 		}
 	}
+
+	print_r($profits);
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
 		$dailyvolumes .= '{';

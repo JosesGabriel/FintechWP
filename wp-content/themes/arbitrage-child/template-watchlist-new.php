@@ -222,16 +222,16 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
 																	<!--<div class="watchlist--buttons">
-																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div> 
-																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	</div>-->
+																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>-->
+																		<div style="display: none;"><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
+																	<!--</div>-->
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
 																			<div class="s_dropdown" style="display: inline-block;"> 
 																				<select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
-										                                                <option  value="select" selected>Select</option>
+										                                                <option  value="select" hidden>Action</option>
 										                                                <option  value="delete">Delete</option>
 										                                                <option  value="edit">Edit</option>
 										                                        </select>
@@ -823,32 +823,21 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 									'success'
 								).then((result) => {
 									var ditemtoremove = jQuery(this).attr('data-space');
-									//window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
-									window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									//window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
 								});
 							}
 						});
+
+						$("div.editwatchlist select").val("Select");
 		        }
 		        if($(this).val() == 'edit'){
-		        		 var ditemtoedit = jQuery(this).attr('data-space');
-		        		 console.log(ditemtoedit);
-		           		$('#modal' + ditemtoedit).addClass('show');
-		        }else {
-		        	$('#modal' + ditemtoedit).removeClass('show');
+	        		var ditemtoedit = jQuery(this).attr('data-space');
+		        	jQuery("#edit_" + ditemtoedit).click();
+		        	
 		        }
 
     		});
-
-		   $('.closemodal').click(function(e) {
-
-		   		var ditemtoedit = jQuery(this).attr('data-space');
-
-		   		if(jQuery('.dmodaleditwatch').hasClass('show')){
-		   			console.log('remove');
-		   			jQuery('.dmodaleditwatch').removeClass('show');
-		   		}
-
-		   });
 
     });
 

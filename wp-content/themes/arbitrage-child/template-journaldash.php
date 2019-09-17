@@ -678,11 +678,11 @@ if($issampledata){
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
 
-			$tremo[$value->tlemotions]['total_trades'] += 1;
+			$tremo[$value->tlemotions]['total_trades'] ++;
 			if($profit > 0){
-				$tremo[$value->tlemotions]['trwin'] += 1;
+				$tremo[$value->tlemotions]['trwin'] ++;
 			} else {
-				$tremo[$value->tlemotions]['trloss'] += 1;
+				$tremo[$value->tlemotions]['trloss'] ++;
 			}
 
 			

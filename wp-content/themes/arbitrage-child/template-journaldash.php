@@ -147,9 +147,6 @@ echo $user->ID ." versis ". $user->ID;
 
 
 
-
-
-
 ?>
 <!-- EOF Deposit -->
 

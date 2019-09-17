@@ -453,7 +453,7 @@ class Activity_Main_API
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="https://arbitrage.ph/chart/' . $dstock . '">' . $dwordpvalue . '</a>';
+                        $dlink = '<a href="https://arbitrage.ph/chart/' . $dstock . '" target="_blank" rel="noopener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
                         $usname = str_replace('@', '', $dwordpvalue);

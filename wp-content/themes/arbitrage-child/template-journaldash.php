@@ -711,6 +711,7 @@ if($issampledata){
 			$strats[$value->tlstrats]['total_trades']++;
 			
 			// top stocks
+			$allstocks[$value->isstock]['stockname'] += $value->isstock;
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
 			if(date('Y', strtotime($value->tldate)) == date('Y')){
@@ -742,8 +743,8 @@ if($issampledata){
 		if($value['profit'] > 0 && $winxcount < 3){
 
 			$dwins = [];
-			$dwins['stocks'] = $key;
-			$dwins['details'] = $value;
+			$dwins['stocks'] = $value['stockname'];
+			$dwins['profit'] = $value['profit'];
 
 			array_push($winningstocks, $dwins);
 
@@ -766,7 +767,7 @@ if($issampledata){
 			$intowinchartbands .= '},';
 		
 			$intowinchartlabels .= '{';
-			$intowinchartlabels .= '"text": "'. $key .'",';
+			$intowinchartlabels .= '"text": "'. $value['stockname'] .'",';
 			$intowinchartlabels .= '"x": "49%",';
 			$intowinchartlabels .= '"y": "'.($winxcount == 2 ? '6.5' : ($winxcount == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
 			$intowinchartlabels .= '"size": 11,';
@@ -792,8 +793,8 @@ if($issampledata){
 		if($value['profit'] < 0 && $lossxcount < 3){
 
 			$dloss = [];
-			$dloss['stocks'] = $key;
-			$dloss['details'] = $value;
+			$dwins['stocks'] = $value['stockname'];
+			$dwins['profit'] = $value['profit'];
 
 			array_push($loosingstocks, $dloss);
 
@@ -816,7 +817,7 @@ if($issampledata){
 			$intolosschartbands .= '},';
 			
 			$intolosschartlabels .= '{';
-			$intolosschartlabels .= '"text": "'. $key .'",';
+			$intolosschartlabels .= '"text": "'. $value['stockname'] .'",';
 			$intolosschartlabels .= '"x": "49%",';
 			$intolosschartlabels .= '"y": "'.($lossxcount == 0 ? '6.5' : ($lossxcount == 1 ? '13.4' : ($lossxcount == 2 ? '20' : '33'))).'%",';
 			$intolosschartlabels .= '"size": 11,';

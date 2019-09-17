@@ -132,7 +132,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.enableBidsAndAsks = true;
+    $scope.enableBidsAndAsks = false;
     $scope.bids = [];
     $scope.asks = [];
     $scope.transactions = [];

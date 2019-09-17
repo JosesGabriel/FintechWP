@@ -3325,9 +3325,9 @@ if($issampledata){
 			return dall;
 		}
 
-		jQuery(document).on('keyup', '#inpt_data_price_bought, #inpt_data_qty_bought', function (e) {
-			let price = jQuery('#inpt_data_price_bought').val().replace(/,/g, '');
-			let quantity = jQuery('#inpt_data_qty_bought').val().replace(/,/g, '');
+		jQuery(document).on('keyup', 'input[name="inpt_data_price_bought"], input[name="inpt_data_qty_bought"]', function (e) {
+			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
 
 			$totalmarket = parseFloat(price) * parseFloat(quantity);
 			$finalcost = $totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));

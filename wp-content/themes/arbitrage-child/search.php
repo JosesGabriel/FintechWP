@@ -831,6 +831,7 @@ $dstockinfo = $gerdqoute->data;
                                                                                         <div class="traider-follower">
                                                                                             <div class="onbfdata"> <?php echo $value['followers']; ?> Connections </div>
                                                                                             <div class="onbfollow">
+                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->ID ); ?>
                                                                                                 <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
                                                                                             </div>
                                                                                         </div>

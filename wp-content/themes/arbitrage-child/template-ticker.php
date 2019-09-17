@@ -599,14 +599,6 @@
                 }) 
                 for(i in ticker_data){
                     let el = $(this).attr("data-element");
-                    if (el.visible()) {
-                        // The element is visible, do something
-                        console.log('visible')
-                        console.log(el);
-                    } else {
-                        console.log(el)
-                        console.log('destroy')
-                    }
                     console.log(ticker_data[i].counter)
                     console.log(el);
                 }

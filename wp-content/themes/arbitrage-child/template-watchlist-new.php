@@ -222,9 +222,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
 																	<!--<div class="watchlist--buttons">
-																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div> -->
+																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	<!--</div>-->
+																	</div>-->
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
@@ -828,6 +828,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 								});
 							}
 						});
+
+						$("div.editwatchlist select").val("Select");
 		        }
 		        if($(this).val() == 'edit'){
 		        		 var ditemtoedit = jQuery(this).attr('data-space');
@@ -847,6 +849,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		   		if(jQuery('.dmodaleditwatch').hasClass('show')){
 		   			console.log('remove');
 		   			jQuery('.dmodaleditwatch').removeClass('show');
+		   			$("div.editwatchlist select").val("Select");
 		   		}
 
 		   });

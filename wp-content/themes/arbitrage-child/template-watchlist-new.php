@@ -308,7 +308,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
+																						<?php
+																							if($value['dconnumber_entry_price'] < 1000){
+																								echo ' Php';
+																							}
+																						 ?>
+																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>
@@ -317,7 +323,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
+																						<?php
+																							if($value['dconnumber_take_profit_point'] < 1000){
+																								echo ' Php';
+																							}
+																						 ?>
+
+																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>
@@ -326,7 +339,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<li>
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
-																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?></span>
+																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
+																						<?php
+																							if($value['dconnumber_stop_loss_point'] < 1000){
+																								echo ' Php';
+																							}
+																						 ?>	
+																							
+																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
 																				</li>

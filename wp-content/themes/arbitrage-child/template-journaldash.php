@@ -583,6 +583,15 @@ if($issampledata){
 
 ?>
 <!-- EOF Sort LIVE Portfolio -->
+
+<!-- BOF Trade Logs Data from DB -->
+<?php
+	$ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$user->ID.' order by tldate');
+
+
+?>
+<!-- EOF Trade Logs Data from DB -->
+
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = $user->ID;
@@ -3113,7 +3122,13 @@ if($issampledata){
 
 	                                                                            		                                                                            	
 	                                                                            	
-                                                                            </li>-->
+																			</li>-->
+																			
+																			<?php
+																				foreach ($ismytrades as $key => $value) {
+																					echo $value->tlvolume;
+																				}
+																			?>
 
 																			<?php
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
@@ -3267,80 +3282,80 @@ if($issampledata){
 																					</div>
 																				</div>
 
-                    <div class="hidethis" id="hidelogs">
-                        
+																				<div class="hidethis" id="hidelogs">
+																					
 
-                    <form method="post" class="edittlogs">     
+																				<form method="post" class="edittlogs">     
 
-                        <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
-                            <div class="entr_ttle_bar">
-                                <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
-                               
-                            </div>
-                            <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
-                            <div class="trdlgsbox">
-                                <?php 
-                                $strategy = $data_trade_info[0]->strategy; 
-                                $tradeplan = $data_trade_info[0]->tradeplan;
-                                $emotion = $data_trade_info[0]->emotion;
-                                ?>
-                                <div class="trdleft">
-                                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-                                            
-                                            <select class="rnd selecteditlog" name="data_strategy" id="">
-                                                <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
-                                                <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
-                                                <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
-                                            </select>
-                                            
-                                        </div>
-                                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+																					<div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+																						<div class="entr_ttle_bar">
+																							<strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+																						
+																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																						<div class="trdlgsbox">
+																							<?php 
+																							$strategy = $data_trade_info[0]->strategy; 
+																							$tradeplan = $data_trade_info[0]->tradeplan;
+																							$emotion = $data_trade_info[0]->emotion;
+																							?>
+																							<div class="trdleft">
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
+																										
+																										<select class="rnd selecteditlog" name="data_strategy" id="">
+																											<option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+																											<option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+																											<option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
+																										</select>
+																										
+																									</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                         <select class="rnd selecteditlog" name="data_tradeplan" id="">
-                                                <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
-                                                <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
-                                                <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
-                                        </select>
+																									<select class="rnd selecteditlog" name="data_tradeplan" id="">
+																											<option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+																											<option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+																											<option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
+																									</select>
 
-                                    </div>
-                                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                        <select class="rnd selecteditlog" name="data_emotion" id="">
-                                                <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
-                                                <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
-                                                <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
-                                        </select>
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+																									<select class="rnd selecteditlog" name="data_emotion" id="">
+																											<option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+																											<option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+																											<option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
+																									</select>
 
-                                    </div>
-                                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-                                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
-                                </div>
-                                <div class="trdright darkbgpadd">
-                                    <div><strong>Notes:</strong></div>
-                                    <div>
-                                        <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
-                                            <?php echo $data_trade_info[0]->tradingnotes; ?>
-                                        </textarea>
-                                    </div>
-                                </div>
-                                 <div class="trdleft">
-                                    <input type="hidden" value="Edit" name="inpt_data_status">
-                                    <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
-                                    <input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
-                                  <div class="onelnetrd" style="margin-top: 9px;"> 
-                                    
-                                    <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																							</div>
+																							<div class="trdright darkbgpadd">
+																								<div><strong>Notes:</strong></div>
+																								<div>
+																									<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+																										<?php echo $data_trade_info[0]->tradingnotes; ?>
+																									</textarea>
+																								</div>
+																							</div>
+																							<div class="trdleft">
+																								<input type="hidden" value="Edit" name="inpt_data_status">
+																								<input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
+																								<input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
+																							<div class="onelnetrd" style="margin-top: 9px;"> 
+																								
+																								<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 
-                                  </div>
-                                </div>
-                            <div class="trdclr"></div>
-                            </div>
+																							</div>
+																							</div>
+																						<div class="trdclr"></div>
+																						</div>
 
-                        </div>
+																					</div>
 
-                    </form>
+																				</form>
 
 
-                    </div>
+																				</div>
 
 
 																			</li>

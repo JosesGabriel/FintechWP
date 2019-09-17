@@ -4161,10 +4161,11 @@
     margin: 0 !important;
     padding: 2px 0 !important;
 }
-.people_tab-label {
+.posts_tab-label {
     padding: 10px 29px !important;
+    min-height: unset;
 }
-.people_title-label {
+.posts_title-label {
     margin: 0 !important;
     padding: 2px 0 !important;
 }

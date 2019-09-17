@@ -840,6 +840,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     		});
 
 		   $('.closemodal').click(function(e) {
+		   		var ditemtoedit = jQuery(this).attr('data-space');
 		   		$('#modal' + ditemtoedit).removeClass('show');
 		   });
 

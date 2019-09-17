@@ -745,7 +745,7 @@ if($issampledata){
 			$dwins['stocks'] = $key;
 			$dwins['details'] = $value;
 
-			array_push($dwins, $winningstocks);
+			array_push($winningstocks, $dwins);
 
 			$profperc = (abs($value['profit']) / $value['profmarketval']) * 100;
 
@@ -795,7 +795,7 @@ if($issampledata){
 			$dloss['stocks'] = $key;
 			$dloss['details'] = $value;
 
-			array_push($dloss, $loosingstocks);
+			array_push($loosingstocks, $dloss);
 
 			$lossprofperc = (abs($value['profit']) / $value['profmarketval']) * 100;
 

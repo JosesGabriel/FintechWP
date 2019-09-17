@@ -598,17 +598,9 @@
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
-                    let el = $(this).attr("data-element");
-                    if (el.visible()) {
-                        // The element is visible, do something
-                        console.log('visible')
-                        console.log(el);
-                    } else {
-                        console.log(el)
-                        console.log('destroy')
-                    }
+                    let element = jQuery('[data-element="${ticker_data[i].counter}"]');
                     console.log(ticker_data[i].counter)
-                    console.log(el);
+                    console.log(element);
                 }
             }, 5000);
 

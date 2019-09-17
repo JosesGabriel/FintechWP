@@ -1606,7 +1606,7 @@ input#sell_price--input {
     border-radius: 0 3px 3px 0;
     height: 27px;
     line-height: 27px;
-    padding: 0 0 0 7px;
+    padding: 0 5px 0 7px;
     background-color: #4e6a85;
     border: 1px solid #4e6a85;
     color: #ecf0f1;
@@ -1619,7 +1619,7 @@ input#qty_price--input {
     border-radius: 0 3px 3px 0;
     height: 27px;
     line-height: 27px;
-    padding: 0 0 0 7px;
+    padding: 0 5px 0 7px;
     background-color: #4e6a85;
     border: 1px solid #4e6a85;
     color: #ecf0f1;

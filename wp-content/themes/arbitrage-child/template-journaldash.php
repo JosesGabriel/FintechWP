@@ -348,6 +348,8 @@ echo $user->ID ." versis ". $user->ID;
 			));
 
 		
+
+		
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 		$wpdb->query($inserttrade);
@@ -1042,16 +1044,17 @@ if($issampledata){
         }
         delete_user_meta($user->ID, '_trade_list');
 
-        // delete all trade logs
-        foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-            echo $delpostvalue['id'].'~';
-            wp_delete_post($delpostvalue['id'], true);
-        }
+        // // delete all trade logs
+        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
+        //     echo $delpostvalue['id'].'~';
+        //     wp_delete_post($delpostvalue['id'], true);
+        // }
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
-        $wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
-
+		$wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
+		$deletelogs = 'delete from arby_tradelog where isuser ='.$user->ID;
+		$wpdb->query($deletelogs);
         wp_redirect('/journal');
         exit;
     }

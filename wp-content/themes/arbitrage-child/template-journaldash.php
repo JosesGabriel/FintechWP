@@ -815,7 +815,7 @@ if($issampledata){
 		}
 	}
 	
-	print_r($strats);
+	// print_r($strats);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -2023,7 +2023,7 @@ if($issampledata){
                                                                 $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
                                                                 $totalprofit += $dprofit;
 
-                                                                ++$totaltrade;
+                                                                // ++$totaltrade;
                                                                 // if ($dprofit > 0) {
                                                                 //     ++$iswin;
                                                                 // } else {
@@ -2112,7 +2112,7 @@ if($issampledata){
 																		</div>
 																		<div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
                                                                             <ul style="margin-bottom:0 !important;">
-
+																				<?php $totaltrade = $iswin + $isloss; ?>
                                                                                 <li>
                                                                                     <div class="width60">Total Trades</div>
                                                                                     <div class="width35"><?php echo $totaltrade; ?></div>
@@ -2401,23 +2401,20 @@ if($issampledata){
 																		<?php
 																			if($isjounalempty){
 																				$stratsinfo = [
-																					0 => [
-																						'dstrat' => 'Bottom Picking',
-																						'winrate' => 15,
-																						'lossrate' => 4,
-																						'trades' => 19,
+																					'Bottom Picking' => [
+																						'trwin' => 15,
+																						'trloss' => 4,
+																						'total_trades' => 19,
 																					],
-																					1 => [
-																						'dstrat' => 'Breakout Play',
-																						'winrate' => 9,
-																						'lossrate' => 1,
-																						'trades' => 10,
+																					'Breakout Play' => [
+																						'trwin' => 9,
+																						'trloss' => 1,
+																						'total_trades' => 10,
 																					],
-																					2 => [
-																						'dstrat' => 'Trend Following',
-																						'winrate' => 2,
-																						'lossrate' => 8,
-																						'trades' => 10,
+																					'Trend Following' => [
+																						'trwin' => 2,
+																						'trloss' => 8,
+																						'total_trades' => 10,
 																					],
 																				];
 																			}
@@ -2436,17 +2433,18 @@ if($issampledata){
                                                                                     </li>
                                                                                     <?php
                                                                                     // $stratstrg = '';
-                                                                                    // $wincharts = '';
-                                                                                    foreach ($stratsinfo as $statskey => $statsvalue) {
+																					// $wincharts = '';
+																					
+                                                                                    foreach ($strats as $statskey => $statsvalue) {
                                                                                         ?>
                                                                                     	<li>
 	                                                                                        <div style="width:99%">
-																								<div style="width:150px;"><?php echo $statsvalue['dstrat']; ?></div>
+																								<div style="width:150px;"><?php echo $statskey; ?></div>
 																								<!-- <span class="legend_circ"></span> -->
-	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trades']; ?></div>
-	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['winrate']; ?></div>
-	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['lossrate']; ?></div>
-	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['winrate'] / $statsvalue['trades']) * 100, 2); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['total_trades']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trwin']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trloss']; ?></div>
+	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['trwin'] / $statsvalue['trloss']) * 100, 2); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php

@@ -482,6 +482,18 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
 }
 
+.groupinput.midd.label_date input {
+    margin: 0;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background: #4e6a85;
+    padding: 4px 5px 3px;
+    text-align: left;
+    font-size: 13px;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
 /* .lockedd i.fa.fa-lock {
 
     top: 7px;
@@ -494,7 +506,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 
     color: #ecf0f1; */
 
-}
+/* } */
 
 
 

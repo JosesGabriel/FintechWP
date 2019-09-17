@@ -1473,6 +1473,11 @@
 																							}
 																						}
 																					?>
+
+																					<div class="entr_ttle_bar">
+																						<strong>Enter Buy Order</strong>
+																					</div>
+
 																					<form action="/journal" method="post">
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">

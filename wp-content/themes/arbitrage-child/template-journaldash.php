@@ -281,8 +281,12 @@ echo $user->ID ." versis ". $user->ID;
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		// print_r($_POST);
-		// exit;
+		$toparsesell = parse_str($_POST['inpt_data_sellprice']);
+		$sellprice = rtrim($toparsesell, ',');
+		$sellqty = rtrim($toparsesell, ',');
+
+		print_r($_POST);
+		exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -305,9 +309,9 @@ echo $user->ID ." versis ". $user->ID;
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
-
-                'data_sell_price' => $_POST['inpt_data_sellprice'],
-                'data_quantity' => $_POST['inpt_data_qty'],
+				
+                'data_sell_price' => $sellprice,
+                'data_quantity' => $sellqty,
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
@@ -315,7 +319,7 @@ echo $user->ID ." versis ". $user->ID;
             ),
         );
 
-        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
+        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -332,7 +336,7 @@ echo $user->ID ." versis ". $user->ID;
             update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
-        $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
+        $stockcost = ($sellprice * $sellqty);
         $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
@@ -1328,7 +1332,7 @@ if($issampledata){
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty"
 																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
 																													
-																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input" onchange="selldate(this);"></div>
+																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input changeselldate"></div>
 																												</div>
 
 																			                                    <div class="entr_clear"></div>
@@ -4003,13 +4007,12 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		$('#sell_price--input, #qty_price--input').keyup(function(event) {
-
+		jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
 			// skip for arrow keys
 			if(event.which >= 37 && event.which <= 40) return;
 
 			// format number
-			$(this).val(function(index, value) {
+			jQuery(this).val(function(index, value) {
 			return value
 			.replace(/\D/g, "")
 			.replace(/\B(?=(\d{3})+(?!\d))/g, ",")

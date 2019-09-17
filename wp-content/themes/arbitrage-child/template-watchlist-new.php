@@ -353,7 +353,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	      <div class="modal-header">
 																	        <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
 																	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																	          <span aria-hidden="true">&times;</span>
+																	          <span class="closemodal" aria-hidden="true">&times;</span>
 																	        </button>
 																	      </div>
 																	      <div class="modal-body edit-stocks-padding">
@@ -838,6 +838,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		        }
 
     		});
+
+		   $('.closemodal').click(function(e) {
+		   		$('#modal' + ditemtoedit).removeClass('show');
+		   });
+
     });
 
 	</script>

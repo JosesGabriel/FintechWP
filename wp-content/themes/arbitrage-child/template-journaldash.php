@@ -581,7 +581,13 @@ if($issampledata){
 	$gplchart = '';
 	$feeschart = '';
 	$demotsonchart = '';
+	$stratstrg = '';
+	$wincharts = '';
+	$formonthperc = '';
+	$iswin = 0;
+	$isloss = 0;
 	$buysscounter = 0;
+	$dtotalpl = 0;
 
 	$profits = [
 		'mon' => 0,
@@ -592,6 +598,21 @@ if($issampledata){
 	];
 
 	$months = array(
+		'jan' => 0,
+		'feb' => 0,
+		'mar' => 0,
+		'apr' => 0,
+		'may' => 0,
+		'jun' => 0,
+		'jul ' => 0,
+		'aug' => 0,
+		'sep' => 0,
+		'oct' => 0,
+		'nov' => 0,
+		'dec' => 0
+	);
+
+	$profitsmonths = array(
 		'jan' => 0,
 		'feb' => 0,
 		'mar' => 0,
@@ -644,24 +665,6 @@ if($issampledata){
 		],
 	];
 
-	// $stratstrg .= '{';
-	// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-	// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-	// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-	// $stratstrg .= '"colors": "#06af68",';
-	// $stratstrg .= '"colorsred": "#b7193f"';
-	// $stratstrg .= '},';
-
-	// $wincharts .= '{';
-	// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-	// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-	// $wincharts .= '},';
-
-
-
-
-
-
 	if(!empty($ismytrades)){
 		foreach ($ismytrades as $key => $value) {
 			$dailyvolumes .= '{';
@@ -686,6 +689,8 @@ if($issampledata){
 			$profits[strtolower($istrdate)] += $profit;
 			$months[strtolower($ismonthtrade)] += getjurfees($selltotal, 'sell');
 
+			$profitsmonths[strtolower($ismonthtrade)] += $profit;
+
 			$gplchart .= '{';
 			$gplchart .= '"category": "'.$buysscounter.'",';
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
@@ -696,9 +701,11 @@ if($issampledata){
 			if($profit > 0){
 				$tremo[$value->tlemotions]['trwin']++;
 				$strats[$value->tlstrats]['trwin']++;
+				$iswin++;
 			} else {
 				$tremo[$value->tlemotions]['trloss'] ++;
 				$strats[$value->tlstrats]['trloss'] ++;
+				$isloss++;
 			}
 			$tremo[$value->tlemotions]['total_trades']++;
 			$strats[$value->tlstrats]['total_trades']++;
@@ -706,9 +713,10 @@ if($issampledata){
 			// top stocks
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
-
-
-
+			if(date('Y', strtotime($value->tldate)) == date('Y')){
+				$dtotalpl += $profit;
+			}
+			
 			
 		}
 	}
@@ -807,13 +815,6 @@ if($issampledata){
 		}
 	}
 	
-
-	
-
-	
-
-
-
 	print_r($strats);
 
 	foreach ($profits as $key => $value) {
@@ -838,8 +839,29 @@ if($issampledata){
 			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
 			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
 			$demotsonchart .= '},';
-		}
-		
+		}	
+	}
+
+	foreach ($strats as $key => $value) {
+		$stratstrg .= '{';
+		$stratstrg .= '"category": "'.$key.'",';
+		$stratstrg .= '"column-2": "'.$value['trloss'].'",';
+		$stratstrg .= '"Trades": "'.$value['trwin'].'",';
+		$stratstrg .= '"colors": "#06af68",';
+		$stratstrg .= '"colorsred": "#b7193f"';
+		$stratstrg .= '},';
+
+		$wincharts .= '{';
+		$wincharts .= '"strategy": "'.$key.'",';
+		$wincharts .= '"winvals": '.$value['trwin'].'';
+		$wincharts .= '},';
+	}
+
+	foreach ($profitsmonths as $key => $value) {
+		$formonthperc .= '{';
+		$formonthperc .= '"category": "'.$key.'",';
+		$formonthperc .= '"column-1": "'.$value.'"';
+		$formonthperc .= '},';
 	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
@@ -1835,7 +1857,7 @@ if($issampledata){
                                                         }
 
                                                         $dlistofsells = [];
-                                                        $dtotalpl = 0;
+                                                        
                                                         // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
                                                                 // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
@@ -1848,7 +1870,7 @@ if($issampledata){
 																	
 																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
-                                                                    $dtotalpl += (($selprice - $sellfee) - $dcurprice);
+                                                                    // $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
                                                             }
                                                         // }
@@ -1884,7 +1906,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',') : '0.00');?>%</div>
+                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $initcapital) * 100), 2, '.', ',') : '0.00');?>%</div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>
@@ -1968,8 +1990,8 @@ if($issampledata){
                                                             );
 
                                                         // get lits of combi strats
-                                                            $iswin = 0;
-                                                            $isloss = 0;
+                                                            // $iswin = 0;
+                                                            // $isloss = 0;
 															$totaltrade = 0;
 															$totalprofit = 0;
                                                             foreach ($alltradelogs as $key => $value) {
@@ -2002,11 +2024,11 @@ if($issampledata){
                                                                 $totalprofit += $dprofit;
 
                                                                 ++$totaltrade;
-                                                                if ($dprofit > 0) {
-                                                                    ++$iswin;
-                                                                } else {
-                                                                    ++$isloss;
-                                                                }
+                                                                // if ($dprofit > 0) {
+                                                                //     ++$iswin;
+                                                                // } else {
+                                                                //     ++$isloss;
+                                                                // }
                                                             }
 
                                                             $listmonth = [];
@@ -2047,14 +2069,14 @@ if($issampledata){
                                                                 array_push($listmonth, $innermonth);
                                                             }
 
-                                                            $formonthperc = '';
-                                                            foreach ($listmonth as $lomkey => $lomvalue) {
-                                                                $formonthperc .= '{';
-                                                                $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
-                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
-                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
-                                                                $formonthperc .= '},';
-                                                            }
+                                                            // $formonthperc = '';
+                                                            // foreach ($listmonth as $lomkey => $lomvalue) {
+                                                            //     $formonthperc .= '{';
+                                                            //     $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
+                                                            //     // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                            //     $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
+                                                            //     $formonthperc .= '},';
+                                                            // }
 
                                                         ?>
 															<div class="box-portlet">
@@ -2413,8 +2435,8 @@ if($issampledata){
                                                                                         </div>
                                                                                     </li>
                                                                                     <?php
-                                                                                    $stratstrg = '';
-                                                                                    $wincharts = '';
+                                                                                    // $stratstrg = '';
+                                                                                    // $wincharts = '';
                                                                                     foreach ($stratsinfo as $statskey => $statsvalue) {
                                                                                         ?>
                                                                                     	<li>
@@ -2428,18 +2450,19 @@ if($issampledata){
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php
-                                                                                            $stratstrg .= '{';
-																							$stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-																							$stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-																							$stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-																							$stratstrg .= '"colors": "#06af68",';
-																							$stratstrg .= '"colorsred": "#b7193f"';
-																							$stratstrg .= '},';
+                                                                                            // $stratstrg .= '{';
+																							// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
+																							// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
+																							// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
+																							// $stratstrg .= '"colors": "#06af68",';
+																							// $stratstrg .= '"colorsred": "#b7193f"';
+																							// $stratstrg .= '},';
 
-																							$wincharts .= '{';
-																							$wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-																							$wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-																							$wincharts .= '},'; ?>
+																							// $wincharts .= '{';
+																							// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
+																							// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
+																							// $wincharts .= '},';
+																							?>
                                                                                     <?php
                                                                                     } ?>
 

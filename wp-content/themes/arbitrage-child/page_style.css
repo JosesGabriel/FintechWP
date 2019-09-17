@@ -4157,11 +4157,11 @@
 .to-content-part.to-back-back.people_tab-label {
     padding: 10px 29px !important;
 }
-.to-content-part.to-back-back.people_title-label {
+.to-top-title.people_title-label {
     margin: 0 !important;
     padding: 2px 0 !important;
 }
-.to-top-title.posts_tab-label {
+.to-content-part.to-back-back.posts_tab-label {
     padding: 10px 29px !important;
     min-height: unset;
 }

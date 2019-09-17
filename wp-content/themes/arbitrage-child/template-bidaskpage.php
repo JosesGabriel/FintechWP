@@ -37,10 +37,26 @@
             background-color: #0c1f33;
             color: #fff;
         }
+        #market_depth{
+            margin-left: 10%;
+        }
+        .text-green{
+            color: green;
+        }
+        .text-red{
+            color: red;
+        }
     </style>
     <script>
         jQuery(document).ready(function() {
-            
+
+            var stock_symbol = jQuery('#stock_symbol');
+            var urlParams = new URLSearchParams(location.search);
+
+            if(!urlParams.get('symbol')){
+                return;
+            }
+
             function getBidAsk(symbol,limit,callback){
                 let url = "https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
                 let settings = {
@@ -52,24 +68,38 @@
                 };
                 jQuery.ajax(settings).done(function (response) {
                 let res = response.data;
+                stock_symbol.html(symbol);
                 callback(res);
                 });
             };
-            
 
-                var content_bid = [];
-                var content_ask = [];
+                var content_bids = "";
+                var content_asks = "";
                 var row_bid_data = jQuery('#row_bid_data');
                 var row_ask_data = jQuery('#row_ask_data');
 
-                getBidAsk('AC',10,function(callback){
-                    console.log('data');
+                getBidAsk(urlParams.get('symbol'),urlParams.get('limit'),function(callback){
                     var bids = callback.bids;
                     var asks = callback.asks;
                     console.log(bids);
                     console.log(asks);
-                    row_bid_data.innerHTML(bids);
-                    row_ask_data.innerHTML(asks);
+                    //var bids_style = 'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}">${ bids[i].price }
+                    for(i in bids){
+                        content_bids += `<tr>
+                                <td>${ bids[i].count }</td>
+                                <td>${ bids[i].volume }</td>
+                                <td>${ bids[i].price }</td>
+                                </tr>`;
+                    }   
+                    for(i in asks){
+                        content_asks += `<tr>
+                                <td>${ asks[i].price }</td>
+                                <td>${ asks[i].volume }</td>
+                                <td>${ asks[i].count }</td>
+                                </tr>`;
+                    }   
+                    row_bid_data.html(content_bids);
+                    row_ask_data.html(content_asks);
                 });
 
         });
@@ -77,7 +107,7 @@
 
 </head>
 <body>
-
+<h4 id="market_depth">Market Depth: <span id="stock_symbol"></span></h4>
 <div class="container container-fluid">
   <div class="row no-gutters">
     <!-- Bid -->
@@ -102,14 +132,14 @@
     <!-- Ask -->
     <div class="col-sm">
         <table class="table table-sm">
-        <thead id="row_ask_data">
+        <thead>
             <tr>
             <th scope="col">Ask</th>
             <th scope="col">Volume</th>
             <th scope="col">#</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="row_ask_data">
             <tr>
             <td></td>
             <td></td>

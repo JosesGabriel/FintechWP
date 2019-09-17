@@ -1114,7 +1114,21 @@ h2.watchtitle {
         line-height: 1em;
         display: inline-block;
         padding: 0;
+        margin-bottom: 12px;
     }
+
+    .editwatchlist {
+        float: right;
+        height: 21px;
+        border-radius: 5px;
+        font-size: 12px;
+        margin-left: 9px;
+        margin-top: 8px;
+        background: #162e48;
+        border: 0;
+        color: #afadb3;
+    }
+
     .wlttlstockvals {
 		display: block;
         width: 100%;

@@ -221,19 +221,19 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																?>
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<div class="watchlist--buttons">
+																	<!--<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	</div>
+																	</div>-->
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
-																			<div class="s_dropdown"> 
-																				<select class="editwatchlist" name="editstock" id="">
+																			<div class="s_dropdown" style="display: inline-block;"> 
+																				<select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
 										                                                <option  value="select" selected>Select</option>
 										                                                <option  value="delete">Delete</option>
-										                                                <option  value="edit">Edit</option>
+										                                                <option  value="edit" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>">Edit</option>
 										                                        </select>
 
 																			</div>
@@ -798,6 +798,40 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		}
         ?>
     }
+
+    jQuery(document).ready(function() {
+
+		 
+		    $('.editwatchlist').change(function(e) {
+
+		        //console.log($(this).val());
+		        if($(this).val() == 'delete'){
+				        e.preventDefault();
+						Swal.fire({
+							title: 'Are you sure?',
+							text: "You won't be able to revert this!",
+							type: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Yes, delete it!'
+						}).then((result) => {
+							if (result.value) {
+								Swal.fire(
+									'Deleted!',
+									'Your Watchlist has been deleted.',
+									'success'
+								).then((result) => {
+									var ditemtoremove = jQuery(this).attr('data-space');
+									//window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
+								});
+							}
+						});
+		        }
+
+    		});
+    });
 
 	</script>
 

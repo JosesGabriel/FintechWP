@@ -285,8 +285,14 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($toparsesell, ',');
 
-		print_r($_POST);
-		exit;
+		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."')";
+
+		$wpdb->query($inserttrade);
+
+		
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -748,6 +754,42 @@ if($issampledata){
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
+			<div class="entr_wrapper_mid">
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_strategy" class="rnd">
+							<option value="" selected>Select Strategy</option>
+							<option value="Bottom Picking">Bottom Picking</option>
+							<option value="Breakout Play">Breakout Play</option>
+							<option value="Trend Following">Trend Following</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_tradeplan" class="rnd">
+							<option value="" selected>Select Trade Plan</option>
+							<option value="Day Trade">Day Trade</option>
+							<option value="Swing Trade">Swing Trade</option>
+							<option value="Investment">Investment</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_emotion" class="rnd">
+							<option value="" selected>Select Emotion</option>
+							<option value="Nuetral">Neutral</option>
+							<option value="Greedy">Greedy</option>
+							<option value="Fearful">Fearful</option>
+						</select>
+					</div>
+				</div>
+				<div class="groupinput">
+					<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+					<!-- <div>this is it</div> -->
+				</div>
+				</div>
 		</div>
 		<div class="record_footer row">
 			<div class="dbuttonrecord_onmodal">

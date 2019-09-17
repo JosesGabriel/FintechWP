@@ -7,6 +7,15 @@ jQuery(document).ready(function(e) {
 
     $(".ms-ctn .ms-sel-ctn").append("<i class='fas fa-search'></i>");
 
+
+
+    jQuery('.editwatchlist').on('change', function(){
+
+        console.log($(this).val());
+
+    });
+
+
     
 });
 

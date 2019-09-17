@@ -1279,13 +1279,6 @@
                 $(this).parents(".bidaskbar").find("."+dtype).show();
                 $(this).parents(".bidaskbar_opt").hide();
             });
-			
-			// $('.tr-background').mouseenter(function(){
-			// 	$('.tr-background').addClass('background');
-			// });
-			// $('.tr-background').mouseleave(function(){
-			// 	$('.tr-background').removeClass('background');
-			// });
 		});
     </script>
     <script type="text/javascript">
@@ -1328,13 +1321,6 @@
             });
         });
         jQuery(document).ready(function(){
-            // jQuery("#toghandle").on('click', function(){
-            //     jQuery("#toghandle").hide().removeClass("dropthiss");
-            // });
-            // jQuery("#toghandlings").on('click', function(){
-            //     jQuery("#toghandlings").hide().removeClass("dropthiss");
-            // });
-
             jQuery(".toclassclose").on('click', function(){
                 jQuery("#toghandle").hide().removeClass("dropthiss");
             });
@@ -1367,8 +1353,6 @@
 		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
 		<!-- <iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe> -->
-
-		<?php //get_template_part('parts/global', 'css'); ?>
 
 		<div class="arb_right_icons_trans">
 			<?php /*?> Top Icons <?php */?>

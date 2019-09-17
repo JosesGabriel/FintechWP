@@ -1258,17 +1258,6 @@
                 $(this).parents(".bidaskbar").find("."+dtype).show();
                 $(this).parents(".bidaskbar_opt").hide();
             });
-			forevertickerinit();
-			function forevertickerinit() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
-			}
-			function foreverticker() {
-				$('.marqueethis').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
-			}
 			
 			// $('.tr-background').mouseenter(function(){
 			// 	$('.tr-background').addClass('background');

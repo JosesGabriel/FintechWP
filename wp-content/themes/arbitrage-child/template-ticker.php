@@ -610,8 +610,8 @@
 				document.getElementById('countdown').innerHTML = remaining;
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
-        */
-    }
+        
+    }*/
 </script>
 <style>
 	.marqueethis {

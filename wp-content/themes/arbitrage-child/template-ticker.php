@@ -575,6 +575,7 @@
 
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 <script>
+    var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
 			forevertickerinit();
 			function forevertickerinit() {

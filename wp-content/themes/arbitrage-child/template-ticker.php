@@ -601,7 +601,8 @@
                     let element = jQuery(ids);
                     element.remove();
                 }
-            }, 10000);
+                jQuery("ul#container").width(1000);
+            }, 15000);
 
 		});
 		
@@ -648,7 +649,7 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="dev-ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-        <ul class="list-inline marqueethis arb_custom_ticker">
+        <ul id="container" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>

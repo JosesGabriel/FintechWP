@@ -287,16 +287,12 @@ echo $user->ID ." versis ". $user->ID;
 
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 
-		echo "<pre>";
-		print_r($buyyinginfo);
-		echo "</pre>";
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."')";
 
-		echo "<pre>";
-		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."')";
-		echo "</pre>";
+		$wpdb->query($inserttrade);
 
 		
-		exit;
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(

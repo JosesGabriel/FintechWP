@@ -48,6 +48,7 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
+
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -56,14 +57,19 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol)
         };
         $scope.ticker.push(transaction);
-       
+        ticker_data_ralph.push(transaction);
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
 
+        if (ticker_data_ralph.length > 150) {
+            ticker_data_ralph.pop();
+        }
+
         $scope.$digest();
     });
-    
+    console.log('yaeh');
+    console.log(ticker_data_ralph);
     $scope.select = goToChart;
 }]);
 

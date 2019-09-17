@@ -1323,12 +1323,12 @@ if($issampledata){
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input step="0.01" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
 
-																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
-																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" required></div>
+																			                                   		<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty"
+																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
 																													
-																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input" id="qty_price--input" onchange="selldate(this);"></div>
+																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input" onchange="selldate(this);"></div>
 																												</div>
 
 																			                                    <div class="entr_clear"></div>
@@ -3980,14 +3980,9 @@ if($issampledata){
 		}
 
 		// calculate total price
-		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity, #sell_price--input, #qty_price--input' function (e) {
+		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
-
-			var sx = $('#sell_price--input').val();
-        	$('#sell_price--input').val(replaceCommas(sx));
-			var sy = $('#qty_price--input').val();
-        	$('#qty_price--input').val(replaceCommas(sy));
 			// let quantity = jQuery('#entertopdataquantity').val();
 			
 			let total_price = parseFloat(price) * Math.trunc(quantity);
@@ -4007,6 +4002,19 @@ if($issampledata){
 					components[1] = components[1].replace(/\D/g, "");
 				return components.join(".");
 			}
+		});
+		$('#sell_price--input, #qty_price--input').keyup(function(event) {
+
+			// skip for arrow keys
+			if(event.which >= 37 && event.which <= 40) return;
+
+			// format number
+			$(this).val(function(index, value) {
+			return value
+			.replace(/\D/g, "")
+			.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+			;
+			});
 		});
 
 		// jQuery("")

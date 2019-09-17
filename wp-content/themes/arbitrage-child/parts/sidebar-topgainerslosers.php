@@ -33,7 +33,7 @@
                 return $b[3] <=> $a[3];
             });
 
-            do {
+            /*do {
                     $stocky[$y][0] = $stock[$y][0];
                     $stocky[$y][1] = $stock[$y][1];
                     $stocky[$y][2] = $stock[$y][2];
@@ -43,7 +43,7 @@
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
-            });
+            });*/
 
             /*
               if($today == $new_date){
@@ -121,14 +121,14 @@
                        // return $a[1] <=> $b[1];
                    // });
 
-                usort($stocky, function($a, $b) {
-                        return $a[1] <=> $b[1];
-                    });
+                //usort($stocky, function($a, $b) {
+                     //   return $a[1] <=> $b[1];
+                   // });
             ?>
 
                      <ul>
-                               <?php for($j=0; $j < 5; $j++) {
-
+                              <?php for($j=0; $j < 5; $j++) {
+ 
                                  if($stocky[$j][1] != null){
                                         ?> 
                                     <li class="odd">

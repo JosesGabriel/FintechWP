@@ -1445,6 +1445,7 @@ input.enter-trade-btn:hover {
 }
 .label_cost {
     margin: 0;
+    height: 20px;
 }
 .label_cost label {
     font-weight: 500;
@@ -1626,4 +1627,22 @@ input#qty_price--input {
     font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: 300;
+}
+.record_modal .selectonly select {
+    width: 152px;
+}
+.record_modal .entr_wrapper_mid {
+    padding: 10px 0 0 10px !important;
+    min-height: 172px;
+    margin: 11px auto;
+}
+.record_modal .entr_col {
+    padding-right: 10px;
+}
+.record_modal textarea.darktheme {
+    max-width: 466px;
+    margin: 0;
+}
+.record_modal .entr_col:nth-child(3) {
+    padding-right: 0 !important;
 }

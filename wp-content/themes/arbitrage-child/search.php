@@ -383,10 +383,10 @@ $dstockinfo = $gerdqoute->data;
     hr.style12 {
         border: 0;
         height: 1px;
-        width: 95%;
+        width: 100%;
         background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
         margin-top: .4rem !important;
-        margin: 0 1em;
+        margin: 0 auto;
     }
 
     .to-content-part {

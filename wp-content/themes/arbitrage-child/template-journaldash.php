@@ -2645,25 +2645,36 @@ if($issampledata){
 																							<?php
 																							
 																							if($isjounalempty){
-																								$finalwinning = [
+																								$winningstocks = [
 																									0 => [
-																										'dstock' => 'Stock 3',
-																										'dprofit' => 123435
+																										'stock' => 'Stock 3',
+																										'profit' => 123435
 																									],
 																									1 => [
-																										'dstock' => 'Stock 2',
-																										'dprofit' => 12343
+																										'stock' => 'Stock 2',
+																										'profit' => 12343
 																									],
 																									2 => [
-																										'dstock' => 'Stock 1',
-																										'dprofit' => 1234
+																										'stock' => 'Stock 1',
+																										'profit' => 1234
 																									],
 																								];
-																								rsort($finalwinning);
+
+																								$loosingstocks = [
+																									0 => [
+																										'stock' => 'Stock 1',
+																										'profit' => -1234
+																									],
+																									1 => [
+																										'stock' => 'Stock 2',
+																										'profit' => -12343
+																									],
+																									2 => [
+																										'stock' => 'Stock 3',
+																										'profit' => -123435
+																									],
+																								];
 																							}
-                                                                                            $dwinning = '';
-                                                                                            // $intowinchartbands = '';
-																							// $intowinchartlabels = '';
 
 																							foreach ($winningstocks as $key => $value) {
 																								$dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
@@ -2676,82 +2687,17 @@ if($issampledata){
 																								}
 																							}
 
-																							krsort($finalwinning);
-                                                                                            foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                                                                $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
-                                                                                                $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
-                                                                                                $dinss .= '</li>';
-																								$dwinning = $dwinning.$dinss;
-																								
-                                                                                                // $intowinchartbands .= '{';
-                                                                                                // $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
-                                                                                                // $intowinchartbands .= '"startValue": 0,';
-                                                                                                // $intowinchartbands .= '"endValue": "100",';
-                                                                                                // $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                // $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                // $intowinchartbands .= '"alpha": 0.3';
-                                                                                                // $intowinchartbands .= '}, {';
-                                                                                                // $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
-                                                                                                // $intowinchartbands .= ' "startValue": 0,';
-                                                                                                // $intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                // $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                // $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                // $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
-                                                                                                // $intowinchartbands .= '},';
-
-                                                                                                // $intowinchartlabels .= '{';
-                                                                                                // $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
-                                                                                                // $intowinchartlabels .= '"x": "49%",';
-                                                                                                // $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
-                                                                                                // $intowinchartlabels .= '"size": 11,';
-                                                                                                // $intowinchartlabels .= '"bold": false,';
-                                                                                                // $intowinchartlabels .= '"color": "#d8d8d8",';
-                                                                                                // $intowinchartlabels .= '"align": "right",';
-                                                                                                // $intowinchartlabels .= '},';
-                                                                                            }
-                                                                                             ?>
-																							 <?php echo $dwinning; ?>
-                                                                                            <?php /*?> Losers <?php */?>
-																							<?php
-																							if($isjounalempty){
-																								$finalloss = [
-																									0 => [
-																										'dstock' => 'Stock 1',
-																										'dprofit' => -1234
-																									],
-																									1 => [
-																										'dstock' => 'Stock 2',
-																										'dprofit' => -12343
-																									],
-																									2 => [
-																										'dstock' => 'Stock 3',
-																										'dprofit' => -123435
-																									],
-																								];
-																								sort($finalloss);
+																							foreach ($loosingstocks as $key => $value) {
+																								$dinss = '<li style="background-color: '.($key == 0 ? '#b91e45' : ($key == 1 ? '#732546' : ($key == 2 ? '#442946' : ($key >= 3 ? '' : '#b91e45')))).';display:'.($key >= 3 ? 'none' : '').';color: #132941;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'.$value['dstock'].'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['dprofit'], 2, '.', ',').'</div>';
+																								$dinss .= '</li>';
+																								echo $dinss;
+																								if($key == 3){
+																									break;
+																								}
 																							}
-                                                                                            // $intolosschartbands = '';
-																							// $intolosschartlabels = '';
-																							krsort($finalloss);
                                                                                              ?>
-																							 <?php echo $dlossing; ?>
-                                                                                            <!-- <li style="background-color: #442946;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">2GO</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(5000, 10000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #732546;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">X</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(12000, 20000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #b91e45;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">CHP</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(25000, 35000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #ff1744;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">NOW</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(36000, 49000), 2, '.', ','); ?></div>
-                                                                                            </li> -->
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>

@@ -281,11 +281,12 @@ echo $user->ID ." versis ". $user->ID;
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		$sellprice = rtrim($_POST['inpt_data_sellprice'], ',');
-		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
+		$toparsesell = parse_str($_POST['inpt_data_sellprice']);
+		$sellprice = rtrim($toparsesell, ',');
+		$sellqty = rtrim($toparsesell, ',');
 
-		// print_r($_POST);
-		// exit;
+		print_r($_POST);
+		exit;
 
         // Update journal data.
         $journalpostlog = array(

@@ -54,7 +54,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         var ctr = counter += 1;
         console.log(ctr);    
         var transaction = {
-            counter: ,
+            counter: ctr,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,

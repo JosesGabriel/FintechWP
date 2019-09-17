@@ -40,38 +40,11 @@
                     $stocky[$y][2] = $stock[$y][2];
                     $stocky[$y][3] = $stock[$y][3];
                     $y++;
-            }while ($y < $i);
+            }while ($sdate == $stock[$y][3]);
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
             });
-
-            /*
-              if($today == $new_date){
-                    $stock[$i][0] = $stvals->symbol;
-                    $stock[$i][1] = $stvals->changepercentage;
-                    $stock[$i][2] = $stvals->description;
-                    $stock[$i][3] =  $new_date; 
-                    $i++;            
-               }elseif ($yesterday == $new_date) {
-                    $stocky[$y][0] = $stvals->symbol;
-                    $stocky[$y][1] = $stvals->changepercentage;
-                    $stocky[$y][2] = $stvals->description;
-                    $stocky[$y][3] =  $new_date; 
-                    $y++;            
-               }    */
-
-        //}
-
-
-       /*
-             usort($stocky, function($a, $b) {
-                return $b[1] <=> $a[1];
-            });
-
-            usort($stock, function($a, $b) {
-                return $b[1] <=> $a[1];
-            }); */
 
 ?>
     
@@ -89,21 +62,15 @@
                                         <li class="odd">
                                             <span><?php echo $stocky[$j][0]; ?></span>
 
-                                            <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stocky[$j][3]; ?></p></a>
+                                            <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
 
                                         </li>
 
 
-                                <?php } //elseif ($stocky[$j][1] != null) { ?>
-                                       <!-- <li class="odd">
-                                            <span><?php //echo $stocky[$j][0]; ?></span>
-
-                                            <a href="#"><?php //echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php // echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
-
-                                        </li>-->
-
+                                <?php }  ?>
+                                       
                                     <?php
-                                       // }
+                                       
                                     }
                                  ?>
                     </ul>                          
@@ -118,13 +85,10 @@
             <div class="to-content-part losers">
 
             <?php 
-                //usort($stock, function($a, $b) {
-                       // return $a[1] <=> $b[1];
-                   // });
 
-                //usort($stocky, function($a, $b) {
-                     //   return $a[1] <=> $b[1];
-                   // });
+                usort($stocky, function($a, $b) {
+                        return $a[1] <=> $b[1];
+                    });
             ?>
 
                      <ul>
@@ -136,13 +100,10 @@
                                         <span><?php echo $stocky[$j][0]; ?></span>
                                         <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
                                     </li>
-                                <?php } //elseif ($stocky[$j][1] != null) { ?>
-                                   <!-- <li class="odd">
-                                        <span><?php //echo $stocky[$j][0]; ?></span>
-                                        <a href="#"><?php //echo $stocky[$j][2]; ?><br><p style="color: #eb4d5c !important;"><?php //echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
-                                    </li>-->
+                                <?php } ?>
+                                 
                                     <?php
-                                      //  } 
+                                     
                                     }
                                 ?>
                     </ul>

@@ -223,7 +223,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
 																	<!--<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>-->
-																		<div><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
+																		<div style="display: none;"><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
 																	<!--</div>-->
 																	
 																	<div class="row">

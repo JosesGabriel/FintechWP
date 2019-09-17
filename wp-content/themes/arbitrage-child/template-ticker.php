@@ -597,7 +597,8 @@
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
-                    console.log(ticker_data[i].counter);
+                    let ids = `li#${ticker_data[i].counter}`;
+                    console.log(ids);
                     //let element = jQuery("li[data-id=`${ticker_data[i].counter}`]");
                 }
             }, 5000);

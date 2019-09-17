@@ -281,10 +281,8 @@ echo $user->ID ." versis ". $user->ID;
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		// for DB injection
-		// sanitize the information
-
-
+		$sellprice = rtrim($_POST['inpt_data_sellprice'], ',');
+		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
 
 		print_r($_POST);
 		exit;
@@ -310,9 +308,9 @@ echo $user->ID ." versis ". $user->ID;
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
-
-                'data_sell_price' => $_POST['inpt_data_sellprice'],
-                'data_quantity' => $_POST['inpt_data_qty'],
+				
+                'data_sell_price' => $sellprice,
+                'data_quantity' => $sellqty,
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
@@ -320,7 +318,7 @@ echo $user->ID ." versis ". $user->ID;
             ),
         );
 
-        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
+        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -337,7 +335,7 @@ echo $user->ID ." versis ". $user->ID;
             update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
-        $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
+        $stockcost = ($sellprice * $sellqty);
         $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
@@ -4008,13 +4006,12 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		$('#sell_price--input, #qty_price--input').keyup(function(event) {
-
+		jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
 			// skip for arrow keys
 			if(event.which >= 37 && event.which <= 40) return;
 
 			// format number
-			$(this).val(function(index, value) {
+			jQuery(this).val(function(index, value) {
 			return value
 			.replace(/\D/g, "")
 			.replace(/\B(?=(\d{3})+(?!\d))/g, ",")

@@ -49,24 +49,26 @@ app.controller('template', function($scope, $http) {
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
 
-    ticker_data_ralph[] = {test:'hello'}
     socket.on('psec', function (data) {
+        var num += 1;
         var transaction = {
+            num_id: num,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
             shares: abbr_format(data.vol)
         };
         $scope.ticker.push(transaction);
-       
+        ticker_data_ralph.push(transaction);
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
 
+        if (ticker_data_ralph.length > 150) {
+            ticker_data_ralph.pop();
+        }
         $scope.$digest();
     });
-    console.log('yaeh');
-    console.log(ticker_data_ralph);
     $scope.select = goToChart;
 }]);
 

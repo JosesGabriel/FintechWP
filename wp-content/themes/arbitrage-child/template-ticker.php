@@ -575,8 +575,10 @@
 
 <!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
 <script>
+    var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			forevertickerinit();
+			/*
+            forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
 					foreverticker();
@@ -588,8 +590,31 @@
 					forevertickerinit();
 				});
 			}
+            */
+
+            setInterval(() => {
+                console.log('test');
+                let ticker_data = ticker_data_ralph.filter(data => {
+                    return data.counter < 100   
+                }) 
+                for(i in ticker_data){
+                    let el = $(this).attr("data-element");
+                    if (el.visible()) {
+                        // The element is visible, do something
+                        console.log('visible')
+                        console.log(el);
+                    } else {
+                        console.log(el)
+                        console.log('destroy')
+                    }
+                    console.log(ticker_data[i].counter)
+                    console.log(el);
+                }
+            }, 5000);
+
 		});
 		
+     /*   
     window.onload=function(){
 
 		(function countdown(remaining) {
@@ -600,7 +625,8 @@
 				document.getElementById('countdown').innerHTML = remaining;
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
-	}
+        
+    }*/
 </script>
 <style>
 	.marqueethis {
@@ -632,7 +658,7 @@
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <ul class="list-inline marqueethis arb_custom_ticker">
-            <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+            <li data-element="{{::transaction.counter}}" ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
@@ -687,7 +713,7 @@
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
-		var _client_id 	= 'arbitrage';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _username 	= '<?php echo $user->user_email; ?>';
 		var _symbol 	= '<?php 

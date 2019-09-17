@@ -40,7 +40,7 @@
                     $stocky[$y][2] = $stock[$y][2];
                     $stocky[$y][3] = $stock[$y][3];
                     $y++;
-            }while ($y < $i);
+            }while ($sdate == $stock[$y][3]);
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];

@@ -309,11 +309,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
-																						<?php
-																						if(strlen($value['dconnumber_entry_price']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
@@ -324,12 +320,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
-																						<?php
-																						if(strlen($value['dconnumber_take_profit_point']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>
-
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
@@ -340,12 +331,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
-																						<?php
-																					if(strlen($value['dconnumber_stop_loss_point']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>	
-
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>

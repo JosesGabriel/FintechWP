@@ -600,6 +600,12 @@ if($issampledata){
 	// 	$feeschart .= '},';
 	// }
 
+	// $demotsonchart .= '{';
+	// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+	// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+	// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+	// $demotsonchart .= '},';
+
 	$profits = [
 		'mon' => 0,
 		'tue' => 0,
@@ -622,6 +628,26 @@ if($issampledata){
 		'nov' => 0,
 		'dec' => 0
 	);
+
+	$tremo = [
+		'Neutral' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Greedy' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		],
+		'Fearful' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0
+		]
+	];
+
+
 
 
 	if(!empty($ismytrades)){
@@ -652,12 +678,19 @@ if($issampledata){
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
 
+			$tremo[$value->tlemotions]['total_trades'] += 1;
+			if($profit > 0){
+				$tremo[$value->tlemotions]['trwin'] += 1;
+			} else {
+				$tremo[$value->tlemotions]['trloss'] += 1;
+			}
+
 			
 			
 		}
 	}
 
-	print_r($profits);
+	print_r($tremo);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -669,7 +702,7 @@ if($issampledata){
 
 	foreach ($months as $key => $value) {
 		$feeschart .= '{';
-		$feeschart .= '"category": "'.$key.'",';
+		$feeschart .= '"category": "'.ucfirst($key).'",';
 		$feeschart .= '"column-1": "'.$value.'"';
 		$feeschart .= '},';
 	}
@@ -1276,16 +1309,16 @@ if($issampledata){
                                                                             <li class="headerpart">
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:7%; text-align: left !important;">Stocks</div>
-                                                                                    <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
+                                                                                    <div style="width:8%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
-                                                                                    <div style="width:15%" class="table-title-live table-title-avprice">Average Price</div>
+                                                                                    <div style="width:12%" class="table-title-live table-title-avprice">Average Price</div>
                                                                                     <div style="width:13%" class="table-title-live table-title-tcost">Total Cost</div>
                                                                                     <!--<div style="width:11%">Market Value</div>-->
                                                                                     <div style="width:13%" class="table-title-live table-title-mvalue">Market Value</div>
                                                                                     <div style="width:13%" class="table-title-live table-title-profit">Profit</div>
                                                                                     <!--<div style="width:9%">Performance</div>-->
-                                                                                    <div style="width:11%" class="table-title-live table-title-performance">Performance</div>
-                                                                                    <div style="width:112px; text-align:center;">Action</div>
+                                                                                    <div style="width:10%" class="table-title-live table-title-performance">Performance</div>
+                                                                                    <div style="width:95px; text-align:center;">Action</div>
                                                                                     <!--<div style="width:45px; text-align: right;">Notes</div>-->
                                                                                 </div>
                                                                             </li>
@@ -1419,15 +1452,15 @@ if($issampledata){
 																	            	<li>
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
-		                                                                                    <div style="width:9%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <div style="width:15%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
+		                                                                                    <div style="width:8%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
+		                                                                                    <div style="width:12%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
 		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
 		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->
-		                                                                                     <div style="width:11%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
-		                                                                                    <div style="width:112px;text-align:center;"><?php /*?>Action<?php */?>
+		                                                                                     <div style="width:10%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
+		                                                                                    <div style="width:93px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
 		                                                                                        <div class="hideformodal">

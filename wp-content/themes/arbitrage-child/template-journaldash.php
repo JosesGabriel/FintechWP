@@ -124,23 +124,23 @@ echo $user->ID ." versis ". $user->ID;
 
 
 
-   // if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-    if(isset($_POST['editbutton'])){
+   // if(isset($_POST['editbutton'])){
         //echo $_POST['inpt_data_status'];
 
         $log_id = $_POST['log_id'];
         $strategy = $_POST['data_strategy'];
         $emotion = $_POST['emotion'];
+        $logs = $_POST['logs'];
 
         echo $strategy;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-        //update_post_meta($log_id,  'data_trade_info', $strategy);
-        update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+        update_post_meta($log_id,  'data_trade_info', $strategy);
+       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
                
-
         wp_redirect('/journal');
         exit;
     }
@@ -3224,7 +3224,7 @@ if($issampledata){
                     <div class="hidethis" id="hidelogs">
                         
 
-                    <form method="post" class="edittlogs" autocomplete="off">     
+                    <form method="post" class="edittlogs">     
 
                         <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
                             <div class="entr_ttle_bar">
@@ -3281,8 +3281,8 @@ if($issampledata){
                                     <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
                                     <input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
                                   <div class="onelnetrd" style="margin-top: 9px;"> 
-                                    <input type="submit" class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;" value="Update">
-                                    <!--<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>-->
+                                    
+                                    <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 
                                   </div>
                                 </div>
@@ -3857,12 +3857,12 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         
-        //jQuery(".editmenow").click(function(){
+        jQuery(".editmenow").click(function(){
         //$(document).on("click", ".editmenow", function() {
 
-          // jQuery('.edittlogs').submit();
+           jQuery('.edittlogs').submit();
 
-      //  });
+        });
 
 
 

@@ -560,7 +560,7 @@
 		background-color:#2c3e50; 
 		text-align:left;
 	}
-    
+    /*
 	@keyframes marquee {
 		0% {
 			transform: translate(0, 0);
@@ -569,7 +569,7 @@
 			transform: translate(-50%, 0);
 		}
 	}
-    
+    */
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
@@ -585,7 +585,6 @@
 				});
 			}
 			function foreverticker() {
-                //console.log('working..');
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1500, "linear", function() {
 					forevertickerinit();
 				});
@@ -594,7 +593,7 @@
 
             setInterval(() => {
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    return data.counter > 10   
+                    return data.counter < 10   
                 }) 
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;
@@ -605,20 +604,6 @@
             }, 15000);
 
 		});
-		
-     /*
-    window.onload=function(){
-
-		(function countdown(remaining) {
-			if(remaining === 0)
-				jQuery(".arb_top_ticker").fadeOut("slow",function(){
-					location.reload(true);
-				});
-				document.getElementById('countdown').innerHTML = remaining;
-				setTimeout(function(){ countdown(remaining - 1); }, 1000);
-		})(<?php echo rand(100,180); ?>);
-        
-    }*/
 </script>
 <style>
 	.marqueethis {

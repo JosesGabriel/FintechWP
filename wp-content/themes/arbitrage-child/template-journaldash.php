@@ -3125,9 +3125,7 @@ if($issampledata){
 																			</li>-->
 																			
 																			<?php
-																			// if(!empty($ismytrades)):
-
-																				print_r($ismytrades);
+																			if(!empty($ismytrades)):
 																	
 																				foreach ($ismytrades as $key => $value) {
 																					$marketvals = $value->tlvolume * $value->tlaverageprice;
@@ -3239,7 +3237,7 @@ if($issampledata){
 																					</li>
 
 																			<?php 	 }
-																			// endif; 
+																			endif; 
 
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
                                                                                 // echo  $_GET['ptnum'];

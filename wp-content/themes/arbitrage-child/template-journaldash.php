@@ -1332,7 +1332,7 @@ if($issampledata){
 																			                                   		<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty"
 																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
 																													
-																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" class="buySell__date-picker trade_input changeselldate"></div>
+																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate"></div>
 																												</div>
 
 																			                                    <div class="entr_clear"></div>
@@ -1344,7 +1344,7 @@ if($issampledata){
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																												<input type="hidden" name="selldate" id="selldate">
+																												<!-- <input type="hidden" name="selldate" id="selldate"> -->
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -3862,7 +3862,7 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
 		jQuery(".changeselldate").change(function() {
-    		var date = $(this).val();
+			var date = $(this).val();
 			console.log(date, 'change');
 		});
         

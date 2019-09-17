@@ -9,11 +9,11 @@ header('Content-Type: application/json');
 global $wpdb;
 
 $charts_table = 'arby_charting';
-
+$request_method = $_SERVER['REQUEST_METHOD'];
 /**
  * TRADINGVIEW CHARTS
  */
-if (isset($_POST['tv_save_chart'])) {
+if ($request_method === 'POST') {
     $user_id = get_current_user_id();
     $data = $_POST;
     $get = $_GET;

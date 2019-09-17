@@ -1090,7 +1090,7 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_bought" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_bought" class="textfield-quantity number" required></div>
-					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_bought_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				</div>
 
 				<div class="col-md-6">
@@ -1111,8 +1111,8 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
-					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
-					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				</div>
 				<div class="entr_wrapper_mid">
 					<div class="entr_col">
@@ -3324,6 +3324,17 @@ if($issampledata){
 
 			return dall;
 		}
+
+		jQuery(document).on('keyup', 'input[name="inpt_data_price_bought"], input[name="inpt_data_qty_bought"]', function (e) {
+			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
+
+			$totalmarket = parseFloat(price) * parseFloat(quantity);
+			$finalcost = $totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			console.log($finalcost.toFixed(2));
+			jQuery('input[name="inpt_data_total_bought_price"]').text($finalcost.toFixed(2));
+		});
+
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {

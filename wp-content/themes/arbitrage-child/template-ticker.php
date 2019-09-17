@@ -593,8 +593,13 @@
             */
 
             setInterval(() => {
-                console.log('showme');
-                console.log(ticker_data_ralph);
+                console.log('test');
+                let ticker_data = ticker_data_ralph.filter(data => {
+                    console.log(data.counter);
+                }) 
+                for(i in ticker_data_ralph){
+
+                }
             }, 5000);
 
 		});

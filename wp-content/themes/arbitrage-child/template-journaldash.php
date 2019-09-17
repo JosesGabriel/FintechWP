@@ -285,12 +285,6 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($toparsesell, ',');
 
-		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
-
-		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
-
-		$wpdb->query($inserttrade);
-
 		
 		// exit;
 
@@ -350,7 +344,12 @@ echo $user->ID ." versis ". $user->ID;
                 'date' => date('Y-m-d', strtotime($_POST['selldate'])),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
-            ));
+			));
+
+		
+		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
+		$wpdb->query($inserttrade);
 
         wp_redirect('/journal');
         exit;
@@ -3125,9 +3124,7 @@ if($issampledata){
 																			</li>-->
 																			
 																			<?php
-																			// if(!empty($ismytrades)):
-
-																				print_r($ismytrades);
+																			if(!empty($ismytrades)):
 																	
 																				foreach ($ismytrades as $key => $value) {
 																					$marketvals = $value->tlvolume * $value->tlaverageprice;
@@ -3239,7 +3236,7 @@ if($issampledata){
 																					</li>
 
 																			<?php 	 }
-																			// endif; 
+																			endif; 
 
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
                                                                                 // echo  $_GET['ptnum'];

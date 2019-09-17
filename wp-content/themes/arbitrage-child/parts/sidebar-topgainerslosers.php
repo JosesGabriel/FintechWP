@@ -40,7 +40,7 @@
                     $stocky[$y][2] = $stock[$y][2];
                     $stocky[$y][3] = $stock[$y][3];
                     $y++;
-            }while ($y <= $i);
+            }while ($y < $i);
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
@@ -83,13 +83,13 @@
                      <ul>
                                <?php for($j=0; $j < 5; $j++) {
 
-                                     if($stock[$j][1] != null){
+                                     if($stocky[$j][1] != null){
                                             ?> 
 
                                         <li class="odd">
-                                            <span><?php echo $stock[$j][0]; ?></span>
+                                            <span><?php echo $stocky[$j][0]; ?></span>
 
-                                            <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$j][3]; ?></p></a>
+                                            <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stocky[$j][3]; ?></p></a>
 
                                         </li>
 

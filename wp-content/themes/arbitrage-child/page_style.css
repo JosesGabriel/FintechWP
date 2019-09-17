@@ -4154,18 +4154,18 @@
     padding-bottom: 0 !important;
     width: 37px !important;
 }
-.to-content-part.to-back-back.people_tab-label {
+.to-top-title.people_tab-label {
     padding: 10px 29px !important;
 }
-.to-content-part.to-back-back.people_title-label {
+.to-top-title.people_title-label {
     margin: 0 !important;
     padding: 2px 0 !important;
 }
-.to-top-title.posts_tab-label {
+.to-content-part.to-back-back.posts_tab-label {
     padding: 10px 29px !important;
     min-height: unset;
 }
-.to-top-title.posts_title-label {
+.to-content-part.to-back-back.posts_title-label {
     margin: 0 !important;
     padding: 2px 0 !important;
 }

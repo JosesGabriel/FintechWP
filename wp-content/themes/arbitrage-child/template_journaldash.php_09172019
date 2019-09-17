@@ -386,9 +386,10 @@ echo $user->ID ." versis ". $user->ID;
 
 <!-- BOF SORT DATA FOR JOURNAL -->
 <?php
-	
+	$dailyvolumes = '';
+	$dailyvalues = '';
 	$alltradelogs = [];
-	
+	$buysscounter = 0;
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
@@ -444,22 +445,33 @@ echo $user->ID ." versis ". $user->ID;
 
 			array_push($alltradelogs, $tradeitems);
 			
-			// $dailyvolumes .= '{';
-			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
-			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			// $dailyvolumes .= '},';
+			$dailyvolumes .= '{';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
+			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
+			$dailyvolumes .= '},';
 
 			
-			// $dailyvalues .= '{';
-			// $dailyvalues .= '"category": "'.$buysscounter.'",';
-			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			// $dailyvalues .= '},';
+			$dailyvalues .= '{';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
+			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
+			$dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
 	}
 	
-	
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');
@@ -575,71 +587,6 @@ if($issampledata){
 <?php
 	$ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$user->ID.' order by tldate');
 
-	$dailyvolumes = '';
-	$dailyvalues = '';
-	$dpercschart = '';
-	$buysscounter = 0;
-
-	
-	// foreach ($xdays as $xdaykey => $xdayvalue) {
-	// 	$basedate = date('D', strtotime($xdayvalue['dday']));
-	// 	$dpercschart .= '{';
-	// 	$dpercschart .= '"category": "'.$basedate.'",';
-	// 	$dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-	// 	$dpercschart .= '"column-2": "#673ab7"';
-	// 	$dpercschart .= '},';
-	// }
-
-	$profits = [
-		'monday' => 0,
-		'tuesday' => 0,
-		'wednesday' => 0,
-		'thursday' => 0,
-		'friday' => 0,
-	];
-
-
-
-	if(!empty($ismytrades)){
-		foreach ($ismytrades as $key => $value) {
-			$dailyvolumes .= '{';
-			$dailyvolumes .= '"category": "'.$buysscounter.'",';
-			$dailyvolumes .= '"column-1": '.($value->tlvolume != "" ? $value->tlvolume : 0).'';
-			$dailyvolumes .= '},';
-
-			
-			$dailyvalues .= '{';
-			$dailyvalues .= '"category": "'.$buysscounter.'",';
-			$dailyvalues .= '"column-1": '.($value->tlsellprice != "" ? $value->tlsellprice : 0).'';
-			$dailyvalues .= '},';
-
-			$selltotal = $value->tlvolume * $value->tlsellprice;
-			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
-			$profit = $sellvalue - $marketvals;
-
-			$istrdate = date('l', strtotime($value->tldate));
-
-			$profits[strtolower($istrdate)] += $profit;
-			
-		}
-	}
-
-	print_r($profits);
-
-	for ($i=$buysscounter; $i <= 20; $i++) { 
-		$dailyvolumes .= '{';
-		$dailyvolumes .= '"category": "'.$i.'",';
-		$dailyvolumes .= '"column-1": 0';
-		$dailyvolumes .= '},';
-
-		
-		$dailyvalues .= '{';
-		$dailyvalues .= '"category": "'.$i.'",';
-		$dailyvalues .= '"column-1": 0';
-		$dailyvalues .= '},';
-	}
-
-	
 
 ?>
 <!-- EOF Trade Logs Data from DB -->
@@ -3177,7 +3124,6 @@ if($issampledata){
 																			</li>-->
 																			
 																			<?php
-																			$trtotals = 0;
 																			if(!empty($ismytrades)):
 																	
 																				foreach ($ismytrades as $key => $value) {
@@ -3188,9 +3134,7 @@ if($issampledata){
 																					$profit = $sellvalue - $marketvals;
 																					$profitperc = ($profit / $marketvals) * 100;
 
-																					$tliswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
-
-																					$trtotals += $profit;
+																					$iswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
 																					?>
 																					<li class="<?php echo $value->tlid; ?> dloglist">
 																						<div style="width:99%;">
@@ -3227,7 +3171,7 @@ if($issampledata){
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
-																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $tliswin; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $iswin; ?></span></div>
 																									</div>
 																									<div class="trdright darkbgpadd">
 																										<div><strong>Notes:</strong></div>
@@ -3301,11 +3245,42 @@ if($issampledata){
                                                                                 $dpage = 1;
                                                                                 $current = (isset($_GET['pt']) ? $_GET['pt'] : 1);
 																				$dlisttrade = [];
-																				
+																				$trtotals = 0;
                                                                                 if ($author_posts->have_posts()) {
                                                                                     while ($author_posts->have_posts()) {
 																						$author_posts->the_post();
 																						$tradelogid = get_the_ID();
+																						$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$tradelogid);
+
+																						$dlisttrade[$dpage][$count]['id'] = $tradelogid;
+																						
+																						$data_stock = array_search('data_stock', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_stock'] = $postmetas[$data_stock]->meta_value;
+																						
+																						$data_sellmonth = array_search('data_sellmonth', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellmonth'] = $postmetas[$data_sellmonth]->meta_value;
+																						
+																						$data_sellday = array_search('data_sellday', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sellday'] = $postmetas[$data_sellday]->meta_value;
+																						
+																						$data_sellyear = array_search('data_sellyear', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_sellyear'] = $postmetas[$data_sellyear]->meta_value;
+
+																						$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_dprice'] = str_replace('₱', '', $postmetas[$data_dprice]->meta_value);
+
+																						$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_sell_price'] = $postmetas[$data_sell_price]->meta_value;
+																						
+																						$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_quantity'] = $postmetas[$data_quantity]->meta_value;
+
+																						$data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+																						$dlisttrade[$dpage][$count]['data_trade_info'] = json_decode($postmetas[$data_trade_info]->meta_value);
+																						
+																						$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
+                                                                                        $dlisttrade[$dpage][$count]['data_avr_price'] = $postmetas[$data_avr_price]->meta_value;
+
                                                                                         // $dlisttrade[$dpage]
                                                                                         if ($count == $paginate) {
                                                                                             $count = 1;
@@ -3317,7 +3292,182 @@ if($issampledata){
                                                                                     wp_reset_postdata();
                                                                                 }
 
+                                                                                $tnum = 0;
+
+                                                                                foreach ($dlisttrade[$current] as $tlkey => $tlvalue):
+                                                                                    $data_sellmonth = $tlvalue['data_sellmonth'];
+                                                                                    $data_sellday = $tlvalue['data_sellday'];
+                                                                                    $data_sellyear = $tlvalue['data_sellyear'];
+                                                                                    $data_stock = $tlvalue['data_stock'];
+                                                                                    $data_dprice = $tlvalue['data_dprice'];
+                                                                                    $data_sell_price = $tlvalue['data_sell_price'];
+                                                                                    $data_quantity = $tlvalue['data_quantity'];
+                                                                                    $data_trade_info = $tlvalue['data_trade_info'];
+                                                                                    $data_avr_price = $tlvalue['data_avr_price'];
+
+                                                                                    // get prices
+                                                                                    $soldplace = $data_quantity * $data_sell_price;
+                                                                                    $baseprice = $data_quantity * $data_dprice;
+
+                                                                                    $sellfee = getjurfees($soldplace, 'sell');
+
+                                                                                    //profit or loss
+                                                                                    $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
+
+                                                                                    // profperc
+                                                                                    $dtlprofperc = (abs($dprofit) / ($data_quantity * $data_avr_price)) * 100;
+                                                                                    $trtotals += $dprofit;
                                                                             ?>
+
+                                                             				<!--<li class="s-logs" style="display: none;">
+	                                                                            	<input type="hidden" name="hsearchlogs" >
+	                                                                            	
+	                                                                            	<?php 
+	                                                                            		//$text = (isset($_POST['keyword']));
+	                                                                            		//echo $text;
+
+	                                                                            	
+	                                                                            	?>
+                                                                            </li>-->
+                                                                     	<input type="hidden" id="<?php echo 'dprofit' . $tnum; ?>" value="<?php echo $dprofit; ?>">
+
+
+																			<li class="<?php echo $tlvalue['id']; ?> dloglist">
+
+																				<div style="width:99%;">
+                                                                                    <div style="width:45px" class="tdata" id="<?php echo 'tdata' . $tnum; ?>"><a href="https://arbitrage.ph/chart/<?php echo $data_stock; ?>" class="stock-label"><?php echo $data_stock; ?></a></div>
+																					<div style="width:65px" class="tdate" id="<?php echo 'tdate' . $tnum; ?>"><?php echo date('m', strtotime($data_sellmonth)); ?>/<?php echo $data_sellday; ?>/<?php echo $data_sellyear; ?></div>
+																					<div style="width:55px" class="table-cell-live" id="<?php echo 'tquantity' . $tnum; ?>"><?php echo $data_quantity; ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tavprice' . $tnum; ?>">₱<?php echo number_format($data_avr_price, 2, '.', ','); ?></div>
+																					<div style="width:95px" class="table-cell-live" id="<?php echo 'tbvalue' . $tnum; ?>">₱<?php echo number_format(($data_quantity * $data_avr_price), 2, '.', ','); ?></div>
+																					<div style="width:65px" class="table-cell-live" id="<?php echo 'tsellprice' . $tnum; ?>">₱<?php echo number_format($data_sell_price, 2, '.', ','); ?></div>
+																					<div style="width:88px" class="table-cell-live" id="<?php echo 'tsellvalue' . $tnum; ?>">₱<?php echo number_format($soldplace, 2, '.', ','); ?></div>
+																					<div style="width:80px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tploss' . $tnum; ?>">₱<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+																					<div style="width:56px" class="<?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?> table-cell-live" id="<?php echo 'tpercent' . $tnum; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</div>
+																					<div style="width:27px; text-align:center">
+																						<a href="#tradelognotes_<?php echo $data_stock; ?>" class="smlbtn blue fancybox-inline">
+																							<i class="fas fa-clipboard"></i>
+																						</a>
+																					</div>
+																					<input type="hidden" id="<?php echo 'deletelog' . $tnum; ?>" value="<?php echo $tlvalue['id']; ?>">
+																					<div style="width:25px">
+																						<a class="deletelog smlbtn-delete" data-istl="<?php echo $tlvalue['id']; ?>" style="cursor:pointer;text-align:center">
+																							<i class="fas fa-eraser"></i>
+																						</a>
+																					</div>
+                                                                                    <div style="width:25px; margin-left: 2px;">
+                                                                                        <a href="#editlognotes_<?php echo $data_stock; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center">
+                                                                                            <i class="fas fa-edit"></i>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    
+																				</div>
+																				<?php  $tnum++; ?>
+																				<div class="hidethis" id="hidelogs">
+																					<div class="tradelogbox" id="tradelognotes_<?php echo $data_stock; ?>">
+																						<div class="entr_ttle_bar">
+																							<strong><?php echo $data_stock; ?></strong> <span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																						<div class="trdlgsbox">
+
+																							<div class="trdleft">
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->strategy; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->tradeplan; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $data_trade_info[0]->emotion; ?></span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																							</div>
+																							<div class="trdright darkbgpadd">
+																								<div><strong>Notes:</strong></div>
+																								<div><?php echo $data_trade_info[0]->tradingnotes; ?></div>
+																							</div>
+
+																						<div class="trdclr"></div>
+																						</div>
+
+																					</div>
+																				</div>
+
+																				<div class="hidethis" id="hidelogs">
+																					
+
+																				<form method="post" class="edittlogs">     
+
+																					<div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+																						<div class="entr_ttle_bar">
+																							<strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+																						
+																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																						<div class="trdlgsbox">
+																							<?php 
+																							$strategy = $data_trade_info[0]->strategy; 
+																							$tradeplan = $data_trade_info[0]->tradeplan;
+																							$emotion = $data_trade_info[0]->emotion;
+																							?>
+																							<div class="trdleft">
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
+																										
+																										<select class="rnd selecteditlog" name="data_strategy" id="">
+																											<option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+																											<option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+																											<option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
+																										</select>
+																										
+																									</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+
+																									<select class="rnd selecteditlog" name="data_tradeplan" id="">
+																											<option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+																											<option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+																											<option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
+																									</select>
+
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+																									<select class="rnd selecteditlog" name="data_emotion" id="">
+																											<option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+																											<option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+																											<option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
+																									</select>
+
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																							</div>
+																							<div class="trdright darkbgpadd">
+																								<div><strong>Notes:</strong></div>
+																								<div>
+																									<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+																										<?php echo $data_trade_info[0]->tradingnotes; ?>
+																									</textarea>
+																								</div>
+																							</div>
+																							<div class="trdleft">
+																								<input type="hidden" value="Edit" name="inpt_data_status">
+																								<input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
+																								<input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
+																							<div class="onelnetrd" style="margin-top: 9px;"> 
+																								
+																								<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
+
+																							</div>
+																							</div>
+																						<div class="trdclr"></div>
+																						</div>
+
+																					</div>
+
+																				</form>
+
+
+																				</div>
+
+
+																			</li>
+																					
+																			<?php endforeach; ?>
 																		<input type="hidden" name="hsearchlogs" value="<?php echo $tnum; ?>" >
                                                                         </ul>
                                                                     </div>

@@ -626,6 +626,39 @@ if($issampledata){
 
 	$allstocks = [];
 
+	$strats = [
+		'Bottom Picking' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0,
+		],
+		'Breakout Play' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0,
+		],
+		'Trend Following' => [
+			'total_trades' => 0,
+			'trwin' => 0,
+			'trloss' => 0,
+		],
+	];
+
+	// $stratstrg .= '{';
+	// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
+	// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
+	// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
+	// $stratstrg .= '"colors": "#06af68",';
+	// $stratstrg .= '"colorsred": "#b7193f"';
+	// $stratstrg .= '},';
+
+	// $wincharts .= '{';
+	// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
+	// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
+	// $wincharts .= '},';
+
+
+
 
 
 
@@ -658,16 +691,23 @@ if($issampledata){
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
+				
 			
 			if($profit > 0){
 				$tremo[$value->tlemotions]['trwin']++;
+				$strats[$value->tlstrats]['trwin']++;
 			} else {
 				$tremo[$value->tlemotions]['trloss'] ++;
+				$strats[$value->tlstrats]['trloss'] ++;
 			}
 			$tremo[$value->tlemotions]['total_trades']++;
+			$strats[$value->tlstrats]['total_trades']++;
 			
+			// top stocks
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
+
+
 
 			
 		}
@@ -774,7 +814,7 @@ if($issampledata){
 
 
 
-	print_r($winstocks);
+	print_r($strats);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';

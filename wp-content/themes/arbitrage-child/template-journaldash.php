@@ -3980,7 +3980,7 @@ if($issampledata){
 		}
 
 		// calculate total price
-		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity' function (e) {
+		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
 			// let quantity = jQuery('#entertopdataquantity').val();

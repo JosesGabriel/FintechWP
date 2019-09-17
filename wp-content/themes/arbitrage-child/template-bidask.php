@@ -305,7 +305,7 @@
 		var _stocks     = {};
 		var _admin 		= true;
 		var _moderator 	= false;
-		var _client_id 	= 'arbt';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '000001'
 		var _username 	= 'guest';
 		var _symbol 	= '<?php echo $_GET['stocksym']; ?>';

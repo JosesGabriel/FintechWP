@@ -221,14 +221,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																?>
 
 																<li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-																	<div class="watchlist--buttons">
+																	<!--<div class="watchlist--buttons">
 																		<div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>
 																		<div><a href="#" class="editItem" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
-																	</div>
+																	</div>-->
 																	
 																	<div class="row">
 																		<div class="wlttlstockvals">
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
+																			<div class="s_dropdown"> 
+																				<select class="editwatchlist" name="editstock" id="">
+										                                                <option  value="select" selected>Select</option>
+										                                                <option  value="delete">Delete</option>
+										                                                <option  value="edit">Edit</option>
+										                                        </select>
+
+																			</div>
 																			<div class="subnotif" style="display: none;">
 																				<?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
 																					echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
@@ -309,11 +317,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Entry Price</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
-																						<?php
-																						if(strlen($value['dconnumber_entry_price']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
@@ -324,12 +328,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Take Profit</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
-																						<?php
-																						if(strlen($value['dconnumber_take_profit_point']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>
-
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>
@@ -340,12 +339,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																					<div class="dcondition">Stop<br>Loss</div>
 																					<div class="dvalue">
 																						<span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
-																						<?php
-																					if(strlen($value['dconnumber_stop_loss_point']) <= 3){
-																								echo ' Php';
-																							}
-																						 ?>	
-
+																						
 																						</span>
 																						<!--<span class="ontoright">Php</span>-->
 																					</div>

@@ -1345,7 +1345,7 @@
 	<div>
 		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
-		<!-- TICKER TEMPORARILY REMOVED <iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe> -->
+		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
 
 		<?php //get_template_part('parts/global', 'css'); ?>
 
@@ -2287,7 +2287,7 @@
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
-		var _client_id 	= 'arbitrage';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _username 	= '<?php echo $user->user_email; ?>';
 		var _symbol 	= '<?php 

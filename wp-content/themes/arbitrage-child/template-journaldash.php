@@ -289,38 +289,39 @@ echo $user->ID ." versis ". $user->ID;
 		// exit;
 
         // Update journal data.
-        $journalpostlog = array(
-            // 'ID'           	=> $data_postid,
-            'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-            'post_status' => 'publish',
-            'post_author' => $user_idd,
-            'post_category' => array(19, 20),
-            'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-            'meta_input' => array(
-                // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-                // 'data_sellday' => $_POST['inpt_data_sellday'],
-				// 'data_sellyear' => $_POST['inpt_data_sellyear'],
+        // $journalpostlog = array(
+        //     // 'ID'           	=> $data_postid,
+        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
+        //     'post_status' => 'publish',
+        //     'post_author' => $user_idd,
+        //     'post_category' => array(19, 20),
+        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
+        //     'meta_input' => array(
+        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
+        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
+		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
 				
-				'data_sellmonth' => $sellmonth,
-                'data_sellday' => $sellday,
-                'data_sellyear' => $sellyear,
+		// 		'data_sellmonth' => $sellmonth,
+        //         'data_sellday' => $sellday,
+        //         'data_sellyear' => $sellyear,
 
-                'data_isdateofw' => $selldayname,
+        //         'data_isdateofw' => $selldayname,
 
-                'data_stock' => $_POST['inpt_data_stock'],
-                'data_dprice' => $_POST['inpt_data_price'],
+        //         'data_stock' => $_POST['inpt_data_stock'],
+        //         'data_dprice' => $_POST['inpt_data_price'],
 				
-                'data_sell_price' => $sellprice,
-                'data_quantity' => $sellqty,
-                'data_avr_price' => $_POST['inpt_avr_price'],
+        //         'data_sell_price' => $sellprice,
+        //         'data_quantity' => $sellqty,
+        //         'data_avr_price' => $_POST['inpt_avr_price'],
 
-                'data_trade_info' => $_POST['dtradelogs'],
-                'data_userid' => $user->ID,
-            ),
-        );
+        //         'data_trade_info' => $_POST['dtradelogs'],
+        //         'data_userid' => $user->ID,
+        //     ),
+        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-        wp_insert_post($journalpostlog);
+		// wp_insert_post($journalpostlog);
+		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {

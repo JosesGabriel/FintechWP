@@ -2902,18 +2902,18 @@ if($issampledata){
                                                                     <div class="col-md-4" style="padding-right:0;">
 																			<?php
 																				if($isjounalempty){
-																					$commissions = 12345.6;
-																					$vat = 2342.5;
-																					$transfer_fee = 1234;
-																					$sccp = 124;
-																					$sales_tax = 223;
+																					// $commissions = 12345.6;
+																					// $vat = 2342.5;
+																					// $transfer_fee = 1234;
+																					// $sccp = 124;
+																					// $sales_tax = 223;
 
 																					$fees = [
-																						'commissions' => 0,
-																						'vat' => 0,
-																						'transfer' => 0,
-																						'sccp' => 0,
-																						'sell' => 0,
+																						'commissions' => 111.2418925,
+																						'vat' => 13.3490271,
+																						'transfer' => 0.87229045,
+																						'sccp' => 1.7445809,
+																						'sell' => 104.674854,
 																					];
 																				}
 																			?>
@@ -2926,23 +2926,23 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60">Commissions</div>
-                                                                                                    <div class="width35">&#8369;<?php echo number_format($commissions, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">&#8369;<?php echo number_format($fees['commissions'], 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60">Value Added Tax</div>
-                                                                                                    <div class="width35">&#8369;<?php echo number_format($vat, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">&#8369;<?php echo number_format($fees['vat'], 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60">Transfer Fee</div>
-                                                                                                    <div class="width35">&#8369;<?php echo number_format($transfer_fee, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">&#8369;<?php echo number_format($fees['transfer'], 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60">SCCP</div>
-                                                                                                    <div class="width35">&#8369;<?php echo number_format($sccp, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">&#8369;<?php echo number_format($fees['sccp'], 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60">Sales Tax</div>
-                                                                                                    <div class="width35">&#8369;<?php echo number_format($sales_tax, 2, '.', ','); ?></div>
+                                                                                                    <div class="width35">&#8369;<?php echo number_format($fees['sell'], 2, '.', ','); ?></div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>

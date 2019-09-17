@@ -134,8 +134,9 @@ $dstockinfo = $gerdqoute->data;
 
     .panel-tabs > li > a:hover {
         border-bottom: 2px solid #ffeb3b !important;
-        background-color: #142c46 !important;}
-
+        background-color: #142c46 !important;
+        border-radius: 5px 5px 0 0;
+    }
     .panel-tabs > li > a.active, 
     .panel-tabs > li > a.active:hover, 
     .panel-tabs > li > a.active:focus {
@@ -143,7 +144,7 @@ $dstockinfo = $gerdqoute->data;
         cursor: default;
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
-        border-radius: 0px;
+        border-radius: 5px 5px 0 0;
         background-color: #142c46;
         border-bottom: 2px solid #ffeb3b;
     }
@@ -235,13 +236,13 @@ $dstockinfo = $gerdqoute->data;
 
     .nav li {
         position: relative;
-        line-height: 2em !important;
+        /* line-height: 2em !important; */
     }
 
     .onbfollow {
         position: absolute;
         right: 50px;
-        margin-top: -20px;
+        margin-top: -3px;
     }
 
     .traider-image .side-image {
@@ -258,7 +259,7 @@ $dstockinfo = $gerdqoute->data;
 
     .top-traiders .to-content-part .trader-item {
         margin: 15px 0;
-        padding: 0px 15px;
+        /* padding: 0px 15px; */
     }
 
     textarea.um-activity-textarea-elem.ui-autocomplete-input {
@@ -382,7 +383,7 @@ $dstockinfo = $gerdqoute->data;
     hr.style12 {
         border: 0;
         height: 1px;
-        width: 98%;
+        width: 95%;
         background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
         margin-top: .4rem !important;
         margin: 0 1em;
@@ -488,7 +489,8 @@ $dstockinfo = $gerdqoute->data;
     /* .to-content-part.to-back-back .to-top-title {padding:5px 15px 5px 15px;} */
 
     .nav>li>a {
-        
+        width: 100%;
+        display: block;
         padding: 4px 15px !important;
     }
 

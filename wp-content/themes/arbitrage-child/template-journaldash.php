@@ -667,7 +667,7 @@ if($issampledata){
 			$tremo[$value->tlemotions]['total_trades']++;
 			
 			$allstocks[$value->isstock]['profit'] += $profit;
-			$allstocks[$value->isstock]['profperc'] += ($sellvalue - $marketvals) * 100;
+			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
 
 			
 		}
@@ -687,7 +687,7 @@ if($issampledata){
 
 	$winxcount = 0;
 	// foreach ($winstocks as $key => $value) {
-	// 	if($value > 0 && $winxcount < 3){
+	// 	if($value['profit'] > 0 && $winxcount < 3){
 	// 		$intowinchartbands .= '{';
 	// 		$intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
 	// 		$intowinchartbands .= '"startValue": 0,';

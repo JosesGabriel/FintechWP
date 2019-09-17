@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
@@ -19,6 +20,7 @@
 		enable_page_level_ads: true
 		});
 	</script>
+	<?php endif ?>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />

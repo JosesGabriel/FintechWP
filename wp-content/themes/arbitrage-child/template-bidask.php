@@ -19,7 +19,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
@@ -38,6 +38,7 @@
 		enable_page_level_ads: true
 		});
 	</script>
+	<?php endif ?>
 
 	<title>Bid/Ask</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
@@ -325,7 +326,7 @@
 		var _stocks     = {};
 		var _admin 		= true;
 		var _moderator 	= false;
-		var _client_id 	= 'arbt';
+		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '000001'
 		var _username 	= 'guest';
 		var _symbol 	= '<?php echo $_GET['stocksym']; ?>';

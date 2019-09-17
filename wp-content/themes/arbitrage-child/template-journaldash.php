@@ -126,27 +126,24 @@ echo $user->ID ." versis ". $user->ID;
 
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-    //if(isset($_POST['editbutton'])){
+   // if(isset($_POST['editbutton'])){
         //echo $_POST['inpt_data_status'];
 
         $log_id = $_POST['log_id'];
         $strategy = $_POST['data_strategy'];
         $emotion = $_POST['emotion'];
+        $logs = $_POST['logs'];
 
         echo $strategy;
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-        //update_post_meta($log_id,  'data_trade_info', $strategy);
-        update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+        update_post_meta($log_id,  'data_trade_info', $strategy);
+       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
                
-
         wp_redirect('/journal');
         exit;
     }
-
-
-
 
 
 
@@ -284,7 +281,11 @@ echo $user->ID ." versis ". $user->ID;
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		// print_r($_POST);
+		$toparsesell = parse_str($_POST['inpt_data_sellprice']);
+		$sellprice = rtrim($toparsesell, ',');
+		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
+
+		
 		// exit;
 
         // Update journal data.
@@ -308,9 +309,9 @@ echo $user->ID ." versis ". $user->ID;
 
                 'data_stock' => $_POST['inpt_data_stock'],
                 'data_dprice' => $_POST['inpt_data_price'],
-
-                'data_sell_price' => $_POST['inpt_data_sellprice'],
-                'data_quantity' => $_POST['inpt_data_qty'],
+				
+                'data_sell_price' => $sellprice,
+                'data_quantity' => $sellqty,
                 'data_avr_price' => $_POST['inpt_avr_price'],
 
                 'data_trade_info' => $_POST['dtradelogs'],
@@ -318,7 +319,7 @@ echo $user->ID ." versis ". $user->ID;
             ),
         );
 
-        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $_POST['inpt_data_qty'];
+        $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
         wp_insert_post($journalpostlog);
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -335,7 +336,7 @@ echo $user->ID ." versis ". $user->ID;
             update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
 
-        $stockcost = ($_POST['inpt_data_sellprice'] * $_POST['inpt_data_qty']);
+        $stockcost = ($sellprice * $sellqty);
         $purchasefee = getjurfees($stockcost, 'sell');
 
         $wpdb->insert('arby_ledger', array(
@@ -343,7 +344,12 @@ echo $user->ID ." versis ". $user->ID;
                 'date' => date('Y-m-d', strtotime($_POST['selldate'])),
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
-            ));
+			));
+
+		
+		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
+		$wpdb->query($inserttrade);
 
         wp_redirect('/journal');
         exit;
@@ -576,6 +582,15 @@ if($issampledata){
 
 ?>
 <!-- EOF Sort LIVE Portfolio -->
+
+<!-- BOF Trade Logs Data from DB -->
+<?php
+	$ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$user->ID.' order by tldate');
+
+
+?>
+<!-- EOF Trade Logs Data from DB -->
+
 <!-- BOF Ledger Data -->
 <?php
     $duseridmo = $user->ID;
@@ -747,6 +762,42 @@ if($issampledata){
 				<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_price" value=""><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 			</div>
+			<div class="entr_wrapper_mid">
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_strategy" class="rnd">
+							<option value="" selected>Select Strategy</option>
+							<option value="Bottom Picking">Bottom Picking</option>
+							<option value="Breakout Play">Breakout Play</option>
+							<option value="Trend Following">Trend Following</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_tradeplan" class="rnd">
+							<option value="" selected>Select Trade Plan</option>
+							<option value="Day Trade">Day Trade</option>
+							<option value="Swing Trade">Swing Trade</option>
+							<option value="Investment">Investment</option>
+						</select>
+					</div>
+				</div>
+				<div class="entr_col">
+					<div class="groupinput selectonly">
+						<select name="inpt_data_emotion" class="rnd">
+							<option value="" selected>Select Emotion</option>
+							<option value="Nuetral">Neutral</option>
+							<option value="Greedy">Greedy</option>
+							<option value="Fearful">Fearful</option>
+						</select>
+					</div>
+				</div>
+				<div class="groupinput">
+					<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
+					<!-- <div>this is it</div> -->
+				</div>
+				</div>
 		</div>
 		<div class="record_footer row">
 			<div class="dbuttonrecord_onmodal">
@@ -1276,7 +1327,8 @@ if($issampledata){
 		                                                                                        	<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 
 																			                            <div class="entr_ttle_bar">
-																			                                <strong>Sell Trade</strong> <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?><input type="date" class="buySell__date-picker" onchange="selldate(this);"></span>
+																											<strong>Sell Trade</strong>
+																											<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
 																			                            </div>
 
 																			                            <form action="/journal" method="post">
@@ -1310,7 +1362,7 @@ if($issampledata){
 																			                                        value="<?php echo $value; ?>" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																			                                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price"
-																			                                        value="<?php echo $dstocktraded['totalstock']; ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																			                                        value="<?php echo number_format($dstocktraded['totalstock'], 2, '.', ','); ?>" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 
 
 																			                                    </div>
@@ -1325,22 +1377,24 @@ if($issampledata){
 
 																			                                    </div>
 																			                                    <div class="entr_col">
-																			                                    	<div class="groupinput midd"><label>Sell Price</label><input type="number" step="0.01" name="inpt_data_sellprice" required></div>
+																			                                    	<div class="groupinput midd"><label>Sell Price</label><input step="0.01" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
 
-																			                                   		<div class="groupinput midd"><label>Qty.</label><input type="number" name="inpt_data_qty"
-																			                                        value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" required></div>
-																			                                   </div>
+																			                                   		<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty"
+																													value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
+																													
+																													<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate"></div>
+																												</div>
 
 																			                                    <div class="entr_clear"></div>
 
 																			                            </div>
 																			                            <div>
-																			                                <div>
+																			                                <div style="height: 36px;">
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
 																												<input type="hidden" name="dtradelogs" value='<?php echo json_encode($dstocktraded['data']); ?>'>
-																												<input type="hidden" name="selldate" id="selldate">
+																												<!-- <input type="hidden" name="selldate" id="selldate"> -->
 																			                                    <input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																			                                </div>
 
@@ -3067,9 +3121,123 @@ if($issampledata){
 
 	                                                                            		                                                                            	
 	                                                                            	
-                                                                            </li>-->
-
+																			</li>-->
+																			
 																			<?php
+																			if(!empty($ismytrades)):
+																	
+																				foreach ($ismytrades as $key => $value) {
+																					$marketvals = $value->tlvolume * $value->tlaverageprice;
+																					$selltotal = $value->tlvolume * $value->tlsellprice;
+																					$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
+
+																					$profit = $sellvalue - $marketvals;
+																					$profitperc = ($profit / $marketvals) * 100;
+
+																					$iswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
+																					?>
+																					<li class="<?php echo $value->tlid; ?> dloglist">
+																						<div style="width:99%;">
+																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="https://arbitrage.ph/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
+																							<div style="width:65px" class="tdate" id="tdate<?php echo $value->tlid; ?>"><?php echo $value->tldate; ?></div>
+																							<div style="width:55px" class="table-cell-live" id="tquantity<?php echo $value->tlid; ?>"><?php echo $value->tlvolume; ?></div>
+																							<div style="width:65px" class="table-cell-live" id="tavprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlaverageprice, 3, ".", ","); ?></div>
+																							<div style="width:95px" class="table-cell-live" id="tbvalue<?php echo $value->tlid; ?>">₱<?php echo number_format($marketvals, 2, ".", ","); ?></div>
+																							<div style="width:65px" class="table-cell-live" id="tsellprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlsellprice, 2, ".", ","); ?></div>
+																							<div style="width:88px" class="table-cell-live" id="tsellvalue<?php echo $value->tlid; ?>">₱<?php echo number_format($sellvalue, 2, ".", ","); ?></div>
+																							<div style="width:80px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tploss1">₱<?php echo number_format($profit, 2, ".", ","); ?></div>
+																							<div style="width:56px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tpercent1"><?php echo number_format($profitperc, 2, ".", ","); ?>%</div>
+																							<div style="width:27px; text-align:center">
+																								<a href="#tradelognotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																							</div>
+																							<input type="hidden" id="deletelog1" value="4394">
+																							<div style="width:25px">
+																								<a class="deletelog smlbtn-delete" data-istl="4394" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																							</div>
+																							<div style="width:25px; margin-left: 2px;">
+																								<a href="#editlognotes_<?php echo $value->tlid; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
+																							</div>
+																						</div>
+																						<div class="hidethis" id="hidelogs">
+																							<div class="tradelogbox" id="tradelognotes_<?php echo $value->tlid; ?>">
+																								<div class="entr_ttle_bar">
+																									<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
+																								</div>
+																								<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																								<div class="trdlgsbox">
+
+																									<div class="trdleft">
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlstrats; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $iswin; ?></span></div>
+																									</div>
+																									<div class="trdright darkbgpadd">
+																										<div><strong>Notes:</strong></div>
+																										<div><?php echo $value->tlnotes; ?></div>
+																									</div>
+																									<div class="trdclr"></div>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="hidethis" id="hidelogs">
+																							<form method="post" class="edittlogs">     
+																								<div class="tradelogbox" id="editlognotes_<?php echo $value->tlid; ?>">
+																									<div class="entr_ttle_bar">
+																									<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
+																									</div>
+																									<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																									<div class="trdlgsbox">
+																										<div class="trdleft">
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
+																													<select class="rnd selecteditlog" name="data_strategy" id="">
+																														<option value="Bottom Picking">Bottom Picking</option>
+																														<option value="Breakout Play">Breakout Play</option>
+																														<option selected="" value="Trend Following">Trend Following</option>
+																													</select>
+																												</div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+																												<select class="rnd selecteditlog" name="data_tradeplan" id="">
+																														<option selected="" value="Day Trade">Day Trade</option>
+																														<option value="Swing Trade">Swing Trade</option>
+																														<option value="Investment">Investment</option>
+																												</select>
+																											</div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+																												<select class="rnd selecteditlog" name="data_emotion" id="">
+																														<option value="Neutral">Neutral</option>
+																														<option value="Greedy">Greedy</option>
+																														<option selected="" value="Fearful">Fearful</option>
+																												</select>
+																											</div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result txtred">-3.09%</span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft txtred">Loss</span></div>
+																										</div>
+																										<div class="trdright darkbgpadd">
+																											<div><strong>Notes:</strong></div>
+																											<div>
+																												<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">																										this is a test																									</textarea>
+																											</div>
+																										</div>
+																										<div class="trdleft">
+																											<input type="hidden" value="Edit" name="inpt_data_status">
+																											<input type="hidden" name="log_id" value="4394">
+																											<input type="hidden" name="logs" value="">
+																											<div class="onelnetrd" style="margin-top: 9px;"> 
+																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
+																											</div>
+																										</div>
+																									<div class="trdclr"></div>
+																									</div>
+																								</div>
+																							</form>
+																						</div>
+																					</li>
+
+																			<?php 	 }
+																			endif; 
+
                                                                                 // $paginate = (isset($_GET['ptnum']) && @$_GET['ptnum'] != "" ? 1 : $_GET['ptnum']);
                                                                                 // echo  $_GET['ptnum'];
                                                                                 $paginate = 20;
@@ -3221,76 +3389,80 @@ if($issampledata){
 																					</div>
 																				</div>
 
-                                                                                <div class="hidethis" id="hidelogs">
-                                                                                    
+																				<div class="hidethis" id="hidelogs">
+																					
 
-                                                                                <form method="post" class="edittlogs" autocomplete="off">     
+																				<form method="post" class="edittlogs">     
 
-                                                                                    <div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
-                                                                                        <div class="entr_ttle_bar">
-                                                                                            <strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
-                                                                                           
-                                                                                        </div>
-                                                                                        <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
-                                                                                        <div class="trdlgsbox">
-                                                                                            <?php 
-                                                                                            $strategy = $data_trade_info[0]->strategy; 
-                                                                                            $tradeplan = $data_trade_info[0]->tradeplan;
-                                                                                            $emotion = $data_trade_info[0]->emotion;
-                                                                                            ?>
-                                                                                            <div class="trdleft">
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-                                                                                                        
-                                                                                                        <select class="rnd selecteditlog" name="data_strategy" id="">
-                                                                                                            <option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
-                                                                                                            <option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
-                                                                                                            <option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
-                                                                                                        </select>
-                                                                                                        
-                                                                                                    </div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
+																					<div class="tradelogbox" id="editlognotes_<?php echo $data_stock; ?>">
+																						<div class="entr_ttle_bar">
+																							<strong><?php echo $data_stock; ?></strong><span class="datestamp_header"><?php echo $data_sellmonth; ?> <?php echo $data_sellday; ?>, <?php echo $data_sellyear; ?></span>
+																						
+																						</div>
+																						<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																						<div class="trdlgsbox">
+																							<?php 
+																							$strategy = $data_trade_info[0]->strategy; 
+																							$tradeplan = $data_trade_info[0]->tradeplan;
+																							$emotion = $data_trade_info[0]->emotion;
+																							?>
+																							<div class="trdleft">
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
+																										
+																										<select class="rnd selecteditlog" name="data_strategy" id="">
+																											<option  <?php if($strategy == 'Bottom Picking'){echo("selected");}?> value="Bottom Picking">Bottom Picking</option>
+																											<option  <?php if($strategy == 'Breakout Play'){echo("selected");}?> value="Breakout Play">Breakout Play</option>
+																											<option  <?php if($strategy == 'Trend Following'){echo("selected");}?> value="Trend Following">Trend Following</option>
+																										</select>
+																										
+																									</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 
-                                                                                                     <select class="rnd selecteditlog" name="data_tradeplan" id="">
-                                                                                                            <option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
-                                                                                                            <option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
-                                                                                                            <option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
-                                                                                                    </select>
+																									<select class="rnd selecteditlog" name="data_tradeplan" id="">
+																											<option  <?php if($tradeplan == 'Day Trade'){echo("selected");}?> value="Day Trade">Day Trade</option>
+																											<option  <?php if($tradeplan == 'Swing Trade'){echo("selected");}?> value="Swing Trade">Swing Trade</option>
+																											<option  <?php if($tradeplan == 'Investment'){echo("selected");}?> value="Investment">Investment</option>
+																									</select>
 
-                                                                                                </div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-                                                                                                    <select class="rnd selecteditlog" name="data_emotion" id="">
-                                                                                                            <option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
-                                                                                                            <option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
-                                                                                                            <option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
-                                                                                                    </select>
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
+																									<select class="rnd selecteditlog" name="data_emotion" id="">
+																											<option  <?php if($emotion == 'Neutral'){echo("selected");}?> value="Neutral">Neutral</option>
+																											<option  <?php if($emotion == 'Greedy'){echo("selected");}?> value="Greedy">Greedy</option>
+																											<option  <?php if($emotion == 'Fearful'){echo("selected");}?> value="Fearful">Fearful</option>
+																									</select>
 
-                                                                                                </div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
-                                                                                                <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
-                                                                                            </div>
-                                                                                            <div class="trdright darkbgpadd">
-                                                                                                <div><strong>Notes:</strong></div>
-                                                                                                <div>
-                                                                                                    <textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
-                                                                                                        <?php echo $data_trade_info[0]->tradingnotes; ?>
-                                                                                                    </textarea>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                             <div class="trdleft">
-                                                                                                <input type="hidden" value="Edit" name="inpt_data_status">
-                                                                                                <input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
-                                                                                                <input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
-                                                                                              <div class="onelnetrd" style="margin-top: 9px;"> <button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button></div>
-                                                                                            </div>
-                                                                                        <div class="trdclr"></div>
-                                                                                        </div>
+																								</div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? '+' : '-'; ?><?php echo number_format($dtlprofperc, 2, '.', ','); ?>%</span></div>
+																								<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo $dprofit > 0 ? 'txtgreen' : 'txtred'; ?>"><?php echo $dprofit > 0 ? 'Gain' : 'Loss'; ?></span></div>
+																							</div>
+																							<div class="trdright darkbgpadd">
+																								<div><strong>Notes:</strong></div>
+																								<div>
+																									<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">
+																										<?php echo $data_trade_info[0]->tradingnotes; ?>
+																									</textarea>
+																								</div>
+																							</div>
+																							<div class="trdleft">
+																								<input type="hidden" value="Edit" name="inpt_data_status">
+																								<input type="hidden" name="log_id" value="<?php echo $tlvalue['id']; ?>">
+																								<input type="hidden" name="logs" value="<?php print_r($data_trade_info); ?>">
+																							<div class="onelnetrd" style="margin-top: 9px;"> 
+																								
+																								<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 
-                                                                                    </div>
+																							</div>
+																							</div>
+																						<div class="trdclr"></div>
+																						</div>
 
-                                                                                </form>
-                                                                               
+																					</div>
 
-                                                                                </div>
+																				</form>
+
+
+																				</div>
 
 
 																			</li>
@@ -3490,10 +3662,10 @@ if($issampledata){
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:8%">Count</div>
                                                                                     <div style="width:19%">Date</div>
-                                                                                    <div style="width:19%">Transaction</div>
-                                                                                    <div style="width:14%">Debit</div>
-                                                                                    <div style="width:14%">Credit</div>
-                                                                                    <div style="width:19%">Balance</div>
+                                                                                    <div style="width:15%">Transaction</div>
+                                                                                    <div style="width:18%" class="to-left-align">Debit</div>
+                                                                                    <div style="width:19%" class="to-left-align">Credit</div>
+                                                                                    <div style="width:18%" class="to-left-align">Balance</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3526,24 +3698,24 @@ if($issampledata){
 																					?>
 																					<li>
 																						<div style="width:99%;">
-																							<div style="width:8%"><?php echo $ledcount; ?></div>
+																							<div style="width:7.9%"><?php echo $ledcount; ?></div>
 		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-																							<div style="width:19%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
-																							<div style="width:14%">
+																							<div style="width:15%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
+																							<div style="width:18%" class="to-left-align">
 																								<?php if($value->trantype == "withraw"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance - $value->tranamount;
 																									$totdebit += $value->tranamount;
 																								} ?>
 																							</div>
-																							<div style="width:14%">
+																							<div style="width:19%" class="to-left-align">
 																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
 																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
 																									$ledbalance = $ledbalance + $value->tranamount;
 																									$totcred += $value->tranamount;
 																								} ?>
 																							</div>
-		                                                                                    <div style="width:19%">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
+		                                                                                    <div style="width:18%" class="to-left-align">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
 		                                                                                </div>
 																					</li>
 																			<?php
@@ -3554,10 +3726,10 @@ if($issampledata){
                                                                             	<div style="width:100%;">
                                                                                     <div style="width:8%">&nbsp;</div>
                                                                                     <div style="width:19%">&nbsp;</div>
-                                                                                    <div style="width:19%">Total</div>
-                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
-                                                                                    <div style="width:14%"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
-                                                                                    <div style="width:19%">&nbsp;</div>
+                                                                                    <div style="width:15%">Total</div>
+                                                                                    <div style="width:18%" class="to-left-align"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
+                                                                                    <div style="width:19%" class="to-left-align"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
+                                                                                    <div style="width:18%" class="to-left-align">&nbsp;</div>
                                                                                     <!-- <div style="width:19%">Deposits</div>
                                                                                     <div style="width:19%">Ending Balance</div> -->
                                                                                 </div>
@@ -3850,17 +4022,24 @@ if($issampledata){
             saveEvent();
         });
     });
+
 	jQuery(document).ready(function(){
 
+		jQuery(".changeselldate").change(function() {
+			var date = $(this).val();
+			console.log(date, 'change');
+		});
         
-        
-        $(document).on("click", ".editmenow", function() {
+        jQuery(".editmenow").click(function(){
+        //$(document).on("click", ".editmenow", function() {
 
            jQuery('.edittlogs').submit();
 
         });
 
-		$(document).on("click", ".deletelog", function() {
+
+        $('.deletelog').on('click', function () {
+	//$(document).on("click", ".deletelog", function() {
 
 		//jQuery(".deletelog").click(function(e){
 
@@ -3882,7 +4061,7 @@ if($issampledata){
 					// swal("Your imaginary file is safe!");
 				}
 			});
-		});
+	});
 
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
@@ -3996,6 +4175,18 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
+		// jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
+		// 	// skip for arrow keys
+		// 	if(event.which >= 37 && event.which <= 40) return;
+
+		// 	// format number
+		// 	jQuery(this).val(function(index, value) {
+		// 	return value
+		// 	.replace(/\D/g, "")
+		// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+		// 	;
+		// 	});
+		// });
 
 		// jQuery("")
 		jQuery('#selectdepotype').on('change', function() {

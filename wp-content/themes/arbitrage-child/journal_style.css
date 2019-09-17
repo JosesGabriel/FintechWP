@@ -688,7 +688,7 @@ input[type="submit"].green {
     background: none;
     line-height: 29px;
     font-size: 14px;
-    padding: 0 12px;
+    padding: 0 12px !important;
     border-radius: 25px;
     color: #fff;
     cursor: pointer;
@@ -1278,7 +1278,7 @@ input.enter-trade-btn:hover {
 }
 .buy-order--submit {
     position: relative;
-    left: 580px;
+    left: 584px;
 }
 .modal-button-confirm {
     position: relative;
@@ -1445,6 +1445,7 @@ input.enter-trade-btn:hover {
 }
 .label_cost {
     margin: 0;
+    height: 20px;
 }
 .label_cost label {
     font-weight: 500;
@@ -1583,4 +1584,65 @@ i.fas.fa-close.to_closethis_rec {
     border-radius: 20px;
     border: 2px solid #fff;
     cursor: pointer;
+}
+.to-left-align {
+    text-align: right !important;
+}
+.buySell__date-picker.trade_input {
+    margin: 0;
+    border-radius: 0 3px 3px 0;
+    border: none;
+    padding: 2px 0 3px;
+    padding-right: 0 !important;
+    background: #4e6a85;
+}
+.sell_date-margin {
+    margin-bottom: 0;
+}
+input.no-padding {
+    padding-right: 3px !important;
+}
+input#sell_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 5px 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+input#qty_price--input {
+    display: inline-block;
+    border-radius: 0 3px 3px 0;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 5px 0 7px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+.record_modal .selectonly select {
+    width: 152px;
+}
+.record_modal .entr_wrapper_mid {
+    padding: 10px 0 0 10px !important;
+    min-height: 172px;
+    margin: 11px auto;
+}
+.record_modal .entr_col {
+    padding-right: 10px;
+}
+.record_modal textarea.darktheme {
+    max-width: 466px;
+    margin: 0;
+}
+.record_modal .entr_col:nth-child(3) {
+    padding-right: 0 !important;
 }

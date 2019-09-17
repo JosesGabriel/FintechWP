@@ -3973,10 +3973,11 @@ if($issampledata){
 		}
 
 		// calculate total price
-		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity','#sell_price--input', function (e) {
+		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity','#sell_price--input','#qty_price--input' function (e) {
 			let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
 			let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
 			jQuery('#sell_price--input').val().replace(/,/g, '');
+			jQuery('#qty_price--input').val().replace(/,/g, '');
 			// let quantity = jQuery('#entertopdataquantity').val();
 			
 			let total_price = parseFloat(price) * Math.trunc(quantity);

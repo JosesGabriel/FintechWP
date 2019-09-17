@@ -626,7 +626,7 @@ if($issampledata){
 
 	print_r($profits);
 
-	foreach ($variable as $key => $value) {
+	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
 		$dpercschart .= '"category": "'.$key.'",';
 		$dpercschart .= '"column-1": "'.$value.'",';

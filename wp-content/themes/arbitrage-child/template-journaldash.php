@@ -3866,10 +3866,10 @@ if($issampledata){
         });
 
 
-
+        $('.deletelog').on('click', function () {
 	//$(document).on("click", ".deletelog", function() {
 
-		jQuery(".deletelog").click(function(e){
+		//jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
 

@@ -598,7 +598,7 @@
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
-                    let el = $(`${ticker_data[i].counter}`).attr("data-element");
+                    let el = $(this).attr("data-element");
                     console.log(ticker_data[i].counter)
                     console.log(el);
                 }

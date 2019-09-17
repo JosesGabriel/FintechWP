@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: API Page
+ * Template Name: Charting API Page
  * Template page for Watchlist Page Platform
  */
 

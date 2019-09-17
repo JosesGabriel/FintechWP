@@ -475,7 +475,7 @@ $dstockinfo = $gerdqoute->data;
 
     .stocks-body {
         background: #142c46 !important;
-        padding: 10px 29px;
+        padding: 10px 29px 10px 33px;
         border-radius: 5px;
         margin: 10px 0px;
         vertical-align: middle;

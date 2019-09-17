@@ -48,6 +48,8 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
+
+    ticker_data_ralph[] = {test:'hello'}
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,
@@ -63,7 +65,8 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
 
         $scope.$digest();
     });
-    
+    console.log('yaeh');
+    console.log(ticker_data_ralph);
     $scope.select = goToChart;
 }]);
 

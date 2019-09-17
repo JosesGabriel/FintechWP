@@ -587,6 +587,7 @@ if($issampledata){
 	$iswin = 0;
 	$isloss = 0;
 	$buysscounter = 0;
+	$dtotalpl = 0;
 
 	$profits = [
 		'mon' => 0,
@@ -712,6 +713,10 @@ if($issampledata){
 			// top stocks
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
+			if(date('Y', strtotime($value->tldate)) == date('Y')){
+				$dtotalpl = $profit;
+			}
+			
 			
 		}
 	}
@@ -1852,7 +1857,7 @@ if($issampledata){
                                                         }
 
                                                         $dlistofsells = [];
-                                                        $dtotalpl = 0;
+                                                        
                                                         // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
                                                             foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
                                                                 // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
@@ -1865,7 +1870,7 @@ if($issampledata){
 																	
 																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
 
-                                                                    $dtotalpl += (($selprice - $sellfee) - $dcurprice);
+                                                                    // $dtotalpl += (($selprice - $sellfee) - $dcurprice);
                                                                 }
                                                             }
                                                         // }
@@ -1901,7 +1906,7 @@ if($issampledata){
                                                                                                 </li>
                                                                                                 <li>
                                                                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $dequityp) * 100), 2, '.', ',') : '0.00');?>%</div>
+                                                                                                    <div class="width35"><?php echo ($dtotalpl > 0 ? number_format((($dtotalpl / $initcapital) * 100), 2, '.', ',') : '0.00');?>%</div>
                                                                                                 </li>
                                                                                             </ul>
                                                                                         </div>

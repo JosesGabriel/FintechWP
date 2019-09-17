@@ -3854,6 +3854,7 @@ if($issampledata){
             saveEvent();
         });
     });
+
 	jQuery(document).ready(function(){
 
         
@@ -3866,9 +3867,9 @@ if($issampledata){
 
 
 
-		$(document).on("click", ".deletelog", function() {
+	//$(document).on("click", ".deletelog", function() {
 
-		//jQuery(".deletelog").click(function(e){
+		jQuery(".deletelog").click(function(e){
 
 			var dlogid = jQuery(this).attr('data-istl');
 
@@ -3888,7 +3889,7 @@ if($issampledata){
 					// swal("Your imaginary file is safe!");
 				}
 			});
-		});
+	});
 
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;

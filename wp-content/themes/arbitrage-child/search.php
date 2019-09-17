@@ -64,7 +64,7 @@ $dstockinfo = $gerdqoute->data;
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" async></script>
 
-<!-- <style type="text/css">
+<style type="text/css">
 
     .center-dashboard-part {
         width: 73%;
@@ -676,7 +676,7 @@ $dstockinfo = $gerdqoute->data;
             padding: 0 !important;
         }
 
-</style> -->
+</style>
 
 <?php get_template_part('parts/global', 'css'); ?>
 

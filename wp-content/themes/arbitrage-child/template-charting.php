@@ -70,4 +70,8 @@ if ($request_method === 'POST') {
     respond(true, [
         'id' => $wpdb->insert_id,
     ]);
+} else if ($request_method === 'GET') {
+
 }
+
+respond(false, ['status' => 'No hacc ples.'], 403);

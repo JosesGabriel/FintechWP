@@ -20,7 +20,7 @@ if ( is_user_logged_in() ) {
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
@@ -39,6 +39,7 @@ if ( is_user_logged_in() ) {
 		enable_page_level_ads: true
 		});
 	</script>
+	<?php endif ?>
 	
 	<meta property="og:type" content="website" /> 
 	<meta property="og:url" content="<?php echo $siteurlgen; ?>/share/" /> 

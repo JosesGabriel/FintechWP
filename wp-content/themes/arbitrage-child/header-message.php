@@ -16,6 +16,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
@@ -34,6 +35,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 		enable_page_level_ads: true
 		});
 	</script>
+	<?php endif ?>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">

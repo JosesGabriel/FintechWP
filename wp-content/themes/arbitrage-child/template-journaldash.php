@@ -785,7 +785,6 @@ if($issampledata){
 	usort($winningstocks, function($a, $b) {
 		return $b['profit'] - $a['profit'];
 	});
-	print_r($winningstocks);
 
 	$intolosschartbands = '';
 	$intolosschartlabels = '';
@@ -795,8 +794,8 @@ if($issampledata){
 		if($value['profit'] < 0 && $lossxcount < 3){
 
 			$dloss = [];
-			$dwins['stocks'] = $value['stockname'];
-			$dwins['profit'] = $value['profit'];
+			$dloss['stocks'] = $value['stockname'];
+			$dloss['profit'] = $value['profit'];
 
 			array_push($loosingstocks, $dloss);
 
@@ -839,7 +838,7 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 	
-	// print_r($strats);
+	print_r($loosingstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -2525,97 +2524,6 @@ if($issampledata){
 													</div>
                                                     <br class="clear">
                                                     <!-- BoF Trade Statistics -->
-													<?php
-                                                        // get all stocks that has been traded
-                                                        $dstocks = [];
-                                                        foreach ($alltradelogs as $dstockskey => $dstocksvalue) {
-                                                            array_push($dstocks, $dstocksvalue['data_stock']);
-                                                        }
-                                                        $dstocks = array_unique($dstocks);
-
-                                                        // identify is stock profit
-                                                        $dlistofstocks = [];
-                                                        foreach ($dstocks as $sxdkey => $sxdvalue) {
-                                                            $dinitbb = [];
-                                                            $dinitbb['dstock'] = $sxdvalue;
-                                                            $dinitbb['dprofit'] = 0;
-
-                                                            foreach ($alltradelogs as $alllogskey => $alllogsvalue) {
-                                                                if ($sxdvalue == $alllogsvalue['data_stock']) {
-                                                                    $data_sellmonth = $alllogsvalue['data_sellmonth'];
-                                                                    $data_sellday = $alllogsvalue['data_sellday'];
-                                                                    $data_sellyear = $alllogsvalue['data_sellyear'];
-
-                                                                    $data_stock = $alllogsvalue['data_stock'];
-                                                                    $data_dprice = $alllogsvalue['data_dprice'];
-                                                                    $data_dprice = str_replace('₱', '', $data_dprice);
-
-                                                                    $data_sell_price = $alllogsvalue['data_sell_price'];
-                                                                    $data_quantity = $alllogsvalue['data_quantity'];
-
-                                                                    $data_trade_info = $alllogsvalue['data_trade_info'];
-                                                                    // $data_trade_info = json_decode($data_trade_info);
-                                                                    $data_avr_price = $alllogsvalue['data_avr_price'];
-
-                                                                    // get prices
-                                                                    $soldplace = $data_quantity * $data_sell_price;
-                                                                    $baseprice = $data_quantity * $data_dprice;
-
-                                                                    $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                    //profit or loss
-                                                                    $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
-
-                                                                    $dinitbb['dprofit'] += $dprofit;
-                                                                }
-                                                            }
-
-                                                            array_push($dlistofstocks, $dinitbb);
-                                                        }
-
-                                                        $iswinstocks = [];
-                                                        $islossstocks = [];
-                                                        foreach ($dlistofstocks as $dwlkey => $dwlvalue) {
-                                                            if ($dwlvalue['dprofit'] > 0) {
-                                                                array_push($iswinstocks, $dwlvalue);
-                                                            } else {
-                                                                array_push($islossstocks, $dwlvalue);
-                                                            }
-                                                        }
-
-                                                        function sortprofits($a, $b)
-                                                        {
-															return $b['dprofit'] - $a['dprofit'];
-                                                        }
-														
-                                                        function winningsort($a, $b)
-                                                        {
-															return $a['dprofit'] - $b['dprofit'];
-                                                        }
-
-                                                        // winning stocks
-                                                        // usort($iswinstocks, 'sortprofits');
-                                                        $totalwin = 0;
-														$finalwinning = [];
-                                                        foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
-                                                            array_push($finalwinning, $pxwinvalue);
-                                                            $totalwin += $pxwinvalue['dprofit'];
-                                                            if ($pxwinkey >= 4) {
-                                                                break;
-                                                            }
-                                                        }
-                                                        // usort($finalwinning, 'winningsort');
-                                                        $finalloss = [];
-														$totalloss = 0;
-                                                        foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
-                                                            array_push($finalloss, $pxlossvalue);
-                                                            $totalloss += $pxlossvalue['dprofit'];
-                                                            if ($pxlosskey >= 4) {
-                                                                break;
-                                                            }
-                                                        }
-
-                                                    ?>
                                                     <!-- EoF Trade Statistics -->
 													<div class="row">
 
@@ -2645,110 +2553,59 @@ if($issampledata){
 																							<?php
 																							
 																							if($isjounalempty){
-																								$finalwinning = [
+																								$winningstocks = [
 																									0 => [
-																										'dstock' => 'Stock 3',
-																										'dprofit' => 123435
+																										'stock' => 'Stock 3',
+																										'profit' => 123435
 																									],
 																									1 => [
-																										'dstock' => 'Stock 2',
-																										'dprofit' => 12343
+																										'stock' => 'Stock 2',
+																										'profit' => 12343
 																									],
 																									2 => [
-																										'dstock' => 'Stock 1',
-																										'dprofit' => 1234
+																										'stock' => 'Stock 1',
+																										'profit' => 1234
 																									],
 																								];
-																								rsort($finalwinning);
-																							}
-                                                                                            $dwinning = '';
-                                                                                            // $intowinchartbands = '';
-																							// $intowinchartlabels = '';
 
-																							// foreach ($winningstocks as $key => $value) {
-																							// 	$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                                                            //     $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
-                                                                                            //     $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
-																							// 	$dinss .= '</li>';
-																							// 	echo $dinss;
-																							// }
-
-																							krsort($finalwinning);
-                                                                                            foreach ($finalwinning as $fwinkey => $fwinvalue) {
-																								$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                                                                $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
-                                                                                                $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
-                                                                                                $dinss .= '</li>';
-																								$dwinning = $dwinning.$dinss;
-																								
-                                                                                                // $intowinchartbands .= '{';
-                                                                                                // $intowinchartbands .= '"color": "'.($fwinkey == 2 ? '#2C3E51' : ($fwinkey == 1 ? '#223448' : ($fwinkey == 0 ? '#172A3F' : ''))).'",';
-                                                                                                // $intowinchartbands .= '"startValue": 0,';
-                                                                                                // $intowinchartbands .= '"endValue": "100",';
-                                                                                                // $intowinchartbands .= '"radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                // $intowinchartbands .= '"innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                // $intowinchartbands .= '"alpha": 0.3';
-                                                                                                // $intowinchartbands .= '}, {';
-                                                                                                // $intowinchartbands .= ' "color": "'.($fwinkey == 2 ? '#00e676' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 0 ? '#0d785a' : ''))).'",';
-                                                                                                // $intowinchartbands .= ' "startValue": 0,';
-                                                                                                // $intowinchartbands .= ' "endValue": '. (($fwinkey >= 0) || $totalwin >= 0 ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00 ).',';
-                                                                                                // $intowinchartbands .= ' "radius": "'.($fwinkey == 2 ? '100' : ($fwinkey == 1 ? '85' : ($fwinkey == 0 ? '70' : ''))).'%",';
-                                                                                                // $intowinchartbands .= ' "innerRadius": "'.($fwinkey == 2 ? '85' : ($fwinkey == 1 ? '70' : ($fwinkey == 0 ? '55' : ''))).'%",';
-                                                                                                // $intowinchartbands .= ' "balloonText": "'. (($fwinvalue['dprofit'] != 0) || ($totalwin != 0 ) ? number_format(abs($fwinvalue['dprofit'] / $totalwin) * 100, 2, '.', ',') : 0.00).'%"';
-                                                                                                // $intowinchartbands .= '},';
-
-                                                                                                // $intowinchartlabels .= '{';
-                                                                                                // $intowinchartlabels .= '"text": "'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'",';
-                                                                                                // $intowinchartlabels .= '"x": "49%",';
-                                                                                                // $intowinchartlabels .= '"y": "'.($fwinkey == 2 ? '6.5' : ($fwinkey == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
-                                                                                                // $intowinchartlabels .= '"size": 11,';
-                                                                                                // $intowinchartlabels .= '"bold": false,';
-                                                                                                // $intowinchartlabels .= '"color": "#d8d8d8",';
-                                                                                                // $intowinchartlabels .= '"align": "right",';
-                                                                                                // $intowinchartlabels .= '},';
-                                                                                            }
-                                                                                             ?>
-																							 <?php echo $dwinning; ?>
-                                                                                            <?php /*?> Losers <?php */?>
-																							<?php
-																							if($isjounalempty){
-																								$finalloss = [
+																								$loosingstocks = [
 																									0 => [
-																										'dstock' => 'Stock 1',
-																										'dprofit' => -1234
+																										'stock' => 'Stock 1',
+																										'profit' => -1234
 																									],
 																									1 => [
-																										'dstock' => 'Stock 2',
-																										'dprofit' => -12343
+																										'stock' => 'Stock 2',
+																										'profit' => -12343
 																									],
 																									2 => [
-																										'dstock' => 'Stock 3',
-																										'dprofit' => -123435
+																										'stock' => 'Stock 3',
+																										'profit' => -123435
 																									],
 																								];
-																								sort($finalloss);
 																							}
-                                                                                            // $intolosschartbands = '';
-																							// $intolosschartlabels = '';
-																							krsort($finalloss);
+
+																							foreach ($winningstocks as $key => $value) {
+																								$dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'. $value['stocks'] .'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
+																								$dinss .= '</li>';
+																								echo $dinss;
+																								if($key == 3){
+																									break;
+																								}
+																							}
+
+																							foreach ($loosingstocks as $key => $value) {
+																								$dinss = '<li style="background-color: '.($key == 0 ? '#b91e45' : ($key == 1 ? '#732546' : ($key == 2 ? '#442946' : ($key >= 3 ? '' : '#b91e45')))).';display:'.($key >= 3 ? 'none' : '').';color: #132941;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'.$value['stocks'].'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
+																								$dinss .= '</li>';
+																								echo $dinss;
+																								if($key == 3){
+																									break;
+																								}
+																							}
                                                                                              ?>
-																							 <?php echo $dlossing; ?>
-                                                                                            <!-- <li style="background-color: #442946;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">2GO</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(5000, 10000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #732546;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">X</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(12000, 20000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #b91e45;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">CHP</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(25000, 35000), 2, '.', ','); ?></div>
-                                                                                            </li>
-                                                                                            <li style="background-color: #ff1744;color: #fdbebe;border: none;">
-                                                                                                <div class="width60">NOW</div>
-                                                                                                <div class="width35">- &#8369; <?php echo number_format(rand(36000, 49000), 2, '.', ','); ?></div>
-                                                                                            </li> -->
                                                                                         </ul>
                                                                                     </div>
                                                                                 </div>
@@ -2768,7 +2625,12 @@ if($issampledata){
 
 													</div>
 													<br class="clear">
-                                                    <?php
+													<pre>
+														<?php print_r($tremo); ?>
+													</pre>
+													<?php
+													
+													
                                                         // this is for the emotional part
                                                         // pull emotions
                                                         $listofemotions = [];

@@ -1584,3 +1584,6 @@ i.fas.fa-close.to_closethis_rec {
     border: 2px solid #fff;
     cursor: pointer;
 }
+.to-left-align {
+    text-align: right !important;
+}

@@ -672,7 +672,19 @@ if($issampledata){
 		}
 	}
 
-	print_r($allstocks);
+	// winning stocks
+	$winstocks = $allstocks;
+	usort($winstocks, function($a, $b) {
+		return $a['profit'] - $b['profit'];
+	});
+
+	// lossing stocks
+	$lossing = $allstocks;
+	usort($lossing, function($a, $b) {
+		return $b['profit'] - $a['profit'];
+	});
+
+	print_r($winstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';

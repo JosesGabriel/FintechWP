@@ -579,6 +579,7 @@ if($issampledata){
 	$dailyvalues = '';
 	$dpercschart = '';
 	$gplchart = '';
+	$feeschart = '';
 	$buysscounter = 0;
 
 	
@@ -591,6 +592,14 @@ if($issampledata){
 	// 	$dpercschart .= '},';
 	// }
 
+	
+	// foreach ($feepermonth as $spmkey => $spmvalue) {
+	// 	$feeschart .= '{';
+	// 	$feeschart .= '"category": "'.date('M', strtotime($spmvalue['month'])).'",';
+	// 	$feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
+	// 	$feeschart .= '},';
+	// }
+
 	$profits = [
 		'mon' => 0,
 		'tue' => 0,
@@ -599,6 +608,20 @@ if($issampledata){
 		'fri' => 0,
 	];
 
+	$months = array(
+		'jan' => 0,
+		'feb' => 0,
+		'mar' => 0,
+		'apr' => 0,
+		'may' => 0,
+		'jun' => 0,
+		'jul ' => 0,
+		'aug' => 0,
+		'sep' => 0,
+		'oct' => 0,
+		'nov' => 0,
+		'dec' => 0
+	);
 
 
 	if(!empty($ismytrades)){
@@ -618,13 +641,18 @@ if($issampledata){
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
 			$istrdate = date('D', strtotime($value->tldate));
+			$ismonthtrade = date('M', strtotime($value->tldate));
+
 			$profits[strtolower($istrdate)] += $profit;
+			$months[strtolower($ismonthtrade)] += getjurfees($selltotal, 'sell');
 
 			$gplchart .= '{';
 			$gplchart .= '"category": "'.$buysscounter.'",';
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
+
+			
 			
 		}
 	}
@@ -637,6 +665,13 @@ if($issampledata){
 		$dpercschart .= '"column-1": "'.$value.'",';
 		$dpercschart .= '"column-2": "#673ab7"';
 		$dpercschart .= '},';
+	}
+
+	foreach ($months as $key => $value) {
+		$feeschart .= '{';
+		$feeschart .= '"category": "'.$key.'",';
+		$feeschart .= '"column-1": "'.$value.'"';
+		$feeschart .= '},';
 	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
@@ -2787,13 +2822,13 @@ if($issampledata){
                                                         // 	$expencetochart .= '},';
                                                         // }
 
-                                                        $feeschart = '';
-                                                        foreach ($feepermonth as $spmkey => $spmvalue) {
-                                                            $feeschart .= '{';
-                                                            $feeschart .= '"category": "'.date('M', strtotime($spmvalue['month'])).'",';
-                                                            $feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
-                                                            $feeschart .= '},';
-                                                        }
+                                                        // $feeschart = '';
+                                                        // foreach ($feepermonth as $spmkey => $spmvalue) {
+                                                        //     $feeschart .= '{';
+                                                        //     $feeschart .= '"category": "'.date('M', strtotime($spmvalue['month'])).'",';
+                                                        //     $feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
+                                                        //     $feeschart .= '},';
+                                                        // }
                                                     ?>
                                                     <!-- EOF expenses report -->
 													<div class="expence-report">
@@ -2854,42 +2889,6 @@ if($issampledata){
 
 															</div>
 													</div>
-													<?php
-                                                        // get last 20 traiding days
-                                                        $volumes = [];
-                                                        $values = [];
-                                                        foreach ($dlistoflivetrades as $ltwkey => $ltwvalue) {
-                                                            array_push($volumes, $ltwvalue['qty']);
-                                                            array_push($values, $ltwvalue['price']);
-                                                            if ($ltwkey >= 20) {
-                                                                break;
-                                                            }
-                                                        }
-
-                                                        for ($i = count($volumes); $i <= 20; ++$i) {
-                                                            array_push($volumes, '0');
-                                                        }
-
-                                                        for ($j = count($values); $j <= 20; ++$j) {
-                                                            array_push($values, '0');
-                                                        }
-
-                                                        // $dailyvolumes = '';
-                                                        // foreach ($volumes as $dvolkey => $dvolvalue) {
-                                                        //     $dailyvolumes .= '{';
-                                                        //     $dailyvolumes .= '"category": "'.$dvolkey.'",';
-                                                        //     $dailyvolumes .= '"column-1": '.($dvolvalue != "" ? $dvolvalue : 0).'';
-                                                        //     $dailyvolumes .= '},';
-                                                        // }
-
-                                                        // $dailyvalues = '';
-                                                        // foreach ($values as $dvalkey => $dvalvalue) {
-                                                        //     $dailyvalues .= '{';
-                                                        //     $dailyvalues .= '"category": "'.$dvalkey.'",';
-                                                        //     $dailyvalues .= '"column-1": '.($dvalvalue != "" ? $dvalvalue : 0).'';
-                                                        //     $dailyvalues .= '},';
-                                                        // }
-                                                    ?>
 													<br class="clear">
 													<div class="row">
 														<div class="col-md-6" style="padding-right: 0;">
@@ -2919,200 +2918,7 @@ if($issampledata){
 															</div>
 														</div>
 													</div>
-													<!-- <br class="clear"> -->
-
-                                                    <!--<div class="_adsbygoogle">
-														<div class="box-portlet" style="background:none !important; box-shadow: none !important; overflow:visible';">
-
-															<div class="box-portlet-content" style="padding:0;">
-                                                            	<?php /*?><small>ADVERTISEMENT</small><?php */?>
-																<div class="adscontainer" style="text-align:center;">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png" style="box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
 													<br class="clear">
-
-													<?php
-                                                        $dates = [];
-                                                        array_push($dates, date('Y-m-d'));
-                                                        for ($i = 1; $i <= 20; ++$i) {
-                                                            array_push($dates, date('Y-m-d', strtotime('today - '.$i.' days')));
-                                                        }
-                                                        $dates = array_reverse($dates);
-
-                                                        $args = array(
-                                                            'posts_per_page' => -1,
-                                                            'post_type' => 'post',
-                                                            'orderby' => 'comment_count',
-                                                            'order' => 'DESC',
-                                                            'date_query' => array(
-                                                                'after' => date('Y-m-d', strtotime('-20 days')),
-                                                            ),
-                                                            'meta_key' => 'data_userid',
-                                                            'meta_value' => $user->ID,
-                                                        );
-                                                        $posts = get_posts($args);
-
-                                                        $dlistofpost = [];
-                                                        foreach ($dates as $ddateskey => $ddatesvalue) {
-                                                            $dlls = [];
-                                                            $dlls[$ddatesvalue] = [];
-                                                            $dlls['profit'] = 0;
-                                                            foreach ($posts as $dpostkey => $dpostvalue) {
-                                                                if ($ddatesvalue == date('Y-m-d', strtotime($dpostvalue->post_date))) {
-																	$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
-
-																	$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
-																	$dsellprice = $postmetas[$data_sell_price]->meta_value;
-																	
-																	$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
-																	$dbuyprice = $postmetas[$data_dprice]->meta_value;
-																	
-																	$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
-																	$dquantity = $postmetas[$data_quantity]->meta_value;
-																	
-																	$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
-                                                                    $data_avr_price = $postmetas[$data_avr_price]->meta_value;
-
-                                                                    $dbuyprice = str_replace('₱', '', $dbuyprice);
-                                                                    // get prices
-                                                                    $soldplace = $dquantity * $dsellprice;
-                                                                    $baseprice = $dquantity * $dbuyprice;
-
-                                                                    $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                    $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
-                                                                    $dlls['profit'] += $dprofit;
-                                                                    array_push($dlls[$ddatesvalue], $dprofit);
-                                                                }
-                                                            }
-                                                            array_push($dlistofpost, $dlls['profit']);
-                                                        }
-
-                                                        $dtrades = [];
-                                                        // $gplchart = '';
-                                                        $counter = 0;
-                                                        foreach ($posts as $dpostkey => $dpostvalue) {
-                                                            $instrade = [];
-                                                            $instrade['count'] = $counter;
-															$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$dpostvalue->ID);
-
-															$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
-															$dsellprice = $postmetas[$data_sell_price]->meta_value;
-															
-															$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
-															$dbuyprice = $postmetas[$data_dprice]->meta_value;
-															
-															$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
-															$dquantity = $postmetas[$data_quantity]->meta_value;
-															
-															$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
-															$data_avr_price = $postmetas[$data_avr_price]->meta_value;
-
-                                                            $dbuyprice = str_replace('₱', '', $dbuyprice);
-                                                            // get prices
-                                                            $soldplace = $dquantity * $dsellprice;
-                                                            $baseprice = $dquantity * $dbuyprice;
-
-                                                            $sellfee = getjurfees($soldplace, 'sell');
-
-                                                            $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
-                                                            $instrade['profit'] = $dprofit;
-                                                            array_push($dtrades, $instrade);
-
-                                                            // $gplchart .= '{';
-                                                            // $gplchart .= '"category": "'.$counter.'",';
-                                                            // $gplchart .= '"column-1": "'.number_format($dprofit, 2, '.', '').'",';
-                                                            // $gplchart .= '"column-2": "#673ab7"';
-                                                            // $gplchart .= '},';
-
-                                                            if ($counter >= 20) {
-                                                                break;
-                                                            }
-                                                        }
-
-                                                        // add empty on string
-                                                        // for ($i = count($dtrades); $i <= 20; ++$i) {
-                                                        //     $gplchart .= '{';
-                                                        //     $gplchart .= '"category": "'.$i.'",';
-                                                        //     $gplchart .= '"column-1": "0",';
-                                                        //     $gplchart .= '"column-2": "#673ab7"';
-                                                        //     $gplchart .= '},';
-                                                        // }
-
-                                                        $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
-                                                        $xdays = [];
-                                                        foreach ($days as $xdayskey => $xdaysvalue) {
-                                                            $indays = [];
-                                                            $indays['dday'] = $xdaysvalue;
-
-                                                            $indays['data'] = [];
-                                                            $indays['profit'] = 0;
-                                                            $tuespostargs = array(
-                                                                'posts_per_page' => -1,
-                                                                'post_type' => 'post',
-                                                                'meta_query' => array(
-                                                                    'relation' => 'AND',
-                                                                    array(
-                                                                        'key' => 'data_userid',
-                                                                        'value' => $user->ID,
-                                                                        'compare' => 'like',
-                                                                    ),
-                                                                    array(
-                                                                        'key' => 'data_isdateofw',
-                                                                        'value' => $xdaysvalue,
-                                                                        'compare' => 'like',
-                                                                    ),
-                                                                ),
-                                                            );
-                                                            $dinfobase = get_posts($tuespostargs);
-                                                            foreach ($dinfobase as $xdsskey => $xdssvalue) {
-																$postmetas = $wpdb->get_results( "select * from arby_postmeta where post_id = ".$xdssvalue->ID);
-
-																$data_sell_price = array_search('data_sell_price', array_column($postmetas, 'meta_key'));
-																$dsellprice = $postmetas[$data_sell_price]->meta_value;
-																
-																$data_dprice = array_search('data_dprice', array_column($postmetas, 'meta_key'));
-																$dbuyprice = $postmetas[$data_dprice]->meta_value;
-																
-																$data_quantity = array_search('data_quantity', array_column($postmetas, 'meta_key'));
-																$dquantity = $postmetas[$data_quantity]->meta_value;
-																
-																$data_avr_price = array_search('data_avr_price', array_column($postmetas, 'meta_key'));
-																$data_avr_price = $postmetas[$data_avr_price]->meta_value;
-
-                                                                // $dsellprice = get_post_meta($xdssvalue->ID, 'data_sell_price', true);
-                                                                // $dbuyprice = get_post_meta($xdssvalue->ID, 'data_dprice', true);
-                                                                // $dquantity = get_post_meta($xdssvalue->ID, 'data_quantity', true);
-                                                                // $data_avr_price = get_post_meta($xdssvalue->ID, 'data_avr_price', true);
-
-                                                                $dbuyprice = str_replace('₱', '', $dbuyprice);
-                                                                // get prices
-                                                                $soldplace = $dquantity * $dsellprice;
-                                                                $baseprice = $dquantity * $dbuyprice;
-
-                                                                $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                $dprofit = ($soldplace - $sellfee) - ($dquantity * $data_avr_price);
-                                                                $indays['profit'] += $dprofit;
-                                                            }
-
-                                                            array_push($xdays, $indays);
-                                                        }
-
-                                                        // $dpercschart = '';
-                                                        // foreach ($xdays as $xdaykey => $xdayvalue) {
-                                                        //     $basedate = date('D', strtotime($xdayvalue['dday']));
-                                                        //     $dpercschart .= '{';
-                                                        //     $dpercschart .= '"category": "'.$basedate.'",';
-                                                        //     $dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-                                                        //     $dpercschart .= '"column-2": "#673ab7"';
-                                                        //     $dpercschart .= '},';
-                                                        // }
-
-                                                    ?>
 													<div class="row">
 														<div class="col-md-5" style="padding-right: 0;">
 															<div class="box-portlet">

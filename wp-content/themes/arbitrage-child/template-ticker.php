@@ -593,14 +593,11 @@
             */
 
             setInterval(() => {
-                console.log('test');
                 let ticker_data = ticker_data_ralph.filter(data => {
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
                     let element = jQuery("li[data-id=`${ticker_data[i].counter}`]");
-                    console.log(ticker_data[i].counter)
-                    console.log(element);
                 }
             }, 5000);
 

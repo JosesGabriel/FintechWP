@@ -88,7 +88,7 @@
                                         <li class="odd">
                                             <span><?php echo $stock[$j][0]; ?></span>
 
-                                            <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$i][3]; ?></p></a>
+                                            <a href="#"><?php echo $stock[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stock[$j][1], 2, '.', ','); ?>%</p> <p><?php echo $stock[$j][3]; ?></p></a>
 
                                         </li>
 

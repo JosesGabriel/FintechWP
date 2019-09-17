@@ -580,31 +580,8 @@ if($issampledata){
 	$dpercschart = '';
 	$gplchart = '';
 	$feeschart = '';
+	$demotsonchart = '';
 	$buysscounter = 0;
-
-	
-	// foreach ($xdays as $xdaykey => $xdayvalue) {
-	// 	$basedate = date('D', strtotime($xdayvalue['dday']));
-	// 	$dpercschart .= '{';
-	// 	$dpercschart .= '"category": "'.$basedate.'",';
-	// 	$dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-	// 	$dpercschart .= '"column-2": "#673ab7"';
-	// 	$dpercschart .= '},';
-	// }
-
-	
-	// foreach ($feepermonth as $spmkey => $spmvalue) {
-	// 	$feeschart .= '{';
-	// 	$feeschart .= '"category": "'.date('M', strtotime($spmvalue['month'])).'",';
-	// 	$feeschart .= '"column-1": "'.$spmvalue['totalfee'].'"';
-	// 	$feeschart .= '},';
-	// }
-
-	// $demotsonchart .= '{';
-	// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-	// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-	// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-	// $demotsonchart .= '},';
 
 	$profits = [
 		'mon' => 0,
@@ -647,6 +624,8 @@ if($issampledata){
 		]
 	];
 
+	$allstocks = [];
+
 
 
 
@@ -687,11 +666,13 @@ if($issampledata){
 			}
 			$tremo[$value->tlemotions]['total_trades']++;
 			
+			$allstocks[$value->isstock]['profit'] += $profit;
+
 			
 		}
 	}
 
-	print_r($tremo);
+	print_r($allstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -706,6 +687,17 @@ if($issampledata){
 		$feeschart .= '"category": "'.ucfirst($key).'",';
 		$feeschart .= '"column-1": "'.$value.'"';
 		$feeschart .= '},';
+	}
+
+	foreach ($tremo as $key => $value) {
+		if($value['total_trades'] > 0){
+			$demotsonchart .= '{';
+			$demotsonchart .= '"category": "'.$key.'",';
+			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
+			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
+			$demotsonchart .= '},';
+		}
+		
 	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
@@ -1312,14 +1304,14 @@ if($issampledata){
                                                                                     <div style="width:7%; text-align: left !important;">Stocks</div>
                                                                                     <div style="width:8%" class="table-title-live table-title-avprice">Position</div>
                                                                                     <!--<div style="width:11%">Average Price</div>-->
-                                                                                    <div style="width:12%" class="table-title-live table-title-avprice">Average Price</div>
-                                                                                    <div style="width:13%" class="table-title-live table-title-tcost">Total Cost</div>
+                                                                                    <div style="width:10%" class="table-title-live table-title-avprice">Avg. Price</div>
+                                                                                    <div style="width:14%" class="table-title-live table-title-tcost">Total Cost</div>
                                                                                     <!--<div style="width:11%">Market Value</div>-->
-                                                                                    <div style="width:13%" class="table-title-live table-title-mvalue">Market Value</div>
-                                                                                    <div style="width:13%" class="table-title-live table-title-profit">Profit</div>
+                                                                                    <div style="width:14%" class="table-title-live table-title-mvalue">Market Value</div>
+                                                                                    <div style="width:14%" class="table-title-live table-title-profit">Profit</div>
                                                                                     <!--<div style="width:9%">Performance</div>-->
-                                                                                    <div style="width:10%" class="table-title-live table-title-performance">Performance</div>
-                                                                                    <div style="width:95px; text-align:center;">Action</div>
+                                                                                    <div style="width:7%" class="table-title-live table-title-performance">Perf.</div>
+                                                                                    <div style="width:77px; text-align:center;">Action</div>
                                                                                     <!--<div style="width:45px; text-align: right;">Notes</div>-->
                                                                                 </div>
                                                                             </li>
@@ -1454,14 +1446,14 @@ if($issampledata){
 		                                                                            	<div style="width:99%;">
 		                                                                                    <div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/<?php echo $value; ?>"><?php echo $value; ?></a>	</div>
 		                                                                                    <div style="width:8%" class="table-cell-live"><?php echo number_format($dstocktraded['totalstock'], 0, '.', ','); ?></div>
-		                                                                                    <div style="width:12%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
-		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
-		                                                                                    <div style="width:13%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:10%" class="table-cell-live">&#8369;<?php echo number_format($avrprice, 3, '.', ','); ?></div>
+		                                                                                    <div style="width:14%" class="table-cell-live">&#8369;<?php echo number_format($totalfixmarktcost, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:14%" class="table-cell-live">&#8369;<?php echo number_format($dselltotal, 2, '.', ','); ?></div>
 		                                                                                   <!-- <div style="width:11%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>">&#8369;<?php //echo number_format( $dprofit, 2, '.', ',' );?></div>-->
-		                                                                                    <div style="width:13%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
+		                                                                                    <div style="width:14%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live">&#8369;<?php echo number_format($dprofit, 2, '.', ','); ?></div>
 		                                                                                    <!--<div style="width:9%" class="<?php //echo ($dprofit < 0 ? 'dredpart' : 'dgreenpart');?>"><?php //echo ($dprofit < 0 ? '-' : '')?><?php //echo number_format( $profpet, 2, '.', ',' );?>%</div>-->
-		                                                                                     <div style="width:10%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
-		                                                                                    <div style="width:93px;text-align:center;"><?php /*?>Action<?php */?>
+		                                                                                     <div style="width:7%" class="<?php echo $dprofit < 0 ? 'dredpart' : 'dgreenpart'; ?> table-cell-live"><?php echo $dprofit < 0 ? '-' : ''; ?><?php echo number_format($profpet, 2, '.', ','); ?>%</div>
+		                                                                                    <div style="width:77px;text-align:center;"><?php /*?>Action<?php */?>
 																							<a href="#entertrade_<?php echo $value; ?>" class="smlbtn fancybox-inline green" style="border: 0px;color:#27ae60;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#27ae60'">BUY</a>
 		                                                                                        <a href="#selltrade_<?php echo $value; ?>" class="smlbtn fancybox-inline red" style="border: 0px;color:#e64c3c;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='#e64c3c'">SELL</a>
 		                                                                                        <div class="hideformodal">
@@ -2724,7 +2716,7 @@ if($issampledata){
                                                                                     <div>Losses</div>
                                                                                     <div>Win Rate</div>
                                                                                 </li>
-																				<?php $demotsonchart = ''; ?>
+																				<?php //$demotsonchart = ''; ?>
                                                                             	<?php foreach ($emotioninfo as $emtkey => $emtvalue) {
                                                         ?>
                                                                             		<li>
@@ -2735,11 +2727,12 @@ if($issampledata){
 	                                                                                    <div><?php  echo number_format(($emtvalue['iswin'] / $emtvalue['totaltrades']) * 100, 2, '.', ''); ?>%</div>
 	                                                                                </li>
 																					<?php
-                                                                                    $demotsonchart .= '{';
-																					$demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
-																					$demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
-																					$demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
-																					$demotsonchart .= '},'; ?>
+                                                                                    // $demotsonchart .= '{';
+																					// $demotsonchart .= '"category": "'.$emtvalue['emotion'].'",';
+																					// $demotsonchart .= '"column-2": "'.$emtvalue['isloss'].'",';
+																					// $demotsonchart .= '"Trades": "'.$emtvalue['iswin'].'"';
+																					// $demotsonchart .= '},'; 
+																					?>
 																					<?php if ($emtkey >= 4) {
                                                             break;
                                                         } ?>

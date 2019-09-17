@@ -594,7 +594,7 @@
 
             setInterval(() => {
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    return data.counter < 10   
+                    return data.counter > 10   
                 }) 
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;

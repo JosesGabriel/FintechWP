@@ -475,7 +475,7 @@ $dstockinfo = $gerdqoute->data;
 
     .stocks-body {
         background: #142c46 !important;
-        padding: 10px 29px;
+        padding: 10px 29px 10px 33px;
         border-radius: 5px;
         margin: 10px 0px;
         vertical-align: middle;
@@ -789,13 +789,13 @@ $dstockinfo = $gerdqoute->data;
                                                         <div class="top-traiders-inner">
                                                             <div class="to-content-part to-back-back posts_tab-label">
                                                                 <div class="to-top-title posts_title-label">Posts</div>
-                                                                <hr class="style14 style12">
                                                                 <div class="content-inner-part">
                                                                     <?php
                                                                         global $wpdb;    
                                                                         $result = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".$_GET['s']."%'");
-                                                                    ?>
+                                                                        ?>
                                                                         <?php foreach ($result as $key => $value) { ?>
+                                                                            <hr class="style14 style12">
                                                                             <?php $dcontent = $value->post_content; ?>
                                                                             <?php if (strpos($dcontent, 'has just followed') === false): ?>
                                                                                 <?php echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$value->ID.'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>

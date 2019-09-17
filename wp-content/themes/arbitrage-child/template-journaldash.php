@@ -619,7 +619,7 @@ if($issampledata){
 
 			$istrdate = date('l', strtotime($value->tldate));
 
-			$profits[$istrdate] += $profit;
+			$profits[strtolower($istrdate)] += $profit;
 			
 		}
 	}

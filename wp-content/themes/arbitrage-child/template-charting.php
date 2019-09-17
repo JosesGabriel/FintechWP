@@ -63,7 +63,7 @@ function respond($success = false, $data = [], $status = 500)
 {
     $data['status'] = $success ? 'ok' : 'error';
     $status = $success ? 200 : $status;
-    http_response_code($status)
+    http_response_code($status);
     echo json_encode(array_push($data, $status));
     die();
 }

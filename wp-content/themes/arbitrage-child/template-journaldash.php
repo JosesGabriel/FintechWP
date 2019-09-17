@@ -3141,12 +3141,12 @@ if($issampledata){
 																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="https://arbitrage.ph/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
 																							<div style="width:65px" class="tdate" id="tdate<?php echo $value->tlid; ?>"><?php echo $value->tldate; ?></div>
 																							<div style="width:55px" class="table-cell-live" id="tquantity<?php echo $value->tlid; ?>"><?php echo $value->tlvolume; ?></div>
-																							<div style="width:65px" class="table-cell-live" id="tavprice<?php echo $value->tlid; ?>">₱<?php echo $value->tlaverageprice; ?></div>
-																							<div style="width:95px" class="table-cell-live" id="tbvalue<?php echo $value->tlid; ?>">₱<?php echo $marketvals; ?></div>
-																							<div style="width:65px" class="table-cell-live" id="tsellprice<?php echo $value->tlid; ?>">₱<?php echo $value->tlsellprice; ?></div>
-																							<div style="width:88px" class="table-cell-live" id="tsellvalue<?php echo $value->tlid; ?>">₱<?php echo $sellvalue; ?></div>
-																							<div style="width:80px" class="txtred table-cell-live" id="tploss1">₱<?php echo $profit; ?></div>
-																							<div style="width:56px" class="txtred table-cell-live" id="tpercent1"><?php echo $profitperc; ?>%</div>
+																							<div style="width:65px" class="table-cell-live" id="tavprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlaverageprice, 3, ".", ","); ?></div>
+																							<div style="width:95px" class="table-cell-live" id="tbvalue<?php echo $value->tlid; ?>">₱<?php echo number_format($marketvals, 2, ".", ","); ?></div>
+																							<div style="width:65px" class="table-cell-live" id="tsellprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlsellprice, 2, ".", ","); ?></div>
+																							<div style="width:88px" class="table-cell-live" id="tsellvalue<?php echo $value->tlid; ?>">₱<?php echo number_format($sellvalue, 2, ".", ","); ?></div>
+																							<div style="width:80px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tploss1">₱<?php echo number_format($profit, 2, ".", ","); ?></div>
+																							<div style="width:56px" class="<?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?> table-cell-live" id="tpercent1"><?php echo number_format($profitperc, 2, ".", ","); ?>%</div>
 																							<div style="width:27px; text-align:center">
 																								<a href="#tradelognotes_BLOOM" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
@@ -3170,8 +3170,8 @@ if($issampledata){
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlstrats; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
-																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result txtred"><?php echo $profitperc; ?>%</span></div>
-																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft txtred"><?php echo $iswin; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $iswin; ?></span></div>
 																									</div>
 																									<div class="trdright darkbgpadd">
 																										<div><strong>Notes:</strong></div>

@@ -2524,97 +2524,6 @@ if($issampledata){
 													</div>
                                                     <br class="clear">
                                                     <!-- BoF Trade Statistics -->
-													<?php
-                                                        // get all stocks that has been traded
-                                                        $dstocks = [];
-                                                        foreach ($alltradelogs as $dstockskey => $dstocksvalue) {
-                                                            array_push($dstocks, $dstocksvalue['data_stock']);
-                                                        }
-                                                        $dstocks = array_unique($dstocks);
-
-                                                        // identify is stock profit
-                                                        $dlistofstocks = [];
-                                                        foreach ($dstocks as $sxdkey => $sxdvalue) {
-                                                            $dinitbb = [];
-                                                            $dinitbb['dstock'] = $sxdvalue;
-                                                            $dinitbb['dprofit'] = 0;
-
-                                                            foreach ($alltradelogs as $alllogskey => $alllogsvalue) {
-                                                                if ($sxdvalue == $alllogsvalue['data_stock']) {
-                                                                    $data_sellmonth = $alllogsvalue['data_sellmonth'];
-                                                                    $data_sellday = $alllogsvalue['data_sellday'];
-                                                                    $data_sellyear = $alllogsvalue['data_sellyear'];
-
-                                                                    $data_stock = $alllogsvalue['data_stock'];
-                                                                    $data_dprice = $alllogsvalue['data_dprice'];
-                                                                    $data_dprice = str_replace('₱', '', $data_dprice);
-
-                                                                    $data_sell_price = $alllogsvalue['data_sell_price'];
-                                                                    $data_quantity = $alllogsvalue['data_quantity'];
-
-                                                                    $data_trade_info = $alllogsvalue['data_trade_info'];
-                                                                    // $data_trade_info = json_decode($data_trade_info);
-                                                                    $data_avr_price = $alllogsvalue['data_avr_price'];
-
-                                                                    // get prices
-                                                                    $soldplace = $data_quantity * $data_sell_price;
-                                                                    $baseprice = $data_quantity * $data_dprice;
-
-                                                                    $sellfee = getjurfees($soldplace, 'sell');
-
-                                                                    //profit or loss
-                                                                    $dprofit = ($soldplace - $sellfee) - ($data_quantity * $data_avr_price);
-
-                                                                    $dinitbb['dprofit'] += $dprofit;
-                                                                }
-                                                            }
-
-                                                            array_push($dlistofstocks, $dinitbb);
-                                                        }
-
-                                                        $iswinstocks = [];
-                                                        $islossstocks = [];
-                                                        foreach ($dlistofstocks as $dwlkey => $dwlvalue) {
-                                                            if ($dwlvalue['dprofit'] > 0) {
-                                                                array_push($iswinstocks, $dwlvalue);
-                                                            } else {
-                                                                array_push($islossstocks, $dwlvalue);
-                                                            }
-                                                        }
-
-                                                        function sortprofits($a, $b)
-                                                        {
-															return $b['dprofit'] - $a['dprofit'];
-                                                        }
-														
-                                                        function winningsort($a, $b)
-                                                        {
-															return $a['dprofit'] - $b['dprofit'];
-                                                        }
-
-                                                        // winning stocks
-                                                        // usort($iswinstocks, 'sortprofits');
-                                                        $totalwin = 0;
-														$finalwinning = [];
-                                                        foreach ($iswinstocks as $pxwinkey => $pxwinvalue) {
-                                                            array_push($finalwinning, $pxwinvalue);
-                                                            $totalwin += $pxwinvalue['dprofit'];
-                                                            if ($pxwinkey >= 4) {
-                                                                break;
-                                                            }
-                                                        }
-                                                        // usort($finalwinning, 'winningsort');
-                                                        $finalloss = [];
-														$totalloss = 0;
-                                                        foreach ($islossstocks as $pxlosskey => $pxlossvalue) {
-                                                            array_push($finalloss, $pxlossvalue);
-                                                            $totalloss += $pxlossvalue['dprofit'];
-                                                            if ($pxlosskey >= 4) {
-                                                                break;
-                                                            }
-                                                        }
-
-                                                    ?>
                                                     <!-- EoF Trade Statistics -->
 													<div class="row">
 
@@ -2716,7 +2625,12 @@ if($issampledata){
 
 													</div>
 													<br class="clear">
-                                                    <?php
+													<pre>
+														<?php print_r($tremo); ?>
+													</pre>
+													<?php
+													
+													
                                                         // this is for the emotional part
                                                         // pull emotions
                                                         $listofemotions = [];

@@ -2665,13 +2665,16 @@ if($issampledata){
                                                                                             // $intowinchartbands = '';
 																							// $intowinchartlabels = '';
 
-																							// foreach ($winningstocks as $key => $value) {
-																							// 	$dinss = '<li style="background-color: '.($fwinkey == 0 ? '#0d785a' : ($fwinkey == 1 ? '#06af68' : ($fwinkey == 2 ? '#00e676' : ($fwinkey >= 3 ? '' : '#00e676')))).';display:'.($fwinkey >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                                                            //     $dinss .= '<div class="width60">'. ($fwinkey <= 2 ? $fwinvalue['dstock'] : '') .'</div>';
-                                                                                            //     $dinss .= '<div class="width35">&#8369; '.($fwinkey <= 2 ? number_format($fwinvalue['dprofit'], 2, '.', ',') : '').'</div>';
-																							// 	$dinss .= '</li>';
-																							// 	echo $dinss;
-																							// }
+																							foreach ($winningstocks as $key => $value) {
+																								$dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
+                                                                                                $dinss .= '<div class="width60">'. $value['stocks'] .'</div>';
+                                                                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
+																								$dinss .= '</li>';
+																								echo $dinss;
+																								if($key == 3){
+																									break;
+																								}
+																							}
 
 																							krsort($finalwinning);
                                                                                             foreach ($finalwinning as $fwinkey => $fwinvalue) {

@@ -7,6 +7,9 @@ jQuery(document).ready(function(e) {
 
     $(".ms-ctn .ms-sel-ctn").append("<i class='fas fa-search'></i>");
 
+
+
+    
     
 });
 

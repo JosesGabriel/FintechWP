@@ -598,7 +598,7 @@
                     return data.counter < 100   
                 }) 
                 for(i in ticker_data){
-                    let element = jQuery("li[id=`${ticker_data[i].counter}`]");
+                    let element = jQuery("li[data-id=`${ticker_data[i].counter}`]");
                     console.log(ticker_data[i].counter)
                     console.log(element);
                 }

@@ -678,13 +678,13 @@ if($issampledata){
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
 
-			$tremo[$value->tlemotions]['total_trades'] += 1;
+			
 			if($profit > 0){
-				$tremo[$value->tlemotions]['trwin'] += 1;
+				$tremo[$value->tlemotions]['trwin']++;
 			} else {
-				$tremo[$value->tlemotions]['trloss'] += 1;
+				$tremo[$value->tlemotions]['trloss'] ++;
 			}
-
+			$tremo[$value->tlemotions]['total_trades']++;
 			
 			
 		}
@@ -927,7 +927,7 @@ if($issampledata){
 					<div class="groupinput selectonly">
 						<select name="inpt_data_emotion" class="rnd">
 							<option value="" selected>Select Emotion</option>
-							<option value="Nuetral">Neutral</option>
+							<option value="Neutral">Neutral</option>
 							<option value="Greedy">Greedy</option>
 							<option value="Fearful">Fearful</option>
 						</select>
@@ -1126,7 +1126,7 @@ if($issampledata){
 																						<div class="groupinput selectonly">
 																							<select name="inpt_data_emotion" class="rnd">
 																								<option value="" selected>Select Emotion</option>
-																								<option value="Nuetral">Neutral</option>
+																								<option value="Neutral">Neutral</option>
 																								<option value="Greedy">Greedy</option>
 																								<option value="Fearful">Fearful</option>
 																							</select>

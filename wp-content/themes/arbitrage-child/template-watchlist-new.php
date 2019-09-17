@@ -834,28 +834,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		        if($(this).val() == 'edit'){
 	        		var ditemtoedit = jQuery(this).attr('data-space');
 		        	jQuery("#edit_" + ditemtoedit).click();
-		        	/*
-		        		 var ditemtoedit = jQuery(this).attr('data-space');
-		        		//$('#modal' + ditemtoedit).modal('show'); 
-		        		 console.log(ditemtoedit);
-		           		$('#modal' + ditemtoedit).addClass('show');
-		        }else {
-		        	$('#modal' + ditemtoedit).removeClass('show');*/
+		        	
 		        }
 
     		});
-
-		  /* $('.closemodal').click(function(e) {
-
-		   		var ditemtoedit = jQuery(this).attr('data-space');
-
-		   		if(jQuery('.dmodaleditwatch').hasClass('show')){
-		   			console.log('remove');
-		   			jQuery('.dmodaleditwatch').removeClass('show');
-		   			$("div.editwatchlist select").val("Select");
-		   		}
-
-		   });*/
 
     });
 

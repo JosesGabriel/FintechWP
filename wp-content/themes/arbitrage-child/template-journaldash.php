@@ -782,7 +782,9 @@ if($issampledata){
 			}
 		}
 	}
-
+	usort($winningstocks, function($a, $b) {
+		return $b['profit'] - $a['profit'];
+	});
 	print_r($winningstocks);
 
 	$intolosschartbands = '';
@@ -832,6 +834,10 @@ if($issampledata){
 			}
 		}
 	}
+
+	usort($loosingstocks, function($a, $b) {
+		return $a['profit'] - $b['profit'];
+	});
 	
 	// print_r($strats);
 

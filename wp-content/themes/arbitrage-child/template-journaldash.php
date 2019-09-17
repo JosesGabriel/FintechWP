@@ -581,6 +581,8 @@ if($issampledata){
 	$gplchart = '';
 	$feeschart = '';
 	$demotsonchart = '';
+	$stratstrg = '';
+	$wincharts = '';
 	$buysscounter = 0;
 
 	$profits = [
@@ -643,24 +645,6 @@ if($issampledata){
 			'trloss' => 0,
 		],
 	];
-
-	// $stratstrg .= '{';
-	// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-	// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-	// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-	// $stratstrg .= '"colors": "#06af68",';
-	// $stratstrg .= '"colorsred": "#b7193f"';
-	// $stratstrg .= '},';
-
-	// $wincharts .= '{';
-	// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-	// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-	// $wincharts .= '},';
-
-
-
-
-
 
 	if(!empty($ismytrades)){
 		foreach ($ismytrades as $key => $value) {
@@ -807,13 +791,6 @@ if($issampledata){
 		}
 	}
 	
-
-	
-
-	
-
-
-
 	print_r($strats);
 
 	foreach ($profits as $key => $value) {
@@ -838,9 +815,24 @@ if($issampledata){
 			$demotsonchart .= '"column-2": "'.$value['trloss'].'",';
 			$demotsonchart .= '"Trades": "'.$value['trwin'].'"';
 			$demotsonchart .= '},';
-		}
-		
+		}	
 	}
+
+	foreach ($strats as $key => $value) {
+		$stratstrg .= '{';
+		$stratstrg .= '"category": "'.$key.'",';
+		$stratstrg .= '"column-2": "'.$value['trloss'].'",';
+		$stratstrg .= '"Trades": "'.$value['trwin'].'",';
+		$stratstrg .= '"colors": "#06af68",';
+		$stratstrg .= '"colorsred": "#b7193f"';
+		$stratstrg .= '},';
+
+		$wincharts .= '{';
+		$wincharts .= '"strategy": "'.$key.'",';
+		$wincharts .= '"winvals": '.$value['trwin'].'';
+		$wincharts .= '},';
+	}
+
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
 		$dailyvolumes .= '{';
@@ -2413,8 +2405,8 @@ if($issampledata){
                                                                                         </div>
                                                                                     </li>
                                                                                     <?php
-                                                                                    $stratstrg = '';
-                                                                                    $wincharts = '';
+                                                                                    // $stratstrg = '';
+                                                                                    // $wincharts = '';
                                                                                     foreach ($stratsinfo as $statskey => $statsvalue) {
                                                                                         ?>
                                                                                     	<li>
@@ -2428,18 +2420,19 @@ if($issampledata){
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php
-                                                                                            $stratstrg .= '{';
-																							$stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
-																							$stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
-																							$stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
-																							$stratstrg .= '"colors": "#06af68",';
-																							$stratstrg .= '"colorsred": "#b7193f"';
-																							$stratstrg .= '},';
+                                                                                            // $stratstrg .= '{';
+																							// $stratstrg .= '"category": "'.$statsvalue['dstrat'].'",';
+																							// $stratstrg .= '"column-2": "'.$statsvalue['lossrate'].'",';
+																							// $stratstrg .= '"Trades": "'.$statsvalue['winrate'].'",';
+																							// $stratstrg .= '"colors": "#06af68",';
+																							// $stratstrg .= '"colorsred": "#b7193f"';
+																							// $stratstrg .= '},';
 
-																							$wincharts .= '{';
-																							$wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
-																							$wincharts .= '"winvals": '.$statsvalue['winrate'].'';
-																							$wincharts .= '},'; ?>
+																							// $wincharts .= '{';
+																							// $wincharts .= '"strategy": "'.$statsvalue['dstrat'].'",';
+																							// $wincharts .= '"winvals": '.$statsvalue['winrate'].'';
+																							// $wincharts .= '},';
+																							?>
                                                                                     <?php
                                                                                     } ?>
 

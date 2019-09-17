@@ -591,11 +591,11 @@ if($issampledata){
 	// }
 
 	$profits = [
-		'monday' => 0,
-		'tuesday' => 0,
-		'wednesday' => 0,
-		'thursday' => 0,
-		'friday' => 0,
+		'mon' => 0,
+		'tue' => 0,
+		'wed' => 0,
+		'thu' => 0,
+		'fri' => 0,
 	];
 
 
@@ -617,7 +617,7 @@ if($issampledata){
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
 
-			$istrdate = date('l', strtotime($value->tldate));
+			$istrdate = date('D', strtotime($value->tldate));
 
 			$profits[strtolower($istrdate)] += $profit;
 			
@@ -625,6 +625,14 @@ if($issampledata){
 	}
 
 	print_r($profits);
+
+	foreach ($variable as $key => $value) {
+		$dpercschart .= '{';
+		$dpercschart .= '"category": "'.$key.'",';
+		$dpercschart .= '"column-1": "'.$value.'",';
+		$dpercschart .= '"column-2": "#673ab7"';
+		$dpercschart .= '},';
+	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
 		$dailyvolumes .= '{';

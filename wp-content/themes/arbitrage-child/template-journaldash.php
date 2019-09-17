@@ -386,10 +386,9 @@ echo $user->ID ." versis ". $user->ID;
 
 <!-- BOF SORT DATA FOR JOURNAL -->
 <?php
-	$dailyvolumes = '';
-	$dailyvalues = '';
+	
 	$alltradelogs = [];
-	$buysscounter = 0;
+	
     if ($author_posts->have_posts()) {
         while ($author_posts->have_posts()) {
 			$author_posts->the_post();
@@ -445,33 +444,22 @@ echo $user->ID ." versis ". $user->ID;
 
 			array_push($alltradelogs, $tradeitems);
 			
-			$dailyvolumes .= '{';
-			$dailyvolumes .= '"category": "'.$buysscounter.'",';
-			$dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			$dailyvolumes .= '},';
+			// $dailyvolumes .= '{';
+			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
+			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
+			// $dailyvolumes .= '},';
 
 			
-			$dailyvalues .= '{';
-			$dailyvalues .= '"category": "'.$buysscounter.'",';
-			$dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			$dailyvalues .= '},';
+			// $dailyvalues .= '{';
+			// $dailyvalues .= '"category": "'.$buysscounter.'",';
+			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
+			// $dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
 	}
 	
-	for ($i=$buysscounter; $i <= 20; $i++) { 
-		$dailyvolumes .= '{';
-		$dailyvolumes .= '"category": "'.$i.'",';
-		$dailyvolumes .= '"column-1": 0';
-		$dailyvolumes .= '},';
-
-		
-		$dailyvalues .= '{';
-		$dailyvalues .= '"category": "'.$i.'",';
-		$dailyvalues .= '"column-1": 0';
-		$dailyvalues .= '},';
-	}
+	
 
     // Months
     $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December');
@@ -587,6 +575,38 @@ if($issampledata){
 <?php
 	$ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$user->ID.' order by tldate');
 
+	$dailyvolumes = '';
+	$dailyvalues = '';
+	$buysscounter = 0;
+	if(!empty($ismytrades)){
+		foreach ($ismytrades as $key => $value) {
+			$dailyvolumes .= '{';
+			$dailyvolumes .= '"category": "'.$buysscounter.'",';
+			$dailyvolumes .= '"column-1": '.($value->tlvolume != "" ? $value->tlvolume : 0).'';
+			$dailyvolumes .= '},';
+
+			
+			$dailyvalues .= '{';
+			$dailyvalues .= '"category": "'.$buysscounter.'",';
+			$dailyvalues .= '"column-1": '.($value->tlsellprice != "" ? $value->tlsellprice : 0).'';
+			$dailyvalues .= '},';
+		}
+	}
+
+	for ($i=$buysscounter; $i <= 20; $i++) { 
+		$dailyvolumes .= '{';
+		$dailyvolumes .= '"category": "'.$i.'",';
+		$dailyvolumes .= '"column-1": 0';
+		$dailyvolumes .= '},';
+
+		
+		$dailyvalues .= '{';
+		$dailyvalues .= '"category": "'.$i.'",';
+		$dailyvalues .= '"column-1": 0';
+		$dailyvalues .= '},';
+	}
+
+	
 
 ?>
 <!-- EOF Trade Logs Data from DB -->
@@ -3135,7 +3155,7 @@ if($issampledata){
 																					$profit = $sellvalue - $marketvals;
 																					$profitperc = ($profit / $marketvals) * 100;
 
-																					$iswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
+																					$tliswin = ($profit > 0 ? 'Win' : ($profit < 0 ? 'Loss' : 'Break Even'));
 
 																					$trtotals += $profit;
 																					?>
@@ -3174,7 +3194,7 @@ if($issampledata){
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
 																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
-																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $iswin; ?></span></div>
+																										<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $tliswin; ?></span></div>
 																									</div>
 																									<div class="trdright darkbgpadd">
 																										<div><strong>Notes:</strong></div>

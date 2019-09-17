@@ -2444,7 +2444,7 @@ if($issampledata){
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['total_trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trwin']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trloss']; ?></div>
-	                                                                                            <div style="text-align: center;"><?php echo number_format(($statsvalue['trwin'] / $statsvalue['trloss']) * 100, 2); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo ($statsvalue['trwin'] > 0 ? number_format(($statsvalue['trwin'] / $statsvalue['trloss']) * 100, 2) : "0.0"); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
 	                                                                                    <?php

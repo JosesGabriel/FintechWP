@@ -850,6 +850,8 @@ if($issampledata){
 		$winningstarts = ($lastwin > $value['trwin'] ? $winningstarts: $key );
 		$lossingstrats = ($lastlose > $value['trloss'] ? $lossingstrats : $key);
 
+		echo $winningstarts ." ~ ". $lastwin . " ~ ".$value['trwin']." $ "; 
+
 		$stratstrg .= '{';
 		$stratstrg .= '"category": "'.$key.'",';
 		$stratstrg .= '"column-2": "'.$value['trloss'].'",';
@@ -862,6 +864,7 @@ if($issampledata){
 		$wincharts .= '"strategy": "'.$key.'",';
 		$wincharts .= '"winvals": '.$value['trwin'].'';
 		$wincharts .= '},';
+
 		$lastwin = $value['trwin'];
 		$lastlose = $value['trloss'];
 	}

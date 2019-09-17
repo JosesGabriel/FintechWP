@@ -1620,7 +1620,7 @@
 
 																							<div class="groupinput">
 																								<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
-																								<iframe class="bidaskbox" id="bidaskbox" src="<?php echo $homeurlgen; ?>/preloader.html"></iframe>
+																								<!-- <iframe class="bidaskbox" id="bidaskbox" src="<?php //echo $homeurlgen; ?>/preloader.html"></!--> -->
 																							</div>
 
 																							<div class="groupinput">

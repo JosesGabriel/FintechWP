@@ -287,16 +287,12 @@ echo $user->ID ." versis ". $user->ID;
 
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 
-		echo "<pre>";
-		print_r($buyyinginfo);
-		echo "</pre>";
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."')";
 
-		echo "<pre>";
-		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$_POST['selldate']."','".$_POST['selldate']."','".$_POST['selldate']."','".$_POST['selldate']."',)";
-		echo "</pre>";
+		$wpdb->query($inserttrade);
 
 		
-		exit;
+		// exit;
 
         // Update journal data.
         $journalpostlog = array(
@@ -792,12 +788,6 @@ if($issampledata){
 				<div class="groupinput">
 					<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
 					<!-- <div>this is it</div> -->
-				</div>
-				<div class="groupinput">
-						<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-					<input type="hidden" value="Live" name="inpt_data_status">
-					<input type="hidden" id="newdate" name="newdate">
-					<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
 				</div>
 				</div>
 		</div>

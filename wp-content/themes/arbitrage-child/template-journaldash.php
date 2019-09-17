@@ -3338,6 +3338,21 @@ if($issampledata){
 			
 		});
 
+		jQuery(document).on('keyup', 'input[name="inpt_data_price_sold"], input[name="inpt_data_qty_sold"]', function (e) {
+			let boughtfinal = jQuery('input[name="inpt_data_total_bought_price"]').val().replace(/,/g, '');
+
+			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
+
+			let totalmarket = parseFloat(price) * parseFloat(quantity);
+			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			// console.log(finalcost.toFixed(2));
+			if(!isNaN(finalcost)){
+				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+			}
+			
+		});
+
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {

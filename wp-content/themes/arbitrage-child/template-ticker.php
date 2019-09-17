@@ -593,6 +593,7 @@
             */
 
             setInterval(() => {
+                console.log('test');
                 let ticker_data = ticker_data_ralph.filter(data => {
                     console.log(data.counter);
                 }) 

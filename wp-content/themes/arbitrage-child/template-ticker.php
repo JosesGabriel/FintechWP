@@ -595,7 +595,7 @@
             setInterval(() => {
                 console.log('test');
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    data.counter < 100   
+                    return data.counter < 100   
                 }) 
                 for(i in ticker_data){
                     console.log(ticker_data[i].counter)

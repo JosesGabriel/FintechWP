@@ -577,7 +577,7 @@
 <script>
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			/*
+			
             forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
@@ -590,7 +590,7 @@
 					forevertickerinit();
 				});
 			}
-            */
+            
 
             setInterval(() => {
                 let ticker_data = ticker_data_ralph.filter(data => {
@@ -605,7 +605,7 @@
 
 		});
 		
-     /*   
+     
     window.onload=function(){
 
 		(function countdown(remaining) {
@@ -617,7 +617,7 @@
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
         
-    }*/
+    }
 </script>
 <style>
 	.marqueethis {
@@ -647,7 +647,7 @@
 </head>
 <body>
 <div class="arb_top_ticker">
-    <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+    <div ng-controller="dev-ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <ul class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>

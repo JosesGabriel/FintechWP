@@ -46,7 +46,8 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
-app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
+
+app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     var counter = 1;
 
@@ -75,7 +76,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         ticker_data_ralph.push(transaction[i]);    
     }
 
-    socket.on('psec', function (data) {  
+    socket.on('dev-psec', function (data) {  
         var ctr = counter += 1;
         var transaction = {
             counter: ctr,
@@ -91,6 +92,35 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         }
 
        //console.log(ticker_data_ralph);
+
+        if (ticker_data_ralph.length > 150) {
+            ticker_data_ralph.pop();
+        }
+        $scope.$digest();
+    });
+    $scope.select = goToChart;
+}]);
+
+
+
+app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
+    $scope.ticker = [];
+    var counter = 1;
+
+    socket.on('psec', function (data) {  
+        var ctr = counter += 1;
+        var transaction = {
+            counter: ctr,
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol)
+        };
+        $scope.ticker.push(transaction);
+        ticker_data_ralph.push(transaction);
+        if ($scope.ticker.length > 150) {
+            $scope.ticker.pop();
+        }
 
         if (ticker_data_ralph.length > 150) {
             ticker_data_ralph.pop();

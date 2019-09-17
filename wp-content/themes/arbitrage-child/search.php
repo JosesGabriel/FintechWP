@@ -107,7 +107,7 @@ $dstockinfo = $gerdqoute->data;
         display: flex;
     }
     .inner-main-content {
-        margin: 60px 0;
+        margin: 60px auto 0;
     }
     .side-header .right-image .onto-user-meta-details {
         color: #ffffff;

@@ -785,7 +785,6 @@ if($issampledata){
 	usort($winningstocks, function($a, $b) {
 		return $b['profit'] - $a['profit'];
 	});
-	print_r($winningstocks);
 
 	$intolosschartbands = '';
 	$intolosschartlabels = '';
@@ -795,8 +794,8 @@ if($issampledata){
 		if($value['profit'] < 0 && $lossxcount < 3){
 
 			$dloss = [];
-			$dwins['stocks'] = $value['stockname'];
-			$dwins['profit'] = $value['profit'];
+			$dloss['stocks'] = $value['stockname'];
+			$dloss['profit'] = $value['profit'];
 
 			array_push($loosingstocks, $dloss);
 
@@ -839,7 +838,7 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 	
-	// print_r($strats);
+	print_r($loosingstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';

@@ -580,13 +580,13 @@
 			
             forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'left': '+=100px'}, 1500, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1500, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
                 //console.log('working..');
-				jQuery('.arb_custom_ticker').animate({'left': '+=100px'}, 1500, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 1500, "linear", function() {
 					forevertickerinit();
 				});
 			}
@@ -606,7 +606,7 @@
 
 		});
 		
-     
+     /*
     window.onload=function(){
 
 		(function countdown(remaining) {
@@ -618,7 +618,7 @@
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
         
-    }
+    }*/
 </script>
 <style>
 	.marqueethis {

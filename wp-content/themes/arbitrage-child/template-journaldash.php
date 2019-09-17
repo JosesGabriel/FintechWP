@@ -714,7 +714,7 @@ if($issampledata){
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
 			if(date('Y', strtotime($value->tldate)) == date('Y')){
-				$dtotalpl = $profit;
+				$dtotalpl += $profit;
 			}
 			
 			

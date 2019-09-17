@@ -578,6 +578,7 @@ if($issampledata){
 	$dailyvolumes = '';
 	$dailyvalues = '';
 	$dpercschart = '';
+	$gplchart = '';
 	$buysscounter = 0;
 
 	
@@ -2991,7 +2992,7 @@ if($issampledata){
                                                         }
 
                                                         $dtrades = [];
-                                                        $gplchart = '';
+                                                        // $gplchart = '';
                                                         $counter = 0;
                                                         foreach ($posts as $dpostkey => $dpostvalue) {
                                                             $instrade = [];

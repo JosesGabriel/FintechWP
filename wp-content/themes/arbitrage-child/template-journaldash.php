@@ -583,6 +583,7 @@ if($issampledata){
 	$demotsonchart = '';
 	$stratstrg = '';
 	$wincharts = '';
+	$formonthperc = '';
 	$iswin = 0;
 	$isloss = 0;
 	$buysscounter = 0;
@@ -596,6 +597,21 @@ if($issampledata){
 	];
 
 	$months = array(
+		'jan' => 0,
+		'feb' => 0,
+		'mar' => 0,
+		'apr' => 0,
+		'may' => 0,
+		'jun' => 0,
+		'jul ' => 0,
+		'aug' => 0,
+		'sep' => 0,
+		'oct' => 0,
+		'nov' => 0,
+		'dec' => 0
+	);
+
+	$profitsmonths = array(
 		'jan' => 0,
 		'feb' => 0,
 		'mar' => 0,
@@ -672,6 +688,8 @@ if($issampledata){
 			$profits[strtolower($istrdate)] += $profit;
 			$months[strtolower($ismonthtrade)] += getjurfees($selltotal, 'sell');
 
+			$profitsmonths[strtolower($ismonthtrade)] += $profit;
+
 			$gplchart .= '{';
 			$gplchart .= '"category": "'.$buysscounter.'",';
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
@@ -694,9 +712,6 @@ if($issampledata){
 			// top stocks
 			$allstocks[$value->isstock]['profit'] += $profit;
 			$allstocks[$value->isstock]['profmarketval'] += $marketvals;
-
-
-
 			
 		}
 	}
@@ -837,6 +852,12 @@ if($issampledata){
 		$wincharts .= '},';
 	}
 
+	foreach ($profitsmonths as $key => $value) {
+		$formonthperc .= '{';
+		$formonthperc .= '"category": "'.$key.'",';
+		$formonthperc .= '"column-1": "'.$value.'"';
+		$formonthperc .= '},';
+	}
 
 	for ($i=$buysscounter; $i <= 20; $i++) { 
 		$dailyvolumes .= '{';
@@ -2043,14 +2064,14 @@ if($issampledata){
                                                                 array_push($listmonth, $innermonth);
                                                             }
 
-                                                            $formonthperc = '';
-                                                            foreach ($listmonth as $lomkey => $lomvalue) {
-                                                                $formonthperc .= '{';
-                                                                $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
-                                                                // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
-                                                                $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
-                                                                $formonthperc .= '},';
-                                                            }
+                                                            // $formonthperc = '';
+                                                            // foreach ($listmonth as $lomkey => $lomvalue) {
+                                                            //     $formonthperc .= '{';
+                                                            //     $formonthperc .= '"category": "'.date('M', strtotime($lomvalue['dmonth'])).'",';
+                                                            //     // $formonthperc .= '"column-1": "'.number_format($lomvalue['dprofit'], 2).'"';
+                                                            //     $formonthperc .= '"column-1": "'.$lomvalue['dprofit'].'"';
+                                                            //     $formonthperc .= '},';
+                                                            // }
 
                                                         ?>
 															<div class="box-portlet">

@@ -74,7 +74,8 @@ function getSMS(){
                         $entryprice = floatval($usermeta['dconnumber_entry_price']);
                         if($last_price == $entryprice){
                             #add data and message to array
-                            $stockdata["EntryMessage"] = 'From Arbitrage: Buy Now! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            #$stockdata["EntryMessage"] = 'From Arbitrage: Buy Now! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            $stockdata["EntryMessage"] = 'Alerts from Arbitrage: Your entry price for ' . $stockname . ' has been hit. ' . $stockname . ' price is now Php' . $last_price . '. Buy now!';
                         }else{
                             $stockdata["EntryMessage"] = "";
                         }
@@ -85,7 +86,8 @@ function getSMS(){
                         $stoplosspoint = floatval($usermeta['dconnumber_stop_loss_point']);
                         if($last_price < $stoplosspoint){
                             #add data and message to array
-                            $stockdata["StopLossMessage"] = 'From Arbitrage: Sell Now and Stop your Loss! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            #$stockdata["StopLossMessage"] = 'From Arbitrage: Sell Now and Stop your Loss! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            $stockdata["StopLossMessage"] = 'Alerts from Arbitrage: Your stop loss point for ' . $stockname . ' has been hit. ' . $stockname . ' price is now Php' . $last_price . '. Cut your losses now!';
                         }else{
                             $stockdata["StopLossMessage"] = "";
                         }
@@ -96,7 +98,8 @@ function getSMS(){
                         $takeprofitpoint = floatval($usermeta['dconnumber_take_profit_point']);
                         if($last_price > $takeprofitpoint){
                             #add data and message to array
-                            $stockdata["TakeProfitMessage"] = 'From Arbitrage: Sell Now and Secure your Profit! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            #$stockdata["TakeProfitMessage"] = 'From Arbitrage: Sell Now and Secure your Profit! ' . $stockname . ' Current price is now Php ' . $last_price;
+                            $stockdata["TakeProfitMessage"] = 'Alerts from Arbitrage: Your take profit point for ' . $stockname . ' has been hit. ' . $stockname . ' price is now Php' . $last_price . '. Secure your profits now!';
                         }else{
                             $stockdata["TakeProfitMessage"] = "";
                         }

@@ -25,6 +25,15 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 
 	gtag('config', 'UA-147416476-1');
 	</script>
+
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4838120237791146",
+		enable_page_level_ads: true
+		});
+	</script>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">

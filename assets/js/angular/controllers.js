@@ -64,7 +64,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             $scope.ticker.pop();
         }
 
-        console.log(ticker_data_ralph);
+       //console.log(ticker_data_ralph);
 
         if (ticker_data_ralph.length > 150) {
             ticker_data_ralph.pop();

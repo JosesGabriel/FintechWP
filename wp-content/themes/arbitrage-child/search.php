@@ -787,8 +787,8 @@ $dstockinfo = $gerdqoute->data;
                                                     </div>
                                                     <div class="top-traiders">
                                                         <div class="top-traiders-inner">
-                                                            <div class="to-content-part to-back-back">
-                                                                <div class="to-top-title">Posts</div>
+                                                            <div class="to-content-part to-back-back posts_tab-label">
+                                                                <div class="to-top-title posts_title-label">Posts</div>
                                                                 <hr class="style14 style12">
                                                                 <div class="content-inner-part">
                                                                     <?php

@@ -32,18 +32,19 @@
             usort($stock, function($a, $b) {
                 return $b[3] <=> $a[3];
             });
+                 $sdate = $stock[0][3];
+            do {
 
-            /*do {
                     $stocky[$y][0] = $stock[$y][0];
                     $stocky[$y][1] = $stock[$y][1];
                     $stocky[$y][2] = $stock[$y][2];
                     $stocky[$y][3] = $stock[$y][3];
                     $y++;
-            }while ($y <= 10 );
+            }while ($sdate == $stocky[$y][3]);
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
-            });*/
+            });
 
             /*
               if($today == $new_date){

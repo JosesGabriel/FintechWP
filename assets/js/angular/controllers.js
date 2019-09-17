@@ -50,9 +50,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
 
     socket.on('psec', function (data) {
-        var num += 1;
         var transaction = {
-            num_id: num,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
@@ -63,6 +61,8 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         if ($scope.ticker.length > 150) {
             $scope.ticker.pop();
         }
+
+        console.log(ticker_data_ralph);
 
         if (ticker_data_ralph.length > 150) {
             ticker_data_ralph.pop();
@@ -106,7 +106,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.enableBidsAndAsks = false;
+    $scope.enableBidsAndAsks = true;
     $scope.bids = [];
     $scope.asks = [];
     $scope.transactions = [];

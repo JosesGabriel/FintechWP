@@ -233,7 +233,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																				<select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
 										                                                <option  value="select" selected>Select</option>
 										                                                <option  value="delete">Delete</option>
-										                                                <option  value="edit" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>">Edit</option>
+										                                                <option  value="edit">Edit</option>
 										                                        </select>
 
 																			</div>
@@ -830,7 +830,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 						});
 		        }
 		        if($(this).val() == 'edit'){
+		        		 var ditemtoedit = jQuery(this).attr('data-space');
+		        		 console.log(ditemtoedit);
 
+		           		$('#modal' + ditemtoedit).addClass('show');
 		        }
 
     		});

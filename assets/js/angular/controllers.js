@@ -48,13 +48,11 @@ app.controller('template', function($scope, $http) {
 });
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
-    
-    socket.on('psec', function (data) {
-        var counter = 1;
+    var counter = 1;
+    socket.on('psec', function (data) {  
         var ctr = counter += 1;
-        console.log(ctr);    
         var transaction = {
-            counter: ,
+            counter: ctr,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
@@ -691,7 +689,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 symbol_search_request_delay: 1000,
                 charts_storage_url: '/charting-api',
                 indicators_file_name: '/assets/js/custom-indicators.js',
-				charts_storage_api_version: "1-1",
+				charts_storage_api_version: "1-0",
                 client_id: _client_id,
                 user_id: _user_id,
                 enabled_features: ['narrow_chart_enabled','study_templates','keep_left_toolbar_visible_on_small_screens'],

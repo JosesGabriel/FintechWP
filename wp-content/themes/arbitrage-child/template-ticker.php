@@ -610,8 +610,8 @@
 				document.getElementById('countdown').innerHTML = remaining;
 				setTimeout(function(){ countdown(remaining - 1); }, 1000);
 		})(<?php echo rand(100,180); ?>);
-        */
-    }
+        
+    }*/
 </script>
 <style>
 	.marqueethis {
@@ -643,7 +643,7 @@
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <ul class="list-inline marqueethis arb_custom_ticker">
-            <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+            <li data-element="{{::transaction.counter}}" ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>

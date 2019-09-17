@@ -236,7 +236,7 @@ $dstockinfo = $gerdqoute->data;
 
     .nav li {
         position: relative;
-        /* line-height: 2em !important; */
+        line-height: 2em !important;
     }
 
     .onbfollow {
@@ -475,10 +475,11 @@ $dstockinfo = $gerdqoute->data;
 
     .stocks-body {
         background: #142c46 !important;
-        padding: 15px 15px;
+        padding: 10px 29px;
         border-radius: 5px;
-        padding-bottom: 5px;
-        margin: 20px 0px;
+        margin: 10px 0px;
+        vertical-align: middle;
+        display: block;
     }
 
 
@@ -808,8 +809,8 @@ $dstockinfo = $gerdqoute->data;
                                                 <div class="tab-pane" id="tab2">
                                                     <div class="top-traiders">
                                                         <div class="top-traiders-inner">
-                                                            <div class="to-content-part to-back-back" style="padding-bottom: 5px">
-                                                                <div class="to-top-title">People</div>
+                                                            <div class="to-content-part to-back-back posts_tab-label" style="padding-bottom: 5px">
+                                                                <div class="to-top-title posts_title-label">People</div>
                                                                 <div class="content-inner-part">
                                                                     <?php
                                                                         $i=0;
@@ -848,7 +849,7 @@ $dstockinfo = $gerdqoute->data;
                                                 </div>
                                                 <div class="tab-pane" id="tab3">
                                                     <div class="stocks-body" style="margin-top: 10px !important">
-                                                        <div class="to-top-title" style="margin-top: -10px">Stocks</div>
+                                                        <div class="to-top-title">Stocks</div>
                                                         <?php
                                                         $args = array(
                                                             'post_type'      => 'page',
@@ -894,8 +895,8 @@ $dstockinfo = $gerdqoute->data;
                                                 <div class="tab-pane" id="tab4">
                                                     <div class="top-traiders">
                                                         <div class="top-traiders-inner">									                                           
-                                                            <div class="to-content-part to-back-back">
-                                                                <div class="to-top-title">Posts</div>
+                                                            <div class="to-content-part to-back-back posts_tab-label">
+                                                                <div class="to-top-title posts_title-label">Posts</div>
                                                                 <div class="content-inner-part">
                                                                 <?php
                                                                     global $wpdb;    

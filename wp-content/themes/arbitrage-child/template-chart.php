@@ -1883,6 +1883,10 @@
 																												</table>
 																											</div>
 																										</div>
+																										<div ng-else
+																											style="height: calc(100% - 35px); position: relative">
+																											<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">Coming soon</span>
+																										</div>
 																									</div>
 																								</div>
 																							</div>

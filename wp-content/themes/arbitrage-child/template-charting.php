@@ -11,6 +11,16 @@ global $wpdb;
 
 $charts_table = 'arby_charting';
 $request_method = $_SERVER['REQUEST_METHOD'];
+
+function respond($success = false, $data = [], $status = 500)
+{
+    $data['status'] = $success ? 'ok' : 'error';
+    $status = $success ? 200 : $status;
+    http_response_code($status);
+    echo json_encode(array_push($data, $status));
+    die();
+}
+
 /**
  * TRADINGVIEW CHARTS
  */
@@ -58,13 +68,4 @@ if ($request_method === 'POST') {
     respond(true, [
         'id' => $wpdb->insert_id,
     ]);
-}
-
-function respond($success = false, $data = [], $status = 500)
-{
-    $data['status'] = $success ? 'ok' : 'error';
-    $status = $success ? 200 : $status;
-    http_response_code($status);
-    echo json_encode(array_push($data, $status));
-    die();
 }

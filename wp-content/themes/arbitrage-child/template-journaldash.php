@@ -663,6 +663,7 @@ if($issampledata){
 			$dailyvalues .= '"column-1": '.($value->tlsellprice != "" ? $value->tlsellprice : 0).'';
 			$dailyvalues .= '},';
 
+			$marketvals = $value->tlvolume * $value->tlaverageprice;
 			$selltotal = $value->tlvolume * $value->tlsellprice;
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
@@ -678,8 +679,6 @@ if($issampledata){
 			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
 			$gplchart .= '"column-2": "#673ab7"';
 			$gplchart .= '},';
-
-			echo $profit ." -- ";
 			
 			if($profit > 0){
 				$tremo[$value->tlemotions]['trwin']++;

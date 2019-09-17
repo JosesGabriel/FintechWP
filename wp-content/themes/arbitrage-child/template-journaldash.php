@@ -847,8 +847,8 @@ if($issampledata){
 	$lastwin = 0;
 	$lastlose = 0;
 	foreach ($strats as $key => $value) {
-		$winningstarts = ($lastwin > $value['trwin'] ? $key : $winningstarts);
-		$lossingstrats = ($lastlose > $value['trloss'] ? $key : $lossingstrats);
+		$winningstarts = ($lastwin > $value['trwin'] ? $winningstarts: $key );
+		$lossingstrats = ($lastlose > $value['trloss'] ? $lossingstrats : $key);
 
 		$stratstrg .= '{';
 		$stratstrg .= '"category": "'.$key.'",';

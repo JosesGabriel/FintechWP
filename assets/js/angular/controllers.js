@@ -65,11 +65,10 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         if (ticker_data_ralph.length > 150) {
             ticker_data_ralph.pop();
         }
-
+        console.log('yaeh');
+        console.log(ticker_data_ralph); 
         $scope.$digest();
     });
-    console.log('yaeh');
-    console.log(ticker_data_ralph);
     $scope.select = goToChart;
 }]);
 

@@ -578,6 +578,7 @@ if($issampledata){
 	$dailyvolumes = '';
 	$dailyvalues = '';
 	$dpercschart = '';
+	$gplchart = '';
 	$buysscounter = 0;
 
 	
@@ -616,17 +617,21 @@ if($issampledata){
 			$selltotal = $value->tlvolume * $value->tlsellprice;
 			$sellvalue = $selltotal - getjurfees($selltotal, 'sell');
 			$profit = $sellvalue - $marketvals;
-
 			$istrdate = date('D', strtotime($value->tldate));
-
 			$profits[strtolower($istrdate)] += $profit;
+
+			$gplchart .= '{';
+			$gplchart .= '"category": "'.$buysscounter.'",';
+			$gplchart .= '"column-1": "'.number_format($profit, 2, '.', '').'",';
+			$gplchart .= '"column-2": "#673ab7"';
+			$gplchart .= '},';
 			
 		}
 	}
 
 	print_r($profits);
 
-	foreach ($variable as $key => $value) {
+	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
 		$dpercschart .= '"category": "'.$key.'",';
 		$dpercschart .= '"column-1": "'.$value.'",';
@@ -645,6 +650,12 @@ if($issampledata){
 		$dailyvalues .= '"category": "'.$i.'",';
 		$dailyvalues .= '"column-1": 0';
 		$dailyvalues .= '},';
+
+		$gplchart .= '{';
+		$gplchart .= '"category": "'.$i.'",';
+		$gplchart .= '"column-1": "0",';
+		$gplchart .= '"column-2": "#673ab7"';
+		$gplchart .= '},';
 	}
 
 	
@@ -2981,7 +2992,7 @@ if($issampledata){
                                                         }
 
                                                         $dtrades = [];
-                                                        $gplchart = '';
+                                                        // $gplchart = '';
                                                         $counter = 0;
                                                         foreach ($posts as $dpostkey => $dpostvalue) {
                                                             $instrade = [];
@@ -3011,11 +3022,11 @@ if($issampledata){
                                                             $instrade['profit'] = $dprofit;
                                                             array_push($dtrades, $instrade);
 
-                                                            $gplchart .= '{';
-                                                            $gplchart .= '"category": "'.$counter.'",';
-                                                            $gplchart .= '"column-1": "'.number_format($dprofit, 2, '.', '').'",';
-                                                            $gplchart .= '"column-2": "#673ab7"';
-                                                            $gplchart .= '},';
+                                                            // $gplchart .= '{';
+                                                            // $gplchart .= '"category": "'.$counter.'",';
+                                                            // $gplchart .= '"column-1": "'.number_format($dprofit, 2, '.', '').'",';
+                                                            // $gplchart .= '"column-2": "#673ab7"';
+                                                            // $gplchart .= '},';
 
                                                             if ($counter >= 20) {
                                                                 break;
@@ -3023,13 +3034,13 @@ if($issampledata){
                                                         }
 
                                                         // add empty on string
-                                                        for ($i = count($dtrades); $i <= 20; ++$i) {
-                                                            $gplchart .= '{';
-                                                            $gplchart .= '"category": "'.$i.'",';
-                                                            $gplchart .= '"column-1": "0",';
-                                                            $gplchart .= '"column-2": "#673ab7"';
-                                                            $gplchart .= '},';
-                                                        }
+                                                        // for ($i = count($dtrades); $i <= 20; ++$i) {
+                                                        //     $gplchart .= '{';
+                                                        //     $gplchart .= '"category": "'.$i.'",';
+                                                        //     $gplchart .= '"column-1": "0",';
+                                                        //     $gplchart .= '"column-2": "#673ab7"';
+                                                        //     $gplchart .= '},';
+                                                        // }
 
                                                         $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
                                                         $xdays = [];
@@ -3091,15 +3102,15 @@ if($issampledata){
                                                             array_push($xdays, $indays);
                                                         }
 
-                                                        $dpercschart = '';
-                                                        foreach ($xdays as $xdaykey => $xdayvalue) {
-                                                            $basedate = date('D', strtotime($xdayvalue['dday']));
-                                                            $dpercschart .= '{';
-                                                            $dpercschart .= '"category": "'.$basedate.'",';
-                                                            $dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-                                                            $dpercschart .= '"column-2": "#673ab7"';
-                                                            $dpercschart .= '},';
-                                                        }
+                                                        // $dpercschart = '';
+                                                        // foreach ($xdays as $xdaykey => $xdayvalue) {
+                                                        //     $basedate = date('D', strtotime($xdayvalue['dday']));
+                                                        //     $dpercschart .= '{';
+                                                        //     $dpercschart .= '"category": "'.$basedate.'",';
+                                                        //     $dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
+                                                        //     $dpercschart .= '"column-2": "#673ab7"';
+                                                        //     $dpercschart .= '},';
+                                                        // }
 
                                                     ?>
 													<div class="row">

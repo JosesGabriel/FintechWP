@@ -3131,10 +3131,10 @@ if($issampledata){
 																	
 																				foreach ($ismytrades as $key => $value) {
 																					$marketvals = $value->tlvolume * $value->tlaverageprice;
-
-																					echo $marketvals;
 																					$selltotal = $value->tlvolume * $value->tlsellprice;
 																					$sellvalue = $selltotal - thetradefees($selltotal, 'sell');
+
+																					echo $sellvalue;
 
 																					$profit = $sellvalue - $marketvals;
 																					$profitperc = ($profit / $marketvals) * 100;

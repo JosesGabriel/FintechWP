@@ -665,13 +665,20 @@ if($issampledata){
 		],
 	];
 
+	$fees = [
+		'commissions' => 0,
+		'vat' => 0,
+		'transfer' => 0,
+		'sccp' => 0,
+		'sell' => 0,
+	];
+
 	if(!empty($ismytrades)){
 		foreach ($ismytrades as $key => $value) {
 			$dailyvolumes .= '{';
 			$dailyvolumes .= '"category": "'.$buysscounter.'",';
 			$dailyvolumes .= '"column-1": '.($value->tlvolume != "" ? $value->tlvolume : 0).'';
 			$dailyvolumes .= '},';
-
 			
 			$dailyvalues .= '{';
 			$dailyvalues .= '"category": "'.$buysscounter.'",';
@@ -717,7 +724,14 @@ if($issampledata){
 			if(date('Y', strtotime($value->tldate)) == date('Y')){
 				$dtotalpl += $profit;
 			}
-			
+
+			$commissions = $marketvals * 0.0025;
+			$finalcommis = ($commissions <= 20 ? 20 : $commissions);
+			$fees['commissions'] += $finalcommis;
+			$fees['vat'] += ($finalcommis * 0.12);
+			$fees['transfer'] += ($marketvals * 0.00005);
+			$fees['sccp'] += ($marketvals * 0.0001);
+			$fees['sell'] += ($marketvals * 0.006);
 			
 		}
 	}
@@ -2752,7 +2766,7 @@ if($issampledata){
 	                                                                                    <div><?php  echo $emtvalue['total_trades']; ?></div>
 	                                                                                    <div><?php  echo $emtvalue['trwin']; ?></div>
 	                                                                                    <div><?php  echo $emtvalue['trloss']; ?></div>
-	                                                                                    <div><?php  echo number_format(($emtvalue['trwin'] / $emtvalue['total_trades']) * 100, 2, '.', ''); ?>%</div>
+	                                                                                    <div><?php  echo ($emtvalue['trwin'] > 0 ? number_format(($emtvalue['trwin'] / $emtvalue['total_trades']) * 100, 2, '.', '') : "0"); ?>%</div>
 	                                                                                </li>
                                                                             	<?php
                                                     							} ?>
@@ -2875,7 +2889,10 @@ if($issampledata){
                                                         //     $feeschart .= '},';
                                                         // }
                                                     ?>
-                                                    <!-- EOF expenses report -->
+													<!-- EOF expenses report -->
+													<pre>
+														<?php print_r($fees); ?>
+													</pre>
 													<div class="expence-report">
 															<div class="box-portlet">
 																<div class="box-portlet-header">
@@ -2890,6 +2907,14 @@ if($issampledata){
 																					$transfer_fee = 1234;
 																					$sccp = 124;
 																					$sales_tax = 223;
+
+																					$fees = [
+																						'commissions' => 0,
+																						'vat' => 0,
+																						'transfer' => 0,
+																						'sccp' => 0,
+																						'sell' => 0,
+																					];
 																				}
 																			?>
 																			<div class="inner-portlet" style="margin-top:20px;">

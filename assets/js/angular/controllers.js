@@ -685,7 +685,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 timezone: "Asia/Hong_Kong",
                 locale: "en",
                 symbol_search_request_delay: 1000,
-                // charts_storage_url: 'https://saveload.tradingview.com',
+                charts_storage_url: 'https://saveload.tradingview.com',
                 indicators_file_name: '/assets/js/custom-indicators.js',
 				charts_storage_api_version: "1.1",
                 client_id: _client_id,

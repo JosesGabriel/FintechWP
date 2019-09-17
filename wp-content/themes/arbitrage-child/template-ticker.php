@@ -595,10 +595,12 @@
             setInterval(() => {
                 console.log('test');
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    console.log(data.counter);
+                    return data.counter < 100   
                 }) 
-                for(i in ticker_data_ralph){
-
+                for(i in ticker_data){
+                    let element = jQuery("li[id=`${ticker_data[i].counter}`]");
+                    console.log(ticker_data[i].counter)
+                    console.log(element);
                 }
             }, 5000);
 
@@ -648,8 +650,8 @@
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <ul class="list-inline marqueethis arb_custom_ticker">
-            <li data-element="{{::transaction.counter}}" ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
-                <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
+            <li ng-repeat="transaction in ticker" data-id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+                <i data-id={{::transaction.counter}} class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
                 &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)

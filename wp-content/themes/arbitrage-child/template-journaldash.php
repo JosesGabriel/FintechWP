@@ -3858,11 +3858,11 @@ if($issampledata){
 
         
         //jQuery(".editmenow").click(function(){
-        $(document).on("click", ".editmenow", function() {
+        //$(document).on("click", ".editmenow", function() {
 
-           jQuery('.edittlogs').submit();
+          // jQuery('.edittlogs').submit();
 
-        });
+      //  });
 
 
 

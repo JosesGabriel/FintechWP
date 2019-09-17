@@ -1112,7 +1112,7 @@ if($issampledata){
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
-					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
+					<div class="groupinput midd lockedd label_cost"><label>Profit/Loss: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_profitloss" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
 				</div>
 				<div class="entr_wrapper_mid">
 					<div class="entr_col">
@@ -3341,14 +3341,15 @@ if($issampledata){
 		jQuery(document).on('keyup', 'input[name="inpt_data_price_sold"], input[name="inpt_data_qty_sold"]', function (e) {
 			let boughtfinal = jQuery('input[name="inpt_data_total_bought_price"]').val().replace(/,/g, '');
 
-			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
-			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
+			let price = jQuery('input[name="inpt_data_price_sold"]').val().replace(/,/g, '');
+			let quantity = jQuery('input[name="inpt_data_qty_sold"]').val().replace(/,/g, '');
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'sell'));
 			// console.log(finalcost.toFixed(2));
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
 			}
 			
 		});

@@ -3091,15 +3091,15 @@ if($issampledata){
                                                             array_push($xdays, $indays);
                                                         }
 
-                                                        $dpercschart = '';
-                                                        foreach ($xdays as $xdaykey => $xdayvalue) {
-                                                            $basedate = date('D', strtotime($xdayvalue['dday']));
-                                                            $dpercschart .= '{';
-                                                            $dpercschart .= '"category": "'.$basedate.'",';
-                                                            $dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
-                                                            $dpercschart .= '"column-2": "#673ab7"';
-                                                            $dpercschart .= '},';
-                                                        }
+                                                        // $dpercschart = '';
+                                                        // foreach ($xdays as $xdaykey => $xdayvalue) {
+                                                        //     $basedate = date('D', strtotime($xdayvalue['dday']));
+                                                        //     $dpercschart .= '{';
+                                                        //     $dpercschart .= '"category": "'.$basedate.'",';
+                                                        //     $dpercschart .= '"column-1": "'.$xdayvalue['profit'].'",';
+                                                        //     $dpercschart .= '"column-2": "#673ab7"';
+                                                        //     $dpercschart .= '},';
+                                                        // }
 
                                                     ?>
 													<div class="row">

@@ -50,11 +50,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.ticker = [];
     
     socket.on('psec', function (data) {
-        var counter = 1;
-        var ctr = counter += 1;
-        console.log(ctr);    
         var transaction = {
-            counter: ctr,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,

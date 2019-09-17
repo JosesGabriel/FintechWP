@@ -286,10 +286,6 @@ echo $user->ID ." versis ". $user->ID;
 		$sellqty = rtrim($toparsesell, ',');
 
 		
-
-		
-
-		
 		// exit;
 
         // Update journal data.

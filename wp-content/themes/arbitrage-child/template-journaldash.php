@@ -1889,39 +1889,6 @@ if($issampledata){
                                                         </div>
                                                     </div>
                                                 	<br class="clear">
-                                                	<?php
-                                                        $disyear = date('Y');
-                                                        $dismonth = date('n');
-                                                        $dmonths = [];
-                                                        for ($i = 1; $i <= $dismonth; ++$i) {
-                                                            $dmonnum = sprintf('%02d', $i);
-
-                                                            $dateObj = DateTime::createFromFormat('!m', $dmonnum);
-                                                            $monthName = $dateObj->format('F');
-
-                                                            array_push($dmonths, $monthName);
-                                                        }
-
-                                                        $dlistofsells = [];
-                                                        
-                                                        // foreach ($dmonths as $dmonprofkey => $dmonprofvalue) {
-                                                            foreach ($alltradelogs as $dlogsmkey => $dlogsmvalue) {
-                                                                // if ($dmonprofvalue == $dlogsmvalue['data_sellmonth'] && $disyear == $dlogsmvalue['data_sellyear']) {
-                                                                if ($disyear == $dlogsmvalue['data_sellyear']) {
-                                                                    array_push($dlistofsells, $dlogsmvalue);
-
-                                                                    $dcurprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_avr_price']);
-                                                                    $selprice = $dlogsmvalue['data_quantity'] * str_replace('₱', '', $dlogsmvalue['data_sell_price']);
-																	$sellfee = getjurfees($selprice, 'sell');
-																	
-																	// echo (($selprice - $sellfee) - $dcurprice)." ~ ";
-
-                                                                    // $dtotalpl += (($selprice - $sellfee) - $dcurprice);
-                                                                }
-                                                            }
-                                                        // }
-
-                                                    ?>
 
 													
 						                        	<div class="row">
@@ -2018,7 +1985,7 @@ if($issampledata){
 																</div>
 
 															</div><br class="clear">
-															
+
 															<div class="box-portlet">
 																<div class="box-portlet-header" style="text-align:center;">
 																	Trade Statistics

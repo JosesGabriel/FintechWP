@@ -285,7 +285,7 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($toparsesell, ',');
 
-		$buyyinginfo = json_decode($_POST['dtradelogs']);
+		$buyyinginfo = json_decode(json_encode(json_decode($_POST['dtradelogs'])));
 
 		echo "<pre>";
 		print_r($buyyinginfo);

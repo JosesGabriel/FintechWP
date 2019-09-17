@@ -283,7 +283,7 @@ echo $user->ID ." versis ". $user->ID;
 
 		$toparsesell = parse_str($_POST['inpt_data_sellprice']);
 		$sellprice = rtrim($toparsesell, ',');
-		$sellqty = rtrim($toparsesell, ',');
+		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
 
 		
 		// exit;

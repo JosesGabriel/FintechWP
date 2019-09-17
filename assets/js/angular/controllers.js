@@ -49,7 +49,11 @@ app.controller('template', function($scope, $http) {
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
 
-    ticker_data_ralph[] = {test:'hello'}
+    ticker_data_ralph = [
+            {test:'hello'},
+            {test:'helra'},
+            {test:'helle'}
+        ]
     socket.on('psec', function (data) {
         var transaction = {
             symbol: data.sym,

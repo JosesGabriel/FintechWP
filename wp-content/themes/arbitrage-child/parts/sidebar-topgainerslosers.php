@@ -13,16 +13,25 @@
                   // var myJSON = JSON.stringify(response);
                    var stocks = [];
                    var i = 0;
-                   var dt_to = formatDate('Y-m-d', new Date());
+                 
+                    var d = new Date();
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_year = d.getFullYear();
+                    var dt = curr_year + "-" + curr_month + "-" + curr_date;
 
-                   console.log(dt_to);
+                   // console.log(dt);
 
                     jQuery.each(response.data, function(i, val) {
 
                         stocks[i][0] = val.symbol;
                         stocks[i][1] = val.changepercentage;
                         stocks[i][2] = val.description;
-                        stocks[i][3] = val.symbol;
+                        var ltime = val.lastupdatetime;
+                        var ltime2 = ltime.split('T');
+
+                        console.log(ltime2[0]);
+                        //stocks[i][3] = val.symbol;
                         
                         i++;
                     });

@@ -1368,32 +1368,32 @@ input.enter-trade-btn:hover {
     width: 100%;
     height: 100%;
 }
-.amChartsLegend.amcharts-legend-div svg {
+#chartdiv1 .amChartsLegend.amcharts-legend-div svg {
     width: 184.094px !important;
     position: relative !important;
 }
-.amChartsLegend.amcharts-legend-div {
+#chartdiv1 .amChartsLegend.amcharts-legend-div {
     display: block;
     height: 116px !important;
     overflow-y: hidden !important;
 }
-.amChartsLegend.amcharts-legend-div:hover {
+#chartdiv1 .amChartsLegend.amcharts-legend-div:hover {
     overflow-y: scroll !important;
 }
 
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 11px;
     background-color: #0f121d;
 }
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar
 {
     width: 8px;
     border-radius: 10px;
     background-color: none;
 }
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar-thumb
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);

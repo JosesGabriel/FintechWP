@@ -4,15 +4,14 @@
     jQuery(document).ready( function() {
 
         $.ajax({
-              type:'GET',
+              type:'POST',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               success: function(response) {
-
-                    jQuery.each(response.data, function(i, val) {
-                        console.log(val.symbol);
-                     });
-
+                    //jQuery.each(response.data, function(i, val) {
+                        var stock = response.data;
+                       // console.log(stock);
+                     //});
                 },
                 error: function(response) {
                     console.log(response);
@@ -32,6 +31,9 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
+        $myArray = json_decode($_POST['stock']);
+
+        print_r($myArray);
 
 
         if ($response !== false) {

@@ -64,13 +64,26 @@
                     });
 
                     for (var i = 0; i < 5; i++) {
-                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
-
+                       
                         var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
 
                         jQuery(".gainers ul").append(list);
+                    }
+
+
+                    stocks2.sort(function(a, b){
+                        return a[1] - b[1];
+                    });
+
+                    for (var i = 0; i < 5; i++) {
+                       
+                        var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
+                            list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
+                            list += '</li>';
+
+                        jQuery(".losers ul").append(list);
                     }
 
 
@@ -154,15 +167,15 @@
             <div class="to-content-part gainers">
 
                      <ul>
-                               <?php for($j=0; $j < 5; $j++) {
+                              <!-- <?php //for($j=0; $j < 5; $j++) {
 
-                                     if($stocky[$j][1] != null){
+                                     //if($stocky[$j][1] != null){
                                             ?> 
 
                                         <li class="odd">
-                                            <span><?php echo $stocky[$j][0]; ?></span>
+                                            <span><?php //echo $stocky[$j][0]; ?></span>
 
-                                            <a href="#"><?php echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
+                                            <a href="#"><?php// echo $stocky[$j][2]; ?><br><p style="color: #53b987 !important;"><?php// echo number_format($stocky[$j][1], 2, '.', ','); ?>%</p></a>
 
                                         </li>
 
@@ -171,7 +184,7 @@
                                     <?php
                                        
                                     }
-                                 ?>
+                                 ?>-->
                     </ul>                          
                        
             </div>          

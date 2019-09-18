@@ -12,6 +12,7 @@
 
                   // var myJSON = JSON.stringify(response);
                     var stocks = [];
+                    var stocks2 = [];
                     var i = 0;
                     var d = new Date();
                     var curr_date = d.getDate();
@@ -42,17 +43,30 @@
                     var new_day = sdate.getDate();
                     var new_mo = sdate.getMonth() + 1;
                     var new_yr = sdate.getFullYear();
-                   
-                    console.log('sday-> ' + new_day);
+                
                     var n = 0;
+
                     do {
                         cur_d = stocks[n][3].getDate();
                         cur_m = stocks[n][3].getMonth() + 1;
                         cur_y = stocks[n][3].getFullYear();
-
+                        stocks2[n] = [];
+                        stocks2[n][0] = stocks[n][0];
+                        stocks2[n][1] = stocks[n][1]; 
+                        stocks2[n][2] = stocks[n][2];  
+                        stocks2[n][3] = stocks[n][3]; 
                         console.log(stocks[n][3]);
                         n++;
                     }while(new_day == cur_d && new_mo == cur_m && new_yr == cur_y);
+
+                    stocks2.sort(function(a, b){
+                        return b[1] - a[1];
+                    });
+
+                    for (var i = 0; i < 10; i++) {
+                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1] + ' - ' + stocks2[n][3]);
+                    }
+
 
                 },
                 error: function(response) {

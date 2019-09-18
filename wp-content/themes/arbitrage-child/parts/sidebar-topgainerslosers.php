@@ -36,7 +36,7 @@
                         return b[3] - a[3];
                     });
 
-                    for (var x = 0; x < i; x++) {
+                    for (var x = 0; x < 100; x++) {
                         console.log(stocks[x][3]);
                     }
 

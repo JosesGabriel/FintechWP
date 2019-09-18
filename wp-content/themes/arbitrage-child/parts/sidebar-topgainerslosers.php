@@ -45,9 +45,9 @@
 
         $myArray = $_COOKIE['myArray'];
 
-        //$myArray1 = json_decode($myArray);
+        $myArray1 = json_decode($myArray);
 
-
+        print_r($myArray1);
         //$myArray1 = json_decode($myArray);
 
          //foreach($myArray as $stkey => $stockval){

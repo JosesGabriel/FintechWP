@@ -4176,3 +4176,13 @@
 .stock_container-inner {
     width: 85%;
 }
+span.my_rank-number {
+    position: absolute;
+    z-index: 99;
+    margin: 5px auto 0;
+    width: 34px;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #d0a950;
+}

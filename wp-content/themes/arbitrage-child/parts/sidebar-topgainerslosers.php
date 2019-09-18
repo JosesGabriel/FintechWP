@@ -9,8 +9,8 @@
               dataType: 'json',
               success: function(response) {
                     //jQuery.each(response.data, function(i, val) {
-
-                        console.log(response.data);
+                        var stock = response.data;
+                        console.log(stock);
 
                      //});
                 },

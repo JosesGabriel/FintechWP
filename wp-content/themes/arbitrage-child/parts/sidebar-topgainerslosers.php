@@ -168,7 +168,7 @@
             <div class="to-content-part gainers">
 
                      <ul>
-                               <?php for($j=0; $j < 5; $j++) {
+                               <?php// for($j=0; $j < 5; $j++) {
 
                                     // if($stocky[$j][1] != null){
                                             ?> 
@@ -184,7 +184,7 @@
                                        
                                     <?php
                                        
-                                    }
+                                   // }
                                  ?>
                     </ul>                          
                        

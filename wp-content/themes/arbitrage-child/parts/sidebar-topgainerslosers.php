@@ -21,7 +21,6 @@
                     var dt = curr_year + "-" + curr_month + "-" + curr_date;
 
                    // console.log(dt);
-
                     jQuery.each(response.data, function(i, val) {
                         stocks[i] = [];
                         stocks[i][0] = val.symbol;
@@ -29,12 +28,17 @@
                         stocks[i][2] = val.description;
                         var ltime = val.lastupdatetime;
                         var ltime2 = ltime.split('T');
-
-                        console.log(ltime2[0]);
-                        //stocks[i][3] = val.symbol;
-                        
+                        stocks[i][3] = ltime2[0];                        
                         i++;
                     });
+
+                    stocks.sort(function(a, b){
+                        return b[3] - a[3];
+                    });
+
+                    for (var x = 0 ; x < i ; x++) {
+                        console.log(stocks[x][3]);
+                    }
 
                 },
                 error: function(response) {

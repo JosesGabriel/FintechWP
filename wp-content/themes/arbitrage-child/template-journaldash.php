@@ -3354,6 +3354,13 @@ if($issampledata){
 
 		});
 
+		jQuery(document).on('change', '#inpt_data_stock_sold', function() {
+			let dstock = this.value;
+			console.log(dstock);
+			jQuery("#inpt_data_stock_bought").val(dstock);
+
+		});
+
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {

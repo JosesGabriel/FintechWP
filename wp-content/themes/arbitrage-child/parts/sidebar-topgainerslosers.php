@@ -18,6 +18,9 @@
                     var curr_month = d.getMonth() + 1; //Months are zero based
                     var curr_year = d.getFullYear();
                     var dt = curr_year + "-" + curr_month + "-" + curr_date;
+                    var cur_d;
+                    var cur_m;
+                    var cur_y;
 
                    // console.log(dt);
                     jQuery.each(response.data, function(i, val) {
@@ -36,14 +39,20 @@
                     });
 
                     var sdate = new Date(stocks[0][3]);
-                    var new_date = sdate.getDate();
+                    var new_day = sdate.getDate();
+                    var new_mo = sdate.getMonth() + 1;
+                    var new_yr = sdate.getFullYear();
                    
-                    console.log('sday-> ' + new_date);
+                    console.log('sday-> ' + new_day);
                     var n = 0;
                     do {
+                        cur_d = stocks[n][3].getDate();
+                        cur_m = stocks[n][3].getMonth() + 1;
+                        cur_y = stocks[n][3].getFullYear();
+
                         console.log(stocks[n][3]);
                         n++;
-                    }while(sdate == stocks[n][3]);
+                    }while(new_day == cur_d && new_mo == cur_m && new_yr == cur_y);
 
                 },
                 error: function(response) {

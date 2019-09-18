@@ -597,12 +597,11 @@
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;
                     let element = jQuery(ids);
-                    element.remove();
+                    //element.remove();
                 }     
                 if(jQuery(".arb_custom_ticker").width()>25000){
                     location.reload(true);
                 }
-
             }, 10000);
 
 		});
@@ -635,7 +634,7 @@
 </head>
 <body>
 <div class="arb_top_ticker">
-    <div ng-controller="dev-ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+    <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <ul id="container" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>

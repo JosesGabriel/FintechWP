@@ -601,7 +601,10 @@
                     element.remove();
                 }
                 
-                console.log(jQuery(".arb_custom_ticker").width());
+                if(jQuery(".arb_custom_ticker").width()>1000){
+                    location.reload(true);
+                }
+
             }, 10000);
 
 		});

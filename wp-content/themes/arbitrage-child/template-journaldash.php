@@ -1083,7 +1083,7 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_bought" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1104,7 +1104,7 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
@@ -3348,7 +3348,10 @@ if($issampledata){
 		});
 
 		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
-			// let dstock
+			let dstock = this.value;
+			console.log(dstock);
+			// jQuery("")
+
 		});
 
 

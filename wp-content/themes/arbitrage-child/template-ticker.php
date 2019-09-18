@@ -580,12 +580,12 @@
 			
             forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 20000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 15000, "linear", function() {
 					foreverticker();
 				});
 			}
 			function foreverticker() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 20000, "linear", function() {
+				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 15000, "linear", function() {
 					forevertickerinit();
 				});
 			}

@@ -1129,6 +1129,10 @@ h2.watchtitle {
         color: #afadb3;
     }
 
+    ..editwatchlist:after{
+        content: "▼";
+    }
+
     select option {
         background: #4e6a85;
         color: #fff;

@@ -67,7 +67,7 @@
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
 
-                        jQuery(".to-content-part .gainers ul").append(list);
+                        jQuery(".gainers ul").append(list);
                     }
 
                     stocks2.sort(function(a, b){

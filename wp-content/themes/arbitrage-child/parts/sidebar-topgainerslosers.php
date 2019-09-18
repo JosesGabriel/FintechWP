@@ -44,10 +44,9 @@
         curl_close($curl);
 
         $myArray = $_COOKIE['myArray'];
-
         $myArray1 = json_decode($myArray);
-
-        print_r($myArray1->data);
+        $stockss = $myArray1->data;
+        print_r($stockss);
         //$myArray1 = json_decode($myArray);
 
          //foreach($myArray as $stkey => $stockval){

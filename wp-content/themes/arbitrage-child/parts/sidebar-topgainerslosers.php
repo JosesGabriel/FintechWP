@@ -37,11 +37,13 @@
                     });
 
                     var sdate = stocks[0][3];
+
+                    console.log('sdate-> ' + sdate);
                     var n = 0;
                     do {
                         console.log(stocks[n][3]);
                         n++;
-                    }while(sdate == stocks[n][3]);
+                    }while(sdate == ltime2[0]);
 
                 },
                 error: function(response) {

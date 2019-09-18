@@ -13,7 +13,14 @@
                   // var myJSON = JSON.stringify(response);
                    var stocks = [];
                    var i = 0;
-                   var dt_to = formatDate('Y-m-d', new Date());
+                 
+                    var d = new Date();
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_year = d.getFullYear();
+                    var dt = curr_year + "-" + curr_month + "-" + curr_date;
+                    console.log(dt);
+
 
                    console.log(dt_to);
 

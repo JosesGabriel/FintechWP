@@ -10,7 +10,7 @@
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
-                   var myJSON = JSON.stringify(response.data);
+                   var myJSON = JSON.stringify(response);
                    var stocks = response;
 
                    document.cookie = "myArray = " + myJSON;
@@ -98,7 +98,7 @@
     <div class="top-stocks">
             <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
 
-            <div><?php print_r($myArray->data); ?></div>
+            <div><?php print_r($myArray); ?></div>
 
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">

@@ -64,7 +64,8 @@
                     });
 
                     for (var i = 0; i < 5; i++) {
-                       
+                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
+
                         var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
@@ -77,15 +78,7 @@
                         return a[1] - b[1];
                     });
 
-                    for (var i = 0; i < 5; i++) {
-                       
-                        var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
-                            list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
-                            list += '</li>';
-
-                        jQuery(".losers ul").append(list);
-                    }
-
+                    
 
                 },
                 error: function(response) {

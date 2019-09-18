@@ -2,7 +2,6 @@
 
 <script>
     jQuery(document).ready( function() {
-
         $.ajax({
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
@@ -83,8 +82,6 @@
 
                         jQuery(".losers ul").append(list);
                     }
-
-
                 },
                 error: function(response) {                 
                 }

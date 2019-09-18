@@ -359,6 +359,13 @@ echo $user->ID ." versis ". $user->ID;
 		echo "<pre>";
 			print_r($_POST);
 		echo "</pre>";
+
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['solddate']."','".$_POST['inpt_data_qty_sold']."','".$_POST['inpt_data_price_bought']."','".$_POST['inpt_data_price_sold']."','".$_POST['inpt_data_strategy']."','".$_POST['inpt_data_tradeplan']."','".$_POST['inpt_data_emotion']."','".$_POST['inpt_data_tradingnotes']."', '".$user->ID."', '".$_POST['inpt_data_stock_sold']."')";
+
+		echo "<pre>";
+		echo $inserttrade;
+		echo "</pre>";
+
 	}
 ?>
 <!-- EOF SELL trades -->

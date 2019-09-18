@@ -598,10 +598,10 @@
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;
                     let element = jQuery(ids);
-                    console.log(element.is(":visible"));
-                    //element.remove();
+                    element.remove();
                 }
-                jQuery(".arb_custom_ticker").width(1000);
+                
+                console.log(jQuery(".arb_custom_ticker").width());
             }, 10000);
 
 		});

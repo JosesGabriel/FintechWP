@@ -7,9 +7,11 @@
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
-              //data: JSON.stringify(obj),
+              data: {symbol:'symbol'},
               success: function(response) {
+
                     console.log(response);
+
                 },
                 error: function(response) {
                     console.log(response);

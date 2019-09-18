@@ -11,9 +11,9 @@
               success: function(response) {
 
                   // var myJSON = JSON.stringify(response);
-                   var stocks = [];
-                   var i = 0;
-                 
+                    var stocks = [];
+                    var i = 0;
+                    var ltime3 = [];
                     var d = new Date();
                     var curr_date = d.getDate();
                     var curr_month = d.getMonth() + 1; //Months are zero based
@@ -28,6 +28,7 @@
                         stocks[i][2] = val.description;
                         var ltime = val.lastupdatetime;
                         var ltime2 = ltime.split('T');
+                        ltime3[i] = ltime2[0];
                         stocks[i][3] = new Date(ltime2[0]);                        
                         i++;
                     });
@@ -43,7 +44,7 @@
                     do {
                         console.log(stocks[n][3]);
                         n++;
-                    }while(sdate == ltime2[0]);
+                    }while(sdate == ltime3[n]);
 
                 },
                 error: function(response) {

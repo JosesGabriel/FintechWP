@@ -76,29 +76,29 @@ app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $fil
         ticker_data_ralph.push(transaction[i]);    
     }
     */
-    socket.on('dev-psec', function (data) {  
-        var ctr = counter += 1;
-        var transaction = {
-            counter: ctr,
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol)
-        };
-        $scope.ticker.push(transaction);
-        ticker_data_ralph.push(transaction);
-        if ($scope.ticker.length > 150) {
-            $scope.ticker.pop();
-        }
+    // socket.on('dev-psec', function (data) {  
+    //     var ctr = counter += 1;
+    //     var transaction = {
+    //         counter: ctr,
+    //         symbol: data.sym,
+    //         price:  price_format(data.prv),
+    //         change: data.chg,
+    //         shares: abbr_format(data.vol)
+    //     };
+    //     $scope.ticker.push(transaction);
+    //     ticker_data_ralph.push(transaction);
+    //     if ($scope.ticker.length > 150) {
+    //         $scope.ticker.pop();
+    //     }
 
-       //console.log(ticker_data_ralph);
+    //    //console.log(ticker_data_ralph);
 
-        if (ticker_data_ralph.length > 150) {
-            ticker_data_ralph.pop();
-        }
-        $scope.$digest();
-    });
-    $scope.select = goToChart;
+    //     if (ticker_data_ralph.length > 150) {
+    //         ticker_data_ralph.pop();
+    //     }
+    //     $scope.$digest();
+    // });
+    // $scope.select = goToChart;
 }]);
 
 

@@ -55,7 +55,7 @@
                         stocks2[n][1] = stocks[n][1]; 
                         stocks2[n][2] = stocks[n][2];  
                         stocks2[n][3] = stocks[n][3]; 
-                        console.log(stocks[n][3]);
+                        //console.log(stocks[n][3]);
                         n++;
                     }while(new_day == cur_d && new_mo == cur_m && new_yr == cur_y);
 
@@ -64,7 +64,7 @@
                     });
 
                     for (var i = 0; i < 10; i++) {
-                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1] + ' - ' + stocks2[n][3]);
+                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1] + ' - ' + stocks2[i][3]);
                     }
 
 

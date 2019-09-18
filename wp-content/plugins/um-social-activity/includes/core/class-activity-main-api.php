@@ -453,7 +453,7 @@ class Activity_Main_API
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="https://arbitrage.ph/chart/' . $dstock . '">' . $dwordpvalue . '</a>';
+                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="noopener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
                         $usname = str_replace('@', '', $dwordpvalue);
@@ -465,7 +465,7 @@ class Activity_Main_API
                         for($i = 1; $i < count($infors); $i++){
                             $newword .= ucfirst($infors[$i])." ";
                         }
-                        $finalword = '<a href="https://arbitrage.ph/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
                         $newconts .= ' ' . $finalword;
                     } else {
                         $newconts .= ' ' . $dwordpvalue;

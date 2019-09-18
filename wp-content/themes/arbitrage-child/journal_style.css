@@ -957,28 +957,31 @@ a.smlbtn.blue:hover {
 }
 .smlbtn.green {
     background-color: transparent;
-    border: 2px solid #27ae60;
-    color: #ffffff;
-    margin-right: -5p;
     line-height: 14px;
     border-radius: 15px;
-    padding: 2px 6px 2px 6px;
-    width: 47px;
+    padding: 2px 4px 2px 4px;
+    width: 35px;
     text-align: center;
 }
 a.smlbtn.green:hover {
     background-color: #27ae60;
     color:#FFFFFF;
 }
+a.smlbtn.fancybox-inline.green:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10px;
+    background: #1c3750;
+    margin-left: 7px;
+}
 a.smlbtn.red {
     background-color: transparent;
-    border: 2px solid #e64c3c;
-    color: #fff;
     margin-right: 0;
     line-height: 14px;
     border-radius: 15px;
-    padding: 2px 7px;
-    width: 47px;
+    padding: 2px 5px;
+    width: 35px;
     text-align: center;
 }
 a.smlbtn.red:hover {
@@ -1365,32 +1368,32 @@ input.enter-trade-btn:hover {
     width: 100%;
     height: 100%;
 }
-.amChartsLegend.amcharts-legend-div svg {
+#chartdiv1 .amChartsLegend.amcharts-legend-div svg {
     width: 184.094px !important;
     position: relative !important;
 }
-.amChartsLegend.amcharts-legend-div {
+#chartdiv1 .amChartsLegend.amcharts-legend-div {
     display: block;
     height: 116px !important;
     overflow-y: hidden !important;
 }
-.amChartsLegend.amcharts-legend-div:hover {
+#chartdiv1 .amChartsLegend.amcharts-legend-div:hover {
     overflow-y: scroll !important;
 }
 
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 11px;
     background-color: #0f121d;
 }
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar
 {
     width: 8px;
     border-radius: 10px;
     background-color: none;
 }
-.amChartsLegend.amcharts-legend-div::-webkit-scrollbar-thumb
+#chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);

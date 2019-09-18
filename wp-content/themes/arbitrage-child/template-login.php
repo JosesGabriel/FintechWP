@@ -329,7 +329,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
             
             var email = jQuery("#email_info").val();
             var hasvalemail = jQuery("#email_info").val().length;
-            // console.log(email);
+
             var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
             jQuery.ajax({
                 'url': url,

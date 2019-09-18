@@ -36,8 +36,8 @@
                         return b[3] - a[3];
                     });
 
-                    for (var x = 0 ; x < i ; x++) {
-                        console.log(stocks[x][3]);
+                    for (var x = 0 ; x < i; x++) {
+                        console.log('-> '+ stocks[x][3]);
                     }
 
                 },

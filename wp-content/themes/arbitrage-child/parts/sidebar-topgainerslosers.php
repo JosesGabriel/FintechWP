@@ -8,11 +8,11 @@
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               success: function(response) {
+                    //jQuery.each(response.data, function(i, val) {
 
-                    jQuery.each(response.data, function(i, val) {
-                        console.log(val.symbol);
-                     });
+                        console.log(response.data);
 
+                     //});
                 },
                 error: function(response) {
                     console.log(response);

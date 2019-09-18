@@ -7,7 +7,7 @@
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
-              data: "stockss="+JSON.stringify(data),
+              //data: "stockss="+JSON.stringify(data),
               success: function(response) {
                     jQuery.each(response.data, function(i, val) {
 

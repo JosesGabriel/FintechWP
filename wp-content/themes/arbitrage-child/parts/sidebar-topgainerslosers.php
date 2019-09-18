@@ -4,7 +4,7 @@
     jQuery(document).ready( function() {
 
         $.ajax({
-              type:'POST',
+              type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               success: function(response) {

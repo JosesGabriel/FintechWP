@@ -9,7 +9,6 @@
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
-
                   // var myJSON = JSON.stringify(response);
                     var stocks = [];
                     var stocks2 = [];
@@ -64,8 +63,7 @@
                     });
 
                     for (var i = 0; i < 5; i++) {
-                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
-
+                       
                         var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
@@ -78,8 +76,7 @@
                     });
 
                     for (var i = 0; i < 5; i++) {
-                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
-
+                        
                         var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #eb4d5c !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';

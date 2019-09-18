@@ -10,7 +10,7 @@
               success: function(response) {
                     //jQuery.each(response.data, function(i, val) {
                         var stock = response.data;
-                       // console.log(stock);
+                        console.log(stock);
                      //});
                 },
                 error: function(response) {
@@ -31,9 +31,11 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray = json_decode($_GET['stock']);
+        $myArray = $_GET['stock'];
 
-         foreach($myArray as $stkey => $stockval){
+        $myArray1 = json_decode($myArray);
+
+         foreach($myArray1 as $stkey => $stockval){
 
                 echo $stockval->symbol;
 

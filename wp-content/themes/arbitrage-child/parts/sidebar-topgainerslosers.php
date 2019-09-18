@@ -3,32 +3,35 @@
 <script>
     jQuery(document).ready( function() {
 
-       /* $.ajax({
+        $.ajax({
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
-                   var myJSON = JSON.stringify(response);
-                   var stocks = response;
+                  // var myJSON = JSON.stringify(response);
+                   var stocks = [];
+                   var i = 0;
+                   var dt_to = formatDate('Y-m-d', new Date());
 
-                   document.cookie = "myArray = " + myJSON;
-                    //jQuery.each(response.data, function(i, val) {
+                   console.log(dt_to);
 
-                        //var stocks = val.symbol;
-                        console.log(stocks);
-                    //});
+                    jQuery.each(response.data, function(i, val) {
 
-
-                        //var stocks = val.symbol;
-                    //});
+                        stocks[i][0] = val.symbol;
+                        stocks[i][1] = val.changepercentage;
+                        stocks[i][2] = val.description;
+                        stocks[i][3] = val.symbol;
+                        
+                        i++;
+                    });
 
                 },
                 error: function(response) {
                     
                 }
-            });*/
+            });
      });
 
 </script>

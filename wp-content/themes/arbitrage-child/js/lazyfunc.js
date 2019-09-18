@@ -118,7 +118,7 @@ $( document ).ready(function() {
                             hwmyrank = '#25ae5f;';
                             hwmyrankside = 'fa-caret-up';
                         }else{
-                            hwmyrank = 'color: #e64c3c;';
+                            hwmyrank = '#e64c3c;';
                             hwmyrankside = 'fa-caret-down';
                         }
                         var ranker = '<li>'

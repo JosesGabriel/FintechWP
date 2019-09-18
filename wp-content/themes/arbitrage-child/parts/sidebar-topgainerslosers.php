@@ -41,7 +41,7 @@
                     do {
                         console.log(stocks[n][3]);
                         n++;
-                    }while(sdate == stocks[n][3];);
+                    }while(sdate == stocks[n][3]);
 
                 },
                 error: function(response) {

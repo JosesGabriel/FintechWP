@@ -167,7 +167,7 @@
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">
 
-                     <ul>
+                    <!-- <ul>  -->
                            <!--    <?php // for($j=0; $j < 5; $j++) {
 
                                   //   if($stocky[$j][1] != null){
@@ -186,7 +186,7 @@
                                        
                                     }
                                  ?>-->
-                    </ul>                          
+                 <!--   </ul>    -->                      
                        
             </div>          
 

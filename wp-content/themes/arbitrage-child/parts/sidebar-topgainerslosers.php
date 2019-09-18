@@ -10,7 +10,7 @@
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
-                   var myJSON = JSON.stringify(response);
+                   var myJSON = JSON.stringify(response.data);
                    var stocks = response;
 
                    document.cookie = "myArray = " + myJSON;

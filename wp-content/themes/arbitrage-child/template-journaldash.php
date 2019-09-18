@@ -356,15 +356,12 @@ echo $user->ID ." versis ". $user->ID;
 	}
 	
 	if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'record') {
-		echo "<pre>";
-			print_r($_POST);
-		echo "</pre>";
 
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['solddate']."','".$_POST['inpt_data_qty_sold']."','".$_POST['inpt_data_price_bought']."','".$_POST['inpt_data_price_sold']."','".$_POST['inpt_data_strategy']."','".$_POST['inpt_data_tradeplan']."','".$_POST['inpt_data_emotion']."','".$_POST['inpt_data_tradingnotes']."', '".$user->ID."', '".$_POST['inpt_data_stock_sold']."')";
-
-		echo "<pre>";
-		echo $inserttrade;
-		echo "</pre>";
+		$wpdb->query($inserttrade);
+		
+		wp_redirect('/journal');
+        exit;
 
 	}
 ?>
@@ -865,7 +862,7 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 	
-	print_r($loosingstocks);
+	// print_r($loosingstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -1168,6 +1165,7 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
+						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">

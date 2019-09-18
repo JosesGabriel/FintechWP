@@ -21,15 +21,15 @@
                     //});
 
 
-                        var stocks = val.symbol;
-                    });
+                        //var stocks = val.symbol;
+                    //});
 
                 },
                 error: function(response) {
                     
                 }
             });
-  
+     });
 
 </script>
 

@@ -33,7 +33,7 @@
 
         $myArray = json_decode($_GET['stock']);
 
-        print_r($myArray);
+        echo $myArray;
 
 
         if ($response !== false) {

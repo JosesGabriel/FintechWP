@@ -346,9 +346,6 @@ echo $user->ID ." versis ". $user->ID;
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
 			));
-
-		
-
 		
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
@@ -356,7 +353,17 @@ echo $user->ID ." versis ". $user->ID;
 
         wp_redirect('/journal');
         exit;
-    }
+	}
+	
+	if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'record') {
+
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['solddate']."','".$_POST['inpt_data_qty_sold']."','".$_POST['inpt_data_price_bought']."','".$_POST['inpt_data_price_sold']."','".$_POST['inpt_data_strategy']."','".$_POST['inpt_data_tradeplan']."','".$_POST['inpt_data_emotion']."','".$_POST['inpt_data_tradingnotes']."', '".$user->ID."', '".$_POST['inpt_data_stock_sold']."')";
+		$wpdb->query($inserttrade);
+		
+		wp_redirect('/journal');
+        exit;
+
+	}
 ?>
 <!-- EOF SELL trades -->
 <?php
@@ -855,7 +862,7 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 	
-	print_r($loosingstocks);
+	// print_r($loosingstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -1083,10 +1090,10 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_bought" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -1104,10 +1111,10 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -1158,7 +1165,9 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
+						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
+						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 					</form>
 				</div>
@@ -3347,6 +3356,20 @@ if($issampledata){
 			
 		});
 
+		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
+			let dstock = this.value;
+			console.log(dstock);
+			jQuery("#inpt_data_stock_sold").val(dstock);
+
+		});
+
+		jQuery(document).on('change', '#inpt_data_stock_sold', function() {
+			let dstock = this.value;
+			console.log(dstock);
+			jQuery("#inpt_data_stock_bought").val(dstock);
+
+		});
+
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
@@ -3624,6 +3647,11 @@ if($issampledata){
 			"pieX": "45%",
 			"pieY": "50%",
 			"radius": 50,
+			"pullOutRadius": "0%",
+			"startRadius": "0%",
+			"pullOutDuration": 0,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -3631,8 +3659,6 @@ if($issampledata){
 			"labelsEnabled": false,
 			"labelTickAlpha": 1,
 			"labelTickColor": "#FFFFFF",
-			"pullOutDuration": 11,
-			"startEffect": "easeOutSine",
 			"titleField": "category",
 			"valueField": "column-1",
 			"backgroundColor": "#000000",
@@ -3666,6 +3692,8 @@ if($issampledata){
 		{
 			"type": "serial",
 			"categoryField": "category",
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"columnWidth": 0,
 			"minSelectedTime": 5,
 			"mouseWheelScrollEnabled": true,
@@ -3674,7 +3702,6 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -3756,6 +3783,7 @@ if($issampledata){
 	var chart = AmCharts.makeChart("chartdiv4a", {
 	  "type": "pie",
 	  "startDuration": 0,
+	  "sequencedAnimation": false,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,
@@ -3816,6 +3844,7 @@ if($issampledata){
 	var chart = AmCharts.makeChart("chartdiv4b", {
 	  "type": "pie",
 	  "startDuration": 0,
+	  "sequencedAnimation": false,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,
@@ -3914,7 +3943,8 @@ if($issampledata){
 	"autoMarginOffset": 0,
 	"marginBottom": 20,
 	"marginTop": 85,
-	"startDuration": 1,
+	"startDuration": 0,
+	"sequencedAnimation": false,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
 	"fontFamily": "Roboto",
@@ -4147,7 +4177,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4249,7 +4280,8 @@ if($issampledata){
 			"autoMarginOffset": 0,
 			"marginTop": 10,
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4342,7 +4374,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4452,7 +4485,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4536,7 +4570,8 @@ if($issampledata){
 			"categoryField": "category",
 			"rotate": true,
 			"marginTop": 5,
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"usePrefixes": true,
@@ -4615,6 +4650,8 @@ if($issampledata){
 	var gaugeChart = AmCharts.makeChart("topstockswinners", {
 	  "type": "gauge",
 	  "theme": "none",
+	  "sequencedAnimation": false,
+	  "startDuration": 0,
 	  "axes": [{
 		"axisAlpha": 0,
 		"tickAlpha": 0,
@@ -4652,6 +4689,8 @@ if($issampledata){
 	var gaugeChart = AmCharts.makeChart("topstocksLosers", {
 	  "type": "gauge",
 	  "theme": "none",
+	  "sequencedAnimation": false,
+	  "startDuration": 0,
 	  "axes": [{
 		"axisAlpha": 0,
 		"tickAlpha": 0,

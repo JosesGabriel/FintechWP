@@ -11,8 +11,9 @@
               success: function(response) {
 
 
-                    <?php $myArray ?> = response.data;
+                   var stocks = response.data;
 
+                   document.cookie = "myArray = " + stocks;
                     //jQuery.each(response.data, function(i, val) {
 
                         //var stocks = val.symbol;
@@ -42,7 +43,9 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray1 = json_decode($myArray);
+        $myArray = $_COOKIE['myArray'];
+
+        //$myArray1 = json_decode($myArray);
 
 
         //$myArray1 = json_decode($myArray);

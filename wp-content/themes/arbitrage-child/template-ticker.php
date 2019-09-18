@@ -560,7 +560,7 @@
 		background-color:#2c3e50; 
 		text-align:left;
 	}
-    
+    /*
 	@keyframes marquee {
 		0% {
 			transform: translate(0, 0);
@@ -569,7 +569,7 @@
 			transform: translate(-50%, 0);
 		}
 	}
-    
+    */
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
@@ -577,48 +577,34 @@
 <script>
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			/*
+			
             forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
+                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+                        foreverticker();
+                    });
 			}
 			function foreverticker() {
-                //console.log('working..');
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
+                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+                        forevertickerinit();
+                    });
 			}
-            */
-
+            
             setInterval(() => {
-                console.log('test');
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    return data.counter < 100   
+                    return data.counter < 50   
                 }) 
                 for(i in ticker_data){
-                    let element = jQuery("li[data-id=`${ticker_data[i].counter}`]");
-                    console.log(ticker_data[i].counter)
-                    console.log(element);
+                    let ids = `li#${ticker_data[i].counter}`;
+                    let element = jQuery(ids);
+                    //element.remove();
+                }     
+                if(jQuery(".arb_custom_ticker").width()>25000){
+                    location.reload(true);
                 }
-            }, 5000);
+            }, 20000);
 
 		});
-		
-     /*   
-    window.onload=function(){
-
-		(function countdown(remaining) {
-			if(remaining === 0)
-				jQuery(".arb_top_ticker").fadeOut("slow",function(){
-					location.reload(true);
-				});
-				document.getElementById('countdown').innerHTML = remaining;
-				setTimeout(function(){ countdown(remaining - 1); }, 1000);
-		})(<?php echo rand(100,180); ?>);
-        
-    }*/
 </script>
 <style>
 	.marqueethis {
@@ -649,9 +635,9 @@
 <body>
 <div class="arb_top_ticker">
     <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-        <ul class="list-inline marqueethis arb_custom_ticker">
-            <li ng-repeat="transaction in ticker" data-id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
-                <i data-id={{::transaction.counter}} class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
+        <ul id="container" class="list-inline marqueethis arb_custom_ticker">
+            <li ng-repeat="transaction in ticker" id={{::transaction.counter}} ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+                <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="<?php echo $url; ?>/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
                 &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)

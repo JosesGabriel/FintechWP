@@ -28,7 +28,7 @@
                         stocks[i][2] = val.description;
                         var ltime = val.lastupdatetime;
                         var ltime2 = ltime.split('T');
-                        stocks[i][3] = ltime2[0];                        
+                        stocks[i][3] = new Date(ltime2[0]);                        
                         i++;
                     });
 

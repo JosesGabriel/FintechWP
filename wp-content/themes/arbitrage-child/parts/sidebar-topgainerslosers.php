@@ -9,11 +9,15 @@
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
-                    jQuery.each(response.data, function(i, val) {
 
-                        var stocks = val.symbol;
+                    <?php $myArray ?> = response.data;
+
+                    //jQuery.each(response.data, function(i, val) {
+
+                        //var stocks = val.symbol;
                         //console.log(val.symbol);
-                    });
+                    //});
+
                 },
                 error: function(response) {
                     console.log(response);
@@ -33,7 +37,7 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray = $_GET['stockss'];
+        $myArray1 = json_decode($myArray);
 
 
         //$myArray1 = json_decode($myArray);

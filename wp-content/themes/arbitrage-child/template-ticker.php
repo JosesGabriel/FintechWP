@@ -598,7 +598,7 @@
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;
                     let element = jQuery(ids);
-                    console.log(element.visible(true, false, 'horizontal'));
+                    console.log(element.is(":visible"));
                     //element.remove();
                 }
                 jQuery(".arb_custom_ticker").width(1000);

@@ -47,7 +47,7 @@
 
         //$myArray1 = json_decode($myArray);
 
-
+        print_r($myArray);
         //$myArray1 = json_decode($myArray);
 
          //foreach($myArray as $stkey => $stockval){

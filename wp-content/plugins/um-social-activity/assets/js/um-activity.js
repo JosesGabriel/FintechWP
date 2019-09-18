@@ -317,7 +317,7 @@ jQuery( window ).scroll( function() {
 
 			},
 			error: function (e) {
-				console.log('UM Social Activity Error', e);
+				
 			}
 		});
 
@@ -1513,7 +1513,7 @@ jQuery( document ).ready(function () {
 
 		var getmodal = jQuery(this).attr('data-modalx');
 		var gettab = jQuery(this).attr('data-istab');
-		console.log(postid);
+		
 		jQuery("#"+getmodal).modal('show');
 		jQuery(this).parents('.um-activity-foot.status').find('.dpartmodal .totabs').removeClass('active');
 		jQuery(this).parents('.um-activity-foot.status').find('.totab > div').removeClass('active').hide();
@@ -1541,8 +1541,6 @@ jQuery( document ).ready(function () {
 
 	jQuery( document.body ).on('click', '.dtabspart .tabbutton li', function(e){
 		e.preventDefault();
-
-		console.log(jQuery(this).attr('data-btname'));
 
 		var dtab = jQuery(this).attr('data-btname');
 

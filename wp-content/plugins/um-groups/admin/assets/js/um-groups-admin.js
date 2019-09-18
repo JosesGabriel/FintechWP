@@ -194,7 +194,7 @@ jQuery(document).ready( function () {
 			  	
 			}
 		}).error( function( error ){
-			console.log('search members error', error );
+			
 		});
     }
 
@@ -222,7 +222,7 @@ jQuery(document).ready( function () {
         		jQuery('.um-groups-found-user a.new-search').trigger('click');
 			}
 		}).error( function( error ){
-			console.log('add member error', error );
+			
 		});
     });
 
@@ -246,7 +246,7 @@ jQuery(document).ready( function () {
 	        		um_groups_dt.row( me.parents('td').parents('tr') ).remove().draw();
 				}
 			}).error( function( error ){
-				console.log('delete member error', error );
+				
 			});
 
 		}
@@ -272,7 +272,7 @@ jQuery(document).ready( function () {
 			}
 			
 		}).error( function( error ){
-				console.log('send invite error', error );
+			
 		});
 	});
 
@@ -339,7 +339,7 @@ jQuery(document).ready( function () {
 			me.parent('td').find('span[class="label"]').fadeIn('slow');
 
 		}).error( function( error ){
-			console.log('delete member error', error );
+			
 		});
 	});
 
@@ -366,7 +366,7 @@ jQuery(document).ready( function () {
 			um_groups_dt.row( me.parents('tr')  ).data( d ).draw();
 			me.parent('td').find('span[class="label"]').fadeIn('slow');
 		}).error( function( error ){
-				console.log('delete member error', error );
+			
 		});
 
 	});

@@ -12,11 +12,10 @@
                     jQuery.each(response.data, function(i, val) {
 
                         var stocks = val.symbol;
-                        //console.log(val.symbol);
                     });
                 },
                 error: function(response) {
-                    console.log(response);
+                    
                 }
             });
     });

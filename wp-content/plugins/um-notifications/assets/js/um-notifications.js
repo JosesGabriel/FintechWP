@@ -327,8 +327,6 @@ jQuery(document).ready(function() {
 
 			window.location.href = notification_uri;
 
-			console.log(notification_uri);
-
 		}
 
 	});

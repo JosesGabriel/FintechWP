@@ -37,13 +37,9 @@
                         return b[3] - a[3];
                     });
 
-                    var sdate = stocks[0][3];
+                    var sdate = new Date(stocks[0][3]);
 
-                    for (var x = 0; x < 270 ; x++) {
-                        console.log(stocks[x][3]);
-                    }
-
-
+                   
                     console.log('sdate-> ' + sdate);
                     var n = 0;
                     do {

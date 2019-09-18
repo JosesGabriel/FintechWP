@@ -23,7 +23,7 @@
                    // console.log(dt);
 
                     jQuery.each(response.data, function(i, val) {
-
+                        stocks[i] = [];
                         stocks[i][0] = val.symbol;
                         stocks[i][1] = val.changepercentage;
                         stocks[i][2] = val.description;

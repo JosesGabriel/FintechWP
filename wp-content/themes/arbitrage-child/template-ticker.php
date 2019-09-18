@@ -577,7 +577,11 @@
 <script>
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			
+			if (document.hasFocus()){
+                console.log('focus')
+            }else{
+                console.log('notfocus')
+            }
             forevertickerinit();
 			function forevertickerinit() {
 				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
@@ -600,7 +604,7 @@
                     let element = jQuery(ids);
                     element.remove();
                 }     
-                if(jQuery(".arb_custom_ticker").width()>2500){
+                if(jQuery(".arb_custom_ticker").width()>25000){
                     location.reload(true);
                 }
 

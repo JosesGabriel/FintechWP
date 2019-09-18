@@ -51,7 +51,7 @@ app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $fil
     $scope.ticker = [];
     var counter = 1;
 
-
+    /*
     let transaction = [
         { counter:1,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
         { counter:2,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
@@ -75,7 +75,7 @@ app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $fil
         $scope.ticker.push(transaction[i]);
         ticker_data_ralph.push(transaction[i]);    
     }
-
+    */
     socket.on('dev-psec', function (data) {  
         var ctr = counter += 1;
         var transaction = {

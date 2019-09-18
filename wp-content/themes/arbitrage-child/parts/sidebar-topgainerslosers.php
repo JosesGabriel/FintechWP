@@ -36,9 +36,12 @@
                         return b[3] - a[3];
                     });
 
-                    for (var x = 0; x < 270; x++) {
-                        console.log(stocks[x][3]);
-                    }
+                    var sdate = stocks[0][3];
+                    var n = 0;
+                    do {
+                        console.log(stocks[n][3]);
+                        n++;
+                    }while(sdate == stocks[n][3];);
 
                 },
                 error: function(response) {

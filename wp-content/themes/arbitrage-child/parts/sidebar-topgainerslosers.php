@@ -7,6 +7,7 @@
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
+              data: { data:data },
               success: function(response) {
                     //jQuery.each(response.data, function(i, val) {
                         var stock = response.data;
@@ -31,7 +32,7 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray = $_GET['stock'];
+        $myArray = $_GET['data'];
 
         $myArray1 = json_decode($myArray);
 

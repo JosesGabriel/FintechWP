@@ -602,7 +602,7 @@
                     //element.remove();
                 }
                 jQuery(".arb_custom_ticker").width(1000);
-            }, 15000);
+            }, 10000);
 
 		});
 </script>

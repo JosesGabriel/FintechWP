@@ -1086,7 +1086,7 @@ if($issampledata){
 						<select name="inpt_data_stock_bought" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -1107,7 +1107,7 @@ if($issampledata){
 						<select name="inpt_data_stock_sold" id="" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -3345,6 +3345,10 @@ if($issampledata){
 				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
 			}
 			
+		});
+
+		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
+			// let dstock
 		});
 
 

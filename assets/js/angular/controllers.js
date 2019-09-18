@@ -119,7 +119,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         $scope.ticker.push(transaction);
         ticker_data_ralph.push(transaction);
         if ($scope.ticker.length > 150) {
-            $scope.ticker.pop();
+            $scope.ticker.shift();
         }
 
         if (ticker_data_ralph.length > 150) {

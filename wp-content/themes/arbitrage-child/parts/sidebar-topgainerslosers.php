@@ -64,7 +64,7 @@
                     });
 
                     for (var i = 0; i < 10; i++) {
-                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1] + ' - ' + stocks2[i][3]);
+                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
                     }
 
 

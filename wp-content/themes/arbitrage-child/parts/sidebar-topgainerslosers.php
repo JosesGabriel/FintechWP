@@ -64,6 +64,7 @@
                     });
 
                     for (var i = 0; i < 5; i++) {
+                        console.log(stocks2[i][0] + ' - ' + stocks2[i][1].toFixed(2) + ' - ' + stocks2[i][3]);
 
                         var list = '<li class="odd"> <span>' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
@@ -71,6 +72,11 @@
 
                         jQuery(".gainers ul").append(list);
                     }
+
+
+                    stocks2.sort(function(a, b){
+                        return a[1] - b[1];
+                    });
 
                     
 

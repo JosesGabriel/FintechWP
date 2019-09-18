@@ -10,10 +10,10 @@
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
-
+                   var myJSON = JSON.stringify(response);
                    var stocks = response;
 
-                   document.cookie = "myArray = " + response;
+                   document.cookie = "myArray = " + myJSON;
                     //jQuery.each(response.data, function(i, val) {
 
                         //var stocks = val.symbol;

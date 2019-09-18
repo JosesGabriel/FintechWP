@@ -214,8 +214,6 @@ function UM_Member_Grid( container ) {
 
 function initImageUpload_UM( trigger ) {
 
-		console.log('trigger', trigger)
-
 		if (trigger.data('upload_help_text')){
 			upload_help_text = '<span class="help">' + trigger.data('upload_help_text') + '</span>';
 		} else {
@@ -316,7 +314,7 @@ function initImageUpload_UM( trigger ) {
 
 			},
 			onError: function ( e ){
-				console.log( e );
+
 			}
 		});
 
@@ -431,7 +429,7 @@ function initFileUpload_UM( trigger ) {
 
 			},
 			onError: function ( e ){
-				console.log( e );
+
 			}
 		});
 
@@ -752,7 +750,6 @@ function responsive_Modal() {
 }
 
 function um_reset_field( dOm ){
-	//console.log(dOm);
 	jQuery(dOm)
 	 .find('div.um-field-area')
 	 .find('input,textarea,select')

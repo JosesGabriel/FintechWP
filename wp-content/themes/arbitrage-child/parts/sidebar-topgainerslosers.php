@@ -10,6 +10,7 @@
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
+
                     <?php $myArray ?> = response.data;
 
                     //jQuery.each(response.data, function(i, val) {
@@ -18,12 +19,16 @@
                         //console.log(val.symbol);
                     //});
 
+
+                        var stocks = val.symbol;
+                    });
+
                 },
                 error: function(response) {
-                    console.log(response);
+                    
                 }
             });
-    });
+  
 
 </script>
 

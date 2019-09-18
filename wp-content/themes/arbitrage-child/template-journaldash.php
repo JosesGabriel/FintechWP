@@ -3358,14 +3358,12 @@ if($issampledata){
 
 		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
 			let dstock = this.value;
-			console.log(dstock);
 			jQuery("#inpt_data_stock_sold").val(dstock);
 
 		});
 
 		jQuery(document).on('change', '#inpt_data_stock_sold', function() {
 			let dstock = this.value;
-			console.log(dstock);
 			jQuery("#inpt_data_stock_bought").val(dstock);
 
 		});

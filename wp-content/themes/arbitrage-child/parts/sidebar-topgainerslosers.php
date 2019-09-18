@@ -11,9 +11,9 @@
               success: function(response) {
 
 
-                   var stocks = response.data;
+                   var stocks = response;
 
-                   document.cookie = "myArray = " + stocks;
+                   document.cookie = "myArray = " + response;
                     //jQuery.each(response.data, function(i, val) {
 
                         //var stocks = val.symbol;
@@ -47,7 +47,7 @@
 
         $myArray1 = json_decode($myArray);
 
-        print_r($myArray1);
+        print_r($myArray1->data);
         //$myArray1 = json_decode($myArray);
 
          //foreach($myArray as $stkey => $stockval){

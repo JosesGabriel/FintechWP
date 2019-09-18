@@ -597,7 +597,7 @@
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;
                     let element = jQuery(ids);
-                    element.remove();
+                    //element.remove();
                 }     
                 if(jQuery(".arb_custom_ticker").width()>25000){
                     location.reload(true);

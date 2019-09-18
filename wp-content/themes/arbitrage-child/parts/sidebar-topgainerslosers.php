@@ -105,7 +105,7 @@
 
          //   }
 
-/*
+
         if ($response !== false) {
             $response = json_decode($response);
             $stockinfo = $response->data;
@@ -141,7 +141,7 @@
             
              usort($stocky, function($a, $b) {
                 return $b[1] <=> $a[1];
-            }); */
+            });
 
 ?>
     
@@ -185,13 +185,13 @@
 
             <?php 
 
-                //usort($stocky, function($a, $b) {
-                   //     return $a[1] <=> $b[1];
-                 //   });
+                usort($stocky, function($a, $b) {
+                        return $a[1] <=> $b[1];
+                    });
             ?>
 
                      <ul>
-                          <!--    <?php for($j=0; $j < 5; $j++) {
+                              <?php for($j=0; $j < 5; $j++) {
  
                                  if($stocky[$j][1] != null){
                                         ?> 
@@ -204,7 +204,7 @@
                                     <?php
                                      
                                     }
-                                ?> -->
+                                ?>
                     </ul>
 
             </div>

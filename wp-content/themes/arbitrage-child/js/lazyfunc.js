@@ -115,7 +115,7 @@ $( document ).ready(function() {
                 } else {
                     if(value.myrank > 5){
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge"><img src="https://dev-v1.arbitrage.ph/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
+                            ranker += '<div class="hudbadge"><span class="my_rank-number">'+value.myrank+'</span><img src="https://dev-v1.arbitrage.ph/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
                             // ranker += '<div class="hudbadge">'+value.myrank+'</div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'

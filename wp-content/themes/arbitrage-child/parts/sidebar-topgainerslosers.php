@@ -7,18 +7,32 @@
               type:'GET',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
+              //data: "stockss="+JSON.stringify(data),
               success: function(response) {
 
+                  // var myJSON = JSON.stringify(response);
+                   var stocks = [];
+                   var i = 0;
+                   var dt_to = formatDate('Y-m-d', new Date());
+
+                   console.log(dt_to);
+
                     jQuery.each(response.data, function(i, val) {
-                        console.log(val.symbol);
-                     });
+
+                        stocks[i][0] = val.symbol;
+                        stocks[i][1] = val.changepercentage;
+                        stocks[i][2] = val.description;
+                        stocks[i][3] = val.symbol;
+                        
+                        i++;
+                    });
 
                 },
                 error: function(response) {
-                    console.log(response);
+                    
                 }
             });
-    });
+     });
 
 </script>
 
@@ -32,6 +46,17 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
+       // $myArray = $_COOKIE['myArray'];
+        //$myArray1 = json_decode($myArray);
+        //$stockss = $myArray1->data;
+        //print_r($stockss);
+        //$myArray1 = json_decode($myArray);
+
+        // foreach($stockss as $stkey => $stockval){
+
+              //  echo $stockval->symbol;
+
+         //   }
 
 
         if ($response !== false) {
@@ -75,6 +100,9 @@
     
     <div class="top-stocks">
             <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
+
+           <!-- <div><?php //print_r($myArray->symbol); ?></div>-->
+
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">
 

@@ -231,7 +231,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																			<div class="stocknn"><?php echo $value['stockname']; ?></div>
 																			<div class="s_dropdown" style="display: inline-block;"> 
 																				<select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
-										                                                <option  value="select" hidden>Action</option>
+										                                                <option  value="select" hidden></option>
 										                                                <option  value="delete">Delete</option>
 										                                                <option  value="edit">Edit</option>
 										                                        </select>
@@ -652,7 +652,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                     
                     <?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
-                    <?php //get_template_part('parts/sidebar', 'alert'); ?>
+                    <?php get_template_part('parts/sidebar', 'alert'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
@@ -837,6 +837,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		        }
 
     		});
+
+    		 jQuery(window).scroll(function(){
+			 		if(jQuery('.um-profile').hasClass('topbannerprofile')){
+			 			return;
+			 		}else {
+			 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+					}
+			 });
 
     });
 

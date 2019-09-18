@@ -346,9 +346,6 @@ echo $user->ID ." versis ". $user->ID;
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
 			));
-
-		
-
 		
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
@@ -356,7 +353,17 @@ echo $user->ID ." versis ". $user->ID;
 
         wp_redirect('/journal');
         exit;
-    }
+	}
+	
+	if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'record') {
+
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['solddate']."','".$_POST['inpt_data_qty_sold']."','".$_POST['inpt_data_price_bought']."','".$_POST['inpt_data_price_sold']."','".$_POST['inpt_data_strategy']."','".$_POST['inpt_data_tradeplan']."','".$_POST['inpt_data_emotion']."','".$_POST['inpt_data_tradingnotes']."', '".$user->ID."', '".$_POST['inpt_data_stock_sold']."')";
+		$wpdb->query($inserttrade);
+		
+		wp_redirect('/journal');
+        exit;
+
+	}
 ?>
 <!-- EOF SELL trades -->
 <?php
@@ -855,7 +862,7 @@ if($issampledata){
 		return $a['profit'] - $b['profit'];
 	});
 	
-	print_r($loosingstocks);
+	// print_r($loosingstocks);
 
 	foreach ($profits as $key => $value) {
 		$dpercschart .= '{';
@@ -1083,7 +1090,7 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_bought" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1104,7 +1111,7 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
@@ -1158,7 +1165,9 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
+						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
+						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 					</form>
 				</div>
@@ -3348,7 +3357,15 @@ if($issampledata){
 		});
 
 		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
-			// let dstock
+			let dstock = this.value;
+			jQuery("#inpt_data_stock_sold").val(dstock);
+
+		});
+
+		jQuery(document).on('change', '#inpt_data_stock_sold', function() {
+			let dstock = this.value;
+			jQuery("#inpt_data_stock_bought").val(dstock);
+
 		});
 
 

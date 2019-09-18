@@ -577,27 +577,26 @@
 <script>
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
-			if (document.hasFocus()){
-                console.log('focus')
-            }else{
-                console.log('notfocus')
-            }
+			
             forevertickerinit();
 			function forevertickerinit() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-					foreverticker();
-				});
+                if (document.hasFocus()){
+                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+                        foreverticker();
+                    });
+                }
 			}
 			function foreverticker() {
-				jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-					forevertickerinit();
-				});
+				if (document.hasFocus()){
+                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+                        forevertickerinit();
+                    });
+                }
 			}
             
-
             setInterval(() => {
                 let ticker_data = ticker_data_ralph.filter(data => {
-                    return data.counter < 10   
+                    return data.counter < 50   
                 }) 
                 for(i in ticker_data){
                     let ids = `li#${ticker_data[i].counter}`;

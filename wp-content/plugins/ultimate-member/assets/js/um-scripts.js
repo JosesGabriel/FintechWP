@@ -411,11 +411,11 @@ jQuery(document).ready(function() {
 						}
 
 						if( typeof data.debug !== 'undefined' ){
-							console.log( data );
+
 						}
 					},
 					error: function( e ){
-						console.log( e );
+
 					}
 				});
 

@@ -83,13 +83,13 @@ jQuery( document ).ready(function() {
 					btn.replaceWith( response.data.btn );
 					btn.removeClass( 'um_friends_ajax' );
 				} else {
-					console.log( response.success );
+
 				}
 
 				um_friends_ajax = false;
 			},
 			error: function( e ) {
-				console.log( e );
+
 			}
 		});
 		return false;

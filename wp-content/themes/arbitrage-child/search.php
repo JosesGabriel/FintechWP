@@ -771,7 +771,7 @@ $dstockinfo = $gerdqoute->data;
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>
                                                                     </a>
-                                                                    <div class="d-flex flex-column">
+                                                                    <div class="d-flex flex-column stock_container-inner">
                                                                         <div style="margin-top: 3px;"> <strong class="ng-binding stocks_name-each"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
                                                                         <div class="stockcompanypriceitem ng-binding stocks_price-each"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
                                                                         <?php if ($change > 0): ?>
@@ -875,7 +875,7 @@ $dstockinfo = $gerdqoute->data;
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>
                                                                     </a>
-                                                                    <div class="d-flex flex-column">
+                                                                    <div class="d-flex flex-column stock_container-inner">
                                                                         <div style="margin-top: 3px;"> <strong class="ng-binding stocks_name-each"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
                                                                         <div class="stockcompanypriceitem ng-binding stocks_price-each"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
                                                                         <?php if ($change > 0): ?>

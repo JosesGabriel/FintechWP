@@ -4173,3 +4173,6 @@
 .stocks_each {
     margin-bottom: 0;
 }
+.stock_container-inner {
+    width: 85%;
+}

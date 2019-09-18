@@ -14,16 +14,16 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             _stocks = response.data.data;
         })
 }]);
-app.controller('message-notification', function($scope, $http, $filter) {
-    $scope.count = 0;
-    $http.get("/welcome/threads").then( function (response) {
-        $scope.messages = response.data.data;
-        $scope.count = $scope.messages.reduce( function(a, b) {
-            if (b.status == 1) a++;
-            return a;
-        }, 0);
-    });
-});
+// app.controller('message-notification', function($scope, $http, $filter) {
+//     $scope.count = 0;
+//     $http.get("/welcome/threads").then( function (response) {
+//         $scope.messages = response.data.data;
+//         $scope.count = $scope.messages.reduce( function(a, b) {
+//             if (b.status == 1) a++;
+//             return a;
+//         }, 0);
+//     });
+// });
 app.controller('template', function($scope, $http) {
     var settings = {
         chart: '1',
@@ -130,17 +130,17 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     $scope.select = goToChart;
 }]);
 
-app.controller('psei', function($scope, $http) {  
-    $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
-        $http.get("/api/psei").then(function (response) {
-            if (response.data.success) {
-                $scope.psei.last = parseFloat(response.data.data.c);
-                $scope.psei.previous = parseFloat(response.data.data.p);
-                $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
-                $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
-            }
-        });
-});
+// app.controller('psei', function($scope, $http) {  
+//     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
+//         $http.get("/api/psei").then(function (response) {
+//             if (response.data.success) {
+//                 $scope.psei.last = parseFloat(response.data.data.c);
+//                 $scope.psei.previous = parseFloat(response.data.data.p);
+//                 $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
+//                 $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
+//             }
+//         });
+// });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var vm = this;
     vm.Total = 0;
@@ -667,35 +667,35 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
-app.controller('disclosures', function($scope, $http, $rootScope) {
-    $scope.$watch('$root.stockList', function () {
-        $scope.stocks = $rootScope.stockList;
-    });
-    $scope.disclosures = [];
-    $http.get("/api/disclosures").then(function (response) {
-        if (response.data.success) {
-            $scope.disclosures = response.data.data;
-        }
-    });
-    // socket.on('disclosure', function(data) {
-    //     if ($scope.$parent.settings.disclosure != '0') {
-    //         $.gritter.add({
-    //             title: 'Disclosure Notification',
-    //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
-    //                   data.template + '<br/>' +
-    //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
-    //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-    //             time: 5000,
-    //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
-    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
-    //         });
-    //     }
-    //     $scope.disclosures.unshift(data);
-    // });
-    $scope.goToChart = function(symbol) {
-        return goToChart(symbol);
-    };
-});
+// app.controller('disclosures', function($scope, $http, $rootScope) {
+//     $scope.$watch('$root.stockList', function () {
+//         $scope.stocks = $rootScope.stockList;
+//     });
+//     $scope.disclosures = [];
+//     $http.get("/api/disclosures").then(function (response) {
+//         if (response.data.success) {
+//             $scope.disclosures = response.data.data;
+//         }
+//     });
+//     // socket.on('disclosure', function(data) {
+//     //     if ($scope.$parent.settings.disclosure != '0') {
+//     //         $.gritter.add({
+//     //             title: 'Disclosure Notification',
+//     //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
+//     //                   data.template + '<br/>' +
+//     //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
+//     //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+//     //             time: 5000,
+//     //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
+//     //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+//     //         });
+//     //     }
+//     //     $scope.disclosures.unshift(data);
+//     // });
+//     $scope.goToChart = function(symbol) {
+//         return goToChart(symbol);
+//     };
+// });
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",

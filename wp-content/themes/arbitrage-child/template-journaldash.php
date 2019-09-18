@@ -346,9 +346,6 @@ echo $user->ID ." versis ". $user->ID;
                 'trantype' => 'selling',
                 'tranamount' => $stockcost - $purchasefee, // ... and so on
 			));
-
-		
-
 		
 		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
@@ -356,7 +353,13 @@ echo $user->ID ." versis ". $user->ID;
 
         wp_redirect('/journal');
         exit;
-    }
+	}
+	
+	if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'record') {
+		echo "<pre>";
+			print_r($_POST);
+		echo "</pre>";
+	}
 ?>
 <!-- EOF SELL trades -->
 <?php
@@ -1159,6 +1162,7 @@ if($issampledata){
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
 						<input type="hidden" name="recorddata" value="record">
+						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 					</form>
 				</div>

@@ -838,6 +838,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
     		});
 
+    		 jQuery(window).scroll(function(){
+			 		if(jQuery('.um-profile').hasClass('topbannerprofile')){
+			 			return;
+			 		}else {
+			 			jQuery('.dashboard-sidebar-left-inner').addClass('fixed-sidebar');
+					}
+			 });
+
     });
 
 	</script>

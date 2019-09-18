@@ -9,17 +9,27 @@
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {
-                    jQuery.each(response.data, function(i, val) {
 
-                        var stocks = val.symbol;
-                        //console.log(val.symbol);
-                    });
+
+                   var stocks = response;
+
+                   document.cookie = "myArray = " + response;
+                    //jQuery.each(response.data, function(i, val) {
+
+                        //var stocks = val.symbol;
+                        console.log(stocks);
+                    //});
+
+
+                        //var stocks = val.symbol;
+                    //});
+
                 },
                 error: function(response) {
-                    console.log(response);
+                    
                 }
             });
-    });
+     });
 
 </script>
 
@@ -33,9 +43,11 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray = $_GET['stockss'];
+        $myArray = $_COOKIE['myArray'];
 
+        $myArray1 = json_decode($myArray);
 
+        print_r($myArray1->data);
         //$myArray1 = json_decode($myArray);
 
          //foreach($myArray as $stkey => $stockval){
@@ -87,7 +99,7 @@
     <div class="top-stocks">
             <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
 
-            <div><?php echo $myArray; ?></div>
+            <div><?php echo $myArray1->data; ?></div>
 
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">

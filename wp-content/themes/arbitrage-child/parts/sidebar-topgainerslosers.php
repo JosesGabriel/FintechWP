@@ -4,7 +4,7 @@
     jQuery(document).ready( function() {
 
         $.ajax({
-              type:'GET',
+              type:'POST',
               url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               success: function(response) {
@@ -31,7 +31,7 @@
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $myArray = json_decode($_GET['stock']);
+        $myArray = json_decode($_POST['stock']);
 
         echo $myArray;
 

@@ -170,7 +170,7 @@
                      <ul>
                                <?php for($j=0; $j < 5; $j++) {
 
-                                     if($stocky[$j][1] != null){
+                                    // if($stocky[$j][1] != null){
                                             ?> 
 
                                        <!-- <li class="odd">
@@ -180,7 +180,7 @@
 
                                         </li>-->
 
-                                <?php }  ?>
+                                <?php //}  ?>
                                        
                                     <?php
                                        

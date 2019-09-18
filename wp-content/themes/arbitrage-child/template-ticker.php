@@ -578,37 +578,37 @@
     var ticker_data_ralph = [];
 	jQuery(document).ready(function() {
 			
-            forevertickerinit();
-			function forevertickerinit() {
-                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-                        foreverticker();
-                    });
-			}
-			function foreverticker() {
-                    jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-                        forevertickerinit();
-                    });
-			}
+            // forevertickerinit();
+			// function forevertickerinit() {
+            //         jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+            //             foreverticker();
+            //         });
+			// }
+			// function foreverticker() {
+            //         jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
+            //             forevertickerinit();
+            //         });
+			// }
             
-            setInterval(() => {
-                let ticker_data = ticker_data_ralph.filter(data => {
-                    return data.counter < 50   
-                }) 
-                for(i in ticker_data){
-                    let ids = `li#${ticker_data[i].counter}`;
-                    let element = jQuery(ids);
-                    //element.remove();
-                }     
-                if(jQuery(".arb_custom_ticker").width()>25000){
-                    location.reload(true);
-                }
-            }, 20000);
+            // setInterval(() => {
+            //     let ticker_data = ticker_data_ralph.filter(data => {
+            //         return data.counter < 50   
+            //     }) 
+            //     for(i in ticker_data){
+            //         let ids = `li#${ticker_data[i].counter}`;
+            //         let element = jQuery(ids);
+            //         //element.remove();
+            //     }     
+            //     if(jQuery(".arb_custom_ticker").width()>25000){
+            //         location.reload(true);
+            //     }
+            // }, 20000);
 
 		});
 </script>
 <style>
 	.marqueethis {
-		width:0;
+		/* width:0; */
 		height:40px;
 		right:-100px;
 	}

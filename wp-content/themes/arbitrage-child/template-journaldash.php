@@ -1083,10 +1083,10 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_bought" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -1104,10 +1104,10 @@ if($issampledata){
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="" style="margin-left: -4px; text-align: left;width: 138px;">
+						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
@@ -3347,6 +3347,13 @@ if($issampledata){
 			
 		});
 
+		jQuery(document).on('change', '#inpt_data_stock_bought', function() {
+			let dstock = this.value;
+			console.log(dstock);
+			jQuery("#inpt_data_stock_sold").val(dstock);
+
+		});
+
 
 		// calculate total price
 		jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
@@ -3624,6 +3631,11 @@ if($issampledata){
 			"pieX": "45%",
 			"pieY": "50%",
 			"radius": 50,
+			"pullOutRadius": "0%",
+			"startRadius": "0%",
+			"pullOutDuration": 0,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"colors": [
 				<?php echo $currentaloccolor; ?>
 			],
@@ -3631,8 +3643,6 @@ if($issampledata){
 			"labelsEnabled": false,
 			"labelTickAlpha": 1,
 			"labelTickColor": "#FFFFFF",
-			"pullOutDuration": 11,
-			"startEffect": "easeOutSine",
 			"titleField": "category",
 			"valueField": "column-1",
 			"backgroundColor": "#000000",
@@ -3666,6 +3676,8 @@ if($issampledata){
 		{
 			"type": "serial",
 			"categoryField": "category",
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"columnWidth": 0,
 			"minSelectedTime": 5,
 			"mouseWheelScrollEnabled": true,
@@ -3674,7 +3686,6 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -3756,6 +3767,7 @@ if($issampledata){
 	var chart = AmCharts.makeChart("chartdiv4a", {
 	  "type": "pie",
 	  "startDuration": 0,
+	  "sequencedAnimation": false,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,
@@ -3816,6 +3828,7 @@ if($issampledata){
 	var chart = AmCharts.makeChart("chartdiv4b", {
 	  "type": "pie",
 	  "startDuration": 0,
+	  "sequencedAnimation": false,
 	  "theme": "none",
 	  "marginBottom": 0,
 	  "marginTop": 0,
@@ -3914,7 +3927,8 @@ if($issampledata){
 	"autoMarginOffset": 0,
 	"marginBottom": 20,
 	"marginTop": 85,
-	"startDuration": 1,
+	"startDuration": 0,
+	"sequencedAnimation": false,
 	"backgroundColor": "#0D1F33",
 	"color": "#78909C",
 	"fontFamily": "Roboto",
@@ -4147,7 +4161,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4249,7 +4264,8 @@ if($issampledata){
 			"autoMarginOffset": 0,
 			"marginTop": 10,
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4342,7 +4358,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4452,7 +4469,8 @@ if($issampledata){
 			"marginTop": 10,
 			"plotAreaBorderColor": "#FFFFFF",
 			"zoomOutText": "Reset",
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"fontFamily": "Roboto",
@@ -4536,7 +4554,8 @@ if($issampledata){
 			"categoryField": "category",
 			"rotate": true,
 			"marginTop": 5,
-			"startDuration": 1,
+			"sequencedAnimation": false,
+			"startDuration": 0,
 			"backgroundColor": "#0D1F33",
 			"color": "#78909C",
 			"usePrefixes": true,
@@ -4615,6 +4634,8 @@ if($issampledata){
 	var gaugeChart = AmCharts.makeChart("topstockswinners", {
 	  "type": "gauge",
 	  "theme": "none",
+	  "sequencedAnimation": false,
+	  "startDuration": 0,
 	  "axes": [{
 		"axisAlpha": 0,
 		"tickAlpha": 0,
@@ -4652,6 +4673,8 @@ if($issampledata){
 	var gaugeChart = AmCharts.makeChart("topstocksLosers", {
 	  "type": "gauge",
 	  "theme": "none",
+	  "sequencedAnimation": false,
+	  "startDuration": 0,
 	  "axes": [{
 		"axisAlpha": 0,
 		"tickAlpha": 0,

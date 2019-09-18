@@ -1,4 +1,26 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/watchlist_style.css?<?php echo time(); ?>">
+
+<script>
+    jQuery(document).ready( function() {
+
+        $.ajax({
+              type:'POST',
+              url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
+              dataType: 'json',
+              success: function(response) {
+                    //jQuery.each(response.data, function(i, val) {
+                        var stock = response.data;
+                       // console.log(stock);
+                     //});
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+    });
+
+</script>
+
 <?php 
              
         $curl = curl_init();
@@ -8,6 +30,11 @@
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         curl_close($curl);
+
+        $myArray = json_decode($_POST['stock']);
+
+        print_r($myArray);
+
 
         if ($response !== false) {
             $response = json_decode($response);
@@ -66,7 +93,6 @@
 
                                         </li>
 
-
                                 <?php }  ?>
                                        
                                     <?php
@@ -109,7 +135,6 @@
                     </ul>
 
             </div>
-    
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

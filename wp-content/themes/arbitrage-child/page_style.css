@@ -4156,6 +4156,7 @@
 }
 .to-content-part.to-back-back.people_tab-label {
     padding: 10px 29px !important;
+    min-height: unset;
 }
 .to-top-title.people_title-label {
     margin: 0 !important;
@@ -4168,4 +4169,7 @@
 .to-top-title.posts_title-label {
     margin: 0 !important;
     padding: 2px 0 !important;
+}
+.stocks_each {
+    margin-bottom: 0;
 }

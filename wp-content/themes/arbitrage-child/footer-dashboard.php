@@ -155,11 +155,10 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				type: 'GET',
 				dataType: 'json', // added data type
 				success: function(res) {
-					console.log(res);
+					
 				},
 				error: function (xhr, ajaxOptions, thrownError) {
-					console.log(xhr.status);
-					console.log(thrownError);
+					
 				}
 			});
 			var stocklist = <?php echo $jsonstocklist; ?> ;	
@@ -380,7 +379,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					?>";
 
 					if(phonenum == "nocp"){
-						console.log('here');
 						$("#modal-phonenum").modal('show'); 
 					}
 				
@@ -392,7 +390,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					method: "get",
 					url: "/watchlist?addcp=" + cpnum,
 					success: function(data){
-						console.log("Success");
+
 					}
 				});
 					

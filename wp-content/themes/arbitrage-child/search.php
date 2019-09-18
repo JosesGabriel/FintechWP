@@ -383,10 +383,10 @@ $dstockinfo = $gerdqoute->data;
     hr.style12 {
         border: 0;
         height: 1px;
-        width: 95%;
+        width: 100%;
         background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
         margin-top: .4rem !important;
-        margin: 0 1em;
+        margin: 0 auto;
     }
 
     .to-content-part {
@@ -475,7 +475,7 @@ $dstockinfo = $gerdqoute->data;
 
     .stocks-body {
         background: #142c46 !important;
-        padding: 10px 29px;
+        padding: 10px 29px 10px 33px;
         border-radius: 5px;
         margin: 10px 0px;
         vertical-align: middle;
@@ -755,7 +755,7 @@ $dstockinfo = $gerdqoute->data;
                                                             );
                                                         $parent = new WP_Query( $args );
                                                         if ( $parent->have_posts() ) : ?>
-                                                                <ul>    
+                                                                <ul class="stocks_each">    
                                                             <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                 <?php
                                                                     $dstock = get_the_title();
@@ -766,18 +766,18 @@ $dstockinfo = $gerdqoute->data;
                                                                 ?>
                                                                 <hr class="style14 style12">
                                                                 <div class="row col-xs-12 stock-row">
-                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="../../Stock/BDO">
+                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/chart/<?php echo $dstock ?>">
                                                                         <div class="stockbox stockprice-bg-up" style="background-color: #<?php echo random_color(); ?>;">
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>
                                                                     </a>
                                                                     <div class="d-flex flex-column">
-                                                                        <div style="margin-top: 3px;"> <strong class="ng-binding"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
-                                                                        <div class="stockcompanypriceitem ng-binding"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
+                                                                        <div style="margin-top: 3px;"> <strong class="ng-binding stocks_name-each"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
+                                                                        <div class="stockcompanypriceitem ng-binding stocks_price-each"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
                                                                         <?php if ($change > 0): ?>
-                                                                            <div class="ng-binding stockprice-up"> <span class="stock-up-caret"> </span> <?php echo $change; ?>% </div>
+                                                                            <div class="ng-binding stockprice-up stocks_change-each--green"> <span class="stock-up-caret"> </span> <?php echo $change; ?>% </div>
                                                                         <?php else: ?>
-                                                                            <div class="ng-binding stockprice-down"> <span class="stock-down-caret"> </span> <?php echo $change; ?>% </div>
+                                                                            <div class="ng-binding stockprice-down stocks_change-each--red"> <span class="stock-down-caret"> </span> <?php echo $change; ?>% </div>
                                                                         <?php endif ?>
                                                                     </div>
                                                                 </div>
@@ -789,13 +789,13 @@ $dstockinfo = $gerdqoute->data;
                                                         <div class="top-traiders-inner">
                                                             <div class="to-content-part to-back-back posts_tab-label">
                                                                 <div class="to-top-title posts_title-label">Posts</div>
-                                                                <hr class="style14 style12">
                                                                 <div class="content-inner-part">
                                                                     <?php
                                                                         global $wpdb;    
                                                                         $result = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%".$_GET['s']."%'");
-                                                                    ?>
+                                                                        ?>
                                                                         <?php foreach ($result as $key => $value) { ?>
+                                                                            <hr class="style14 style12">
                                                                             <?php $dcontent = $value->post_content; ?>
                                                                             <?php if (strpos($dcontent, 'has just followed') === false): ?>
                                                                                 <?php echo do_shortcode('[ultimatemember_activity user_wall="false" wall_post="'.$value->ID.'" template="activity" mode="activity" form_id="um_activity_id" ]'); ?>
@@ -831,7 +831,7 @@ $dstockinfo = $gerdqoute->data;
                                                                                         <div class="traider-follower">
                                                                                             <div class="onbfdata"> <?php echo $value['followers']; ?> Connections </div>
                                                                                             <div class="onbfollow">
-                                                                                                <a href="#" id="mingle-btn" class="mingle-btn um-button um-alt" data-user_id1="<?php echo $value['id']; ?>" data-user_id2="<?php echo $user->ID; ?>">Mingle</a>
+                                                                                                <?php echo UM()->Friends_API()->api()->friend_button( $value['id'], $user->ID ); ?>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -848,7 +848,7 @@ $dstockinfo = $gerdqoute->data;
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane" id="tab3">
-                                                    <div class="stocks-body" style="margin-top: 10px !important">
+                                                <div class="stocks-body" style="margin-top: 10px">
                                                         <div class="to-top-title">Stocks</div>
                                                         <?php
                                                         $args = array(
@@ -858,32 +858,30 @@ $dstockinfo = $gerdqoute->data;
                                                             'post_parent'    => 504
                                                             );
                                                         $parent = new WP_Query( $args );
-
                                                         if ( $parent->have_posts() ) : ?>
-                                                                <ul>    
+                                                                <ul class="stocks_each">    
                                                             <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
                                                                 <?php
                                                                     $dstock = get_the_title();
-                                                                    $price = $dstockinfo->$dstock->last;
-                                                                    $change = $dstockinfo->$dstock->change;
-
+                                                                    $key = array_search($dstock, array_column($dstockinfo, 'symbol'));
+                                                                    $price = $dstockinfo[$key]->last;
+                                                                    $change = $dstockinfo[$key]->change;
                                                                     $dsubtitle = get_post_meta( get_the_id(), 'stock_subtitle', true );
                                                                 ?>
                                                                 <hr class="style14 style12">
-                                                    
                                                                 <div class="row col-xs-12 stock-row">
-                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="../../Stock/BDO">
+                                                                    <a style="line-height: 1.4; text-decoration: none;" class="pr-2" href="<?php echo get_home_url(); ?>/chart/<?php echo $dstock ?>">
                                                                         <div class="stockbox stockprice-bg-up" style="background-color: #<?php echo random_color(); ?>;">
                                                                             <br> <span class="stockdetailbox ng-binding"><?php echo get_the_title(); ?></span> <br>
                                                                         </div>
                                                                     </a>
                                                                     <div class="d-flex flex-column">
-                                                                        <div style="margin-top: 3px;"> <strong class="ng-binding"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
-                                                                        <div class="stockcompanypriceitem ng-binding"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
+                                                                        <div style="margin-top: 3px;"> <strong class="ng-binding stocks_name-each"><?php echo get_the_title(); ?> <?php echo ($dsubtitle ? '- '.$dsubtitle : ''); ?></strong> </div>
+                                                                        <div class="stockcompanypriceitem ng-binding stocks_price-each"> &#8369;<?php echo number_format($price,2,".",","); ?> </div>
                                                                         <?php if ($change > 0): ?>
-                                                                            <div class="ng-binding stockprice-up"> <span class="stock-up-caret"> </span> <?php echo $change; ?>% </div>
+                                                                            <div class="ng-binding stockprice-up stocks_change-each--green"> <span class="stock-up-caret"> </span> <?php echo $change; ?>% </div>
                                                                         <?php else: ?>
-                                                                            <div class="ng-binding stockprice-down"> <span class="stock-down-caret"> </span> <?php echo $change; ?>% </div>
+                                                                            <div class="ng-binding stockprice-down stocks_change-each--red"> <span class="stock-down-caret"> </span> <?php echo $change; ?>% </div>
                                                                         <?php endif ?>
                                                                     </div>
                                                                 </div>

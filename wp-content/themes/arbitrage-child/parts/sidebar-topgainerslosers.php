@@ -49,11 +49,11 @@
         print_r($stockss);
         //$myArray1 = json_decode($myArray);
 
-         //foreach($myArray as $stkey => $stockval){
+         foreach($stockss as $stkey => $stockval){
 
-                //echo $stockval->symbol;
+                echo $stockval->symbol;
 
-            //}
+            }
 
 
         if ($response !== false) {

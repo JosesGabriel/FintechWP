@@ -289,12 +289,12 @@ ul.main-drops-chart > ul:before {
 		</div>
 	   
 	</div>
-<div style="height:44%;">
+<div style="height:46%;">
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-1/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-2/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>
 <div style="clear:both"></div>
-<div style="height:43.2%;">
+<div style="height:47%;">
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-3/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-4/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>

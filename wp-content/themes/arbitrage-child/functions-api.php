@@ -63,7 +63,9 @@ class ChartsAPI extends WP_REST_Controller
             $id = $data['chart'];
 
             $chart = $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE id = %d", $id));
-            return $this->respond(true, $chart, 200);
+            return $this->respond(true, [
+                'data' => $chart
+            ], 200);
         }
         //endregion Behavioral change
 
@@ -71,7 +73,9 @@ class ChartsAPI extends WP_REST_Controller
         $charts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_name WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
         //endregion Data retrieval
 
-        return $this->respond(true, $charts, 200);
+        return $this->respond(true, [
+            'data' => $charts
+        ], 200);
     }
 
     public function saveTemplate($request)

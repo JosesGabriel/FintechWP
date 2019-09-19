@@ -87,10 +87,10 @@ class ChartsAPI extends WP_REST_Controller
             ], 417);
         }
     
-        if (!isset($data['user_id']) ||
-            !is_numeric($data['user_id'])) {
+        if (!isset($data['user']) ||
+            !is_numeric($data['user'])) {
             return $this->respond(false, [
-                'message' => 'The user_id is not defined.',
+                'message' => 'The user is not defined.',
                 'parameters' => $data,
             ], 417);
         }

@@ -1,38 +1,5 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/watchlist_style.css?<?php echo time(); ?>">
 
-<script>
-    jQuery(document).ready( function() {
-
-        $.ajax({
-              type:'GET',
-              url:'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE',
-              dataType: 'json',
-              //data: "stockss="+JSON.stringify(data),
-              success: function(response) {
-
-
-                   var stocks = response;
-
-                   document.cookie = "myArray = " + response;
-                    //jQuery.each(response.data, function(i, val) {
-
-                        //var stocks = val.symbol;
-                        console.log(stocks);
-                    //});
-
-
-                        //var stocks = val.symbol;
-                    //});
-
-                },
-                error: function(response) {
-                    
-                }
-            });
-     });
-
-</script>
-
 <?php 
              
         $curl = curl_init();
@@ -42,18 +9,6 @@
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
         curl_close($curl);
-
-        $myArray = $_COOKIE['myArray'];
-        $myArray1 = json_decode($myArray);
-        $stockss = $myArray1->data;
-        print_r($stockss);
-        //$myArray1 = json_decode($myArray);
-
-         //foreach($myArray as $stkey => $stockval){
-
-                //echo $stockval->symbol;
-
-            //}
 
 
         if ($response !== false) {
@@ -98,8 +53,6 @@
     <div class="top-stocks">
             <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
 
-            <div><?php print_r($myArray); ?></div>
-
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">
 
@@ -120,8 +73,8 @@
                                        
                                     <?php
                                        
-                                    }
-                                 ?>
+                                     }
+                                 ?>  
                     </ul>                          
                        
             </div>          

@@ -4,7 +4,7 @@
  * Template page for Watchlist Page Platform
  */
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Methods: POST, GET, DELETE, OPTIONS');
 header('Content-Type: application/json; charset=UTF-8');
 header("Cache-Control: no-cache"); 
 header("Pragma: no-cache"); 

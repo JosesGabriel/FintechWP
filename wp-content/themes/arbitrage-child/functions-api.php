@@ -134,9 +134,10 @@ class ChartsAPI extends WP_REST_Controller
                 'content' => $data['content'],
                 'symbol' => $data['symbol'],
                 'resolution' => $data['resolution'],
+                'timestamp' => time(),
             ],
             [
-                '%d', '%s', '%s', '%s', '%s', '%s'
+                '%d', '%s', '%s', '%s', '%s', '%s', '%d'
             ]
         );
         //endregion Data insertion

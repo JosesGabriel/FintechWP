@@ -99,7 +99,17 @@ class ChartsAPI extends WP_REST_Controller
         //region Data insertion
         $wpdb->insert(
             $this->table_name,
-            compact($data)
+            [
+                'user_id' => $data['user'],
+                'client_id' => $data['client'],
+                'name' => $data['name'],
+                'content' => $data['content'],
+                'symbol' => $data['symbol'],
+                'resolution' => $data['resolution'],
+            ],
+            [
+                '%d', '%s', '%s', '%s', '%s', '%s'
+            ]
         );
         //endregion Data insertion
 

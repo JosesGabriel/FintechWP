@@ -35,30 +35,35 @@ if ($request_method === 'POST') {
     if (!isset($data['name'])) {
         respond(false, [
             'message' => 'The name is not defined.',
+            'parameters' => $data,
         ], 417);
     }
 
     if (!isset($data['content'])) {
         respond(false, [
             'message' => 'The content is not defined.',
+            'parameters' => $data,
         ], 417);
     }
 
     if (!isset($data['symbol'])) {
         respond(false, [
             'message' => 'The symbol is not defined.',
+            'parameters' => $data,
         ], 417);
     }
 
     if (!isset($data['resolution'])) {
         respond(false, [
             'message' => 'The resolution is not defined.',
+            'parameters' => $data,
         ], 417);
     }
 
     if (!isset($get['client_id'])) {
         respond(false, [
             'message' => 'The client_id is not defined.',
+            'parameters' => $data,
         ], 417);
     }
 
@@ -66,6 +71,7 @@ if ($request_method === 'POST') {
         !is_numeric($user_id)) {
         respond(false, [
             'message' => 'The user_id is not defined.',
+            'parameters' => $data,
         ], 417);
     }
     //endregion Data validation

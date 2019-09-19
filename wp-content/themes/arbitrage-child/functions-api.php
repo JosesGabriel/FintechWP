@@ -1,10 +1,5 @@
 <?php
 
-add_action('rest_api_init', function () {
-    $chartsApi = new ChartsAPI();
-    $chartsApi->registerRoutes();
-});
-
 class ChartsAPI extends WP_REST_Controller
 {
     protected $namespace;
@@ -121,3 +116,9 @@ function charting_api_save(WP_REST_Request $request)
     $data['status'] = 'ok';
     return new WP_REST_Response( $data, '200' );
 }
+
+// Register API endpoints
+add_action('rest_api_init', function () {
+    $chartsApi = new ChartsAPI();
+    $chartsApi->registerRoutes();
+});

@@ -80,9 +80,9 @@ class ChartsAPI extends WP_REST_Controller
             ], 417);
         }
     
-        if (!isset($data['client_id'])) {
+        if (!isset($data['client'])) {
             return $this->respond(false, [
-                'message' => 'The client_id is not defined.',
+                'message' => 'The client is not defined.',
                 'parameters' => $data,
             ], 417);
         }

@@ -34,17 +34,8 @@ iframe {
 		top: 4px;
 		left: 9px;
 	}
-	.arb_right_icons_trans {
-			position: absolute;
-		    width: 275px;
-		    right: -54px;
-		    top: 2px;
-			padding-left: 110px;
-		    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
-		    z-index: 9;
-		}
-		.arb_right_icons_trans {display:block;}
-		ul.main-drops-chart > ul:before {
+.arb_right_icons_trans {display:block;}
+ul.main-drops-chart > ul:before {
 	    bottom: 100% !important;
 	    right: 2% !important;
 	    border: solid transparent !important;
@@ -104,11 +95,11 @@ iframe {
 	}
 	a.arb-side-icon {
 		text-align: center;
-		width: 13%;
+		width: auto;
 		font-size: 20px;
 		color: #ffffff;
-		padding: 4px 0 0;
 		display: inline-block;
+		padding: 2px 2px;
 	}
 	a.arb-side-icon span {
 		text-align: center;
@@ -124,18 +115,6 @@ iframe {
 		top: 8px;
 		left: 9px;
 	}
-    .arb_right_icons_trans {display:block;}
-    .arb_right_icons_trans {
-			position: absolute;
-		    width: 275px;
-		    right: -54px;
-		    top: 2px;
-			padding-left: 110px;
-		    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
-		    z-index: 9;
-		}
-
-
         .closesidebar {
 	    position: relative;
 		z-index:9999;
@@ -246,14 +225,16 @@ iframe {
 	    border-bottom-right-radius: 4px !important;
 	}  
     .arb_right_icons_trans {
-        position: absolute;
-        width: 220px;
-        right: -70px;
-        top: -12px;
-        padding-left: 110px;
-        background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
-        z-index: 9;
-        height: 55px;
+		position: absolute;
+		width: 156px;
+		right: 0px;
+		top: -12px;
+		padding-right: 13px;
+		padding-left: 0;
+		background: linear-gradient(to right, #2c3e5000 4%, #34495e 43%);
+		z-index: 9;
+		height: 55px;
+		text-align: right;
 		}
 		.arb-side-icon i {
 			border: none;
@@ -266,12 +247,12 @@ iframe {
             
 		} 
         .arb_proficon{
-            position: absolute;
             width: 24px;
-            height: 24px;
-            margin-left: -10px;
-            margin-top: -17px;
-            border-radius: 100%;
+			height: 24px;
+			border-radius: 100%;
+			display: inline-block;
+			top: 8px;
+			position: relative;
         }
 </style>
 </head>
@@ -308,12 +289,12 @@ iframe {
 		</div>
 	   
 	</div>
-<div style="height:50%;">
+<div style="height:44%;">
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-1/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-2/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>
 <div style="clear:both"></div>
-<div style="height:50%;">
+<div style="height:43.2%;">
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-3/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:left;"></iframe>
     <iframe src="<?php echo $url; ?>/multicharts/chart-part-4/" scrolling="no" frameborder="0" allowtransparency="yes" style="width:50%; height:100%; float:right;"></iframe>
 </div>

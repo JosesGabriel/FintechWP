@@ -25,11 +25,11 @@ class ChartsAPI extends WP_REST_Controller
         register_rest_route($base_route, 'charts', [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => [$this, 'getTemplate'],
+                'callback' => array($this, 'getTemplate'),
             ],
             [
                 'methods' => WP_REST_Server::EDITABLE,
-                'callback' => [$this, 'saveTemplate'],
+                'callback' => array($this, 'saveTemplate'),
             ],
         ]);
     }

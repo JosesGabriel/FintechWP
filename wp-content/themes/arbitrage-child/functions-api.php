@@ -71,7 +71,7 @@ class ChartsAPI extends WP_REST_Controller
         $charts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_name WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
         //endregion Data retrieval
 
-        $this->respond(true, $charts, 200);
+        return $this->respond(true, $charts, 200);
     }
 
     public function saveTemplate($request)

@@ -31,6 +31,13 @@ class ChartsAPI extends WP_REST_Controller
                 'callback' => [$this, 'deleteTemplate'],
             ],
         ]);
+
+        register_rest_route($base_route, 'study_templates', [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => [],
+            ]
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)

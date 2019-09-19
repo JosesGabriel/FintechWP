@@ -23,7 +23,7 @@ class ChartsAPI extends WP_REST_Controller
                 'callback' => array($this, 'getTemplate'),
             ],
             [
-                'methods' => WP_REST_Server::EDITABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => array($this, 'saveTemplate'),
             ],
         ]);

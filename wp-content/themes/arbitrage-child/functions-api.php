@@ -36,7 +36,11 @@ class ChartsAPI extends WP_REST_Controller
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [],
-            ]
+            ],
+            [
+                'methods' => WP_REST_Server::CREATABLE,
+                'callback' => array($this, 'saveTemplate'),
+            ],
         ]);
     }
 

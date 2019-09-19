@@ -41,9 +41,37 @@ class ChartsAPI extends WP_REST_Controller
         global $wpdb;
         $data = $request->get_params();
 
-        $this->respond(true, [
-            'test' => true,
-        ], 200);
+        //region Data validation
+        if (!isset($data['client'])) {
+            return $this->respond(false, [
+                'message' => 'The client is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['user']) ||
+            !is_numeric($data['user'])) {
+            return $this->respond(false, [
+                'message' => 'The user is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+        //endregion Data validation
+
+        //region Behavioral change
+        if (isset($data['chart'])) {
+            $id = $data['chart'];
+
+            $chart = $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE id = %d", $id));
+            return $this->respond(true, $chart, 200);
+        }
+        //endregion Behavioral change
+
+        //region Data retrieval
+        $charts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_name WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
+        //endregion Data retrieval
+
+        $this->respond(true, $charts, 200);
     }
 
     public function saveTemplate($request)

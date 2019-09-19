@@ -32,7 +32,7 @@ class ChartsAPI extends WP_REST_Controller
         ]);
     }
 
-    protected function respond($success = false, $data = [], $status = 500)
+    public function respond($success = false, $data = [], $status = 500)
     {
         $data['status'] = $success ? 'ok' : 'error';
         $status = $success ? 200 : $status;

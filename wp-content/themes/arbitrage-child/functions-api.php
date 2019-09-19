@@ -26,6 +26,10 @@ class ChartsAPI extends WP_REST_Controller
                 'methods' => WP_REST_Server::CREATABLE,
                 'callback' => array($this, 'saveTemplate'),
             ],
+            [
+                'methods' => WP_REST_Server::DELETABLE,
+                'callback' => [$this, 'deleteTemplate'],
+            ],
         ]);
     }
 
@@ -34,6 +38,50 @@ class ChartsAPI extends WP_REST_Controller
         $data['status'] = $success ? 'ok' : 'error';
         $status = $success ? 200 : $status;
         return new WP_REST_Response($data, $status);
+    }
+
+    public function deleteTemplate($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        //region Data validation
+        if (!isset($data['client'])) {
+            return $this->respond(false, [
+                'message' => 'The client is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['user']) ||
+            !is_numeric($data['user'])) {
+            return $this->respond(false, [
+                'message' => 'The user is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['chart']) ||
+            !is_numeric($data['chart'])) {
+            return $this->respond(false, [
+                'message' => 'The chart is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+        //endregion Data validation
+
+        //region Data deletion
+        $delete = $wpdb->delete($this->table_name, ['id' => $data['chart']]);
+
+        if ($delete === false) {
+            return $this->respond(false, [
+                'message' => 'An error has occurred while deleting the chart.',
+                'parameters' => $data,
+            ], 500);
+        }
+        //endregion Data deletion
+
+        return $this->respond(true, [], 200);
     }
 
     public function getTemplate($request)

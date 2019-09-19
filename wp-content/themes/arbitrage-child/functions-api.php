@@ -53,35 +53,35 @@ class ChartsAPI extends WP_REST_Controller
 
         //region Data validation
         if (!isset($data['name'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The name is not defined.',
                 'parameters' => $data,
             ], 417);
         }
     
         if (!isset($data['content'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The content is not defined.',
                 'parameters' => $data,
             ], 417);
         }
     
         if (!isset($data['symbol'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The symbol is not defined.',
                 'parameters' => $data,
             ], 417);
         }
     
         if (!isset($data['resolution'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The resolution is not defined.',
                 'parameters' => $data,
             ], 417);
         }
     
         if (!isset($data['client_id'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The client_id is not defined.',
                 'parameters' => $data,
             ], 417);
@@ -89,7 +89,7 @@ class ChartsAPI extends WP_REST_Controller
     
         if (!isset($data['user_id']) ||
             !is_numeric($data['user_id'])) {
-            $this->respond(false, [
+            return $this->respond(false, [
                 'message' => 'The user_id is not defined.',
                 'parameters' => $data,
             ], 417);
@@ -103,7 +103,7 @@ class ChartsAPI extends WP_REST_Controller
         );
         //endregion Data insertion
 
-        $this->respond(true, [
+        return $this->respond(true, [
             'id' => $wpdb->insert_id,
         ]); 
     }

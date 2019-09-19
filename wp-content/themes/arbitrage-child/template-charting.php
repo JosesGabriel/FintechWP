@@ -8,6 +8,7 @@ header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Content-Type: application/json');
 header("Cache-Control: no-cache"); 
 header("Pragma: no-cache"); 
+require(getcwd().'/wp-load.php');
 
 global $wpdb;
 

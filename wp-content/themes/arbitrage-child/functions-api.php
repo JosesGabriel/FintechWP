@@ -1,7 +1,9 @@
 <?php
-$chartsApi = new ChartsAPI;
 
-add_action('rest_api_init', $chartsApi->registerRoutes());
+add_action('rest_api_init', function () {
+    $chartsApi = new ChartsAPI();
+    $chartsApi->registerRoutes();
+});
 
 class ChartsAPI extends WP_REST_Controller
 {

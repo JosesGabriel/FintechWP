@@ -1377,6 +1377,7 @@ jQuery( document ).ready(function () {
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
 
+/*
 
 			if(jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').hasClass('isyours')){
 			var numberofbull = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull');
@@ -1385,7 +1386,7 @@ jQuery( document ).ready(function () {
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.active a').removeClass("isclicked");
 			}
-
+	*/
 
 			if (!jQuery(this).parents('.um-activity-widget').hasClass('unready')) {
 				var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');

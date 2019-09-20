@@ -1253,6 +1253,9 @@ jQuery( document ).ready(function () {
 				if (parseInt(numberbullx) > 0) {
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').attr('data-numbear', parseInt(numberbullx) - 1);
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours .dnumof').text(parseInt(numberbullx) - 1);
+
+					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish').removeClass('active').removeClass('isyours').addClass('notyours');
+					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.active a').removeClass("isclicked");
 	
 					// jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').removeClass('active').removeClass('isyours').addClass('notyours');
 	
@@ -1377,14 +1380,6 @@ jQuery( document ).ready(function () {
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
 
-/*
-
-			if(jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').hasClass('isyours')){
-			
-			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
-			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.active a').removeClass("isclicked");
-			}
-	*/
 
 			if (!jQuery(this).parents('.um-activity-widget').hasClass('unready')) {
 				var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');

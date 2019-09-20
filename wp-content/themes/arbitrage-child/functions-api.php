@@ -35,7 +35,7 @@ class ChartsAPI extends WP_REST_Controller
         register_rest_route($base_route, 'study_templates', [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'saveIndicator'),
+                'callback' => array($this, 'getIndicators'),
             ],
         ]);
     }
@@ -47,7 +47,7 @@ class ChartsAPI extends WP_REST_Controller
         return new WP_REST_Response($data, $status);
     }
 
-    public function saveIndicator($request){
+    public function getIndicators($request){
         global $wpdb;
         $data = $request->get_params();
         return $this->respond(true, [

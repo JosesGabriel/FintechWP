@@ -1207,7 +1207,7 @@
         overflow: hidden;
     }
     .um-activity-bodyinner-txt span.post-excerpt {
-        padding: 5px 20px 0 20px;
+        /* padding: 5px 20px 0 20px; */
         margin: 0;
         color: #aaa !important;
         font-size: 12px;
@@ -1219,7 +1219,7 @@
         overflow: hidden;
     }
     .um-activity-bodyinner-txt span.post-domain {
-        padding: 5px 20px 0 20px;
+        /* padding: 5px 20px 0 20px; */
         margin: 0;
         color: #aaa !important;
         font-size: 11px;
@@ -1320,6 +1320,7 @@
     }
     .desc-note {
         padding-left: 16px;
+        padding-right: 16px;
     }
     .um-activity-widget {
         overflow: hidden;
@@ -3964,7 +3965,7 @@
         display: block;
         color: #fff;
         margin: 12px 0 0 0;
-        padding-bottom: 10px;
+        /* padding-bottom: 10px; */
         background: #11273e;
     }
     .um-activity-bodyinner-txt span.post-title {
@@ -4175,4 +4176,14 @@
 }
 .stock_container-inner {
     width: 85%;
+}
+span.my_rank-number {
+    position: absolute;
+    z-index: 99;
+    margin: 5px auto 0;
+    width: 34px;
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #d0a950;
 }

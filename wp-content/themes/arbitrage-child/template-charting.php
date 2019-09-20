@@ -4,10 +4,11 @@
  * Template page for Watchlist Page Platform
  */
 header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: POST, GET, DELETE, OPTIONS');
+header('Content-Type: application/json; charset=UTF-8');
 header("Cache-Control: no-cache"); 
 header("Pragma: no-cache"); 
+require(getcwd().'/wp-load.php');
 
 global $wpdb;
 
@@ -19,7 +20,7 @@ function respond($success = false, $data = [], $status = 500)
     $data['status'] = $success ? 'ok' : 'error';
     $status = $success ? 200 : $status;
     http_response_code($status);
-    echo json_encode(array_push($data, $status));
+    echo json_encode($data);
     die();
 }
 
@@ -32,28 +33,46 @@ if ($request_method === 'POST') {
     $get = $_GET;
     //region Data validation
     if (!isset($data['name'])) {
-        respond();
+        respond(false, [
+            'message' => 'The name is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
 
     if (!isset($data['content'])) {
-        respond();
+        respond(false, [
+            'message' => 'The content is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
 
     if (!isset($data['symbol'])) {
-        respond();
+        respond(false, [
+            'message' => 'The symbol is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
 
     if (!isset($data['resolution'])) {
-        respond();
+        respond(false, [
+            'message' => 'The resolution is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
 
     if (!isset($get['client_id'])) {
-        respond();
+        respond(false, [
+            'message' => 'The client_id is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
 
     if (!isset($user_id) ||
         !is_numeric($user_id)) {
-        respond();
+        respond(false, [
+            'message' => 'The user_id is not defined.',
+            'parameters' => $data,
+        ], 417);
     }
     //endregion Data validation
 

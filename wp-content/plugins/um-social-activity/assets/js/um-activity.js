@@ -1255,7 +1255,7 @@ jQuery( document ).ready(function () {
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours .dnumof').text(parseInt(numberbullx) - 1);
 
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish').removeClass('active').removeClass('isyours').addClass('notyours');
-					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.active a').removeClass("isclicked");
+					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish a').removeClass("isclicked");
 	
 					// jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').removeClass('active').removeClass('isyours').addClass('notyours');
 	

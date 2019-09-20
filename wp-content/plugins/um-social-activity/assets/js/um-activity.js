@@ -1328,7 +1328,7 @@ jQuery( document ).ready(function () {
 		console.log('unbull');
 
 		//if(!jQuery(this).hasClass("isclicked")){
-		if(jQuery(this).hasClass("isclicked")){
+		if(jQuery('.um-activity-bullish.active').hasClass("isyours")){
 			//jQuery(this).addClass("isclicked");
 
 			var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');

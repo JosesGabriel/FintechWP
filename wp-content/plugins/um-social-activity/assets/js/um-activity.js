@@ -1380,9 +1380,7 @@ jQuery( document ).ready(function () {
 /*
 
 			if(jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').hasClass('isyours')){
-			var numberofbull = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull');
-			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull', parseInt(numberofbull) - 1);
-			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours .dnumof').text(parseInt(numberofbull) - 1);	
+			
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.active a').removeClass("isclicked");
 			}
@@ -1416,6 +1414,9 @@ jQuery( document ).ready(function () {
 				if (parseInt(numberbullx) > 0) {
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull', parseInt(numberbullx) - 1);
 					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours .dnumof').text(parseInt(numberbullx) - 1);
+
+					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
+					jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.active a').removeClass("isclicked");
 
 					// jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
 					

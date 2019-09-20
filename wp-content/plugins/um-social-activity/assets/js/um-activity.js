@@ -1377,6 +1377,7 @@ jQuery( document ).ready(function () {
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
 
+
 			if(jQuery('.um-activity-bullish').hasClass('isyours')){
 			var numberofbull = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull');
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull', parseInt(numberofbull) - 1);
@@ -1385,6 +1386,7 @@ jQuery( document ).ready(function () {
 			jQuery('.um-activity-bullish.active a').removeClass("isclicked");
 			
 			}
+
 
 			if (!jQuery(this).parents('.um-activity-widget').hasClass('unready')) {
 				var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
@@ -1484,8 +1486,12 @@ jQuery( document ).ready(function () {
 	// activate un bearish
 	jQuery( document.body ).on('click', '.um-activity-bearish.active a', function(e) {
 		e.preventDefault();
-		if(!jQuery(this).hasClass("isclicked")){
-			jQuery(this).addClass("isclicked");
+
+		//if(!jQuery(this).hasClass("isclicked")){
+			if(jQuery('.um-activity-bearish.active').hasClass("isyours")){
+			//jQuery(this).addClass("isclicked");
+			jQuery(this).removeClass("isclicked");
+
 			var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
 			jQuery(this).find('i').removeClass('um-effect-pop');
 			

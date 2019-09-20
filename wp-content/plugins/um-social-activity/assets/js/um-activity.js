@@ -1380,6 +1380,7 @@ jQuery( document ).ready(function () {
 			if(jQuery('.um-activity-bullish').hasClass('isyours')){
 			jQuery('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
 			jQuery('.um-activity-bullish.active a').removeClass("isclicked");
+			var numberofbull = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull');
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours').attr('data-numbull', parseInt(numberofbull) - 1);
 			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.isyours .dnumof').text(parseInt(numberofbull) - 1);
 			}

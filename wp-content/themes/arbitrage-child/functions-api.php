@@ -35,11 +35,7 @@ class ChartsAPI extends WP_REST_Controller
         register_rest_route($base_route, 'study_templates', [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => [],
-            ],
-            [
-                'methods' => WP_REST_Server::CREATABLE,
-                'callback' => array($this, 'saveTemplate'),
+                'callback' => array($this, 'saveIndicator'),
             ],
         ]);
     }
@@ -49,6 +45,14 @@ class ChartsAPI extends WP_REST_Controller
         $data['status'] = $success ? 'ok' : 'error';
         $status = $success ? 200 : $status;
         return new WP_REST_Response($data, $status);
+    }
+
+    public function saveIndicator($request){
+        global $wpdb;
+        $data = $request->get_params();
+        return $this->respond(true, [
+            'data' => [],
+        ], 200);
     }
 
     public function deleteTemplate($request)
@@ -203,10 +207,18 @@ class ChartsAPI extends WP_REST_Controller
                 '%d', '%s', '%s', '%s', '%s', '%s', '%d'
             ]
         );
+
+        $id = $wpdb->insert_id;
+
+        if ($id == 0) {
+            return $this->respond(false, [
+                'message' => 'An error has occurred while saving to the database.',
+            ], 500);
+        }
         //endregion Data insertion
 
         return $this->respond(true, [
-            'id' => $wpdb->insert_id,
+            'id' => $id,
         ]); 
     }
 }

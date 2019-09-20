@@ -992,10 +992,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                 });
 
-                chart.onIntervalChange().subscribe(null, function(resolution) {
-                    console.log('resolution changed', resolution);
-                });
-
 				$(widget.createButton())
                     .on('click', function (e) {
                         widget.chart().createStudy("Support and Resistance", false, false);

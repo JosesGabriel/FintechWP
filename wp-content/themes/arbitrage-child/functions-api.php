@@ -78,7 +78,7 @@ class ChartsAPI extends WP_REST_Controller
         //endregion Data retrieval
 
         return $this->respond(true, [
-            'data' => [],
+            'data' => $indicators,
         ], 200);
     }
 

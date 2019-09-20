@@ -1376,6 +1376,12 @@ jQuery( document ).ready(function () {
 		e.preventDefault();
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
+
+			//if(jQuery('.um-activity-bullish').hasClass('isyours')){
+			jQuery('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
+			jQuery('.um-activity-bullish.active a').removeClass("isclicked");
+			//}
+
 			if (!jQuery(this).parents('.um-activity-widget').hasClass('unready')) {
 				var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
 				jQuery(this).find('i').addClass('um-effect-pop');

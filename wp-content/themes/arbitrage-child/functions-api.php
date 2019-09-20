@@ -38,6 +38,10 @@ class ChartsAPI extends WP_REST_Controller
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array($this, 'getIndicators'),
             ],
+            [
+                'methods' => WP_REST_Server::CREATABLE,
+                'callback' => array($this, 'saveIndicator'),
+            ],
         ]);
     }
 
@@ -76,6 +80,70 @@ class ChartsAPI extends WP_REST_Controller
         return $this->respond(true, [
             'data' => [],
         ], 200);
+    }
+
+    public function saveIndicator($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        //region Data validation
+        if (!isset($data['client'])) {
+            return $this->respond(false, [
+                'message' => 'The client is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['user']) ||
+            !is_numeric($data['user'])) {
+            return $this->respond(false, [
+                'message' => 'The user is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['name'])) {
+            return $this->respond(false, [
+                'message' => 'The name is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+    
+        if (!isset($data['content'])) {
+            return $this->respond(false, [
+                'message' => 'The content is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+        //endregion Data validation
+
+        //region Data insertion
+        $wpdb->insert(
+            $this->table_name,
+            [
+                'user_id' => $data['user'],
+                'client_id' => $data['client'],
+                'name' => $data['name'],
+                'content' => $data['content'],
+            ],
+            [
+                '%d', '%s', '%s', '%s'
+            ]
+        );
+
+        $id = $wpdb->insert_id;
+
+        if ($id == 0) {
+            return $this->respond(false, [
+                'message' => 'An error has occurred while saving to the database.',
+            ], 500);
+        }
+        //endregion Data insertion
+
+        return $this->respond(true, [
+            'id' => $id,
+        ]); 
     }
 
     public function deleteTemplate($request)

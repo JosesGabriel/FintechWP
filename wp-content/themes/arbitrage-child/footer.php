@@ -16,6 +16,8 @@ foreach ($users as $key => $value) {
 	$userdetails['displayname'] = htmlentities($userdata->first_name .  " " . $userdata->last_name, ENT_QUOTES);
 	array_push($newuserlist, $userdetails);
 }
+
+
  
 if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	<span class="et_pb_scroll_top et-pb-icon"></span>
@@ -43,6 +45,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		    jQuery(document).ready(function() {
 
 		    	var postid;
+		    	var usersall = `<?php echo json_encode($newuserlist); ?>`;
 
 		    	jQuery(".um-activity-new-post .um-activity-textarea").append('<div class="tagging_cont"></div>');
 				jQuery(this).on('keyup', '.um-activity-comment-textarea', function (e) {
@@ -83,7 +86,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		        		return;
 		        	}
 		        	var counx = 0;
-					var usersall = `<?php echo json_encode($newuserlist); ?>`;
+					//var usersall = `<?php // echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
 
 							jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont")
@@ -166,7 +169,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					
 					var comment_id = jQuery(this).attr('data-reply_to');
 		        	var counx = 0;
-					var usersall = `<?php echo json_encode($newuserlist); ?>`;
+					//var usersall = `<?php // echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
 									
 		        	if (e.which == 52) { dauto = true; }

@@ -203,10 +203,18 @@ class ChartsAPI extends WP_REST_Controller
                 '%d', '%s', '%s', '%s', '%s', '%s', '%d'
             ]
         );
+
+        $id = $wpdb->insert_id;
+
+        if ($id == 0) {
+            return $this->respond(false, [
+                'message' => 'An error has occurred while saving to the database.',
+            ], 500);
+        }
         //endregion Data insertion
 
         return $this->respond(true, [
-            'id' => $wpdb->insert_id,
+            'id' => $id,
         ]); 
     }
 }

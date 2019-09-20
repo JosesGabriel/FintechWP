@@ -1226,6 +1226,9 @@ jQuery( document ).ready(function () {
 		e.preventDefault();
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
+
+			console.log('bull');	
+
 			if (!jQuery(this).parents('.um-activity-widget').hasClass('unready')) {
 				var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
 				jQuery(this).find('i').addClass('um-effect-pop');
@@ -1244,10 +1247,7 @@ jQuery( document ).ready(function () {
 	
 				var todo = '';
 	
-				// console.log("here");
-				
-	
-	
+				// console.log("here");		
 				// get others data
 				var numberbullx = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').attr('data-numbear');
 				if (parseInt(numberbullx) > 0) {
@@ -1324,6 +1324,9 @@ jQuery( document ).ready(function () {
 	// activate unbullish
 	jQuery( document.body ).on('click', '.um-activity-bullish.active a', function(e) {
 		e.preventDefault();
+
+		console.log('unbull');
+
 		if(!jQuery(this).hasClass("isclicked")){
 			jQuery(this).addClass("isclicked");
 			var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');

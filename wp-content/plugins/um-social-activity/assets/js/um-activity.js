@@ -1327,10 +1327,10 @@ jQuery( document ).ready(function () {
 
 		console.log('unbull');
 
-		//if(!jQuery(this).hasClass("isclicked")){
-		if(jQuery(this).hasClass("isyours")){
-			//jQuery(this).addClass("isclicked");
-			
+		if(!jQuery(this).hasClass("isclicked")){
+		//if(jQuery(this).hasClass("isyours")){
+			jQuery(this).addClass("isclicked");
+
 			var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
 			jQuery(this).find('i').removeClass('um-effect-pop');
 			

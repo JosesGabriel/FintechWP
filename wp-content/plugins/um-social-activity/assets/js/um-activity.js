@@ -1330,6 +1330,8 @@ jQuery( document ).ready(function () {
 		//if(!jQuery(this).hasClass("isclicked")){
 		if(jQuery('.um-activity-bullish.active').hasClass("isyours")){
 			//jQuery(this).addClass("isclicked");
+			jQuery(this).removeClass("isclicked");
+
 
 			var postid = jQuery(this).parents('.um-activity-widget').attr('id').replace('postid-', '');
 			jQuery(this).find('i').removeClass('um-effect-pop');

@@ -50,7 +50,9 @@ class ChartsAPI extends WP_REST_Controller
     public function saveIndicator($request){
         global $wpdb;
         $data = $request->get_params();
-        return $this->respond(true, $data, 200);
+        return $this->respond(true, [
+            'data' => [],
+        ], 200);
     }
 
     public function deleteTemplate($request)

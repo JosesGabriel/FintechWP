@@ -991,6 +991,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         ga('send', 'pageview');
                     }
                 });
+
 				$(widget.createButton())
                     .on('click', function (e) {
                         widget.chart().createStudy("Support and Resistance", false, false);

@@ -1379,8 +1379,8 @@ jQuery( document ).ready(function () {
 
 
 			if(jQuery('.um-activity-bullish').hasClass('isyours')){	
-			jQuery('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
-			jQuery('.um-activity-bullish.active a').removeClass("isclicked");
+			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish').removeClass('active').removeClass('isyours').addClass('notyours');
+			jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bullish.active a').removeClass("isclicked");
 			}
 
 

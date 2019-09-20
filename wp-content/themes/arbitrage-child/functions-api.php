@@ -35,10 +35,6 @@ class ChartsAPI extends WP_REST_Controller
         register_rest_route($base_route, 'study_templates', [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => [],
-            ],
-            [
-                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => array($this, 'saveTemplate'),
             ],
         ]);
@@ -49,6 +45,11 @@ class ChartsAPI extends WP_REST_Controller
         $data['status'] = $success ? 'ok' : 'error';
         $status = $success ? 200 : $status;
         return new WP_REST_Response($data, $status);
+    }
+
+    public function saveIndicator($request){
+        global $wpdb;
+        return $this->respond(true, [], 200);
     }
 
     public function deleteTemplate($request)

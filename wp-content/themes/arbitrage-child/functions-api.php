@@ -11,6 +11,7 @@ class ChartsAPI extends WP_REST_Controller
         $this->version = 'v1';
         $this->namespace = 'charts-api';
         $this->table_name = 'arby_charting';
+        $this->table_indicators = 'arby_chart_indicators';
     }
 
     public function registerRoutes()
@@ -50,6 +51,28 @@ class ChartsAPI extends WP_REST_Controller
     public function getIndicators($request){
         global $wpdb;
         $data = $request->get_params();
+
+         //region Data validation
+         if (!isset($data['client'])) {
+            return $this->respond(false, [
+                'message' => 'The client is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+
+        if (!isset($data['user']) ||
+            !is_numeric($data['user'])) {
+            return $this->respond(false, [
+                'message' => 'The user is not defined.',
+                'parameters' => $data,
+            ], 417);
+        }
+        //endregion Data validation
+
+        //region Data retrieval
+        $indicators = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_indicators WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
+        //endregion Data retrieval
+
         return $this->respond(true, [
             'data' => [],
         ], 200);

@@ -35,7 +35,7 @@ class ChartsAPI extends WP_REST_Controller
         register_rest_route($base_route, 'study_templates', [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'saveTemplate'),
+                'callback' => array($this, 'saveIndicator'),
             ],
         ]);
     }

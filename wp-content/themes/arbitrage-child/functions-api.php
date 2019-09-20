@@ -73,6 +73,15 @@ class ChartsAPI extends WP_REST_Controller
         }
         //endregion Data validation
 
+        //region Behavioral change
+        if (isset($data['template'])) {
+            $indicator = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_indicators WHERE user_id = %d AND client_id = %s AND name = %s LIMIT 1", [$data['user'], $data['client'], $data['template']]));
+            return $this->respond(true, [
+                'data' => $indicator,
+            ], 200);
+        }
+        //endregion Behavioral change
+
         //region Data retrieval
         $indicators = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_indicators WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
         //endregion Data retrieval

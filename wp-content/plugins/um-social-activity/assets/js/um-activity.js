@@ -1260,18 +1260,23 @@ jQuery( document ).ready(function () {
 					// jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').removeClass('active').removeClass('isyours').addClass('notyours');
 	
 					todo = 'unbearish';
-					 jQuery.ajax({
-					 	url: wp.ajax.settings.url,
-					 	type: 'post',
-					 	dataType: 'json',
-					 	data: {
-					 		action:'um_activity_unbearish_post',
-				 		postid: postid
-					 	},
-					 	success: function (data) {	
-	
-					 	}
-					 });
+
+
+					 setTimeout(function() {
+						 jQuery.ajax({
+						 	url: wp.ajax.settings.url,
+						 	type: 'post',
+						 	dataType: 'json',
+						 	data: {
+						 		action:'um_activity_unbearish_post',
+					 		postid: postid
+						 	},
+						 	success: function (data) {	
+		
+						 	}
+						 });
+						}, 2000);
+
 
 				}
 	
@@ -1299,21 +1304,23 @@ jQuery( document ).ready(function () {
 				}
 
 				var dlinkinfo = jQuery(this);
-	
-				jQuery.ajax({
-					url: wp.ajax.settings.url,
-					type: 'post',
-					dataType: 'json',
-					data: {
-						action:'um_activity_bullish_post',
-						postid: postid,
-						relay: todo
-					},
-					success: function (data) {
-						dlinkinfo.removeClass("isclicked");
 
-					}
-				});
+				 setTimeout(function() {
+					jQuery.ajax({
+						url: wp.ajax.settings.url,
+						type: 'post',
+						dataType: 'json',
+						data: {
+							action:'um_activity_bullish_post',
+							postid: postid,
+							relay: todo
+						},
+						success: function (data) {
+							dlinkinfo.removeClass("isclicked");
+
+						}
+					});
+				}, 2000);
 			
 			}
 			
@@ -1352,19 +1359,23 @@ jQuery( document ).ready(function () {
 
 				jQuery(this).parent().removeClass('active').removeClass('isyours').addClass('notyours');
 				var dlinkinfo = jQuery(this);
-				jQuery.ajax({
-					url: wp.ajax.settings.url,
-					type: 'post',
-					dataType: 'json',
-					data: {
-						action:'um_activity_unbullish_post',
-						postid: postid
-					},
-					success: function (data) {
-						console.log(data);
-						dlinkinfo.removeClass("isclicked");
-					}
-				});
+
+			setTimeout(function() {
+					jQuery.ajax({
+						url: wp.ajax.settings.url,
+						type: 'post',
+						dataType: 'json',
+						data: {
+							action:'um_activity_unbullish_post',
+							postid: postid
+						},
+						success: function (data) {
+							console.log(data);
+							dlinkinfo.removeClass("isclicked");
+						}
+					});
+				}, 2000);
+
 			}
 		} else {
 			console.log("cant proceed");
@@ -1416,19 +1427,21 @@ jQuery( document ).ready(function () {
 					
 					todo = 'unbullish';
 
-					 jQuery.ajax({
-					 	url: wp.ajax.settings.url,
-					 	type: 'post',
-					 	dataType: 'json',
-					 	data: {
-					 		action:'um_activity_unbullish_post',
-					 		postid: postid
-					 	},
-					 	success: function (data) {
-					 		console.log(data);
-					 	}
-					 });
-					 
+				setTimeout(function() {	
+						 jQuery.ajax({
+						 	url: wp.ajax.settings.url,
+						 	type: 'post',
+						 	dataType: 'json',
+						 	data: {
+						 		action:'um_activity_unbullish_post',
+						 		postid: postid
+						 	},
+						 	success: function (data) {
+						 		console.log(data);
+						 	}
+						 });
+					}, 2000);
+ 
 				}
 
 				var numberlikes = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-like.isyours').attr('data-numlikes');
@@ -1455,20 +1468,21 @@ jQuery( document ).ready(function () {
 
 				var dlinkinfo = jQuery(this);
 
-				jQuery.ajax({
-					url: wp.ajax.settings.url,
-					type: 'post',
-					dataType: 'json',
-					data: {
-						action:'um_activity_bearish_post',
-						postid: postid,
-						relay: todo
-					},
-					success: function (data) {
-						dlinkinfo.removeClass("isclicked");
-					}
-				});
-
+				setTimeout(function() {	
+					jQuery.ajax({
+						url: wp.ajax.settings.url,
+						type: 'post',
+						dataType: 'json',
+						data: {
+							action:'um_activity_bearish_post',
+							postid: postid,
+							relay: todo
+						},
+						success: function (data) {
+							dlinkinfo.removeClass("isclicked");
+						}
+					});
+				}, 2000);
 
 
 				// console.log(numbear);
@@ -1503,19 +1517,23 @@ jQuery( document ).ready(function () {
 
 				jQuery(this).parent().removeClass('active').removeClass('isyours').addClass('notyours');
 				var dlinkinfo = jQuery(this);
-				jQuery.ajax({
-					url: wp.ajax.settings.url,
-					type: 'post',
-					dataType: 'json',
-					data: {
-						action:'um_activity_unbearish_post',
-						postid: postid
-					},
-					success: function (data) {
-						console.log(data);
-						dlinkinfo.removeClass("isclicked");
-					}
-				});
+
+				setTimeout(function() {	
+					jQuery.ajax({
+						url: wp.ajax.settings.url,
+						type: 'post',
+						dataType: 'json',
+						data: {
+							action:'um_activity_unbearish_post',
+							postid: postid
+						},
+						success: function (data) {
+							console.log(data);
+							dlinkinfo.removeClass("isclicked");
+						}
+					});
+				}, 2000);
+
 			}
 		} else {
 			console.log("cant proceed");

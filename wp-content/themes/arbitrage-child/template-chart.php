@@ -1873,7 +1873,7 @@
 																													<button
 																														class="btn btn-success btn-xs"
 																														type="button"
-																														ng-click="enableBidsAndAsks = true">Enable</button>
+																														ng-click="$parent.enableBidsAndAsks = true">Enable</button>
 																												<?php else: ?>
 																													<div>Coming soon</div>
 																												<?php endif ?>

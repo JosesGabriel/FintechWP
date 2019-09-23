@@ -807,10 +807,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			let eps = $('.addwatchtab input[name="dconnumber_entry_price"]').val();
 			let tfs = $('.addwatchtab input[name="dconnumber_take_profit_point"]').val();
 			let sls = $('.addwatchtab input[name="dconnumber_stop_loss_point"]').val();
+			let isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
+
 
 			console.log(eps+" ~ "+tfs+" ~ "+sls);
 
-			if(!(eps == "" && tfs == "" && sls == "")){
+			if(!(eps == "" && tfs == "" && sls == "" && isstock == "")){
 				console.log("go with submit");
 			} else {
 				console.log("stop the submit");

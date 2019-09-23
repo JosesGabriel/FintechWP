@@ -816,9 +816,12 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 				if(!(eps == "" && tfs == "" && sls == "")){
 					console.log("go with submit");
 					$('.chart-loader').css("display","block"); 
+					jQuery("#add-watchlist-param").submit();
 				} else {
 					console.log("stop the submit");
 				}
+			} else {
+				console.log("no stock selected");
 			}
 			
 		});

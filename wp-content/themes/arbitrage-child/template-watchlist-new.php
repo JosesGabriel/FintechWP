@@ -812,7 +812,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			console.log(eps+" ~ "+tfs+" ~ "+sls+" ~ "+isstock);
 
-			if(isstock != ""{
+			if(isstock != ""){
 				if(!(eps == "" && tfs == "" && sls == "")){
 					console.log("go with submit");
 					$('.chart-loader').css("display","block"); 

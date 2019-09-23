@@ -810,9 +810,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			console.log(eps+" ~ "+tfs+" ~ "+sls);
 
-			if(){
+			// if(){
 
-			}
+			// }
 		});
 		 
 		    $('.editwatchlist').change(function(e) {

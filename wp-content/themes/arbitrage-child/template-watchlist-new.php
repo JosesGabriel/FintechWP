@@ -810,14 +810,17 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			let isstock = $('.addwatchtab #dstockname').val();
 
 
-			console.log(eps+" ~ "+tfs+" ~ "+sls);
+			console.log(eps+" ~ "+tfs+" ~ "+sls+" ~ "+isstock);
 
-			if(!(eps == "" && tfs == "" && sls == "" && isstock == "")){
-				console.log("go with submit");
-				$('.chart-loader').css("display","block"); 
-			} else {
-				console.log("stop the submit");
+			if(isstock != ""{
+				if(!(eps == "" && tfs == "" && sls == "")){
+					console.log("go with submit");
+					$('.chart-loader').css("display","block"); 
+				} else {
+					console.log("stop the submit");
+				}
 			}
+			
 		});
 		 
 		    $('.editwatchlist').change(function(e) {

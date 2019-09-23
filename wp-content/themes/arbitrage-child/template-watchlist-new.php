@@ -801,6 +801,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
     jQuery(document).ready(function() {
 
+		$("#submitmenow").click(function(e){
+			e.preventDefault();
+
+			let eps = $('input[name="dconnumber_entry_price"]').val();
+			let tfs = $('input[name="dconnumber_take_profit_point"]').val();
+			let sls = $('input[name="dconnumber_stop_loss_point"]').val();
+
+			console.log(eps+" ~ "+tfs+" ~ "+sls);
+		});
 		 
 		    $('.editwatchlist').change(function(e) {
 

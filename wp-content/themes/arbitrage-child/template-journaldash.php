@@ -3243,7 +3243,11 @@ if($issampledata){
 			});
 	});
 
-	// $("#addarecord").click();
+	$("#addarecord").click(function(e){
+		e.preventDefault();
+
+		console.log("record it");
+	});
 
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;

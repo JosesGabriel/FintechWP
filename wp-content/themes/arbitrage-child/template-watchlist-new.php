@@ -819,7 +819,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 					$("#add-watchlist-param").submit();
 					$(this).hide();
 				} else {
-					$('.addwatchtab .selectnotifitems').append('<div class="indicatorerror errorpop">You have add a value to atleast one indicator</div>');
+					$('.addwatchtab .selectnotifitems').prepend('<div class="indicatorerror errorpop">You have add a value to atleast one indicator</div>');
 					console.log("stop the submit");
 				}
 			} else {

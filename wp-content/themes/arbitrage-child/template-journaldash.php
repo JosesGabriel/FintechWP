@@ -1081,7 +1081,7 @@ if($issampledata){
 		<div class="record_header">
 			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
 		</div>
-		<form action="/journal" method="post">
+		<form action="/journal" method="post" id="recordatrade">
 			<div class="record_body row">
 				<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
 					<span class="label_thisleft">Bought</span>
@@ -3242,6 +3242,8 @@ if($issampledata){
 				}
 			});
 	});
+
+	// $("#addarecord").click();
 
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;

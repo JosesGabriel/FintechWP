@@ -836,6 +836,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
 
+                    angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
+
                     // for register sentiments
                     $http({
                         method : "POST",

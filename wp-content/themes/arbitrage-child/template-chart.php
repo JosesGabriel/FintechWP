@@ -1467,6 +1467,9 @@
 																			</div>
 
 																			<div class="hideformodal">  
+																				<div class="buytrade" style="display:none" id="buytrade">
+																					this is a sell part
+																				</div>
 																				<div class="entertrade" style="display:none" id="entertrade">
 																					<?php
 																						$dbaseaccount = 0;
@@ -1483,7 +1486,7 @@
 																						<strong>Enter Buy Order</strong>
 																					</div>
 
-																					<form action="/journal" method="post">
+																					<form action="/journal" method="post">1
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">
 																								<div class="groupinput fctnlhdn">   
@@ -2521,6 +2524,10 @@
 				$( ".chartlocker" ).fadeOut(500);
 			});
 		});
+
+		// $(".arb_sell").click(function(e){
+
+		// });
 			
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();

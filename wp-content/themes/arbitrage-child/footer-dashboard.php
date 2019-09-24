@@ -345,6 +345,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
 				}
 
+				jQuery('.stockerror.errorpop').remove();
+
 			});
 
 

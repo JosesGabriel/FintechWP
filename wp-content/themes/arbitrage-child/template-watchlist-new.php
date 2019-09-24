@@ -804,6 +804,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 		$("#submitmenow").click(function(e){
 			e.preventDefault();
 
+			$('.addwatchtab .selectnotifitems').remove();
+			$('.addwatchtab .selectstock').remove();
+
 			let eps = $('.addwatchtab input[name="dconnumber_entry_price"]').val();
 			let tfs = $('.addwatchtab input[name="dconnumber_take_profit_point"]').val();
 			let sls = $('.addwatchtab input[name="dconnumber_stop_loss_point"]').val();

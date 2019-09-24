@@ -1168,7 +1168,7 @@ if($issampledata){
 						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
-						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
+						<input type="submit" name="record" id="addarecord" value="Record" class="record-data-btn recorddata">
 					</form>
 				</div>
 			</div>

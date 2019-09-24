@@ -400,7 +400,7 @@ jQuery( document ).ready(function () {
 		}
 		
 		jQuery(this).closest( '.um-activity-publish' ).submit();
-		 window.setTimeout(function(){ document.location.reload(true); }, 5000);
+		// window.setTimeout(function(){ document.location.reload(true); }, 5000);
 	});
 	
 	

@@ -3245,10 +3245,13 @@ if($issampledata){
 
 	$("#addarecord").click(function(e){
 		// e.preventDefault();
-		$(this).hideO();
-		$("#recordatradeloader").show();
+		
+
+
+		// $(this).hideO();
+		// $("#recordatradeloader").show();
 		// $("#recordatrade").submit();
-		console.log("record it");
+		// console.log("record it");
 	});
 
 		jQuery("#inpt_data_select_stock").on('change', function() {

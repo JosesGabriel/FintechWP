@@ -418,72 +418,71 @@ jQuery( document ).ready(function () {
 		um_disable_post_submit( form );
 
 		var formdata = form.serializeArray();
-		// jQuery.ajax({
-		// 	url: wp.ajax.settings.url,
-		// 	type: 'post',
-		// 	dataType: 'json',
-		// 	data: formdata,
-		// 	success: function( data ) {
+		 jQuery.ajax({
+		 	url: wp.ajax.settings.url,
+		 	type: 'post',
+		 	dataType: 'json',
+		 	data: formdata,
+		 	success: function( data ) {
 
-		// 		console.log("posted");
+		 		console.log("posted");
 
-		// 		var widget_template;
-		// 		var template_data;
+		 		var widget_template;
+		 		var template_data;
 
-		// 		if ( form.find('input[name="_post_id"]').val() === '0' ) {
-		// 			var wall = form.parents('.um').find('.um-activity-wall');
+		 		if ( form.find('input[name="_post_id"]').val() === '0' ) {
+		 			var wall = form.parents('.um').find('.um-activity-wall');
 
-		// 			widget_template = wp.template( 'um-activity-widget' );
-		// 			template_data = {
-		// 				'content'       : data.content,
-		// 				'img_src'       : data.photo_orig_base,
-		// 				'img_src_url'   : data.photo_orig_url,
-		// 				/*'img_src'       : form.find('input[name="_post_img"]').val(),
-		// 				'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
-		// 				'wall_id'       : formdata._wall_id,
-		// 				'user_id'       : data.user_id,
-		// 				'post_id'       : data.postid,
-		// 				'post_url'      : data.permalink,
-		// 				'photo'         : ( form.find('input[name="_post_img"]').val().trim().length > 0 ),
-		// 				'video'         : data.video || data.has_text_video,
-		// 				'video_content' : data.video,
-		// 				'oembed'        : data.has_oembed
-		// 			};
+		 			widget_template = wp.template( 'um-activity-widget' );
+		 			template_data = {
+		 				'content'       : data.content,
+		 				'img_src'       : data.photo_orig_base,
+		 				'img_src_url'   : data.photo_orig_url,
+		 				/*'img_src'       : form.find('input[name="_post_img"]').val(),
+		 				'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
+		 				'wall_id'       : formdata._wall_id,
+		 				'user_id'       : data.user_id,
+		 				'post_id'       : data.postid,
+		 				'post_url'      : data.permalink,
+		 				'photo'         : ( form.find('input[name="_post_img"]').val().trim().length > 0 ),
+		 				'video'         : data.video || data.has_text_video,
+		 				'video_content' : data.video,
+		 				'oembed'        : data.has_oembed
+		 			};
 
-		// 			wall.prepend( widget_template( template_data ) );
-		// 			wall.find( '.unready' ).removeClass( 'unready um-activity-clone' ).fadeIn();
+		 			wall.prepend( widget_template( template_data ) );
+		 			wall.find( '.unready' ).removeClass( 'unready um-activity-clone' ).fadeIn();
 
-		// 			form.find('textarea').val('').height('auto');
-		// 			um_clean_photo_fields( form );
-		// 			um_post_placeholder( form.find( 'textarea' ) );
+		 			form.find('textarea').val('').height('auto');
+		 			um_clean_photo_fields( form );
+		 			um_post_placeholder( form.find( 'textarea' ) );
 
-		// 			UM_wall_autocomplete_start();
-		// 		} else {
-		// 			form.parents('.um-activity-widget').removeClass( 'editing' );
+		 			UM_wall_autocomplete_start();
+		 		} else {
+		 			form.parents('.um-activity-widget').removeClass( 'editing' );
 
-		// 			widget_template = wp.template( 'um-activity-post' );
-		// 			template_data = {
-		// 				'content'       : data.content,
-		// 				'img_src'       : data.photo_orig_base,
-		// 				'img_src_url'   : data.photo_orig_url,
-		// 				/*'img_src'       : form.find('input[name="_post_img"]').val(),
-		// 				'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
-		// 				'wall_id'       : formdata._wall_id,
-		// 				'user_id'       : data.user_id,
-		// 				'post_id'       : data.postid,
-		// 				'post_url'      : data.permalink,
-		// 				'photo'         : ( form.find('input[name="_post_img"]').val().trim().length > 0 ),
-		// 				'video'         : data.video || data.has_text_video,
-		// 				'video_content' : data.video,
-		// 				'oembed'        : data.has_oembed
-		// 			};
+		 			widget_template = wp.template( 'um-activity-post' );
+		 			template_data = {
+		 				'content'       : data.content,
+		 				'img_src'       : data.photo_orig_base,
+		 				'img_src_url'   : data.photo_orig_url,
+		 				/*'img_src'       : form.find('input[name="_post_img"]').val(),
+		 				'img_src_url'   : form.find('input[name="_post_img_url"]').val(),*/
+		 				'wall_id'       : formdata._wall_id,
+		 				'user_id'       : data.user_id,
+		 				'post_id'       : data.postid,
+		 				'post_url'      : data.permalink,
+		 				'photo'         : ( form.find('input[name="_post_img"]').val().trim().length > 0 ),
+		 				'video'         : data.video || data.has_text_video,
+		 				'video_content' : data.video,
+		 				'oembed'        : data.has_oembed
+		 			};
+		 			form.parents('.um-activity-body').html( widget_template( template_data ) );
+		 		}
 
-		// 			form.parents('.um-activity-body').html( widget_template( template_data ) );
-		// 		}
-
-		// 		// window.location.reload(true);
-		// 	}
-		// });
+		 		// window.location.reload(true);
+		 	}
+		 });
 	});
 
 

@@ -1165,7 +1165,7 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
-						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
+						<img class="chart-loader" id="recordatradeloader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" id="addarecord" value="Record" class="record-data-btn recorddata">
@@ -3244,8 +3244,10 @@ if($issampledata){
 	});
 
 	$("#addarecord").click(function(e){
-		e.preventDefault();
-
+		// e.preventDefault();
+		$(this).hideO();
+		$("#recordatradeloader").show();
+		// $("#recordatrade").submit();
 		console.log("record it");
 	});
 

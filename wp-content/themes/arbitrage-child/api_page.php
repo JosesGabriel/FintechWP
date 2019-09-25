@@ -699,7 +699,7 @@
 		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_list"');
 
 
-		print_r($dsprest[0]['meta_value']);
+		print_r($dsprest[0]->meta_value);
 
 
 

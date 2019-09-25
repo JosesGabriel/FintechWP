@@ -837,10 +837,10 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
-
+                    console.log("outhere");
                     $http({
                         method : "GET",
-                        url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        url : "https://dev-v1.arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {

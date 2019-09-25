@@ -706,7 +706,7 @@
 
 
 			$return['status'] = "yes_stock";
-			$return['data'] = 'select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$_GET['symbol'].'"';
+			$return['data'] = $getstockdetails;
 			
 
 

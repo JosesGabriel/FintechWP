@@ -1109,17 +1109,17 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
-							<option value="">Select Stocks</option>
-							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
+							<!-- <option value="">Select Stocks</option> -->
+							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
+								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
+							<?php //endforeach; ?>
+						<!-- </select> -->
+						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
 						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					</div>
+					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -3329,14 +3329,25 @@ if($issampledata){
 			return dall;
 		}
 
+
 		jQuery(document).on('keyup', 'input[name="inpt_data_price_bought"], input[name="inpt_data_qty_bought"]', function (e) {
 			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
 			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			let wdecimal = finalcost.toFixed(2);
 			if(!isNaN(finalcost)){
-				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+				jQuery('input[name="inpt_data_total_bought_price"]').val(replaceCommas(wdecimal));
+			}
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
 			}
 			
 		});
@@ -3349,9 +3360,21 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
+			let finalbought = finalcost.toFixed(2);
+			let totalfinalsold = finalcost - boughtfinal;
+			let finalsold = totalfinalsold.toFixed(2);
 			if(!isNaN(finalcost)){
-				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
-				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(finalbought));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(finalsold));
+			}
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
 			}
 			
 		});

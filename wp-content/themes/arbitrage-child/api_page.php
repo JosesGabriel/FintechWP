@@ -671,7 +671,7 @@
 		}
 
 		echo json_encode($listofwatchlist);
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
 		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
 		
 		$curl = curl_init();
@@ -693,6 +693,15 @@
 		array_push($dranks, $myrank);
 
 		echo json_encode($dranks);
+
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
+		echo $_GET['symbol'];
+		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_list"');
+
+
+		print_r($dsprest[0]->meta_value);
+
+
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
 

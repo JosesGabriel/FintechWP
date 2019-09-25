@@ -164,7 +164,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.enableBidsAndAsks = false;
+    $scope.enableBidsAndAsks = true;
     $scope.bids = [];
     $scope.asks = [];
     $scope.transactions = [];
@@ -386,7 +386,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
                 response = response.data;
                 if (!response.success) {
@@ -835,6 +835,10 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
+
+                    angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
+
+                    
 
                     // for register sentiments
                     $http({

@@ -1462,11 +1462,16 @@
 																				</button>
 																				<div class="buttons">
 																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock_details[stock.symbol].symbol}}"><i class="fas fa-arrow-down"></i> Sell</a>
 																				</div>
 																			</div>
 
 																			<div class="hideformodal">  
+																				<div class="buytrade" style="display:none" id="buytrade">
+																					<div class="innerbuy">
+																						this is a sell part
+																					</div>
+																				</div>
 																				<div class="entertrade" style="display:none" id="entertrade">
 																					<?php
 																						$dbaseaccount = 0;
@@ -1483,7 +1488,7 @@
 																						<strong>Enter Buy Order</strong>
 																					</div>
 
-																					<form action="/journal" method="post">
+																					<form action="/journal" method="post">1
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">
 																								<div class="groupinput fctnlhdn">   
@@ -1836,7 +1841,20 @@
 																							<div class="vertical-box-row">
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
-																										<div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
+																										<div ng-show="!enableBidsAndAsks"
+																											style="height: calc(100% - 35px); position: relative">
+																											<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+																												<?php if ( ! WP_PROD_ENV): ?>
+																													<button
+																														class="btn btn-success btn-xs"
+																														type="button"
+																														ng-click="enableBidsAndAsks = true">Enable</button>
+																												<?php else: ?>
+																													<div>Coming soon</div>
+																												<?php endif ?>
+																											</div>
+																										</div>
+																										<div data-scrollbar="true" data-height="90%" class="" ng-show="enableBidsAndAsks">
 																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
 																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
@@ -1865,10 +1883,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																										</div>
-																										<div ng-else
-																											style="height: calc(100% - 35px); position: relative">
-																											<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">Coming soon</span>
 																										</div>
 																									</div>
 																								</div>
@@ -2512,6 +2526,10 @@
 				$( ".chartlocker" ).fadeOut(500);
 			});
 		});
+
+		// $(".arb_sell").click(function(e){
+
+		// });
 			
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();

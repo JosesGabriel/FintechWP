@@ -838,20 +838,21 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
                     console.log("outhere");
+
                     $http({
                         method : "GET",
                         url : "https://dev-v1.arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
-                            'action' : 'check_sentiment',
+                            'action' : 'check_have_stock',
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
                         console.log(response);
 
                     }, function myError(error) {
-
+                        console.log(error);
                     });
 
                     // for register sentiments

@@ -706,7 +706,9 @@
 
 
 			$return['status'] = "yes_stock";
-			$return['data'] = $dstockinfo;
+			$return['data']['symbol'] = $_GET['symbol'];
+			$return['data']['volume'] = $dstockinfo['totalstock'];
+			$return['data']['averageprice'] = $dstockinfo['aveprice'];
 			
 
 

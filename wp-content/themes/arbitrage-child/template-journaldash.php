@@ -1081,7 +1081,7 @@ if($issampledata){
 		<div class="record_header">
 			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
 		</div>
-		<form action="/journal" method="post" id="recordatrade">
+		<form action="/journal" method="post">
 			<div class="record_body row">
 				<div class="col-md-6" style="border-right: 1px solid #1c2d3f;">
 					<span class="label_thisleft">Bought</span>
@@ -1114,7 +1114,7 @@ if($issampledata){
 						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
 							<!-- <option value="">Select Stocks</option> -->
 							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php //echo $dstvals->symbol; ?>'><?php //echo $dstvals->symbol; ?></option> -->
+								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
 							<?php //endforeach; ?>
 						<!-- </select> -->
 						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
@@ -1165,10 +1165,10 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
-						<img class="chart-loader" id="recordatradeloader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
-						<input type="submit" name="record" id="addarecord" value="Record" class="record-data-btn recorddata">
+						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
 					</form>
 				</div>
 			</div>
@@ -2543,9 +2543,9 @@ if($issampledata){
 																							<div style="width:27px; text-align:center">
 																								<a href="#tradelognotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
-																							<input type="hidden" id="deletelog1" value="<?php echo $value->tlid; ?>">
+																							<input type="hidden" id="deletelog1" value="4394">
 																							<div style="width:25px">
-																								<a class="deletelog smlbtn-delete" data-istl="<?php echo $value->tlid; ?>" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a class="deletelog smlbtn-delete" data-istl="4394" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="#editlognotes_<?php echo $value->tlid; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
@@ -3243,17 +3243,6 @@ if($issampledata){
 			});
 	});
 
-	$("#addarecord").click(function(e){
-		// e.preventDefault();
-		
-
-
-		// $(this).hideO();
-		// $("#recordatradeloader").show();
-		// $("#recordatrade").submit();
-		// console.log("record it");
-	});
-
 		jQuery("#inpt_data_select_stock").on('change', function() {
 			var datts = this.value;
 			var dstocks = $.parseJSON(datts);
@@ -3340,6 +3329,7 @@ if($issampledata){
 			return dall;
 		}
 
+
 		jQuery(document).on('keyup', 'input[name="inpt_data_price_bought"], input[name="inpt_data_qty_bought"]', function (e) {
 			let price = jQuery('input[name="inpt_data_price_bought"]').val().replace(/,/g, '');
 			let quantity = jQuery('input[name="inpt_data_qty_bought"]').val().replace(/,/g, '');
@@ -3370,21 +3360,9 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
-			let wboughttotal = finalcost.toFixed(2);
-			let wfbtotal = finalcost - boughtfinal;
-			let wsoldtotal = wfbtotal.toFixed(2);
 			if(!isNaN(finalcost)){
-				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(wboughttotal));
-				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(wsoldtotal));
-			}
-			function replaceCommas(yourNumber) {
-				var components = yourNumber.toString().split(".");
-				if (components.length === 1) 
-					components[0] = yourNumber;
-				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				if (components.length === 2)
-					components[1] = components[1].replace(/\D/g, "");
-				return components.join(".");
+				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
 			}
 			
 		});

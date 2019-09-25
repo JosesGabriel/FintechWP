@@ -1854,7 +1854,7 @@
 																												<?php endif ?>
 																											</div>
 																										</div>
-																										<div data-scrollbar="true" data-height="90%" class="" ng-show="!enableBidsAndAsks">
+																										<div data-scrollbar="true" data-height="90%" class="" ng-show="enableBidsAndAsks">
 																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
 																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">

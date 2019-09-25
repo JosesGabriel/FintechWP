@@ -849,7 +849,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
-                        console.log(response);
+                        console.log(response.data);
 
                     }, function myError(error) {
                         console.log(error);

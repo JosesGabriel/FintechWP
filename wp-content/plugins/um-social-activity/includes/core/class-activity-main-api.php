@@ -449,7 +449,10 @@ class Activity_Main_API
 
             if ($content != '') {
                 $newconts = '';
-                $dprocessedtext = explode(' ', $content);
+
+                $content1 = str_replace('<br />', ' ',$content);
+
+                $dprocessedtext = explode(' ', $content1);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);

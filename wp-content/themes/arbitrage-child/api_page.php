@@ -706,7 +706,7 @@
 
 
 			$return['status'] = "yes_stock";
-			$return['data'] = $getstockdetails;
+			$return['data'] = $getstockdetails->meta_value;
 			
 
 

@@ -839,7 +839,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
 
                     $http({
-                        method : "POST",
+                        method : "GET",
                         url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",

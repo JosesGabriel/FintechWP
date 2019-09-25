@@ -1477,7 +1477,7 @@
 																							<form action="/journal" method="post">
 																								<div class="entr_wrapper_top">
 																									<div class="entr_col">
-																										<div class="groupinput midd lockedd"><label>Stock</label><input type="text" id="sellstockname" name="inpt_data_stock" value="{{stock_details[stock.symbol].description}}" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Stock</label><input type="text" id="sellstockname" name="inpt_data_stock" value="{{stock.symbol}}" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
 																										<div class="groupinput midd lockedd"><label>Position</label><input type="text" id="sellvolume" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																									</div>
 																									<div class="entr_col">

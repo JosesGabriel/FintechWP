@@ -1468,7 +1468,9 @@
 
 																			<div class="hideformodal">  
 																				<div class="buytrade" style="display:none" id="buytrade">
-																					this is a sell part
+																					<div class="innerbuy">
+																						this is a sell part
+																					</div>
 																				</div>
 																				<div class="entertrade" style="display:none" id="entertrade">
 																					<?php

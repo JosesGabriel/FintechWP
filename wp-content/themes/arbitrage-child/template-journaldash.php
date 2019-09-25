@@ -1088,15 +1088,15 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="boughtdate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
+					<div class="groupinput midd lockedd"><label>Stock</label>
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;"> -->
-							<!-- <option value="">Select Stocks</option> -->
-							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php //echo $dstvals->symbol; ?>'><?php //echo $dstvals->symbol; ?></option> -->
-							<?php //endforeach; ?>
-						<!-- </select> -->
-						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
+						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
+							<option value="">Select Stocks</option>
+							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
+								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
+							<?php endforeach; ?>
+						</select>
+						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
 						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 					</div>
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_bought" class="textfield-buyprice number" required></div>
@@ -1109,17 +1109,17 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<div class="groupinput midd lockedd"><label>Stock</label>
+					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
+						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
 								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
 							<?php endforeach; ?>
 						</select>
-						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
+						<input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
 						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					</div>
+					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -3370,8 +3370,12 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
+			let wbstotal = finalcost - boughtfinal;
+			console.log(wbstotal)
 			let wboughttotal = finalcost.toFixed(2);
-			let wsoldtotal = finalcost - boughtfinal.toFixed(2);
+			console.log(wboughttotal)
+			let wsoldtotal = wbstotal.toFixed(2);
+
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(wboughttotal));
 				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(wsoldtotal));

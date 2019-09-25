@@ -696,7 +696,6 @@
 
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
 		$duserid = $current_user->ID;
-		echo $duserid;
 		$return = [];
 		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_list"');
 		print_r('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_list"');
@@ -719,7 +718,7 @@
 			$return['status'] = "no_stock";
 		}
 
-		// echo json_encode($return);
+		echo json_encode($return);
 
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){

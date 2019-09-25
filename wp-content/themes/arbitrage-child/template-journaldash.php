@@ -1089,7 +1089,7 @@ if($issampledata){
 						<label>Enter Date</label><input type="date" name="boughtdate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
 					<div class="groupinput midd lockedd"><label>Stock</label>
-						<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly>
+						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
 						<select name="inpt_data_stock_bought" id="inpt_data_stock_bought" style="margin-left: -4px; text-align: left;width: 138px;">
 							<option value="">Select Stocks</option>
 							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
@@ -1097,7 +1097,7 @@ if($issampledata){
 							<?php endforeach; ?>
 						</select>
 						<input type="hidden" name="inpt_data_stock" id="dfinstocks">
-						<i class="fa fa-lock" aria-hidden="true"></i>
+						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 					</div>
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_bought" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_bought" class="textfield-quantity number" required></div>

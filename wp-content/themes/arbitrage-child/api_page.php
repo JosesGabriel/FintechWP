@@ -695,13 +695,13 @@
 		echo json_encode($dranks);
 
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
-
+		$duserid = $current_user->ID;
 		$return = [];
-		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$current_user->ID.'" and meta_key = "_trade_list"');
-		print_r('select * from arby_usermeta where user_id = "'.$current_user->ID.'" and meta_key = "_trade_list"');
+		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_list"');
+		print_r('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_list"');
 		if(strpos($dsprest[0]->meta_value, $_GET['symbol']) !== false){
 			// echo "has stocks";
-			$getstockdetails = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$current_user->ID.'" and meta_key = "_trade_'.$_GET['symbol'].'"');
+			$getstockdetails = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_'.$_GET['symbol'].'"');
 			$dstockinfo = unserialize($getstockdetails[0]->meta_value);
 
 

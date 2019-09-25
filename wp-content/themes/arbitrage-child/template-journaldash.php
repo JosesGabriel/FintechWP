@@ -1111,13 +1111,13 @@ if($issampledata){
 					</div>
 					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
 						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;">
-							<option value="">Select Stocks</option>
-							<?php foreach($listosstocks as $dstkey => $dstvals): ?>
-								<option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option>
-							<?php endforeach; ?>
-						</select>
-						<input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
+						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
+							<!-- <option value="">Select Stocks</option> -->
+							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
+								<!-- <option value='<?php //echo $dstvals->symbol; ?>'><?php //echo $dstvals->symbol; ?></option> -->
+							<?php //endforeach; ?>
+						<!-- </select> -->
+						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
 						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
 					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
@@ -3370,15 +3370,10 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
-			let wbstotal = finalcost - boughtfinal;
-			console.log(wbstotal)
 			let wboughttotal = finalcost.toFixed(2);
-			console.log(wboughttotal)
-			let wsoldtotal = wbstotal.toFixed(2);
-
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(wboughttotal));
-				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(wsoldtotal));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(finalcost - boughtfinal).toFixed(2));
 			}
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");

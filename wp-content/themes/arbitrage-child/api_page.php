@@ -697,10 +697,9 @@
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
 
 		$return = [];
-
 		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_list"');
 		if(strpos($dsprest[0]->meta_value, $_GET['symbol']) !== false){
-			echo "has stocks";
+			// echo "has stocks";
 			$getstockdetails = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$_GET['symbol'].'"');
 			$dstockinfo = unserialize($getstockdetails[0]->meta_value);
 
@@ -714,7 +713,7 @@
 
 
 		} else {
-			echo "no stocks";
+			// echo "no stocks";
 			$return['status'] = "no_stock";
 		}
 

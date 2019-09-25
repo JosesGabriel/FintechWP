@@ -838,7 +838,21 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
 
-                    
+                    $http({
+                        method : "POST",
+                        url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: {
+                            'action' : 'check_sentiment',
+                            'stock' : _symbol,
+                        }
+                    }).then(function mySucces(response) {
+                        console.log(response);
+
+                    }, function myError(error) {
+
+                    });
 
                     // for register sentiments
                     $http({

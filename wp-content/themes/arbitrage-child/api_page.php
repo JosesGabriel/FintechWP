@@ -702,6 +702,8 @@
 		if(strpos($dsprest[0]->meta_value, $_GET['symbol']) !== false){
 			echo "has stocks";
 			$getstockdetails = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$_GET['symbol'].'"');
+
+			print_r($getstockdetails);
 			$dstockinfo = json_decode($getstockdetails[0]->meta_value);
 
 

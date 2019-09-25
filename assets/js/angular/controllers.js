@@ -850,6 +850,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
                     }).then(function mySucces(response) {
                         console.log(response.data);
+                        if(response.data.status == "yes_stock"){
+                            angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
+                        } else {
+                            angular.element(".arb_sell").attr("data-hasstock","no_stock"); //setter
+                        }
 
                     }, function myError(error) {
                         console.log(error);

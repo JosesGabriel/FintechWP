@@ -3371,7 +3371,8 @@ if($issampledata){
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
 			let wboughttotal = finalcost.toFixed(2);
-			let wsoldtotal = finalcost - boughtfinal.toFixed(2);
+			let wbstotal = finalcost - boughtfinal;
+			let wsoldtotal = wbstotal.toFixed(2);
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(wboughttotal));
 				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(wsoldtotal));

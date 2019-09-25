@@ -3373,7 +3373,7 @@ if($issampledata){
 			let wboughttotal = finalcost.toFixed(2);
 			if(!isNaN(finalcost)){
 				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(wboughttotal));
-				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(finalcost - boughtfinal).toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
 			}
 			function replaceCommas(yourNumber) {
 				var components = yourNumber.toString().split(".");

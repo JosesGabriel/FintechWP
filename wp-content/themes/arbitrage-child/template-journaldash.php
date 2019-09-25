@@ -3360,9 +3360,21 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
+			let finalbought = finalcost.toFixed(2);
+			let totalfinalsold = finalcost - boughtfinal;
+			let finalsold = totalfinalsold.toFixed(2);
 			if(!isNaN(finalcost)){
-				jQuery('input[name="inpt_data_total_sold_price"]').val(finalcost.toFixed(2));
-				jQuery('input[name="inpt_data_total_sold_profitloss"]').val((finalcost - boughtfinal).toFixed(2));
+				jQuery('input[name="inpt_data_total_sold_price"]').val(replaceCommas(finalbought));
+				jQuery('input[name="inpt_data_total_sold_profitloss"]').val(replaceCommas(finalsold));
+			}
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
 			}
 			
 		});

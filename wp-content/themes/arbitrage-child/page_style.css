@@ -3575,7 +3575,7 @@
         height: auto;
     }
     .um-activity-bodyinner-photo {
-        padding-top: 4px;
+        /* padding-top: 4px; */
         background-color: #142c46;
     }
     .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {

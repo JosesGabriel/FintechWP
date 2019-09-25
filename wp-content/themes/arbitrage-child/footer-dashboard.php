@@ -99,21 +99,21 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			jQuery('.closemebutton').click(function(e){
 			});
 
-			jQuery('#submitmenow').click(function(e){
-				e.preventDefault();
+			// jQuery('#submitmenow').click(function(e){
+			// 	e.preventDefault();
 
-				var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
+			// 	var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
 				
-				//var countli = jQuery(".listofinfo li").length;
+			// 	//var countli = jQuery(".listofinfo li").length;
 
-				//if (countli != 0) {
-					if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
-						jQuery("#add-watchlist-param").submit();
-						$('.chart-loader').css("display","block");
-						$(this).hide();
-					}
-				//}
-			});
+			// 	//if (countli != 0) {
+			// 		if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
+			// 			jQuery("#add-watchlist-param").submit();
+			// 			$('.chart-loader').css("display","block");
+			// 			$(this).hide();
+			// 		}
+			// 	//}
+			// });
 
 			jQuery('#canceladd').click(function(e){
 				e.preventDefault();
@@ -345,6 +345,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 					jQuery('.ddropbase').addClass('opendrop').show('slow');
 				}
 
+				jQuery('.stockerror.errorpop').remove();
+
 			});
 
 
@@ -453,7 +455,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		});
 
 	</script>
-
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lazyfunc.js?<?php echo time(); ?>"></script>
 	  <?php /* temp-disabled-start */ 
 	  include 'watchlist-alert.php'; 
 	  /*temp-disabled-end */ ?>

@@ -497,35 +497,35 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                                                 <!-- wathlist phone number modal -->    
                                                 <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-																		<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
-																			<div class="modal-content">
-																				<div class="modal-header header-depo">
-																					<h5 class="modal-title title-depo" id="exampleModalLabel">Add Cellphone Number</h5>
-																					<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
-																						<i class="fas fa-times modal-btn-close-deposit"></i>
-																					</button>
-																				</div>
-																				<hr class="style14 style15">
-																				<form action="/watchlist" method="GET" id="frmcpnum" class="add-funds-show depotincome">
-																				<div class="modal-body depo-body">
-																					<div class="dmainform">
-																						<div class="dinnerform">
-																							<div class="dinitem">
-																									<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
-																									<div class="dninput"><input type="text" id="txtcpnum" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-
-																					<div class="modal-footer footer-depo">
-																						<a href="#" id="cpsubmitbtn" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
-																					</div>
-																				</form>
-
+													<div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+														<div class="modal-content">
+															<div class="modal-header header-depo">
+																<h5 class="modal-title title-depo" id="exampleModalLabel">Add Cellphone Number</h5>
+																<button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+																	<i class="fas fa-times modal-btn-close-deposit"></i>
+																</button>
+															</div>
+															<hr class="style14 style15">
+															<form action="/watchlist" method="GET" id="frmcpnum" class="add-funds-show depotincome">
+															<div class="modal-body depo-body">
+																<div class="dmainform">
+																	<div class="dinnerform">
+																		<div class="dinitem">
+																				<h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
+																				<div class="dninput"><input type="text" id="txtcpnum" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
 																			</div>
 																		</div>
 																	</div>
+																</div>
+
+																<div class="modal-footer footer-depo">
+																	<a href="#" id="cpsubmitbtn" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
+																</div>
+															</form>
+
+														</div>
+													</div>
+												</div>
                                                 <!-- wathlist phone number modal -->    
 
 
@@ -535,7 +535,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 														<div class="">
 
 
-														<div class="groupinput midd"><label>Stock Code</label>
+														<div class="groupinput midd selectstock"><label>Stock Code</label>
 															
 
 															<input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
@@ -560,7 +560,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 															<input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
 															<input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
 														</div>
-														<div class="">
+														<div class="selectnotifitems">
 																<div class="innerdeliver innerdeliver-addstock">
 																	<ul>
 																		<li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
@@ -801,6 +801,36 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
     jQuery(document).ready(function() {
 
+		$("#submitmenow").click(function(e){
+			e.preventDefault();
+
+			$('.addwatchtab .selectnotifitems').remove();
+			$('.addwatchtab .selectstock').remove();
+
+			let eps = $('.addwatchtab input[name="dconnumber_entry_price"]').val();
+			let tfs = $('.addwatchtab input[name="dconnumber_take_profit_point"]').val();
+			let sls = $('.addwatchtab input[name="dconnumber_stop_loss_point"]').val();
+			let isstock = $('.addwatchtab #dstockname').val();
+
+
+			console.log(eps+" ~ "+tfs+" ~ "+sls+" ~ "+isstock);
+
+			if(isstock != ""){
+				if(!(eps == "" && tfs == "" && sls == "")){
+					console.log("go with submit");
+					$('.chart-loader').css("display","block"); 
+					$("#add-watchlist-param").submit();
+					$(this).hide();
+				} else {
+					$('.addwatchtab .selectnotifitems').prepend('<div class="indicatorerror errorpop">You have add a value to atleast one indicator</div>');
+					console.log("stop the submit");
+				}
+			} else {
+				$('.addwatchtab .selectstock').append('<div class="stockerror errorpop">You have to select a stock</div>');
+				console.log("no stock selected");
+			}
+			
+		});
 		 
 		    $('.editwatchlist').change(function(e) {
 

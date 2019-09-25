@@ -671,7 +671,7 @@
 		}
 
 		echo json_encode($listofwatchlist);
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
 		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
 		
 		$curl = curl_init();
@@ -693,6 +693,9 @@
 		array_push($dranks, $myrank);
 
 		echo json_encode($dranks);
+
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
+		echo "enter the bridge";
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
 

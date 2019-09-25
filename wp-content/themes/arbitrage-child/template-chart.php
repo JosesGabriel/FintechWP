@@ -1469,7 +1469,40 @@
 																			<div class="hideformodal">  
 																				<div class="buytrade" style="display:none" id="buytrade">
 																					<div class="innerbuy">
-																						this is a sell part
+																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
+																							<div class="entr_ttle_bar">
+																								<strong>Sell Trade</strong>
+																								<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
+																							</div>
+																							<form action="/journal" method="post">
+																								<div class="entr_wrapper_top">
+																									<div class="entr_col">
+																										<div class="groupinput midd lockedd"><label>Stock</label><input type="text" id="sellstockname" name="inpt_data_stock" value="" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Position</label><input type="text" id="sellvolume" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																									</div>
+																									<div class="entr_col">
+																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price_b" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																									</div>
+																									<div class="entr_col">
+																										<div class="groupinput midd"><label>Sell Price</label><input step="0.01" id="sellprice" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
+																										<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty" value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
+																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate"></div>
+																									</div>
+																									<div class="entr_clear"></div>
+																								</div>
+																								<div>
+																									<div style="height: 36px;">
+																										<input type="hidden" value="Log" name="inpt_data_status">
+																										<input type="hidden" value="" id="sellavrprice" name="inpt_avr_price">
+																										<input type="hidden" value="" name="inpt_data_postid">
+																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
+																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
+																										<input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
+																									</div>
+																								</div>
+																							</form>
+																						</div>
 																					</div>
 																				</div>
 																				<div class="entertrade" style="display:none" id="entertrade">

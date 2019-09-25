@@ -709,6 +709,7 @@
 			$return['data']['symbol'] = $_GET['symbol'];
 			$return['data']['volume'] = $dstockinfo['totalstock'];
 			$return['data']['averageprice'] = $dstockinfo['aveprice'];
+			$return['data']['tradelog'] = $getstockdetails[0]->meta_value;
 			
 
 

@@ -2543,7 +2543,7 @@ if($issampledata){
 																							<div style="width:27px; text-align:center">
 																								<a href="#tradelognotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
-																							<input type="hidden" id="deletelog1" value="4394">
+																							<input type="hidden" id="deletelog1" value="<?php echo $value->tlid; ?>">
 																							<div style="width:25px">
 																								<a class="deletelog smlbtn-delete" data-istl="<?php echo $value->tlid; ?>" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>

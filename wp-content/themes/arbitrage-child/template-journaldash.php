@@ -3370,8 +3370,10 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket - parseFloat(thetradefees(totalmarket, 'sell'));
-			let wboughttotal = finalcost.toFixed(2);
 			let wbstotal = finalcost - boughtfinal;
+			console.log(wbstotal)
+			let wboughttotal = finalcost.toFixed(2);
+			console.log(wboughttotal)
 			let wsoldtotal = wbstotal.toFixed(2);
 
 			if(!isNaN(finalcost)){

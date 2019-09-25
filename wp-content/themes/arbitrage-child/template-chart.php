@@ -1462,7 +1462,7 @@
 																				</button>
 																				<div class="buttons">
 																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock_details[stock.symbol].symbol}}"><i class="fas fa-arrow-down"></i> Sell</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock_details[stock.symbol].symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
 																				</div>
 																			</div>
 

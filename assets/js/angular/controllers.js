@@ -838,6 +838,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
 
+                    
+
                     // for register sentiments
                     $http({
                         method : "POST",

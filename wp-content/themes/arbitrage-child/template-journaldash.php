@@ -3346,8 +3346,18 @@ if($issampledata){
 
 			let totalmarket = parseFloat(price) * parseFloat(quantity);
 			let finalcost = totalmarket + parseFloat(thetradefees(totalmarket, 'buy'));
+			let wdecimal = finalcost.toFixed(2);
 			if(!isNaN(finalcost)){
-				jQuery('input[name="inpt_data_total_bought_price"]').val(finalcost.toFixed(2));
+				jQuery('input[name="inpt_data_total_bought_price"]').val(replaceCommas(wdecimal));
+			}
+			function replaceCommas(yourNumber) {
+				var components = yourNumber.toString().split(".");
+				if (components.length === 1) 
+					components[0] = yourNumber;
+				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				if (components.length === 2)
+					components[1] = components[1].replace(/\D/g, "");
+				return components.join(".");
 			}
 			
 		});

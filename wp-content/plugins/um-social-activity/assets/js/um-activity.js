@@ -1260,23 +1260,18 @@ jQuery( document ).ready(function () {
 					// jQuery(this).parents('.um-activity-foot.status').find('.um-activity-bearish.isyours').removeClass('active').removeClass('isyours').addClass('notyours');
 	
 					todo = 'unbearish';
-
-
-					 setTimeout(function() {
-						 jQuery.ajax({
-						 	url: wp.ajax.settings.url,
-						 	type: 'post',
-						 	dataType: 'json',
-						 	data: {
-						 		action:'um_activity_unbearish_post',
-					 		postid: postid
-						 	},
-						 	success: function (data) {	
-		
-						 	}
-						 });
-						}, 2000);
-
+					 jQuery.ajax({
+					 	url: wp.ajax.settings.url,
+					 	type: 'post',
+					 	dataType: 'json',
+					 	data: {
+					 		action:'um_activity_unbearish_post',
+				 		postid: postid
+					 	},
+					 	success: function (data) {	
+	
+					 	}
+					 });
 
 				}
 	
@@ -1427,21 +1422,19 @@ jQuery( document ).ready(function () {
 					
 					todo = 'unbullish';
 
-				setTimeout(function() {	
-						 jQuery.ajax({
-						 	url: wp.ajax.settings.url,
-						 	type: 'post',
-						 	dataType: 'json',
-						 	data: {
-						 		action:'um_activity_unbullish_post',
-						 		postid: postid
-						 	},
-						 	success: function (data) {
-						 		console.log(data);
-						 	}
-						 });
-					}, 2000);
- 
+					 jQuery.ajax({
+					 	url: wp.ajax.settings.url,
+					 	type: 'post',
+					 	dataType: 'json',
+					 	data: {
+					 		action:'um_activity_unbullish_post',
+					 		postid: postid
+					 	},
+					 	success: function (data) {
+					 		console.log(data);
+					 	}
+					 });
+					 
 				}
 
 				var numberlikes = jQuery(this).parents('.um-activity-foot.status').find('.um-activity-like.isyours').attr('data-numlikes');

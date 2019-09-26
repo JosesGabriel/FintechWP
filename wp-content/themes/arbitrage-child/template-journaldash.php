@@ -2594,8 +2594,9 @@ if($issampledata){
 																									</div>
 																									<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
 
-                                                                                                    <form method="post" class="edittlogs"> 
+                                                                                                    
 																									<div class="trdlgsbox">
+                                                                                                        <form method="post" class="edittlogs"> 
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
 																													<select class="rnd selecteditlog" name="data_strategy" id="">
@@ -2635,9 +2636,10 @@ if($issampledata){
 																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 																											</div>
 																										</div>
+                                                                                                        </form>
     																									<div class="trdclr"></div>
     																									</div>
-                                                                                                    </form>
+                                                                                                    
 																								</div>
 																							
 																						</div>

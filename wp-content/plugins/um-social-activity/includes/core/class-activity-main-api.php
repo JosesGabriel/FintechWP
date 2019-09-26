@@ -450,11 +450,10 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-                $newline = ["<br >","<br>","<br />","<br/>"];
+               
+                $dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                $content1 = str_replace($newline,' ',$content);
-
-                $dprocessedtext = explode(' ', $content1);
+                //$dprocessedtext = explode(' ', $content1);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);

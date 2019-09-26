@@ -450,15 +450,17 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-                $newline = ["<br >","<br>","<br />","<br/>"];
+                $rows = explode('\n', $content);
+                //$$content1 = array();
+                //$content1 = str_replace($newline,' ',$content);            
 
-                $content1 = str_replace($newline,' ',$content);
+                foreach($rows as $row) {
+                    $dprocessedtext = explode(' ', $row);
 
-                $dprocessedtext = explode(' ', $content1);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
+                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="noopener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
                         $usname = str_replace('@', '', $dwordpvalue);
@@ -476,6 +478,9 @@ class Activity_Main_API
                         $newconts .= ' ' . $dwordpvalue;
                     }
                 }
+
+            }
+
             }
 
             ob_start();

@@ -134,13 +134,13 @@ echo $user->ID ." versis ". $user->ID;
 
     //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-    if(isset($_POST['editbutton'])){
+    if(isset($_POST['to_edit'])){
         //echo $_POST['inpt_data_status'];
 
-        $log_id = $_POST['log_id'];
-        $strategy = $_POST['data_strategy'];
-        $tradepan = $_POST['data_tradeplan'];
-        $emotion = $_POST['data_emotion'];
+        $log_id = $_POST['to_edit'];
+        $strategy = $_POST['strategy'];
+        $tradepan = $_POST['trade_plan'];
+        $emotion = $_POST['emotion'];
         $notes = $_POST['tlnotes'];
 
         //echo $strategy;
@@ -2596,7 +2596,7 @@ if($issampledata){
 
                                                                                                     
 																									<div class="trdlgsbox">
-                                                                                                        <form method="post" class="edittlogs"> 
+                                                                                                       <!-- <form method="post" class="edittlogs"> -->
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
 																													<select class="rnd selecteditlog strat" name="data_strategy" id="strat">
@@ -2636,13 +2636,22 @@ if($issampledata){
 																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 																											</div>
 																										</div>
-                                                                                                        </form>
+                                                                                                        <!--</form>-->
     																									<div class="trdclr"></div>
     																									</div>
                                                                                                     
 																								</div>
 																							
 																						</div>
+
+                                                                                        <form method="post" class="edittlogs">
+                                                                                                <input type="hidden" name="to_edit" id="tl_id" value="<?php echo $value->tlid; ?>">
+                                                                                                <input type="hidden" name="strategy" id="strategy" value="">
+                                                                                                <input type="hidden" name="trade_plan" id="trade_plan" value="">
+                                                                                                <input type="hidden" name="emotion" id="emotion" value="">
+                                                                                                <input type="hidden" name="tlnotes" id="tlnotes" value="">
+                                                                                        </form>
+
 																					</li>
 
 																			<?php 	 }
@@ -3235,12 +3244,12 @@ if($issampledata){
             var tplan = jQuery('.tplan').val();
             var emot = jQuery('.emot').val();
             var tnotes = jQuery('.tnotes').val();
-            console.log(strat);
-            console.log(tplan);
-            console.log(emot);
-            console.log(tnotes);
+            jQuery(".edittlogs").find("#strategy").val(strat);
+            jQuery(".edittlogs").find("#trade_plan").val(tplan);
+            jQuery(".edittlogs").find("#emotion").val(emot);
+            jQuery(".edittlogs").find("#tlnotes").val(tnotes);
 
-           jQuery('.edittlogs').submit();
+            jQuery('.edittlogs').submit();
 
         });
 

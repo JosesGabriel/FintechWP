@@ -132,9 +132,9 @@ echo $user->ID ." versis ". $user->ID;
 
 
 
-    if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-   // if(isset($_POST['editbutton'])){
+    if(isset($_POST['editbutton'])){
         //echo $_POST['inpt_data_status'];
 
         $log_id = $_POST['log_id'];

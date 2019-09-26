@@ -143,7 +143,6 @@ echo $user->ID ." versis ". $user->ID;
         $emotion = $_POST['data_emotion'];
         $notes = $_POST['tlnotes'];
 
-        echo "<script>console.log('test sulod');</script>";
         //echo $strategy;
          $updatelogs = 'update arby_tradelog set tlstrats = '. $strategy .', tltradeplans = '. $tradepan .', tlemotions = '. $emotion .', tlnotes = '. $notes .'  where tlid = '. $log_id .' and isuser ='.$user->ID;
          $wpdb->query($updatelogs);
@@ -2600,7 +2599,7 @@ if($issampledata){
                                                                                                         <form method="post" class="edittlogs"> 
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-																													<select class="rnd selecteditlog" name="data_strategy" id="">
+																													<select class="rnd selecteditlog" name="data_strategy" id="strat">
 																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
 																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
 																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
@@ -3229,7 +3228,11 @@ if($issampledata){
 		});
         
         jQuery(".editmenow").click(function(){
+
         //$(document).on("click", ".editmenow", function() {
+
+            var strat = jQuery('.selecteditlog').find("#strat").val();
+            console.log(strat);
 
            jQuery('.edittlogs').submit();
 

@@ -453,7 +453,7 @@ class Activity_Main_API
                
                 $dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                //$dprocessedtext = explode(' ', $content1);
+                //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);

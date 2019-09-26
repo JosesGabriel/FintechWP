@@ -1466,7 +1466,7 @@
 																									<div class="entr_col">
 																										<div class="groupinput midd"><label>Sell Price</label><input step="0.01" id="sellprice" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
 																										<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty" value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
-																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate"></div>
+																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate" required></div>
 																									</div>
 																									<div class="entr_clear"></div>
 																								</div>

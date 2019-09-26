@@ -108,8 +108,6 @@ echo $user->ID ." versis ". $user->ID;
            //exit; 
         //=========================================
 
-
-
         echo 'delete: '.$_POST['todelete'];
         $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
         wp_update_post($post);
@@ -2595,27 +2593,27 @@ if($issampledata){
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
 																													<select class="rnd selecteditlog" name="data_strategy" id="">
-																														<option value="Bottom Picking">Bottom Picking</option>
-																														<option value="Breakout Play">Breakout Play</option>
-																														<option selected="" value="Trend Following">Trend Following</option>
+																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
+																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
+																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
 																													</select>
 																												</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
 																												<select class="rnd selecteditlog" name="data_tradeplan" id="">
-																														<option selected="" value="Day Trade">Day Trade</option>
-																														<option value="Swing Trade">Swing Trade</option>
-																														<option value="Investment">Investment</option>
+																														<option <?php if($value->tltradeplans == 'Day Trade') echo "selected"; ?> value="Day Trade">Day Trade</option>
+																														<option <?php if($value->tltradeplans == 'Swing Trade') echo "selected"; ?> value="Swing Trade">Swing Trade</option>
+																														<option <?php if($value->tltradeplans == 'Investment') echo "selected"; ?> value="Investment">Investment</option>
 																												</select>
 																											</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
 																												<select class="rnd selecteditlog" name="data_emotion" id="">
-																														<option value="Neutral">Neutral</option>
-																														<option value="Greedy">Greedy</option>
-																														<option selected="" value="Fearful">Fearful</option>
+																														<option  <?php if($value->tlemotions == 'Neutral') echo "selected"; ?> value="Neutral">Neutral</option>
+																														<option <?php if($value->tlemotions == 'Greedy') echo "selected"; ?> value="Greedy">Greedy</option>
+																														<option <?php if($value->tlemotions == 'Fearful') echo "selected"; ?> value="Fearful">Fearful</option>
 																												</select>
 																											</div>
-																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result txtred">-3.09%</span></div>
-																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft txtred">Loss</span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $tliswin; ?></span></div>
 																										</div>
 																										<div class="trdright darkbgpadd">
 																											<div><strong>Notes:</strong></div>

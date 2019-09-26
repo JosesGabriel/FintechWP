@@ -2586,7 +2586,7 @@ if($issampledata){
 																								</div>
 																							</div>
 																						</div>
-																						<div class="hidethis" id="hidelogs">
+																						<div class="hidethis1" id="hidelogs1">
 																							    
 																								<div class="tradelogbox" id="editlognotes_<?php echo $value->tlid; ?>">
 																									<div class="entr_ttle_bar">

@@ -20,27 +20,6 @@ if ( is_user_logged_in() ) {
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-147416476-1');
-	</script>
-	
-	<!-- Google Ads -->
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-4838120237791146",
-		enable_page_level_ads: true
-		});
-	</script>
-	<?php endif ?>
-	
 	<meta property="og:type" content="website" /> 
 	<meta property="og:url" content="<?php echo $siteurlgen; ?>/share/" /> 
 	<meta property="og:image" content="<?php 

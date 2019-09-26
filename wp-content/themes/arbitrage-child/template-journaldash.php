@@ -134,10 +134,10 @@ echo $user->ID ." versis ". $user->ID;
 
     //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-    if(isset($_POST['editbutton'])){
+    if(isset($_POST['to_edit'])){
         //echo $_POST['inpt_data_status'];
 
-        $log_id = $_POST['tl_id'];
+        $log_id = $_POST['to_edit'];
         $strategy = $_POST['strategy'];
         $tradepan = $_POST['trade_plan'];
         $emotion = $_POST['emotion'];
@@ -2645,7 +2645,7 @@ if($issampledata){
 																						</div>
 
                                                                                         <form method="post" class="edittlogs">
-                                                                                                <input type="hidden" name="tl_id" id="tl_id" value="<?php echo $value->tlid; ?>">
+                                                                                                <input type="hidden" name="to_edit" id="tl_id" value="<?php echo $value->tlid; ?>">
                                                                                                 <input type="hidden" name="strategy" id="strategy" value="">
                                                                                                 <input type="hidden" name="trade_plan" id="trade_plan" value="">
                                                                                                 <input type="hidden" name="emotion" id="emotion" value="">

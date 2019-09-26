@@ -1474,8 +1474,8 @@
 																									<div style="height: 36px;">
 																										<input type="hidden" value="Log" name="inpt_data_status">
 																										<input type="hidden" value="fromchart" name="formsource">
-																										<input type="hidden" value="" id="sellavrprice" name="inpt_avr_price">
-																										<input type="hidden" value="" name="inpt_data_postid">
+																										<!-- <input type="hidden" value="" id="sellavrprice" name="inpt_avr_price"> -->
+																										<!-- <input type="hidden" value="" name="inpt_data_postid"> -->
 																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
 																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
 																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade" style="display:none;">

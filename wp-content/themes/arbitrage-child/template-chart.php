@@ -2542,8 +2542,8 @@
 		// $(".arb_sell").click(function(e){
 
 		// });
-
-		var dstockpath = pathname.split("/");
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
 		dstockpath = dstockpath.filter(function(el) { return el; });
 		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
 

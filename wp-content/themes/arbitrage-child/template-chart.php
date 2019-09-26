@@ -1451,7 +1451,6 @@
 																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 																							<div class="entr_ttle_bar">
 																								<strong>Sell Trade</strong>
-																								<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
 																							</div>
 																							<form action="/journal" method="post">
 																								<div class="entr_wrapper_top">
@@ -1474,8 +1473,8 @@
 																									<div style="height: 36px;">
 																										<input type="hidden" value="Log" name="inpt_data_status">
 																										<input type="hidden" value="fromchart" name="formsource">
-																										<input type="hidden" value="" id="sellavrprice" name="inpt_avr_price">
-																										<input type="hidden" value="" name="inpt_data_postid">
+																										<!-- <input type="hidden" value="" id="sellavrprice" name="inpt_avr_price"> -->
+																										<!-- <input type="hidden" value="" name="inpt_data_postid"> -->
 																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
 																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
 																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade" style="display:none;">
@@ -2543,6 +2542,29 @@
 		// $(".arb_sell").click(function(e){
 
 		// });
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+
+		jQuery.ajax({
+			method: "GET",
+			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			dataType: 'json',
+			data: {
+				'action' : 'post_sentiment',
+				'stock' : dstockpath
+			},
+			success: function(data) {
+				console.log(data);
+				if(data.status == "yes_stock"){
+					$("#sellvolume").val(data.data.volume);
+					$("#sellavrprice").val(data.data.averageprice);
+					$("#tradelogs").val(data.data.tradelog);
+					$("#confirmsellparts").show();
+				}
+			}
+		});
 			
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();

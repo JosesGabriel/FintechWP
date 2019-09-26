@@ -296,12 +296,29 @@ echo $user->ID ." versis ". $user->ID;
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
 
-		$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+		$pzemos = "";
+		$pzplans = "";
+		$pzstrats = "";
+		$pznotes = "";
+
+		if(isset($_POST['formsource']) && $_POST['formsource'] == "fromchart"){
+			$buyyinginfo = unserialize(stripslashes($_POST['dtradelogs']));
+			// $buyyinginfo['data']['']
+		} else {
+			$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+
+			$pzemos = $buyyinginfo[0]->emotion;
+			$pzplans = $buyyinginfo[0]->tradeplan;
+			$pzstrats = $buyyinginfo[0]->strategy;
+			$pznotes = $buyyinginfo[0]->tradingnotes;
+		}
+
+		
 
 		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 
-		// print_r(unserialize(stripslashes($_POST['dtradelogs'])));
-		print_r($_POST);
+		print_r(unserialize(stripslashes($_POST['dtradelogs'])));
+		// print_r($_POST);
 		exit;
 
         // Update journal data.

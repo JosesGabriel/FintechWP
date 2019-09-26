@@ -3234,6 +3234,7 @@ if($issampledata){
 			})
 			.then((willDelete) => {
 				if (willDelete) {
+                    console.log('delete this');
 					jQuery(this).parents(".dloglist").addClass("housed");
 					jQuery(".deleteformitem").find("#todelete").val(dlogid);
 					jQuery(".deleteformitem").submit();

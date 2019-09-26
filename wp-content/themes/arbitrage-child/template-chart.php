@@ -1460,7 +1460,7 @@
 																										<div class="groupinput midd lockedd"><label>Position</label><input type="text" id="sellvolume" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																									</div>
 																									<div class="entr_col">
-																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price_b" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																										<div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																									</div>
 																									<div class="entr_col">

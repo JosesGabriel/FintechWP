@@ -1498,7 +1498,7 @@
 																										<input type="hidden" value="" name="inpt_data_postid">
 																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
 																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
-																										<input type="submit" id="buy-order--submit" class="confirmtrd green buy-order--submit" value="Confirm Trade">
+																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade">
 																									</div>
 																								</div>
 																							</form>

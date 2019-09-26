@@ -2618,21 +2618,21 @@ if($issampledata){
                                                                                                        <!-- <form method="post" class="edittlogs"> -->
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-																													<select class="rnd selecteditlog strat" name="data_strategy_<?php echo $value->tlid; ?>" id="strat">
+																													<select class="rnd selecteditlog strat_<?php echo $value->tlid; ?>" name="data_strategy" id="strat">
 																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
 																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
 																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
 																													</select>
 																												</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
-																												<select class="rnd selecteditlog tplan" name="data_tradeplan_<?php echo $value->tlid; ?>" id="">
+																												<select class="rnd selecteditlog tplan_<?php echo $value->tlid; ?>" name="data_tradeplan" id="">
 																														<option <?php if($value->tltradeplans == 'Day Trade') echo "selected"; ?> value="Day Trade">Day Trade</option>
 																														<option <?php if($value->tltradeplans == 'Swing Trade') echo "selected"; ?> value="Swing Trade">Swing Trade</option>
 																														<option <?php if($value->tltradeplans == 'Investment') echo "selected"; ?> value="Investment">Investment</option>
 																												</select>
 																											</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-																												<select class="rnd selecteditlog emot" name="data_emotion_<?php echo $value->tlid; ?>" id="">
+																												<select class="rnd selecteditlog emot_<?php echo $value->tlid; ?>" name="data_emotion" id="">
 																														<option  <?php if($value->tlemotions == 'Neutral') echo "selected"; ?> value="Neutral">Neutral</option>
 																														<option <?php if($value->tlemotions == 'Greedy') echo "selected"; ?> value="Greedy">Greedy</option>
 																														<option <?php if($value->tlemotions == 'Fearful') echo "selected"; ?> value="Fearful">Fearful</option>
@@ -2644,7 +2644,7 @@ if($issampledata){
 																										<div class="trdright darkbgpadd">
 																											<div><strong>Notes:</strong></div>
 																											<div>
-																												<textarea rows="3" name="tlnotes_<?php echo $value->tlid; ?>" class="tnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
+																												<textarea rows="3" name="tlnotes" class="tnotes_<?php echo $value->tlid; ?>" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
 																											</div>
 																										</div>
 																										<div class="trdleft">
@@ -2652,7 +2652,7 @@ if($issampledata){
 																											<input type="hidden" name="log_id" value="<?php echo $value->tlid; ?>">
 																											<input type="hidden" name="logs" value="">
 																											<div class="onelnetrd" style="margin-top: 9px;"> 
-																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
+																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" data-istl="<?php echo $value->tlid; ?>" style="float: right;">Update</button>
 																											</div>
 																										</div>
                                                                                                         <!--</form>-->
@@ -3258,11 +3258,12 @@ if($issampledata){
         jQuery(".editmenow").click(function(){
 
         //$(document).on("click", ".editmenow", function() {
+            var ulogid = jQuery(this).attr('data-istl');
 
-            var strat = jQuery('.strat').val();
-            var tplan = jQuery('.tplan').val();
-            var emot = jQuery('.emot').val();
-            var tnotes = jQuery('.tnotes').val();
+            var strat = jQuery('.strat_'+ ulogid).val();
+            var tplan = jQuery('.tplan_'+ ulogid).val();
+            var emot = jQuery('.emot_'+ ulogid).val();
+            var tnotes = jQuery('.tnotes_'+ ulogid).val();
             jQuery(".edittlogs").find("#strategy").val(strat);
             jQuery(".edittlogs").find("#trade_plan").val(tplan);
             jQuery(".edittlogs").find("#emotion").val(emot);

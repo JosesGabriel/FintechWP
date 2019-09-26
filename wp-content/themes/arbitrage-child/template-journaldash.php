@@ -143,7 +143,6 @@ echo $user->ID ." versis ". $user->ID;
         $emotion = $_POST['data_emotion'];
         $notes = $_POST['tlnotes'];
 
-        echo "<script>console.log('test sulod');</script>";
         //echo $strategy;
          $updatelogs = 'update arby_tradelog set tlstrats = '. $strategy .', tltradeplans = '. $tradepan .', tlemotions = '. $emotion .', tlnotes = '. $notes .'  where tlid = '. $log_id .' and isuser ='.$user->ID;
          $wpdb->query($updatelogs);
@@ -2600,21 +2599,21 @@ if($issampledata){
                                                                                                         <form method="post" class="edittlogs"> 
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-																													<select class="rnd selecteditlog" name="data_strategy" id="">
+																													<select class="rnd selecteditlog strat" name="data_strategy" id="strat">
 																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
 																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
 																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
 																													</select>
 																												</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
-																												<select class="rnd selecteditlog" name="data_tradeplan" id="">
+																												<select class="rnd selecteditlog tplan" name="data_tradeplan" id="">
 																														<option <?php if($value->tltradeplans == 'Day Trade') echo "selected"; ?> value="Day Trade">Day Trade</option>
 																														<option <?php if($value->tltradeplans == 'Swing Trade') echo "selected"; ?> value="Swing Trade">Swing Trade</option>
 																														<option <?php if($value->tltradeplans == 'Investment') echo "selected"; ?> value="Investment">Investment</option>
 																												</select>
 																											</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-																												<select class="rnd selecteditlog" name="data_emotion" id="">
+																												<select class="rnd selecteditlog emot" name="data_emotion" id="">
 																														<option  <?php if($value->tlemotions == 'Neutral') echo "selected"; ?> value="Neutral">Neutral</option>
 																														<option <?php if($value->tlemotions == 'Greedy') echo "selected"; ?> value="Greedy">Greedy</option>
 																														<option <?php if($value->tlemotions == 'Fearful') echo "selected"; ?> value="Fearful">Fearful</option>
@@ -2626,7 +2625,7 @@ if($issampledata){
 																										<div class="trdright darkbgpadd">
 																											<div><strong>Notes:</strong></div>
 																											<div>
-																												<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
+																												<textarea rows="3" name="tlnotes" class="tnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
 																											</div>
 																										</div>
 																										<div class="trdleft">
@@ -3229,7 +3228,17 @@ if($issampledata){
 		});
         
         jQuery(".editmenow").click(function(){
+
         //$(document).on("click", ".editmenow", function() {
+
+            var strat = jQuery('.strat').val();
+            var tplan = jQuery('.tplan').val();
+            var emot = jQuery('.emot').val();
+            var tnotes = jQuery('.tnotes').val();
+            console.log(strat);
+            console.log(tplan);
+            console.log(emot);
+            console.log(tnotes);
 
            jQuery('.edittlogs').submit();
 

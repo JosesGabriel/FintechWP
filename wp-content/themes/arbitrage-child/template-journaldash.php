@@ -2587,12 +2587,14 @@ if($issampledata){
 																							</div>
 																						</div>
 																						<div class="hidethis" id="hidelogs">
-																							<form method="post" class="edittlogs">     
+																							    
 																								<div class="tradelogbox" id="editlognotes_<?php echo $value->tlid; ?>">
 																									<div class="entr_ttle_bar">
 																									<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
 																									</div>
 																									<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+
+                                                                                                    <form method="post" class="edittlogs"> 
 																									<div class="trdlgsbox">
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
@@ -2633,10 +2635,11 @@ if($issampledata){
 																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
 																											</div>
 																										</div>
-																									<div class="trdclr"></div>
-																									</div>
+    																									<div class="trdclr"></div>
+    																									</div>
+                                                                                                    </form>
 																								</div>
-																							</form>
+																							
 																						</div>
 																					</li>
 

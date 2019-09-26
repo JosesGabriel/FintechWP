@@ -104,8 +104,8 @@ echo $user->ID ." versis ". $user->ID;
         //========================================
            $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
            $wpdb->query($deletelogs);
-           wp_redirect('/journal');
-           exit; 
+           //wp_redirect('/journal');
+           //exit; 
         //=========================================
 
 

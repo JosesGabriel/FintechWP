@@ -139,10 +139,14 @@ echo $user->ID ." versis ". $user->ID;
 
         $log_id = $_POST['log_id'];
         $strategy = $_POST['data_strategy'];
-        $emotion = $_POST['emotion'];
-        $logs = $_POST['logs'];
+        $tradepan = $_POST['data_tradeplan'];
+        $emotion = $_POST['data_emotion'];
+        $notes = $_POST['tlnotes'];
 
-        echo $strategy;
+        //echo $strategy;
+         $updatelogs = 'update arby_tradelog set tlstrats = '. $strategy .', tltradeplans = '. $tradepan .', tlemotions = '. $emotion .', tlnotes = '. $notes .'  where tlid = '. $log_id .' and isuser ='.$user->ID;
+         $wpdb->query($updatelogs);
+
 
         $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
@@ -2623,7 +2627,7 @@ if($issampledata){
 																										</div>
 																										<div class="trdleft">
 																											<input type="hidden" value="Edit" name="inpt_data_status">
-																											<input type="hidden" name="log_id" value="4394">
+																											<input type="hidden" name="log_id" value="<?php echo $value->tlid; ?>">
 																											<input type="hidden" name="logs" value="">
 																											<div class="onelnetrd" style="margin-top: 9px;"> 
 																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>

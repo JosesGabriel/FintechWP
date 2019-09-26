@@ -2557,6 +2557,11 @@
 			},
 			success: function(data) {
 				console.log(data);
+				if(data.status == "yes_stock"){
+					$("#sellvolume").val(data.data.volume);
+					$("#sellavrprice").val(data.data.averageprice);
+					$("#tradelogs").val(data.data.tradelog);
+				}
 			}
 		});
 			

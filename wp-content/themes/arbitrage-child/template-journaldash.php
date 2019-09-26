@@ -138,10 +138,10 @@ echo $user->ID ." versis ". $user->ID;
         //echo $_POST['inpt_data_status'];
 
         $log_id = $_POST['to_edit'];
-        $strategy = $_POST['strategy'];
-        $tradepan = $_POST['trade_plan'];
-        $emotion = $_POST['emotion'];
-        $notes = $_POST['tlnotes'];
+        $strategy = $_POST['strategy_'. $log_id];
+        $tradepan = $_POST['trade_plan_'. $log_id];
+        $emotion = $_POST['emotion_'. $log_id];
+        $notes = $_POST['tlnotes_'. $log_id];
 
          $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
          $wpdb->query($updatelogs);
@@ -2663,12 +2663,12 @@ if($issampledata){
 																							
 																						</div>
 
-                                                                                        <form method="post" class="edittlogs">
+                                                                                        <form method="post" class="edittlogs_<?php echo $value->tlid; ?>">
                                                                                                 <input type="hidden" name="to_edit" id="tl_id" value="<?php echo $value->tlid; ?>">
-                                                                                                <input type="hidden" name="strategy" id="strategy" value="">
-                                                                                                <input type="hidden" name="trade_plan" id="trade_plan" value="">
-                                                                                                <input type="hidden" name="emotion" id="emotion" value="">
-                                                                                                <input type="hidden" name="tlnotes" id="tlnotes" value="">
+                                                                                                <input type="hidden" name="strategy_<?php echo $value->tlid; ?>" id="strategy" value="">
+                                                                                                <input type="hidden" name="trade_plan_<?php echo $value->tlid; ?>" id="trade_plan" value="">
+                                                                                                <input type="hidden" name="emotion_<?php echo $value->tlid; ?>" id="emotion" value="">
+                                                                                                <input type="hidden" name="tlnotes_<?php echo $value->tlid; ?>" id="tlnotes" value="">
                                                                                         </form>
 
 																					</li>
@@ -3264,12 +3264,12 @@ if($issampledata){
             var tplan = jQuery('.tplan_'+ ulogid).val();
             var emot = jQuery('.emot_'+ ulogid).val();
             var tnotes = jQuery('.tnotes_'+ ulogid).val();
-            jQuery(".edittlogs").find("#strategy").val(strat);
-            jQuery(".edittlogs").find("#trade_plan").val(tplan);
-            jQuery(".edittlogs").find("#emotion").val(emot);
-            jQuery(".edittlogs").find("#tlnotes").val(tnotes);
+            jQuery(".edittlogs_" + ulogid).find("#strategy").val(strat);
+            jQuery(".edittlogs_" + ulogid).find("#trade_plan").val(tplan);
+            jQuery(".edittlogs_" + ulogid).find("#emotion").val(emot);
+            jQuery(".edittlogs_" + ulogid).find("#tlnotes").val(tnotes);
 
-            jQuery('.edittlogs').submit();
+            jQuery('.edittlogs_' + ulogid).submit();
 
         });
 

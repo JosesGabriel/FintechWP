@@ -450,7 +450,9 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-                $content1 = str_replace('<br />', ' ',$content);
+                $newline = ["<br >","<br>","<br />","<br/>"];
+
+                $content1 = str_replace($newline, ' ',$content);
 
                 $dprocessedtext = explode(' ', $content1);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {

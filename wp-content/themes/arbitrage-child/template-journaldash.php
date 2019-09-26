@@ -104,7 +104,7 @@ echo $user->ID ." versis ". $user->ID;
         //========================================
            $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
            $wpdb->query($deletelogs);
-           wp_redirect('/watchlist');
+           wp_redirect('/journal');
            exit; 
         //=========================================
 
@@ -2555,7 +2555,7 @@ if($issampledata){
 																							</div>
 																							<input type="hidden" id="deletelog1" value="4394">
 																							<div style="width:25px">
-																								<a class="deletelog smlbtn-delete" data-istl="4394" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a class="deletelog smlbtn-delete" data-istl="<?php echo $value->tlid; ?>" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="#editlognotes_<?php echo $value->tlid; ?>" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>

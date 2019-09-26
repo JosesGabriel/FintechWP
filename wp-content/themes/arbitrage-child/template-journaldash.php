@@ -153,7 +153,7 @@ echo $user->ID ." versis ". $user->ID;
         update_post_meta($log_id,  'data_trade_info', $strategy);
        // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
                
-        wp_redirect('/watchlist');
+        wp_redirect('/journal');
         exit;
     }
 

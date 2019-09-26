@@ -1300,7 +1300,7 @@ jQuery( document ).ready(function () {
 
 				var dlinkinfo = jQuery(this);
 
-				 setTimeout(function() {
+				 //setTimeout(function() {
 					jQuery.ajax({
 						url: wp.ajax.settings.url,
 						type: 'post',
@@ -1315,7 +1315,7 @@ jQuery( document ).ready(function () {
 
 						}
 					});
-				}, 2000);
+				//}, 2000);
 			
 			}
 			
@@ -1355,7 +1355,7 @@ jQuery( document ).ready(function () {
 				jQuery(this).parent().removeClass('active').removeClass('isyours').addClass('notyours');
 				var dlinkinfo = jQuery(this);
 
-			setTimeout(function() {
+			//setTimeout(function() {
 					jQuery.ajax({
 						url: wp.ajax.settings.url,
 						type: 'post',
@@ -1369,7 +1369,7 @@ jQuery( document ).ready(function () {
 							dlinkinfo.removeClass("isclicked");
 						}
 					});
-				}, 2000);
+				//}, 2000);
 
 			}
 		} else {
@@ -1461,7 +1461,7 @@ jQuery( document ).ready(function () {
 
 				var dlinkinfo = jQuery(this);
 
-				setTimeout(function() {	
+				//setTimeout(function() {	
 					jQuery.ajax({
 						url: wp.ajax.settings.url,
 						type: 'post',
@@ -1475,7 +1475,7 @@ jQuery( document ).ready(function () {
 							dlinkinfo.removeClass("isclicked");
 						}
 					});
-				}, 2000);
+				//}, 2000);
 
 
 				// console.log(numbear);
@@ -1511,7 +1511,7 @@ jQuery( document ).ready(function () {
 				jQuery(this).parent().removeClass('active').removeClass('isyours').addClass('notyours');
 				var dlinkinfo = jQuery(this);
 
-				setTimeout(function() {	
+				//setTimeout(function() {	
 					jQuery.ajax({
 						url: wp.ajax.settings.url,
 						type: 'post',
@@ -1525,7 +1525,7 @@ jQuery( document ).ready(function () {
 							dlinkinfo.removeClass("isclicked");
 						}
 					});
-				}, 2000);
+				//}, 2000);
 
 			}
 		} else {

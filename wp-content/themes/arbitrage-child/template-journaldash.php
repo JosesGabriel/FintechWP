@@ -319,13 +319,6 @@ echo $user->ID ." versis ". $user->ID;
 		}
 
 		
-
-		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$pzstrats."','".$pzplans."','".$pzemos."','".$pznotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
-
-		print_r(unserialize(stripslashes($_POST['dtradelogs'])));
-		// print_r($_POST);
-		exit;
-
         // Update journal data.
         // $journalpostlog = array(
         //     // 'ID'           	=> $data_postid,
@@ -386,7 +379,7 @@ echo $user->ID ." versis ". $user->ID;
 			));
 		
 		
-		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
+		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$pzstrats."','".$pzplans."','".$pzemos."','".$pznotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 		$wpdb->query($inserttrade);
 
         wp_redirect('/journal');

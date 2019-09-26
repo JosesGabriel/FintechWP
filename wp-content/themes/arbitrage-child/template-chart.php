@@ -2561,6 +2561,7 @@
 					$("#sellvolume").val(data.data.volume);
 					$("#sellavrprice").val(data.data.averageprice);
 					$("#tradelogs").val(data.data.tradelog);
+					$("#confirmsellparts").show();
 				}
 			}
 		});

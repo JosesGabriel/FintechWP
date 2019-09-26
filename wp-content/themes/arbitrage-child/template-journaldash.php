@@ -2618,7 +2618,7 @@ if($issampledata){
 																										<div class="trdright darkbgpadd">
 																											<div><strong>Notes:</strong></div>
 																											<div>
-																												<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;">																										this is a test																									</textarea>
+																												<textarea rows="3" name="tlnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
 																											</div>
 																										</div>
 																										<div class="trdleft">

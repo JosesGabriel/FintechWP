@@ -100,6 +100,16 @@ echo $user->ID ." versis ". $user->ID;
 <!-- BOF Deposit -->
 <?php
     if (isset($_POST['todelete'])) {
+
+        //========================================
+           $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
+           $wpdb->query($deletelogs);
+            //wp_redirect('/journal');
+            //exit; 
+        //=========================================
+
+
+
         echo 'delete: '.$_POST['todelete'];
         $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
         wp_update_post($post);

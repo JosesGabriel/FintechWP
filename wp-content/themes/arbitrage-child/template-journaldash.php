@@ -143,8 +143,7 @@ echo $user->ID ." versis ". $user->ID;
         $emotion = $_POST['emotion'];
         $notes = $_POST['tlnotes'];
 
-        //echo $strategy;
-         $updatelogs = 'update arby_tradelog set tlstrats = '. $strategy .', tltradeplans = '. $tradepan .', tlemotions = '. $emotion .', tlnotes = '. $notes .'  where tlid = '. $log_id .' and isuser ='.$user->ID;
+         $updatelogs = "update arby_tradelog set tlstrats = '". $strategy ."', tltradeplans = '". $tradepan ."', tlemotions = '". $emotion ."', tlnotes = '". $notes ."'  where tlid = '". $log_id ."' and isuser ='".$user->ID;
          $wpdb->query($updatelogs);
 
 
@@ -153,7 +152,7 @@ echo $user->ID ." versis ". $user->ID;
         update_post_meta($log_id,  'data_trade_info', $strategy);
        // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
                
-        wp_redirect('/watchlist');
+        wp_redirect('/journal');
         exit;
     }
 

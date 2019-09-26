@@ -3227,7 +3227,7 @@ if($issampledata){
 
 			swal({
 			title: "Are you sure?",
-			text: "Once deleted, you will not be able to recover this entry!!",
+			text: "Once deleted, you will not be able to recover this entry!",
 			icon: "warning",
 			buttons: true,
 			dangerMode: true,

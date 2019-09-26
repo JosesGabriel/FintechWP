@@ -2548,17 +2548,12 @@
 		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
 
 		jQuery.ajax({
-			method: "POST",
+			method: "GET",
 			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
 			dataType: 'json',
 			data: {
 				'action' : 'post_sentiment',
-				'stock' : dpathl,
-				'postid' : '<?php echo get_the_id(); ?>',
-				'userid' : '<?php echo $user_id; ?>',
-				'dbasebull': dbull,
-				'dbasebear': dbear,
-				'dbuttonact' : dclass
+				'stock' : dstockpath
 			},
 			success: function(data) {
 				console.log(data);

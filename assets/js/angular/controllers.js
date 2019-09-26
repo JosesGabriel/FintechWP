@@ -852,6 +852,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         console.log(response.data);
                         if(response.data.status == "yes_stock"){
                             angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
+
+                            // add detail from api
+                            angular.element(".tradelogs").val(response.data.data.tradelog);
+                            angular.element(".sellvolume").val(response.data.data.volume);
+                            angular.element(".sellavrprice").val(response.data.data.averageprice);
                         } else {
                             angular.element(".arb_sell").attr("data-hasstock","no_stock"); //setter
                         }

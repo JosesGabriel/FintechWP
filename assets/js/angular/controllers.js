@@ -858,6 +858,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             angular.element("#tradelogs").val(response.data.data.tradelog);
                             angular.element("#sellvolume").val(response.data.data.volume);
                             angular.element("#sellavrprice").val(response.data.data.averageprice);
+                            angular.element("#sellavrprice").val(response.data.data.averageprice);
 
                             angular.element("#confirmsellparts").show();
                         } else {

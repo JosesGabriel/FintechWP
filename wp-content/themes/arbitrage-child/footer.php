@@ -80,11 +80,17 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 
 		        jQuery('.um-activity-textarea textarea').on('keyup', function (e) {
-		        	if($(this).val().length < 2) {
+
+		        	var string = jQuery(this).val();
+		        	var lastChar = string.substr(string.length -1);
+
+		        	if($(this).val().length < 2 || lastChar == '$') {
 		        		jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont > li").remove();
 		        		jQuery(this).parent().find(".popname").remove();
 		        		return;
 		        	}
+
+
 		        	var counx = 0;
 					//var usersall = `<?php // echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);

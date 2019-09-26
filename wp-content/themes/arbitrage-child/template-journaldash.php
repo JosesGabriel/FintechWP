@@ -303,7 +303,12 @@ echo $user->ID ." versis ". $user->ID;
 
 		if(isset($_POST['formsource']) && $_POST['formsource'] == "fromchart"){
 			$buyyinginfo = unserialize(stripslashes($_POST['dtradelogs']));
-			// $buyyinginfo['data']['']
+			// $buyyinginfo['data'][0]['strategy'];
+
+			$pzemos = $buyyinginfo['data'][0]['emotion'];;
+			$pzplans = $buyyinginfo['data'][0]['tradeplan'];;
+			$pzstrats = $buyyinginfo['data'][0]['strategy'];;
+			$pznotes = $buyyinginfo['data'][0]['tradingnotes'];;
 		} else {
 			$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
 
@@ -315,7 +320,7 @@ echo $user->ID ." versis ". $user->ID;
 
 		
 
-		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
+		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$pzstrats."','".$pzplans."','".$pzemos."','".$pznotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 
 		print_r(unserialize(stripslashes($_POST['dtradelogs'])));
 		// print_r($_POST);

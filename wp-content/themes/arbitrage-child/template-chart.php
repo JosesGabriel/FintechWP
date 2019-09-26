@@ -1451,7 +1451,6 @@
 																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 																							<div class="entr_ttle_bar">
 																								<strong>Sell Trade</strong>
-																								<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
 																							</div>
 																							<form action="/journal" method="post">
 																								<div class="entr_wrapper_top">
@@ -2543,6 +2542,28 @@
 		// $(".arb_sell").click(function(e){
 
 		// });
+
+		var dstockpath = pathname.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+
+		jQuery.ajax({
+			method: "POST",
+			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			dataType: 'json',
+			data: {
+				'action' : 'post_sentiment',
+				'stock' : dpathl,
+				'postid' : '<?php echo get_the_id(); ?>',
+				'userid' : '<?php echo $user_id; ?>',
+				'dbasebull': dbull,
+				'dbasebear': dbear,
+				'dbuttonact' : dclass
+			},
+			success: function(data) {
+				console.log(data);
+			}
+		});
 			
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();

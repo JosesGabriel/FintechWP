@@ -143,7 +143,7 @@ echo $user->ID ." versis ". $user->ID;
         $emotion = $_POST['data_emotion'];
         $notes = $_POST['tlnotes'];
 
-        echo "<script>console.log('".  $strategy ."')</script>";
+        echo "<script>console.log(<?php echo $stratgy; ?>)</script>";
         //echo $strategy;
          $updatelogs = 'update arby_tradelog set tlstrats = '. $strategy .', tltradeplans = '. $tradepan .', tlemotions = '. $emotion .', tlnotes = '. $notes .'  where tlid = '. $log_id .' and isuser ='.$user->ID;
          $wpdb->query($updatelogs);

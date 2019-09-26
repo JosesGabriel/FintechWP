@@ -450,15 +450,14 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-                $newline = ["<br >","<br>","<br />","<br/>"];
+               
+                $dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                $content1 = str_replace($newline, ' ',$content);
-
-                $dprocessedtext = explode(' ', $content1);
+                //$dprocessedtext = explode(' ', $content1);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="noopener noreferrer">' . $dwordpvalue . '</a>';
+                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
                         $usname = str_replace('@', '', $dwordpvalue);

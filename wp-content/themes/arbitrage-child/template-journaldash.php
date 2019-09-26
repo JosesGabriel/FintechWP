@@ -300,7 +300,7 @@ echo $user->ID ." versis ". $user->ID;
 
 		echo "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$buyyinginfo[0]->strategy."','".$buyyinginfo[0]->tradeplan."','".$buyyinginfo[0]->emotion."','".$buyyinginfo[0]->tradingnotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 
-		print_r($_POST['dtradelogs']);
+		print_r(stripslashes($_POST['dtradelogs']));
 		exit;
 
         // Update journal data.

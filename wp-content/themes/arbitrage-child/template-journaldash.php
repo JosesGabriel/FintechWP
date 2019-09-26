@@ -2599,7 +2599,7 @@ if($issampledata){
                                                                                                         <form method="post" class="edittlogs"> 
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-																													<select class="rnd selecteditlog" name="data_strategy" id="strat">
+																													<select class="rnd selecteditlog strat" name="data_strategy" id="strat">
 																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
 																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
 																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
@@ -3231,7 +3231,7 @@ if($issampledata){
 
         //$(document).on("click", ".editmenow", function() {
 
-            var strat = jQuery('.selecteditlog').find("#strat").val();
+            var strat = jQuery('.strat').val();
             console.log(strat);
 
            jQuery('.edittlogs').submit();

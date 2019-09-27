@@ -401,6 +401,16 @@ echo $user->ID ." versis ". $user->ID;
 <!-- BOF DELETE LIVE PORTFOLIO -->
 <?php if(isset($_GET['todo']) && @$_GET['todo'] == 'deletelivetrade'){
 	$getdstocks = get_user_meta($user->ID, '_trade_list', true);
+	$isstock = @$_GET['stock'];
+	if (($key = array_search($isstock, $getdstocks)) !== false) {
+		unset($getdstocks[$key]);
+	}
+
+	$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
+	echo $deletesql;
+	// $wpdb->query($inserttrade);
+
+	// update_user_meta($user_id, 'user_url', $website);
 
 	print_r($getdstocks);
 

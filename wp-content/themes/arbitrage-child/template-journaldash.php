@@ -1904,7 +1904,7 @@ if($issampledata){
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
-																								<a href="/journal/?todo=deletelivetrade&stock=<?php echo $value; ?>" class="deletelog smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a data-stock="<?php echo $value; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
@@ -3314,6 +3314,35 @@ if($issampledata){
 
         });
 
+		$(".deletelive").on('click', function(e){
+			e.preventDefault();
+
+			/// journal/?todo=deletelivetrade&stock=
+
+			let dstock = $(this).attr('data-stock');
+			
+
+			swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this entry!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					console.log('delete this');
+					console.log(dstock);
+					// window.location.href = "/journal/?todo=deletelivetrade&stock=ALCO";
+
+					// jQuery(this).parents(".dloglist").addClass("housed");
+					// jQuery(".deleteformitem").find("#todelete").val(dlogid);
+					// jQuery(".deleteformitem").submit();
+				} else {
+					// swal("Your imaginary file is safe!");
+				}
+			});
+		});
 
         $('.deletelog').on('click', function () {
 	//$(document).on("click", ".deletelog", function() {

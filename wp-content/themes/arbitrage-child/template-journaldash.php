@@ -1781,7 +1781,7 @@ if($issampledata){
 																			                            </div>
 																			                            <div>
 																			                                <div style="height: 36px;">
-                                                                                                                 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
+                                                                                                                 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
                                                                                 
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
@@ -3253,6 +3253,12 @@ if($issampledata){
     });
 
 	jQuery(document).ready(function(){
+
+        jQuery(".buy-order--submit").click(function(){
+             $('.chart-loader').css("display","block");
+             $(this).hide();
+        });
+
 
 		jQuery(".changeselldate").change(function() {
 			var date = $(this).val();

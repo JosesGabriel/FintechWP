@@ -1898,7 +1898,7 @@ if($issampledata){
 		                                                                                        </div>
 																							</div>
 																							<div style="width:27px; text-align:center">
-																								<a href="" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																								<a href="#livetradenotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
@@ -1907,6 +1907,29 @@ if($issampledata){
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
 																							</div>
+																							<!-- <div class="hidethis" id="hidelogs">
+																								<div class="tradelogbox" id="livetradenotes_<?php echo $value->tlid; ?>">
+																									<div class="entr_ttle_bar">
+																										<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
+																									</div>
+																									<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																									<div class="trdlgsbox">
+
+																										<div class="trdleft">
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlstrats; ?></span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tltradeplans; ?></span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft"><?php echo $value->tlemotions; ?></span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Performance:</strong></span> <span class="modal-notes-result <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo number_format($profitperc, 2, ".", ","); ?>%</span></div>
+																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft <?php echo ($profit > 0 ? 'txtgreen' : 'txtred'); ?>"><?php echo $tliswin; ?></span></div>
+																										</div>
+																										<div class="trdright darkbgpadd">
+																											<div><strong>Notes:</strong></div>
+																											<div><?php echo $value->tlnotes; ?></div>
+																										</div>
+																										<div class="trdclr"></div>
+																									</div>
+																								</div>
+																							</div> -->
 		                                                                                   
 		                                                                                   <!-- <div style="width:40px; text-align: right;"><?php /*?>Notes<?php */?>
 		                                                                                    	<a href="#tradingnotes_JFC" class="smlbtn blue fancybox-inline">

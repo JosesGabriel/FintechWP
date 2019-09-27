@@ -404,15 +404,15 @@ echo $user->ID ." versis ". $user->ID;
 	$isstock = @$_GET['stock'];
 	if (($key = array_search($isstock, $getdstocks)) !== false) {
 		unset($getdstocks[$key]);
+		$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
+		$wpdb->query($deletesql);
+
+		update_user_meta($user->ID, '_trade_list', $getdstocks);
 	}
 
-	$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
-	echo $deletesql;
-	// $wpdb->query($inserttrade);
-
-	// update_user_meta($user_id, 'user_url', $website);
-
-	print_r($getdstocks);
+	wp_redirect('/journal');
+    exit;
+	// print_r($getdstocks);
 
 } ?>
 <!-- EOF DELETE LIVE PORTFOLIO -->

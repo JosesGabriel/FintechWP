@@ -164,7 +164,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.enableBidsAndAsks = false;
+    $scope.enableBidsAndAsks = true;
     $scope.bids = [];
     $scope.asks = [];
     $scope.transactions = [];
@@ -386,7 +386,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit=20&symbol=' + symbol)
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
                 response = response.data;
                 if (!response.success) {
@@ -542,6 +542,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             $scope.$digest();
         }
+        socket.emit('test_psebd',$scope);
     });
 
     $scope.updateBidAndAsks = function (list, data) {
@@ -835,6 +836,39 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
+
+                    angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
+                    console.log("outhere");
+                    angular.element("#confirmsellparts").hide();
+
+                    $http({
+                        method : "GET",
+                        url : "https://dev-v1.arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        dataType: "json",
+                        contentType: "application/json",
+                        data: {
+                            'action' : 'check_have_stock',
+                            'stock' : _symbol,
+                        }
+                    }).then(function mySucces(response) {
+                        console.log(response.data);
+                        if(response.data.status == "yes_stock"){
+                            angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
+                            
+                            // add detail from api
+                            angular.element("#tradelogs").val(response.data.data.tradelog);
+                            angular.element("#sellvolume").val(response.data.data.volume);
+                            angular.element("#sellavrprice").val(response.data.data.averageprice);
+                            angular.element("#sellavrprice").val(response.data.data.averageprice);
+
+                            angular.element("#confirmsellparts").show();
+                        } else {
+                            angular.element(".arb_sell").attr("data-hasstock","no_stock"); //setter
+                        }
+
+                    }, function myError(error) {
+                        console.log(error);
+                    });
 
                     // for register sentiments
                     $http({

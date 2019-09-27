@@ -72,7 +72,7 @@
             var $new_post = form.parents('.um').find('.um-activity-wall #postid-' + temp_id)
             $.ajax({
                 // url: wp.ajax.settings.url,
-                url: 'https://arbitrage.ph/wp-admin/admin-ajax.php',
+                url: 'https://dev-v1.arbitrage.ph/wp-admin/admin-ajax.php',
                 type: 'post',
                 dataType: 'json',
                 data: formdata,

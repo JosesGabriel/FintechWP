@@ -1441,11 +1441,49 @@
 																				</button>
 																				<div class="buttons">
 																					<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;"><i class="fas fa-arrow-down"></i> Sell</a>
+																					<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock_details[stock.symbol].symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
 																				</div>
 																			</div>
 
 																			<div class="hideformodal">  
+																				<div class="buytrade" style="display:none" id="buytrade">
+																					<div class="innerbuy">
+																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
+																							<div class="entr_ttle_bar">
+																								<strong>Sell Trade</strong>
+																							</div>
+																							<form action="/journal" method="post">
+																								<div class="entr_wrapper_top">
+																									<div class="entr_col">
+																										<div class="groupinput midd lockedd"><label>Stock</label><input type="text" id="sellstockname" name="inpt_data_stock" value="{{stock.symbol}}" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Position</label><input type="text" id="sellvolume" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																									</div>
+																									<div class="entr_col">
+																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																									</div>
+																									<div class="entr_col">
+																										<div class="groupinput midd"><label>Sell Price</label><input step="0.01" id="sellprice" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
+																										<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty" value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
+																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate" required></div>
+																									</div>
+																									<div class="entr_clear"></div>
+																								</div>
+																								<div>
+																									<div style="height: 36px;">
+																										<input type="hidden" value="Log" name="inpt_data_status">
+																										<input type="hidden" value="fromchart" name="formsource">
+																										<!-- <input type="hidden" value="" id="sellavrprice" name="inpt_avr_price"> -->
+																										<!-- <input type="hidden" value="" name="inpt_data_postid"> -->
+																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
+																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
+																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade" style="display:none;">
+																									</div>
+																								</div>
+																							</form>
+																						</div>
+																					</div>
+																				</div>
 																				<div class="entertrade" style="display:none" id="entertrade">
 																					<?php
 																						$dbaseaccount = 0;
@@ -1462,7 +1500,7 @@
 																						<strong>Enter Buy Order</strong>
 																					</div>
 
-																					<form action="/journal" method="post">
+																					<form action="/journal" method="post">1
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">
 																								<div class="groupinput fctnlhdn">   
@@ -1815,7 +1853,20 @@
 																							<div class="vertical-box-row">
 																								<div class="vertical-box-cell">
 																									<div class="vertical-box-inner-cell">
-																										<div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
+																										<div ng-show="!enableBidsAndAsks"
+																											style="height: calc(100% - 35px); position: relative">
+																											<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
+																												<?php if ( ! WP_PROD_ENV): ?>
+																													<button
+																														class="btn btn-success btn-xs"
+																														type="button"
+																														ng-click="enableBidsAndAsks = true">Enable</button>
+																												<?php else: ?>
+																													<div>Coming soon</div>
+																												<?php endif ?>
+																											</div>
+																										</div>
+																										<div data-scrollbar="true" data-height="90%" class="" ng-show="enableBidsAndAsks">
 																											<div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
 																												<table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
 																													<col width="8.335%">
@@ -1844,10 +1895,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																										</div>
-																										<div ng-else
-																											style="height: calc(100% - 35px); position: relative">
-																											<span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">Coming soon</span>
 																										</div>
 																									</div>
 																								</div>
@@ -2490,6 +2537,33 @@
 				});
 				$( ".chartlocker" ).fadeOut(500);
 			});
+		});
+
+		// $(".arb_sell").click(function(e){
+
+		// });
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+
+		jQuery.ajax({
+			method: "GET",
+			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			dataType: 'json',
+			data: {
+				'action' : 'post_sentiment',
+				'stock' : dstockpath
+			},
+			success: function(data) {
+				console.log(data);
+				if(data.status == "yes_stock"){
+					$("#sellvolume").val(data.data.volume);
+					$("#sellavrprice").val(data.data.averageprice);
+					$("#tradelogs").val(data.data.tradelog);
+					$("#confirmsellparts").show();
+				}
+			}
 		});
 			
 			$(".bbs_bull").click(function(e){

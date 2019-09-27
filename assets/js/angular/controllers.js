@@ -531,6 +531,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
      *  u => update new order
      */
      socket.on('psebd', function (data) {
+        console.log('data from psebd'); 
+        console.log(data);
         if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
             if (data.ov == 'B') {
                 // bid

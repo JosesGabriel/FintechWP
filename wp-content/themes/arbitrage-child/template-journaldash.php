@@ -138,10 +138,10 @@ echo $user->ID ." versis ". $user->ID;
         //echo $_POST['inpt_data_status'];
 
         $log_id = $_POST['to_edit'];
-        $strategy = $_POST['strategy'];
-        $tradepan = $_POST['trade_plan'];
-        $emotion = $_POST['emotion'];
-        $notes = $_POST['tlnotes'];
+        $strategy = $_POST['strategy_'. $log_id];
+        $tradepan = $_POST['trade_plan_'. $log_id];
+        $emotion = $_POST['emotion_'. $log_id];
+        $notes = $_POST['tlnotes_'. $log_id];
 
          $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
          $wpdb->query($updatelogs);
@@ -1781,6 +1781,8 @@ if($issampledata){
 																			                            </div>
 																			                            <div>
 																			                                <div style="height: 36px;">
+                                                                                                                 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+                                                                                
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
 																			                                    <input type="hidden" value="<?php echo get_the_ID(); ?>" name="inpt_data_postid">
@@ -2641,21 +2643,21 @@ if($issampledata){
                                                                                                        <!-- <form method="post" class="edittlogs"> -->
 																										<div class="trdleft">
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> 
-																													<select class="rnd selecteditlog strat" name="data_strategy" id="strat">
+																													<select class="rnd selecteditlog strat_<?php echo $value->tlid; ?>" name="data_strategy" id="strat">
 																														<option  <?php if($value->tlstrats == 'Bottom Picking') echo "selected"; ?> value="Bottom Picking">Bottom Picking</option>
 																														<option <?php if($value->tlstrats == 'Breakout Play') echo "selected"; ?> value="Breakout Play">Breakout Play</option>
 																														<option <?php if($value->tlstrats == 'Trend Following') echo "selected"; ?> value="Trend Following">Trend Following</option>
 																													</select>
 																												</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span>
-																												<select class="rnd selecteditlog tplan" name="data_tradeplan" id="">
+																												<select class="rnd selecteditlog tplan_<?php echo $value->tlid; ?>" name="data_tradeplan" id="">
 																														<option <?php if($value->tltradeplans == 'Day Trade') echo "selected"; ?> value="Day Trade">Day Trade</option>
 																														<option <?php if($value->tltradeplans == 'Swing Trade') echo "selected"; ?> value="Swing Trade">Swing Trade</option>
 																														<option <?php if($value->tltradeplans == 'Investment') echo "selected"; ?> value="Investment">Investment</option>
 																												</select>
 																											</div>
 																											<div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> 
-																												<select class="rnd selecteditlog emot" name="data_emotion" id="">
+																												<select class="rnd selecteditlog emot_<?php echo $value->tlid; ?>" name="data_emotion" id="">
 																														<option  <?php if($value->tlemotions == 'Neutral') echo "selected"; ?> value="Neutral">Neutral</option>
 																														<option <?php if($value->tlemotions == 'Greedy') echo "selected"; ?> value="Greedy">Greedy</option>
 																														<option <?php if($value->tlemotions == 'Fearful') echo "selected"; ?> value="Fearful">Fearful</option>
@@ -2667,15 +2669,16 @@ if($issampledata){
 																										<div class="trdright darkbgpadd">
 																											<div><strong>Notes:</strong></div>
 																											<div>
-																												<textarea rows="3" name="tlnotes" class="tnotes" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
+																												<textarea rows="3" name="tlnotes" class="tnotes_<?php echo $value->tlid; ?>" style="width: 313px; border-radius: 5px; background: #4e6a85;border: 0; color: #a1adb5;"><?php echo $value->tlnotes; ?></textarea>
 																											</div>
 																										</div>
 																										<div class="trdleft">
+                                                                                                            <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
 																											<input type="hidden" value="Edit" name="inpt_data_status">
 																											<input type="hidden" name="log_id" value="<?php echo $value->tlid; ?>">
 																											<input type="hidden" name="logs" value="">
 																											<div class="onelnetrd" style="margin-top: 9px;"> 
-																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" style="float: right;">Update</button>
+																												<button class="editmenow arbitrage-button arbitrage-button--primary" name="editbutton" data-istl="<?php echo $value->tlid; ?>" style="float: right;">Update</button>
 																											</div>
 																										</div>
                                                                                                         <!--</form>-->
@@ -2686,12 +2689,12 @@ if($issampledata){
 																							
 																						</div>
 
-                                                                                        <form method="post" class="edittlogs">
+                                                                                        <form method="post" class="edittlogs_<?php echo $value->tlid; ?>">
                                                                                                 <input type="hidden" name="to_edit" id="tl_id" value="<?php echo $value->tlid; ?>">
-                                                                                                <input type="hidden" name="strategy" id="strategy" value="">
-                                                                                                <input type="hidden" name="trade_plan" id="trade_plan" value="">
-                                                                                                <input type="hidden" name="emotion" id="emotion" value="">
-                                                                                                <input type="hidden" name="tlnotes" id="tlnotes" value="">
+                                                                                                <input type="hidden" name="strategy_<?php echo $value->tlid; ?>" id="strategy" value="">
+                                                                                                <input type="hidden" name="trade_plan_<?php echo $value->tlid; ?>" id="trade_plan" value="">
+                                                                                                <input type="hidden" name="emotion_<?php echo $value->tlid; ?>" id="emotion" value="">
+                                                                                                <input type="hidden" name="tlnotes_<?php echo $value->tlid; ?>" id="tlnotes" value="">
                                                                                         </form>
 
 																					</li>
@@ -3274,6 +3277,17 @@ if($issampledata){
 
 	jQuery(document).ready(function(){
 
+        jQuery(".buy-order--submit").click(function(){
+
+            if($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0) {
+                
+                 $('.chart-loader').css("display","block");
+                 $(this).hide();
+            }
+
+        });
+
+
 		jQuery(".changeselldate").change(function() {
 			var date = $(this).val();
 		});
@@ -3281,17 +3295,21 @@ if($issampledata){
         jQuery(".editmenow").click(function(){
 
         //$(document).on("click", ".editmenow", function() {
+            var ulogid = jQuery(this).attr('data-istl');
 
-            var strat = jQuery('.strat').val();
-            var tplan = jQuery('.tplan').val();
-            var emot = jQuery('.emot').val();
-            var tnotes = jQuery('.tnotes').val();
-            jQuery(".edittlogs").find("#strategy").val(strat);
-            jQuery(".edittlogs").find("#trade_plan").val(tplan);
-            jQuery(".edittlogs").find("#emotion").val(emot);
-            jQuery(".edittlogs").find("#tlnotes").val(tnotes);
+            var strat = jQuery('.strat_'+ ulogid).val();
+            var tplan = jQuery('.tplan_'+ ulogid).val();
+            var emot = jQuery('.emot_'+ ulogid).val();
+            var tnotes = jQuery('.tnotes_'+ ulogid).val();
+            jQuery(".edittlogs_" + ulogid).find("#strategy").val(strat);
+            jQuery(".edittlogs_" + ulogid).find("#trade_plan").val(tplan);
+            jQuery(".edittlogs_" + ulogid).find("#emotion").val(emot);
+            jQuery(".edittlogs_" + ulogid).find("#tlnotes").val(tnotes);
 
-            jQuery('.edittlogs').submit();
+            $('.chart-loader').css("display","block");
+            $(this).hide();
+
+            jQuery('.edittlogs_' + ulogid).submit();
 
         });
 

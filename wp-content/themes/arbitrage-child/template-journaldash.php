@@ -3255,8 +3255,12 @@ if($issampledata){
 	jQuery(document).ready(function(){
 
         jQuery(".buy-order--submit").click(function(){
-             $('.chart-loader').css("display","block");
-             $(this).hide();
+
+            if($('#sell_price--input').length > 0 && $('#qty_price--input').length > 0) {
+                 $('.chart-loader').css("display","block");
+                 $(this).hide();
+            }
+            
         });
 
 

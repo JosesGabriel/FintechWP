@@ -671,7 +671,7 @@
 		}
 
 		echo json_encode($listofwatchlist);
-	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
 		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
 		
 		$curl = curl_init();
@@ -693,6 +693,32 @@
 		array_push($dranks, $myrank);
 
 		echo json_encode($dranks);
+
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
+		$duserid = $current_user->ID;
+		$return = [];
+		$dsprest = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_list"');
+		if(strpos($dsprest[0]->meta_value, $_GET['symbol']) !== false){
+			// echo "has stocks";
+			$getstockdetails = $wpdb->get_results('select * from arby_usermeta where user_id = "'.$duserid.'" and meta_key = "_trade_'.$_GET['symbol'].'"');
+			$dstockinfo = unserialize($getstockdetails[0]->meta_value);
+
+
+			$return['status'] = "yes_stock";
+			$return['data']['symbol'] = $_GET['symbol'];
+			$return['data']['volume'] = $dstockinfo['totalstock'];
+			$return['data']['averageprice'] = $dstockinfo['aveprice'];
+			$return['data']['tradelog'] = $getstockdetails[0]->meta_value;
+			
+
+
+		} else {
+			// echo "no stocks";
+			$return['status'] = "no_stock";
+		}
+
+		echo json_encode($return);
+
 
 	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'sidebar-bulletin'){
 

@@ -1485,4 +1485,16 @@ h2.watchtitle {
 
     hr.style14.style13 {
     display: none;
-}
+    }
+
+    .errorpop {
+        border: 2px solid #e51f62;
+        color: #e51f62;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1em;
+        border-radius: 3px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 96%;
+    }

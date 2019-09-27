@@ -3256,13 +3256,10 @@ if($issampledata){
 
         jQuery(".buy-order--submit").click(function(){
 
-            console.log($('#sell_price--input').val().length);
-             console.log($('#qty_price--input').val().length);
-
-            if($('#sell_price--input').length > 0 && $('#qty_price--input').length > 0) {
-                //console.log($('#sell_price--input').length);
-                 //$('.chart-loader').css("display","block");
-                 //$(this).hide();
+            if($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0) {
+                
+                 $('.chart-loader').css("display","block");
+                 $(this).hide();
             }
 
         });

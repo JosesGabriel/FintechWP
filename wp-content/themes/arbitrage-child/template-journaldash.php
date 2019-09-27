@@ -3257,10 +3257,11 @@ if($issampledata){
         jQuery(".buy-order--submit").click(function(){
 
             if($('#sell_price--input').length > 0 && $('#qty_price--input').length > 0) {
-                 $('.chart-loader').css("display","block");
-                 $(this).hide();
+                console.log($('#sell_price--input').length);
+                 //$('.chart-loader').css("display","block");
+                 //$(this).hide();
             }
-            
+
         });
 
 

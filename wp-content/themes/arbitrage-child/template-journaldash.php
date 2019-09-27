@@ -3333,7 +3333,7 @@ if($issampledata){
 				if (willDelete) {
 					console.log('delete this');
 					console.log(dstock);
-					// window.location.href = "/journal/?todo=deletelivetrade&stock=ALCO";
+					window.location.href = "/journal/?todo=deletelivetrade&stock="+dstock;
 
 					// jQuery(this).parents(".dloglist").addClass("housed");
 					// jQuery(".deleteformitem").find("#todelete").val(dlogid);

@@ -1909,7 +1909,7 @@ if($issampledata){
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
 																							</div>
-																							<?php print_r($value); ?>
+																							<?php print_r($dstocktraded); ?>
 																							<!-- <div class="hidethis" id="hidelogs">
 																								<div class="tradelogbox" id="livetradenotes_<?php echo $value; ?>">
 																									<div class="entr_ttle_bar">

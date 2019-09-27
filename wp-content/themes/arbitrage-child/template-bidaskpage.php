@@ -47,8 +47,15 @@
             color: red;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <script>
         jQuery(document).ready(function() {
+
+
+            socket.on('test_psebd', function(data){
+                cosnole.log('test');
+                console.log(data);
+            });
 
             var stock_symbol = jQuery('#stock_symbol');
             var urlParams = new URLSearchParams(location.search);
@@ -149,7 +156,6 @@
     </div>
   </div>
 </div>
-    
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

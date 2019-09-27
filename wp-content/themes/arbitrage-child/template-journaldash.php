@@ -397,6 +397,15 @@ echo $user->ID ." versis ". $user->ID;
 	}
 ?>
 <!-- EOF SELL trades -->
+
+<!-- BOF DELETE LIVE PORTFOLIO -->
+<?php if(isset($_GET['todo']) && @$_GET['todo'] == 'deletelivetrade'){
+	$getdstocks = get_user_meta($user->ID, '_trade_list', true);
+
+	print_r($getdstocks);
+
+} ?>
+<!-- EOF DELETE LIVE PORTFOLIO -->
 <?php
     $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 

@@ -1900,7 +1900,7 @@ if($issampledata){
 		                                                                                        </div>
 																							</div>
 																							<div style="width:27px; text-align:center">
-																								<a href="#livetradenotes_<?php echo $value->tlid; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
+																								<a href="#livetradenotes_<?php echo $value; ?>" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a>
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
@@ -1909,10 +1909,11 @@ if($issampledata){
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
 																							</div>
+																							<?php print_r($value); ?>
 																							<!-- <div class="hidethis" id="hidelogs">
-																								<div class="tradelogbox" id="livetradenotes_<?php echo $value->tlid; ?>">
+																								<div class="tradelogbox" id="livetradenotes_<?php echo $value; ?>">
 																									<div class="entr_ttle_bar">
-																										<strong><?php echo $value->isstock; ?></strong> <span class="datestamp_header"><?php echo $value->tldate; ?></span>
+																										<strong><?php echo $value; ?></strong> <span class="datestamp_header"><?php echo $value; ?></span>
 																									</div>
 																									<hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
 																									<div class="trdlgsbox">

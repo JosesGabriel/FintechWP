@@ -51,9 +51,8 @@
     <script>
         jQuery(document).ready(function() {
 
-
             socket.on('test_psebd', function(data){
-                cosnole.log('test');
+                console.log('test');
                 console.log(data);
             });
 

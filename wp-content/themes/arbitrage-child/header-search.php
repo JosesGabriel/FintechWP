@@ -16,6 +16,27 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-147416476-1');
+	</script>
+
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4838120237791146",
+		enable_page_level_ads: true
+		});
+	</script>
+	<?php endif ?>
+	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<link rel="shortcut icon" href="https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">

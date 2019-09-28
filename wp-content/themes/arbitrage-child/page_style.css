@@ -2945,7 +2945,8 @@
         border-radius: 3px;
         color: #e4e4e4;
     }
-    .deletelog.smlbtn-delete {
+    .deletelog.smlbtn-delete,
+    .deletelive.smlbtn-delete {
         line-height: 19px;
         padding: 4px 7px 4.8px 4px;
         width: 32px !important;
@@ -2974,7 +2975,8 @@
         color: #FFFFFF;
     }
 
-    .deletelog.smlbtn-delete:hover {
+    .deletelog.smlbtn-delete:hover,
+    .deletelive.smlbtn-delete:hover {
         background-color: #e91e63;
         color: #FFFFFF;
     }

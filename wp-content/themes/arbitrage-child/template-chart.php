@@ -37,6 +37,27 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
+	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-147416476-1');
+	</script>
+	
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4838120237791146",
+		enable_page_level_ads: true
+		});
+	</script>
+	<?php endif ?>
+	
 	<title>Arbitrage Trading Tools | Chart</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta name="robots" content="noindex">
@@ -1451,7 +1472,6 @@
 																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
 																							<div class="entr_ttle_bar">
 																								<strong>Sell Trade</strong>
-																								<!-- <span class="datestamp_header"><?php echo date('F j, Y g:i a'); ?></span> -->
 																							</div>
 																							<form action="/journal" method="post">
 																								<div class="entr_wrapper_top">
@@ -1460,24 +1480,25 @@
 																										<div class="groupinput midd lockedd"><label>Position</label><input type="text" id="sellvolume" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																									</div>
 																									<div class="entr_col">
-																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price_b" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+																										<div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																										<div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
 																									</div>
 																									<div class="entr_col">
 																										<div class="groupinput midd"><label>Sell Price</label><input step="0.01" id="sellprice" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
 																										<div class="groupinput midd"><label>Qty.</label><input name="inpt_data_qty" value="<?php echo get_post_meta(get_the_ID(), 'data_qty', true); ?>" class="no-padding" id="qty_price--input" required></div>
-																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate"></div>
+																										<div class="groupinput midd inpt_data_price"><label>Sell Date</label><input type="date" name="selldate" class="buySell__date-picker trade_input changeselldate" required></div>
 																									</div>
 																									<div class="entr_clear"></div>
 																								</div>
 																								<div>
 																									<div style="height: 36px;">
 																										<input type="hidden" value="Log" name="inpt_data_status">
-																										<input type="hidden" value="" id="sellavrprice" name="inpt_avr_price">
-																										<input type="hidden" value="" name="inpt_data_postid">
+																										<input type="hidden" value="fromchart" name="formsource">
+																										<!-- <input type="hidden" value="" id="sellavrprice" name="inpt_avr_price"> -->
+																										<!-- <input type="hidden" value="" name="inpt_data_postid"> -->
 																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
 																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
-																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade">
+																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade" style="display:none;">
 																									</div>
 																								</div>
 																							</form>
@@ -1814,12 +1835,12 @@
 
 																	<div class="vertical-box-row" style="height: 138px; overflow:hidden; display: block; padding: 5px 0 0 0;">
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
-																			<li>
+																			<li class="active">
 																				<a href="#tab-marketepth" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Bids & Asks</small>
 																				</a>
 																			</li>
-																			<li class="active">
+																			<li>
 																				<a href="#tab-transaxtions" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Time & Trades</small>
 																				</a>
@@ -1831,7 +1852,7 @@
 																				<div class="vertical-box">
 																					<div class="vertical-box-column">
 																						<!--Market Depth-->
-																						<div class="vertical-box tab-pane fade" id="tab-marketepth">
+																						<div class="vertical-box tab-pane fade in active" id="tab-marketepth">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
 																								<col width="8">
 																								<col width="17%">
@@ -1902,7 +1923,7 @@
 																						</div>
 
 																						<!-- Transactions -->
-																						<div class="vertical-box tab-pane fade in active" id="tab-transaxtions">
+																						<div class="vertical-box tab-pane fade" id="tab-transaxtions">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
 																								<col width="20%">
 																								<col width="20%">
@@ -2542,6 +2563,29 @@
 		// $(".arb_sell").click(function(e){
 
 		// });
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+
+		jQuery.ajax({
+			method: "GET",
+			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			dataType: 'json',
+			data: {
+				'action' : 'post_sentiment',
+				'stock' : dstockpath
+			},
+			success: function(data) {
+				console.log(data);
+				if(data.status == "yes_stock"){
+					$("#sellvolume").val(data.data.volume);
+					$("#sellavrprice").val(data.data.averageprice);
+					$("#tradelogs").val(data.data.tradelog);
+					$("#confirmsellparts").show();
+				}
+			}
+		});
 			
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();

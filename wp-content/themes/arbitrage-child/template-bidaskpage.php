@@ -20,6 +20,27 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
+    <?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-147416476-1');
+	</script>
+	
+	<!-- Google Ads -->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-4838120237791146",
+		enable_page_level_ads: true
+		});
+	</script>
+    <?php endif ?>
+    
 	<title>Bid / Ask Page</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta name="robots" content="noindex">
@@ -47,8 +68,14 @@
             color: red;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <script>
         jQuery(document).ready(function() {
+
+            socket.on('test_psebd', function(data){
+                console.log('test');
+                console.log(data);
+            });
 
             var stock_symbol = jQuery('#stock_symbol');
             var urlParams = new URLSearchParams(location.search);
@@ -149,7 +176,6 @@
     </div>
   </div>
 </div>
-    
 
 	<!-- end page container -->
 	<!-- ================== BEGIN BASE JS ================== -->

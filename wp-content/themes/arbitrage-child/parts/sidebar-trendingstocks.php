@@ -5,8 +5,8 @@
 
     // $curl = curl_init();
     // curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
-    // // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
-    // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+    // // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+    // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
 	// 	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
     // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     // $gerdqoute = curl_exec($curl);

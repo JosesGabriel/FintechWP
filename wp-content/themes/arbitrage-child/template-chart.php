@@ -1835,12 +1835,12 @@
 
 																	<div class="vertical-box-row" style="height: 138px; overflow:hidden; display: block; padding: 5px 0 0 0;">
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
-																			<li>
+																			<li class="active">
 																				<a href="#tab-marketepth" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Bids & Asks</small>
 																				</a>
 																			</li>
-																			<li class="active">
+																			<li>
 																				<a href="#tab-transaxtions" data-toggle="tab" style="padding: 5px 15px;margin-right: 0px;font-weight: bold;">
 																					<small>Time & Trades</small>
 																				</a>
@@ -1852,7 +1852,7 @@
 																				<div class="vertical-box">
 																					<div class="vertical-box-column">
 																						<!--Market Depth-->
-																						<div class="vertical-box tab-pane fade" id="tab-marketepth">
+																						<div class="vertical-box tab-pane fade in active" id="tab-marketepth">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
 																								<col width="8">
 																								<col width="17%">
@@ -1923,7 +1923,7 @@
 																						</div>
 
 																						<!-- Transactions -->
-																						<div class="vertical-box tab-pane fade in active" id="tab-transaxtions">
+																						<div class="vertical-box tab-pane fade" id="tab-transaxtions">
 																							<table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
 																								<col width="20%">
 																								<col width="20%">
@@ -2144,7 +2144,7 @@
 
 		  $curl = curl_init();
 		  curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
-		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:104.199.140.243']);
+		  curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
 		  curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 		  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	      $dhistofronold = curl_exec($curl);

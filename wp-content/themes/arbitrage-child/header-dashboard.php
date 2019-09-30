@@ -29,13 +29,13 @@
 	</script>
 	
 	<!-- Google Ads -->
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-4838120237791146",
-		enable_page_level_ads: true
-		});
-	</script>
+    <script async src=“https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js“></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: “ca-pub-7982031973729040”,
+            enable_page_level_ads: true
+        });
+    </script>
 	<?php endif ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />

@@ -26,7 +26,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	<?php wp_footer(); ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-<script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
+<script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
@@ -382,12 +382,12 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("display","block");
 			jQuery('.right-dashboard-part').css("right","0%");
-			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/cancel.svg');
+			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();
 		}else{
 			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg');
+			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/menu.svg');
 			$('#right-slider-icon').attr('width','20px');
 			$('#right-menu').addClass('right-slider-menu1');
 		}

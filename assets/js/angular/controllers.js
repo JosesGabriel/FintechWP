@@ -141,7 +141,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
 //             }
 //         });
 // });
-app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
+app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -388,23 +388,24 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         if ($scope.enableBidsAndAsks) {
             $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
-                response = response.data;
-                if (!response.success) {
-                    $scope.bids = [];
-                    $scope.asks = [];
-                    return;
-                }
-    
-                $scope.bids = Object.values(response.data.bids);
-                $scope.asks = Object.values(response.data.asks);
+                $timeout(function () {
+                    response = response.data;
+                    if (!response.success) {
+                        $scope.bids = [];
+                        $scope.asks = [];
+                        return;
+                    }
+        
+                    $scope.bids = Object.values(response.data.bids);
+                    $scope.asks = Object.values(response.data.asks);
+                }, 0);
             })
             .catch(err => {
-                $scope.bids = [];
-                $scope.asks = [];
+                $timeout(function () {
+                    $scope.bids = [];
+                    $scope.asks = [];
+                }, 0)
             })
-            .finally(() => {
-                $scope.$digest();
-            });
         }
     }
     $scope.getBidsAndAsks(_symbol);

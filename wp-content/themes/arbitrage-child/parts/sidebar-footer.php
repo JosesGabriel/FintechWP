@@ -1,10 +1,10 @@
 <div class="ontofooter">
     <div class="ontonowfooter">
         <ul class="footmore">
-            <li><a href="https://arbitrage.ph/privacy-policy">Privacy Policy</a></li><span class="ddot">•</span>
-            <li><a href="https://arbitrage.ph/terms-of-use">Terms of Use</a></li><span class="ddot">•</span>
-            <li><a href="https://arbitrage.ph/contact">Contact Us</a></li>
-            <li><a href="https://arbitrage.ph/about">About Us</a></li><span class="ddot">•</span>
+            <li><a href="/privacy-policy">Privacy Policy</a></li><span class="ddot">•</span>
+            <li><a href="/terms-of-use">Terms of Use</a></li><span class="ddot">•</span>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about">About Us</a></li><span class="ddot">•</span>
             <li style="font-size: 13px;">Arbitrage &copy; <?php echo date('Y'); ?></li>
         </ul>
     </div>

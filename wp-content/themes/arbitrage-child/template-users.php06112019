@@ -725,9 +725,9 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 								<div class="um-dropdown-b">
 									<div class="um-dropdown-arr" style="top: -15px;left: 71px;right: auto;"><i class="um-icon-arrow-up-b"></i></div>
 									<ul>
-											<li><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
-											<li><a href="https://arbitrage.ph/account/" class="real_url">My Account</a></li>
-											<li><a href="https://arbitrage.ph/logout/" class="real_url">Logout</a></li>
+											<li><a href="/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
+											<li><a href="/account/" class="real_url">My Account</a></li>
+											<li><a href="/logout/" class="real_url">Logout</a></li>
 											<li><a href="#" class="um-dropdown-hide">Cancel</a></li>
 									</ul>
 								</div>
@@ -811,7 +811,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 							<div class="meta-details-inner">
 								<ul>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
+										<div class="oncount"><a href="/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?></a></div>
 										<div class="onlabel">Friends</div>
 									</li>
 									<!-- <li>
@@ -830,7 +830,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 
 									?>
 									<li>
-										<div class="oncount"><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $the_query->post_count; ?></a></div>
+										<div class="oncount"><a href="/user/<?php echo um_user('user_login') ?>/?getdpage=activity"><?php echo $the_query->post_count; ?></a></div>
 										<div class="onlabel">Posts</div>
 									</li>
 								</ul>
@@ -862,43 +862,43 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 									<?php else: ?>
 											<?php if (isset($_GET['um_action']) && $_GET['um_action'] == 'edit'): ?>
 												<li>
-													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/" class=" um-button um-alt">Update</a>
+													<a href="/user/<?php echo um_user('user_login') ?>/" class=" um-button um-alt">Update</a>
 												</li>
 											<?php else: ?>
 												<li>
-													<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" ">Edit Profile</a>
+													<a href="/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class=" um-button um-alt" ">Edit Profile</a>
 												</li>
 											<?php endif ?>
 
 
 									<?php endif; ?>
 									<!-- <li>
-										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=friends" class="uimob800-hide uimob500-hide uimob340-hide" title="Friends">
+										<a href="/user/<?php echo um_user('user_login') ?>/?getdpage=friends" class="uimob800-hide uimob500-hide uimob340-hide" title="Friends">
 											<i class="um-faicon-users"></i>
 											<span class="title">Friends (<?php echo UM()->Friends_API()->api()->count_friends( $profile_id ); ?>)</span>
 										</a>
 									</li> -->
 									<!-- <li> -->
 										<?php // if ($ismyprofile): ?>
-											<!-- <a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=messages" class="message-part-btn" ><span>Message</span></a> -->
+											<!-- <a href="/user/<?php echo um_user('user_login') ?>/?getdpage=messages" class="message-part-btn" ><span>Message</span></a> -->
 										<?php // else: ?>
 											<?php // echo do_shortcode( '[ultimatemember_message_button user_id="' . $profile_id . '"]' ); ?>
 										<?php // endif ?>
 									<!-- </li> -->
 									<!-- <li>
-										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=messages" class="uimob800-hide uimob500-hide uimob340-hide" title="Messages">
+										<a href="/user/<?php echo um_user('user_login') ?>/?profiletab=messages" class="uimob800-hide uimob500-hide uimob340-hide" title="Messages">
 											<i class="um-faicon-envelope-o"></i>
 											<span class="title">Messages</span>
 										</a>
 									</li> -->
 									<!-- <li>
-										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=photos" class="uimob800-hide uimob500-hide uimob340-hide" title="Photos">
+										<a href="/user/<?php echo um_user('user_login') ?>/?getdpage=photos" class="uimob800-hide uimob500-hide uimob340-hide" title="Photos">
 											<i class="um-icon-images"></i>
 											<span class="title">Photos</span>
 										</a>
 									</li> -->
 									<!-- <li>
-										<a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?getdpage=activity" class="uimob800-hide uimob500-hide uimob340-hide" title="Activity">
+										<a href="/user/<?php echo um_user('user_login') ?>/?getdpage=activity" class="uimob800-hide uimob500-hide uimob340-hide" title="Activity">
 											<i class="um-icon-compose"></i>
 											<span class="title">Activity</span>
 										</a>
@@ -1028,7 +1028,7 @@ $ismyprofile = ($user->id == $profile_id ? true : false);
 															<div class="side-image" style="background: url('<?php echo esc_url( get_avatar_url( $value['id'] ) ); ?>') no-repeat center center;">&nbsp;</div>
 														</div>
 														<div class="traider-details">
-															<div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a></div>
+															<div class="traider-name"><a href="/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a></div>
 															<div class="traider-follower">
 																<div class="onbfdata"><?php echo $value['followers']; ?> followers </div>
 																<div class="onbfollow">

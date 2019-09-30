@@ -554,7 +554,7 @@ foreach ( $wallposts->posts as $post ) {
 						// 		if (strpos($dwordpvalue, '$') !== false) {
 						// 		    echo $dwordpvalue;
 						// 		    $dstock = str_replace("$", "", $dwordpvalue);
-						// 		    $dlink = '<a href="https://arbitrage.ph/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
+						// 		    $dlink = '<a href="/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
 						// 		    $newconts .= " ".$dlink;
 						// 		} else {
 						// 			$newconts .= " ".$dwordpvalue;
@@ -674,7 +674,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
+							<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
 
 							
 
@@ -688,7 +688,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
+							<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
 
 							
 
@@ -721,11 +721,11 @@ foreach ( $wallposts->posts as $post ) {
 				<div class="es-sentiments-container">
  						<div class="es-sentiments-cover1">
  							<a class="es-sentiments1 es-same-style">
- 							<img src="https://arbitrage.ph/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
+ 							<img src="/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
  							<a class="es-sentiments2 es-same-style">
- 							<img src="https://arbitrage.ph/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
+ 							<img src="/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
  							<a class="es-sentiments3 es-same-style">
- 							<img src="https://arbitrage.ph/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
+ 							<img src="/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
  						</div>
  					</div>
  -->
@@ -752,14 +752,14 @@ foreach ( $wallposts->posts as $post ) {
 
 										<li class="totabs" style="color: white;" data-btname="bullish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/svg/Bullish-border.svg" style="width: 30px; padding: 5px;">
+												<img src="/svg/Bullish-border.svg" style="width: 30px; padding: 5px;">
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bullish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbullish); ?></span>
 										</li>
 
 										<li class="totabs" style="color: white;" data-btname="bearish">
 											<span style="margin-left: 0;">
-												<img src="https://arbitrage.ph/svg/Bearish-border.svg" style="width: 30px; padding: 5px;">
+												<img src="/svg/Bearish-border.svg" style="width: 30px; padding: 5px;">
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 										</li>
@@ -798,7 +798,7 @@ foreach ( $wallposts->posts as $post ) {
 
 													<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white !important; margin-right: 10px; margin-left: 0px;">
 
-													<img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
+													<img src="/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
 														<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
 													</a>
 															
@@ -829,7 +829,7 @@ foreach ( $wallposts->posts as $post ) {
 
 												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white!important; margin-right: 10px; margin-left: 0px;">
 
-												<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
+												<img src="/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
 													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
 												</a>
 

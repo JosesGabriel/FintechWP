@@ -24,7 +24,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 .et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}
 </style>
 
-<script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
+<script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 <script type="text/javascript">
 		(function($) {
 			// jQuery(document).scrollTop(0);
@@ -522,12 +522,12 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 		if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("display","block");
 			jQuery('.right-dashboard-part').css("right","0%");
-			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/cancel.svg');
+			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();
 		}else{
 			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-slider-icon').attr('src','https://arbitrage.ph/wp-content/themes/arbitrage-child/images/menu.svg');
+			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/menu.svg');
 			$('#right-slider-icon').attr('width','20px');
 			$('#right-menu').addClass('right-slider-menu1');
 		}

@@ -26,7 +26,7 @@ get_header( 'dashboard' );
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 
 
-<link rel="stylesheet" type="text/css" href="https://arbitrage.ph/wp-content/themes/divi-child/tradelogs.css">
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/divi-child/tradelogs.css">
 
 
 <div id="main-content" class="oncommonsidebar">
@@ -45,10 +45,10 @@ get_header( 'dashboard' );
 						                        <!-- Tabs -->
 						                         <ul class="nav panel-tabs">
 						                            <li class="active"><a href="#tab1" data-toggle="tab" class="active show">
-						                            	<img src="https://arbitrage.ph/svg/layout.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">All</span></a></a></li>
-						                            <li class=""><a href="#tab2" data-toggle="tab"> <img src="https://arbitrage.ph/svg/user-outline.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">People</span></a></li>
-						                            <li class=""><a href="#tab3" data-toggle="tab" class=""> <img src="https://arbitrage.ph/svg/bar-chart.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Stocks</span></a></li>
-						                            <li class=""><a href="#tab4" data-toggle="tab" class=""> <img src="https://arbitrage.ph/svg/edit1.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Posts</span></a></li>
+						                            	<img src="/svg/layout.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">All</span></a></a></li>
+						                            <li class=""><a href="#tab2" data-toggle="tab"> <img src="/svg/user-outline.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">People</span></a></li>
+						                            <li class=""><a href="#tab3" data-toggle="tab" class=""> <img src="/svg/bar-chart.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Stocks</span></a></li>
+						                            <li class=""><a href="#tab4" data-toggle="tab" class=""> <img src="/svg/edit1.svg" style="width: 19px;vertical-align: sub;height: 18px;"> <span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Posts</span></a></li>
 						                        </ul>
 						                    </span>
 						                </div>

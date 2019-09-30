@@ -7,82 +7,82 @@
 <div class="arb_calcbox varcalc">
     <?php
 
-        function getfees($funmarketval, $funtype)
-        {
-            // Commissions
-            $dpartcommission = $funmarketval * 0.0025;
-            $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
-            // TAX
-            $dtax = $dcommission * 0.12;
-            // Transfer Fee
-            $dtransferfee = $funmarketval * 0.00005;
-            // SCCP
-            $dsccp = $funmarketval * 0.0001;
-            $dsell = $funmarketval * 0.006;
+        // function getfees($funmarketval, $funtype)
+        // {
+        //     // Commissions
+        //     $dpartcommission = $funmarketval * 0.0025;
+        //     $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
+        //     // TAX
+        //     $dtax = $dcommission * 0.12;
+        //     // Transfer Fee
+        //     $dtransferfee = $funmarketval * 0.00005;
+        //     // SCCP
+        //     $dsccp = $funmarketval * 0.0001;
+        //     $dsell = $funmarketval * 0.006;
 
-            if ($funtype == 'buy') {
-                $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
-            } else {
-                $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
-            }
+        //     if ($funtype == 'buy') {
+        //         $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
+        //     } else {
+        //         $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+        //     }
 
-            return $dall;
-        }
+        //     return $dall;
+        // }
 
-        $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
+        // $getdstocks = get_user_meta(get_current_user_id(), '_trade_list', true);
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/charthisto/?g=sampleprice');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $gerdqoute = curl_exec($curl);
-        curl_close($curl);
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, '/charthisto/?g=sampleprice');
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // $gerdqoute = curl_exec($curl);
+        // curl_close($curl);
 
-        $gerdqoute = json_decode($gerdqoute);
+        // $gerdqoute = json_decode($gerdqoute);
 
-        $dtradeingfo = [];
-        if ($getdstocks && $getdstocks != '') {
-            foreach ($getdstocks as $dstockskey => $dstocksvalue) {
-                $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
-                if ($dstocktraded && $dstocktraded != '') {
-                    $dstockinfo = $gerdqoute->data->$dstocksvalue;
-                    $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-                    $dsellfees = getfees($marketval, 'sell');
-                    $dtotal = $marketval - $dsellfees;
+        // $dtradeingfo = [];
+        // if ($getdstocks && $getdstocks != '') {
+        //     foreach ($getdstocks as $dstockskey => $dstocksvalue) {
+        //         $dstocktraded = get_user_meta(get_current_user_id(), '_trade_'.$dstocksvalue, true);
+        //         if ($dstocktraded && $dstocktraded != '') {
+        //             $dstockinfo = $gerdqoute->data->$dstocksvalue;
+        //             $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+        //             $dsellfees = getfees($marketval, 'sell');
+        //             $dtotal = $marketval - $dsellfees;
 
-                    $dstocktraded['totalcost'] = $dtotal;
-                    $dstocktraded['stockname'] = $dstocksvalue;
-                    array_push($dtradeingfo, $dstocktraded);
-                }
-            }
-        }
+        //             $dstocktraded['totalcost'] = $dtotal;
+        //             $dstocktraded['stockname'] = $dstocksvalue;
+        //             array_push($dtradeingfo, $dstocktraded);
+        //         }
+        //     }
+        // }
 
-        $duseridmo = get_current_user_id();
-        $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
+        // $duseridmo = get_current_user_id();
+        // $dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo);
 
-        $buypower = 0;
-        foreach ($dledger as $getbuykey => $getbuyvalue) {
-            if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
-                $buypower = $buypower + $getbuyvalue->tranamount;
-            } else {
-                $buypower = $buypower - $getbuyvalue->tranamount;
-            }
-        }
+        // $buypower = 0;
+        // foreach ($dledger as $getbuykey => $getbuyvalue) {
+        //     if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
+        //         $buypower = $buypower + $getbuyvalue->tranamount;
+        //     } else {
+        //         $buypower = $buypower - $getbuyvalue->tranamount;
+        //     }
+        // }
 
-        $dequityp = $buypower;
+        // $dequityp = $buypower;
 
-        if ($dtradeingfo) {
-            foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-                $dinforstocl = $trinfovalue['stockname'];
-                $dstockinfo = $gerdqoute->data->$dinforstocl;
-                $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
-                $dsellfees = getfees($marketval, 'sell');
-                $dtotal = $marketval - $dsellfees;
+        // if ($dtradeingfo) {
+        //     foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
+        //         $dinforstocl = $trinfovalue['stockname'];
+        //         $dstockinfo = $gerdqoute->data->$dinforstocl;
+        //         $marketval = $dstockinfo->last * $dstocktraded['totalstock'];
+        //         $dsellfees = getfees($marketval, 'sell');
+        //         $dtotal = $marketval - $dsellfees;
 
-                $dequityp += $dtotal;
-                $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
-                // $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
-            }
-        }
+        //         $dequityp += $dtotal;
+        //         $currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($trinfovalue['totalcost'], 2, '.', '').'"},';
+        //         // $currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
+        //     }
+        // }
 
         // $dequityp = 0;
         

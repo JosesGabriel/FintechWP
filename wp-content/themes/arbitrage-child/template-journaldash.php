@@ -287,40 +287,8 @@ function number_format_short($n, $precision = 1)
 			$pznotes = $buyyinginfo[0]->tradingnotes;
 		}
 
-		
-        // Update journal data.
-        // $journalpostlog = array(
-        //     // 'ID'           	=> $data_postid,
-        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'post_status' => 'publish',
-        //     'post_author' => $user_idd,
-        //     'post_category' => array(19, 20),
-        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'meta_input' => array(
-        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
-		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
-				
-		// 		'data_sellmonth' => $sellmonth,
-        //         'data_sellday' => $sellday,
-        //         'data_sellyear' => $sellyear,
-
-        //         'data_isdateofw' => $selldayname,
-
-        //         'data_stock' => $_POST['inpt_data_stock'],
-        //         'data_dprice' => $_POST['inpt_data_price'],
-				
-        //         'data_sell_price' => $sellprice,
-        //         'data_quantity' => $sellqty,
-        //         'data_avr_price' => $_POST['inpt_avr_price'],
-
-        //         'data_trade_info' => $_POST['dtradelogs'],
-        //         'data_userid' => $user->ID,
-        //     ),
-        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-		// wp_insert_post($journalpostlog);
 		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -408,8 +376,8 @@ get_header('dashboard');
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
+<!-- <script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script> -->
 
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -418,8 +386,9 @@ get_header('dashboard');
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
+<!-- <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
+<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet"> -->
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -514,16 +483,6 @@ get_header('dashboard');
 
 			array_push($alltradelogs, $tradeitems);
 			
-			// $dailyvolumes .= '{';
-			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
-			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			// $dailyvolumes .= '},';
-
-			
-			// $dailyvalues .= '{';
-			// $dailyvalues .= '"category": "'.$buysscounter.'",';
-			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			// $dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
@@ -1109,13 +1068,8 @@ if($issampledata){
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta($user->ID, '_trade_list');
-
-        // // delete all trade logs
-        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-        //     echo $delpostvalue['id'].'~';
-        //     wp_delete_post($delpostvalue['id'], true);
-        // }
+		delete_user_meta($user->ID, '_trade_list');
+		
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
@@ -1169,17 +1123,6 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
-						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
-							<!-- <option value="">Select Stocks</option> -->
-							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
-							<?php //endforeach; ?>
-						<!-- </select> -->
-						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
-						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -1225,7 +1168,7 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
-						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
+						<!-- <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
@@ -1296,18 +1239,7 @@ if($issampledata){
 
                                                                 // echo $dbaseaccount;
                                                             ?>
-                                                        	<!-- <div class="dltbutton">
-                                                        		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
-                                                        				<input type="submit" name="deletedata" value="Reset">
-                                                        			</form>
-                                                        		</div>
-                                                        	</div> -->
 															<?php if($isjounalempty): ?>
-																<!-- <div class="sampleData__overlay"></div>
-																<div class="sampleData__notification">
-																	Trading analytics display here. <br> It requires at least one complete trading data.
-																</div> -->
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio
@@ -1416,7 +1348,7 @@ if($issampledata){
 																						<!-- <div>this is it</div> -->
 																					</div>
 																					<div class="groupinput">
-																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																							<img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																						<input type="hidden" value="Live" name="inpt_data_status">
 																						<input type="hidden" id="newdate" name="newdate">
 																						<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
@@ -1810,7 +1742,7 @@ if($issampledata){
 																			                            </div>
 																			                            <div>
 																			                                <div style="height: 36px;">
-                                                                                                                 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+                                                                                                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
                                                                                 
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
@@ -1918,7 +1850,7 @@ if($issampledata){
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																	                                        	 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																												<input type="hidden" value="Live" name="inpt_data_status">
 																												<input type="hidden" value="" name="addstockisdate" id="addstockisdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
@@ -2616,7 +2548,7 @@ if($issampledata){
 																					?>
 																					<li class="<?php echo $value->tlid; ?> dloglist">
 																						<div style="width:99%;">
-																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="https://arbitrage.ph/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
+																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
 																							<div style="width:65px" class="tdate" id="tdate<?php echo $value->tlid; ?>"><?php echo $value->tldate; ?></div>
 																							<div style="width:55px" class="table-cell-live" id="tquantity<?php echo $value->tlid; ?>"><?php echo $value->tlvolume; ?></div>
 																							<div style="width:65px" class="table-cell-live" id="tavprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlaverageprice, 3, ".", ","); ?></div>
@@ -2702,7 +2634,7 @@ if($issampledata){
 																											</div>
 																										</div>
 																										<div class="trdleft">
-                                                                                                            <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
+                                                                                                            <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
 																											<input type="hidden" value="Edit" name="inpt_data_status">
 																											<input type="hidden" name="log_id" value="<?php echo $value->tlid; ?>">
 																											<input type="hidden" name="logs" value="">
@@ -3041,27 +2973,7 @@ if($issampledata){
                                                         </div>
                                                     </div>
                                                 	<br class="clear">
-
-                                                    <!--<div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
-													<br class="clear">
-
 						                        </div>
-						                        <!-- <div class="tab-pane" id="tab4">
-
-                                               		<div data-provide="calendar"></div>
-													<br class="clear">
-
-						                        </div> -->
 						                    </div>
 						                </div>
 						            </div>
@@ -3718,7 +3630,7 @@ if($issampledata){
 		    			}else{
 
 		    				$('.dstatstrade1 ul').append(
-		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
+		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
 		    					$('.s-logs').remove();
 		    			}
 		    					

@@ -212,7 +212,7 @@ jQuery(function(){
                         
                         <div class="to-left-watch" style="position: relative;float: left;display: contents;vertical-align: middle;top: 3px;">
                           <div class="to-stock" style="display: inline-block;position: relative;padding: 0 5px;">
-                            <a style= "color: #fff;" href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank">
+                            <a style= "color: #fff;" href="/chart/<?php echo $value['stockname']; ?>" target="_blank">
                               <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
                             </a>
                           </div>
@@ -240,7 +240,7 @@ jQuery(function(){
                         <?php endif; ?>
                         </div>
                           <div class="minichartt" style="display: block;top: 8px;position: relative;">
-                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                            <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>

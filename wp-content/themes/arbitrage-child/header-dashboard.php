@@ -4,7 +4,7 @@
 	if ( is_user_logged_in() ) {
 		// echo 'Welcome, registered user!';
 	} else {
-		wp_redirect( 'https://arbitrage.ph/login/', 301 );
+		wp_redirect( 'login', 301 );
 		exit;
 	}
 
@@ -12,8 +12,7 @@
 	$default_cover = UM()->options()->get( 'default_cover' );
 	um_fetch_user($profile_id);
 
-	$ismyprofile = ($user->ID == $profile_id ? true : false);
-	$homeurlgen = get_home_url();
+	$homeurlgen = '';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">
@@ -30,13 +29,13 @@
 	</script>
 	
 	<!-- Google Ads -->
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-4838120237791146",
-		enable_page_level_ads: true
-		});
-	</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7982031973729040",
+            enable_page_level_ads: true
+        });
+    </script>
 	<?php endif ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
@@ -50,9 +49,9 @@
 	<!-- THIS IS WHERE JQUERY IS -->
 	
 <?php
-	elegant_description();
-	elegant_keywords();
-	elegant_canonical();
+	//elegant_description();
+	//elegant_keywords();
+	//elegant_canonical();
 	/**
 	 * Fires in the head, before {@see wp_head()} is called. This action can be used to
 	 * insert elements into the beginning of the head before any styles or scripts.
@@ -67,11 +66,11 @@
 	</script>
 	<?php wp_head(); ?>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<link rel="shortcut icon" href="https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
+	<link rel="shortcut icon" href="/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css" integrity="sha256-Qc3yyFhqacL9loe3ItFKo9WaSdTwZhpZRMYBvEpR2Cw=" crossorigin="anonymous" />
-	<link href="https://arbitrage.ph/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">
+	<link href="/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,600i" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>">

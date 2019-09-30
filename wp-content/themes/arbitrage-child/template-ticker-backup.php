@@ -8,13 +8,13 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( 'https://arbitrage.ph/login/', 301 );
+		wp_redirect( '/login/', 301 );
 		exit;
 	}
 	$user_id = $user->ID;
 	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	if (!$checksharing){
-		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+		header('Location: /share/?'.rand(12345 ,89019));
 		die();
 	}
 	$cdnorlocal = get_home_url();
@@ -634,7 +634,7 @@
         <ul ng-attr-data-speed="speed" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
-                <a href="https://arbitrage.ph/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
+                <a href="/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
                 <strong style="font-black: bold !important;">{{::transaction.price}}</strong>
                 &nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
             </li>
@@ -707,7 +707,7 @@
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 <script src="/assets/js/datafeed.js?v=2.218"></script>'
-<script src="https://arbitrage.ph/assets/js/pauseresume.js"></script>
+<script src="/assets/js/pauseresume.js"></script>
 <script>
 $(".arb_custom_ticker").hover(function() {
   // pause on hover

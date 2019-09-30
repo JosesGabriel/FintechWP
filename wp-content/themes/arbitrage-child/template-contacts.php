@@ -183,44 +183,44 @@ get_header('dashboard');
 <div class="footer-container">
 	<div class="button-media-container">
 		<a href="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
-			<img src="https://arbitrage.ph/svg/facebook-01.svg" class="media-facebook" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
+			<img src="/svg/facebook-01.svg" class="media-facebook" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
 		</a>
 		<a href="https://twitter.com/ArbitragePh?s=09">
-			<img src="https://arbitrage.ph/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
+			<img src="/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
 		</a>
 		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
-			<img src="https://arbitrage.ph/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
 		</a>
 	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
-		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a>
+		<a href="/privacy-policy/">Privacy Policy</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a>
+		<a href="/terms-of-use/">Terms of Use</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/contact/">Contact Us</a>
+		<a href="/contact/">Contact Us</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/about/">About Us</a>
+		<a href="/about/">About Us</a>
 		<!-- <span class="ddot">•</span>
-		<a href="https://arbitrage.ph/FAQ/">FAQ</a> -->
+		<a href="/FAQ/">FAQ</a> -->
 		<div class="c-footer-arbitrage">Copyright © 2019 Arbitrage</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function(){
 		$(".media-facebook").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/facebook-1.svg");
+			$(this).attr('src', "/svg/facebook-1.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/facebook-01.svg");
+			$(this).attr('src', "/svg/facebook-01.svg");
 		}, 1500);
 		$(".media-twitter").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/twitter-1.svg");
+			$(this).attr('src', "/svg/twitter-1.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
+			$(this).attr('src', "/svg/twitter-01.svg");
 		}, 1500);
 		$(".media-instagram").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-2.svg");
+			$(this).attr('src', "/svg/instagram-2.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-white.svg");
+			$(this).attr('src', "/svg/instagram-white.svg");
 		}, 1500);
 	});
 </script>

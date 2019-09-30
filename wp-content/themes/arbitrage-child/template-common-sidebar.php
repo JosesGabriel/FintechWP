@@ -23,7 +23,7 @@ include_once(get_template_directory().'/arphie-functions.php');
 <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
 <link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="https://arbitrage.ph/wp-content/themes/divi-child/tradelogs.css">
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/divi-child/tradelogs.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});

@@ -720,7 +720,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         //         if( hasemail >= 1 ) {
         //             jQuery.ajax({
         //                 method: "POST",
-        //                 url: "https://arbitrage.ph/apipge/?daction=password_reset",
+        //                 url: "/apipge/?daction=password_reset",
         //                 data: {
         //                     'mail' : email
         //                 },

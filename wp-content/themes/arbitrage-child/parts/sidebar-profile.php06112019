@@ -18,13 +18,13 @@ $userid = get_current_user_id();
   <div class="left-user-details-inner">
       <div class="side-header">
           <div class="left-image">
-              <a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
+              <a href="/user/<?php echo $value['user_nicename']; ?>"><div class="user-image" style="background: url('<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>') no-repeat center center;width: 29px;height: 29px;">&nbsp;</div>
               </a>
           </div>
           <div class="right-image">
 
                   <div class="onto-user-name true-name">
-                    <!-- <a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>" style="color:#fffffe; 
+                    <!-- <a href="/user/<?php echo $value['user_nicename']; ?>" style="color:#fffffe; 
                     <?php echo ($unametype == "" || $unametype == 'rn' ? '' : 'display:none;'); ?>">
                       <?php echo um_user('first_name') . " " . um_user('last_name'); ?>
                     </a> -->
@@ -56,11 +56,11 @@ $userid = get_current_user_id();
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
               <ul style="margin-top: 10px; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
-                  <li class="one" style="margin-top: 8px;"><a href="https://arbitrage.ph/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">Social Wall</a></li>
+                  <li class="one" style="margin-top: 8px;"><a href="/"><img src="<?php echo get_home_url(); ?>/svg/layout.svg">Social Wall</a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart.svg">Interactive Chart</a></li>
                   <li class="three"><a href="/journal/"><img src="<?php echo get_home_url(); ?>/svg/edit1.svg">Trading Journal</a></li>
                   <li class="four"><a href="/watchlist/"><img src="<?php echo get_home_url(); ?>/svg/binoculars5.svg">Watcher & Alerts</a></li>
-                  <li class="five"><a href="https://arbitrage.ph/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/ico_messager_blue.svg">Vyndue Messenger</a></li>
+                  <li class="five"><a href="/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/ico_messager_blue.svg">Vyndue Messenger</a></li>
                   <li class="six dpowerdown">
                     <a href="#" class="powertools"><img src="<?php echo get_home_url(); ?>/svg/think.svg">Power Tools
                       <i class="fas fa-ellipsis-h sddropps"></i></a>
@@ -74,7 +74,7 @@ $userid = get_current_user_id();
                       </div>
                     </div>
                   </li>
-                  <li class="seven"><a href="https://arbitrage.ph/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">Games</a></li>
+                  <li class="seven"><a href="/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">Games</a></li>
                   <?php /*?><li class="seven"><a href="https://game.arbitrage.ph/game/activateme/<?php echo md5($dusersecret); ?>"><img src="<?php echo get_home_url(); ?>/svg/play-station.svg">Games</a></li><?php */?>
               </ul>
           </div>
@@ -85,7 +85,7 @@ $userid = get_current_user_id();
 <hr class="style14 style13">
 
 <script type="text/javascript">
-  // $activetab1 = 'https://arbitrage.ph/';
+  // $activetab1 = '/';
   // if()
   // jQuery('.hidemeplease').click(){
   //   jQuery('.choosename').show();
@@ -107,7 +107,7 @@ $userid = get_current_user_id();
 
                 jQuery.ajax({
                     method: "GET",
-                    url: "https://arbitrage.ph/apipge/?daction=changeto&toname=tn",
+                    url: "/apipge/?daction=changeto&toname=tn",
                     // url: 'https://api2.pse.tools/api/quotes',
                     dataType: 'json',
                     data: {
@@ -133,7 +133,7 @@ $userid = get_current_user_id();
 
                 jQuery.ajax({
                     method: "GET",
-                    url: "https://arbitrage.ph/apipge/?daction=changeto&toname=rn",
+                    url: "/apipge/?daction=changeto&toname=rn",
                     // url: 'https://api2.pse.tools/api/quotes',
                     dataType: 'json',
                     data: {
@@ -165,19 +165,19 @@ $userid = get_current_user_id();
 
   jQuery(document).ready(function(){
     var pageURL = jQuery(location).attr("href");
-    if(pageURL == 'https://arbitrage.ph/'){
+    if(pageURL == '/'){
       jQuery('.side-content ul .one').addClass('active');
-    }else if(pageURL == 'https://arbitrage.ph/chart/'){
+    }else if(pageURL == '/chart/'){
       jQuery('.side-content ul .twos').addClass('active');
-    }else if(pageURL == 'https://arbitrage.ph/journal/'){
+    }else if(pageURL == '/journal/'){
       jQuery('.side-content ul .three').addClass('active');
-    }else if(pageURL == 'https://arbitrage.ph/watchlist/'){
+    }else if(pageURL == '/watchlist/'){
       jQuery('.side-content ul .four').addClass('active');
     }else if(pageURL == 'https://vyndue.com/'){
       jQuery('.side-content ul .five').addClass('active');
-    }else if(pageURL == 'https://arbitrage.ph/tools/'){
+    }else if(pageURL == '/tools/'){
       jQuery('.side-content ul .six').addClass('active');
-    }else if(pageURL == 'https://arbitrage.ph/game/'){
+    }else if(pageURL == '/game/'){
       jQuery('.side-content ul .seven').addClass('active');
     }
   });

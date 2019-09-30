@@ -3,7 +3,7 @@ $user = wp_get_current_user();
 if ( is_user_logged_in() ) {
     // echo 'Welcome, registered user!';
 } else {
-    wp_redirect( 'https://arbitrage.ph/login/', 301 );
+    wp_redirect( '/login/', 301 );
     exit;
 }
 
@@ -55,7 +55,7 @@ $user = wp_get_current_user();
 
 	  $checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	  if (!$checksharing){
-			echo '<script type="text/javascript">window.location.href = "https://arbitrage.ph/share/?'.rand(12345 ,89019).'";</script>';
+			echo '<script type="text/javascript">window.location.href = "/share/?'.rand(12345 ,89019).'";</script>';
 	  }
 	  
   }
@@ -63,7 +63,7 @@ $user = wp_get_current_user();
   if (isset($_GET['resetshare'])){
 	    $user_id = $user->ID;
 		update_user_meta($user_id, 'check_user_share', "");
-		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+		header('Location: /share/?'.rand(12345 ,89019));
 		die();
   }
 

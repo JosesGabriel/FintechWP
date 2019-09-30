@@ -8,7 +8,7 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( 'https://arbitrage.ph/login/', 301 );
+		wp_redirect( '/login/', 301 );
 		exit;
 	}
 	$cdnorlocal = get_home_url();

@@ -994,37 +994,37 @@ get_header( 'dashboard' );
 </style>
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery('.um-faicon-user').html('<img src="https://arbitrage.ph/svg/account.svg" style="width: 20px;">');
+		jQuery('.um-faicon-user').html('<img src="/svg/account.svg" style="width: 20px;">');
 		jQuery('.um-faicon-user').removeClass('um-faicon-user');
 
-		jQuery('.um-faicon-asterisk').html('<img src="https://arbitrage.ph/svg/user-key-account3.svg" style="width: 19px;">');
+		jQuery('.um-faicon-asterisk').html('<img src="/svg/user-key-account3.svg" style="width: 19px;">');
 		jQuery('.um-faicon-asterisk').removeClass('um-faicon-asterisk');
 
-		jQuery('.um-faicon-credit-card').html('<img src="https://arbitrage.ph/svg/real-estate2.svg" style="width: 20px;">');
+		jQuery('.um-faicon-credit-card').html('<img src="/svg/real-estate2.svg" style="width: 20px;">');
 		jQuery('.um-faicon-credit-card').removeClass('um-faicon-credit-card');
 
-		jQuery('.um-faicon-shopping-cart').html('<img src="https://arbitrage.ph/svg/shopping-cart1.svg" style="width: 20px;">');
+		jQuery('.um-faicon-shopping-cart').html('<img src="/svg/shopping-cart1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-shopping-cart').removeClass('um-faicon-shopping-cart');
 
-		jQuery('.um-faicon-download').html('<img src="https://arbitrage.ph/svg/download.svg" style="width: 20px;">');
+		jQuery('.um-faicon-download').html('<img src="/svg/download.svg" style="width: 20px;">');
 		jQuery('.um-faicon-download').removeClass('um-faicon-download');
 
-		jQuery('.um-faicon-lock').html('<img src="https://arbitrage.ph/svg/shield1.svg" style="width: 21px;">');
+		jQuery('.um-faicon-lock').html('<img src="/svg/shield1.svg" style="width: 21px;">');
 		jQuery('.um-faicon-lock').removeClass('um-faicon-lock');
 
-		jQuery('.um-faicon-envelope').html('<img src="https://arbitrage.ph/svg/bell2.svg" style="width: 21px;">');
+		jQuery('.um-faicon-envelope').html('<img src="/svg/bell2.svg" style="width: 21px;">');
 		jQuery('.um-faicon-envelope').removeClass('um-faicon-envelope');
 
-		jQuery('.um-faicon-bell').html('<img src="https://arbitrage.ph/svg/bel-not4.svg" style="width: 21px;">');
+		jQuery('.um-faicon-bell').html('<img src="/svg/bel-not4.svg" style="width: 21px;">');
 		jQuery('.um-faicon-bell').removeClass('um-faicon-bell');
 
-		jQuery('.um-faicon-sign-in').html('<img src="https://arbitrage.ph/svg/link1.svg" style="width: 20px;">');
+		jQuery('.um-faicon-sign-in').html('<img src="/svg/link1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-sign-in').removeClass('um-faicon-sign-in');
 
-		jQuery('.um-faicon-image').html('<img src="https://arbitrage.ph/svg/photo1.svg" style="width: 20px;">');
+		jQuery('.um-faicon-image').html('<img src="/svg/photo1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-image').removeClass('um-faicon-image');
 
-		jQuery('.um-faicon-trash-o').html('<img src="https://arbitrage.ph/svg/garbage1.svg" style="width: 20px;">');
+		jQuery('.um-faicon-trash-o').html('<img src="/svg/garbage1.svg" style="width: 20px;">');
 		jQuery('.um-faicon-trash-o').removeClass('um-faicon-trash-o');
 
 		jQuery(".um-field-nickname").find(".um-field-label label").text('Trading Name');

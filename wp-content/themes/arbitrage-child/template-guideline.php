@@ -89,7 +89,7 @@ get_header('dashboard');
 		<p><strong>DONT FEED A TROLL.</strong> Trolls post messages or content deliberately designed to get the blood boiling. Replying to or arguing with a troll is feeding. The best pest-control is to ignore, and use the flag to let us know about them so we can deal with it. Trolling is a prevalent culture present in amongst retail traders. It may take awhile to bring them over the real side. For now, let us just manage their behaviours. </p>
 
 
-		<p>You can contact us at <a href="https://arbitrage.ph/login/" style="color:cyan;"><strong>communities@arbitrage.ph</strong></a>  with feedback, questions or issues about our online community. If you have guidebook feedback, or a suggestion for a business that you would like to see listed, and all sorts of other queries you should <a href="http://www.lonelyplanet.com/contact" style="color:cyan;"><strong>use this form.</strong></a> This will make sure your feedback gets to the right person faster. For swift action against community violations, simple hit the “report” button.</p>
+		<p>You can contact us at <a href="/login/" style="color:cyan;"><strong>communities@arbitrage.ph</strong></a>  with feedback, questions or issues about our online community. If you have guidebook feedback, or a suggestion for a business that you would like to see listed, and all sorts of other queries you should <a href="http://www.lonelyplanet.com/contact" style="color:cyan;"><strong>use this form.</strong></a> This will make sure your feedback gets to the right person faster. For swift action against community violations, simple hit the “report” button.</p>
 
 	</div>
 

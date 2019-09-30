@@ -96,7 +96,7 @@ $user = wp_get_current_user();
 				if( hasemail >= 1 ) {
 					jQuery.ajax({
 						method: "POST",
-						url: "https://arbitrage.ph/apipge/?daction=notify_me_email",
+						url: "/apipge/?daction=notify_me_email",
 						// url: 'https://api2.pse.tools/api/quotes',
 						data: {
 							'email' : email

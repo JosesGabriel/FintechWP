@@ -8,7 +8,7 @@
             <div class="left-header-part">
                 <div class="left-header-inner">
                     <div class="logo-image">
-                        <a href="/"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a>
+                        <a href="/"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a>
                     </div>
                     <div class="searchbar">
                         <div class="inner-seatch">
@@ -59,7 +59,7 @@
                     <div class="dmessagepart" <?php if(is_page(2457)){ ?>style="padding-right:0;"<?php } ?>>
                     	<?php if(!is_page(2457)){ ?>
                             <div class="dmessagepart-wrap" data-show-always="1">
-                                <a href="https://arbitrage.ph/vyndue/"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top:3px"></a>
+                                <a href="/vyndue/"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top:3px"></a>
                                 <span class="vyndue-notification" style="display: none;">0</span>
                             </div>
                         <?php } ?>
@@ -73,7 +73,7 @@
                             
                         </div>
                         <ul id="droppouts" style="">
-                            <li><a href="https://arbitrage.ph/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
+                            <li><a href="/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
                             <li><a href="<?php echo get_home_url(); ?>/user/">My Account</a></li>
                             <hr class="style14 style15">
                             <li class="onto-last-element"><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>

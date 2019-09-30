@@ -33,7 +33,7 @@ if (isset($_POST) && !empty($_POST)) {
         array_push($havemeta, $_POST);
         update_user_meta($userID, '_watchlist_instrumental', $havemeta);
 
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        wp_redirect( '/watchlist' );
         exit;
 
     } else {
@@ -53,7 +53,7 @@ if (isset($_POST) && !empty($_POST)) {
             update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        wp_redirect( '/watchlist' );
         exit;
     }
 
@@ -67,7 +67,7 @@ if (isset($_GET['remove'])) {
         }
     }
     update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-    wp_redirect( 'https://arbitrage.ph/watchlist' );
+    wp_redirect( '/watchlist' );
 }
 
 if(isset($_GET['addcp'])){
@@ -266,7 +266,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 	<div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
 																					</div>
                                                                                     <div class="minichartt">
-                                                                                    <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                                                                                    <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                                                                                     <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                                                                         <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                                                                                     </div>
@@ -456,7 +456,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                     </div>-->
                                                                                                     <div class="col-md-12">
                                                                                                         <div class="submitform" style="margin-left: 84px;">
-                                                                                                        	<img class="chart-preloader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
+                                                                                                        	<img class="chart-preloader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
                                                                                                             <input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
                                                                                                             <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                                                             <input type="hidden" name="subtype" value="editdata">
@@ -614,7 +614,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>-->
                                                                     <div class="submitform" style="margin-right: -125px;">
-                                                                    	<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
+                                                                    	<img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
@@ -852,7 +852,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 									'success'
 								).then((result) => {
 									var ditemtoremove = jQuery(this).attr('data-space');
-									window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									window.location.href = "/watchlist/?remove="+ditemtoremove;
 									//window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
 								});
 							}

@@ -24,7 +24,7 @@ function getSMS(){
     #get List of users and their meta: 
 
    /* $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/apipge/?daction=userwatchlist');
+    curl_setopt($curl, CURLOPT_URL, '/apipge/?daction=userwatchlist');
     curl_setopt($curl, CURLOPT_RESOLVE, ['arbitrage.ph:443:34.92.99.210']);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     $usersmeta = curl_exec($curl);

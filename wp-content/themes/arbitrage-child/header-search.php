@@ -3,7 +3,7 @@ $user = wp_get_current_user();
 if ( is_user_logged_in() ) {
     // echo 'Welcome, registered user!';
 } else {
-    wp_redirect( 'https://arbitrage.ph/login/', 301 );
+    wp_redirect( '/login/', 301 );
     exit;
 }
 
@@ -38,7 +38,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	<?php endif ?>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<link rel="shortcut icon" href="https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
+	<link rel="shortcut icon" href="/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 
 	<script type="text/javascript">
@@ -63,7 +63,7 @@ $user = wp_get_current_user();
 
 	  $checksharing = get_user_meta( $user_id, "check_user_share", true ); 
 	  if (!$checksharing){
-			echo '<script type="text/javascript">window.location.href = "https://arbitrage.ph/share/?'.rand(12345 ,89019).'";</script>';
+			echo '<script type="text/javascript">window.location.href = "/share/?'.rand(12345 ,89019).'";</script>';
 	  }
 	  
   }
@@ -71,7 +71,7 @@ $user = wp_get_current_user();
   if (isset($_GET['resetshare'])){
 	    $user_id = $user->ID;
 		update_user_meta($user_id, 'check_user_share', "");
-		header('Location: https://arbitrage.ph/share/?'.rand(12345 ,89019));
+		header('Location: /share/?'.rand(12345 ,89019));
 		die();
   }
 
@@ -189,7 +189,7 @@ $user = wp_get_current_user();
 		margin-bottom: 0;
 	}	
     </style>
-	<link href="https://arbitrage.ph/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">
+	<link href="/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">
     <script language="javascript">
 		jQuery(document).ready(function(e) {
 			

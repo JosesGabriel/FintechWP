@@ -723,7 +723,7 @@ $dstockinfo = $gerdqoute->data;
                                                                                 </div>
                                                                             </div>
                                                                             <div class="traider-details">
-                                                                                <div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a> 
+                                                                                <div class="traider-name"><a href="/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a> 
                                                                                 <div class="login"></div>
                                                                                 </div>
                                                                                 <div class="traider-follower">
@@ -824,7 +824,7 @@ $dstockinfo = $gerdqoute->data;
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="traider-details">
-                                                                                        <div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a>
+                                                                                        <div class="traider-name"><a href="/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a>
                                                                                         
                                                                                         <div class="login"></div>
                                                                                         </div>

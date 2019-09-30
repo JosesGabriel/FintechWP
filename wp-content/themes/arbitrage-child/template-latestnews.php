@@ -885,7 +885,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						                			<p><a href="https://news.google.com/<?php echo $link[$topright]; ?>" target="_blank"><?php echo (strlen($titles[$topright]) > 45 ? substr($titles[$topright], 0, 45) . '...' : $titles[$topright])?></a></p>
 						                			<p class="ellpnews"><?php echo (strlen($desc[$topright]) > 33 ? substr($desc[$topright], 0, 33) . '...' : $desc[$topright]) ?></p>
 													<p><?php echo (strlen($source[$topright]) > 25 ? substr($source[$topright], 0, 25) . '...' : $source[$topright]) ?></p>
-						                			<!-- <p class="nws-toplinks"><a href="https://arbitrage.ph/bulletins/">https://arbitrage.ph/bulletins/</a></p> -->
+						                			<!-- <p class="nws-toplinks"><a href="/bulletins/">/bulletins/</a></p> -->
 						                		</div>
 					                		</div>
 										<?php } ?>
@@ -977,7 +977,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 								<!--	<div class="box-portlet-content col-md-10" style="padding: 0 !important;">-->
 										<!-- <small>ADVERTISEMENT</small> -->
 									<!--	<div class="adscontainer" style="width: 900px;">
-										<img src="https://arbitrage.ph/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
+										<img src="/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
 										</div>
 									</div>
 								</div>

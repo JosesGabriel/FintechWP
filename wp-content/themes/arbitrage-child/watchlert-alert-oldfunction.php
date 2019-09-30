@@ -39,7 +39,7 @@ function checkwatchlist() {
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+istockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+istockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';
@@ -65,7 +65,7 @@ function checkwatchlist() {
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+istockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+istockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';
@@ -91,7 +91,7 @@ function checkwatchlist() {
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+istockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+istockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';

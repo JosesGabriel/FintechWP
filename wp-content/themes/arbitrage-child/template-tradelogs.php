@@ -20,7 +20,7 @@ include_once(get_theme_file_path().'/ab-functions.php');
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css" href="https://arbitrage.ph/wp-content/themes/divi-child/tradelogs.css">
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/divi-child/tradelogs.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
@@ -195,7 +195,7 @@ include_once(get_theme_file_path().'/ab-functions.php');
                     	<div class="hideformodal">
                         	<div class="tradingnotescont" id="tradingnotes<?php echo "_".$numbrng ; ?>">
                             	<div class="entr_ttle_bar">
-                                    <img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
+                                    <img src="/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
                                 </div>
                             	<div style="padding:10px 0 0 0"><?php echo get_post_meta(get_the_ID(), 'data_tradingnotes', true); ?></div>
                             </div>

@@ -13,7 +13,7 @@
 			  
 
 			   <div class="see-more-btn see-all-members" style="padding: 0 0 0px 2px;">
-				  <a href="https://arbitrage.ph/member-directory/">
+				  <a href="/member-directory/">
 				 	 <strong style="font-size:13px;font-weight: 400;">View all members</strong>
 				  </a>
 		  	  </div>

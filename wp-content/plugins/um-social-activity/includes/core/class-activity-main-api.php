@@ -450,8 +450,10 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-               
-                $dprocessedtext = preg_split("/[\s,]+/", $content);
+               $rows = explode("<br>", $content);
+                //$dprocessedtext = preg_split("/[\s,]+/", $content);
+               foreach($rows as $row) {
+                $dprocessedtext = explode(' ', $row);
 
                 //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
@@ -475,6 +477,9 @@ class Activity_Main_API
                         $newconts .= ' ' . $dwordpvalue;
                     }
                 }
+
+              } //==============>
+
             }
 
             ob_start();
@@ -526,6 +531,7 @@ class Activity_Main_API
         return null;
     }
 
+   
     /**
 
      * Check if URL is oEmbed supported

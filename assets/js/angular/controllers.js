@@ -141,7 +141,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
 //             }
 //         });
 // });
-app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
+app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope) {
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -385,27 +385,29 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
     });
     $scope.getBidsAndAsks = function (symbol) {
-        if ($scope.enableBidsAndAsks) {
-            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
-            .then(response => {
-                response = response.data;
-                if (!response.success) {
+        $timeout(function () {
+            if ($scope.enableBidsAndAsks) {
+                $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+                .then(response => {
+                    response = response.data;
+                    if (!response.success) {
+                        $scope.bids = [];
+                        $scope.asks = [];
+                        return;
+                    }
+        
+                    $scope.bids = Object.values(response.data.bids);
+                    $scope.asks = Object.values(response.data.asks);
+                })
+                .catch(err => {
                     $scope.bids = [];
                     $scope.asks = [];
-                    return;
-                }
-    
-                $scope.bids = Object.values(response.data.bids);
-                $scope.asks = Object.values(response.data.asks);
-            })
-            .catch(err => {
-                $scope.bids = [];
-                $scope.asks = [];
-            })
-            .finally(() => {
-                $scope.$digest();
-            });
-        }
+                })
+                .finally(() => {
+                    $scope.$digest();
+                });
+            }
+        }, 0)
     }
     $scope.getBidsAndAsks(_symbol);
     let limit = 20;

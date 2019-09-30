@@ -3297,7 +3297,7 @@ if($issampledata){
 
 	jQuery(document).ready(function(){
 
-        jQuery(".buy-order--submit").click(function(){
+        jQuery("#buy-order--submit").click(function(){
 
             if($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0) {
                 

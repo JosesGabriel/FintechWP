@@ -12,155 +12,62 @@ header("Expires: 0");
 global $current_user, $wpdb;
 $user = wp_get_current_user();
 date_default_timezone_set('Asia/Manila');
-get_header('dashboard');
 
-echo $user->ID ." versis ". $user->ID;
+function getjurfees($funmarketval, $funtype)
+{
+	// Commissions
+	$dpartcommission = $funmarketval * 0.0025;
+	$dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
+	// TAX
+	$dtax = $dcommission * 0.12;
+	// Transfer Fee
+	$dtransferfee = $funmarketval * 0.00005;
+	// SCCP
+	$dsccp = $funmarketval * 0.0001;
+	$dsell = $funmarketval * 0.006;
 
+	if ($funtype == 'buy') {
+		$dall = $dcommission + $dtax + $dtransferfee + $dsccp;
+	} else {
+		$dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+	}
 
+	return $dall;
+}
+
+// number formater
+function number_format_short($n, $precision = 1)
+{
+	if ($n < 900) {
+		// 0 - 900
+		$n_format = number_format($n, $precision);
+		$suffix = '';
+	} elseif ($n < 900000) {
+		// 0.9k-850k
+		$n_format = number_format($n / 1000, $precision);
+		$suffix = 'K';
+	} elseif ($n < 900000000) {
+		// 0.9m-850m
+		$n_format = number_format($n / 1000000, $precision);
+		$suffix = 'M';
+	} elseif ($n < 900000000000) {
+		// 0.9b-850b
+		$n_format = number_format($n / 1000000000, $precision);
+		$suffix = 'B';
+	} else {
+		// 0.9t+
+		$n_format = number_format($n / 1000000000000, $precision);
+		$suffix = 'T';
+	}
+
+	if ($precision > 0) {
+		$dotzero = '.'.str_repeat('0', $precision);
+		$n_format = str_replace($dotzero, '', $n_format);
+	}
+
+	return $n_format.$suffix;
+}
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
-
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
-
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
-
-<?php get_template_part('parts/sidebar', 'calc'); ?>
-<?php get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
-<?php
-    function getjurfees($funmarketval, $funtype)
-    {
-        // Commissions
-        $dpartcommission = $funmarketval * 0.0025;
-        $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
-        // TAX
-        $dtax = $dcommission * 0.12;
-        // Transfer Fee
-        $dtransferfee = $funmarketval * 0.00005;
-        // SCCP
-        $dsccp = $funmarketval * 0.0001;
-        $dsell = $funmarketval * 0.006;
-
-        if ($funtype == 'buy') {
-            $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
-        } else {
-            $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
-        }
-
-        return $dall;
-    }
-
-    // number formater
-    function number_format_short($n, $precision = 1)
-    {
-        if ($n < 900) {
-            // 0 - 900
-            $n_format = number_format($n, $precision);
-            $suffix = '';
-        } elseif ($n < 900000) {
-            // 0.9k-850k
-            $n_format = number_format($n / 1000, $precision);
-            $suffix = 'K';
-        } elseif ($n < 900000000) {
-            // 0.9m-850m
-            $n_format = number_format($n / 1000000, $precision);
-            $suffix = 'M';
-        } elseif ($n < 900000000000) {
-            // 0.9b-850b
-            $n_format = number_format($n / 1000000000, $precision);
-            $suffix = 'B';
-        } else {
-            // 0.9t+
-            $n_format = number_format($n / 1000000000000, $precision);
-            $suffix = 'T';
-        }
-
-        if ($precision > 0) {
-            $dotzero = '.'.str_repeat('0', $precision);
-            $n_format = str_replace($dotzero, '', $n_format);
-        }
-
-        return $n_format.$suffix;
-    }
-?>
-<!-- BOF Deposit -->
-<?php
-    if (isset($_POST['todelete'])) {
-
-        //========================================
-           $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
-           $wpdb->query($deletelogs);
-           //wp_redirect('/journal');
-           //exit; 
-        //=========================================
-
-        echo 'delete: '.$_POST['todelete'];
-        $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
-        wp_update_post($post);
-        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
-        exit;
-    }
-    if (isset($_POST['istype'])) {
-		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
-        if ($dxammount > 0) {
-            $wpdb->insert('arby_ledger', array(
-                'userid' => $user->ID,
-                'date' => $_POST['ddate'],
-                'trantype' => $_POST['istype'],
-                'tranamount' =>  $dxammount// ... and so on
-            ));
-        }
-
-        wp_redirect('/journal');
-        exit;
-    }
-
-
-
-
-    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
-
-    if(isset($_POST['to_edit'])){
-        //echo $_POST['inpt_data_status'];
-
-        $log_id = $_POST['to_edit'];
-        $strategy = $_POST['strategy_'. $log_id];
-        $tradepan = $_POST['trade_plan_'. $log_id];
-        $emotion = $_POST['emotion_'. $log_id];
-        $notes = $_POST['tlnotes_'. $log_id];
-
-         $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
-         $wpdb->query($updatelogs);
-
-
-        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
-
-        update_post_meta($log_id,  'data_trade_info', $strategy);
-       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
-               
-        wp_redirect('/journal');
-        exit;
-    }
-
-
-
-?>
-<!-- EOF Deposit -->
-
 
 <!-- BOF BUY trades -->
 <?php
@@ -274,6 +181,71 @@ echo $user->ID ." versis ". $user->ID;
     }
 ?>
 <!-- EOF BUY trades -->
+
+<!-- BOF Deposit -->
+<?php
+    if (isset($_POST['todelete'])) {
+
+        //========================================
+           $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
+           $wpdb->query($deletelogs);
+           //wp_redirect('/journal');
+           //exit; 
+        //=========================================
+
+        echo 'delete: '.$_POST['todelete'];
+        $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
+        wp_update_post($post);
+        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+    if (isset($_POST['istype'])) {
+		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
+        if ($dxammount > 0) {
+            $wpdb->insert('arby_ledger', array(
+                'userid' => $user->ID,
+                'date' => $_POST['ddate'],
+                'trantype' => $_POST['istype'],
+                'tranamount' =>  $dxammount// ... and so on
+            ));
+        }
+
+        wp_redirect('/journal');
+        exit;
+    }
+
+
+
+
+    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+
+    if(isset($_POST['to_edit'])){
+        //echo $_POST['inpt_data_status'];
+
+        $log_id = $_POST['to_edit'];
+        $strategy = $_POST['strategy_'. $log_id];
+        $tradepan = $_POST['trade_plan_'. $log_id];
+        $emotion = $_POST['emotion_'. $log_id];
+        $notes = $_POST['tlnotes_'. $log_id];
+
+         $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
+         $wpdb->query($updatelogs);
+
+
+        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+
+        update_post_meta($log_id,  'data_trade_info', $strategy);
+       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+               
+        wp_redirect('/journal');
+        exit;
+    }
+
+
+
+?>
+<!-- EOF Deposit -->
+
 
 <!-- BOF SELL trades -->
 <?php
@@ -424,6 +396,39 @@ echo $user->ID ." versis ". $user->ID;
 
 } ?>
 <!-- EOF DELETE LIVE PORTFOLIO -->
+
+<?php
+
+get_header('dashboard');
+
+// echo $user->ID ." versis ". $user->ID;
+
+
+?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
+
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
+<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
+
+<?php get_template_part('parts/sidebar', 'calc'); ?>
+<?php get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+
 <?php
     $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 

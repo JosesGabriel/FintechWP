@@ -12,8 +12,7 @@
 	$default_cover = UM()->options()->get( 'default_cover' );
 	um_fetch_user($profile_id);
 
-	$ismyprofile = ($user->ID == $profile_id ? true : false);
-	$homeurlgen = get_home_url();
+	$homeurlgen = '';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> ng-app="arbitrage_wl">

@@ -1068,13 +1068,8 @@ if($issampledata){
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta($user->ID, '_trade_list');
-
-        // // delete all trade logs
-        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-        //     echo $delpostvalue['id'].'~';
-        //     wp_delete_post($delpostvalue['id'], true);
-        // }
+		delete_user_meta($user->ID, '_trade_list');
+		
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
@@ -1128,17 +1123,6 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
-						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
-							<!-- <option value="">Select Stocks</option> -->
-							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
-							<?php //endforeach; ?>
-						<!-- </select> -->
-						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
-						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -1255,18 +1239,7 @@ if($issampledata){
 
                                                                 // echo $dbaseaccount;
                                                             ?>
-                                                        	<!-- <div class="dltbutton">
-                                                        		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
-                                                        				<input type="submit" name="deletedata" value="Reset">
-                                                        			</form>
-                                                        		</div>
-                                                        	</div> -->
 															<?php if($isjounalempty): ?>
-																<!-- <div class="sampleData__overlay"></div>
-																<div class="sampleData__notification">
-																	Trading analytics display here. <br> It requires at least one complete trading data.
-																</div> -->
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio
@@ -2999,27 +2972,7 @@ if($issampledata){
                                                         </div>
                                                     </div>
                                                 	<br class="clear">
-
-                                                    <!--<div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
-													<br class="clear">
-
 						                        </div>
-						                        <!-- <div class="tab-pane" id="tab4">
-
-                                               		<div data-provide="calendar"></div>
-													<br class="clear">
-
-						                        </div> -->
 						                    </div>
 						                </div>
 						            </div>

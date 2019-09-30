@@ -82,7 +82,7 @@
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';
@@ -107,7 +107,7 @@
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';
@@ -131,7 +131,7 @@
 													
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
-													dslert += '<div class="btn-show"><a href="https://arbitrage.ph/chart/'+stockname+'">Show</a></div>';
+													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
 													dslert += '<div class="btn-close xclsbtn">Close</div>';
 												dslert += '</div>';
 											dslert += '</div>';

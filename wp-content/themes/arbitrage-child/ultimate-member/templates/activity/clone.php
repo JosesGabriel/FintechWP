@@ -46,7 +46,7 @@ date_default_timezone_set("Asia/Manila");
 
 	<div class="um-activity-widget um-activity-new-clone unready hala-clone" id="postid-{{{data.post_id}}}">
 
-		<img class="arbitrage-wall-post-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" alt="loading post">
+		<img class="arbitrage-wall-post-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" alt="loading post">
 
 		<div class="um-activity-head">
 
@@ -218,7 +218,7 @@ date_default_timezone_set("Asia/Manila");
 
 					<a href="#">
 
-						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
+						<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbullish; ?></span>
 
@@ -230,7 +230,7 @@ date_default_timezone_set("Asia/Manila");
 
 					<a href="#">
 
-						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
+						<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbear; ?></span>
 

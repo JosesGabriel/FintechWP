@@ -115,7 +115,7 @@ get_header( 'dashboard' );
                               <div class="side-image" style="background: url('<?php echo esc_url( get_avatar_url( $value['id'] ) ); ?>') no-repeat center center;">&nbsp;</div>
                             </div>
                             <div class="traider-details">
-                              <div class="traider-name"><a href="https://arbitrage.ph/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a></div>
+                              <div class="traider-name"><a href="/user/<?php echo $value['user_nicename']; ?>"><?php echo $value['displayname']; ?></a></div>
                               <div class="traider-follower">
                                 <div class="onbfdata"><?php echo $value['followers']; ?> followers </div>
                                 <div class="onbfollow">
@@ -226,7 +226,7 @@ get_header( 'dashboard' );
 
                       <li class="even">
                         <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
-                          <div class="to-stock"><a style= "color: #fff;" href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank"><?php echo $value['stockname']; ?></a></div>
+                          <div class="to-stock"><a style= "color: #fff;" href="/chart/<?php echo $value['stockname']; ?>" target="_blank"><?php echo $value['stockname']; ?></a></div>
                           
                           <?php if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
                             <div class="dbox">
@@ -288,7 +288,7 @@ get_header( 'dashboard' );
                   </ul>
                 <?php else: ?>
                         <div class="to-content-part">
-                            <a href="https://arbitrage.ph/watchlist/">
+                            <a href="/watchlist/">
                               <div class="dplusbutton" style="text-align: center; color: #fff">
                                   <div class="dplsicons" style="font-size: 36px;margin-bottom: 11px;">
                                     <i class="fa fa-plus-circle"></i></div>
@@ -334,7 +334,7 @@ get_header( 'dashboard' );
                 <?php endif; ?>
               </div>
               <!-- <div class="to-bottom-title"> -->
-                <!-- <a href="https://arbitrage.ph/watchlist/" class="to-add-more">Add More</a> -->
+                <!-- <a href="/watchlist/" class="to-add-more">Add More</a> -->
               <!-- </div> -->
             </div>
           </div>

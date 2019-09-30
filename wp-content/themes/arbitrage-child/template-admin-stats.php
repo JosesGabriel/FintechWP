@@ -195,7 +195,7 @@
 																				    ?>
 																				    	<li>
 																				    		<div class="duserperson">
-																				    			<a href="https://arbitrage.ph/user/<?php echo $user->data->user_login; ?>"><?php echo $firstName . ' ' . $lastName; ?></a>
+																				    			<a href="/user/<?php echo $user->data->user_login; ?>"><?php echo $firstName . ' ' . $lastName; ?></a>
 																				    		</div>
 																				    		<div class="dactivesince"><?php echo date("F j, Y", strtotime($user->data->user_registered)); ?></div>
 																				    		<div class="dcomission">Free User</div>

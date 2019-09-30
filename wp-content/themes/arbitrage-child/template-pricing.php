@@ -27,7 +27,7 @@ get_header( 'dashboard' );
 date_default_timezone_set('Asia/Manila'); ?>
 
 <?php get_template_part('parts/global', 'css'); ?>
-<link rel="stylesheet" href="https://arbitrage.ph/wp-content/themes/arbitrage-child/animate-style.css" type='text/css' />
+<link rel="stylesheet" href="/wp-content/themes/arbitrage-child/animate-style.css" type='text/css' />
 <style type="text/css">
 	html {
 		background: linear-gradient(90deg, #0d1f33 0%,#0d1f33 0%,#12263b 0%,#152c43 100%) !important;

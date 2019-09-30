@@ -232,7 +232,7 @@ $homeurlgen = get_home_url();
         }
         html, body, div#page-container, div#et-main-area {height: 100%;}
         /* .um-social-login-overlay, #preloader, */
-        html {background: url("https://arbitrage.ph/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
+        html {background: url("/images/<?php echo $get_bgfimage; ?>") 50% 0 no-repeat #2c3e50 fixed;}
         /* #preloader {background-size: cover;} */
         html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
         .ondashboardpage_login {

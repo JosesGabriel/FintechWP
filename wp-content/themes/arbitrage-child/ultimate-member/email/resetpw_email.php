@@ -1,6 +1,6 @@
 <div class="container" style="width: 100%; font-family: 'Roboto', sans-serif; color: #142c46;">
 
-<div class="em-head" style="padding: 23px 0px 23px 31px; background: #142c46; background-image: url('https://arbitrage.ph/email-templates/email-template/lines.png'); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="https://arbitrage.ph/email-templates/email-template/logo.png" /></div>
+<div class="em-head" style="padding: 23px 0px 23px 31px; background: #142c46; background-image: url('/email-templates/email-template/lines.png'); background-position: 5vh 34%; background-size: 103%;"><img class="arbi-logo" style="width: 24%;" src="/email-templates/email-template/logo.png" /></div>
 
 <div class="site-name" style="text-align: right; font-size: 15px; float: right; margin: 20px 30px 0px 0px;">{site_name} <a class="trade-btn" style="color: #142c46; cursor: pointer; padding: 3px 9px; border-radius: 20px; border: 3px solid #142c46;">Trade now </a></div>
 

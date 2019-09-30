@@ -163,7 +163,7 @@ get_header('dashboard');
 
 			<p class="p-padding">The real journey is about to begin. We know inside that it is going to be exciting. As we <strong class="hg-rainbow">write our story</strong>, we invite you to come take this journey with us. We will traverse off the beaten track and leave a trail for everyone else to follow. We will cultivate tools and approach way beyond the TA prevalent highway. We will make everyone see how other fronts prove effective and efficient to attaining a successful trading journey. Tools like <strong class="hg-rainbow">fair market value calculator</strong> is in pipeline. Research and barney style explanations, understanding business dynamics, sales cycle, enterprise seasonality and the strengths and weaknesses of each industries.  A glimpse of how economies work, how money works, all in a easy to understand and painless to navigate online trading platform.</p>
 
-			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" style="color:cyan;"><strong>Join us!</strong></a></p> -->
+			<p class="p-padding">The road ahead is long, we can use some company. <a href="/login/" style="color:cyan;"><strong>Join us!</strong></a></p> -->
 			<p class="p-padding">Every company has a story to tell. Although ours is just starting, it is rather a fascinating tale of how we are forced to evolve beyond the blueprint of our already mapped-out journey.</p>
 			
 			<h4 class="sub-topics">Our aim </h4>
@@ -182,7 +182,7 @@ get_header('dashboard');
 			
 			<p class="p-padding">The real journey is about to begin. We know that it is going to be exciting. As we <strong>write our story</strong>, we invite you to come to take this journey with us. We will traverse off the beaten track and leave a trail for everyone else to follow. We will cultivate tools and approach way beyond the TA prevalent highway. We will make everyone see how other fronts prove effective and efficient to attaining a successful trading journey. Tools like <strong>fair market value calculator</strong> are in the pipeline. Research and barney style explanations, understanding business dynamics, sales cycle, enterprise seasonality and the strengths and weaknesses of each industry. A glimpse of how economies work, how money works, all easy to understand and painless to navigate online trading platform.</p>
 			
-			<p class="p-padding">The road ahead is long, we can use some company. <a href="https://arbitrage.ph/login/" class="a-color-pink"><strong>Join us!</strong></a></p>
+			<p class="p-padding">The road ahead is long, we can use some company. <a href="/login/" class="a-color-pink"><strong>Join us!</strong></a></p>
 		</div>
 
 	</div>
@@ -190,44 +190,44 @@ get_header('dashboard');
 <div class="footer-container">
 	<div class="button-media-container">
 		<a href="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
-			<img src="https://arbitrage.ph/svg/facebook-01.svg" class="media-facebook" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
+			<img src="/svg/facebook-01.svg" class="media-facebook" alt="https://business.facebook.com/arbitrage.ph/?business_id=118029389394062&ref=bookmarks">
 		</a>
 		<a href="https://twitter.com/ArbitragePh?s=09">
-			<img src="https://arbitrage.ph/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
+			<img src="/svg/twitter-01.svg" class="media-twitter" alt="https://twitter.com/ArbitragePh?s=09">
 		</a>
 		<a href="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
-			<img src="https://arbitrage.ph/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
+			<img src="/svg/instagram-white.svg" class="media-instagram" alt="https://instagram.com/arbitrage_ph?igshid=1nhyzhq0d8jqy/">
 		</a>
 	</div>
 	<div class="container a-link-text-align a-link-text-margin a-text-font">
-		<a href="https://arbitrage.ph/privacy-policy/">Privacy Policy</a>
+		<a href="/privacy-policy/">Privacy Policy</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/terms-of-use/">Terms of Use</a>
+		<a href="/terms-of-use/">Terms of Use</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/contact/">Contact Us</a>
+		<a href="/contact/">Contact Us</a>
 		<span class="ddot">•</span>
-		<a href="https://arbitrage.ph/about/">About Us</a>
+		<a href="/about/">About Us</a>
 		<!-- <span class="ddot">•</span> -->
-		<!-- <a href="https://arbitrage.ph/FAQ/">FAQ</a> -->
+		<!-- <a href="/FAQ/">FAQ</a> -->
 		<div class="c-footer-arbitrage">Copyright © 2019 Arbitrage</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function(){
 		$(".media-facebook").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/facebook-1.svg");
+			$(this).attr('src', "/svg/facebook-1.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/facebook-01.svg");
+			$(this).attr('src', "/svg/facebook-01.svg");
 		}, 1500);
 		$(".media-twitter").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/twitter-1.svg");
+			$(this).attr('src', "/svg/twitter-1.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/twitter-01.svg");
+			$(this).attr('src', "/svg/twitter-01.svg");
 		}, 1500);
 		$(".media-instagram").hover(function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-2.svg");
+			$(this).attr('src', "/svg/instagram-2.svg");
 			}, function(){
-			$(this).attr('src', "https://arbitrage.ph/svg/instagram-white.svg");
+			$(this).attr('src', "/svg/instagram-white.svg");
 		}, 1500);
 	});
 </script>

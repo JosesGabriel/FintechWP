@@ -85,11 +85,11 @@ jQuery(".ontomitif").click(function(e){
         jQuery(".um-notification-live-feed").clone().appendTo(".opennotification .notifinnerbase");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").show().addClass("dropopen");
         
-        jQuery(".um-notification span.b2 .um-faicon-thumbs-up").append('<img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring_notification.svg">');
+        jQuery(".um-notification span.b2 .um-faicon-thumbs-up").append('<img src="/assets/svg/ico_bullish_no_ring_notification.svg">');
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").removeClass();
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").empty();
 
-        jQuery(".um-notification span.b2 .um-faicon-thumbs-down").append('<img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring_notification.svg">');
+        jQuery(".um-notification span.b2 .um-faicon-thumbs-down").append('<img src="/assets/svg/ico_bearish_no_ring_notification.svg">');
         jQuery(".um-notification span.b2 .um-faicon-thumbs-down").removeClass();
         jQuery(".um-notification span.b2 .um-faicon-thumbs-down").empty();
 }

@@ -30,7 +30,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 					</div>
 					<div class="on-footer-middle">
 						<div class="on-footer-mid-inner">
-							<img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png">
+							<img src="/wp-content/uploads/2018/12/logo.png">
 						</div>
 					</div>
 					<div class="on-footer-right">

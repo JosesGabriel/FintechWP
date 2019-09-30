@@ -50,7 +50,7 @@ $currentdate = date("Y-m-d", time());
 		// update_user_meta( get_current_user_id(), 'refformentor', $_POST['dcode'] );
 		//rwvng2l0
 
-		wp_redirect('https://arbitrage.ph/administrator/');
+		wp_redirect('/administrator/');
 		exit;
 	endif;
 

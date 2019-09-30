@@ -23,7 +23,7 @@ html, .home body.et_cover_background {
 
 			<div class="page-wrapper">
 				<div class="page-content" style="text-align:center; color:#fff; background-color:#354960;">
-					<a href="https://arbitrage.ph"><img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Comp-2.gif" width="50%" style="mix-blend-mode: lighten;"></a>
+					<a href="/"><img src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/Comp-2.gif" width="50%" style="mix-blend-mode: lighten;"></a>
 					<!--<h3 style="color:#fff; font-weight:300;"><?php echo 'We&rsquo;re unable to locate the page you&rsquo;re trying to access.'; ?></h3>-->
 				</div><!-- .page-content -->
 			</div><!-- .page-wrapper -->

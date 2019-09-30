@@ -5,7 +5,7 @@
     <div class="to-content-part">
         <div class="to-rss-inner">
             <div class="see-more-btn" style="padding: 0 0 5px 16px;">
-                <a href="https://arbitrage.ph/bulletins/">
+                <a href="/bulletins/">
                     <strong style="font-size:13px;font-weight: 400;">View all</strong>
                 </a>
             </div>

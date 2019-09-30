@@ -36,7 +36,7 @@
 	<?php endif ?>
 
 <title>Arbitrage | Multicharts</title>
-<link rel="shortcut icon" href="https://arbitrage.ph/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
+<link rel="shortcut icon" href="/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-192x192.png" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 <meta name="robots" content="noindex">
 <style>
@@ -281,7 +281,7 @@ ul.main-drops-chart > ul:before {
 
 <body>
     <div>
-        <div class="chart_logo_arbitrage"><a href="<?php echo $url; ?>" target="_blank"><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+        <div class="chart_logo_arbitrage"><a href="<?php echo $url; ?>" target="_blank"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
         <iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $url; ?>/stock-ticker/"></iframe>
 
 		<?php //get_template_part('parts/global', 'css'); ?>

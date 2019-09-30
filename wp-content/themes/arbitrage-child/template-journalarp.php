@@ -623,7 +623,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
 							<div class="hideformodal">
 								<div class="tradingnotescont" id="tradingnotes_1">
 									<div class="entr_ttle_bar">
-										<img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
+										<img src="/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
 									</div>
 									<div style="padding:10px 0 0 0">this is the notes</div>
 								</div>

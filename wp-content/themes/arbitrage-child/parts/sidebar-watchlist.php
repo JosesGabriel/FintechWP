@@ -178,14 +178,14 @@ jQuery(function(){
 
                         <div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">
                           <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">
-                            <a style= "color: #fff;" href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank">
+                            <a style= "color: #fff;" href="/chart/<?php echo $value['stockname']; ?>" target="_blank">
                               <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
                             </a>
                           </div>
 
 
                           <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
-                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                            <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                             </div>
@@ -226,7 +226,7 @@ jQuery(function(){
 
                   <?php else: ?>
                   <div class="to-content-part">
-                    <a href="https://arbitrage.ph/watchlist/">
+                    <a href="/watchlist/">
                         <div class="dplusbutton" style="text-align: center; color: #6583a8">
                             <div class="dplsicons" style="font-size: 36px;margin-bottom: 11px;">
                               <i class="fa fa-plus-circle" style="color: #6583a8;"></i>
@@ -243,7 +243,7 @@ jQuery(function(){
         <div class="see-more-btn" style="padding: 0 0 10px 16px;">
 
           <?php if($value['stockname'] != null) { ?>
-              <a href="https://arbitrage.ph/watchlist/">
+              <a href="/watchlist/">
               <strong style="font-size:13px;font-weight: 400;">View all</strong>
               </a>
           <?php } ?>

@@ -1,7 +1,4 @@
 <?php
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1.
-header("Pragma: no-cache"); // HTTP 1.0.
-header("Expires: 0");
     /*
     * Template Name: Journal Design
     */
@@ -12,155 +9,62 @@ header("Expires: 0");
 global $current_user, $wpdb;
 $user = wp_get_current_user();
 date_default_timezone_set('Asia/Manila');
-get_header('dashboard');
 
-echo $user->ID ." versis ". $user->ID;
+function getjurfees($funmarketval, $funtype)
+{
+	// Commissions
+	$dpartcommission = $funmarketval * 0.0025;
+	$dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
+	// TAX
+	$dtax = $dcommission * 0.12;
+	// Transfer Fee
+	$dtransferfee = $funmarketval * 0.00005;
+	// SCCP
+	$dsccp = $funmarketval * 0.0001;
+	$dsell = $funmarketval * 0.006;
 
+	if ($funtype == 'buy') {
+		$dall = $dcommission + $dtax + $dtransferfee + $dsccp;
+	} else {
+		$dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
+	}
 
+	return $dall;
+}
+
+// number formater
+function number_format_short($n, $precision = 1)
+{
+	if ($n < 900) {
+		// 0 - 900
+		$n_format = number_format($n, $precision);
+		$suffix = '';
+	} elseif ($n < 900000) {
+		// 0.9k-850k
+		$n_format = number_format($n / 1000, $precision);
+		$suffix = 'K';
+	} elseif ($n < 900000000) {
+		// 0.9m-850m
+		$n_format = number_format($n / 1000000, $precision);
+		$suffix = 'M';
+	} elseif ($n < 900000000000) {
+		// 0.9b-850b
+		$n_format = number_format($n / 1000000000, $precision);
+		$suffix = 'B';
+	} else {
+		// 0.9t+
+		$n_format = number_format($n / 1000000000000, $precision);
+		$suffix = 'T';
+	}
+
+	if ($precision > 0) {
+		$dotzero = '.'.str_repeat('0', $precision);
+		$n_format = str_replace($dotzero, '', $n_format);
+	}
+
+	return $n_format.$suffix;
+}
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
-
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
-<script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
-
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
-
-<?php get_template_part('parts/sidebar', 'calc'); ?>
-<?php get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
-<?php
-    function getjurfees($funmarketval, $funtype)
-    {
-        // Commissions
-        $dpartcommission = $funmarketval * 0.0025;
-        $dcommission = ($dpartcommission > 20 ? $dpartcommission : 20);
-        // TAX
-        $dtax = $dcommission * 0.12;
-        // Transfer Fee
-        $dtransferfee = $funmarketval * 0.00005;
-        // SCCP
-        $dsccp = $funmarketval * 0.0001;
-        $dsell = $funmarketval * 0.006;
-
-        if ($funtype == 'buy') {
-            $dall = $dcommission + $dtax + $dtransferfee + $dsccp;
-        } else {
-            $dall = $dcommission + $dtax + $dtransferfee + $dsccp + $dsell;
-        }
-
-        return $dall;
-    }
-
-    // number formater
-    function number_format_short($n, $precision = 1)
-    {
-        if ($n < 900) {
-            // 0 - 900
-            $n_format = number_format($n, $precision);
-            $suffix = '';
-        } elseif ($n < 900000) {
-            // 0.9k-850k
-            $n_format = number_format($n / 1000, $precision);
-            $suffix = 'K';
-        } elseif ($n < 900000000) {
-            // 0.9m-850m
-            $n_format = number_format($n / 1000000, $precision);
-            $suffix = 'M';
-        } elseif ($n < 900000000000) {
-            // 0.9b-850b
-            $n_format = number_format($n / 1000000000, $precision);
-            $suffix = 'B';
-        } else {
-            // 0.9t+
-            $n_format = number_format($n / 1000000000000, $precision);
-            $suffix = 'T';
-        }
-
-        if ($precision > 0) {
-            $dotzero = '.'.str_repeat('0', $precision);
-            $n_format = str_replace($dotzero, '', $n_format);
-        }
-
-        return $n_format.$suffix;
-    }
-?>
-<!-- BOF Deposit -->
-<?php
-    if (isset($_POST['todelete'])) {
-
-        //========================================
-           $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
-           $wpdb->query($deletelogs);
-           //wp_redirect('/journal');
-           //exit; 
-        //=========================================
-
-        echo 'delete: '.$_POST['todelete'];
-        $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
-        wp_update_post($post);
-        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
-        exit;
-    }
-    if (isset($_POST['istype'])) {
-		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
-        if ($dxammount > 0) {
-            $wpdb->insert('arby_ledger', array(
-                'userid' => $user->ID,
-                'date' => $_POST['ddate'],
-                'trantype' => $_POST['istype'],
-                'tranamount' =>  $dxammount// ... and so on
-            ));
-        }
-
-        wp_redirect('/journal');
-        exit;
-    }
-
-
-
-
-    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
-
-    if(isset($_POST['to_edit'])){
-        //echo $_POST['inpt_data_status'];
-
-        $log_id = $_POST['to_edit'];
-        $strategy = $_POST['strategy_'. $log_id];
-        $tradepan = $_POST['trade_plan_'. $log_id];
-        $emotion = $_POST['emotion_'. $log_id];
-        $notes = $_POST['tlnotes_'. $log_id];
-
-         $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
-         $wpdb->query($updatelogs);
-
-
-        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
-
-        update_post_meta($log_id,  'data_trade_info', $strategy);
-       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
-               
-        wp_redirect('/journal');
-        exit;
-    }
-
-
-
-?>
-<!-- EOF Deposit -->
-
 
 <!-- BOF BUY trades -->
 <?php
@@ -275,6 +179,71 @@ echo $user->ID ." versis ". $user->ID;
 ?>
 <!-- EOF BUY trades -->
 
+<!-- BOF Deposit -->
+<?php
+    if (isset($_POST['todelete'])) {
+
+        //========================================
+           $deletelogs = 'delete from arby_tradelog where tlid = '. $_POST['todelete'] .' and isuser ='.$user->ID;
+           $wpdb->query($deletelogs);
+           //wp_redirect('/journal');
+           //exit; 
+        //=========================================
+
+        echo 'delete: '.$_POST['todelete'];
+        $post = array('ID' => $_POST['todelete'], 'post_status' => 'draft');
+        wp_update_post($post);
+        wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+        exit;
+    }
+    if (isset($_POST['istype'])) {
+		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
+        if ($dxammount > 0) {
+            $wpdb->insert('arby_ledger', array(
+                'userid' => $user->ID,
+                'date' => $_POST['ddate'],
+                'trantype' => $_POST['istype'],
+                'tranamount' =>  $dxammount// ... and so on
+            ));
+        }
+
+        wp_redirect('/journal');
+        exit;
+    }
+
+
+
+
+    //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
+
+    if(isset($_POST['to_edit'])){
+        //echo $_POST['inpt_data_status'];
+
+        $log_id = $_POST['to_edit'];
+        $strategy = $_POST['strategy_'. $log_id];
+        $tradepan = $_POST['trade_plan_'. $log_id];
+        $emotion = $_POST['emotion_'. $log_id];
+        $notes = $_POST['tlnotes_'. $log_id];
+
+         $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
+         $wpdb->query($updatelogs);
+
+
+        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
+
+        update_post_meta($log_id,  'data_trade_info', $strategy);
+       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+               
+        wp_redirect('/journal');
+        exit;
+    }
+
+
+
+?>
+<!-- EOF Deposit -->
+
+
 <!-- BOF SELL trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Log') {
@@ -318,40 +287,8 @@ echo $user->ID ." versis ". $user->ID;
 			$pznotes = $buyyinginfo[0]->tradingnotes;
 		}
 
-		
-        // Update journal data.
-        // $journalpostlog = array(
-        //     // 'ID'           	=> $data_postid,
-        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'post_status' => 'publish',
-        //     'post_author' => $user_idd,
-        //     'post_category' => array(19, 20),
-        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'meta_input' => array(
-        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
-		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
-				
-		// 		'data_sellmonth' => $sellmonth,
-        //         'data_sellday' => $sellday,
-        //         'data_sellyear' => $sellyear,
-
-        //         'data_isdateofw' => $selldayname,
-
-        //         'data_stock' => $_POST['inpt_data_stock'],
-        //         'data_dprice' => $_POST['inpt_data_price'],
-				
-        //         'data_sell_price' => $sellprice,
-        //         'data_quantity' => $sellqty,
-        //         'data_avr_price' => $_POST['inpt_avr_price'],
-
-        //         'data_trade_info' => $_POST['dtradelogs'],
-        //         'data_userid' => $user->ID,
-        //     ),
-        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-		// wp_insert_post($journalpostlog);
 		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -402,12 +339,20 @@ echo $user->ID ." versis ". $user->ID;
 <?php if(isset($_GET['todo']) && @$_GET['todo'] == 'deletelivetrade'){
 	$getdstocks = get_user_meta($user->ID, '_trade_list', true);
 	$isstock = @$_GET['stock'];
+	$isprice = @$_GET['totalbase'];
 	if (($key = array_search($isstock, $getdstocks)) !== false) {
 		unset($getdstocks[$key]);
 		$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
 		$wpdb->query($deletesql);
 
+		$wpdb->insert('arby_ledger', array(
+			'userid' => $user->ID,
+			'date' => date('Y-m-d'),
+			'trantype' => 'deleted_live',
+			'tranamount' => $isprice, // ... and so on
+		));
 		update_user_meta($user->ID, '_trade_list', $getdstocks);
+
 	}
 
 	wp_redirect('/journal');
@@ -416,6 +361,40 @@ echo $user->ID ." versis ". $user->ID;
 
 } ?>
 <!-- EOF DELETE LIVE PORTFOLIO -->
+
+<?php
+
+get_header('dashboard');
+
+// echo $user->ID ." versis ". $user->ID;
+
+
+?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- <script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script> -->
+
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
+<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet"> -->
+
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
+
+<?php get_template_part('parts/sidebar', 'calc'); ?>
+<?php get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+
 <?php
     $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 
@@ -504,16 +483,6 @@ echo $user->ID ." versis ". $user->ID;
 
 			array_push($alltradelogs, $tradeitems);
 			
-			// $dailyvolumes .= '{';
-			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
-			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			// $dailyvolumes .= '},';
-
-			
-			// $dailyvalues .= '{';
-			// $dailyvalues .= '"category": "'.$buysscounter.'",';
-			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			// $dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
@@ -1002,7 +971,7 @@ if($issampledata){
 	$buypower = 0;
 	$initcapital = $dledger[0]->tranamount;
     foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend') {
+        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend' || $getbuyvalue->trantype == 'deleted_live') {
             $buypower = $buypower + $getbuyvalue->tranamount;
         } else {
             $buypower = $buypower - $getbuyvalue->tranamount;
@@ -1099,13 +1068,8 @@ if($issampledata){
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta($user->ID, '_trade_list');
-
-        // // delete all trade logs
-        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-        //     echo $delpostvalue['id'].'~';
-        //     wp_delete_post($delpostvalue['id'], true);
-        // }
+		delete_user_meta($user->ID, '_trade_list');
+		
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
@@ -1159,17 +1123,6 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
-						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
-							<!-- <option value="">Select Stocks</option> -->
-							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
-							<?php //endforeach; ?>
-						<!-- </select> -->
-						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
-						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -1215,7 +1168,7 @@ if($issampledata){
 			<div class="record_footer row">
 				<div class="dbuttonrecord_onmodal">
 					<form action="" method="post" class="recordform">
-						<!-- <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
+						<!-- <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;"> -->
 						<input type="hidden" name="recorddata" value="record">
 						<input type="hidden" name="inpt_data_status" value="record">
 						<input type="submit" name="record" value="Record" class="record-data-btn recorddata">
@@ -1286,18 +1239,7 @@ if($issampledata){
 
                                                                 // echo $dbaseaccount;
                                                             ?>
-                                                        	<!-- <div class="dltbutton">
-                                                        		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
-                                                        				<input type="submit" name="deletedata" value="Reset">
-                                                        			</form>
-                                                        		</div>
-                                                        	</div> -->
 															<?php if($isjounalempty): ?>
-																<!-- <div class="sampleData__overlay"></div>
-																<div class="sampleData__notification">
-																	Trading analytics display here. <br> It requires at least one complete trading data.
-																</div> -->
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio
@@ -1406,7 +1348,7 @@ if($issampledata){
 																						<!-- <div>this is it</div> -->
 																					</div>
 																					<div class="groupinput">
-																							<img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																							<img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																						<input type="hidden" value="Live" name="inpt_data_status">
 																						<input type="hidden" id="newdate" name="newdate">
 																						<input type="submit" class="confirmtrd dloadform green modal-button-confirm" value="Confirm Trade">
@@ -1800,7 +1742,7 @@ if($issampledata){
 																			                            </div>
 																			                            <div>
 																			                                <div style="height: 36px;">
-                                                                                                                 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+                                                                                                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
                                                                                 
 																			                                    <input type="hidden" value="Log" name="inpt_data_status">
 																			                                    <input type="hidden" value="<?php echo $dstocktraded['aveprice']; ?>" name="inpt_avr_price">
@@ -1908,7 +1850,7 @@ if($issampledata){
 																	                                            <!-- <div>this is it</div> -->
 																	                                        </div>
 																	                                        <div class="groupinput">
-																	                                        	 <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
+																	                                        	 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
 																												<input type="hidden" value="Live" name="inpt_data_status">
 																												<input type="hidden" value="" name="addstockisdate" id="addstockisdate">
 																	                                            <input type="submit" class="confirmtrd green modal-button-confirm" value="Confirm Trade">
@@ -1923,11 +1865,10 @@ if($issampledata){
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
-																								<a data-stock="<?php echo $value; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a data-stock="<?php echo $value; ?>" data-totalprice="<?php echo $totalfixmarktcost; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
-																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
-																							</div>
+																								</div>
 																							
 																							<div class="hidethis" id="hidelogs">
 																								<div class="tradelogbox" id="livetradenotes_<?php echo $value; ?>">
@@ -2198,7 +2139,7 @@ if($issampledata){
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['total_trades']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trwin']; ?></div>
 	                                                                                            <div style="text-align: center;"><?php echo $statsvalue['trloss']; ?></div>
-	                                                                                            <div style="text-align: center;"><?php echo ($statsvalue['trwin'] > 0 ? number_format(($statsvalue['trwin'] / $statsvalue['trloss']) * 100, 2) : "0.0"); ?>%</div>
+	                                                                                            <div style="text-align: center;"><?php echo ($statsvalue['trwin'] > 0 ? number_format(($statsvalue['trwin'] / ($statsvalue['trwin'] + $statsvalue['trloss'])) * 100, 2) : "0.0"); ?>%</div>
 	                                                                                        </div>
 	                                                                                    </li>
                                                                                     <?php
@@ -2607,7 +2548,7 @@ if($issampledata){
 																					?>
 																					<li class="<?php echo $value->tlid; ?> dloglist">
 																						<div style="width:99%;">
-																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="https://arbitrage.ph/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
+																							<div style="width:45px" class="tdata" id="tdata<?php echo $value->tlid; ?>"><a href="/chart/<?php echo $value->isstock; ?>" class="stock-label"><?php echo $value->isstock; ?></a></div>
 																							<div style="width:65px" class="tdate" id="tdate<?php echo $value->tlid; ?>"><?php echo $value->tldate; ?></div>
 																							<div style="width:55px" class="table-cell-live" id="tquantity<?php echo $value->tlid; ?>"><?php echo $value->tlvolume; ?></div>
 																							<div style="width:65px" class="table-cell-live" id="tavprice<?php echo $value->tlid; ?>">₱<?php echo number_format($value->tlaverageprice, 3, ".", ","); ?></div>
@@ -2693,7 +2634,7 @@ if($issampledata){
 																											</div>
 																										</div>
 																										<div class="trdleft">
-                                                                                                            <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
+                                                                                                            <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px; margin-top: 10px;">
 																											<input type="hidden" value="Edit" name="inpt_data_status">
 																											<input type="hidden" name="log_id" value="<?php echo $value->tlid; ?>">
 																											<input type="hidden" name="logs" value="">
@@ -2862,12 +2803,11 @@ if($issampledata){
 
 														$(".confirmtrd").click(function(e){
 
-															//
-															if(x == 1 && y == 1){
+															console.log('==>');
+															if((x == 1 && y == 1) || ($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0 )){
 																$('.chart-loader').css("display","block");
 																$(this).hide();
 															}
-
 															
 														});
 													});
@@ -3032,38 +2972,6 @@ if($issampledata){
                                                         </div>
                                                     </div>
                                                 	<br class="clear">
-
-                                                    <!--<div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
-													<br class="clear">
-
-						                        </div>
-						                        <div class="tab-pane" id="tab4">
-
-                                               		<div data-provide="calendar"></div>
-
-                                                   <!-- <div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
-													<br class="clear">
-
 						                        </div>
 						                    </div>
 						                </div>
@@ -3115,190 +3023,191 @@ if($issampledata){
 		function selldate(event){
 			jQuery("#selldate").val(event.value);
 		}
-    function deleteEvent(event) {
-        var dataSource = jQuery('#calendar').data('calendar').getDataSource();
+    // function deleteEvent(event) {
+    //     var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 
-        for(var i in dataSource) {
-            if(dataSource[i].id == event.id) {
-                dataSource.splice(i, 1);
-                break;
-            }
-        }
+    //     for(var i in dataSource) {
+    //         if(dataSource[i].id == event.id) {
+    //             dataSource.splice(i, 1);
+    //             break;
+    //         }
+    //     }
 
-        jQuery('#calendar').data('calendar').setDataSource(dataSource);
-    }
+    //     jQuery('#calendar').data('calendar').setDataSource(dataSource);
+    // }
 
-    function saveEvent() {
-        var event = {
-            id: jQuery('#event-modal input[name="event-index"]').val(),
-            name: jQuery('#event-modal input[name="event-name"]').val(),
-            location: jQuery('#event-modal input[name="event-location"]').val(),
-            startDate: jQuery('#event-modal input[name="event-start-date"]').datepicker('getDate'),
-            endDate: jQuery('#event-modal input[name="event-end-date"]').datepicker('getDate')
-        }
+    // function saveEvent() {
+    //     var event = {
+    //         id: jQuery('#event-modal input[name="event-index"]').val(),
+    //         name: jQuery('#event-modal input[name="event-name"]').val(),
+    //         location: jQuery('#event-modal input[name="event-location"]').val(),
+    //         startDate: jQuery('#event-modal input[name="event-start-date"]').datepicker('getDate'),
+    //         endDate: jQuery('#event-modal input[name="event-end-date"]').datepicker('getDate')
+    //     }
 
-        var dataSource = jQuery('#calendar').data('calendar').getDataSource();
+    //     var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 
-        if(event.id) {
-            for(var i in dataSource) {
-                if(dataSource[i].id == event.id) {
-                    dataSource[i].name = event.name;
-                    dataSource[i].location = event.location;
-                    dataSource[i].startDate = event.startDate;
-                    dataSource[i].endDate = event.endDate;
-                }
-            }
-        }
-        else
-        {
-            var newId = 0;
-            for(var i in dataSource) {
-                if(dataSource[i].id > newId) {
-                    newId = dataSource[i].id;
-                }
-            }
+    //     if(event.id) {
+    //         for(var i in dataSource) {
+    //             if(dataSource[i].id == event.id) {
+    //                 dataSource[i].name = event.name;
+    //                 dataSource[i].location = event.location;
+    //                 dataSource[i].startDate = event.startDate;
+    //                 dataSource[i].endDate = event.endDate;
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         var newId = 0;
+    //         for(var i in dataSource) {
+    //             if(dataSource[i].id > newId) {
+    //                 newId = dataSource[i].id;
+    //             }
+    //         }
 
-            newId++;
-            event.id = newId;
+    //         newId++;
+    //         event.id = newId;
 
-            dataSource.push(event);
-        }
+    //         dataSource.push(event);
+    //     }
 
-        jQuery('#calendar').data('calendar').setDataSource(dataSource);
-        jQuery('#event-modal').modal('hide');
-    }
+    //     jQuery('#calendar').data('calendar').setDataSource(dataSource);
+    //     jQuery('#event-modal').modal('hide');
+    // }
 
-    jQuery(function() {
-        var currentYear = new Date().getFullYear();
+    // jQuery(function() {
+    //     var currentYear = new Date().getFullYear();
 
-        jQuery('#calendar').calendar({
-            enableContextMenu: true,
-            enableRangeSelection: true,
-            contextMenuItems:[
-                {
-                    text: 'Update',
-                    click: editEvent
-                },
-                {
-                    text: 'Delete',
-                    click: deleteEvent
-                }
-            ],
-            selectRange: function(e) {
-                editEvent({ startDate: e.startDate, endDate: e.endDate });
-            },
-            mouseOnDay: function(e) {
-                if(e.events.length > 0) {
-                    var content = '';
+    //     jQuery('#calendar').calendar({
+    //         enableContextMenu: true,
+    //         enableRangeSelection: true,
+    //         contextMenuItems:[
+    //             {
+    //                 text: 'Update',
+    //                 click: editEvent
+    //             },
+    //             {
+    //                 text: 'Delete',
+    //                 click: deleteEvent
+    //             }
+    //         ],
+    //         selectRange: function(e) {
+    //             editEvent({ startDate: e.startDate, endDate: e.endDate });
+    //         },
+    //         mouseOnDay: function(e) {
+    //             if(e.events.length > 0) {
+    //                 var content = '';
 
-                    for(var i in e.events) {
-                        content += '<div class="event-tooltip-content">'
-                                        + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
-                                        + '<div class="event-location">' + e.events[i].location + '</div>'
-                                    + '</div>';
-                    }
+    //                 for(var i in e.events) {
+    //                     content += '<div class="event-tooltip-content">'
+    //                                     + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+    //                                     + '<div class="event-location">' + e.events[i].location + '</div>'
+    //                                 + '</div>';
+    //                 }
 
-                    jQuery(e.element).popover({
-                        trigger: 'manual',
-                        container: 'body',
-                        html:true,
-                        content: content
-                    });
+    //                 jQuery(e.element).popover({
+    //                     trigger: 'manual',
+    //                     container: 'body',
+    //                     html:true,
+    //                     content: content
+    //                 });
 
-                    jQuery(e.element).popover('show');
-                }
-            },
-            mouseOutDay: function(e) {
-                if(e.events.length > 0) {
-                    jQuery(e.element).popover('hide');
-                }
-            },
-            dayContextMenu: function(e) {
-                jQuery(e.element).popover('hide');
-            },
-            dataSource: [
-                {
-                    id: 0,
-                    name: 'Google I/O',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 4, 28),
-                    endDate: new Date(currentYear, 4, 29)
-                },
-                {
-                    id: 1,
-                    name: 'Microsoft Convergence',
-                    location: 'New Orleans, LA',
-                    startDate: new Date(currentYear, 2, 16),
-                    endDate: new Date(currentYear, 2, 19)
-                },
-                {
-                    id: 2,
-                    name: 'Microsoft Build Developer Conference',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 3, 29),
-                    endDate: new Date(currentYear, 4, 1)
-                },
-                {
-                    id: 3,
-                    name: 'Apple Special Event',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 8, 1),
-                    endDate: new Date(currentYear, 8, 1)
-                },
-                {
-                    id: 4,
-                    name: 'Apple Keynote',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 8, 9),
-                    endDate: new Date(currentYear, 8, 9)
-                },
-                {
-                    id: 5,
-                    name: 'Chrome Developer Summit',
-                    location: 'Mountain View, CA',
-                    startDate: new Date(currentYear, 10, 17),
-                    endDate: new Date(currentYear, 10, 18)
-                },
-                {
-                    id: 6,
-                    name: 'F8 2015',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 2, 25),
-                    endDate: new Date(currentYear, 2, 26)
-                },
-                {
-                    id: 7,
-                    name: 'Yahoo Mobile Developer Conference',
-                    location: 'New York',
-                    startDate: new Date(currentYear, 7, 25),
-                    endDate: new Date(currentYear, 7, 26)
-                },
-                {
-                    id: 8,
-                    name: 'Android Developer Conference',
-                    location: 'Santa Clara, CA',
-                    startDate: new Date(currentYear, 11, 1),
-                    endDate: new Date(currentYear, 11, 4)
-                },
-                {
-                    id: 9,
-                    name: 'LA Tech Summit',
-                    location: 'Los Angeles, CA',
-                    startDate: new Date(currentYear, 10, 17),
-                    endDate: new Date(currentYear, 10, 17)
-                }
-            ]
-        });
+    //                 jQuery(e.element).popover('show');
+    //             }
+    //         },
+    //         mouseOutDay: function(e) {
+    //             if(e.events.length > 0) {
+    //                 jQuery(e.element).popover('hide');
+    //             }
+    //         },
+    //         dayContextMenu: function(e) {
+    //             jQuery(e.element).popover('hide');
+    //         },
+    //         dataSource: [
+    //             {
+    //                 id: 0,
+    //                 name: 'Google I/O',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 4, 28),
+    //                 endDate: new Date(currentYear, 4, 29)
+    //             },
+    //             {
+    //                 id: 1,
+    //                 name: 'Microsoft Convergence',
+    //                 location: 'New Orleans, LA',
+    //                 startDate: new Date(currentYear, 2, 16),
+    //                 endDate: new Date(currentYear, 2, 19)
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: 'Microsoft Build Developer Conference',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 3, 29),
+    //                 endDate: new Date(currentYear, 4, 1)
+    //             },
+    //             {
+    //                 id: 3,
+    //                 name: 'Apple Special Event',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 8, 1),
+    //                 endDate: new Date(currentYear, 8, 1)
+    //             },
+    //             {
+    //                 id: 4,
+    //                 name: 'Apple Keynote',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 8, 9),
+    //                 endDate: new Date(currentYear, 8, 9)
+    //             },
+    //             {
+    //                 id: 5,
+    //                 name: 'Chrome Developer Summit',
+    //                 location: 'Mountain View, CA',
+    //                 startDate: new Date(currentYear, 10, 17),
+    //                 endDate: new Date(currentYear, 10, 18)
+    //             },
+    //             {
+    //                 id: 6,
+    //                 name: 'F8 2015',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 2, 25),
+    //                 endDate: new Date(currentYear, 2, 26)
+    //             },
+    //             {
+    //                 id: 7,
+    //                 name: 'Yahoo Mobile Developer Conference',
+    //                 location: 'New York',
+    //                 startDate: new Date(currentYear, 7, 25),
+    //                 endDate: new Date(currentYear, 7, 26)
+    //             },
+    //             {
+    //                 id: 8,
+    //                 name: 'Android Developer Conference',
+    //                 location: 'Santa Clara, CA',
+    //                 startDate: new Date(currentYear, 11, 1),
+    //                 endDate: new Date(currentYear, 11, 4)
+    //             },
+    //             {
+    //                 id: 9,
+    //                 name: 'LA Tech Summit',
+    //                 location: 'Los Angeles, CA',
+    //                 startDate: new Date(currentYear, 10, 17),
+    //                 endDate: new Date(currentYear, 10, 17)
+    //             }
+    //         ]
+    //     });
 
-        jQuery('#save-event').click(function() {
-            saveEvent();
-        });
-    });
+    //     jQuery('#save-event').click(function() {
+    //         saveEvent();
+    //     });
+    // });
 
 	jQuery(document).ready(function(){
 
-        jQuery(".buy-order--submit").click(function(){
+        jQuery("#buy-order--submit").click(function(){
 
+            console.log('...sell');
             if($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0) {
                 
                  $('.chart-loader').css("display","block");
@@ -3339,6 +3248,7 @@ if($issampledata){
 			/// journal/?todo=deletelivetrade&stock=
 
 			let dstock = $(this).attr('data-stock');
+			let dtotalprice = $(this).attr('data-totalprice');
 			
 
 			swal({
@@ -3352,7 +3262,7 @@ if($issampledata){
 				if (willDelete) {
 					console.log('delete this');
 					console.log(dstock);
-					window.location.href = "/journal/?todo=deletelivetrade&stock="+dstock;
+					window.location.href = "/journal/?todo=deletelivetrade&stock="+dstock+"&totalbase="+dtotalprice;
 
 					// jQuery(this).parents(".dloglist").addClass("housed");
 					// jQuery(".deleteformitem").find("#todelete").val(dlogid);
@@ -3441,6 +3351,7 @@ if($issampledata){
 			var dbuypower = parseFloat($(".dentertrade #input_buy_product").val().replace(/,/g, ''));
 			var total_price = parseFloat(jQuery('input[name="inpt_data_total_price"]').val().replace(/,/g, ''));
 			var buySell__date = jQuery('#journal__trade-btn--date-picker').val();
+
 			if(dstock != "" && dbuypower > 0 && total_price < dbuypower && buySell__date != ""){
 				jQuery(".dentertrade").submit();
 			} else if (buySell__date == "") {
@@ -3561,45 +3472,13 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		// jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
-		// 	// skip for arrow keys
-		// 	if(event.which >= 37 && event.which <= 40) return;
-
-		// 	// format number
-		// 	jQuery(this).val(function(index, value) {
-		// 	return value
-		// 	.replace(/\D/g, "")
-		// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-		// 	;
-		// 	});
-		// });
-
-		// jQuery("")
+		
 		jQuery('#selectdepotype').on('change', function() {
 			// alert( this.value );
 			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
 
 		});
 
-		// jQuery(document).on('submit', '.dentertrade', function (e) {
-		// 	e.preventDefault();
-		// 	let form = jQuery(this).serializeArray();
-
-		// 	jQuery.ajax({
-		// 		url: '/apipge',
-		// 		method: 'POST',
-		// 		data: form,
-		// 		dataType: 'json',
-		// 		success: function (response) {
-					
-		// 		}
-		// 	})
-		// })
-		//$(document).on("click", ".fancybox-inline", function() {
-			//e.preventDefault();
-  			//$(this).toggleClass("tradelogbox");
-
-		//});
 
 		jQuery(".depotbutton").click(function(e){
 			
@@ -3750,7 +3629,7 @@ if($issampledata){
 		    			}else{
 
 		    				$('.dstatstrade1 ul').append(
-		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='https://arbitrage.ph/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
+		    				$("<li class='s-logs"+ i +"' id='logrows-" + i+ "'><div style='width:99%;' class='tdatalogs"+ i +"'><div style='width:65px'>" + tdate + "</div><div style='width:45px; margin-left: 13px;'><a href='/chart/"+ tdata +"' class='stock-label'>"+ tdata +"</a></div><div style='width:55px; margin-left: -10px;margin-right: 10px;' class='table-cell-live'>" + tquantity + "</div><div style='width:65px' class='table-cell-live'>" + tavprice + "</div><div style='width:95px' class='table-cell-live'> "+ tbvalue +"</div><div style='width:65px' class='table-cell-live'>"+ tsellprice +"</div><div style='width:95px' class='table-cell-live'>"+ tsellvalue +"</div><div style='width:80px; margin-left: 10px;' class='"+tcolor+" table-cell-live' >" + tploss + "</div><div style='width:65px' class='"+tcolor+" table-cell-live'>" +tpercent + "</div><div style='width:35px; text-align:center;margin-left: 5px;'><a href='#tradelognotes_" + tdata + "' class='smlbtn blue fancybox-inline'><i class='fas fa-clipboard'></i></a></div><div style='width:25px'><a class='deletelog smlbtn-delete' data-istl='"+ deletelog +"' style='cursor:pointer;text-align:center'><i class='fas fa-eraser'></i></a></div></div><div class='hidethis'><div class='tradelogbox' id='tradelognotes_" + tdata + "'><div class='entr_ttle_bar'><strong>"+ tdata +"</strong> <span class='datestamp_header'></span><hr class='style14 style15' style='width: 93% !important;width: 93% !important;margin: 5px auto !important;'><div class='trdlgsbox'><div class='trdleft'><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Strategy:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Trade Plan:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Emotion:</strong></span> <span class='modal-notes-result modal-notes-result-toleft'></span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Performance:</strong></span> <span class='modal-notes-result'>%</span></div><div class='onelnetrd'><span class='modal-notes-ftitle'><strong>Outcome:</strong></span> <span class='modal-notes-result'></span></div></div><div class='trdright darkbgpadd'><div><strong>Notes:</strong></div><div></div></div><div class='trdclr'></div></div> </div></li>"));
 		    					$('.s-logs').remove();
 		    			}
 		    					
@@ -3767,37 +3646,6 @@ if($issampledata){
     		}	
 			
         });
-        
-        // jQuery('input.number').keyup(function (event) {         // skip for arrow keys
-        //     // journals
-        //     if (event.which >= 37 && event.which <= 40) {
-        //         event.preventDefault();
-        //     }
-
-        //     var currentVal = jQuery(this).val();
-        //     var testDecimal = testDecimals(currentVal);
-        //     if (testDecimal.length > 1) {
-        //         currentVal = currentVal.slice(0, -1);
-        //     }
-        //     jQuery(this).val(replaceCommas(currentVal));
-
-        // });
-
-        // function testDecimals(currentVal) {
-        //     var count;
-        //     currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-        //     return count;
-        // }
-
-        // function replaceCommas(yourNumber) {
-        //     var components = yourNumber.toString().split(".");
-        //     if (components.length === 1) 
-        //         components[0] = yourNumber;
-        //     components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        //     if (components.length === 2)
-        //         components[1] = components[1].replace(/\D/g, "");
-        //     return components.join(".");
-        // }
 
 
 	});

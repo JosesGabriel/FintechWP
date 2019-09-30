@@ -32,7 +32,7 @@ echo "</pre>";
 			array_push($havemeta, $_POST);
 			update_user_meta($userID, '_watchlist_instrumental', $havemeta);
 
-			wp_redirect( 'https://arbitrage.ph/watchlist' );
+			wp_redirect( '/watchlist' );
 			exit;
 
 		} else {
@@ -52,7 +52,7 @@ echo "</pre>";
 			    update_user_meta($userID, '_watchlist_instrumental', $newarray);
 			}
 
-			wp_redirect( 'https://arbitrage.ph/watchlist' );
+			wp_redirect( '/watchlist' );
 			exit;
 		}
 
@@ -66,7 +66,7 @@ echo "</pre>";
 			}
 		}
 		update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-		wp_redirect( 'https://arbitrage.ph/watchlist' );
+		wp_redirect( '/watchlist' );
 	}
 
 
@@ -1621,7 +1621,7 @@ h2.watchtitle {
 																		<div class="col-md-12" style="padding-top: 12px;">
 
                                                                           <div class="minichartt">
-                                                                            <a href="https://arbitrage.ph/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                                                                            <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                                                                             <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                                                                 <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                                                                             </div>

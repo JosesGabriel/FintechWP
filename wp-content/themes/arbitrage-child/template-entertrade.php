@@ -13,7 +13,7 @@ $user = wp_get_current_user();
 if ( is_user_logged_in() ) {
 	// user is now logged in
 } else {
-	wp_redirect( 'https://arbitrage.ph/login/', 301 );
+	wp_redirect( '/login/', 301 );
 	exit;
 }
 
@@ -419,7 +419,7 @@ a.smlbtn.green:hover {
             </div>
             
             <div class="groupinput">
-                <img class="chart-loader" src="https://arbitrage.ph/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
+                <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none;">
             	<input type="hidden" value="Live" name="inpt_data_status">
             	<input type="submit" class="confirmtrd green" value="Confirm Trade">
             </div>
@@ -620,7 +620,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
                     	<div class="hideformodal">
                         	<div class="tradingnotescont" id="tradingnotes<?php echo "_".$numbrng ; ?>">
                             	<div class="entr_ttle_bar">
-                                    <img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
+                                    <img src="/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
                                 </div>
                             	<div style="padding:10px 0 0 0"><?php echo get_post_meta(get_the_ID(), 'data_tradingnotes', true); ?></div>
                             </div>
@@ -867,7 +867,7 @@ if( isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == "Log" ){
                     	<div class="hideformodal">
                         	<div class="tradingnotescont" id="tradingnotes<?php echo "_".$numbrng ; ?>">
                             	<div class="entr_ttle_bar">
-                                    <img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
+                                    <img src="/wp-content/uploads/2018/12/logo.png" alt="Arbitrage"> <strong>Trading Notes</strong>
                                 </div>
                             	<div style="padding:10px 0 0 0"><?php echo get_post_meta(get_the_ID(), 'data_tradingnotes', true); ?></div>
                             </div>

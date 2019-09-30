@@ -16,7 +16,7 @@ class JWTBuilder
     private $validator;
     protected $token;
     protected $entities = [
-        'arbitrage' => 'https://arbitrage.ph',
+        'arbitrage' => '/',
         'vyndue' => 'https://vyndue.com',
     ];
 

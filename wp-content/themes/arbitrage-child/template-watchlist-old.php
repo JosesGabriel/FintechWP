@@ -29,7 +29,7 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); // get watc
 			array_push($havemeta, $_POST);
 			update_user_meta($userID, '_watchlist_instrumental', $havemeta);
 
-			wp_redirect( 'https://arbitrage.ph/watchlist' );
+			wp_redirect( '/watchlist' );
 			exit;
 
 		} else {
@@ -49,7 +49,7 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); // get watc
 			    update_user_meta($userID, '_watchlist_instrumental', $newarray);
 			}
 
-			wp_redirect( 'https://arbitrage.ph/watchlist' );
+			wp_redirect( '/watchlist' );
 			exit;
 		}
 		
@@ -63,7 +63,7 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); // get watc
 			}
 		}
 		update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-		wp_redirect( 'https://arbitrage.ph/watchlist' );
+		wp_redirect( '/watchlist' );
 	}
 
 

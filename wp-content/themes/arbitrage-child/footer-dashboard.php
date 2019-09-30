@@ -26,7 +26,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 	<?php wp_footer(); ?>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js" integrity="sha256-BfIfo/K+ePw1iAn4BFfrfVXmXQPAmKtqeDwVIgCFqTU=" crossorigin="anonymous"></script>
-	<script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
+	<script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 	<?php
 		$dwatchdd = get_user_meta('7', '_scrp_stocks_watch', true);
 		$ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
@@ -200,7 +200,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							'success'
 						).then((result) => {
 							var ditemtoremove = jQuery(this).attr('data-space');
-							window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
+							window.location.href = "/watchlist/?remove="+ditemtoremove;
 						});
 					}
 				});

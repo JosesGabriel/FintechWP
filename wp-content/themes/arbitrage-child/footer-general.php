@@ -30,7 +30,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 					</div>
 					<div class="on-footer-middle">
 						<div class="on-footer-mid-inner">
-							<img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png">
+							<img src="/wp-content/uploads/2018/12/logo.png">
 						</div>
 					</div>
 					<div class="on-footer-right">
@@ -55,7 +55,7 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 	<?php wp_footer(); ?>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-	<script src="https://arbitrage.ph/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
+	<script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 	
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js" integrity="sha256-BfIfo/K+ePw1iAn4BFfrfVXmXQPAmKtqeDwVIgCFqTU=" crossorigin="anonymous"></script>

@@ -405,15 +405,17 @@ echo $user->ID ." versis ". $user->ID;
 	if (($key = array_search($isstock, $getdstocks)) !== false) {
 		unset($getdstocks[$key]);
 		$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
-		$wpdb->query($deletesql);
+		// $wpdb->query($deletesql);
 
-		update_user_meta($user->ID, '_trade_list', $getdstocks);
+		$updateledger = '';
+
+		// update_user_meta($user->ID, '_trade_list', $getdstocks);
 
 
 
 	}
 
-	wp_redirect('/journal');
+	// wp_redirect('/journal');
     exit;
 	// print_r($getdstocks);
 
@@ -3341,6 +3343,7 @@ if($issampledata){
 			/// journal/?todo=deletelivetrade&stock=
 
 			let dstock = $(this).attr('data-stock');
+			let dtotalprice = $(this).attr('data-totalprice');
 			
 
 			swal({
@@ -3354,7 +3357,7 @@ if($issampledata){
 				if (willDelete) {
 					console.log('delete this');
 					console.log(dstock);
-					window.location.href = "/journal/?todo=deletelivetrade&stock="+dstock;
+					window.location.href = "/journal/?todo=deletelivetrade&stock="+dstock+"&totalbase="+dtotalprice;
 
 					// jQuery(this).parents(".dloglist").addClass("housed");
 					// jQuery(".deleteformitem").find("#todelete").val(dlogid);

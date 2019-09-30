@@ -287,40 +287,8 @@ function number_format_short($n, $precision = 1)
 			$pznotes = $buyyinginfo[0]->tradingnotes;
 		}
 
-		
-        // Update journal data.
-        // $journalpostlog = array(
-        //     // 'ID'           	=> $data_postid,
-        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'post_status' => 'publish',
-        //     'post_author' => $user_idd,
-        //     'post_category' => array(19, 20),
-        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'meta_input' => array(
-        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
-		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
-				
-		// 		'data_sellmonth' => $sellmonth,
-        //         'data_sellday' => $sellday,
-        //         'data_sellyear' => $sellyear,
-
-        //         'data_isdateofw' => $selldayname,
-
-        //         'data_stock' => $_POST['inpt_data_stock'],
-        //         'data_dprice' => $_POST['inpt_data_price'],
-				
-        //         'data_sell_price' => $sellprice,
-        //         'data_quantity' => $sellqty,
-        //         'data_avr_price' => $_POST['inpt_avr_price'],
-
-        //         'data_trade_info' => $_POST['dtradelogs'],
-        //         'data_userid' => $user->ID,
-        //     ),
-        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-		// wp_insert_post($journalpostlog);
 		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -408,8 +376,8 @@ get_header('dashboard');
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
+<!-- <script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script> -->
 
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -418,8 +386,9 @@ get_header('dashboard');
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
+<!-- <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
+<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet"> -->
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -514,16 +483,6 @@ get_header('dashboard');
 
 			array_push($alltradelogs, $tradeitems);
 			
-			// $dailyvolumes .= '{';
-			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
-			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			// $dailyvolumes .= '},';
-
-			
-			// $dailyvalues .= '{';
-			// $dailyvalues .= '"category": "'.$buysscounter.'",';
-			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			// $dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {
@@ -1109,13 +1068,8 @@ if($issampledata){
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }
-        delete_user_meta($user->ID, '_trade_list');
-
-        // // delete all trade logs
-        // foreach ($alltradelogs as $delpostkey => $delpostvalue) {
-        //     echo $delpostvalue['id'].'~';
-        //     wp_delete_post($delpostvalue['id'], true);
-        // }
+		delete_user_meta($user->ID, '_trade_list');
+		
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
@@ -1169,17 +1123,6 @@ if($issampledata){
 					<div class="groupinput midd rec_label_date">
 						<label>Enter Date</label><input type="date" name="solddate" class="inpt_data_boardlot_get buySell__date-picker" required="" id="" max="2019-09-16">
 					</div>
-					<!-- <div class="groupinput midd lockedd"><label>Stock</label> -->
-						<!-- <input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="" readonly> -->
-						<!-- <select name="inpt_data_stock_sold" id="inpt_data_stock_sold" style="margin-left: -4px; text-align: left;width: 138px;"> -->
-							<!-- <option value="">Select Stocks</option> -->
-							<?php //foreach($listosstocks as $dstkey => $dstvals): ?>
-								<!-- <option value='<?php echo $dstvals->symbol; ?>'><?php echo $dstvals->symbol; ?></option> -->
-							<?php //endforeach; ?>
-						<!-- </select> -->
-						<!-- <input type="hidden" name="inpt_data_stock" id="dfinstocks"> -->
-						<!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
-					<!-- </div> -->
 					<div class="groupinput midd"><label>Enter Price</label><input type="text" id="" name="inpt_data_price_sold" class="textfield-buyprice number" required></div>
 					<div class="groupinput midd" style="margin-bottom: 5px;"><label>Quantity</label><input type="text" id="" name="inpt_data_qty_sold" class="textfield-quantity number" required></div>
 					<div class="groupinput midd lockedd label_cost"><label>Total Cost: </label><input readonly="" type="text" class="number" name="inpt_data_total_sold_price" value="0.00"><i class="fa fa-lock" aria-hidden="true" style="display:none;"></i></div>
@@ -1296,18 +1239,7 @@ if($issampledata){
 
                                                                 // echo $dbaseaccount;
                                                             ?>
-                                                        	<!-- <div class="dltbutton">
-                                                        		<div class="dbuttondelete">
-                                                        			<form action="/journal" method="post">
-                                                        				<input type="submit" name="deletedata" value="Reset">
-                                                        			</form>
-                                                        		</div>
-                                                        	</div> -->
 															<?php if($isjounalempty): ?>
-																<!-- <div class="sampleData__overlay"></div>
-																<div class="sampleData__notification">
-																	Trading analytics display here. <br> It requires at least one complete trading data.
-																</div> -->
 															<?php endif; ?>
                                                             <div class="box-portlet-header">
                                                                 Live Portfolio
@@ -2872,7 +2804,7 @@ if($issampledata){
 														$(".confirmtrd").click(function(e){
 
 															console.log('==>');
-															if((x == 1 && y == 1) || $('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0 ){
+															if((x == 1 && y == 1) || ($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0 )){
 																$('.chart-loader').css("display","block");
 																$(this).hide();
 															}
@@ -3040,27 +2972,7 @@ if($issampledata){
                                                         </div>
                                                     </div>
                                                 	<br class="clear">
-
-                                                    <!--<div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
-													<br class="clear">
-
 						                        </div>
-						                        <!-- <div class="tab-pane" id="tab4">
-
-                                               		<div data-provide="calendar"></div>
-													<br class="clear">
-
-						                        </div> -->
 						                    </div>
 						                </div>
 						            </div>

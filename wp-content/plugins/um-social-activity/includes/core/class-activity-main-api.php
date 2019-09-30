@@ -451,9 +451,7 @@ class Activity_Main_API
                 $newconts = '';
 
                
-                //$dprocessedtext = preg_split("/[\s,]+/", $content);
-
-                $exploded = multiexplode(array(" ","\n"),$content);
+                $dprocessedtext = preg_split("/[\s,]+/", $content);
 
                 //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
@@ -526,12 +524,6 @@ class Activity_Main_API
         }
 
         return null;
-    }
-
-    function multiexplode ($delimiters,$string) {
-        $ready = str_replace($delimiters, $delimiters[0], $string);
-        $launch = explode($delimiters[0], $ready);
-        return  $launch;
     }
 
     /**

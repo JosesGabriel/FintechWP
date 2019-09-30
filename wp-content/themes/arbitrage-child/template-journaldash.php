@@ -2875,11 +2875,10 @@ if($issampledata){
 														$(".confirmtrd").click(function(e){
 
 															console.log('==>');
-															if(x == 1 && y == 1){
+															if((x == 1 && y == 1) || $('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0 ){
 																$('.chart-loader').css("display","block");
 																$(this).hide();
 															}
-
 															
 														});
 													});

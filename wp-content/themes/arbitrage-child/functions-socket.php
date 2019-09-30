@@ -14,6 +14,19 @@ add_action('wp_logout', function () use ($emitter) {
     $secret = get_user_meta($user_id, 'user_secret', true);
     $emitter->emit('arbitrage:logout', ['user_secret' => $secret]);
 });
+
+add_action('init', function () use ($emitter) {
+    if (isset($_GET)) {
+        if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+            $user_id = get_current_user_id();
+            
+            if ($user_id) {
+                $secret = get_user_meta($user_id, 'user_secret', true);
+                $emitter->emit('arbitrage:logout', ['user_secret' => $secret]);
+            }
+        }
+    }
+});
 //endregion User
 
 //region Posts

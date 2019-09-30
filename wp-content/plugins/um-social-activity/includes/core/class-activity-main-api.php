@@ -450,10 +450,10 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-               
-                $dprocessedtext = preg_split("/[\s,]+/", $content);
-
-                //$dprocessedtext = multiexplode(array(",","<br />"),$content);
+               $rows = explode("\n", $content);
+                //$dprocessedtext = preg_split("/[\s,]+/", $content);
+               foreach($rows as $row) {
+                $dprocessedtext = explode(' ', $row);
 
                 //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
@@ -477,6 +477,9 @@ class Activity_Main_API
                         $newconts .= ' ' . $dwordpvalue;
                     }
                 }
+
+              } //==============>
+
             }
 
             ob_start();

@@ -1926,11 +1926,10 @@ if($issampledata){
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
-																								<a data-stock="<?php echo $value; ?>" data-avrpricve="<?php echo $avrprice; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a data-stock="<?php echo $value; ?>" data-totalprice="<?php echo $totalfixmarktcost; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
-																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>
-																							</div>
+																								</div>
 																							
 																							<div class="hidethis" id="hidelogs">
 																								<div class="tradelogbox" id="livetradenotes_<?php echo $value; ?>">

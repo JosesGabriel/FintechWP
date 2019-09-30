@@ -287,40 +287,8 @@ function number_format_short($n, $precision = 1)
 			$pznotes = $buyyinginfo[0]->tradingnotes;
 		}
 
-		
-        // Update journal data.
-        // $journalpostlog = array(
-        //     // 'ID'           	=> $data_postid,
-        //     'post_title' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'post_status' => 'publish',
-        //     'post_author' => $user_idd,
-        //     'post_category' => array(19, 20),
-        //     'post_content' => 'Trading Log - '.rand(123456, 987654).' ('.$user_namee.')',
-        //     'meta_input' => array(
-        //         // 'data_sellmonth' => $_POST['inpt_data_sellmonth'],
-        //         // 'data_sellday' => $_POST['inpt_data_sellday'],
-		// 		// 'data_sellyear' => $_POST['inpt_data_sellyear'],
-				
-		// 		'data_sellmonth' => $sellmonth,
-        //         'data_sellday' => $sellday,
-        //         'data_sellyear' => $sellyear,
-
-        //         'data_isdateofw' => $selldayname,
-
-        //         'data_stock' => $_POST['inpt_data_stock'],
-        //         'data_dprice' => $_POST['inpt_data_price'],
-				
-        //         'data_sell_price' => $sellprice,
-        //         'data_quantity' => $sellqty,
-        //         'data_avr_price' => $_POST['inpt_avr_price'],
-
-        //         'data_trade_info' => $_POST['dtradelogs'],
-        //         'data_userid' => $user->ID,
-        //     ),
-        // );
 
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-		// wp_insert_post($journalpostlog);
 		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
@@ -408,8 +376,8 @@ get_header('dashboard');
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script>
+<!-- <script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
+<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script> -->
 
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
@@ -418,8 +386,9 @@ get_header('dashboard');
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet">
+<!-- <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
+<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet"> -->
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
 <?php get_template_part('parts/sidebar', 'calc'); ?>
@@ -514,16 +483,6 @@ get_header('dashboard');
 
 			array_push($alltradelogs, $tradeitems);
 			
-			// $dailyvolumes .= '{';
-			// $dailyvolumes .= '"category": "'.$buysscounter.'",';
-			// $dailyvolumes .= '"column-1": '.($postmetas[$data_quantity]->meta_value != "" ? $postmetas[$data_quantity]->meta_value : 0).'';
-			// $dailyvolumes .= '},';
-
-			
-			// $dailyvalues .= '{';
-			// $dailyvalues .= '"category": "'.$buysscounter.'",';
-			// $dailyvalues .= '"column-1": '.(str_replace("₱", "", $postmetas[$data_dprice]->meta_value) != "" ? str_replace("₱", "", $postmetas[$data_dprice]->meta_value) : 0).'';
-			// $dailyvalues .= '},';
         }
         wp_reset_postdata();
     } else {

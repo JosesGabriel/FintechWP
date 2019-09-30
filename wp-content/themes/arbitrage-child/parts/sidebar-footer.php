@@ -1,27 +1,12 @@
-<!--<div class="ads1" style="margin: 15px 0"><img src="<?php // echo get_home_url(); ?>/assets/img/adsense_sample_003.png" style="width: 100%;height: 221px;" /></div>-->
-
 <div class="ontofooter">
     <div class="ontonowfooter">
         <ul class="footmore">
             <li><a href="https://arbitrage.ph/privacy-policy">Privacy Policy</a></li><span class="ddot">•</span>
             <li><a href="https://arbitrage.ph/terms-of-use">Terms of Use</a></li><span class="ddot">•</span>
-            <!--<li><a href="https://arbitrage.ph/guidelines">Guidelines</a></li><span class="ddot">.</span>-->
             <li><a href="https://arbitrage.ph/contact">Contact Us</a></li>
-            <!-- <span class="ddot">.</span>-->
             <li><a href="https://arbitrage.ph/about">About Us</a></li><span class="ddot">•</span>
-            <!-- <li><a href="https://arbitrage.ph/FAQ">FAQ</a></li><span class="ddot">•</span> -->
-            <li style="font-size: 13px;"><!--<a href="https://arbitrage.ph/#">-->Arbitrage &copy; <?php echo date('Y'); ?><!--</a>--></li>
-            <!-- <li><a href="#">Business</a></li> -->
-<!--             <li class="nobar">
-                <a class="moretoclick">More</a>
-                <ul class="closehideme">
-                    <li class="ontohidebase"><a href="https://arbitrage.ph/about">About</a></li>
-                    <li class="ontohidebase"><a href="#">FAQ</a></li>
-                    <li class="ontohidebase"><a href="#">Contact Us</a></li>
-                </ul>
-            </li> -->
+            <li style="font-size: 13px;">Arbitrage &copy; <?php echo date('Y'); ?></li>
         </ul>
-        <!-- <div class="copyright">Arbitrage &copy; <?php echo date('Y'); ?></div> -->
     </div>
 </div>
 
@@ -76,9 +61,3 @@
         color: inherit !important;
     }
 </style>
-<!-- <script type="text/javascript">
-        jQuery('.closehideme').hide();
-        jQuery('.moretoclick').toogle(function(){
-            jQuery('.closehideme').show();
-        });
-</script> -->

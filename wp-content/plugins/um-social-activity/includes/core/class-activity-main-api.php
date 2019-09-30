@@ -453,7 +453,7 @@ class Activity_Main_API
                
                 //$dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                $dprocessedtext = multiexplode(array(",","\n","<br />"),$content);
+                $dprocessedtext = multiexplode(array(",","<br />"),$content);
 
                 //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {

@@ -3311,6 +3311,7 @@ if($issampledata){
 
         jQuery("#buy-order--submit").click(function(){
 
+            console.log('...sell')
             if($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0) {
                 
                  $('.chart-loader').css("display","block");

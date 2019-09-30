@@ -1,6 +1,7 @@
 <?php
 
 include 'functions-api.php';
+include 'functions-journalapi.php';
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';

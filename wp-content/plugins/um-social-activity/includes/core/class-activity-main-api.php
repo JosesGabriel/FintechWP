@@ -528,12 +528,7 @@ class Activity_Main_API
         return null;
     }
 
-    function multiexplode ($delimiters,$string) {
-
-        $ready = str_replace($delimiters, $delimiters[0], $string);
-        $launch = explode($delimiters[0], $ready);
-        return  $launch;
-    }
+   
     /**
 
      * Check if URL is oEmbed supported

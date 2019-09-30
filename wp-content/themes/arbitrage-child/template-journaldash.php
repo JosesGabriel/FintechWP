@@ -3056,24 +3056,12 @@ if($issampledata){
 													<br class="clear">
 
 						                        </div>
-						                        <div class="tab-pane" id="tab4">
+						                        <!-- <div class="tab-pane" id="tab4">
 
                                                		<div data-provide="calendar"></div>
-
-                                                   <!-- <div class="adsbygoogle">
-														<div class="box-portlet">
-
-															<div class="box-portlet-content">
-                                                            	<small>ADVERTISEMENT</small>
-																<div class="adscontainer">
-                                                                	<img src="<?php //echo get_home_url(); ?>/ads/addsample728x90_<?php //echo rand(1, 3); ?>.png">
-                                                                </div>
-															</div>
-														</div>
-													</div>-->
 													<br class="clear">
 
-						                        </div>
+						                        </div> -->
 						                    </div>
 						                </div>
 						            </div>
@@ -3124,185 +3112,185 @@ if($issampledata){
 		function selldate(event){
 			jQuery("#selldate").val(event.value);
 		}
-    function deleteEvent(event) {
-        var dataSource = jQuery('#calendar').data('calendar').getDataSource();
+    // function deleteEvent(event) {
+    //     var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 
-        for(var i in dataSource) {
-            if(dataSource[i].id == event.id) {
-                dataSource.splice(i, 1);
-                break;
-            }
-        }
+    //     for(var i in dataSource) {
+    //         if(dataSource[i].id == event.id) {
+    //             dataSource.splice(i, 1);
+    //             break;
+    //         }
+    //     }
 
-        jQuery('#calendar').data('calendar').setDataSource(dataSource);
-    }
+    //     jQuery('#calendar').data('calendar').setDataSource(dataSource);
+    // }
 
-    function saveEvent() {
-        var event = {
-            id: jQuery('#event-modal input[name="event-index"]').val(),
-            name: jQuery('#event-modal input[name="event-name"]').val(),
-            location: jQuery('#event-modal input[name="event-location"]').val(),
-            startDate: jQuery('#event-modal input[name="event-start-date"]').datepicker('getDate'),
-            endDate: jQuery('#event-modal input[name="event-end-date"]').datepicker('getDate')
-        }
+    // function saveEvent() {
+    //     var event = {
+    //         id: jQuery('#event-modal input[name="event-index"]').val(),
+    //         name: jQuery('#event-modal input[name="event-name"]').val(),
+    //         location: jQuery('#event-modal input[name="event-location"]').val(),
+    //         startDate: jQuery('#event-modal input[name="event-start-date"]').datepicker('getDate'),
+    //         endDate: jQuery('#event-modal input[name="event-end-date"]').datepicker('getDate')
+    //     }
 
-        var dataSource = jQuery('#calendar').data('calendar').getDataSource();
+    //     var dataSource = jQuery('#calendar').data('calendar').getDataSource();
 
-        if(event.id) {
-            for(var i in dataSource) {
-                if(dataSource[i].id == event.id) {
-                    dataSource[i].name = event.name;
-                    dataSource[i].location = event.location;
-                    dataSource[i].startDate = event.startDate;
-                    dataSource[i].endDate = event.endDate;
-                }
-            }
-        }
-        else
-        {
-            var newId = 0;
-            for(var i in dataSource) {
-                if(dataSource[i].id > newId) {
-                    newId = dataSource[i].id;
-                }
-            }
+    //     if(event.id) {
+    //         for(var i in dataSource) {
+    //             if(dataSource[i].id == event.id) {
+    //                 dataSource[i].name = event.name;
+    //                 dataSource[i].location = event.location;
+    //                 dataSource[i].startDate = event.startDate;
+    //                 dataSource[i].endDate = event.endDate;
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         var newId = 0;
+    //         for(var i in dataSource) {
+    //             if(dataSource[i].id > newId) {
+    //                 newId = dataSource[i].id;
+    //             }
+    //         }
 
-            newId++;
-            event.id = newId;
+    //         newId++;
+    //         event.id = newId;
 
-            dataSource.push(event);
-        }
+    //         dataSource.push(event);
+    //     }
 
-        jQuery('#calendar').data('calendar').setDataSource(dataSource);
-        jQuery('#event-modal').modal('hide');
-    }
+    //     jQuery('#calendar').data('calendar').setDataSource(dataSource);
+    //     jQuery('#event-modal').modal('hide');
+    // }
 
-    jQuery(function() {
-        var currentYear = new Date().getFullYear();
+    // jQuery(function() {
+    //     var currentYear = new Date().getFullYear();
 
-        jQuery('#calendar').calendar({
-            enableContextMenu: true,
-            enableRangeSelection: true,
-            contextMenuItems:[
-                {
-                    text: 'Update',
-                    click: editEvent
-                },
-                {
-                    text: 'Delete',
-                    click: deleteEvent
-                }
-            ],
-            selectRange: function(e) {
-                editEvent({ startDate: e.startDate, endDate: e.endDate });
-            },
-            mouseOnDay: function(e) {
-                if(e.events.length > 0) {
-                    var content = '';
+    //     jQuery('#calendar').calendar({
+    //         enableContextMenu: true,
+    //         enableRangeSelection: true,
+    //         contextMenuItems:[
+    //             {
+    //                 text: 'Update',
+    //                 click: editEvent
+    //             },
+    //             {
+    //                 text: 'Delete',
+    //                 click: deleteEvent
+    //             }
+    //         ],
+    //         selectRange: function(e) {
+    //             editEvent({ startDate: e.startDate, endDate: e.endDate });
+    //         },
+    //         mouseOnDay: function(e) {
+    //             if(e.events.length > 0) {
+    //                 var content = '';
 
-                    for(var i in e.events) {
-                        content += '<div class="event-tooltip-content">'
-                                        + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
-                                        + '<div class="event-location">' + e.events[i].location + '</div>'
-                                    + '</div>';
-                    }
+    //                 for(var i in e.events) {
+    //                     content += '<div class="event-tooltip-content">'
+    //                                     + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+    //                                     + '<div class="event-location">' + e.events[i].location + '</div>'
+    //                                 + '</div>';
+    //                 }
 
-                    jQuery(e.element).popover({
-                        trigger: 'manual',
-                        container: 'body',
-                        html:true,
-                        content: content
-                    });
+    //                 jQuery(e.element).popover({
+    //                     trigger: 'manual',
+    //                     container: 'body',
+    //                     html:true,
+    //                     content: content
+    //                 });
 
-                    jQuery(e.element).popover('show');
-                }
-            },
-            mouseOutDay: function(e) {
-                if(e.events.length > 0) {
-                    jQuery(e.element).popover('hide');
-                }
-            },
-            dayContextMenu: function(e) {
-                jQuery(e.element).popover('hide');
-            },
-            dataSource: [
-                {
-                    id: 0,
-                    name: 'Google I/O',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 4, 28),
-                    endDate: new Date(currentYear, 4, 29)
-                },
-                {
-                    id: 1,
-                    name: 'Microsoft Convergence',
-                    location: 'New Orleans, LA',
-                    startDate: new Date(currentYear, 2, 16),
-                    endDate: new Date(currentYear, 2, 19)
-                },
-                {
-                    id: 2,
-                    name: 'Microsoft Build Developer Conference',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 3, 29),
-                    endDate: new Date(currentYear, 4, 1)
-                },
-                {
-                    id: 3,
-                    name: 'Apple Special Event',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 8, 1),
-                    endDate: new Date(currentYear, 8, 1)
-                },
-                {
-                    id: 4,
-                    name: 'Apple Keynote',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 8, 9),
-                    endDate: new Date(currentYear, 8, 9)
-                },
-                {
-                    id: 5,
-                    name: 'Chrome Developer Summit',
-                    location: 'Mountain View, CA',
-                    startDate: new Date(currentYear, 10, 17),
-                    endDate: new Date(currentYear, 10, 18)
-                },
-                {
-                    id: 6,
-                    name: 'F8 2015',
-                    location: 'San Francisco, CA',
-                    startDate: new Date(currentYear, 2, 25),
-                    endDate: new Date(currentYear, 2, 26)
-                },
-                {
-                    id: 7,
-                    name: 'Yahoo Mobile Developer Conference',
-                    location: 'New York',
-                    startDate: new Date(currentYear, 7, 25),
-                    endDate: new Date(currentYear, 7, 26)
-                },
-                {
-                    id: 8,
-                    name: 'Android Developer Conference',
-                    location: 'Santa Clara, CA',
-                    startDate: new Date(currentYear, 11, 1),
-                    endDate: new Date(currentYear, 11, 4)
-                },
-                {
-                    id: 9,
-                    name: 'LA Tech Summit',
-                    location: 'Los Angeles, CA',
-                    startDate: new Date(currentYear, 10, 17),
-                    endDate: new Date(currentYear, 10, 17)
-                }
-            ]
-        });
+    //                 jQuery(e.element).popover('show');
+    //             }
+    //         },
+    //         mouseOutDay: function(e) {
+    //             if(e.events.length > 0) {
+    //                 jQuery(e.element).popover('hide');
+    //             }
+    //         },
+    //         dayContextMenu: function(e) {
+    //             jQuery(e.element).popover('hide');
+    //         },
+    //         dataSource: [
+    //             {
+    //                 id: 0,
+    //                 name: 'Google I/O',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 4, 28),
+    //                 endDate: new Date(currentYear, 4, 29)
+    //             },
+    //             {
+    //                 id: 1,
+    //                 name: 'Microsoft Convergence',
+    //                 location: 'New Orleans, LA',
+    //                 startDate: new Date(currentYear, 2, 16),
+    //                 endDate: new Date(currentYear, 2, 19)
+    //             },
+    //             {
+    //                 id: 2,
+    //                 name: 'Microsoft Build Developer Conference',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 3, 29),
+    //                 endDate: new Date(currentYear, 4, 1)
+    //             },
+    //             {
+    //                 id: 3,
+    //                 name: 'Apple Special Event',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 8, 1),
+    //                 endDate: new Date(currentYear, 8, 1)
+    //             },
+    //             {
+    //                 id: 4,
+    //                 name: 'Apple Keynote',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 8, 9),
+    //                 endDate: new Date(currentYear, 8, 9)
+    //             },
+    //             {
+    //                 id: 5,
+    //                 name: 'Chrome Developer Summit',
+    //                 location: 'Mountain View, CA',
+    //                 startDate: new Date(currentYear, 10, 17),
+    //                 endDate: new Date(currentYear, 10, 18)
+    //             },
+    //             {
+    //                 id: 6,
+    //                 name: 'F8 2015',
+    //                 location: 'San Francisco, CA',
+    //                 startDate: new Date(currentYear, 2, 25),
+    //                 endDate: new Date(currentYear, 2, 26)
+    //             },
+    //             {
+    //                 id: 7,
+    //                 name: 'Yahoo Mobile Developer Conference',
+    //                 location: 'New York',
+    //                 startDate: new Date(currentYear, 7, 25),
+    //                 endDate: new Date(currentYear, 7, 26)
+    //             },
+    //             {
+    //                 id: 8,
+    //                 name: 'Android Developer Conference',
+    //                 location: 'Santa Clara, CA',
+    //                 startDate: new Date(currentYear, 11, 1),
+    //                 endDate: new Date(currentYear, 11, 4)
+    //             },
+    //             {
+    //                 id: 9,
+    //                 name: 'LA Tech Summit',
+    //                 location: 'Los Angeles, CA',
+    //                 startDate: new Date(currentYear, 10, 17),
+    //                 endDate: new Date(currentYear, 10, 17)
+    //             }
+    //         ]
+    //     });
 
-        jQuery('#save-event').click(function() {
-            saveEvent();
-        });
-    });
+    //     jQuery('#save-event').click(function() {
+    //         saveEvent();
+    //     });
+    // });
 
 	jQuery(document).ready(function(){
 
@@ -3573,45 +3561,13 @@ if($issampledata){
 				return components.join(".");
 			}
 		});
-		// jQuery(document).on('keyup', '#sell_price--input, #qty_price--input', function (e) {
-		// 	// skip for arrow keys
-		// 	if(event.which >= 37 && event.which <= 40) return;
-
-		// 	// format number
-		// 	jQuery(this).val(function(index, value) {
-		// 	return value
-		// 	.replace(/\D/g, "")
-		// 	.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-		// 	;
-		// 	});
-		// });
-
-		// jQuery("")
+		
 		jQuery('#selectdepotype').on('change', function() {
 			// alert( this.value );
 			jQuery("#tabdeposit").find('input[name="istype"]').val(this.value);
 
 		});
 
-		// jQuery(document).on('submit', '.dentertrade', function (e) {
-		// 	e.preventDefault();
-		// 	let form = jQuery(this).serializeArray();
-
-		// 	jQuery.ajax({
-		// 		url: '/apipge',
-		// 		method: 'POST',
-		// 		data: form,
-		// 		dataType: 'json',
-		// 		success: function (response) {
-					
-		// 		}
-		// 	})
-		// })
-		//$(document).on("click", ".fancybox-inline", function() {
-			//e.preventDefault();
-  			//$(this).toggleClass("tradelogbox");
-
-		//});
 
 		jQuery(".depotbutton").click(function(e){
 			
@@ -3779,37 +3735,6 @@ if($issampledata){
     		}	
 			
         });
-        
-        // jQuery('input.number').keyup(function (event) {         // skip for arrow keys
-        //     // journals
-        //     if (event.which >= 37 && event.which <= 40) {
-        //         event.preventDefault();
-        //     }
-
-        //     var currentVal = jQuery(this).val();
-        //     var testDecimal = testDecimals(currentVal);
-        //     if (testDecimal.length > 1) {
-        //         currentVal = currentVal.slice(0, -1);
-        //     }
-        //     jQuery(this).val(replaceCommas(currentVal));
-
-        // });
-
-        // function testDecimals(currentVal) {
-        //     var count;
-        //     currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-        //     return count;
-        // }
-
-        // function replaceCommas(yourNumber) {
-        //     var components = yourNumber.toString().split(".");
-        //     if (components.length === 1) 
-        //         components[0] = yourNumber;
-        //     components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        //     if (components.length === 2)
-        //         components[1] = components[1].replace(/\D/g, "");
-        //     return components.join(".");
-        // }
 
 
 	});

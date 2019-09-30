@@ -1,11 +1,11 @@
 <?php
-
+include 'functions-social-api.php';
 include 'functions-api.php';
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
 include 'functions-accounts-api.php';
-include 'functions-social-api.php';
+
 
 function my_theme_enqueue_styles()
 {
@@ -131,28 +131,6 @@ function custom_enqueue_scripts()
 add_action('wp_enqueue_scripts', 'custom_enqueue_styles', 20);
 add_action('wp_enqueue_scripts', 'custom_enqueue_scripts', 20);
 
-/*include 'ab-functions.php';
-include 'arphie-function.php';
-include 'nikko-functions.php';*/
-// include 'emman-functions.php';
-
-// add_action( 'um_registration_complete', 'vyndue_user_register', 10, 2 );
-
-// function vyndue_user_register( $user_id, $args ) {
-//     echo "TESST";
-//     var_dump($args);
-//     exit();
-// }
-// add_action( 'um_user_register', 'vyndue_user_register', 10, 2 );
-
-// add_action('register_post', function ($sanitized_user_login, $user_email, $errors) {
-//     echo '<pre class="registerr-post">';
-//     print_r($sanitized_user_login);
-//     print_r($user_email);
-//     print_r($errors);
-//     echo '</pre>';
-//     exit();
-// }, 10, 2);
 
 add_action('user_register', 'myplugin_registration_save', 10, 1);
 function myplugin_registration_save($user_id)

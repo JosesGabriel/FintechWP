@@ -50,9 +50,9 @@
 	<!-- THIS IS WHERE JQUERY IS -->
 	
 <?php
-	elegant_description();
-	elegant_keywords();
-	elegant_canonical();
+	//elegant_description();
+	//elegant_keywords();
+	//elegant_canonical();
 	/**
 	 * Fires in the head, before {@see wp_head()} is called. This action can be used to
 	 * insert elements into the beginning of the head before any styles or scripts.

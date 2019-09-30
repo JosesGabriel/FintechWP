@@ -402,20 +402,23 @@ echo $user->ID ." versis ". $user->ID;
 <?php if(isset($_GET['todo']) && @$_GET['todo'] == 'deletelivetrade'){
 	$getdstocks = get_user_meta($user->ID, '_trade_list', true);
 	$isstock = @$_GET['stock'];
+	$isprice = @$_GET['totalbase'];
 	if (($key = array_search($isstock, $getdstocks)) !== false) {
 		unset($getdstocks[$key]);
 		$deletesql = 'delete from arby_usermeta where user_id = "'.$user->ID.'" and meta_key = "_trade_'.$isstock.'"';
-		// $wpdb->query($deletesql);
+		$wpdb->query($deletesql);
 
-		$updateledger = '';
-
-		// update_user_meta($user->ID, '_trade_list', $getdstocks);
-
-
-
+		$wpdb->insert('arby_ledger', array(
+			'userid' => $user->ID,
+			'date' => date('Y-m-d'),
+			'trantype' => 'deleted_live',
+			'tranamount' => $isprice, // ... and so on
+		));
+		update_user_meta($user->ID, '_trade_list', $getdstocks);
+		
 	}
 
-	// wp_redirect('/journal');
+	wp_redirect('/journal');
     exit;
 	// print_r($getdstocks);
 

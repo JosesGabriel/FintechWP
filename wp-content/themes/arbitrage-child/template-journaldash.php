@@ -2804,10 +2804,10 @@ if($issampledata){
 														$(".confirmtrd").click(function(e){
 
 															console.log('==>');
-    														if((x == 1 && y == 1) || $(this).hasClass('.buy-order--submit'))  {
+    														//if(x == 1 && y == 1) {
     															$('.chart-loader').css("display","block");
     															$(this).hide();
-    														}
+    														//}
 															
 														});
 

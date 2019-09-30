@@ -450,7 +450,7 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-               $rows = explode("\n", $content);
+               $rows = explode("<br>", $content);
                 //$dprocessedtext = preg_split("/[\s,]+/", $content);
                foreach($rows as $row) {
                 $dprocessedtext = explode(' ', $row);

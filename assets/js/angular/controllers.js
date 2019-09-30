@@ -385,10 +385,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
     });
     $scope.getBidsAndAsks = function (symbol) {
-        $timeout(function () {
-            if ($scope.enableBidsAndAsks) {
-                $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
-                .then(response => {
+        if ($scope.enableBidsAndAsks) {
+            $http.get('https://data-api.arbitrage.ph/api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+            .then(response => {
+                $timeout(function () {
                     response = response.data;
                     if (!response.success) {
                         $scope.bids = [];
@@ -398,16 +398,15 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         
                     $scope.bids = Object.values(response.data.bids);
                     $scope.asks = Object.values(response.data.asks);
-                })
-                .catch(err => {
+                }, 0);
+            })
+            .catch(err => {
+                $timeout(function () {
                     $scope.bids = [];
                     $scope.asks = [];
-                })
-                .finally(() => {
-                    $scope.$digest();
-                });
-            }
-        }, 0)
+                }, 0)
+            })
+        }
     }
     $scope.getBidsAndAsks(_symbol);
     let limit = 20;

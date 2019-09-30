@@ -408,6 +408,9 @@ echo $user->ID ." versis ". $user->ID;
 		$wpdb->query($deletesql);
 
 		update_user_meta($user->ID, '_trade_list', $getdstocks);
+
+
+
 	}
 
 	wp_redirect('/journal');
@@ -1923,7 +1926,7 @@ if($issampledata){
 																							</div>
 																							<!-- <input type="hidden" id="deletelog1"> -->
 																							<div style="width:25px">
-																								<a data-stock="<?php echo $value; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
+																								<a data-stock="<?php echo $value; ?>" data-avrpricve="<?php echo $avrprice; ?>" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a>
 																							</div>
 																							<div style="width:25px; margin-left: 2px;">
 																								<a href="" class="editlog smlbtn-edit fancybox-inline" style="cursor:pointer;text-align:center"><i class="fas fa-edit"></i></a>

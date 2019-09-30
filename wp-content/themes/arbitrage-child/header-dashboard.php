@@ -4,7 +4,7 @@
 	if ( is_user_logged_in() ) {
 		// echo 'Welcome, registered user!';
 	} else {
-		wp_redirect( 'https://arbitrage.ph/login/', 301 );
+		wp_redirect( 'login', 301 );
 		exit;
 	}
 

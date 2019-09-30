@@ -2797,19 +2797,20 @@ if($issampledata){
 														jQuery('.textfield-quantity').keyup(function(){
 															var inputVal2 = jQuery(this).val().length;
 															if(inputVal2 != 0){
-																y = 1
+																y = 1;
 															}
 														});
 
 														$(".confirmtrd").click(function(e){
 
 															console.log('==>');
-															if((x == 1 && y == 1) || ($('#sell_price--input').val().length > 0 && $('#qty_price--input').val().length > 0 )){
-																$('.chart-loader').css("display","block");
-																$(this).hide();
-															}
+    														//if(x == 1 && y == 1) {
+    															$('.chart-loader').css("display","block");
+    															$(this).hide();
+    														//}
 															
 														});
+
 													});
 						                        </script>
 						                        <div class="tab-pane <?php echo isset($_GET['ld']) ? 'active show' : ''; ?>" id="tab3">

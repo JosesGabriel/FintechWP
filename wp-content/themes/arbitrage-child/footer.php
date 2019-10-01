@@ -87,7 +87,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							type: 'GET',
 							dataType: 'json',
 							success: function(response) {
-								console.log(data);
+								console.log(response);
 							}error: function(xhr, ajaxOptions, thrownError) {  
 
                				}

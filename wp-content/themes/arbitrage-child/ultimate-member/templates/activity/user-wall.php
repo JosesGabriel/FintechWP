@@ -491,59 +491,9 @@ foreach ( $wallposts->posts as $post ) {
 
 			$numbear = UM()->Activity_API()->api()->get_bearish_number( $post->ID );
 
-			$likes = UM()->Activity_API()->api()->get_likes_number( $post->ID );
-
 			$comments = UM()->Activity_API()->api()->get_comments_number( $post->ID );
-
-
-
-			if ( $likes > 0 || $comments > 0 ) { ?>
-
-				<div class="um-activity-disp">
-
-					<div class="um-activity-left">
-
-						<div class="um-activity-disp-likes">
-
-							<a href="#" class="um-activity-show-likes um-link" data-post_id="<?php echo $post->ID; ?>">
-
-								<span class="um-activity-post-likes"><?php echo $likes; ?></span>
-
-								<span class="um-activity-disp-span"><?php _e('likes','um-activity'); ?></span>
-
-							</a>
-
-						</div>
-
-						<div class="um-activity-disp-comments">
-
-							<a href="javascript:void(0);" class="um-link">
-
-								<span class="um-activity-post-comments"><?php echo $comments; ?></span>
-
-								<span class="um-activity-disp-span"><?php _e('comments','um-activity'); ?></span>
-
-							</a>
-
-						</div>
-
-					</div>
-
-					<div class="um-activity-faces um-activity-right">
-
-						<?php echo UM()->Activity_API()->api()->get_faces( $post->ID ); ?>
-
-					</div>
-
-					<div class="um-clear"></div>
-
-				</div>
-
-				<div class="um-clear"></div>
-
-			<?php } ?>
-
-
+			
+			?>
 
 		</div>
 

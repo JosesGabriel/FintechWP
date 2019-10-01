@@ -324,7 +324,7 @@ foreach ( $wallposts->posts as $post ) {
 
 			<div class="um-activity-right">
 
-				<?php if ( is_user_logged_in() ) { ?>
+				<?php if ( $get_current_user_id ) { ?>
 
 					<a href="#" class="um-activity-ticon um-activity-start-dialog" data-role="um-activity-tool-dialog">
 
@@ -505,7 +505,7 @@ foreach ( $wallposts->posts as $post ) {
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
 
-			<?php if ( is_user_logged_in() ) { ?>
+			<?php if ( $get_current_user_id ) { ?>
 
 				<div class="um-activity-left um-activity-actions">
 

@@ -364,25 +364,13 @@ function number_format_short($n, $precision = 1)
 
 <?php
 
-get_header('dashboard');
+get_header('journal');
 
 // echo $user->ID ." versis ". $user->ID;
 
 
 ?>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-
-<!-- <script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.js"></script>
-<script type="text/javascript" src="../calendar-assets/bootstrap-year-calendar.min.js"></script> -->
-
-
-
-
-<!-- <link href="../calendar-assets/bootstrap-year-calendar.css" rel="stylesheet">
-<link href="../calendar-assets/bootstrap-year-calendar.min.css" rel="stylesheet"> -->
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
@@ -3480,9 +3468,7 @@ if($issampledata){
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/journalscripts.js?<?php echo time(); ?>"></script>
 
 <script language="javascript">
-	$( document ).ready(function() {
-		new getCurrentAllocation(<?php echo $user->ID; ?>);
-	});
+	
 
 
 	// Chart 1 - Current Allocation
@@ -4534,4 +4520,4 @@ if($issampledata){
 
 
 </div>
-<?php get_footer();
+<?php get_footer("journal");

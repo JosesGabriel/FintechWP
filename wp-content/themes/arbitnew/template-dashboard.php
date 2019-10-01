@@ -1,5 +1,5 @@
 <?php
-/*
+	/*
     * Template Name: Dashboard
     */
 
@@ -21,7 +21,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 						
-						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
+						<?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
@@ -41,7 +41,19 @@ date_default_timezone_set('Asia/Manila'); ?>
 			</div>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
+					<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'traders'); ?>
+                    
+                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
+                    
+                    <?php get_template_part('parts/sidebar', 'watchlist'); ?>
 
+                    <?php get_template_part('parts/sidebar', 'topplayers'); ?>
+
+                    <?php get_template_part('parts/sidebar', 'alert'); ?>
+					
+					<?php get_template_part('parts/sidebar', 'footer'); ?>
 
 				</div>
 			</div>

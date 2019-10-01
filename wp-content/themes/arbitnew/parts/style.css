@@ -1,12 +1,16 @@
 /*
-Theme Name: Arbitrage New Theme
-Author: Development Team
-Description: Basic WordPress theme for Arbitrage
-Text Domain: arbitbasic
-Version: 1.0.0
-License: GNU General Public License v2 or later
+ Theme Name:     Arbitrage Child
+ Theme URI:      http://arbitrage.ph/
+ Description:    Arbitrage Child Theme
+ Author:         Arbitrage Dev Team
+ Author URI:     http://arbitrage.ph/
+ Template:       Arbitrage
+ Version:        8.88
 */
-
+ 
+ 
+/* =Theme customization starts here
+------------------------------------------------------- */
 .clear {
     clear: both;
 }
@@ -21,13 +25,12 @@ License: GNU General Public License v2 or later
 }
 .left-dashboard-part {
     float: left;
-	width: 196px;
+    width: 20%;
     padding: 23px 0px;
 }
 .center-dashboard-part {
     float: left;
-    width: 100%;
-    max-width: 539px;
+    width: 55%;
     margin-top: -10px;
 }
 .inner-main-content,
@@ -218,7 +221,7 @@ License: GNU General Public License v2 or later
 }
 .um-activity-widget .um-activity-foot.status a,
 .um-activity-widget .um-activity-foot.status i {
-    /* color: #fff !important; */
+    color: #fff !important;
 }
 .um-activity-widget .um-activity-foot .um-activity-bullish.active a {
     /*color: red !important;*/
@@ -316,13 +319,13 @@ label.screen-reader-text {
     font-weight: normal;
 }
 .top-traiders {
-    /* position: -webkit-sticky;
-    position: sticky; */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
     top: 50px;
 }
 .top-traiders {
-    /* position: -webkit-sticky;
-    position: sticky; */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
     top: 50px;
 }
 .top-stocks .to-content-part ul li.even,
@@ -388,6 +391,7 @@ label.screen-reader-text {
 }
 .side-header {
     line-height: 1em;
+    padd
 }
 .to-content-part {
     background: #142c46;
@@ -466,6 +470,11 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     background: transparent;
     border-radius: 0 0 5px 5px;
     /*padding: 10px 0px;*/
+}
+.side-content ul li a:hover {
+    background: #3a5168;
+    text-decoration: none;
+    border-radius: 4px;
 }
 ul.main-drop {
     position: relative;
@@ -636,19 +645,24 @@ body header#main-header {
     display: inline-block;
     margin-left: 2px;
     vertical-align: top;
-    width: 180px;
-    border: 1px solid #3c8098;
-    border-radius: 20px;
+    width: 190px;
     position:relative;
+}
+i.fa.fa-search {
+    position: absolute;
+    z-index: 9;
+    top: 6px;
+    left: 8px;
+    font-size: 14px;
 }
 .searchbar input[type="text"] {
     border: 0 none;
-    padding: 5px 10px 5px 23px !important;
+    padding: 5px 10px 5px 10px !important;
     background: #4e6a85;
     color: #d8d8d8;
     width: 100%;
     border-radius: 0;
-    height: 25px !important;
+    height: 30px;
     font-size: 13px;
 }
 .on-footer-right {
@@ -895,7 +909,7 @@ div.uimob800 .um-account-side ul {
     border-radius: 50px !important;
 }
 .um-notification-shortcode {
-    padding: 11px 15px !important;
+    padding: 25px 15px;
 }
 .um-notification-shortcode .um-notification-header .um-notification-left {
     border-bottom: 0 none;
@@ -1291,8 +1305,8 @@ body .um-notification-b.right {
     display: none;
 }
 .ontomitif span.um-notification-live-count {
-    right: -6px;
-    top: -1px;
+    right: -3px;
+    top: 20px;
     font-size: 10px;
     width: 15px;
     height: 15px;
@@ -1647,12 +1661,11 @@ ul.footmore li.nobar:after {
     max-width: initial !important; 
     margin: 0 !important;
 }
-
 .um-11.um .um-profile-photo a.um-profile-photo-img {
-   
+    width: 180px;
+    height: 180px;
     top: -30px !important;
 }
-
 .tlb-inner .onlikebutton {
     display: inline-block;
     width: 49%;
@@ -1771,7 +1784,7 @@ ul.footmore li.nobar:after {
     margin-right: 0px;
 }
 .dnavtopinner ul li a {
-    background: transparent;
+    background: #273647;
     color: #fff;
     font-size: 13px;
     padding: 10px 15px;
@@ -1816,12 +1829,12 @@ ul.footmore li.nobar:after {
 }
 .dpostlet {
     margin: 25px 15px 0;
-    border: 1px solid #142c46;
+    border: 1px solid #273647;
     border-radius: 5px;
     overflow: hidden;
 }
 .dpostlet .header-port {
-    background: #142c46 !important;
+    background: #273647;
     padding: 10px 15px;
     font-size: 13px;
 }
@@ -2061,11 +2074,14 @@ a.message-part-btn:before {
     vertical-align: middle;
     color: #ecf0f1;
 }
+a.um-friend-pending-btn.um-button.um-alt {
+    padding: 7px 7px !important;
+}
 .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a {
-    /*padding: 6px 24px !important;*/
+    padding: 6px 24px !important;
     width: initial !important;
     min-width: initial;
-    font-size: 10px !important;
+    font-size: 10px;
     background: none;
     color: #fff;
 }
@@ -2096,7 +2112,7 @@ a.message-part-btn:before {
     vertical-align: middle;
 }
 .um-activity-widget .um-activity-foot.status div > a span.diconbase img {
-    width: 16px;
+    width: 15px;
     display: block;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish {
@@ -2124,7 +2140,7 @@ a.message-part-btn:before {
     background: #2d3d51;
     padding: 7px 6px;
     border-radius: 50px;
-    background: #25ae5f;
+    /*background: #25ae5f;*/
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
@@ -2346,8 +2362,7 @@ hr.style13 {
     height: 1px;
     width: 98%;
     background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-bottom: 0 !important;
-    margin-top: 0 !important;
+    margin-bottom: .6rem !important;
 }
 hr.style12 {
     border: 0;
@@ -2365,7 +2380,6 @@ hr.style11 {
 }
 .top-stocks .to-content-part {
 }
-
 
 .um-activity-widget div.um-activity-textarea textarea,
 .um-activity-widget div.um-activity-textarea textarea:hover,
@@ -2433,7 +2447,3 @@ hr.style11 {
     border-width: 10px;
     margin-left: -36px;
     }
-.totabs active {
-    color: red;
-}
-

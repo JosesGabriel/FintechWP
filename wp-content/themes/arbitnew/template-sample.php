@@ -10,10 +10,10 @@ $userID = $current_user->ID;
 get_header();
 date_default_timezone_set('Asia/Manila'); ?>
 
-<?php //get_template_part('parts/global', 'css'); ?>
-<?php //get_template_part('parts/sidebar', 'calc'); ?>
-<?php //get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php //get_template_part('parts/sidebar', 'avarageprice'); ?>
+<?php get_template_part('parts/global', 'css'); ?>
+<?php get_template_part('parts/sidebar', 'calc'); ?>
+<?php get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 <div id="main-content" class="ondashboardpage">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						
 						<?php // get_template_part('parts/sidebar', 'tasks'); ?>
                     
-                    	<?php //get_template_part('parts/sidebar', 'profile'); ?>
+                    	<?php get_template_part('parts/sidebar', 'profile'); ?>
 
 					</div>
 				</div>

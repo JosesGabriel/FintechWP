@@ -1,0 +1,1 @@
+<div class="arb_ads"><img src="<?php echo get_home_url(); ?>/ads/sample_ads_<?php echo rand(1,4); ?>.png" alt="Ad Sample <?php echo rand(1,4); ?>"></div>

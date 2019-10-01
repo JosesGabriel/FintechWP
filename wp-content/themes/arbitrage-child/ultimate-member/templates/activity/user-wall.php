@@ -219,6 +219,7 @@ $args = apply_filters( 'um_activity_wall_args', $args );
 $wallposts = new WP_Query( $args );
 
 
+$get_current_user_id = get_current_user_id();
 
 if ( $wallposts->found_posts == 0 ) {
 
@@ -336,7 +337,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
-						<?php if ( ( current_user_can('edit_users') || $author_id == get_current_user_id() ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
+						<?php if ( ( current_user_can('edit_users') || $author_id == $get_current_user_id ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
 
 							<a href="javascript:void(0);" class="um-activity-manage">
 
@@ -348,7 +349,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
-						if ( current_user_can('edit_users') || $author_id == get_current_user_id() ) { ?>
+						if ( current_user_can('edit_users') || $author_id == $get_current_user_id ) { ?>
 
 							<a href="javascript:void(0);" class="um-activity-trash"
 
@@ -362,7 +363,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 					
-						if ( $author_id != get_current_user_id() ) { ?>
+						if ( $author_id != $get_current_user_id ) { ?>
 
 							<span class="sep"></span>
 
@@ -372,7 +373,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							   data-cancel_report="<?php esc_attr_e('Cancel report','um-activity'); ?>">
 
-								<?php echo ( UM()->Activity_API()->api()->reported( $post->ID, get_current_user_id() ) ) ? __('Cancel report','um-activity') : __('Report','um-activity'); ?>
+								<?php echo ( UM()->Activity_API()->api()->reported( $post->ID, $get_current_user_id ) ) ? __('Cancel report','um-activity') : __('Report','um-activity'); ?>
 
 							</a>
 

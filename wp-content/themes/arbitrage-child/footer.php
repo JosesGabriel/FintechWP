@@ -44,6 +44,19 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 		(function($) {
 		    jQuery(document).ready(function() {
 
+
+		    	$.ajax({
+				    		url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
+							type: 'GET',
+							dataType: 'json',
+							success: function(response) {
+								console.log(response);
+							}error: function(xhr, ajaxOptions, thrownError) {  
+
+               				}
+				    	});
+		    	
+
 		    	var postid;
 		    	var usersall = `<?php echo json_encode($newuserlist); ?>`;
 
@@ -80,20 +93,6 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 				});
 
 		        jQuery('.um-activity-textarea textarea').on('keyup', function (e) {
-
-
-		        	$.ajax({
-				    		url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
-							type: 'GET',
-							dataType: 'json',
-							success: function(response) {
-								console.log(response);
-							}error: function(xhr, ajaxOptions, thrownError) {  
-
-               				}
-				    	});
-
-
 
 		        	var string = jQuery(this).val();
 		        	var lastChar = string.substr(string.length -1);

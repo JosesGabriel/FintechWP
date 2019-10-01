@@ -42,20 +42,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 <script type="text/javascript">
 		(function($) {
-		    jQuery(document).ready(function() {
-
-
-		    	$.ajax({
-				    		url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
-							type: 'GET',
-							dataType: 'json',
-							success: function(response) {
-								console.log(response);
-							}error: function(xhr, ajaxOptions, thrownError) {  
-
-               				}
-				    	});
-		    	
+		    jQuery(document).ready(function() {    	
 
 		    	var postid;
 		    	var usersall = `<?php echo json_encode($newuserlist); ?>`;

@@ -268,7 +268,6 @@ if ( $wallposts->found_posts == 0 ) {
 
 }
 
-$count = 0;
 $adscount = 0;
 
 foreach ( $wallposts->posts as $post ) {
@@ -292,70 +291,6 @@ foreach ( $wallposts->posts as $post ) {
 	$post_link = UM()->Activity_API()->api()->get_permalink( $post->ID );
 
 	um_fetch_user( $author_id );
-
-	/*
-	//if ($count % 5 == 0 && $count != 0) {
-	if ($adscount = 5 && $count % 5 == 0) {
-
-		$adscount++ ;
-
-		?>
-
-            	<div class="um-activity-widget hala-user-wall" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">
-                    <div class="um-activity-head">
-                        <div class="um-activity-left um-activity-author">
-                            <div class="um-activity-ava">
-            
-                                <a href="#">
-                                    <img src="<?php echo get_home_url(); ?>/wp-content/uploads/ultimatemember/5/profile_photo-80x80.jpg?1558730722" class="gravatar avatar avatar-80 um-avatar um-avatar-uploaded" width="80" height="80" alt="Arbitrage" data-default="<?php echo get_home_url(); ?>/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg">
-                                </a>
-            
-                            </div>
-                            <div class="um-activity-author-meta">
-            
-                                <div class="um-activity-author-url">
-                                    <a href="<?php echo get_home_url(); ?>/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platform</a>
-                                </div>
-            
-                                <span class="um-activity-metadata">
-            
-                                    <a href="#">
-                                        Advertisement
-                                    </a>
-            
-                                </span>
-                            </div>
-                        </div>
-                        <div class="um-clear"></div>
-            
-                    </div>
-
-                    <div class="um-activity-body">
-            
-                        <div class="um-activity-bodyinner ">
-                                <div class="um-activity-bodyinner-txt">
-                                    <div class="desc-note">
-                                    	<div class="arbadblock">
-                                        	<div style="width: 104%;background-color: #11273e;margin: 0 0 20px -16px;">
-                                            	<img src="<?php echo get_home_url(); ?>/assets/img/adsense_sample_001.jpg" style="width: 524px;height: 131px;" />
-                                            </div>
-                                        </div>
-                                    </div>           
-                                </div>
-                        </div>
-						<div class="um-clear"></div>
-            
-                    </div>
-            
-                </div>
-
-		<?php
-	}
-
-	if($adscount > 5){
-		$adscount = 0;
-	}
-		*/
 
 	?>
 
@@ -698,38 +633,6 @@ foreach ( $wallposts->posts as $post ) {
 
 					</div>
 
-					<!-- <div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active isyours' : 'notyours') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
-
-						<a href="#">
-
-							<i class="um-faicon-thumbs-up"></i>
-
-							<i class="um-faicon-thumbs-down" style="display:none;"></i>
-
-							
-
-						</a>
-
-						<div class="dnumof" data-istab="liked" data-modalx="mod<?php echo $post->ID; ?>"><?php echo $likes; ?></div>
-
-					</div>
-
- -->
-
-			<!-- <hr class="style14 style11">
-
-				<div class="es-sentiments-container">
- 						<div class="es-sentiments-cover1">
- 							<a class="es-sentiments1 es-same-style">
- 							<img src="/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
- 							<a class="es-sentiments2 es-same-style">
- 							<img src="/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
- 							<a class="es-sentiments3 es-same-style">
- 							<img src="/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
- 						</div>
- 					</div>
- -->
-
  					
 
 					<div class="dpartmodal">
@@ -742,13 +645,9 @@ foreach ( $wallposts->posts as $post ) {
 
 						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
 
-						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-
 						        <div class="dtabspart">
 
 						        	<ul class="tabbutton">
-
-						        		<!-- <li class="">All</li> -->
 
 										<li class="totabs" style="color: white;" data-btname="bullish">
 											<span style="margin-left: 0;">
@@ -763,8 +662,6 @@ foreach ( $wallposts->posts as $post ) {
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 										</li>
-
-						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
 						        	</ul>
 
@@ -917,12 +814,6 @@ foreach ( $wallposts->posts as $post ) {
 
 	</div>
 
-<?php $count++; ?>
-
 <?php } ?>
-
-
-
-
 
 <div class="um-activity-load"></div>

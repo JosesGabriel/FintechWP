@@ -460,9 +460,9 @@ class Activity_Main_API
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
 
-                        $dwordpvalue1 = str_replace('<br />', '', $dwordpvalue);
+                        $dstock1 = str_replace('<br />', '', $dstock);
 
-                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue1 . '</a>';
+                        $dlink = '<a href="/chart/' . $dstock1 . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
                         $usname = str_replace('@', '', $dwordpvalue);

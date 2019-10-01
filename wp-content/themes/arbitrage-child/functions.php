@@ -260,11 +260,11 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    arbitrage_api_curl("api/users/$user_uuid/update", [
-        'email' => $user->user_email,
-        'first_name' => $user->first_name,
-        'last_name' => $user->last_name,
-    ]);
+    // arbitrage_api_curl("api/users/$user_uuid/update", [
+    //     'email' => $user->user_email,
+    //     'first_name' => $user->first_name,
+    //     'last_name' => $user->last_name,
+    // ]);
     
     //region call api
     $curl = curl_init();
@@ -291,9 +291,9 @@ function vyndue_password_update($post)
         'password' => $_POST['user_password'],
     ]);
 
-    arbitrage_api_curl("api/users/$user_uuid/update", [
-        'password' => $_POST['user_password'],
-    ]);
+    // arbitrage_api_curl("api/users/$user_uuid/update", [
+    //     'password' => $_POST['user_password'],
+    // ]);
 
     //region call api
     $curl = curl_init();

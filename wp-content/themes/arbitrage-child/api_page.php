@@ -15,7 +15,7 @@
 	global $current_user;
 	$user = wp_get_current_user();
 
-	date_default_timezone_set('Asia/Manila');
+	// date_default_timezone_set('Asia/Manila');
 	$date = date('m/d/Y', time());
 
 
@@ -693,6 +693,9 @@
 		array_push($dranks, $myrank);
 
 		echo json_encode($dranks);
+
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'chartallocation'){
+		echo json_encode(['test']);
 
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
 		$duserid = $current_user->ID;

@@ -58,7 +58,7 @@
 	 *
 	 * @since 1.0
 	 */
-	do_action( 'et_head_meta' );
+	// do_action( 'et_head_meta' );
 ?>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<script type="text/javascript">

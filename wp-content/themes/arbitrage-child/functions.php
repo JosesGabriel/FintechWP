@@ -161,11 +161,6 @@ function myplugin_registration_save($user_id)
         'password_confirmation' => $_POST['user_password-9'],
         'profile_image' => '',
     ];
-    
-    $response = arbitrage_api_curl('api/register', $api_data);
-    if ($response) {
-        add_user_meta($user_id, 'user_uuid', $response['user']['uuid']);
-    }
 
     //region call api
     $curl = curl_init();

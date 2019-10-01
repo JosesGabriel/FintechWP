@@ -460,7 +460,6 @@ class Activity_Main_API
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
 
-                       // $dstock1 = str_replace("\n", '', $dstock);
 
                         $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;

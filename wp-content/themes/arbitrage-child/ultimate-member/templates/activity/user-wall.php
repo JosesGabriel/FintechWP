@@ -176,48 +176,6 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 		}
 
-
-
-		/*if ( ! $friends_ids && ! $followed_ids && ! empty( $user_id ) ) {
-
-			$args['meta_query'][] = array(
-
-				'relation'	=> 'OR',
-
-				array(
-
-					'key'       => '_wall_id',
-
-					'value'     => $user_id,
-
-					'compare'   => '='
-
-				),
-
-				array(
-
-					'key'       => '_user_id',
-
-					'value'     => $user_id,
-
-					'compare'   => '='
-
-				),
-
-				array(
-
-					'key'       => '_wall_id',
-
-					'value'     => 0,
-
-					'compare'   => '='
-
-				)
-
-			);
-
-		}*/
-
 	}
 
 
@@ -365,18 +323,11 @@ foreach ( $wallposts->posts as $post ) {
 
 				<?php if ( is_user_logged_in() ) { ?>
 
-
-
-
-				<?php //if ( $author_id == get_current_user_id() ) { ?>
-
 					<a href="#" class="um-activity-ticon um-activity-start-dialog" data-role="um-activity-tool-dialog">
 
 						<i class="fas fa-ellipsis-h drop-over-post"></i>
 
 					</a>
-
-				<?php //} ?>
 
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
@@ -736,46 +687,6 @@ foreach ( $wallposts->posts as $post ) {
 										?>
 
 						        	</div>
-
-						        	<!-- <div class="liked">
-
-										<?php 
-										
-											$post_liked = get_post_meta( $post->ID, '_liked', TRUE );
-
-											if ($post_liked):
-												foreach ($post_liked as $key => $value):
-
-													$user_info = get_userdata($value);
-
-										?>
-
-												<div class="bullitems listofpeople">
-
-													<div class="dusername">
-
-														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
-
-														</a>
-
-													</div>
-
-													<div class="isfriends">
-
-														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
-
-													</div>
-
-												</div>
-
-										<?php
-												endforeach;
-											endif;
-										?>
-
-						        	</div> -->
 
 						        </div>
 

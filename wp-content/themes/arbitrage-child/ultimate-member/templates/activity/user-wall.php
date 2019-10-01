@@ -55,39 +55,39 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 
 
-	$followed_ids = UM()->Activity_API()->api()->followed_ids();
+	// $followed_ids = UM()->Activity_API()->api()->followed_ids();
 
-	if ( $followed_ids ) {
+	// if ( $followed_ids ) {
 
-		$args['meta_query'][] = array(
+	// 	$args['meta_query'][] = array(
 
-			'key'       => '_user_id',
+	// 		'key'       => '_user_id',
 
-			'value'     => $followed_ids,
+	// 		'value'     => $followed_ids,
 
-			'compare'   => 'IN'
+	// 		'compare'   => 'IN'
 
-		);
+	// 	);
 
-	}
+	// }
 
 
 
-	$friends_ids = UM()->Activity_API()->api()->friends_ids();
+	// $friends_ids = UM()->Activity_API()->api()->friends_ids();
 
-	if ( $friends_ids ) {
+	// if ( $friends_ids ) {
 
-		$args['meta_query'][] = array(
+	// 	$args['meta_query'][] = array(
 
-			'key'       => '_user_id',
+	// 		'key'       => '_user_id',
 
-			'value'     => $friends_ids,
+	// 		'value'     => $friends_ids,
 
-			'compare'   => 'IN'
+	// 		'compare'   => 'IN'
 
-		);
+	// 	);
 
-	}
+	// }
 
 
 
@@ -142,81 +142,39 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 	} else {
 
-		$followed_ids = UM()->Activity_API()->api()->followed_ids();
+		// $followed_ids = UM()->Activity_API()->api()->followed_ids();
 
-		if ( $followed_ids ) {
+		// if ( $followed_ids ) {
 
-			$args['meta_query'][] = array(
+		// 	$args['meta_query'][] = array(
 
-				'key'       => '_user_id',
+		// 		'key'       => '_user_id',
 
-				'value'     => $followed_ids,
+		// 		'value'     => $followed_ids,
 
-				'compare'   => 'IN'
+		// 		'compare'   => 'IN'
 
-			);
+		// 	);
 
-		}
-
-
-
-		$friends_ids = UM()->Activity_API()->api()->friends_ids();
-
-		if ( $friends_ids ) {
-
-			$args['meta_query'][] = array(
-
-				'key'       => '_user_id',
-
-				'value'     => $friends_ids,
-
-				'compare'   => 'IN'
-
-			);
-
-		}
+		// }
 
 
 
-		/*if ( ! $friends_ids && ! $followed_ids && ! empty( $user_id ) ) {
+		// $friends_ids = UM()->Activity_API()->api()->friends_ids();
 
-			$args['meta_query'][] = array(
+		// if ( $friends_ids ) {
 
-				'relation'	=> 'OR',
+		// 	$args['meta_query'][] = array(
 
-				array(
+		// 		'key'       => '_user_id',
 
-					'key'       => '_wall_id',
+		// 		'value'     => $friends_ids,
 
-					'value'     => $user_id,
+		// 		'compare'   => 'IN'
 
-					'compare'   => '='
+		// 	);
 
-				),
-
-				array(
-
-					'key'       => '_user_id',
-
-					'value'     => $user_id,
-
-					'compare'   => '='
-
-				),
-
-				array(
-
-					'key'       => '_wall_id',
-
-					'value'     => 0,
-
-					'compare'   => '='
-
-				)
-
-			);
-
-		}*/
+		// }
 
 	}
 
@@ -261,6 +219,7 @@ $args = apply_filters( 'um_activity_wall_args', $args );
 $wallposts = new WP_Query( $args );
 
 
+$get_current_user_id = get_current_user_id();
 
 if ( $wallposts->found_posts == 0 ) {
 
@@ -268,7 +227,6 @@ if ( $wallposts->found_posts == 0 ) {
 
 }
 
-$count = 0;
 $adscount = 0;
 
 foreach ( $wallposts->posts as $post ) {
@@ -293,69 +251,7 @@ foreach ( $wallposts->posts as $post ) {
 
 	um_fetch_user( $author_id );
 
-	/*
-	//if ($count % 5 == 0 && $count != 0) {
-	if ($adscount = 5 && $count % 5 == 0) {
-
-		$adscount++ ;
-
-		?>
-
-            	<div class="um-activity-widget hala-user-wall" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">
-                    <div class="um-activity-head">
-                        <div class="um-activity-left um-activity-author">
-                            <div class="um-activity-ava">
-            
-                                <a href="#">
-                                    <img src="<?php echo get_home_url(); ?>/wp-content/uploads/ultimatemember/5/profile_photo-80x80.jpg?1558730722" class="gravatar avatar avatar-80 um-avatar um-avatar-uploaded" width="80" height="80" alt="Arbitrage" data-default="<?php echo get_home_url(); ?>/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg">
-                                </a>
-            
-                            </div>
-                            <div class="um-activity-author-meta">
-            
-                                <div class="um-activity-author-url">
-                                    <a href="<?php echo get_home_url(); ?>/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platform</a>
-                                </div>
-            
-                                <span class="um-activity-metadata">
-            
-                                    <a href="#">
-                                        Advertisement
-                                    </a>
-            
-                                </span>
-                            </div>
-                        </div>
-                        <div class="um-clear"></div>
-            
-                    </div>
-
-                    <div class="um-activity-body">
-            
-                        <div class="um-activity-bodyinner ">
-                                <div class="um-activity-bodyinner-txt">
-                                    <div class="desc-note">
-                                    	<div class="arbadblock">
-                                        	<div style="width: 104%;background-color: #11273e;margin: 0 0 20px -16px;">
-                                            	<img src="<?php echo get_home_url(); ?>/assets/img/adsense_sample_001.jpg" style="width: 524px;height: 131px;" />
-                                            </div>
-                                        </div>
-                                    </div>           
-                                </div>
-                        </div>
-						<div class="um-clear"></div>
-            
-                    </div>
-            
-                </div>
-
-		<?php
-	}
-
-	if($adscount > 5){
-		$adscount = 0;
-	}
-		*/
+	$um_user_profile_url = um_user_profile_url();
 
 	?>
 
@@ -373,7 +269,7 @@ foreach ( $wallposts->posts as $post ) {
 
 				<div class="um-activity-ava">
 
-					<a href="<?php echo esc_attr( um_user_profile_url() ); ?>">
+					<a href="<?php echo esc_attr( $um_user_profile_url ); ?>">
 
 						<?php echo get_avatar( $author_id, 80 ); ?>
 
@@ -384,7 +280,7 @@ foreach ( $wallposts->posts as $post ) {
 				<div class="um-activity-author-meta">
 
 					<div class="um-activity-author-url">
-						<a href="<?php echo um_user_profile_url(); ?>" class="um-link">
+						<a href="<?php echo $um_user_profile_url; ?>" class="um-link">
 							<?php if ($unametype == "" || $unametype == 'rn'): ?>
 								<?php echo um_user('display_name', 'html'); ?>
 							<?php else: ?>
@@ -400,7 +296,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							<i class="um-icon-forward"></i>
 
-							<a href="<?php esc_attr( um_user_profile_url() ) ?>" class="um-link">
+							<a href="<?php esc_attr( $um_user_profile_url ) ?>" class="um-link">
 
 								<?php echo um_user( 'display_name' ) ?>
 
@@ -428,12 +324,7 @@ foreach ( $wallposts->posts as $post ) {
 
 			<div class="um-activity-right">
 
-				<?php if ( is_user_logged_in() ) { ?>
-
-
-
-
-				<?php //if ( $author_id == get_current_user_id() ) { ?>
+				<?php if ( $get_current_user_id ) { ?>
 
 					<a href="#" class="um-activity-ticon um-activity-start-dialog" data-role="um-activity-tool-dialog">
 
@@ -441,14 +332,12 @@ foreach ( $wallposts->posts as $post ) {
 
 					</a>
 
-				<?php //} ?>
-
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
 
 
 
-						<?php if ( ( current_user_can('edit_users') || $author_id == get_current_user_id() ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
+						<?php if ( ( current_user_can('edit_users') || $author_id == $get_current_user_id ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
 
 							<a href="javascript:void(0);" class="um-activity-manage">
 
@@ -460,7 +349,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
-						if ( current_user_can('edit_users') || $author_id == get_current_user_id() ) { ?>
+						if ( current_user_can('edit_users') || $author_id == $get_current_user_id ) { ?>
 
 							<a href="javascript:void(0);" class="um-activity-trash"
 
@@ -474,7 +363,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 					
-						if ( $author_id != get_current_user_id() ) { ?>
+						if ( $author_id != $get_current_user_id ) { ?>
 
 							<span class="sep"></span>
 
@@ -484,7 +373,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							   data-cancel_report="<?php esc_attr_e('Cancel report','um-activity'); ?>">
 
-								<?php echo ( UM()->Activity_API()->api()->reported( $post->ID, get_current_user_id() ) ) ? __('Cancel report','um-activity') : __('Report','um-activity'); ?>
+								<?php echo ( UM()->Activity_API()->api()->reported( $post->ID, $get_current_user_id ) ) ? __('Cancel report','um-activity') : __('Report','um-activity'); ?>
 
 							</a>
 
@@ -602,59 +491,9 @@ foreach ( $wallposts->posts as $post ) {
 
 			$numbear = UM()->Activity_API()->api()->get_bearish_number( $post->ID );
 
-			$likes = UM()->Activity_API()->api()->get_likes_number( $post->ID );
-
 			$comments = UM()->Activity_API()->api()->get_comments_number( $post->ID );
-
-
-
-			if ( $likes > 0 || $comments > 0 ) { ?>
-
-				<div class="um-activity-disp">
-
-					<div class="um-activity-left">
-
-						<div class="um-activity-disp-likes">
-
-							<a href="#" class="um-activity-show-likes um-link" data-post_id="<?php echo $post->ID; ?>">
-
-								<span class="um-activity-post-likes"><?php echo $likes; ?></span>
-
-								<span class="um-activity-disp-span"><?php _e('likes','um-activity'); ?></span>
-
-							</a>
-
-						</div>
-
-						<div class="um-activity-disp-comments">
-
-							<a href="javascript:void(0);" class="um-link">
-
-								<span class="um-activity-post-comments"><?php echo $comments; ?></span>
-
-								<span class="um-activity-disp-span"><?php _e('comments','um-activity'); ?></span>
-
-							</a>
-
-						</div>
-
-					</div>
-
-					<div class="um-activity-faces um-activity-right">
-
-						<?php echo UM()->Activity_API()->api()->get_faces( $post->ID ); ?>
-
-					</div>
-
-					<div class="um-clear"></div>
-
-				</div>
-
-				<div class="um-clear"></div>
-
-			<?php } ?>
-
-
+			
+			?>
 
 		</div>
 
@@ -666,7 +505,7 @@ foreach ( $wallposts->posts as $post ) {
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
 
-			<?php if ( is_user_logged_in() ) { ?>
+			<?php if ( $get_current_user_id ) { ?>
 
 				<div class="um-activity-left um-activity-actions">
 
@@ -698,38 +537,6 @@ foreach ( $wallposts->posts as $post ) {
 
 					</div>
 
-					<!-- <div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active isyours' : 'notyours') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
-
-						<a href="#">
-
-							<i class="um-faicon-thumbs-up"></i>
-
-							<i class="um-faicon-thumbs-down" style="display:none;"></i>
-
-							
-
-						</a>
-
-						<div class="dnumof" data-istab="liked" data-modalx="mod<?php echo $post->ID; ?>"><?php echo $likes; ?></div>
-
-					</div>
-
- -->
-
-			<!-- <hr class="style14 style11">
-
-				<div class="es-sentiments-container">
- 						<div class="es-sentiments-cover1">
- 							<a class="es-sentiments1 es-same-style">
- 							<img src="/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
- 							<a class="es-sentiments2 es-same-style">
- 							<img src="/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
- 							<a class="es-sentiments3 es-same-style">
- 							<img src="/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
- 						</div>
- 					</div>
- -->
-
  					
 
 					<div class="dpartmodal">
@@ -742,13 +549,9 @@ foreach ( $wallposts->posts as $post ) {
 
 						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
 
-						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-
 						        <div class="dtabspart">
 
 						        	<ul class="tabbutton">
-
-						        		<!-- <li class="">All</li> -->
 
 										<li class="totabs" style="color: white;" data-btname="bullish">
 											<span style="margin-left: 0;">
@@ -763,8 +566,6 @@ foreach ( $wallposts->posts as $post ) {
 											</span>
 											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 										</li>
-
-						        		<!-- <li class="totabs" data-btname="liked">Liked</li> -->
 
 						        	</ul>
 
@@ -840,46 +641,6 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	</div>
 
-						        	<!-- <div class="liked">
-
-										<?php 
-										
-											$post_liked = get_post_meta( $post->ID, '_liked', TRUE );
-
-											if ($post_liked):
-												foreach ($post_liked as $key => $value):
-
-													$user_info = get_userdata($value);
-
-										?>
-
-												<div class="bullitems listofpeople">
-
-													<div class="dusername">
-
-														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
-
-															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
-
-														</a>
-
-													</div>
-
-													<div class="isfriends">
-
-														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
-
-													</div>
-
-												</div>
-
-										<?php
-												endforeach;
-											endif;
-										?>
-
-						        	</div> -->
-
 						        </div>
 
 						      </div>
@@ -917,12 +678,6 @@ foreach ( $wallposts->posts as $post ) {
 
 	</div>
 
-<?php $count++; ?>
-
 <?php } ?>
-
-
-
-
 
 <div class="um-activity-load"></div>

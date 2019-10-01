@@ -15,7 +15,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <?php
                                 $search_term = get_search_query();
-                                echo do_shortcode("[et_pb_search admin_label='Search Arbitrage...' background_layout='light' text_orientation='left' exclude_pages='off' exclude_posts='off' hide_button='off' /]");
+                                //echo do_shortcode("[et_pb_search admin_label='Search Arbitrage...' background_layout='light' text_orientation='left' exclude_pages='off' exclude_posts='off' hide_button='off' /]");
                              ?>
 
                             <script>

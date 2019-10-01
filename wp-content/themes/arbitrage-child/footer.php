@@ -87,13 +87,13 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 							type: 'GET',
 							dataType: 'json',
 							success: function(response) {
-								console.log(response.data.symbol);
+								console.log(data);
 							}error: function(xhr, ajaxOptions, thrownError) {  
 
                				}
 				    	});
 
-		        	
+
 
 		        	var string = jQuery(this).val();
 		        	var lastChar = string.substr(string.length -1);

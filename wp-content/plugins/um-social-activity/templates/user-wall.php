@@ -94,7 +94,6 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 } else {
 
 
-
 	//set offset when pagination
 
 	$args['posts_per_page'] = UM()->Activity_API()->api()->get_posts_per_page();
@@ -176,48 +175,6 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 		}
 
-
-
-		/*if ( ! $friends_ids && ! $followed_ids && ! empty( $user_id ) ) {
-
-			$args['meta_query'][] = array(
-
-				'relation'	=> 'OR',
-
-				array(
-
-					'key'       => '_wall_id',
-
-					'value'     => $user_id,
-
-					'compare'   => '='
-
-				),
-
-				array(
-
-					'key'       => '_user_id',
-
-					'value'     => $user_id,
-
-					'compare'   => '='
-
-				),
-
-				array(
-
-					'key'       => '_wall_id',
-
-					'value'     => 0,
-
-					'compare'   => '='
-
-				)
-
-			);
-
-		}*/
-
 	}
 
 
@@ -268,8 +225,6 @@ if ( $wallposts->found_posts == 0 ) {
 
 }
 
-$count = 0;
-
 foreach ( $wallposts->posts as $post ) {
 
 	$author_id = UM()->Activity_API()->api()->get_author( $post->ID );
@@ -291,59 +246,6 @@ foreach ( $wallposts->posts as $post ) {
 	$post_link = UM()->Activity_API()->api()->get_permalink( $post->ID );
 
 	um_fetch_user( $author_id );
-
-	/*
-	if ($count % 5 == 0 && $count != 0) {
-		?>
-
-            	<div class="um-activity-widget" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">
-                    <div class="um-activity-head">
-                        <div class="um-activity-left um-activity-author">
-                            <div class="um-activity-ava">
-            
-                                <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/">
-                                    <img src="https://arbitrage.ph/wp-content/uploads/ultimatemember/5/profile_photo-80x80.jpg?1558730722" class="gravatar avatar avatar-80 um-avatar um-avatar-uploaded" width="80" height="80" alt="Arbitrage" data-default="https://arbitrage.ph/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg">
-                                </a>
-            
-                            </div>
-                            <div class="um-activity-author-meta">
-            
-                                <div class="um-activity-author-url">
-                                    <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platformasasdfsdfsd</a>
-                                </div>
-            
-                                <span class="um-activity-metadata">
-            
-                                    <a href="#">
-                                        Advertisement
-                                    </a>
-            
-                                </span>
-                            </div>
-                        </div>
-                        <div class="um-clear"></div>
-            
-                    </div>
-
-                    <div class="um-activity-body">
-            
-                        <div class="um-activity-bodyinner ">
-                                <div class="um-activity-bodyinner-txt">
-                                    <div class="desc-note">
-                                    	<div class="arbadblock">ADS</div>
-                                    </div>           
-                                </div>
-                        </div>
-						<div class="um-clear"></div>
-            
-                    </div>
-            
-                </div>
-
-		<?php
-	}
-	*/
-	
 
 	?>
 
@@ -548,8 +450,6 @@ foreach ( $wallposts->posts as $post ) {
 							
 						?>
 						
-						<?php //echo $newconts; ?>
-
 						<div class="desc-note">
 							<?php echo $um_activity_post; ?>
 						</div>
@@ -688,39 +588,6 @@ foreach ( $wallposts->posts as $post ) {
 						<span class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 
 					</div>
-
-					<!-- <div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active isyours' : 'notyours') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
-
-						<a href="#">
-
-							<i class="um-faicon-thumbs-up"></i>
-
-							<i class="um-faicon-thumbs-down" style="display:none;"></i>
-
-							
-
-						</a>
-
-						<div class="dnumof" data-istab="liked" data-modalx="mod<?php echo $post->ID; ?>"><?php echo $likes; ?></div>
-
-					</div>
-
- -->
-
-			<!-- <hr class="style14 style11">
-
-				<div class="es-sentiments-container">
- 						<div class="es-sentiments-cover1">
- 							<a class="es-sentiments1 es-same-style">
- 							<img src="https://arbitrage.ph/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
- 							<a class="es-sentiments2 es-same-style">
- 							<img src="https://arbitrage.ph/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
- 							<a class="es-sentiments3 es-same-style">
- 							<img src="https://arbitrage.ph/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
- 						</div>
- 					</div>
- -->
-
  					
 
 					<div class="dpartmodal">
@@ -733,13 +600,9 @@ foreach ( $wallposts->posts as $post ) {
 
 						      <div class="modal-header">
 
-						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-
 						        <div class="dtabspart">
 
 						        	<ul class="tabbutton">
-
-						        		<!-- <li class="">All</li> -->
 
 						        		<li class="totabs" data-btname="bullish">Bullish</li>
 
@@ -770,10 +633,6 @@ foreach ( $wallposts->posts as $post ) {
 						        			<?php foreach (get_post_meta( $post->ID, '_bull_people', TRUE ) as $key => $value) {
 
 												$user_info = get_userdata($value);
-
-												// echo 'Username: ' . $user_info->user_login . "<br />";
-
-												//print_r($user_info);
 
 												 ?>
 
@@ -809,10 +668,6 @@ foreach ( $wallposts->posts as $post ) {
 
 												$user_info = get_userdata($value);
 
-												// echo 'Username: ' . $user_info->user_login . "<br />";
-
-												//print_r($user_info);
-
 												 ?>
 
 												<div class="bullitems listofpeople">
@@ -844,10 +699,6 @@ foreach ( $wallposts->posts as $post ) {
 						        		<?php foreach (get_post_meta( $post->ID, '_liked', TRUE ) as $key => $value) {
 
 												$user_info = get_userdata($value);
-
-												// echo 'Username: ' . $user_info->user_login . "<br />";
-
-												// print_r($user_info);
 
 												 ?>
 
@@ -911,8 +762,6 @@ foreach ( $wallposts->posts as $post ) {
 
 
 	</div>
-
-<?php $count++; ?>
 
 <?php } ?>
 

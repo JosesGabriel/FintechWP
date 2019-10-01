@@ -1,11 +1,11 @@
 <?php
-include 'functions-social-api.php';
+// include 'functions-social-api.php';
 include 'functions-api.php';
 include 'functions-journalapi.php';
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
-include 'functions-accounts-api.php';
+// include 'functions-accounts-api.php';
 
 
 function my_theme_enqueue_styles()

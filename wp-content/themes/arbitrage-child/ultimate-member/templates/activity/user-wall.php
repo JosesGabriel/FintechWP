@@ -55,39 +55,39 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 
 
-	$followed_ids = UM()->Activity_API()->api()->followed_ids();
+	// $followed_ids = UM()->Activity_API()->api()->followed_ids();
 
-	if ( $followed_ids ) {
+	// if ( $followed_ids ) {
 
-		$args['meta_query'][] = array(
+	// 	$args['meta_query'][] = array(
 
-			'key'       => '_user_id',
+	// 		'key'       => '_user_id',
 
-			'value'     => $followed_ids,
+	// 		'value'     => $followed_ids,
 
-			'compare'   => 'IN'
+	// 		'compare'   => 'IN'
 
-		);
+	// 	);
 
-	}
+	// }
 
 
 
-	$friends_ids = UM()->Activity_API()->api()->friends_ids();
+	// $friends_ids = UM()->Activity_API()->api()->friends_ids();
 
-	if ( $friends_ids ) {
+	// if ( $friends_ids ) {
 
-		$args['meta_query'][] = array(
+	// 	$args['meta_query'][] = array(
 
-			'key'       => '_user_id',
+	// 		'key'       => '_user_id',
 
-			'value'     => $friends_ids,
+	// 		'value'     => $friends_ids,
 
-			'compare'   => 'IN'
+	// 		'compare'   => 'IN'
 
-		);
+	// 	);
 
-	}
+	// }
 
 
 
@@ -142,39 +142,39 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 	} else {
 
-		$followed_ids = UM()->Activity_API()->api()->followed_ids();
+		// $followed_ids = UM()->Activity_API()->api()->followed_ids();
 
-		if ( $followed_ids ) {
+		// if ( $followed_ids ) {
 
-			$args['meta_query'][] = array(
+		// 	$args['meta_query'][] = array(
 
-				'key'       => '_user_id',
+		// 		'key'       => '_user_id',
 
-				'value'     => $followed_ids,
+		// 		'value'     => $followed_ids,
 
-				'compare'   => 'IN'
+		// 		'compare'   => 'IN'
 
-			);
+		// 	);
 
-		}
+		// }
 
 
 
-		$friends_ids = UM()->Activity_API()->api()->friends_ids();
+		// $friends_ids = UM()->Activity_API()->api()->friends_ids();
 
-		if ( $friends_ids ) {
+		// if ( $friends_ids ) {
 
-			$args['meta_query'][] = array(
+		// 	$args['meta_query'][] = array(
 
-				'key'       => '_user_id',
+		// 		'key'       => '_user_id',
 
-				'value'     => $friends_ids,
+		// 		'value'     => $friends_ids,
 
-				'compare'   => 'IN'
+		// 		'compare'   => 'IN'
 
-			);
+		// 	);
 
-		}
+		// }
 
 	}
 

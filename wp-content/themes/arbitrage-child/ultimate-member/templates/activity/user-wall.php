@@ -250,6 +250,8 @@ foreach ( $wallposts->posts as $post ) {
 
 	um_fetch_user( $author_id );
 
+	$um_user_profile_url = um_user_profile_url();
+
 	?>
 
 
@@ -266,7 +268,7 @@ foreach ( $wallposts->posts as $post ) {
 
 				<div class="um-activity-ava">
 
-					<a href="<?php echo esc_attr( um_user_profile_url() ); ?>">
+					<a href="<?php echo esc_attr( $um_user_profile_url ); ?>">
 
 						<?php echo get_avatar( $author_id, 80 ); ?>
 
@@ -277,7 +279,7 @@ foreach ( $wallposts->posts as $post ) {
 				<div class="um-activity-author-meta">
 
 					<div class="um-activity-author-url">
-						<a href="<?php echo um_user_profile_url(); ?>" class="um-link">
+						<a href="<?php echo $um_user_profile_url; ?>" class="um-link">
 							<?php if ($unametype == "" || $unametype == 'rn'): ?>
 								<?php echo um_user('display_name', 'html'); ?>
 							<?php else: ?>
@@ -293,7 +295,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							<i class="um-icon-forward"></i>
 
-							<a href="<?php esc_attr( um_user_profile_url() ) ?>" class="um-link">
+							<a href="<?php esc_attr( $um_user_profile_url ) ?>" class="um-link">
 
 								<?php echo um_user( 'display_name' ) ?>
 

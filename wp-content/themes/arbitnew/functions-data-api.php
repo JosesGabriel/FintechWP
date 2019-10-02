@@ -50,7 +50,7 @@ class DataAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_URL, $url);
         $result = curl_exec($this->$curl);
 
-        return json_decode($result);
+        return $result;
     }
         
     public function getOhlcHistory($request)
@@ -99,7 +99,7 @@ class DataAPI extends WP_REST_Controller
         //endregion forward request
 
         return $this->respond(true, [
-            'data' => $data
+            'data' => $result
         ], 200);
     }
 

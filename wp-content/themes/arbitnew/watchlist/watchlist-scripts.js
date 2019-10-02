@@ -30,19 +30,19 @@ $(document).ready(function(){
                 dataType: 'json', // added data type
                 success: function(res) {
                     
-                    
+                   
+                    jQuery.each(res.data, function(index, value) {      
+                            jQuery('.listofstocks').append('<a class="datastock_' + index + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
+                            index++;        
+                    });  
+
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     
                 }
             });
-                var i = 0;
-                jQuery.each(res.data, function(index, value) {
-                   
-                        jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
-                        i++;        
-                });  
+               
 
     });
 

@@ -121,53 +121,16 @@ class DataAPI extends WP_REST_Controller
         $data = $request->get_params();
    
         //region forward request
-        $result = $this->sendViaCurl();
+        //$result = $this->sendViaCurl();
         //endregion forward request
 
-        return json_decode($result);
+        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $forwardUrl = str_replace($this->dataBaseUrl,$_SERVER[HTTP_HOST],$currentUrl);
+        
+        return $forwardUrl;
+        //return json_decode($result);
     }
 
-    public function getTemplate($request)
-    {
-        global $wpdb;
-        $data = $request->get_params();
-
-        //region Data validation
-        if (!isset($data['client'])) {
-            return $this->respond(false, [
-                'message' => 'The client is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-
-        if (!isset($data['user']) ||
-            !is_numeric($data['user'])) {
-            return $this->respond(false, [
-                'message' => 'The user is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-        //endregion Data validation
-
-        //region Behavioral change
-        if (isset($data['chart'])) {
-            $id = $data['chart'];
-
-            $chart = $wpdb->get_row($wpdb->prepare("SELECT * FROM $this->table_name WHERE id = %d", $id));
-            return $this->respond(true, [
-                'data' => $chart
-            ], 200);
-        }
-        //endregion Behavioral change
-
-        //region Data retrieval
-        $charts = $wpdb->get_results($wpdb->prepare("SELECT * FROM $this->table_name WHERE user_id = %d AND client_id = %s", [$data['user'], $data['client']]));
-        //endregion Data retrieval
-
-        return $this->respond(true, [
-            'data' => $charts
-        ], 200);
-    }
 }
 
 // Register API endpoints

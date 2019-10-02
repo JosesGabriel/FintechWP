@@ -103,7 +103,18 @@ a:hover {
     top: 10px;
 }
 .left-dashboard-part {
-    padding: 19px 0px 0 !important;
+    padding: 10px 0 0 !important;
     width: 196px;
 }
 /*------ global-sidebar ------*/
+
+
+/*------ center-part-dashboard ------*/
+.center-dashboard-part {
+    float: left;
+    max-width: 539px;
+}
+.add-post {
+    border-radius: 5px;
+    overflow: hidden;
+}

@@ -1,6 +1,6 @@
 <?php
 	/*
-    * Template Name: Dashboard
+    * Template Name: BlogPage
     */
 global $current_user;
 $user = wp_get_current_user();

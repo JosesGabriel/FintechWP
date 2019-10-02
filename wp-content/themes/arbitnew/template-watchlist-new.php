@@ -1,22 +1,6 @@
 
 <?php include_once "watchlist/header-files.php";?>
 
-<?php
-
-global $current_user;
-$userID = $current_user->ID;
-
-$havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
-
-foreach ($havemeta as $key => $value) {
-
-    echo $value['stockname'];
-
-}
-
-?>
-
-
 <!-- #main-header -->
 <div id="main-content" class="oncommonsidebar">
 
@@ -335,6 +319,7 @@ foreach ($havemeta as $key => $value) {
 
 
                                                         <div class="groupinput midd selectstock"><label>Stock Code</label>
+                                                            
 
                                                             <input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
 

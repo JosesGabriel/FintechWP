@@ -100,9 +100,6 @@ class DataAPI extends WP_REST_Controller
             'Content-Type: application/json',
             "Authorization: Bearer {$this->client_secret}",
         ];
-
-        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $forwardUrl = str_replace("{$_SERVER[HTTP_HOST]}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
         
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $forwardUrl);
@@ -121,7 +118,10 @@ class DataAPI extends WP_REST_Controller
         $data = $request->get_params();
    
         //region forward request
-        $result = $this->sendViaCurl();
+        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $forwardUrl = str_replace("{$_SERVER[HTTP_HOST]}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
+        
+        $result = $this->sendViaCurl($forwardUrl);
         //endregion forward request
 
         return json_decode($result);

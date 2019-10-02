@@ -95,12 +95,12 @@ class DataAPI extends WP_REST_Controller
         //endregion Data validation
 
         //region forward request
-        dd($request, $data);
+        //dd($request, $data);
         //$result = $this->sendViaCurl("$this->dataBaseUrl/charts/history?symbol=$data['symbol']&exchange=");
         //endregion forward request
 
         return $this->respond(true, [
-            'data' => $charts
+            'data' => $request
         ], 200);
     }
 

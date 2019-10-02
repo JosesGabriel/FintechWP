@@ -6,10 +6,12 @@ class DataAPI extends WP_REST_Controller
     protected $namespace;
     protected $version;
     protected $table_name;
+    protected $client_secret ;
 
     public function __construct()
     {
         $this->dataBaseUrl = 'https://data-api.arbitrage.ph/api/v1';
+        $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
         $this->namespace = 'data-api';
     }
@@ -30,17 +32,16 @@ class DataAPI extends WP_REST_Controller
          //endregion charts
     }
 
-    public function respond($success = false, $data = [], $status = 500)
-    {
-        $data['status'] = $success ? 'ok' : 'error';
-        $status = $success ? 200 : $status;
-        return new WP_REST_Response($data, $status);
-    }
-
     public function sendViaCurl($url){
+        $headers = [
+            'Content-Type: application/json',
+            "Authorization: Bearer {$this->client_secret}",
+        ];
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);

@@ -706,7 +706,7 @@
 		?>';
 	</script>
 <script src="/assets/js/angular/functions.js?v=1.219"></script>
-<script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
+<script src="/assets/js/angular/ticker-controller.js?v=<?php echo time() ?>"></script>
 <script src="/assets/js/angular/directives.js?v=1.218"></script>
 <script src="/assets/js/angular/filters.js?v=1.218"></script>
 <script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>

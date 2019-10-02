@@ -30,6 +30,69 @@ class DataAPI extends WP_REST_Controller
              ],
          ]);
          //endregion charts
+
+         //region stocks
+         $stock_route = 'stocks';
+         //region market depth
+         $market_depth_route = 'market-depth';
+
+         register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/bidask", [
+             [
+                 'methods' => WP_REST_Server::READABLE,
+                 'callback' => array($this, 'getLatestMarketDepth'),
+             ],
+         ]);
+         register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/full-depth", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getLatestFullDepth'),
+            ],
+        ]);
+        register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/top-depth", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getLatestTopDepth'),
+            ],
+        ]);
+         //endregion market depth
+
+         //region stock info
+         register_rest_route($base_route, "{$stock_route}/list", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getStocksList'),
+            ],
+        ]);
+         //endregion stock info
+
+         //region stock history
+         $stock_history_route = 'history';
+
+        register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getLatestStockHistory'),
+            ],
+        ]);
+        register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest-active-date", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getLatestActiveDate'),
+            ],
+        ]);
+         //endregion stock history
+
+         //region trade
+        $trade_route = 'trades';
+
+        register_rest_route($base_route, "{$stock_route}/${$trade_route}/latest", [
+            [
+                'methods' => WP_REST_Server::READABLE,
+                'callback' => array($this, 'getLatestTrades'),
+            ],
+        ]);
+         //endregion trade
+         //endregion stocks
     }
 
     public function sendViaCurl($url){
@@ -54,48 +117,11 @@ class DataAPI extends WP_REST_Controller
     {
         $data = $request->get_params();
    
-        //region Data validation
-        if (!isset($data['symbol'])) {
-            return $this->respond(false, [
-                'message' => 'The symbol is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-
-        if (!isset($data['exchange'])) {
-            return $this->respond(false, [
-                'message' => 'The exchange is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-
-        if (!isset($data['resolution'])) {
-            return $this->respond(false, [
-                'message' => 'The resolution is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-
-        if (!isset($data['from'])) {
-            return $this->respond(false, [
-                'message' => 'The from date is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-
-        if (!isset($data['to'])) {
-            return $this->respond(false, [
-                'message' => 'The to date is not defined.',
-                'parameters' => $data,
-            ], 417);
-        }
-        //endregion Data validation
-
         //region forward request
         $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
         //endregion forward request
 
-        return $result;
+        return json_decode($request);
     }
 
     public function getTemplate($request)

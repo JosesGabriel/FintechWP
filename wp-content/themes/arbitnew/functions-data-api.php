@@ -9,7 +9,7 @@ class DataAPI extends WP_REST_Controller
     public function __construct()
     {
         $this->curl = curl_init();
-        $this->dataBaseUrl = 'https://data-api.arbitrage.ph/api/v1/';
+        $this->dataBaseUrl = 'https://data-api.arbitrage.ph/api/v1';
         $this->version = 'v1';
         $this->namespace = 'data-api';
 

@@ -115,7 +115,7 @@ class DataAPI extends WP_REST_Controller
         $result = curl_exec($curl);
         curl_close($curl);
 
-        return json_decode($result);
+        return is_user_logged_in();
     }
         
     public function getForwardedResponse($request)

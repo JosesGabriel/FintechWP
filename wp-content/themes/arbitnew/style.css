@@ -19,24 +19,11 @@ License: GNU General Public License v2 or later
 .ondashboardpage {
     font-family: 'Roboto', sans-serif !important;
 }
-.left-dashboard-part {
-    float: left;
-	width: 196px;
-    padding: 23px 0px;
-}
 .center-dashboard-part {
     float: left;
     width: 100%;
     max-width: 539px;
     margin-top: -10px;
-}
-.inner-main-content,
-.header-dashboard-inner {
-    max-width: 1200px;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
 }
 .inner-placeholder{
     background: #0d1f33;
@@ -259,11 +246,6 @@ label.screen-reader-text {
     border-radius: 50px;
     width: 42px;
 }
-.sidebariconssocial img {
-    width: 21px;
-    vertical-align: bottom;
-    margin-right: 11px;
-}
 .inner-center-dashboard .um.um-activity {
     max-width: initial;
 }
@@ -423,18 +405,9 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 .border-colored .yellow {
     background: #f49d1e;
 }
-.side-content {
-    border: none !important;
-    background: transparent;
-    border-radius: 0 0 5px 5px;
-    /*padding: 10px 0px;*/
-}
 ul.main-drop {
     position: relative;
 }
-/*ul.main-drop:hover > ul {
-    display: block;
-}*/
 ul.main-drop > ul {
     display: none;
     position: absolute;
@@ -494,48 +467,6 @@ body header#main-header {
     padding-top: 2px;
     padding-left: 10px;
 }
-.side-content ul li {
-    background: transparent;
-
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-.side-content ul li:hover {
-
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-/*.side-content ul li.one a{
-    background: url('images/icons/1.png') no-repeat 5px center;
-}
-.side-content ul li.two a{
-    background: url('images/icons/2.png') no-repeat 5px center;
-}
-.side-content ul li.three a{
-    background: url('images/icons/3.png') no-repeat 5px center;
-}
-.side-content ul li.four a{
-    background: url('images/icons/4.png') no-repeat 5px center;
-}
-.side-content ul li.five a{
-    background: url('images/icons/5.png') no-repeat 5px center;
-}
-.side-content ul li.six a{
-    background: url('images/icons/6.png') no-repeat 5px center;
-}
-.side-content ul li.seven a{
-    background: url('images/icons/7.png') no-repeat 5px center;
-}
-.side-content ul li.eight a{
-    background: url('images/icons/8.png') no-repeat 5px center;
-}
-.side-content ul li.nine a{
-    background: url('images/icons/9.png') no-repeat 5px center;
-}*/
 .header-image .user-image {
     background-size: cover !important;
     width: 26px;
@@ -1018,9 +949,6 @@ div.uimob800 .um-account-side ul {
     display: inline-block;
     margin: 10px;
     border-radius: 5px;
-}
-.dashboard-sidebar-left {
-    height: 100%;
 }
 body .um-notification-b.right {
     top: 110px !important;
@@ -2260,16 +2188,9 @@ body .iflychat-popup {
 #main-content {
 }
 .um-activity-new-post .um-activity-head {display:none}
-.side-content-inner ul {
-    list-style: none;
-    padding: 0;
-}
+
 @import url("arphie-style.css");
 @import url("nicar-style.css");
-
-.side-content-inner {
-    margin-top: 23px !important;
-}
 .site-header {
     padding-bottom: 23px !important;
     margin-bottom: 22px !important;

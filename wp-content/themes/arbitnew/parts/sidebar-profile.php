@@ -49,27 +49,9 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
           </div>
       </div>
-	  <?php
-	  	//$dusersecret = get_user_meta($userid, 'user_secret', true);
-	  ?>
-
-    <div class="side-completenessbox">
-    <?php if($num != 100) { ?>
-          <small style="float: left;"><?php echo $num; ?>% complete</small>
-          <small style="float:right;font-size: 14px !important;margin-top: -4px;" class="info-circle">
-            <i class="fa fa-info-circle" aria-hidden="true"></i>
-          </small>
-          <div class="profile-progress" style="clear: both;">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $num; ?>%; background: linear-gradient(to right, #71f29f 12%, #b5dc5d 89%);"></div>
-          </div>
-    <?php } ?>
-      <?php get_template_part('parts/sidebar', 'tasks'); ?>
-    </div>
-
-
       <div class="side-content">
           <div class="side-content-inner sidebariconssocial">
-              <ul style="margin-top: 0; font-family: Helvetica, Arial, sans-serif; font-weight: 600;">
+              <ul class="sidebariconssocial-child">
 				  <li class="one" style="margin-top: 3px;"><a href="<?php echo get_home_url(); ?>/"><img src="<?php echo get_home_url(); ?>/svg/layout-2.svg">	<span>Social Wall</span></a></li>
                   <li class="twos"><a href="/chart/"><img src="<?php echo get_home_url(); ?>/svg/bar-chart-2.svg">
 					  <span>Interactive Chart</span></a></li>

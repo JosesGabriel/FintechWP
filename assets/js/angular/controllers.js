@@ -429,7 +429,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('h:mm a');
+            let full_time = (moment(data.t * 1000)).format('hh:mm a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),

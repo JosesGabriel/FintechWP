@@ -364,9 +364,8 @@ function number_format_short($n, $precision = 1)
 
 <?php
 
-require "header-journal.php";
-
-// echo $user->ID ." versis ". $user->ID;
+require("journal/header-files.php");
+require("parts/global-header.php");
 
 
 ?>

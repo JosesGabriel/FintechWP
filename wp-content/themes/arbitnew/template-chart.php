@@ -2577,7 +2577,6 @@
 				'stock' : dstockpath
 			},
 			success: function(data) {
-				console.log(data);
 				if(data.status == "yes_stock"){
 					$("#sellvolume").val(data.data.volume);
 					$("#sellavrprice").val(data.data.averageprice);

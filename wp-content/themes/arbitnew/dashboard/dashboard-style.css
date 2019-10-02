@@ -1,0 +1,45 @@
+/*------ global-sidebar ------*/
+.side-header .right-image .onto-user-name {
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+.side-header .right-image .onto-user-meta-details {
+    color: #57718b;
+}
+.side-header .right-image .onto-user-name {
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: capitalize;
+    font-size: 13px;
+}
+.side-header {
+    background: transparent;
+    border-radius: 3px 3px 0 0;
+    padding: 0px 0 0px 0px;
+    line-height: 1em;
+    border-bottom: none  !important;
+}
+.side-header .left-image {
+    display: inline-block;
+    width: 12%;
+}
+.side-header .right-image {
+    display: inline-block;
+    width: 81%;
+    font-size: 13px !important;
+    font-weight: normal;
+    line-height: 1.3em;
+    vertical-align: top;
+}
+.side-header .left-image .user-image{
+    background-size: cover !important;
+    width: 26px;
+    height: 26px;
+    border-radius: 50px;
+}
+.arb_smalltxt {
+    font-weight: 300;
+    font-size: 11px;
+    text-transform: lowercase;
+    color: #aaa;
+}

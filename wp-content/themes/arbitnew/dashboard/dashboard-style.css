@@ -9,6 +9,15 @@
     display: flex;
     justify-content: space-between;
 }
+hr.style15 {
+    border: 0;
+    height: 1px;
+    width: 96%;
+    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
+    margin-top: 0rem !important;
+    margin-bottom: 2.5px !important;
+    display: flex;
+}
 /*------ global-sidebar ------*/
 
 
@@ -103,7 +112,48 @@ a:hover {
     top: 10px;
 }
 .left-dashboard-part {
-    padding: 19px 0px 0 !important;
+    padding: 10px 0 0 !important;
     width: 196px;
 }
 /*------ global-sidebar ------*/
+
+
+/*------ center-part-dashboard ------*/
+.center-dashboard-part {
+    float: left;
+    max-width: 539px;
+}
+.add-post {
+    border-radius: 5px;
+    overflow: hidden;
+}
+.um-activity-widget.um-activity-new-post:first-child {
+    margin-top: 11px;
+}
+.um-activity-new-post .um-activity-head {display:none}
+.um-activity-new-post .um-activity-foot,
+.um-activity-widget .um-activity-comments {
+    background: #142c46;
+    color: #ecf0f1;
+    border: 0 none;
+}
+.um-activity-widget .um-activity-body {
+    background: #142c46;
+}
+.um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
+    height: 90px !important;
+    border-radius: 0 !important;
+    color: #fff;
+}
+.um-form textarea {
+    line-height: 18px;
+}
+.um-activity-new-post .um-activity-body {
+    border: 0 none;
+}
+textarea.um-activity-textarea-elem.ui-autocomplete-input {
+    background: #142c46 !important;
+}
+.add-post .um-activity-new-post .um-activity-body .um-activity-preview {
+    border: 0 none;
+}

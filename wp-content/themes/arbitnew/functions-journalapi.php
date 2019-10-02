@@ -118,7 +118,7 @@ class JournalAPI extends WP_REST_Controller
             // get marketvals
             $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
             $marketprofit = $stockdetails->last * $trdata['totalstock'];
-            $marketcost = $totalcost - $this->getjurfees($totalcost, 'sell');
+            $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
 
             $profit = $marketcost - $totalcost;
 
@@ -132,11 +132,20 @@ class JournalAPI extends WP_REST_Controller
             $dlivetrade['marketvalue'] = $marketcost;
             $dlivetrade['profit'] = $profit;
             $dlivetrade['profitperc'] = ($profit / $totalcost) * 100;
+            $dlivetrade['livedetails'] = $stockdetails;
+
+            $dlivetrade['strategy'] = $trdata['data'][0]['strategy'];
+            $dlivetrade['tradeplan'] = $trdata['data'][0]['tradeplan'];
+            $dlivetrade['emotion'] = $trdata['data'][0]['emotion'];
+            $dlivetrade['tradingnotes'] = $trdata['data'][0]['tradingnotes'];
+            $dlivetrade['boardlot'] = $trdata['data'][0]['boardlot'];
+            $dlivetrade['outcome'] = ($profit > 0 ? "Winning" : "Loosing");
+
 
             array_push($finallive, $dlivetrade);
         }
 
-        return $this->respond(true, [$finallive], 200);
+        return $this->respond(true, ['data' => $finallive], 200);
     }
 
 
@@ -148,3 +157,5 @@ add_action('rest_api_init', function () {
     $JournalAPI->registerRoutes();
     
 });
+
+?>

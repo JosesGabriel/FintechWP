@@ -19,12 +19,6 @@ License: GNU General Public License v2 or later
 .ondashboardpage {
     font-family: 'Roboto', sans-serif !important;
 }
-.center-dashboard-part {
-    float: left;
-    width: 100%;
-    max-width: 539px;
-    margin-top: -10px;
-}
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
@@ -43,10 +37,6 @@ License: GNU General Public License v2 or later
 }
 
 /*custom post on to save on*/
-.inner-center-dashboard {
-    padding: 0;
-    margin-top: 20px; 
-}
 .post-user-inner .header-post,
 .post-user-inner .footer-post {
     background: #2e3746;
@@ -94,10 +84,6 @@ License: GNU General Public License v2 or later
     color: #fff;
     padding: 5px 10px;
 }
-.add-post {
-    border-radius: 5px;
-    overflow: hidden;
-}
 .post-user-item {
     background: #2c3d50;
     margin: 15px 0;
@@ -128,16 +114,6 @@ License: GNU General Public License v2 or later
     background: #3a5168;
     padding: 10px 20px;
 }
-
-.um-activity-new-post .um-activity-head,
-.um-activity-new-post .um-activity-foot,
-.um-activity-widget .um-activity-head,
-.um-activity-widget .um-activity-comments {
-    background: #142c46;
-    color: #ecf0f1;
-    border: 0 none;
-    padding-bottom: 2px;
-}
 .um-activity-comments {
     background: #fafafa;
     border: 1px solid #e5e5e5;
@@ -161,16 +137,6 @@ License: GNU General Public License v2 or later
 }
 .um-activity-new-post .um-activity-insert .ajax-upload-dragdrop:hover .upload > i {
     color: #fff !important;
-}
-.um-activity-new-post .um-activity-textarea textarea {
-    background: #4e6a85 !important;
-    color: #fff !important;
-    border-radius: 0;
-}
-.um-activity-new-post .um-activity-body {
-    box-shadow: none;
-    border: 0 none;
-    border-radius: 0;
 }
 .um-activity-new-post .um-activity-foot .upload > i {
     color: #2196F3 !important;
@@ -230,15 +196,9 @@ License: GNU General Public License v2 or later
     color: #fff !important;
     font-size: 13px !important
 }
-.um-activity-widget .um-activity-body {
-    background: #142c46;
-}
 .um-activity-widget .um-activity-body .um-activity-bodyinner .um-activity-bodyinner-txt {
     color: #fff;
     background-color: #142c46;
-}
-.um-activity-widget .um-activity-body {
-    border: 0 none;
 }
 label.screen-reader-text {
     display: none;
@@ -249,9 +209,6 @@ label.screen-reader-text {
 .side-header .left-image img {
     border-radius: 50px;
     width: 42px;
-}
-.inner-center-dashboard .um.um-activity {
-    max-width: initial;
 }
 .watch-list-inner .to-top-title,
 .top-stocks .to-top-title,
@@ -350,15 +307,6 @@ label.screen-reader-text {
     display: inline-block;
     margin-top: 5px;
     margin-right: 6px;
-}
-textarea.um-activity-textarea-elem.ui-autocomplete-input {
-    background: #142c46 !important;
-    border-radius: 5px;
-}
-.um-activity-widget.um-activity-new-post:first-child {
-    margin-top: 15px;
-    border-radius: 7px;
-    overflow: hidden !important;
 }
 .top-traiders .to-content-part .trader-item .traider-image img {
     border-radius: 50px;
@@ -852,14 +800,9 @@ div.uimob800 .um-account-side ul {
 .add-post .um-activity-new-post .um-activity-foot .upload-statusbar > div.upload-progress .upload-bar {
     border-bottom: 2px solid #56ba65;
 }
-.add-post .um-activity-new-post .um-activity-body .um-activity-preview {
-    border: 0 none;
-}
 .add-post .um-activity-wall .um-activity-body .um-activity-bodyinner-photo {
     width: 100%;
     margin: 0 auto;
-}
-.add-post .um-activity-wall .um-activity-body .um-activity-bodyinner {
 }
 .user_profile .um-header .um-profile-meta .um-friends-coverbtn a {
     background: #2c80c1 !important;
@@ -2171,13 +2114,6 @@ a.message-part-btn:before {
     font-weight: bold;
     padding: 0 15px 0 5px;
 }
-
-.um-activity-widget.um-activity-new-post:first-child {
-    margin-top: 11px;
-    box-shadow: 0px 1px 2px 0px rgba(4,13,23,1) !important;
-} 
-
-
 body .iflychat-popup {
     display: none !important;
 }
@@ -2189,9 +2125,6 @@ body .iflychat-popup {
 .left-header-inner {
     padding-bottom: 8px;
 }
-#main-content {
-}
-.um-activity-new-post .um-activity-head {display:none}
 
 @import url("arphie-style.css");
 @import url("nicar-style.css");
@@ -2245,15 +2178,6 @@ hr.style11 {
     margin-top: .4rem !important;
 }
 .top-stocks .to-content-part {
-}
-
-
-.um-activity-widget div.um-activity-textarea textarea,
-.um-activity-widget div.um-activity-textarea textarea:hover,
-.um-activity-widget div.um-activity-textarea textarea:focus {
-    height: 75px !important;
-    border-radius: 0 !important;
-    padding: 18px 15px 10px 52px !important;
 }
 	.um-activity-dialog.um-activity-tool-dialog {
 	    border: none;

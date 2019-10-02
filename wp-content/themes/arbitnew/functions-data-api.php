@@ -124,7 +124,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl($forwardUrl);
         //endregion forward request
 
-        return json_decode($forwardUrl);
+        return $forwardUrl;
     }
 
 }

@@ -16,15 +16,10 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
             shares: abbr_format(data.vol)
         };
         $scope.ticker.push(transaction);
-        ticker_data_ralph.push(transaction);
+
         if ($scope.ticker.length > 50) {
             $scope.ticker.shift();
         }
-
-        if (ticker_data_ralph.length > 150) {
-            ticker_data_ralph.pop();
-        }
         $scope.$digest();
     });
-    $scope.select = goToChart;
 }]);

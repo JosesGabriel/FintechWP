@@ -20,7 +20,7 @@ if (typeof angular !== 'undefined') {
 	foreach ($ismetadis as $key => $value) {
 
       $curl = curl_init();
-      curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+      curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
 
       //
       
@@ -124,7 +124,7 @@ jQuery(function(){
 <?php
   // $dwatchinfo = null;
   $curl = curl_init();
-  curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
+  curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
   //
   
   curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);

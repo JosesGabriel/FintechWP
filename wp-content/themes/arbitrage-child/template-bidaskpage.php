@@ -85,7 +85,7 @@
             }
 
             function getBidAsk(symbol,limit,callback){
-                let url = "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
+                let url = "https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&limit="+limit+"&symbol="+symbol;
                 let settings = {
                     "async": true,
                     "crossDomain": true,

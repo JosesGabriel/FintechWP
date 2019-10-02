@@ -87,7 +87,7 @@
         // $dequityp = 0;
         
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
+        curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
         
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $dwatchinfo = curl_exec($curl);

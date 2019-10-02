@@ -3,7 +3,7 @@
     * Template Name: Dashboard
     */
 
-// get_header();
+
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
@@ -18,18 +18,9 @@ date_default_timezone_set('Asia/Manila'); ?>
 <div id="main-content" class="ondashboardpage">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
-			
-			<div class="left-dashboard-part" id="left-dashboard-part">
-				<div class="dashboard-sidebar-left">
-					<div class="dashboard-sidebar-left-inner">
-						
-						<?php //get_template_part('parts/sidebar', 'tasks'); ?>
-                    
-                    	<?php get_template_part('parts/sidebar', 'profile'); ?>
+	
+<?php require("parts/global-sidebar.php"); ?>	
 
-					</div>
-				</div>
-			</div>
 			<div class="center-dashboard-part">
 				<div class="inner-center-dashboard">
 					<div class="add-post">

@@ -95,12 +95,17 @@ class DataAPI extends WP_REST_Controller
          //endregion stocks
     }
 
-    public function sendViaCurl($forwardUrl){
+    public function sendViaCurl(){
+        //set the headers
         $headers = [
             'Content-Type: application/json',
             "Authorization: Bearer {$this->client_secret}",
         ];
         
+        //set the forward url
+        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $forwardUrl = str_replace("{$_SERVER[HTTP_HOST]}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $forwardUrl);
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
@@ -118,10 +123,7 @@ class DataAPI extends WP_REST_Controller
         $data = $request->get_params();
    
         //region forward request
-        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $forwardUrl = str_replace("{$_SERVER[HTTP_HOST]}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
-        
-        $result = $this->sendViaCurl($forwardUrl);
+        $result = $this->sendViaCurl();
         //endregion forward request
 
         return $result;

@@ -89,16 +89,12 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                   <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-3.svg">
             <span>VAR Calculator</span></a></li>
                   <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-3.svg">
-            <span>Average Price Calculator</span></a></li>
-
-                  
+            <span>Average Price Calculator</span></a></li>      
               </ul>
           </div>
       </div>
   </div>
 </div>
-
-<hr class="style14 style13">
 
 <script type="text/javascript">
 

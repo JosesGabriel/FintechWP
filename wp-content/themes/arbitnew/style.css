@@ -41,7 +41,7 @@ License: GNU General Public License v2 or later
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
-    padding-top: 4%;
+    /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
 }
 .header-dashboard-inner {
     color: #fff;
@@ -205,6 +205,10 @@ License: GNU General Public License v2 or later
 .um-activity-widget .um-activity-head .um-activity-ava img {
     border-radius: 50px !important;
 }
+.um-activity-ava img {
+    width: 100%;
+    height: 100%;
+}
 .um-activity-widget .um-activity-comments .um-activity-comment-avatar img {
     border-radius: 50px;
 }
@@ -255,49 +259,14 @@ label.screen-reader-text {
 .home .ondashboardpage {
     padding-top: 0;
 }
-.side-header .left-image {
-    display: inline-block;
-    width: 12%;
-}
-.side-header .right-image {
-    display: inline-block;
-    width: 70%;
-}
 .side-header .left-image img {
     border-radius: 50px;
     width: 42px;
-}
-.side-header .right-image {
-    display: inline-block;
-    width: 70%;
-    font-size: 13px !important;
-    font-weight: normal;
-    line-height: 1.3em;
-    vertical-align: top;
 }
 .sidebariconssocial img {
     width: 21px;
     vertical-align: bottom;
     margin-right: 11px;
-}
-.side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
-    /*margin-top: 5px;*/
-    font-family: 'Roboto', sans-serif;
-}
-.side-header .right-image .onto-user-meta-details {
-    color: #57718b;
-}
-.side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
-    font-family: 'Roboto', sans-serif;
-    text-transform: capitalize;
-    font-size: 13px;
-}
-.side-header {
-    background: transparent;
-    border-radius: 3px 3px 0 0;
-    padding: 0px 0 0px 0px;
 }
 .inner-center-dashboard .um.um-activity {
     max-width: initial;
@@ -385,9 +354,6 @@ label.screen-reader-text {
     line-height: 1em;
     background: #142c46;
     /* padding-bottom: 15px; */
-}
-.side-header {
-    line-height: 1em;
 }
 .to-content-part {
     background: #142c46;
@@ -574,12 +540,6 @@ body header#main-header {
 .side-content ul li.nine a{
     background: url('images/icons/9.png') no-repeat 5px center;
 }*/
-.side-header .left-image .user-image{
-    background-size: cover !important;
-    width: 26px;
-    height: 26px;
-    border-radius: 50px;
-}
 .header-image .user-image {
     background-size: cover !important;
     width: 26px;
@@ -2096,7 +2056,7 @@ a.message-part-btn:before {
     vertical-align: middle;
 }
 .um-activity-widget .um-activity-foot.status div > a span.diconbase img {
-    width: 16px;
+    width: 14px;
     display: block;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish {
@@ -2108,7 +2068,7 @@ a.message-part-btn:before {
     background: #142c46;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img {
-    width: 18px;
+    width: 14px;
     padding: 0 1px;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {

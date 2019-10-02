@@ -450,7 +450,7 @@ foreach ( $wallposts->posts as $post ) {
 							
 						?>
 						
-						<div class="desc-note">
+						<div>
 							<?php echo $um_activity_post; ?>
 						</div>
 						<div class="desc-note1">
@@ -565,7 +565,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
+							<span class="diconbase"><img src="svg/ico_bullish_no_ring.svg"></span>
 
 							
 
@@ -579,7 +579,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
+							<span class="diconbase"><img src="/svg/ico_bearish_no_ring.svg"></span>
 
 							
 

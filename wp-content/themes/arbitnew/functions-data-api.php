@@ -95,11 +95,13 @@ class DataAPI extends WP_REST_Controller
          //endregion stocks
     }
 
-    public function sendViaCurl($url){
+    public function sendViaCurl(){
         $headers = [
             'Content-Type: application/json',
             "Authorization: Bearer {$this->client_secret}",
         ];
+
+        $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -118,10 +120,10 @@ class DataAPI extends WP_REST_Controller
         $data = $request->get_params();
    
         //region forward request
-        $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
+        $result = $this->sendViaCurl();
         //endregion forward request
 
-        return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        return $_SERVER[HTTP_HOST];
     }
 
     public function getTemplate($request)

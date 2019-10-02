@@ -125,7 +125,7 @@ class DataAPI extends WP_REST_Controller
         //endregion forward request
 
         $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $forwardUrl = str_replace($this->dataBaseUrl,$_SERVER[HTTP_HOST],$currentUrl);
+        $forwardUrl = str_replace("{$_SERVER[HTTP_HOST]}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
         
         return $forwardUrl;
         //return json_decode($result);

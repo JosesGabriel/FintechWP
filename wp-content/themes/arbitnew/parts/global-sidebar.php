@@ -5,4 +5,4 @@
 			<?php get_template_part('parts/sidebar', 'profile'); ?>
 		</div>
 	</div>
-</div>		
+</div>

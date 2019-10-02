@@ -177,15 +177,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
         /* background: #0d1f33 !important; */
         padding: 15px;
     }
-    .side-content {
-        background: rgba(44, 62, 80, 0) !important;
-        border-radius: 0px 0px 5px 5px !important;
-        padding: 3px 0px 0px 0px !important;
-    }
-
-    .side-content ul li {
-        background: rgba(255, 255, 255, 0) !important;
-    }
     .watch-list {
         background: #142c46 !important;
         margin-top: 11px !important;

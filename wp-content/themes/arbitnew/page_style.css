@@ -24,13 +24,9 @@
         font-family: Roboto, sans-serif;
     }
     .inner-placeholder {
-        padding-top: 40px !important;
+        /* padding-top: 40px !important; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class*/
     }
-    .inner-main-content, .header-dashboard-inner {
-        max-width: 1000px;
-        width: 100%;
-    }
-    .left-user-details, .watch-list, .top-stocks {
+    .watch-list, .top-stocks {
         margin-bottom: 0;
     }
     .et_fixed_nav.et_show_nav #page-container {
@@ -38,11 +34,6 @@
     }
     .right-header-inner .ontomitif {
         padding-right: 0;
-    }
-    .sidebariconssocial li.active a {
-        background: #284867 !important;
-        color:#fff !important;
-        border-radius: 4px !important;
     }
     .header-dashboard-inner > div {
         height: 34px !important;
@@ -252,9 +243,6 @@
         font-size: 13px !important;
         font-weight: 500;
     }
-    .left-dashboard-part {
-        padding: 19px 0px 0 !important;
-    }
     .onto-user-name {
         font-size: 13px;
         padding-left: 2px;
@@ -305,44 +293,10 @@
         font-weight: 400;
         font-size: 12px;
     }
-    .one {
-        font-weight: 500;
-    }
-    .two {
-        font-weight: 500;
-    }
-    .twos {
-        font-weight: 500;
-    }
-    .two a {
-        border-radius: 4px;
-    }
-    .third {
-        font-weight: 500;
-    }
-    .fourth {
-        font-weight: 500;
-    }
-    .five {
-        font-weight: 500;
-    }
-    .six {
-        font-weight: 500;
-    }
-    .seven {
-        font-weight: 500;
-        cursor: pointer;
-    }
-    .side-content-inner {
-        margin-top: 10px !important;
-    }
     .site-header {
         padding-bottom: 0px !important;
         margin-bottom: 22px !important;
         padding: 0px 0px 0px 0px !important;
-    }
-    .active {
-
     }
     #mingle-btn {
         border-radius: 26px !important;
@@ -580,14 +534,6 @@
         display:none;
         right: 9px;
         top: 24px;
-    }
-    .side-content ul li a {
-        display: block;
-        color: #ecf0f1 !important;
-        padding: 6px 1px 6px 5px;
-        font-size: 13px;
-        font-family: Roboto, sans-serif;
-        font-weight: 500;
     }
     .top-stocks .to-content-part ul li a {
         display: block;
@@ -834,6 +780,7 @@
     }
     .um-activity-left.um-activity-actions > div .dnumof {
         padding: 8px 0px 6px 0;
+        color: white;
     }
     .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
         background: #11273e;
@@ -2675,36 +2622,14 @@
         position: fixed;
         width: 265px;
         top: 296px;
-    } */
-
-
-
+    }
     .seven span.menu-title-calc {
         font-size: 13px !important;
         font-family: 'Roboto', sans-serif;
         color: #aaa;
     }
-    .m-separator {
-        width: 100%;
-        height: 15px;
-    }
-    li.seven.calc-menu-var img {
-        /* width: 20px; */
-    }
-    li.seven.calc-menu-buysell img {
-        width: 20px;
-        height: 23px;
-    }
     li.seven.calc-menu-avprice img {
         width: 22px;
-    }
-    li.seven.calc-menu-var span {
-        /* top: -4px;
-        position: relative; */
-    }
-    li.seven.calc-menu-buysell span {
-        top: -2px;
-        position: relative;
     }
     li.five a span {
         position: relative;
@@ -2824,12 +2749,6 @@
     .stock-label {
         color: #01afc8 !important;
         font-weight: 600;
-    }
-    span.menu-title-calc {
-        color: #aaa;
-        font-size: 13px;
-        font-family: Roboto, sans-serif;
-        font-weight: 500;
     }
     .table-title-avprice {
     }
@@ -3221,43 +3140,10 @@
         font-weight: 400;
         font-size: 12px;
     }
-    .one {
-        font-weight: 500;
-    }
-    .two {
-        font-weight: 500;
-    }
-    .twos {
-        font-weight: 500;
-    }
-    .two a {
-        border-radius: 4px;
-    }
-    .third {
-        font-weight: 500;
-    }
-    .fourth {
-        font-weight: 500;
-    }
-    .five {
-        font-weight: 500;
-    }
-    .six {
-        font-weight: 500;
-    }
-    .seven {
-        font-weight: 500;
-    }
-    .side-content-inner {
-        margin-top: 0 !important;
-    }
     .site-header {
         padding-bottom: 0px !important;
         margin-bottom: 22px !important;
         padding: 0px 0px 0px 0px !important;
-    }
-    .active {
-
     }
     #removes-btn {
         border-radius: 26px !important;
@@ -3745,10 +3631,6 @@
     .dauthor {
         color: #878a8e;
     }
-    .left-dashboard-part {
-        position: sticky;
-        top: -43%;
-    }
     .um-activity-bodyinner-txt span.post-meta {
         width: 100%;
     }
@@ -3987,9 +3869,6 @@
         width: 100%;
         height: auto;
         margin-bottom: -117px;
-    }
-    a:hover {
-        text-decoration: none !important;
     }
     .dcontent-wrap a {
         color: #00bcd4;

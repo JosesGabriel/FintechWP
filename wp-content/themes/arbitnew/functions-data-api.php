@@ -23,7 +23,7 @@ class DataAPI extends WP_REST_Controller
          //region charts
          $chart_route = 'charts';
 
-         register_rest_route($base_route, "{$chart_route}/history", [
+        register_rest_route($base_route, "{$chart_route}/history", [
              [
                  'methods' => WP_REST_Server::READABLE,
                  'callback' => [$this, 'getForwardedResponse'],
@@ -36,7 +36,7 @@ class DataAPI extends WP_REST_Controller
          //region market depth
          $market_depth_route = 'market-depth';
 
-         register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/bidask", [
+        register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/bidask", [
              [
                  'methods' => WP_REST_Server::READABLE,
                  'callback' => [$this, 'getForwardedResponse'],
@@ -57,7 +57,7 @@ class DataAPI extends WP_REST_Controller
          //endregion market depth
 
          //region stock info
-         register_rest_route($base_route, "{$stock_route}/list", [
+        register_rest_route($base_route, "{$stock_route}/list", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],

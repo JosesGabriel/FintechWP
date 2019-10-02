@@ -440,7 +440,7 @@ foreach ( $wallposts->posts as $post ) {
 						// 		if (strpos($dwordpvalue, '$') !== false) {
 						// 		    echo $dwordpvalue;
 						// 		    $dstock = str_replace("$", "", $dwordpvalue);
-						// 		    $dlink = '<a href="https://arbitrage.ph/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
+						// 		    $dlink = '<a href="/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
 						// 		    $newconts .= " ".$dlink;
 						// 		} else {
 						// 			$newconts .= " ".$dwordpvalue;
@@ -565,7 +565,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
+							<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
 
 							
 
@@ -579,7 +579,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
+							<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
 
 							
 

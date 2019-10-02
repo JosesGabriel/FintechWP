@@ -153,14 +153,12 @@
 	<script src="/assets/js/angular/filters.js?v=1.218"></script>
 	<script src="/assets/tradingview/charting_library/charting_library.min.js?v=1.218"></script>
 	<script src="/assets/js/datafeed.js?v=2.218"></script>
-	<!-- <script src="<?php // echo get_stylesheet_directory_uri(); ?>/js/arphie-script.js"></script> -->
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var x = 0;
 			var y = 0;
 
 			function fees(marketval) {
-
 				//commission
 				var dpartcommission = marketval * 0.0025;
 				var dcommission = (dpartcommission > 20 ? dpartcommission : 20);
@@ -191,8 +189,6 @@
 				}
 				
 			});
-
-			
 		
 		$( ".closesidebar a" ).click(function(){
 			$( ".mobileinithide" ).addClass("hidesidebar", function(){
@@ -229,9 +225,6 @@
 			});
 		});
 
-		// $(".arb_sell").click(function(e){
-
-		// });
 		var dpathss = window.location.pathname;
 		var dstockpath = dpathss.split("/");
 		dstockpath = dstockpath.filter(function(el) { return el; });
@@ -286,13 +279,10 @@
 						},
 						success: function(data) {
 
-						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
-
 							$( ".dbaronchart" ).animate({
 								width: "70%"
 							},500, function(){
-								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+								
 							});
 
 							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
@@ -354,13 +344,10 @@
 						},
 						success: function(data) {
 
-						// jQuery(".bbs_bull_bar").removeAttr('style').css({"width" : data.dbull+"%", "margin-top" : "11px"});
-						// jQuery(".bbs_bear_bar").removeAttr('style').css({"width" : data.dbear+"%", "margin-top" : "11px"});
-
 							$( ".dbaronchart" ).animate({
 								width: "70%"
 							},500, function(){
-								// $( ".bbs_bear_bar span" ).fadeIn("fast");
+								
 							});
 
 							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){

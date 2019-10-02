@@ -30,13 +30,15 @@ $(document).ready(function(){
                 dataType: 'json', // added data type
                 success: function(res) {
                     
+                    
+
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     
                 }
             });
                 var i = 0;
-                jQuery.each(stocklist.data, function(index, value) {
+                jQuery.each(res.data, function(index, value) {
                    
                         jQuery('.listofstocks').append('<a class="datastock_' + i + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
                         i++;        

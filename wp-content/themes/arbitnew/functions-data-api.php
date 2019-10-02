@@ -21,14 +21,14 @@ class DataAPI extends WP_REST_Controller
         $base_route = "{$this->namespace}/{$this->version}";
 
          //region charts
-        //  $chart_route = 'charts';
+         $chart_route = 'charts';
 
-        //  register_rest_route($base_route, "{$chart_route}/history", [
-        //      [
-        //          'methods' => WP_REST_Server::READABLE,
-        //          'callback' => [$this, 'getForwardedResponse'],
-        //      ],
-        //  ]);
+         register_rest_route($base_route, "{$chart_route}/history", [
+             [
+                 'methods' => WP_REST_Server::READABLE,
+                 'callback' => [$this, 'getForwardedResponse'],
+             ],
+         ]);
          //endregion charts
 
          //region stocks

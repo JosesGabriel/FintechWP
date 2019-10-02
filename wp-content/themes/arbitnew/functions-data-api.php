@@ -128,12 +128,12 @@ class DataAPI extends WP_REST_Controller
     public function getForwardedResponse($request)
     {
         //verify if user is logged in
-        if (!is_user_logged_in()) { 
-            return $this->respond(false, [
-                'message' => 'Unauthorized access.',
-                'parameters' => $data,
-            ], 401);
-        }
+        // if (!is_user_logged_in()) { 
+        //     return $this->respond(false, [
+        //         'message' => 'Unauthorized access.',
+        //         'parameters' => $data,
+        //     ], 401);
+        // }
 
         $data = $request->get_params();
    

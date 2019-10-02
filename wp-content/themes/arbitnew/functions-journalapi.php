@@ -91,19 +91,52 @@ class JournalAPI extends WP_REST_Controller
 
     public function getliveportfolio($request)
     {
+        global $wpdb;
+        $data = $request->get_params();
+
         $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
-        // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        // curl_setopt($curl, CURLOPT_CUSTOMREQUEST, false);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $gerdqouteone = curl_exec($curl);
         curl_close($curl);
 
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
 
+        $finallive = [];
+        foreach ($ismytrades as $key => $value) {
+            $dstock = str_replace('_trade_','',$value->meta_key);
+            $trdata = unserialize($value->meta_value);
+            $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
+            $stockdetails = $gerdqoute->data[$key];
+            $value->tradedetails = $trdata;
+            $value->stockdata = $stockdetails;
+            
 
-        return $this->respond(true, $gerdqouteone, 200);
+            // get marketvals
+            $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
+            $marketprofit = $stockdetails->last * $trdata['totalstock'];
+            $marketcost = $totalcost - $this->getjurfees($totalcost, 'sell');
+
+            $profit = $marketcost - $totalcost;
+
+
+
+            $dlivetrade = [];
+            $dlivetrade['stock'] = $dstock;
+            $dlivetrade['position'] = $trdata['totalstock'];
+            $dlivetrade['aveprice'] = $trdata['aveprice'];
+            $dlivetrade['totalcost'] = $totalcost;
+            $dlivetrade['marketvalue'] = $marketcost;
+            $dlivetrade['profit'] = $profit;
+            $dlivetrade['profitperc'] = ($profit / $totalcost) * 100;
+
+            array_push($finallive, $dlivetrade);
+        }
+
+        return $this->respond(true, [$finallive], 200);
     }
 
 

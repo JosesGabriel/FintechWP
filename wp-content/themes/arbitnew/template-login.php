@@ -11,7 +11,9 @@ if ( is_user_logged_in() ) {
 }
 global $current_user;
 $user = wp_get_current_user();
-get_header('login');
+
+require("login/header-files.php");
+
 $setrand = rand(1,12);
 $get_bgfimage = "loginbg".$setrand.".jpg";
 ?>
@@ -350,4 +352,4 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
         });;
 </script>
 
-<?php get_footer();
+<?php require("login/footer-files.php"); ?>

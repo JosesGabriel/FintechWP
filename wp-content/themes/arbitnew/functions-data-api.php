@@ -95,7 +95,7 @@ class DataAPI extends WP_REST_Controller
          //endregion stocks
     }
 
-    public function sendViaCurl(){
+    public function sendViaCurl($forwardUrl){
         $headers = [
             'Content-Type: application/json',
             "Authorization: Bearer {$this->client_secret}",
@@ -124,7 +124,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl($forwardUrl);
         //endregion forward request
 
-        return json_decode($forwardUrl);
+        return json_decode($result);
     }
 
 }

@@ -3,20 +3,15 @@
 class DataAPI extends WP_REST_Controller
 {
     protected $dataBaseUrl;
-    protected $curl;
     protected $namespace;
     protected $version;
     protected $table_name;
 
     public function __construct()
     {
-        $this->curl = curl_init();
         $this->dataBaseUrl = 'https://data-api.arbitrage.ph/api/v1';
         $this->version = 'v1';
         $this->namespace = 'data-api';
-
-        //initialize curl
-        $this->initializeCurl();
     }
 
     public function registerRoutes()
@@ -42,17 +37,16 @@ class DataAPI extends WP_REST_Controller
         return new WP_REST_Response($data, $status);
     }
 
-    public function initializeCurl(){
-        curl_setopt($this->curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-        curl_setopt($this->curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
-    }
-
     public function sendViaCurl($url){
-        curl_setopt($this->curl, CURLOPT_URL, $url);
-        $result = curl_exec($this->$curl);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($curl);
+        curl_close($curl);
 
-        return $result;
+        return json_decode($result);
     }
         
     public function getOhlcHistory($request)
@@ -97,17 +91,10 @@ class DataAPI extends WP_REST_Controller
         //endregion Data validation
 
         //region forward request
-        //$result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $dhistofronold = curl_exec($curl);
-        curl_close($curl);
+        $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
         //endregion forward request
 
-        return $dhistofronold;
+        return $result;
     }
 
     public function getTemplate($request)

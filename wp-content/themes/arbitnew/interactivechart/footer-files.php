@@ -10,7 +10,7 @@
 				var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
 				link.type = 'image/x-icon';
 				link.rel = 'shortcut icon';
-				link.href = '<?php echo $homeurlgen; ?>/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-32x32.png';
+				link.href = '/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-32x32.png';
 				document.getElementsByTagName('head')[0].appendChild(link);
 			}
 			$( "body" ).mousemove(function() {
@@ -79,7 +79,7 @@
             });
         });
 	</script>
-	
+
 	<!-- ================== BEGIN BASE JS ================== -->
 	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
@@ -239,7 +239,7 @@
 
 		jQuery.ajax({
 			method: "GET",
-			url: "<?php echo $homeurlgen; ?>/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			url: "/apipge/?daction=checkifhavestock&symbol="+dstockpath,
 			dataType: 'json',
 			data: {
 				'action' : 'post_sentiment',
@@ -273,7 +273,7 @@
 
 					jQuery.ajax({
 						method: "POST",
-						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
@@ -341,7 +341,7 @@
 
 					jQuery.ajax({
 						method: "POST",
-						url: "<?php echo $homeurlgen; ?>/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',

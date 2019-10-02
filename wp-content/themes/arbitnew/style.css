@@ -28,7 +28,7 @@ License: GNU General Public License v2 or later
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
-    padding-top: 4%;
+    /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
 }
 .header-dashboard-inner {
     color: #fff;
@@ -191,6 +191,10 @@ License: GNU General Public License v2 or later
 }
 .um-activity-widget .um-activity-head .um-activity-ava img {
     border-radius: 50px !important;
+}
+.um-activity-ava img {
+    width: 100%;
+    height: 100%;
 }
 .um-activity-widget .um-activity-comments .um-activity-comment-avatar img {
     border-radius: 50px;
@@ -1980,7 +1984,7 @@ a.message-part-btn:before {
     vertical-align: middle;
 }
 .um-activity-widget .um-activity-foot.status div > a span.diconbase img {
-    width: 16px;
+    width: 14px;
     display: block;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish {
@@ -1992,7 +1996,7 @@ a.message-part-btn:before {
     background: #142c46;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img {
-    width: 18px;
+    width: 14px;
     padding: 0 1px;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {

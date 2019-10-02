@@ -5,11 +5,10 @@
 	*/
 	global $current_user; 
     $user = wp_get_current_user();
-    $url = get_home_url();
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $url.'/login/', 301 );
+		wp_redirect( '/login', 301 );
 		exit;
 	}
 	$user_id = $user->ID;
@@ -32,9 +31,7 @@
 	<link rel="stylesheet" href="/assets/css/theme/default.css" id="theme" />
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
-	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 
-	
     <style type="text/css">
 		.arb_right_icons_trans {display:none;}
 		.arb_buysell {
@@ -161,9 +158,6 @@
 		.arb_padding_5.b0.arb_bullbear {
 			border-top: 4px #34495e solid;
 		}
-		/*.sd_border_btm {
-			border-bottom: 4px #34495e solid;
-		}*/
 		.sd_border_top {
 			border-top: 4px #34495e solid;
 		}
@@ -176,7 +170,6 @@
 		.list-inline>li{display:inline-block;}
 		.list-inline>li+li{margin-bottom:5px !important;}
     </style>
-    <?php /*?> Enter Trade CSS <?php */?>
 	<style>
     .hideformodal {display:none;}
     /* Enter Trade Form */
@@ -525,24 +518,6 @@
 		text-align:center;
 		color:#bdc3c7;
 	}
-    /*
-	.marqueethis {
-		width: 150%;
-		height:40px;
-		right: 0;
-		text-align: right;
-	}
-    */
-    /*
-    .marqueethis > li {
-		animation: marquee 15s linear infinite;
-	}
-    */
-	/*
-    .marqueethis > li:hover {
-		animation-play-state: paused;
-	}
-    */
 	.arb_custom_ticker {
 		font-size: 10px;
 		line-height: 12px;
@@ -560,52 +535,8 @@
 		background-color:#2c3e50; 
 		text-align:left;
 	}
-    /*
-	@keyframes marquee {
-		0% {
-			transform: translate(0, 0);
-		}
-		100% {
-			transform: translate(-50%, 0);
-		}
-	}
-    */
     </style>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-
-<!-- TEMP SCRIPT AND CSS FOR MARQUEE, TODO: REMOVE -->
-<script>
-    var ticker_data_ralph = [];
-	jQuery(document).ready(function() {
-			
-            // forevertickerinit();
-			// function forevertickerinit() {
-            //         jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-            //             foreverticker();
-            //         });
-			// }
-			// function foreverticker() {
-            //         jQuery('.arb_custom_ticker').animate({'width': '+=100px'}, 2000, "linear", function() {
-            //             forevertickerinit();
-            //         });
-			// }
-            
-            // setInterval(() => {
-            //     let ticker_data = ticker_data_ralph.filter(data => {
-            //         return data.counter < 50   
-            //     }) 
-            //     for(i in ticker_data){
-            //         let ids = `li#${ticker_data[i].counter}`;
-            //         let element = jQuery(ids);
-            //         //element.remove();
-            //     }     
-            //     if(jQuery(".arb_custom_ticker").width()>25000){
-            //         location.reload(true);
-            //     }
-            // }, 20000);
-
-		});
-</script>
 <style>
 	.marqueethis {
 		/* width:0; */

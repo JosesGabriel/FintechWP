@@ -1,3 +1,4 @@
+
 <?php include_once "watchlist/header-files.php";?>
 
 <!-- #main-header -->
@@ -31,3 +32,4 @@
     </div>
 
 </div> <!-- #main-content -->
+

@@ -787,7 +787,7 @@ class Activity_Main_API
                         for($i = 1; $i < count($infors); $i++){
                             $newword .= ucfirst($infors[$i])." ";
                         }
-                        $finalword = '<a href="https://arbitrage.ph/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
                         $newconts .= ' ' . $finalword;
                     } else {
                         $newconts .= ' ' . $dwordpvalue;

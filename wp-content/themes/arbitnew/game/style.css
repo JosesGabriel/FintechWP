@@ -1,0 +1,9 @@
+html, body, #page-container {
+    height: 100%;
+}
+body {overflow: hidden;}
+.header-dashboard-inner {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 8px 10px 0 !important;
+}

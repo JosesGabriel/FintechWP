@@ -1649,3 +1649,11 @@ input#qty_price--input {
 .record_modal .entr_col:nth-child(3) {
     padding-right: 0 !important;
 }
+.oncommonsidebar ul {
+    margin: 0;
+    padding: 0;
+}
+.oncommonsidebar ul li {
+    list-style: none;
+    line-height: 1em;
+}

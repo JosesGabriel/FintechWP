@@ -631,7 +631,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 symbol: _symbol,
                 interval: 'D',
                 container_id: "tv_chart_container",
-                datafeed: new Datafeeds.UDFCompatibleDatafeed("https://arbitrage.ph/api"),
+                datafeed: new Datafeeds.UDFCompatibleDatafeed("/api"),
                 library_path: "/assets/tradingview/charting_library/",
                 timezone: "Asia/Hong_Kong",
                 locale: "en",
@@ -650,7 +650,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 },
                 logo: {
                     image: '/wp-content/uploads/2019/04/translogo.png',
-                    link: 'https://arbitrage.ph/'
+                    link: '/'
                 },
                 time_frames: [
                     { text: "5y", resolution: "D" },
@@ -683,7 +683,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 // for register sentiments
                 $http({
                     method : "POST",
-                    url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                    url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
                     dataType: "json",
                     contentType: "application/json",
                     data: {
@@ -734,7 +734,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     $http({
                         method : "GET",
-                        url : "https://dev-v1.arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -763,7 +763,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     // for register sentiments
                     $http({
                         method : "POST",
-                        url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                        url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -801,7 +801,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     $http({
                         method : "POST",
-                        url : "https://arbitrage.ph/apipge/?daction=marketsentiment&stock="+_symbol,
+                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {

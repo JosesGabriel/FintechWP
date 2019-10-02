@@ -135,7 +135,6 @@
 		var _moderator 	= false;
 		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
-		var _username 	= '<?php echo $user->user_email; ?>';
 		var _symbol 	= '<?php 
 		$getcururl = $_SERVER['REQUEST_URI'];
 		if ($getcururl == "/chart/"){

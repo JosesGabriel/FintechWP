@@ -26,7 +26,7 @@ class DataAPI extends WP_REST_Controller
          register_rest_route($base_route, "{$chart_route}/history", [
              [
                  'methods' => WP_REST_Server::READABLE,
-                 'callback' => array($this, 'getOhlcHistory'),
+                 'callback' => [$this, 'getForwardedResponse'],
              ],
          ]);
          //endregion charts
@@ -39,19 +39,19 @@ class DataAPI extends WP_REST_Controller
          register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/bidask", [
              [
                  'methods' => WP_REST_Server::READABLE,
-                 'callback' => array($this, 'getLatestMarketDepth'),
+                 'callback' => [$this, 'getForwardedResponse'],
              ],
          ]);
          register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/full-depth", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLatestFullDepth'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
         register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/top-depth", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLatestTopDepth'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
          //endregion market depth
@@ -60,7 +60,7 @@ class DataAPI extends WP_REST_Controller
          register_rest_route($base_route, "{$stock_route}/list", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getStocksList'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
          //endregion stock info
@@ -71,13 +71,13 @@ class DataAPI extends WP_REST_Controller
         register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLatestStockHistory'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
         register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest-active-date", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLatestActiveDate'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
          //endregion stock history
@@ -88,7 +88,7 @@ class DataAPI extends WP_REST_Controller
         register_rest_route($base_route, "{$stock_route}/${$trade_route}/latest", [
             [
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'getLatestTrades'),
+                'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
          //endregion trade
@@ -118,7 +118,7 @@ class DataAPI extends WP_REST_Controller
         return json_decode($result);
     }
         
-    public function getOhlcHistory($request)
+    public function getForwardedResponse($request)
     {
         $data = $request->get_params();
    

@@ -29,13 +29,11 @@ $(document).ready(function(){
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {
-                    
-                   
+                        
                     jQuery.each(res.data, function(index, value) {      
                             jQuery('.listofstocks').append('<a class="datastock_' + index + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
                             index++;        
                     });  
-
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -70,6 +68,34 @@ $(document).ready(function(){
 
                 jQuery('.stockerror.errorpop').remove();
 
+    });
+
+
+    jQuery( "#myDropdown" ).keyup(function(e) {
+        e.preventDefault();
+
+        var dtyped = jQuery(this).val();
+
+        jQuery(".listofstocks > a").each(function(index){
+            var istock = jQuery(this).attr('data-dstock');
+            if (istock.toLowerCase().indexOf(dtyped) >= 0) {
+                jQuery(this).show();
+            } else {
+                jQuery(this).hide();
+            }
+        });
+    });
+
+    jQuery(document).on('click','.ddropbase a',function(e){
+        e.preventDefault();
+        var dstock = jQuery(this).attr('data-dstock');
+
+        jQuery('#myDropdown').val(dstock);
+        jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+
+        jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
+
+       
     });
 
 

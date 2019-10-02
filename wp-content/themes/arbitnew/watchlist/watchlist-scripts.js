@@ -98,6 +98,19 @@ $(document).ready(function(){
        
     });
 
+     jQuery('#submitmenow').click(function(e){
+              e.preventDefault();
+
+              var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();         
+             //var countli = jQuery(".listofinfo li").length;
+             //if (countli != 0) {
+               if (isstock != "" && jQuery("#add-watchlist-param input:checkbox:checked").length > 0 ) {
+                      jQuery("#add-watchlist-param").submit();
+                  $('.chart-loader').css("display","block");
+                  $(this).hide();
+             }
+              //}
+           });
 
 
 });

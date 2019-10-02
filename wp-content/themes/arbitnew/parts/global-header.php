@@ -10,22 +10,22 @@
                     <div class="logo-image">
                         <a href="/"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a>
                     </div>
-                    <div class="searchbar">
+                    <!-- <div class="searchbar">
                         <div class="inner-seatch">
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <?php
-                                $search_term = get_search_query();
+                                //$search_term = get_search_query();
                                 //echo do_shortcode("[et_pb_search admin_label='Search Arbitrage...' background_layout='light' text_orientation='left' exclude_pages='off' exclude_posts='off' hide_button='off' /]");
                              ?>
 
                             <script>
                                 jQuery(document).ready(function(e) {
-                                    jQuery(".inner-seatch input[type='text']").val("<?php if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
+                                    jQuery(".inner-seatch input[type='text']").val("<?php //if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
                                 });
                             </script>
 							
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="right-header-part">

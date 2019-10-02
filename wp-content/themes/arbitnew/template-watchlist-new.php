@@ -8,7 +8,7 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
-get_header( 'dashboard' );
+get_header();
 
 date_default_timezone_set('Asia/Manila');
 
@@ -880,4 +880,4 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 	</script>
 
 	
-<?php get_footer('dashboard'); ?>
+<?php get_footer(); ?>

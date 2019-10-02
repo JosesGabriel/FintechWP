@@ -364,7 +364,7 @@ function number_format_short($n, $precision = 1)
 
 <?php
 
-get_header('journal');
+require "header-journal.php";
 
 // echo $user->ID ." versis ". $user->ID;
 
@@ -4520,4 +4520,5 @@ if($issampledata){
 
 
 </div>
-<?php get_footer("journal");
+<?php
+require "footer-journal.php";

@@ -141,7 +141,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl();
         //endregion forward request
 
-        return get_current_user_id();
+        return wp_get_current_user();
     }
 
 }

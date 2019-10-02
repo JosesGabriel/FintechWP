@@ -24,7 +24,7 @@
         font-family: Roboto, sans-serif;
     }
     .inner-placeholder {
-        padding-top: 40px !important;
+        /* padding-top: 40px !important; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class*/
     }
     .inner-main-content, .header-dashboard-inner {
         max-width: 1000px;
@@ -834,6 +834,7 @@
     }
     .um-activity-left.um-activity-actions > div .dnumof {
         padding: 8px 0px 6px 0;
+        color: white;
     }
     .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
         background: #11273e;

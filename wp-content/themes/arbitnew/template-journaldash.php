@@ -1083,8 +1083,8 @@ if($issampledata){
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 
-                    	<?php echo get_template_part('parts/sidebar', 'profile'); ?>
-						
+						<?php require("parts/global-sidebar.php"); ?>
+
 					</div>
 				</div>
 			</div>
@@ -3229,4 +3229,4 @@ if($issampledata){
 
 </div>
 <?php
-require "footer-journal.php";
+require "journal/footer-files.php";

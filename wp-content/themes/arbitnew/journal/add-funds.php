@@ -11,9 +11,9 @@
                                 <a href="#tabdeposit" data-toggle="tab" class="active show">Deposit</a>
                             </li>
                             <?php if ($dbaseaccount > 0): ?>
-                            <li>
-                                <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
-                            </li>
+                                <li>
+                                    <a href="#tabwithdraw" data-toggle="tab" class="">Withdraw</a>
+                                </li>
                             <?php endif; ?>
                         </ul>
                     </span> 
@@ -31,25 +31,19 @@
                             </select>
                         </div>
                         <form action="/journal" method="post" class="add-funds-show depotincome">
-                        <!-- <div class="modal-body depo-body">-->
                                 <div class="dmainform">
                                     <div class="dinnerform">
                                         <div class="dinitem" style="margin: 10px;">
                                             <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Enter Amount</h5>
-                                            <!-- <div class="dnlabel">Amount</div> -->
                                             <div class="dninput"><input type="text" name="damount" class="depo-input-field number" style="background: #4e6a85; text-align: right;"></div>
                                         </div>
                                     </div>
                                 </div>
-                        <!-- </div>-->
 
                             <div class="modal-footer footer-depo">
-                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                 <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                 <input type="hidden" name="istype" value="deposit">
-                                <!-- <input type="submit" name="subs" value="Deposit" class="depotbutton arbitrage-button arbitrage-button--primary"> -->
                                 <a href="#" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 12px;font-weight: 300; padding: 3px 14px;">Deposit</a>
-                                <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                             </div>
                         </form>
                         <form action="/journal" method="post" class="add-funds-shows dividincome" style="display: none;">
@@ -58,20 +52,15 @@
                                         <div class="dinnerform">
                                             <div class="dinitem">
                                                 <h5 class="modal-title title-depo-in" id="exampleModalLabel">Dividend Income</h5>
-                                                <!-- <div class="dnlabel">Amount</div> -->
                                                 <div class="dninput modal-title-content-dev"><input type="text" name="damount" class="depo-input-field" style="text-align: right;"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer footer-depo">
-                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                     <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                     <input type="hidden" name="istype" value="dividend">
-                                    <!-- <input type="submit" name="subs" value="Deposit" class="divibutton arbitrage-button arbitrage-button--primary"> -->
                                     <a href="#" class="divibutton arbitrage-button arbitrage-button--primary">Deposit</a>
-                                    <!-- <input type="submit" name="subs" value="Deposit Now!" class="depo-mon-btn"> -->
-                                    <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                                 </div>
                         </form>
                     </div>
@@ -92,15 +81,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer footer-depo">
-                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
                                 <input type="hidden" name="ddate" value="<?php echo date('Y-m-d'); ?>">
                                 <input type="hidden" name="istype" value="withraw">
                                 <input type="submit" class="dwidfunds arbitrage-button arbitrage-button--primary" name="subs" value="Withdraw" style="margin-bottom: 3px; margin-top: 10px;">
-                                <!-- <button type="button" class="btn btn-primary">Deposit Now!</button> -->
                             </div>
                         </form>
                     </div>
-                </div><!---------------------->
+                </div>
             </div>
         </div>
     </div>

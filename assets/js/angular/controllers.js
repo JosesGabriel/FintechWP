@@ -542,7 +542,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             }
             $scope.$digest();
         }
-        socket.emit('test_psebd',$scope);
     });
 
     $scope.updateBidAndAsks = function (list, data) {

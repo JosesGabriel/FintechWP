@@ -9,6 +9,7 @@ $(document).ready(function(){
         }
     });
 
+
     $(".losers-title").click(function () {
         
         if($('.losers').css('display') == 'none'){
@@ -17,6 +18,7 @@ $(document).ready(function(){
              $('.losers').slideUp();
         }
     });
+
 
     jQuery('.addwatch').click(function(e){
     jQuery(".dtabcontent > div").removeClass('active').hide('slow');
@@ -40,14 +42,33 @@ $(document).ready(function(){
                         i++;        
                 });  
 
-            });
+    });
 
-        jQuery('#canceladd').click(function(e){
+    jQuery('#canceladd').click(function(e){
         e.preventDefault();
         jQuery(".dtabcontent > div").removeClass('active').hide('slow');
         jQuery(".dtabcontent .watchtab").addClass('active').show('slow');
     });
 
+    jQuery('#myDropdown').click(function(e){
+                e.preventDefault();
+
+                var dtyped = jQuery(this).val();
+                
+                if(jQuery(this).val().length < 1){
+                    jQuery('.ddropbase').removeClass('opendrop').hide('slow');
+                }
+
+                if (jQuery(this).hasClass('disopen')) {
+                    jQuery(this).removeClass('disopen');
+                } else {
+                    jQuery(this).addClass('disopen');
+                    jQuery('.ddropbase').addClass('opendrop').show('slow');
+                }
+
+                jQuery('.stockerror.errorpop').remove();
+
+    });
 
 
 

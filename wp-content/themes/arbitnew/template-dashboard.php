@@ -13,7 +13,6 @@ require("parts/sidebar-varcalc.php");
 require("parts/sidebar-avarageprice.php");
 ?>
 <div id="main-content" class="ondashboardpage">
-	<div class="inner-placeholder">
 		<div class="inner-main-content">
 		<?php require("parts/global-sidebar.php"); ?>	
 			<div class="center-dashboard-part">
@@ -39,5 +38,4 @@ require("parts/sidebar-avarageprice.php");
 			<br class="clear">
 		</div>
 	</div>
-</div>
 <?php require("dashboard/footer-files.php"); ?>

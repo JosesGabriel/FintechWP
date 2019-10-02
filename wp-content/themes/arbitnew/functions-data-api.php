@@ -95,6 +95,13 @@ class DataAPI extends WP_REST_Controller
          //endregion stocks
     }
 
+    public function respond($success = false, $data = [], $status = 500)
+    {
+        $data['status'] = $success ? 'ok' : 'error';
+        $status = $success ? 200 : $status;
+        return new WP_REST_Response($data, $status);
+    }
+
     public function sendViaCurl(){
         //set the headers
         $headers = [
@@ -115,11 +122,19 @@ class DataAPI extends WP_REST_Controller
         $result = curl_exec($curl);
         curl_close($curl);
 
-        return is_user_logged_in();
+        return json_decode($result);
     }
         
     public function getForwardedResponse($request)
     {
+        //verify if user is logged in
+        if (!is_user_logged_in()) { 
+            return $this->respond(false, [
+                'message' => 'Unauthorized access.',
+                'parameters' => $data,
+            ], 401);
+        }
+
         $data = $request->get_params();
    
         //region forward request

@@ -8,11 +8,64 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
-foreach ($havemeta as $key => $value) {
+if (isset($_POST) && !empty($_POST)) {
 
-    print_r($value['stockname']);
+    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+
+        foreach ($havemeta as $key => $value) {
+            if ($value['stockname'] == $_POST['stockname']) {
+                unset($havemeta[$key]);
+            }
+        }
+
+        array_push($havemeta, $_POST);
+        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+
+        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        exit;
+
+    } else {
+
+        if (isset($havemeta) && !empty($havemeta)){
+            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
+                echo "Stock Already Exist";
+            } else {
+                array_push($havemeta, $_POST);
+                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+            }
+
+        } else {
+            $newarray = [];
+            array_push($newarray, $_POST);
+            // add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            update_user_meta($userID, '_watchlist_instrumental', $newarray);
+        }
+
+        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        exit;
+    }
+
 
 }
+
+if (isset($_GET['remove'])) {
+    foreach ($havemeta as $key => $value) {
+        if ($value['stockname'] == $_GET['remove']) {
+            unset($havemeta[$key]);
+        }
+    }
+    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+    wp_redirect( 'https://arbitrage.ph/watchlist' );
+}
+
+if(isset($_GET['addcp'])){
+    $cpnum = $_GET['addcp'];
+    add_user_meta( $userID, 'cpnum', $cpnum, true);
+}
+
+
+
+
 
 ?>
 
@@ -48,7 +101,7 @@ foreach ($havemeta as $key => $value) {
                                                         <ul>
                                                             <li class="addwatch">
                                                                 <div class="dplusbutton">
-                                                                    <div class="dplstext">Add watchlist</div>
+                                                                    <div class="dplstext">Add watchlist </div>
                                                                     <div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
                                                                 </div>
                                                             </li>

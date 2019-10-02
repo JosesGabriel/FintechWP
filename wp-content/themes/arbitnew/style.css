@@ -19,12 +19,6 @@ License: GNU General Public License v2 or later
 .ondashboardpage {
     font-family: 'Roboto', sans-serif !important;
 }
-.center-dashboard-part {
-    float: left;
-    width: 100%;
-    max-width: 539px;
-    margin-top: -10px;
-}
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
@@ -43,10 +37,6 @@ License: GNU General Public License v2 or later
 }
 
 /*custom post on to save on*/
-.inner-center-dashboard {
-    padding: 0;
-    margin-top: 20px; 
-}
 .post-user-inner .header-post,
 .post-user-inner .footer-post {
     background: #2e3746;
@@ -93,10 +83,6 @@ License: GNU General Public License v2 or later
     border-radius: 3px;
     color: #fff;
     padding: 5px 10px;
-}
-.add-post {
-    border-radius: 5px;
-    overflow: hidden;
 }
 .post-user-item {
     background: #2c3d50;
@@ -249,9 +235,6 @@ label.screen-reader-text {
 .side-header .left-image img {
     border-radius: 50px;
     width: 42px;
-}
-.inner-center-dashboard .um.um-activity {
-    max-width: initial;
 }
 .watch-list-inner .to-top-title,
 .top-stocks .to-top-title,
@@ -858,8 +841,6 @@ div.uimob800 .um-account-side ul {
 .add-post .um-activity-wall .um-activity-body .um-activity-bodyinner-photo {
     width: 100%;
     margin: 0 auto;
-}
-.add-post .um-activity-wall .um-activity-body .um-activity-bodyinner {
 }
 .user_profile .um-header .um-profile-meta .um-friends-coverbtn a {
     background: #2c80c1 !important;

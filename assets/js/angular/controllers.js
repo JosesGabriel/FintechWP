@@ -14,16 +14,6 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             _stocks = response.data.data;
         })
 }]);
-// app.controller('message-notification', function($scope, $http, $filter) {
-//     $scope.count = 0;
-//     $http.get("/welcome/threads").then( function (response) {
-//         $scope.messages = response.data.data;
-//         $scope.count = $scope.messages.reduce( function(a, b) {
-//             if (b.status == 1) a++;
-//             return a;
-//         }, 0);
-//     });
-// });
 app.controller('template', function($scope, $http) {
     var settings = {
         chart: '1',
@@ -46,63 +36,6 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
-
-app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
-    $scope.ticker = [];
-    var counter = 1;
-
-    /*
-    let transaction = [
-        { counter:1,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:2,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:3,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:4,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:5,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:6,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:7,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:8,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:9,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:10,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:11,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:12,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:13,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:14,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:15,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:16,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-    ]
-
-    for(i in transaction){i
-        $scope.ticker.push(transaction[i]);
-        ticker_data_ralph.push(transaction[i]);    
-    }
-    */
-    // socket.on('dev-psec', function (data) {  
-    //     var ctr = counter += 1;
-    //     var transaction = {
-    //         counter: ctr,
-    //         symbol: data.sym,
-    //         price:  price_format(data.prv),
-    //         change: data.chg,
-    //         shares: abbr_format(data.vol)
-    //     };
-    //     $scope.ticker.push(transaction);
-    //     ticker_data_ralph.push(transaction);
-    //     if ($scope.ticker.length > 150) {
-    //         $scope.ticker.pop();
-    //     }
-
-    //    //console.log(ticker_data_ralph);
-
-    //     if (ticker_data_ralph.length > 150) {
-    //         ticker_data_ralph.pop();
-    //     }
-    //     $scope.$digest();
-    // });
-    // $scope.select = goToChart;
-}]);
-
-
-
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     var counter = 1;
@@ -129,18 +62,6 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     });
     $scope.select = goToChart;
 }]);
-
-// app.controller('psei', function($scope, $http) {  
-//     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
-//         $http.get("/api/psei").then(function (response) {
-//             if (response.data.success) {
-//                 $scope.psei.last = parseFloat(response.data.data.c);
-//                 $scope.psei.previous = parseFloat(response.data.data.p);
-//                 $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
-//                 $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
-//             }
-//         });
-// });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
     var vm = this;
     vm.Total = 0;
@@ -669,35 +590,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
-// app.controller('disclosures', function($scope, $http, $rootScope) {
-//     $scope.$watch('$root.stockList', function () {
-//         $scope.stocks = $rootScope.stockList;
-//     });
-//     $scope.disclosures = [];
-//     $http.get("/api/disclosures").then(function (response) {
-//         if (response.data.success) {
-//             $scope.disclosures = response.data.data;
-//         }
-//     });
-//     // socket.on('disclosure', function(data) {
-//     //     if ($scope.$parent.settings.disclosure != '0') {
-//     //         $.gritter.add({
-//     //             title: 'Disclosure Notification',
-//     //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
-//     //                   data.template + '<br/>' +
-//     //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
-//     //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-//     //             time: 5000,
-//     //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
-//     //             class_name: nightmode ? "gritter-dark" : "gritter-light",
-//     //         });
-//     //     }
-//     //     $scope.disclosures.unshift(data);
-//     // });
-//     $scope.goToChart = function(symbol) {
-//         return goToChart(symbol);
-//     };
-// });
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",
@@ -724,7 +616,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
     $(function() {
         TradingView.onready(function() {
-			/* $(".vertical-box-inner-cell.ng-scope").append('<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png"></a></div>'); */
             var override = nightmode ? JSON.parse(JSON.stringify(dark_overrides)) : JSON.parse(JSON.stringify(light_overrides));
             override["paneProperties.background"] = "#2c3e50";
 			override["paneProperties.gridProperties.color"] = "#bdc3c7";
@@ -839,7 +730,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
-                    console.log("outhere");
                     angular.element("#confirmsellparts").hide();
 
                     $http({
@@ -852,7 +742,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
-                        console.log(response.data);
                         if(response.data.status == "yes_stock"){
                             angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
                             
@@ -868,7 +757,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
 
                     }, function myError(error) {
-                        console.log(error);
+                        
                     });
 
                     // for register sentiments

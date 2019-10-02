@@ -1,9 +1,9 @@
 <?php
 global $current_user;
 $user = wp_get_current_user();
-	elegant_description();
-	elegant_keywords();
-	elegant_canonical();
+	//elegant_description();
+	//elegant_keywords();
+	//elegant_canonical();
 
 	/**
 	 * Fires in the head, before {@see wp_head()} is called. This action can be used to
@@ -146,156 +146,13 @@ $user = wp_get_current_user();
 	
 	
 	
-<?php 
-	if(isset($_GET['active'])){
-		//   $all_meta_for_user = get_user_meta( $_GET['active'] );
-		//   print_r( $all_meta_for_user );
-	}
-?>
+
 <?php /* Global CSS Overrides  get_template_part('parts/global', 'css'); */ ?>
 <div id="preloader">
     <div id="status">&nbsp;</div>
     <div id="status_txt"></div>
 </div>
-<?php
-	$product_tour_enabled = et_builder_is_product_tour_enabled();
-	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>
-	<div id="page-container"<?php echo $page_container_style; ?>>
-<?php
-	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {
-		return;
-	}
 
-	$et_secondary_nav_items = et_divi_get_top_nav_items();
-	$et_phone_number = $et_secondary_nav_items->phone_number;
-	$et_email = $et_secondary_nav_items->email;
-	$et_contact_info_defined = $et_secondary_nav_items->contact_info_defined;
-	$show_header_social_icons = $et_secondary_nav_items->show_header_social_icons;
-	$et_secondary_nav = $et_secondary_nav_items->secondary_nav;
-	$et_top_info_defined = $et_secondary_nav_items->top_info_defined;
-	$et_slide_header = 'slide' === et_get_option( 'header_style', 'left' ) || 'fullscreen' === et_get_option( 'header_style', 'left' ) ? true : false;
-?>
-
-	<?php if ( $et_top_info_defined && ! $et_slide_header || is_customize_preview() ) : ?>
-		<?php ob_start(); ?>
-		<div id="top-header"<?php echo $et_top_info_defined ? '' : 'style="display: none;"'; ?>>
-			<div class="container clearfix">
-
-			<?php if ( $et_contact_info_defined ) : ?>
-
-				<div id="et-info">
-				<?php if ( '' !== ( $et_phone_number = et_get_option( 'phone_number' ) ) ) : ?>
-					<span id="et-info-phone"><?php echo et_sanitize_html_input_text( $et_phone_number ); ?></span>
-				<?php endif; ?>
-
-				<?php if ( '' !== ( $et_email = et_get_option( 'header_email' ) ) ) : ?>
-					<a href="<?php echo esc_attr( 'mailto:' . $et_email ); ?>"><span id="et-info-email"><?php echo esc_html( $et_email ); ?></span></a>
-				<?php endif; ?>
-
-				<?php
-				if ( true === $show_header_social_icons ) {
-					get_template_part( 'includes/social_icons', 'header' );
-				} ?>
-				</div> <!-- #et-info -->
-
-			<?php endif; // true === $et_contact_info_defined ?>
-
-				<div id="et-secondary-menu">
-				<?php
-					if ( ! $et_contact_info_defined && true === $show_header_social_icons ) {
-						get_template_part( 'includes/social_icons', 'header' );
-					} else if ( $et_contact_info_defined && true === $show_header_social_icons ) {
-						ob_start();
-
-						get_template_part( 'includes/social_icons', 'header' );
-
-						$duplicate_social_icons = ob_get_contents();
-
-						ob_end_clean();
-
-						printf(
-							'<div class="et_duplicate_social_icons">
-								%1$s
-							</div>',
-							$duplicate_social_icons
-						);
-					}
-
-					if ( '' !== $et_secondary_nav ) {
-						echo $et_secondary_nav;
-					}
-
-					et_show_cart_total();
-				?>
-				</div> <!-- #et-secondary-menu -->
-
-			</div> <!-- .container -->
-		</div> <!-- #top-header -->
-	<?php
-		$top_header = ob_get_clean();
-
-		/**
-		 * Filters the HTML output for the top header.
-		 *
-		 * @since ??
-		 *
-		 * @param string $top_header
-		 */
-		echo apply_filters( 'et_html_top_header', $top_header );
-	?>
-	<?php endif; // true ==== $et_top_info_defined ?>
-
-	<?php if ( $et_slide_header || is_customize_preview() ) : ?>
-		<?php ob_start(); ?>
-		<div class="et_slide_in_menu_container">
-			<?php if ( 'fullscreen' === et_get_option( 'header_style', 'left' ) || is_customize_preview() ) { ?>
-				<span class="mobile_menu_bar et_toggle_fullscreen_menu"></span>
-			<?php } ?>
-
-			<div class="et_pb_fullscreen_nav_container">
-				<?php
-					$slide_nav = '';
-					$slide_menu_class = 'et_mobile_menu';
-
-					$slide_nav = wp_nav_menu( array( 'theme_location' => 'primary-menu', 'container' => '', 'fallback_cb' => '', 'echo' => false, 'items_wrap' => '%3$s' ) );
-					$slide_nav .= wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'container' => '', 'fallback_cb' => '', 'echo' => false, 'items_wrap' => '%3$s' ) );
-				?>
-
-				<ul id="mobile_menu_slide" class="<?php echo esc_attr( $slide_menu_class ); ?>">
-
-				<?php
-					if ( '' == $slide_nav ) :
-				?>
-						<?php if ( 'on' == et_get_option( 'divi_home_link' ) ) { ?>
-							<li <?php if ( is_home() ) echo( 'class="current_page_item"' ); ?>><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'Divi' ); ?></a></li>
-						<?php }; ?>
-
-						<?php show_page_menu( $slide_menu_class, false, false ); ?>
-						<?php show_categories_menu( $slide_menu_class, false ); ?>
-				<?php
-					else :
-						echo( $slide_nav );
-					endif;
-				?>
-
-				</ul>
-			</div>
-		</div>
-	<?php
-		$slide_header = ob_get_clean();
-
-		/**
-		 * Filters the HTML output for the slide header.
-		 *
-		 * @since ??
-		 *
-		 * @param string $top_header
-		 */
-		echo apply_filters( 'et_html_slide_header', $slide_header );
-	?>
-	<?php endif; // true ==== $et_slide_header ?>
-
-	<?php ob_start(); ?>
 	
     <?php // get_template_part('parts/global', 'header'); ?>
     

@@ -97,10 +97,17 @@ class DataAPI extends WP_REST_Controller
         //endregion Data validation
 
         //region forward request
-        $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
+        //$result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $dhistofronold = curl_exec($curl);
+        curl_close($curl);
         //endregion forward request
 
-        return $result;
+        return $dhistofronold;
     }
 
     public function getTemplate($request)

@@ -91,7 +91,7 @@
 					   data-ext-err="<?php esc_attr_e( 'Please upload a valid image', 'um-activity' ); ?>">
 
 						<div class="photo-upload-cont" style="display: inline-block;/* background-color: #11273e; */padding: 4px 14px;border-radius:25px;border: 1px solid #1e3554 !important;">
-							<img src="https://arbitrage.ph/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
+							<img src="/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
 							<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span> 
 						</div>
 

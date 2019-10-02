@@ -128,6 +128,7 @@ class DataAPI extends WP_REST_Controller
     public function getForwardedResponse($request)
     {
         //verify if user is logged in
+        //TODO: enable logged in verification
         // if (!is_user_logged_in()) { 
         //     return $this->respond(false, [
         //         'message' => 'Unauthorized access.',
@@ -141,7 +142,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl();
         //endregion forward request
 
-        return wp_get_current_user();
+        return $result;
     }
 
 }

@@ -28,7 +28,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		curl_close($curl);
@@ -39,7 +39,7 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
 		curl_close($curl);
@@ -69,7 +69,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
 			curl_close($curl);
@@ -80,7 +80,7 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
 			curl_close($curl);
@@ -422,7 +422,7 @@
 
 		$curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$gerdqouteone = curl_exec($curl);
@@ -597,8 +597,8 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
-		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		// 
+		
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

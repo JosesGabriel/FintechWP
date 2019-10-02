@@ -165,9 +165,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
                                                                     curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
 
-                                                                    //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                                                                    //
 
-                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                                                                    
         															curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -706,8 +706,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
 
-            //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-            curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+            //
+            
         	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -737,7 +737,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 			  	$curl = curl_init();
 				curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
-                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dintrabase = curl_exec($curl);
 				curl_close($curl);

@@ -48,7 +48,7 @@ function random_color() {
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 $gerdqoute = curl_exec($curl);

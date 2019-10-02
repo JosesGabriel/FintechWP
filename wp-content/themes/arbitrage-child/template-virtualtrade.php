@@ -1568,7 +1568,7 @@ get_header('dashboard');
 
     $curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-	curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+	
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $gerdqouteone = curl_exec($curl);
     curl_close($curl);
@@ -1963,7 +1963,7 @@ if ($getdstocks && $getdstocks != '') {
 																			<?php
 																				$curl = curl_init();
 																				curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
-																				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+																				
 																				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 																				$dstocksonme = curl_exec($curl);
 																				curl_close($curl);

@@ -347,7 +347,7 @@
 							$( ".dbaronchart" ).animate({
 								width: "70%"
 							},500, function(){
-								
+
 							});
 
 							$( ".bbs_bear_bar, .bbs_bull_bar" ).fadeIn("fast",function(){
@@ -402,9 +402,9 @@
 				$(".derrormes").text('You can only purchase a maximum of '+ numeral(dbuypower / dpurprice).format('0,0.00') +' stocks if the price is ₱'+ numeral(dpurprice).format('0,0.00')  );
 			}else {
 				if(x == 1 && y == 1){
-				$('.chart-loader').css("display","block");
-				$(this).hide();
-			}
+					$('.chart-loader').css("display","block");
+					$(this).hide();
+				}
 			}
 		
 		});

@@ -99,7 +99,7 @@ class DataAPI extends WP_REST_Controller
         //endregion forward request
 
         return $this->respond(true, [
-            'data' => $result
+            'data' => $data
         ], 200);
     }
 

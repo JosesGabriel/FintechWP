@@ -352,6 +352,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                 };                                    
             });
             $scope.$digest();
+        })
+        .catch(err => {
+            
         });
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')

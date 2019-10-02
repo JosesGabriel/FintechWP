@@ -99,7 +99,7 @@ class DataAPI extends WP_REST_Controller
         //endregion forward request
 
         return $this->respond(true, [
-            'data' => "{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}"
+            'data' => $result
         ], 200);
     }
 

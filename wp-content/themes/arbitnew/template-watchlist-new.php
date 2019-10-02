@@ -8,7 +8,7 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
-get_header( 'dashboard' );
+get_header();
 
 date_default_timezone_set('Asia/Manila');
 
@@ -853,7 +853,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 								).then((result) => {
 									var ditemtoremove = jQuery(this).attr('data-space');
 									window.location.href = "/watchlist/?remove="+ditemtoremove;
-									//window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
 								});
 							}
 						});
@@ -881,4 +880,4 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 	</script>
 
 	
-<?php get_footer('dashboard'); ?>
+<?php get_footer(); ?>

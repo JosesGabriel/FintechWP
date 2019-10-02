@@ -24,6 +24,13 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'getcurrentallocation'),
             ]
         ]);
+
+        register_rest_route($base_route, 'liveportfolio', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getliveportfolio'),
+            ]
+        ]);
     }
 
     // generic information
@@ -80,6 +87,23 @@ class JournalAPI extends WP_REST_Controller
             if($this->getprofits($value) > 0){ $win++; } else { $loss++; }
         }
         return $this->respond(true, ['data' => ['win' => $win, 'loss' => $loss]], 200);
+    }
+
+    public function getliveportfolio($request)
+    {
+        $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
+        // curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        // curl_setopt($curl, CURLOPT_CUSTOMREQUEST, false);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $gerdqouteone = curl_exec($curl);
+        curl_close($curl);
+
+        $gerdqoute = json_decode($gerdqouteone);
+
+
+        return $this->respond(true, $gerdqouteone, 200);
     }
 
 

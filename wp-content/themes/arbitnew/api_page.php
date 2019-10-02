@@ -418,6 +418,27 @@
 
 			echo getpointtrades($_GET['stock']);
 
+ 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'curltest'){
+
+		$curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE');
+        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$gerdqouteone = curl_exec($curl);
+		
+		if($gerdqouteone === false)
+		{
+			echo 'Curl error: ' . curl_error($curl);
+			die;
+		}
+		curl_close($curl);
+		
+
+		$gerdqoute = json_decode($gerdqouteone);
+		
+		print_r($gerdqouteone);
+
  	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";
 		  	$the_site = "https://www.marketwatch.com/story/shocks-and-surprises-could-damage-all-major-economies-warns-swiss-hedge-fund-manager-2019-04-29?mod=hp_investing";

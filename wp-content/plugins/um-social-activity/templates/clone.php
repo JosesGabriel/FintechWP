@@ -195,7 +195,7 @@
 
 					<a href="#">
 
-						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
+						<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbullish; ?></span>
 
@@ -207,7 +207,7 @@
 
 					<a href="#">
 
-						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
+						<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbear; ?></span>
 

@@ -2,6 +2,8 @@
 
 class DataAPI extends WP_REST_Controller
 {
+    protected $dataBaseUrl;
+    protected $curl;
     protected $namespace;
     protected $version;
     protected $table_name;

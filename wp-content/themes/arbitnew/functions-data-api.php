@@ -121,7 +121,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
         //endregion forward request
 
-        return json_decode($request);
+        return json_decode($request->get_params());
     }
 
     public function getTemplate($request)

@@ -19,7 +19,7 @@ div.um-activity {
 }
 
 .um-activity-widget {
-	margin-top: 25px;
+	/* margin-top: 25px; commented kay dako kaayo ang margin between per posts sa social. ayaw ibalik */
 	box-shadow: 0 1px 2px #ddd;
 	background-color: #142c46;
     border-radius: 6px !important;
@@ -929,7 +929,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 	font-size: 16px;
 	height: 40px;
 	cursor: pointer !important;
-	width: 100%;
+	/* width: 100%; */
 }
 
 .um-activity-widget .upload {
@@ -943,7 +943,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 	cursor: pointer !important;
 	border-radius: 0 0 0 3px !important;
 }
-.um-activity-widget .upload:hover {color: #999; background: #f6f6f6 !important}
+/* .um-activity-widget .upload:hover {color: #999; background: #f6f6f6 !important} */
 ::-webkit-file-upload-button { cursor:pointer; }
 
 .um-activity-widget .um-error-block {

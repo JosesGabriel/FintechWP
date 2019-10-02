@@ -62,4 +62,5 @@ require("parts/sidebar-avarageprice.php");
 
 <?php
 
-get_footer();
+//get_footer();
+require("dashboard/footer-files.php");

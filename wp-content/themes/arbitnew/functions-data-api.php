@@ -19,12 +19,12 @@ class DataAPI extends WP_REST_Controller
 
     public function registerRoutes()
     {
-        $base_route = "$this->namespace/$this->version";
+        $base_route = "{$this->namespace}/{$this->version}";
 
          //region charts
          $chart_route = 'charts';
 
-         register_rest_route($base_route, "$chart_route/history", [
+         register_rest_route($base_route, "{$chart_route}/history", [
              [
                  'methods' => WP_REST_Server::READABLE,
                  'callback' => array($this, 'getOhlcHistory'),
@@ -95,12 +95,11 @@ class DataAPI extends WP_REST_Controller
         //endregion Data validation
 
         //region forward request
-        //dd($request, $data);
-        //$result = $this->sendViaCurl("$this->dataBaseUrl/charts/history?symbol=$data['symbol']&exchange=");
+        $result = $this->sendViaCurl("{$this->dataBaseUrl}/charts/history?symbol={$data['symbol']}&exchange={$data['exchange']}&resolution={$data['resolution']}&from={$data['from']}&to={$data['to']}");
         //endregion forward request
 
         return $this->respond(true, [
-            'data' => $request
+            'data' => $result
         ], 200);
     }
 

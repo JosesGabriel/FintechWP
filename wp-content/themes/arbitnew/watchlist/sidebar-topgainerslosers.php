@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/watchlist_style.css?<?php echo time(); ?>">
 
 <script>
     jQuery(function(){
@@ -121,28 +120,4 @@
             </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-
-$(document).ready(function(){
-    $(".gainers-title").click(function () {
-        
-        if($('.gainers').css('display') == 'none'){
-            $('.gainers').slideDown();
-        }else {
-             $('.gainers').slideUp();
-        }
-    });
-
-    $(".losers-title").click(function () {
-        
-        if($('.losers').css('display') == 'none'){
-            $('.losers').slideDown();
-        }else {
-             $('.losers').slideUp();
-        }
-    });
-
-});
-</script>
 

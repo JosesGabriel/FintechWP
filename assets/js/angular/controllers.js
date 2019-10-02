@@ -352,6 +352,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                 };                                    
             });
             $scope.$digest();
+        })
+        .catch(err => {
+            
         });
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
@@ -426,7 +429,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 
     socket.on('pset', function (data) {
         if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('h:mm a');
+            let full_time = (moment(data.t * 1000)).format('hh:mm a');
             let transaction = {
                 symbol: data.sym,
                 price:  price_format(data.exp),
@@ -464,7 +467,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             }
             $scope.$digest();
         }
-        socket.emit('test_psebd',$scope);
     });
 
     $scope.updateBidAndAsks = function (list, data) {

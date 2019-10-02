@@ -14,7 +14,370 @@
                 </div>
             </div>
             <div class="center-dashboard-part">
+                <div class="inner-center-dashboard">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-portlet">
+                                <div class="box-portlet-header">
+                                    <h2 class="watchtitle">Watchlist</h2>
+                                </div>
+                                <div class="box-portlet-content">
+                                    <div class="dtabcontent">
+                                        <div class="dclosetab watchtab active">
+                                 
 
+
+                                                <div class="dinnerlist">
+                                                    <?php if ($havemeta): ?>
+                                                        <ul>
+                                                            <li class="addwatch">
+                                                                <div class="dplusbutton">
+                                                                    <div class="dplstext">Add watchlist</div>
+                                                                    <div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
+                                                                </div>
+                                                            </li>
+                                                            <?php foreach ($havemeta as $key => $value) { ?>
+                                                                <?php
+                                                                    // get current price and increase/decrease percentage
+                                                                    $curl = curl_init();
+                                                                    //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
+                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
+
+                                                                    //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+
+                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                                                                    curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+                                                                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                                                                    $dwatchinfo = curl_exec($curl);
+                                                                    curl_close($curl);
+                                                                   
+                                                                    $dstockinfo = json_decode($dwatchinfo);
+                                                                    $dinstall = get_object_vars($dstockinfo);
+
+                                                                    // get stcok history
+                                                                        $curl = curl_init();
+                                                                        curl_setopt($curl, CURLOPT_URL, 'http://pseapi.com/api/Stock/'.$value['stockname'].'/');
+
+                                                                         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+                                                                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                                                                        $dwatchhisto = curl_exec($curl);
+                                                                        curl_close($curl);
+
+                                                                        $ddata = json_decode($dwatchhisto);
+                                                                        
+                                                                        if (!is_array($ddata)) continue;
+
+                                                                        $ddata = array_reverse($ddata, true);
+
+                                                                        $dlisttrue = [];
+                                                                        $count = 0;
+                                                                        foreach ($ddata as $xbkey => $xbvalue) {
+                                                                            array_push($dlisttrue, $xbvalue);
+                                                                            if ($count == 10) {
+                                                                                break;
+                                                                            }
+                                                                            $count++;
+                                                                        }
+
+                                                                        $dstockinfo = [];
+                                                                        foreach (array_reverse($dlisttrue) as $stckkey => $stckvalue) {
+                                                                            $infodata = [];
+
+                                                                                array_push($infodata, $stckvalue->date);
+                                                                                array_push($infodata, $stckvalue->low);
+                                                                                array_push($infodata, $stckvalue->open);
+                                                                                array_push($infodata, $stckvalue->close);
+                                                                                array_push($infodata, $stckvalue->high);
+
+                                                                            array_push($dstockinfo, $infodata);
+                                                                        
+                                                                        }
+                                                                    if (is_object($dinstall['data'])):
+                                                                ?>
+
+                                                                <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
+                                                                    <!--<div class="watchlist--buttons">
+                                                                        <div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>-->
+                                                                        <div style="display: none;"><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
+                                                                  
+                                                                    
+                                                                    <div class="row">
+                                                                        <div class="wlttlstockvals">
+                                                                            <div class="stocknn"><?php echo $value['stockname']; ?></div>
+                                                                            <div class="s_dropdown" style="display: inline-block;"> 
+                                                                                <select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
+                                                                                        <option  value="select" hidden></option>
+                                                                                        <option  value="delete">Delete</option>
+                                                                                        <option  value="edit">Edit</option>
+                                                                                </select>
+
+                                                                            </div>
+                                                                            <div class="subnotif" style="display: none;">
+                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
+                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
+                                                                                    echo ",";
+                                                                                } ?>
+                                                                            </div>
+
+                                                                            <div class="dpricechange">
+                                                                                <div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
+                                                                                <?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
+                                                                                    <div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+
+                                                                                <?php elseif (round($dinstall['data']->changepercentage, 2) == 0.00): ?>
+                                                                                    <div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                                    
+
+                                                                                <?php else: ?>
+                                                                                    <div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                                <?php endif; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12">
+                                                                             <div class="dchart">
+                                                                                <div class="chartjs">
+                                                                        
+                                                                                
+                                                                                    <div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
+                                                                                    </div>
+                                                                                    <div class="minichartt">
+                                                                                    <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                                                                                    <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
+                                                                                        <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                
+
+
+
+                                                                    <div class="dparams">
+                                                                        <ul>
+                                                                            <?php if (isset($value['dcondition_entry_price']) && $value['dconnumber_entry_price'] > 0 ): ?>
+                                                                                <li>
+                                                                                    <div class="dcondition">Entry Price</div>
+                                                                                    <div class="dvalue">
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
+                                                                                        
+                                                                                        </span>
+                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                    </div>
+                                                                                </li>
+                                                                            <?php endif ?>
+                                                                            <?php if (isset($value['dcondition_take_profit_point']) && $value['dconnumber_take_profit_point'] > 0 ): ?>
+                                                                                <li>
+                                                                                    <div class="dcondition">Take Profit</div>
+                                                                                    <div class="dvalue">
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
+                                                                                        
+                                                                                        </span>
+                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                    </div>
+                                                                                </li>
+                                                                            <?php endif ?>
+                                                                            <?php if (isset($value['dcondition_stop_loss_point']) && $value['dconnumber_stop_loss_point'] > 0 ): ?>
+                                                                                <li>
+                                                                                    <div class="dcondition">Stop<br>Loss</div>
+                                                                                    <div class="dvalue">
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
+                                                                                        
+                                                                                        </span>
+                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                    </div>
+                                                                                </li>
+                                                                            <?php endif ?>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                      <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content mc-background" style="width: 60%; height: 265px;">
+                                                                          <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel" style="color: #333;"><?php echo $value['stockname']; ?></h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                              <span class="closemodal" aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                          </div>
+                                                                          <div class="modal-body edit-stocks-padding">
+                                                                            <div class="">
+                                                                                <div class="editme">
+                                                                                    <form method="post" action="#" id="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">
+                                                                                        <input type="hidden" name="stockname" value="<?php echo $value['stockname']; ?>">
+                                                                                        <div class="instumentinner">
+                                                                                            <div class="row">
+
+                                                                                                <div class="cond-ion" style="margin: 15px 0px 0px 26px;">                           
+                                                                                                    <div class="groupinput midd"><label>Entry Price</label>
+                                                                                                        <input type="text" name="dconnumber_entry_price" class="inpt_data_price number" value="<?php echo $value['dconnumber_entry_price']; ?>" >
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
+                                                                                                    </div>
+                                                                                                    <div class="groupinput midd"><label>Take Profit</label>
+                                                                                                        <input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_take_profit_point']; ?>">
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point">
+                                                                                                    </div>
+                                                                                                    <div class="groupinput midd"><label>Stop Loss</label>
+                                                                                                        <input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
+                                                                                                        <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
+                                                                                                    </div>
+                                                                                                </div>      
+
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="innerdeliver innerdeliver-editstock">
+                                                                                                        <ul>
+                                                                                                            <li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" <?php echo (in_array("web-notif", $value['delivery_type']) ? 'checked' : ''); ?> checked><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
+                                                                                                            <li id="smscheckboxli"><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif" <?php echo (in_array("sms-notif", $value['delivery_type']) ? 'checked' : ''); ?>><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row">
+                                                               
+                                                                                                    <div class="col-md-12">
+                                                                                                        <div class="submitform" style="margin-left: 84px;">
+                                                                                                            <img class="chart-preloader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
+                                                                                                            <input type="hidden" name="toadddate" value="<?php echo $value['toadddate']; ?>">
+                                                                                                            <input type="hidden" name="isticked" value="<?php echo time(); ?>">
+                                                                                                            <input type="hidden" name="subtype" value="editdata">
+                                                                                                            <button class="editmenow arbitrage-button arbitrage-button--primary" data-tochange="edit-watchlist-param-<?php echo strtolower($value['stockname']); ?>">Change</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                          </div>
+                                                              
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                </li>
+                                                            <?php endif; } ?>
+                                                        </ul>
+                                                    <?php else: ?>
+                                                        <ul>
+                                                            <li class="addwatch">
+                                                                <div class="dplusbutton">
+                                                                    <div class="dplsicon"><i class="fa fa-plus-circle"></i></div>
+                                                                    <div class="dplstext">Add watchlist</div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </div>
+
+                               
+                                        </div>
+
+
+                                        <div class="dclosetab addwatchtab " style="width: 271px;">
+
+
+                                                <!-- wathlist phone number modal -->    
+                                                <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-depo">
+                                                                <h5 class="modal-title title-depo" id="exampleModalLabel">Add Cellphone Number</h5>
+                                                                <button type="button" class="close close-depo" data-dismiss="modal" aria-label="Close">
+                                                                    <i class="fas fa-times modal-btn-close-deposit"></i>
+                                                                </button>
+                                                            </div>
+                                                            <hr class="style14 style15">
+                                                            <form action="/watchlist" method="GET" id="frmcpnum" class="add-funds-show depotincome">
+                                                            <div class="modal-body depo-body">
+                                                                <div class="dmainform">
+                                                                    <div class="dinnerform">
+                                                                        <div class="dinitem">
+                                                                                <h5 class="modal-title title-depo-in" id="exampleModalLabel" style="font-weight: 300;font-size: 13px;">Cellphone</h5>
+                                                                                <div class="dninput"><input type="text" id="txtcpnum" name="txtcpnum" class="depo-input-field" style="background: #4e6a85; text-align: right; font-size: 13px !important;"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-footer footer-depo">
+                                                                    <a href="#" id="cpsubmitbtn" class="depotbutton arbitrage-button arbitrage-button--primary" style="font-size: 11px;">Submit</a>
+                                                                </div>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- wathlist phone number modal -->    
+
+
+
+                                                <form method="post" action="" id="add-watchlist-param">
+                                                    <div class="instumentinner">
+                                                        <div class="">
+
+
+                                                        <div class="groupinput midd selectstock"><label>Stock Code</label>
+                                                            
+
+                                                            <input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
+
+
+                                                            <div class="dropdown-content ddropbase" style="display: none;">
+                                                                        <input type="hidden" id="dstockname" name="stockname">
+                                                                        <div class="listofstocks"></div>
+                                                                    </div>
+
+                                                        </div>
+                                                        <hr>
+                                                        <div class="groupinput midd"><label>Entry Price</label>
+                                                            <input type="text" name="dconnumber_entry_price" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
+                                                            <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
+                                                        </div>
+                                                        <div class="groupinput midd"><label>Take Profit</label>
+                                                            <input type="text" name="dconnumber_take_profit_point" class="inpt_data_price number" placeholder="Enter Amount" autocomplete="off">
+                                                            <input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="take_profit_point" autocomplete="off">
+                                                        </div>
+                                                        <div class="groupinput midd"><label>Stop Loss</label>
+                                                            <input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" placeholder="Enter Amount">
+                                                            <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
+                                                        </div>
+                                                        <div class="selectnotifitems">
+                                                                <div class="innerdeliver innerdeliver-addstock">
+                                                                    <ul>
+                                                                        <li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
+                                                                        <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+                                                                    </ul>
+                                                                </div>
+                                                        </div>
+
+                                                           
+                                                            <div class="row">
+                                                               
+                                                                <div class="col-md-6">
+                                                                   
+                                                                    <div class="submitform" style="margin-right: -125px;">
+                                                                        <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
+                                                                        <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
+                                                                        <input type="hidden" name="isticked" value="<?php echo time(); ?>">
+                                                                        <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
+                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="right-dashboard-part">
@@ -33,3 +396,4 @@
 
 </div> <!-- #main-content -->
 
+<?php include_once "watchlist/footer-files.php";?> 

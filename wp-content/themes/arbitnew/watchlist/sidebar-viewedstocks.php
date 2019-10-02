@@ -20,9 +20,7 @@ jQuery(function(){
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
 
-
         <?php 
-
        
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
@@ -101,9 +99,7 @@ jQuery(function(){
                         echo "<div class='hide-show watched-hidden-content'>";
                     }
                    
-                }
-
-           
+                }        
 
                     echo "</div>";
             
@@ -114,16 +110,7 @@ jQuery(function(){
                        
                
     </div>
-    <!-- <div class="to-bottom-seemore" style="display: inline-flex;">
-        <i class="fas fa-sort-down" style="
-        font-size: 16px;
-        margin-right: 3px;
-        vertical-align: initial;
-    "></i>
-        <div class="see-more-btn button-toggle-content">
-            <strong>See more</strong>
-        </div>
-    </div> -->
+ 
     <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
         <div class="see-more-btn button-toggle-content">
             <i class="fas fa-sort-down" id="fa-up" style="
@@ -140,11 +127,7 @@ jQuery(function(){
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-// $(document).ready(function(){
-// 	$('.button-toggle-content').on('click', function(){
-// 		$('.watched-hidden-content').toggle();
-// 	});
-// });
+
 $(document).ready(function(){
     $(".button-toggle-content").click(function () {
         $(".watched-hidden-content").toggle('slow');

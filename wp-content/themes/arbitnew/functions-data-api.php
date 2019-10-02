@@ -36,19 +36,19 @@ class DataAPI extends WP_REST_Controller
          //region market depth
          $market_depth_route = 'market-depth';
 
-         register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/bidask", [
+         register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/bidask", [
              [
                  'methods' => WP_REST_Server::READABLE,
                  'callback' => [$this, 'getForwardedResponse'],
              ],
          ]);
-         register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/full-depth", [
+         register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/full-depth", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
-        register_rest_route($base_route, "{$stock_route}/${$market_depth_route}/latest/top-depth", [
+        register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/top-depth", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],
@@ -68,13 +68,13 @@ class DataAPI extends WP_REST_Controller
          //region stock history
          $stock_history_route = 'history';
 
-        register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest", [
+        register_rest_route($base_route, "{$stock_route}/{$stock_history_route}/latest", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
-        register_rest_route($base_route, "{$stock_route}/${$stock_history_route}/latest-active-date", [
+        register_rest_route($base_route, "{$stock_route}/{$stock_history_route}/latest-active-date", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],
@@ -85,7 +85,7 @@ class DataAPI extends WP_REST_Controller
          //region trade
         $trade_route = 'trades';
 
-        register_rest_route($base_route, "{$stock_route}/${$trade_route}/latest", [
+        register_rest_route($base_route, "{$stock_route}/{$trade_route}/latest", [
             [
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => [$this, 'getForwardedResponse'],

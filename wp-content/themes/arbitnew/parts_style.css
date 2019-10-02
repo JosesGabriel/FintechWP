@@ -169,9 +169,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
         display: none !important;
 
     }
-    .side-header {
-        border-bottom: none  !important;
-    }
     .dplusbutton {
         color: #fff;
         padding: 30px 0px 22px 0px;
@@ -179,15 +176,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
     .top-traiders .to-content-part {
         /* background: #0d1f33 !important; */
         padding: 15px;
-    }
-    .side-content {
-        background: rgba(44, 62, 80, 0) !important;
-        border-radius: 0px 0px 5px 5px !important;
-        padding: 3px 0px 0px 0px !important;
-    }
-
-    .side-content ul li {
-        background: rgba(255, 255, 255, 0) !important;
     }
     .watch-list {
         background: #142c46 !important;
@@ -801,20 +789,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
       visibility: visible;
       cursor: pointer;
     }*/
-    .side-header .right-image {
-      display: inline-block;
-      width: 81%;
-      font-size: 13px !important;
-      font-weight: normal;
-      line-height: 1.3em;
-      vertical-align: top;
-    }
-    .sidebariconssocial li.active a {
-      background: #142c46 !important;
-      color:#fff !important;
-      border-radius: 4px !important;
-      box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;
-    }
     .side-content ul li a:hover {
       background: #142c46 !important;
     }

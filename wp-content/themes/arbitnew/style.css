@@ -19,29 +19,10 @@ License: GNU General Public License v2 or later
 .ondashboardpage {
     font-family: 'Roboto', sans-serif !important;
 }
-.left-dashboard-part {
-    float: left;
-	width: 196px;
-    padding: 23px 0px;
-}
-.center-dashboard-part {
-    float: left;
-    width: 100%;
-    max-width: 539px;
-    margin-top: -10px;
-}
-.inner-main-content,
-.header-dashboard-inner {
-    max-width: 1200px;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-}
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
-    padding-top: 4%;
+    /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
 }
 .header-dashboard-inner {
     color: #fff;
@@ -56,10 +37,6 @@ License: GNU General Public License v2 or later
 }
 
 /*custom post on to save on*/
-.inner-center-dashboard {
-    padding: 0;
-    margin-top: 20px; 
-}
 .post-user-inner .header-post,
 .post-user-inner .footer-post {
     background: #2e3746;
@@ -106,10 +83,6 @@ License: GNU General Public License v2 or later
     border-radius: 3px;
     color: #fff;
     padding: 5px 10px;
-}
-.add-post {
-    border-radius: 5px;
-    overflow: hidden;
 }
 .post-user-item {
     background: #2c3d50;
@@ -205,6 +178,10 @@ License: GNU General Public License v2 or later
 .um-activity-widget .um-activity-head .um-activity-ava img {
     border-radius: 50px !important;
 }
+.um-activity-ava img {
+    width: 100%;
+    height: 100%;
+}
 .um-activity-widget .um-activity-comments .um-activity-comment-avatar img {
     border-radius: 50px;
 }
@@ -255,52 +232,9 @@ label.screen-reader-text {
 .home .ondashboardpage {
     padding-top: 0;
 }
-.side-header .left-image {
-    display: inline-block;
-    width: 12%;
-}
-.side-header .right-image {
-    display: inline-block;
-    width: 70%;
-}
 .side-header .left-image img {
     border-radius: 50px;
     width: 42px;
-}
-.side-header .right-image {
-    display: inline-block;
-    width: 70%;
-    font-size: 13px !important;
-    font-weight: normal;
-    line-height: 1.3em;
-    vertical-align: top;
-}
-.sidebariconssocial img {
-    width: 21px;
-    vertical-align: bottom;
-    margin-right: 11px;
-}
-.side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
-    /*margin-top: 5px;*/
-    font-family: 'Roboto', sans-serif;
-}
-.side-header .right-image .onto-user-meta-details {
-    color: #57718b;
-}
-.side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
-    font-family: 'Roboto', sans-serif;
-    text-transform: capitalize;
-    font-size: 13px;
-}
-.side-header {
-    background: transparent;
-    border-radius: 3px 3px 0 0;
-    padding: 0px 0 0px 0px;
-}
-.inner-center-dashboard .um.um-activity {
-    max-width: initial;
 }
 .watch-list-inner .to-top-title,
 .top-stocks .to-top-title,
@@ -386,9 +320,6 @@ label.screen-reader-text {
     background: #142c46;
     /* padding-bottom: 15px; */
 }
-.side-header {
-    line-height: 1em;
-}
 .to-content-part {
     background: #142c46;
     padding: 15px;
@@ -461,18 +392,9 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 .border-colored .yellow {
     background: #f49d1e;
 }
-.side-content {
-    border: none !important;
-    background: transparent;
-    border-radius: 0 0 5px 5px;
-    /*padding: 10px 0px;*/
-}
 ul.main-drop {
     position: relative;
 }
-/*ul.main-drop:hover > ul {
-    display: block;
-}*/
 ul.main-drop > ul {
     display: none;
     position: absolute;
@@ -531,54 +453,6 @@ body header#main-header {
     vertical-align: top;
     padding-top: 2px;
     padding-left: 10px;
-}
-.side-content ul li {
-    background: transparent;
-
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-.side-content ul li:hover {
-
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-/*.side-content ul li.one a{
-    background: url('images/icons/1.png') no-repeat 5px center;
-}
-.side-content ul li.two a{
-    background: url('images/icons/2.png') no-repeat 5px center;
-}
-.side-content ul li.three a{
-    background: url('images/icons/3.png') no-repeat 5px center;
-}
-.side-content ul li.four a{
-    background: url('images/icons/4.png') no-repeat 5px center;
-}
-.side-content ul li.five a{
-    background: url('images/icons/5.png') no-repeat 5px center;
-}
-.side-content ul li.six a{
-    background: url('images/icons/6.png') no-repeat 5px center;
-}
-.side-content ul li.seven a{
-    background: url('images/icons/7.png') no-repeat 5px center;
-}
-.side-content ul li.eight a{
-    background: url('images/icons/8.png') no-repeat 5px center;
-}
-.side-content ul li.nine a{
-    background: url('images/icons/9.png') no-repeat 5px center;
-}*/
-.side-header .left-image .user-image{
-    background-size: cover !important;
-    width: 26px;
-    height: 26px;
-    border-radius: 50px;
 }
 .header-image .user-image {
     background-size: cover !important;
@@ -968,8 +842,6 @@ div.uimob800 .um-account-side ul {
     width: 100%;
     margin: 0 auto;
 }
-.add-post .um-activity-wall .um-activity-body .um-activity-bodyinner {
-}
 .user_profile .um-header .um-profile-meta .um-friends-coverbtn a {
     background: #2c80c1 !important;
     color: #fff;
@@ -1062,9 +934,6 @@ div.uimob800 .um-account-side ul {
     display: inline-block;
     margin: 10px;
     border-radius: 5px;
-}
-.dashboard-sidebar-left {
-    height: 100%;
 }
 body .um-notification-b.right {
     top: 110px !important;
@@ -2096,7 +1965,7 @@ a.message-part-btn:before {
     vertical-align: middle;
 }
 .um-activity-widget .um-activity-foot.status div > a span.diconbase img {
-    width: 16px;
+    width: 14px;
     display: block;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish {
@@ -2108,7 +1977,7 @@ a.message-part-btn:before {
     background: #142c46;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img {
-    width: 18px;
+    width: 14px;
     padding: 0 1px;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
@@ -2304,16 +2173,9 @@ body .iflychat-popup {
 #main-content {
 }
 .um-activity-new-post .um-activity-head {display:none}
-.side-content-inner ul {
-    list-style: none;
-    padding: 0;
-}
+
 @import url("arphie-style.css");
 @import url("nicar-style.css");
-
-.side-content-inner {
-    margin-top: 23px !important;
-}
 .site-header {
     padding-bottom: 23px !important;
     margin-bottom: 22px !important;

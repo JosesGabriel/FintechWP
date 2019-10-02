@@ -102,9 +102,10 @@ class DataAPI extends WP_REST_Controller
         ];
 
         $currentUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
+        $forwardUrl = str_replace($this->dataBaseUrl,$_SERVER[HTTP_HOST],$currentUrl);
+        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_URL, $forwardUrl);
         curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -123,7 +124,7 @@ class DataAPI extends WP_REST_Controller
         $result = $this->sendViaCurl();
         //endregion forward request
 
-        return $_SERVER[HTTP_HOST];
+        return json_decode($result);
     }
 
     public function getTemplate($request)

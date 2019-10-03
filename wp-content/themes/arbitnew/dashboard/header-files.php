@@ -1,3 +1,11 @@
+<?php
+	if ( is_user_logged_in() ) {
+		// echo 'Welcome, registered user!';
+	} else {
+		wp_redirect( '/login', 301 );
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>

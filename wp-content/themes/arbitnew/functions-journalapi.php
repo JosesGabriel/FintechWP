@@ -118,7 +118,7 @@ class JournalAPI extends WP_REST_Controller
         $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $gerdqouteone = curl_exec($curl);
         curl_close($curl);

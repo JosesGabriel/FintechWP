@@ -54,23 +54,22 @@ if (isset($_POST) && !empty($_POST)) {
 
     echo $havemeta;
 
-     $success = $wpdb->insert('arby_usermeta', array(
-                'user_id' => $userID,
-                'metakey' => '_watchlist_instrumental',
-                'meta_value' => 'selling'
+     //$success = $wpdb->insert('arby_usermeta', array(
+             //   'user_id' => $userID,
+             //   'metakey' => '_watchlist_instrumental',
+             //   'meta_value' => 'selling'
                 // ... and so on
-            ));
+           // ));
 
-     if($success){
+     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
+
+        $wpdb->query($insertmeta);
+
+    if($insertmeta){
         echo "insert success...";
      }else {
         echo "unable to insert";
      }
-
-
-     //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
-
-        //$wpdb->query($insertmeta);
 
         //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         //exit;

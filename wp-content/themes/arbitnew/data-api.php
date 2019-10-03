@@ -1,6 +1,6 @@
 <?php 
 /*
-	* Template Name: Login Page
+	* Template Name: Data API Page
 */
 
 ?>

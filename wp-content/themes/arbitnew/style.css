@@ -372,6 +372,9 @@ ul.main-drop > ul li.onto-last-element {
 }
 body header#main-header {
     background: #213f58 !important;
+    position: fixed;
+    width: 100%;
+    z-index: 99999
 }
 .header-image .user-image img {
     width: 25px;

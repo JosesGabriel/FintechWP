@@ -24,7 +24,7 @@
         font-family: Roboto, sans-serif;
     }
     .inner-placeholder {
-        /* padding-top: 40px !important; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class*/
+        padding-top: 55px !important; 
     }
     .watch-list, .top-stocks {
         margin-bottom: 0;

@@ -47,15 +47,15 @@
 	?>
 
 	<div>
-		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="/" target="_blank"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
-		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
+		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="/stock-ticker/"></iframe>
 
 		<div class="arb_right_icons_trans">
 			<?php /*?> Top Icons <?php */?>
 			<ul class="main-drops-chart">
 				<a href="#" class="arb-side-icon">
-					<img src="<?php echo $homeurlgen; ?>/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
+					<img src="/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
 				</a>
 				<ul id="droppouts" style="box-shadow: 0px 2px 4px 1px rgba(7, 13, 19, 0.52);display: none;">
 						<li><a href="#">Buy/Sell Calculator</a></li>
@@ -64,9 +64,9 @@
 						<li><a href="<?php echo get_home_url(); ?>/multicharts/">Multichart</a></li>
 				</ul>
 			</ul>
-			<a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
+			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
+			<a href="/vyndue/" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
@@ -255,26 +255,26 @@
 																													$("#inpt_data_boardlot").val(5);
 																											}
 																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
+																											$('#bidaskbox').prop('src', "/bidask-box/?stocksym="+getthestocksym);
 																										});
 																									<?php 
 																										$getcururl = $_SERVER['REQUEST_URI'];
 																										if ($getcururl == "/chart/"){ 
 																									?>
-																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/pleaseselect.html");
+																										$('#bullbearframe').prop('src', "/pleaseselect.html");
 																										$( ".ng-scope" ).click(function() {
 																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
+																											$('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
 																										});
 																									<?php
 																										} else {
 																											$remchrt = str_replace("/chart/", "", $getcururl);
 																											$getfsymb = str_replace("/", "", $remchrt); 
 																									?>
-																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/<?php echo $getfsymb; ?>");
+																										$('#bullbearframe').prop('src', "/sentiments/<?php echo $getfsymb; ?>");
 																										$( ".ng-scope" ).click(function() {
 																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
+																											$('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
 																										});
 																									<?php } ?>
 																									});
@@ -415,7 +415,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
+																			<h2><img src="/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
 																		</div>
 																	</div>
 
@@ -432,7 +432,7 @@
 																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 80px;overflow: hidden;">
 																			<div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
 																				<span class="bullbearsents_label">Register your sentiments</span>
-																				<a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>
+																				<a href="#" class="bbs_bull"><img src="/svg/ico_bullish_no_ring.svg"></a>
 																				<div class="dbaronchart" style="width: <?php echo ($percbid > 0 ? '70' : ''); ?>%;">
 																					<div class="bbs_bull_bar" style="width: <?php echo $percbid; ?>%;">
 																						<div class="bbs_bull_bar_inner"></div>
@@ -443,7 +443,7 @@
 																						<span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percask,2); ?>%</span>
 																					</div>
 																				</div>
-																				<a href="#" class="bbs_bear"><img src="<?php echo $homeurlgen; ?>/svg/ico_bearish_no_ring.svg"></a>
+																				<a href="#" class="bbs_bear"><img src="/svg/ico_bearish_no_ring.svg"></a>
 																			</div>
 																			
 																			

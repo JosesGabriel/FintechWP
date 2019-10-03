@@ -46,7 +46,7 @@
 						<li><a href="#">Buy/Sell Calculator</a></li>
 						<li><a href="#">VAR Calculator</a></li>
 						<li><a href="#">Average Price Calculator</a></li>
-						<li><a href="<?php echo get_home_url(); ?>/multicharts/">Multichart</a></li>
+						<li><a href="/multicharts/">Multichart</a></li>
 				</ul>
 			</ul>
 			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
@@ -88,11 +88,11 @@
 										</div>
 
 										<div class="closesidebar">
-											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/close_verysmall.svg"></a>
+											<a href="#"><img src="/svg/close_verysmall.svg"></a>
 										</div>
 
 										<div class="opensidebar">
-											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/open_verysmall.svg"></a>
+											<a href="#"><img src="/svg/open_verysmall.svg"></a>
 										</div>
 
 										<div class="vertical-box">

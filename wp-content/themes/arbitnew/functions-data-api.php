@@ -131,7 +131,7 @@ class DataAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
-
+        return $result;
         //result = 1 if logged in, otherwise 0
         if (intval($result) == 0){
             return false;
@@ -142,6 +142,7 @@ class DataAPI extends WP_REST_Controller
         
     public function getForwardedResponse($request)
     {
+        return isUserLoggedIn();
         //verify if user is logged in
         if (!isUserLoggedIn()) { 
             return $this->respond(false, [

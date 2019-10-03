@@ -1,5 +1,9 @@
 
-<?php include_once "watchlist/header-files.php";?>
+<?php 
+include_once "watchlist/header-files.php";
+require("parts/global-header.php");
+?>
+
 
 <?php
 

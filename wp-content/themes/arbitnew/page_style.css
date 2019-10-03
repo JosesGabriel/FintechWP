@@ -132,10 +132,6 @@
     span.um-field-checkbox-option {
         display: none;
     }
-
-    html {
-        background: #0d1f33;
-    }
     .right-dashboard-part{
         float: left;
         width: 267px !important;
@@ -151,13 +147,6 @@
     .true-name .show-name span {
         font-size: 13px !important;
         font-weight: 500;
-    }
-    .onto-user-name {
-        font-size: 13px;
-        padding-left: 2px;
-        color: #fffffe;
-        padding-top: 10;
-        margin-bottom: 0px !important;
     }
 
     .table{
@@ -813,9 +802,6 @@
     }
     small.um-max-filesize {
         color: #888888;
-    }
-    .um-activity-widget {
-        overflow: hidden;
     }
     #tableStock .even {
         max-height: 247px;
@@ -2079,14 +2065,6 @@
     .um-activity-comment-meta .um-activity-editc a:hover,
     .um-activity-comment-meta .um-activity-editc a:active,
     .um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe !important}
-    .um-activity-new-post .um-activity-foot .um-activity-right a {
-        border-radius: 26px !important;
-        border: 2px solid #2481bc!important;
-        background: none !important;
-    }
-    .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
-        background: none !important;
-    }
 
     .fixed-sidebar {
         position: fixed;
@@ -2520,13 +2498,6 @@
         background: #273647;
         border: 1px solid #273647;
         font-weight: 600;
-    }
-    .onto-user-name {
-        font-size: 13px;
-        padding-left: 12px;
-        color: #fffffe;
-        padding-top: 10;
-        margin-bottom: 0px !important;
     }
 
     .table{
@@ -3065,24 +3036,6 @@
         padding: 5px 4px;
         border-radius: 50%;
         margin-right: 5px;
-    }
-	.um-activity-widget.um-activity-new-clone.unready {
-		position: relative;
-		pointer-events: none;
-	}
-	.um-activity-widget.um-activity-new-clone.unready > :not(.arbitrage-wall-post-loader) {
-		opacity: 0.5;
-	}
-	.um-activity-widget.um-activity-new-clone.unready > .arbitrage-wall-post-loader {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 50px;
-		z-index: 2;
-	}
-	.um-activity-widget:not(.unready) > .arbitrage-wall-post-loader {
-		display: none;
     }
     /* END Social wall */
     

@@ -56,7 +56,7 @@
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
-   // $(document).ready(function () {
+    $(document).ready(function () {
 
         /**
          * Overrides the wall post submit function in 
@@ -150,7 +150,7 @@
                 }
             });
         })
-   // })
+    });
     $('.opennotification').on('click', '.um-notification', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -158,7 +158,7 @@
         if (typeof $this.data('notification_uri') !== 'undefined') {
             window.location.href = $this.data('notification_uri')
         }
-    })
+    });
 
 
 </script>

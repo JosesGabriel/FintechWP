@@ -66,6 +66,7 @@ ul.main-drops > ul {
     border: none;
     border-radius: 4px;
     padding: 0;
+    display: none
 }
 ul.main-drops > ul li a {
     color: #fff;
@@ -291,6 +292,7 @@ ul.main-drop > ul {
     border-radius: 4px !important;
     box-shadow: rgba(7, 13, 19, 0.52) 0px 2px 4px 1px;
     padding: 0;
+    display: none;
 }
 ul.main-drop > ul:before {
     bottom: 100%;
@@ -353,18 +355,14 @@ ul.main-drop > ul li:last-child {
 
 
 /*------ global-sidebar ------*/
-.side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
-    font-family: 'Roboto', sans-serif;
-}
 .side-header .right-image .onto-user-meta-details {
     color: #57718b;
 }
 .side-header .right-image .onto-user-name {
-    margin-bottom: 5px;
     font-family: 'Roboto', sans-serif;
     text-transform: capitalize;
     font-size: 13px;
+    padding-left: 11px;
 }
 .side-header {
     background: transparent;
@@ -453,6 +451,7 @@ a:hover {
 .center-dashboard-part {
     float: left;
     max-width: 539px;
+    width: 539px;
 }
 .add-post {
     border-radius: 5px;
@@ -493,6 +492,9 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 }
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
     background: #2481bc;
+}
+.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disable:hover {
+    background: none;
 }
 .add-post .um-activity-widget .um-activity-ava a {
     width: 41px;
@@ -765,7 +767,43 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 span.um-activity-seemore {
     color: #6583a8;
 }
+.um-activity-new-post .um-activity-foot .um-activity-right a {
+    border-radius: 26px !important;
+    border: 2px solid #2481bc!important;
+    background: none;
+}
+.um-activity-widget.um-activity-new-clone.unready {
+    position: relative;
+    pointer-events: none;
+}
+.um-activity-widget.um-activity-new-clone.unready > :not(.arbitrage-wall-post-loader) {
+    opacity: 0.5;
+}
+.um-activity-widget.um-activity-new-clone.unready > .arbitrage-wall-post-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    z-index: 2;
+}
+.um-activity-widget:not(.unready) > .arbitrage-wall-post-loader {
+    display: none;
+}
+.um-activity-widget {
+    margin-top: 11px;
+    box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;
+    overflow: hidden;
+}
 /*------ center-part-dashboard ------*/
+
+
+
+/*------ sidebar-mingle ------*/
+
+
+
+/*------ sidebar-mingle ------*/
 
 
 

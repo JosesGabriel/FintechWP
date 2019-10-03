@@ -75,7 +75,7 @@
                             <li><a href="/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
                             <li><a href="<?php echo get_home_url(); ?>/user/">My Account</a></li>
                             <hr class="style14 style15">
-                            <li class="onto-last-element"><a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a></li>
+                            <li class="onto-last-element"><a href="/logout">Logout</a></li>
                         </ul>
                         
                     </ul>

@@ -143,7 +143,7 @@ class DataAPI extends WP_REST_Controller
     public function getForwardedResponse($request)
     {
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, '/data-api');
+        curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/data-api');
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);

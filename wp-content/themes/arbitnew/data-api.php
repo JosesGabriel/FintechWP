@@ -4,7 +4,7 @@
 */
 
 echo json_encode([
-	"isLoggedIn" => is_user_logged_in(),
+	"is_user_login" => is_user_logged_in(),
 	"data" => wp_get_current_user(),
 ]);
 

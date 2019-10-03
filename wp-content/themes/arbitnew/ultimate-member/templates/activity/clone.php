@@ -17,11 +17,7 @@ date_default_timezone_set("Asia/Manila");
 
 
 <style type="text/css">
-	.um-activity-left.um-activity-actions > div .dnumof {
-		padding: 8px 0px 6px 0 !important;
-		font-weight: 400 !important;
-    	font-size: 13px !important;
-	}
+
 	.um-activity-widget.um-activity-new-clone.unready {
 		position: relative;
 		pointer-events: none;

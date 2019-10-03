@@ -54,9 +54,16 @@ if (isset($_POST) && !empty($_POST)) {
 
     echo $havemeta;
 
-     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
+     $wpdb->insert('arby_usermeta', array(
+                'user_id' => $userID,
+                'metakey' => '_watchlist_instrumental',
+                'meta_value' => 'selling',
+                // ... and so on
+            ));
 
-        $wpdb->query($insertmeta);
+     //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
+
+        //$wpdb->query($insertmeta);
 
         //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         //exit;

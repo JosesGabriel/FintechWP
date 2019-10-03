@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
      $.ajax({
-        url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='<?php echo $value['stockname']; ?>'",
+        url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=2GO",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {

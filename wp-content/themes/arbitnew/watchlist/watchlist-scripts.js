@@ -7,7 +7,7 @@ $(document).ready(function(){
         success: function(res) {
                 
             //jQuery.each(res.data, function(index, value) {      
-                    console.log(res);    
+                    console.log(res.data);    
             //});  
 
         },

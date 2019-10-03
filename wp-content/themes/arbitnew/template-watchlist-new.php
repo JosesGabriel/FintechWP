@@ -65,7 +65,7 @@ if (isset($_POST) && !empty($_POST)) {
 
         $wpdb->query($insertmeta);
 
-    if($insertmeta){
+    if($wpdb->query($insertmeta)){
         echo "insert success...";
      }else {
         echo "unable to insert";

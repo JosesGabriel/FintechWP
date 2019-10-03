@@ -1,8 +1,6 @@
 <?php
 include ('data-api.php');
 
-$currentUser = GetCurrentUser();
-
 class DataAPI extends WP_REST_Controller
 {
     protected $dataBaseUrl;
@@ -12,13 +10,12 @@ class DataAPI extends WP_REST_Controller
     protected $client_secret;
     protected $currentUser;
 
-    public function __construct($currentUser)
+    public function __construct()
     {
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
         $this->namespace = 'data-api';
-        $this->currentUser = $currentUser;
     }
 
     public function registerRoutes()
@@ -173,5 +170,6 @@ class DataAPI extends WP_REST_Controller
 // Register API endpoints
 add_action('rest_api_init', function () {
     $dataApi = new DataAPI();
+    $data->currentUser = GetCurrentUser();
     $dataApi->registerRoutes();
 });

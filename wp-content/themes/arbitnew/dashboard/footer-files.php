@@ -17,7 +17,7 @@
 </html>
 
 <script>
-(function ($) {
+
 
     var user_id = '<?php echo $user_id ?>'
 
@@ -150,7 +150,7 @@
                 }
             });
         })
-    })
+    });
     $('.opennotification').on('click', '.um-notification', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -158,7 +158,7 @@
         if (typeof $this.data('notification_uri') !== 'undefined') {
             window.location.href = $this.data('notification_uri')
         }
-    })
+    });
 
-})(jQuery)
+
 </script>

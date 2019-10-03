@@ -8,6 +8,8 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
+echo $userID;
+
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
@@ -37,7 +39,7 @@ if (isset($_POST) && !empty($_POST)) {
         } else {
             $newarray = [];
             array_push($newarray, $_POST);
-            // add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            //add_user_meta($userID, '_watchlist_instrumental', $newarray);
             update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
@@ -62,9 +64,6 @@ if(isset($_GET['addcp'])){
     $cpnum = $_GET['addcp'];
     add_user_meta( $userID, 'cpnum', $cpnum, true);
 }
-
-
-
 
 
 ?>

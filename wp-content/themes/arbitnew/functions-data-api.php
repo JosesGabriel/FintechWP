@@ -146,7 +146,7 @@ class DataAPI extends WP_REST_Controller
     {
       
         
-        return 'test' . $this->currentUser;
+        return json_decode($this->currentUser)->is_user_login;
 
         //verify if user is logged in
         if (!isUserLoggedIn()) { 

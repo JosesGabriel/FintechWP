@@ -44,7 +44,7 @@ if (isset($_POST) && !empty($_POST)) {
             //update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
-    echo $_POST;
+    echo $havemeta;
 
         //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         //exit;

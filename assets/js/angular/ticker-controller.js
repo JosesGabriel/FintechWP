@@ -2,14 +2,12 @@ var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yar
 app.run(['$rootScope', '$http', function($rootScope, $http) {
 
 }]);
-app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
+app.controller('ticker', ['$scope', function($scope) {
+    $scope.enable = true;
     $scope.ticker = [];
-    var counter = 1;
 
     socket.on('psec', function (data) {  
-        var ctr = counter += 1;
         var transaction = {
-            counter: ctr,
             symbol: data.sym,
             price:  price_format(data.prv),
             change: data.chg,
@@ -20,6 +18,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
         if ($scope.ticker.length > 50) {
             $scope.ticker.shift();
         }
+
         $scope.$digest();
     });
 }]);

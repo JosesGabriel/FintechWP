@@ -25,7 +25,7 @@ $(document).ready(function(){
     jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
             
             $.ajax({
-                url: "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list",
+                url: "/wp-json/data-api/v1/stocks/list",
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {

@@ -3,71 +3,21 @@
 
 <?php
 
-global $current_user;
+global $wpdb, $current_user;
 $userID = $current_user->ID;
+
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
-echo $userID;
-
 if (isset($_POST) && !empty($_POST)) {
 
-    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
-
-        foreach ($havemeta as $key => $value) {
-            if ($value['stockname'] == $_POST['stockname']) {
-                unset($havemeta[$key]);
-            }
-        }
-
-        array_push($havemeta, $_POST);
-        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
-        exit;
-
-    } else {
-
-        if (isset($havemeta) && !empty($havemeta)){
-            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
-                echo "Stock Already Exist";
-            } else {
-                array_push($havemeta, $_POST);
-                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                //add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            }
-
-        } else {
-            $newarray = [];
-            array_push($newarray, $_POST);
-            add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
-        }
-
-    echo $havemeta;
-
-        //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
-        //exit;
-    }
-
+    $sql = $wpdb->prepare(
+            "INSERT INTO `arby_usermeta`      
+               (`user_id`,`meta_key`,`meta_value`) 
+         values ($userID, '_watchlist_instrumental', 'test')");
+    $wpdb->query($sql);
 
 }
-
-if (isset($_GET['remove'])) {
-    foreach ($havemeta as $key => $value) {
-        if ($value['stockname'] == $_GET['remove']) {
-            unset($havemeta[$key]);
-        }
-    }
-    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-    wp_redirect( 'https://arbitrage.ph/watchlist' );
-}
-
-if(isset($_GET['addcp'])){
-    $cpnum = $_GET['addcp'];
-    add_user_meta( $userID, 'cpnum', $cpnum, true);
-}
-
 
 ?>
 
@@ -112,7 +62,7 @@ if(isset($_GET['addcp'])){
                                                                     // get current price and increase/decrease percentage
                                                                     $curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
+                                                                    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
 
                                                                     //
 

@@ -17,7 +17,7 @@
 
     if(isset($_GET['query'])){
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list");
+        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);
@@ -49,7 +49,7 @@
 
     if(isset($_GET['g']) && $_GET['g'] == "fullstack" ){
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
+        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
         
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $response = curl_exec($curl);

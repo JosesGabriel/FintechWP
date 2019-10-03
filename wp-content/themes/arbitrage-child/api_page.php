@@ -27,8 +27,8 @@
 		$dinfstock = strtoupper($stockname);
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		curl_close($curl);
@@ -38,8 +38,8 @@
 		
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
 		curl_close($curl);
@@ -68,8 +68,8 @@
 		$dinfstock = strtoupper($stockname);
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+			curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
 			curl_close($curl);
@@ -79,8 +79,8 @@
 			
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+			curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
 			curl_close($curl);
@@ -258,7 +258,7 @@
 	else if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
 		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE' );
+		curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$dwatchinfo = curl_exec($curl);
 		curl_close($curl);
@@ -575,9 +575,9 @@
 		$date = date('Y-m-d', time());
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/list');
-		// curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-		curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+		curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
+		// 
+		
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

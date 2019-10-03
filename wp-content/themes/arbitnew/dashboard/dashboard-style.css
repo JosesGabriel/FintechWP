@@ -293,3 +293,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     width: auto;
     display: inline-block;
 }
+ul {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+.tabbutton {
+    padding-left: 0;
+    display: inline-flex;
+}

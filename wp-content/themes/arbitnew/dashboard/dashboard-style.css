@@ -157,3 +157,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 .add-post .um-activity-new-post .um-activity-body .um-activity-preview {
     border: 0 none;
 }
+ul {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+.tabbutton {
+    padding-left: 0;
+    display: inline-flex;
+}

@@ -22,9 +22,7 @@
     <?php wp_head(); ?>
     
 </head>
-
 <body>
-
 <?php
     $user = wp_get_current_user();
     $cdnorlocal = get_home_url();

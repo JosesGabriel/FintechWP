@@ -7,9 +7,7 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 */
 
-.clear {
-    clear: both;
-}
+
 #page-container {
     background: #354960;
 }
@@ -30,9 +28,6 @@ License: GNU General Public License v2 or later
 .header-dashboard-inner > div {
     float: left;
     width: 50%;
-}
-.header-dashboard-inner .right-header-part {
-    text-align: right;
 }
 
 /*custom post on to save on*/
@@ -113,9 +108,6 @@ License: GNU General Public License v2 or later
     background: #3a5168;
     padding: 10px 20px;
 }
-.um-activity-widget{
-    box-shadow: none !important;
-}
 .um-activity-new-post {
     box-shadow: 0 0;
     /*border: 1px solid #273647;*/
@@ -133,9 +125,6 @@ License: GNU General Public License v2 or later
 .um-activity-new-post .um-activity-foot .upload > i {
     color: #2196F3 !important;
     font-size: 18px !important;
-}
-.um-activity-widget {
-    box-shadow: none;
 }
 .um-activity-widget .um-activity-disp {
     display: none;
@@ -277,10 +266,6 @@ label.screen-reader-text {
     font-size: 13px;
     line-height: 1em;
 }
-.border-colored {
-    height: 4px;
-    background-image: linear-gradient(to right, #894b9d, #eb8023, #c2b819, #49ba6f, #2581bc); 
-}
 .border-colored > div {
     float: left;
     width: 25%;
@@ -297,78 +282,13 @@ label.screen-reader-text {
 .border-colored .yellow {
     background: #f49d1e;
 }
-ul.main-drop {
-    position: relative;
-}
-ul.main-drop > ul {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: #2e3746;
-    min-width: 200px;
-    text-align: left;
-    /*padding: 10px 0 10px 0;*/
-    margin-top: 9px;
-    border: 2px solid #506889;
-    border-radius: 5px;
-}
-ul.main-drop > ul:before {
-    bottom: 100%;
-    right: 2%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #4f6987;
-    border-width: 10px;
-    margin-left: -36px;
-}
-ul.main-drop > ul li:hover {
-    background: #50678b;
-}
-ul.main-drop > ul li {
-    padding: 5px 15px;
-}
-ul.main-drop > ul li a {
-    color: #fff;
-    display: block;
-    font-size: 13px;
-}
-ul.main-drop > ul li:hover a {
-    text-decoration: none;
-}
-ul.main-drop > ul li.onto-last-element {
-    border-top: 1px solid #475c71;
-}
 body header#main-header {
     background: #213f58;
     position: fixed;
     width: 100%;
     z-index: 99999
 }
-.header-image .user-image img {
-    width: 25px;
-    border-radius: 50px;
-}
-.header-image {
-    display: inline-block;
-}
-.on-header-title {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 2px;
-    padding-left: 10px;
-}
-.header-image .user-image {
-    background-size: cover !important;
-    width: 26px;
-    height: 26px;
-    border-radius: 25px;
-    cursor: pointer;
-}
+
 .d-feed-image {
     width: 25%;
     float: left;
@@ -827,11 +747,6 @@ div.uimob800 .um-account-side ul {
     margin: 10px;
     border-radius: 5px;
 }
-body .um-notification-b.right {
-    top: 110px !important;
-    bottom: initial !important;
-}
-
 .oncommonsidebar .center-dashboard-part {
     width: 80%;
 }
@@ -982,28 +897,6 @@ a.to-view-more {
     line-height: 1em !important;
     margin: 0 !important;
 }
-.ontomitif .um-notification-b.right {
-    position: relative;
-    top: initial !important;
-    bottom: initial !important;
-    background: none;
-    box-shadow: none;
-    padding: 0 !important;
-    right: initial !important;
-    width: initial !important;
-    height: initial !important;
-    line-height: 1em;
-    display: block;
-}
-.right-header-inner .ontomitif,
-.right-header-inner .main-drop,
-.right-header-inner .ontotools {
-    display: inline-block;
-    vertical-align: top;
-}
-body .um-notification-b.right {
-    display: none;
-}
 .right-header-inner .ontomitif {
     padding-right: 5px;
 }
@@ -1021,10 +914,7 @@ body .um-notification-b.right {
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
-.right-header-inner .main-drop {
-    margin-bottom: 0;
-    padding:0 !important;
-}
+
 .to-content-part ul {
     margin: 0;
 }
@@ -1034,46 +924,6 @@ body .um-notification-b.right {
 .add-post > .likebtn_container {
     display: none;
 }
-.ontomitif span.um-notification-live-count {
-    right: -6px;
-    top: -1px;
-    font-size: 10px;
-    width: 15px;
-    height: 15px;
-    line-height: 15px;
-}
-body .um-notification-live-feed {
-    height: 250px !important;
-    top: 51px;
-}
-body .um-notification-live-feed {
-    top: 51px;
-    background: #273647;
-    color: #fff;
-    height: 250px !important;
-}
-body .um-notification-live-feed .um-notification-header {
-    border-bottom: 1px solid #35485f;
-}
-body .um-notification-live-feed .um-notification-left {
-    border: 0 none;
-    text-transform: uppercase;
-    font-size: 13px !important;
-}
-body .um-notification-live-feed .um-notification-right a {
-    color: #fff !important;
-}
-body .um-notification-live-feed .um-notification-ajax .um-notification {
-    border-bottom: 1px solid #35485f;
-    color: #fff;
-}
-body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
-    background: #222d3a;
-}
-body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
-    color: #fff !important;
-}
-
 .closehideme {
     display: none;
     position: absolute;
@@ -1633,40 +1483,6 @@ a.message-part-btn:before {
 .open-messages .messages-inner .message-body a.um-link.um-gdpr-donwload-link {
     display: none;
 }
-.dmessagepart {
-    padding-right: 5px;
-    display: inline-block;
-}
-.dmessagepart a:before {
-    width: initial !important;
-    margin: 0 !important;
-    color: #fff;
-}
-.ontotools a,
-.right-header-inner .ontomitif i,
-.right-header-inner .dmessagepart a {
-    height: 26px;
-    line-height: 26px;
-    color: #d8d8d8;
-    padding:0;
-    width: 26px;
-    border-radius: 50px;
-    display: block;
-    background-color: #213f58;
-    text-align:center;
-
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-.ontotools a {
-    font-size: 16px;
-    line-height: 27px;
-}
-
-.right-header-inner .ontomitif i {font-size: 16px;}
-.right-header-inner .dmessagepart a {font-size: 16px;}
 .dmessagepart a span {
     display: none;
 }
@@ -1971,9 +1787,6 @@ body .iflychat-popup {
     border: none;
     border-radius: 35px;
 }
-.left-header-inner {
-    padding-bottom: 8px;
-}
 
 @import url("arphie-style.css");
 @import url("nicar-style.css");
@@ -1993,10 +1806,6 @@ body .iflychat-popup {
 }
 .add-friend-btn {
     margin-left: 2px !important;
-}
-.um-activity-widget {
-    margin-top: 11px;
-    box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;
 }
 .top-stocks .to-content-part {
 }

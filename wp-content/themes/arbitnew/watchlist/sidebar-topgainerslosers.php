@@ -100,7 +100,7 @@
                 }
             });
      });
-
+        
 </script>
     
     <div class="top-stocks">

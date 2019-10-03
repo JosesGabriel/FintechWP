@@ -131,7 +131,7 @@ class DataAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
-        return $result;
+        return json_decode($result);
         //result = 1 if logged in, otherwise 0
         if (intval($result) == 0){
             return false;
@@ -144,11 +144,12 @@ class DataAPI extends WP_REST_Controller
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, '/data-api');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
         
-        return $this->respond(true, $result, 200);
+        return "Weww";
 
         //verify if user is logged in
         if (!isUserLoggedIn()) { 

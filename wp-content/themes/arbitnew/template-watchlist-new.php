@@ -17,6 +17,8 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 if (isset($_POST) && !empty($_POST)) {
 
+$query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
+print_r($query);
 //$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
 //foreach ($select as $key => $value) {

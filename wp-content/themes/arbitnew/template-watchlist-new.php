@@ -9,90 +9,18 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
-echo $userID;
+
 
 if (isset($_POST) && !empty($_POST)) {
 
-    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
-        foreach ($havemeta as $key => $value) {
-            if ($value['stockname'] == $_POST['stockname']) {
-                unset($havemeta[$key]);
-            }
+foreach ($select as $key => $value) {
+         echo $value['stockname'];
         }
 
-        array_push($havemeta, $_POST);
-        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
-        exit;
-
-    } else {
-
-        if (isset($havemeta) && !empty($havemeta)){
-            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
-                echo "Stock Already Exist";
-            } else {
-                array_push($newarray, $_POST);
-                //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
-
-                //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
-
-                //$wpdb->query($insertmeta);
-                //wp_redirect( '/watchlist' );
-                //exit;
-            }
-
-        } else {
-            $newarray = [];
-            array_push($newarray, $_POST);
-            //add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
-        }
-
-    echo $havemeta;
-
-  $wpdb->insert('arby_usermeta', array(
-             'user_id' => $userID,
-             'meta_key' => '_watchlist_instrumental',
-             'meta_value' => 'asdadadad',
-                // ... and so on
-      ));
-
-     //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$newarray')";
-
-       // $wpdb->query($insertmeta);
-
-   // if($success){
-      //  echo "insert success...";
-    // }else {
-     //   echo "unable to insert";
-    // }
-
-        //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
-        //exit;
-    }
-
-
+   
 }
-
-if (isset($_GET['remove'])) {
-    foreach ($havemeta as $key => $value) {
-        if ($value['stockname'] == $_GET['remove']) {
-            unset($havemeta[$key]);
-        }
-    }
-    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-    wp_redirect( 'https://arbitrage.ph/watchlist' );
-}
-
-if(isset($_GET['addcp'])){
-    $cpnum = $_GET['addcp'];
-    add_user_meta( $userID, 'cpnum', $cpnum, true);
-}
-
 
 ?>
 

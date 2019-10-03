@@ -337,7 +337,7 @@ class Activity_Main_API
         } else {
             $res = array_splice($array, $wordsreturned);
 
-            $retval = implode(' ', $array) . " <span class='um-activity-seemore'>(<a href='' class='um-link'>" . __('See more', 'um-activity') . '</a>)</span>' . " <span class='um-activity-hiddentext'>" . implode(' ', $res) . '</span>';
+            $retval = implode(' ', $array) . " <span class='um-activity-seemore'><a href='' class='um-link'>" . __('See more', 'um-activity') . '</a></span>' . " <span class='um-activity-hiddentext'>" . implode(' ', $res) . '</span>';
         }
 
         return $retval;

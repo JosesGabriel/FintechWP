@@ -3,7 +3,7 @@
 
 <?php
 
-global $current_user, $wpdb;
+global $wpdb, $current_user;
 $userID = $current_user->ID;
 
 
@@ -54,16 +54,16 @@ if (isset($_POST) && !empty($_POST)) {
 
     echo $havemeta;
 
-    // $success = $wpdb->insert('arby_usermeta', array(
-             //   'user_id' => $userID,
-              //  'metakey' => '_watchlist_instrumental',
-              //  'meta_value' => $havemeta,
+  $wpdb->insert('arby_usermeta', array(
+             'user_id' => $userID,
+             'metakey' => '_watchlist_instrumental',
+             'meta_value' => $newarray,
                 // ... and so on
-            //));
+      ));
 
-     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$newarray')";
+     //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$newarray')";
 
-        $wpdb->query($insertmeta);
+       // $wpdb->query($insertmeta);
 
    // if($success){
       //  echo "insert success...";

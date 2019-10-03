@@ -206,10 +206,10 @@ class JournalAPI extends WP_REST_Controller
         $ending = 0;
         foreach ($dledger as $key => $value) {
             if($value->trantype == "deposit" || $value->trantype == "dividend"){
-                $totaldebit += $value->tranamount;
+                $totalcredit += $value->tranamount;
                 $ending += $value->tranamount;
             } else {
-                $totalcredit += $value->tranamount;
+                $totaldebit += $value->tranamount;
                 $ending -= $value->tranamount;
             }
             $value->ending = $ending;

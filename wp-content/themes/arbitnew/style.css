@@ -11,24 +11,6 @@ License: GNU General Public License v2 or later
 #page-container {
     background: #354960;
 }
-.home .ondashboardpage {
-    padding-top: 50px;
-}
-.ondashboardpage {
-    font-family: 'Roboto', sans-serif !important;
-}
-.inner-placeholder{
-    background: #0d1f33;
-    color: #d8d8d8;
-    /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
-}
-.header-dashboard-inner {
-    padding: 8px 0 0;
-}
-.header-dashboard-inner > div {
-    float: left;
-    width: 50%;
-}
 
 /*custom post on to save on*/
 .post-user-inner .header-post,
@@ -139,42 +121,7 @@ label.screen-reader-text {
     border-radius: 50px;
     width: 42px;
 }
-.watch-list-inner .to-top-title,
-.top-stocks .to-top-title,
-.top-traiders-inner .to-top-title,
-.watch-list-inner .to-bottom-title,
-.top-traiders-inner .to-bottom-title,
-.top-stocks .to-bottom-title,
-.latest-news .to-top-title,
-.latest-news .to-bottom-title{
-    background: transparent;
-    padding: 10px 14px 10px 1px;
-    font-size: 15px;
-    font-weight: normal;
-}
-.top-traiders {
-    /* position: -webkit-sticky;
-    position: sticky; */
-    top: 50px;
-}
-.top-traiders {
-    /* position: -webkit-sticky;
-    position: sticky; */
-    top: 50px;
-}
-.top-stocks .to-content-part ul li.even,
-.watch-list-inner .to-content-part ul li.even {
-    /*background: #2b405b;*/
-    /* margin-top: 19px; */
-}
-.top-stocks,
-.latest-news,
-.watch-list,
-.top-traiders {
-    border-radius: 5px;
-    overflow: hidden;
-    border: none;
-}
+
 .top-stocks .to-content-part ul li a {
     display: block;
     padding: 5px 10px;
@@ -183,11 +130,6 @@ label.screen-reader-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.left-user-details,
-.watch-list,
-.top-stocks {
-    margin-bottom: 15px;
 }
 .watch-list-inner .to-content-part ul li {
     padding: 5px;
@@ -200,11 +142,6 @@ label.screen-reader-text {
     width: 25%;
     display: inline-block;
     text-align: right;
-}
-.to-content-part ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
 }
 .watch-list-inner .to-content-part ul li .to-persec {
     width: 25%;
@@ -223,48 +160,8 @@ label.screen-reader-text {
     background: #142c46;
     /* padding-bottom: 15px; */
 }
-.to-content-part {
-    background: #142c46;
-    padding: 15px;
-    border-radius: 5px;
-}
-.top-traiders .to-content-part .trader-item {
-    margin-bottom: 10px;
-}
-.top-traiders .to-content-part .trader-item .traider-image {
-    width: 25%;
-    display: inline-block;
-    margin-top: 5px;
-    margin-right: 6px;
-}
 .top-traiders .to-content-part .trader-item .traider-image img {
     border-radius: 50px;
-}
-
-.top-traiders .to-content-part .trader-item .traider-details .traider-name {
-    margin-top: 5px;
-    font-size: 15px;
-    line-height: 1em;
-    color: #fffffe;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-}
-.top-traiders .to-content-part .trader-item .traider-details .traider-name a {
-    color: #ecf0f1;
-    font-size: 13px;
-    line-height: 1em;
-    /* text-transform: uppercase; */
-}
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower {
-    margin-top: 7px;
-    color: #6f8ead;
-}
-.top-traiders .to-content-part .trader-item .traider-details {
-    display: inline-block;
-    width: 70%;
-    vertical-align: top;
-    font-size: 13px;
-    line-height: 1em;
 }
 .border-colored > div {
     float: left;
@@ -281,12 +178,6 @@ label.screen-reader-text {
 }
 .border-colored .yellow {
     background: #f49d1e;
-}
-body header#main-header {
-    background: #213f58;
-    position: fixed;
-    width: 100%;
-    z-index: 99999
 }
 
 .d-feed-image {
@@ -330,9 +221,6 @@ body header#main-header {
 .to-rss-inner .widget_super_rss_reader p.srr-summary {
     font-size: 13px;
     line-height: 1.3em;
-}
-.logo-image {
-    display: inline-block;
 }
 .searchbar {
     display: inline-block;
@@ -867,24 +755,6 @@ ul.onstats > li > div.textright {
 .home footer, .home header {
     display: block !important;
 }
-ul.footmore {
-    margin: 10px 0 0;
-    padding: 0;
-}
-ul.footmore li {
-    display: inline-block;
-    border-right: 1px solid #fff;
-    padding-right: 10px;
-    padding-left: 5px;
-    line-height: 1em;
-}
-ul.footmore li a {
-    font-size: 13px;
-    color: #fff;
-}
-/*ul.footmore li.ontohidebase {
-    display: none;
-}*/
 ul.footmore li.nobar {
     border: 0 none;
     position: relative;
@@ -913,10 +783,6 @@ a.to-view-more {
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-}
-
-.to-content-part ul {
-    margin: 0;
 }
 .srr-wrap.srr-style-none .srr-item {
     padding: 0 0 0px 0!important;
@@ -1593,14 +1459,6 @@ a.message-part-btn:before {
     font-size: 21px;
     margin-top: 15px;
 }
-.traider-image .side-image {
-    background-size: cover !important;
-    height: 35px;
-    width: 35px;
-    border-radius: 50px;
-    /* border: 3px solid #6482a7; */
-    /* padding: 9px !important; */
-}
 .ondashboardpage .add-post .um-activity-bodyinner-txt img.avatar {
     display: none !important;
 }
@@ -1614,18 +1472,10 @@ a.message-part-btn:before {
     color: #fff;
     text-shadow: 2px 2px 4px #333;
 }
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower > div {
-    display: inline-block;
-    vertical-align: middle;
-    color: #ecf0f1;
-}
 .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a {
-    /*padding: 6px 24px !important;*/
-    width: initial !important;
-    min-width: initial;
-    font-size: 10px !important;
+    min-width: auto;
+    font-size: 10px;
     background: none;
-    color: #fff;
 }
 .top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:before {
     font-size: 11px;
@@ -1670,28 +1520,6 @@ a.message-part-btn:before {
         font-size: 13px;
         font-weight: 600;
     }
-.um-activity-widget .um-activity-foot.status div > a span.dnumof {
-    font-size: 15px;
-    padding: 0 15px 0 5px;
-    /*display: none;*/
-    font-weight: bold;
-}
-
-.um-activity-widget .um-activity-foot.status .um-activity-bullish:hover a span.diconbase {
-    background: #25ae5f;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-
-.um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
-    background: #e64c3c;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
 
 .um-activity-widget .um-activity-foot.status .um-activity-bearish.active a {
     background: #a93927;
@@ -1794,20 +1622,8 @@ body .iflychat-popup {
     padding-bottom: 23px !important;
     margin-bottom: 22px !important;
 }
-.to-back-back {
-    background: none !important;
-    padding-left: 0px !important;
-    padding-top: 6px !important;
-}
-.to-top-title {
-    color: #fffffe;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-}
 .add-friend-btn {
     margin-left: 2px !important;
-}
-.top-stocks .to-content-part {
 }
     .um-notification-live-feed {
         position: absolute;

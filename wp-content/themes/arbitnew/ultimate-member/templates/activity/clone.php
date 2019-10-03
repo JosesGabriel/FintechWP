@@ -4,18 +4,7 @@ global $user_ID, $post;
 um_fetch_user( $user_ID );
 
 date_default_timezone_set("Asia/Manila");
-
-//======================================================================
-
-
-
-//===================================================================
 ?>
-
-
-
-
-
 <style type="text/css">
 
 	.um-activity-widget.um-activity-new-clone.unready {
@@ -236,6 +225,7 @@ date_default_timezone_set("Asia/Manila");
 			
 
 			<div class="um-clear"></div>
+			<hr class="style14 style11">
 				
 
 		</div>

@@ -1,17 +1,5 @@
 
 /* BOF Trending Stocks */
-    .fa-sort-down {
-        color: #d8d8d8;
-    }
-    .fa-sort-up {
-        color: #d8d8d8;
-    }
-    .see-more-btn strong {
-        color: #d8d8d8;
-    }
-    .see-more-btn i {
-        color: #d8d8d8;
-    }
     .top-stocks .to-content-part ul .even span {
         border: 2px solid;
         height: 42px;
@@ -60,33 +48,6 @@
     .watch-list-inner .to-content-part {
         padding-top: 0 !important;
     }
-    .top-stocks {
-        background-color: #142c46;
-
-    }
-    .top-stocks .to-top-title {
-        padding-top: 10px !important;
-        padding-left: 15px !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 7px !important;
-    }
-    .to-bottom-seemore {
-        padding: 0px 0px 8px 16px;
-        font-size: 12px !important;
-        font-weight: 300 !important;
-    }
-    .hide-show {
-        display: none;
-    }
-    .right-dashboard-part {
-        float: left;
-        width: 27%;
-        padding: 21px 0px !important;
-    }
-    .to-bottom-seemore {
-        cursor: pointer;
-        font-weight: 500;
-    }
     .top-stock .to-content-part {
         padding-bottom: 0 !important;
     }
@@ -100,10 +61,6 @@
     .top-stocks .to-content-part ul .odd a p{
         color: #999999;
         margin-bottom: 0;
-    }
-    .top-stocks .to-content-part {
-        padding-bottom: 0 !important;
-    min-height: 126px;
     }
     .gravatar .avatar .avatar-80 .um-avatar .um-avatar-default {
         top: 17px !important;
@@ -172,10 +129,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
         color: #fff;
         padding: 30px 0px 22px 0px;
     }
-    .top-traiders .to-content-part {
-        /* background: #0d1f33 !important; */
-        padding: 15px;
-    }
     .watch-list {
         background: #142c46 !important;
         margin-top: 11px !important;
@@ -231,10 +184,6 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
         color: #fffffe;
         line-height: 1.7;
         cursor: pointer;
-    }
-    div#show_hide {
-        margin-left: 0;
-        margin-bottom: 3px;
     }
 /* EOF Bullitins */
 
@@ -845,12 +794,3 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
       margin-top: 10px;
     }
 /* EOF sidebar */
-
-.top-stocks #preloader,
-.top-recommended-people #preloader,
-.ranks #preloader{
-    margin-top: 25px;
-    background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
-    background-size: 50px;
-    height: 60px;
-}

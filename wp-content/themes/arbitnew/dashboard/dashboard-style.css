@@ -5,6 +5,17 @@ html {
 dl, ol, ul {
     margin-bottom: 0;
 }
+body,
+#page-container,
+#main-content,
+.inner-placeholder {
+    font-family: 'Roboto', sans-serif;
+}
+.inner-placeholder{
+    background: #0d1f33;
+    color: #d8d8d8;
+    padding-top: 55px !important; 
+}
 hr.style14 {
     position: relative;
     border: 0;
@@ -30,6 +41,152 @@ body header#main-header {
     position: fixed;
     width: 100%;
     z-index: 99999
+}
+.header-dashboard-inner {
+    padding: 8px 0 0;
+}
+.header-dashboard-inner > div {
+    float: left;
+    width: 50%;
+}
+.um-activity-commentwrap {
+    padding-top: 13px;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-name {
+    color: #fffffe;
+    font-size: 13px;
+    font-weight: 500;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-name a {
+    color: #ecf0f1;
+    font-size: 13px;
+    line-height: 1em;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower {
+    margin-top: 6px;
+    color: #6f8ead;
+}
+#mingle-btn {
+    border-radius: 26px !important;
+    border: 2px solid #e77e24 !important;
+    padding: 5px 14px !important;
+    font-family: 'Nunito', sans-serif;
+    color: #e77e24 !important;
+}
+#mingle-btn:hover {
+    background: #e77e24 !important;
+    color: #fff !important;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a {
+    min-width: auto;
+    font-size: 10px;
+    background: none;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:before {
+    font-size: 11px;
+    margin-right: 5px;
+    width: initial;
+}
+.view__all {
+    font-weight: 400;
+    color: #d8d8d8;
+}
+ul.footmore {
+    margin: 10px 0 0;
+    padding: 0;
+}
+ul.footmore li {
+    padding-right: 6px;
+    padding-left: 2px;
+    color: inherit;
+    border-right: none;
+    display: inline-block;
+}
+ul.footmore li a {
+    font-size: 13px;
+}
+ul.footmore .ddot {
+    top: 2px;
+    position: relative;
+}
+.um-activity-preview img {
+    border-radius: 9px;
+    width: 114px;
+    height: auto;
+}
+.right-dashboard-part {
+    float: left;
+    max-width: 267px;
+    padding: 11px 0 0;
+    height: 140%;
+}
+.top-stocks,
+.latest-news,
+.watch-list,
+.top-traiders {
+    border-radius: 5px;
+    overflow: hidden;
+    border: none;
+    background-color: #142c46;
+}
+.watch-list-inner .to-top-title,
+.top-stocks .to-top-title,
+.top-traiders-inner .to-top-title,
+.latest-news .to-top-title {
+    padding: 9px 15px 0 !important;
+    margin-bottom: 7px;
+    color: #fffffe;
+    font-size: 13px;
+    font-weight: 500;
+}
+.watch-list-inner .to-content-part,
+.top-stocks .to-content-part,
+.top-traiders .to-content-part,
+.latest-news .to-content-part{
+    min-height: 126px;
+    padding: 5px 15px;
+}
+.to-bottom-seemore {
+    padding: 0 15px 8px;
+    font-size: 12px;
+    font-weight: 300;
+    cursor: pointer;
+    display: block;
+}
+.to-content-part #preloader{
+    background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
+    background-size: 50px;
+    height: 125px;
+}
+.to-content-part ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.traider-image .side-image {
+    background-size: cover !important;
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+}
+.top-traiders .to-content-part .trader-item .traider-details {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1em;
+}
+.hide-show {
+    display: none;
+}
+.top-traiders .to-content-part .trader-item {
+    padding: 5px 0;
+}
+.top-traiders .to-content-part .trader-item .traider-image {
+    width: 20%;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 5px;
 }
 .inner-main-content,
 .header-dashboard-inner {
@@ -493,7 +650,7 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
     background: #2481bc;
 }
-.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disable:hover {
+.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
     background: none;
 }
 .add-post .um-activity-widget .um-activity-ava a {
@@ -569,8 +726,11 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     margin: 0;
     padding: 0;
 }
-.um-activity-widget .um-activity-foot.status div > a span {
+.um-activity-widget .um-activity-foot.status div > a .diconbase {
     margin: 0;
+}
+.hala-clone .um-activity-actions span {
+    margin-left: 2px;
 }
 .um-activity-left.um-activity-actions > div .dnumof {
     color: white;
@@ -592,6 +752,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
+.um-activity-widget .um-activity-foot.status .um-activity-bullish:hover a span.diconbase {
+    background: #25ae5f;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
 .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase img{
     width: 16px;
     display: block;
@@ -608,6 +775,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     height: 26px;
     vertical-align: middle;
     display: inline-flex;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
+    background: #e64c3c;
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;

@@ -2,6 +2,7 @@
 // include 'functions-social-api.php';
 include 'functions-api.php';
 include 'functions-journalapi.php';
+include 'functions-data-api.php';
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';

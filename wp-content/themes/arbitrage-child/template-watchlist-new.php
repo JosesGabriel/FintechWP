@@ -163,11 +163,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 																	// get current price and increase/decrease percentage
 																	$curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
+                                                                    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
 
-                                                                    //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                                                                    //
 
-                                                                    curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+                                                                    
         															curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
 																	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -690,24 +690,24 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 
-           // $charthistory = 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
+           // $charthistory = 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d');
 
 
 
 
             //echo "CHART HISTORY :::::: " . $charthistory . "<br/>";
 
-            //$chartintraday = 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE';
+            //$chartintraday = 'https://arbitrage.ph/wp-json/data-api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE';
 
 
             //echo "CHART INTRA DAY :::::: " . $chartintraday;
 
 
             $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
 
-            //curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-            curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+            //
+            
         	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -736,8 +736,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 			if ($currentTime >= $startTime && $currentTime <= $endTime) {
 
 			  	$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, 'https://data-api.arbitrage.ph/api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
-                curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+				curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history/intraday?symbol=' . $value['stockname'] . '&exchange=PSE' );
+                
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 				$dintrabase = curl_exec($curl);
 				curl_close($curl);
@@ -853,7 +853,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 								).then((result) => {
 									var ditemtoremove = jQuery(this).attr('data-space');
 									window.location.href = "/watchlist/?remove="+ditemtoremove;
-									//window.location.href = "https://dev-v1.arbitrage.ph/watchlist/?remove="+ditemtoremove;
+									//window.location.href = "https://arbitrage.ph/watchlist/?remove="+ditemtoremove;
 								});
 							}
 						});

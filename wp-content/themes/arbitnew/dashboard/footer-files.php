@@ -17,7 +17,7 @@
 </html>
 
 <script>
-(function ($) {
+
 
     var user_id = '<?php echo $user_id ?>'
 
@@ -56,7 +56,7 @@
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
-    $(document).ready(function () {
+   // $(document).ready(function () {
 
         /**
          * Overrides the wall post submit function in 
@@ -150,7 +150,7 @@
                 }
             });
         })
-    })
+   // })
     $('.opennotification').on('click', '.um-notification', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -160,5 +160,5 @@
         }
     })
 
-})(jQuery)
+
 </script>

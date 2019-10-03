@@ -17,7 +17,7 @@
     jQuery(document).ready( function() {
         $.ajax({
               type:'GET',
-              url:'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
+              url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),
               success: function(response) {

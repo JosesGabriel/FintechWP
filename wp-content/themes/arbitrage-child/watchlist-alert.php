@@ -4,7 +4,7 @@
 
 	$curl = curl_init();	
 	#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-	curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
+	curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$dwatchinfo = curl_exec($curl);
 	curl_close($curl);
@@ -60,7 +60,7 @@
 					var stockname = dinfo.stockname;
 					jQuery.ajax({
 						method: "get",
-						url: "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
+						url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
 						dataType: 'json',
 						success: function(data){
 							var stocklastdata = parseFloat(data.data.last);

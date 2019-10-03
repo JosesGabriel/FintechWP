@@ -202,7 +202,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.calculateHistoryDepth = function(perio
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback, firstDataRequest) {
 	var that = this;
-	var url = 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/charts/history';
+	var url = '/wp-json/data-api/v1/charts/history';
 	var rangeStartDate = moment.unix(rangeStartDate).format('YYYY-MM-DD');
 	var rangeEndDate = moment.unix(rangeEndDate).format('YYYY-MM-DD');
 	var params = {

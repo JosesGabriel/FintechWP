@@ -1,4 +1,7 @@
 <?php
+include ('data-api.php');
+
+$currentUser = GetCurrentUser();
 
 class DataAPI extends WP_REST_Controller
 {
@@ -6,14 +9,16 @@ class DataAPI extends WP_REST_Controller
     protected $namespace;
     protected $version;
     protected $table_name;
-    protected $client_secret ;
+    protected $client_secret;
+    protected $currentUser;
 
-    public function __construct()
+    public function __construct($currentUser)
     {
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
         $this->namespace = 'data-api';
+        $this->currentUser = $currentUser;
     }
 
     public function registerRoutes()
@@ -142,14 +147,9 @@ class DataAPI extends WP_REST_Controller
         
     public function getForwardedResponse($request)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/data-api');
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
+      
         
-        return json_decode($result);
+        return 'test' . $this->currentUser;
 
         //verify if user is logged in
         if (!isUserLoggedIn()) { 

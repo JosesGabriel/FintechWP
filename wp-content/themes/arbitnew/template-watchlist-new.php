@@ -120,24 +120,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                                                                 //echo $value['stockname'];
                                                                 ?>
-                                                                <script type="text/javascript">
-                                                                    
-                                                                    $.ajax({
-                                                                                url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='<?php echo $value['stockname']; ?>'",
-                                                                                type: 'GET',
-                                                                                dataType: 'json', // added data type
-                                                                                success: function(res) {
-                                                                                        
-                                                                                    //jQuery.each(res.data, function(index, value) {      
-                                                                                            console.log(res.data);    
-                                                                                    //});  
-
-                                                                                },
-                                                                                error: function (xhr, ajaxOptions, thrownError) {
-                                                                                    
-                                                                                }
-                                                                            })
-                                                                    </script>
+                                                               
 
                                                                 <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
                                                                     <!--<div class="watchlist--buttons">

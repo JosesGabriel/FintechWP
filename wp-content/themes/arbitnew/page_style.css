@@ -1,14 +1,7 @@
 /* BOF Global CSS */    
 
     /* Global CSS Overrides */
-    html {
-        background: #142c46;
-        background: linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        background: -moz-linear-gradient(90deg, #142c46 0%, #27455f 100%);
-        background: -webkit-linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        background: linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#142c46', endColorstr='#27455f',GradientType=0 );
-    }
+    
     .et_fixed_nav #main-header, .et_fixed_nav #top-header {
         position: fixed;
         z-index: 2147483644;
@@ -20,7 +13,6 @@
     #page-container,
     #main-content,
     .inner-placeholder {
-        background: transparent !important;
         font-family: Roboto, sans-serif;
     }
     .inner-placeholder {
@@ -225,7 +217,7 @@
     }
 
     html {
-        background: #0d1f33 !important;
+        background: #0d1f33;
     }
     .right-dashboard-part{
         float: left;
@@ -2750,9 +2742,6 @@
     }	
     /* Bootstrap Overrides */
 
-    html {
-        background: #0d1f33 !important;
-    }
     .right-dashboard-part{
         float: left;
         width: 100%;

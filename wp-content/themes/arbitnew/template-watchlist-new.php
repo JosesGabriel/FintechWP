@@ -1,5 +1,9 @@
 
-<?php include_once "watchlist/header-files.php";?>
+<?php 
+include_once "watchlist/header-files.php";
+require("parts/global-header.php");
+?>
+
 
 <?php
 
@@ -9,15 +13,18 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
+//if (isset($_POST) && !empty($_POST)) {
 
+if(isset($_POST['submit'])){
 
-if (isset($_POST) && !empty($_POST)) {
+    $query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
+    print_r($query);
+//$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
-$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
+//foreach ($select as $key => $value) {
+      //   echo $value['stockname'];
+   //     }
 
-foreach ($select as $key => $value) {
-         echo $value['stockname'];
-        }
 
    
 }
@@ -385,7 +392,7 @@ foreach ($select as $key => $value) {
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
-                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
+                                                                        <button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -407,7 +414,7 @@ foreach ($select as $key => $value) {
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>    
-                      <?php include_once "parts/sidebar-latestnews.php";?>    
+                      <?php //include_once "parts/sidebar-latestnews.php";?>    
                       <?php include_once "parts/sidebar-footer.php";?>               
                 </div>
 

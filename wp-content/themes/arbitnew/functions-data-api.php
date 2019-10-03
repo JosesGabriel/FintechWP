@@ -144,6 +144,7 @@ class DataAPI extends WP_REST_Controller
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, '/data-api');
+        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);

@@ -370,11 +370,6 @@
     .dplsicon a {
         color: #fff
     }
-    .um-activity-head {
-        border-radius: 6px 6px 0 0;
-        padding-top:13px;
-        padding-bottom: 9px !important;
-    }
     .um-activity-author-meta {
         padding-top: 4px;
         padding-left: 11px;
@@ -512,13 +507,6 @@
         -moz-transition: all .5s ease-in-out;
         -o-transition: all .5s ease-in-out;
         transition: all .5s ease-in-out;
-    }
-    .um-activity-widget div.um-activity-textarea textarea,
-    .um-activity-widget div.um-activity-textarea textarea:hover, 
-    .um-activity-widget div.um-activity-textarea textarea:focus {
-        height: 90px !important;
-        border-radius: 0 !important;
-        padding: 22px 15px 10px 65px !important;
     }
     img.arb_newpostimg {
         width: 41px !important;
@@ -1054,9 +1042,6 @@
         border-width: 8px;
         margin-left: -36px;
     }
-    .add-post .um-activity-new-post .um-activity-body .um-activity-preview{
-        padding: 0 5px;
-    }
     .um-activity-preview img {
         max-height: 91px;
         border-radius: 9px;
@@ -1212,9 +1197,6 @@
     }
     .um-activity-commentwrap {
         padding-top: 13px;
-    }
-    .um-form textarea {
-        line-height: 18px;
     }
     .dnavtopinner ul li a.um-button.um-alt {
         line-height: 13px !important;
@@ -3044,17 +3026,6 @@
     .page-id-1871 {
         overflow:hidden;
     }
-    .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
-    height: 90px !important;
-    border-radius: 0 !important;
-    padding: 18px 15px 10px 54px !important;
-    }
-    .um-activity-widget div.um-activity-textarea textarea {
-    height:90px;
-    }
-    .um-activity-new-post .um-activity-body .um-activity-textarea {
-    position:relative;
-    }
     img.arb_newpostimg {
     width: 32px;
     height: auto;
@@ -3206,11 +3177,6 @@
     .dplsicon a {
         color: #fff
     }
-    .um-activity-head {
-        border-radius: 6px 6px 0 0;
-        padding-top:13px;
-        padding-bottom: 9px !important;
-    }
     .um-activity-author-meta {
         padding-top: 4px;
         padding-left: 11px;
@@ -3342,13 +3308,6 @@
         -moz-transition: all .5s ease-in-out;
         -o-transition: all .5s ease-in-out;
         transition: all .5s ease-in-out;
-    }
-    .um-activity-widget div.um-activity-textarea textarea,
-    .um-activity-widget div.um-activity-textarea textarea:hover, 
-    .um-activity-widget div.um-activity-textarea textarea:focus {
-        height: 90px !important;
-        border-radius: 0 !important;
-        padding: 22px 15px 10px 65px !important;
     }
     img.arb_newpostimg {
         width: 41px !important;
@@ -3753,9 +3712,6 @@
         border-width: 8px;
         margin-left: -36px;
     }
-    .add-post .um-activity-new-post .um-activity-body .um-activity-preview{
-        padding: 0 5px;
-    }
     .um-activity-preview img {
         max-height: 91px;
         border-radius: 9px;
@@ -3909,9 +3865,6 @@
     }
     .um-activity-commentwrap {
         padding-top: 13px;
-    }
-    .um-form textarea {
-        line-height: 18px;
     }
     .user-counter {
         font-size: 15px;

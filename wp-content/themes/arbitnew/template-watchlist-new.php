@@ -33,7 +33,7 @@ if (isset($_POST) && !empty($_POST)) {
             if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
                 echo "Stock Already Exist";
             } else {
-                array_push($havemeta, $_POST);
+                array_push($newarray, $_POST);
                 //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
                 //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
                 //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
@@ -48,7 +48,7 @@ if (isset($_POST) && !empty($_POST)) {
         } else {
             $newarray = [];
             array_push($newarray, $_POST);
-            add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            //add_user_meta($userID, '_watchlist_instrumental', $newarray);
             //update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
@@ -61,7 +61,7 @@ if (isset($_POST) && !empty($_POST)) {
                 // ... and so on
             //));
 
-     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$newarray')";
 
         $wpdb->query($insertmeta);
 

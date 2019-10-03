@@ -135,11 +135,8 @@ class DataAPI extends WP_REST_Controller
         if (!$isUserLoggedIn) { 
             return $this->respond(false, [
                 'message' => 'Unauthorized access.',
-                'parameters' => $data,
             ], 401);
         }
-
-        $data = $request->get_params();
    
         //region forward request
         $result = $this->sendViaCurl();

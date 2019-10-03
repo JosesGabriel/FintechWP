@@ -21,8 +21,8 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
         array_push($havemeta, $_POST);
-        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
+        //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+         add_user_meta($userID, '_watchlist_instrumental', $newarray);
         wp_redirect( 'https://arbitrage.ph/watchlist' );
         exit;
 

@@ -12,7 +12,7 @@
 		wp_redirect( $homeurlgen.'/login/', 301 );
 		exit;
 	}
-	
+
 	
 	$homeurlgen = get_home_url();
 	$user_id = $user->ID;
@@ -157,10 +157,7 @@
 																									<div style="height: 36px;">
 																										<input type="hidden" value="Log" name="inpt_data_status">
 																										<input type="hidden" value="fromchart" name="formsource">
-																										<!-- <input type="hidden" value="" id="sellavrprice" name="inpt_avr_price"> -->
-																										<!-- <input type="hidden" value="" name="inpt_data_postid"> -->
 																										<input type="hidden" name="dtradelogs" id="tradelogs" value=''>
-																										<!-- <input type="hidden" name="selldate" id="selldate"> -->
 																										<input type="submit" id="confirmsellparts" class="confirmtrd green buy-order--submit" value="Confirm Trade" style="display:none;">
 																									</div>
 																								</div>
@@ -184,7 +181,7 @@
 																						<strong>Enter Buy Order</strong>
 																					</div>
 
-																					<form action="/journal" method="post">1
+																					<form action="/journal" method="post">
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">
 																								<div class="groupinput fctnlhdn">   
@@ -325,7 +322,6 @@
 
 																							<div class="groupinput">
 																								<textarea class="darktheme" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
-																								<!-- <iframe class="bidaskbox" id="bidaskbox" src="<?php //echo $homeurlgen; ?>/preloader.html"></!--> -->
 																							</div>
 
 																							<div class="groupinput">
@@ -430,45 +426,6 @@
 																		$page = end($dxlink);
 
 																		$dsentilist = get_post_meta( 504, '_sentiment_'.$page.'_list', true );
-																		/* temp-disabled
-																		if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
-																			// echo "already voted";
-																			// get the page sentiment
-																			$dpullbear = get_post_meta( 504, '_sentiment_'.$page.'_bear', true );
-																			$dpullbull = get_post_meta( 504, '_sentiment_'.$page.'_bull', true );
-
-																			$curl = curl_init();	
-																			curl_setopt($curl, CURLOPT_URL, 'https://marketdepth.pse.tools/api/market-depth?symbol='.$page );
-																			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-																			$dwatchinfo = curl_exec($curl);
-																			curl_close($curl);
-
-																			$dstockidepthinfo = json_decode($dwatchinfo);
-																			$dfinfodp = $dstockidepthinfo->data;
-
-																			$dbidvol = ($dpullbear != "" ? $dpullbear : 0);
-																			$daskvol = ($dpullbull != "" ? $dpullbull : 0);
-																			foreach ($dfinfodp as $dpinfokey => $dpinfovalue) {
-																				$dbidvol += $dpinfovalue->bid_volume;
-																				$daskvol += $dpinfovalue->ask_volume;
-																			}
-
-																			$totalvols = $dbidvol + $daskvol;
-																			$percbid = ($dbidvol / $totalvols) * 100;
-																			$percask = ($daskvol / $totalvols) * 100;
-
-																			
-
-																		} else {
-																			// echo "go vote";
-																			$percbid = 0;
-																			$percask = 0;
-																		} temp-disabled */
-
-																		
-
-																		// echo $dpullbull." - ".$dpullbear;
-
 																	?>
 
 																	<div class="regsentiment">
@@ -627,8 +584,6 @@
 																													</tbody>
 																												</table>
 																											</div>
-																											<!-- <div ng-show="marketdepth.length != 0"> -->
-																											<!-- </div> -->
 																										</div>
 																									</div>
 																								</div>
@@ -727,27 +682,19 @@
 																										<tr>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('symbol')" style="padding: 3px 12px 3px 6px !important; cursor: pointer;">
 																												<strong>STOCK</strong>
-																												<!-- <i ng-if="sort == 'symbol'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('last')" style="padding: 3px 15px 3px 4px !important; cursor: pointer;">
 																												<strong>LAST</strong>
-																												<!-- <i ng-if="sort == 'last'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('change_percentage')" style="padding: 3px !important; cursor: pointer;">
 																												<strong>CHANGE</strong>
-																												<!-- <i ng-if="sort == 'change'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('value')" style="padding: 3px !important; cursor: pointer;">
 																												<strong>VALUE</strong>
-																												<!-- <i ng-if="sort == 'value'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
 																											<th class="text-default border-default text-left" nowrap="nowrap" ng-click="sortStocks('trades')" style="padding: 3px 3px 3px 10px !important; cursor: pointer;">
 																												<strong>TRADES</strong>
-																												<!-- <i ng-if="sort == 'trades'" class="fa" ng-class="{'fa-caret-down':reverse, 'fa-caret-up':!reverse}"></i> -->
 																											</th>
-																											<?php /*?><th class="text-default border-default text-right" nowrap="nowrap" style="padding-right: 10px;">
-																												<a ng-if="watchlists[watchlist] != 'stocks' && watchlists[watchlist] != 'new' && watchlist != 'Default Watchlist'" href="javascript:void(0);" ng-click="deleteWatchlist(watchlist)" class="text-red-darker" title="Delete Watchlist"><i class="fa fa-fw fa-trash"></i></a>
-																											</th><?php */?>
 																										</tr>
 																									</thead>
 																								</table>
@@ -771,10 +718,6 @@
 																											<td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
 																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
 																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;padding-right: 5px !important;">{{stock.trades | numeraljs:'0,0'}}</td>
-																											<?php /*?><td align="right" class="text-default" style="padding-right: 10px; font-weight: normal;">
-																												<a ng-if="watchlists[watchlist] == 'stocks'" href="javascript:void(0);" ng-click="addToWatchlist(stock.symbol)" class="text-default"><i class="fa fa-fw fa-plus"></i></a>
-																												<a ng-if="watchlists[watchlist] != 'stocks'" href="javascript:void(0);" ng-click="removeFromWatchlist(watchlists[watchlist], stock.symbol)" class="text-red-darker" title="Remove Stock"><i class="fa fa-fw fa-trash"></i></a>
-																											</td><?php */?>
 																										</tr>
 																										<tr ng-if="watchlists[watchlist].length == 0">
 																											<td colspan="5" align="center">No Data Found</td>
@@ -795,16 +738,6 @@
 																											</tr>
 																										</thead>
 																										<?php
-		/* temp-disabled
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$dwatchinfo = curl_exec($curl);
-		curl_close($curl);
-		$genstockinfo = json_decode($dwatchinfo);
-		$stockinfo = $genstockinfo->data;
-		temp-disabled */
-
 		  $curl = curl_init();
 		  curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 		  
@@ -826,9 +759,6 @@
 				<?php
 
 					$dstock = $value['stockname'];
-					//$dprice = $stockinfo->$dstock->last;
-					//$dchange = $stockinfo->$dstock->change;
-
 					$dprice = 0;
 					$dchange = 0;
 
@@ -840,10 +770,6 @@
 								$dhigh = $stvals->high;
                               }
                           }
-
-						
-						//echo " --- ". $dpr;
-						
 					?>
 					<tr class="tr-background">
 						<td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
@@ -910,17 +836,6 @@
 						</select>
 					</div>
 				</div>
-				<?php /* ?>
-				<div class="row m-t-10">
-					<div class="col-md-5 control-label double-line">Chat</div>
-					<div class="col-md-7">
-						<select name="header-styling" class="form-control input-sm" ng-model="settings.chat" ng-change="updateSettings('chat')">
-							<option value="1">Volume On</option>
-							<option value="0">Mute</option>
-						</select>
-					</div>
-				</div>
-				<?php */ ?>
 				<div class="row m-t-10">
 					<div class="col-md-5 control-label double-line">Disclosure</div>
 					<div class="col-md-7">

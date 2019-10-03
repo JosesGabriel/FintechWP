@@ -3,10 +3,13 @@
 
 <?php
 
-global $current_user;
+global $current_user, $wpdb;
 $userID = $current_user->ID;
 
+
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
+
+echo $userID;
 
 if (isset($_POST) && !empty($_POST)) {
 
@@ -31,18 +34,45 @@ if (isset($_POST) && !empty($_POST)) {
                 echo "Stock Already Exist";
             } else {
                 array_push($havemeta, $_POST);
-                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
+
+                //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+
+                //$wpdb->query($insertmeta);
+                //wp_redirect( '/watchlist' );
+                //exit;
             }
 
         } else {
             $newarray = [];
             array_push($newarray, $_POST);
-            // add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            update_user_meta($userID, '_watchlist_instrumental', $newarray);
+            add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
-        exit;
+    echo $havemeta;
+
+     //$success = $wpdb->insert('arby_usermeta', array(
+             //   'user_id' => $userID,
+             //   'metakey' => '_watchlist_instrumental',
+             //   'meta_value' => 'selling'
+                // ... and so on
+           // ));
+
+     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+
+        //$wpdb->query($insertmeta);
+
+    if($wpdb->query($insertmeta)){
+        echo "insert success...";
+     }else {
+        echo "unable to insert";
+     }
+
+        //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
+        //exit;
     }
 
 
@@ -62,9 +92,6 @@ if(isset($_GET['addcp'])){
     $cpnum = $_GET['addcp'];
     add_user_meta( $userID, 'cpnum', $cpnum, true);
 }
-
-
-
 
 
 ?>

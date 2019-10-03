@@ -18,7 +18,7 @@ hr.style15 {
     margin-bottom: 2.5px !important;
     display: flex;
 }
-/*------ global-sidebar ------*/
+/*------ global-dashboard-css ------*/
 
 
 /*------ global-sidebar ------*/
@@ -139,10 +139,13 @@ a:hover {
 }
 .um-activity-widget .um-activity-body {
     background: #142c46;
+    max-height: 461px !important;
+    border: 0;
+    overflow:hidden;
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
     height: 90px !important;
-    border-radius: 0 !important;
+    border-radius: 0 !important;    
     color: #fff;
 }
 .um-form textarea {
@@ -152,8 +155,151 @@ a:hover {
     border: 0 none;
 }
 textarea.um-activity-textarea-elem.ui-autocomplete-input {
-    background: #142c46 !important;
+    background: #142c46;
 }
 .add-post .um-activity-new-post .um-activity-body .um-activity-preview {
     border: 0 none;
+}
+.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
+    background: #2481bc;
+}
+.add-post .um-activity-widget .um-activity-ava a {
+    width: 41px;
+    height: 41px;
+}
+.um-activity-ava img {
+    width: 100%;
+    height: 100%;
+}
+.um-activity-author-meta {
+    padding-top: 4px;
+    padding-left: 11px;
+}
+.um-activity-widget .um-activity-head .um-activity-author .um-activity-author-meta .um-activity-author-url a {
+    font-size: 13px;
+    text-transform: capitalize;
+}
+.drop-over-post {
+    color: #6583a8;
+    font-size: 20px;
+    margin-top: 7px;
+    margin-right: 7px;
+}
+.um-activity-dialog.um-activity-tool-dialog {
+    border: none;
+    background-color: #123;
+    color: #ffffff;
+    box-shadow: none;
+}
+.um-activity-dialog:before {
+    bottom: 100%;
+    right: 4%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #112233;
+    border-width: 8px;
+    margin-left: -36px;
+}
+.um-activity-widget .um-activity-body .um-activity-bodyinner .um-activity-bodyinner-txt {
+    color: #fff;
+    background-color: #142c46;
+    padding-left: 0;
+}
+.desc-note {
+    padding: 0 16px;
+}
+.add-post .um-activity-wall .um-activity-body .um-activity-bodyinner-photo {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: block;
+    position: relative;
+}
+.um-activity-widget .um-activity-foot.status {
+    background: #142c46;
+    padding: 9px 0px 0px 0px;
+    border: 0 none;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bullish {
+    margin-left: 17px;
+    display: inline-block;
+}
+.um-activity-widget .um-activity-foot.status div > a {
+    background: none !important;
+    border-radius: 50px;
+    height: initial;
+    margin: 0;
+    padding: 0;
+}
+.um-activity-widget .um-activity-foot.status div > a span {
+    margin: 0;
+}
+.um-activity-left.um-activity-actions > div .dnumof {
+    color: white;
+    padding: 5px 0;
+    font-weight: 400;
+    font-size: 13px;
+    display: inline-block;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
+    border: #25ae5f solid 2px !important;
+    background: none;
+    border-radius: 50px;
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    display: inline-flex;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase img{
+    width: 16px;
+    display: block;
+    margin: 0 auto;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bullish:hover a span.diconbase {
+    transform: scale(1.3);
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase {
+    border: #d04234 solid 2px !important;
+    background: none;
+    border-radius: 50px;
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    display: inline-flex;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img{
+    width: 14px;
+    display: block;
+    margin: 0 auto;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
+    transform: scale(1.3); 
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish {
+    margin-left: 10px;
+    width: auto;
+    display: inline-block;
+}
+ul {
+    list-style: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    list-style-type: none;
+}
+.tabbutton {
+    padding-left: 0;
+    display: inline-flex;
 }

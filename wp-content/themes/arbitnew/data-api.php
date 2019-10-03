@@ -9,5 +9,5 @@ $data = json_encode([
 	"user_id" => $currentUser->ID,
 ]);
 
-return new WP_REST_Response($data, 200);
+echo new WP_REST_Response($data, 200);
 ?>

@@ -26,7 +26,7 @@ jQuery(function(){
 
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list");
+        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

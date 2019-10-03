@@ -381,7 +381,7 @@ require("parts/global-header.php");
     $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 
     $curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+	curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
 	
 	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

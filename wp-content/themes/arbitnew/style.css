@@ -142,43 +142,14 @@ License: GNU General Public License v2 or later
     color: #2196F3 !important;
     font-size: 18px !important;
 }
-.um-activity-new-post .um-activity-foot .um-activity-right a {
-}
 .um-activity-widget {
     box-shadow: none;
-}
-.um-activity-widget .um-activity-head .um-activity-author .um-activity-author-meta .um-activity-author-url a {
-    color: #ecf0f1;
-    font-size: 13px;
-    text-transform: capitalize;
 }
 .um-activity-widget .um-activity-disp {
     display: none;
 }
-.um-activity-widget .um-activity-head .um-activity-ava img {
-    border-radius: 50px !important;
-}
-.um-activity-ava img {
-    width: 100%;
-    height: 100%;
-}
 .um-activity-widget .um-activity-comments .um-activity-comment-avatar img {
     border-radius: 50px;
-}
-.um-activity-widget .um-activity-foot.status {
-    background: #3a5168;
-}
-.um-activity-widget .um-activity-foot.status {
-    background: #142c46;
-    padding: 12px 0px 0px 0px;
-    border: 0 none;
-}
-.um-activity-widget .um-activity-foot.status a,
-.um-activity-widget .um-activity-foot.status i {
-    /* color: #fff !important; */
-}
-.um-activity-widget .um-activity-foot .um-activity-bullish.active a {
-    /*color: red !important;*/
 }
 .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
     background: #2b405b;
@@ -195,10 +166,6 @@ License: GNU General Public License v2 or later
 .um-activity-widget .um-activity-comments .um-activity-comment-text {
     color: #fff !important;
     font-size: 13px !important
-}
-.um-activity-widget .um-activity-body .um-activity-bodyinner .um-activity-bodyinner-txt {
-    color: #fff;
-    background-color: #142c46;
 }
 label.screen-reader-text {
     display: none;
@@ -727,15 +694,6 @@ div.uimob800 .um-account-side ul {
 .user_profile .um-profile-meta {
     padding-right: 0;
 }
-.add-post .um-activity-widget .um-activity-ava a img {
-/*    display: none;*/
-}
-.add-post .um-activity-widget .um-activity-ava a {
-    width: 41px;
-    height: 41px;
-    background-size: cover !important;
-    border-radius: 50px !important;
-}
 .um-notification-shortcode {
     padding: 11px 15px !important;
 }
@@ -802,10 +760,6 @@ div.uimob800 .um-account-side ul {
 }
 .add-post .um-activity-new-post .um-activity-foot .upload-statusbar > div.upload-progress .upload-bar {
     border-bottom: 2px solid #56ba65;
-}
-.add-post .um-activity-wall .um-activity-body .um-activity-bodyinner-photo {
-    width: 100%;
-    margin: 0 auto;
 }
 .user_profile .um-header .um-profile-meta .um-friends-coverbtn a {
     background: #2c80c1 !important;
@@ -1917,58 +1871,6 @@ a.message-part-btn:before {
 .the_user_top_page .um-header .um-profile-headericon {
     display: none;
 }
-
-
-.um-activity-widget .um-activity-foot.status div > a {
-    height: initial;
-    margin: 0;
-    padding: 0;
-}
-.um-activity-widget .um-activity-foot.status div > a span {
-    margin: 0;
-    display: inline-block;
-    vertical-align: middle;
-}
-.um-activity-widget .um-activity-foot.status div > a span.diconbase img {
-    width: 14px;
-    display: block;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bullish {
-    margin-left: 15px;
-    background: #142c46;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bearish {
-    margin-left: 10px;
-    background: #142c46;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase img {
-    width: 14px;
-    padding: 0 1px;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase {
-    background: #2d3d51;
-    padding: 7px 6px;
-    border-radius: 50px;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-.um-activity-widget .um-activity-foot.status .um-activity-bearish a span.diconbase {
-    background: #2d3d51;
-    padding: 7px 6px;
-    border-radius: 50px;
-    background: #25ae5f;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-.um-activity-widget .um-activity-foot.status div > a {
-    /*background: #4d607d;*/
-    border-radius: 50px;
-}
-
     .es-sentiments-container {
         width: 100%;
         margin-left: 0 !important;
@@ -1998,9 +1900,6 @@ a.message-part-btn:before {
         font-size: 13px;
         font-weight: 600;
     }
-.um-activity-widget .um-activity-foot.status div > a {
-    text-decoration: none;
-}
 .um-activity-widget .um-activity-foot.status div > a span.dnumof {
     font-size: 15px;
     padding: 0 15px 0 5px;
@@ -2050,13 +1949,6 @@ a.message-part-btn:before {
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
-}
-
-.add-post .um-activity-wall .um-activity-body {
-    background: #2e3d52;
-    border: 0;
-    max-height:310px;
-    overflow:hidden;
 }
 
 .um-activity-widget .um-activity-foot.status .um-activity-like a {
@@ -2182,38 +2074,6 @@ hr.style11 {
 }
 .top-stocks .to-content-part {
 }
-	.um-activity-dialog.um-activity-tool-dialog {
-	    border: none;
-	    display: block;
-	    background-color: #123;
-	    color: #ffffff;
-	    box-shadow: none;
-	    right: 10px;
-	    top: 18px;
-	}
-
-    .um-activity-dialog a {
-	    line-height: 1.3em;
-	    height: auto;
-	    font-size: 12px;
-	    color: #ffffff !important;
-	    float: none;
-	    display: block;
-	    padding: 6px 12px;
-	    margin: 0;
-	    font-weight: normal;
-	}
-
-    .um-activity-dialog span.sep {
-	    display: none !important;
-	    /* background-color: #1e3554; */
-	    width: 100%;
-	    height: 1px;
-	    padding: 0 0 4px 0;
-	    margin: 0 0 4px 0;
-	    border-bottom: 1px solid #1e3554;
-	}
-
     .um-notification-live-feed {
         position: absolute;
         right: 220px !important;

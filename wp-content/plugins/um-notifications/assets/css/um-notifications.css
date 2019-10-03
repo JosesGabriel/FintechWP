@@ -23,13 +23,7 @@
 
 	float: left;
 
-	font-size: 15px !important;
-
 	font-weight: 600;
-
-	padding: 15px 20px;
-
-	border-bottom: 3px solid #444;
 
 	position: relative;
 
@@ -46,8 +40,6 @@
 	float: right;
 
 	padding-right: 22px;
-
-	padding-top: 13px;
 
 }
 
@@ -85,60 +77,6 @@
 
 /* The Icon */
 
-.um-notification-b {
-
-	position: fixed;
-
-	right: 25px;
-
-	bottom: 25px;
-
-	width: 60px;
-
-	height: 60px;
-
-	line-height: 60px;
-
-	border-radius: 999px;
-
-	font-size: 26px;
-
-	background: #444;
-
-	color: #fff;
-
-	text-align: center;
-
-	cursor: pointer;
-
-	box-sizing: border-box;
-
-
-
-	display: inline-block;
-
-	vertical-align: middle;
-
-	-webkit-transform: translateZ(0);
-
-	transform: translateZ(0);
-
-	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.4); 
-
-	-webkit-backface-visibility: hidden;
-
-	backface-visibility: hidden;
-
-	-moz-osx-font-smoothing: grayscale;
-
-	
-
-	z-index: 50;
-
-}
-
-
-
 .um-notification-b.left {
 
 	right: auto;
@@ -153,10 +91,6 @@
 
 	padding: 10px 30px 10px 10px;
 
-	border-bottom: 1px solid #f5f5f5;
-
-	font-size: 12px;
-
 	position: relative;
 
 	padding-left: 66px;
@@ -164,8 +98,6 @@
 	cursor: pointer;
 
 	line-height: 1.5em;
-
-	color: #666;
 
 	-webkit-font-smoothing: antialiased;
 
@@ -413,50 +345,6 @@
 
 /* Feed window */
 
-.um-notification-live-feed {
-
-	display: none;
-
-	position: fixed;
-
-	z-index: 556665;
-
-	background: #fff;
-
-	width: 400px;
-
-	box-shadow: 0 1px 3px #888;
-
-	overflow: auto;
-
-	top: 0;
-
-	height: 100%;
-
-    transition: 100ms right ease-in;
-
-    -o-transition: 100ms right ease-in;
-
-    -ms-transition: 100ms right ease-in;
-
-    -moz-transition: 100ms right ease-in;
-
-    -webkit-transition: 100ms right ease-in;
-
-}
-
-
-
-.um-notification-live-feed-inner {
-
-	position: relative;
-
-	height: 100%;
-
-}
-
-
-
 .um-notification-live-feed-inner .um-notification {
 
 	font-size: 12px;
@@ -470,8 +358,6 @@
 	display: block;
 
 	text-align: center;
-
-	padding: 15px;
 
 	font-size: 13px;
 

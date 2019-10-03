@@ -10,16 +10,14 @@ $userID = $current_user->ID;
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 
-$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = 1');
+
+if (isset($_POST) && !empty($_POST)) {
+
+$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
 foreach ($select as $key => $value) {
          echo $value['stockname'];
         }
-
-
-
-
-if (isset($_POST) && !empty($_POST)) {
 
    
 }

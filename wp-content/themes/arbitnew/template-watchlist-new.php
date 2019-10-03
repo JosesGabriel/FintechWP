@@ -33,7 +33,8 @@ if (isset($_POST) && !empty($_POST)) {
                 echo "Stock Already Exist";
             } else {
                 array_push($havemeta, $_POST);
-                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                add_user_meta($userID, '_watchlist_instrumental', $newarray);
             }
 
         } else {

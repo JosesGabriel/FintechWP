@@ -17,11 +17,11 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 if (isset($_POST) && !empty($_POST)) {
 
-$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
+//$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
-foreach ($select as $key => $value) {
-         echo $value['stockname'];
-        }
+//foreach ($select as $key => $value) {
+      //   echo $value['stockname'];
+   //     }
 
    
 }

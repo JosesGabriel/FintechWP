@@ -45,6 +45,13 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'gettradelogs'),
             ]
         ]);
+
+        register_rest_route($base_route, 'ledger', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getledger'),
+            ]
+        ]);
     }
 
     // generic information
@@ -171,16 +178,22 @@ class JournalAPI extends WP_REST_Controller
 
         $ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
         $finaltrade = [];
+        $totalprofit = 0;
         foreach ($ismytrades as $key => $value) {
             $buytotal = $value->tlvolume * $value->tlaverageprice;
             $selltotal = $value->tlvolume * $value->tlsellprice;
             $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
             $profit = $sellnet - $buytotal;
+            $value->buyvalue = $buytotal;
+            $value->sellvalue = $sellnet;
             $value->profit = $profit;
             $value->perc = ($profit / $buytotal) * 100;
+            $value->outcome = ($profit > 0 ? 'Winning' : 'Lossing');
+
+            $totalprofit += $profit;
             array_push($finaltrade, $value);
         }
-        return $this->respond(true, [$finaltrade], 200);
+        return $this->respond(true, ['data' => $finaltrade, 'totalprofit' => $totalprofit], 200);
     }
 
 

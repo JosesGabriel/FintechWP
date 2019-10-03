@@ -38,6 +38,43 @@
         });
     }
 
+    var loadTradeLogs = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/tradelogs?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                $(".showtradelogs ul li.dloglist").remove();
+                $.each(data.data, function(i, value){
+                    let addliveme = '';
+                    addliveme += '<li class="dloglist">';
+                    addliveme += '<div style="width:99%;">';
+                    addliveme += '<div style="width:45px" class="tdata"><a href="/chart/'+value.isstock+'" class="stock-label">'+value.isstock+'</a></div>';
+                    addliveme += '<div style="width:65px" class="tdate">'+value.tldate+'</div>';
+                    addliveme += '<div style="width:55px" class="table-cell-live" >'+value.tlvolume+'</div>';
+                    addliveme += '<div style="width:65px" class="table-cell-live" >₱'+(parseFloat(value.tlaverageprice)).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:95px" class="table-cell-live" >₱'+(parseFloat(value.buyvalue)).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:65px" class="table-cell-live" >₱'+(parseFloat(value.tlsellprice)).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:88px" class="table-cell-live" >₱'+(value.sellvalue).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:80px" class="table-cell-live" id="tploss1">₱'+(value.profit).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:56px" class="table-cell-live" id="tpercent1">'+(value.perc).toFixed(2)+'%</div>';
+                    addliveme += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="'+value.tlstrats+'" data-tltradeplans="'+value.tltradeplans+'" data-tlemotions="'+value.tlemotions+'" data-tlnotes="'+value.tlnotes+'" data-outcome="'+value.outcome+'" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></div>';
+                    addliveme += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="'+value.tlid+'" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
+                    addliveme += '</div>';
+                    addliveme += '</li>';
+                    $(".showtradelogs ul").append(addliveme);
+                });
+
+                let totalprofit = (parseFloat(data.totalprofit)).toFixed(2);
+                $(".totalplscore").text("₱"+totalprofit);
+                
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
+
     $( document ).ready(function() {
 
         // initialize fancy box
@@ -57,6 +94,16 @@
             $("#opentradedetails").click();
         });
 
+        $(".showtradelogs ul").on("click", ".tldetails", function(e){
+            e.preventDefault();
+            $("#livetradenotes .addstrats").text($(this).attr("data-tlstrats"));
+            $("#livetradenotes .addtplan").text($(this).attr("data-tltradeplans"));
+            $("#livetradenotes .addemotion").text($(this).attr("data-tlemotions"));
+            $("#livetradenotes .addoutcome").text($(this).attr("data-outcome"));
+            $("#livetradenotes .addnotes").text($(this).attr("data-tlnotes"));
+            $("#opentradedetails").click();
+        });
+
         $("#live_portfolio ul").on("click", ".buymystocks", function(e){
             e.preventDefault();
             let sdata = $(this).attr("data-stockdetails");
@@ -70,6 +117,15 @@
             
             $("#opensellbox").click();
         });
+
+        $(".opentradelogtab").click(function(e){
+            // e.preventDefault();
+
+            // console.log("show tabs");
+            new loadTradeLogs(<?php echo $user->ID; ?>);
+        });
+
+
 
         // load 
         new loadLivePortfolio(<?php echo $user->ID; ?>);

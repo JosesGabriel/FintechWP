@@ -54,12 +54,19 @@ if (isset($_POST) && !empty($_POST)) {
 
     echo $havemeta;
 
-     $wpdb->insert('arby_usermeta', array(
+     $success = $wpdb->insert('arby_usermeta', array(
                 'user_id' => $userID,
                 'metakey' => '_watchlist_instrumental',
                 'meta_value' => 'selling'
                 // ... and so on
             ));
+
+     if($success){
+        echo "insert success...";
+     }else {
+        echo "unable to insert";
+     }
+
 
      //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
 

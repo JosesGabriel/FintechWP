@@ -1,4 +1,5 @@
 <?php
+include ('data-api.php');
 
 class DataAPI extends WP_REST_Controller
 {
@@ -6,7 +7,8 @@ class DataAPI extends WP_REST_Controller
     protected $namespace;
     protected $version;
     protected $table_name;
-    protected $client_secret ;
+    protected $client_secret;
+    public $currentUser;
 
     public function __construct()
     {
@@ -124,42 +126,17 @@ class DataAPI extends WP_REST_Controller
 
         return json_decode($result);
     }
-
-    protected function isUserLoggedIn(){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, '/data-api');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        return $result;
-        //result = 1 if logged in, otherwise 0
-        if (intval($result) == 0){
-            return false;
-        }
-
-        return true;
-    }
-        
+     
     public function getForwardedResponse($request)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, '/data-api');
-        curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        
-        return "Weww";
+        $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
 
         //verify if user is logged in
-        if (!isUserLoggedIn()) { 
+        if (!$isUserLoggedIn) { 
             return $this->respond(false, [
                 'message' => 'Unauthorized access.',
-                'parameters' => $data,
             ], 401);
         }
-
-        $data = $request->get_params();
    
         //region forward request
         $result = $this->sendViaCurl();
@@ -173,5 +150,6 @@ class DataAPI extends WP_REST_Controller
 // Register API endpoints
 add_action('rest_api_init', function () {
     $dataApi = new DataAPI();
+    $dataApi->currentUser = GetCurrentUser();
     $dataApi->registerRoutes();
 });

@@ -25,7 +25,6 @@ License: GNU General Public License v2 or later
     /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
 }
 .header-dashboard-inner {
-    color: #fff;
     padding: 8px 0 0;
 }
 .header-dashboard-inner > div {
@@ -345,7 +344,7 @@ ul.main-drop > ul li.onto-last-element {
     border-top: 1px solid #475c71;
 }
 body header#main-header {
-    background: #213f58 !important;
+    background: #213f58;
     position: fixed;
     width: 100%;
     z-index: 99999

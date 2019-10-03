@@ -116,7 +116,7 @@ class JournalAPI extends WP_REST_Controller
         $data = $request->get_params();
 
         $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+	    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -125,7 +125,7 @@ class JournalAPI extends WP_REST_Controller
         
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
-        // var_dump($gerdqouteone);
+        var_dump($gerdqouteone);
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
             $dstock = str_replace('_trade_','',$value->meta_key);

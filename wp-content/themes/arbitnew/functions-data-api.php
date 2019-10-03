@@ -170,6 +170,6 @@ class DataAPI extends WP_REST_Controller
 // Register API endpoints
 add_action('rest_api_init', function () {
     $dataApi = new DataAPI();
-    $data->currentUser = GetCurrentUser();
+    $dataApi->currentUser = GetCurrentUser();
     $dataApi->registerRoutes();
 });

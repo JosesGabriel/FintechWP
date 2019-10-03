@@ -38,11 +38,11 @@ if (isset($_POST) && !empty($_POST)) {
                 //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
                 //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
 
-                $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+                //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
 
-                $wpdb->query($insertmeta);
-                wp_redirect( '/watchlist' );
-                exit;
+                //$wpdb->query($insertmeta);
+                //wp_redirect( '/watchlist' );
+                //exit;
             }
 
         } else {
@@ -53,6 +53,10 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
     echo $havemeta;
+
+     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+
+        $wpdb->query($insertmeta);
 
         //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         //exit;

@@ -19,15 +19,15 @@
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
-                                                    <div class="width35">₱<?php echo number_format($initcapital, 2, '.', ','); ?></div>
+                                                    <div class="width35 addcapital"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrg2"></span>Year to Date P/L</div>
-                                                    <div class="width35">₱<?php echo number_format($dtotalpl, 2, '.', ','); ?></div>
+                                                    <div class="width35 addyearpl"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrg3"></span>Portfolio YTD %</div>
-                                                    <div class="width35"><?php echo  ($dtotalpl < 0 ? "-" : "").number_format(((abs($dtotalpl) / $initcapital) * 100), 2, '.', ',');?>%</div>
+                                                    <div class="width35 addyearplperc"></div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -47,15 +47,15 @@
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrb1"></span>Deposits</div>
-                                                    <div class="width35">₱<?php echo number_format($porttotaldep, 2, '.', ','); ?></div>
+                                                    <div class="width35 adddeposit"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrb2"></span>Withdrawals</div>
-                                                    <div class="width35">₱<?php echo number_format($porttotalwid, 2, '.', ','); ?></div>
+                                                    <div class="width35 addwidthraw"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60"><span class="bulletclrd clrb3"></span>Equity</div>
-                                                    <div class="width35">₱<?php echo number_format($dequityp, 2, '.', ','); ?></div>
+                                                    <div class="width35 adddashequity"></div>
                                                 </li>
                                             </ul>
                                         </div>

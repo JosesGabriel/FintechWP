@@ -17,8 +17,8 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 if(isset($_POST['submit'])){
 
-$query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
-print_r($query);
+    $query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
+    print_r($query);
 //$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
 //foreach ($select as $key => $value) {
@@ -414,7 +414,7 @@ print_r($query);
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>    
-                      <?php include_once "parts/sidebar-latestnews.php";?>    
+                      <?php //include_once "parts/sidebar-latestnews.php";?>    
                       <?php include_once "parts/sidebar-footer.php";?>               
                 </div>
 

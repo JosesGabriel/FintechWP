@@ -21,8 +21,8 @@ if (isset($_POST) && !empty($_POST)) {
         }
 
         array_push($havemeta, $_POST);
-        //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-         add_user_meta($userID, '_watchlist_instrumental', $newarray);
+        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+
         wp_redirect( 'https://arbitrage.ph/watchlist' );
         exit;
 
@@ -40,11 +40,11 @@ if (isset($_POST) && !empty($_POST)) {
         } else {
             $newarray = [];
             array_push($newarray, $_POST);
-            add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
+            //add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            update_user_meta($userID, '_watchlist_instrumental', $newarray);
         }
 
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
+        wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         exit;
     }
 

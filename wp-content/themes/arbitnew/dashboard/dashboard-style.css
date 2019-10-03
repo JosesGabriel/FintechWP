@@ -1,4 +1,13 @@
 /*------ global-dashboard-css ------*/
+html {
+    background: #0d1f33;
+}
+body header#main-header {
+    background: #213f58;
+    position: fixed;
+    width: 100%;
+    z-index: 99999
+}
 .inner-main-content, .header-dashboard-inner {
     max-width: 1000px;
     width: 100%;

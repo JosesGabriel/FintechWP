@@ -11,57 +11,12 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 if (isset($_POST) && !empty($_POST)) {
 
-    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+    $sql = $wpdb->prepare(
+            "INSERT INTO `arby_usermeta`      
+               (`user_id`,`meta_key`,`meta_value`) 
+         values ($userID, '_watchlist_instrumental', 'test')");
+    $wpdb->query($sql);
 
-        foreach ($havemeta as $key => $value) {
-            if ($value['stockname'] == $_POST['stockname']) {
-                unset($havemeta[$key]);
-            }
-        }
-
-        array_push($havemeta, $_POST);
-        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
-        wp_redirect( '/watchlist' );
-        exit;
-
-    } else {
-
-        if (isset($havemeta) && !empty($havemeta)){
-            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
-                echo "Stock Already Exist";
-            } else {
-                array_push($havemeta, $_POST);
-                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-            }
-
-        } else {
-            $newarray = [];
-            array_push($newarray, $_POST);
-            add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
-        }
-
-        wp_redirect( '/watchlist' );
-        exit;
-    }
-
-
-}
-
-if (isset($_GET['remove'])) {
-    foreach ($havemeta as $key => $value) {
-        if ($value['stockname'] == $_GET['remove']) {
-            unset($havemeta[$key]);
-        }
-    }
-    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-    wp_redirect( '/watchlist' );
-}
-
-if(isset($_GET['addcp'])){
-    $cpnum = $_GET['addcp'];
-    add_user_meta( $userID, 'cpnum', $cpnum, true);
 }
 
 ?>

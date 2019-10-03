@@ -69,29 +69,6 @@ if(isset($_GET['addcp'])){
 }
 
 
-//removing date compare function as it broke the page:
-
-#function date_compare($a, $b)
-#{
-#    $t1 = strtotime($a['toadddate']);
-#    $t2 = strtotime($b['toadddate']);
-#    return $t1 - $t2;
-#}
-
-#if ($havemeta) {
-#    usort($havemeta, 'date_compare');
-#    array_reverse($havemeta);
-#}
-
-#function working_days_ago($days) {
-#    $count = 0;
-#    $day = strtotime('-2 day');
-#    while ($count < $days || date('N', $day) > 5) {
-#       $count++;
-#       $day = strtotime('-1 day', $day);
-#    }
-#    return date('Y-m-d', $day);
-#}
 
 $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 ?>
@@ -405,46 +382,9 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                 </div>
                                                         </div>
 
-                                                            <!--<div class="dselectstockname">
-                                                                <div class="dropdown ddropconts">
-                                                                    <button id="myDropdown" class="dropbtn arbitrage-button arbitrage-button--primary">Select a Stock</button>
-                                                                    <div class="dropdown-content ddropbase" style="display: none;">
-                                                                        <input type="hidden" id="dstockname" name="stockname">
-                                                                        <input type="text" placeholder="Search.." id="myInput">
-                                                                        <div class="listofstocks"></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dselected"></div>
-                                                            </div>-->
-                                                            <!--<div class="">
-                                                                <div class="innerdeliver innerdeliver-addstock">
-                                                                    <ul>
-                                                                        <li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
-                                                                        <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>-->
+                                                         
                                                             <div class="row">
-                                                                <!--<div class="col-md-6 condition-padding">
-                                                                    <div class="condition-params">
-                                                                        <div class="condition-type">
-                                                                           
-                                                                            <select id="condition-list">
-                                                                                <option value="">Select Conditions</option>
-                                                                                <option value="entry_price">Entry Price</option>
-                                                                                <option value="take_profit_point">Take Profit Point</option>
-                                                                                <option value="stop_loss_point">Stop Loss Point</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="condition-freq">
-                                                                            
-                                                                            <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
-                                                                        </div>
-                                                                        <div class="addtolist">
-                                                                            <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>-->
+                                                               
                                                                 <div class="col-md-6">
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>

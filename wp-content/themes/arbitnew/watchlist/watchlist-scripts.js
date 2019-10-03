@@ -124,4 +124,40 @@ $(document).ready(function(){
            });
 
 
+            $('.editwatchlist').change(function(e) {
+
+                if($(this).val() == 'delete'){
+                        e.preventDefault();
+                        Swal.fire({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Yes, delete it!'
+                        }).then((result) => {
+                            if (result.value) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your Watchlist has been deleted.',
+                                    'success'
+                                ).then((result) => {
+                                    var ditemtoremove = jQuery(this).attr('data-space');
+                                    window.location.href = "/watchlist/?remove="+ditemtoremove;
+                                });
+                            }
+                        });
+
+                        $("div.editwatchlist select").val("Select");
+                }
+                if($(this).val() == 'edit'){
+                    var ditemtoedit = jQuery(this).attr('data-space');
+                    jQuery("#edit_" + ditemtoedit).click();
+                    
+                }
+
+            });
+
+
 });

@@ -147,7 +147,8 @@ class DataAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($curl);
         curl_close($curl);
-        return curl_error($curl);
+        
+        return $this->respond(false, isUserLoggedIn(), 200);
 
         //verify if user is logged in
         if (!isUserLoggedIn()) { 

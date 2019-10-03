@@ -1776,3 +1776,32 @@ a:hover {
     width: 196px;
 }
 /*------ global-sidebar ------*/
+
+.swal-overlay--show-modal {
+    z-index: 99999999;
+}
+.sss {
+    padding-right: 14px !important;
+}
+.sss::placeholder {
+    color: #ffffff;
+    font-size: 13px;
+}
+.dnlabel {
+    font-size: 15px;
+    padding-left: 11px;
+    margin-bottom: 2px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+}
+.depo-body {
+    position: relative;
+    padding: 5px 10px;
+}
+.active-funds {
+    display: block !important;
+}
+.button-funds {
+    padding: 7px 10px 2px 10px;
+    display: block;
+}

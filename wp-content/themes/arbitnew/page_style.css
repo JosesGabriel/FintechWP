@@ -1,14 +1,7 @@
 /* BOF Global CSS */    
 
     /* Global CSS Overrides */
-    html {
-        background: #142c46;
-        background: linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        background: -moz-linear-gradient(90deg, #142c46 0%, #27455f 100%);
-        background: -webkit-linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        background: linear-gradient(90deg, #142c46 0%,#27455f 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#142c46', endColorstr='#27455f',GradientType=0 );
-    }
+    
     .et_fixed_nav #main-header, .et_fixed_nav #top-header {
         position: fixed;
         z-index: 2147483644;
@@ -20,7 +13,6 @@
     #page-container,
     #main-content,
     .inner-placeholder {
-        background: transparent !important;
         font-family: Roboto, sans-serif;
     }
     .inner-placeholder {
@@ -225,7 +217,7 @@
     }
 
     html {
-        background: #0d1f33 !important;
+        background: #0d1f33;
     }
     .right-dashboard-part{
         float: left;
@@ -412,33 +404,6 @@
     .to-content-part {
         background: #142c46;
     }
-    hr.style15 {
-        border: 0;
-        height: 1px;
-        width: 96%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 0rem !important;
-        margin-bottom: 2.5px !important;
-        display: flex;
-    }
-    hr.style11 {
-        border: 0;
-        height: 1px;
-        width: 100%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 0.5rem !important;
-        margin-bottom: 1.5px !important;
-        display: flex;
-    }
-    hr.style10 {
-        border: 0;
-        height: 1px;
-        width: 96%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 10px !important;
-        margin-bottom: 3px !important;
-    }
-
     .um-activity-left .um-activity-actions {
         display: none !important;
     }
@@ -552,17 +517,6 @@
         padding-top: 0;
         background-color: #142c46;
     }
-    .um-activity-comment-data {
-        background-color: #2b405b3d;
-        padding: 6px 12px 7px 14px;
-        border-radius: 25px;
-    }
-    .um-activity-comment-child {
-        border-left: none !important;
-    }
-    .um-activity-comment-meta {
-        padding-left: 15px;
-    }
     .um-activity-commentl .um-activity-comment-area .um-activity-comment-avatar {
         width: 31px;
         height: 31px;
@@ -570,24 +524,7 @@
         position: absolute;
         z-index: 9999;
     }
-    .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-avatar {
-        left: 5px;
-        top: 5px;
-        visibility: visible;
-        position: absolute;
-        z-index: 0;
-    }
-    .um-activity-comment-avatar.hidden-0 {
-        margin-left: 5px !important;
-        position: absolute !important;
-        top: -3px;
-    }
-    .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img  {
-        width: 100%;
-        height: 100%;
-        top: 5px;
-        position: relative;
-    }
+    
     .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img .um-avatar-uploaded  {
         width: 100% !important;
         height: 100% !important;
@@ -598,34 +535,8 @@
         margin-top: 8px;
         padding-bottom: 2px !important;
     }
-    .um-activity-comment-child {
-        padding-left: 5px;
-    }
-    .um .um-activity-comment-author-link a.um-link {
-        color: #6583a8 !important;
-        text-transform: capitalize;
-    }
-    ..um-activity-comment-meta a.um-activity-comment-permalink {
-        color: #aaaaaa !important;
-    }
-    .um .um-activity-comment-meta a.um-link {
-        color: #6583a8 !important;
-        text-transform: capitalize;
-    }
-    .um .um-activity-comment-meta .um-activity-editc a {
-        color: #6583a8 !important;
-        text-transform: capitalize;
-    }
-    .um-activity-widget .um-activity-comments .um-activity-comment-text {
-        color: #fff !important;
-        font-size: 13px !important;
-        letter-spacing: 0.1px;
-    }
     .um-activity-ccommentload {
         padding-top: 10px;
-    }
-    .um-activity-commentl.is-child .um-activity-comment-hidden {
-        padding-top: 7px;
     }
     .um-activity-comment-textarea .ui-autocomplete-input .ui-autocomplete-loading {
         height: auto !important;
@@ -687,10 +598,6 @@
         top: 56px;
         z-index: 999999;
         /* padding: 10px 15px 15px 15px; */
-    }
-    .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
-        background: #11273e;
-        border: 1px solid #1e3554 !important;
     }
     ul.main-drops > ul {
     font-size: 13px !important;
@@ -872,22 +779,6 @@
         background: #123;
         cursor: pointer;
     }
-    .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area {
-        position: relative;
-        padding: 0 0 10px;
-    }
-    hr.style20 {
-        position: relative;
-        top: 0px;
-        margin-top: 0rem !important;
-        margin-left: -15px;
-        border: 0;
-        height: 1px;
-        width: 107%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-bottom: -1px !important;
-        display: flex;
-    }
     .um-activity-confirm {
         color: #fff;
         background: #142c46;
@@ -983,9 +874,6 @@
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
         background-color: #34495e;
     }
-    div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:focus {
-        border-color: #1e3554 !important;
-    }
     .um-activity-bodyinner-txt span.post-meta {
         border: none; 
         box-shadow: none; 
@@ -1074,12 +962,6 @@
     .to-top-create {
         float: right;
         color: #6583a8;
-    }
-    .um-activity-comments-loop {
-        padding-top: 0px;
-    }
-    .um-activity-comments {
-        padding: 9px 15px 0 15px !important;
     }
     .um-activity-commentwrap {
         padding-top: 13px;
@@ -1831,12 +1713,6 @@
     input.dpos::placeholder, input.dpri::placeholder {
         color: white;
     } 
-    .bullbear-Modal--header {
-        background-color: #213f58;
-    }
-    .bullbear-Modal--body {
-        background-color: #142b46;
-    }
     .totabs active {
         border-bottom: 2px solid red;
     }
@@ -2367,13 +2243,6 @@
         position: relative;
         margin-top: 0 !important;
     }
-    .um-activity-comment-meta .um-activity-editc-d a.edit,
-    .um-activity-comment-meta .um-activity-editc-d a.delete {
-        display: block;
-        font-size: 12px;
-        padding: 6px 10px;
-        color: #fffffe !important;
-    }
 
     .um-activity-comment-meta .um-activity-editc-d a:hover {
         color: #fffffe;
@@ -2385,19 +2254,7 @@
         background: #2b405b;
         transition-duration: 200ms;
     }
-    .um-activity-comment-meta .um-activity-editc-d {
-        position: absolute;
-        top: unset;
-        bottom: 25px;
-        right: -29px;
-        left: unset;
-        width: 100px;
-        background: #123;
-        display: none;
-        z-index: 999;
-        border-radius: 4px;
-        box-shadow: none;
-    }
+
     .um-activity-comment-meta .um-activity-editc-d:before {
         bottom: -16px;
         top: unset;
@@ -2416,10 +2273,6 @@
     .um-activity-comment-meta .um-activity-editc a:hover,
     .um-activity-comment-meta .um-activity-editc a:active,
     .um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe !important}
-    .um-activity-comment-meta .um-activity-editc a {
-        font-size: 12px;
-        color: #fffffe !important;
-    }
     .um-activity-new-post .um-activity-foot .um-activity-right a {
         border-radius: 26px !important;
         border: 2px solid #2481bc!important;
@@ -2888,13 +2741,7 @@
     display: none !important;
     }	
     /* Bootstrap Overrides */
-    dl, ol, ul {
-    margin-bottom: 0;
-    }
 
-    html {
-        background: #0d1f33 !important;
-    }
     .right-dashboard-part{
         float: left;
         width: 100%;
@@ -3072,32 +2919,6 @@
     .to-content-part {
         background: #142c46;
     }
-    hr.style15 {
-        border: 0;
-        height: 1px;
-        width: 96%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 0rem !important;
-        margin-bottom: 2.5px !important;
-        display: flex;
-    }
-    hr.style11 {
-        border: 0;
-        height: 1px;
-        width: 100%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 0.5rem !important;
-        margin-bottom: 1.5px !important;
-        display: flex;
-    }
-    hr.style10 {
-        border: 0;
-        height: 1px;
-        width: 96%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-top: 10px !important;
-        margin-bottom: 3px !important;
-    }
     .um-activity-left .um-activity-actions {
         display: none !important;
     }
@@ -3188,41 +3009,12 @@
         /* padding-top: 4px; */
         background-color: #142c46;
     }
-    .um-activity-comment-data {
-        background-color: #2b405b3d;
-        padding: 6px 12px 7px 14px;
-        border-radius: 25px;
-    }
-    .um-activity-comment-child {
-        border-left: none !important;
-    }
-    .um-activity-comment-meta {
-        padding-left: 15px;
-    }
     .um-activity-commentl .um-activity-comment-area .um-activity-comment-avatar {
         width: 31px;
         height: 31px;
         visibility: visible;
         position: absolute;
         z-index: 9999;
-    }
-    .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-avatar {
-        left: 5px;
-        top: 5px;
-        visibility: visible;
-        position: absolute;
-        z-index: 0;
-    }
-    .um-activity-comment-avatar.hidden-0 {
-        margin-left: 5px !important;
-        position: absolute !important;
-        top: -3px;
-    }
-    .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img  {
-        width: 100%;
-        height: 100%;
-        top: 5px;
-        position: relative;
     }
     .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img .um-avatar-uploaded  {
         width: 100% !important;
@@ -3234,23 +3026,8 @@
         margin-top: 8px;
         padding-bottom: 2px !important;
     }
-    .um-activity-comment-child {
-        padding-left: 5px;
-    }
-    .um a.um-link {
-        color: #6583a8 !important;
-        text-transform: capitalize;
-    }
-    .um-activity-widget .um-activity-comments .um-activity-comment-text {
-        color: #fff !important;
-        font-size: 13px !important;
-        letter-spacing: 0.1px;
-    }
     .um-activity-ccommentload {
         padding-top: 10px;
-    }
-    .um-activity-commentl.is-child .um-activity-comment-hidden {
-        padding-top: 7px;
     }
     .um-activity-comment-textarea .ui-autocomplete-input .ui-autocomplete-loading {
         height: auto !important;
@@ -3276,10 +3053,6 @@
         overflow: hidden;
         padding-bottom: 8px; 
         /* padding: 10px 15px 15px 15px; */
-    }
-    .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
-        background: #11273e;
-        border: 1px solid #1e3554 !important;
     }
     ul.main-drop > ul {
         font-size: 13px !important;
@@ -3396,22 +3169,7 @@
         background: #123;
         cursor: pointer;
     }
-    .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area {
-        position: relative;
-        padding: 0 0 10px;
-    }
-    hr.style20 {
-        position: relative;
-        top: 0px;
-        margin-top: 0rem !important;
-        margin-left: -15px;
-        border: 0;
-        height: 1px;
-        width: 107%;
-        background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-        margin-bottom: -1px !important;
-        display: flex;
-    }
+    
     .um-activity-confirm {
         color: #fff;
         background: #142c46;
@@ -3510,9 +3268,6 @@
         border-radius: 6px 6px 0px 0px;
         width: 365px;
     }
-    div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:focus {
-        border-color: #1e3554 !important;
-    }
     .um-activity-bodyinner-txt span.post-meta {
         border: none; 
         box-shadow: none; 
@@ -3596,12 +3351,6 @@
     .to-top-create {
         float: right;
         color: #6583a8;
-    }
-    .um-activity-comments-loop {
-        padding-top: 0px;
-    }
-    .um-activity-comments {
-        padding: 9px 15px 0 15px !important;
     }
     .um-activity-commentwrap {
         padding-top: 13px;

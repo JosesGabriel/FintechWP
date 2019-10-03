@@ -25,7 +25,6 @@ License: GNU General Public License v2 or later
     /* padding-top: 4%; para asa ni? gi-comment ni para ma fix padding top sa social. if kailangan jud ni, use different class  */
 }
 .header-dashboard-inner {
-    color: #fff;
     padding: 8px 0 0;
 }
 .header-dashboard-inner > div {
@@ -114,13 +113,6 @@ License: GNU General Public License v2 or later
     background: #3a5168;
     padding: 10px 20px;
 }
-.um-activity-comments {
-    background: #fafafa;
-    border: 1px solid #e5e5e5;
-    border-top-color: #f3f3f3;
-    border-bottom: 0;
-    border-radius: 0 0 6px 6px;
-}
 .um-activity-widget{
     box-shadow: none !important;
 }
@@ -147,25 +139,6 @@ License: GNU General Public License v2 or later
 }
 .um-activity-widget .um-activity-disp {
     display: none;
-}
-.um-activity-widget .um-activity-comments .um-activity-comment-avatar img {
-    border-radius: 50px;
-}
-.ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
-    background: #2b405b;
-    color: #fff;
-    border: 0 none !important;
-}
-.um-activity-widget .um-activity-comments .um-activity-comments-loop .um-activity-comment-child {
-    margin-left: 40px;
-}
-.um-activity-widget .um-activity-comments .um-activity-comment-author-link a
-{
-    font-size: 13px !important
-}
-.um-activity-widget .um-activity-comments .um-activity-comment-text {
-    color: #fff !important;
-    font-size: 13px !important
 }
 label.screen-reader-text {
     display: none;
@@ -371,7 +344,7 @@ ul.main-drop > ul li.onto-last-element {
     border-top: 1px solid #475c71;
 }
 body header#main-header {
-    background: #213f58 !important;
+    background: #213f58;
     position: fixed;
     width: 100%;
     z-index: 99999
@@ -858,23 +831,6 @@ body .um-notification-b.right {
     top: 110px !important;
     bottom: initial !important;
 }
-.add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area {
-    position: relative;
-    padding: 0 0 10px;
-}
-.add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-avatar {
-    left: 5px;
-    top: 5px;
-}
-.add-post .um-activity-widget .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-box textarea {
-    padding-left: 45px !important;
-    border-radius: 20px;
-    min-height: 40px !important;
-    box-sizing: border-box;
-    padding-top: 11px !important;
-     height: 41px;
-    /*line-height: 33px !important;*/
-}
 
 .oncommonsidebar .center-dashboard-part {
     width: 80%;
@@ -1117,9 +1073,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
 }
-.um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-right {
-    display: none;
-}
+
 .closehideme {
     display: none;
     position: absolute;
@@ -2043,34 +1997,6 @@ body .iflychat-popup {
 .um-activity-widget {
     margin-top: 11px;
     box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;
-}
-hr.style14 {
-    border: 0;
-    height: 1px;
-    width: 98%;
-    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-}
-hr.style13 {
-    border: 0;
-    height: 1px;
-    width: 98%;
-    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-bottom: 0 !important;
-    margin-top: 0 !important;
-}
-hr.style12 {
-    border: 0;
-    height: 1px;
-    width: 98%;
-    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-top: .4rem !important;
-}
-hr.style11 {
-    border: 0;
-    height: 1px;
-    width: 95%;
-    background-image: -webkit-linear-gradient(left, #1e3554, #1e3554, #1e3554);
-    margin-top: .4rem !important;
 }
 .top-stocks .to-content-part {
 }

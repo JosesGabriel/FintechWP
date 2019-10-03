@@ -70,11 +70,6 @@ div.uimob800 .um-account-side li a.current:hover
 .um a.um-button.um-disabled:active {
     background: #3ba1da;
 }
-
-.um a.um-link {
-    color: #3ba1da;
-}
-
 .um input[type=submit].um-button:hover,
 .um a.um-button:hover {
     background-color: #44b0ec;
@@ -124,18 +119,8 @@ div.uimob800 .um-account-side li a.current:hover
 .um .um-form input[type=tel]:focus,
 .um .um-form input[type=number]:focus,
 .um .um-form input[type=password]:focus,
-.um .um-form .um-datepicker.picker__input.picker__input--active,
-.um .um-form .um-datepicker.picker__input.picker__input--target,
 .um .um-form textarea:focus {
-    border: 2px solid #bbb !important;
-}
-
-.um .um-form input[type=text]:focus,
-.um .um-form input[type=tel]:focus,
-.um .um-form input[type=number]:focus,
-.um .um-form input[type=password]:focus,
-.um .um-form textarea:focus {
-    background-color: #ffffff;
+    background-color: #142c46;
 }
 
 .um .um-form input[type=text],

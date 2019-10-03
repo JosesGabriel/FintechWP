@@ -31,6 +31,27 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'getliveportfolio'),
             ]
         ]);
+
+        register_rest_route($base_route, 'portfoliosnap', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getportfoliosnap'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'tradelogs', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'gettradelogs'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'ledger', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getledger'),
+            ]
+        ]);
     }
 
     // generic information
@@ -95,7 +116,7 @@ class JournalAPI extends WP_REST_Controller
         $data = $request->get_params();
 
         $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+	    curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -111,18 +132,12 @@ class JournalAPI extends WP_REST_Controller
             $trdata = unserialize($value->meta_value);
             $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
             $stockdetails = $gerdqoute->data[$key];
-            $value->tradedetails = $trdata;
-            $value->stockdata = $stockdetails;
-            
 
             // get marketvals
             $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
             $marketprofit = $stockdetails->last * $trdata['totalstock'];
             $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
-
             $profit = $marketcost - $totalcost;
-
-
 
             $dlivetrade = [];
             $dlivetrade['stock'] = $dstock;
@@ -140,14 +155,70 @@ class JournalAPI extends WP_REST_Controller
             $dlivetrade['tradingnotes'] = $trdata['data'][0]['tradingnotes'];
             $dlivetrade['boardlot'] = $trdata['data'][0]['boardlot'];
             $dlivetrade['outcome'] = ($profit > 0 ? "Winning" : "Loosing");
-
-
             array_push($finallive, $dlivetrade);
         }
 
         return $this->respond(true, ['data' => $finallive], 200);
     }
 
+    public function getportfoliosnap($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+
+        
+        return $this->respond(true, ['test'], 200);
+    }
+
+    public function gettradelogs($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        $finaltrade = [];
+        $totalprofit = 0;
+        foreach ($ismytrades as $key => $value) {
+            $buytotal = $value->tlvolume * $value->tlaverageprice;
+            $selltotal = $value->tlvolume * $value->tlsellprice;
+            $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
+            $profit = $sellnet - $buytotal;
+            $value->buyvalue = $buytotal;
+            $value->sellvalue = $sellnet;
+            $value->profit = $profit;
+            $value->perc = ($profit / $buytotal) * 100;
+            $value->outcome = ($profit > 0 ? 'Winning' : 'Lossing');
+            $totalprofit += $profit;
+            array_push($finaltrade, $value);
+        }
+        return $this->respond(true, ['data' => $finaltrade, 'totalprofit' => $totalprofit], 200);
+    }
+
+    public function getledger($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $totaldebit = 0;
+        $totalcredit = 0;
+        $ledger = [];
+        $dledger = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' and trantype in ("deposit", "withraw", "dividend") order by ledid');
+        $ending = 0;
+        foreach ($dledger as $key => $value) {
+            if($value->trantype == "deposit" || $value->trantype == "dividend"){
+                $totalcredit += $value->tranamount;
+                $ending += $value->tranamount;
+            } else {
+                $totaldebit += $value->tranamount;
+                $ending -= $value->tranamount;
+            }
+            $value->ending = $ending;
+            $value->nicedate = date("F d, Y", strtotime($value->date));
+            $value->showtext = ($value->trantype == 'deposit' ? 'Deposit Funds' : ($value->trantype == 'withraw' ?  "Withdrawal" : "Dividend Income"));
+            array_push($ledger, $value);
+        }
+        return $this->respond(true, ['data' => $ledger, 'debit' => $totaldebit, 'creadit' => $totalcredit], 200);
+    }
 
 
 }

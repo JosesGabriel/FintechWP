@@ -567,21 +567,11 @@ div.um-activity {
 	margin: 4px 2px 0 2px !important;
 }
 
-.um-activity-comments {
-	background: #fafafa;
-	border: 1px solid #e5e5e5;
-	border-top-color: #f3f3f3;
-	border-bottom: 0;
-	border-radius: 0 0 3px 3px;
-	padding: 4px 15px 0 15px;
-}
-
 .um-activity-commentwrap {
 	padding-bottom: 1px !important;
 }
 
 .um-activity-comment-child {
-	border-left: 2px solid #e5e5e5;
 	margin-top: -6px;
 	margin-bottom: 12px;
 	margin-left: 28px;
@@ -650,15 +640,9 @@ div.um-activity {
 }
 
 div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
-	border: 1px solid #eee !important;
-	padding: 4px 6px !important;
 	font-size: 13px !important;
 	resize: none;
 	line-height: 16px !important;
-}
-
-div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:focus {
-	border-color: #ddd !important;
 }
 
 .um-activity-comment-info {
@@ -699,10 +683,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 
 .um-activity-comment-meta {color: #aaa;margin: 4px 0 0 0;line-height: 15px}
 .um-activity-comment-meta a {border: none !important}
-.um-activity-comment-meta a.um-activity-comment-permalink {
-	color: #aaa !important;
-	text-decoration: none;
-}
+
 .um-activity-comment-meta a.um-activity-comment-permalink:hover {text-decoration: underline !important}
 .um-activity-comment-meta ins {text-decoration: none !important}
 .um-activity-comment-meta span:after {

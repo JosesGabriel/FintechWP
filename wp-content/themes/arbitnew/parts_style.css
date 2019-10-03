@@ -113,7 +113,6 @@
 /* EOF Trending Stocks */
 
 /* BOF footer styles */
-html {margin-top: 0 !important;}
 #wpadminbar {display:none !important;}
 body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #main-header, body.admin-bar.et_non_fixed_nav.et_transparent_nav #top-header {top: 0 !important;}
 .et_fixed_nav.et_show_nav #page-container, .et_non_fixed_nav.et_transparent_nav.et_show_nav #page-container {padding-top: 54px;}

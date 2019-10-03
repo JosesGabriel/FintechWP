@@ -12,6 +12,7 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
+
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
@@ -138,66 +139,16 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                     <div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
                                                                 </div>
                                                             </li>
-                                                            <?php foreach ($havemeta as $key => $value) { ?>
+                                                            <?php foreach ($havemeta as $key => $value) { 
+
+                                                                //echo $value['stockname'];
+                                                                ?>
+
                                                                 <?php
                                                                     // get current price and increase/decrease percentage
-                                                                    $curl = curl_init();
-                                                                    //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
-
-                                                                    //
-
-                                                                    
-                                                                    curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-
-                                                                    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                                                                    $dwatchinfo = curl_exec($curl);
-                                                                    curl_close($curl);
-                                                                    // adding static json list of stocks
-                                                                    //$staticstock = '["2GO","8990P","AAA","AB","ABA","ABC","ABG","ABS","ABSP","AC","ACE","ACPA","ACPB1","ACPB2","ACR","AEV","AGI","ALCO","ALCPB","ALHI","ALI","ALL","ANI","ANS","AP","APC","APL","APO","APX","AR","ARA","AT","ATI","ATN","ATNB","AUB","BC","BCB","BCOR","BCP","BDO","BEL","BH","BHI","BKR","BLFI","BLOOM","BMM","BPI","BRN","BSC","CA","CAB","CAT","CDC","CEB","CEI","CEU","CHI","CHIB","CHP","CIC","CIP","CLC","CLI","CNPF","COAL","COL","COSCO","CPG","CPM","CPV","CPVB","CROWN","CSB","CYBR","DAVIN","DD","DDPR","DELM","DFNN","DIZ","DMC","DMCP","DMPA1","DMPA2","DMW","DNA","DNL","DTEL","DWC","EAGLE","ECP","EDC","EEI","EG","EIBA","EIBB","ELI","EMP","EURO","EVER","EW","FAF","FB","FBP","FBP2","FDC","FERRO","FEU","FFI","FGEN","FGENF","FGENG","FIN","FJP","FJPB","FLI","FMETF","FNI","FOOD","FPH","FPHP","FPHPC","FPI","FYN","FYNB","GEO","GERI","GLO","GLOPA","GLOPP","GMA7","GMAP","GPH","GREEN","GSMI","GTCAP","GTPPA","GTPPB","H2O","HDG","HI","HLCM","HOUSE","HVN","I","ICT","IDC","IMI","IMP","IND","ION","IPM","IPO","IRC","IS","ISM","JAS","JFC","JGS","JOH","KEP","KPH","KPHB","LAND","LBC","LC","LCB","LFM","LIHC","LMG","LOTO","LPZ","LR","LRP","LRW","LSC","LTG","M-O","MA","MAB","MAC","MACAY","MAH","MAHB","MARC","MAXS","MB","MBC","MBT","MED","MEG","MER","MFC","MFIN","MG","MGH","MHC","MJC","MJIC","MPI","MRC","MRP","MRSGI","MVC","MWC","MWIDE","MWP","NI","NIKL","NOW","NRCP","NXGEN","OM","OPM","OPMB","ORE","OV","PA","PAL","PAX","PBB","PBC","PCOR","PCP","PERC","PGOLD","PHA","PHC","PHEN","PHES","PHN","PIP","PIZZA","PLC","PMPC","PMT","PNB","PNC","PNX","PNX3A","PNX3B","PNXP","POPI","PORT","PPC","PPG","PRC","PRF2A","PRF2B","PRIM","PRMX","PRO","PSB","PSE","PSEI","PTC","PTT","PX","PXP","RCB","RCI","REG","RFM","RLC","RLT","ROCK","ROX","RRHI","RWM","SBS","SCC","SECB","SEVN","SFI","SFIP","SGI","SGP","SHLPH","SHNG","SLF","SLI","SM","SMC","SMC2A","SMC2B","SMC2C","SMC2D","SMC2E","SMC2F","SMC2G","SMC2H","SMC2I","SMCP1","SMPH","SOC","SPC","SPM","SRDC","SSI","SSP","STI","STN","STR","SUN","SVC","T","TBGI","TECB2","TECH","TEL","TFC","TFHI","TLII","TLJJ","TUGS","UBP","UNI","UPM","URC","V","VITA","VLL","VMC","VUL","VVT","WEB","WIN","WLCON","WPI","X","ZHI"]';
-                                                                    $dstockinfo = json_decode($dwatchinfo);
-                                                                    $dinstall = get_object_vars($dstockinfo);
-
-                                                                    // get stcok history
-                                                                        $curl = curl_init();
-                                                                        curl_setopt($curl, CURLOPT_URL, 'http://pseapi.com/api/Stock/'.$value['stockname'].'/');
-
-                                                                         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-
-                                                                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                                                                        $dwatchhisto = curl_exec($curl);
-                                                                        curl_close($curl);
-
-                                                                        $ddata = json_decode($dwatchhisto);
-                                                                        
-                                                                        if (!is_array($ddata)) continue;
-
-                                                                        $ddata = array_reverse($ddata, true);
-
-                                                                        $dlisttrue = [];
-                                                                        $count = 0;
-                                                                        foreach ($ddata as $xbkey => $xbvalue) {
-                                                                            array_push($dlisttrue, $xbvalue);
-                                                                            if ($count == 10) {
-                                                                                break;
-                                                                            }
-                                                                            $count++;
-                                                                        }
-
-                                                                        $dstockinfo = [];
-                                                                        foreach (array_reverse($dlisttrue) as $stckkey => $stckvalue) {
-                                                                            $infodata = [];
-
-                                                                                array_push($infodata, $stckvalue->date);
-                                                                                array_push($infodata, $stckvalue->low);
-                                                                                array_push($infodata, $stckvalue->open);
-                                                                                array_push($infodata, $stckvalue->close);
-                                                                                array_push($infodata, $stckvalue->high);
-
-                                                                            array_push($dstockinfo, $infodata);
-                                                                        
-                                                                        }
-                                                                    if (is_object($dinstall['data'])):
+                                                     
+                                                                       
+                                                                    //if (is_object($dinstall['data'])):
                                                                 ?>
 
                                                                 <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
@@ -257,37 +208,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                         </div>
                                                                     </div>
                                                                     
-                                                                     <!--                       
-                                                                     <div class="dtockname">
-                                                                        <div class="stocknn"><?php echo $value['stockname']; ?></div>
-                                                                        <div class="subnotif">
-                                                                            <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                echo ",";
-                                                                            } ?>
-                                                                        </div>
-                                                                    </div>                                                          
-                                                                    <div class="dcontainer">
-                                                                        <div class="dchart">
-                                                                            <div class="chartjs">
-                                                                                <div id="chart_div_<?php //echo $value['stockname']; ?>" class="chart">
-                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="dpricechange">
-                                                                            <?php //if (strpos($dinstall['stock'][0]->percent_change, '-') !== false): ?>
-                                                                                <div class="curchange onred"><?php //echo $dinstall['stock'][0]->percent_change; ?>%</div>
-                                                                            <?php// else: ?>
-                                                                                <div class="curchange ongreen">+<?php //echo $dinstall['stock'][0]->percent_change; ?>%</div>
-                                                                            <?php// endif; ?>
-                                                                            <div class="curprice">&#8369;<?php //echo $dinstall['stock'][0]->price->amount; ?></div>
-                                                                        </div>
-                                                                        <br style="clear:both;">
-                                                                    </div> -->
-
-
-                                                              
-
 
 
                                                                     <div class="dparams">
@@ -368,72 +288,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                                                                   <!-- <div class="col-md-6">
-                                                                                                        <div class="condition-params">
-                                                                                                            <div class="condition-type">
-                                                                                                                
-                                                                                                                <select id="condition-list">
-                                                                                                                    <option value="">Select Conditions</option>
-                                                                                                                    <option style="<?php //echo ($value['dcondition_entry_price'] == 'entry_price' ? 'display: none;' : ''); ?>" value="entry_price">Entry Price</option>
-                                                                                                                    <option style="<?php //echo ($value['dcondition_take_profit_point'] == 'take_profit_point' ? 'display: none;' : ''); ?>" value="take_profit_point">Take Profit Point</option>
-                                                                                                                    <option style="<?php// echo ($value['dcondition_stop_loss_point'] == 'stop_loss_point' ? 'display: none;' : ''); ?>" value="stop_loss_point">Stop Loss Point</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                            <div class="condition-freq">
-                                                                                                             
-                                                                                                                <input type="number" id="condition_frequency" name="confreq" placeholder="Enter Amount">
-                                                                                                            </div>
-                                                                                                            <div class="addtolist">
-                                                                                                                <button class="add-params arbitrage-button arbitrage-button--primary">Add Parameters</button>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>-->
-                                                                                                    <!--<div class="col-md-6">
-                                                                                                        <div class="dpaste">
-                                                                                                            <ul class="listofinfo">
-                                                                                                                <?php // if (isset($value['dcondition_entry_price'])): ?>
-                                                                                                                    <li class="dbaseitem">
-                                                                                                                        <div class="dinfodata">
-                                                                                                                            <div class="dcondition"><?php //echo $value['dcondition_entry_price']; ?></div>
-                                                                                                                            <div class="dfreq"><?php //echo $value['dconnumber_entry_price']; ?></div>
-                                                                                                                        </div>
-                                                                                                                        <div class="closetab">
-                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="<?php //echo $value['dcondition_entry_price']; ?>">
-                                                                                                                            <input type="hidden" id="" name="dconnumber_entry_price" value="<?php //echo $value['dconnumber_entry_price']; ?>">
-                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-                                                                                                                        </div>
-                                                                                                                    </li>
-                                                                                                                <?php //endif ?>
-                                                                                                                <?php //if (isset($value['dcondition_take_profit_point'])): ?>
-                                                                                                                    <li class="dbaseitem">
-                                                                                                                        <div class="dinfodata">
-                                                                                                                            <div class="dcondition"><?php //echo $value['dcondition_take_profit_point']; ?></div>
-                                                                                                                            <div class="dfreq"><?php //echo $value['dconnumber_take_profit_point']; ?></div>
-                                                                                                                        </div>
-                                                                                                                        <div class="closetab">
-                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_take_profit_point" value="<?php //echo $value['dcondition_take_profit_point']; ?>">
-                                                                                                                            <input type="hidden" id="" name="dconnumber_take_profit_point" value="<?php //echo $value['dconnumber_take_profit_point']; ?>">
-                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-                                                                                                                        </div>
-                                                                                                                    </li>
-                                                                                                                <?php //endif ?>
-                                                                                                                <?php //if (isset($value['dcondition_stop_loss_point'])): ?>
-                                                                                                                    <li class="dbaseitem">
-                                                                                                                        <div class="dinfodata">
-                                                                                                                            <div class="dcondition"><?php// echo $value['dcondition_stop_loss_point']; ?></div>
-                                                                                                                            <div class="dfreq"><?php //echo $value['dconnumber_stop_loss_point']; ?></div>
-                                                                                                                        </div>
-                                                                                                                        <div class="closetab">
-                                                                                                                            <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="<?php// echo $value['dcondition_stop_loss_point']; ?>">
-                                                                                                                            <input type="hidden" id="" name="dconnumber_stop_loss_point" value="<?php //echo $value['dconnumber_stop_loss_point']; ?>">
-                                                                                                                            <button class="closemebutton"><i class="fa fa-minus-circle"></i></button>
-                                                                                                                        </div>
-                                                                                                                    </li>
-                                                                                                                <?php// endif ?>
-                                                                                                                
-                                                                                                            </ul>
-                                                                                                        </div>
-                                                                                                    </div>-->
+                                                                                                 
                                                                                                     <div class="col-md-12">
                                                                                                         <div class="submitform" style="margin-left: 84px;">
                                                                                                             <img class="chart-preloader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
@@ -458,7 +313,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                       </div>
                                                                     </div>
                                                                 </li>
-                                                            <?php endif; } ?>
+                                                            <?php //endif; 
+                                                                            } ?>
                                                         </ul>
                                                     <?php else: ?>
                                                         <ul>

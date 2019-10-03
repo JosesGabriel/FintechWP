@@ -46,7 +46,6 @@
 						<li><a href="#">Buy/Sell Calculator</a></li>
 						<li><a href="#">VAR Calculator</a></li>
 						<li><a href="#">Average Price Calculator</a></li>
-						<li><a href="/multicharts/">Multichart</a></li>
 				</ul>
 			</ul>
 			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>

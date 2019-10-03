@@ -36,7 +36,10 @@ if (isset($_POST) && !empty($_POST)) {
                 array_push($havemeta, $_POST);
                 //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
                 //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                $insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
+                //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
+
+                $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
+
                 $wpdb->query($insertmeta);
                 wp_redirect( '/watchlist' );
                 exit;

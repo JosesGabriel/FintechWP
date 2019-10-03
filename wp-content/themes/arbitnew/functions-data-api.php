@@ -132,7 +132,7 @@ class DataAPI extends WP_REST_Controller
         $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
 
         //verify if user is logged in
-        if (!isUserLoggedIn) { 
+        if (!$isUserLoggedIn) { 
             return $this->respond(false, [
                 'message' => 'Unauthorized access.',
                 'parameters' => $data,

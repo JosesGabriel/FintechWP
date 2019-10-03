@@ -122,10 +122,10 @@ class JournalAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $gerdqouteone = curl_exec($curl);
         curl_close($curl);
-
+        
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
-
+        // var_dump($gerdqouteone);
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
             $dstock = str_replace('_trade_','',$value->meta_key);

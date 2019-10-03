@@ -61,7 +61,7 @@ if (isset($_POST) && !empty($_POST)) {
                 // ... and so on
            // ));
 
-     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','asdasd')";
+     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
 
         //$wpdb->query($insertmeta);
 

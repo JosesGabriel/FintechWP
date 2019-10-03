@@ -55,8 +55,8 @@ if (isset($_POST) && !empty($_POST)) {
     echo $havemeta;
 
   $wpdb->insert('arby_usermeta', array(
-             'user_id' => 123,
-             'metakey' => '_watchlist_instrumental',
+             'user_id' => $userID,
+             'meta_key' => '_watchlist_instrumental',
              'meta_value' => 'asdadadad',
                 // ... and so on
       ));

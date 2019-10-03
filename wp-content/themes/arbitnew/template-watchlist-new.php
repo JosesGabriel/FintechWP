@@ -54,7 +54,7 @@ if (isset($_POST) && !empty($_POST)) {
 
     echo $havemeta;
 
-  $wpdb->insert('arby_usermeta', array(
+  $success = $wpdb->insert('arby_usermeta', array(
              'user_id' => $userID,
              'meta_key' => '_watchlist_instrumental',
              'meta_value' => 'asdadadad',
@@ -65,11 +65,11 @@ if (isset($_POST) && !empty($_POST)) {
 
        // $wpdb->query($insertmeta);
 
-   // if($success){
-      //  echo "insert success...";
-    // }else {
-     //   echo "unable to insert";
-    // }
+        if($success){
+           echo "insert success...";
+        }else {
+            echo "unable to insert";
+         }
 
         //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
         //exit;

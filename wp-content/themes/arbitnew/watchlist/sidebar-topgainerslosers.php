@@ -14,7 +14,7 @@
 });
 
 
-    jQuery(document).ready( function() {
+  /*  jQuery(document).ready( function() {
         $.ajax({
               type:'GET',
               url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
@@ -100,7 +100,7 @@
                 }
             });
      });
-
+        */
 </script>
     
     <div class="top-stocks">

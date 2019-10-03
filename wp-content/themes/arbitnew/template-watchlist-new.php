@@ -15,19 +15,7 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 //if (isset($_POST) && !empty($_POST)) {
 
-if(isset($_POST['submit'])){
 
-    $query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
-    print_r($query);
-//$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
-
-//foreach ($select as $key => $value) {
-      //   echo $value['stockname'];
-   //     }
-
-
-   
-}
 
 ?>
 
@@ -376,8 +364,8 @@ if(isset($_POST['submit'])){
                                                         <div class="selectnotifitems">
                                                                 <div class="innerdeliver innerdeliver-addstock">
                                                                     <ul>
-                                                                        <li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
-                                                                        <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+                                                                        <li><input type="checkbox" name="delivery_type_webpopup" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
+                                                                        <li><input type="checkbox" name="delivery_type_sms" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
                                                                     </ul>
                                                                 </div>
                                                         </div>
@@ -392,13 +380,49 @@ if(isset($_POST['submit'])){
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
-                                                                        <button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>
+                                                                        <!--<button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>-->
+                                                                        <input class="arbitrage-button arbitrage-button--primary" name="submit" type="submit" value="Submit" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </form>
+                                                <?php
+
+                                                if(isset($_POST['submit'])){
+
+                                                    $stockname = $_POST['stockname'];
+                                                    $entry_price = $_POST['dconnumber_entry_price'];
+                                                    $take_profit_point = $_POST['dconnumber_take_profit_point'];
+                                                    $stop_loss_point = $_POST['dconnumber_stop_loss_point'];
+                                                    $webpopup = 'web-notif';
+                                                    $smspopup = $_POST['delivery_type_sms'];
+
+                                                
+                                                   //$newarray = array(
+                                                   // 'stockname' => $stockname, 
+                                                   // 'dconnumber_entry_price' => $entry_price, 
+                                                   // 'dconnumber_take_profit_point'=> $take_profit_point, 
+                                                  //  'dconnumber_stop_loss_point' => $stop_loss_point, 
+                                                   // 'delivery_type_webpopup' => $webpopup, 
+                                                   // 'delivery_type_sms' => $smspopup 
+                                                   // );
+
+                                                   $newarray = $stockname . '|' . $entry_price . '|'. $take_profit_point . '|' . $stop_loss_point . '|'. $webpopup . '|' . $smspopup;
+                                                    if($stockname != '' && $stockname != null ) {
+                                                        $wpdb->insert('arby_usermeta', array(
+                                                        'user_id' => $userID,
+                                                        'meta_key' => '_watchlist_instrumental',
+                                                        'meta_value' => $newarray, // ... and so on
+                                                        ));
+                                                    }
+
+                                                   
+                                                }
+
+                                                ?>
+
                                             </div>
 
 

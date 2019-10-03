@@ -122,10 +122,10 @@ class JournalAPI extends WP_REST_Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $gerdqouteone = curl_exec($curl);
         curl_close($curl);
-
+        
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
-
+        var_dump($gerdqouteone);
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
             $dstock = str_replace('_trade_','',$value->meta_key);
@@ -189,13 +189,36 @@ class JournalAPI extends WP_REST_Controller
             $value->profit = $profit;
             $value->perc = ($profit / $buytotal) * 100;
             $value->outcome = ($profit > 0 ? 'Winning' : 'Lossing');
-
             $totalprofit += $profit;
             array_push($finaltrade, $value);
         }
         return $this->respond(true, ['data' => $finaltrade, 'totalprofit' => $totalprofit], 200);
     }
 
+    public function getledger($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $totaldebit = 0;
+        $totalcredit = 0;
+        $ledger = [];
+        $dledger = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' and trantype in ("deposit", "withraw", "dividend") order by ledid');
+        $ending = 0;
+        foreach ($dledger as $key => $value) {
+            if($value->trantype == "deposit" || $value->trantype == "dividend"){
+                $totalcredit += $value->tranamount;
+                $ending += $value->tranamount;
+            } else {
+                $totaldebit += $value->tranamount;
+                $ending -= $value->tranamount;
+            }
+            $value->ending = $ending;
+            $value->nicedate = date("F d, Y", strtotime($value->date));
+            $value->showtext = ($value->trantype == 'deposit' ? 'Deposit Funds' : ($value->trantype == 'withraw' ?  "Withdrawal" : "Dividend Income"));
+            array_push($ledger, $value);
+        }
+        return $this->respond(true, ['data' => $ledger, 'debit' => $totaldebit, 'creadit' => $totalcredit], 200);
+    }
 
 
 }

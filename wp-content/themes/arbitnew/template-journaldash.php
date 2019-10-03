@@ -381,15 +381,20 @@ require("parts/global-header.php");
     $getdstocks = get_user_meta($user->ID, '_trade_list', true);
 
     $curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+	curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
 	
 	curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    $gerdqouteone = curl_exec($curl);
+	$gerdqouteone = curl_exec($curl);
+	
+	var_dump(curl_error($curl));
+
     curl_close($curl);
 
     $gerdqoute = json_decode($gerdqouteone);
-    // $gerdqoute = [];
+	// $gerdqoute = [];
+	
+	// print_r($gerdqouteone);
 ?>
 <!-- BOF get the tradelogs -->
 <?php
@@ -1101,7 +1106,7 @@ if($issampledata){
 						                        <ul class="nav panel-tabs">
 						                            <li class="<?php echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'; ?>"><a href="#tab1" data-toggle="tab" class="<?php echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active show'; ?>">Dashboard</a></li>
 						                            <li class="<?php echo isset($_GET['pt']) ? 'active' : ''; ?>"><a href="#tab2" data-toggle="tab" class="<?php echo isset($_GET['pt']) ? 'active show' : ''; ?> opentradelogtab">Tradelogs</a></li>
-						                            <li class="<?php echo isset($_GET['ld']) ? 'active' : ''; ?>"><a href="#tab3" data-toggle="tab" class="<?php echo isset($_GET['ld']) ? 'active show' : ''; ?>">Ledger</a></li>
+						                            <li class="<?php echo isset($_GET['ld']) ? 'active' : ''; ?>"><a href="#tab3" data-toggle="tab" class="<?php echo isset($_GET['ld']) ? 'active show' : ''; ?> openledger">Ledger</a></li>
 						                            <!-- <li class=""><a href="#tab4" data-toggle="tab" class="">Calendar</a></li> -->
 						                        </ul>
 						                    </span>
@@ -1170,247 +1175,8 @@ if($issampledata){
 						                        <div class="tab-pane <?php echo isset($_GET['pt']) ? 'active show' : ''; ?> testss" id="tab2">
 													<?php require "journal/tradelogs.php";?>
 						                        </div>
-												<style type="text/css">
-													.swal-overlay--show-modal {
-														z-index: 99999999;
-													}
-													.sss {
-														padding-right: 14px !important;
-													}
-													.sss::placeholder {
-														color: #ffffff;
-														font-size: 13px;
-													}
-													.dnlabel {
-														font-size: 15px;
-														padding-left: 11px;
-														margin-bottom: 2px;
-														font-weight: 400;
-														font-family: 'Roboto', sans-serif;
-													}
-													.depo-body {
-														position: relative;
-														padding: 5px 10px;
-													}
-													.active-funds {
-														display: block !important;
-													}
-													.button-funds {
-														padding: 7px 10px 2px 10px;
-														display: block;
-													}
-													/*.dropopen {
-														display: block;
-													}*/
-												</style>
-												<script type="text/javascript">
-						                        	jQuery(document).ready(function(){
-														jQuery('.add-funds-show').show();
-														jQuery('.add-funds-shows').hide();
-														var x = 0;
-														var y = 0;
-
-														jQuery(".show-button2").click(function(e){
-															e.preventDefault();
-															jQuery('.add-funds-shows').hide();
-															jQuery('.add-funds-show').show();
-														});
-														jQuery(".show-button1").click(function(e){
-															e.preventDefault();
-															jQuery('.add-funds-show').hide();
-															jQuery('.add-funds-shows').show();
-														});
-														// jQuery('td[name=tcol1]')
-														jQuery('.textfield-buyprice').keyup(function(){
-															
-															var inputVal = jQuery(this).val().length;													
-															if(inputVal != 0){
-																$('.confirmtrd').prop('disabled', false);
-																 x = 1;
-
-															}else{
-																$('.confirmtrd').prop('disabled', true);
-															}
-														});
-
-														jQuery('.textfield-quantity').keyup(function(){
-															var inputVal2 = jQuery(this).val().length;
-															if(inputVal2 != 0){
-																y = 1;
-															}
-														});
-
-														$(".confirmtrd").click(function(e){
-
-															console.log('==>');
-    														//if(x == 1 && y == 1) {
-    															$('.chart-loader').css("display","block");
-    															$(this).hide();
-    														//}
-															
-														});
-
-													});
-						                        </script>
 						                        <div class="tab-pane <?php echo isset($_GET['ld']) ? 'active show' : ''; ?>" id="tab3">
-
-						                        	<div class="ledgerbox">
-                                                        <div class="box-portlet">
-
-                                                            <div class="box-portlet-header">
-                                                                Ledger
-																<div class="headright" style="display:none;">
-																	<form action="" method="get" id="ldchangenum">
-																		<input type="number" id="ldnum" name="ldnum">
-																		<input type="hidden" name="ld" value="1">
-																		<a href="#" class="lddmoveto">Go</a>
-																	</form>
-																</div>
-                                                                	<!-- Add funds -->
-                                                            </div>
-                                                            	<?php
-                                                                    function date_sort($a, $b)
-                                                                    {
-                                                                        return strtotime($a->date) - strtotime($b->date);
-                                                                    }
-                                                                    usort($dledger, 'date_sort');
-
-                                                                    // insert month-year value
-                                                                    foreach ($dledger as $addmykey => $addmyvalue) {
-                                                                        $addmyvalue->ismonth = date('F Y', strtotime($addmyvalue->date));
-                                                                    }
-
-                                                                    // get all month-year
-                                                                    $dmonths = [];
-                                                                    foreach ($dledger as $getmonthskey => $getmonthsvalue) {
-                                                                        array_push($dmonths, $getmonthsvalue->ismonth);
-                                                                    }
-                                                                    $dmonths = array_unique($dmonths);
-
-                                                                    // filter info as per month-year
-                                                                    $dmonthdata = [];
-                                                                    $dending = 0;
-                                                                    foreach ($dmonths as $sepmonthkey => $sepmonthvalue) {
-                                                                        $dmoninner = [];
-                                                                        $dmoninner['ismonth'] = $sepmonthvalue;
-                                                                        $dmoninner['isdata'] = [];
-                                                                        $dmoninner['totalwith'] = 0;
-                                                                        $dmoninner['totaldepo'] = 0;
-                                                                        foreach ($dledger as $dmntskey => $dmntsvalue) {
-                                                                            if ($sepmonthvalue == $dmntsvalue->ismonth) {
-                                                                                array_push($dmoninner['isdata'], $dmntsvalue);
-                                                                                if ($dmntsvalue->trantype == 'deposit') {
-                                                                                    $dmoninner['totaldepo'] += $dmntsvalue->tranamount;
-                                                                                    $dending = $dending + $dmntsvalue->tranamount;
-                                                                                } elseif ($dmntsvalue->trantype == 'withraw') {
-                                                                                    $dmoninner['totalwith'] += $dmntsvalue->tranamount;
-                                                                                    $dending = $dending - $dmntsvalue->tranamount;
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                        $dmoninner['isenfing'] = $dending;
-                                                                        array_push($dmonthdata, $dmoninner);
-                                                                    }
-                                                                ?>
-                                                            <div class="box-portlet-content">
-                                                                <div class="stats-info">
-                                                                    <div class="dstatstrade overridewidth">
-                                                                        <ul>
-                                                                            <li class="headerpart">
-                                                                            	<div style="width:100%;">
-                                                                                    <div style="width:8%">Count</div>
-                                                                                    <div style="width:19%">Date</div>
-                                                                                    <div style="width:15%">Transaction</div>
-                                                                                    <div style="width:18%" class="to-left-align">Debit</div>
-                                                                                    <div style="width:19%" class="to-left-align">Credit</div>
-                                                                                    <div style="width:18%" class="to-left-align">Balance</div>
-                                                                                    <!-- <div style="width:19%">Deposits</div>
-                                                                                    <div style="width:19%">Ending Balance</div> -->
-                                                                                </div>
-                                                                            </li>
-																			
-                                                                            <?php
-                                                                                // $numofitems = (isset($_GET['ldnum']) && @$_GET['ldnum'] != "" ? 1 : $_GET['ldnum']);
-                                                                                $numofitems = 20;
-                                                                                $ldcount = 1;
-                                                                                $ldpages = 1;
-                                                                                $listledger = [];
-                                                                                foreach ($dmonthdata as $ldskey => $ldsvalue) {
-                                                                                    $listledger[$ldpages][$ldcount] = $ldsvalue;
-
-                                                                                    if ($ldcount == $numofitems) {
-                                                                                        $ldcount = 1;
-                                                                                        ++$ldpages;
-                                                                                    } else {
-                                                                                        ++$ldcount;
-                                                                                    }
-																				}
-
-																				$ledcount = 0;
-																				$ledbalance = 0;
-																				$totdebit = 0;
-																				$totcred = 0;
-																				foreach ($dledger as $key => $value) {
-																					if($value->trantype == "deposit" || $value->trantype == "withraw" || $value->trantype == "dividend"):
-																						$ledcount++;
-																					?>
-																					<li>
-																						<div style="width:99%;">
-																							<div style="width:7.9%"><?php echo $ledcount; ?></div>
-		                                                                                    <div style="width:19%"><?php echo date("F d, Y", strtotime($value->date)); ?></div>
-																							<div style="width:15%"><?php echo ($value->trantype == "deposit" ? "Deposit Funds" : ($value->trantype == "withraw" ? "Withdrawal" : "Dividend Income")); ?></div>
-																							<div style="width:18%" class="to-left-align">
-																								<?php if($value->trantype == "withraw"){
-																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
-																									$ledbalance = $ledbalance - $value->tranamount;
-																									$totdebit += $value->tranamount;
-																								} ?>
-																							</div>
-																							<div style="width:19%" class="to-left-align">
-																								<?php if($value->trantype == "deposit" || $value->trantype == "dividend"){
-																									echo "₱ ".number_format($value->tranamount, 2, '.', ',');
-																									$ledbalance = $ledbalance + $value->tranamount;
-																									$totcred += $value->tranamount;
-																								} ?>
-																							</div>
-		                                                                                    <div style="width:18%" class="to-left-align">₱<?php echo number_format($ledbalance, 2, '.', ',');  ?></div>
-		                                                                                </div>
-																					</li>
-																			<?php
-																					endif;
-																				}
-																			?>
-																			<li class="headerpart">
-                                                                            	<div style="width:100%;">
-                                                                                    <div style="width:8%">&nbsp;</div>
-                                                                                    <div style="width:19%">&nbsp;</div>
-                                                                                    <div style="width:15%">Total</div>
-                                                                                    <div style="width:18%" class="to-left-align"><?php echo "₱ ".number_format($totdebit, 2, '.', ','); ?></div>
-                                                                                    <div style="width:19%" class="to-left-align"><?php echo "₱ ".number_format($totcred, 2, '.', ','); ?></div>
-                                                                                    <div style="width:18%" class="to-left-align">&nbsp;</div>
-                                                                                    <!-- <div style="width:19%">Deposits</div>
-                                                                                    <div style="width:19%">Ending Balance</div> -->
-                                                                                </div>
-                                                                            </li>
-                                                                        </ul>
-                                                                    </div>
-																	<div class="dledgerpag">
-																		<div class="dledinner">
-																			<ul>
-																				<?php for ($i = 1; $i <= $ldpages; ++$i) {
-                                                                                    ?>
-																					<li><a href="/journal/?ld=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-																				<?php
-                                                                                } ?>
-																			</ul>
-																		</div>
-																	</div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Modal -->
-
-                                                        </div>
-                                                    </div>
+													<?php require "journal/ledger.php";?>
                                                 	<br class="clear">
 						                        </div>
 						                    </div>

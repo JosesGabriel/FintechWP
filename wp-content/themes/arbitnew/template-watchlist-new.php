@@ -3,8 +3,9 @@
 
 <?php
 
-global $current_user;
+global $current_user, $wpdb;
 $userID = $current_user->ID;
+
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
@@ -34,7 +35,11 @@ if (isset($_POST) && !empty($_POST)) {
             } else {
                 array_push($havemeta, $_POST);
                 //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                add_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
+                $insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
+                $wpdb->query($insertmeta);
+                wp_redirect( '/watchlist' );
+                exit;
             }
 
         } else {

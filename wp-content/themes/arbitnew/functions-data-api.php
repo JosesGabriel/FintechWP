@@ -8,7 +8,7 @@ class DataAPI extends WP_REST_Controller
     protected $version;
     protected $table_name;
     protected $client_secret;
-    protected $currentUser;
+    public $currentUser;
 
     public function __construct()
     {

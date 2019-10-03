@@ -13,9 +13,9 @@ $userID = $current_user->ID;
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
+//if (isset($_POST) && !empty($_POST)) {
 
-
-if (isset($_POST) && !empty($_POST)) {
+if(isset($_POST['submit'])){
 
 $query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
 print_r($query);
@@ -24,6 +24,7 @@ print_r($query);
 //foreach ($select as $key => $value) {
       //   echo $value['stockname'];
    //     }
+
 
    
 }
@@ -391,7 +392,7 @@ print_r($query);
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
-                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
+                                                                        <button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

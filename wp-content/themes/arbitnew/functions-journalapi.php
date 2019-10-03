@@ -115,6 +115,17 @@ class JournalAPI extends WP_REST_Controller
         global $wpdb;
         $data = $request->get_params();
 
+        $equity = 0;
+        $getequiry = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
+        foreach ($getequiry as $key => $value) {
+            if($value->trantype == 'withraw' || $value->trantype == 'purchase'){
+                $equity -= $value->tranamount;
+            }
+            if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){
+                $equity += $value->tranamount;
+            }
+        }
+
         $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
@@ -125,7 +136,7 @@ class JournalAPI extends WP_REST_Controller
         
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
-        var_dump($gerdqouteone);
+
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
             $dstock = str_replace('_trade_','',$value->meta_key);
@@ -138,7 +149,7 @@ class JournalAPI extends WP_REST_Controller
             $marketprofit = $stockdetails->last * $trdata['totalstock'];
             $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
             $profit = $marketcost - $totalcost;
-
+            $equity += $marketcost;
             $dlivetrade = [];
             $dlivetrade['stock'] = $dstock;
             $dlivetrade['position'] = $trdata['totalstock'];
@@ -158,7 +169,7 @@ class JournalAPI extends WP_REST_Controller
             array_push($finallive, $dlivetrade);
         }
 
-        return $this->respond(true, ['data' => $finallive], 200);
+        return $this->respond(true, ['data' => $finallive, 'equity' => $equity], 200);
     }
 
     public function getportfoliosnap($request)
@@ -166,9 +177,35 @@ class JournalAPI extends WP_REST_Controller
         global $wpdb;
         $data = $request->get_params();
 
+        $information = [];
+        $information['capital'] = 0;
+        $information['deposit'] = 0;
+        $information['withraw'] = 0;
+        $ismytrades = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
+        foreach ($ismytrades as $key => $value) {
+            if($key == 0){ $information['capital'] = $value->tranamount; }
+            if($value->trantype == 'deposit'){
+                $information['deposit'] += $value->tranamount;
+            }
+            if($value->trantype == 'withraw'){
+                $information['withraw'] += $value->tranamount;
+            }
+        }
+        $information['profit'] = 0;
+        $getprofits = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        foreach ($getprofits as $key => $value) {
+            $buytotal = $value->tlvolume * $value->tlaverageprice;
+            $selltotal = $value->tlvolume * $value->tlsellprice;
+            $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
+            $profit = $sellnet - $buytotal;
+            $information['profit'] += $profit;
+        }
+
+        $information['profperc'] = ($information['profit'] / $information['capital']) * 100;
+
 
         
-        return $this->respond(true, ['test'], 200);
+        return $this->respond(true, ['data' => $information], 200);
     }
 
     public function gettradelogs($request)

@@ -6,6 +6,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
+                $(".adddashequity").text("₱"+(data.equity).toFixed(2));
                 $.each(data.data, function(i, value){
                     let addliveme = '';
                     addliveme += '<li>';
@@ -106,6 +107,24 @@
         });
     }
 
+    var loadPortfolioSnapshot = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/portfoliosnap?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                $(".addcapital").text("₱"+(parseFloat(data.data.capital)).toFixed(2));
+                $(".addyearpl").text("₱"+(data.data.profit).toFixed(2));
+                $(".addyearplperc").text((data.data.profperc).toFixed(2));
+                $(".adddeposit").text("₱"+(data.data.deposit).toFixed(2));
+                $(".addwidthraw").text("₱"+(data.data.withraw).toFixed(2));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
+
     $( document ).ready(function() {
 
         // initialize fancy box
@@ -161,5 +180,6 @@
 
         // load 
         new loadLivePortfolio(<?php echo $user->ID; ?>);
+        new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
     });
 </script>

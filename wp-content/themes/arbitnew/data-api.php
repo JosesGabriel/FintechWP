@@ -3,7 +3,12 @@
 	* Template Name: Data API Page
 */
 
-//return user log in flag
-echo is_user_logged_in();
+header('Content-Type: application/json');
+
+$currentUser = wp_get_current_user();
+echo json_encode([
+	"is_user_login" => is_user_logged_in(),
+	"user_id" => $currentUser->ID,
+]);
 
 ?>

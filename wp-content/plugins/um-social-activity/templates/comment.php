@@ -136,11 +136,6 @@
 	</div>
 
 <style type="text/css">
-	.eyeyey {
-		font-size: 16px !important;
-	    color: #aaaaaa !important;
-	    padding: 4px 13px !important;
-	}
 	.um-icon-close-round {
 		display: none !important;
 	}

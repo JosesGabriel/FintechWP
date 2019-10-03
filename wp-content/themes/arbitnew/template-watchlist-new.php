@@ -93,7 +93,7 @@ echo $userID;
 
                                                                             <script>
 
-                                                                            $.ajax({
+                                                                           /* $.ajax({
                                                                                 url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='<?php echo $stockname; ?>'",
                                                                                 type: 'GET',
                                                                                 dataType: 'json', // added data type
@@ -107,7 +107,7 @@ echo $userID;
                                                                                 error: function (xhr, ajaxOptions, thrownError) {
                                                                                     
                                                                                 }
-                                                                            });
+                                                                            });*/
                                                                                 
                                                                             </script>
 

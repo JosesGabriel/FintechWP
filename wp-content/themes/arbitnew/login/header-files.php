@@ -1,9 +1,6 @@
 <?php
 global $current_user;
 $user = wp_get_current_user();
-	//elegant_description();
-	//elegant_keywords();
-	//elegant_canonical();
 
 	/**
 	 * Fires in the head, before {@see wp_head()} is called. This action can be used to
@@ -55,7 +52,7 @@ $user = wp_get_current_user();
 	</script>
 
 	<?php wp_head(); ?>
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login_style.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/login/login_style.css?<?php echo time(); ?>">
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -127,35 +124,25 @@ $user = wp_get_current_user();
 
 
 
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> 
 <script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
-<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script>
+<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script> -->
 <script type="text/javascript">  
     $('document').ready(function() {
-        'use strict';
-       
+ /*       'use strict';
         const timestamp = parseInt(Date.now()/1000);
-
     	$('.countdown').final_countdown({
             'start': 1565338684,
             'end': 1568595600,
             'now': timestamp     
-        });
+        }); */
     });
 </script>
-	
-	
-	
-
 <?php /* Global CSS Overrides  get_template_part('parts/global', 'css'); */ ?>
 <div id="preloader">
     <div id="status">&nbsp;</div>
     <div id="status_txt"></div>
-</div>
-
-	
-    <?php // get_template_part('parts/global', 'header'); ?>
-    
+</div>    
 	<?php
 		$main_header = ob_get_clean();
 

@@ -124,39 +124,17 @@ class DataAPI extends WP_REST_Controller
 
         return json_decode($result);
     }
-
-    protected function isUserLoggedIn(){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, '/data-api');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        return $result;
-        //result = 1 if logged in, otherwise 0
-        if (intval($result) == 0){
-            return false;
-        }
-
-        return true;
-    }
         
     public function getForwardedResponse($request)
     {
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, '/data-api');
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
-        
-        return $this->respond(true, $result, 200);
-
         //verify if user is logged in
-        if (!isUserLoggedIn()) { 
-            return $this->respond(false, [
-                'message' => 'Unauthorized access.',
-                'parameters' => $data,
-            ], 401);
-        }
+        //TODO: enable logged in verification
+        // if (!is_user_logged_in()) { 
+        //     return $this->respond(false, [
+        //         'message' => 'Unauthorized access.',
+        //         'parameters' => $data,
+        //     ], 401);
+        // }
 
         $data = $request->get_params();
    

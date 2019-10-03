@@ -4,7 +4,7 @@
 	*/
 // get_header();'
 $homeurlgen = get_home_url();
-
+echo is_user_logged_in();
 if ( is_user_logged_in() ) {
 	header("Location: ".$homeurlgen."/");
 	die();
@@ -203,21 +203,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 <style type="text/css">/* Strong  */
 
 
-	<?php if (isset($_GET['active'])){ ?>
-		/* Countdown disabled */
-		.contercontrol {display:none !important;}
-	<?php }else{ ?>
-		/* Countdown */
-		/* #page-container {display: none;}
-		.um-social-login-overlay, #preloader, html {background-image: none !important;}
-		html, .home body.et_cover_background {
-			background-color: #0b1927 !important;
-		}
-		.text .val {
-			margin: -11px 0 0 0;
-			padding: 0;
-		} */
-	<?php } ?>
+
 	
 </style> 
 <script type="text/javascript">
@@ -234,12 +220,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
 		jQuery("#loginform .um-form .um-row .um-col-1").append("<span class='for_pass'>Forgot your password?</span>");
-		
-		/* jQuery(".showpassreset").click(function(){
-			jQuery(".hidefromreset").fadeOut(400, function(){
-				jQuery(".forgotpass-wrapper").fadeIn(400);
-			});
-		}); */
+	
 		
 		jQuery(".hidepassreset").click(function(){
 			jQuery(".forgotpass-wrapper").fadeOut(400, function(){

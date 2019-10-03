@@ -198,7 +198,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		if(symbolInfo.ticker.toUpperCase() == 'PSEI'){
 			url = 'https://arbitrage.ph/charthisto/';
 		} else {
-			url = 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/charts/history';
+			url = '/wp-json/data-api/v1/charts/history';
 		}
 		
 		rangeStartDate = rangeStartDate.format('YYYY-MM-DD');

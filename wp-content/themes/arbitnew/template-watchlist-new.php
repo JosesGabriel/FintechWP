@@ -1,98 +1,33 @@
 
-<?php include_once "watchlist/header-files.php";?>
+<?php 
+include_once "watchlist/header-files.php";
+require("parts/global-header.php");
+?>
+
 
 <?php
 
-global $current_user, $wpdb;
+global $wpdb, $current_user;
 $userID = $current_user->ID;
 
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
-echo $userID;
+//if (isset($_POST) && !empty($_POST)) {
 
-if (isset($_POST) && !empty($_POST)) {
+if(isset($_POST['submit'])){
 
-    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+    $query = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '1')");
+    print_r($query);
+//$select = $wpdb->get_results('SELECT * FROM arby_usermeta where meta_key = "_watchlist_instrumental" AND user_id = "1"');
 
-        foreach ($havemeta as $key => $value) {
-            if ($value['stockname'] == $_POST['stockname']) {
-                unset($havemeta[$key]);
-            }
-        }
-
-        array_push($havemeta, $_POST);
-        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
-        wp_redirect( 'https://arbitrage.ph/watchlist' );
-        exit;
-
-    } else {
-
-        if (isset($havemeta) && !empty($havemeta)){
-            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
-                echo "Stock Already Exist";
-            } else {
-                array_push($havemeta, $_POST);
-                //update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                //add_user_meta($userID, '_watchlist_instrumental', $havemeta);
-                //$insertmeta = "insert into arby_usermeta (user_id, metakey, meta_value) values ('".$userID."','_watchlist_instrumental','".$havemeta."')";
-
-                //$insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
-
-                //$wpdb->query($insertmeta);
-                //wp_redirect( '/watchlist' );
-                //exit;
-            }
-
-        } else {
-            $newarray = [];
-            array_push($newarray, $_POST);
-            add_user_meta($userID, '_watchlist_instrumental', $newarray);
-            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
-        }
-
-    echo $havemeta;
-
-     //$success = $wpdb->insert('arby_usermeta', array(
-             //   'user_id' => $userID,
-             //   'metakey' => '_watchlist_instrumental',
-             //   'meta_value' => 'selling'
-                // ... and so on
-           // ));
-
-     $insertmeta = "INSERT INTO `arby_usermeta` (`user_id`,`metakey`,`meta_value`) VALUES ('$userID','_watchlist_instrumental','$havemeta')";
-
-        //$wpdb->query($insertmeta);
-
-    if($wpdb->query($insertmeta)){
-        echo "insert success...";
-     }else {
-        echo "unable to insert";
-     }
-
-        //wp_redirect( 'https://dev-v1.arbitrage.ph/watchlist' );
-        //exit;
-    }
+//foreach ($select as $key => $value) {
+      //   echo $value['stockname'];
+   //     }
 
 
+   
 }
-
-if (isset($_GET['remove'])) {
-    foreach ($havemeta as $key => $value) {
-        if ($value['stockname'] == $_GET['remove']) {
-            unset($havemeta[$key]);
-        }
-    }
-    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-    wp_redirect( 'https://arbitrage.ph/watchlist' );
-}
-
-if(isset($_GET['addcp'])){
-    $cpnum = $_GET['addcp'];
-    add_user_meta( $userID, 'cpnum', $cpnum, true);
-}
-
 
 ?>
 
@@ -137,7 +72,7 @@ if(isset($_GET['addcp'])){
                                                                     // get current price and increase/decrease percentage
                                                                     $curl = curl_init();
                                                                     //curl_setopt($curl, CURLOPT_URL, 'http://phisix-api4.appspot.com/stocks/'.$value['stockname'].'.json');
-                                                                    curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
+                                                                    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='.$value['stockname']);
 
                                                                     //
 
@@ -457,7 +392,7 @@ if(isset($_GET['addcp'])){
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
-                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
+                                                                        <button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -479,7 +414,7 @@ if(isset($_GET['addcp'])){
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>    
-                      <?php include_once "parts/sidebar-latestnews.php";?>    
+                      <?php //include_once "parts/sidebar-latestnews.php";?>    
                       <?php include_once "parts/sidebar-footer.php";?>               
                 </div>
 

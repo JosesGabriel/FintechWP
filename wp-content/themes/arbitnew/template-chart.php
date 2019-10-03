@@ -9,26 +9,11 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $homeurlgen.'/login/', 301 );
+		wp_redirect( '/login', 301 );
 		exit;
 	}
 
-	
-	$homeurlgen = get_home_url();
 	$user_id = $user->ID;
-	/* temp-disabled
-	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
-	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
-	
-	if(!$checksharing){
-		if($checkfbshare){
-			header('Location: '.$homeurlgen.'/share/?'.rand(12345 ,89019));
-			die(); 
-		}else{
-			header('Location: '.$homeurlgen.'/verify/?'.rand(12345 ,89019));
-			die();
-		}
-	} temp-disabled */
 	require "interactivechart/header.php";
 ?>
 	<div id="preloader">

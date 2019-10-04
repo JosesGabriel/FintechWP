@@ -18,3 +18,43 @@
 	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/interactivechart/interactive-style.css?<?php echo time(); ?>">
+    <style>
+		.arb_top_ticker {display:block;}
+		.list-inline>li,
+		.list-inline>li+li {
+			margin-left: 0px !important;
+			border-left: 4px solid #34495e !important;
+			margin-bottom: 0 !important;
+			padding: 5px 7px 7px 7px !important;
+			height:40px !important;
+			overflow:hidden;
+			vertical-align:top;
+			transition: all 1s;
+		}
+		.list-inline>li+li span {transition:1s all;}
+		.list-inline>li{display:inline-block;}
+		.list-inline>li+li{margin-bottom:5px !important;}
+		.marqueethis {
+			width: 100%;
+			height:40px;
+			right:-100px;
+		}
+		.arb_custom_ticker {
+			font-size: 10px;
+			line-height: 12px;
+			padding: 0; 
+			display:block !important;
+			margin-bottom: 0; 
+			position:absolute;
+			overflow:hidden; 
+		}
+		.arb_custom_ticker li {text-align:right;}
+		.arb_custom_ticker_wrapper {
+			height:40px;
+			position: relative;
+			overflow: hidden; 
+			background-color:#2c3e50; 
+			text-align:left;
+		}
+		.text-white {color: #bdc3c7 !important;}
+	</style>

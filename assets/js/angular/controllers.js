@@ -316,9 +316,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             .catch(err => {
                 $scope.bids = [];
                 $scope.asks = [];
-            })
-            .finally(() => {
-                $scope.$digest();
             });
         }
     }

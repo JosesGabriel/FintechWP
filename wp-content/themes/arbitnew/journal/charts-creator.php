@@ -14,7 +14,7 @@
                 let items = [];
                 $.each(data.data, function(key, value){
                     colors.push(value.color);
-                    items.push({"category" : value.stock, "column-1" : (value.value).toString()});
+                    items.push({"category" : value.stock, "column-1" : ((value.value).toFixed(2)).toString()});
                 });
                 AmCharts.makeChart("chartdiv1",
                 {

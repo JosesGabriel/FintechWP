@@ -337,7 +337,7 @@ class Activity_Main_API
         } else {
             $res = array_splice($array, $wordsreturned);
 
-            $retval = implode(' ', $array) . " <span class='um-activity-seemore'><a href='' class='um-link'>" . __('See more', 'um-activity') . '</a></span>' . " <span class='um-activity-hiddentext'>" . implode(' ', $res) . '</span>';
+            $retval = implode(' ', $array) . " <span class='um-activity-seemore'>(<a href='' class='um-link'>" . __('See more', 'um-activity') . '</a>)</span>' . " <span class='um-activity-hiddentext'>" . implode(' ', $res) . '</span>';
         }
 
         return $retval;
@@ -450,17 +450,13 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-               $rows = explode("\n", $content);
-                //$dprocessedtext = preg_split("/[\s,]+/", $content);
-               foreach($rows as $row) {
-                $dprocessedtext = explode(' ', $row);
+               
+                $dprocessedtext = preg_split("/[\s,]+/", $content);
 
                 //$dprocessedtext = explode(' ', $content);
                 foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
                     if (strpos($dwordpvalue, '$') !== false) {
                         $dstock = str_replace('$', '', $dwordpvalue);
-
-
                         $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
                         $newconts .= ' ' . $dlink;
                     } elseif(strpos($dwordpvalue, '@') !== false){
@@ -479,9 +475,6 @@ class Activity_Main_API
                         $newconts .= ' ' . $dwordpvalue;
                     }
                 }
-
-              } //==============>
-
             }
 
             ob_start();
@@ -533,7 +526,6 @@ class Activity_Main_API
         return null;
     }
 
-   
     /**
 
      * Check if URL is oEmbed supported
@@ -787,7 +779,7 @@ class Activity_Main_API
                         for($i = 1; $i < count($infors); $i++){
                             $newword .= ucfirst($infors[$i])." ";
                         }
-                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+                        $finalword = '<a href="https://arbitrage.ph/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
                         $newconts .= ' ' . $finalword;
                     } else {
                         $newconts .= ' ' . $dwordpvalue;

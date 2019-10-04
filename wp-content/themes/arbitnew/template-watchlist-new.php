@@ -466,7 +466,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             ?>     
 
-            var dhist = '';
+            var dhist;
             var counter = 0;
 
         jQuery.ajax({

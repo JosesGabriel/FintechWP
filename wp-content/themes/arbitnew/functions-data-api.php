@@ -187,7 +187,7 @@ class DataAPI extends WP_REST_Controller
 
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
-        
+
         $promise = $this->guzzleClient->requestAsync("GET", $forwardUrl, [
             "headers" => [
                 "Content-type" => "application/json",
@@ -196,7 +196,7 @@ class DataAPI extends WP_REST_Controller
             ]);
 
         $promise->then(function ($response) {
-            return json_decode($response->getBody());
+            return "test";
         });
 
         //return $result;

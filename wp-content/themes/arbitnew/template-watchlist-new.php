@@ -486,7 +486,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                    }
 
                    console.log(dhist);
-                   
+
                            app.controller('minichartarb<?php echo strtolower($stock); ?>', function($scope) {
                             $scope.options = {
                                     chart: {
@@ -534,10 +534,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                 
             }
         });
-
-
-        //minichart_data('<?php echo $stock ?>','<?php echo $from ?>','<?php echo $to ?>');
-
 
         <?php
             }

@@ -485,7 +485,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                         counter++;
                    }
 
-                   console.log(dhist);
+                  
 
                            
                 }
@@ -500,7 +500,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
         });
-
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
@@ -533,10 +532,10 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                 };
 
                             //$scope.data = [{values: [<?php // echo $dhistoflist; ?>]}];
-                            $scope.data = [{values: dhist}];
+                            $scope.data = [{values: [dhist]}];
                         });
 
-
+ console.log(dhist);
 
         <?php
             }

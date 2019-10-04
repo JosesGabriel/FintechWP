@@ -208,11 +208,11 @@
 
 		jQuery.ajax({
 			method: "GET",
-			url: "/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			url: "/apipge/?daction=checkifhavestock&symbol="+_symbol,
 			dataType: 'json',
 			data: {
 				'action' : 'post_sentiment',
-				'stock' : dstockpath
+				'stock' : _symbol
 			},
 			success: function(data) {
 				if(data.status == "yes_stock"){
@@ -227,7 +227,6 @@
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();
 				if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
-					var pathname = window.location.pathname;
 
 					$(this).parents('.bullbearsents').addClass("clickedthis");
 
@@ -236,17 +235,13 @@
 
 					var dclass = $(this).attr('class');
 
-					var dpathl = pathname.split("/");
-					dpathl = dpathl.filter(function(el) { return el; });
-					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbull&stock="+_symbol+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
-							'stock' : dpathl,
+							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
 							'userid' : '<?php echo $user_id; ?>',
 							'dbasebull': dbull,
@@ -301,17 +296,13 @@
 
 					var dclass = $(this).attr('class');
 
-					var dpathl = pathname.split("/");
-					dpathl = dpathl.filter(function(el) { return el; });
-					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbear&stock="+_symbol+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
-							'stock' : dpathl,
+							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
 							'userid' : '<?php echo $user_id; ?>',
 							'dbasebull': dbull,

@@ -237,13 +237,13 @@
 
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbull&stock="+_symbol+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbull&stock="+_symbol+"&userid="+_user_id+"&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
 							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
-							'userid' : '<?php echo $user_id; ?>',
+							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,
 							'dbuttonact' : dclass
@@ -298,13 +298,13 @@
 
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbear&stock="+_symbol+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbear&stock="+_symbol+"&userid="+_user_id+"&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
 							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
-							'userid' : '<?php echo $user_id; ?>',
+							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,
 							'dbuttonact' : dclass

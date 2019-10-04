@@ -454,7 +454,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-var mini = '';
+var mini = "";
 
 function minichart(symbol, from, to){
 
@@ -478,7 +478,7 @@ function minichart(symbol, from, to){
 
                 mini = dhist;
 
-                console.log(dhist);
+                //console.log(dhist);
 
                return dhist;                       
             },

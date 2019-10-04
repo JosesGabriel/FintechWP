@@ -21,7 +21,7 @@ class DataAPI extends WP_REST_Controller
     {
         $this->guzzleClient = new GuzzleHttp\Client([
             'http_errors' => false,
-            'handler' => new \GuzzleHttp\Handler\CurlHandler()
+            'handler' => new GuzzleHttp\Handler\CurlHandler()
             ]);
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';

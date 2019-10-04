@@ -454,6 +454,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
+global mini;
+
 function minichart(symbol, from, to){
 
         jQuery.ajax({
@@ -473,6 +475,8 @@ function minichart(symbol, from, to){
                    }
                            
                 }
+
+                mini = dhist;
 
                 console.log(dhist);
 
@@ -508,7 +512,7 @@ function minichart(symbol, from, to){
 
             var dhist;
             var counter = 0;
-
+            console.log(mini);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
@@ -547,7 +551,7 @@ function minichart(symbol, from, to){
 
 
 
-        console.log(datahisto);
+        
 
 
 

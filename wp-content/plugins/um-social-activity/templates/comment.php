@@ -44,7 +44,7 @@
 							                        for($i = 1; $i < count($infors); $i++){
 							                            $newword .= ucfirst($infors[$i])." ";
 							                        }
-							                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+							                        $finalword = '<a href="https://arbitrage.ph/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
 							                        $newconts .= ' ' . $finalword;
 							                    } else {
 							                        $newconts .= ' ' . $dwordpvalue;
@@ -136,6 +136,11 @@
 	</div>
 
 <style type="text/css">
+	.eyeyey {
+		font-size: 16px !important;
+	    color: #aaaaaa !important;
+	    padding: 4px 13px !important;
+	}
 	.um-icon-close-round {
 		display: none !important;
 	}

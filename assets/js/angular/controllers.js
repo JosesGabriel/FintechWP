@@ -8,12 +8,45 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
 
-    $http.get("/wp-json/data-api/v1/stocks/list")
+    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
             $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
         })
 }]);
+<<<<<<< HEAD
+// app.controller('message-notification', function($scope, $http, $filter) {
+//     $scope.count = 0;
+//     $http.get("/welcome/threads").then( function (response) {
+//         $scope.messages = response.data.data;
+//         $scope.count = $scope.messages.reduce( function(a, b) {
+//             if (b.status == 1) a++;
+//             return a;
+//         }, 0);
+//     });
+// });
+=======
+app.controller('ticker', ['$scope', function($scope) {
+    $scope.enable = true;
+    $scope.ticker = [];
+
+    socket.on('psec', function (data) {  
+        var transaction = {
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol)
+        };
+        $scope.ticker.push(transaction);
+
+        if ($scope.ticker.length > 50) {
+            $scope.ticker.shift();
+        }
+
+        $scope.$digest();
+    });
+}]);
+>>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
 app.controller('template', function($scope, $http) {
     var settings = {
         chart: '1',
@@ -36,6 +69,64 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
+<<<<<<< HEAD
+
+app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
+    $scope.ticker = [];
+    var counter = 1;
+
+    /*
+    let transaction = [
+        { counter:1,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:2,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:3,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:4,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:5,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:6,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:7,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:8,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:9,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:10,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:11,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:12,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:13,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:14,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:15,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+        { counter:16,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
+    ]
+
+    for(i in transaction){i
+        $scope.ticker.push(transaction[i]);
+        ticker_data_ralph.push(transaction[i]);    
+    }
+    */
+    // socket.on('dev-psec', function (data) {  
+    //     var ctr = counter += 1;
+    //     var transaction = {
+    //         counter: ctr,
+    //         symbol: data.sym,
+    //         price:  price_format(data.prv),
+    //         change: data.chg,
+    //         shares: abbr_format(data.vol)
+    //     };
+    //     $scope.ticker.push(transaction);
+    //     ticker_data_ralph.push(transaction);
+    //     if ($scope.ticker.length > 150) {
+    //         $scope.ticker.pop();
+    //     }
+
+    //    //console.log(ticker_data_ralph);
+
+    //     if (ticker_data_ralph.length > 150) {
+    //         ticker_data_ralph.pop();
+    //     }
+    //     $scope.$digest();
+    // });
+    // $scope.select = goToChart;
+}]);
+
+
+
 app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
     var counter = 1;
@@ -62,7 +153,22 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     });
     $scope.select = goToChart;
 }]);
+
+// app.controller('psei', function($scope, $http) {  
+//     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
+//         $http.get("/api/psei").then(function (response) {
+//             if (response.data.success) {
+//                 $scope.psei.last = parseFloat(response.data.data.c);
+//                 $scope.psei.previous = parseFloat(response.data.data.p);
+//                 $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
+//                 $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
+//             }
+//         });
+// });
+app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
+=======
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
+>>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
@@ -249,13 +355,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             });
         }
     }
-    $http.get("/wp-json/data-api/v1/stocks/history/latest-active-date")
+    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
                 $scope.latest_trading_date = moment(response.data.data.date)
             }
         })
-    $http.get("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
+    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
@@ -307,31 +413,30 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+            $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
-                $timeout(function () {
-                    response = response.data;
-                    if (!response.success) {
-                        $scope.bids = [];
-                        $scope.asks = [];
-                        return;
-                    }
-        
-                    $scope.bids = Object.values(response.data.bids);
-                    $scope.asks = Object.values(response.data.asks);
-                }, 0);
-            })
-            .catch(err => {
-                $timeout(function () {
+                response = response.data;
+                if (!response.success) {
                     $scope.bids = [];
                     $scope.asks = [];
-                }, 0)
+                    return;
+                }
+    
+                $scope.bids = Object.values(response.data.bids);
+                $scope.asks = Object.values(response.data.asks);
             })
+            .catch(err => {
+                $scope.bids = [];
+                $scope.asks = [];
+            })
+            .finally(() => {
+                $scope.$digest();
+            });
         }
     }
     $scope.getBidsAndAsks(_symbol);
     let limit = 20;
-    $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
+    $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
         .then(response => {
             response = response.data;
             if (!response.success) {
@@ -352,9 +457,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                 };                                    
             });
             $scope.$digest();
-        })
-        .catch(err => {
-            
         });
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
@@ -551,7 +653,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {
         if ($scope.stock) {
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+            $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
                 .then(function (response) {
                     if (response.data.success) {
                         let data = response.data.data;
@@ -570,7 +672,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                     $scope.fullbidtotal = 0;
                 });
 
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
+            $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
                 .then(function (response) {
                     if (response.data.success) {
                         let data = response.data.data;
@@ -592,6 +694,35 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
+// app.controller('disclosures', function($scope, $http, $rootScope) {
+//     $scope.$watch('$root.stockList', function () {
+//         $scope.stocks = $rootScope.stockList;
+//     });
+//     $scope.disclosures = [];
+//     $http.get("/api/disclosures").then(function (response) {
+//         if (response.data.success) {
+//             $scope.disclosures = response.data.data;
+//         }
+//     });
+//     // socket.on('disclosure', function(data) {
+//     //     if ($scope.$parent.settings.disclosure != '0') {
+//     //         $.gritter.add({
+//     //             title: 'Disclosure Notification',
+//     //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
+//     //                   data.template + '<br/>' +
+//     //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
+//     //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+//     //             time: 5000,
+//     //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
+//     //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+//     //         });
+//     //     }
+//     //     $scope.disclosures.unshift(data);
+//     // });
+//     $scope.goToChart = function(symbol) {
+//         return goToChart(symbol);
+//     };
+// });
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",
@@ -618,6 +749,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
     $(function() {
         TradingView.onready(function() {
+			/* $(".vertical-box-inner-cell.ng-scope").append('<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png"></a></div>'); */
             var override = nightmode ? JSON.parse(JSON.stringify(dark_overrides)) : JSON.parse(JSON.stringify(light_overrides));
             override["paneProperties.background"] = "#2c3e50";
 			override["paneProperties.gridProperties.color"] = "#bdc3c7";
@@ -633,7 +765,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 symbol: _symbol,
                 interval: 'D',
                 container_id: "tv_chart_container",
-                datafeed: new Datafeeds.UDFCompatibleDatafeed("/api"),
+                datafeed: new Datafeeds.UDFCompatibleDatafeed("https://arbitrage.ph/api"),
                 library_path: "/assets/tradingview/charting_library/",
                 timezone: "Asia/Hong_Kong",
                 locale: "en",
@@ -652,7 +784,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 },
                 logo: {
                     image: '/wp-content/uploads/2019/04/translogo.png',
-                    link: '/'
+                    link: 'https://arbitrage.ph/'
                 },
                 time_frames: [
                     { text: "5y", resolution: "D" },
@@ -685,7 +817,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 // for register sentiments
                 $http({
                     method : "POST",
-                    url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                    url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
                     dataType: "json",
                     contentType: "application/json",
                     data: {
@@ -732,11 +864,12 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
+                    console.log("outhere");
                     angular.element("#confirmsellparts").hide();
 
                     $http({
                         method : "GET",
-                        url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        url : "https://arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -744,6 +877,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
+                        console.log(response.data);
                         if(response.data.status == "yes_stock"){
                             angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
                             
@@ -759,13 +893,13 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
 
                     }, function myError(error) {
-                        
+                        console.log(error);
                     });
 
                     // for register sentiments
                     $http({
                         method : "POST",
-                        url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                        url : "https://arbitrage.ph/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -803,7 +937,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     $http({
                         method : "POST",
-                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
+                        url : "https://arbitrage.ph/apipge/?daction=marketsentiment&stock="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -834,7 +968,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $scope.$parent.dshowsentiment = '';
                         let limit = 20;
-                        $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+                        $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
                             .then(response => {
                                 response = response.data;
                                 if (!response.success) {
@@ -862,7 +996,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.$digest();
                             });
                         
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
+                        $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
                             .then(function (response) {
                                 if (response.data.success) {
                                     let data = response.data.data;
@@ -881,7 +1015,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 $scope.$parent.fullbidtotal = 0;
                             });
 
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
+                        $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
                             .then(function (response) {
                                 if (response.data.success) {
                                     let data = response.data.data;

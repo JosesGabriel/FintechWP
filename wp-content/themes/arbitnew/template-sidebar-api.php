@@ -12,7 +12,10 @@ $action = $_GET['daction'];
 switch($action){
   case 'whotomingle':
       get_whotomingle();
-  break;
+      break;
+  case 'trendingstocks':
+      get_trendingstocks();
+      break;
   default:
   echo 'no action';
 }
@@ -36,5 +39,75 @@ function get_whotomingle(){
       mysqli_close($conn);
       echo json_encode($newuserlist);
   }
+
+function get_trendingstocks(){
+      global $wpdb;
+      $date = date('Y-m-d', time());
+      $curl = curl_init();
+      curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/list');
+      curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      $gerdqoute = curl_exec($curl);
+      curl_close($curl);
+      $gerdqoute = json_decode($gerdqoute);
+      $adminuser = 504; // store on the chart page
+      if ($gerdqoute) {
+        $listofstocks = [];
+        foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
+          $indls = [];
+          $indls['stock'] = $dlskey;
+          $dstocknamme = $dlskey;
+
+          $dstocks = $dlsvalue->description;
+          $indls['stnamename'] = $dstocks;
+
+          $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
+
+          $todayreps = 0; // today
+          $countpstock = 0; // 3 days back
+          $isbull = 0;
+          foreach ($dsprest as $rsffkey => $rsffvalue) {
+            $dcontent = $rsffvalue->post_content;
+            if (strpos(strtolower($dcontent), '$'.strtolower($dstocknamme)) !== false) {
+              if(date("Y-m-d", strtotime($rsffvalue->post_date)) == $date){
+                $todayreps++;
+              } else {
+                $countpstock++;
+              }
+            }
+          }
+          $dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
+          $dpullbull = $dpullbull == '' ? 0 : $dpullbull;
+          // 3 days back
+          $threedays = ceil($countpstock * 0.2);
+          $bulls = ceil($dpullbull * 0.3);
+          $tags = ceil($todayreps * 0.6);
+          $finalcount = $bulls + $threedays + $tags;
+          $stocksscount = $countpstock + $dpullbull + $todayreps;
+          $indls['following'] = $finalcount;
+          if($finalcount > 0){
+            array_push($listofstocks, $indls);
+          }
+        }
+        usort($listofstocks, 'date_compare');
+        $drevdds = array_reverse($listofstocks);
+        $maxitems = 10;
+        $finaltopstocks = [];
+        foreach ($drevdds as $fnskey => $fnsvalue) {
+          if ($fnskey + 1 > $maxitems) {
+            break;
+          }
+          array_push($finaltopstocks, $fnsvalue);
+
+        }
+        echo json_encode($finaltopstocks);
+        die;
+      } else {
+        echo "no stock selected";
+      }
+}
+
+
+
 
  ?>

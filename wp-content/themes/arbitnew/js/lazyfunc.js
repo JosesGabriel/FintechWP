@@ -16,7 +16,7 @@ $( document ).ready(function() {
     });
 
     $.ajax({
-        url: "/apipge/?daction=trendingstocks",
+        url: "/sidebar-api/?daction=trendingstocks",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
@@ -42,11 +42,11 @@ $( document ).ready(function() {
     });
 
     $.ajax({
-        url: "sidebar-api/?daction=whotomingle",
+        url: "/sidebar-api/?daction=whotomingle",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            $(".top-recommended-people > .trendingpreloader").hide();
+            $(".trendingpreloader").hide();
             $.each(res, function( index, value ) {
                 var toappendme = '<div class="trader-item userid_'+value.id+'">';
                 toappendme += '<div class="traider-inner">';

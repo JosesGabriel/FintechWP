@@ -562,7 +562,7 @@ div.um-activity {
 .um-activity-comment-child .um-activity-commentl.highlighted .um-activity-comment-avatar {left: 10px}
 
 .um-activity-comment-info .um-activity-comment-area {
-	padding: 8px 0 0 30px;
+	padding: 0 0 0 30px;
 }
 
 .um-activity-comment-info .um-activity-comment-avatar {
@@ -833,6 +833,7 @@ div.um-activity {
 }
 
 .um-activity-widget .upload {
+	position: unset !important;
 	box-sizing: content-box;
 	line-height: 20px !important;
 	display: block;

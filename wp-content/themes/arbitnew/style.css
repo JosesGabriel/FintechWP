@@ -990,11 +990,6 @@ ul.footmore li.nobar:after {
     font-size: 12px;
     color: #7fbfe9;
 }
-.um-profile.um-viewing.topbannerprofile {
-    max-width: 100%;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-}
 .the_user_top_page .um-header {
     max-width: 1120px;
     margin: 0 auto;
@@ -1004,9 +999,6 @@ ul.footmore li.nobar:after {
 }
 .profile-post-content {
     padding: 0 10px;
-}
-.the_user_top_page {
-    background: #35485f;
 }
 .the_user_top_page .um-profile-photo a.um-profile-photo-img {
     background: #2e3e53;
@@ -1100,10 +1092,6 @@ ul.footmore li.nobar:after {
 .userprofilepage .left-dashboard-part {
     /*margin-top: 50px;*/
     padding-top: 0;
-}
-.the_user_top_page .um-11.um {
-    max-width: initial !important; 
-    margin: 0 !important;
 }
 
 .um-11.um .um-profile-photo a.um-profile-photo-img {
@@ -1472,9 +1460,6 @@ a.message-part-btn:before {
     color: #fff;
     text-shadow: 2px 2px 4px #333;
 }
-.the_user_top_page .um-cover {
-    overflow: hidden;
-}
 
 
 .the_user_top_page .um-header .um-likebtn-profile,
@@ -1605,9 +1590,6 @@ body .iflychat-popup {
     border: none;
     border-radius: 35px;
 }
-
-@import url("arphie-style.css");
-@import url("nicar-style.css");
 .site-header {
     padding-bottom: 23px !important;
     margin-bottom: 22px !important;

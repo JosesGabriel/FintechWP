@@ -741,7 +741,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
-                    console.log("outhere");
                     angular.element("#confirmsellparts").hide();
 
                     $http({
@@ -754,7 +753,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
-                        console.log(response.data);
                         if(response.data.status == "yes_stock"){
                             angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
                             
@@ -776,20 +774,20 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     // for register sentiments
                     $scope.getSentiments(_symbol, $scope.$parent.fullbidtotal, $scope.$parent.fullasktotal);
 
-                    $http({
-                        method : "POST",
-                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: {
-                            'action' : 'check_sentiment',
-                            'stock' : _symbol,
-                        }
-                    }).then(function mySucces(response) {
+                    // $http({
+                    //     method : "POST",
+                    //     url : "/apipge/?daction=marketsentiment&stock="+_symbol,
+                    //     dataType: "json",
+                    //     contentType: "application/json",
+                    //     data: {
+                    //         'action' : 'check_sentiment',
+                    //         'stock' : _symbol,
+                    //     }
+                    // }).then(function mySucces(response) {
 
-                    }, function myError(error) {
+                    // }, function myError(error) {
                         
-                    });
+                    // });
                      
                     if (found.length) {
 

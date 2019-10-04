@@ -117,11 +117,17 @@ class DataAPI extends WP_REST_Controller
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
-        $request = new \GuzzleHttp\Psr7\Request('GET', $forwardUrl);
+        $request = new Request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$this->client_secret}",
+                ]
+            ]);
 
         $promise = $this->guzzleClient->sendAsync($request)->then(function ($response) {
-            return "check";
+            return $response->getStatusCode();
         });
+        
         
         $promise->wait();
 

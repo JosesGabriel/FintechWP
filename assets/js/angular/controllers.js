@@ -623,6 +623,46 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
         "scalesProperties.showStudyPlotLabels": true,
     };
 
+    $scope.getSentiments = function (symbol, fullbidtotal, fullasktotal) {
+        $http({
+            method : "POST",
+            url : "/apipge/?stock="+symbol+"&isbull="+fullbidtotal+"&isbear="+fullasktotal,
+            dataType: "json",
+            contentType: "application/json",
+            data: {
+                'action' : 'check_sentiment',
+                'stock' : symbol,
+            }
+        }).then(function mySucces(response) {
+            angular.element(".regsentiment").addClass('openmenow');
+            if (response.data.isvote == "1") {
+                // cant vote!
+                angular.element(".bullbearsents").addClass('clickedthis');
+                angular.element(".dbaronchart").css('width', '70%');
+                angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
+                angular.element(".bbs_bull_bar").find('span').show('fast');
+
+                var dbullvalx = parseFloat(response.data.dbull);
+                var dbearvalx = parseFloat(response.data.dbear);
+
+                angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+
+                angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
+                angular.element(".bbs_bear_bar").find('span').show('fast');
+                angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+            } else {
+                // can vote!
+                angular.element(".bullbearsents").removeClass('clickedthis');
+                angular.element(".dbaronchart").css('width', '0%');
+                angular.element(".bbs_bull_bar").find('span').hide();
+                angular.element(".bbs_bear_bar").find('span').hide();
+            }
+
+        }, function myError(error) {
+
+        });
+    }
+
     $(function() {
         TradingView.onready(function() {
             var override = nightmode ? JSON.parse(JSON.stringify(dark_overrides)) : JSON.parse(JSON.stringify(light_overrides));

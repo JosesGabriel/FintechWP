@@ -1,6 +1,6 @@
 <?php
-require ('data-api.php');
-require $_SERVER['DOCUMENT_ROOT'] . ‘vendor/autoload.php’;
+require_once ('data-api.php');
+require_once ABSPATH . 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;

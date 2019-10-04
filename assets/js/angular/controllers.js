@@ -741,7 +741,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter
-                    console.log("outhere");
                     angular.element("#confirmsellparts").hide();
 
                     $http({
@@ -754,7 +753,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             'stock' : _symbol,
                         }
                     }).then(function mySucces(response) {
-                        console.log(response.data);
                         if(response.data.status == "yes_stock"){
                             angular.element(".arb_sell").attr("data-hasstock","has_stock"); //setter
                             

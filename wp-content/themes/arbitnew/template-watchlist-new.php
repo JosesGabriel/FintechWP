@@ -515,7 +515,7 @@ function minichart(symbol, from, to){
             var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
             var dhist = $('#minchart_<?php echo $stock; ?>').val();
-            dhist = JSON.parse(dhist);
+            //dhist = JSON.parse(dhist);
 
             var counter = 0;
             console.log(dhist);

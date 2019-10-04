@@ -560,14 +560,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                             //$scope.data = [{values: [dhist]}];
                         });
 
-
-
-
-        
-
-
-
-
         <?php
             }
         }

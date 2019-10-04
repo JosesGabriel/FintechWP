@@ -27,7 +27,7 @@ app.controller('ticker', ['$scope', function($scope) {
         };
         $scope.ticker.push(transaction);
 
-        if ($scope.ticker.length > 50) {
+        if ($scope.ticker.length > 30) {
             $scope.ticker.shift();
         }
 

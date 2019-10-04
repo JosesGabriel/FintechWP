@@ -551,43 +551,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {
         if ($scope.stock) {
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
-                .then(function (response) {
-                    if (response.data.success) {
-                        let data = response.data.data;
-
-                        $scope.fullaskperc = data.ask_total_percent;
-                        $scope.fullasktotal = data.ask_total;
-                        $scope.fullbidperc = data.bid_total_percent;
-                        $scope.fullbidtotal = data.bid_total;
-
-                    }
-                })
-                .catch(function (response) {
-                    $scope.fullaskperc = 0;
-                    $scope.fullasktotal = 0;
-                    $scope.fullbidperc = 0;
-                    $scope.fullbidtotal = 0;
-                });
-
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
-                .then(function (response) {
-                    if (response.data.success) {
-                        let data = response.data.data;
-
-                        $scope.askperc = data.ask_total_percent;
-                        $scope.asktotal = data.ask_total;
-                        $scope.bidperc = data.bid_total_percent;
-                        $scope.bidtotal = data.bid_total;
-
-                    }
-                })
-                .catch(function (response) {
-                    $scope.askperc = 0;
-                    $scope.asktotal = 0;
-                    $scope.bidperc = 0;
-                    $scope.bidtotal = 0;
-                });
+            $scope.getFullMarketDepth($scope.stock.symbol);
+            $scope.getTopMarketDepth($scope.stock.symbol);
         }
     }
 

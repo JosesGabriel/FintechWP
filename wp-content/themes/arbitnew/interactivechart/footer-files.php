@@ -5,17 +5,6 @@
 				$("#status, #status_txt").fadeOut("fast");
 				$("#preloader").delay(400).fadeOut("slow");
 			})
-			
-			function changicotonormal() {
-				var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-				link.type = 'image/x-icon';
-				link.rel = 'shortcut icon';
-				link.href = '/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-32x32.png';
-				document.getElementsByTagName('head')[0].appendChild(link);
-			}
-			$( "body" ).mousemove(function() {
-			  changicotonormal();
-			});
 			$( ".bidaskbar_btn" ).click(function() {
 			  $( ".bidaskbar_opt" ).slideToggle("fast");
 			});
@@ -90,11 +79,6 @@
 		$('#draggable_buysell').draggable({cancel:false});
 	} );
 	</script>
-	<script>
-		var today = new Date();
-		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
-		jQuery(".buySell__date-picker").attr('max',currentDate);
-	</script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>
@@ -121,6 +105,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 	<script src="https://platform.twitter.com/widgets.js"></script>
 	<script>
+		jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 		var modalzindex = 10000;
 		var nightmode = localStorage.getItem('theme') == 'dark';
         var socket = io.connect('https://dev-socket-api.arbitrage.ph');
@@ -130,21 +115,16 @@
 		        $(".stocks-select2").select2({placeholder:"Stock", width: '100%'})
 		    });
 		});
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
 		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
-		var _symbol 	= '<?php 
-		$getcururl = $_SERVER['REQUEST_URI'];
-		if ($getcururl == "/chart/"){
-			echo "PSEI";
-		}else{
-			$remchrt = str_replace("/chart/", "", $getcururl);
-			$getfsymb = str_replace("/", "", $remchrt);
-			echo strtoupper($getfsymb);
-		}
-		?>';
+		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
 	</script>
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>
 	<script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
@@ -224,18 +204,15 @@
 			});
 		});
 
-		var dpathss = window.location.pathname;
-		var dstockpath = dpathss.split("/");
-		dstockpath = dstockpath.filter(function(el) { return el; });
-		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+		
 
 		jQuery.ajax({
 			method: "GET",
-			url: "/apipge/?daction=checkifhavestock&symbol="+dstockpath,
+			url: "/apipge/?daction=checkifhavestock&symbol="+_symbol,
 			dataType: 'json',
 			data: {
 				'action' : 'post_sentiment',
-				'stock' : dstockpath
+				'stock' : _symbol
 			},
 			success: function(data) {
 				if(data.status == "yes_stock"){
@@ -250,7 +227,6 @@
 			$(".bbs_bull").click(function(e){
 				e.preventDefault();
 				if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
-					var pathname = window.location.pathname;
 
 					$(this).parents('.bullbearsents').addClass("clickedthis");
 
@@ -259,19 +235,15 @@
 
 					var dclass = $(this).attr('class');
 
-					var dpathl = pathname.split("/");
-					dpathl = dpathl.filter(function(el) { return el; });
-					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbull&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbull&stock="+_symbol+"&userid="+_user_id+"&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
-							'stock' : dpathl,
+							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
-							'userid' : '<?php echo $user_id; ?>',
+							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,
 							'dbuttonact' : dclass
@@ -324,19 +296,15 @@
 
 					var dclass = $(this).attr('class');
 
-					var dpathl = pathname.split("/");
-					dpathl = dpathl.filter(function(el) { return el; });
-					dpathl = dpathl[(parseInt(dpathl.length) - 1)];
-
 					jQuery.ajax({
 						method: "POST",
-						url: "/apipge/?daction=sentimentbear&stock="+dpathl+"&userid=<?php echo $user_id; ?>&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
+						url: "/apipge/?daction=sentimentbear&stock="+_symbol+"&userid="+_user_id+"&dbasebull="+dbull+"&dbasebear="+dbear+"&dbuttonact="+dclass,
 						dataType: 'json',
 						data: {
 							'action' : 'post_sentiment',
-							'stock' : dpathl,
+							'stock' : _symbol,
 							'postid' : '<?php echo get_the_id(); ?>',
-							'userid' : '<?php echo $user_id; ?>',
+							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,
 							'dbuttonact' : dclass
@@ -423,22 +391,21 @@
 				jQuery(this).val(replaceCommas(currentVal));
 
 			});
-
-			function testDecimals(currentVal) {
-				var count;
-				currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
-				return count;
-			}
-
-			function replaceCommas(yourNumber) {
-				var components = yourNumber.toString().split(".");
-				if (components.length === 1) 
-					components[0] = yourNumber;
-				components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				if (components.length === 2)
-					components[1] = components[1].replace(/\D/g, "");
-				return components.join(".");
-			}
-
 		});
+		
+		function testDecimals(currentVal) {
+			var count;
+			currentVal.match(/\./g) === null ? count = 0 : count = currentVal.match(/\./g);
+			return count;
+		}
+
+		function replaceCommas(yourNumber) {
+			var components = yourNumber.toString().split(".");
+			if (components.length === 1) 
+				components[0] = yourNumber;
+			components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			if (components.length === 2)
+				components[1] = components[1].replace(/\D/g, "");
+			return components.join(".");
+		}
 	</script>

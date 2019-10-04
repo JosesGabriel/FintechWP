@@ -88,7 +88,6 @@
 	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
-	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>
@@ -96,15 +95,8 @@
 	<![endif]-->
 	<script src="/assets/js/apps.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-numeraljs/2.0.1/angular-numeraljs.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/angular-timeago@0.4.6/dist/angular-timeago.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.6/angular-sanitize.min.js"></script>
-	<script src="//cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
-	<script src="/assets/plugins/ng-embed/dist/ng-embed.min.js"></script>
 	<script>
         var socket = io.connect('https://dev-socket-api.arbitrage.ph');
 
@@ -112,7 +104,6 @@
 			App.init();
 		});
 	</script>
-<script src="/assets/js/angular/functions.js?v=1.219"></script>
 <script src="/assets/js/angular/ticker-controller.js?v=<?php echo time() ?>"></script>
 </body>
 </html> 

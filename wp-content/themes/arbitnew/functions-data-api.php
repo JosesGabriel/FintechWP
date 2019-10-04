@@ -197,11 +197,8 @@ class DataAPI extends WP_REST_Controller
                 ]
             ]);
 
-        $promise->then(function ($response) {
-            return "test";
-        });
-
-        return $forwardUrl;
+        $response = $promise->wait();
+        return json_decode($response->getBody());
     }
 
 }

@@ -8,7 +8,7 @@ require("parts/global-header.php");
     function lateststocks(symbol){
 
          jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=2GO",
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {

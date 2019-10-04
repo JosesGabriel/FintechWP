@@ -774,20 +774,20 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     // for register sentiments
                     $scope.getSentiments(_symbol, $scope.$parent.fullbidtotal, $scope.$parent.fullasktotal);
 
-                    $http({
-                        method : "POST",
-                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: {
-                            'action' : 'check_sentiment',
-                            'stock' : _symbol,
-                        }
-                    }).then(function mySucces(response) {
+                    // $http({
+                    //     method : "POST",
+                    //     url : "/apipge/?daction=marketsentiment&stock="+_symbol,
+                    //     dataType: "json",
+                    //     contentType: "application/json",
+                    //     data: {
+                    //         'action' : 'check_sentiment',
+                    //         'stock' : _symbol,
+                    //     }
+                    // }).then(function mySucces(response) {
 
-                    }, function myError(error) {
+                    // }, function myError(error) {
                         
-                    });
+                    // });
                      
                     if (found.length) {
 

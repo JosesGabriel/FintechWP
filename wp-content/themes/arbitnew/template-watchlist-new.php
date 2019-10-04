@@ -463,34 +463,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
-
-            //echo "<script> minichart_data('$stock','$from','$to'); </script>";
-           
-            /*$curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
-            
-            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            $dhistofronold = curl_exec($curl);
-            curl_close($curl);
-
-            $dhistoforchart = json_decode($dhistofronold);
-            $dhistoforchart = $dhistoforchart->data;
-
-            $dhistoflist = "";
-            $counter = 0;
-
-
-            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
-                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-                    $counter++;
-                }
-            }*/
-
             ?>     
-        minichart_data('<?php echo $stock ?>','<?php echo $from ?>','<?php echo $to ?>');
+
+        jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=<?php echo $stock ?>&exchange=PSE&resolution=1D&from=<?php echo $from ?>&to=<?php echo $to ?>",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                    console.log(res.data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+
+
+        //minichart_data('<?php echo $stock ?>','<?php echo $from ?>','<?php echo $to ?>');
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
             $scope.options = {

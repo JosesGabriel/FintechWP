@@ -3,7 +3,29 @@
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
+<script type="text/javascript">
+        
+        function lateststocks(symbol){
 
+         $.ajax({
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='" + symbol + "'",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                    
+                //jQuery.each(res.data, function(index, value) {      
+                        console.log(res.data);    
+                //});  
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+
+     }
+
+</script>
 
 <?php
 

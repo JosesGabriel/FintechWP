@@ -490,18 +490,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
-            ?>     
-
-
-            ///var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
-
-            //var dhist = $('#minchart_<?php echo $stock; ?>').val();
-            //dhist = JSON.parse(dhist);
-
-            var counter = 0;
-           // console.log(dhist);
-
-        <?php
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);

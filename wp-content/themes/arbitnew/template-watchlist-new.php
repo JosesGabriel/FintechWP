@@ -486,6 +486,8 @@ function minichart(symbol, from, to){
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
+            minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -510,7 +512,9 @@ function minichart(symbol, from, to){
 
     ?>
 
-    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+    var dat = jQuery('.minchart_<?php echo $stock ?>').val();
+
+    console.log(dat);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

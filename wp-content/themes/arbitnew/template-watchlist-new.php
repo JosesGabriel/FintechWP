@@ -17,7 +17,7 @@ require("parts/global-header.php");
                         console.log(res.data.last);   
                         console.log(res.data.changepercentage);  
 
-                        jQuery('.curprice').text(res.data.last);
+                        jQuery('.curprice_' + symbol).text(res.data.last);
                 //});  
 
             },
@@ -167,7 +167,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             </div>
 
                                                                             <div class="dpricechange">
-                                                                                <div class="curprice">&#8369;</div>
+                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>
                                                                                 <?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
                                                                                     <div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
 

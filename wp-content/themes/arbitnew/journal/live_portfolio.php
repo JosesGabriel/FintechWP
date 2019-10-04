@@ -127,7 +127,7 @@
                                 <input type="text" name="inpt_data_sellyear" style="width:45px; border-radius:3px; text-align:center; padding:0;" value="<?php echo date('Y'); ?>">
                             </div>
                         <div class="groupinput midd lockedd"><label>Stock</label><input type="text" name="inpt_data_stock" value="" readonly style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i></div>
-                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                        <div class="groupinput midd lockedd"><label>Position</label><input type="text" name="inpt_data_position" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                     </div>
                     <div class="entr_col">
                         <div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" name="inpt_avr_price_b" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>

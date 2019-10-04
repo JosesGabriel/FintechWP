@@ -18,9 +18,6 @@
                         <div class="groupinput midd lockedd"><label>Stock</label>
                             <select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 138px;">
                                 <option value="">Select Stocks</option>
-                                <?php foreach($listosstocks as $dstkey => $dstvals): ?>
-                                    <option value='<?php echo json_encode($dstvals); ?>'><?php echo $dstvals->symbol; ?></option>
-                                <?php endforeach; ?>
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>

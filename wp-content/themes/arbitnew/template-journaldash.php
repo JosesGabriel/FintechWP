@@ -69,32 +69,26 @@ function number_format_short($n, $precision = 1)
 <!-- BOF BUY trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
-
-		$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$user->ID);
-	
-		$buypower = 0;
-		foreach ($dledger as $getbuykey => $getbuyvalue) {
-			if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling') {
-				$buypower = $buypower + $getbuyvalue->tranamount;
-			} else {
-				$buypower = $buypower - $getbuyvalue->tranamount;
-			}
-		}
+		$buypower = $_POST['input_buy_product'];
 
 		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);
 
 		$total_stocks_price = bcadd($stockquantity, $butstockprice);
 
+		
 		if ($total_stocks_price > $buypower) {
 			wp_redirect('/journal');
 			exit;
 		}
 
+		// print_r($total_stocks_price);
+		// print_r($buypower);
+		// print_r($_POST);
+		// exit;
+		
+
         $tradeinfo = [];
-        // $tradeinfo['buymonth'] = $_POST['inpt_data_buymonth'];
-        // $tradeinfo['buyday'] = $_POST['inpt_data_buyday'];
-		// $tradeinfo['buyyear'] = $_POST['inpt_data_buyyear'];
 
 		$tradeinfo['buymonth'] = date('F', strtotime($_POST['newdate']));
         $tradeinfo['buyday'] = date('d', strtotime($_POST['newdate']));
@@ -195,7 +189,8 @@ function number_format_short($n, $precision = 1)
         wp_update_post($post);
         wp_redirect("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
         exit;
-    }
+	}
+	
     if (isset($_POST['istype'])) {
 		$dxammount = preg_replace("/[^0-9.]/", "", $_POST['damount']);
         if ($dxammount > 0) {
@@ -216,27 +211,24 @@ function number_format_short($n, $precision = 1)
 
     //if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Edit') {
 
-    if(isset($_POST['to_edit'])){
-        //echo $_POST['inpt_data_status'];
+    // if(isset($_POST['to_edit'])){
+    //     //echo $_POST['inpt_data_status'];
+    //     $log_id = $_POST['to_edit'];
+    //     $strategy = $_POST['strategy_'. $log_id];
+    //     $tradepan = $_POST['trade_plan_'. $log_id];
+    //     $emotion = $_POST['emotion_'. $log_id];
+    //     $notes = $_POST['tlnotes_'. $log_id];
 
-        $log_id = $_POST['to_edit'];
-        $strategy = $_POST['strategy_'. $log_id];
-        $tradepan = $_POST['trade_plan_'. $log_id];
-        $emotion = $_POST['emotion_'. $log_id];
-        $notes = $_POST['tlnotes_'. $log_id];
+    //      $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
+    //      $wpdb->query($updatelogs);
 
-         $updatelogs = "UPDATE arby_tradelog set tlstrats = '$strategy', tltradeplans = '$tradepan', tlemotions = '$emotion', tlnotes = '$notes'  where tlid = '$log_id' and isuser ='$user->ID'";
-         $wpdb->query($updatelogs);
+    //     $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
 
-
-        $data_trade_info = array_search('data_trade_info', array_column($postmetas, 'meta_key'));
-
-        update_post_meta($log_id,  'data_trade_info', $strategy);
-       // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
-               
-        wp_redirect('/journal');
-        exit;
-    }
+    //     update_post_meta($log_id,  'data_trade_info', $strategy);
+    //    // update_post_meta($log_id,  'data_trade_info', $data_trade_info[0]->strategy, 'test');
+    //     wp_redirect('/journal');
+    //     exit;
+    // }
 
 
 
@@ -247,14 +239,9 @@ function number_format_short($n, $precision = 1)
 <!-- BOF SELL trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Log') {
-        // echo '<pre>';
-        // print_r($_POST);
-        // echo '</pre>';
-
         $dstocktraded = get_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], true);
         $user_idd = $curuserid;
         $user_namee = $current_user->user_login;
-		$data_postid = $_POST['inpt_data_postid'];
 		
 		$sellmonth = date('F', strtotime($_POST['selldate']));
 		$sellday = date('d', strtotime($_POST['selldate']));
@@ -272,24 +259,18 @@ function number_format_short($n, $precision = 1)
 
 		if(isset($_POST['formsource']) && $_POST['formsource'] == "fromchart"){
 			$buyyinginfo = unserialize(stripslashes($_POST['dtradelogs']));
-			// $buyyinginfo['data'][0]['strategy'];
-
 			$pzemos = $buyyinginfo['data'][0]['emotion'];;
 			$pzplans = $buyyinginfo['data'][0]['tradeplan'];;
 			$pzstrats = $buyyinginfo['data'][0]['strategy'];;
 			$pznotes = $buyyinginfo['data'][0]['tradingnotes'];;
 		} else {
 			$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
-
 			$pzemos = $buyyinginfo[0]->emotion;
 			$pzplans = $buyyinginfo[0]->tradeplan;
 			$pzstrats = $buyyinginfo[0]->strategy;
 			$pznotes = $buyyinginfo[0]->tradingnotes;
 		}
-
-
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
-		
         if ($dstocktraded['totalstock'] <= 0) {
             $dlisroflive = get_user_meta($user->ID, '_trade_list', true);
             foreach ($dlisroflive as $rmkey => $rmvalue) {
@@ -300,22 +281,16 @@ function number_format_short($n, $precision = 1)
             }
             update_user_meta($user->ID, '_trade_list', $dlisroflive);
         } else {
-            // Update existing data.
-
             update_user_meta($user->ID, '_trade_'.$_POST['inpt_data_stock'], $dstocktraded);
         }
-
         $stockcost = ($sellprice * $sellqty);
         $purchasefee = getjurfees($stockcost, 'sell');
-
         $wpdb->insert('arby_ledger', array(
-                'userid' => $user->ID,
-                'date' => date('Y-m-d', strtotime($_POST['selldate'])),
-                'trantype' => 'selling',
-                'tranamount' => $stockcost - $purchasefee, // ... and so on
-			));
-		
-		
+			'userid' => $user->ID,
+			'date' => date('Y-m-d', strtotime($_POST['selldate'])),
+			'trantype' => 'selling',
+			'tranamount' => $stockcost - $purchasefee, // ... and so on
+		));
 		$inserttrade = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".$_POST['selldate']."','".$_POST['inpt_data_qty']."','".$_POST['inpt_avr_price']."','".$_POST['inpt_data_sellprice']."','".$pzstrats."','".$pzplans."','".$pzemos."','".$pznotes."', '".$user->ID."', '".$_POST['inpt_data_stock']."')";
 		$wpdb->query($inserttrade);
 
@@ -366,7 +341,6 @@ function number_format_short($n, $precision = 1)
 
 require("journal/header-files.php");
 require("parts/global-header.php");
-
 
 ?>
 

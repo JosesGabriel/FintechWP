@@ -118,6 +118,20 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'getledger'),
             ]
         ]);
+
+        register_rest_route($base_route, 'buypower', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getbuypower'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'allstocks', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getallstocks'),
+            ]
+        ]);
     }
 
     // generic information
@@ -543,6 +557,40 @@ class JournalAPI extends WP_REST_Controller
         return $this->respond(true, ['data' => $ledger, 'debit' => $totaldebit, 'creadit' => $totalcredit], 200);
     }
 
+    public function getbuypower($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $cashme = 0;
+        $getequiry = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
+        foreach ($getequiry as $key => $value) {
+            if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
+            if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
+        }
+
+        return $this->respond(true, ['data' => $cashme], 200);
+    }
+
+    public function getallstocks($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        
+        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // $gerdqouteone = curl_exec($curl);
+        // curl_close($curl);
+
+        // $gerdqoute = json_decode($gerdqouteone);
+
+        $xmlData = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        $stocks = json_decode($xmlData);
+        return $this->respond(true, ['data' => $stocks->data], 200);
+    }
 
 }
 // Register API endpoints

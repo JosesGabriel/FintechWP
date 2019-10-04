@@ -143,7 +143,7 @@ class DataAPI extends WP_REST_Controller
         $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
             "headers" => [
                 "Content-type" => "application/json",
-                "Authorization: Bearer {$this->client_secret}",
+                "Authorization" => "Bearer {$this->client_secret}",
                 ]
             ]);
 

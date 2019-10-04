@@ -14,18 +14,6 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             _stocks = response.data.data;
         })
 }]);
-<<<<<<< HEAD
-// app.controller('message-notification', function($scope, $http, $filter) {
-//     $scope.count = 0;
-//     $http.get("/welcome/threads").then( function (response) {
-//         $scope.messages = response.data.data;
-//         $scope.count = $scope.messages.reduce( function(a, b) {
-//             if (b.status == 1) a++;
-//             return a;
-//         }, 0);
-//     });
-// });
-=======
 app.controller('ticker', ['$scope', function($scope) {
     $scope.enable = true;
     $scope.ticker = [];
@@ -46,7 +34,6 @@ app.controller('ticker', ['$scope', function($scope) {
         $scope.$digest();
     });
 }]);
->>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
 app.controller('template', function($scope, $http) {
     var settings = {
         chart: '1',
@@ -69,106 +56,7 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
-<<<<<<< HEAD
-
-app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
-    $scope.ticker = [];
-    var counter = 1;
-
-    /*
-    let transaction = [
-        { counter:1,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:2,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:3,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:4,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:5,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:6,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:7,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:8,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:9,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:10,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:11,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:12,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:13,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:14,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:15,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-        { counter:16,symbol:"AC",price:price_format(213.32), change:11, shares: abbr_format(12332) },
-    ]
-
-    for(i in transaction){i
-        $scope.ticker.push(transaction[i]);
-        ticker_data_ralph.push(transaction[i]);    
-    }
-    */
-    // socket.on('dev-psec', function (data) {  
-    //     var ctr = counter += 1;
-    //     var transaction = {
-    //         counter: ctr,
-    //         symbol: data.sym,
-    //         price:  price_format(data.prv),
-    //         change: data.chg,
-    //         shares: abbr_format(data.vol)
-    //     };
-    //     $scope.ticker.push(transaction);
-    //     ticker_data_ralph.push(transaction);
-    //     if ($scope.ticker.length > 150) {
-    //         $scope.ticker.pop();
-    //     }
-
-    //    //console.log(ticker_data_ralph);
-
-    //     if (ticker_data_ralph.length > 150) {
-    //         ticker_data_ralph.pop();
-    //     }
-    //     $scope.$digest();
-    // });
-    // $scope.select = goToChart;
-}]);
-
-
-
-app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
-    $scope.ticker = [];
-    var counter = 1;
-
-    socket.on('psec', function (data) {  
-        var ctr = counter += 1;
-        var transaction = {
-            counter: ctr,
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol)
-        };
-        $scope.ticker.push(transaction);
-        ticker_data_ralph.push(transaction);
-        if ($scope.ticker.length > 50) {
-            $scope.ticker.shift();
-        }
-
-        if (ticker_data_ralph.length > 150) {
-            ticker_data_ralph.pop();
-        }
-        $scope.$digest();
-    });
-    $scope.select = goToChart;
-}]);
-
-// app.controller('psei', function($scope, $http) {  
-//     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
-//         $http.get("/api/psei").then(function (response) {
-//             if (response.data.success) {
-//                 $scope.psei.last = parseFloat(response.data.data.c);
-//                 $scope.psei.previous = parseFloat(response.data.data.p);
-//                 $scope.psei.difference = $scope.psei.last - $scope.psei.previous;
-//                 $scope.psei.change = ($scope.psei.difference / $scope.psei.previous) * 100;
-//             }
-//         });
-// });
-app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
-=======
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
->>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";

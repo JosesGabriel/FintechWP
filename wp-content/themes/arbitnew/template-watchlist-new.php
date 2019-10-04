@@ -10,23 +10,43 @@ require("parts/global-header.php");
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
             type: 'GET',
-            dataType: 'json', // added data type
+            dataType: 'json', 
             success: function(res) {
-                    
-                //jQuery.each(res.data, function(index, value) {      
-                        console.log(res.data.last);   
-                        console.log(res.data.changepercentage);  
+                               
+                        var price = parseFloat(res.data.last);
+                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
+                        var curchange = parseFloat(res.data.changepercentage);
 
-                        jQuery('.curprice_' + symbol).text('₱ ' + res.data.last);
-                        jQuery('.curchange_' + symbol).text(res.data.changepercentage + '%');
-                //});  
+                        if(curchange < 0){
+                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
+                        }else if (curchange > 0) {
+                            jQuery('.curchange_' + symbol).css("color","#53b987");
+                        }
 
+                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
+              
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
             }
         });
 
+     }
+
+
+    function minichart_data(symbol, from, to){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                    console.log(res);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
      }
     
 </script>
@@ -160,34 +180,18 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 </select>
 
                                                                             </div>
-                                                                            <div class="subnotif" style="display: none;">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </div>
-
+                                                                            
                                                                             <div class="dpricechange">
-                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>
-                                                                                
-                                                                                   <!-- <div class="curchange_<?php echo $value['stockname'];?> onred"></div>-->
-
-                                                                             
-                                                                                    <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
-                                                                                    
-
-                                                                               
-                                                                                    <!--<div class="curchange_<?php echo $value['stockname'];?> ongreen"></div>-->
-                                                                                
+                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>                                                                                          
+                                                                                <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
                                                                             </div>
                                                                         </div>
+
+                                                                        <!-------MINI CHART -->
                                                                         <div class="col-md-12">
                                                                              <div class="dchart">
                                                                                 <div class="chartjs">
-                                                                               <!-- <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span> -->
-                                                                                
-                                                                                    <div id="chart_div_<?php echo $value['stockname']; ?>" class="chart">
-                                                                                    </div>
+                                                                                 <div id="chart_div_<?php echo $value['stockname']; ?>" class="chart"></div>
                                                                                     <div class="minichartt">
                                                                                     <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                                                                                     <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
@@ -198,9 +202,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    
 
+                                                                    </div>
 
                                                                     <div class="dparams">
                                                                         <ul>
@@ -208,10 +211,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 <li>
                                                                                     <div class="dcondition">Entry Price</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>                                                                                        
+                                                                                        </span>                                                                                        
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
@@ -219,10 +220,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 <li>
                                                                                     <div class="dcondition">Take Profit</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>                                                                                        
+                                                                                        </span>                                                                                       
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
@@ -230,15 +229,15 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                 <li>
                                                                                     <div class="dcondition">Stop<br>Loss</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>                                                                                        
+                                                                                        </span>                                                                                       
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
                                                                         </ul>
                                                                     </div>
+
+
                                                                     <div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                       <div class="modal-dialog" role="document">
                                                                         <div class="modal-content mc-background" style="width: 60%; height: 265px;">
@@ -445,4 +444,90 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 </div> <!-- #main-content -->
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
+<script>
+    if (typeof angular !== 'undefined') {
+        var app = angular.module('arbitrage_wl', ['nvd3']);
+        <?php    
+
+        if ($havemeta) {
+        foreach ($havemeta as $key => $value) {    
+
+            $stock = $value['stockname'];
+            $from  = date('Y-m-d', strtotime("-20 days"));
+            $to = date('Y-m-d');
+
+
+            //echo "<script> minichart_data('$stock','$from','$to'); </script>";
+           
+            /*$curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+            
+            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $dhistofronold = curl_exec($curl);
+            curl_close($curl);
+
+            $dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
+
+            $dhistoflist = "";
+            $counter = 0;
+
+
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }*/
+
+            ?>     
+        minichart_data('<?php echo $stock ?>','<?php echo $from ?>','<?php echo $to ?>');
+
+        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+            $scope.options = {
+                    chart: {
+                        type: 'candlestickBarChart',
+                        height: 70,
+                        width: 195,
+                        margin : {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0
+                        },
+                        interactiveLayer: {
+                            tooltip: { enabled: false }
+                        },
+                        x: function(d){ return d['date']; },
+                        y: function(d){ return d['close']; },
+                        duration: 100,
+                        zoom: {
+                            enabled: true,
+                            scaleExtent: [1, 10],
+                            useFixedDomain: false,
+                            useNiceScale: false,
+                            horizontalOff: false,
+                            verticalOff: true,
+                            unzoomEventType: 'dblclick.zoom'
+                        }
+                    }
+                };
+
+            $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+        });
+        <?php
+            }
+        }
+        ?>
+    }
+</script>
 <?php include_once "watchlist/footer-files.php";?> 

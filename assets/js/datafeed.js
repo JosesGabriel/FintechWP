@@ -30,6 +30,36 @@ var DataProvider = (function () {
     	})();
         this._subscribers = {};
         var that = this;
+        // socket.on('tick', function(data) {
+        // 	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
+        // 		var subscriber = that._subscribers[data.listenerGuid];
+		// 		var lastBar = {
+		// 			time: 	parseFloat(moment(data.t).format('x')),
+		// 			close: 	parseFloat(data.c),
+		// 			open: 	parseFloat(data.o),
+		// 			high: 	parseFloat(data.h),
+		// 			low: 	parseFloat(data.l),
+		// 			volume: parseInt(data.v),
+		// 		};
+		// 		subscriber.listener(lastBar);
+        // 	}
+        // });
+        // socket.on('tick2', function(data) {
+        // 	if (that._subscribers.hasOwnProperty(data.listenerGuid)) {
+        // 		var subscriber = that._subscribers[data.listenerGuid];
+		// 		var lastBar = {
+		// 			time: 	parseFloat(moment(data.t).format('x')),
+		// 			close: 	parseFloat(data.c),
+		// 			open: 	parseFloat(data.o),
+		// 			high: 	parseFloat(data.h),
+		// 			low: 	parseFloat(data.l),
+		// 		};
+		// 		if (data.v) {
+		// 			lastBar.volume = parseFloat(data.v);
+		// 		}
+		// 		subscriber.listener(lastBar);
+        // 	}
+		// });
 		socket.on('psec', function (data) {
 			let listenerGuid = data.sym + '_D';
 			if (that._subscribers.hasOwnProperty(listenerGuid)) {
@@ -43,14 +73,26 @@ var DataProvider = (function () {
 					volume: parseFloat(data.vol),
 				};
 				subscriber.listener(lastBar);
+				// console.log('DataPulseProvider: websocket:psec', lastBar);
 			}
 		});
+        // socket.on('reconnect', function() {
+        // 	for (var listenerGuid in that._subscribers) {
+        // 		socket.emit('subscribeBars2', listenerGuid);
+        // 	}
+        // });
     }
     DataPulseProvider.prototype.subscribeBars = function (symbolInfo, resolution, newDataCallback, listenerGuid) {
     	var that = this;
         if (that._subscribers.hasOwnProperty(listenerGuid)) {
+            // console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
             return;
         }
+        // if (symbolInfo.type == 'index') {
+        // 	socket.emit('subscribeBars3', 'test.' + listenerGuid, that._id);
+	    // } else {
+        // 	socket.emit('subscribeBars2', listenerGuid);
+	    // }
         that._subscribers[listenerGuid] = {
             symbolInfo: symbolInfo,
             resolution: resolution,
@@ -59,6 +101,8 @@ var DataProvider = (function () {
         // console.log("DataPulseProvider: subscribed for #" + listenerGuid + " - {" + symbolInfo.name + ", " + resolution + "}");
     };
     DataPulseProvider.prototype.unsubscribeBars = function (listenerGuid) {
+        // socket.emit('unsubscribeBars2', listenerGuid);
+        // socket.emit('unsubscribeBars3', 'test.' + listenerGuid);
         delete this._subscribers[listenerGuid];
         // console.log("DataPulseProvider: unsubscribed for #" + listenerGuid);
     };
@@ -72,12 +116,14 @@ Datafeeds.UDFCompatibleDatafeed.prototype.onReady = function(callback) {
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.searchSymbols = function(searchString, exchange, type, onResultReadyCallback) {
 	var MAX_SEARCH_RESULTS = 30;
-	this._send('/charthisto/', {
+	// this._send('https://api2.pse.tools/api/chart/search', {
+	this._send('https://arbitrage.ph/charthisto/', {
 		limit: MAX_SEARCH_RESULTS,
 		query: searchString.toUpperCase(),
 		type: type,
 		exchange: exchange
 	}).done(function(response) {
+		// var data = JSON.parse(response);
 		var data = response;
 		for (var i = 0; i < data.length; ++i) {
 			if (!data[i].params) {
@@ -156,11 +202,12 @@ Datafeeds.UDFCompatibleDatafeed.prototype.calculateHistoryDepth = function(perio
 };
 Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback, firstDataRequest) {
 	var that = this;
-	var url = '/wp-json/data-api/v1/charts/history';
+	var url = 'https://arbitrage.ph/wp-json/data-api/v1/charts/history';
 	var rangeStartDate = moment.unix(rangeStartDate).format('YYYY-MM-DD');
 	var rangeEndDate = moment.unix(rangeEndDate).format('YYYY-MM-DD');
 	var params = {
 		symbol: symbolInfo.ticker.toUpperCase(),
+		// firstDataRequest: firstDataRequest,
 		from: rangeStartDate,
 		resolution: '1D',
 		exchange: 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
@@ -170,7 +217,10 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 	if (resolution != 'D') {
 		params.resolution = '1m'
 	}
-
+	
+	// if ( ! firstDataRequest) {
+	// 	params['to'] = rangeEndDate;
+	// }
 	params['to'] = rangeEndDate;
 	that._send(url, params).done(function(sxdata) {
 		
@@ -204,6 +254,8 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		onDataCallback(bars, meta);
 		return;
 	}).fail( function(arg) {
+		// console.warn(['getBars(): HTTP error', arg]);
+		// onErrorCallback('network error: ' + JSON.stringify(arg));
 		return;
 	});
 };

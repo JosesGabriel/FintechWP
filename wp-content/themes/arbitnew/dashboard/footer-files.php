@@ -1,12 +1,15 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 <script type="text/javascript">
 			jQuery(document).ready(function(){
-				jQuery('.um-activity-post').html('Post');
+				//jQuery('.um-activity-post').html('Post');
 			});
 </script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
@@ -18,7 +21,7 @@
 
 <script>
 
-
+(function ($) {
     var user_id = '<?php echo $user_id ?>'
 
     function add_loading_btn($btn) {
@@ -59,10 +62,11 @@
     $(document).ready(function () {
 
         /**
-         * Overrides the wall post submit function in 
+         * Overrides the wall post submit function in
          * wp-content/plugins/um-social-activity/assets/js/um-activity.js line 407
          */
         $('.ondashboardpage').on('submit', '.um-activity-publish', function (e) {
+            console.log("post submitted");
             e.stopPropagation();
             e.preventDefault();
 
@@ -97,6 +101,7 @@
                     var template_data;
 
                     if ( form.find('input[name="_post_id"]').val() === '0' ) {
+                        console.log("ed success");
                         var wall = form.parents('.um').find('.um-activity-wall');
 
                         widget_template = wp.template( 'um-activity-widget' );
@@ -160,5 +165,5 @@
         }
     });
 
-
+})(jQuery)
 </script>

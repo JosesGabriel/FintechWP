@@ -3,6 +3,15 @@
 <?php um_fetch_user( $user_ID ); ?>
 
 <?php date_default_timezone_set("Asia/Manila"); ?>
+
+<style type="text/css">
+	.um-activity-left.um-activity-actions > div .dnumof {
+		padding: 8px 0px 6px 0 !important;
+		font-weight: 400 !important;
+    	font-size: 13px !important;
+	}
+</style>
+
 <script type="text/template" id="tmpl-um-activity-widget">
 
 	<div class="um-activity-widget um-activity-clone unready" id="postid-{{{data.post_id}}}">
@@ -186,7 +195,7 @@
 
 					<a href="#">
 
-						<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
+						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbullish; ?></span>
 
@@ -198,7 +207,7 @@
 
 					<a href="#">
 
-						<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
+						<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
 
 						<span class="dnumof"><?php echo $numbear; ?></span>
 

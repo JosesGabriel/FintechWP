@@ -5,6 +5,7 @@ require("parts/global-header.php");
 ?>
 <script>
 
+
     function lateststocks(symbol){
 
          jQuery.ajax({
@@ -200,6 +201,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                         <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                                                                                     </div>
                                                                                 </div>
+
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" name="">
                                                                                 
                                                                                 </div>
                                                                             </div>
@@ -454,11 +457,11 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-var mini = "";
+
 
 function minichart(symbol, from, to){
 
-  mini = jQuery.ajax({
+ jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
             dataType: 'json', 
@@ -477,10 +480,11 @@ function minichart(symbol, from, to){
                 }
 
                 //mini = dhist;
-
+                jQuery('.minchart_' + symbol).val(dhist);
+               
                 //console.log(dhist);
 
-               return dhist;                       
+               //return dhist;                       
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -512,7 +516,7 @@ function minichart(symbol, from, to){
 
             var dhist;
             var counter = 0;
-            console.log(mini);
+            //console.log(datamin);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

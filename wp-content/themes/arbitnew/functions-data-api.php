@@ -154,11 +154,12 @@ class DataAPI extends WP_REST_Controller
         //endregion test
 
         //verify if user is logged in
-        if (!$isUserLoggedIn) { 
-            return $this->respond(false, [
-                'message' => 'Unauthorized access.',
-            ], 401);
-        }
+        //TODO: enable this
+        // if (!$isUserLoggedIn) { 
+        //     return $this->respond(false, [
+        //         'message' => 'Unauthorized access.',
+        //     ], 401);
+        // }
    
         //region forward request
         $result = $this->forwardRequest();

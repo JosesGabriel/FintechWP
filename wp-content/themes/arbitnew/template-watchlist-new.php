@@ -94,12 +94,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                             <div class="col-md-12">
                                 <div class="box-portlet">
                                     <div class="box-portlet-header">
-                                        <!-- <div class="optbase">
-                                            <ul>
-                                                <li class="watchtab" data-toptab="watchtab">Watchlist</li>
-                                                <li class="addwatchtab" data-toptab="addwatchtab">Add Watchlist</li>
-                                            </ul>
-                                        </div> -->
+                                     
                                         <h2 class="watchtitle">Watchlist</h2>
                                        
                                     </div>

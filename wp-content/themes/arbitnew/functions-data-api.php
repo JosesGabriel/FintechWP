@@ -199,7 +199,7 @@ class DataAPI extends WP_REST_Controller
             return "test";
         });
 
-        //return $result;
+        return "wtfs";
     }
 
 }

@@ -324,32 +324,38 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         }
     }
     $scope.getBidsAndAsks(_symbol);
-    let limit = 20;
-    $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
-        .then(response => {
-            response = response.data;
-            if (!response.success) {
-                return;
-            }
+    
+    $scope.getStockTrades = function (symbol = '', limit = 20) {
+        if (symbol != 'PSEI' || symbol != '') {
+            $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+                .then(response => {
+                    response = response.data;
+                    if (!response.success) {
+                        return;
+                    }
+    
+                    let data = response.data;
+    
+                    $scope.transactions = data.map(transaction => {
+                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
+                        return {
+                            symbol: transaction.symbol,
+                            price:  price_format(transaction.executed_price),
+                            shares: abbr_format(transaction.executed_volume),
+                            buyer:  transaction.buyer,
+                            seller: transaction.seller,
+                            time:   full_time,
+                        };                                    
+                    });
+                    $scope.$digest();
+                })
+                .catch(err => {
+                    
+                });
+        }
+    }
+    $scope.getStockTrades(_symbol);
 
-            let data = response.data;
-
-            $scope.transactions = data.map(transaction => {
-                let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                return {
-                    symbol: transaction.symbol,
-                    price:  price_format(transaction.executed_price),
-                    shares: abbr_format(transaction.executed_volume),
-                    buyer:  transaction.buyer,
-                    seller: transaction.seller,
-                    time:   full_time,
-                };                                    
-            });
-            $scope.$digest();
-        })
-        .catch(err => {
-            
-        });
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {

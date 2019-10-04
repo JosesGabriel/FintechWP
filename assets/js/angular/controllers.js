@@ -326,7 +326,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.getBidsAndAsks(_symbol);
     
     $scope.getStockTrades = function (symbol = '', limit = 20) {
-        if (symbol != 'PSEI' || symbol != '') {
+        if (symbol != 'PSEI' && symbol != '') {
             $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
                 .then(response => {
                     response = response.data;

@@ -575,7 +575,7 @@ function minichart(symbol, from, to){
                                     }
                                 };
 
-                            $scope.data = [{values: [<?php //echo $dhistory; ?>]}];
+                            $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
                             //$scope.data = [{values: [dhist]}];
                         });
 

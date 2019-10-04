@@ -1,5 +1,10 @@
 <?php
-include ('data-api.php');
+require_once ('data-api.php');
+require_once ABSPATH . 'vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 
 class DataAPI extends WP_REST_Controller
 {
@@ -8,10 +13,16 @@ class DataAPI extends WP_REST_Controller
     protected $version;
     protected $table_name;
     protected $client_secret;
+    protected $guzzleClient;
     public $currentUser;
+
 
     public function __construct()
     {
+        $this->guzzleClient = new GuzzleHttp\Client([
+            'http_errors' => false,
+            'handler' => new GuzzleHttp\Handler\CurlHandler()
+            ]);
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
@@ -104,45 +115,91 @@ class DataAPI extends WP_REST_Controller
         return new WP_REST_Response($data, $status);
     }
 
-    public function sendViaCurl(){
-        //set the headers
-        $headers = [
-            'Content-Type: application/json',
-            "Authorization: Bearer {$this->client_secret}",
-        ];
-        
+    public function forwardRequest(){
         //set the forward url
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $forwardUrl);
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
+        // $request = new Request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+        //     "headers" => [
+        //         "Content-type" => "application/json",
+        //         "Authorization" => "Bearer {$this->client_secret}",
+        //         ]
+        //     ]);
 
-        return json_decode($result);
+        // $promise = $this->guzzleClient->sendAsync($request)->then(function ($response) {
+        //     return $response->getStatusCode();
+        // });
+        
+        
+        // $promise->wait();
+        $promise = $this->guzzleClient->requestAsync("GET", $forwardUrl, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$this->client_secret}",
+                ]
+            ]);
+
+        $promise->then(function ($response) {
+            return json_decode($response->getBody());
+        });
+
+        //$promise = $this->guzzleClient->sendAsync($request);
+
+        // $response = $this->guzzleClient->request("GET", $forwardUrl, [
+        //     "headers" => [
+        //         "Content-type" => "application/json",
+        //         "Authorization" => "Bearer {$this->client_secret}",
+        //         ]
+        //     ]);
+
+        //return json_decode($promise->getBody());
     }
      
     public function getForwardedResponse($request)
     {
         $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
 
+        //TODO: sample code for guzzle request
+        //region test
+        // $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+        //     "headers" => [
+        //         "Content-type" => "application/json",
+        //         "Authorization" => "Bearer {$this->client_secret}",
+        //         ]
+        //     ]);
+
+        // return json_decode($response->getBody());
+        //endregion test
+
         //verify if user is logged in
-        if (!$isUserLoggedIn) { 
-            return $this->respond(false, [
-                'message' => 'Unauthorized access.',
-            ], 401);
-        }
+        //TODO: enable this
+        // if (!$isUserLoggedIn) { 
+        //     return $this->respond(false, [
+        //         'message' => 'Unauthorized access.',
+        //     ], 401);
+        // }
    
         //region forward request
-        $result = $this->sendViaCurl();
+        //TODO:enable
+        //$result = $this->forwardRequest();
         //endregion forward request
 
-        return $result;
+        $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+        $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
+
+        $promise = $this->guzzleClient->requestAsync("GET", $forwardUrl, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$this->client_secret}",
+                ]
+            ]);
+
+        $promise->then(function ($response) {
+            return "test";
+        });
+
+        return $forwardUrl;
     }
 
 }

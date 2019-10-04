@@ -3,7 +3,33 @@
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
+<script>
 
+    function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                    
+                //jQuery.each(res.data, function(index, value) {      
+                        console.log(res.data.last);   
+                        console.log(res.data.changepercentage);  
+
+                        jQuery('.curprice_' + symbol).text('₱ ' + res.data.last);
+                        jQuery('.curchange_' + symbol).text(res.data.changepercentage + '%');
+                //});  
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+
+     }
+    
+</script>
 
 <?php
 
@@ -94,12 +120,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                             <div class="col-md-12">
                                 <div class="box-portlet">
                                     <div class="box-portlet-header">
-                                        <!-- <div class="optbase">
-                                            <ul>
-                                                <li class="watchtab" data-toptab="watchtab">Watchlist</li>
-                                                <li class="addwatchtab" data-toptab="addwatchtab">Add Watchlist</li>
-                                            </ul>
-                                        </div> -->
+                                     
                                         <h2 class="watchtitle">Watchlist</h2>
                                        
                                     </div>
@@ -117,8 +138,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                 </div>
                                                             </li>
                                                             <?php foreach ($havemeta as $key => $value) { 
-
-                                                                //echo $value['stockname'];
+                                                                $stock = $value['stockname'];
+                                                               echo "<script> lateststocks('$stock');</script>";
                                                                 ?>
                                                                
 
@@ -147,17 +168,17 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                             </div>
 
                                                                             <div class="dpricechange">
-                                                                                <div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
-                                                                                <?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
-                                                                                    <div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>
+                                                                                
+                                                                                   <!-- <div class="curchange_<?php echo $value['stockname'];?> onred"></div>-->
 
-                                                                                <?php elseif (round($dinstall['data']->changepercentage, 2) == 0.00): ?>
-                                                                                    <div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                             
+                                                                                    <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
                                                                                     
 
-                                                                                <?php else: ?>
-                                                                                    <div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
-                                                                                <?php endif; ?>
+                                                                               
+                                                                                    <!--<div class="curchange_<?php echo $value['stockname'];?> ongreen"></div>-->
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-12">

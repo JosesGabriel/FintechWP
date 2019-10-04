@@ -24,31 +24,6 @@
     .adsbygoogle .box-portlet-content {
         padding: 10px 27px 27px 27px;
     }
-    .um-notification-live-feed {
-        box-shadow: 0px 2px 3px 0px rgba(7, 13, 19, 0.52)!important;
-        /*max-height: 200px !important;*/
-        max-height: 100% !important;
-    }
-    .um-notification-live-feed::-webkit-scrollbar-track
-    {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-        border-radius: 11px;
-        background-color: #0f121d;
-    }
-
-    .um-notification-live-feed::-webkit-scrollbar
-    {
-        width: 8px;
-        border-radius: 10px;
-        background-color: none;
-    }
-
-    .um-notification-live-feed::-webkit-scrollbar-thumb
-    {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-        background-color: #34495e;
-    }
     .to-content-part ul::-webkit-scrollbar-track
     {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -88,9 +63,6 @@
         border-radius: 10px;
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
         background-color: #34495e;
-    }
-    .um-notification-live-feed {
-        max-width: 365px !important;
     }
     body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
         background: #0d1f337a;
@@ -501,9 +473,6 @@
     .dauthor {
         color: #878a8e;
     }
-    .um-activity-bodyinner-txt span.post-meta {
-        width: 100%;
-    }
     .srr-wrap.srr-style-none .srr-item {
         padding: 5px 0px 5px 0px !important;
     }
@@ -597,54 +566,6 @@
         display: inline-block;
         width: initial;
         color: #fff!important;
-    }
-
-    .um-notification-live-feed {
-        overflow: visible !important;
-        right: 58px !important;
-    }
-    .um-activity-bodyinner-txt span.post-meta {
-        border: none; 
-        box-shadow: none; 
-        display: block;
-        color: #fff;
-        margin: 6px 0 0 0;
-        padding-bottom: 0px;
-        background: #11273e;
-    }
-    .um-activity-bodyinner-txt span.post-title {
-        font-weight: bold;
-        color: #d8d8d8 !important;
-        padding: 15px 20px 0 20px;
-        margin: 0;
-        font-size: 14px;
-        /* display: block; */
-        font-family: 'Montserrat', sans-serif;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .um-activity-bodyinner-txt span.post-excerpt {
-        /* padding: 5px 20px 0 20px; */
-        margin: 0;
-        color: #aaa !important;
-        font-size: 12px;
-        line-height: 14px;
-        display: block;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .um-activity-bodyinner-txt span.post-domain {
-        /* padding: 5px 20px 0 20px; */
-        margin: 0;
-        color: #aaa !important;
-        font-size: 11px;
-        line-height: 18px;
-        text-transform: uppercase;
-        display: block;
     }
     .md-handlerurl {
         background-color: rgba(13, 31, 49, 0.91);
@@ -863,9 +784,6 @@
     .nws-top:hover .overlay {
         width: 95.4%;
         left: 15px;
-    }
-    .um-activity-bodyinner-txt span.post-image {
-        background: #11273e;
     }
     .see-more-btn strong a {
         color: #d8d8d8;
@@ -1845,64 +1763,6 @@
         color: #6583a8;
         font-weight: 500;
     }
-    .ons2 span.post-image {
-        height: 300px;
-        width: 100%;
-        margin: 0 auto;
-        overflow: hidden !important;
-        display: block;
-        position: relative;
-        /* background: #fffffe !important; */
-    }
-    a.dmeta {
-        display: block;
-        max-height: 300px;
-    }
-    .closerff {
-        display: inline-block;
-        position: absolute;
-        height: 300px;
-        width: 519.22px;
-    }
-    .cls-inner {
-        position: absolute;
-        display: inline-block;
-        bottom: 0;
-        padding: 0px 0px 11px 0px;
-        width: 519.22px;
-        background: rgba(18, 39, 62, 0.85);
-        z-index: 3;
-    }
-    img.inpostimage {
-        display: block;
-        height: 300px !important;
-        width: auto !important;
-        margin: 0 auto;
-        z-index: 2;
-        position: relative;
-        /* box-shadow: 0px 0px 5px -2px rgba(0,0,0,0.75) !important; */
-    }
-    span.postImageBlur:before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        zoom: 0;
-        background: inherit;
-        filter: blur(5px);
-        -moz-filter: blur(5px);
-        -webkit-filter: blur(5px);
-        -o-filter: blur(5px);
-        transition: all 2s linear;
-        -moz-transition: all 2s linear;
-        -webkit-transition: all 2s linear;
-        -o-transition: all 2s linear;
-        /* background-color: #fffffe !important; */
-    }
-    span.postImageBlur {
-        background-color: #fffffe !important;
-        display: block;
-    }
 
     i.fa.fa-search {
         position: absolute;
@@ -2648,9 +2508,6 @@
     .dauthor {
         color: #878a8e;
     }
-    .um-activity-bodyinner-txt span.post-meta {
-        width: 100%;
-    }
     .srr-wrap.srr-style-none .srr-item {
         padding: 5px 0px 5px 0px !important;
     }
@@ -2745,51 +2602,6 @@
         display: inline-block;
         width: initial;
         color: #fff!important;
-    }
-    
-    .um-notification-live-feed {
-        overflow: visible !important;
-    }
-    .um-activity-bodyinner-txt span.post-meta {
-        border: none; 
-        box-shadow: none; 
-        display: block;
-        color: #fff;
-        margin: 12px 0 0 0;
-        /* padding-bottom: 10px; */
-        background: #11273e;
-    }
-    .um-activity-bodyinner-txt span.post-title {
-        font-weight: bold;
-        color: #d8d8d8 !important;
-        padding: 10px 12px 0 12px;
-        margin: 0;
-        font-size: 14px;
-        /*display: block;*/
-        font-family: 'Montserrat', sans-serif;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .um-activity-bodyinner-txt span.post-excerpt {
-        margin: 5px 12px 0 12px;
-        color: #aaa !important;
-        font-size: 12px;
-        line-height: 14px;
-        display: block;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .um-activity-bodyinner-txt span.post-domain {
-        margin: 5px 12px 0 12px;
-        color: #aaa !important;
-        font-size: 11px;
-        line-height: 18px;
-        text-transform: uppercase;
-        display: block;
     }
     .md-handlerurl {
         background-color: rgba(13, 31, 49, 0.91);

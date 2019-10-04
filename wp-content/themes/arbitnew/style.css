@@ -1625,18 +1625,6 @@ body .iflychat-popup {
 .add-friend-btn {
     margin-left: 2px !important;
 }
-    .um-notification-live-feed {
-        position: absolute;
-        right: 220px !important;
-        background: #2e3746;
-        min-width: 200px;
-        text-align: left;
-        margin-top: -10px;
-        border: 2px solid #506889;
-        border-radius: 5px;
-        max-width:300px;
-        max-height: 280px !important;
-    }
 
 .um-notification-live-feed:before {
     bottom: 100%;

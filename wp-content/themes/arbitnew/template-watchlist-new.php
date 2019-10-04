@@ -19,9 +19,9 @@ require("parts/global-header.php");
                         var curchange = parseFloat(res.data.changepercentage);
 
                         if(curchange < 0){
-                            jQuery('.curchange_' + symbol).css("color","red");
+                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
                         }else if (curchange > 0) {
-                            jQuery('.curchange_' + symbol).css("color","green");
+                            jQuery('.curchange_' + symbol).css("color","#53b987");
                         }
 
                         jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');

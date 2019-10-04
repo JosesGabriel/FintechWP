@@ -2749,3 +2749,17 @@ span.my_rank-number {
     font-family: 'Roboto', sans-serif;
     color: #d0a950;
 }
+.um-notification-live-feed:before {
+    bottom: 100%;
+    right: 3%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #152d46;
+    border-width: 10px;
+    margin-left: -36px;
+}

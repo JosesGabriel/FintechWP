@@ -1472,16 +1472,6 @@ a.message-part-btn:before {
     color: #fff;
     text-shadow: 2px 2px 4px #333;
 }
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a {
-    min-width: auto;
-    font-size: 10px;
-    background: none;
-}
-.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:before {
-    font-size: 11px;
-    margin-right: 5px;
-    width: initial;
-}
 .the_user_top_page .um-cover {
     overflow: hidden;
 }
@@ -1625,21 +1615,6 @@ body .iflychat-popup {
 .add-friend-btn {
     margin-left: 2px !important;
 }
-
-.um-notification-live-feed:before {
-    bottom: 100%;
-    right: 3%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #4f6987;
-    border-width: 10px;
-    margin-left: -36px;
-    }
 .totabs active {
     color: red;
 }

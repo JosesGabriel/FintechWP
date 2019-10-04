@@ -123,6 +123,7 @@ ul.main-drops {
 .right-header-inner .ontotools {
     display: inline-block;
     vertical-align: top;
+    cursor: pointer;
 }
 .ontotools a {
     font-size: 16px;
@@ -207,7 +208,7 @@ body .um-notification-live-feed {
     box-shadow: 0px 2px 3px 0px rgba(7, 13, 19, 0.52);
     max-width: 365px;
     overflow: visible;
-    right: 58px !important;
+    right: 55px !important;
     display: none;
 }
 .um-notification-live-feed-inner {
@@ -380,6 +381,20 @@ ul.main-drop > ul li:last-child {
 .main-drop hr.style14 {
     margin-top: 0;
 }
+.um-notification-live-feed:before {
+    bottom: 100%;
+    right: 3%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #152d46;
+    border-width: 10px;
+    margin-left: -36px;
+    }
 /*------ global-header-css ------*/
 
 
@@ -619,7 +634,7 @@ img.inpostimage {
     overflow:hidden;
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
-    height: 90px !important;
+    height: 50px !important;
     border-radius: 0 !important;    
     color: #fff;
 }
@@ -631,6 +646,10 @@ img.inpostimage {
 }
 textarea.um-activity-textarea-elem.ui-autocomplete-input {
     background: #142c46;
+    display: block
+}
+.um-activity-textarea {
+    padding: 15px 15px 0;
 }
 .add-post .um-activity-new-post .um-activity-body .um-activity-preview {
     border: 0 none;
@@ -687,6 +706,7 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     color: #fff;
     background-color: #142c46;
     padding-left: 0;
+    padding-bottom: 3px;
 }
 .desc-note {
     padding: 0 16px;
@@ -833,7 +853,6 @@ ul {
 }
 .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area {
     position: relative;
-    padding: 0 0 10px;
 }
 .add-post .um-activity-comments .um-activity-commentl.um-activity-comment-area .um-activity-comment-avatar {
     left: 5px;
@@ -851,7 +870,8 @@ ul {
     min-height: 40px;
     box-sizing: border-box;
     padding-top: 11px;
-    height: 40px;
+    height: 40px !important;
+    resize: none;
 }
 .ondashboardpage .um-activity-widget .um-activity-comments .um-activity-comment-box textarea.um-activity-comment-textarea {
     background: #11273e;
@@ -892,7 +912,6 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
     letter-spacing: 0.1px;
 }
 .um .um-activity-comment-meta .um-activity-editc a {
-    color: #6583a8 !important;
     text-transform: capitalize;
 }
 .um-activity-comment-meta .um-activity-editc-d {
@@ -979,6 +998,22 @@ span.um-activity-seemore {
 .um-activity-bodyinner-photo img {
     z-index: 2;
     position: relative;
+}
+.um-activity-head {
+    padding: 10px 10px 10px;
+}
+.um-activity-comment-meta .um-activity-editc-d:before {
+    content: "";
+    bottom: -15px;
+    left: 42px;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-top-color: #123;
+    border-width: 8px;
 }
 /*------ center-part-dashboard ------*/
 
@@ -1360,35 +1395,6 @@ margin: 0;
     padding: 3px 7px 3px;
     line-height: 20px;
 }
-
-.banner-try {
-    background: #142c46;
-    border-radius: 5px;
-    padding-bottom: 12px;
-    margin-top: 15px;
-    display: none;
-}
-
-.banner-try .to-top-title {
-    padding-top: 10px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    padding-bottom: 0 !important;
-    margin-bottom: 5px !important;
-}
-
-.adsbygoogle .to-top-title {
-    padding-top: 6px;
-    padding-left: 13px;
-    padding-right: 13px;
-    padding-bottom: 0;
-    margin-bottom: 5px;
-}
-
-.cont-try-premium {
-    padding: 0 14px;
-}
-
 .to-top-create {
     float: right;
     color: #6583a8;
@@ -1415,8 +1421,6 @@ margin: 0;
 
 /* BOF Var Calc */
 
-/* Chart Default - do not copy */
-
 .lockedd {
 
 position: relative;
@@ -1435,21 +1439,6 @@ color: #ecf0f1;
 font-family: 'Roboto', sans-serif;
 font-weight: 300;
 }
-/* .lockedd i.fa.fa-lock {
-
-top: 7px;
-
-position: absolute;
-
-right: 1px;
-
-font-size: 14px;
-
-color: #ecf0f1; */
-
-/* } */
-
-
 
 /* Default Calc Styles - do not copy */
 

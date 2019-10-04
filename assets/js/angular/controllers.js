@@ -1,7 +1,7 @@
 var widget;
 var chart;
 var marketdepthTimeout;
-var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
+// var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
 app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;

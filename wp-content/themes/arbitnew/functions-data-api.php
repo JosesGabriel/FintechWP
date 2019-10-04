@@ -131,6 +131,8 @@ class DataAPI extends WP_REST_Controller
         
         $promise->wait();
 
+        return 'test';
+
         //$promise = $this->guzzleClient->sendAsync($request);
 
         // $response = $this->guzzleClient->request("GET", $forwardUrl, [

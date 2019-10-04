@@ -32,21 +32,6 @@ require("parts/global-header.php");
         });
 
      }
-
-     function minichart_data(symbol, from, to){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                    console.log(res);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-     }
     
 </script>
 
@@ -458,12 +443,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
         if ($havemeta) {
         foreach ($havemeta as $key => $value) {    
            
-           $stock = $value['stockname'];
-           $from  = date('Y-m-d', strtotime("-20 days"));
-           $to = date('Y-m-d');
-
-            echo "<script>minichart_data('$stock','$from','$to')</script>";
-            /*$curl = curl_init();
+            $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
             
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -476,7 +456,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             $dhistoforchart = $dhistoforchart->data;
 
             $dhistoflist = "";
-            $counter = 0;*/
+            $counter = 0;
 
 
             if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
@@ -524,7 +504,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
         <?php
             }
         }
-
         ?>
     }
 </script>

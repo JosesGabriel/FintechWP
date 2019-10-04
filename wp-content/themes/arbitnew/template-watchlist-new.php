@@ -474,7 +474,7 @@ function minichart(symbol, from, to){
                            
                 }
 
-                //console.log(dhist);
+                console.log(dhist);
 
                return dhist;                       
             },

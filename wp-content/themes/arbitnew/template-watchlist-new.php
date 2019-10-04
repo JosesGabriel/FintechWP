@@ -18,7 +18,8 @@ require("parts/global-header.php");
                         console.log(res.data.changepercentage);  
 
                         jQuery('.curprice_' + symbol).text('₱ ' + res.data.last);
-                        jQuery('.curchange_' + symbol).text(res.data.changepercentage + '%');
+                        var value = parseFloat(res.data.changepercentage);
+                        jQuery('.curchange_' + symbol).text(value.toFixed(2) + '%');
                 //});  
 
             },

@@ -202,7 +202,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" name="">
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="">
                                                                                 
                                                                                 </div>
                                                                             </div>
@@ -514,7 +514,7 @@ function minichart(symbol, from, to){
 
             var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
-            var dhist = $('.minchart_<?php echo $stock; ?>').val();
+            var dhist = $('#minchart_<?php echo $stock; ?>').val();
             var counter = 0;
             console.log(dhist);
 

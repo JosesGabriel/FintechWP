@@ -1,5 +1,10 @@
 <?php
-include ('data-api.php');
+require ('data-api.php');
+require $_SERVER['DOCUMENT_ROOT'] . ‘vendor/autoload.php’;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 
 class DataAPI extends WP_REST_Controller
 {
@@ -8,10 +13,13 @@ class DataAPI extends WP_REST_Controller
     protected $version;
     protected $table_name;
     protected $client_secret;
+    protected $guzzleClient;
     public $currentUser;
+
 
     public function __construct()
     {
+        $this->guzzleClient = new GuzzleHttp\Client(['base_uri' => 'https://data-api.arbitrage.ph/']);
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
@@ -130,6 +138,17 @@ class DataAPI extends WP_REST_Controller
     public function getForwardedResponse($request)
     {
         $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
+
+        //region test
+        $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization: Bearer {$this->client_secret}",
+                ]
+            ]);
+
+        return $response->getBody();
+        //endregion test
 
         //verify if user is logged in
         if (!$isUserLoggedIn) { 

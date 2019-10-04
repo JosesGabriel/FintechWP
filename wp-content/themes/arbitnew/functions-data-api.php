@@ -147,7 +147,7 @@ class DataAPI extends WP_REST_Controller
                 ]
             ]);
 
-        return $response->getBody();
+        return $response->getStatusCode();
         //endregion test
 
         //verify if user is logged in

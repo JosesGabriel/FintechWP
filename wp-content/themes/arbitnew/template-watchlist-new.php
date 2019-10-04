@@ -487,7 +487,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                    console.log(dhist);
 
-                           app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+                           
+                }
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+
+
+
+
+        });
+
+
+        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
                                     chart: {
                                         type: 'candlestickBarChart',
@@ -522,18 +537,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                         });
 
 
-
-
-
-
-
-                }
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
 
         <?php
             }

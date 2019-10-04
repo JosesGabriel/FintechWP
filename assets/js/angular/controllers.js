@@ -8,7 +8,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
 
-    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/list")
+    $http.get("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
             $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
@@ -243,13 +243,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             });
         }
     }
-    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest-active-date")
+    $http.get("/wp-json/data-api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
                 $scope.latest_trading_date = moment(response.data.data.date)
             }
         })
-    $http.get("https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
+    $http.get("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
@@ -301,7 +301,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
-            $http.get('https://arbitrage.ph/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
                 response = response.data;
                 if (!response.success) {
@@ -598,35 +598,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
-// app.controller('disclosures', function($scope, $http, $rootScope) {
-//     $scope.$watch('$root.stockList', function () {
-//         $scope.stocks = $rootScope.stockList;
-//     });
-//     $scope.disclosures = [];
-//     $http.get("/api/disclosures").then(function (response) {
-//         if (response.data.success) {
-//             $scope.disclosures = response.data.data;
-//         }
-//     });
-//     // socket.on('disclosure', function(data) {
-//     //     if ($scope.$parent.settings.disclosure != '0') {
-//     //         $.gritter.add({
-//     //             title: 'Disclosure Notification',
-//     //             text: '<a href="javascript:void(0);" onclick="goToChart(\'' + data.symbol + '\')"><b>$' + data.symbol + '</b></a> | ' + $scope.stocks[data.symbol].description + '<br/>' +
-//     //                   data.template + '<br/>' +
-//     //                   '<a href="https://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '" target="_blank" onclick="ga(\'send\', \'event\', \'disclosures\', \'notification\');">http://edge.pse.com.ph/openDiscViewer.do?edge_no=' + data.md5 + '</a><br/>' +
-//     //                   "<small class='text-muted'>You can disable disclosure notification under the site settings</small><div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-//     //             time: 5000,
-//     //             image: "https://website.com/assets/images/logos/" + data.symbol + ".jpg",
-//     //             class_name: nightmode ? "gritter-dark" : "gritter-light",
-//     //         });
-//     //     }
-//     //     $scope.disclosures.unshift(data);
-//     // });
-//     $scope.goToChart = function(symbol) {
-//         return goToChart(symbol);
-//     };
-// });
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",
@@ -693,7 +664,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
     $(function() {
         TradingView.onready(function() {
-			/* $(".vertical-box-inner-cell.ng-scope").append('<div class="chart_logo_arbitrage"><a href="https://arbitrage.ph/" target="_blank"><img src="https://arbitrage.ph/wp-content/uploads/2018/12/logo.png"></a></div>'); */
             var override = nightmode ? JSON.parse(JSON.stringify(dark_overrides)) : JSON.parse(JSON.stringify(light_overrides));
             override["paneProperties.background"] = "#2c3e50";
 			override["paneProperties.gridProperties.color"] = "#bdc3c7";
@@ -709,7 +679,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 symbol: _symbol,
                 interval: 'D',
                 container_id: "tv_chart_container",
-                datafeed: new Datafeeds.UDFCompatibleDatafeed("https://arbitrage.ph/api"),
+                datafeed: new Datafeeds.UDFCompatibleDatafeed("/api"),
                 library_path: "/assets/tradingview/charting_library/",
                 timezone: "Asia/Hong_Kong",
                 locale: "en",
@@ -728,7 +698,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 },
                 logo: {
                     image: '/wp-content/uploads/2019/04/translogo.png',
-                    link: 'https://arbitrage.ph/'
+                    link: '/'
                 },
                 time_frames: [
                     { text: "5y", resolution: "D" },
@@ -776,7 +746,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     $http({
                         method : "GET",
-                        url : "https://arbitrage.ph/apipge/?daction=checkifhavestock&symbol="+_symbol,
+                        url : "/apipge/?daction=checkifhavestock&symbol="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {
@@ -808,7 +778,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                     $http({
                         method : "POST",
-                        url : "https://arbitrage.ph/apipge/?daction=marketsentiment&stock="+_symbol,
+                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
                         dataType: "json",
                         contentType: "application/json",
                         data: {

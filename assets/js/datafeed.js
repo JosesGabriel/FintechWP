@@ -117,7 +117,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.onReady = function(callback) {
 Datafeeds.UDFCompatibleDatafeed.prototype.searchSymbols = function(searchString, exchange, type, onResultReadyCallback) {
 	var MAX_SEARCH_RESULTS = 30;
 	// this._send('https://api2.pse.tools/api/chart/search', {
-	this._send('https://arbitrage.ph/charthisto/', {
+	this._send('/charthisto/', {
 		limit: MAX_SEARCH_RESULTS,
 		query: searchString.toUpperCase(),
 		type: type,

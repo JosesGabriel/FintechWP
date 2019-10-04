@@ -2,6 +2,9 @@
 
 jQuery(function(){
   
+
+  var vstocks;
+
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
@@ -12,7 +15,25 @@ jQuery(function(){
     jQuery(el).css('border-color',colors[dcount]);
     dcount++;
   });
+
+$.ajax({
+    url: "/wp-json/data-api/v1/stocks/list",
+    type: 'GET',
+    dataType: 'json', // added data type
+    success: function(res) {
+     
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+        
+    }
 });
+
+
+
+});
+
+
+
 </script>
 
 <div class="top-stocks">

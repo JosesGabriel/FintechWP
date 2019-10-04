@@ -445,7 +445,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 </div> <!-- #main-content -->
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
@@ -454,6 +453,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <script>
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
+
+        var dhisto;
 
         <?php    
 
@@ -466,7 +467,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             ?>     
 
-            var dhist = '';
+            var dhist;
             var counter = 0;
 
         jQuery.ajax({
@@ -485,9 +486,23 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                         counter++;
                    }
 
-                   console.log(dhist);
 
-                           app.controller('minichartarb<?php echo strtolower($stock); ?>', function($scope) {
+                           
+                }
+
+               dhisto = dhist;
+                
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+        });
+
+console.log(dhisto);
+
+                app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
                                     chart: {
                                         type: 'candlestickBarChart',
@@ -523,17 +538,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 
-
-
-
-
-                }
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
 
         <?php
             }

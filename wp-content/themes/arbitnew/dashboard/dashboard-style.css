@@ -339,10 +339,11 @@ ul.main-drop > ul:before {
     right: 4%;
 }
 ul.main-drop > ul li:hover {
-    background: #50678b;
+    background: #0d1f33;
 }
 ul.main-drop > ul li {
     padding: 6px 15px;
+    list-style: none;
 }
 ul.main-drop > ul li:hover a {
     text-decoration: none;
@@ -490,6 +491,9 @@ a:hover {
 .left-dashboard-part {
     padding: 10px 0 0 !important;
     width: 196px;
+}
+.seven.calc-menu-buysell img {
+    height: 23px;
 }
 /*------ global-sidebar ------*/
 

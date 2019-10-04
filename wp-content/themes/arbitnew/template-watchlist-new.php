@@ -102,8 +102,6 @@ if(isset($_GET['addcp'])){
 }
 
 
-
-$watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 ?>
 
 
@@ -441,9 +439,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-
-
-/*function minichart(symbol, from, to){
+function minichart(symbol, from, to){
 
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
@@ -474,8 +470,6 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
         });
 
     }
-
-*/
 
 
     if (typeof angular !== 'undefined') {
@@ -513,6 +507,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
     ?>
+
+    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

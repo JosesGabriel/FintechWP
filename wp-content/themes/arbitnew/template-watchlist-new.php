@@ -486,6 +486,47 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                    }
 
                    console.log(dhist);
+                   
+                           app.controller('minichartarb<?php echo strtolower($stock); ?>', function($scope) {
+                            $scope.options = {
+                                    chart: {
+                                        type: 'candlestickBarChart',
+                                        height: 70,
+                                        width: 195,
+                                        margin : {
+                                            top: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            left: 0
+                                        },
+                                        interactiveLayer: {
+                                            tooltip: { enabled: false }
+                                        },
+                                        x: function(d){ return d['date']; },
+                                        y: function(d){ return d['close']; },
+                                        duration: 100,
+                                        zoom: {
+                                            enabled: true,
+                                            scaleExtent: [1, 10],
+                                            useFixedDomain: false,
+                                            useNiceScale: false,
+                                            horizontalOff: false,
+                                            verticalOff: true,
+                                            unzoomEventType: 'dblclick.zoom'
+                                        }
+                                    }
+                                };
+
+                            //$scope.data = [{values: [<?php // echo $dhistoflist; ?>]}];
+                            $scope.data = [{values: [dhist]}];
+                        });
+
+
+
+
+
+
+
                 }
 
             },
@@ -497,39 +538,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
         //minichart_data('<?php echo $stock ?>','<?php echo $from ?>','<?php echo $to ?>');
 
-        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
-            $scope.options = {
-                    chart: {
-                        type: 'candlestickBarChart',
-                        height: 70,
-                        width: 195,
-                        margin : {
-                            top: 0,
-                            right: 0,
-                            bottom: 0,
-                            left: 0
-                        },
-                        interactiveLayer: {
-                            tooltip: { enabled: false }
-                        },
-                        x: function(d){ return d['date']; },
-                        y: function(d){ return d['close']; },
-                        duration: 100,
-                        zoom: {
-                            enabled: true,
-                            scaleExtent: [1, 10],
-                            useFixedDomain: false,
-                            useNiceScale: false,
-                            horizontalOff: false,
-                            verticalOff: true,
-                            unzoomEventType: 'dblclick.zoom'
-                        }
-                    }
-                };
 
-            //$scope.data = [{values: [<?php // echo $dhistoflist; ?>]}];
-            $scope.data = [{values: [dhist]}];
-        });
         <?php
             }
         }

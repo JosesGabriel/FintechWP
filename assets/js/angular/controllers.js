@@ -843,43 +843,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $scope.$parent.getStockTrades(_symbol);
                         
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
-                            .then(function (response) {
-                                if (response.data.success) {
-                                    let data = response.data.data;
-
-                                    $scope.$parent.fullaskperc = data.ask_total_percent;
-                                    $scope.$parent.fullasktotal = data.ask_total;
-                                    $scope.$parent.fullbidperc = data.bid_total_percent;
-                                    $scope.$parent.fullbidtotal = data.bid_total;
-
-                                }
-                            })
-                            .catch(function(response) {
-                                $scope.$parent.fullaskperc = 0;
-                                $scope.$parent.fullasktotal = 0;
-                                $scope.$parent.fullbidperc = 0;
-                                $scope.$parent.fullbidtotal = 0;
-                            });
-
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
-                            .then(function (response) {
-                                if (response.data.success) {
-                                    let data = response.data.data;
-
-                                    $scope.$parent.askperc = data.ask_total_percent;
-                                    $scope.$parent.asktotal = data.ask_total;
-                                    $scope.$parent.bidperc = data.bid_total_percent;
-                                    $scope.$parent.bidtotal = data.bid_total;
-
-                                }
-                            })
-                            .catch(function (response) {
-                                $scope.$parent.askperc = 0;
-                                $scope.$parent.asktotal = 0;
-                                $scope.$parent.bidperc = 0;
-                                $scope.$parent.bidtotal = 0;
-                            });
+                        $scope.$parent.getFullMarketDepth(_symbol);
+                        $scope.$parent.getTopMarketDepth(_symbol);
                             
                         $scope.$parent.getBidsAndAsks(symbol);
                     } else {

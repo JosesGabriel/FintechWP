@@ -125,6 +125,7 @@
 		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
+		var _post_id    = '<?php echo get_the_id(); ?>';
 	</script>
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>
 	<script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
@@ -242,7 +243,7 @@
 						data: {
 							'action' : 'post_sentiment',
 							'stock' : _symbol,
-							'postid' : '<?php echo get_the_id(); ?>',
+							'postid' : _post_id,
 							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,
@@ -303,7 +304,7 @@
 						data: {
 							'action' : 'post_sentiment',
 							'stock' : _symbol,
-							'postid' : '<?php echo get_the_id(); ?>',
+							'postid' : _post_id,
 							'userid' : _user_id,
 							'dbasebull': dbull,
 							'dbasebear': dbear,

@@ -16,10 +16,10 @@ require("parts/global-header.php");
                 //jQuery.each(res.data, function(index, value) {      
                         console.log(res.data.last);   
                         console.log(res.data.changepercentage);  
-
-                        jQuery('.curprice_' + symbol).text('₱ ' + res.data.last);
-                        var value = parseFloat(res.data.changepercentage);
-                        jQuery('.curchange_' + symbol).text(value.toFixed(2) + '%');
+                        var price = parseFloat(res.data.last);
+                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
+                        var curchange = parseFloat(res.data.changepercentage);
+                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
                 //});  
 
             },

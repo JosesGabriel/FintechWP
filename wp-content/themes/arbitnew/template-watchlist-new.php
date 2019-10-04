@@ -441,6 +441,7 @@ if(isset($_GET['addcp'])){
 
 function minichart(symbol, from, to){
 
+ var dhist = '';
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',

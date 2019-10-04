@@ -3,17 +3,104 @@
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
+<script>
 
+    function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                               
+                        var price = parseFloat(res.data.last);
+                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
+                        var curchange = parseFloat(res.data.changepercentage);
+
+                        if(curchange < 0){
+                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
+                        }else if (curchange > 0) {
+                            jQuery('.curchange_' + symbol).css("color","#53b987");
+                        }
+
+                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
+              
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+
+     }
+    
+</script>
 
 <?php
 
 global $wpdb, $current_user;
 $userID = $current_user->ID;
 
-$data = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '". $userID ."')");
-echo $userID;
-//print_r($data);
-//$havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
+$havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
+
+
+if (isset($_POST) && !empty($_POST)) {
+
+    if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
+
+        foreach ($havemeta as $key => $value) {
+            if ($value['stockname'] == $_POST['stockname']) {
+                unset($havemeta[$key]);
+            }
+        }
+
+        array_push($havemeta, $_POST);
+        update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+
+        wp_redirect( '/watchlist' );
+        exit;
+
+    } else {
+
+        if (isset($havemeta) && !empty($havemeta)){
+            if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
+                echo "Stock Already Exist";
+            } else {
+                array_push($havemeta, $_POST);
+                update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+            }
+
+        } else {
+            $newarray = [];
+            array_push($newarray, $_POST);
+            add_user_meta($userID, '_watchlist_instrumental', $newarray);
+            //update_user_meta($userID, '_watchlist_instrumental', $newarray);
+        }
+
+        wp_redirect( '/watchlist' );
+        exit;
+    }
+
+
+}
+
+if (isset($_GET['remove'])) {
+    foreach ($havemeta as $key => $value) {
+        if ($value['stockname'] == $_GET['remove']) {
+            unset($havemeta[$key]);
+        }
+    }
+    update_user_meta($userID, '_watchlist_instrumental', $havemeta);
+    wp_redirect( '/watchlist' );
+}
+
+if(isset($_GET['addcp'])){
+    $cpnum = $_GET['addcp'];
+    add_user_meta( $userID, 'cpnum', $cpnum, true);
+}
+
+
+
+$watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 ?>
 
 
@@ -29,45 +116,38 @@ echo $userID;
                     </div>
                 </div>
             </div>
-            <div class="center-dashboard-part">
+                        <div class="center-dashboard-part">
                 <div class="inner-center-dashboard">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="box-portlet">
-                                <div class="box-portlet-header">
-                                    <h2 class="watchtitle">Watchlist</h2>
-                                </div>
-                                <div class="box-portlet-content">
-                                    <div class="dtabcontent">
-                                        <div class="dclosetab watchtab active">
-                                 
-
+                    <div class="add-post">
+                        <!--start content-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box-portlet">
+                                    <div class="box-portlet-header">
+                                     
+                                        <h2 class="watchtitle">Watchlist</h2>
+                                       
+                                    </div>
+                                    <div class="box-portlet-content">
+                                        <div class="dtabcontent">
+                                            <div class="dclosetab watchtab active">
+                                                
                                                 <div class="dinnerlist">
-
-                                                    <?php if ($data): ?>
+                                                    <?php if ($havemeta): ?>
                                                         <ul>
-                                                             <li class="addwatch">
+                                                            <li class="addwatch">
                                                                 <div class="dplusbutton">
                                                                     <div class="dplstext">Add watchlist</div>
                                                                     <div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
                                                                 </div>
-                                                             </li>
-                                                            
+                                                            </li>
+                                                            <?php foreach ($havemeta as $key => $value) { 
+                                                                $stock = $value['stockname'];
+                                                               echo "<script> lateststocks('$stock');</script>";
+                                                                ?>
+                                                               
 
-                                                        <?php foreach($data as $results) { 
-
-                                                            $meta_value = explode('|', $results->meta_value);
-                                                            $stockname = $meta_value[0];
-                                                            $entry_price = $meta_value[1];
-                                                            $take_profit = $meta_value[2];
-                                                            $stop_loss = $meta_value[3];
-                                                            $webpopup = $meta_value[4];
-                                                            $smspopup = $meta_value[5];
-
-
-                                                            ?>
-
-                                                            <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $stockname; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
+                                                                <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
                                                                     <!--<div class="watchlist--buttons">
                                                                         <div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>-->
                                                                         <div style="display: none;"><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
@@ -75,7 +155,7 @@ echo $userID;
                                                                     
                                                                     <div class="row">
                                                                         <div class="wlttlstockvals">
-                                                                            <div class="stocknn"><?php echo $stockname; ?></div>
+                                                                            <div class="stocknn"><?php echo $value['stockname']; ?></div>
                                                                             <div class="s_dropdown" style="display: inline-block;"> 
                                                                                 <select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
                                                                                         <option  value="select" hidden></option>
@@ -84,58 +164,21 @@ echo $userID;
                                                                                 </select>
 
                                                                             </div>
-                                                                            <div class="subnotif" style="display: none;">
-                                                                                <?php foreach ($value['delivery_type'] as $dtkey => $dtvalue) {
-                                                                                    echo ($dtvalue == 'web-notif' ? 'Web Notif' : 'SMS Notif');
-                                                                                    echo ",";
-                                                                                } ?>
-                                                                            </div>
-
-                                                                            <script>
-
-                                                                            $.ajax({
-                                                                                url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol='<?php echo $stockname; ?>'",
-                                                                                type: 'GET',
-                                                                                dataType: 'json', // added data type
-                                                                                success: function(res) {
-                                                                                        
-                                                                                    //jQuery.each(res.data, function(index, value) {      
-                                                                                            console.log(res.data);    
-                                                                                    //});  
-
-                                                                                },
-                                                                                error: function (xhr, ajaxOptions, thrownError) {
-                                                                                    
-                                                                                }
-                                                                            });
-                                                                                
-                                                                            </script>
-
-
+                                                                            
                                                                             <div class="dpricechange">
-                                                                                <div class="curprice">&#8369;<?php echo $dinstall['data']->last; ?></div>
-                                                                                <?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
-                                                                                    <div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
-
-                                                                                <?php elseif (round($dinstall['data']->changepercentage, 2) == 0.00): ?>
-                                                                                    <div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
-                                                                                    
-
-                                                                                <?php else: ?>
-                                                                                    <div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
-                                                                                <?php endif; ?>
+                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>                                                                                          
+                                                                                <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
                                                                             </div>
                                                                         </div>
+
+                                                                        <!-------MINI CHART -->
                                                                         <div class="col-md-12">
                                                                              <div class="dchart">
                                                                                 <div class="chartjs">
-                                                                               <!-- <span class="nocont"><i class="fas fa-kiwi-bird" style="font-size: 25px;"></i><br>Waiting for API</span> -->
-                                                                                
-                                                                                    <div id="chart_div_<?php echo $stockname; ?>" class="chart">
-                                                                                    </div>
+                                                                                 <div id="chart_div_<?php echo $value['stockname']; ?>" class="chart"></div>
                                                                                     <div class="minichartt">
-                                                                                    <a href="/chart/<?php echo $stockname; ?>" target="_blank" class="stocklnk"></a>
-                                                                                    <div ng-controller="minichartarb<?php echo strtolower($stockname); ?>">
+                                                                                    <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                                                                                    <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
                                                                                         <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                                                                                     </div>
                                                                                 </div>
@@ -143,48 +186,42 @@ echo $userID;
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                     </div>
-                                                                    
-
-
 
                                                                     <div class="dparams">
                                                                         <ul>
-                                                                            <?php if (isset($entry_price) && $entry_price > 0 ): ?>
+                                                                            <?php if (isset($value['dcondition_entry_price']) && $value['dconnumber_entry_price'] > 0 ): ?>
                                                                                 <li>
                                                                                     <div class="dcondition">Entry Price</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $entry_price; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>                                                                                        
+                                                                                        </span>                                                                                        
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
-                                                                            <?php if (isset($take_profit) && $take_profit > 0 ): ?>
+                                                                            <?php if (isset($value['dcondition_take_profit_point']) && $value['dconnumber_take_profit_point'] > 0 ): ?>
                                                                                 <li>
                                                                                     <div class="dcondition">Take Profit</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $take_profit; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>                                                                                        
+                                                                                        </span>                                                                                       
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
-                                                                            <?php if (isset($stop_loss) && $stop_loss > 0 ): ?>
+                                                                            <?php if (isset($value['dcondition_stop_loss_point']) && $value['dconnumber_stop_loss_point'] > 0 ): ?>
                                                                                 <li>
                                                                                     <div class="dcondition">Stop<br>Loss</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $stop_loss; ?>
-                                                                                        
-                                                                                        </span>
-                                                                                        <!--<span class="ontoright">Php</span>-->
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>                                                                                        
+                                                                                        </span>                                                                                       
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
                                                                         </ul>
                                                                     </div>
+
+
                                                                     <div class="modal fade dmodaleditwatch" id="modal<?php echo $value['stockname']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                       <div class="modal-dialog" role="document">
                                                                         <div class="modal-content mc-background" style="width: 60%; height: 265px;">
@@ -226,7 +263,7 @@ echo $userID;
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                              
+                                                                                                 
                                                                                                     <div class="col-md-12">
                                                                                                         <div class="submitform" style="margin-left: 84px;">
                                                                                                             <img class="chart-preloader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
@@ -243,23 +280,18 @@ echo $userID;
                                                                                 </div>
                                                                             </div>
                                                                           </div>
-                                                                          
-
+                                                                          <!-- <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                                          </div> -->
                                                                         </div>
                                                                       </div>
                                                                     </div>
                                                                 </li>
-
-                                                            <?php  } ?>
-
-
-
-
-
+                                                            <?php //endif; 
+                                                                            } ?>
                                                         </ul>
                                                     <?php else: ?>
-
-
                                                         <ul>
                                                             <li class="addwatch">
                                                                 <div class="dplusbutton">
@@ -268,17 +300,10 @@ echo $userID;
                                                                 </div>
                                                             </li>
                                                         </ul>
-
                                                     <?php endif; ?>
-
-
                                                 </div>
-
-                               
-                                        </div>
-
-
-                                        <div class="dclosetab addwatchtab " style="width: 271px;">
+                                            </div>  
+                                            <div class="dclosetab addwatchtab " style="width: 271px;">
 
 
                                                 <!-- wathlist phone number modal -->    
@@ -322,6 +347,7 @@ echo $userID;
 
 
                                                         <div class="groupinput midd selectstock"><label>Stock Code</label>
+                                                            
 
                                                             <input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
 
@@ -348,85 +374,40 @@ echo $userID;
                                                         <div class="selectnotifitems">
                                                                 <div class="innerdeliver innerdeliver-addstock">
                                                                     <ul>
-                                                                        <li><input type="checkbox" name="delivery_type_webpopup" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
-                                                                        <li><input type="checkbox" name="delivery_type_sms" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+                                                                        <li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
+                                                                        <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
                                                                     </ul>
                                                                 </div>
                                                         </div>
 
-                                                           
+                                                         
                                                             <div class="row">
                                                                
                                                                 <div class="col-md-6">
-                                                                   
+                                                                    <!--<div class="dpaste">
+                                                                        <ul class="listofinfo"></ul>
+                                                                    </div>-->
                                                                     <div class="submitform" style="margin-right: -125px;">
                                                                         <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
                                                                         <button id="canceladd" class="arbitrage-button arbitrage-button--primary" style="margin-right: 2px;">Cancel</button>
-                                                                        <!--<button id="submitmenow" name="submit" class="arbitrage-button arbitrage-button--primary">Submit</button>-->
-                                                                        <input class="arbitrage-button arbitrage-button--primary" name="submit" type="submit" value="Submit" />
+                                                                        <button id="submitmenow" class="arbitrage-button arbitrage-button--primary">Submit</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <?php
-
-                                                if(isset($_POST['submit'])){
-
-                                                    $stockname = $_POST['stockname'];
-                                                    $entry_price = $_POST['dconnumber_entry_price'];
-                                                    $take_profit_point = $_POST['dconnumber_take_profit_point'];
-                                                    $stop_loss_point = $_POST['dconnumber_stop_loss_point'];
-                                                    $webpopup = 'web-notif';
-                                                    $smspopup = $_POST['delivery_type_sms'];
-
-                                                
-                                                   //$newarray = array(
-                                                   // 'stockname' => $stockname, 
-                                                   // 'dconnumber_entry_price' => $entry_price, 
-                                                   // 'dconnumber_take_profit_point'=> $take_profit_point, 
-                                                  //  'dconnumber_stop_loss_point' => $stop_loss_point, 
-                                                   // 'delivery_type_webpopup' => $webpopup, 
-                                                   // 'delivery_type_sms' => $smspopup 
-                                                   // );
-
-                                                   $result = $wpdb->get_results("SELECT * FROM arby_usermeta WHERE (meta_key = '_watchlist_instrumental' AND user_id = '". $userID ."')");
-                                                   foreach($result as $results) { 
-                                                        $meta = explode('|', $results->meta_value);
-                                                        if($stockname == $meta[0]){
-                                                            $num = 1;
-                                                        }
-                                                   }
-
-                                                   $newarray = $stockname . '|' . $entry_price . '|'. $take_profit_point . '|' . $stop_loss_point . '|'. $webpopup . '|' . $smspopup;
-                                                    if($num != 1) {
-                                                        $wpdb->insert('arby_usermeta', array(
-                                                        'user_id' => $userID,
-                                                        'meta_key' => '_watchlist_instrumental',
-                                                        'meta_value' => $newarray, // ... and so on
-                                                        ));
-
-                                                         wp_redirect( '/watchlist' );
-                                                         exit;
-
-
-                                                    }
-
-                                                   
-                                                }
-
-                                                ?>
-
                                             </div>
-
-
+                                        </div>
+                                        <br class="clear">
                                     </div>
+                                    <div class="box-portlet-footer"></div>
                                 </div>
                             </div>
                         </div>
+                        <!--end content-->
                     </div>
                 </div>
             </div>
@@ -447,4 +428,83 @@ echo $userID;
 
 </div> <!-- #main-content -->
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
+<script>
+    if (typeof angular !== 'undefined') {
+        var app = angular.module('arbitrage_wl', ['nvd3']);
+        <?php    
+
+        if ($havemeta) {
+        foreach ($havemeta as $key => $value) {    
+           
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
+            
+            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $dhistofronold = curl_exec($curl);
+            curl_close($curl);
+
+            $dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
+
+            $dhistoflist = "";
+            $counter = 0;
+
+
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }
+
+            ?>     
+
+
+        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+            $scope.options = {
+                    chart: {
+                        type: 'candlestickBarChart',
+                        height: 70,
+                        width: 195,
+                        margin : {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0
+                        },
+                        interactiveLayer: {
+                            tooltip: { enabled: false }
+                        },
+                        x: function(d){ return d['date']; },
+                        y: function(d){ return d['close']; },
+                        duration: 100,
+                        zoom: {
+                            enabled: true,
+                            scaleExtent: [1, 10],
+                            useFixedDomain: false,
+                            useNiceScale: false,
+                            horizontalOff: false,
+                            verticalOff: true,
+                            unzoomEventType: 'dblclick.zoom'
+                        }
+                    }
+                };
+
+            $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+        });
+        <?php
+            }
+        }
+        ?>
+    }
+</script>
 <?php include_once "watchlist/footer-files.php";?> 

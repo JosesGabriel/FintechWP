@@ -4,18 +4,7 @@ global $user_ID, $post;
 um_fetch_user( $user_ID );
 
 date_default_timezone_set("Asia/Manila");
-
-//======================================================================
-
-
-
-//===================================================================
 ?>
-
-
-
-
-
 <style type="text/css">
 
 	.um-activity-widget.um-activity-new-clone.unready {
@@ -204,8 +193,6 @@ date_default_timezone_set("Asia/Manila");
 
 		<div class="um-activity-foot status" id="wallcomments-{{{data.post_id}}}">
 
-
-
 			<div class="um-activity-left um-activity-actions">
 
 
@@ -235,12 +222,13 @@ date_default_timezone_set("Asia/Manila");
 				</div>
 			
 
-			<div class="um-clear"></div>
+			
 				
 
+			</div>
+			<!-- <div class="um-clear"></div> -->
+			<hr class="style14 style11">
 		</div>
-
-
 
 		<div class="um-activity-comments">
 
@@ -252,7 +240,7 @@ date_default_timezone_set("Asia/Manila");
 
 				<div class="um-activity-commentl um-activity-comment-area">
 
-					<div class="um-activity-comment-avatar" style="top: 14px !important;bottom: 8px;position: relative;">
+					<div class="um-activity-comment-avatar">
 
 						<?php echo get_avatar( get_current_user_id(), 80 ); ?>
 

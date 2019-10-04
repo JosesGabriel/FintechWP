@@ -5,6 +5,17 @@ html {
 dl, ol, ul {
     margin-bottom: 0;
 }
+body,
+#page-container,
+#main-content,
+.inner-placeholder {
+    font-family: 'Roboto', sans-serif;
+}
+.inner-placeholder{
+    background: #0d1f33;
+    color: #d8d8d8;
+    padding-top: 55px !important; 
+}
 hr.style14 {
     position: relative;
     border: 0;
@@ -21,6 +32,13 @@ hr.style20 {
     width: 107%;
     margin-bottom: -1px !important;
 }
+.inner-main-content {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
 /*------ global-dashboard-css ------*/
 
 
@@ -31,7 +49,13 @@ body header#main-header {
     width: 100%;
     z-index: 99999
 }
-.inner-main-content,
+.header-dashboard-inner {
+    padding: 8px 0 0;
+}
+.header-dashboard-inner > div {
+    float: left;
+    width: 50%;
+}
 .header-dashboard-inner {
     max-width: 1000px;
     width: 100%;
@@ -457,8 +481,16 @@ a:hover {
     border-radius: 5px;
     overflow: hidden;
 }
+.um-activity-commentwrap {
+    padding-top: 13px;
+}
 .um-activity-widget.um-activity-new-post:first-child {
     margin-top: 11px;
+}
+.um-activity-preview img {
+    border-radius: 9px;
+    width: 114px;
+    height: auto;
 }
 .um-activity-new-post .um-activity-head {display:none}
 .um-activity-new-post .um-activity-foot,
@@ -493,7 +525,7 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 .um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post:hover {
     background: #2481bc;
 }
-.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disable:hover {
+.um-activity-new-post .um-activity-foot .um-activity-right a.um-button.um-activity-post.um-disabled:hover {
     background: none;
 }
 .add-post .um-activity-widget .um-activity-ava a {
@@ -569,8 +601,11 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     margin: 0;
     padding: 0;
 }
-.um-activity-widget .um-activity-foot.status div > a span {
+.um-activity-widget .um-activity-foot.status div > a .diconbase {
     margin: 0;
+}
+.hala-clone .um-activity-actions span {
+    margin-left: 2px;
 }
 .um-activity-left.um-activity-actions > div .dnumof {
     color: white;
@@ -592,6 +627,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
 }
+.um-activity-widget .um-activity-foot.status .um-activity-bullish:hover a span.diconbase {
+    background: #25ae5f;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
 .um-activity-widget .um-activity-foot.status .um-activity-bullish a span.diconbase img{
     width: 16px;
     display: block;
@@ -608,6 +650,13 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     height: 26px;
     vertical-align: middle;
     display: inline-flex;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+.um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
+    background: #e64c3c;
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
@@ -795,20 +844,709 @@ span.um-activity-seemore {
     box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;
     overflow: hidden;
 }
+.um-photo-modal:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    zoom: 1;
+    background: inherit;
+
+    filter        : blur(27px);
+    -moz-filter   : blur(27px);
+    -webkit-filter: blur(27px);
+    -o-filter     : blur(27px);
+
+    transition        : all 2s linear;
+    -moz-transition   : all 2s linear;
+    -webkit-transition: all 2s linear;
+    -o-transition     : all 2s linear;
+}
+.um-activity-bodyinner-photo img {
+    z-index: 2;
+    position: relative;
+}
 /*------ center-part-dashboard ------*/
 
 
 
-/*------ sidebar-mingle ------*/
+/*------ right-sidebar ------*/
 
-
-
-/*------ sidebar-mingle ------*/
+.right-dashboard-part {
+    float: left;
+    max-width: 267px;
+    padding: 11px 0 0;
+    height: 140%;
+}
+.top-stocks,
+.latest-news,
+.watch-list,
+.top-traiders {
+    border-radius: 5px;
+    overflow: hidden;
+    border: none;
+    background-color: #142c46;
+}
+.watch-list-inner .to-top-title,
+.top-stocks .to-top-title,
+.top-traiders-inner .to-top-title,
+.latest-news .to-top-title {
+    padding: 9px 15px 0 !important;
+    margin-bottom: 7px;
+    color: #fffffe;
+    font-size: 13px;
+    font-weight: 500;
+}
+.watch-list-inner .to-content-part,
+.top-stocks .to-content-part,
+.top-traiders .to-content-part,
+.latest-news .to-content-part{
+    min-height: 126px;
+    padding: 5px 15px;
+}
+.to-bottom-seemore {
+    padding: 0 15px 8px;
+    font-size: 12px;
+    font-weight: 300;
+    cursor: pointer;
+    display: block;
+}
+.to-content-part #preloader{
+    background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
+    background-size: 50px;
+    height: 125px;
+}
+.to-content-part ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.traider-image .side-image {
+    background-size: cover !important;
+    height: 35px;
+    width: 35px;
+    border-radius: 50px;
+}
+.top-traiders .to-content-part .trader-item .traider-details {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1em;
+}
+.hide-show {
+    display: none;
+}
+.top-traiders .to-content-part .trader-item {
+    padding: 5px 0;
+}
+.top-traiders .to-content-part .trader-item .traider-image {
+    width: 20%;
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 5px;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-name {
+    color: #fffffe;
+    font-size: 13px;
+    font-weight: 500;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-name a {
+    color: #ecf0f1;
+    font-size: 13px;
+    line-height: 1em;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower {
+    margin-top: 6px;
+    color: #6f8ead;
+}
+#mingle-btn {
+    border-radius: 26px !important;
+    border: 2px solid #e77e24 !important;
+    padding: 5px 14px !important;
+    font-family: 'Nunito', sans-serif;
+    color: #e77e24 !important;
+}
+#mingle-btn:hover {
+    background: #e77e24 !important;
+    color: #fff !important;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a {
+    min-width: auto;
+    font-size: 10px;
+    background: none;
+}
+.top-traiders .to-content-part .trader-item .traider-details .traider-follower .onbfollow a:before {
+    font-size: 11px;
+    margin-right: 5px;
+    width: initial;
+}
+.view__all {
+    font-weight: 400;
+    color: #d8d8d8;
+}
+ul.footmore {
+    margin: 10px 0 0;
+    padding: 0;
+}
+ul.footmore li {
+    padding-right: 6px;
+    padding-left: 2px;
+    color: inherit;
+    border-right: none;
+    display: inline-block;
+}
+ul.footmore li a {
+    font-size: 13px;
+}
+ul.footmore .ddot {
+    top: 2px;
+    position: relative;
+}
+/*------ right-sidebar ------*/
 
 
 
 /*------ calc-part-dashboard ------*/
+.arb_calcbox {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 13px;
+    background: rgba(30, 30, 30, 0.9);
+    position: fixed;
+    z-index: 99999999000;
+    display: flex;
+    align-items: center;
+}
+.bkcalcbox {
+    padding: 12px 20px 12px 20px;
+    color: #fff;
+    max-width: 450px;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 100%;
+    background: #142c46;
+}
+.arb_calcbox {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 13px;
+    background: rgba(30, 30, 30, 0.9);
+    position: fixed;
+    z-index: 99999999000;
+    display: flex;
+    align-items: center;
+}
+.bkcalcbox {
+    padding: 12px 20px 12px 20px;
+    color: #fff;
+    max-width: 450px;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 100%;
+    background: #142c46;
+}
+.bkcalcboxess {
+    padding: 20px 20px 20px 20px;
+    color: #fff;
+    max-width: 650px;
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 460px;
+    width: 100%;
+    background: #0c1f33;
+}
+.bkcalcboxess input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none; 
+margin: 0; 
+}
+.bkcalcboxess input{ 
+    text-align: right;
+}
+.halfts {
+    height: 40em;
+    overflow: auto;
+    margin-top: 10px;
+}
+.halfts::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 11px;
+    background-color: #0f121d;
+}
 
+.halfts::-webkit-scrollbar
+{
+    width: 8px;
+    border-radius: 10px;
+    background-color: none;
+}
+
+.halfts::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #34495e;
+}
+.arb_calcshares input {
+    background: #11273e !important;
+    border: 1px solid #1e3554 !important;
+    border-radius: 9px !important;
+    height: 35px;
+}
+.arb_buyprice input {
+    background: #11273e !important;
+    border: 1px solid #1e3554 !important;
+    /* border-radius: 9px !important; */
+    /* height: 35px; */
+}
+.arb_sellprice input {
+    background: #11273e !important;
+    border: 1px solid #1e3554 !important;
+    border-radius: 9px !important;
+    height: 35px;
+}
+.doneitem li {
+    width: 48.5% !important;
+    display: inline-block;
+}
+.arb_calcbox_right input {
+    text-align: right;
+}
+.arb_calcbox input[type="number"] {
+    border: 0;
+    border-radius: 4px;
+    padding: 5px 6px;
+    background-color: #4e6a85;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    display: block;
+    width: 90%;
+    margin-top: 3px;
+}
+.arb_calcbox input[type="number"]::placeholder {
+    color: white;
+}
+.arb_calcbox h3 {
+    font-size: 17px;
+    padding-bottom: 0;
+    font-weight: normal;
+}
+
+.arb_calcbox h3 strong {
+    text-transform: uppercase;
+}
+
+.arb_calcbox h4 {
+    font-size: 15px;
+    padding-bottom: 0;
+    font-weight: normal;
+}
+
+.arb_calcbox h4 strong {
+    text-transform: uppercase;
+}
+
+.arb_calcbox small {
+    font-size: 11px;
+    display: block;
+}
+
+.arb_clear {
+    clear: both;
+}
+
+.arb_calcbox_lefting {
+    float: left;
+    width: 60%;
+}
+
+.arb_calcbox_righting {
+    float: right;
+    width: 40%;
+    padding-top: 16px;
+    padding-right: 5px;
+}
+
+.padbott {
+    padding-bottom: 5px;
+}
+
+.arb_buyfees,
+.arb_sellfees {
+    position: relative;
+}
+
+.feedetails_sell,
+.feedetails_buy {
+    display: none;
+}
+
+.feedetails_sell,
+.feedetails_buy {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #2b3d4f;
+    width: 90%;
+}
+
+.smlinline {
+    display: inline-block !important;
+    vertical-align: text-top;
+    cursor: pointer;
+}
+
+.clcbxttl {
+    border-bottom: 1px solid #4e6a85;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.arb_dvdr {
+    border-bottom: 1px solid #1e3554 !important;
+    width: 75%;
+    margin: 8px 12px;
+    padding-left: 10px;
+}
+
+.arb_breakeven {
+    width: 100%;
+    margin: 4px 0 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.arbredtxt {
+    color: #e64c3c;
+}
+
+.arbgreentxt {
+    color: #25ae5f;
+}
+
+.alleft {
+    float: left
+}
+
+.alright {
+    float: right
+}
+
+.arbleveling {
+    padding: 3px 7px 3px;
+    line-height: 20px;
+}
+
+.banner-try {
+    background: #142c46;
+    border-radius: 5px;
+    padding-bottom: 12px;
+    margin-top: 15px;
+    display: none;
+}
+
+.banner-try .to-top-title {
+    padding-top: 10px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 5px !important;
+}
+
+.adsbygoogle .to-top-title {
+    padding-top: 6px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+}
+
+.cont-try-premium {
+    padding: 0 14px;
+}
+
+.to-top-create {
+    float: right;
+    color: #6583a8;
+}
+.bit_asda {
+    padding-bottom: 3px;
+    display: block;
+}
+.rightAlignCal {
+    float: right;
+    margin-right: 25px;
+}
+.amtdtls{
+    float:right;
+}
+.lblbcl{
+    margin-left:15px;
+}
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+/* EOF Sidebar Calc */
+
+/* BOF Var Calc */
+
+/* Chart Default - do not copy */
+
+.lockedd {
+
+position: relative;
+
+}
+
+.groupinput.midd.label_date input {
+margin: 0;
+border: none;
+border-radius: 0 4px 4px 0;
+background: #4e6a85;
+padding: 4px 5px 3px;
+text-align: left;
+font-size: 13px;
+color: #ecf0f1;
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+}
+/* .lockedd i.fa.fa-lock {
+
+top: 7px;
+
+position: absolute;
+
+right: 1px;
+
+font-size: 14px;
+
+color: #ecf0f1; */
+
+/* } */
+
+
+
+/* Default Calc Styles - do not copy */
+
+.arb_calcbox input[type="number"] {
+    border:0;
+    border-radius: 4px;
+    padding: 5px 6px;
+    background: #11273e !important;
+    border: 1px solid #4e6a85;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    display:block;
+    width:90%;
+    margin-top:3px;
+}
+.arb_calcbox input[type="number"]::placeholder {
+    color: white;
+}
+
+.arb_calcbox h3 {
+    font-size: 17px;
+    padding-bottom: 0;
+    font-weight:normal;
+}
+
+.arb_calcbox h3 strong {
+    text-transform: uppercase;
+}
+
+.arb_calcbox h4 {
+    font-size: 15px;
+    padding-bottom: 0;
+    font-weight:normal;
+}
+
+.arb_calcbox h4 strong {
+    text-transform: uppercase;
+}
+
+.arb_calcbox small {
+    font-size:11px;
+    display:block;
+}
+
+.arb_clear {clear:both;}
+
+.arb_calcbox_left {
+    float:left;
+    width:60%;
+}
+
+.arb_calcbox_right {
+    float:right;
+    width:40%;
+}
+
+.padbott {
+    padding-bottom:5px;
+}
+
+.arb_buyfees, .arb_sellfees {position: relative;}
+
+.feedetails_sell, .feedetails_buy {display:none;}
+
+.feedetails_sell,
+
+.feedetails_buy {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #2b3d4f;
+    width:90%;
+}
+
+.smlinline {
+    display: inline-block !important;
+    vertical-align: text-top;
+    cursor:pointer;
+}
+
+.clcbxttl {
+    border-bottom: 1px solid #4e6a85;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.arb_dvdr {
+    border-bottom: 1px solid #4e6a85;
+    width: 90%;
+    margin: 8px 0 10px;
+}
+
+.arb_breakeven {
+    width: 100%;
+    margin: 4px 0 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.arbredtxt {color: #e64c3c; }
+
+.arbgreentxt {color: #25ae5f; }
+
+.alleft {float:left}
+
+.alright {float:right}
+
+.arbleveling {
+    padding: 3px 7px 3px;
+    line-height: 20px;
+}
+
+
+
+/* VAR Calc Style */
+
+.arb_calcbox .arb_calcbox_left {
+    line-height: 30px;
+    background-color: #34495e;
+    padding: 0 0 0 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+.arb_calcbox input[type="number"] {
+    margin-top:0;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    display:inline-block;
+    padding: 5px 6px;
+    line-height: 20px;
+    background: #4e6a85 !important;
+}
+.arb_calcbox input[type="number"]::placeholder {
+    color: white;
+}
+
+.arb_calcbox input[type="text"] {
+    border:0;
+    border-radius: 4px;
+    padding: 5px 6px;
+    line-height: 20px;
+    background-color: #4e6a85;
+    border: none;
+    color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+    display:inline-block;
+    margin-top:0;
+    border-radius: 0 5px 5px 0;
+}
+
+.arb_calcbox input[type="text"]::placeholder {
+    color: white;
+}
+
+.sublbl.after {
+    display:inline-block;
+    line-height: 30px;
+    padding:0 5px;
+    border-radius: 0 5px 5px 0;
+    background-color: #11273e;
+}
+
+.sublbl.before {
+    display:inline-block;
+    line-height: 30px;
+    padding:0 0 0 7px;
+    border-radius:0;
+    background-color: #4e6a85;
+}
+
+.arb_calcbox .padbott {
+    padding-bottom:5px;
+}
+
+.arb_calcbox .allcaps {
+    text-transform: uppercase;
+}
+
+.smlspc {
+    height: 4px;
+}
+
+.varsecttl {
+    margin-bottom:8px;
+}
+
+.lockedd input {
+    cursor:not-allowed;
+}
+.lockedd i.fa.fa-lock.lock__icon--position {
+    right: 1px;
+}
+
+.number{
+    font-size: 13px;
+    text-align: right;
+}
+
+select#stockname {
+    background: #4e6a85;
+    color: #fff;
+    height: 30px;
+    border: 0 none;
+    padding: 3px;
+    display: inline-block;
+    border-radius: 0 6px 6px 0 !important;
+}
+/* EOF Var Calc */
 
 
 

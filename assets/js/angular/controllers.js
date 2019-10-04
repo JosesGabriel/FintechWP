@@ -14,6 +14,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             _stocks = response.data.data;
         })
 }]);
+<<<<<<< HEAD
 // app.controller('message-notification', function($scope, $http, $filter) {
 //     $scope.count = 0;
 //     $http.get("/welcome/threads").then( function (response) {
@@ -24,6 +25,28 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
 //         }, 0);
 //     });
 // });
+=======
+app.controller('ticker', ['$scope', function($scope) {
+    $scope.enable = true;
+    $scope.ticker = [];
+
+    socket.on('psec', function (data) {  
+        var transaction = {
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol)
+        };
+        $scope.ticker.push(transaction);
+
+        if ($scope.ticker.length > 50) {
+            $scope.ticker.shift();
+        }
+
+        $scope.$digest();
+    });
+}]);
+>>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
 app.controller('template', function($scope, $http) {
     var settings = {
         chart: '1',
@@ -46,6 +69,7 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
+<<<<<<< HEAD
 
 app.controller('dev-ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
     $scope.ticker = [];
@@ -142,6 +166,9 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
 //         });
 // });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
+=======
+app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
+>>>>>>> e7f93762920e1fd25a2e99bfab4ae6f78af576c2
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";

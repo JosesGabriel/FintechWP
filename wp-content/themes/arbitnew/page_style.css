@@ -9,23 +9,8 @@
     .showonmobonly {
         display:none;
     }
-    body,
-    #page-container,
-    #main-content,
-    .inner-placeholder {
-        font-family: Roboto, sans-serif;
-    }
-    .inner-placeholder {
-        padding-top: 55px !important; 
-    }
-    .watch-list, .top-stocks {
-        margin-bottom: 0;
-    }
     .et_fixed_nav.et_show_nav #page-container {
         padding-top: 0 !important;
-    }
-    .header-dashboard-inner > div {
-        height: 34px !important;
     }
     .trading-name {
         font-family: 'Nunito', sans-serif;
@@ -132,11 +117,6 @@
     span.um-field-checkbox-option {
         display: none;
     }
-    .right-dashboard-part{
-        float: left;
-        width: 267px !important;
-        padding: 21px 0px !important;
-    }
     .btn-tradelog {
         border-radius: 0px;
         margin: 10px 0px;
@@ -196,17 +176,6 @@
         margin-bottom: 22px !important;
         padding: 0px 0px 0px 0px !important;
     }
-    #mingle-btn {
-        border-radius: 26px !important;
-        border: 2px solid #e77e24 !important;
-        padding: 5px 14px !important;
-        font-family: 'Nunito', sans-serif;
-        color: #e77e24 !important;
-    }
-    #mingle-btn:hover {
-        background: #e77e24 !important;
-        color: #fff !important;
-    }
     #removes-btn {
         border-radius: 26px !important;
         border: 1.3px solid #6583a8 !important;
@@ -257,10 +226,6 @@
         font-size: 12px;
         color: #fffffe;
     }
-    .top-traiders-inner {
-        padding-top: 0px;
-        padding-left: 0px;
-    }
     .dplsicon {
         display: inline-block !important;
         /* float: center; */
@@ -307,29 +272,17 @@
         background: none;
         /* margin-top: 19px; */
     }
-    .to-content-part {
-        background: #142c46;
-    }
     .um-activity-left .um-activity-actions {
         display: none !important;
     }
     .um-activity-actions {
         width: 100%;
     }
-    .top-traiders .to-content-part .trader-item .traider-image {
-        width: 20%;
-        display: inline-block;
-        margin-top: 0;
-        margin-right: 5px;
-    }
     .upload.photo-upload-cont:hover {
         background-color: #0d1f33 !important;
     }
     img.arb_newpostimg {
         width: 41px !important;
-    }
-    .to-content-part {
-        padding: 5px;
     }
     .top-stocks .to-content-part ul li a {
         display: block;
@@ -346,22 +299,6 @@
         padding: 47px 0;
         color: #6583a8;
         font-size: 18px;
-    }	
-    .top-stocks {
-        margin-bottom: 15px !important;
-    }
-    .watch-list-inner .to-top-title,
-    .top-stocks .to-top-title,
-    .top-traiders-inner .to-top-title,
-    .watch-list-inner .to-bottom-title,
-    .top-traiders-inner .to-bottom-title,
-    .top-stocks .to-bottom-title,
-    .latest-news .to-top-title,
-    .latest-news .to-bottom-title{
-        background: transparent;
-        padding: 10px 14px 10px 1px;
-        font-size: 15px;
-        font-weight: normal;
     }
     .style18 {
         width: 92% !important;
@@ -570,14 +507,6 @@
     .srr-wrap.srr-style-none .srr-item {
         padding: 5px 0px 5px 0px !important;
     }
-    .top-traiders .to-content-part .trader-item .traider-details .traider-name a {
-        text-transform: capitalize;
-
-    }
-    .top-traiders .to-content-part .trader-item .traider-details .traider-name {
-        min-height: 13px;
-        margin-top: 1px !important;
-    }
     .um-padding-none {
         padding-left: 18px;
     }
@@ -655,10 +584,6 @@
         border-bottom-color: #11273e;
         border-width: 8px;
         margin-left: -36px;
-    }
-    .um-activity-preview img {
-        max-height: 91px;
-        border-radius: 9px;
     }
     .add-post .um-activity-new-post .um-activity-foot .upload-statusbar {
         font-size: 12px;
@@ -766,9 +691,6 @@
     .to-top-create {
         float: right;
         color: #6583a8;
-    }
-    .um-activity-commentwrap {
-        padding-top: 13px;
     }
     .dnavtopinner ul li a.um-button.um-alt {
         line-height: 13px !important;
@@ -1605,40 +1527,6 @@
         border-bottom: 2px solid #E91E63;
         font-size: 20px;
     }
-    .um-activity-bodyinner-photo img {
-        max-width: 100% !important;
-        max-height: 400px!important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        display: block;
-        overflow: hidden;
-        max-width: 100% !important;
-        max-height: 400px!important;
-        padding: 0 !important;
-        margin: 0 auto !important;
-        display: block;
-        overflow: hidden;
-        z-index: 2;
-        position: relative;
-    }
-    .um-photo-modal:before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        zoom: 1;
-        background: inherit;
-
-        filter        : blur(27px);
-        -moz-filter   : blur(27px);
-        -webkit-filter: blur(27px);
-        -o-filter     : blur(27px);
-
-        transition        : all 2s linear;
-        -moz-transition   : all 2s linear;
-        -webkit-transition: all 2s linear;
-        -o-transition     : all 2s linear;
-    }
     .um-modal-btn.alt {
         color: #fff;
         background-color: #142c46 !important;
@@ -1732,16 +1620,6 @@
         font-family: 'Nunito', sans-serif;
         color: #6583a8;
         background: none !important;
-    }
-    ul.footmore li {
-        padding-right: 6px !important;
-        padding-left: 2px !important;
-        color: inherit !important;
-        border-right: none !important;
-    }
-    ul.footmore .ddot {
-        top: 2px;
-        position: relative;
     }
     .wh-container {
         margin-top: 10px;
@@ -2103,19 +1981,6 @@
     li.five a span {
         position: relative;
         top: -2px;
-    }
-    .top-traiders {
-        background-color: #142c46;
-    }
-    .top-traiders .to-content-part {
-        min-height: 126px;
-        padding: 7px 13px 7px 13px !important;
-    }
-    .top-traiders .to-top-title {
-        padding-top: 10px !important;
-        padding-left: 15px !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 7px !important;
     }
     .see-more-btn.see-all-members {
         padding: 0 0 2px 5px !important;
@@ -2481,17 +2346,6 @@
     display: none !important;
     }	
     /* Bootstrap Overrides */
-
-    .right-dashboard-part{
-        float: left;
-        width: 100%;
-        max-width: 267px !important;
-        padding: 21px 0px !important;
-        height: 140%;
-        position: -webkit-sticky;
-        position: sticky;
-        top: -177%;
-    }
     .btn-tradelog {
         border-radius: 0px;
         margin: 10px 0px;
@@ -2596,10 +2450,6 @@
         font-size: 12px;
         color: #fffffe;
     }
-    .top-traiders-inner {
-        padding-top: 0px;
-        padding-left: 4px;
-    }
     .dplsicon {
         display: inline-block !important;
         /* float: right; */
@@ -2641,17 +2491,6 @@
     .hidden-bttn:hover .remm-sm {
         display:block;
     }
-    .to-content-part {
-        background: none;
-    }/*
-    .top-stocks .to-content-part ul li.even,
-    .watch-list-inner .to-content-part ul li.even {
-        background: none;
-        /* margin-top: 19px; */
-    }*/
-    .to-content-part {
-        background: #142c46;
-    }
     .um-activity-left .um-activity-actions {
         display: none !important;
     }
@@ -2663,25 +2502,6 @@
     }
     img.arb_newpostimg {
         width: 41px !important;
-    }
-    .to-content-part {
-        padding: 5px;
-    }
-    .top-stocks {
-        margin-bottom: 15px !important;
-    }
-    .watch-list-inner .to-top-title,
-    .top-stocks .to-top-title,
-    .top-traiders-inner .to-top-title,
-    .watch-list-inner .to-bottom-title,
-    .top-traiders-inner .to-bottom-title,
-    .top-stocks .to-bottom-title,
-    .latest-news .to-top-title,
-    .latest-news .to-bottom-title{
-        background: transparent;
-        padding: 10px 14px 10px 1px;
-        font-size: 15px;
-        font-weight: normal;
     }
     .watch-list-inner .to-top-title {
         padding: 10px 14px 0px 14px !important;
@@ -2834,9 +2654,6 @@
     .srr-wrap.srr-style-none .srr-item {
         padding: 5px 0px 5px 0px !important;
     }
-    .top-traiders .to-content-part .trader-item .traider-details .traider-name a {
-        text-transform: capitalize;
-    }
     .um-padding-none {
         padding-left: 18px;
     }
@@ -2915,10 +2732,6 @@
         border-bottom-color: #11273e;
         border-width: 8px;
         margin-left: -36px;
-    }
-    .um-activity-preview img {
-        max-height: 91px;
-        border-radius: 9px;
     }
     .add-post .um-activity-new-post .um-activity-foot .upload-statusbar {
         font-size: 12px;
@@ -3020,9 +2833,6 @@
     .to-top-create {
         float: right;
         color: #6583a8;
-    }
-    .um-activity-commentwrap {
-        padding-top: 13px;
     }
     .user-counter {
         font-size: 15px;

@@ -833,34 +833,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
-                        let limit = 20;
-                        $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
-                            .then(response => {
-                                response = response.data;
-                                if (!response.success) {
-                                    return;
-                                }
 
-                                let data = response.data;
-
-                                $scope.$parent.transactions = data.map(transaction => {
-                                    let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                                    return {
-                                        symbol: transaction.symbol,
-                                        price:  price_format(transaction.executed_price),
-                                        shares: abbr_format(transaction.executed_volume),
-                                        buyer:  transaction.buyer,
-                                        seller: transaction.seller,
-                                        time:   full_time,
-                                    };                                    
-                                });
-                            })
-                            .catch(response => {
-                                $scope.$parent.transactions = [];
-                            })
-                            .finally(() => {
-                                $scope.$parent.$digest();
-                            });
+                        $scope.$parent.getStockTrades(_symbol);
                         
                         $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
                             .then(function (response) {

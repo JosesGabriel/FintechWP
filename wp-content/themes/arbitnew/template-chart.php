@@ -32,7 +32,7 @@
 	?>
 
 	<div>
-		<div class="chart_logo_arbitrage"><a href="/" target="_blank"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="/" target="_blank"><img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
 		<div class="arb_top_ticker">
 			<div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">

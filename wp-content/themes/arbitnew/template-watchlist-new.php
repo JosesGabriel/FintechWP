@@ -14,8 +14,6 @@ require("parts/global-header.php");
             success: function(res) {
                     
                 //jQuery.each(res.data, function(index, value) {      
-                        console.log(res.data.last);   
-                        console.log(res.data.changepercentage);  
                         var price = parseFloat(res.data.last);
                         jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
                         var curchange = parseFloat(res.data.changepercentage);

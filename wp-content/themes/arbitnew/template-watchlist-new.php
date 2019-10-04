@@ -35,22 +35,6 @@ require("parts/global-header.php");
 
 
      }
-
-
-    function minichart_data(symbol, from, to){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                   // console.log(res.data);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-     }
     
 </script>
 
@@ -459,7 +443,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 
 
-function minichart(symbol, from, to){
+/*function minichart(symbol, from, to){
 
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
@@ -491,7 +475,7 @@ function minichart(symbol, from, to){
 
     }
 
-
+*/
 
 
     if (typeof angular !== 'undefined') {
@@ -541,9 +525,6 @@ function minichart(symbol, from, to){
 
 
     ?>
-
-
-
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

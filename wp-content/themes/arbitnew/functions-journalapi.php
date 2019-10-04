@@ -426,13 +426,15 @@ class JournalAPI extends WP_REST_Controller
             }
         }
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $gerdqouteone = curl_exec($curl);
-        curl_close($curl);
+        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // $gerdqouteone = curl_exec($curl);
+        // curl_close($curl);
+
+        $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
         $gerdqoute = json_decode($gerdqouteone);
@@ -576,16 +578,6 @@ class JournalAPI extends WP_REST_Controller
     {
         global $wpdb;
         $data = $request->get_params();
-
-        // $curl = curl_init();
-        // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        
-        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // $gerdqouteone = curl_exec($curl);
-        // curl_close($curl);
-
-        // $gerdqoute = json_decode($gerdqouteone);
 
         $xmlData = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         $stocks = json_decode($xmlData);

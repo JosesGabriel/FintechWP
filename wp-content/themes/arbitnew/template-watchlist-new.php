@@ -448,7 +448,8 @@ function minichart(symbol, from, to){
             dataType: 'json', 
             success: function(res) {
                     
-                    var sdata = res.data.o;               
+                    var sdata = res.data.o; 
+                    var counter = 0;              
 
                     
                 if(sdata.length != 0){

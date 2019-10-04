@@ -147,7 +147,8 @@
             dataType: 'json', // added data type
             success: function(data) {
                 $.each(data.data, function(key, value){
-                    $("#inpt_data_select_stock, #inpt_data_stock_bought").append("<option value='"+JSON.stringify(value)+"'>"+value.symbol+"</option>");
+                    $("#inpt_data_select_stock").append("<option value='"+JSON.stringify(value)+"'>"+value.symbol+"</option>");
+                    $("#inpt_data_stock_bought").append("<option value='"+value.symbol+"'>"+value.symbol+"</option>");
                 });
             },
             error: function (xhr, ajaxOptions, thrownError) {

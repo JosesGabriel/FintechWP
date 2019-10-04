@@ -519,8 +519,9 @@ class JournalAPI extends WP_REST_Controller
         $finaltrade = [];
         $totalprofit = 0;
         foreach ($ismytrades as $key => $value) {
-            $buytotal = $value->tlvolume * $value->tlaverageprice;
-            $selltotal = $value->tlvolume * $value->tlsellprice;
+            $volume = str_replace(",", "", $value->tlvolume);
+            $buytotal = $volume * $value->tlaverageprice;
+            $selltotal = $volume * $value->tlsellprice;
             $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
             $profit = $sellnet - $buytotal;
             $value->buyvalue = $buytotal;

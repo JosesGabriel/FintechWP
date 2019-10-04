@@ -41,7 +41,7 @@ require("parts/global-header.php");
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    console.log(res);
+                    console.log(res.data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

@@ -428,7 +428,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
 </div> <!-- #main-content -->
 
-<?php include_once "watchlist/footer-files.php";?> 
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
@@ -507,3 +507,4 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
         ?>
     }
 </script>
+<?php include_once "watchlist/footer-files.php";?> 

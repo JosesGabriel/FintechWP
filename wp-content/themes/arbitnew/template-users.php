@@ -282,7 +282,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 					</div>
 				</div>
 			</div>
-			<div class="right-dashboard-part" style="padding: 10px 0px !important;">
+			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
                     <?php

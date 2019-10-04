@@ -30,7 +30,7 @@ hr.style20 {
     margin-top: 0rem !important;
     margin-left: -15px;
     width: 107%;
-    margin-bottom: -1px !important;
+    margin-bottom: 11px !important;
 }
 .inner-main-content {
     max-width: 1000px;
@@ -104,6 +104,7 @@ ul.main-drops > ul li:hover {
 }
 ul.main-drops > ul li {
     padding: 6px 15px;
+    list-style: none;
 }
 ul.main-drops > ul li:first-child {
     border-top-left-radius: 4px;
@@ -504,13 +505,21 @@ a:hover {
     max-width: 539px;
     width: 539px;
 }
+.eyeyey {
+    font-size: 16px !important;
+    color: #aaaaaa !important;
+    padding: 4px 13px !important;
+}
+.um-icon-close-round {
+    display: none !important;
+}
 .add-post {
     border-radius: 5px;
     overflow: hidden;
 }
-.um-activity-commentwrap {
+/* .um-activity-commentwrap {
     padding-top: 13px;
-}
+} */
 .um-activity-bodyinner-txt span.post-meta {
     border: none; 
     box-shadow: none; 
@@ -638,7 +647,7 @@ img.inpostimage {
     overflow:hidden;
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
-    height: 50px !important;
+    height: 80px !important;
     border-radius: 0 !important;    
     color: #fff;
 }

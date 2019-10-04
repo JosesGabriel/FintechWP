@@ -115,7 +115,7 @@
             success: function(data) {
                 $(".addcapital").text("₱"+(parseFloat(data.data.capital)).toFixed(2));
                 $(".addyearpl").text("₱"+(data.data.profit).toFixed(2));
-                $(".addyearplperc").text((data.data.profperc).toFixed(2));
+                $(".addyearplperc").text((data.data.profperc).toFixed(2)+"%");
                 $(".adddeposit").text("₱"+(data.data.deposit).toFixed(2));
                 $(".addwidthraw").text("₱"+(data.data.withraw).toFixed(2));
             },

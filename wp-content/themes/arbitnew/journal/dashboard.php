@@ -93,17 +93,9 @@
                 </div>
 
             </div><br class="clear">
-
             <div class="box-portlet">
                 <div class="box-portlet-header" style="text-align:center;">
                     Trade Statistics
-                    <?php
-                        if($isjounalempty){
-                            $iswin = 100;
-                            $isloss = 60;
-                            $totaltrade = 160;
-                        }
-                    ?>
                 </div>
                 <div class="chartarea col-md-12" style="margin-bottom: -3px;">
                     <div id="chartdiv4a"></div>
@@ -115,81 +107,45 @@
                             <ul style="margin-bottom:0 !important;">
 
                                 <li>
-                                    <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
-                                    <div class="width35"><?php echo $iswin; ?></div>
+                                    <div class="width60"><span class="bulletclrd clrg1 "></span> Wins</div>
+                                    <div class="width35 iswins"></div>
                                 </li>
                                 <li>
-                                    <div class="width60"><span class="bulletclrd clrr1"></span> Losses</div>
-                                    <div class="width35"><?php echo $isloss; ?></div>
+                                    <div class="width60"><span class="bulletclrd clrr1 "></span> Losses</div>
+                                    <div class="width35 islosses"></div>
                                 </li>
-
                             </ul>
                         </div>
                         <div class="dstatstrade eqpad col-md-6" style="padding-left: 3px;">
                             <ul style="margin-bottom:0 !important;">
-                                <?php $totaltrade = $iswin + $isloss; ?>
                                 <li>
                                     <div class="width60">Total Trades</div>
-                                    <div class="width35"><?php echo $totaltrade; ?></div>
+                                    <div class="width35 istotaltrades"></div>
                                 </li>
                                 <li>
                                     <div class="width60"><strong>Win Rate</strong></div>
-                                    <div class="width35"><strong><?php
-                                        if ($iswin > 0) {
-                                            echo number_format(($iswin / $totaltrade) * 100, 2, '.', ',');
-                                        } else {
-                                            echo '0.00';
-                                        }
-                                        ?>%</strong></div>
+                                    <div class="width35 iswinrate"></div>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
     <br class="clear">
-
-    <!-- BOF Strategy Statistics -->
-    <!-- EOF Strategy Statistics -->
     <div class="row">
-        <div class="col-md-12">
+        <div id="stratstatspge" class="col-md-12">
             <div class="box-portlet">
                 <style>.dstatstrade ul li div {width: 16%;}</style>
 
                 <div style="padding:5px 15px;" class="col-md-8">
                     <div class="col-md-12" style="padding:0 10px 0 0">
-
                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
                             Strategy Statistics
                         </div>
-                        <?php
-                            if($isjounalempty){
-                                $stratsinfo = [
-                                    'Bottom Picking' => [
-                                        'trwin' => 15,
-                                        'trloss' => 4,
-                                        'total_trades' => 19,
-                                    ],
-                                    'Breakout Play' => [
-                                        'trwin' => 9,
-                                        'trloss' => 1,
-                                        'total_trades' => 10,
-                                    ],
-                                    'Trend Following' => [
-                                        'trwin' => 2,
-                                        'trloss' => 8,
-                                        'total_trades' => 10,
-                                    ],
-                                ];
-                            }
-                        ?>
                         <div class="stats-info">
-                            <div class="dstatstrade">
+                            <div class="dstatstrade stratstables">
                                 <ul>
                                     <li class="headerpart">
                                         <div style="width:100%">
@@ -200,26 +156,9 @@
                                             <div>Win Rate</div>
                                         </div>
                                     </li>
-                                    <?php
-                                    foreach ($strats as $statskey => $statsvalue) {
-                                        ?>
-                                        <li>
-                                            <div style="width:99%">
-                                                <div style="width:150px;"><?php echo $statskey; ?></div>
-                                                <!-- <span class="legend_circ"></span> -->
-                                                <div style="text-align: center;"><?php echo $statsvalue['total_trades']; ?></div>
-                                                <div style="text-align: center;"><?php echo $statsvalue['trwin']; ?></div>
-                                                <div style="text-align: center;"><?php echo $statsvalue['trloss']; ?></div>
-                                                <div style="text-align: center;"><?php echo ($statsvalue['trwin'] > 0 ? number_format(($statsvalue['trwin'] / ($statsvalue['trwin'] + $statsvalue['trloss'])) * 100, 2) : "0.0"); ?>%</div>
-                                            </div>
-                                        </li>
-                                    <?php
-                                    } ?>
-
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                     <div class="col-md-12" style="padding: 0 12px 0 10px;">
                         <div id="chartdiv5" style="padding-left: 0;"></div>
@@ -227,30 +166,25 @@
                     <br class="clear">
                 </div>
                 <div class="col-md-4" style="padding-left:0;">
-                        <div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
-                            Win Allocations
-                        </div>
-                        <div class="chartarea">
-                            <div id="chartdiv4b"></div>
-                        </div>
-
-                        <div class="dstatstrade eqpad">
-                            <ul>
-
-                                <li>
-                                    <div class="width48"><span class="bulletclrd clrg1"></span> Winning Strategy</div>
-                                    <div class="width48" style="text-align: right;"><?php echo $winningstarts; ?></div>
-                                </li>
-                                <li>
-                                    <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
-                                    <div class="width48" style="text-align: right;"><?php echo $lossingstrats; ?></div>
-                                </li>
-
-                            </ul>
-                        </div>
-
+                    <div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
+                        Win Allocations
                     </div>
-                
+                    <div class="chartarea">
+                        <div id="chartdiv4b"></div>
+                    </div>
+                    <div class="dstatstrade eqpad">
+                        <ul>
+                            <li>
+                                <div class="width48"><span class="bulletclrd clrg1"></span> Winning Strategy</div>
+                                <div class="width48 stratwinning" style="text-align: right;"></div>
+                            </li>
+                            <li>
+                                <div class="width48"><span class="bulletclrd clrr1"></span> Losing Strategy</div>
+                                <div class="width48 stratlossing" style="text-align: right;"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <br class="clear">
@@ -259,8 +193,7 @@
     <!-- BoF Trade Statistics -->
     <!-- EoF Trade Statistics -->
     <div class="row">
-
-        <div class="col-md-12">
+        <div id="dashtopstocks" class="col-md-12">
             <div class="box-portlet">
                 <div class="topstockgauge">
                     <div class="col-md-4" style="padding:20px 0 0">
@@ -276,38 +209,6 @@
                                     <div class="dstatstrade">
                                         <ul style="overflow: hidden;border-radius: 5px;">
                                             <?php
-                                            
-                                            if($isjounalempty){
-                                                $winningstocks = [
-                                                    0 => [
-                                                        'stock' => 'Stock 3',
-                                                        'profit' => 123435
-                                                    ],
-                                                    1 => [
-                                                        'stock' => 'Stock 2',
-                                                        'profit' => 12343
-                                                    ],
-                                                    2 => [
-                                                        'stock' => 'Stock 1',
-                                                        'profit' => 1234
-                                                    ],
-                                                ];
-
-                                                $loosingstocks = [
-                                                    0 => [
-                                                        'stock' => 'Stock 1',
-                                                        'profit' => -1234
-                                                    ],
-                                                    1 => [
-                                                        'stock' => 'Stock 2',
-                                                        'profit' => -12343
-                                                    ],
-                                                    2 => [
-                                                        'stock' => 'Stock 3',
-                                                        'profit' => -123435
-                                                    ],
-                                                ];
-                                            }
 
                                             foreach ($winningstocks as $key => $value) {
                                                 $dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
@@ -340,60 +241,26 @@
                         <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Losers</div>
                         <div id="topstocksLosers"></div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         <br class="clear">
-
     </div>
     <br class="clear">
     <div class="row">
-
-        <div class="col-md-12">
+        <div id="emotionalstats" class="col-md-12">
             <div class="box-portlet">
-
                 <div class="box-portlet-header" style="padding-bottom:13px;">
                     Emotional Statistics
                 </div>
-                <?php
-                    if($isjounalempty){
-                        $emotioninfo = [
-                            'Neutral' => [
-                                'emotion' => 'Neutral',
-                                'trwin' => 3,
-                                'trloss' => 4,
-                                'total_trades' => 7
-                            ],
-                            'Greedy' => [
-                                'emotion' => 'Greedy',
-                                'trwin' => 2,
-                                'trloss' => 3,
-                                'total_trades' => 5
-                            ],
-                            'Fearful' => [
-                                'emotion' => 'Fearful',
-                                'trwin' => 6,
-                                'trloss' => 1,
-                                'total_trades' => 7
-                            ],
-                        ];
-                    }
-                ?>
                 <div class="col-md-6" style="padding-right:0;">
-
                     <div class="chartarea">
                         <div id="chartdiv11"></div>
                     </div>
-
                 </div>
-
                 <div class="col-md-6">
-
                     <div class="stats-info">
-                        <div class="dstatstrade dstatsemo">
+                        <div class="dstatstrade dstatsemo emotioonmlistbase">
                             <ul>
                                 <li class="headerpart">
                                     <div>Emotions</div>
@@ -402,51 +269,22 @@
                                     <div>Losses</div>
                                     <div>Win Rate</div>
                                 </li>
-                                <?php //$demotsonchart = ''; ?>
-                                <?php foreach ($tremo as $emtkey => $emtvalue) { ?>
-                                    <li>
-                                        <div><?php  echo $emtkey; ?></div>
-                                        <div><?php  echo $emtvalue['total_trades']; ?></div>
-                                        <div><?php  echo $emtvalue['trwin']; ?></div>
-                                        <div><?php  echo $emtvalue['trloss']; ?></div>
-                                        <div><?php  echo ($emtvalue['trwin'] > 0 ? number_format(($emtvalue['trwin'] / $emtvalue['total_trades']) * 100, 2, '.', '') : "0"); ?>%</div>
-                                    </li>
-                                <?php
-                                } ?>
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
         <br class="clear">
-
     </div>
     <br class="clear">
-
-    <!-- BOF expenses report -->
-    <!-- EOF expenses report -->
-    <div class="expence-report">
+    <div id="expensereports" class="expence-report">
             <div class="box-portlet">
                 <div class="box-portlet-header">
                     Expense Report
                 </div>
                 <div class="box-portlet-content" style="padding-top: 0; padding-left:0; padding-bottom:0;">
                     <div class="col-md-4" style="padding-right:0;">
-                            <?php
-                                if($isjounalempty){
-                                    $fees = [
-                                        'commissions' => 111.2418925,
-                                        'vat' => 13.3490271,
-                                        'transfer' => 0.87229045,
-                                        'sccp' => 1.7445809,
-                                        'sell' => 104.674854,
-                                    ];
-                                }
-                            ?>
                             <div class="inner-portlet" style="margin-top:20px;">
                                     <div class="stats-info">
                                         <div class="dstatstrade">
@@ -456,23 +294,23 @@
                                                 </li>
                                                 <li>
                                                     <div class="width60">Commissions</div>
-                                                    <div class="width35">&#8369;<?php echo number_format($fees['commissions'], 2, '.', ','); ?></div>
+                                                    <div class="width35 dxcommission"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60">Value Added Tax</div>
-                                                    <div class="width35">&#8369;<?php echo number_format($fees['vat'], 2, '.', ','); ?></div>
+                                                    <div class="width35 dxvat"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60">Transfer Fee</div>
-                                                    <div class="width35">&#8369;<?php echo number_format($fees['transfer'], 2, '.', ','); ?></div>
+                                                    <div class="width35 dxtransfer"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60">SCCP</div>
-                                                    <div class="width35">&#8369;<?php echo number_format($fees['sccp'], 2, '.', ','); ?></div>
+                                                    <div class="width35 dxsccp"></div>
                                                 </li>
                                                 <li>
                                                     <div class="width60">Sales Tax</div>
-                                                    <div class="width35">&#8369;<?php echo number_format($fees['sell'], 2, '.', ','); ?></div>
+                                                    <div class="width35 dxsalestax"></div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -490,12 +328,11 @@
             </div>
     </div>
     <br class="clear">
-    <div class="row">
+    <div id="buyvolval" class="row">
         <div class="col-md-6" style="padding-right: 0;">
             <div class="box-portlet">
                 <div class="box-portlet-header">
                     Buy Volume<br />
-                    <!--<span>For the last 20 trading days</span>-->
                     <span>Last 20 Trades</span>
                 </div>
                 <div class="box-portlet-content" style="padding-right:0;">
@@ -508,7 +345,6 @@
             <div class="box-portlet">
                 <div class="box-portlet-header">
                     Buy Value<br />
-                    <!--<span>For the last 20 trading days</span>-->
                     <span>Last 20 Trades</span>
                 </div>
                 <div class="box-portlet-content" style="padding-right:0;">
@@ -519,7 +355,7 @@
         </div>
     </div>
     <br class="clear">
-    <div class="row">
+    <div id="perogross" class="row">
         <div class="col-md-5" style="padding-right: 0;">
             <div class="box-portlet">
                 <div class="box-portlet-header">
@@ -536,7 +372,6 @@
             <div class="box-portlet">
                 <div class="box-portlet-header">
                     Gross Profit & Loss<br />
-                    <!--<span>Last 20 trading days</span>-->
                     <span>Last 20 Trades</span>
                 </div>
                 <div class="box-portlet-content" style="padding-right:0;">

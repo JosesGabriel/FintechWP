@@ -5,6 +5,7 @@ require("parts/global-header.php");
 ?>
 <script>
 
+
     function lateststocks(symbol){
 
          jQuery.ajax({
@@ -33,22 +34,6 @@ require("parts/global-header.php");
 
 
 
-     }
-
-
-    function minichart_data(symbol, from, to){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                   // console.log(res.data);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
      }
     
 </script>
@@ -200,6 +185,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                         <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
                                                                                     </div>
                                                                                 </div>
+
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="">
                                                                                 
                                                                                 </div>
                                                                             </div>
@@ -454,16 +441,16 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-var mini = "";
 
-function minichart(symbol, from, to){
 
-  mini = jQuery.ajax({
+/*function minichart(symbol, from, to){
+
+ jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    //console.log(res.data);
+                    
                     var sdata = res.data.o;               
 
                     
@@ -476,11 +463,9 @@ function minichart(symbol, from, to){
                            
                 }
 
-                //mini = dhist;
-
-                //console.log(dhist);
-
-               return dhist;                       
+                
+                jQuery('.minchart_' + symbol).val(dhist);
+                                   
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -490,7 +475,7 @@ function minichart(symbol, from, to){
 
     }
 
-
+*/
 
 
     if (typeof angular !== 'undefined') {
@@ -505,14 +490,29 @@ function minichart(symbol, from, to){
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
-            ?>     
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
+            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $dhistofronold = curl_exec($curl);
+            curl_close($curl);
+
+            $dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
+
+            $dhistoflist = "";
+            $counter = 0;
 
 
-            var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }
 
-            var dhist;
-            var counter = 0;
-            console.log(mini);
+
+    ?>
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
@@ -544,17 +544,9 @@ function minichart(symbol, from, to){
                                     }
                                 };
 
-                            //$scope.data = [{values: [<?php //echo $dhistory; ?>]}];
-                            $scope.data = [{values: [ ]}];
+                            $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+                            //$scope.data = [{values: [dhist]}];
                         });
-
-
-
-
-        
-
-
-
 
         <?php
             }

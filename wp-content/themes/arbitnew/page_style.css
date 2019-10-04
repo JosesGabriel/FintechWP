@@ -332,14 +332,6 @@
         padding-top: 0;
         background-color: #142c46;
     }
-    .um-activity-commentl .um-activity-comment-area .um-activity-comment-avatar {
-        width: 31px;
-        height: 31px;
-        visibility: visible;
-        position: absolute;
-        z-index: 9999;
-    }
-    
     .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img .um-avatar-uploaded  {
         width: 100% !important;
         height: 100% !important;
@@ -613,18 +605,7 @@
         float: right;
         color: #6583a8;
     }
-    .dnavtopinner ul li a.um-button.um-alt {
-        line-height: 13px !important;
-        border-radius: 30px !important;
-        background: none !important;
-        border: 1px solid #6583a8 !important;
-        color: #6583a8 !important;
-        padding: 10px 15px !important;
-    }
-    ul li a.um-button.um-alt:hover {
-        background: #123 !important;
-        transition-duration: 0.3s;
-    }
+
     .um-modal-header {
         background: #142c46;
     }
@@ -985,10 +966,7 @@
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-    .um-members a.um-friend-btn.um-button.um-alt:hover,
-    .um .um-button.um-alt:hover, .um input[type=submit].um-button.um-alt:hover {
-        background: #0d1f33;
-    }
+
     .sddropps {
         float: right;
         top: 3px;
@@ -1718,22 +1696,6 @@
         background: #2b405b;
         transition-duration: 200ms;
     }
-
-    .um-activity-comment-meta .um-activity-editc-d:before {
-        bottom: -16px;
-        top: unset;
-        right: 42px;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(194, 225, 245, 0);
-        border-top-color: #112233;
-        border-width: 8px;
-        margin-left: -36px;
-    }
     .um-activity-comment-meta .um-activity-editc a:hover,
     .um-activity-comment-meta .um-activity-editc a:active,
     .um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe !important}
@@ -2237,13 +2199,6 @@
     .um-activity-bodyinner-photo {
         /* padding-top: 4px; */
         background-color: #142c46;
-    }
-    .um-activity-commentl .um-activity-comment-area .um-activity-comment-avatar {
-        width: 31px;
-        height: 31px;
-        visibility: visible;
-        position: absolute;
-        z-index: 9999;
     }
     .um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img .um-avatar-uploaded  {
         width: 100% !important;

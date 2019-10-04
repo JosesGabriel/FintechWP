@@ -43,7 +43,7 @@ require("parts/global-header.php");
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    console.log(res.data);
+                   // console.log(res.data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -474,7 +474,7 @@ function minichart(symbol, from, to){
                            
                 }
 
-                console.log(dhist);
+                //console.log(dhist);
 
                return dhist;                       
             },

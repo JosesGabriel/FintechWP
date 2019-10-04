@@ -1,7 +1,7 @@
 var widget;
 var chart;
 var marketdepthTimeout;
-var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
+// var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
 app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
@@ -68,13 +68,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.losers       = 0;
     $scope.unchanged    = 0;
     $scope.stocks = [];
-    $scope.watchlists = {
-        'All Stocks': 'stocks', 
-        'New Watchlist': 'new',
-        'Default Watchlist': JSON.parse(localStorage.getItem('watchlist')) || [],
-    };
-    $scope.watchlist = 'All Stocks';
-    $scope.lastWatchlist = 'All Stocks';
+    // $scope.watchlists = {
+    //     'All Stocks': 'stocks', 
+    //     'New Watchlist': 'new',
+    //     'Default Watchlist': JSON.parse(localStorage.getItem('watchlist')) || [],
+    // };
+    // $scope.watchlist = 'All Stocks';
+    // $scope.lastWatchlist = 'All Stocks';
     $scope.sort = 'value';
     $scope.reverse  = true;
     $scope.stock        = null;
@@ -93,156 +93,156 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.fullaskperc = 0;
     $scope.dshowsentiment = '';
     $rootScope.selectedSymbol = $scope.selectedStock = _symbol;
-    $scope.watchlistReady = false;
-    $scope.selectWatchlist = function(watchlist) {
-        if (watchlist == 'new') {
-            if (_user_id == 'public_user') {
-                if (confirm('Please login to create additional watchlist')) {
-                    window.location.href = '/login';
-                    $scope.watchlist = $scope.lastWatchlist;
-                }
-                $scope.watchlist = $scope.lastWatchlist;
-                return false;
-            }
-            var watchlistName = prompt('Watchlist Name:');
-            if (watchlistName) {
-                watchlistName = watchlistName.trim();
-            }
-            if (watchlistName) {
-                if ( ! $scope.watchlists[watchlistName]) {
-                    $scope.watchlists[watchlistName] = [];
-                    $http.post("/api/watchlist-add", $.param({watchlist: watchlistName})).then( function (response) {
-                    });
-                    $.gritter.add({
-                        title: 'Success',
-                        text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                        time: 5000,
-                        class_name: nightmode ? "gritter-dark" : "gritter-light",
-                    });
-                }
-                $scope.watchlist = watchlistName;
-                $scope.lastWatchlist = watchlistName;
-            } else {
-                $scope.watchlist = $scope.lastWatchlist;
-            }
-        } else if (watchlist == 'stocks') {
-        } else {
-            $scope.lastWatchlist = $scope.watchlist;
-        }
-        $('#watchlist-scroll').slimScroll({ scrollTo : '0px' });
-    }
-    $scope.addToWatchlist = function(symbol) {
-        if (_user_id == 'public_user')  {
-            if ($scope.watchlists['Default Watchlist'].indexOf(symbol) === -1) {
-                $scope.watchlists['Default Watchlist'].push(symbol);
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-            }
-            $.gritter.add({
-                title: 'Success',
-                text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-            return;
-        }
-        watchlist = prompt('Add ' + symbol + 'to Watchlist:', $scope.lastWatchlist);
-        if (watchlist) {
-            watchlist = watchlist.trim();
-        }
-        if (watchlist && watchlist.length > 0) {
-            if ($scope.watchlists[watchlist]) {
-                $scope.watchlists[watchlist].push(symbol);
-                $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
-                });
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-            } else {
-                $scope.watchlists[watchlist] = [symbol];
-                $scope.watchlist = watchlist;
-                $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
-                });
-                $.gritter.add({
-                    title: 'Success',
-                    text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-            }
-            $scope.lastWatchlist = watchlist;
-        }
-    }
-    $scope.addStockToWatchlist = function(watchlist) {
-        symbol = prompt('Stock Symbol:', _symbol);
-        if (symbol) {
-            symbol = symbol.toUpperCase().trim();
-        }
-        if (symbol && symbol.length > 0 && watchlist.indexOf(symbol) === -1) {
-            watchlist.push(symbol);
-            if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-                return;
-            }
-            $http.post("/api/watchlist-add", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: symbol + " has been successfully added to your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
-    $scope.deleteWatchlist = function(watchlist) {
-        if (_user_id == 'public_user') {
-            return;
-        }
-        if (confirm('Are you sure you want to delete "' + watchlist + '"?')) {
-            delete $scope.watchlists[watchlist];
-            $scope.watchlist = 'All Stocks';
-            $scope.lastWatchlist = 'Default Watchlist';
-            $http.post("/api/watchlist-delete", $.param({watchlist: watchlist})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: '"' + watchlist + "\" has been successfully deleted<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
-    $scope.removeFromWatchlist = function(watchlist, symbol) {
-        if (confirm('Are you sure you want to remove ' + symbol.toUpperCase() + ' from your watchlist?')) {
-            watchlist.splice(watchlist.indexOf(symbol), 1);
-            if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-                return;
-            }
-            $http.post("/api/watchlist-delete", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
+    // $scope.watchlistReady = false;
+    // $scope.selectWatchlist = function(watchlist) {
+    //     if (watchlist == 'new') {
+    //         if (_user_id == 'public_user') {
+    //             if (confirm('Please login to create additional watchlist')) {
+    //                 window.location.href = '/login';
+    //                 $scope.watchlist = $scope.lastWatchlist;
+    //             }
+    //             $scope.watchlist = $scope.lastWatchlist;
+    //             return false;
+    //         }
+    //         var watchlistName = prompt('Watchlist Name:');
+    //         if (watchlistName) {
+    //             watchlistName = watchlistName.trim();
+    //         }
+    //         if (watchlistName) {
+    //             if ( ! $scope.watchlists[watchlistName]) {
+    //                 $scope.watchlists[watchlistName] = [];
+    //                 $http.post("/api/watchlist-add", $.param({watchlist: watchlistName})).then( function (response) {
+    //                 });
+    //                 $.gritter.add({
+    //                     title: 'Success',
+    //                     text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                     time: 5000,
+    //                     class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //                 });
+    //             }
+    //             $scope.watchlist = watchlistName;
+    //             $scope.lastWatchlist = watchlistName;
+    //         } else {
+    //             $scope.watchlist = $scope.lastWatchlist;
+    //         }
+    //     } else if (watchlist == 'stocks') {
+    //     } else {
+    //         $scope.lastWatchlist = $scope.watchlist;
+    //     }
+    //     $('#watchlist-scroll').slimScroll({ scrollTo : '0px' });
+    // }
+    // $scope.addToWatchlist = function(symbol) {
+    //     if (_user_id == 'public_user')  {
+    //         if ($scope.watchlists['Default Watchlist'].indexOf(symbol) === -1) {
+    //             $scope.watchlists['Default Watchlist'].push(symbol);
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //         }
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //         return;
+    //     }
+    //     watchlist = prompt('Add ' + symbol + 'to Watchlist:', $scope.lastWatchlist);
+    //     if (watchlist) {
+    //         watchlist = watchlist.trim();
+    //     }
+    //     if (watchlist && watchlist.length > 0) {
+    //         if ($scope.watchlists[watchlist]) {
+    //             $scope.watchlists[watchlist].push(symbol);
+    //             $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
+    //             });
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //         } else {
+    //             $scope.watchlists[watchlist] = [symbol];
+    //             $scope.watchlist = watchlist;
+    //             $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
+    //             });
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //         }
+    //         $scope.lastWatchlist = watchlist;
+    //     }
+    // }
+    // $scope.addStockToWatchlist = function(watchlist) {
+    //     symbol = prompt('Stock Symbol:', _symbol);
+    //     if (symbol) {
+    //         symbol = symbol.toUpperCase().trim();
+    //     }
+    //     if (symbol && symbol.length > 0 && watchlist.indexOf(symbol) === -1) {
+    //         watchlist.push(symbol);
+    //         if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //             return;
+    //         }
+    //         $http.post("/api/watchlist-add", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol + " has been successfully added to your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
+    // $scope.deleteWatchlist = function(watchlist) {
+    //     if (_user_id == 'public_user') {
+    //         return;
+    //     }
+    //     if (confirm('Are you sure you want to delete "' + watchlist + '"?')) {
+    //         delete $scope.watchlists[watchlist];
+    //         $scope.watchlist = 'All Stocks';
+    //         $scope.lastWatchlist = 'Default Watchlist';
+    //         $http.post("/api/watchlist-delete", $.param({watchlist: watchlist})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: '"' + watchlist + "\" has been successfully deleted<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
+    // $scope.removeFromWatchlist = function(watchlist, symbol) {
+    //     if (confirm('Are you sure you want to remove ' + symbol.toUpperCase() + ' from your watchlist?')) {
+    //         watchlist.splice(watchlist.indexOf(symbol), 1);
+    //         if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //             return;
+    //         }
+    //         $http.post("/api/watchlist-delete", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
     $http.get("/wp-json/data-api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
@@ -316,9 +316,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             .catch(err => {
                 $scope.bids = [];
                 $scope.asks = [];
-            })
-            .finally(() => {
-                $scope.$digest();
             });
         }
     }

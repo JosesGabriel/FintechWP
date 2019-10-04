@@ -19,7 +19,7 @@ class DataAPI extends WP_REST_Controller
 
     public function __construct()
     {
-        $this->guzzleClient = new GuzzleHttp\Client(['base_uri' => 'https://data-api.arbitrage.ph/', 'http_errors' => false]);
+        $this->guzzleClient = new GuzzleHttp\Client(['http_errors' => false]);
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
@@ -112,35 +112,12 @@ class DataAPI extends WP_REST_Controller
         return new WP_REST_Response($data, $status);
     }
 
-    public function sendViaCurl(){
-        //set the headers
-        $headers = [
-            'Content-Type: application/json',
-            "Authorization: Bearer {$this->client_secret}",
-        ];
-        
+    public function forwardRequest(){
         //set the forward url
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $forwardUrl);
-        curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        return json_decode($result);
-    }
-     
-    public function getForwardedResponse($request)
-    {
-        $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
-
-        //region test
-        $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+        $response = $this->guzzleClient->request("GET", $forwardUrl, [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$this->client_secret}",
@@ -148,6 +125,22 @@ class DataAPI extends WP_REST_Controller
             ]);
 
         return json_decode($response->getBody());
+    }
+     
+    public function getForwardedResponse($request)
+    {
+        $isUserLoggedIn =  json_decode($this->currentUser)->is_user_login;
+
+        //TODO: sample code for guzzle request
+        //region test
+        // $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+        //     "headers" => [
+        //         "Content-type" => "application/json",
+        //         "Authorization" => "Bearer {$this->client_secret}",
+        //         ]
+        //     ]);
+
+        // return json_decode($response->getBody());
         //endregion test
 
         //verify if user is logged in
@@ -158,7 +151,7 @@ class DataAPI extends WP_REST_Controller
         }
    
         //region forward request
-        $result = $this->sendViaCurl();
+        $result = $this->forwardRequest();
         //endregion forward request
 
         return $result;

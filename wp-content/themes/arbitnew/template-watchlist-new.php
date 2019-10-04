@@ -485,25 +485,13 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                         counter++;
                    }
 
-                  
 
                            
                 }
 
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(dhist);
                 
-            }
-
-
-
-
-
-        });
-
-         console.log(dhist);
-
-        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+                        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
                                     chart: {
                                         type: 'candlestickBarChart',
@@ -536,6 +524,22 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                             //$scope.data = [{values: [<?php // echo $dhistoflist; ?>]}];
                             $scope.data = [{values: [dhist]}];
                         });
+
+
+
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+
+
+
+
+        });
+
+
 
 
 

@@ -458,7 +458,7 @@ var mini = "";
 
 function minichart(symbol, from, to){
 
-        jQuery.ajax({
+  mini = jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
             dataType: 'json', 
@@ -476,7 +476,7 @@ function minichart(symbol, from, to){
                            
                 }
 
-                mini = dhist;
+                //mini = dhist;
 
                 //console.log(dhist);
 

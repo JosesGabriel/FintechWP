@@ -140,9 +140,11 @@ class DataAPI extends WP_REST_Controller
                 ]
             ]);
 
-        $promise->then(function ($response) {
-            return json_decode($response->getBody());
-        });
+        $response = $promise->wait();
+        return json_decode($response->getBody());
+        // $promise->then(function ($response) {
+        //     return json_decode($response->getBody());
+        // });
 
         //$promise = $this->guzzleClient->sendAsync($request);
 

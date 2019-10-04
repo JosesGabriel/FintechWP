@@ -1,7 +1,7 @@
 var widget;
 var chart;
 var marketdepthTimeout;
-var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
+// var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
 app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
@@ -13,6 +13,26 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
         })
+}]);
+app.controller('ticker', ['$scope', function($scope) {
+    $scope.enable = true;
+    $scope.ticker = [];
+
+    socket.on('psec', function (data) {  
+        var transaction = {
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol)
+        };
+        $scope.ticker.push(transaction);
+
+        if ($scope.ticker.length > 30) {
+            $scope.ticker.shift();
+        }
+
+        $scope.$digest();
+    });
 }]);
 app.controller('template', function($scope, $http) {
     var settings = {
@@ -36,32 +56,6 @@ app.controller('template', function($scope, $http) {
         $scope.marketopen = data.is_market_open == '1';
     });
 });
-app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter, $http) {
-    $scope.ticker = [];
-    var counter = 1;
-
-    socket.on('psec', function (data) {  
-        var ctr = counter += 1;
-        var transaction = {
-            counter: ctr,
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol)
-        };
-        $scope.ticker.push(transaction);
-        ticker_data_ralph.push(transaction);
-        if ($scope.ticker.length > 50) {
-            $scope.ticker.shift();
-        }
-
-        if (ticker_data_ralph.length > 150) {
-            ticker_data_ralph.pop();
-        }
-        $scope.$digest();
-    });
-    $scope.select = goToChart;
-}]);
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
     var vm = this;
     vm.Total = 0;
@@ -74,13 +68,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.losers       = 0;
     $scope.unchanged    = 0;
     $scope.stocks = [];
-    $scope.watchlists = {
-        'All Stocks': 'stocks', 
-        'New Watchlist': 'new',
-        'Default Watchlist': JSON.parse(localStorage.getItem('watchlist')) || [],
-    };
-    $scope.watchlist = 'All Stocks';
-    $scope.lastWatchlist = 'All Stocks';
+    // $scope.watchlists = {
+    //     'All Stocks': 'stocks', 
+    //     'New Watchlist': 'new',
+    //     'Default Watchlist': JSON.parse(localStorage.getItem('watchlist')) || [],
+    // };
+    // $scope.watchlist = 'All Stocks';
+    // $scope.lastWatchlist = 'All Stocks';
     $scope.sort = 'value';
     $scope.reverse  = true;
     $scope.stock        = null;
@@ -99,156 +93,156 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.fullaskperc = 0;
     $scope.dshowsentiment = '';
     $rootScope.selectedSymbol = $scope.selectedStock = _symbol;
-    $scope.watchlistReady = false;
-    $scope.selectWatchlist = function(watchlist) {
-        if (watchlist == 'new') {
-            if (_user_id == 'public_user') {
-                if (confirm('Please login to create additional watchlist')) {
-                    window.location.href = '/login';
-                    $scope.watchlist = $scope.lastWatchlist;
-                }
-                $scope.watchlist = $scope.lastWatchlist;
-                return false;
-            }
-            var watchlistName = prompt('Watchlist Name:');
-            if (watchlistName) {
-                watchlistName = watchlistName.trim();
-            }
-            if (watchlistName) {
-                if ( ! $scope.watchlists[watchlistName]) {
-                    $scope.watchlists[watchlistName] = [];
-                    $http.post("/api/watchlist-add", $.param({watchlist: watchlistName})).then( function (response) {
-                    });
-                    $.gritter.add({
-                        title: 'Success',
-                        text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                        time: 5000,
-                        class_name: nightmode ? "gritter-dark" : "gritter-light",
-                    });
-                }
-                $scope.watchlist = watchlistName;
-                $scope.lastWatchlist = watchlistName;
-            } else {
-                $scope.watchlist = $scope.lastWatchlist;
-            }
-        } else if (watchlist == 'stocks') {
-        } else {
-            $scope.lastWatchlist = $scope.watchlist;
-        }
-        $('#watchlist-scroll').slimScroll({ scrollTo : '0px' });
-    }
-    $scope.addToWatchlist = function(symbol) {
-        if (_user_id == 'public_user')  {
-            if ($scope.watchlists['Default Watchlist'].indexOf(symbol) === -1) {
-                $scope.watchlists['Default Watchlist'].push(symbol);
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-            }
-            $.gritter.add({
-                title: 'Success',
-                text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-            return;
-        }
-        watchlist = prompt('Add ' + symbol + 'to Watchlist:', $scope.lastWatchlist);
-        if (watchlist) {
-            watchlist = watchlist.trim();
-        }
-        if (watchlist && watchlist.length > 0) {
-            if ($scope.watchlists[watchlist]) {
-                $scope.watchlists[watchlist].push(symbol);
-                $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
-                });
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-            } else {
-                $scope.watchlists[watchlist] = [symbol];
-                $scope.watchlist = watchlist;
-                $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
-                });
-                $.gritter.add({
-                    title: 'Success',
-                    text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-            }
-            $scope.lastWatchlist = watchlist;
-        }
-    }
-    $scope.addStockToWatchlist = function(watchlist) {
-        symbol = prompt('Stock Symbol:', _symbol);
-        if (symbol) {
-            symbol = symbol.toUpperCase().trim();
-        }
-        if (symbol && symbol.length > 0 && watchlist.indexOf(symbol) === -1) {
-            watchlist.push(symbol);
-            if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-                return;
-            }
-            $http.post("/api/watchlist-add", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: symbol + " has been successfully added to your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
-    $scope.deleteWatchlist = function(watchlist) {
-        if (_user_id == 'public_user') {
-            return;
-        }
-        if (confirm('Are you sure you want to delete "' + watchlist + '"?')) {
-            delete $scope.watchlists[watchlist];
-            $scope.watchlist = 'All Stocks';
-            $scope.lastWatchlist = 'Default Watchlist';
-            $http.post("/api/watchlist-delete", $.param({watchlist: watchlist})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: '"' + watchlist + "\" has been successfully deleted<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
-    $scope.removeFromWatchlist = function(watchlist, symbol) {
-        if (confirm('Are you sure you want to remove ' + symbol.toUpperCase() + ' from your watchlist?')) {
-            watchlist.splice(watchlist.indexOf(symbol), 1);
-            if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
-                localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
-                $.gritter.add({
-                    title: 'Success',
-                    text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                    time: 5000,
-                    class_name: nightmode ? "gritter-dark" : "gritter-light",
-                });
-                return;
-            }
-            $http.post("/api/watchlist-delete", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
-            });
-            $.gritter.add({
-                title: 'Success',
-                text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
-                time: 5000,
-                class_name: nightmode ? "gritter-dark" : "gritter-light",
-            });
-        }
-    }
+    // $scope.watchlistReady = false;
+    // $scope.selectWatchlist = function(watchlist) {
+    //     if (watchlist == 'new') {
+    //         if (_user_id == 'public_user') {
+    //             if (confirm('Please login to create additional watchlist')) {
+    //                 window.location.href = '/login';
+    //                 $scope.watchlist = $scope.lastWatchlist;
+    //             }
+    //             $scope.watchlist = $scope.lastWatchlist;
+    //             return false;
+    //         }
+    //         var watchlistName = prompt('Watchlist Name:');
+    //         if (watchlistName) {
+    //             watchlistName = watchlistName.trim();
+    //         }
+    //         if (watchlistName) {
+    //             if ( ! $scope.watchlists[watchlistName]) {
+    //                 $scope.watchlists[watchlistName] = [];
+    //                 $http.post("/api/watchlist-add", $.param({watchlist: watchlistName})).then( function (response) {
+    //                 });
+    //                 $.gritter.add({
+    //                     title: 'Success',
+    //                     text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                     time: 5000,
+    //                     class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //                 });
+    //             }
+    //             $scope.watchlist = watchlistName;
+    //             $scope.lastWatchlist = watchlistName;
+    //         } else {
+    //             $scope.watchlist = $scope.lastWatchlist;
+    //         }
+    //     } else if (watchlist == 'stocks') {
+    //     } else {
+    //         $scope.lastWatchlist = $scope.watchlist;
+    //     }
+    //     $('#watchlist-scroll').slimScroll({ scrollTo : '0px' });
+    // }
+    // $scope.addToWatchlist = function(symbol) {
+    //     if (_user_id == 'public_user')  {
+    //         if ($scope.watchlists['Default Watchlist'].indexOf(symbol) === -1) {
+    //             $scope.watchlists['Default Watchlist'].push(symbol);
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //         }
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //         return;
+    //     }
+    //     watchlist = prompt('Add ' + symbol + 'to Watchlist:', $scope.lastWatchlist);
+    //     if (watchlist) {
+    //         watchlist = watchlist.trim();
+    //     }
+    //     if (watchlist && watchlist.length > 0) {
+    //         if ($scope.watchlists[watchlist]) {
+    //             $scope.watchlists[watchlist].push(symbol);
+    //             $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
+    //             });
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //         } else {
+    //             $scope.watchlists[watchlist] = [symbol];
+    //             $scope.watchlist = watchlist;
+    //             $http.post("/api/watchlist-add", $.param({watchlist: watchlist, symbol: symbol})).then( function (response) {
+    //             });
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: "Watchlist has been successfully created<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //         }
+    //         $scope.lastWatchlist = watchlist;
+    //     }
+    // }
+    // $scope.addStockToWatchlist = function(watchlist) {
+    //     symbol = prompt('Stock Symbol:', _symbol);
+    //     if (symbol) {
+    //         symbol = symbol.toUpperCase().trim();
+    //     }
+    //     if (symbol && symbol.length > 0 && watchlist.indexOf(symbol) === -1) {
+    //         watchlist.push(symbol);
+    //         if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol + " has been successfully added to you watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //             return;
+    //         }
+    //         $http.post("/api/watchlist-add", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol + " has been successfully added to your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
+    // $scope.deleteWatchlist = function(watchlist) {
+    //     if (_user_id == 'public_user') {
+    //         return;
+    //     }
+    //     if (confirm('Are you sure you want to delete "' + watchlist + '"?')) {
+    //         delete $scope.watchlists[watchlist];
+    //         $scope.watchlist = 'All Stocks';
+    //         $scope.lastWatchlist = 'Default Watchlist';
+    //         $http.post("/api/watchlist-delete", $.param({watchlist: watchlist})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: '"' + watchlist + "\" has been successfully deleted<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
+    // $scope.removeFromWatchlist = function(watchlist, symbol) {
+    //     if (confirm('Are you sure you want to remove ' + symbol.toUpperCase() + ' from your watchlist?')) {
+    //         watchlist.splice(watchlist.indexOf(symbol), 1);
+    //         if (_user_id == 'public_user' && $scope.watchlist == 'Default Watchlist')  {
+    //             localStorage.setItem('watchlist', JSON.stringify($scope.watchlists['Default Watchlist']));
+    //             $.gritter.add({
+    //                 title: 'Success',
+    //                 text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //                 time: 5000,
+    //                 class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //             });
+    //             return;
+    //         }
+    //         $http.post("/api/watchlist-delete", $.param({watchlist: $scope.watchlist, symbol: symbol})).then( function (response) {
+    //         });
+    //         $.gritter.add({
+    //             title: 'Success',
+    //             text: symbol.toUpperCase() + " has been successfully removed from your watchlist<div class='pull-right'><a href='javascript:void(0);' onclick='$.gritter.removeAll();' class='text-danger'>Close all notifications</a></div>",
+    //             time: 5000,
+    //             class_name: nightmode ? "gritter-dark" : "gritter-light",
+    //         });
+    //     }
+    // }
     $http.get("/wp-json/data-api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
@@ -309,53 +303,55 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         if ($scope.enableBidsAndAsks) {
             $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
-                $timeout(function () {
-                    response = response.data;
-                    if (!response.success) {
-                        $scope.bids = [];
-                        $scope.asks = [];
-                        return;
-                    }
-        
-                    $scope.bids = Object.values(response.data.bids);
-                    $scope.asks = Object.values(response.data.asks);
-                }, 0);
-            })
-            .catch(err => {
-                $timeout(function () {
+                response = response.data;
+                if (!response.success) {
                     $scope.bids = [];
                     $scope.asks = [];
-                }, 0)
+                    return;
+                }
+    
+                $scope.bids = Object.values(response.data.bids);
+                $scope.asks = Object.values(response.data.asks);
             })
+            .catch(err => {
+                $scope.bids = [];
+                $scope.asks = [];
+            });
         }
     }
     $scope.getBidsAndAsks(_symbol);
-    let limit = 20;
-    $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + _symbol + '&limit=' + limit)
-        .then(response => {
-            response = response.data;
-            if (!response.success) {
-                return;
-            }
+    
+    $scope.getStockTrades = function (symbol = '', limit = 20) {
+        if (symbol != 'PSEI' && symbol != '') {
+            $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+                .then(response => {
+                    response = response.data;
+                    if (!response.success) {
+                        return;
+                    }
+    
+                    let data = response.data;
+    
+                    $scope.transactions = data.map(transaction => {
+                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
+                        return {
+                            symbol: transaction.symbol,
+                            price:  price_format(transaction.executed_price),
+                            shares: abbr_format(transaction.executed_volume),
+                            buyer:  transaction.buyer,
+                            seller: transaction.seller,
+                            time:   full_time,
+                        };                                    
+                    });
+                    $scope.$digest();
+                })
+                .catch(err => {
+                    
+                });
+        }
+    }
+    $scope.getStockTrades(_symbol);
 
-            let data = response.data;
-
-            $scope.transactions = data.map(transaction => {
-                let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                return {
-                    symbol: transaction.symbol,
-                    price:  price_format(transaction.executed_price),
-                    shares: abbr_format(transaction.executed_volume),
-                    buyer:  transaction.buyer,
-                    seller: transaction.seller,
-                    time:   full_time,
-                };                                    
-            });
-            $scope.$digest();
-        })
-        .catch(err => {
-            
-        });
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {
@@ -551,44 +547,51 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {
         if ($scope.stock) {
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
-                .then(function (response) {
-                    if (response.data.success) {
-                        let data = response.data.data;
-
-                        $scope.fullaskperc = data.ask_total_percent;
-                        $scope.fullasktotal = data.ask_total;
-                        $scope.fullbidperc = data.bid_total_percent;
-                        $scope.fullbidtotal = data.bid_total;
-
-                    }
-                })
-                .catch(function (response) {
-                    $scope.fullaskperc = 0;
-                    $scope.fullasktotal = 0;
-                    $scope.fullbidperc = 0;
-                    $scope.fullbidtotal = 0;
-                });
-
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.stock.symbol)
-                .then(function (response) {
-                    if (response.data.success) {
-                        let data = response.data.data;
-
-                        $scope.askperc = data.ask_total_percent;
-                        $scope.asktotal = data.ask_total;
-                        $scope.bidperc = data.bid_total_percent;
-                        $scope.bidtotal = data.bid_total;
-
-                    }
-                })
-                .catch(function (response) {
-                    $scope.askperc = 0;
-                    $scope.asktotal = 0;
-                    $scope.bidperc = 0;
-                    $scope.bidtotal = 0;
-                });
+            $scope.getFullMarketDepth($scope.stock.symbol);
+            $scope.getTopMarketDepth($scope.stock.symbol);
         }
+    }
+
+    $scope.getFullMarketDepth = function (symbol) {
+        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + symbol)
+            .then(function (response) {
+                if (response.data.success) {
+                    let data = response.data.data;
+
+                    $scope.fullaskperc = data.ask_total_percent;
+                    $scope.fullasktotal = data.ask_total;
+                    $scope.fullbidperc = data.bid_total_percent;
+                    $scope.fullbidtotal = data.bid_total;
+
+                }
+            })
+            .catch(function (response) {
+                $scope.fullaskperc = 0;
+                $scope.fullasktotal = 0;
+                $scope.fullbidperc = 0;
+                $scope.fullbidtotal = 0;
+            });
+    }
+
+    $scope.getTopMarketDepth = function (symbol) {
+        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + symbol)
+            .then(function (response) {
+                if (response.data.success) {
+                    let data = response.data.data;
+
+                    $scope.askperc = data.ask_total_percent;
+                    $scope.asktotal = data.ask_total;
+                    $scope.bidperc = data.bid_total_percent;
+                    $scope.bidtotal = data.bid_total;
+
+                }
+            })
+            .catch(function (response) {
+                $scope.askperc = 0;
+                $scope.asktotal = 0;
+                $scope.bidperc = 0;
+                $scope.bidtotal = 0;
+            });
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
@@ -615,6 +618,46 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
         "mainSeriesProperties.showCountdown": true,
         "scalesProperties.showStudyPlotLabels": true,
     };
+
+    $scope.getSentiments = function (symbol, fullbidtotal, fullasktotal) {
+        $http({
+            method : "POST",
+            url : "/apipge/?stock="+symbol+"&isbull="+fullbidtotal+"&isbear="+fullasktotal,
+            dataType: "json",
+            contentType: "application/json",
+            data: {
+                'action' : 'check_sentiment',
+                'stock' : symbol,
+            }
+        }).then(function mySucces(response) {
+            angular.element(".regsentiment").addClass('openmenow');
+            if (response.data.isvote == "1") {
+                // cant vote!
+                angular.element(".bullbearsents").addClass('clickedthis');
+                angular.element(".dbaronchart").css('width', '70%');
+                angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
+                angular.element(".bbs_bull_bar").find('span').show('fast');
+
+                var dbullvalx = parseFloat(response.data.dbull);
+                var dbearvalx = parseFloat(response.data.dbear);
+
+                angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+
+                angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
+                angular.element(".bbs_bear_bar").find('span').show('fast');
+                angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+            } else {
+                // can vote!
+                angular.element(".bullbearsents").removeClass('clickedthis');
+                angular.element(".dbaronchart").css('width', '0%');
+                angular.element(".bbs_bull_bar").find('span').hide();
+                angular.element(".bbs_bear_bar").find('span').hide();
+            }
+
+        }, function myError(error) {
+
+        });
+    }
 
     $(function() {
         TradingView.onready(function() {
@@ -683,45 +726,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 chart = widget.chart();
 
                 // for register sentiments
-                $http({
-                    method : "POST",
-                    url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: {
-                        'action' : 'check_sentiment',
-                        'stock' : _symbol,
-                    }
-                }).then(function mySucces(response) {
-                    angular.element(".regsentiment").addClass('openmenow');
-                    if (response.data.isvote == "1") {
-                        // cant vote!
-                        angular.element(".bullbearsents").addClass('clickedthis');
-                        angular.element(".dbaronchart").css('width', '70%');
-                        angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
-                        angular.element(".bbs_bull_bar").find('span').show('fast');
-
-                        var dbullvalx = parseFloat(response.data.dbull);
-                        var dbearvalx = parseFloat(response.data.dbear);
-
-                        angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
-
-                        angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
-                        angular.element(".bbs_bear_bar").find('span').show('fast');
-                        angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
-                    } else {
-                        // can vote!
-                        angular.element(".bullbearsents").removeClass('clickedthis');
-                        angular.element(".dbaronchart").css('width', '0%');
-                        angular.element(".bbs_bull_bar").find('span').hide();
-                        angular.element(".bbs_bear_bar").find('span').hide();
-                    }
-
-                }, function myError(error) {
-
-                });
-                
-                
+                $scope.getSentiments(_symbol, $scope.$parent.fullbidtotal, $scope.$parent.fullasktotal);
+            
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
                     var symbol = symbolData.ticker;
@@ -759,62 +765,26 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         }
 
                     }, function myError(error) {
-                        
+                        console.log(error);
                     });
 
                     // for register sentiments
-                    $http({
-                        method : "POST",
-                        url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: {
-                            'action' : 'check_sentiment',
-                            'stock' : _symbol,
-                        }
-                    }).then(function mySucces(response) {
-                        angular.element(".regsentiment").addClass('openmenow');
-                        if (response.data.isvote == "1") {
-                            // cant vote!
-                            angular.element(".bullbearsents").addClass('clickedthis');
-                            angular.element(".dbaronchart").css('width', '70%');
-                            angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
-                            angular.element(".bbs_bull_bar").find('span').show('fast');
+                    $scope.getSentiments(_symbol, $scope.$parent.fullbidtotal, $scope.$parent.fullasktotal);
 
-                            var dbullvalx = parseFloat(response.data.dbull);
-                            var dbearvalx = parseFloat(response.data.dbear);
+                    // $http({
+                    //     method : "POST",
+                    //     url : "/apipge/?daction=marketsentiment&stock="+_symbol,
+                    //     dataType: "json",
+                    //     contentType: "application/json",
+                    //     data: {
+                    //         'action' : 'check_sentiment',
+                    //         'stock' : _symbol,
+                    //     }
+                    // }).then(function mySucces(response) {
 
-                            angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
-
-                            angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
-                            angular.element(".bbs_bear_bar").find('span').show('fast');
-                            angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
-                        } else {
-                            // can vote!
-                            angular.element(".bullbearsents").removeClass('clickedthis');
-                            angular.element(".dbaronchart").css('width', '0%');
-                            angular.element(".bbs_bull_bar").find('span').hide();
-                            angular.element(".bbs_bear_bar").find('span').hide();
-                        }
-
-                    }, function myError(error) {
-
-                    });
-
-                    $http({
-                        method : "POST",
-                        url : "/apipge/?daction=marketsentiment&stock="+_symbol,
-                        dataType: "json",
-                        contentType: "application/json",
-                        data: {
-                            'action' : 'check_sentiment',
-                            'stock' : _symbol,
-                        }
-                    }).then(function mySucces(response) {
-
-                    }, function myError(error) {
+                    // }, function myError(error) {
                         
-                    });
+                    // });
                      
                     if (found.length) {
 
@@ -833,72 +803,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.fullaskperc = 0;
 
                         $scope.$parent.dshowsentiment = '';
-                        let limit = 20;
-                        $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
-                            .then(response => {
-                                response = response.data;
-                                if (!response.success) {
-                                    return;
-                                }
 
-                                let data = response.data;
-
-                                $scope.$parent.transactions = data.map(transaction => {
-                                    let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                                    return {
-                                        symbol: transaction.symbol,
-                                        price:  price_format(transaction.executed_price),
-                                        shares: abbr_format(transaction.executed_volume),
-                                        buyer:  transaction.buyer,
-                                        seller: transaction.seller,
-                                        time:   full_time,
-                                    };                                    
-                                });
-                            })
-                            .catch(response => {
-                                $scope.$parent.transactions = [];
-                            })
-                            .finally(() => {
-                                $scope.$parent.$digest();
-                            });
+                        $scope.$parent.getStockTrades(_symbol);
                         
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + $scope.stock.symbol)
-                            .then(function (response) {
-                                if (response.data.success) {
-                                    let data = response.data.data;
-
-                                    $scope.$parent.fullaskperc = data.ask_total_percent;
-                                    $scope.$parent.fullasktotal = data.ask_total;
-                                    $scope.$parent.fullbidperc = data.bid_total_percent;
-                                    $scope.$parent.fullbidtotal = data.bid_total;
-
-                                }
-                            })
-                            .catch(function(response) {
-                                $scope.$parent.fullaskperc = 0;
-                                $scope.$parent.fullasktotal = 0;
-                                $scope.$parent.fullbidperc = 0;
-                                $scope.$parent.fullbidtotal = 0;
-                            });
-
-                        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + $scope.$parent.stock.symbol)
-                            .then(function (response) {
-                                if (response.data.success) {
-                                    let data = response.data.data;
-
-                                    $scope.$parent.askperc = data.ask_total_percent;
-                                    $scope.$parent.asktotal = data.ask_total;
-                                    $scope.$parent.bidperc = data.bid_total_percent;
-                                    $scope.$parent.bidtotal = data.bid_total;
-
-                                }
-                            })
-                            .catch(function (response) {
-                                $scope.$parent.askperc = 0;
-                                $scope.$parent.asktotal = 0;
-                                $scope.$parent.bidperc = 0;
-                                $scope.$parent.bidtotal = 0;
-                            });
+                        $scope.$parent.getFullMarketDepth(_symbol);
+                        $scope.$parent.getTopMarketDepth(_symbol);
                             
                         $scope.$parent.getBidsAndAsks(symbol);
                     } else {

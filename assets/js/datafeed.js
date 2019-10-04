@@ -43,12 +43,14 @@ var DataProvider = (function () {
 					volume: parseFloat(data.vol),
 				};
 				subscriber.listener(lastBar);
+				// console.log('DataPulseProvider: websocket:psec', lastBar);
 			}
 		});
     }
     DataPulseProvider.prototype.subscribeBars = function (symbolInfo, resolution, newDataCallback, listenerGuid) {
     	var that = this;
         if (that._subscribers.hasOwnProperty(listenerGuid)) {
+            // console.log("DataPulseProvider: already has subscriber with id=" + listenerGuid);
             return;
         }
         that._subscribers[listenerGuid] = {
@@ -170,7 +172,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 	if (resolution != 'D') {
 		params.resolution = '1m'
 	}
-
+	
 	params['to'] = rangeEndDate;
 	that._send(url, params).done(function(sxdata) {
 		
@@ -204,6 +206,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		onDataCallback(bars, meta);
 		return;
 	}).fail( function(arg) {
+		// console.warn(['getBars(): HTTP error', arg]);
 		return;
 	});
 };

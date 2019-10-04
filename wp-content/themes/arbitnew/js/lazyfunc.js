@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 
     // setTimeout(function(){
-        
-    
+
+
     // }, 1000);
     $.ajax({
         url: '/apipge/?daction=sidebar-bulletin',
@@ -16,7 +16,7 @@ $( document ).ready(function() {
     });
 
     $.ajax({
-        url: "/apipge/?daction=trendingstocks",
+        url: "/sidebar-api/?daction=trendingstocks",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
@@ -37,16 +37,16 @@ $( document ).ready(function() {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            
+
         }
     });
 
     $.ajax({
-        url: "/apipge/?daction=whotomingle",
+        url: "/sidebar-api/?daction=whotomingle",
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            $(".top-recommended-people > .trendingpreloader").hide();
+            $(".trendingpreloader").hide();
             $.each(res, function( index, value ) {
                 var toappendme = '<div class="trader-item userid_'+value.id+'">';
                 toappendme += '<div class="traider-inner">';
@@ -71,7 +71,7 @@ $( document ).ready(function() {
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            
+
         }
     });
 
@@ -82,7 +82,7 @@ $( document ).ready(function() {
         type: 'GET',
         dataType: 'json', // added data type
         success: function(res) {
-            
+
             $.each(res, function( index, value ) {
                 if(value.type == 'allrank'){
                     if(value.myrank <= 3){
@@ -135,16 +135,16 @@ $( document ).ready(function() {
                         ranker += '</li>';
                         $(".ranks .myrank").append(ranker);
                     }
-                    
+
                 }
-                
+
             });
             $(".ranks .trendingpreloader").hide();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            
+
         }
     });
 
-    
+
 });

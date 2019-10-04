@@ -19,23 +19,12 @@ div.um-activity {
 }
 
 .um-activity-widget {
-	/* margin-top: 25px; commented kay dako kaayo ang margin between per posts sa social. ayaw ibalik */
-	box-shadow: 0 1px 2px #ddd;
 	background-color: #142c46;
     border-radius: 6px !important;
 }
 
 .um-activity-widget.highlighted {
 
-}
-
-.um-activity-head {
-	background: #142c46;
-    border-radius: 3px 3px 0 0;
-    padding: 8px 6px 8px 15px;
-    color: #555;
-    font-weight: bold;
-    font-size: 12px;
 }
 
 .um-activity-head a {
@@ -119,7 +108,7 @@ div.um-activity {
 
 /* Text-wall posts */
 .um-activity-bodyinner-txt {
-    padding: 0px 0px 11px 15px;
+    padding: 0px 0px 0 15px;
 	font-size: 13px;
 	line-height: 20px;
 	color: #666;
@@ -150,48 +139,8 @@ div.um-activity {
 	background: #fff;
 }
 
-.um-activity-bodyinner-txt span.post-meta {
-	border: 1px solid #ddd;
-	display: block;
-	margin: 12px 0 0 0;
-	padding-bottom: 10px;
-	box-shadow: 0 1px 2px #eee;
-	background: #fff;
-}
-
-.um-activity-bodyinner-txt span.post-title {
-	font-weight: bold;
-	color: #333 !important;
-	margin: 10px 12px 0 12px;
-	font-size: 14px;
-	display: block;
-}
-
-.um-activity-bodyinner-txt span.post-excerpt {
-	margin: 5px 12px 0 12px;
-	color: #666 !important;
-	font-size: 12px;
-	line-height: 18px;
-	display: block;
-}
-
-.um-activity-bodyinner-txt span.post-domain {
-	margin: 5px 12px 0 12px;
-	color: #aaa !important;
-	font-size: 11px;
-	line-height: 18px;
-	text-transform: uppercase;
-	display: block;
-}
-
 .um-activity-bodyinner-txt span.post-image {
 	background: #f9f9f9;
-}
-
-.um-activity-bodyinner-txt span.post-image img {
-	max-width: 100%;
-	width: 100%;
-	height: auto;
 }
 
 .um-activity-bodyinner-txt span.post-price {
@@ -248,10 +197,10 @@ div.um-activity {
 }
 
 .um-activity-bodyinner-photo img {
-	max-width: 100% !important;
-	height: auto !important;
-	padding: 0 !important;
-	margin: 0 auto !important;
+	max-width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0 auto;
 	display: block;
 	overflow: hidden;
 }
@@ -299,13 +248,18 @@ div.um-activity {
 .um-activity-widget div.um-activity-textarea textarea:focus {
 	border: none !important;
 	resize: none;
-	padding: 10px 15px !important;
+	padding: 0 !important;
 	min-height: auto !important;
 	font-size: 13px !important;
 	outline: none !important;
 }
 
 .um-activity-foot {
+	padding: 0 5px 0 0;
+	background: #fcfcfc;
+	border: 1px solid #e5e5e5;
+	border-top-color: #f3f3f3;
+	border-bottom: 0;
 	border-radius: 0 0 3px 3px;
 }
 .um-activity-foot.status {
@@ -336,12 +290,14 @@ div.um-activity {
 .um-activity-foot a.um-button,
 .um-activity-comment-area a.um-button {
 	float: left;
-    padding: 0 20px !important;
-    font-size: 12px;
-    font-weight: bold !important;
-    width: auto !important;
-    line-height: 26px !important;
-    margin: 4px 9px;
+	padding: 0 20px !important;
+	font-size: 12px;
+	font-weight: bold !important;
+	width: auto !important;
+	margin-right: 5px;
+	line-height: 26px !important;
+	margin-top: 4px;
+	margin-bottom: 5px;
 }
 
 .um-activity-foot a.um-button.um-alt,
@@ -411,19 +367,14 @@ div.um-activity {
 	font-size: 13px;
 	margin-left: 6px;
 }
-.um-activity-actions > div {float: left}
 
 /* external dd dialogs */
 .um-activity-dialog {
 	position: absolute;
-	top: 30px;
-	left: 15px;
-	width: 150px;
-	background: #fff;
 	box-shadow: 0 1px 2px #ddd;
 	z-index: 99;
 	display: none;
-	border: 1px solid #e5e5e5;
+	border: 0 2px 0px #0d1f33 !important;
 	border-bottom: 0;
 	border-radius: 3px;
 	padding: 5px 0;
@@ -454,7 +405,7 @@ div.um-activity {
 	margin: 0 0 4px 0;
 	border-bottom: 1px solid #f5f5f5;
 }
-.um-activity-dialog a:hover {color: #fff !important;}
+.um-activity-dialog a:hover {color: #fff !important;background: #1a3552 !important;}
 .um-activity-dialog a i {margin-right: 8px}
 
 /* author info */
@@ -567,11 +518,21 @@ div.um-activity {
 	margin: 4px 2px 0 2px !important;
 }
 
+.um-activity-comments {
+	background: #fafafa;
+	border: 1px solid #e5e5e5;
+	border-top-color: #f3f3f3;
+	border-bottom: 0;
+	border-radius: 0 0 3px 3px;
+	padding: 4px 15px 0 15px;
+}
+
 .um-activity-commentwrap {
 	padding-bottom: 1px !important;
 }
 
 .um-activity-comment-child {
+	border-left: 2px solid #e5e5e5;
 	margin-top: -6px;
 	margin-bottom: 12px;
 	margin-left: 28px;
@@ -579,18 +540,19 @@ div.um-activity {
 }
 
 .um-activity-comment-child .um-activity-commentl {
-	padding: 3px 0 3px 28px;
-	min-height: 20px;
+	padding: 3px 0 0 28px;
+    margin-top: 10px;
+    min-height: 20px;
 }
 
 .um-activity-commentl {
-	padding: 0 0 10px 40px;
+	padding: 0 0 0 40px;
 	position: relative;
 	min-height: 30px;
 }
 
 .um-activity-commentl.um-activity-comment-area {
-	padding-bottom: 0;
+	padding: 0;
 }
 
 .um-activity-commentl.highlighted {border-left: 2px solid #3ba1da;margin-left: -16px;padding-left: 54px;}
@@ -600,7 +562,7 @@ div.um-activity {
 .um-activity-comment-child .um-activity-commentl.highlighted .um-activity-comment-avatar {left: 10px}
 
 .um-activity-comment-info .um-activity-comment-area {
-	padding: 8px 0 0 30px;
+	padding: 0 0 0 30px;
 }
 
 .um-activity-comment-info .um-activity-comment-avatar {
@@ -638,13 +600,6 @@ div.um-activity {
 	width: 20px !important;
 	height: 20px !important;
 }
-
-div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
-	font-size: 13px !important;
-	resize: none;
-	line-height: 16px !important;
-}
-
 .um-activity-comment-info {
 	position: relative;
 	top: -3px;
@@ -683,7 +638,10 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
 
 .um-activity-comment-meta {color: #aaa;margin: 4px 0 0 0;line-height: 15px}
 .um-activity-comment-meta a {border: none !important}
-
+.um-activity-comment-meta a.um-activity-comment-permalink {
+	color: #aaa !important;
+	text-decoration: none;
+}
 .um-activity-comment-meta a.um-activity-comment-permalink:hover {text-decoration: underline !important}
 .um-activity-comment-meta ins {text-decoration: none !important}
 .um-activity-comment-meta span:after {
@@ -739,36 +697,15 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
 .um-activity-comment-meta .um-activity-editc a:active,
 .um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe}
 
-.um-activity-comment-meta .um-activity-editc-d {
-    position: absolute;
-    width: 100px;
-    background: #123;
-    display: none;
-    z-index: 99999999;
-    border-radius: 3px;
-}
-.um-activity-comment-meta .um-activity-editc-d:before {
-	content: "";
-    bottom: -15px;
-    right: 43px;
-    border: solid transparent;
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(194, 225, 245, 0);
-    border-top-color: #123;
-    border-width: 8px;
-}
+
 
 .um-activity-comment-meta span.um-activity-editc-d:after {
 	display: none;
 }
-
 .um-activity-comment-meta .um-activity-editc-d a:hover {
 	color: #fffffe;
-	background: #11273e;
-	border-radius: 3px;
+	background: #1a3552;
+	border-radius: 4px;
 }
 
 /* Comment loading */
@@ -868,9 +805,9 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
 	font-size: 14px;
 	line-height: 14px;
 	height: 14px;
-	display: block;
-	padding: 4px;
-	cursor: pointer;
+	padding: 4px 6px;
+    cursor: pointer;
+    border-radius: 50px;
 }
 .um-activity-img-remove:hover {background: rgba(255, 255, 255, 0.1)}
 .um-activity-img-remove i {
@@ -892,14 +829,15 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
 	font-size: 16px;
 	height: 40px;
 	cursor: pointer !important;
-	/* width: 100%; */
+	width: 100%;
 }
 
 .um-activity-widget .upload {
+	position: unset !important;
 	box-sizing: content-box;
 	line-height: 20px !important;
 	display: block;
-	padding: 4px 12px;
+	padding: 4px 15px;
 	background: transparent !important;
 	color: #999;
 	cursor: pointer !important;

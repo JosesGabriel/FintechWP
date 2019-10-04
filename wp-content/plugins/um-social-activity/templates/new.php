@@ -51,15 +51,15 @@
 
 
 					<div class="photo-upload-cont" style="display: inline-block;/* background-color: #11273e; */padding: 4px 14px;border-radius: 25px;border: 1px solid #1e3554 !important;">
-						<img src="/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
+						<img src="https://arbitrage.ph/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
 						<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span> 
 					</div>
 					<!-- <div class="video-upload-cont" style="display: inline-block;background-color: #11273e;padding: 4px 14px;border-radius: 25px;    margin: 0 6px">
-						<img src="/svg/camera-video.svg" style="width: 21px;vertical-align: bottom;">
+						<img src="https://arbitrage.ph/svg/camera-video.svg" style="width: 21px;vertical-align: bottom;">
 						<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Video</span>
 					</div>
 					<div class="tag-upload-cont" style="display: inline-block;background-color: #11273e;padding: 4px 14px;border-radius: 25px;">
-						<img src="/svg/user-outline.svg" style="width: 19px;vertical-align: sub;height: 18px;">
+						<img src="https://arbitrage.ph/svg/user-outline.svg" style="width: 19px;vertical-align: sub;height: 18px;">
 						<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">People</span>
 					</div> -->
 					</a>
@@ -129,7 +129,7 @@
 					   data-size-err="<?php esc_attr_e( 'Image is too large', 'um-activity' ); ?>"
 					   data-ext-err="<?php esc_attr_e( 'Please upload a valid image', 'um-activity' ); ?>">
 						<div class="photo-upload-cont" style="display: inline-block;/* background-color: #11273e; */padding: 4px 14px;border-radius:25px;border: 1px solid #1e3554 !important;margin-top: -2px;">
-							<img src="/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
+							<img src="https://arbitrage.ph/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
 							<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span> 
 						</div>
 					</a>

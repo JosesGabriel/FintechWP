@@ -94,6 +94,7 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 } else {
 
 
+
 	//set offset when pagination
 
 	$args['posts_per_page'] = UM()->Activity_API()->api()->get_posts_per_page();
@@ -175,6 +176,48 @@ if ( isset( $wall_post ) && $wall_post > 0 ) {
 
 		}
 
+
+
+		/*if ( ! $friends_ids && ! $followed_ids && ! empty( $user_id ) ) {
+
+			$args['meta_query'][] = array(
+
+				'relation'	=> 'OR',
+
+				array(
+
+					'key'       => '_wall_id',
+
+					'value'     => $user_id,
+
+					'compare'   => '='
+
+				),
+
+				array(
+
+					'key'       => '_user_id',
+
+					'value'     => $user_id,
+
+					'compare'   => '='
+
+				),
+
+				array(
+
+					'key'       => '_wall_id',
+
+					'value'     => 0,
+
+					'compare'   => '='
+
+				)
+
+			);
+
+		}*/
+
 	}
 
 
@@ -225,6 +268,8 @@ if ( $wallposts->found_posts == 0 ) {
 
 }
 
+$count = 0;
+
 foreach ( $wallposts->posts as $post ) {
 
 	$author_id = UM()->Activity_API()->api()->get_author( $post->ID );
@@ -246,6 +291,59 @@ foreach ( $wallposts->posts as $post ) {
 	$post_link = UM()->Activity_API()->api()->get_permalink( $post->ID );
 
 	um_fetch_user( $author_id );
+
+	/*
+	if ($count % 5 == 0 && $count != 0) {
+		?>
+
+            	<div class="um-activity-widget" style="box-shadow: 0px 1px 2px -1px rgba(4,13,23,1) !important;" id="postid-2409">
+                    <div class="um-activity-head">
+                        <div class="um-activity-left um-activity-author">
+                            <div class="um-activity-ava">
+            
+                                <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/">
+                                    <img src="https://arbitrage.ph/wp-content/uploads/ultimatemember/5/profile_photo-80x80.jpg?1558730722" class="gravatar avatar avatar-80 um-avatar um-avatar-uploaded" width="80" height="80" alt="Arbitrage" data-default="https://arbitrage.ph/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg">
+                                </a>
+            
+                            </div>
+                            <div class="um-activity-author-meta">
+            
+                                <div class="um-activity-author-url">
+                                    <a href="https://arbitrage.ph/user/trading+platform+for+filipinos/" class="um-link">Arbitrage Trading Platformasasdfsdfsd</a>
+                                </div>
+            
+                                <span class="um-activity-metadata">
+            
+                                    <a href="#">
+                                        Advertisement
+                                    </a>
+            
+                                </span>
+                            </div>
+                        </div>
+                        <div class="um-clear"></div>
+            
+                    </div>
+
+                    <div class="um-activity-body">
+            
+                        <div class="um-activity-bodyinner ">
+                                <div class="um-activity-bodyinner-txt">
+                                    <div class="desc-note">
+                                    	<div class="arbadblock">ADS</div>
+                                    </div>           
+                                </div>
+                        </div>
+						<div class="um-clear"></div>
+            
+                    </div>
+            
+                </div>
+
+		<?php
+	}
+	*/
+	
 
 	?>
 
@@ -440,7 +538,7 @@ foreach ( $wallposts->posts as $post ) {
 						// 		if (strpos($dwordpvalue, '$') !== false) {
 						// 		    echo $dwordpvalue;
 						// 		    $dstock = str_replace("$", "", $dwordpvalue);
-						// 		    $dlink = '<a href="/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
+						// 		    $dlink = '<a href="https://arbitrage.ph/chart/'.$dstock.'">'.$dwordpvalue.'</a>';
 						// 		    $newconts .= " ".$dlink;
 						// 		} else {
 						// 			$newconts .= " ".$dwordpvalue;
@@ -450,7 +548,9 @@ foreach ( $wallposts->posts as $post ) {
 							
 						?>
 						
-						<div>
+						<?php //echo $newconts; ?>
+
+						<div class="desc-note">
 							<?php echo $um_activity_post; ?>
 						</div>
 						<div class="desc-note1">
@@ -565,7 +665,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="svg/ico_bullish_no_ring.svg"></span>
+							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bullish_no_ring.svg"></span>
 
 							
 
@@ -579,7 +679,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<a href="#">
 
-							<span class="diconbase"><img src="/svg/ico_bearish_no_ring.svg"></span>
+							<span class="diconbase"><img src="https://arbitrage.ph/assets/svg/ico_bearish_no_ring.svg"></span>
 
 							
 
@@ -588,49 +688,78 @@ foreach ( $wallposts->posts as $post ) {
 						<span class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
 
 					</div>
+
+					<!-- <div class="um-activity-like <?php echo (UM()->Activity_API()->api()->user_liked( $post->ID ) ? 'active isyours' : 'notyours') ?>" data-like_text="<?php _e('Like','um-activity'); ?>" data-unlike_text="<?php _e('Unlike','um-activity'); ?>" data-numlikes="<?php echo $likes; ?>">
+
+						<a href="#">
+
+							<i class="um-faicon-thumbs-up"></i>
+
+							<i class="um-faicon-thumbs-down" style="display:none;"></i>
+
+							
+
+						</a>
+
+						<div class="dnumof" data-istab="liked" data-modalx="mod<?php echo $post->ID; ?>"><?php echo $likes; ?></div>
+
+					</div>
+
+ -->
+
+			<!-- <hr class="style14 style11">
+
+				<div class="es-sentiments-container">
+ 						<div class="es-sentiments-cover1">
+ 							<a class="es-sentiments1 es-same-style">
+ 							<img src="https://arbitrage.ph/svg/group.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Sentiments</a>
+ 							<a class="es-sentiments2 es-same-style">
+ 							<img src="https://arbitrage.ph/svg/message.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Comment</a>
+ 							<a class="es-sentiments3 es-same-style">
+ 							<img src="https://arbitrage.ph/svg/share.svg" style="margin-right: 3px;width: 21px;vertical-align: bottom;"> Share</a>
+ 						</div>
+ 					</div>
+ -->
+
  					
 
 					<div class="dpartmodal">
 
 						<div class="modal fade" id="mod<?php echo $post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 60px;">
 
-						  <div class="modal-dialog" role="document" style="float: none; max-width: 300px;">
+						  <div class="modal-dialog" role="document" style="float: none;">
 
-						    <div class="modal-content" style="border-radius: 20px;">
+						    <div class="modal-content">
 
-						      <div class="modal-header bullbear-Modal--header" style="border-bottom: 0px; padding: 10px;">
+						      <div class="modal-header">
+
+						        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
 
 						        <div class="dtabspart">
 
 						        	<ul class="tabbutton">
 
-										<li class="totabs" style="color: white;" data-btname="bullish">
-											<span style="margin-left: 0;">
-												<img src="/svg/Bullish-border.svg" style="width: 30px; padding: 5px;">
-											</span>
-											<span style="margin-left: 0px;" class="dnumof" data-istab="bullish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbullish); ?></span>
-										</li>
+						        		<!-- <li class="">All</li> -->
 
-										<li class="totabs" style="color: white;" data-btname="bearish">
-											<span style="margin-left: 0;">
-												<img src="/svg/Bearish-border.svg" style="width: 30px; padding: 5px;">
-											</span>
-											<span style="margin-left: 0px;" class="dnumof" data-istab="bearish" data-modalx="mod<?php echo $post->ID; ?>"><?php echo getnumformat($numbear); ?></span>
-										</li>
+						        		<li class="totabs" data-btname="bullish">Bullish</li>
+
+						        		<li class="totabs" data-btname="bearish">Bearish</li>
+
+						        		<li class="totabs" data-btname="liked">Liked</li>
 
 						        	</ul>
 
 						        </div>
 
-						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="padding: 0 15px;">
 
 						          <span aria-hidden="true">&times;</span>
 
 						        </button>
 
 						      </div>
-							<div style="height: 3px; background-image: linear-gradient(to right, #894b9d, #eb8023, #c2b819, #49ba6f, #2581bc);"></div>
-						      <div class="modal-body bullbear-Modal--body">
+
+						      <div class="modal-body">
 
 						        <div class="totab">
 
@@ -638,29 +767,37 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<div class="innerbull">
 
-											<?php 
+						        			<?php foreach (get_post_meta( $post->ID, '_bull_people', TRUE ) as $key => $value) {
 
-												$post_bull_people = get_post_meta( $post->ID, '_bull_people', TRUE );
+												$user_info = get_userdata($value);
 
-												if ($post_bull_people):
-													foreach (get_post_meta($post->ID, '_bull_people', true) as $key => $value):
-														$user_info = get_userdata($value);
+												// echo 'Username: ' . $user_info->user_login . "<br />";
 
-											?>
+												//print_r($user_info);
 
-													<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white !important; margin-right: 10px; margin-left: 0px;">
+												 ?>
 
-													<img src="/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
-														<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
-													</a>
-															
-												
-										
-											<?php
-											
-													endforeach;
-												endif;
-											?>
+												<div class="bullitems listofpeople">
+
+													<div class="dusername">
+
+														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+
+															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+
+														</a>
+
+													</div>
+
+													<div class="isfriends">
+
+														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
+
+													</div>
+
+												</div>
+
+											<?php } ?>
 
 						        		</div>
 
@@ -668,27 +805,73 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	<div class="bearish">
 
-										<?php 
-										
-											$post_bear_people = get_post_meta( $post->ID, '_bear_people', TRUE );
+						        		<?php foreach (get_post_meta( $post->ID, '_bear_people', TRUE ) as $key => $value) {
 
-											if ($post_bear_people):
-												foreach ($post_bear_people as $key => $value):
+												$user_info = get_userdata($value);
 
-													$user_info = get_userdata($value);
+												// echo 'Username: ' . $user_info->user_login . "<br />";
 
-										?>
+												//print_r($user_info);
 
-												<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank" style="width: 100%; font-size: 0.9em; color: white!important; margin-right: 10px; margin-left: 0px;">
+												 ?>
 
-												<img src="/assets/svg/ico_bearish_no_ring_notification.svg" style="width: 20px; padding: 5px;">
-													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
-												</a>
+												<div class="bullitems listofpeople">
 
-										<?php 
-												endforeach;
-											endif; 
-										?>
+													<div class="dusername">
+
+														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+
+															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+
+														</a>
+
+													</div>
+
+													<div class="isfriends">
+
+														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
+
+													</div>
+
+												</div>
+
+											<?php } ?>
+
+						        	</div>
+
+						        	<div class="liked">
+
+						        		<?php foreach (get_post_meta( $post->ID, '_liked', TRUE ) as $key => $value) {
+
+												$user_info = get_userdata($value);
+
+												// echo 'Username: ' . $user_info->user_login . "<br />";
+
+												// print_r($user_info);
+
+												 ?>
+
+												<div class="bullitems listofpeople">
+
+													<div class="dusername">
+
+														<a href="/user/<?php echo $user_info->user_login; ?>" target="_blank">
+
+															<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
+
+														</a>
+
+													</div>
+
+													<div class="isfriends">
+
+														<?php echo UM()->Friends_API()->api()->friend_button( $user_info->ID, get_current_user_id() ); ?>
+
+													</div>
+
+												</div>
+
+											<?php } ?>
 
 						        	</div>
 
@@ -728,6 +911,8 @@ foreach ( $wallposts->posts as $post ) {
 
 
 	</div>
+
+<?php $count++; ?>
 
 <?php } ?>
 

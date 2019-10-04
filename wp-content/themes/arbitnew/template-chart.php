@@ -9,26 +9,11 @@
 	if ( is_user_logged_in() ) {
 		// user is now logged in
 	} else {
-		wp_redirect( $homeurlgen.'/login/', 301 );
+		wp_redirect( '/login', 301 );
 		exit;
 	}
 
-	
-	$homeurlgen = get_home_url();
 	$user_id = $user->ID;
-	/* temp-disabled
-	$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
-	$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
-	
-	if(!$checksharing){
-		if($checkfbshare){
-			header('Location: '.$homeurlgen.'/share/?'.rand(12345 ,89019));
-			die(); 
-		}else{
-			header('Location: '.$homeurlgen.'/verify/?'.rand(12345 ,89019));
-			die();
-		}
-	} temp-disabled */
 	require "interactivechart/header.php";
 ?>
 	<div id="preloader">
@@ -47,26 +32,36 @@
 	?>
 
 	<div>
-		<div class="chart_logo_arbitrage"><a href="<?php echo $homeurlgen; ?>" target="_blank"><img src="/wp-content/themes/arbitrage-child/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
+		<div class="chart_logo_arbitrage"><a href="/" target="_blank"><img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 
-		<iframe style="border:0;width:100%;height: 40px;border-bottom: 4px #34495e solid;overflow: hidden;" scrolling="no" src="<?php echo $homeurlgen; ?>/stock-ticker/"></iframe>
+		<div class="arb_top_ticker">
+			<div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+				<ul id="container" class="list-inline marqueethis arb_custom_ticker">
+					<li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
+						<i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
+						<a href="/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
+						<strong style="font-black: bold !important;">{{::transaction.price}}</strong>
+						&nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
+					</li>
+				</ul>
+			</div>
+		</div>
 
 		<div class="arb_right_icons_trans">
 			<?php /*?> Top Icons <?php */?>
 			<ul class="main-drops-chart">
 				<a href="#" class="arb-side-icon">
-					<img src="<?php echo $homeurlgen; ?>/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
+					<img src="/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
 				</a>
 				<ul id="droppouts" style="box-shadow: 0px 2px 4px 1px rgba(7, 13, 19, 0.52);display: none;">
 						<li><a href="#">Buy/Sell Calculator</a></li>
 						<li><a href="#">VAR Calculator</a></li>
 						<li><a href="#">Average Price Calculator</a></li>
-						<li><a href="<?php echo get_home_url(); ?>/multicharts/">Multichart</a></li>
 				</ul>
 			</ul>
-			<a href="<?php echo $homeurlgen; ?>/notifications/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/vyndue/" class="arb-side-icon"><img src="<?php echo $homeurlgen; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
-			<a href="<?php echo $homeurlgen; ?>/account/" class="arb-side-icon"><?php
+			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
+			<a href="/vyndue/" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="/account/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
@@ -103,11 +98,11 @@
 										</div>
 
 										<div class="closesidebar">
-											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/close_verysmall.svg"></a>
+											<a href="#"><img src="/svg/close_verysmall.svg"></a>
 										</div>
 
 										<div class="opensidebar">
-											<a href="#"><img src="<?php echo get_home_url(); ?>/svg/open_verysmall.svg"></a>
+											<a href="#"><img src="/svg/open_verysmall.svg"></a>
 										</div>
 
 										<div class="vertical-box">
@@ -235,50 +230,6 @@
 																									<i class="fa fa-lock" aria-hidden="true"></i>
 																									<input type="hidden" id="inpt_data_boardlot_get" value="{{stock.displayLast}}">
 																								</div>
-																								<script>
-																									$(document).ready(function() {
-																										$( ".arb_buy" ).hover(function() {
-																											var boardlotget = $("#inpt_data_boardlot_get").val();
-																											if ( boardlotget >= 0.0001 && boardlotget <= 0.0099){
-																													$("#inpt_data_boardlot").val(1000000);
-																											} else if ( boardlotget >= 0.01 && boardlotget <= 0.049){
-																													$("#inpt_data_boardlot").val(100000);
-																											} else if ( boardlotget >= 0.05 && boardlotget <= 0.495){
-																													$("#inpt_data_boardlot").val(10000);
-																											} else if ( boardlotget >= 0.5 && boardlotget <= 4.99){
-																													$("#inpt_data_boardlot").val(1000);
-																											} else if ( boardlotget >= 5 && boardlotget <= 49.95){
-																													$("#inpt_data_boardlot").val(100);
-																											} else if ( boardlotget >= 50 && boardlotget <= 999.5){
-																													$("#inpt_data_boardlot").val(10);
-																											} else if ( boardlotget >= 1000){
-																													$("#inpt_data_boardlot").val(5);
-																											}
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bidaskbox').prop('src', "<?php echo $homeurlgen; ?>/bidask-box/?stocksym="+getthestocksym);
-																										});
-																									<?php 
-																										$getcururl = $_SERVER['REQUEST_URI'];
-																										if ($getcururl == "/chart/"){ 
-																									?>
-																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/pleaseselect.html");
-																										$( ".ng-scope" ).click(function() {
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
-																										});
-																									<?php
-																										} else {
-																											$remchrt = str_replace("/chart/", "", $getcururl);
-																											$getfsymb = str_replace("/", "", $remchrt); 
-																									?>
-																										$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/<?php echo $getfsymb; ?>");
-																										$( ".ng-scope" ).click(function() {
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "<?php echo $homeurlgen; ?>/sentiments/"+getthestocksym);
-																										});
-																									<?php } ?>
-																									});
-																								</script>
 																							</div>
 
 																							<div class="entr_clear"></div>
@@ -415,7 +366,7 @@
 																		</div>
 
 																		<div class="arb_logo_placehldr">
-																			<h2><img src="<?php echo $homeurlgen; ?>/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
+																			<h2><img src="/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
 																		</div>
 																	</div>
 
@@ -432,7 +383,7 @@
 																		<div class=" arb_padding_5 b0 arb_bullbear  {{dshowsentiment}}" style="<?php echo ($page != "chart" ? 'display:block;' : 'display:none;'); ?>height: 80px;overflow: hidden;">
 																			<div class="bullbearsents" data-bull="{{fullbidtotal}}" data-bear="{{fullasktotal}}">
 																				<span class="bullbearsents_label">Register your sentiments</span>
-																				<a href="#" class="bbs_bull"><img src="<?php echo $homeurlgen; ?>/svg/ico_bullish_no_ring.svg"></a>
+																				<a href="#" class="bbs_bull"><img src="/svg/ico_bullish_no_ring.svg"></a>
 																				<div class="dbaronchart" style="width: <?php echo ($percbid > 0 ? '70' : ''); ?>%;">
 																					<div class="bbs_bull_bar" style="width: <?php echo $percbid; ?>%;">
 																						<div class="bbs_bull_bar_inner"></div>
@@ -443,7 +394,7 @@
 																						<span style="<?php echo ($percask > 0 ? 'display:block;' : ''); ?>%;"><?php echo number_format($percask,2); ?>%</span>
 																					</div>
 																				</div>
-																				<a href="#" class="bbs_bear"><img src="<?php echo $homeurlgen; ?>/svg/ico_bearish_no_ring.svg"></a>
+																				<a href="#" class="bbs_bear"><img src="/svg/ico_bearish_no_ring.svg"></a>
 																			</div>
 																			
 																			
@@ -702,7 +653,6 @@
 																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
 																										<tr 
-																											ng-show="watchlists[watchlist] == 'stocks' || watchlists[watchlist].indexOf(stock.symbol) !== -1" 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
 																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"

@@ -403,12 +403,12 @@ iframe.bidaskbox {
     border: 1px solid #4e6a85;
     border-radius: 5px;
     padding: 5px;
-    background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% transparent;
+    background: url(/images/arb_preloader.svg) no-repeat 50% 50% transparent;
     background-size: 50px;
     background-color: #0c1f33;
 }
 iframe.bullbearframe {
-    background: url(<?php echo $homeurlgen; ?>/images/arb_preloader.svg) no-repeat 50% 50% #2b3d4f;
+    background: url(/images/arb_preloader.svg) no-repeat 50% 50% #2b3d4f;
     background-size: 35px;
 }
 
@@ -684,7 +684,7 @@ span.bullbearsents_label {
     position: absolute;
     left: 50%;
     top: 45%;
-    background-image: url(<?php echo get_home_url(); ?>/wp-content/plugins/um-social-activity/assets/img/loader.svg);
+    background-image: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg);
     background-size:50px;
     background-repeat: no-repeat;
     background-position: center;
@@ -702,7 +702,7 @@ span.bullbearsents_label {
 }
 .chart_logo_arbitrage{
     position: absolute;
-    z-index: 9;
+    z-index: 10;
     top: 4px;
     left: 9px;
 }

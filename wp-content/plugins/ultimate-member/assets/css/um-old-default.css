@@ -54,12 +54,21 @@ div.uimob800 .um-account-side li a.current:hover
     background: #44b0ec;
 }
 
-.um {
-    margin-left: auto!important;
-    margin-right: auto!important;
-}
 .um input[type=submit]:disabled:hover {
     background: #3ba1da;
+}
+
+.um input[type=submit].um-button,
+.um input[type=submit].um-button:focus,
+.um a.um-button,
+.um a.um-button.um-disabled:hover,
+.um a.um-button.um-disabled:focus,
+.um a.um-button.um-disabled:active {
+    background: #3ba1da;
+}
+
+.um a.um-link {
+    color: #3ba1da;
 }
 
 .um input[type=submit].um-button:hover,
@@ -76,21 +85,6 @@ div.uimob800 .um-account-side li a.current:hover
     color: #ffffff;
 }
 
-.um .um-button.um-alt,
-.um input[type=submit].um-button.um-alt {
-    background: transparent;
-}
-
-.um .um-button.um-alt:hover,
-.um input[type=submit].um-button.um-alt:hover{
-    background: #e5e5e5;
-}
-
-.um .um-button.um-alt,
-.um input[type=submit].um-button.um-alt {
-    color: #666666;
-}
-
 .um .um-tip {
     color: #cccccc;
 }
@@ -102,19 +96,9 @@ div.uimob800 .um-account-side li a.current:hover
 .um .um-row.um-customized-row .um-field-label {
     color: inherit;
 }
-
 .um .um-form .select2-container-multi .select2-choices .select2-search-field input[type=text] {
     border: none !important
 }
-
-.um .um-form input[type=text]:focus,
-.um .um-form input[type=tel]:focus,
-.um .um-form input[type=number]:focus,
-.um .um-form input[type=password]:focus,
-.um .um-form textarea:focus {
-    background-color: #142c46;
-}
-
 .um .um-form input[type=text],
 .um .um-form input[type=tel],
 .um .um-form input[type=password],

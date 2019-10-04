@@ -3,9 +3,9 @@
         background: #fff;
     }
 </style>
-<div class="top-stocks" style="margin-bottom: 15px;">
+<div class="top-stocks">
     <div class="to-top-title" style="padding-top:2px"><strong>Trending Stocks</strong></div>
-    <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
+    <hr class="style14 style15">
     <div class="to-content-part">
         <div id="preloader" class="trendingpreloader">
             <div id="status">&nbsp;</div>
@@ -16,7 +16,7 @@
         </ul>
     </div>
 
-    <div class="to-bottom-seemore" style="display: inline-flex;color: #cecece;font-size: 13px;">
+    <div class="to-bottom-seemore">
 
     <div class="see-more-btn stocks-hidden-content" id="show_hide">
         <i class="fas fa-sort-down" id="fa-up" style="

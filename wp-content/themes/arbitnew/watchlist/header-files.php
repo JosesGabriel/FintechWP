@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> ng-app="arbitrage_wl">
 <head>
     <title><?php bloginfo('name'); ?></title>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
     <link href="/wp-content/themes/arbitnew/watchlist/watchlist-style.css" rel="stylesheet">
+    
     <?php wp_head(); ?>
     
 </head>

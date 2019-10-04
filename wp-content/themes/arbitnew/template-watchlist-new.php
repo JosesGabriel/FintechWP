@@ -14,7 +14,7 @@ require("parts/global-header.php");
             success: function(res) {
                     
                 //jQuery.each(res.data, function(index, value) {      
-                        console.log(res.data.symbol);    
+                        console.log(res.data);    
                 //});  
 
             },

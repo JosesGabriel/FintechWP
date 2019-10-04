@@ -120,7 +120,7 @@ class DataAPI extends WP_REST_Controller
         $request = new \GuzzleHttp\Psr7\Request('GET', $forwardUrl);
 
         $promise = $this->guzzleClient->sendAsync($request)->then(function ($response) {
-            return $response->getStatusCode();
+            return "check";
         });
         
         $promise->wait();

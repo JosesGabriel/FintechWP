@@ -17,7 +17,7 @@ require("parts/global-header.php");
                         console.log(res.data.last);   
                         console.log(res.data.changepercentage);  
 
-                        jQuery('.curprice_' + symbol).text(res.data.last + '&#8369;');
+                        jQuery('.curprice_' + symbol).text(res.data.last);
                         jQuery('.curchange_' + symbol).text(res.data.changepercentage + '%');
                 //});  
 

@@ -454,6 +454,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <script>
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
+
         <?php    
 
         if ($havemeta) {
@@ -465,12 +466,26 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             ?>     
 
+            var dhist = '';
+            var counter = 0;
+
         jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=<?php echo $stock ?>&exchange=PSE&resolution=1D&from=<?php echo $from ?>&to=<?php echo $to ?>",
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
                     console.log(res.data);
+
+                if(res.data.o.length > 0){
+
+                   for (var i = 0; i < res.data.o.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[c] + '},' + dhist;
+                        counter++;
+                   }
+
+                   console.log(dhist);
+                }
+
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

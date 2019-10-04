@@ -14,6 +14,40 @@ $(document).ready(function(){
         $(this).parents(".bidaskbar_opt").hide();
     });
 
+    $( ".arb_buy" ).hover(function() {
+        var boardlotget = $("#inpt_data_boardlot_get").val();
+        if ( boardlotget >= 0.0001 && boardlotget <= 0.0099){
+                $("#inpt_data_boardlot").val(1000000);
+        } else if ( boardlotget >= 0.01 && boardlotget <= 0.049){
+                $("#inpt_data_boardlot").val(100000);
+        } else if ( boardlotget >= 0.05 && boardlotget <= 0.495){
+                $("#inpt_data_boardlot").val(10000);
+        } else if ( boardlotget >= 0.5 && boardlotget <= 4.99){
+                $("#inpt_data_boardlot").val(1000);
+        } else if ( boardlotget >= 5 && boardlotget <= 49.95){
+                $("#inpt_data_boardlot").val(100);
+        } else if ( boardlotget >= 50 && boardlotget <= 999.5){
+                $("#inpt_data_boardlot").val(10);
+        } else if ( boardlotget >= 1000){
+                $("#inpt_data_boardlot").val(5);
+        }
+        var getthestocksym = $('#inpt_data_stock').val();
+        $('#bidaskbox').prop('src', "/bidask-box/?stocksym="+getthestocksym);
+    });
+
+    if (_symbol == 'PSEI') {
+        $('#bullbearframe').prop('src', "/pleaseselect.html");
+        $( ".ng-scope" ).click(function() {
+            var getthestocksym = $('#inpt_data_stock').val();
+            $('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
+        });
+    } else {
+        $('#bullbearframe').prop('src', "/sentiments/" + _symbol);
+        $( ".ng-scope" ).click(function() {
+            var getthestocksym = $('#inpt_data_stock').val();
+            $('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
+        });
+    }
 
     jQuery("ul.main-drops-chart").click(function(e){
         event.stopPropagation();

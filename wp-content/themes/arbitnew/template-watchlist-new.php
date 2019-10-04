@@ -514,9 +514,9 @@ function minichart(symbol, from, to){
 
             var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
-            var dhist;
+            var dhist = jQuery('.minchart_<?php echo $stock; ?>').val();
             var counter = 0;
-            //console.log(datamin);
+            console.log(dhist);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

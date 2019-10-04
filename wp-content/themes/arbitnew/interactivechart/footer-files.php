@@ -90,11 +90,6 @@
 		$('#draggable_buysell').draggable({cancel:false});
 	} );
 	</script>
-	<script>
-		var today = new Date();
-		var currentDate = today.getFullYear()+'-'+ ('0' + (today.getMonth()+1)).slice(-2) +'-'+ ("0" + today.getDate()).slice(-2);	
-		jQuery(".buySell__date-picker").attr('max',currentDate);
-	</script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
 		<script src="/assets/crossbrowserjs/respond.min.js"></script>
@@ -121,6 +116,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 	<script src="https://platform.twitter.com/widgets.js"></script>
 	<script>
+		jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 		var modalzindex = 10000;
 		var nightmode = localStorage.getItem('theme') == 'dark';
         var socket = io.connect('https://dev-socket-api.arbitrage.ph');

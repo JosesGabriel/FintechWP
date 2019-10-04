@@ -466,7 +466,7 @@ function minichart(symbol, from, to){
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    //console.log(res.data);
+                    
                     var sdata = res.data.o;               
 
                     
@@ -479,12 +479,9 @@ function minichart(symbol, from, to){
                            
                 }
 
-                //mini = dhist;
+                
                 jQuery('.minchart_' + symbol).val(dhist);
-               
-                //console.log(dhist);
-
-               //return dhist;                       
+                                   
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -512,13 +509,41 @@ function minichart(symbol, from, to){
             ?>     
 
 
-            var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+            ///var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
-            var dhist = $('#minchart_<?php echo $stock; ?>').val();
+            //var dhist = $('#minchart_<?php echo $stock; ?>').val();
             //dhist = JSON.parse(dhist);
 
             var counter = 0;
-            console.log(dhist);
+           // console.log(dhist);
+
+        <?php
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
+            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $dhistofronold = curl_exec($curl);
+            curl_close($curl);
+
+            $dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
+
+            $dhistoflist = "";
+            $counter = 0;
+
+
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }
+
+
+    ?>
+
+
+
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
@@ -550,8 +575,8 @@ function minichart(symbol, from, to){
                                     }
                                 };
 
-                            //$scope.data = [{values: [<?php //echo $dhistory; ?>]}];
-                            $scope.data = [{values: [dhist]}];
+                            $scope.data = [{values: [<?php //echo $dhistory; ?>]}];
+                            //$scope.data = [{values: [dhist]}];
                         });
 
 

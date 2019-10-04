@@ -18,8 +18,8 @@ require("parts/global-header.php");
                         jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
                         var curchange = parseFloat(res.data.changepercentage);
 
-                        var n = curchange.indexOf("-");
-                        var p = curchange.indexOf("+");
+                        var n = res.data.changepercentage.indexOf("-");
+                        var p = res.data.changepercentage.indexOf("+");
 
                         if(n == 0){
                             jQuery('.curchange_' + symbol).css("color","red");

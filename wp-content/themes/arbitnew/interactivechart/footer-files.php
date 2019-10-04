@@ -5,17 +5,6 @@
 				$("#status, #status_txt").fadeOut("fast");
 				$("#preloader").delay(400).fadeOut("slow");
 			})
-			
-			function changicotonormal() {
-				var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-				link.type = 'image/x-icon';
-				link.rel = 'shortcut icon';
-				link.href = '/wp-content/uploads/2018/12/cropped-Arbitrage-Favicon-32x32.png';
-				document.getElementsByTagName('head')[0].appendChild(link);
-			}
-			$( "body" ).mousemove(function() {
-			  changicotonormal();
-			});
 			$( ".bidaskbar_btn" ).click(function() {
 			  $( ".bidaskbar_opt" ).slideToggle("fast");
 			});

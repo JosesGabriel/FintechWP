@@ -18,6 +18,7 @@ require("parts/global-header.php");
                         console.log(res.data.changepercentage);  
 
                         jQuery('.curprice_' + symbol).text(res.data.last);
+                        jQuery('.curchange_' + symbol).text(res.data.changepercentage);
                 //});  
 
             },
@@ -168,16 +169,16 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
                                                                             <div class="dpricechange">
                                                                                 <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>
-                                                                                <?php if (strpos($dinstall['data']->changepercentage, '-') !== false): ?>
-                                                                                    <div class="curchange onred"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                                
+                                                                                   <!-- <div class="curchange_<?php echo $value['stockname'];?> onred"></div>-->
 
-                                                                                <?php elseif (round($dinstall['data']->changepercentage, 2) == 0.00): ?>
-                                                                                    <div class="curchange" style="color:#FFC107;"><?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
+                                                                             
+                                                                                    <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
                                                                                     
 
-                                                                                <?php else: ?>
-                                                                                    <div class="curchange ongreen">+<?php echo round($dinstall['data']->changepercentage, 2); ?>%</div>
-                                                                                <?php endif; ?>
+                                                                               
+                                                                                    <!--<div class="curchange_<?php echo $value['stockname'];?> ongreen"></div>-->
+                                                                                
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-md-12">

@@ -35,22 +35,6 @@ require("parts/global-header.php");
 
 
      }
-
-
-    function minichart_data(symbol, from, to){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                   // console.log(res.data);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-     }
     
 </script>
 
@@ -118,8 +102,6 @@ if(isset($_GET['addcp'])){
 }
 
 
-
-$watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 ?>
 
 
@@ -457,17 +439,17 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-
-
 function minichart(symbol, from, to){
 
+ var dhist = '';
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
                     
-                    var sdata = res.data.o;               
+                    var sdata = res.data.o; 
+                    var counter = 0;              
 
                     
                 if(sdata.length != 0){
@@ -492,8 +474,6 @@ function minichart(symbol, from, to){
     }
 
 
-
-
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
@@ -506,18 +486,6 @@ function minichart(symbol, from, to){
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
-            ?>     
-
-
-            ///var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
-
-            //var dhist = $('#minchart_<?php echo $stock; ?>').val();
-            //dhist = JSON.parse(dhist);
-
-            var counter = 0;
-           // console.log(dhist);
-
-        <?php
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -542,8 +510,7 @@ function minichart(symbol, from, to){
 
     ?>
 
-
-
+    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
@@ -578,14 +545,6 @@ function minichart(symbol, from, to){
                             $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
                             //$scope.data = [{values: [dhist]}];
                         });
-
-
-
-
-        
-
-
-
 
         <?php
             }

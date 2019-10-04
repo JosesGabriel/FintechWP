@@ -115,21 +115,16 @@
 		        $(".stocks-select2").select2({placeholder:"Stock", width: '100%'})
 		    });
 		});
+		var dpathss = window.location.pathname;
+		var dstockpath = dpathss.split("/");
+		dstockpath = dstockpath.filter(function(el) { return el; });
+		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
 		var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
 		var _client_id 	= 'arbitrage.ph';
 		var _user_id 	= '<?php echo $user->ID; ?>'
-		var _symbol 	= '<?php 
-		$getcururl = $_SERVER['REQUEST_URI'];
-		if ($getcururl == "/chart/"){
-			echo "PSEI";
-		}else{
-			$remchrt = str_replace("/chart/", "", $getcururl);
-			$getfsymb = str_replace("/", "", $remchrt);
-			echo strtoupper($getfsymb);
-		}
-		?>';
+		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
 	</script>
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>
 	<script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
@@ -209,10 +204,7 @@
 			});
 		});
 
-		var dpathss = window.location.pathname;
-		var dstockpath = dpathss.split("/");
-		dstockpath = dstockpath.filter(function(el) { return el; });
-		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
+		
 
 		jQuery.ajax({
 			method: "GET",

@@ -124,7 +124,13 @@ class DataAPI extends WP_REST_Controller
                 ]
             ]);
 
-        $promise = $this->guzzleClient->sendAsync($request);
+        $promise = $this->guzzleClient->sendAsync($request)->then(function ($response) {
+            return json_decode($promise->getBody());
+        });
+        
+        $promise->wait();
+
+        //$promise = $this->guzzleClient->sendAsync($request);
 
         // $response = $this->guzzleClient->request("GET", $forwardUrl, [
         //     "headers" => [
@@ -133,7 +139,7 @@ class DataAPI extends WP_REST_Controller
         //         ]
         //     ]);
 
-        return json_decode($promise->getBody());
+        //return json_decode($promise->getBody());
     }
      
     public function getForwardedResponse($request)

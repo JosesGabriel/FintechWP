@@ -480,7 +480,7 @@ function minichart(symbol, from, to){
                 }
 
                 //mini = dhist;
-                jQuery('.minchart_' + symbol).val(JSON.stringify(dhist));
+                jQuery('.minchart_' + symbol).val(dhist);
                
                 //console.log(dhist);
 

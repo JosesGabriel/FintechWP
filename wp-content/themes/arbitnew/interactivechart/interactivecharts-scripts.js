@@ -1,4 +1,68 @@
 $(document).ready(function(){
+    $(window).load(function() {
+        $("#status, #status_txt").fadeOut("fast");
+        $("#preloader").delay(400).fadeOut("slow");
+    })
+    $( ".bidaskbar_btn" ).click(function() {
+      $( ".bidaskbar_opt" ).slideToggle("fast");
+    });
+    $(".bidaskbar_opt ul li a").click(function(e){
+        e.preventDefault();
+        var dtype = $(this).attr('data-istype');
+        $(this).parents(".bidaskbar").find(".arb_bar").hide();
+        $(this).parents(".bidaskbar").find("."+dtype).show();
+        $(this).parents(".bidaskbar_opt").hide();
+    });
+
+
+    jQuery("ul.main-drops-chart").click(function(e){
+        event.stopPropagation();
+        var isopen = jQuery("ul.main-drops-chart > ul").hasClass("dropopen");
+
+        if (isopen) {
+            jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
+        } else {
+            jQuery("ul.main-drops-chart > ul").show().addClass("dropopen");
+        }
+
+    });
+    jQuery(document).on("click", function () {
+        jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
+        jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
+        jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
+    });
+    jQuery("ul.main-drops-chart > ul li:first-child").on("click", function () {
+        event.stopPropagation();
+         var openthis = jQuery("#showplease").hasClass("dropthiss");
+         if ( openthis ) {
+             jQuery("#toghandle").hide().removeClass("dropthiss");
+        } else {
+            jQuery("#toghandle").show().addClass("dropthiss");
+        }
+    });
+    jQuery("ul.main-drops-chart > ul li:nth-child(2)").on("click", function () {
+        event.stopPropagation();
+        jQuery("#toghandlings").show().addClass("dropthiss");
+
+    });
+    jQuery("ul.main-drops-chart > ul li:nth-child(3)").on("click", function () {
+        event.stopPropagation();
+        jQuery("#toghandlingers").show().addClass("dropthiss");
+    });
+    jQuery(".toclassclose").on('click', function(){
+        jQuery("#toghandle").hide().removeClass("dropthiss");
+    });
+    jQuery(".toclassclosess").on('click', function(){
+        jQuery("#toghandlings").hide().removeClass("dropthiss");
+    });
+    jQuery(".toclasscloserss").on('click', function(){
+        jQuery("#toghandlingers").hide().removeClass("dropthiss");
+    });
+
+    $('#draggable_buysell').draggable({cancel:false});
+
+    jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
+
     var x = 0;
     var y = 0;
 

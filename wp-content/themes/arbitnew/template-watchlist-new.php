@@ -14,7 +14,8 @@ require("parts/global-header.php");
             success: function(res) {
                     
                 //jQuery.each(res.data, function(index, value) {      
-                        console.log(res.data);    
+                        console.log(res.data.last);   
+                        console.log(res.data.changepercentage);  
                 //});  
 
             },

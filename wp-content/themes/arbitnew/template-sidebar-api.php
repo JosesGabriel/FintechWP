@@ -16,6 +16,9 @@ switch($action){
   case 'trendingstocks':
       get_trendingstocks();
       break;
+  case 'sidebar-bulletin':
+      get_bulletins();
+      break;
   default:
   echo 'no action';
 }
@@ -57,12 +60,9 @@ function get_trendingstocks(){
           $indls = [];
           $indls['stock'] = $dlskey;
           $dstocknamme = $dlskey;
-
           $dstocks = $dlsvalue->description;
           $indls['stnamename'] = $dstocks;
-
           $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
-
           $todayreps = 0; // today
           $countpstock = 0; // 3 days back
           $isbull = 0;
@@ -105,6 +105,16 @@ function get_trendingstocks(){
       } else {
         echo "no stock selected";
       }
+}
+
+function get_bulletins(){
+  ob_start();
+  dynamic_sidebar( 'Bulletin Sidebar' );
+  $content = ob_get_contents();
+  ob_end_clean();
+
+  echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
+
 }
 
 

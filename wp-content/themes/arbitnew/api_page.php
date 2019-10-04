@@ -28,18 +28,18 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-		
+
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
 		curl_close($curl);
 
 		$trades = json_decode($response);
 		$trades = $trades->data;
-		
+
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-		
+
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
 		curl_close($curl);
@@ -47,7 +47,7 @@
 		$dstock = json_decode($getstocks);
 		$dstock = $dstock->data;
 
-		
+
 		$dlast = $dstock->open;
 
 		$bulltrades = 0;
@@ -69,18 +69,18 @@
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
-			
+
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
 			curl_close($curl);
 
 			$trades = json_decode($response);
 			$trades = $trades->data;
-			
+
 
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
-			
+
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
 			curl_close($curl);
@@ -88,7 +88,7 @@
 			$dstock = json_decode($getstocks);
 			$dstock = $dstock->data;
 
-			
+
 			$dlast = $dstock->open;
 
 			// get prices
@@ -120,10 +120,10 @@
 
 			// sort as per bull / bear
 
-			
-			
+
+
 			// echo  "Open: ".$dlast." | ";
-		
+
 			$isbullbear = [];
 			$isbullbear['bear'] = [];
 			$isbullbear['bull'] = [];
@@ -167,7 +167,7 @@
 			$percbull = number_format(($totalbull / $totalperc) * 100, 2, ".", ",");
 			$percbear = number_format(($totalbear / $totalperc) * 100, 2, ".", ",");
 
-			// echo "Bull: ".$percbull . " ~ Bear : ". $percbear; 
+			// echo "Bull: ".$percbull . " ~ Bear : ". $percbear;
 
 			return json_encode(['bull' => $totalbull, 'bear' => $totalbear]);
 	}
@@ -196,9 +196,9 @@
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
-		 
+
 		$dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
-		
+
 		echo json_encode([
 			'post' => $_POST,
 			'list' => $dlistofstocks,
@@ -256,7 +256,7 @@
 	}
 
 	else if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
-		$curl = curl_init();	
+		$curl = curl_init();
 		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
 		curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -267,10 +267,10 @@
 		$stockinfo = $genstockinfo->data;
 		echo json_encode(["dinfo" => $stockinfo]);
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbear'){ // market sentiment add sentiment
-		
-		
+
+
 		if ($_GET['stock'] != 'chart') { // if chart page valid stock
-			
+
 			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
@@ -278,12 +278,12 @@
 
 			// echo $_GET['dbuttonact'];
 			// exit;
-			
+
 			if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
 				// do nothin
 				$dreturn = "Cant vote!";
 			} else{
-				
+
 				$dreturn = "Go for Vote ";
 				// add sentiment points
 				$whatchanged = "";
@@ -298,7 +298,7 @@
 					update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
 					$whatchanged = "bear";
 				// }
-				
+
 
 				// add user on the sentiment
 				if (is_array($dsentilist)) {
@@ -307,8 +307,8 @@
 					$dsentilist = [get_current_user_id()];
 				}
 				$dlistofusers = array();
-				
-				
+
+
 				// array_push($dsentilist, $dlistofusers);
 				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dsentilist );
 
@@ -318,12 +318,12 @@
 			}
 
 			// echo json_encode(["dinfo" => "you selected".$_GET['stock']]);
-			
+
 		} else {
 			// echo json_encode(["dinfo" => "error: no stock was selected"]);
 			$dreturn = "error: no stock was selected";
 		}
-		
+
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
@@ -339,12 +339,12 @@
 
 		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $whatchanged, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
-		
+
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'sentimentbull'){ // market sentiment add sentiment
-		
-		
+
+
 		if ($_GET['stock'] != 'chart') { // if chart page valid stock
-			
+
 			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
@@ -352,12 +352,12 @@
 
 			// echo $_GET['dbuttonact'];
 			// exit;
-			
+
 			if ($dsentilist && is_array( $dsentilist ) && in_array( get_current_user_id(), $dsentilist )) {
 				// do nothin
 				$dreturn = "Cant vote!";
 			} else{
-				
+
 				$dreturn = "Go for Vote ";
 				// add sentiment points
 				$whatchanged = "";
@@ -372,7 +372,7 @@
 				// 	update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', $finalcount );
 				// 	$whatchanged = "bear";
 				// }
-				
+
 
 				// add user on the sentiment
 				if (is_array($dsentilist)) {
@@ -381,8 +381,8 @@
 					$dsentilist = [get_current_user_id()];
 				}
 				$dlistofusers = array();
-				
-				
+
+
 				// array_push($dsentilist, $dlistofusers);
 				update_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', $dsentilist );
 
@@ -392,12 +392,12 @@
 			}
 
 			// echo json_encode(["dinfo" => "you selected".$_GET['stock']]);
-			
+
 		} else {
 			// echo json_encode(["dinfo" => "error: no stock was selected"]);
 			$dreturn = "error: no stock was selected";
 		}
-		
+
 		$dpullbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 		$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
@@ -411,9 +411,9 @@
 		$dpercbear = (($dfinbear + $dtradd->bear) / $dtotalall) * 100;
 		$dpercbull = (($dfinbull + $dtradd->bull) / $dtotalall) * 100;
 
-		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );		
+		// $dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 		echo json_encode(['dbear' => $dpercbear, 'dbull' => $dpercbull, 'action' => $dreturn, 'whatchanged' => $dtradd->bull, 'stock' => $_GET['stock'], 'gbear' => $dsentbear, 'gbull' => $dsentbull]);
-		
+
 	}  elseif(isset($_GET['daction']) && $_GET['daction'] == 'marketsentiment'){
 
 			echo getpointtrades($_GET['stock']);
@@ -422,42 +422,42 @@
 
 		$curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        
+
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$gerdqouteone = curl_exec($curl);
-		
+
 		if($gerdqouteone === false)
 		{
 			echo 'Curl error: ' . curl_error($curl);
 			die;
 		}
 		curl_close($curl);
-		
+
 
 		$gerdqoute = json_decode($gerdqouteone);
-		
+
 		print_r($gerdqouteone);
 
  	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'testpage'){
 		echo "this is a test";
 		  	$the_site = "https://www.marketwatch.com/story/shocks-and-surprises-could-damage-all-major-economies-warns-swiss-hedge-fund-manager-2019-04-29?mod=hp_investing";
-		    $the_tag = "div"; 
+		    $the_tag = "div";
 		    $the_class = "images";
 
 		    $mypage = file_get_contents($the_site);
 		    preg_match_all('/<img[^>]+>/i',$mypage,$srcs);
 
 		    // $html = file_get_contents($the_site);
-		 //    $curl = curl_init($the_site); 
-			// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
-			// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); 
-			// curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); 
-			// curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); 
-			// $response_string = curl_exec($curl); 
+		 //    $curl = curl_init($the_site);
+			// curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+			// curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+			// curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+			// $response_string = curl_exec($curl);
 			// $html = str_get_html($response_string);
 
-			
+
 
 		    // foreach ($html->find('img') as $item) {
 		    //     // $img_src =  $item->getAttribute('src');
@@ -475,7 +475,7 @@
 		$userid = get_current_user_id();
 		if (isset($_GET['toname'])) {
 			$todo = $_GET['toname'];
-			
+
 			update_user_meta($userid, 'disname', $todo);
 			echo json_encode('success');
 		} else {
@@ -489,7 +489,7 @@
 		global $wpdb;
         $str = stripslashes($_POST['email']);
         // $str = mysql_real_escape_string($str);
-		
+
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
@@ -497,7 +497,7 @@
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_manual'){
 		global $wpdb;
         $emailstr = stripslashes($_GET['email']);
-        
+
         $user = get_user_by( 'email', $emailstr );
 
         if(empty($user)){
@@ -518,7 +518,7 @@
 
 		$data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
 		$passgen = substr(str_shuffle($data), 50);
-	  
+
 		$passhash = wp_hash_password( $passgen );
 		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
 		$wpdb->query($updatepass);
@@ -544,12 +544,12 @@
 			</div>
 		</div>
 		';
-		
+
 		$headers = 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$headers .= 'To: <'.$emailstr.'>' . "\r\n";
 		$headers .= 'From: Arbitrage Team <no-reply@arbitrage.ph>';
-		
+
 		$success = mail($to, $subject, $message, $headers);
 		if (!$success) {
 			$errorMessage = error_get_last();
@@ -597,21 +597,21 @@
 
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/list');
-		// 
-		
+		//
+
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$gerdqoute = curl_exec($curl);
 		curl_close($curl);
-		
+
 		$gerdqoute = json_decode($gerdqoute);
 		$adminuser = 504; // store on the chart page
 
-		
+
 
 		if ($gerdqoute) {
-			$listofstocks = []; 
+			$listofstocks = [];
 			foreach ($gerdqoute->data as $dlskey => $dlsvalue) {
 				$indls = [];
 				$indls['stock'] = $dlskey;
@@ -619,7 +619,7 @@
 
 				$dstocks = $dlsvalue->description;
 				$indls['stnamename'] = $dstocks;
-				
+
 				$dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
 
 				$todayreps = 0; // today
@@ -633,7 +633,7 @@
 						} else {
 							$countpstock++;
 						}
-						
+
 					}
 				}
 				$dpullbull = get_post_meta( $adminuser, '_sentiment_'.$dstocknamme.'_bull', true );
@@ -645,12 +645,12 @@
 				$finalcount = $bulls + $threedays + $tags;
 				$stocksscount = $countpstock + $dpullbull + $todayreps;
 
-		
+
 				$indls['following'] = $finalcount;
 				if($finalcount > 0){
 					array_push($listofstocks, $indls);
 				}
-				
+
 			}
 
 			function date_compare($a, $b)
@@ -694,7 +694,7 @@
 		echo json_encode($listofwatchlist);
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'topplayers'){
 		$secret = get_user_meta( $current_user->ID, 'user_secret', true );
-		
+
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getranking' );
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -702,7 +702,7 @@
 		$dranks = curl_exec($curl);
 		curl_close($curl);
 		$dranks = json_decode($dranks, true);
-		
+
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, 'https://game.arbitrage.ph/api/getmyrank/'.$secret );
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -733,7 +733,7 @@
 			$return['data']['volume'] = $dstockinfo['totalstock'];
 			$return['data']['averageprice'] = $dstockinfo['aveprice'];
 			$return['data']['tradelog'] = $getstockdetails[0]->meta_value;
-			
+
 
 
 		} else {
@@ -767,9 +767,9 @@
 		}
 
 		$posts_count = $wpdb->get_var($wpdb->prepare(
-			"SELECT COUNT(id) 
+			"SELECT COUNT(id)
 			FROM $wpdb->posts
-			WHERE post_type = 'um_activity' 
+			WHERE post_type = 'um_activity'
 			AND post_author = %s
 			AND post_status = 'publish'",
 			$profile_id
@@ -804,7 +804,7 @@
 		die();
 
 	} elseif (isset($_GET['daction']) && $_GET['daction'] == 'user-social-wall' && isset($_GET['user-id'])) {
-		
+
 		$profile_id = $_GET['user-id'];
 
 		if (!is_numeric($profile_id)) {
@@ -846,12 +846,12 @@
 					echo $_GET['toverify']." is already verified";
 				}
 			}
-		
+
 		} else {
 			$dlastupdate = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_lastupdated', true );
 
-		 
-		
+
+
 			$diffDays = 0;
 			if ($dlastupdate != "") {
 				$today = new DateTime(); // This object represents current date/time
@@ -864,7 +864,7 @@
 				$diffDays = (integer)$diff->format( "%R%a" ); // Extract days count in interval
 			}
 
-			
+
 
 			$dsentilist = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_list', true );
 
@@ -892,10 +892,10 @@
 				} else {
 					$isvote = 0;
 				}
-				
+
 			}
 
-			
+
 			$dsentbear = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bear', true );
 			$dsentbull = get_post_meta( $adminuser, '_sentiment_'.$_GET['stock'].'_bull', true );
 
@@ -904,9 +904,9 @@
 
 
 			$dtradd = json_decode(getpointtrades($_GET['stock']));
-			
+
 			$totalitem = $totsbear + $totsbull + ($dtradd->bear + $dtradd->bull);
-			
+
 			$bearperc = 0;
 			$bullperc = 0;
 
@@ -914,16 +914,16 @@
 				$bearperc = ($totsbear + $dtradd->bear) != 0 ? (($totsbear + $dtradd->bear) / $totalitem) * 100 : 0;
 				$bullperc = ($totsbull + $dtradd->bull) != 0 ? (($totsbull + $dtradd->bull) / $totalitem) * 100 : 0;
 			}
-			
+
 			echo json_encode(["dbear" => number_format( $bearperc, 2, '.', ',' ), 'dbull' => number_format( $bullperc, 2, '.', ',' ), 'isvote' => $isvote, 'islastupdate' => $dlastupdate]);
 		}
 
-		
-		
+
+
 	}
 
-	
-	
+
+
 
 	// $totsbear = (int) ($dsentbear == "" ? 0 : $dsentbear) + $_GET['isbear'];
 	// $totsbull = (int) ($dsentbull == "" ? 0 : $dsentbull) + $_GET['isbull'];
@@ -933,7 +933,7 @@
 	// $bearperc = ($totsbear / $totalitem) * 100;
 	// $bullperc = ($totsbull / $totalitem) * 100;
 
-	
+
 
 
 ?>

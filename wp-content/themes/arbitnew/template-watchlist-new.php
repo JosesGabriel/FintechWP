@@ -474,12 +474,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    console.log(res.data);
+                    //console.log(res.data);
 
-                if(res.data.o.length > 0){
+                    var sdata = res.data.o;
 
-                   for (var i = 0; i < res.data.o.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[c] + '},' + dhist;
+                if(sdata != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
                         counter++;
                    }
 

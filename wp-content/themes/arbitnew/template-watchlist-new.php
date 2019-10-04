@@ -454,6 +454,8 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
+        var dhisto;
+
         <?php    
 
         if ($havemeta) {
@@ -488,6 +490,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                            
                 }
 
+               dhisto = dhist;
                 
 
             },
@@ -497,7 +500,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
         });
 
-console.log(dhist);
+console.log(dhisto);
 
                 app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {

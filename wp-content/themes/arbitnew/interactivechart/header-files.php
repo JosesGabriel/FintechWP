@@ -1,6 +1,6 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" />
-	<link rel="preconnect" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
 	<link rel="stylesheet" href="/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" />
 	<link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/assets/css/animate.min.css" />

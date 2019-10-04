@@ -31,6 +31,8 @@ require("parts/global-header.php");
             }
         });
 
+
+
      }
 
 
@@ -41,7 +43,7 @@ require("parts/global-header.php");
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    console.log(res.data);
+                   // console.log(res.data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -451,11 +453,48 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
-    var dhisto;
+
+var mini = "";
+
+function minichart(symbol, from, to){
+
+  mini = jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                    //console.log(res.data);
+                    var sdata = res.data.o;               
+
+                    
+                if(sdata.length != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        counter++;
+                   }
+                           
+                }
+
+                //mini = dhist;
+
+                //console.log(dhist);
+
+               return dhist;                       
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+        });
+
+    }
+
+
+
+
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
-
-        
 
         <?php    
 
@@ -468,42 +507,14 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 
             ?>     
 
+
+            var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+
             var dhist;
             var counter = 0;
+            console.log(mini);
 
-        jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=<?php echo $stock ?>&exchange=PSE&resolution=1D&from=<?php echo $from ?>&to=<?php echo $to ?>",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                    //console.log(res.data);
-
-                    var sdata = res.data.o;
-
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-
-
-                           
-                }
-
-               dhisto = dhist;
-                
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-
-        });
-
-console.log(dhisto);
-
-                app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
+        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                             $scope.options = {
                                     chart: {
                                         type: 'candlestickBarChart',
@@ -533,9 +544,14 @@ console.log(dhisto);
                                     }
                                 };
 
-                            //$scope.data = [{values: [<?php // echo $dhistoflist; ?>]}];
-                            $scope.data = [{values: [dhist]}];
+                            //$scope.data = [{values: [<?php //echo $dhistory; ?>]}];
+                            $scope.data = [{values: [ ]}];
                         });
+
+
+
+
+        
 
 
 

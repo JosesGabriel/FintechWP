@@ -230,50 +230,6 @@
 																									<i class="fa fa-lock" aria-hidden="true"></i>
 																									<input type="hidden" id="inpt_data_boardlot_get" value="{{stock.displayLast}}">
 																								</div>
-																								<script>
-																									$(document).ready(function() {
-																										$( ".arb_buy" ).hover(function() {
-																											var boardlotget = $("#inpt_data_boardlot_get").val();
-																											if ( boardlotget >= 0.0001 && boardlotget <= 0.0099){
-																													$("#inpt_data_boardlot").val(1000000);
-																											} else if ( boardlotget >= 0.01 && boardlotget <= 0.049){
-																													$("#inpt_data_boardlot").val(100000);
-																											} else if ( boardlotget >= 0.05 && boardlotget <= 0.495){
-																													$("#inpt_data_boardlot").val(10000);
-																											} else if ( boardlotget >= 0.5 && boardlotget <= 4.99){
-																													$("#inpt_data_boardlot").val(1000);
-																											} else if ( boardlotget >= 5 && boardlotget <= 49.95){
-																													$("#inpt_data_boardlot").val(100);
-																											} else if ( boardlotget >= 50 && boardlotget <= 999.5){
-																													$("#inpt_data_boardlot").val(10);
-																											} else if ( boardlotget >= 1000){
-																													$("#inpt_data_boardlot").val(5);
-																											}
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bidaskbox').prop('src', "/bidask-box/?stocksym="+getthestocksym);
-																										});
-																									<?php 
-																										$getcururl = $_SERVER['REQUEST_URI'];
-																										if ($getcururl == "/chart/"){ 
-																									?>
-																										$('#bullbearframe').prop('src', "/pleaseselect.html");
-																										$( ".ng-scope" ).click(function() {
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
-																										});
-																									<?php
-																										} else {
-																											$remchrt = str_replace("/chart/", "", $getcururl);
-																											$getfsymb = str_replace("/", "", $remchrt); 
-																									?>
-																										$('#bullbearframe').prop('src', "/sentiments/<?php echo $getfsymb; ?>");
-																										$( ".ng-scope" ).click(function() {
-																											var getthestocksym = $('#inpt_data_stock').val();
-																											$('#bullbearframe').prop('src', "/sentiments/"+getthestocksym);
-																										});
-																									<?php } ?>
-																									});
-																								</script>
 																							</div>
 
 																							<div class="entr_clear"></div>

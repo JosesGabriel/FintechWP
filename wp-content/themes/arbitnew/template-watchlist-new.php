@@ -135,7 +135,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                             </li>
                                                             <?php foreach ($havemeta as $key => $value) { 
                                                                 $stock = $value['stockname'];
-                                                               echo "<script type='text/javascript'> lateststocks('$stock');</script>";
+                                                               echo "<script type='text/javascript'> lateststocks($stock);</script>";
                                                                 ?>
                                                                
 

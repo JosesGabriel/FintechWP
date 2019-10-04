@@ -730,45 +730,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 chart = widget.chart();
 
                 // for register sentiments
-                $http({
-                    method : "POST",
-                    url : "/apipge/?stock="+_symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
-                    dataType: "json",
-                    contentType: "application/json",
-                    data: {
-                        'action' : 'check_sentiment',
-                        'stock' : _symbol,
-                    }
-                }).then(function mySucces(response) {
-                    angular.element(".regsentiment").addClass('openmenow');
-                    if (response.data.isvote == "1") {
-                        // cant vote!
-                        angular.element(".bullbearsents").addClass('clickedthis');
-                        angular.element(".dbaronchart").css('width', '70%');
-                        angular.element(".bbs_bull_bar").css('width', response.data.dbull+'%');
-                        angular.element(".bbs_bull_bar").find('span').show('fast');
-
-                        var dbullvalx = parseFloat(response.data.dbull);
-                        var dbearvalx = parseFloat(response.data.dbear);
-
-                        angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
-
-                        angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
-                        angular.element(".bbs_bear_bar").find('span').show('fast');
-                        angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
-                    } else {
-                        // can vote!
-                        angular.element(".bullbearsents").removeClass('clickedthis');
-                        angular.element(".dbaronchart").css('width', '0%');
-                        angular.element(".bbs_bull_bar").find('span').hide();
-                        angular.element(".bbs_bear_bar").find('span').hide();
-                    }
-
-                }, function myError(error) {
-
-                });
-                
-                
+                $scope.getSentiments(_symbol, $scope.$parent.fullbidtotal, $scope.$parent.fullasktotal);
+            
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
                     var symbol = symbolData.ticker;

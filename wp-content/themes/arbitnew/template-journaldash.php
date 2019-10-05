@@ -459,49 +459,6 @@ require("parts/global-header.php");
 ?>
 <!-- EOF Trade Logs Data from DB -->
 
-<!-- BOF Ledger Data -->
-<?php
-    $duseridmo = $user->ID;
-	$dledger = $wpdb->get_results('SELECT * FROM arby_ledger where userid = '.$duseridmo.' order by ledid');
-	
-	$buypower = 0;
-    foreach ($dledger as $getbuykey => $getbuyvalue) {
-        if ($getbuyvalue->trantype == 'deposit' || $getbuyvalue->trantype == 'selling' || $getbuyvalue->trantype == 'dividend' || $getbuyvalue->trantype == 'deleted_live') {
-            $buypower = $buypower + $getbuyvalue->tranamount;
-        } else {
-            $buypower = $buypower - $getbuyvalue->tranamount;
-        }
-	}
-?>
-<!-- BOF Current Allocation Data -->
-<?php
-	$currentalocinfo = "";
-	if(!empty($issampledata)){
-		$dequityp = $buypower;
-		$aloccolors = array('#FF5500', '#00B4C4', '#FF008F', '#FFB700', '#CEF500', '#FB3640', '#00AAFF', '#CC0066', '#33FF99', '#FF8000', '#33FFCC', '#FB3640', '#FF2B66', '#99FF00', '#9900FF', '#FB3640', '#00B4C4', '#FF008F', '#FFB700');
-		$currentalocinfo = '{"category" : "Cash", "column-1" : "'.number_format($buypower, 2, '.', '').'"},';
-		$currentaloccolor = '"#FF5500",';
-		if ($dtradeingfo) {
-			foreach ($dtradeingfo as $trinfokey => $trinfovalue) {
-				// print_r($trinfovalue);
-				$key = array_search(strtoupper($trinfovalue['stockname']), array_column($gerdqoute->data, 'symbol'));
-				$stockdetails = $gerdqoute->data[$key];
-				$dstockinfo = $stockdetails;
-				$marketval = $dstockinfo->last * $trinfovalue['totalstock'];
-				$dsellfees = getjurfees($marketval, 'sell');
-				$dtotal = $marketval - $dsellfees;
-	
-				$dequityp += $dtotal;
-				$currentalocinfo .= '{"category" : "'.$trinfovalue['stockname'].'", "column-1" : "'.number_format($dtotal, 2, '.', '').'"},';
-				$currentaloccolor .= '"'.$aloccolors[$trinfokey + 1].'",';
-			}
-		}
-	}
-    
-?>
-<!-- EOF Current Allocation Data -->
-
-
 <!-- Delete Data -->
 <?php
 

@@ -473,10 +473,10 @@ div.uimob800 .um-account-side ul {
 .add-post .um-activity-new-post .um-activity-foot .upload-statusbar {
     font-size: 12px;
     line-height: 1.3em;
-    background: #4f6a87;
+    background: #11273e;
     padding: 5px 10px;
     border-radius: 20px;
-    margin-top: 8px;
+    margin: 5px 10px;
     display: inline-block;
     width: initial;
 }
@@ -494,7 +494,7 @@ div.uimob800 .um-account-side ul {
 }
 .add-post .um-activity-new-post .um-activity-foot .upload-statusbar > div.upload-progress {
     display: block;
-    background: #273647;
+    background: #11273e;
 }
 .add-post .um-activity-new-post .um-activity-foot .upload-statusbar > div.upload-progress .upload-bar {
     border-bottom: 2px solid #56ba65;

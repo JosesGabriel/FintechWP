@@ -3,74 +3,6 @@
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
-<script>
-
-    function lateststocks(symbol){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-
-                        var price = parseFloat(res.data.last);
-                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
-                        var curchange = parseFloat(res.data.changepercentage);
-
-                        if(curchange < 0){
-                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
-                        }else if (curchange > 0) {
-                            jQuery('.curchange_' + symbol).css("color","#53b987");
-                        }
-
-                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
-            }
-        });
-
-    }
-
-
-function minichart(symbol, from, to){
-
-
- jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-
-                    var sdata = res.data.o;
-                    var counter = 0;
-                    var dhist = "";
-
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-
-                }
-
-                jQuery('.minchart_' + symbol).val(dhist);
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
-            }
-
-        });
-
-    }
-    
-
-
-
-</script>
 
 <?php
 
@@ -137,7 +69,6 @@ if(isset($_GET['addcp'])){
 
 
 ?>
-
 
 <!-- #main-header -->
 <div id="main-content" class="oncommonsidebar">
@@ -323,15 +254,12 @@ if(isset($_GET['addcp'])){
                                                                                 </div>
                                                                             </div>
                                                                           </div>
-                                                                          <!-- <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                                          </div> -->
+                                                                          
                                                                         </div>
                                                                       </div>
                                                                     </div>
                                                                 </li>
-                                                            <?php //endif;
+                                                            <?php 
                                                                             } ?>
                                                         </ul>
                                                     <?php else: ?>
@@ -473,92 +401,5 @@ if(isset($_GET['addcp'])){
 </div> <!-- #main-content -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
-<script>
 
-    var dhisto = $('#minchart_HLCM').val();
-    console.log(dhisto);
-    console.log($("input[name='minchart_HLCM']").val());
-
-    if (typeof angular !== 'undefined') {
-        var app = angular.module('arbitrage_wl', ['nvd3']);
-
-        <?php
-
-        if ($havemeta) {
-    foreach ($havemeta as $key => $value) {
-
-            $stock = $value['stockname'];
-
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));
-            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            $dhistofronold = curl_exec($curl);
-            curl_close($curl);
-
-            $dhistoforchart = json_decode($dhistofronold);
-            $dhistoforchart = $dhistoforchart->data;
-
-            $dhistoflist = "";
-            $counter = 0;
-
-
-            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
-                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-                    $counter++;
-                }
-            }
-
-
-    ?>
-    //var $target = $(this).parent().find('input[name="row_id"]').val();
-    
-
-        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
-                $scope.options = {
-                        chart: {
-                            type: 'candlestickBarChart',
-                            height: 70,
-                            width: 195,
-                            margin : {
-                                top: 0,
-                                right: 0,
-                                bottom: 0,
-                                left: 0
-                            },
-                            interactiveLayer: {
-                                tooltip: { enabled: false }
-                            },
-                            x: function(d){ return d['date']; },
-                            y: function(d){ return d['close']; },
-                            duration: 100,
-                            zoom: {
-                                enabled: true,
-                                scaleExtent: [1, 10],
-                                useFixedDomain: false,
-                                useNiceScale: false,
-                                horizontalOff: false,
-                                verticalOff: true,
-                                unzoomEventType: 'dblclick.zoom'
-                            }
-                        }
-                    };
-
-                $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                //$scope.data = [{values: [datahistory]}];
-            });
-
-        <?php
-            }
-        }
-        ?>
-    }
-
-</script>
 <?php include_once "watchlist/footer-files.php";?>

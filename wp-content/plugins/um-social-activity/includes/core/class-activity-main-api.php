@@ -1285,6 +1285,8 @@ class Activity_Main_API
         }
     }
 
+
+ 
     /**
 
      * Checks if user hidden comment

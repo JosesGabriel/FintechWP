@@ -182,9 +182,9 @@ if(isset($_GET['addcp'])){
                                                                 $from  = date('Y-m-d', strtotime("-20 days"));
                                                                 $to = date('Y-m-d');
 
-
-                                                               echo "<script> lateststocks('$stock');</script>";
                                                                echo "<script> minichart('$stock', '$from', '$to');</script>";
+                                                               echo "<script> lateststocks('$stock');</script>";
+                                                               
 
                                                                 ?>
                                                                
@@ -529,7 +529,7 @@ if(isset($_GET['addcp'])){
     var datahistory = $('#minchart_<?php echo $stock; ?>').val();
 
     //hist();
-console.log(dhisto);
+console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

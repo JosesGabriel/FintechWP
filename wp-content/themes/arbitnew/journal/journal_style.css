@@ -1592,7 +1592,7 @@ body .um-notification-b.right {
 .ontomitif .um-notification-b.right {
     position: relative;
     top: initial;
-    bottom: initial;
+    bottom: initial !important;
     background: none;
     box-shadow: none;
     padding: 0;

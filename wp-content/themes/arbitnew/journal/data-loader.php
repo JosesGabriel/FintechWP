@@ -12,11 +12,11 @@
                     addliveme += '<li>';
                     addliveme += '<div style="width:99%;">';
                     addliveme += '<div style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></div>';
-                    addliveme += '<div style="width:8%" class="table-cell-live">'+value.position+'</div>';
-                    addliveme += '<div style="width:10%" class="table-cell-live">₱'+(value.aveprice).toFixed(3)+'</div>';
-                    addliveme += '<div style="width:14%" class="table-cell-live">₱'+(value.totalcost).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:14%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:14%" class="dredpart table-cell-live">₱'+(value.profit).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:9%" class="table-cell-live">'+value.position+'</div>';
+                    addliveme += '<div style="width:11%" class="table-cell-live">₱'+(value.aveprice).toFixed(3)+'</div>';
+                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:15%" class="dredpart table-cell-live">₱'+(value.profit).toFixed(2)+'</div>';
                     addliveme += '<div style="width:7%" class="dredpart table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
                     addliveme += '<div style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
@@ -26,8 +26,8 @@
                     addliveme += '</div>';
                     addliveme += '<div style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></div>';
                     addliveme += '<div style="width:25px"><a data-stock="'+value.stock+'" data-totalprice="'+value.totalcost+'" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
-                    addliveme += '<div style="width:25px; margin-left: 2px;">';
-                    addliveme += '</div>';
+                    // addliveme += '<div style="width:25px; margin-left: 2px;">';
+                    // addliveme += '</div>';
                     addliveme += '</div>';
                     addliveme += '</li>';
                     $("#live_portfolio ul").append(addliveme).show('slow');
@@ -90,8 +90,8 @@
                     addliveme += '<div style="width:7.9%">'+(i + 1)+'</div>';
                     addliveme += '<div style="width:19%">'+value.nicedate+'</div>';
                     addliveme += '<div style="width:15%">'+value.showtext+'</div>';
-                    addliveme += '<div style="width:18%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
-                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:20%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
                     addliveme += '<div style="width:18%" class="to-left-align">₱ '+(parseFloat(value.tranamount)).toFixed(2)+'</div>';
                     addliveme += '</div>';
                     addliveme += '</li>';

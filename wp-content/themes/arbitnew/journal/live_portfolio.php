@@ -3,13 +3,13 @@
         <li class="headerpart">
             <div style="width:100%;">
                 <div style="width:7%; text-align: left !important;">Stocks</div>
-                <div style="width:8%" class="table-title-live table-title-avprice">Position</div>
-                <div style="width:10%" class="table-title-live table-title-avprice">Avg. Price</div>
-                <div style="width:14%" class="table-title-live table-title-tcost">Total Cost</div>
-                <div style="width:14%" class="table-title-live table-title-mvalue">Market Value</div>
-                <div style="width:14%" class="table-title-live table-title-profit">Profit</div>
-                <div style="width:7%" class="table-title-live table-title-performance">Perf.</div>
-                <div style="width:77px; text-align:center;">Action</div>
+                <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
+                <div style="width:11%" class="table-title-live table-title-avprice">Avg. Price</div>
+                <div style="width:15%" class="table-title-live table-title-tcost">Total Cost</div>
+                <div style="width:15%" class="table-title-live table-title-mvalue">Market Value</div>
+                <div style="width:15%" class="table-title-live table-title-profit">Profit</div>
+                <div style="width:8%" class="table-title-live table-title-performance">Perf.</div>
+                <div style="width:105px; text-align:center;">Action</div>
             </div>
         </li>
     </ul>

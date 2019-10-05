@@ -23,7 +23,7 @@
                                 <div style="width:8%">&nbsp;</div>
                                 <div style="width:19%">&nbsp;</div>
                                 <div style="width:15%">Total</div>
-                                <div style="width:18%" class="to-left-align adddebithere">&nbsp;</div>
+                                <div style="width:18.5%" class="to-left-align adddebithere">&nbsp;</div>
                                 <div style="width:19%" class="to-left-align addcredithere">&nbsp;</div>
                                 <div style="width:18%" class="to-left-align">&nbsp;</div>
                             </div>

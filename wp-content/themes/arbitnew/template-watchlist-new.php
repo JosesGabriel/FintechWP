@@ -458,9 +458,9 @@ if(isset($_GET['addcp'])){
 
             <div class="right-dashboard-part">
                 <div class="right-dashboard-part-inner">
-                      <?php //include_once "watchlist/sidebar-viewedstocks.php";?>
+                      <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>
-                      <?php include_once "parts/sidebar-latestnews.php";?>
+                      <?php //include_once "parts/sidebar-latestnews.php";?>
                       <?php include_once "parts/sidebar-footer.php";?>
                       <?php include_once "parts/sidebar-alert.php";?>              
                 </div>

@@ -12,11 +12,7 @@
                 $.each(data.data, function(key, value){
 
                     let stockchange = '';
-                    if(value.change > 0 ){
-                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#53b987;">';
-                    }else if(value.change < 0){
-                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#eb4d5c;">';
-                    }
+                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
 
 
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';

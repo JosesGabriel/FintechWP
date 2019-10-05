@@ -132,7 +132,7 @@
             dataType: 'json', // added data type
             success: function(data) {
                 // console.log(data);
-                $("#entertradelive input[name='input_buy_product']").val((data.data).toFixed(2));
+                $("#entertradelive input[name='input_buy_product'], .entertrade input[name='input_buy_product']").val((data.data).toFixed(2));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

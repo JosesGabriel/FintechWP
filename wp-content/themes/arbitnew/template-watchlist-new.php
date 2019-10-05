@@ -480,7 +480,7 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-    var dhisto = jQuery('#minchart_HLCM').val();
+    var dhisto = $('#minchart_HLCM').val();
     console.log(dhisto);
 
     if (typeof angular !== 'undefined') {

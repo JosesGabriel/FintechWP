@@ -513,9 +513,6 @@ if(isset($_GET['addcp'])){
             }
 
 
-            print_r($dhistoflist);
-
-
     ?>
 
 

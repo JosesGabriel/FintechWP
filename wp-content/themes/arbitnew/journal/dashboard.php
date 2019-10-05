@@ -135,7 +135,7 @@
         <div id="stratstatspge" class="col-md-12">
             <div class="box-portlet">
                 <style>.dstatstrade ul li div {width: 16%;}</style>
-                <div class="row">
+                <div class="row" style="margin:0;">
                 <div style="padding:5px 15px;" class="col-md-8">
                     <div class="col-md-12" style="padding:0 10px 0 0">
                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
@@ -183,6 +183,7 @@
                     </div>
                 </div>
                 </div>
+                <br class="clear">
             </div>
         </div>
         <br class="clear">
@@ -193,50 +194,52 @@
         <div id="dashtopstocks" class="col-md-12">
             <div class="box-portlet">
                 <div class="topstockgauge">
-                    <div class="col-md-4" style="padding:20px 0 0">
-                        <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Winners</div>
-                        <div id="topstockswinners"></div>
-                    </div>
-                    <div class="col-md-4" style="padding-bottom: 15px;">
-                        <div class="box-portlet-header" style="text-align:center;">
-                            Top Stocks
+                    <div class="row" style="margin:0;">
+                        <div class="col-md-4" style="padding:20px 0 0">
+                            <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Winners</div>
+                            <div id="topstockswinners"></div>
                         </div>
-                        <div class="inner-portlet" style="margin-top:20px;">
-                                <div class="stats-info">
-                                    <div class="dstatstrade">
-                                        <ul style="overflow: hidden;border-radius: 5px;">
-                                            <?php
+                        <div class="col-md-4" style="padding-bottom: 15px;">
+                            <div class="box-portlet-header" style="text-align:center;">
+                                Top Stocks
+                            </div>
+                            <div class="inner-portlet" style="margin-top:20px;">
+                                    <div class="stats-info">
+                                        <div class="dstatstrade">
+                                            <ul style="overflow: hidden;border-radius: 5px;">
+                                                <?php
 
-                                            foreach ($winningstocks as $key => $value) {
-                                                $dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                $dinss .= '<div class="width60">'. $value['stocks'] .'</div>';
-                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
-                                                $dinss .= '</li>';
-                                                echo $dinss;
-                                                if($key == 3){
-                                                    break;
+                                                foreach ($winningstocks as $key => $value) {
+                                                    $dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
+                                                    $dinss .= '<div class="width60">'. $value['stocks'] .'</div>';
+                                                    $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
+                                                    $dinss .= '</li>';
+                                                    echo $dinss;
+                                                    if($key == 3){
+                                                        break;
+                                                    }
                                                 }
-                                            }
 
-                                            foreach ($loosingstocks as $key => $value) {
-                                                $dinss = '<li style="background-color: '.($key == 0 ? '#b91e45' : ($key == 1 ? '#732546' : ($key == 2 ? '#442946' : ($key >= 3 ? '' : '#b91e45')))).';display:'.($key >= 3 ? 'none' : '').';color: #132941;border: none;">';
-                                                $dinss .= '<div class="width60">'.$value['stocks'].'</div>';
-                                                $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
-                                                $dinss .= '</li>';
-                                                echo $dinss;
-                                                if($key == 3){
-                                                    break;
+                                                foreach ($loosingstocks as $key => $value) {
+                                                    $dinss = '<li style="background-color: '.($key == 0 ? '#b91e45' : ($key == 1 ? '#732546' : ($key == 2 ? '#442946' : ($key >= 3 ? '' : '#b91e45')))).';display:'.($key >= 3 ? 'none' : '').';color: #132941;border: none;">';
+                                                    $dinss .= '<div class="width60">'.$value['stocks'].'</div>';
+                                                    $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
+                                                    $dinss .= '</li>';
+                                                    echo $dinss;
+                                                    if($key == 3){
+                                                        break;
+                                                    }
                                                 }
-                                            }
-                                                ?>
-                                        </ul>
+                                                    ?>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4" style="padding:20px 0 0">
-                        <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Losers</div>
-                        <div id="topstocksLosers"></div>
+                        <div class="col-md-4" style="padding:20px 0 0">
+                            <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Losers</div>
+                            <div id="topstocksLosers"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -249,23 +252,25 @@
                 <div class="box-portlet-header" style="padding-bottom:13px;">
                     Emotional Statistics
                 </div>
-                <div class="col-md-6" style="padding-right:0;">
-                    <div class="chartarea">
-                        <div id="chartdiv11"></div>
+                <div class="row" style="margin:0;">
+                    <div class="col-md-6" style="padding-right:0;">
+                        <div class="chartarea">
+                            <div id="chartdiv11"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="stats-info">
-                        <div class="dstatstrade dstatsemo emotioonmlistbase">
-                            <ul>
-                                <li class="headerpart">
-                                    <div>Emotions</div>
-                                    <div>Trades</div>
-                                    <div>Wins</div>
-                                    <div>Losses</div>
-                                    <div>Win Rate</div>
-                                </li>
-                            </ul>
+                    <div class="col-md-6">
+                        <div class="stats-info">
+                            <div class="dstatstrade dstatsemo emotioonmlistbase">
+                                <ul>
+                                    <li class="headerpart">
+                                        <div>Emotions</div>
+                                        <div>Trades</div>
+                                        <div>Wins</div>
+                                        <div>Losses</div>
+                                        <div>Win Rate</div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,6 +284,7 @@
                     Expense Report
                 </div>
                 <div class="box-portlet-content" style="padding-top: 0; padding-left:0; padding-bottom:0;">
+                <div class="row" style="margin:0;">
                     <div class="col-md-4" style="padding-right:0;">
                             <div class="inner-portlet" style="margin-top:20px;">
                                     <div class="stats-info">
@@ -316,7 +322,8 @@
                     <div class="col-md-8" style="padding-right:0;">
                         <div id="chartdiv6"></div>
                     </div>
-                    <br class="clear">
+
+                    </div>
                 </div>
 
 

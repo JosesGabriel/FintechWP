@@ -147,7 +147,7 @@ if ($dwatchinfo !== null) :
   $genstockinfo = json_decode($dwatchinfo);
   $stockinfo = $genstockinfo->data;
   ?>
-  <div class="watch-list">
+  <div class="watch-list" style="margin-top:10px;">
     <div class="watch-list-inner">
 
       <div class="to-top-title">Watchlist

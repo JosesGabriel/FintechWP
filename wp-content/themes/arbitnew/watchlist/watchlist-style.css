@@ -1557,4 +1557,9 @@ a:hover {
     padding: 10px 0 0 !important;
     width: 196px;
 }
+
+
+.dinnerlist .dparams ul {
+    padding: 0px;
+}
 /*------ global-sidebar ------*/

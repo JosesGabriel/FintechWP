@@ -16,7 +16,7 @@ class DataAPI extends WP_REST_Controller
     public function __construct()
     {
         $this->guzzleClient = new GuzzleRequest();
-        $this->dataBaseUrl = 'data-api.arbitrage.ph';
+        $this->dataBaseUrl = 'https://data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
         $this->namespace = 'data-api';
@@ -110,7 +110,7 @@ class DataAPI extends WP_REST_Controller
 
     public function forwardRequest(){
         //set the forward url
-        $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+        $currentUrl = "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
         $request = $this->guzzleClient->request("GET", $forwardUrl, [

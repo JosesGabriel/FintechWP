@@ -1187,6 +1187,7 @@ time.srr-date div {
     text-align: left;
     margin-bottom: 3px;
     text-transform: capitalize;
+    min-height: 18px;
 }
 .istotal {
     color: #a2adb9;

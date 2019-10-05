@@ -50,7 +50,7 @@ function minichart(symbol, from, to){
                 if(sdata.length != 0){
 
                    for (var i = 0; i < sdata.length; i++) {
-                        dhist += '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
                         counter++;
                    }
                            

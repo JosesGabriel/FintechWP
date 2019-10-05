@@ -441,34 +441,37 @@ class JournalAPI extends WP_REST_Controller
 
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
-            $dstock = str_replace('_trade_','',$value->meta_key);
-            $trdata = unserialize($value->meta_value);
-            $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
-            $stockdetails = $gerdqoute->data[$key];
+            if($value->meta_value != ""){
+                $dstock = str_replace('_trade_','',$value->meta_key);
+                $trdata = unserialize($value->meta_value);
+                $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
+                $stockdetails = $gerdqoute->data[$key];
 
-            // get marketvals
-            $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
-            $marketprofit = $stockdetails->last * $trdata['totalstock'];
-            $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
-            $profit = $marketcost - $totalcost;
+                // get marketvals
+                $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
+                $marketprofit = $stockdetails->last * $trdata['totalstock'];
+                $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
+                $profit = $marketcost - $totalcost;
 
-            $equity += $marketcost;
-            $dlivetrade = [];
-            $dlivetrade['stock'] = $dstock;
-            $dlivetrade['position'] = $trdata['totalstock'];
-            $dlivetrade['aveprice'] = $trdata['aveprice'];
-            $dlivetrade['totalcost'] = $totalcost;
-            $dlivetrade['marketvalue'] = $marketcost;
-            $dlivetrade['profit'] = $profit;
-            $dlivetrade['profitperc'] = ($profit / $totalcost) * 100;
-            $dlivetrade['livedetails'] = $stockdetails;
-            $dlivetrade['strategy'] = $trdata['data'][0]['strategy'];
-            $dlivetrade['tradeplan'] = $trdata['data'][0]['tradeplan'];
-            $dlivetrade['emotion'] = $trdata['data'][0]['emotion'];
-            $dlivetrade['tradingnotes'] = $trdata['data'][0]['tradingnotes'];
-            $dlivetrade['boardlot'] = $trdata['data'][0]['boardlot'];
-            $dlivetrade['outcome'] = ($profit > 0 ? "Winning" : "Loosing");
-            array_push($finallive, $dlivetrade);
+                $equity += $marketcost;
+                $dlivetrade = [];
+                $dlivetrade['stock'] = $dstock;
+                $dlivetrade['position'] = $trdata['totalstock'];
+                $dlivetrade['aveprice'] = $trdata['aveprice'];
+                $dlivetrade['totalcost'] = $totalcost;
+                $dlivetrade['marketvalue'] = $marketcost;
+                $dlivetrade['profit'] = $profit;
+                $dlivetrade['profitperc'] = ($profit / $totalcost) * 100;
+                $dlivetrade['livedetails'] = $stockdetails;
+                $dlivetrade['strategy'] = $trdata['data'][0]['strategy'];
+                $dlivetrade['tradeplan'] = $trdata['data'][0]['tradeplan'];
+                $dlivetrade['emotion'] = $trdata['data'][0]['emotion'];
+                $dlivetrade['tradingnotes'] = $trdata['data'][0]['tradingnotes'];
+                $dlivetrade['boardlot'] = $trdata['data'][0]['boardlot'];
+                $dlivetrade['outcome'] = ($profit > 0 ? "Winning" : "Loosing");
+                array_push($finallive, $dlivetrade);
+            }
+            
         }
 
         return $this->respond(true, ['data' => $finallive, 'equity' => $equity], 200);

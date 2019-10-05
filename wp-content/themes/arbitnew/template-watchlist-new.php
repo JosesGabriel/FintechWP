@@ -12,8 +12,6 @@ $userID = $current_user->ID;
 
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
-
-
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
@@ -104,8 +102,6 @@ if(isset($_GET['addcp'])){
                                                 </div>
                                             </div>
                                             <div class="dclosetab addwatchtab " style="width: 271px;">
-
-
                                                 <!-- wathlist phone number modal -->
                                                 <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">

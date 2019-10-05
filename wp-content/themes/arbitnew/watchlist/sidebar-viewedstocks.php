@@ -27,7 +27,7 @@ $.ajax({
        jQuery.each(res.data, function(i, val) {
 
        <?php
-        
+
 
        ?>
 
@@ -46,6 +46,12 @@ $.ajax({
 
 </script>
 
+<?php 
+
+$stocks = $_GET['stocks'];
+
+?>
+
 <div class="top-stocks">
     <div class="to-top-title"><strong>Most Watched Stocks</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
@@ -53,17 +59,17 @@ $.ajax({
 
         <?php 
        
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($curl);
-        curl_close($curl);
+        //$curl = curl_init();
+       // curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
+       // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+       // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        ///$response = curl_exec($curl);
+        //curl_close($curl);
 
-        if ($response !== false) {
-            $response = json_decode($response);
-            $stockinfo = $response->data;
-        }
+       // if ($stocks !== false) {
+       //     $response = json_decode($stocks);
+        //    $stockinfo = $response->data;
+      //  }
 
         $num = 0;
         $counter = 1;
@@ -71,7 +77,7 @@ $.ajax({
         //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        foreach($stockinfo as $stkey => $stvals){
+        foreach($stocks as $stkey => $stvals){
         
             foreach($users as $user_id){
            

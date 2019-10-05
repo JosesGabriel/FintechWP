@@ -1,34 +1,5 @@
 $(document).ready(function(){
 
-
-$.ajax({
-    url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE",
-    type: 'GET',
-    dataType: 'json', // added data type
-    success: function(res) {
-       // console.log(res.data);
-        viewed_stocks(res.data);
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-        
-    }
-});
-
-
-function viewed_stocks(stocks){
-
-        $.ajax({
-              url: "sidebar-viewedstocks.php",
-              type: "GET",
-              data:{stocks:stocks},
-              success: function(data){
-               
-              }
-        });
-
-}
-
-
     $(".gainers-title").click(function () {
 
         if($('.gainers').css('display') == 'none'){

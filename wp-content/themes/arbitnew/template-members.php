@@ -8,17 +8,14 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
-get_header( 'dashboard' );
-
-// add_user_meta( 19, 'user_secret', 'a67890');
-// echo get_user_meta(5, 'user_secret', true);
-
+require("members/header-files.php");
+require("parts/global-header.php");
 date_default_timezone_set('Asia/Manila'); ?>
 
 <style type="text/css">
 	/* Member Directory Overrides */
 	div.uimob800 .um-member {
-		width: 48%;
+		width: 250px;
 		min-height: 250px;
 	}
 	.um-members-edit-btn,
@@ -31,7 +28,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		border-radius: 5px;
 		overflow: hidden;
 		border: 1px solid #142c46;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		background-color: #142c46;
 	}
 	.um-member-name a {
@@ -48,7 +45,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 		font-family: 'Montserrat', sans-serif;
 		font-weight: 700;
 		font-size: 17px;
-		margin-bottom: 0;
+		margin-bottom: 10px;
 	}
 	.um-member-cover {
 		background: url(<?php echo get_home_url(); ?>/assets/img/arb_default_bg_2.jpg) 0 0 no-repeat #6583a8;
@@ -76,13 +73,13 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
-						
+
                         <?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 						<?php //get_template_part('parts/sidebar', 'traders'); ?>
-						
+
 					</div>
-                    
+
 				</div>
 			</div>
 			<div class="center-dashboard-part">
@@ -103,7 +100,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
 					<?php get_template_part('parts/sidebar', 'watchlist'); ?>
-					
+
 					<?php //get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>
                     <div class="forsticky">
@@ -122,7 +119,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     </div>
 				</div><?php */?>
 
-                
+
                 <br class="clear">
 			</div>
 
@@ -133,4 +130,4 @@ date_default_timezone_set('Asia/Manila'); ?>
 
  <!-- #main-content -->
 
-<?php get_footer();
+<?php require("members/footer-files.php"); ?>

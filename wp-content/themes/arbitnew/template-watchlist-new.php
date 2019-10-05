@@ -33,7 +33,7 @@ require("parts/global-header.php");
 
     }
 
-/*
+
 function minichart(symbol, from, to){
 
 
@@ -67,7 +67,7 @@ function minichart(symbol, from, to){
         });
 
     }
-    */
+    
 
 
 
@@ -182,7 +182,7 @@ if(isset($_GET['addcp'])){
                                                                 $from  = date('Y-m-d', strtotime("-20 days"));
                                                                 $to = date('Y-m-d');
 
-                                                               //echo "<script> minichart('$stock', '$from', '$to');</script>";
+                                                               echo "<script> minichart('$stock', '$from', '$to');</script>";
                                                                echo "<script> lateststocks('$stock');</script>";
 
 
@@ -458,9 +458,9 @@ if(isset($_GET['addcp'])){
 
             <div class="right-dashboard-part">
                 <div class="right-dashboard-part-inner">
-                      <?php //include_once "watchlist/sidebar-viewedstocks.php";?>
+                      <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>
-                      <?php include_once "parts/sidebar-latestnews.php";?>
+                      <?php //include_once "parts/sidebar-latestnews.php";?>
                       <?php include_once "parts/sidebar-footer.php";?>
                       <?php include_once "parts/sidebar-alert.php";?>              
                 </div>
@@ -480,6 +480,8 @@ if(isset($_GET['addcp'])){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
+
+
 
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
@@ -512,8 +514,11 @@ if(isset($_GET['addcp'])){
                 }
             }
 
+
     ?>
 
+    var dhist = jQuery('.dchart').find('input[name=<?php echo $stock;?>]').val();
+    console.log(dhist);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

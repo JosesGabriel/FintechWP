@@ -61,9 +61,9 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 					  <span>Watcher & Alerts</span></a></li>
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-4.svg" class="icon-game">
             <span>Games</span></a></li>
-                  <li class="five"><a id="vyndue--link" href="<?php echo get_home_url(); ?>/vyndue/"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
+                  <li class="five"><a id="vyndue--link" href="https://vyndue.com/userview/im"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>
-            
+
             <div class="m-separator"></div>
             <span class="menu-title-calc">Power Tools</span>
                   <li class="seven calc-menu-buysell"><a><img src="<?php echo get_home_url(); ?>/svg/BuySellCalculators-3.svg">
@@ -71,7 +71,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                   <li class="seven calc-menu-var"><a><img src="<?php echo get_home_url(); ?>/svg/think-3.svg">
             <span>VAR Calculator</span></a></li>
                   <li class="seven calc-menu-avprice"><a><img src="<?php echo get_home_url(); ?>/svg/AveragePriceCalculator1-3.svg">
-            <span>Average Price Calculator</span></a></li>      
+            <span>Average Price Calculator</span></a></li>
               </ul>
           </div>
       </div>
@@ -148,7 +148,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
           }
         });
 
-	  
+
     });
 
   jQuery(document).ready(function(){
@@ -168,6 +168,6 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
     }else if(pageURL == '<?php echo get_home_url(); ?>/game/'){
       jQuery('.side-content ul .seven').addClass('active');
     }
-	  
+
   });
 </script>

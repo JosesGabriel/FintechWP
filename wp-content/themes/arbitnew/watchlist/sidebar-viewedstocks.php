@@ -46,11 +46,6 @@ jQuery(function(){
 
 </script>
 
-<?php 
-
-$stocks = $_GET['stocks'];
-
-?>
 
 <div class="top-stocks">
     <div class="to-top-title"><strong>Most Watched Stocks</strong></div>
@@ -66,8 +61,8 @@ $stocks = $_GET['stocks'];
         $response = curl_exec($curl);
         curl_close($curl);
 
-        if ($stocks !== false) {
-                $response = json_decode($stocks);
+        if ($response !== false) {
+                $response = json_decode($response);
                 $stockinfo = $response->data;
             }
 

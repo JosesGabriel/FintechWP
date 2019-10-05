@@ -3,75 +3,6 @@
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
-<script>
-
-    function lateststocks(symbol){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-
-                        var price = parseFloat(res.data.last);
-                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
-                        var curchange = parseFloat(res.data.changepercentage);
-
-                        if(curchange < 0){
-                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
-                        }else if (curchange > 0) {
-                            jQuery('.curchange_' + symbol).css("color","#53b987");
-                        }
-
-                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
-            }
-        });
-
-    }
-
-/*
-function minichart(symbol, from, to){
-
-
- jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
-
-                    var sdata = res.data.o;
-                    var counter = 0;
-                    var dhist = "";
-
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-
-                }
-
-                dhisto = dhist;
-                jQuery('.minchart_' + symbol).val(dhist);
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
-            }
-
-        });
-
-    }
-    */
-
-
-
-</script>
 
 <?php
 
@@ -139,7 +70,6 @@ if(isset($_GET['addcp'])){
 
 ?>
 
-
 <!-- #main-header -->
 <div id="main-content" class="oncommonsidebar">
 
@@ -182,7 +112,7 @@ if(isset($_GET['addcp'])){
                                                                 $from  = date('Y-m-d', strtotime("-20 days"));
                                                                 $to = date('Y-m-d');
 
-                                                               //echo "<script> minichart('$stock', '$from', '$to');</script>";
+                                                               echo "<script> minichart('$stock', '$from', '$to');</script>";
                                                                echo "<script> lateststocks('$stock');</script>";
 
 
@@ -324,15 +254,12 @@ if(isset($_GET['addcp'])){
                                                                                 </div>
                                                                             </div>
                                                                           </div>
-                                                                          <!-- <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                                          </div> -->
+                                                                          
                                                                         </div>
                                                                       </div>
                                                                     </div>
                                                                 </li>
-                                                            <?php //endif;
+                                                            <?php 
                                                                             } ?>
                                                         </ul>
                                                     <?php else: ?>
@@ -481,6 +408,7 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
+
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
@@ -512,9 +440,10 @@ if(isset($_GET['addcp'])){
                 }
             }
 
+
     ?>
-
-
+    //var $target = $(this).parent().find('input[name="row_id"]').val();
+    
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {
                         chart: {

@@ -450,7 +450,7 @@ class Activity_Main_API
             if ($content != '') {
                 $newconts = '';
 
-               
+                //$dprocessedtext = multiexplode(array('\n',' '),$content);
                 $dprocessedtext = preg_split("/[\s,]+/", $content);
 
                 //$dprocessedtext = explode(' ', $content);
@@ -1268,6 +1268,8 @@ class Activity_Main_API
         }
     }
 
+
+ 
     /**
 
      * Checks if user hidden comment

@@ -531,7 +531,7 @@ if(isset($_GET['addcp'])){
 
     //hist();
 
-console.log(datahistory2);
+console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

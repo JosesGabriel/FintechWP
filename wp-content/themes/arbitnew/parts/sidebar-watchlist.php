@@ -151,7 +151,7 @@ if ($dwatchinfo !== null) :
     <div class="watch-list-inner">
 
       <div class="to-top-title">Watchlist
-        <div class="dplsicon" style="display: none;"><a href="/watchlist/"> <i class="fa fa-plus-circle"></i></a></div>
+        <div class="dplsicon"><a href="/watchlist/"> <i class="fa fa-plus-circle"></i></a></div>
       </div>
       <hr class="style14 style15">
       <div class="to-content-part">

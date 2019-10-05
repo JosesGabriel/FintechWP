@@ -17,15 +17,6 @@
 html {
     background: #0d1f33 !important;
 }
-.right-dashboard-part{
-    float: left;
-    width: 30% !important;
-    padding: 21px 0px !important;
-    height: 140%;
-    position: -webkit-sticky;
-    position: sticky;
-    top: -112%;
-}
 .btn-tradelog {
     border-radius: 0px;
     margin: 10px 0px;
@@ -68,27 +59,6 @@ td.to-stock {
 
 .table td, .table th {
     border-top:none !important;
-}
-
-.dbox.red {
-    padding: 6px 7px;
-    background-color: #eb4d5c;
-    border-radius: 50px;
-    width: 56px;
-}
-
-.dbox.green {
-    padding: 6px 12px;
-    background-color: #53b987;
-    border-radius: 50px;
-    width: 56px;
-}
-
-td.to-stock a {
-}
-.stockperc {
-    width: 42px;
-    text-align: center;
 }
 .trading-name {
     font-family: 'Nunito', sans-serif;
@@ -396,22 +366,6 @@ img.arb_newpostimg {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.watch-list-inner .to-top-title,
-.top-stocks .to-top-title,
-.top-traiders-inner .to-top-title,
-.watch-list-inner .to-bottom-title,
-.top-traiders-inner .to-bottom-title,
-.top-stocks .to-bottom-title,
-.latest-news .to-top-title,
-.latest-news .to-bottom-title{
-    background: transparent;
-    padding: 10px 14px 10px 1px;
-    font-size: 15px;
-    font-weight: normal;
-}
-.watch-list-inner .to-top-title {
-    padding: 10px 14px 0px 14px !important;
-}
 .style18 {
     width: 92% !important;
     margin-bottom: 0;
@@ -689,7 +643,7 @@ div.uimob800 .um-account-side ul li {
     text-transform: capitalize !important;
 }
 .um-left {
-    float: right;
+    float: left;
 }
 .um-account-main .um-account-tab input[type="submit"]:hover {
     background: #091523 !important;

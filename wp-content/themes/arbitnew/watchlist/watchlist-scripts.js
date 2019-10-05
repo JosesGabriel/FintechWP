@@ -7,7 +7,7 @@ $.ajax({
     dataType: 'json', // added data type
     success: function(res) {
        // console.log(res.data);
-        viewed_stocks(res.data);
+        viewed_stocks(res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
         
@@ -18,8 +18,8 @@ $.ajax({
 function viewed_stocks(stocks){
 
         $.ajax({
-              url: "sidebar-viewedstocks.php",
-              type: "GET",
+              url: 'sidebar-viewedstocks.php',
+              type: 'GET',
               data:{stocks:stocks},
               success: function(data){
                

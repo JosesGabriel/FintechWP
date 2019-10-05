@@ -18,7 +18,7 @@ jQuery(function(){
     dcount++;
   });
 
-$.ajax({
+/* $.ajax({
     url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE",
     type: 'GET',
     dataType: 'json', // added data type
@@ -38,7 +38,7 @@ $.ajax({
     }
 });
 
-    
+   */ 
 
 });
 

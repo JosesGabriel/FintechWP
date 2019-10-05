@@ -108,10 +108,6 @@ if(isset($_GET['addcp'])){
                                                                 $from  = date('Y-m-d', strtotime("-20 days"));
                                                                 $to = date('Y-m-d');
 
-                                                               echo "<script> minichart('$stock', '$from', '$to');</script>";
-                                                               echo "<script> lateststocks('$stock');</script>";
-
-
                                                                 ?>
 
 

@@ -35,22 +35,6 @@ require("parts/global-header.php");
 
 
      }
-
-
-    function minichart_data(symbol, from, to){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from=" + from + "&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                   // console.log(res.data);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-     }
     
 </script>
 
@@ -118,8 +102,6 @@ if(isset($_GET['addcp'])){
 }
 
 
-
-$watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 ?>
 
 
@@ -202,7 +184,7 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" name="">
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="">
                                                                                 
                                                                                 </div>
                                                                             </div>
@@ -457,17 +439,17 @@ $watchinfo = get_user_meta('7', '_scrp_stocks_chart', true);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-
-
 function minichart(symbol, from, to){
 
+ var dhist = '';
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
             dataType: 'json', 
             success: function(res) {
-                    //console.log(res.data);
-                    var sdata = res.data.o;               
+                    
+                    var sdata = res.data.o; 
+                    var counter = 0;              
 
                     
                 if(sdata.length != 0){
@@ -479,12 +461,8 @@ function minichart(symbol, from, to){
                            
                 }
 
-                //mini = dhist;
                 jQuery('.minchart_' + symbol).val(dhist);
-               
-                //console.log(dhist);
-
-               //return dhist;                       
+                                   
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -495,70 +473,84 @@ function minichart(symbol, from, to){
     }
 
 
-
-
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
         <?php    
 
         if ($havemeta) {
-        foreach ($havemeta as $key => $value) {    
+    foreach ($havemeta as $key => $value) {    
 
             $stock = $value['stockname'];
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
 
-            ?>     
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
+            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $dhistofronold = curl_exec($curl);
+            curl_close($curl);
+
+            $dhistoforchart = json_decode($dhistofronold);
+            $dhistoforchart = $dhistoforchart->data;
+
+            $dhistoflist = "";
+            $counter = 0;
 
 
-            var datahisto = minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
+                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
+                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
+                    $counter++;
+                }
+            }
 
-            var dhist;
-            var counter = 0;
-            //console.log(datamin);
+
+
+
+    ?>
+    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+
+    
+    var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+
+    
+console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
-                            $scope.options = {
-                                    chart: {
-                                        type: 'candlestickBarChart',
-                                        height: 70,
-                                        width: 195,
-                                        margin : {
-                                            top: 0,
-                                            right: 0,
-                                            bottom: 0,
-                                            left: 0
-                                        },
-                                        interactiveLayer: {
-                                            tooltip: { enabled: false }
-                                        },
-                                        x: function(d){ return d['date']; },
-                                        y: function(d){ return d['close']; },
-                                        duration: 100,
-                                        zoom: {
-                                            enabled: true,
-                                            scaleExtent: [1, 10],
-                                            useFixedDomain: false,
-                                            useNiceScale: false,
-                                            horizontalOff: false,
-                                            verticalOff: true,
-                                            unzoomEventType: 'dblclick.zoom'
-                                        }
-                                    }
-                                };
+                $scope.options = {
+                        chart: {
+                            type: 'candlestickBarChart',
+                            height: 70,
+                            width: 195,
+                            margin : {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0
+                            },
+                            interactiveLayer: {
+                                tooltip: { enabled: false }
+                            },
+                            x: function(d){ return d['date']; },
+                            y: function(d){ return d['close']; },
+                            duration: 100,
+                            zoom: {
+                                enabled: true,
+                                scaleExtent: [1, 10],
+                                useFixedDomain: false,
+                                useNiceScale: false,
+                                horizontalOff: false,
+                                verticalOff: true,
+                                unzoomEventType: 'dblclick.zoom'
+                            }
+                        }
+                    };
 
-                            //$scope.data = [{values: [<?php //echo $dhistory; ?>]}];
-                            $scope.data = [{values: [ ]}];
-                        });
-
-
-
-
-        
-
-
-
+                $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+                //$scope.data = [{values: [dhist]}];
+            });
 
         <?php
             }

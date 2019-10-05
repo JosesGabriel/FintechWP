@@ -20,7 +20,7 @@
                     addliveme += '<div style="width:7%" class="dredpart table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
                     addliveme += '<div style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
-                    addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"'>BUY</a>";
+                    addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
                     addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
                     addliveme += '</div>';
@@ -115,9 +115,41 @@
             success: function(data) {
                 $(".addcapital").text("₱"+(parseFloat(data.data.capital)).toFixed(2));
                 $(".addyearpl").text("₱"+(data.data.profit).toFixed(2));
-                $(".addyearplperc").text((data.data.profperc).toFixed(2));
+                $(".addyearplperc").text((data.data.profperc).toFixed(2)+"%");
                 $(".adddeposit").text("₱"+(data.data.deposit).toFixed(2));
                 $(".addwidthraw").text("₱"+(data.data.withraw).toFixed(2));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
+
+    var loadBuyPower = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/buypower?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                // console.log(data);
+                $("#entertradelive input[name='input_buy_product']").val((data.data).toFixed(2));
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
+
+    var loadStocks = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/allstocks?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                $.each(data.data, function(key, value){
+                    $("#inpt_data_select_stock").append("<option value='"+JSON.stringify(value)+"'>"+value.symbol+"</option>");
+                    $("#inpt_data_stock_bought").append("<option value='"+value.symbol+"'>"+value.symbol+"</option>");
+                });
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -157,14 +189,30 @@
         $("#live_portfolio ul").on("click", ".buymystocks", function(e){
             e.preventDefault();
             let sdata = $(this).attr("data-stockdetails");
-            console.log(sdata);
-            
+            let dstatobj = jQuery.parseJSON(sdata);
+            console.log(dstatobj);
+
+            $("#entertradelive #inpt_data_stock").val(dstatobj.symbol);
+            $("#entertradelive input[name='inpt_data_currprice']").val(dstatobj.last);
+            $("#entertradelive input[name='inpt_data_change']").val((dstatobj.changepercentage).toFixed(2));
+            $("#entertradelive input[name='inpt_data_open']").val(dstatobj.open);
+            $("#entertradelive input[name='inpt_data_low']").val(dstatobj.low);
+            $("#entertradelive input[name='inpt_data_high']").val(dstatobj.high);
+            $("#entertradelive input[name='inpt_data_volume']").val(dstatobj.volume);
+            $("#entertradelive input[name='inpt_data_value']").val(dstatobj.value);
+            $("#entertradelive input[name='inpt_data_boardlot']").val($(this).attr("data-boardlot"));
             $("#openboxmode").click();
         });
 
         $("#live_portfolio ul").on("click", ".sellmystocks", function(e){
             e.preventDefault();
-            
+            let sdata = $(this).attr("data-stockdetails");
+            let dstatobj = jQuery.parseJSON(sdata);
+            $("#selllivetrade input[name='inpt_data_stock']").val($(this).attr("data-stock"));
+            $("#selllivetrade input[name='inpt_data_position']").val($(this).attr("data-position"));
+            $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
+            $("#selllivetrade input[name='inpt_avr_price_b']").val((parseFloat($(this).attr("data-averprice"))).toFixed(2));
+            $("#selllivetrade input[name='inpt_avr_price']").val($(this).attr("data-averprice"));
             $("#opensellbox").click();
         });
 
@@ -179,6 +227,8 @@
 
 
         // load 
+        new loadStocks();
+        new loadBuyPower(<?php echo $user->ID; ?>);
         new loadLivePortfolio(<?php echo $user->ID; ?>);
         new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
     });

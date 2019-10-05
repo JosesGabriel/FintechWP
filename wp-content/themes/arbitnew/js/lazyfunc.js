@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
     // }, 1000);
     $.ajax({
-        url: '/apipge/?daction=sidebar-bulletin',
+        url: '/sidebar-api/?daction=sidebar-bulletin',
         type: 'GET',
         dataType: 'json',
         success: function(res) {

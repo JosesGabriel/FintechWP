@@ -393,9 +393,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
             if ($scope.$parent.settings.chart == '1') {
-                beep();
-                if (stock.change > 0){changicotogreen();}
-				if (stock.change < 0){changicotored();}
+                if (stock.change > 0){
+                    beep();
+                    changicotogreen();
+                }
+				if (stock.change < 0){
+                    beep();
+                    changicotored();
+                }
 				if (stock.change = 0){changicotounchanged();}
             }
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);

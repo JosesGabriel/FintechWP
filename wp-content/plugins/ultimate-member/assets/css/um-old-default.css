@@ -65,7 +65,7 @@ div.uimob800 .um-account-side li a.current:hover
 .um a.um-button.um-disabled:hover,
 .um a.um-button.um-disabled:focus,
 .um a.um-button.um-disabled:active {
-    background: #3ba1da;
+    background: none;
 }
 
 .um a.um-link {

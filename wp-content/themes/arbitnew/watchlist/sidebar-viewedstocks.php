@@ -22,8 +22,11 @@ $.ajax({
     dataType: 'json', // added data type
     success: function(res) {
 
-        console.log(res.data);
-     
+       jQuery.each(res.data, function(i, val) {
+        
+            console.log(val.symbol);
+
+        });
     },
     error: function (xhr, ajaxOptions, thrownError) {
         

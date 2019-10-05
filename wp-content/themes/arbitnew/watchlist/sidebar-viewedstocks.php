@@ -1,8 +1,3 @@
-<?php 
-include_once "watchlist/header-files.php";
-require("parts/global-header.php");
-?>
-
 <script type="text/javascript">
 
 jQuery(function(){

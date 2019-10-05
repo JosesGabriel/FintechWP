@@ -526,7 +526,7 @@ if(isset($_GET['addcp'])){
    
 
     
-    //var datahistory = $('#minchart_<?php echo $stock; ?>').val();
+   
      var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
 
     //hist();
@@ -563,7 +563,7 @@ console.log(datahistory);
                     };
 
                 //$scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                $scope.data = [{values: [datahistory]}];
+                $scope.data = [{values: datahistory}];
             });
 
         <?php

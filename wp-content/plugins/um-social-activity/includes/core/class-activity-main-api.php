@@ -450,6 +450,24 @@ class Activity_Main_API
             $newconts = '';
 
             if ($content != '') {   
+                $regex_search = [
+                    // stock tagging
+                    '/[\s,](\$\S+)/m',
+    
+                    // user tagging
+                    '/[\s,](\@\S+)/m',
+                ];
+    
+                $regex_replace = [
+                    // stock tagging
+                    ' <a href="/chart/$1" target="_blank" rel="no_opener noreferrer">$1</a>',
+    
+                    // user tagging
+                    ' <a href="/user/$1 target="_blank" rel="no_opener noreferrer">$1</a>',
+                ];
+    
+                $newconts = preg_replace($regex_search, $regex_replace, $content);
+                
                 // $dprocessedtext = preg_split("/[\s,]+/", $content);
 
                 // //$dprocessedtext = explode(' ', $content);

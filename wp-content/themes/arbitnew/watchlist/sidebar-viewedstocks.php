@@ -74,7 +74,7 @@ jQuery(function(){
         //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        foreach($stockinfo as $stkey => $stvals){
+        foreach($stocks as $stkey => $stvals){
         
             foreach($users as $user_id){
            

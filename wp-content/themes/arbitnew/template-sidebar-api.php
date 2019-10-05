@@ -19,6 +19,9 @@ switch($action){
   case 'sidebar-bulletin':
       get_bulletins();
       break;
+  case 'get_user_metas':
+      get_user_metas();
+      break;
   default:
   echo 'no action';
 }
@@ -117,6 +120,12 @@ function get_bulletins(){
 
 }
 
+function get_user_metas(){
+  global $current_user;
+  $userID = $current_user->ID;
+  $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
+  echo json_encode($ismetadis);
+}
 
 
 

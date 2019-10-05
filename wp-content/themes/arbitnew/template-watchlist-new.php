@@ -5,7 +5,6 @@ require("parts/global-header.php");
 ?>
 <script>
 
-
     function lateststocks(symbol){
 
          jQuery.ajax({
@@ -32,9 +31,50 @@ require("parts/global-header.php");
             }
         });
 
+    }
 
 
-     }
+function minichart(symbol, from, to){
+
+ var dhist = '';
+ jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                    
+                    var sdata = res.data.o; 
+                    var counter = 0;              
+
+                    
+                if(sdata.length != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        counter++;
+                   }
+                           
+                }
+
+                jQuery('.minchart_' + symbol).val(dhist);
+                                   
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+        });
+
+    }
+
+
+function hist(){
+     var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+     console.log(datahistory);
+}
+
+
+ 
     
 </script>
 
@@ -439,40 +479,6 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-function minichart(symbol, from, to){
-
- var dhist = '';
- jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                    
-                    var sdata = res.data.o; 
-                    var counter = 0;              
-
-                    
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-                           
-                }
-
-                jQuery('.minchart_' + symbol).val(dhist);
-                                   
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-
-        });
-
-    }
-
-
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
@@ -484,7 +490,12 @@ function minichart(symbol, from, to){
             $stock = $value['stockname'];
             $from  = date('Y-m-d', strtotime("-20 days"));
             $to = date('Y-m-d');
+        ?>
 
+         minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+            //echo '><>';
+
+           /* 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -504,19 +515,20 @@ function minichart(symbol, from, to){
                     $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
                     $counter++;
                 }
-            }
+            }*/
 
 
 
 
-    ?>
-    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+    //?>
 
-    
-    var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+   
 
     
-console.log(datahistory);
+    //var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+
+    hist();
+//console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {
@@ -557,5 +569,6 @@ console.log(datahistory);
         }
         ?>
     }
+
 </script>
 <?php include_once "watchlist/footer-files.php";?> 

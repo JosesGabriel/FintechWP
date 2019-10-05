@@ -225,9 +225,9 @@ if(isset($_GET['addcp'])){
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="minchart_<?php echo $value['stockname'];?>">
-                                                                                
+                    
                                                                                 </div>
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="minchart_<?php echo $value['stockname'];?>">
                                                                             </div>
                                                                         </div>
 
@@ -527,7 +527,7 @@ if(isset($_GET['addcp'])){
 
     
     //var datahistory = $('#minchart_<?php echo $stock; ?>').val();
-     var datahistory = $('input[name="minchart_<?php echo $stock; ?>"]').val();
+     var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
 
     //hist();
 console.log(datahistory);

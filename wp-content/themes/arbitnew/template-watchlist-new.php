@@ -68,12 +68,6 @@ function minichart(symbol, from, to){
     }
 
 
-function hist(){
-     var datahistory = $('.minchart_<?php echo $stock; ?>').val();
-     console.log(datahistory);
-}
-
-
  
     
 </script>
@@ -184,7 +178,13 @@ if(isset($_GET['addcp'])){
                                                             </li>
                                                             <?php foreach ($havemeta as $key => $value) { 
                                                                 $stock = $value['stockname'];
+                                                                $from  = date('Y-m-d', strtotime("-20 days"));
+                                                                $to = date('Y-m-d');
+
+
                                                                echo "<script> lateststocks('$stock');</script>";
+                                                               echo "<script> minichart('$stock', '$from', '$to');</script>";
+
                                                                 ?>
                                                                
 
@@ -488,11 +488,11 @@ if(isset($_GET['addcp'])){
     foreach ($havemeta as $key => $value) {    
 
             $stock = $value['stockname'];
-            $from  = date('Y-m-d', strtotime("-20 days"));
-            $to = date('Y-m-d');
+          //  $from  = date('Y-m-d', strtotime("-20 days"));
+           // $to = date('Y-m-d');
         ?>
 
-         minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+        // minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
             //echo '><>';
 
            /* 
@@ -525,10 +525,10 @@ if(isset($_GET['addcp'])){
    
 
     
-    //var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+    var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
 
-    hist();
-//console.log(datahistory);
+    //hist();
+console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

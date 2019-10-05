@@ -217,11 +217,6 @@
     .hidden-bttn:hover .remm-sm {
         display:block;
     }
-    .top-stocks .to-content-part ul li.even,
-    .watch-list-inner .to-content-part ul li.even {
-        background: none;
-        /* margin-top: 19px; */
-    }
     .um-activity-left .um-activity-actions {
         display: none !important;
     }
@@ -233,15 +228,6 @@
     }
     img.arb_newpostimg {
         width: 41px !important;
-    }
-    .top-stocks .to-content-part ul li a {
-        display: block;
-        padding: 11px 10px;
-        font-size: 12px;
-        color: #ecf0f1;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
     span.nocont {
         display: block;
@@ -401,41 +387,7 @@
     .fa-plus-circle {
         color: #fffffe;
     }
-    .srr-item-cont {
-        display: block !important;
-        padding-top: 0px !important;
-        padding-left: 1px !important;
-        padding-right: 13px !important;
-        text-align: center !important;
-        top: -1px;
-        position: relative;
-        margin-bottom: 7px!important;
-        margin-top: 0;
-        /* padding-top: 13px; */
-    }
-    time.srr-date {
-        font-size: 20px;
-        line-height: 1.1;
-        font-weight: 300;
-        color: #ffeb3b;
-    }
-    time.srr-date div {
-        font-size: 12px;
-        margin-top: -4px;
-        text-transform: uppercase;
-    }
-    .srr-wrap .srr-item > * {
-        margin-bottom: 5px !important;
-    }
-    .srr-wrap .srr-item > *:last-child {
-        margin-bottom: 0px !important;
-    }
-    .dauthor {
-        color: #878a8e;
-    }
-    .srr-wrap.srr-style-none .srr-item {
-        padding: 5px 0px 5px 0px !important;
-    }
+    
     .um-padding-none {
         padding-left: 18px;
     }
@@ -1447,79 +1399,7 @@
 
 
     /*************************** Sidebar Top Players *******************************/
-    .hudbadge {
-        /* width: 23%; */
-        display: inline-block;
-        margin: 4px 0;
-    }
-
-    .topsect {
-        padding-top: 5px;
-    }
-    .playerscontent {
-        width: 86%;
-        display: inline-block;
-        position: relative;
-        vertical-align: middle;
-        padding: 5px;
-        /* border-radius: 5px; */
-        margin-bottom: 10px;
-    }
-    .hudbadge img {
-        height: auto;
-        width: 30px;
-        top: -3px;
-        position: relative;
-        margin-left: 2px;
-    }
-    .isname {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.3;
-        color: #ecf0f1;
-        text-align: left;
-        margin-bottom: 3px;
-        text-transform: capitalize;
-    }
-    .istotal {
-        color: #a2adb9;
-        line-height: 1;
-        font-weight: 300;
-        font-size: 12px;
-        font-family: 'Roboto', sans-serif;
-        text-align: left;
-    }
-    .hudbadge p {
-        display: block;
-        vertical-align: middle;
-        margin: 0 auto;
-        color: #72cddd;
-        font-size: 20px;
-        font-family: 'Century Gothic';
-        text-align: center;
-        /* width: 55px; */
-    }
-    .ranks h5 {
-        padding-left: 9px;
-        padding-top: 4px;
-        padding-bottom: 5px;
-    }
-    .caret {
-        padding-right: 3px;
-        line-height: 0;
-    }
-    .isname span {
-        float: right;
-        font-family: 'Century Gothic';
-        font-weight: 500;
-        font-size: 14px;
-    }
-    .shwmepls {
-        display: block !important;
-    }
-    .viewmoreplayers {
-        cursor: pointer;
-    }
+    
     /*************************** End top players *******************************/
 
 
@@ -1870,17 +1750,7 @@
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
         background-color: #34495e;
     }
-    .text-yellow {
-        color: #FFC107;
-    }
-    span.value-t {
-        display: inline-block;
-        float: left;
-    }
-    span.value-p {
-        display: inline-block;
-        float: right;
-    }
+
     .bbbutton-sen {
         position: relative;
         bottom: 46px;
@@ -2145,41 +2015,6 @@
     .fa-plus-circle {
         color: #fffffe;
     }
-    .srr-item-cont {
-        display: block !important;
-        padding-top: 0px !important;
-        padding-left: 1px !important;
-        padding-right: 13px !important;
-        text-align: center !important;
-        top: -1px;
-        position: relative;
-        margin-bottom: 7px!important;
-        margin-top: 8px;
-        /* padding-top: 13px; */
-    }
-    time.srr-date {
-        font-size: 20px;
-        line-height: 1.1;
-        font-weight: 300;
-        color: #ffeb3b;
-    }
-    time.srr-date div {
-        font-size: 12px;
-        margin-top: -4px;
-        text-transform: uppercase;
-    }
-    .srr-wrap .srr-item > * {
-        margin-bottom: 7px;
-    }
-    .srr-wrap .srr-item > *:last-child {
-        margin-bottom: 0px !important;
-    }
-    .dauthor {
-        color: #878a8e;
-    }
-    .srr-wrap.srr-style-none .srr-item {
-        padding: 5px 0px 5px 0px !important;
-    }
     .um-padding-none {
         padding-left: 18px;
     }
@@ -2407,16 +2242,6 @@
 }
 .stock_container-inner {
     width: 85%;
-}
-span.my_rank-number {
-    position: absolute;
-    z-index: 99;
-    margin: 5px auto 0;
-    width: 34px;
-    text-align: center;
-    font-size: 12px;
-    font-family: 'Roboto', sans-serif;
-    color: #d0a950;
 }
 .um-notification-live-feed:before {
     bottom: 100%;

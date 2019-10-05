@@ -1,10 +1,6 @@
 <?php
 require_once ('data-api.php');
-require_once ABSPATH . 'vendor/autoload.php';
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request;
+require_once ('guzzle-class.php');
 
 class DataAPI extends WP_REST_Controller
 {
@@ -19,9 +15,7 @@ class DataAPI extends WP_REST_Controller
 
     public function __construct()
     {
-        $this->guzzleClient = new GuzzleHttp\Client([
-            'http_errors' => false,
-            ]);
+        $this->guzzleClient = new GuzzleRequest();
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
         $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
@@ -119,15 +113,14 @@ class DataAPI extends WP_REST_Controller
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
-        $promise = $this->guzzleClient->requestAsync("GET", $forwardUrl, [
+        $request = $this->guzzleClient->request("GET", $forwardUrl, [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$this->client_secret}",
                 ]
             ]);
 
-        $response = $promise->wait();
-        return json_decode($response->getBody());
+        return json_decode($request->content);
     }
      
     public function getForwardedResponse($request)

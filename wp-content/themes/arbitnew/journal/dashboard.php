@@ -1,5 +1,4 @@
-<br class="clear">
-    <div class="row">
+<div class="row">
         <div class="col-md-7" style="padding-right: 0;">
             <div class="box-portlet">
                 <div class="box-portlet-header">
@@ -66,7 +65,7 @@
                     </div>
                     <br class="clear">
                 </div>
-            </div><br class="clear">
+            </div>
             <div class="box-portlet">
                 <div class="box-portlet-header">
                     Monthly Performance
@@ -77,7 +76,6 @@
                     </div>
                     <br class="clear">
                 </div>
-
             </div>
         </div>
         <div class="col-md-5">
@@ -92,7 +90,7 @@
                     </div>
                 </div>
 
-            </div><br class="clear">
+            </div>
             <div class="box-portlet">
                 <div class="box-portlet-header" style="text-align:center;">
                     Trade Statistics
@@ -133,7 +131,6 @@
             </div>
         </div>
     </div>
-    <br class="clear">
     <div class="row">
         <div id="stratstatspge" class="col-md-12">
             <div class="box-portlet">
@@ -189,7 +186,6 @@
         </div>
         <br class="clear">
     </div>
-    <br class="clear">
     <!-- BoF Trade Statistics -->
     <!-- EoF Trade Statistics -->
     <div class="row">
@@ -246,7 +242,6 @@
         </div>
         <br class="clear">
     </div>
-    <br class="clear">
     <div class="row">
         <div id="emotionalstats" class="col-md-12">
             <div class="box-portlet">
@@ -277,7 +272,6 @@
         </div>
         <br class="clear">
     </div>
-    <br class="clear">
     <div id="expensereports" class="expence-report">
             <div class="box-portlet">
                 <div class="box-portlet-header">
@@ -327,7 +321,6 @@
 
             </div>
     </div>
-    <br class="clear">
     <div id="buyvolval" class="row">
         <div class="col-md-6" style="padding-right: 0;">
             <div class="box-portlet">
@@ -354,7 +347,6 @@
             </div>
         </div>
     </div>
-    <br class="clear">
     <div id="perogross" class="row">
         <div class="col-md-5" style="padding-right: 0;">
             <div class="box-portlet">
@@ -381,3 +373,4 @@
             </div>
         </div>
     </div>
+    <!-- <br class="clear"> -->

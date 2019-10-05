@@ -94,7 +94,7 @@ if(isset($_GET['addcp'])){
                                         <div class="dtabcontent">
                                             <div class="dclosetab watchtab active">
 
-                                                <div class="dinnerlist">
+                                                <div class="dinnerlist watcherlist">
                                                     <?php if ($havemeta): ?>
                                                         <ul>
                                                             <li class="addwatch">

@@ -525,10 +525,10 @@ if(isset($_GET['addcp'])){
    
 
     
-    var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+    var datahistory = $('.minchart_<?php echo $stock; ?>').val();
 
     //hist();
-console.log('<?php $stock; ?>->' + datahistory);
+console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

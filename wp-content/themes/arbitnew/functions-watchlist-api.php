@@ -82,7 +82,7 @@ class WatchlistAPI extends WP_REST_Controller
             $key = array_search($value['stockname'], array_column($stocksdata->data, 'symbol'));
             $stockdetails = $stocksdata->data[$key];
             $value['last'] = $stockdetails->last;
-            $value['change'] = $stockdetails->change;
+            $value['changepercentage'] = $stockdetails->change;
             array_push($finalwatch, $value);
         }
         return $this->respond(true, ['data' => $finalwatch], 200);

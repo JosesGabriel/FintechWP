@@ -22,8 +22,11 @@ $.ajax({
     dataType: 'json', // added data type
     success: function(res) {
 
-        console.log(res.data);
-     
+       jQuery.each(res.data, function(i, val) {
+        
+            console.log(val.symbol);
+
+        });
     },
     error: function (xhr, ajaxOptions, thrownError) {
         
@@ -46,10 +49,9 @@ $.ajax({
         <?php 
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
-        
+        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
         curl_close($curl);
 

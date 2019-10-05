@@ -8,7 +8,8 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
-get_header( 'dashboard' );
+require("members/header-files.php");
+require("parts/global-header.php");
 
 // add_user_meta( 19, 'user_secret', 'a67890');
 // echo get_user_meta(5, 'user_secret', true);
@@ -76,13 +77,13 @@ date_default_timezone_set('Asia/Manila'); ?>
 			<div class="left-dashboard-part">
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
-						
+
                         <?php //get_template_part('parts/sidebar', 'tasks'); ?>
                     	<?php get_template_part('parts/sidebar', 'profile'); ?>
 						<?php //get_template_part('parts/sidebar', 'traders'); ?>
-						
+
 					</div>
-                    
+
 				</div>
 			</div>
 			<div class="center-dashboard-part">
@@ -103,7 +104,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
 					<?php get_template_part('parts/sidebar', 'watchlist'); ?>
-					
+
 					<?php //get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>
                     <div class="forsticky">
@@ -122,7 +123,7 @@ date_default_timezone_set('Asia/Manila'); ?>
                     </div>
 				</div><?php */?>
 
-                
+
                 <br class="clear">
 			</div>
 
@@ -133,4 +134,4 @@ date_default_timezone_set('Asia/Manila'); ?>
 
  <!-- #main-content -->
 
-<?php get_footer();
+<?php require("members/footer-files.php"); ?>

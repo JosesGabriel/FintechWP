@@ -121,16 +121,6 @@ label.screen-reader-text {
     border-radius: 50px;
     width: 42px;
 }
-
-.top-stocks .to-content-part ul li a {
-    display: block;
-    padding: 5px 10px;
-    font-size: 12px;
-    color: #ecf0f1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 .top-traiders .to-content-part .trader-item .traider-image img {
     border-radius: 50px;
 }
@@ -171,10 +161,6 @@ label.screen-reader-text {
 }
 .d-feed-content .d-rss-readmore {
     font-size: 12px;
-}
-.to-rss-inner .widget_super_rss_reader {
-    float: none;
-    padding: 0px 15px 0;
 }
 .to-rss-inner .widget_super_rss_reader h4.widgettitle {
     display: none;
@@ -754,9 +740,6 @@ a.to-view-more {
     -moz-transition: all .5s ease-in-out;
     -o-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-}
-.srr-wrap.srr-style-none .srr-item {
-    padding: 0 0 0px 0!important;
 }
 .add-post > .likebtn_container {
     display: none;

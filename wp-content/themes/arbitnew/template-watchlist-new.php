@@ -525,7 +525,7 @@ if(isset($_GET['addcp'])){
    
 
     
-    var datahistory = $('.minchart_<?php echo $stock; ?>').val();
+    var datahistory = $('#minchart_<?php echo $stock; ?>').val();
 
     //hist();
 console.log(datahistory);

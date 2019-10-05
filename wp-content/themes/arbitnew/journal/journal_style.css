@@ -152,9 +152,9 @@ input#entertopdataprice, input#entertopdataquantity {
 }
 
 .fundtabs ul.nav.panel-tabs a.active {
-    border-bottom: 3px solid #01afc8;
-    background-color: rgba(18, 40, 64, 0.5);
     color: #fff;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .fundtabs .nav>li>a:hover,
@@ -162,7 +162,7 @@ input#entertopdataprice, input#entertopdataquantity {
     background-color: rgba(18, 40, 64, 0.8);
 }
 .modalfund {
-    height: 200px;
+    height: auto;
 }
 
 .gain_c {
@@ -199,6 +199,7 @@ input#entertopdataprice, input#entertopdataquantity {
     background: linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a1c31', endColorstr='#1a3550',GradientType=1 );
     box-shadow: -7px 8px 8px -3px rgba(4,13,23,0.3);
+    margin-bottom: 10px;
 }
 .box-portlet-header, .box-portlet-footer {
     background: transparent;
@@ -1417,7 +1418,8 @@ input#qty_price--input {
 
 /*------ global-dashboard-css ------*/
 html {
-    background: #0d1f33;
+    background: #0d1f33 !important;
+    height: 100%
 }
 dl, ol, ul {
     margin-bottom: 0;
@@ -2018,7 +2020,7 @@ a:hover {
     font-size: 14px;
     color: #d8d8d8 !important;
     float: right;
-    top: 8px;
+    top: 0;
     position: relative;
     text-shadow: none;
     opacity: 1 !important;
@@ -2028,7 +2030,7 @@ a:hover {
 }
 
 .header-depo {
-    padding: 5px 13px !important;
+    padding: 13px 13px 2px;
     border-bottom: none !important;
 }
 .title-depo {
@@ -2049,7 +2051,7 @@ a:hover {
     position: relative;
     display: inline-block;
     background-color: #34495e;
-    padding: 8px 32px 10px 10px !important;
+    padding: 7px 32px 10px 10px !important;
     border-radius: 5px 0 0 5px;
     bottom: -36px;
 }

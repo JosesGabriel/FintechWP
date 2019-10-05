@@ -66,7 +66,7 @@
                     <br class="clear">
                 </div>
             </div>
-            <div class="box-portlet">
+            <div class="box-portlet" style="padding-top: 4px;">
                 <div class="box-portlet-header">
                     Monthly Performance
                 </div>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="box-portlet" style="height:202px;">
+            <div class="box-portlet" style="height:180px;">
                 <div class="box-portlet-header" style="text-align:center;">
                     Current Allocation
                 </div>
@@ -135,7 +135,7 @@
         <div id="stratstatspge" class="col-md-12">
             <div class="box-portlet">
                 <style>.dstatstrade ul li div {width: 16%;}</style>
-
+                <div class="row">
                 <div style="padding:5px 15px;" class="col-md-8">
                     <div class="col-md-12" style="padding:0 10px 0 0">
                         <div class="box-portlet-header" style="padding: 13px 0 17px 2px;">
@@ -181,6 +181,7 @@
                             </li>
                         </ul>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

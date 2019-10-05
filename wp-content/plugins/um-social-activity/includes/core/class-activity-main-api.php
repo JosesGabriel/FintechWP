@@ -452,18 +452,18 @@ class Activity_Main_API
             if ($content != '') {   
                 $regex_search = [
                     // stock tagging
-                    '/[\s,](\$\S+)/m',
+                    '/([\s,]|^)(\$\S+)/m',
     
                     // user tagging
-                    '/[\s,](\@\S+)/m',
+                    '/([\s,]|^)(\@\S+)/m',
                 ];
     
                 $regex_replace = [
                     // stock tagging
-                    ' <a href="/chart/$1" target="_blank" rel="no_opener noreferrer">$1</a>',
+                    '$1<a href="/chart/$2" target="_blank" rel="no_opener noreferrer">$2</a>',
     
                     // user tagging
-                    ' <a href="/user/$1 target="_blank" rel="no_opener noreferrer">$1</a>',
+                    '$1<a href="/user/$2" target="_blank" rel="no_opener noreferrer">$2</a>',
                 ];
     
                 $newconts = preg_replace($regex_search, $regex_replace, $content);

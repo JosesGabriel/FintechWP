@@ -1070,6 +1070,7 @@ h2.watchtitle {
     }
     .dinnerlist .dparams ul li {
         width: 31.6%;
+        padding: 2px;
 	}
 	.box-portlet-header, .box-portlet-footer {
 		background: none;

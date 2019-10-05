@@ -69,7 +69,7 @@ function minichart(symbol, from, to){
 
 
 function hist(){
-     var datahistory = jQuery('.minchart_<?php echo $stock; ?>').val();
+     var datahistory = $('.minchart_<?php echo $stock; ?>').val();
      console.log(datahistory);
 }
 

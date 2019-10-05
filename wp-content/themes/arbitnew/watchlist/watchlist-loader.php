@@ -19,7 +19,7 @@
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';
                     watchtoadd += ' <div class="curprice_'+value.stockname+'">₱'+value.last+'</div>';
-                    watchtoadd += '<div class="curchange_'+value.stockname+'" style="color:#FFC107;">'+value.change+'</div>';
+                    watchtoadd += '<div class="curchange_'+value.stockname+'" style="color:#FFC107;">'+(value.change).toFixed(2)+' </div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="col-md-12">';

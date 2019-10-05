@@ -122,7 +122,7 @@ $( document ).ready(function() {
                             hwmyrankside = 'fa-caret-down';
                         }
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge"><span class="my_rank-number">'+value.myrank+'</span><img src="/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
+                            ranker += '<div class="hudbadge"><span class="my_rank-number">'+value.myrank+'</span><img src="/wp-content/themes/arbitnew/images/top0.svg" alt=""></div>'
                             // ranker += '<div class="hudbadge">'+value.myrank+'</div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'

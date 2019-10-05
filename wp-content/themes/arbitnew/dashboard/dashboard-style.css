@@ -1043,6 +1043,7 @@ span.um-activity-seemore {
 .top-stocks,
 .latest-news,
 .watch-list,
+.dtanks,
 .top-traiders {
     border-radius: 5px;
     overflow: hidden;
@@ -1052,7 +1053,8 @@ span.um-activity-seemore {
 .watch-list-inner .to-top-title,
 .top-stocks .to-top-title,
 .top-traiders-inner .to-top-title,
-.latest-news .to-top-title {
+.latest-news .to-top-title,
+.dtanks .to-top-title {
     padding: 9px 15px 0 !important;
     margin-bottom: 7px;
     color: #fffffe;
@@ -1062,6 +1064,7 @@ span.um-activity-seemore {
 .watch-list-inner .to-content-part,
 .top-stocks .to-content-part,
 .top-traiders .to-content-part,
+.dtanks .to-content-part,
 .latest-news .to-content-part{
     min-height: 126px;
     padding: 5px 15px;
@@ -1070,8 +1073,67 @@ span.um-activity-seemore {
     padding: 0 15px 8px;
     font-size: 12px;
     font-weight: 300;
-    cursor: pointer;
     display: block;
+}
+.to-bottom-seemore a {
+    cursor: pointer;
+}
+div#show_hide {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.watch-list-inner .to-content-part ul li {
+    padding: 5px;
+}
+.watch-list-inner .to-content-part ul li .to-stock {
+    width: 5%;
+    display: inline-block;
+}
+.watch-list-inner .to-content-part ul li .to-numsec {
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+}
+.watch-list-inner .to-content-part ul li .to-persec {
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+}
+.watch-list-inner .to-content-part ul li .bered {
+    color: #f46759;
+}
+.watch-list-inner .to-content-part ul li .begreen {
+    color: #3ac16f;
+}
+.watch-list-inner .to-content-part {
+    font-size: 13px;
+    line-height: 1em;
+}
+.to-watch-data {
+    border-bottom: #1e3554 solid 1px;
+    min-height: 76px;
+}
+.minichartt .stocklnk {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+}
+.dbox.red {
+    border-radius: 50px !important;
+    color: #eb4d5c !important;
+}
+.dbox.green {
+    border-radius: 50px !important;
+    color: #53b987 !important;
+}
+.stockperc {
+    text-align: right;
+    margin-top: 3px;
+    font-weight: 400;
+    font-size: 12px;
 }
 .to-content-part #preloader{
     background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;

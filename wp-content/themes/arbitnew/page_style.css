@@ -101,10 +101,6 @@
         font-weight: 500;
     }
 
-    .table{
-        margin-bottom: 0px !important
-    } 
-
     tr.to-watch-data td {
         display: table-cell;
         vertical-align: middle;
@@ -113,9 +109,7 @@
         position:relative;
 
     }
-    .to-watch-data {
-        border-bottom: #1e3554 solid 1px;
-    }
+
     td.to-stock {
         margin-left:10px;
     }
@@ -124,25 +118,9 @@
         border-top:none !important;
     }
 
-    .dbox.red {
-        border-radius: 50px !important;
-        color: #eb4d5c !important;
-    }
-
-    .dbox.green {
-        border-radius: 50px !important;
-        color: #53b987 !important;
-    }
-
     td.to-stock a {
     }
-    .stockperc {
-        /*width: 42px;*/
-        text-align: right;
-        margin-top: 3px;
-        font-weight: 400;
-        font-size: 12px;
-    }
+
     .site-header {
         padding-bottom: 0px !important;
         margin-bottom: 22px !important;
@@ -281,13 +259,6 @@
         background: #142c46;
         margin-top: 15px;
     }
-    .latest-news {
-        margin-top: 15px;
-        background: #142c46;
-    }
-    .latest-news .to-top-title {
-        padding: 10px 14px 2px 14px !important
-    }
     .srr-tab-wrap > li.srr-active-tab {
         border-left: none !important;
         background: #11273e !important;
@@ -324,9 +295,6 @@
         font-weight: 400;
         text-align: left;
         text-transform: uppercase;
-    }
-    .latest-news .to-content-part {
-        height: auto;
     }
     .um-activity-bodyinner-photo {
         padding-top: 0;
@@ -571,9 +539,6 @@
         height: auto;
         margin-bottom: -117px;
     }
-    a:hover {
-        text-decoration: none !important;
-    }
     .dcontent-wrap a {
         color: #00bcd4;
     }
@@ -626,10 +591,6 @@
     }
     small.um-max-filesize {
         color: #888888;
-    }
-    #tableStock .even {
-        max-height: 247px;
-        display: block
     }
     .nws-seprator .nws-title p {
         font-size: 20px;
@@ -1486,13 +1447,6 @@
 
 
     /*************************** Sidebar Top Players *******************************/
-    .dtanks {
-        padding: 10px 15px;
-        background-color: #142c46;
-        border-radius: 5px;
-        margin-top: 15px;
-        overflow: hidden;
-    }
     .hudbadge {
         /* width: 23%; */
         display: inline-block;
@@ -1544,19 +1498,6 @@
         font-family: 'Century Gothic';
         text-align: center;
         /* width: 55px; */
-    }
-    .dtanks h5 {
-        color: #fffffe;
-        font-size: 13px;
-        margin: 0;
-        padding: 0;
-    }
-    a.viewmoreplayers {
-        color: #d8d8d8 !important;
-        display: block;
-        font-size: 13px;
-        font-weight: 400;
-        margin-top: 5px;
     }
     .ranks h5 {
         padding-left: 9px;
@@ -1953,13 +1894,6 @@
     .minichartt .ng-scope {
         overflow:hidden;
     }
-    .minichartt .stocklnk {
-        position:absolute;
-        width:100%;
-        height:100%;
-        top:0;
-        left:0;
-    }
     #page-container {
         /*padding-top:0 !important;*/
         height:100%;
@@ -1991,10 +1925,6 @@
         border: 1px solid #273647;
         font-weight: 600;
     }
-
-    .table{
-        margin-bottom: 0px !important
-    } 
     tr.to-watch-data td {
         display: table-cell;
         vertical-align: middle;
@@ -2003,35 +1933,12 @@
         position:relative;
 
     }
-    .to-watch-data {
-        border-bottom: #1e3554 solid 1px;
-    }
     td.to-stock {
         margin-left:10px;
     }
 
     .table td, .table th {
         border-top:none !important;
-    }
-
-    .dbox.red {
-        border-radius: 50px !important;
-        color: #eb4d5c !important;
-    }
-
-    .dbox.green {
-        border-radius: 50px !important;
-        color: #53b987 !important;
-    }
-
-    td.to-stock a {
-    }
-    .stockperc {
-        /*width: 42px;*/
-        text-align: right;
-        margin-top: 3px;
-        font-weight: 400;
-        font-size: 12px;
     }
     .site-header {
         padding-bottom: 0px !important;
@@ -2141,9 +2048,6 @@
     img.arb_newpostimg {
         width: 41px !important;
     }
-    .watch-list-inner .to-top-title {
-        padding: 10px 14px 0px 14px !important;
-    }
     .style18 {
         width: 92% !important;
         margin-bottom: 0;
@@ -2152,9 +2056,6 @@
     .watch-list {
         background: #142c46;
         margin-top: 15px;
-    }
-    .latest-news .to-top-title {
-        padding: 10px 14px 2px 14px !important
     }
     .srr-tab-wrap > li.srr-active-tab {
         border-left: none !important;
@@ -2192,9 +2093,6 @@
         font-weight: 400;
         text-align: left;
         text-transform: uppercase;
-    }
-    .latest-news .to-content-part {
-        height: auto;
     }
     .um-activity-bodyinner-photo {
         /* padding-top: 4px; */

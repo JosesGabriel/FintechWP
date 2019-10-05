@@ -45,9 +45,6 @@
         border-bottom: none !important;
 
     }
-    .watch-list-inner .to-content-part {
-        padding-top: 0 !important;
-    }
     .top-stock .to-content-part {
         padding-bottom: 0 !important;
     }
@@ -76,13 +73,7 @@ body.admin-bar.et_fixed_nav #main-header, body.admin-bar.et_fixed_nav #top-heade
 /* EOF footer styles */
 
 /* BOF Watchlist */
-    .to-watch-data {
-        border-bottom: #1e3554 solid 1px;
-        /*display: table-cell;
-        vertical-align: middle;*/
-        min-height: 76px;/*
-        background: #123;*/
-    }
+
     .to-watch-data.to-stock {
         display: inline-block !important;
     }

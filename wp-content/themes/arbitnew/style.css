@@ -131,35 +131,6 @@ label.screen-reader-text {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.watch-list-inner .to-content-part ul li {
-    padding: 5px;
-}
-.watch-list-inner .to-content-part ul li .to-stock {
-    width: 5%;
-    display: inline-block;
-}
-.watch-list-inner .to-content-part ul li .to-numsec {
-    width: 25%;
-    display: inline-block;
-    text-align: right;
-}
-.watch-list-inner .to-content-part ul li .to-persec {
-    width: 25%;
-    display: inline-block;
-    text-align: right;
-}
-.watch-list-inner .to-content-part ul li .bered {
-    color: #f46759;
-}
-.watch-list-inner .to-content-part ul li .begreen {
-    color: #3ac16f;
-}
-.watch-list-inner .to-content-part {
-    font-size: 13px;
-    line-height: 1em;
-    background: #142c46;
-    /* padding-bottom: 15px; */
-}
 .top-traiders .to-content-part .trader-item .traider-image img {
     border-radius: 50px;
 }

@@ -66,7 +66,7 @@ jQuery(function(){
                 $stockinfo = $response->data;
             }
 
-        print_r($stockinfo);
+        //print_r($stockinfo);
 
         $num = 0;
         $counter = 1;

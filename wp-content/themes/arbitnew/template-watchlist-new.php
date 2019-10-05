@@ -489,10 +489,6 @@ if(isset($_GET['addcp'])){
     foreach ($havemeta as $key => $value) {    
 
             $stock = $value['stockname'];
-          //  $from  = date('Y-m-d', strtotime("-20 days"));
-           // $to = date('Y-m-d');
-       
-               //echo '><>';
 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
@@ -515,20 +511,8 @@ if(isset($_GET['addcp'])){
                 }
             }
 
-
-
-
     ?>
-
-   
-
-    
-   
-    // var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
-
-    //hist();
-
-//console.log(datahistory);
+      
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

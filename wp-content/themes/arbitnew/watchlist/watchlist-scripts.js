@@ -1,9 +1,73 @@
 $(document).ready(function(){
 
+
+function minichart(symbol, from, to){
+
+ jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+
+                    var sdata = res.data.o;
+                    var counter = 0;
+                    var dhist = "";
+
+                if(sdata.length != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        counter++;
+                   }
+
+                }
+
+                jQuery('.minchart_' + symbol).val(dhist);
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+
+        });
+
+    }
+
+
+function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+
+                        var price = parseFloat(res.data.last);
+                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
+                        var curchange = parseFloat(res.data.changepercentage);
+
+                        if(curchange < 0){
+                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
+                        }else if (curchange > 0) {
+                            jQuery('.curchange_' + symbol).css("color","#53b987");
+                        }
+
+                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+        });
+
+    }
     
 
+
+
+
     $(".gainers-title").click(function () {
-        
+
         if($('.gainers').css('display') == 'none'){
             $('.gainers').slideDown();
         }else {
@@ -13,7 +77,7 @@ $(document).ready(function(){
 
 
     $(".losers-title").click(function () {
-        
+
         if($('.losers').css('display') == 'none'){
             $('.losers').slideDown();
         }else {
@@ -25,33 +89,23 @@ $(document).ready(function(){
     jQuery('.addwatch').click(function(e){
     jQuery(".dtabcontent > div").removeClass('active').hide('slow');
     jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
-            
+
             $.ajax({
                 url: "/wp-json/data-api/v1/stocks/list",
                 type: 'GET',
                 dataType: 'json', // added data type
                 success: function(res) {
-                        
-                    jQuery.each(res.data, function(index, value) {      
+
+                    jQuery.each(res.data, function(index, value) {
                             jQuery('.listofstocks').append('<a class="datastock_' + index + '" href="#" data-dstock="'+value.symbol+'">'+value.symbol+'</a>');
-                            index++;        
-                    });  
+                            index++;
+                    });
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    
+
                 }
             });
-
-
-    //var staticstocks = ["2GO","8990P","AAA","AB","ABA","ABC","ABG","ABS","ABSP","AC","ACE","ACPA","ACPB1","ACPB2","ACR","AEV","AGI","ALCO","ALCPB","ALHI","ALI","ALL","ANI","ANS","AP","APC","APL","APO","APX","AR","ARA","AT","ATI","ATN","ATNB","AUB","BC","BCB","BCOR","BCP","BDO","BEL","BH","BHI","BKR","BLFI","BLOOM","BMM","BPI","BRN","BSC","CA","CAB","CAT","CDC","CEB","CEI","CEU","CHI","CHIB","CHP","CIC","CIP","CLC","CLI","CNPF","COAL","COL","COSCO","CPG","CPM","CPV","CPVB","CROWN","CSB","CYBR","DAVIN","DD","DDPR","DELM","DFNN","DIZ","DMC","DMCP","DMPA1","DMPA2","DMW","DNA","DNL","DTEL","DWC","EAGLE","ECP","EDC","EEI","EG","EIBA","EIBB","ELI","EMP","EURO","EVER","EW","FAF","FB","FBP","FBP2","FDC","FERRO","FEU","FFI","FGEN","FGENF","FGENG","FIN","FJP","FJPB","FLI","FMETF","FNI","FOOD","FPH","FPHP","FPHPC","FPI","FYN","FYNB","GEO","GERI","GLO","GLOPA","GLOPP","GMA7","GMAP","GPH","GREEN","GSMI","GTCAP","GTPPA","GTPPB","H2O","HDG","HI","HLCM","HOUSE","HVN","I","ICT","IDC","IMI","IMP","IND","ION","IPM","IPO","IRC","IS","ISM","JAS","JFC","JGS","JOH","KEP","KPH","KPHB","LAND","LBC","LC","LCB","LFM","LIHC","LMG","LOTO","LPZ","LR","LRP","LRW","LSC","LTG","M-O","MA","MAB","MAC","MACAY","MAH","MAHB","MARC","MAXS","MB","MBC","MBT","MED","MEG","MER","MFC","MFIN","MG","MGH","MHC","MJC","MJIC","MPI","MRC","MRP","MRSGI","MVC","MWC","MWIDE","MWP","NI","NIKL","NOW","NRCP","NXGEN","OM","OPM","OPMB","ORE","OV","PA","PAL","PAX","PBB","PBC","PCOR","PCP","PERC","PGOLD","PHA","PHC","PHEN","PHES","PHN","PIP","PIZZA","PLC","PMPC","PMT","PNB","PNC","PNX","PNX3A","PNX3B","PNXP","POPI","PORT","PPC","PPG","PRC","PRF2A","PRF2B","PRIM","PRMX","PRO","PSB","PSE","PSEI","PTC","PTT","PX","PXP","RCB","RCI","REG","RFM","RLC","RLT","ROCK","ROX","RRHI","RWM","SBS","SCC","SECB","SEVN","SFI","SFIP","SGI","SGP","SHLPH","SHNG","SLF","SLI","SM","SMC","SMC2A","SMC2B","SMC2C","SMC2D","SMC2E","SMC2F","SMC2G","SMC2H","SMC2I","SMCP1","SMPH","SOC","SPC","SPM","SRDC","SSI","SSP","STI","STN","STR","SUN","SVC","T","TBGI","TECB2","TECH","TEL","TFC","TFHI","TLII","TLJJ","TUGS","UBP","UNI","UPM","URC","V","VITA","VLL","VMC","VUL","VVT","WEB","WIN","WLCON","WPI","X","ZHI"];
-
-    //jQuery.each(staticstocks, function(index, value) {      
-                        //  jQuery('.listofstocks').append('<a class="datastock_' + index + '" href="#" data-dstock="'+staticstocks[index]+'">'+staticstocks[index]+'</a>');
-                      //   index++;        
-                   //});
-
-               
 
     });
 
@@ -65,7 +119,7 @@ $(document).ready(function(){
                 e.preventDefault();
 
                 var dtyped = jQuery(this).val();
-                
+
                 if(jQuery(this).val().length < 1){
                     jQuery('.ddropbase').removeClass('opendrop').hide('slow');
                 }
@@ -106,13 +160,13 @@ $(document).ready(function(){
 
         jQuery(this).parents('.ddropbase').find('#dstockname').val(dstock);
 
-       
+
     });
 
      jQuery('#submitmenow').click(function(e){
               e.preventDefault();
               jQuery("#add-watchlist-param").submit();
-              var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();         
+              var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
              //var countli = jQuery(".listofinfo li").length;
              //if (countli != 0) {
                 console.log(isstock);
@@ -156,10 +210,172 @@ $(document).ready(function(){
                 if($(this).val() == 'edit'){
                     var ditemtoedit = jQuery(this).attr('data-space');
                     jQuery("#edit_" + ditemtoedit).click();
-                    
+
                 }
 
             });
+//Start Notifications ============================================================================================================================
+
+function getval() {
+  var currentTime = new Date()
+  var hours = currentTime.getHours()
+  var minutes = currentTime.getMinutes()
+
+  if (minutes < 10) minutes = "0" + minutes;
+
+  var suffix = "AM";
+  if (hours >= 12) {
+      suffix = "PM";
+      hours = hours - 12;
+  }
+  if (hours == 0) {
+      hours = 12;
+  }
+  var current_time = hours + ":" + minutes + " " + suffix;
+
+  return current_time;
+}
+
+function get24Hr(time){
+  var hours = Number(time.match(/^(\d+)/)[1]);
+  var AMPM = time.match(/\s(.*)$/)[1];
+  if(AMPM == "PM" && hours<12) hours = hours+12;
+  if(AMPM == "AM" && hours==12) hours = hours-12;
+
+  var minutes = Number(time.match(/:(\d+)/)[1]);
+  hours = hours*100+minutes;
+  return hours;
+}
+
+function newwatchlist(){
+        jQuery.ajax({
+            method: "get",
+            url: "/sidebar-api/?daction=get_user_metas",
+            dataType: 'json',
+            success: function(data){
+              var usermetas = data;
+              $.each(usermetas, function(index, dinfo){
+                var stockname = dinfo.stockname;
+                console.log("Stockname: " + stockname);
+                jQuery.ajax({
+                  method: "get",
+                  url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
+                  dataType: 'json',
+                  success: function(data){
+                    var stocklastdata = parseFloat(data.data.last);
+
+                    //compare now
+
+                    //Entry Price
+
+                      if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
+                        var dslert = '<div class="noti-message">';
+                          dslert += '<div class="vertical-align">';
+                            dslert += '<a class="cont-logo">';
+                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+                            dslert += '</a>';
+                            dslert += '<div class="md-rightside">';
+                              dslert += '<a class="cont-bodymessage">';
+                                dslert += 'Buy Now! <br>';
+                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+
+                              dslert += '</a>';
+                              dslert += '<div class="op-btnchart">';
+                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+                                dslert += '<div class="btn-close xclsbtn">Close</div>';
+                              dslert += '</div>';
+                            dslert += '</div>';
+                          dslert += '</div>';
+                        dslert += '</div>';
+                        jQuery(".alert-handler").append(dslert);
+
+                      }
+
+                    //stoplosspoint
+
+                      if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
+                        var dslert = '<div class="noti-message">';
+                          dslert += '<div class="vertical-align">';
+                            dslert += '<a class="cont-logo">';
+                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+                            dslert += '</a>';
+                            dslert += '<div class="md-rightside">';
+                              dslert += '<a class="cont-bodymessage">';
+                                dslert += 'Sell Now and Stop your loss! <br>';
+                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+
+                              dslert += '</a>';
+                              dslert += '<div class="op-btnchart">';
+                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+                                dslert += '<div class="btn-close xclsbtn">Close</div>';
+                              dslert += '</div>';
+                            dslert += '</div>';
+                          dslert += '</div>';
+                        dslert += '</div>';
+                        jQuery(".alert-handler").append(dslert);
+                      }
+
+                    //takeprofit
+
+                      if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
+                        var dslert = '<div class="noti-message">';
+                          dslert += '<div class="vertical-align">';
+                            dslert += '<a class="cont-logo">';
+                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+                            dslert += '</a>';
+                            dslert += '<div class="md-rightside">';
+                              dslert += '<a class="cont-bodymessage">';
+                                dslert += 'Sell Now and Secure your Profit! <br>';
+                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+
+                              dslert += '</a>';
+                              dslert += '<div class="op-btnchart">';
+                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+                                dslert += '<div class="btn-close xclsbtn">Close</div>';
+                              dslert += '</div>';
+                            dslert += '</div>';
+                          dslert += '</div>';
+                        dslert += '</div>';
+                        jQuery(".alert-handler").append(dslert);
+                      }
+
+                  }
+                });
+              });
+            }
+        });
+}
 
 
+  function removealerts() {
+    jQuery(".alert-handler").find('div').fadeOut( "slow", function() {
+      jQuery(this).remove();
+    });
+  }
+
+  jQuery(".alert-handler").on("click", ".xclsbtn", function(){
+    jQuery(this).parents('.noti-message').fadeOut( "slow", function() {
+      jQuery(this).remove();
+    });
+  });
+
+
+
+var startTime = '09:30 AM';
+var endTime = '11:30 PM';
+var curr_time = getval();
+if (get24Hr(curr_time) > get24Hr(startTime) && get24Hr(curr_time) < get24Hr(endTime)) {
+  newwatchlist();
+
+    $counts = 1;
+    setInterval(function(){
+        $counts++;
+        removealerts();
+        if ($counts <= 1) {
+        newwatchlist();
+        }
+    },30000);
+}
+
+//End Notifications ============================================================================================================================
 });

@@ -8,7 +8,6 @@
     border: 1px solid #273647;
     font-weight: 600;
 }
-
 .selecteditlog {
     width: 168px;
     padding: 5px 5px 5px 0px;
@@ -18,12 +17,10 @@
     color: #a1adb5;
 
 }
-
 .side-header .right-image .onto-user-name {
     margin-bottom: 5px;
     text-transform: capitalize !important;
 }
-
 .onto-user-name {
     font-size: 13px;
     padding-left: 12px;
@@ -31,7 +28,6 @@
     padding-top: 10;
     margin-bottom: 0px !important;
 }
-
 .table{
     margin-bottom: 0px !important
 }
@@ -42,44 +38,15 @@
     border: 1px solid #28b1dc;
     margin-left: 5px;
 }
-
-tr.to-watch-data td {
-    display: table-cell;
-    vertical-align: middle;
-    padding:12px 5px;
-    color:#ecf0f1;
-    position:relative;
-
-}
-.to-watch-data {
-    border-bottom: #1e3554 solid 1px;
-}
-td.to-stock {
-    margin-left:10px;
-}
-
-.table td, .table th {
-    border-top:none !important;
-}
-
 .dbox.red {
     padding: 6px 7px;
     background: #eb4d5c;
     border-radius: 50px;
 }
-
 .dbox.green {
     padding: 6px 12px;
     background: #53b987;
     border-radius: 50px;
-}
-
-td.to-stock a {
-    margin-left: 7px;
-}
-.stockperc {
-    width: 42px;
-    text-align: center;
 }
 .trading-name {
     font-family: 'Nunito', sans-serif;
@@ -87,39 +54,10 @@ td.to-stock a {
     font-size: 13px;
     padding-left: 10px;
 }
-.one {
-    font-weight: 500;
-}
-.two {
-    font-weight: 500;
-    margin-top: 13px;
-}
-.two a {
-    border-radius: 4px;
-}
-.third {
-    font-weight: 500;
-}
-.fourth {
-    font-weight: 500;
-}
-.five {
-    font-weight: 500;
-}
 .site-header {
     padding-bottom: 0px !important;
     margin-bottom: 22px !important;
     padding: 0px 0px 0px 0px !important;
-}
-.active {
-
-}
-#mingle-btn {
-    border-radius: 26px !important;
-    border: 1.3px solid #e77e24 !important;
-    padding: 5px 14px !important;
-    font-family: 'Nunito', sans-serif;
-    color: #6583a8;
 }
 #removes-btn {
     border-radius: 26px !important;
@@ -128,112 +66,6 @@ td.to-stock a {
     font-family: 'Nunito', sans-serif;
     color: #6583a8;
     margin-left: 3px !important;
-}
-a.add-btn {
-
-}
-.true-name {
-    padding-left: 10px;
-    font-size: 14px;
-    font-weight: 500;
-}
-.following-people {
-    width: 33.3%;
-    float: left;
-    text-align: left;
-    font-size: 12px;
-    color: #999999;
-    font-family: 'Nunito', sans-serif;
-    display: inline-block;
-}
-.your-posts {
-    width: 28.3%;
-    text-align: left;
-    font-size: 12px;
-    color: #999999;
-    font-family: 'Nunito', sans-serif;
-    display: inline-block;
-    float: left;
-    margin-left: 1px;
-}
-.your-followers {
-    width: 31.3%;
-    text-align: left;
-    font-size: 12px;
-    color: #999999;
-    font-family: 'Nunito', sans-serif;
-    display: inline-block;
-}
-.num-followers {
-    font-size: 12px;
-    color: #fffffe;
-}
-.num-posts {
-    font-size: 12px;
-    color: #fffffe;
-}
-.num-following {
-    font-size: 12px;
-    color: #fffffe;
-}
-.top-traiders-inner {
-    padding-top: 0px;
-       padding-left: 4px;
-}
-.dplsicon {
-    display: inline-block !important;
-    float: right;
-}
-.dplsicon a {
-    color: #fff
-}
-.hidden-bttn {
-    visibility: hidden;
-}
-.hidden-bttn:hover {
-    cursor: pointer;
-}
-.traider-inner:hover .hidden-bttn{
-    visibility: visible;
-}
-.hidden-bttn {
-    color: black;
-    font-size: 14px;
-    float: right;
-    color: #fff;
-}
-.remm-sm {
-    display: none;
-    margin-top: -1px;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    right: 22px;
-    color: #fff;
-    background-color: #2b405b;
-    font-size: 10px;
-    padding: 6px 10px;
-    border-radius: 25px;
-}
-.hidden-bttn:hover .remm-sm {
-    display:block;
-}
-.drop-over-post {
-    color: #fff;
-    font-size: 20px;
-    margin-top: 7px;
-    margin-right: 7px;
-}
-.to-content-part {
-    background: none;
-}
-.top-stocks .to-content-part ul li.even,
-.watch-list-inner .to-content-part ul li.even {
-    background: none;
-}
-.to-content-part {
-    background: #142c46;
 }
 /* Calendar Overrides */
 /*.month-container.col-xs-3 {
@@ -272,9 +104,12 @@ a.add-btn {
 }
 
 /* Journal Overrides */
-/*	.inner-placeholder {
-    padding-top: 0 !important;
-}*/
+input.textfield-buyprice.number, input.textfield-quantity.number {
+    padding-right: 6px;
+}
+input#entertopdataprice, input#entertopdataquantity {
+    padding-right: 8px;
+}
 .searchbar input[type="text"] {
     height: 26px !important;
 }
@@ -298,10 +133,17 @@ a.add-btn {
 .journaltabs .nav>li>a {
     padding: 15px 0;
     border-radius: 6px 6px 0 0;
+    display: block;
+}
+.journaltabs .nav>li>a.active {
+    background: #11263d;
+    color: #fff;
+    border-bottom: 3px solid #00bcd4 !important;
 }
 .journaltabs .nav>li>a:hover,
 .journaltabs .nav>li>a:focus {
     background-color: rgba(18, 40, 64, 0.8);
+    border-bottom: 3px solid #11263d;
 }
 .journaltabs ul.nav.panel-tabs a.active {
     border-bottom: 3px solid #01afc8;
@@ -376,7 +218,7 @@ a.add-btn {
     background: transparent;
 }
 .inner-center-dashboard {margin-top: 10px;}
-.panel-body {padding: 15px 0;}
+/* .panel-body {padding: 15px 0;} */
 .inner-portlet .inner-portlet-title {
     background: #213f58;
 }
@@ -696,7 +538,7 @@ textarea.darktheme {
 .groupinput.midd input {
     width:138px;
     text-align: right;
-    padding-right: 20px;
+    padding-right: 23px;
 }
 .entr_wrapper_top {
     padding:20px 0 15px 20px;
@@ -1028,6 +870,11 @@ span.modal-notes-result {
     border-radius: 25px;
     padding: 3px 9px;
 }
+.record-data-btn:hover {
+    color: white;
+    background-color: #e91e63;
+    cursor: pointer;
+}
 .enter-trade-btn {
     float: right;
     font-family: 'Roboto', sans-serif;
@@ -1058,6 +905,7 @@ span.modal-notes-result {
 input.delete-data-btn:hover {
     background: #e91e63;
     transition: all .3s ease-out;
+    cursor: pointer;
 }
 input.enter-trade-btn:hover {
     background: #00bcd4;
@@ -1380,7 +1228,7 @@ input.enter-trade-btn:hover {
     border: none;
     border-radius: 0 4px 4px 0;
     background: #4e6a85;
-    padding: 4px 5px 3px;
+    padding:3px 5px 4px;
     text-align: left;
     font-size: 13px;
     color: #ecf0f1;
@@ -1490,6 +1338,12 @@ i.fas.fa-close.to_closethis_rec {
     border-radius: 20px;
     border: 2px solid #fff;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: lowercase
+}
+.rec_label_date label {
+    height: 28px;
 }
 .to-left-align {
     text-align: right !important;
@@ -2061,8 +1915,6 @@ a:hover {
 /*------ global-sidebar ------*/
 
 
-
-
 .swal-overlay--show-modal {
     z-index: 99999999;
 }
@@ -2390,9 +2242,6 @@ margin: 0;
     width: 90%;
     margin-top: 3px;
 }
-.arb_calcbox input[type="number"]::placeholder {
-    color: white;
-}
 .arb_calcbox h3 {
     font-size: 17px;
     padding-bottom: 0;
@@ -2478,14 +2327,6 @@ margin: 0;
     margin: 8px 12px;
     padding-left: 10px;
 }
-
-.arb_breakeven {
-    width: 100%;
-    margin: 4px 0 0;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
 .arbredtxt {
     color: #e64c3c;
 }
@@ -2493,18 +2334,8 @@ margin: 0;
 .arbgreentxt {
     color: #25ae5f;
 }
-
-.alleft {
-    float: left
-}
-
 .alright {
     float: right
-}
-
-.arbleveling {
-    padding: 3px 7px 3px;
-    line-height: 20px;
 }
 .to-top-create {
     float: right;
@@ -2552,23 +2383,6 @@ font-weight: 300;
 }
 
 /* Default Calc Styles - do not copy */
-
-.arb_calcbox input[type="number"] {
-    border:0;
-    border-radius: 4px;
-    padding: 5px 6px;
-    background: #11273e !important;
-    border: 1px solid #4e6a85;
-    color: #ecf0f1;
-    font-family: 'Roboto', sans-serif;
-    display:block;
-    width:90%;
-    margin-top:3px;
-}
-.arb_calcbox input[type="number"]::placeholder {
-    color: white;
-}
-
 .arb_calcbox h3 {
     font-size: 17px;
     padding-bottom: 0;
@@ -2675,20 +2489,9 @@ font-weight: 300;
     padding: 0 0 0 10px;
     border-radius: 5px 0 0 5px;
 }
-
-.arb_calcbox input[type="number"] {
-    margin-top:0;
-    border-radius: 0 5px 5px 0;
-    border: none;
-    display:inline-block;
-    padding: 5px 6px;
-    line-height: 20px;
-    background: #4e6a85 !important;
-}
 .arb_calcbox input[type="number"]::placeholder {
     color: white;
 }
-
 .arb_calcbox input[type="text"] {
     border:0;
     border-radius: 4px;
@@ -2760,9 +2563,177 @@ select#stockname {
     display: inline-block;
     border-radius: 0 6px 6px 0 !important;
 }
+input.dpri {
+    padding-left: 16px !important;
+    width: 100%;
+    height: 36px;
+    border-radius: 9px !important;
+    color: #d8d8d8 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px;
+}
+input.dpos {
+    padding-left: 16px !important;
+    width: 100%;
+    height: 36px;
+    border-radius: 9px !important;
+    color: #d8d8d8 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px;
+}
+input.dpos::placeholder, input.dpri::placeholder {
+    color: white;
+} 
+.totabs active {
+    border-bottom: 2px solid red;
+}
+.paramlist .jjaajs {
+    margin-top: 15px !important;
+    max-height: 150px !important;
+    overflow-y: auto !important;
+}
+.doneitem li span {
+    padding-left: 17px;
+}
+.additems a{
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    background: none;
+    border: 2px #CDDC39 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 10px;
+}
+.calculate a{
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    background: none;
+    border: 2px #e91e63 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 9px;
+}
+.clearbtn a{
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    background: none;
+    border: 2px #03A9F4 solid;
+    height: auto;
+    border-radius: 25px;
+    padding: 3px 20px;
+}
+.tobottomsit {
+    margin: 30px 0px 30px 2px;
+}
+span.totalcost {
+    font-size: 26px;
+    font-weight: 200;
+}
+span.totalposition {
+    font-size: 26px;
+    font-weight: 200;
+}
+span.totalprice {
+    font-size: 26px;
+    font-weight: 200;
+}
+.tobottomsit ul li {
+    line-height: 1.2;
+    text-align: left;
+    margin-bottom: 7px;
+    border-bottom: 1px solid rgba(17, 39, 62, 0.32941176470588235);
+    width: 94%;
+}
+.toborderbotcalc, .toborderbotvar, .toborderbot {
+    border-bottom: 2px solid #FFC107;
+    font-size: 20px;
+}
+.toclassclose, .toclassclosess, .toclasscloserss {
+    cursor: pointer;
+    font-size: 14px;
+    color: #d8d8d8;
+    float: right;
+    top: 8px;
+    position: relative;
+}
+.sccas{
+    padding: 12px 20px 15px 20px !important;
+    max-width: 359px;
+    background: linear-gradient(#11273e,#24405f);
+}
+.xmakfb {
+    padding: 12px 20px 17px 20px !important;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	font-size: 100%;
+	vertical-align: baseline;
+	list-style: none !important;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+.adprams div {
+    display: inline-block;
+}
 /* EOF Var Calc */
-
-
-
-
 /*------ calc-part-dashboard ------*/

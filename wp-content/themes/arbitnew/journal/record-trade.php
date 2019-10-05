@@ -1,7 +1,7 @@
 <div class="record_modal">
 	<div class="record_main">
 		<div class="record_header">
-			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec"></i></span>
+			<span class="record_head_label">Record A Trade<i class="fas fa-close to_closethis_rec">X</i></span>
 		</div>
 		<form action="/journal" method="post">
 			<div class="record_body row">

@@ -1,82 +1,15 @@
 
-<?php 
+<?php
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
-<script>
-
-    function lateststocks(symbol){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                               
-                        var price = parseFloat(res.data.last);
-                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
-                        var curchange = parseFloat(res.data.changepercentage);
-
-                        if(curchange < 0){
-                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
-                        }else if (curchange > 0) {
-                            jQuery('.curchange_' + symbol).css("color","#53b987");
-                        }
-
-                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
-              
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-
-    }
-
-/*
-function minichart(symbol, from, to){
-
- 
- jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                    
-                    var sdata = res.data.o; 
-                    var counter = 0;              
-                    var dhist = "";
-                    
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-                           
-                }
-
-                dhisto = dhist;
-                jQuery('.minchart_' + symbol).val(dhist);
-                                   
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-
-        });
-
-    }
-    */
-
- 
-    
-</script>
 
 <?php
 
 global $wpdb, $current_user;
 $userID = $current_user->ID;
+
+
 
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
@@ -84,21 +17,17 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
-
         foreach ($havemeta as $key => $value) {
             if ($value['stockname'] == $_POST['stockname']) {
                 unset($havemeta[$key]);
             }
         }
-
         array_push($havemeta, $_POST);
         update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
         wp_redirect( '/watchlist' );
         exit;
 
     } else {
-
         if (isset($havemeta) && !empty($havemeta)){
             if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
                 echo "Stock Already Exist";
@@ -117,8 +46,6 @@ if (isset($_POST) && !empty($_POST)) {
         wp_redirect( '/watchlist' );
         exit;
     }
-
-
 }
 
 if (isset($_GET['remove'])) {
@@ -138,7 +65,6 @@ if(isset($_GET['addcp'])){
 
 
 ?>
-
 
 <!-- #main-header -->
 <div id="main-content" class="oncommonsidebar">
@@ -160,15 +86,15 @@ if(isset($_GET['addcp'])){
                             <div class="col-md-12">
                                 <div class="box-portlet">
                                     <div class="box-portlet-header">
-                                     
+
                                         <h2 class="watchtitle">Watchlist</h2>
-                                       
+
                                     </div>
                                     <div class="box-portlet-content">
                                         <div class="dtabcontent">
                                             <div class="dclosetab watchtab active">
-                                                
-                                                <div class="dinnerlist">
+
+                                                <div class="dinnerlist watcherlist">
                                                     <?php if ($havemeta): ?>
                                                         <ul>
                                                             <li class="addwatch">
@@ -177,28 +103,24 @@ if(isset($_GET['addcp'])){
                                                                     <div class="dplsicon" style="margin: 5px 70px;"><i class="fa fa-plus-circle"></i></div>
                                                                 </div>
                                                             </li>
-                                                            <?php foreach ($havemeta as $key => $value) { 
+                                                            <?php foreach ($havemeta as $key => $value) {
                                                                 $stock = $value['stockname'];
                                                                 $from  = date('Y-m-d', strtotime("-20 days"));
                                                                 $to = date('Y-m-d');
 
-                                                               //echo "<script> minichart('$stock', '$from', '$to');</script>";
-                                                               echo "<script> lateststocks('$stock');</script>";
-                                                               
-
                                                                 ?>
-                                                               
+
 
                                                                 <li class="watchonlist" class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>" data-dhisto='<?php echo json_encode($dstockinfo); ?>'>
                                                                     <!--<div class="watchlist--buttons">
                                                                         <div><a href="#" class="removeItem" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-trash"></i></a></div>-->
                                                                         <div style="display: none;"><a href="#" class="editItem" id="edit_<?php echo $value['stockname']; ?>" data-toggle="modal" data-target="#modal<?php echo $value['stockname']; ?>" data-space="<?php echo $value['stockname']; ?>"><i class="fa fa-edit"></i></a></div>
                                                                     <!--</div>-->
-                                                                    
+
                                                                     <div class="row">
                                                                         <div class="wlttlstockvals">
                                                                             <div class="stocknn"><?php echo $value['stockname']; ?></div>
-                                                                            <div class="s_dropdown" style="display: inline-block;"> 
+                                                                            <div class="s_dropdown" style="display: inline-block;">
                                                                                 <select class="editwatchlist" name="editstock" id="" data-space="<?php echo $value['stockname']; ?>">
                                                                                         <option  value="select" hidden></option>
                                                                                         <option  value="delete">Delete</option>
@@ -206,9 +128,9 @@ if(isset($_GET['addcp'])){
                                                                                 </select>
 
                                                                             </div>
-                                                                            
+
                                                                             <div class="dpricechange">
-                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>                                                                                          
+                                                                                <div class="curprice_<?php echo $value['stockname'];?>">&#8369;</div>
                                                                                 <div class="curchange_<?php echo $value['stockname'];?>" style="color:#FFC107;"></div>
                                                                             </div>
                                                                         </div>
@@ -225,7 +147,7 @@ if(isset($_GET['addcp'])){
                                                                                     </div>
                                                                                 </div>
 
-                    
+
                                                                                 </div>
                                                                                 <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="minchart_<?php echo $value['stockname'];?>">
                                                                             </div>
@@ -239,8 +161,8 @@ if(isset($_GET['addcp'])){
                                                                                 <li>
                                                                                     <div class="dcondition">Entry Price</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>                                                                                        
-                                                                                        </span>                                                                                        
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_entry_price']; ?>
+                                                                                        </span>
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
@@ -248,8 +170,8 @@ if(isset($_GET['addcp'])){
                                                                                 <li>
                                                                                     <div class="dcondition">Take Profit</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>                                                                                        
-                                                                                        </span>                                                                                       
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_take_profit_point']; ?>
+                                                                                        </span>
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
@@ -257,8 +179,8 @@ if(isset($_GET['addcp'])){
                                                                                 <li>
                                                                                     <div class="dcondition">Stop<br>Loss</div>
                                                                                     <div class="dvalue">
-                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>                                                                                        
-                                                                                        </span>                                                                                       
+                                                                                        <span class="ontoleft"><?php echo $value['dconnumber_stop_loss_point']; ?>
+                                                                                        </span>
                                                                                     </div>
                                                                                 </li>
                                                                             <?php endif ?>
@@ -283,7 +205,7 @@ if(isset($_GET['addcp'])){
                                                                                         <div class="instumentinner">
                                                                                             <div class="row">
 
-                                                                                                <div class="cond-ion" style="margin: 15px 0px 0px 26px;">                           
+                                                                                                <div class="cond-ion" style="margin: 15px 0px 0px 26px;">
                                                                                                     <div class="groupinput midd"><label>Entry Price</label>
                                                                                                         <input type="text" name="dconnumber_entry_price" class="inpt_data_price number" value="<?php echo $value['dconnumber_entry_price']; ?>" >
                                                                                                         <input type="hidden" id="dparamcondition" name="dcondition_entry_price" value="entry_price">
@@ -296,7 +218,7 @@ if(isset($_GET['addcp'])){
                                                                                                         <input type="text" name="dconnumber_stop_loss_point" class="inpt_data_price number" value="<?php echo $value['dconnumber_stop_loss_point']; ?>">
                                                                                                         <input type="hidden" id="dparamcondition" name="dcondition_stop_loss_point" value="stop_loss_point">
                                                                                                     </div>
-                                                                                                </div>      
+                                                                                                </div>
 
                                                                                                 <div class="col-md-12">
                                                                                                     <div class="innerdeliver innerdeliver-editstock">
@@ -307,7 +229,7 @@ if(isset($_GET['addcp'])){
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="row">
-                                                                                                 
+
                                                                                                     <div class="col-md-12">
                                                                                                         <div class="submitform" style="margin-left: 84px;">
                                                                                                             <img class="chart-preloader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: -6px; margin-left: 23px;">
@@ -324,15 +246,12 @@ if(isset($_GET['addcp'])){
                                                                                 </div>
                                                                             </div>
                                                                           </div>
-                                                                          <!-- <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                                                          </div> -->
+                                                                          
                                                                         </div>
                                                                       </div>
                                                                     </div>
                                                                 </li>
-                                                            <?php //endif; 
+                                                            <?php 
                                                                             } ?>
                                                         </ul>
                                                     <?php else: ?>
@@ -346,11 +265,11 @@ if(isset($_GET['addcp'])){
                                                         </ul>
                                                     <?php endif; ?>
                                                 </div>
-                                            </div>  
+                                            </div>
                                             <div class="dclosetab addwatchtab " style="width: 271px;">
 
 
-                                                <!-- wathlist phone number modal -->    
+                                                <!-- wathlist phone number modal -->
                                                 <div class="modal" id="modal-phonenum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-modelbox-margin" role="document" style="left: 0; width: 300px">
                                                         <div class="modal-content">
@@ -381,7 +300,7 @@ if(isset($_GET['addcp'])){
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- wathlist phone number modal -->    
+                                                <!-- wathlist phone number modal -->
 
 
 
@@ -391,7 +310,7 @@ if(isset($_GET['addcp'])){
 
 
                                                         <div class="groupinput midd selectstock"><label>Stock Code</label>
-                                                            
+
 
                                                             <input type="text" autocomplete="off" class="input-stock" id="myDropdown" placeholder="Search" style="margin-left: -3px; text-align: right;" >
 
@@ -424,9 +343,9 @@ if(isset($_GET['addcp'])){
                                                                 </div>
                                                         </div>
 
-                                                         
+
                                                             <div class="row">
-                                                               
+
                                                                 <div class="col-md-6">
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
@@ -459,9 +378,9 @@ if(isset($_GET['addcp'])){
             <div class="right-dashboard-part">
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
-                      <?php include_once "watchlist/sidebar-topgainerslosers.php";?>    
-                      <?php //include_once "parts/sidebar-latestnews.php";?>    
-                      <?php include_once "parts/sidebar-footer.php";?>               
+                      <?php include_once "watchlist/sidebar-topgainerslosers.php";?>
+                      <?php include_once "parts/sidebar-footer.php";?>
+                      <?php include_once "parts/sidebar-alert.php";?>              
                 </div>
 
             </div>
@@ -473,86 +392,4 @@ if(isset($_GET['addcp'])){
 </div> <!-- #main-content -->
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
-<script>
-
-    if (typeof angular !== 'undefined') {
-        var app = angular.module('arbitrage_wl', ['nvd3']);
-
-        <?php    
-
-        if ($havemeta) {
-    foreach ($havemeta as $key => $value) {    
-
-            $stock = $value['stockname'];
-
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
-            curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            $dhistofronold = curl_exec($curl);
-            curl_close($curl);
-
-            $dhistoforchart = json_decode($dhistofronold);
-            $dhistoforchart = $dhistoforchart->data;
-
-            $dhistoflist = "";
-            $counter = 0;
-
-
-            if (isset($dhistoforchart->o) && is_array($dhistoforchart->o)) {
-                for ($i=0; $i < (count($dhistoforchart->o)); $i++) {
-                    $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
-                    $counter++;
-                }
-            }
-
-    ?>
-      
-
-        app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
-                $scope.options = {
-                        chart: {
-                            type: 'candlestickBarChart',
-                            height: 70,
-                            width: 195,
-                            margin : {
-                                top: 0,
-                                right: 0,
-                                bottom: 0,
-                                left: 0
-                            },
-                            interactiveLayer: {
-                                tooltip: { enabled: false }
-                            },
-                            x: function(d){ return d['date']; },
-                            y: function(d){ return d['close']; },
-                            duration: 100,
-                            zoom: {
-                                enabled: true,
-                                scaleExtent: [1, 10],
-                                useFixedDomain: false,
-                                useNiceScale: false,
-                                horizontalOff: false,
-                                verticalOff: true,
-                                unzoomEventType: 'dblclick.zoom'
-                            }
-                        }
-                    };
-
-                $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                //$scope.data = [{values: [datahistory]}];
-            });
-
-        <?php
-            }
-        }
-        ?>
-    }
-
-</script>
-<?php include_once "watchlist/footer-files.php";?> 
+<?php include_once "watchlist/footer-files.php";?>

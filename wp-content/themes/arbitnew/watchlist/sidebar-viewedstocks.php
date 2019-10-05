@@ -1,9 +1,11 @@
+
 <script type="text/javascript">
 
 jQuery(function(){
   
 
-  var vstocks;
+  var vstocks = [];
+  var i=0;
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,15 +18,18 @@ jQuery(function(){
     dcount++;
   });
 
-$.ajax({
+ $.ajax({
     url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE",
     type: 'GET',
     dataType: 'json', // added data type
     success: function(res) {
-
+    
        jQuery.each(res.data, function(i, val) {
-        
-            console.log(val.symbol);
+
+       <?php
+
+
+       ?>
 
         });
     },
@@ -33,13 +38,14 @@ $.ajax({
     }
 });
 
-
+   
 
 });
 
 
 
 </script>
+
 
 <div class="top-stocks">
     <div class="to-top-title"><strong>Most Watched Stocks</strong></div>
@@ -49,16 +55,18 @@ $.ajax({
         <?php 
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
+        curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/list");
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
         curl_close($curl);
 
         if ($response !== false) {
-            $response = json_decode($response);
-            $stockinfo = $response->data;
-        }
+                $response = json_decode($response);
+                $stockinfo = $response->data;
+            }
+
+        //print_r($stockinfo);
 
         $num = 0;
         $counter = 1;
@@ -66,7 +74,7 @@ $.ajax({
         //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        foreach($stockinfo as $stkey => $stvals){
+        foreach($stocks as $stkey => $stvals){
         
             foreach($users as $user_id){
            

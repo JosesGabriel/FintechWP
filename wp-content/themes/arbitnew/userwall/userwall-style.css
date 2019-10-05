@@ -523,7 +523,7 @@
 	}
 	.inner-center-dashboard {
 		padding: 0;
-    	margin-top: 9px;
+    	margin-top: -1px;
 	}
 	.inner-placeholder {
 		padding-top: 0 !important;
@@ -1167,7 +1167,7 @@ a:hover {
     top: 65px;
 }
 .left-dashboard-part {
-    padding: 10px 0 0 !important;
+    padding: 0 0 0 !important;
     width: 196px;
 }
 .seven.calc-menu-buysell img {
@@ -1722,7 +1722,7 @@ span.um-activity-seemore {
 .right-dashboard-part {
     float: left;
     max-width: 267px;
-    padding: 11px 0 0;
+    /* padding: 11px 0 0; */
     height: 140%;
 }
 .top-stocks,

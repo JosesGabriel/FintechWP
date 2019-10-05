@@ -1070,6 +1070,7 @@ h2.watchtitle {
     }
     .dinnerlist .dparams ul li {
         width: 31.6%;
+        padding: 2px;
 	}
 	.box-portlet-header, .box-portlet-footer {
 		background: none;
@@ -1144,7 +1145,8 @@ h2.watchtitle {
 		display: block;
         width: 100%;
         margin: 0;
-        padding: 0;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #page-container {
@@ -1556,5 +1558,10 @@ a:hover {
 .left-dashboard-part {
     padding: 10px 0 0 !important;
     width: 196px;
+}
+
+
+.dinnerlist .dparams ul {
+    padding: 0px;
 }
 /*------ global-sidebar ------*/

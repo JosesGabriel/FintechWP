@@ -22,7 +22,7 @@ $.ajax({
     dataType: 'json', // added data type
     success: function(res) {
 
-        console.log(res.data.symbol);
+        console.log(res.data);
      
     },
     error: function (xhr, ajaxOptions, thrownError) {

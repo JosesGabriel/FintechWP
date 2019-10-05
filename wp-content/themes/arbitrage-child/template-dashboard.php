@@ -12,9 +12,9 @@ get_header( 'dashboard' );
 date_default_timezone_set('Asia/Manila'); ?>
 
 <?php //get_template_part('parts/global', 'css'); ?>
-<?php get_template_part('parts/sidebar', 'calc'); ?>
-<?php get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+<?php //get_template_part('parts/sidebar', 'calc'); ?>
+<?php //get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php //get_template_part('parts/sidebar', 'avarageprice'); ?>
 <div id="main-content" class="ondashboardpage">
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
@@ -54,7 +54,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 
                     <?php get_template_part('parts/sidebar', 'topplayers'); ?>
 
-                    <?php //get_template_part('parts/sidebar', 'alert'); ?>
+                    <?php get_template_part('parts/sidebar', 'alert'); ?>
 					
 					<?php get_template_part('parts/sidebar', 'footer'); ?>
 

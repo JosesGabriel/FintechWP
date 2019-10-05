@@ -625,18 +625,15 @@ a.um-link-alt:hover {text-decoration: underline !important;}
 .um-dropdown li  a {
 	display: block;
 	padding: 8px 12px;
-	color: #666;
+	color: #fff;
 	font-size: 14px;
 	line-height: 18px;
 }
 
-.um-dropdown li:last-child a {
-	border-top: 1px solid #e5e5e5;
-	padding: 12px;
-}
-
 .um-dropdown li  a:hover {
-
+	background: #1e3554;
+	border-radius: 5px;
+	color: #fff !important;
 }
 
 .um-dropdown-b {
@@ -645,16 +642,14 @@ a.um-link-alt:hover {text-decoration: underline !important;}
 
 .um-dropdown-arr {
 	position: absolute;
-	color: #fff;
 	font-size: 24px;
 	width: 24px;
 	height: 24px;
 	overflow: hidden;
 	z-index: 15;
-	color: #eee;
 }
 
-.um-dropdown-arr * { display: block !important; width: 24px !important; height: 24px !important; vertical-align: bottom !important; overflow: hidden !important; line-height: 24px !important; color: #213f58; }
+.um-dropdown-arr * { display: block !important; width: 24px !important; height: 24px !important; vertical-align: bottom !important; overflow: hidden !important; line-height: 24px !important; color: #142c46; }
 
 /*
 	- Misc.

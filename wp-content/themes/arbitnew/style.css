@@ -969,7 +969,7 @@ ul.footmore li.nobar:after {
     min-height: 60px;
 }
 .profile-post-content {
-    padding: 0 10px;
+    padding: 0 10px 0;
 }
 .the_user_top_page .um-profile-photo a.um-profile-photo-img {
     background: #2e3e53;

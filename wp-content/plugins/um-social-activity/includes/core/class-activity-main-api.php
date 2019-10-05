@@ -447,10 +447,9 @@ class Activity_Main_API
 
             $content = str_replace($search, $replace, $content);
 
-            if ($content != '') {
-                $newconts = '';
+            $newconts = '';
 
-               
+            if ($content != '') {   
                 $dprocessedtext = preg_split("/[\s,]+/", $content);
 
                 //$dprocessedtext = explode(' ', $content);

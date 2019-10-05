@@ -1,9 +1,11 @@
+
 <script type="text/javascript">
 
 jQuery(function(){
   
 
-  var vstocks;
+  var vstocks = [];
+  var i=0;
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -21,10 +23,13 @@ $.ajax({
     type: 'GET',
     dataType: 'json', // added data type
     success: function(res) {
-
+    
        jQuery.each(res.data, function(i, val) {
+
+       <?php
         
-            console.log(val.symbol);
+
+       ?>
 
         });
     },
@@ -33,7 +38,7 @@ $.ajax({
     }
 });
 
-
+    
 
 });
 

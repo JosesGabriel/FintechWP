@@ -480,9 +480,6 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-    var dhisto = $('#minchart_HLCM').val();
-    console.log(dhisto);
-    console.log($("input[name='minchart_HLCM']").val());
 
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);

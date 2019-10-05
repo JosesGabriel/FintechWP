@@ -71,6 +71,8 @@ $stocks = $_GET['stocks'];
                 $stockinfo = $response->data;
             }
 
+        print_r($stockinfo);
+
         $num = 0;
         $counter = 1;
         $stockcount = 0;

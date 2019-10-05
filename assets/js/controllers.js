@@ -106,7 +106,7 @@ app.controller('ticker', ['$scope','$filter', '$http', function($scope, $filter,
     });
     $scope.select = goToChart;
 }]);
-app.controller('psei', function($scope, $http) {  
+app.controller('psei', function($scope, $http) {
     $scope.psei = {last: 0, chg: 0, diff: 0, prev: 0};
     // function updatePSEI() {
         $http.get("/api/psei").then(function (response) {
@@ -145,7 +145,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
     $scope.stocks = [];
     $scope.stock_details = _stocks;
     $scope.watchlists = {
-        'All Stocks': 'stocks', 
+        'All Stocks': 'stocks',
         'New Watchlist': 'new',
         'Default Watchlist': JSON.parse(localStorage.getItem('watchlist')) || [],
     };
@@ -322,7 +322,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             });
         }
     }
-    $http.get("https://arbitrage.ph/charthisto/?g=fullstack").then( function (response) {
+    $http.get("/charthisto/?g=fullstack").then( function (response) {
         stocks = response.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
@@ -349,22 +349,22 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             return stock;
         });
 
-        
-        
+
+
         $scope.stocks = stocks;
         $scope.count = $scope.stocks.reduce( function(a, b) {
             if (b.change < 0) {
                 a.losers = ++a.losers || 1;
-            }  
+            }
             if (b.change === 0) {
                 a.unchanged = ++a.unchanged || 1;
-            }  
+            }
             if (b.change > 0) {
                 a.gainers = ++a.gainers || 1;
             }
             return a;
         }, {});
-        
+
         $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
         // jQuery.extend($scope.watchlists, JSON.parse(localStorage.getItem('watchlists')));
         // IF LOGGED IN
@@ -376,7 +376,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
             $scope.watchlist = 'All Stocks';
             $scope.watchlistReady = true;
         });*/
-        $http.get("https://arbitrage.ph/charthisto/?g=md").then( function (response) {
+        $http.get("/charthisto/?g=md").then( function (response) {
             if (response.data.success) {
                 // $scope.marketdepth = response.data.data;
                 $scope.marketdepth = response;
@@ -465,10 +465,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', function($sc
         $scope.count = $scope.stocks.reduce( function(a, b) {
             if (b.change < 0) {
                 a.losers = ++a.losers || 1;
-            }  
+            }
             if (b.change === 0) {
                 a.unchanged = ++a.unchanged || 1;
-            }  
+            }
             if (b.change > 0) {
                 a.gainers = ++a.gainers || 1;
             }
@@ -629,7 +629,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 symbol: _symbol,
                 interval: 'D',
                 container_id: "tv_chart_container",
-                datafeed: new Datafeeds.UDFCompatibleDatafeed("https://arbitrage.ph/api"),
+                datafeed: new Datafeeds.UDFCompatibleDatafeed("/api"),
                 library_path: "/assets/tradingview/charting_library/",
                 timezone: "Asia/Hong_Kong",
                 locale: "en",
@@ -648,7 +648,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 },
                 logo: {
                     image: '/wp-content/uploads/2019/04/translogo.png',
-                    link: 'https://arbitrage.ph/'
+                    link: '/'
                 },
                 time_frames: [
                     { text: "5y", resolution: "D" },
@@ -668,7 +668,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 theme: "Dark",
             });
             widget.onChartReady(function() {
-                
+
                 function changeTheme() {
                     $('body').toggleClass('dark-theme', nightmode);
                     $('#tv_chart_container iframe').contents().find('html').toggleClass('theme-dark', nightmode);
@@ -678,7 +678,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 $('#tv_chart_container').show();
                 chart = widget.chart();
                 console.log("its here na");
-                
+
                 chart.onSymbolChanged().subscribe(null, function(symbolData) {
                     console.log(symbolData);
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
@@ -687,7 +687,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     if (symbolData.type == 'index') {
                     }
                     var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
-                    
+
                     if (found.length) {
 
                         if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
@@ -707,11 +707,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.dshowsentiment = '';
 
                         console.log("the stock changed");
-                            console.log("https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
-                        
+                            console.log("/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal);
+
                         $http.get("//marketdepth.pse.tools/api/market-depth?symbol=" + symbol).then( function (response) {
 
-                        
+
                             if (response.data.success) {
                                 $scope.$parent.marketdepth = response.data.data;
                             }
@@ -748,11 +748,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                             $scope.$parent.fullbidperc = ($scope.$parent.fullbidtotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
                             $scope.$parent.fullaskperc = ($scope.$parent.fullasktotal / ($scope.$parent.fullbidtotal + $scope.$parent.fullasktotal)) * 100;
 
-                            
+
 
                             $http({
                                 method : "POST",
-                                url : "https://arbitrage.ph/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
+                                url : "/apipge/?stock="+symbol+"&isbull="+$scope.$parent.fullbidtotal+"&isbear="+$scope.$parent.fullasktotal,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: {
@@ -763,7 +763,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                 console.log(response.data);
                                 console.log(response.data.isvote);
                                 angular.element(".regsentiment").addClass('openmenow');
-                                
+
 
                                 // angular.element(".bullbearsents").addClass('clickedthis');
 
@@ -777,11 +777,11 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                                     var dbullvalx = parseFloat(response.data.dbull);
                                     var dbearvalx = parseFloat(response.data.dbear);
 
-                                    angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%'); 
+                                    angular.element(".bbs_bull_bar").find('span').text(dbullvalx.toFixed(2)+'%');
 
                                     angular.element(".bbs_bear_bar").css('width', response.data.dbear+'%');
                                     angular.element(".bbs_bear_bar").find('span').show('fast');
-                                    angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%'); 
+                                    angular.element(".bbs_bear_bar").find('span').text(dbearvalx.toFixed(2)+'%');
                                 } else {
                                     // can vote!
                                     angular.element(".bullbearsents").removeClass('clickedthis');
@@ -808,7 +808,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         $scope.$parent.transactions = [];
                         $scope.$parent.$digest();
                     }
-                    var url = '/chart/' + symbol; 
+                    var url = '/chart/' + symbol;
                     var title = symbol + ' | Arbitrage Trading Tools';
                     document.title = title;
                     window.history.pushState({path: url}, title, url);
@@ -822,7 +822,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         widget.chart().createStudy("Support and Resistance", false, false);
                      })
                     .append('<span>S&R</span>');
-                $(widget.createButton({align: "right"})).attr('title', 'Fullscreen').on('click', function (e) { 
+                $(widget.createButton({align: "right"})).attr('title', 'Fullscreen').on('click', function (e) {
                     $('#tv_chart_container').toggleFullScreen();
                 })
 				.html('<div class="button-2-lC3gh4- button-2ioYhFEY- apply-common-tooltip isInteractive-20uLObIc-" style="margin: 0 -10px !important;"><span class="icon-beK_KS0k-"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="28" height="28"><g fill="currentColor"><path d="M21 7v4h1V6h-5v1z"></path><path d="M16.854 11.854l5-5-.708-.708-5 5zM7 7v4H6V6h5v1z"></path><path d="M11.146 11.854l-5-5 .708-.708 5 5zM21 21v-4h1v5h-5v-1z"></path><path d="M16.854 16.146l5 5-.708.708-5-5z"></path><g><path d="M7 21v-4H6v5h5v-1z"></path><path d="M11.146 16.146l-5 5 .708.708 5-5z"></path></g></g></svg></span></div>').css('cursor','pointer');
@@ -830,4 +830,3 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
         });
     });
 }]);
-

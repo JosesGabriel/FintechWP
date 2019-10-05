@@ -1157,6 +1157,9 @@ time.srr-date div {
 .srr-wrap .srr-item > *:last-child {
     margin-bottom: 0px !important;
 }
+.widget.widget_super_rss_reader {
+    list-style: none;
+}
 .hudbadge {
     display: inline-block;
     margin: 4px 0;

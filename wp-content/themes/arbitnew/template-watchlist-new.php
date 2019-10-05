@@ -36,7 +36,7 @@ var dhisto = '';
 
 function minichart(symbol, from, to){
 
- var dhist = '';
+ 
  jQuery.ajax({
             url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
             type: 'GET',
@@ -45,12 +45,12 @@ function minichart(symbol, from, to){
                     
                     var sdata = res.data.o; 
                     var counter = 0;              
-
+                    var dhist = "";
                     
                 if(sdata.length != 0){
 
                    for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        dhist += '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
                         counter++;
                    }
                            

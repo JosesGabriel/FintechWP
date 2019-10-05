@@ -491,12 +491,9 @@ if(isset($_GET['addcp'])){
             $stock = $value['stockname'];
           //  $from  = date('Y-m-d', strtotime("-20 days"));
            // $to = date('Y-m-d');
-        ?>
+       
+               //echo '><>';
 
-        // minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
-            //echo '><>';
-
-           /* 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
             curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -516,22 +513,22 @@ if(isset($_GET['addcp'])){
                     $dhistoflist .= '{"date": '.($i + 1).', "open": '.$dhistoforchart->o[$i].', "high": '.$dhistoforchart->h[$i].', "low": '.$dhistoforchart->l[$i].', "close": '.$dhistoforchart->c[$i].'},';
                     $counter++;
                 }
-            }*/
+            }
 
 
 
 
-    //?>
+    ?>
 
    
 
     
    
-     var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
+    // var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
 
     //hist();
 
-console.log(datahistory);
+//console.log(datahistory);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {
@@ -563,8 +560,8 @@ console.log(datahistory);
                         }
                     };
 
-                //$scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                $scope.data = [{values: [datahistory]}];
+                $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+                //$scope.data = [{values: [datahistory]}];
             });
 
         <?php

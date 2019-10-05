@@ -669,7 +669,7 @@
 																											<td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
 																											<td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;padding-right: 5px !important;">{{stock.trades | numeraljs:'0,0'}}</td>
 																										</tr>
-																										<tr ng-if="watchlists[watchlist].length == 0">
+																										<tr ng-if="stocks.length == 0">
 																											<td colspan="5" align="center">No Data Found</td>
 																										</tr>
 																									</tbody>

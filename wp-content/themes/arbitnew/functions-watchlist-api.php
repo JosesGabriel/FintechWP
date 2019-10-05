@@ -23,6 +23,13 @@ class WatchlistAPI extends WP_REST_Controller
                 'callback' => [$this, 'fetchUserWatchlist'],
             ],
         ]);
+
+        register_rest_route($base_route, 'watchlists', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getwatchlist'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -57,6 +64,21 @@ class WatchlistAPI extends WP_REST_Controller
             ],
             'message' => 'Successfully fetched watchlist.'
         ]);
+    }
+
+    public function getwatchlist($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $metadata = "";
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key = "_watchlist_instrumental" and user_id ='.$data['userid']);
+        foreach ($ismytrades as $key => $value) {
+            $metadata = unserialize($value->meta_value);
+        }
+        
+        
+        return $this->respond(true, ['data' => $metadata], 200);
+        
     }
 }
 

@@ -1,5 +1,71 @@
 $(document).ready(function(){
 
+
+function minichart(symbol, from, to){
+
+ jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+
+                    var sdata = res.data.o;
+                    var counter = 0;
+                    var dhist = "";
+
+                if(sdata.length != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        counter++;
+                   }
+
+                }
+
+                jQuery('.minchart_' + symbol).val(dhist);
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+
+        });
+
+    }
+
+
+function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
+            type: 'GET',
+            dataType: 'json',
+            success: function(res) {
+
+                        var price = parseFloat(res.data.last);
+                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
+                        var curchange = parseFloat(res.data.changepercentage);
+
+                        if(curchange < 0){
+                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
+                        }else if (curchange > 0) {
+                            jQuery('.curchange_' + symbol).css("color","#53b987");
+                        }
+
+                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+        });
+
+    }
+    
+
+
+
+
     $(".gainers-title").click(function () {
 
         if($('.gainers').css('display') == 'none'){

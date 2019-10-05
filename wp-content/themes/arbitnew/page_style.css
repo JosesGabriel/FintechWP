@@ -469,7 +469,7 @@
     .add-post .um-activity-new-post .um-activity-foot .upload-statusbar {
         font-size: 12px;
         line-height: 1.3em;
-        background: #112233 !important;
+        background: pink !important;
         padding: 5px 10px;
         border-radius: 20px;
         margin-top: 2px;
@@ -1283,117 +1283,6 @@
     }	
     /*************************** User wall edit *******************************/
 
-    .um-activity-bodyinner-edit .um-activity-preview {
-        border-top: none;
-        min-height: 50px;
-        display: none;
-    }
-    .um-activity-bodyinner-edit .um-activity-preview-spn {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        float: left;
-        max-height: 150px;
-        padding: 0 10px 10px 10px !important;
-    }
-    .um-activity-bodyinner-edit textarea.um-activity-textarea-elem.ui-autocomplete-input {
-        padding: 2px 16px !important;
-        height: 60px !important;
-    }
-    .um-activity-bodyinner-edit .um-activity-img-remove {
-        position: absolute;
-        right: 15px;
-        top: 5px;
-        color: #fff;
-        font-size: 14px;
-        line-height: 14px;
-        height: 14px;
-        display: block;
-        padding: 4px;
-        cursor: pointer;
-    }
-    .um-activity-bodyinner-edit .um-activity-img-remove:hover {
-        background: rgb(0,0,0,0.3);
-        border-radius: 25px;
-    }
-    .um-activity-bodyinner-edit .um-activity-img-remove {
-        position: absolute;
-        right: 15px;
-        top: 5px;
-        color: #fff;
-        font-size: 14px;
-        line-height: 14px;
-        height: 14px;
-        display: block;
-        padding: 4px 6px;
-        cursor: pointer;
-    }
-    .um-activity-bodyinner-edit div.um-activity-textarea textarea,
-    .um-activity-bodyinner-edit div.um-activity-textarea textarea:hover,
-    .um-activity-bodyinner-edit div.um-activity-textarea textarea:focus {
-        padding: 2px 16px !important;
-        height: 60px !important;
-        color: #fffffe;
-    }
-    .um-activity-bodyinner-edit .um-activity-foot {
-        padding: 0 5px 0 0;
-        background: none;
-        border: transparent;
-        border-top-color: transparent;
-        border-bottom: 0;
-        border-radius: 0 0 3px 3px;
-    }
-    .um-activity-bodyinner-edit a.um-activity-edit-cancel {
-        border-radius: 26px !important;
-        border: 1.3px solid #6583a8 !important;
-        padding: 0px 17px !important;
-        font-family: 'Nunito', sans-serif;
-        color: #6583a8;
-        background: none !important;
-        margin-right: 5px;
-        margin-top: 6px;
-        margin-bottom: 5px;
-        height: 27px !important;
-        line-height: 26px !important;
-    }
-    .um-activity-bodyinner-edit a.um-button.um-activity-post {
-        border-radius: 26px !important;
-        border: 1.3px solid #6583a8 !important;
-        padding: 0px 17px !important;
-        font-family: 'Nunito', sans-serif;
-        color: #6583a8;
-        background: none !important;
-    }
-    .wh-container {
-        margin-top: 10px;
-    }
-    .nws-toptitle {
-        position: absolute;
-        display: block;
-        padding: 20px 20px;
-        max-width: 23em;
-        min-width: 23em;
-        height: 100%;
-        z-index: 1;
-        background: rgba(0,0,0,0.7);
-        /*transform: translate(-23em);*/
-    }
-    .nws-toptitle p a {
-        font-size: 30px;
-        color: #fffffe;
-        display: block;
-        line-height: 1.2;
-        font-weight: 100;
-    }
-    .left-dashboard-part-inner {
-        position: sticky;
-        z-index: 999999;
-        top: 55px;
-    }
-    ._fottns {
-        font-size: 14px;
-        padding-left: 10px !important;
-    }
 
     /*************************** End User wall edit *******************************/
 

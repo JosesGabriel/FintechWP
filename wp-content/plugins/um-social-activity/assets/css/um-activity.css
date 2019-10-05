@@ -197,7 +197,7 @@ div.um-activity {
 }
 
 .um-activity-bodyinner-photo img {
-	max-width: 100%;
+	width: 100%;
 	height: auto;
 	padding: 0;
 	margin: 0 auto;
@@ -248,7 +248,6 @@ div.um-activity {
 .um-activity-widget div.um-activity-textarea textarea:focus {
 	border: none !important;
 	resize: none;
-	padding: 0 !important;
 	min-height: auto !important;
 	font-size: 13px !important;
 	outline: none !important;
@@ -296,8 +295,8 @@ div.um-activity {
 	width: auto !important;
 	margin-right: 5px;
 	line-height: 26px !important;
-	margin-top: 4px;
-	margin-bottom: 5px;
+	margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .um-activity-foot a.um-button.um-alt,
@@ -785,7 +784,7 @@ div.um-activity {
 .um-activity-preview img {
     display: block;
     overflow: hidden;
-	max-height: 150px;
+	/* max-height: 150px; */
 }
 
 .um-activity-preview-spn {
@@ -795,6 +794,7 @@ div.um-activity {
     float: left;
 	max-height: 150px;
 	padding: 4px !important;
+    margin: 2px 10px;
 }
 
 .um-activity-img-remove {
@@ -833,7 +833,6 @@ div.um-activity {
 }
 
 .um-activity-widget .upload {
-	position: unset !important;
 	box-sizing: content-box;
 	line-height: 20px !important;
 	display: block;

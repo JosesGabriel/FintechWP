@@ -452,7 +452,7 @@ class Activity_Main_API
             if ($content != '') {   
                 $regex_search = [
                     // stock tagging
-                    '/([\s,]|^)\$([A-Z]+)/m',
+                    '/([\s,]|^)\$(\S+)/m',
     
                     // user tagging
                     '/([\s,]|^)\@(\S+)/m',

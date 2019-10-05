@@ -112,6 +112,8 @@
 
 div.um-modal .upload-statusbar {
 	margin: 20px 0 0 0;
+	background: #6583a8;
+	color: #fff;
 }
 
 div.um-modal .upload-filename {

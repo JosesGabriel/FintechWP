@@ -112,6 +112,8 @@
 
 div.um-modal .upload-statusbar {
 	margin: 20px 0 0 0;
+	background: #6583a8;
+	color: #fff;
 }
 
 div.um-modal .upload-filename {
@@ -144,7 +146,7 @@ div.um-modal .ajax-upload-dragdrop {
 	vertical-align:middle;
 	padding: 20px;
 	box-sizing: border-box;
-	border: 2px dashed #ddd;
+	border: 2px dashed #172f45;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;

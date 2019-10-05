@@ -447,34 +447,51 @@ class Activity_Main_API
 
             $content = str_replace($search, $replace, $content);
 
-            if ($content != '') {
-                $newconts = '';
+            $newconts = '';
 
-               
-                $dprocessedtext = preg_split("/[\s,]+/", $content);
+            if ($content != '') {   
+                $regex_search = [
+                    // stock tagging
+                    '/([\s,]|^)\$(\S+)/m',
+    
+                    // user tagging
+                    '/([\s,]|^)\@(\S+)/m',
+                ];
+    
+                $regex_replace = [
+                    // stock tagging
+                    '$1<a href="/chart/$2" target="_blank" rel="no_opener noreferrer">$$2</a>',
+    
+                    // user tagging
+                    '$1<a href="/user/$2" target="_blank" rel="no_opener noreferrer">@$2</a>',
+                ];
+    
+                $newconts = preg_replace($regex_search, $regex_replace, $content);
+                
+                // $dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                //$dprocessedtext = explode(' ', $content);
-                foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
-                    if (strpos($dwordpvalue, '$') !== false) {
-                        $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
-                        $newconts .= ' ' . $dlink;
-                    } elseif(strpos($dwordpvalue, '@') !== false){
-                        $usname = str_replace('@', '', $dwordpvalue);
-                        $infors = explode("_", $usname);
-                        $uid = $infors[0];
+                // //$dprocessedtext = explode(' ', $content);
+                // foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
+                //     if (strpos($dwordpvalue, '$') !== false) {
+                //         $dstock = str_replace('$', '', $dwordpvalue);
+                //         $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
+                //         $newconts .= ' ' . $dlink;
+                //     } elseif(strpos($dwordpvalue, '@') !== false){
+                //         $usname = str_replace('@', '', $dwordpvalue);
+                //         $infors = explode("_", $usname);
+                //         $uid = $infors[0];
 
-                        $userdetails = get_userdata($uid);
-                        $newword = "";
-                        for($i = 1; $i < count($infors); $i++){
-                            $newword .= ucfirst($infors[$i])." ";
-                        }
-                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
-                        $newconts .= ' ' . $finalword;
-                    } else {
-                        $newconts .= ' ' . $dwordpvalue;
-                    }
-                }
+                //         $userdetails = get_userdata($uid);
+                //         $newword = "";
+                //         for($i = 1; $i < count($infors); $i++){
+                //             $newword .= ucfirst($infors[$i])." ";
+                //         }
+                //         $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+                //         $newconts .= ' ' . $finalword;
+                //     } else {
+                //         $newconts .= ' ' . $dwordpvalue;
+                //     }
+                // }
             }
 
             ob_start();
@@ -1268,6 +1285,8 @@ class Activity_Main_API
         }
     }
 
+
+ 
     /**
 
      * Checks if user hidden comment

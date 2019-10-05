@@ -2,9 +2,9 @@
 	$ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
 	$ismetadis = json_encode($ismetadis);
 
-	$curl = curl_init();	
+	$curl = curl_init();
 	#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-	curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
+	curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$dwatchinfo = curl_exec($curl);
 	curl_close($curl);
@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	(function($) {
 	    jQuery(document).ready(function() {
-	    	function getval() {
+				function getval() {
 			    var currentTime = new Date()
 			    var hours = currentTime.getHours()
 			    var minutes = currentTime.getMinutes()
@@ -48,7 +48,7 @@
 			    var AMPM = time.match(/\s(.*)$/)[1];
 			    if(AMPM == "PM" && hours<12) hours = hours+12;
 			    if(AMPM == "AM" && hours==12) hours = hours-12;
-			    
+
 			    var minutes = Number(time.match(/:(\d+)/)[1]);
 			    hours = hours*100+minutes;
 			    return hours;
@@ -60,11 +60,11 @@
 					var stockname = dinfo.stockname;
 					jQuery.ajax({
 						method: "get",
-						url: "https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
+						url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
 						dataType: 'json',
 						success: function(data){
 							var stocklastdata = parseFloat(data.data.last);
-							
+
 							//compare now
 
 							//Entry Price
@@ -79,7 +79,7 @@
 												dslert += '<a class="cont-bodymessage">';
 													dslert += 'Buy Now! <br>';
 													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
-													
+
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
 													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
@@ -91,9 +91,9 @@
 									jQuery(".alert-handler").append(dslert);
 
 								}
-							
+
 							//stoplosspoint
-							
+
 								if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
@@ -104,7 +104,7 @@
 												dslert += '<a class="cont-bodymessage">';
 													dslert += 'Sell Now and Stop your loss! <br>';
 													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
-													
+
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
 													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
@@ -115,9 +115,9 @@
 									dslert += '</div>';
 									jQuery(".alert-handler").append(dslert);
 								}
-							
+
 							//takeprofit
-							
+
 								if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
 									var dslert = '<div class="noti-message">';
 										dslert += '<div class="vertical-align">';
@@ -128,7 +128,7 @@
 												dslert += '<a class="cont-bodymessage">';
 													dslert += 'Sell Now and Secure your Profit! <br>';
 													dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
-													
+
 												dslert += '</a>';
 												dslert += '<div class="op-btnchart">';
 													dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
@@ -139,13 +139,13 @@
 									dslert += '</div>';
 									jQuery(".alert-handler").append(dslert);
 								}
-								
+
 						}
 					});
 				});
 
 			}
-	        
+
 
 	        function removealerts() {
 	        	jQuery(".alert-handler").find('div').fadeOut( "slow", function() {
@@ -158,7 +158,7 @@
 				    jQuery(this).remove();
 				});
 			});
-	        
+
 
 
 	        var startTime = '09:30 AM';
@@ -168,7 +168,7 @@
 			    //in between these two times
 			    //checkwatchlist();
 				newwatchlist();
-	
+
 			    $counts = 1;
 			    setInterval(function(){
 			    	$counts++;
@@ -176,9 +176,9 @@
 			    	if ($counts <= 1) {
 			    		//checkwatchlist();
 						newwatchlist();
-				
+
 			    	}
-				    
+
 				},30000);
 			}
 	    });

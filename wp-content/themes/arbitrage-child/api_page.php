@@ -15,7 +15,7 @@
 	global $current_user;
 	$user = wp_get_current_user();
 
-	date_default_timezone_set('Asia/Manila');
+	// date_default_timezone_set('Asia/Manila');
 	$date = date('m/d/Y', time());
 
 
@@ -27,7 +27,7 @@
 		$dinfstock = strtoupper($stockname);
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+		curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
 		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec($curl);
@@ -38,7 +38,7 @@
 		
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+		curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
 		
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		$getstocks = curl_exec($curl);
@@ -68,7 +68,7 @@
 		$dinfstock = strtoupper($stockname);
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
+			curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/trades/latest?symbol=".$dinfstock."&exchange=PSE");
 			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$response = curl_exec($curl);
@@ -79,7 +79,7 @@
 			
 
 			$curl = curl_init();
-			curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
+			curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=".$dinfstock);
 			
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$getstocks = curl_exec($curl);
@@ -258,7 +258,7 @@
 	else if (isset($_GET['daction']) && $_GET['daction'] == 'watchlistval') { // watchlist get all stock prices
 		$curl = curl_init();	
 		#curl_setopt($curl, CURLOPT_URL, 'https://api2.pse.tools/api/quotes' );
-		curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
+		curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$dwatchinfo = curl_exec($curl);
 		curl_close($curl);
@@ -575,7 +575,7 @@
 		$date = date('Y-m-d', time());
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/list');
+		curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/list');
 		// 
 		
 		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
@@ -693,6 +693,9 @@
 		array_push($dranks, $myrank);
 
 		echo json_encode($dranks);
+
+	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'chartallocation'){
+		echo json_encode(['test']);
 
 	} elseif(isset($_GET['daction']) && $_GET['daction'] == 'checkifhavestock'){
 		$duserid = $current_user->ID;

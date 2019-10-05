@@ -87,7 +87,7 @@ $( document ).ready(function() {
                 if(value.type == 'allrank'){
                     if(value.myrank <= 3){
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge"><img src="https://arbitrage.ph/svg/top'+value.myrank+'.svg" alt=""></div>'
+                            ranker += '<div class="hudbadge"><img src="/svg/top'+value.myrank+'.svg" alt=""></div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'
                             ranker += '<span class="profit_loss" style="color: #24a65d;float: right;position: absolute;top: 4px;width: 95%;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
@@ -100,7 +100,7 @@ $( document ).ready(function() {
                         $(".ranks .topsect").append(ranker);
                     } else if(value.myrank >= 4 && value.myrank <= 5) {
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge"><img src="https://arbitrage.ph/svg/top4.svg" alt=""></div>'
+                            ranker += '<div class="hudbadge"><img src="/svg/top4.svg" alt=""></div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'
                             ranker += '<span class="profit_loss" style="color: #24a65d;float: right;position: absolute;top: 4px;width: 95%;text-align: right;font-size: 13px;"> ₱ '+value.bttotal+'</span>';
@@ -122,7 +122,7 @@ $( document ).ready(function() {
                             hwmyrankside = 'fa-caret-down';
                         }
                         var ranker = '<li>'
-                            ranker += '<div class="hudbadge"><span class="my_rank-number">'+value.myrank+'</span><img src="https://arbitrage.ph/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
+                            ranker += '<div class="hudbadge"><span class="my_rank-number">'+value.myrank+'</span><img src="/wp-content/themes/arbitrage-child/images/top0.svg" alt=""></div>'
                             // ranker += '<div class="hudbadge">'+value.myrank+'</div>'
                             ranker += '<div class="playerscontent">'
                             ranker += '<div class="isname" style="width: 120px;">'+value.displayname+'</div>'

@@ -66,10 +66,10 @@ $stocks = $_GET['stocks'];
         ///$response = curl_exec($curl);
         //curl_close($curl);
 
-       // if ($stocks !== false) {
-       //     $response = json_decode($stocks);
-        //    $stockinfo = $response->data;
-      //  }
+        if ($stocks !== false) {
+                $response = json_decode($stocks);
+                $stockinfo = $response->data;
+            }
 
         $num = 0;
         $counter = 1;

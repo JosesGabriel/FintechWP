@@ -482,6 +482,7 @@ if(isset($_GET['addcp'])){
 
     var dhisto = $('#minchart_HLCM').val();
     console.log(dhisto);
+    console.log($("input[name='minchart_HLCM']").val());
 
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);

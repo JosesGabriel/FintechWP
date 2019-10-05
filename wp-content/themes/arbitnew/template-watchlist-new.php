@@ -4,7 +4,7 @@ include_once "watchlist/header-files.php";
 require("parts/global-header.php");
 ?>
 <script>
-
+var dhisto = '';
     function lateststocks(symbol){
 
          jQuery.ajax({
@@ -56,6 +56,7 @@ function minichart(symbol, from, to){
                            
                 }
 
+                dhisto = dhist;
                 jQuery('.minchart_' + symbol).val(dhist);
                                    
             },
@@ -528,7 +529,7 @@ if(isset($_GET['addcp'])){
     var datahistory = $('#minchart_<?php echo $stock; ?>').val();
 
     //hist();
-console.log(datahistory);
+console.log(dhisto);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

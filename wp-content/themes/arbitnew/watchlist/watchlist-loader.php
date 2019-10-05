@@ -10,6 +10,15 @@
                 let watchtoadd = '';
 
                 $.each(data.data, function(key, value){
+
+                    let stockchange = '';
+                    if(value.change > 0 ){
+                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#53b987;">';
+                    }else if(value.change < 0){
+                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#eb4d5c;">';
+                    }
+
+
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';
                     watchtoadd += '<div class="row">';
                     watchtoadd += '<div class="wlttlstockvals">';
@@ -20,7 +29,7 @@
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';
                     watchtoadd += ' <div class="curprice_'+value.stockname+'">₱'+value.last+'</div>';
-                    watchtoadd += '<div class="curchange_'+value.stockname+'" style="color:#FFC107;">'+value.change+'</div>';
+                    watchtoadd += stockchange + (value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="col-md-12">';

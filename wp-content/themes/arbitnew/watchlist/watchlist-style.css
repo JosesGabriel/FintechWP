@@ -1144,7 +1144,8 @@ h2.watchtitle {
 		display: block;
         width: 100%;
         margin: 0;
-        padding: 0;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #page-container {

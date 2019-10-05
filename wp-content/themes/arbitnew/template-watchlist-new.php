@@ -15,21 +15,17 @@ $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 if (isset($_POST) && !empty($_POST)) {
 
     if (isset($_POST['subtype']) && $_POST['subtype'] == 'editdata') {
-
         foreach ($havemeta as $key => $value) {
             if ($value['stockname'] == $_POST['stockname']) {
                 unset($havemeta[$key]);
             }
         }
-
         array_push($havemeta, $_POST);
         update_user_meta($userID, '_watchlist_instrumental', $havemeta);
-
         wp_redirect( '/watchlist' );
         exit;
 
     } else {
-
         if (isset($havemeta) && !empty($havemeta)){
             if (in_array($_POST['stockname'], array_column($havemeta, 'stockname'))) {
                 echo "Stock Already Exist";
@@ -48,8 +44,6 @@ if (isset($_POST) && !empty($_POST)) {
         wp_redirect( '/watchlist' );
         exit;
     }
-
-
 }
 
 if (isset($_GET['remove'])) {
@@ -387,7 +381,6 @@ if(isset($_GET['addcp'])){
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>
-                      <?php //include_once "parts/sidebar-latestnews.php";?>
                       <?php include_once "parts/sidebar-footer.php";?>
                       <?php include_once "parts/sidebar-alert.php";?>              
                 </div>

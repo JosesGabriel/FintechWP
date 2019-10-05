@@ -1075,6 +1075,13 @@ span.um-activity-seemore {
     font-weight: 300;
     display: block;
 }
+.dplsicon {
+    display: inline-block !important;
+    float: right;
+}
+.dplsicon a {
+    color: #fff
+}
 .to-bottom-seemore a {
     cursor: pointer;
 }

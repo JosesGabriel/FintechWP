@@ -517,7 +517,7 @@ if(isset($_GET['addcp'])){
 
     ?>
 
-    var dhist = $('.dchart').find('input[name=<?php echo $stock;?>]').val();
+    var dhist = $('.dchart').find('input[name=minchart_<?php echo $stock;?>]').val();
     console.log(dhist);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {

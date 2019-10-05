@@ -7,7 +7,7 @@ $.ajax({
     dataType: 'json', // added data type
     success: function(res) {
        // console.log(res.data);
-        viewed_stocks(res.data);
+        viewed_stocks(res);
     },
     error: function (xhr, ajaxOptions, thrownError) {
         

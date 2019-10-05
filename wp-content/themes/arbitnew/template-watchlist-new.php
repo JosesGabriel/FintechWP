@@ -9,6 +9,8 @@ require("parts/global-header.php");
 global $wpdb, $current_user;
 $userID = $current_user->ID;
 
+
+
 $havemeta = get_user_meta($userID, '_watchlist_instrumental', true);
 
 
@@ -392,7 +394,6 @@ if(isset($_GET['addcp'])){
     </div>
 
 </div> <!-- #main-content -->
-
 
 
 <?php include_once "watchlist/footer-files.php";?>

@@ -530,7 +530,9 @@ if(isset($_GET['addcp'])){
      var datahistory = $('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
 
     //hist();
-console.log(datahistory);
+    var datahistory2 = json_encode(datahistory);
+
+console.log(datahistory2);
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {
@@ -563,7 +565,7 @@ console.log(datahistory);
                     };
 
                 //$scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                $scope.data = [{values: datahistory}];
+                $scope.data = [{values: [datahistory2]}];
             });
 
         <?php

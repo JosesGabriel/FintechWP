@@ -5,7 +5,6 @@ require("parts/global-header.php");
 ?>
 <script>
 
-
     function lateststocks(symbol){
 
          jQuery.ajax({
@@ -32,9 +31,45 @@ require("parts/global-header.php");
             }
         });
 
+    }
 
+/*
+function minichart(symbol, from, to){
 
-     }
+ 
+ jQuery.ajax({
+            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+            type: 'GET',
+            dataType: 'json', 
+            success: function(res) {
+                    
+                    var sdata = res.data.o; 
+                    var counter = 0;              
+                    var dhist = "";
+                    
+                if(sdata.length != 0){
+
+                   for (var i = 0; i < sdata.length; i++) {
+                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                        counter++;
+                   }
+                           
+                }
+
+                dhisto = dhist;
+                jQuery('.minchart_' + symbol).val(dhist);
+                                   
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+
+        });
+
+    }
+    */
+
+ 
     
 </script>
 
@@ -144,7 +179,13 @@ if(isset($_GET['addcp'])){
                                                             </li>
                                                             <?php foreach ($havemeta as $key => $value) { 
                                                                 $stock = $value['stockname'];
+                                                                $from  = date('Y-m-d', strtotime("-20 days"));
+                                                                $to = date('Y-m-d');
+
+                                                               //echo "<script> minichart('$stock', '$from', '$to');</script>";
                                                                echo "<script> lateststocks('$stock');</script>";
+                                                               
+
                                                                 ?>
                                                                
 
@@ -184,9 +225,9 @@ if(isset($_GET['addcp'])){
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="">
-                                                                                
+                    
                                                                                 </div>
+                                                                                <input type="hidden" class="minchart_<?php echo $value['stockname'];?>" id="minchart_<?php echo $value['stockname'];?>" name="minchart_<?php echo $value['stockname'];?>">
                                                                             </div>
                                                                         </div>
 
@@ -439,52 +480,15 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-function minichart(symbol, from, to){
-
- var dhist = '';
- jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json', 
-            success: function(res) {
-                    
-                    var sdata = res.data.o; 
-                    var counter = 0;              
-
-                    
-                if(sdata.length != 0){
-
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-                           
-                }
-
-                
-                jQuery('.minchart_' + symbol).val(dhist);
-                                   
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-
-        });
-
-    }
-
-
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
 
         <?php    
 
         if ($havemeta) {
-        foreach ($havemeta as $key => $value) {    
+    foreach ($havemeta as $key => $value) {    
 
             $stock = $value['stockname'];
-            $from  = date('Y-m-d', strtotime("-20 days"));
-            $to = date('Y-m-d');
 
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'));  
@@ -507,49 +511,48 @@ function minichart(symbol, from, to){
                 }
             }
 
-
     ?>
-
-    minichart('<?php echo $stock; ?>','<?php echo $from; ?>','<?php echo $to; ?>');
+      
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
-                            $scope.options = {
-                                    chart: {
-                                        type: 'candlestickBarChart',
-                                        height: 70,
-                                        width: 195,
-                                        margin : {
-                                            top: 0,
-                                            right: 0,
-                                            bottom: 0,
-                                            left: 0
-                                        },
-                                        interactiveLayer: {
-                                            tooltip: { enabled: false }
-                                        },
-                                        x: function(d){ return d['date']; },
-                                        y: function(d){ return d['close']; },
-                                        duration: 100,
-                                        zoom: {
-                                            enabled: true,
-                                            scaleExtent: [1, 10],
-                                            useFixedDomain: false,
-                                            useNiceScale: false,
-                                            horizontalOff: false,
-                                            verticalOff: true,
-                                            unzoomEventType: 'dblclick.zoom'
-                                        }
-                                    }
-                                };
+                $scope.options = {
+                        chart: {
+                            type: 'candlestickBarChart',
+                            height: 70,
+                            width: 195,
+                            margin : {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0
+                            },
+                            interactiveLayer: {
+                                tooltip: { enabled: false }
+                            },
+                            x: function(d){ return d['date']; },
+                            y: function(d){ return d['close']; },
+                            duration: 100,
+                            zoom: {
+                                enabled: true,
+                                scaleExtent: [1, 10],
+                                useFixedDomain: false,
+                                useNiceScale: false,
+                                horizontalOff: false,
+                                verticalOff: true,
+                                unzoomEventType: 'dblclick.zoom'
+                            }
+                        }
+                    };
 
-                            $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
-                            //$scope.data = [{values: [dhist]}];
-                        });
+                $scope.data = [{values: [<?php echo $dhistoflist; ?>]}];
+                //$scope.data = [{values: [datahistory]}];
+            });
 
         <?php
             }
         }
         ?>
     }
+
 </script>
 <?php include_once "watchlist/footer-files.php";?> 

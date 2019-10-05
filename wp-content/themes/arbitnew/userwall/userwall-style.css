@@ -178,13 +178,6 @@
 		padding-top: 0px;
    		padding-left: 4px;
 	}
-	.dplsicon {
-		display: inline-block !important;
-		float: right;
-	}
-	.dplsicon a {
-		color: #fff
-	}
 	.um-activity-head {
     	border-radius: 6px 6px 0 0;
 		padding-top:13px;
@@ -357,9 +350,6 @@
 		font-size: 15px;
 		font-weight: normal;
 	}
-	.watch-list-inner .to-top-title {
-        padding: 10px 14px 0px 14px !important;
-    }
     .style18 {
     	width: 92% !important;
     	margin-bottom: 0;
@@ -533,7 +523,7 @@
 	}
 	.inner-center-dashboard {
 		padding: 0;
-    	margin-top: 9px;
+    	margin-top: -1px;
 	}
 	.inner-placeholder {
 		padding-top: 0 !important;
@@ -1177,7 +1167,7 @@ a:hover {
     top: 65px;
 }
 .left-dashboard-part {
-    padding: 10px 0 0 !important;
+    padding: 0 0 0 !important;
     width: 196px;
 }
 .seven.calc-menu-buysell img {
@@ -1732,12 +1722,13 @@ span.um-activity-seemore {
 .right-dashboard-part {
     float: left;
     max-width: 267px;
-    padding: 5px 0 0;
+    /* padding: 11px 0 0; */
     height: 140%;
 }
 .top-stocks,
 .latest-news,
 .watch-list,
+.dtanks,
 .top-traiders {
     border-radius: 5px;
     overflow: hidden;
@@ -1747,7 +1738,8 @@ span.um-activity-seemore {
 .watch-list-inner .to-top-title,
 .top-stocks .to-top-title,
 .top-traiders-inner .to-top-title,
-.latest-news .to-top-title {
+.latest-news .to-top-title,
+.dtanks .to-top-title {
     padding: 9px 15px 0 !important;
     margin-bottom: 7px;
     color: #fffffe;
@@ -1757,6 +1749,7 @@ span.um-activity-seemore {
 .watch-list-inner .to-content-part,
 .top-stocks .to-content-part,
 .top-traiders .to-content-part,
+.dtanks .to-content-part,
 .latest-news .to-content-part{
     min-height: 126px;
     padding: 5px 15px;
@@ -1765,8 +1758,73 @@ span.um-activity-seemore {
     padding: 0 15px 8px;
     font-size: 12px;
     font-weight: 300;
-    cursor: pointer;
     display: block;
+}
+.to-bottom-seemore a {
+    cursor: pointer;
+}
+div#show_hide {
+    display: inline-block;
+    cursor: pointer;
+}
+.dplsicon {
+	display: inline-block !important;
+	float: right;
+}
+.dplsicon a {
+	color: #fff
+}
+.watch-list-inner .to-content-part ul li {
+    padding: 5px;
+}
+.watch-list-inner .to-content-part ul li .to-stock {
+    width: 5%;
+    display: inline-block;
+}
+.watch-list-inner .to-content-part ul li .to-numsec {
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+}
+.watch-list-inner .to-content-part ul li .to-persec {
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+}
+.watch-list-inner .to-content-part ul li .bered {
+    color: #f46759;
+}
+.watch-list-inner .to-content-part ul li .begreen {
+    color: #3ac16f;
+}
+.watch-list-inner .to-content-part {
+    font-size: 13px;
+    line-height: 1em;
+}
+.to-watch-data {
+    border-bottom: #1e3554 solid 1px;
+    min-height: 76px;
+}
+.minichartt .stocklnk {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+}
+.dbox.red {
+    border-radius: 50px !important;
+    color: #eb4d5c !important;
+}
+.dbox.green {
+    border-radius: 50px !important;
+    color: #53b987 !important;
+}
+.stockperc {
+    text-align: right;
+    margin-top: 3px;
+    font-weight: 400;
+    font-size: 12px;
 }
 .to-content-part #preloader{
     background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
@@ -1864,6 +1922,7 @@ ul.footmore .ddot {
 
 
 
+
 /*------ right-sidebar ------*/
 ul li a.um-button.um-alt:hover {
 	background: #123;
@@ -1893,6 +1952,10 @@ ul li a.um-button.um-alt:hover {
     background: #0d1f33;
 }
 .um-profile-photo .um-dropdown {
-    top: 100px !important;
+	top: 97px !important;
+	left: 10px !important;
     width: 200px !important;
+}
+.um-dropdown-arr {
+    top: -16px !important;
 }

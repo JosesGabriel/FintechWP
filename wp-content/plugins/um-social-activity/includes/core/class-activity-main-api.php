@@ -450,30 +450,30 @@ class Activity_Main_API
             $newconts = '';
 
             if ($content != '') {   
-                $dprocessedtext = preg_split("/[\s,]+/", $content);
+                // $dprocessedtext = preg_split("/[\s,]+/", $content);
 
-                //$dprocessedtext = explode(' ', $content);
-                foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
-                    if (strpos($dwordpvalue, '$') !== false) {
-                        $dstock = str_replace('$', '', $dwordpvalue);
-                        $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
-                        $newconts .= ' ' . $dlink;
-                    } elseif(strpos($dwordpvalue, '@') !== false){
-                        $usname = str_replace('@', '', $dwordpvalue);
-                        $infors = explode("_", $usname);
-                        $uid = $infors[0];
+                // //$dprocessedtext = explode(' ', $content);
+                // foreach ($dprocessedtext as $dwordpkey => $dwordpvalue) {
+                //     if (strpos($dwordpvalue, '$') !== false) {
+                //         $dstock = str_replace('$', '', $dwordpvalue);
+                //         $dlink = '<a href="/chart/' . $dstock . '" target="_blank" rel="no_opener noreferrer">' . $dwordpvalue . '</a>';
+                //         $newconts .= ' ' . $dlink;
+                //     } elseif(strpos($dwordpvalue, '@') !== false){
+                //         $usname = str_replace('@', '', $dwordpvalue);
+                //         $infors = explode("_", $usname);
+                //         $uid = $infors[0];
 
-                        $userdetails = get_userdata($uid);
-                        $newword = "";
-                        for($i = 1; $i < count($infors); $i++){
-                            $newword .= ucfirst($infors[$i])." ";
-                        }
-                        $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
-                        $newconts .= ' ' . $finalword;
-                    } else {
-                        $newconts .= ' ' . $dwordpvalue;
-                    }
-                }
+                //         $userdetails = get_userdata($uid);
+                //         $newword = "";
+                //         for($i = 1; $i < count($infors); $i++){
+                //             $newword .= ucfirst($infors[$i])." ";
+                //         }
+                //         $finalword = '<a href="/user/'.$userdetails->user_login.'" target="_blank" class="user_tag">@'.$newword.'</a>';
+                //         $newconts .= ' ' . $finalword;
+                //     } else {
+                //         $newconts .= ' ' . $dwordpvalue;
+                //     }
+                // }
             }
 
             ob_start();

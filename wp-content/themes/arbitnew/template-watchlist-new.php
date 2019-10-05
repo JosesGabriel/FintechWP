@@ -481,7 +481,8 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-
+    var dhisto = jQuery('.dchart').find('input[name="minchart_HLCM"]').val();
+    console.log(dhisto);
 
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
@@ -517,8 +518,7 @@ if(isset($_GET['addcp'])){
 
     ?>
     //var $target = $(this).parent().find('input[name="row_id"]').val();
-    //var dhisto = jQuery('.dchart').find('input[name="minchart_<?php echo $stock; ?>"]').val();
-    console.log(dhisto);
+    
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

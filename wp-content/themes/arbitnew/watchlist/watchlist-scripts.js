@@ -1,35 +1,38 @@
 $(document).ready(function(){
 
+    
+
+
 
 function minichart(symbol, from, to){
 
  jQuery.ajax({
-            url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-            type: 'GET',
-            dataType: 'json',
-            success: function(res) {
+    url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
+    type: 'GET',
+    dataType: 'json',
+    success: function(res) {
 
-                    var sdata = res.data.o;
-                    var counter = 0;
-                    var dhist = "";
+            var sdata = res.data.o;
+            var counter = 0;
+            var dhist = "";
 
-                if(sdata.length != 0){
+        if(sdata.length != 0){
 
-                   for (var i = 0; i < sdata.length; i++) {
-                        dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
-                        counter++;
-                   }
-
-                }
-
-                jQuery('.minchart_' + symbol).val(dhist);
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
+            for (var i = 0; i < sdata.length; i++) {
+                dhist = '{"date": ' + (i + 1) + ', "open:" ' + res.data.o[i] + ', "high": ' + res.data.h[i] + ', "low": ' + res.data.l[i] + ', "close": ' + res.data.l[i] + '},' + dhist;
+                counter++;
             }
 
-        });
+        }
+
+        jQuery('.minchart_' + symbol).val(dhist);
+
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+
+    }
+
+});
 
     }
 
@@ -87,8 +90,8 @@ function lateststocks(symbol){
 
 
     jQuery('.addwatch').click(function(e){
-    jQuery(".dtabcontent > div").removeClass('active').hide('slow');
-    jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
+      jQuery(".dtabcontent > div").removeClass('active').hide('slow');
+      jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
 
             $.ajax({
                 url: "/wp-json/data-api/v1/stocks/list",
@@ -179,41 +182,7 @@ function lateststocks(symbol){
               //}
            });
 
-
-            $('.editwatchlist').change(function(e) {
-
-                if($(this).val() == 'delete'){
-                        e.preventDefault();
-                        Swal.fire({
-                            title: 'Are you sure?',
-                            text: "You won't be able to revert this!",
-                            type: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Yes, delete it!'
-                        }).then((result) => {
-                            if (result.value) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your Watchlist has been deleted.',
-                                    'success'
-                                ).then((result) => {
-                                    var ditemtoremove = jQuery(this).attr('data-space');
-                                    window.location.href = "/watchlist/?remove="+ditemtoremove;
-                                });
-                            }
-                        });
-
-                        $("div.editwatchlist select").val("Select");
-                }
-                if($(this).val() == 'edit'){
-                    var ditemtoedit = jQuery(this).attr('data-space');
-                    jQuery("#edit_" + ditemtoedit).click();
-
-                }
-
-            });
+           
 //Start Notifications ============================================================================================================================
 
 function getval() {

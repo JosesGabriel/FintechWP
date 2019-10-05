@@ -1,5 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="/wp-content/themes/arbitnew/watchlist/watchlist-scripts.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
@@ -10,6 +11,9 @@
 <?php
     include "watchlist-loader.php";
 ?>
+<script src="/wp-content/themes/arbitnew/watchlist/watchlist-scripts.js?<?php echo time(); ?>"></script>
+
+
 <script>
 //=================MINICHART================================
 

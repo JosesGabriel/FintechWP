@@ -16,7 +16,9 @@ use GuzzleHttp\Exception\ServerException;
 class GuzzleRequest
 {
     protected
-        $client,
+        $client;
+
+    public
         $content,
         $response,
         $status_code;

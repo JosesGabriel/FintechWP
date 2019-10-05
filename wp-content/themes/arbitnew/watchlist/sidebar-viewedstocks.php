@@ -66,7 +66,7 @@ jQuery(function(){
                 $stockinfo = $response->data;
             }
 
-        print_r($stockinfo);
+        //print_r($stockinfo);
 
         $num = 0;
         $counter = 1;
@@ -74,7 +74,7 @@ jQuery(function(){
         //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        foreach($stocks as $stkey => $stvals){
+        foreach($stockinfo as $stkey => $stvals){
         
             foreach($users as $user_id){
            

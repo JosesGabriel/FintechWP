@@ -127,6 +127,12 @@ function get_user_metas(){
   echo json_encode($ismetadis);
 }
 
+function date_compare($a, $b)
+{
+  $t1 = $a['following'];
+  $t2 = $b['following'];
+  return $t1 - $t2;
+}
 
 
- ?>
+?>

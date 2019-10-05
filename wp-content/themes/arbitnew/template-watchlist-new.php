@@ -56,7 +56,6 @@ function minichart(symbol, from, to){
 
                 }
 
-                dhisto = dhist;
                 jQuery('.minchart_' + symbol).val(dhist);
 
             },
@@ -481,7 +480,9 @@ if(isset($_GET['addcp'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <script>
 
-
+    var dhisto = $('#minchart_HLCM').val();
+    console.log(dhisto);
+    console.log($("input[name='minchart_HLCM']").val());
 
     if (typeof angular !== 'undefined') {
         var app = angular.module('arbitrage_wl', ['nvd3']);
@@ -516,9 +517,8 @@ if(isset($_GET['addcp'])){
 
 
     ?>
-
-    var dhist = jQuery('.dchart').find('input[name=<?php echo $stock;?>]').val();
-    console.log(dhist);
+    //var $target = $(this).parent().find('input[name="row_id"]').val();
+    
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
                 $scope.options = {

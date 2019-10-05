@@ -18,26 +18,6 @@ jQuery(function(){
     dcount++;
   });
 
- $.ajax({
-    url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE",
-    type: 'GET',
-    dataType: 'json', // added data type
-    success: function(res) {
-    
-       jQuery.each(res.data, function(i, val) {
-
-       <?php
-
-
-       ?>
-
-        });
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-        
-    }
-});
-
    
 
 });
@@ -74,7 +54,7 @@ jQuery(function(){
         //$stock_watched = array();      
         $users = get_users( array( 'fields' => array( 'ID' ) ) );
 
-        foreach($stocks as $stkey => $stvals){
+        foreach($stockinfo as $stkey => $stvals){
         
             foreach($users as $user_id){
            

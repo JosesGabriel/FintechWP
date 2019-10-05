@@ -60,7 +60,7 @@ $stocks = $_GET['stocks'];
         <?php 
        
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
+        curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE");
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($curl);
@@ -71,7 +71,7 @@ $stocks = $_GET['stocks'];
                 $stockinfo = $response->data;
             }
 
-        print_r($stockinfo);
+        //print_r($stockinfo);
 
         $num = 0;
         $counter = 1;

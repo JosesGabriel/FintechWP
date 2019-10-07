@@ -9,7 +9,7 @@
             success: function(res) {
 
                   jQuery.each(res.data, function(index, value) {
-                        console.log(value.symbol);
+                        console.log(value.description);
                   });
             },
             error: function (xhr, ajaxOptions, thrownError) {

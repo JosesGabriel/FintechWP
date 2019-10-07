@@ -504,10 +504,17 @@ a:hover {
 
 
 /*------ center-part-dashboard ------*/
+.popname ul li {
+    display: inline-block;
+    margin: 1px;
+    padding: 0 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .center-dashboard-part {
     float: left;
-    max-width: 539px;
-    width: 539px;
+    max-width: 520px;
+    width: 520px;
 }
 .eyeyey {
     font-size: 16px !important;

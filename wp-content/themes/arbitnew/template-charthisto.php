@@ -30,10 +30,8 @@
            ]);
 
         $response = $request->content;
-        var_dump($response);
-        die();
     
-        if (!$response) {
+        if ($response) {
             $data = json_decode($response->data);
 
             $dstock = strtolower($_GET['query']);

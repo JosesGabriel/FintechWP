@@ -62,8 +62,8 @@ global $current_user;
   if (isset($_GET['resetshare'])){
 	    $user_id = $user->ID;
 		update_user_meta($user_id, 'check_user_share', "");
-		header('Location: /share/?'.rand(12345 ,89019));
-		die();
+		//header('Location: /share/?'.rand(12345 ,89019));
+		//die();
   }
 	#elegant_description();
 	#elegant_keywords();

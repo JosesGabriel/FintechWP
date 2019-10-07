@@ -109,7 +109,7 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>
-                          <a href="#"><span class="desc"></span><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                          <a href="#"><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                       </li>
 
               <?php

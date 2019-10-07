@@ -8,8 +8,9 @@
             type: 'GET',
             success: function(res) {
 
-                        console.log(res.data);
-
+                  jQuery.each(res.data, function(index, value) {
+                        console.log(value.symbol);
+                  });
             },
             error: function (xhr, ajaxOptions, thrownError) {
 

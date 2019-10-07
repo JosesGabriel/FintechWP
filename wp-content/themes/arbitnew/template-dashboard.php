@@ -31,7 +31,7 @@ require("parts/sidebar-avarageprice.php");
 								get_template_part('parts/sidebar', 'latestnews');
 								get_template_part('parts/sidebar', 'watchlist');
 								#get_template_part('parts/sidebar', 'topplayers');
-                #get_template_part('parts/sidebar', 'alert');
+                get_template_part('parts/sidebar', 'alert');
 					 			get_template_part('parts/sidebar', 'footer');
 					 ?>
 				</div>

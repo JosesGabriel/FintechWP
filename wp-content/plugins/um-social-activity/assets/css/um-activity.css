@@ -565,7 +565,8 @@ div.um-activity {
 .um-activity-comment-child .um-activity-commentl.highlighted .um-activity-comment-avatar {left: 10px}
 
 .um-activity-comment-info .um-activity-comment-area {
-	padding: 0 0 0 30px;
+	padding: 0;
+	margin-top: 7px;
 }
 
 .um-activity-comment-info .um-activity-comment-avatar {
@@ -593,15 +594,8 @@ div.um-activity {
 .um-activity-comment-avatar.hidden-1 {opacity: 0.5}
 
 .um-activity-commentl .um-activity-comment-avatar img {
-	border-radius: 3px;
 	width: 30px;
 	height: 30px;
-}
-
-.um-activity-comment-info .um-activity-comment-avatar img,
-.um-activity-comment-child .um-activity-comment-avatar img {
-	width: 20px !important;
-	height: 20px !important;
 }
 .um-activity-comment-info {
 	position: relative;

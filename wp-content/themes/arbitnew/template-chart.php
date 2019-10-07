@@ -628,6 +628,7 @@
 																					<div class="tab-content vertical-box-inner-cell" style="background-color: transparent; border-radius: 0; padding: 0; margin-bottom: 0;">
 																						<div data-scrollbar="true" data-height="100%" style="height: 100%;">
 																							<div class="vertical-box tab-pane fade in active" id="allstock">
+																								<?php if ( ! WP_PROD_ENV): ?>
 																								<table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
 																									<thead style="position: fixed; background-color: #2c3e50">
 																										<tr>
@@ -652,6 +653,7 @@
 
 																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
+																										
 																										<tr 
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
 																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
@@ -674,6 +676,10 @@
 																										</tr>
 																									</tbody>
 																								</table>
+																								<?php else: ?>
+																								<div
+																									style="padding: 20px; text-align: center; color: #fff;">Temporarily disabled.</div>
+																								<?php endif ?>
 																							</div>
 
 																							<div class="vertical-box tab-pane fade" id="watchlists">

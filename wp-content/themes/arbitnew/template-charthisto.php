@@ -31,9 +31,8 @@
 
         $response = $request->content;
     
-        if (!$response) {
-            $data = $response->data;
-
+        if ($response) {
+            $data = json_decode($response)->data;
             $dstock = strtolower($_GET['query']);
 
             // add params

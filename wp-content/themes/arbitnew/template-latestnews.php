@@ -268,7 +268,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 abcds">
-								<?php //get_template_part('parts/sidebar', 'stockslatestnews'); 
+								<?php //get_template_part('parts/sidebar', 'stockslatestnews');
 								?>
 							</div>
 						</div>
@@ -426,7 +426,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 						<div class="nws-containersss">
 							<div class="nws-inner">
 								<div class="container">
-									<?php //get_template_part('parts/sidebar', 'watchlistlatestnews'); 
+									<?php //get_template_part('parts/sidebar', 'watchlistlatestnews');
 									?>
 
 
@@ -518,7 +518,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 								</div>
 							</div>
 						</div>
-					
+
 				<style type="text/css">
 				</style>
 				<div class="banner-try">

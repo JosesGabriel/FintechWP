@@ -6,7 +6,14 @@
             type: 'GET',
             dataType: 'json', // added data type
              success: function(res) {
-                console.log(res.data.change);
+                
+                 jQuery.each(res.data, function(index, value) {
+
+                    console.log(value.change)
+
+                 });
+
+
             },error: function (xhr, ajaxOptions, thrownError) {
                 
             }

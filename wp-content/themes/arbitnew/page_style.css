@@ -1598,6 +1598,7 @@
     .condition-notif {
         margin: 0;
         font-size: 13px;
+        color: white
     }
     #canceladd {
         padding: 4px 9px !important;

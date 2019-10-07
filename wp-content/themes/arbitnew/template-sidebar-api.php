@@ -59,7 +59,7 @@ function get_trendingstocks(){
       $gerdqoute = json_decode($gerdqoute);
 
       //print_r($gerdqoute);
-      echo 'test';
+    
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {
         $listofstocks = [];

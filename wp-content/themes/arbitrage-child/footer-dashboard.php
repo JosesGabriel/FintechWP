@@ -152,7 +152,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			
 			$.ajax({
 				url: "/wp-json/data-api/v1/stocks/list",
-				type: 'GET',
+				type: 'post',
 				dataType: 'json', // added data type
 				success: function(res) {
 					

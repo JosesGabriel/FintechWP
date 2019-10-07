@@ -581,5 +581,7 @@ require("parts/global-header.php");
 		</div>
 	</div>
 </div> <!-- #main-content -->
+
 <?php
+get_template_part('parts/sidebar', 'alert');
 require "journal/footer-files.php";

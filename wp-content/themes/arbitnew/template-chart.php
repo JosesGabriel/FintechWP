@@ -36,7 +36,9 @@
 
 		<div class="arb_top_ticker">
 			<div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
-				<ul id="container" class="list-inline marqueethis arb_custom_ticker">
+				<ul 
+					ng-if="enable"
+					id="container" class="list-inline marqueethis arb_custom_ticker">
 					<li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
 						<i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
 						<a href="/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>
@@ -44,6 +46,15 @@
 						&nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
 					</li>
 				</ul>
+
+				<div class="ticker-enabler">
+					<button 
+						ng-click="enable = !enable"
+						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-eye': enable, 'fa-eye-slash': !enable}"></i></button>
+					<button 
+						ng-click="tickerBeep = !tickerBeep"
+						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-volume-up': tickerBeep, 'fa-volume-off': !tickerBeep}"></i></button>
+				</div>
 			</div>
 		</div>
 
@@ -60,15 +71,15 @@
 				</ul>
 			</ul>
 			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="/vyndue/" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
-			<a href="/account/" class="arb-side-icon"><?php
+			<a href="https://vyndue.com/userview/im" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="/user/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />
 				<?php else: ?>
 					<i class="fas fa-user-tie"></i>
 				<?php endif; ?></a>
 			<div style="clear:both"></div>
-		</div>    
+		</div>
 	</div>
 
 	<div id="page-container" class="fade page-content-full-height page-without-sidebar" ng-controller="template">
@@ -78,7 +89,7 @@
 					<div class="vertical-box-cell">
 						<div class="vertical-box-inner-cell">
 							<div style="height:100%" data-height="100%" ng-controller="chart">
-								<div class="vertical-box">		
+								<div class="vertical-box">
 									<div class="vertical-box-column mobilefull" style="position: relative; height: 100%;">
 										<div class="vertical-box" style="height: 100%;">
 											<div class="vertical-box-row" style="height: 100%;">
@@ -90,7 +101,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="vertical-box-column width-250 mobileinithide" id="right-sidebar" ng-show="settings.right">
 										<div class="showsidemobile">
 											<i class="fa fa-outdent" aria-hidden="true"></i>
@@ -124,7 +135,7 @@
 																				</div>
 																			</div>
 
-																			<div class="hideformodal">  
+																			<div class="hideformodal">
 																				<div class="buytrade" style="display:none" id="buytrade">
 																					<div class="innerbuy">
 																						<div class="selltrade selltrade--align" id="selltrade_<?php echo $value; ?>">
@@ -179,7 +190,7 @@
 																					<form action="/journal" method="post">
 																						<div class="entr_wrapper_top">
 																							<div class="entr_col">
-																								<div class="groupinput fctnlhdn">   
+																								<div class="groupinput fctnlhdn">
 																								<label style="width:100%">Buy Date:</label>
 																								<select name="inpt_data_buymonth" style="width:90px;">
 																									<option value="<?php echo date("F"); ?>" selected><?php echo date("F"); ?></option>
@@ -282,13 +293,13 @@
 																							</div>
 																						</div>
 																					</form>
-																				</div> 
+																				</div>
 																			</div>
 
 																			<div style="padding: 3px 5px 5px 40px; margin-bottom: 2px;" id="sval" class="sd_border_btm">
 																				<div class="arb_stock_name"><!-- STOCK NAME -->
 																					<i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
-																					<div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden; 
+																					<div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden;
 																					text-overflow: ellipsis;">{{stock_details[stock.symbol].description}}</div>
 																					<div class="figures" style="margin-top: 0; overflow: visible; white-space: nowrap;">
 																						<span style="
@@ -298,7 +309,7 @@
 																						<span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0}" style="
 																							font-size: 14px;
 																							line-height: 1.42857143;">
-																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span> 
+																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span>
 																							<span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.displayChange}}%)</span>
 																						</span>
 																						<small class="arb_markcap">Market Capitalization: {{stock.displayMarketCap}}</small>
@@ -333,7 +344,7 @@
 																						</tbody>
 																					</table>
 																				</div>
-																				
+
 																				<div style="float: left; width: 50%;">
 																					<table class="table table-condensed m-b-0 sd_border_btm">
 																						<tbody style="font-size: 10px;">
@@ -396,8 +407,8 @@
 																				</div>
 																				<a href="#" class="bbs_bear"><img src="/svg/ico_bearish_no_ring.svg"></a>
 																			</div>
-																			
-																			
+
+
 																			<div class="arb_clear"></div>
 																		</div>
 																	</div>
@@ -658,7 +669,7 @@
 																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
 																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
-																											style="font-weight: bold;" 
+																											style="font-weight: bold;"
 																											>
 																											<td class="text-default dspecitem" style="padding: 0px 7px 0 7px !important;" ng-click="select(stock.symbol)" style="cursor: pointer;">
 																												<div style="width: 0; height: 0; overflow: hidden; display: block;">
@@ -696,7 +707,7 @@
 																										<?php
 		  $curl = curl_init();
 		  curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
-		  
+
 		  curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 		  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	      $dhistofronold = curl_exec($curl);
@@ -710,7 +721,7 @@
 			<tbody>
 				<?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
 				<?php if ($havemeta): ?>
-				
+
 				<?php foreach ($havemeta as $key => $value) { ?>
 				<?php
 
@@ -743,7 +754,7 @@
 							<?php else: ?>
 								<div class="chred"><?php echo number_format( $dchange, 2, '.', ',' ); ?>%</div>
 							<?php endif ?>
-							
+
 						</td>
 					</tr>
 				<?php } ?>
@@ -766,8 +777,8 @@
 												</div>
 											</div>
 										</div>
-									</div>	
-										
+									</div>
+
 									<div class="chartlocker"></div>
 								</div>
 							</div>
@@ -809,7 +820,7 @@
 			</div>
 		</div>
 		<!-- end theme-panel -->
-		
+
 	</div>
     <!-- end page container -->
 

@@ -236,6 +236,23 @@ jQuery(document).ready(function() {
 // BOF Var Calc
 jQuery(document).ready(function(){
 
+    $.ajax({
+        url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
+        type: 'POST',
+        dataType: 'json', // added data type
+        success: function(data) {
+            console.log(data);
+            $.each(data.data, function(key, value){
+                $(".varcalc #stockname").append('<option value="'+value.last+'">'+value.symbol+'</option>');
+            });
+            // $("#entertradelive input[name='input_buy_product'], .entertrade input[name='input_buy_product']").val((data.data).toFixed(2));
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            
+        }
+    });
+
+
     jQuery("#stockname").on('change', function() {
         jQuery("#currentprice").val(this.value);
     });

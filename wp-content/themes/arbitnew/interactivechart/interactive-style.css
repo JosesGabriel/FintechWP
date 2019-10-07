@@ -1287,3 +1287,12 @@ svg {
 .fa-arrow-down {
 	color: #e64c3c;
 }
+.ticker-enabler {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+}
+.ticker-enabler i {
+    color: #fff;
+}

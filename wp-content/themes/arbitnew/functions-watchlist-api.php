@@ -33,6 +33,13 @@ class WatchlistAPI extends WP_REST_Controller
                 'callback' => [$this, 'getwatchlist'],
             ],
         ]);
+
+        register_rest_route($base_route, 'stockcharts', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getstockcharts'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -83,10 +90,7 @@ class WatchlistAPI extends WP_REST_Controller
                 "Authorization" => "Bearer {$authorization}",
                 ]
         ]);
-        $stocksdata = json_decode($request->content);
-
-        // $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        // $stocksdata = json_decode($gerdqouteone);
+        $stocksdata = json_decode($request->content); 
 
         $metadata = "";
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key = "_watchlist_instrumental" and user_id ='.$data['userid']);
@@ -101,6 +105,38 @@ class WatchlistAPI extends WP_REST_Controller
         }
         return $this->respond(true, ['data' => $finalwatch], 200);
         
+    }
+
+    public function getstockcharts($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $metadata = "";
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key = "_watchlist_instrumental" and user_id ='.$data['userid']);
+        foreach ($ismytrades as $sdkey => $dsvalue) { $metadata = unserialize($dsvalue->meta_value); }
+        $finalwatch = [];
+        foreach ($metadata as $key => $value) {
+            $stock = $value['stockname'];
+
+            $intovals = [];
+            $intovals['stock'] = $stock;
+            $guzzle = new GuzzleRequest();
+            $dataUrl = GetDataApiUrl();
+            $authorization = GetDataApiAuthorization();
+            $request = $guzzle->request("GET", "{$dataUrl}/api/v1/charts/history?symbol=".$stock.'&exchange=PSE&resolution=1D&from='. date('Y-m-d', strtotime("-20 days")) .'&to=' . date('Y-m-d'), [
+                "headers" => [
+                    "Content-type" => "application/json",
+                    "Authorization" => "Bearer {$authorization}",
+                    ]
+            ]);
+            
+            $stocksdata = json_decode($request->content); 
+            $intovals['chartdata'] = $stocksdata->data;
+            array_push($finalwatch, $intovals);
+        }
+
+
+        return $this->respond(true, ['data' => $finalwatch], 200);
     }
 }
 

@@ -1,4 +1,18 @@
 <script>
+    var loadMiniCharts = function(userid){
+		$.ajax({
+			url: "/wp-json/watchlist-api/v1/stockcharts?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                console.log(data);
+                $(".watchonlist").addClass("after-load");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+		});
+    }
 	var loadwatctlist = function(userid){
 		$.ajax({
 			url: "/wp-json/watchlist-api/v1/watchlists?userid="+userid,
@@ -70,12 +84,16 @@
                 $(".watcherlist > ul").append(watchtoadd);
                 
 
+                
+
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
             }
 		});
     }
+
+   
     
     $( document ).ready(function() {
         jQuery('.watcherlist > ul').on('change', 'select.editwatchlist', function(e) {
@@ -123,6 +141,7 @@
         });
 
         new loadwatctlist(<?php echo $user->ID; ?>);
+        new loadMiniCharts(<?php echo $user->ID; ?>);
     });
 
 

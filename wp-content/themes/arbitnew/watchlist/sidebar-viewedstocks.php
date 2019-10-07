@@ -58,7 +58,7 @@ global $wpdb;
 $count = 0;
 $counter = 0;
 $stock_watched[0][0] = '';
-$stock_watched[0][1] = 1;
+//$stock_watched[0][1] = 1;
 
 $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta_key = "_watchlist_instrumental" ');
     

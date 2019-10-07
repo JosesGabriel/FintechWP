@@ -14,7 +14,7 @@ body,
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
-    padding-top: 55px !important; 
+    padding-top: 46px !important; 
 }
 hr.style14 {
     position: relative;
@@ -669,7 +669,7 @@ img.inpostimage {
     border: 0 none;
 }
 textarea.um-activity-textarea-elem.ui-autocomplete-input {
-    background: #142c46;
+    background: #142c46 !important;
     display: block
 }
 .um-activity-textarea {
@@ -964,11 +964,17 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 .um-activity-comment-child {
     border-left: none !important;
 }
-.um-activity-comment-info .um-activity-comment-avatar img, .um-activity-comment-child .um-activity-comment-avatar img  {
-    width: 100%;
-    height: 100%;
+.um-activity-comment-child .um-activity-comment-avatar img {
     top: 0;
     position: relative;
+	width: 20px !important;
+	height: 20px !important;
+}
+.um-activity-comment-info .um-activity-comment-avatar img {
+    top: 0;
+    position: relative;
+    width: 30px !important;
+    height: 30px !important;
 }
 span.um-activity-seemore {
     color: #6583a8;

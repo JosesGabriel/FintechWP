@@ -13,12 +13,12 @@ get_header();
 <?php get_template_part('parts/global', 'cssfooter'); ?>
 
 <?php get_template_part('parts/global', 'css'); ?>
-
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/footer/privacy-style.css?<?php echo time(); ?>">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<div class="background-positionfix">
+<!-- <div class="background-positionfix"> -->
 		<div class="starsNear-2zVFGJ">
 		<svg class="leftConstellation-OiQA13" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<circle class="star-3Afsk9" r="1" cx="55.39610339506173%" cy="28.23688271604938%"></circle>
@@ -126,11 +126,11 @@ get_header();
 			</svg>
 		</div>
 	</div>
-	<div class="wavey-bottom-bg">
+	<!-- <div class="wavey-bottom-bg">
 		<svg class="wave-1hkxOo" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
 			<path class="wavePath-haxJK1" d="M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z" fill="#0b1827" style=""></path>
 		</svg>
-	</div>
+	</div> -->
 <div class="container">
 	<div class="sub-container" style="width: 100%; text-align: justify;">
 		<h2>Privacy Policy</h2>

@@ -1,4 +1,7 @@
 <?php
+require_once ('guzzle-class.php');
+require_once ('data-api.php');
+
 
 class WatchlistAPI extends WP_REST_Controller
 {
@@ -71,8 +74,19 @@ class WatchlistAPI extends WP_REST_Controller
         global $wpdb;
         $data = $request->get_params();
 
-        $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        $stocksdata = json_decode($gerdqouteone);
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $stocksdata = json_decode($request->content);
+
+        // $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        // $stocksdata = json_decode($gerdqouteone);
 
         $metadata = "";
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key = "_watchlist_instrumental" and user_id ='.$data['userid']);

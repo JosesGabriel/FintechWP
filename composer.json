@@ -3,6 +3,7 @@
         "goez/socket.io-php-emitter": "^0.1.2",
         "lcobucci/jwt": "^3.3",
         "mailjet/mailjet-apiv3-php": "^1.4",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "predis/predis": "^1.1"
     }
 }

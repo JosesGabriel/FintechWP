@@ -24,6 +24,22 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'getcurrentallocation'),
             ]
         ]);
+        
+        register_rest_route($base_route, 'tradestats', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'gettradestats'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'monthperformance', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getmonthperformance'),
+            ]
+        ]);
+
+
     }
 
     // generic information
@@ -67,19 +83,37 @@ class JournalAPI extends WP_REST_Controller
 
 
     // getters
+    public function gettradestats($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $win = 0;
+        $loss = 0;
+        $ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        foreach ($ismytrades as $key => $value) { if($this->getprofits($value) > 0){ $win++; } else { $loss++; } }
+        $totaltrades = $win + $loss;
+        $winperc = ($win / $totaltrades) * 100;
+        return $this->respond(true, ['data' => ['win' => $win, 'loss' => $loss, 'totaltrades' => $totaltrades, 'totalperc' => $winperc]], 200);
+    }
+
     public function getcurrentallocation($request)
     {
         global $wpdb;
         $data = $request->get_params();
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id ='.$data['userid']);
+        return $this->respond(true, $ismytrades, 200);
+    }
 
-        $win = 0;
-        $loss = 0;
-
+    public function getmonthperformance($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        $profitsmonths = ['jan' => 0,'feb' => 0,'mar' => 0,'apr' => 0,'may' => 0,'jun' => 0,'jul' => 0,'aug' => 0,'sep' => 0,'oct' => 0,'nov' => 0,'dec' => 0];
         $ismytrades = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
         foreach ($ismytrades as $key => $value) {
-            if($this->getprofits($value) > 0){ $win++; } else { $loss++; }
+            $profitsmonths[strtolower(date('M', strtotime($value->tldate)))] += ($value->tlvolume * $value->tlsellprice);
         }
-        return $this->respond(true, ['data' => ['win' => $win, 'loss' => $loss]], 200);
+        return $this->respond(true, ['data' => $profitsmonths], 200);
     }
 
 

@@ -4,10 +4,14 @@
 * Template page for SideBar API
 */
 #require("wp-config.php");
+require_once ('guzzle-class.php');
+require_once ('data-api.php');
+
 
 header('Content-Type: application/json');
 date_default_timezone_set("Asia/Manila");
 $action = $_GET['daction'];
+
 
 switch($action){
   case 'whotomingle':
@@ -49,17 +53,17 @@ function get_whotomingle(){
 function get_trendingstocks(){
       global $wpdb;
       $date = date('Y-m-d', time());
-      //$curl = curl_init();
-      //curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
-      //curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-      //curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      //$gerdqoute = curl_exec($curl);
-      //curl_close($curl);
-      $gerdqoute = file_get_contents('https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
-      $gerdqoute = json_decode($gerdqoute);
 
-      //print_r($gerdqoute);
-    
+      $guzzle = new GuzzleRequest();
+      $dataUrl = GetDataApiUrl();
+      $authorization = GetDataApiAuthorization();
+      $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/list", [
+        "headers" => [
+            "Content-type" => "application/json",
+            "Authorization" => "Bearer {$authorization}",
+            ]
+       ]);
+      $gerdqoute = json_decode($request->content);
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {
         $listofstocks = [];

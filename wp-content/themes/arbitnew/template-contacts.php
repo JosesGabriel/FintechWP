@@ -23,7 +23,7 @@ get_header('dashboard');
 ?>
 
 <?php get_template_part('parts/global', 'cssfooter'); ?>
-
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/footer/contacts.css?<?php echo time(); ?>">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -32,7 +32,7 @@ get_header('dashboard');
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-	<div class="background-positionfix">
+	<!-- <div class="background-positionfix"> -->
 		<div class="starsNear-2zVFGJ">
 		<svg class="leftConstellation-OiQA13" version="1.1" xmlns="http://www.w3.org/2000/svg">
 			<circle class="star-3Afsk9" r="1" cx="55.39610339506173%" cy="28.23688271604938%"></circle>

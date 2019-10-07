@@ -21,7 +21,7 @@
 
         $response = $guzzle->request('GET', get_site_url(null, '', 'https') . "/wp-json/data-api/v1/stocks/list");
         echo "RESPONSE" . $response;
-        die();
+        $response = json_decode($response);
         // $curl = curl_init();
         // curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         

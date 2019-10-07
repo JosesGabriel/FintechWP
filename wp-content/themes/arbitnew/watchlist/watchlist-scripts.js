@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+  $(".button-toggle-content").click(function () {
+    $(".watched-hidden-content").toggle('slow');
+    if($(".button-toggle-content").hasClass('isopen')){
+        $(".button-toggle-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
+        $(".watched-hidden-content").slideUp( "slow" );
+    }else {
+        $(".button-toggle-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
+        $(".watched-hidden-content").slideDown( "slow" );
+    }
+});
 
 function minichart(symbol, from, to){
 

@@ -132,6 +132,37 @@
 		});
     }
 
+    var loadmostwatch = function(userid){
+		$.ajax({
+			url: "/wp-json/watchlist-api/v1/gettrending?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                console.log(data);
+                var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+                $.each(data.data, function(key, value){
+                    let mostwatch = '';
+                    mostwatch += '<li class="odd">';
+                    mostwatch += '<span style="border-color:'+colors[key]+';">'+value[0]+'</span>';
+                    mostwatch += '<a href="#"><label class="desc_'+value[0]+'">'+value[2]+'</label><br><p>'+value[1]+' Following</p></a>';
+                    mostwatch += '</li>';
+                    if(key < 5){
+                        $(".mostwatchside .topfiveparts").append(mostwatch);
+                    } else {
+                        $(".mostwatchside .toptenparts").append(mostwatch);
+                    }
+                    
+                });
+
+                
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+		});
+    }
+
    
     
     $( document ).ready(function() {
@@ -179,9 +210,9 @@
                 
             }
         });
-
-
         
+        new loadmostwatch(<?php echo $user->ID; ?>);
+
         new loadwatctlist(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

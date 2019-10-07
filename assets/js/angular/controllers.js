@@ -7,31 +7,33 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
     $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
-    
+    $rootScope.tickerBeep = true;
     $http.post("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
             $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
         })
 }]);
-app.controller('ticker', ['$scope', function($scope) {
+app.controller('ticker', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.enable = true;
     $scope.ticker = [];
 
     socket.on('psec', function (data) {  
-        var transaction = {
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol)
-        };
-        $scope.ticker.push(transaction);
+        if ($scope.enable) {
+            var transaction = {
+                symbol: data.sym,
+                price:  price_format(data.prv),
+                change: data.chg,
+                shares: abbr_format(data.vol)
+            };
+            $scope.ticker.push(transaction);
 
-        if ($scope.ticker.length > 30) {
-            $scope.ticker.shift();
+            if ($scope.ticker.length > 30) {
+                $scope.ticker.shift();
+            }
+
+            $scope.$digest();
         }
-
-        $scope.$digest();
     });
 }]);
 app.controller('template', function($scope, $http) {
@@ -394,11 +396,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
             if ($scope.$parent.settings.chart == '1') {
                 if (stock.change > 0){
-                    beep();
+                    if ($rootScope.tickerBeep) beep();
                     changicotogreen();
                 }
 				if (stock.change < 0){
-                    beep();
+                    if ($rootScope.tickerBeep) beep();
                     changicotored();
                 }
 				if (stock.change = 0){changicotounchanged();}

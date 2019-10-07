@@ -5,7 +5,7 @@
 
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/list",
-            type: 'GET',
+            type: 'POST',
             success: function(res) {
 
                   jQuery.each(res.data, function(index, value) {

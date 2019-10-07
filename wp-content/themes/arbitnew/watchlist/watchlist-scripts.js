@@ -17,6 +17,7 @@ $.ajax({
     dataType: 'json',
     //data: "stockss="+JSON.stringify(data),
     success: function(response) {
+          $(".trendingpreloader").hide();
         // var myJSON = JSON.stringify(response);
           var stocks = [];
           var stocks2 = [];

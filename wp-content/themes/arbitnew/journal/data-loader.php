@@ -8,6 +8,11 @@
             success: function(data) {
                 $(".adddashequity").text("₱"+(data.equity).toFixed(2));
                 $.each(data.data, function(i, value){
+                    if(value.profitperc > 0){
+                        let perfstats = 'dgreenpart';
+                    }else{
+                        let perfstats = 'dredpart';
+                    }
                     let addliveme = '';
                     addliveme += '<li>';
                     addliveme += '<div style="width:99%;">';
@@ -16,8 +21,8 @@
                     addliveme += '<div style="width:12%" class="table-cell-live">₱'+(value.aveprice).toFixed(3)+'</div>';
                     addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2)+'</div>';
                     addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:15%" class="dredpart table-cell-live">₱'+(value.profit).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:7%" class="dredpart table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
+                    addliveme += '<div style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:7%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
                     addliveme += '<div style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";

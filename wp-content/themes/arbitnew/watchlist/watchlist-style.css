@@ -1209,6 +1209,11 @@ h2.watchtitle {
     .editmenow {
         margin: 5px 0 15px 0;
         cursor: pointer;
+        color: white;
+        display: inline-block;
+        background-color: #11273e;
+        padding: 4px 14px !important;
+        border-radius: 25px
     }
     .eventnone {
         cursor: pointer;

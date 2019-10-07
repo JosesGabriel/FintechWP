@@ -9,7 +9,7 @@
                 
                  jQuery.each(res.data, function(index, value) {
 
-                    console.log(value.change)
+                    console.log(value.last);
 
                  });
 

@@ -1161,7 +1161,9 @@ span.um-activity-seemore {
 
 
 /*------ right-sidebar ------*/
-
+.right-dashboard-part-inner {
+    height: 100%;
+}
 .right-dashboard-part {
     float: left;
     max-width: 282px;

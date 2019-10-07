@@ -11,5 +11,4 @@
 			<strong class="view__all">View all</strong>
 		</a>
 	</div>
-    </div>
 </div>

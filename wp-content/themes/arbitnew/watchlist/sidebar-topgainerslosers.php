@@ -1,26 +1,5 @@
 
 <script>
-jQuery(document).ready(function(){
-  
-
-  var vstocks = [];
-  var i=0;
-
-  function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-  var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
-  var dcount = 0;
-  jQuery('.top-stocks .to-content-part ul .odd span.rainbow-border').each(function(index,els){
-    if (dcount == '10') {dcount = 0; }
-    jQuery(els).css('border-color',colors[dcount]);
-    dcount++;
-  });
- 
-
-
-});
-
     jQuery(document).ready( function() {
         $.ajax({
               type:'POST',

@@ -10,12 +10,11 @@
 
                   jQuery.each(res.data, function(index, value) {
                       if(symbol == value.symbol){
-                        var desc = value.description;
-
+                        $('.desc_' + symbol).text(value.description);
+                        $('.desc_' + symbol).css("text-overflow","ellipsis");
                       }
                   });
 
-                  return desc;
             },
             error: function (xhr, ajaxOptions, thrownError) {
 
@@ -59,7 +58,7 @@ global $wpdb;
 $count = 0;
 $counter = 0;
 $stock_watched[0][0] = '';
-$stock_watched[0][1] = 1;
+//$stock_watched[0][1] = 1;
 
 $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta_key = "_watchlist_instrumental" ');
     

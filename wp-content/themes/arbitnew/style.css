@@ -7,7 +7,6 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 */
 
-
 #page-container {
     background: #354960;
 }
@@ -1215,7 +1214,7 @@ ul.footmore li.nobar:after {
     display: none;
 }
 .dpostlet {
-    margin: 25px 15px 0;
+    margin: 25px 10px 0;
     border: 1px solid #142c46;
     border-radius: 5px;
     overflow: hidden;
@@ -1224,6 +1223,8 @@ ul.footmore li.nobar:after {
     background: #142c46 !important;
     padding: 10px 15px;
     font-size: 13px;
+    font-weight: 500;
+    color: #fff;
 }
 .dpostlet .body-port {
     padding: 0 10px 10px;
@@ -1388,10 +1389,12 @@ a.message-part-btn:before {
     line-height: 1em;
 }
 .meta-details-inner ul li .onlabel {
-    font-size: 13px;
+    font-size: 15px;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
+    margin: 10px 0;
+    cursor: pointer;
 }
 .meta-details-inner {
     margin-top: 10px;

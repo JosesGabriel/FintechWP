@@ -3,6 +3,7 @@
 
   function lateststocks(symbol){
 
+      console.log(symbol);
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/list",
             type: 'GET',

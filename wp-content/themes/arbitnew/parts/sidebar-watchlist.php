@@ -7,11 +7,11 @@
             dataType: 'json', // added data type
              success: function(res) {
                 
-                 jQuery.each(res.data, function(index, value) {
+                 //jQuery.each(res.data, function(index, value) {
 
-                    console.log(value.last);
+                    console.log(res.data);
 
-                 });
+                 //});
 
 
             },error: function (xhr, ajaxOptions, thrownError) {

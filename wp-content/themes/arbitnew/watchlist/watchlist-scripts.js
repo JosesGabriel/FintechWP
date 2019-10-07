@@ -36,28 +36,7 @@ function minichart(symbol, from, to){
 
     }
 
-
-function lateststocks(symbol){
-
-         jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/list",
-            type: 'GET',
-            success: function(res) {
-
-                        console.log(res.data);
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-
-            }
-        });
-
-    }
-    
-
-
-
-
+ 
     $(".gainers-title").click(function () {
 
         if($('.gainers').css('display') == 'none'){

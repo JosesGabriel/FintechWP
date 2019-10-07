@@ -19,6 +19,27 @@ jQuery(function(){
   });
  
 
+function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/list",
+            type: 'GET',
+            success: function(res) {
+
+                        console.log(res.data);
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+        });
+
+    }
+
+
+
+
+
 });
 
 </script>

@@ -7,6 +7,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
     $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
+    $rootScope.tickerBeep = true;
 
     $http.get("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
@@ -14,7 +15,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
             _stocks = response.data.data;
         })
 }]);
-app.controller('ticker', ['$scope', function($scope) {
+app.controller('ticker', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.enable = true;
     $scope.ticker = [];
 
@@ -396,11 +397,11 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
             if ($scope.$parent.settings.chart == '1') {
                 if (stock.change > 0){
-                    beep();
+                    if ($rootScope.tickerBeep) beep();
                     changicotogreen();
                 }
 				if (stock.change < 0){
-                    beep();
+                    if ($rootScope.tickerBeep) beep();
                     changicotored();
                 }
 				if (stock.change = 0){changicotounchanged();}

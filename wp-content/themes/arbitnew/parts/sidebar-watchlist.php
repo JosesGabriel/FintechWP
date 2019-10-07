@@ -9,7 +9,7 @@
                 
                  jQuery.each(res.data, function(index, value) {
 
-                    $('.stockperc_' + value.stockname).text(value.change);
+                    $('.stockperc_' + value.stockname).text((value.change).toFixed(2));
                     console.log(value.change);
 
                  });

@@ -9,6 +9,7 @@
                 
                  jQuery.each(res.data, function(index, value) {
 
+                    $('.stockperc').text(value.change);
                     console.log(value.change);
 
                  });

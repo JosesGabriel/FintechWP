@@ -101,13 +101,13 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
  ?>
      <ul>
      <?php
-
+ echo "<script> lateststocks('$stockname');</script>";
      for($i = 0; $i < 10; $i++){
 
          if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
             $stockname = $stock_watched[$i][0];
             $following = $stock_watched[$i][1];
-            echo "<script> lateststocks('$stockname');</script>";
+           
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>

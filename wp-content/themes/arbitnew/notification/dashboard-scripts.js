@@ -11,7 +11,7 @@
 
 				//query all stocks
 				$.ajax({
-					type: 'GET',
+					type: 'post',
 					url: '/wp-json/data-api/v1/stocks/list',
 					dataType: 'json',
 
@@ -322,7 +322,7 @@
                     var stockname = dinfo.stockname;
                     console.log("Stockname: " + stockname);
                     jQuery.ajax({
-                      method: "get",
+                      method: "post",
                       url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
                       dataType: 'json',
                       success: function(data){

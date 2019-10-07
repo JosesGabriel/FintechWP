@@ -330,12 +330,12 @@ date_default_timezone_set('Asia/Manila'); ?>
 									<div class="row msbusinesstit">
 										<!-- first news -->
 										<div class="col-md-8" style="padding-right: 10px;">
-											<div class="nws-thumbnstopimg sss" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
-												<div class="nws-toptitle">
+											<div class="nws-toptitle">
 													<p><a href="https://news.google.com/<?php echo $link[0]; ?>" target="_blank"><?php echo (strlen($titles[0]) > 59 ? substr($titles[0], 0, 60) . '...' : $titles[0]) ?></a></p>
 													<p class="ellpnews"><?php echo (strlen($desc[0]) > 200 ? substr($desc[0], 0, 200) . '...' : $desc[0]) ?></p>
 													<p><?php echo (strlen($source[0]) > 25 ? substr($source[0], 0, 25) . '...' : $source[0]) ?></p>
 												</div>
+											<div class="nws-thumbnstopimg sss" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
 												<div class="ddtopimg" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: auto 100%;background-repeat: no-repeat;">
 												</div>
 											</div>
@@ -428,23 +428,6 @@ date_default_timezone_set('Asia/Manila'); ?>
 								<div class="container">
 									<?php //get_template_part('parts/sidebar', 'watchlistlatestnews');
 									?>
-
-
-
-								<!-- <div class="adsbygoogle">
-									<div class="box-portlet row" style="padding: 0px 0%;">
-										<div class="tte-spons col-md-2">
-											<h6>Sponsor</h6>
-										</div>
-											<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
-										<small>ADVERTISEMENT</small>
-										<div class="adscontainer" style="width: 900px;">
-											<img src="/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
-											</div>
-										</div>
-									</div>
-								</div> -->
-
 									<div class="nws-businesstitle">Market News</div>
 
 									<!-- ========================================= Second section ============================================== -->

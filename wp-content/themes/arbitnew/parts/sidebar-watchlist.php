@@ -1,3 +1,22 @@
+<script>
+  function load_watchlist(userid){
+
+    $.ajax({
+      url: "/wp-json/watchlist-api/v1/watchlists?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+             success: function(data) {
+                console.log(data);
+            },error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+    });
+  }
+
+
+</script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
@@ -178,7 +197,12 @@ if ($dwatchinfo !== null) :
 
                       ?>
 
-                <?php if ($value['stockname'] != null) {  ?>
+                <?php if ($value['stockname'] != null) {  
+
+                   echo "<script> load_watchlist('$userID');</script>";
+                  ?>
+
+
 
                   <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 

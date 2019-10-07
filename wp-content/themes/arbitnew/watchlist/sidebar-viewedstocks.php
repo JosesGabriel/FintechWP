@@ -10,12 +10,10 @@
 
                   jQuery.each(res.data, function(index, value) {
                       if(symbol == value.symbol){
-                        var desc = value.description;
-
+                        $('.desc').text(value.description);
                       }
                   });
 
-                  return desc;
             },
             error: function (xhr, ajaxOptions, thrownError) {
 
@@ -107,11 +105,11 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
 
          if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
             $stockname = $stock_watched[$i][0];
-           
+            echo "<script> lateststocks('$stockname');</script>";
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>
-                          <a href="#"><?php  echo "<script> lateststocks('$stockname');</script>"; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                          <a href="#"><label class="desc"></label><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                       </li>
 
               <?php

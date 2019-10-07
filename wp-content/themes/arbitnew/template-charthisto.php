@@ -30,7 +30,7 @@
            ]);
 
         $response = $request->content;
-        var_dump(json_decode($response));
+        var_dump(json_decode($response)->data);
         die();
 
         if ($response) {

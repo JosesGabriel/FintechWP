@@ -9,7 +9,7 @@
                 
                  jQuery.each(res.data, function(index, value) {
 
-                    $('.stockperc').text(value.change);
+                    $('.stockperc_' + value.stockname).text(value.change);
                     console.log(value.change);
 
                  });
@@ -235,21 +235,21 @@ if ($dwatchinfo !== null) :
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
                         <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox red">
-                          <div class="stockperc" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
                     <?php elseif ($dchange === $dyellow) : ?>
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
                         <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
                     <?php elseif (strpos($dchange, '-') !== true) : ?>
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
                         <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
 

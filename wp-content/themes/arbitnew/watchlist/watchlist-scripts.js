@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-    
-
-
 
 function minichart(symbol, from, to){
 

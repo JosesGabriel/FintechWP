@@ -112,7 +112,8 @@
                 let tp = $(this).find(':selected').data('tp');
                 let sl = $(this).find(':selected').data('sl');
                 let stock = $(this).find(':selected').data('stock');
-
+                
+                $(".modal-title").text(stock);
                 $("#editstockmodal input[name='dconnumber_entry_price']").val(entry);
                 $("#editstockmodal input[name='dconnumber_take_profit_point']").val(tp);
                 $("#editstockmodal input[name='dconnumber_stop_loss_point']").val(sl);

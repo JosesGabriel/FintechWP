@@ -206,7 +206,7 @@ class JournalAPI extends WP_REST_Controller
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
-        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+        $request = $guzzle->request("POST", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$authorization}",
@@ -453,7 +453,7 @@ class JournalAPI extends WP_REST_Controller
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
-        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+        $request = $guzzle->request("POST", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$authorization}",
@@ -612,7 +612,7 @@ class JournalAPI extends WP_REST_Controller
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
-        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+        $request = $guzzle->request("POST", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$authorization}",

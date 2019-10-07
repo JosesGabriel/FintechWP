@@ -8,6 +8,8 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
+require("notification/header-files.php");
+require("parts/global-header.php");
 get_header( 'dashboard' );
 
 date_default_timezone_set('Asia/Manila');
@@ -51,6 +53,4 @@ date_default_timezone_set('Asia/Manila');
     });
 </script>
 
-<?php
-get_footer();
-?>
+<?php require("notification/footer-files.php"); ?>

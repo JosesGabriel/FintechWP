@@ -23,7 +23,7 @@
 
     jQuery(document).ready( function() {
         $.ajax({
-              type:'GET',
+              type:'POST',
               url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
               dataType: 'json',
               //data: "stockss="+JSON.stringify(data),

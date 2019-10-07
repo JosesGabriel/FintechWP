@@ -6,7 +6,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                $(".adddashequity").text("₱"+(data.equity).toFixed(2));
+                $(".adddashequity").text("₱"+(data.equity).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
                 $.each(data.data, function(i, value){
                     if(value.profitperc > 0){
                         perfstats = 'dgreenpart';
@@ -17,12 +17,12 @@
                     addliveme += '<li>';
                     addliveme += '<div style="width:99%;">';
                     addliveme += '<div style="width:7.5%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></div>';
-                    addliveme += '<div style="width:9%" class="table-cell-live">'+value.position+'</div>';
+                    addliveme += '<div style="width:9%" class="table-cell-live">'+(value.position).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:12%" class="table-cell-live">₱'+(value.aveprice).toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:7%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
+                    addliveme += '<div style="width:7%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
                     addliveme += '<div style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
@@ -95,16 +95,16 @@
                     addliveme += '<div style="width:7.9%">'+(i + 1)+'</div>';
                     addliveme += '<div style="width:19%">'+value.nicedate+'</div>';
                     addliveme += '<div style="width:15%">'+value.showtext+'</div>';
-                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
-                    addliveme += '<div style="width:20%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
-                    addliveme += '<div style="width:18%" class="to-left-align">₱ '+(parseFloat(value.tranamount)).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:20%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:18%" class="to-left-align">₱ '+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '</div>';
                     addliveme += '</li>';
                     
                 });
                 $(".ledgerlist ul li.toplistpart").after(addliveme);
-                $(".adddebithere").text("₱"+(parseFloat(data.debit)).toFixed(2));
-                $(".addcredithere").text("₱"+(parseFloat(data.creadit)).toFixed(2));
+                $(".adddebithere").text("₱"+(parseFloat(data.debit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $(".addcredithere").text("₱"+(parseFloat(data.creadit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -118,11 +118,11 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                $(".addcapital").text("₱"+(parseFloat(data.data.capital)).toFixed(2));
-                $(".addyearpl").text("₱"+(data.data.profit).toFixed(2));
-                $(".addyearplperc").text((data.data.profperc).toFixed(2)+"%");
-                $(".adddeposit").text("₱"+(data.data.deposit).toFixed(2));
-                $(".addwidthraw").text("₱"+(data.data.withraw).toFixed(2));
+                $(".addcapital").text("₱"+(parseFloat(data.data.capital)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $(".addyearpl").text("₱"+(data.data.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $(".addyearplperc").text((data.data.profperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+"%");
+                $(".adddeposit").text("₱"+(data.data.deposit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $(".addwidthraw").text("₱"+(data.data.withraw).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

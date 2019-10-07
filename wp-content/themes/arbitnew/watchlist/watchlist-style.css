@@ -1371,8 +1371,7 @@ h2.watchtitle {
         display: inline-flex;
         text-overflow: ellipsis;
         width: 98%;
-        padding: 7px;
-        padding-left: 11px;
+        padding: 7px 0;
     }
     .top-stocks .to-content-part ul .odd span {
         border: 2px solid;

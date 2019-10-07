@@ -1,18 +1,25 @@
 
 <script>
-    jQuery(function(){
-          function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-          };
-          var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
-          var dcount = 0;
-          jQuery('.top-stocks .to-content-part ul .even span, .top-stocks .to-content-part ul .odd span').each(function(index,el){
-            if (dcount == '10') {dcount = 0; }
-            jQuery(el).css('border-color',colors[dcount]);
-            dcount++;
-          });
-});
+jQuery(function(){
+  
 
+  var vstocks = [];
+  var i=0;
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+  var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+  var dcount = 0;
+  jQuery('.top-stocks .to-content-part ul .odd span').each(function(index,el){
+    if (dcount == '10') {dcount = 0; }
+    jQuery(el).css('border-color',colors[dcount]);
+    dcount++;
+  });
+ 
+
+
+});
 
     jQuery(document).ready( function() {
         $.ajax({
@@ -104,7 +111,7 @@
 </script>
     
     <div class="top-stocks">
-            <div class="to-top-title gainers-title"><strong>Top Gainers </strong></div>
+            <div class="to-top-title gainers-title"><strong>Biggest Gainers </strong></div>
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part gainers">
                      <ul></ul>                                          
@@ -113,7 +120,7 @@
 </div>
 <div class="top-stocks">
 
-    <div class="to-top-title losers-title"><strong>Top Losers</strong></div>
+    <div class="to-top-title losers-title"><strong>Biggest Losers</strong></div>
             <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
             <div class="to-content-part losers">
                    <ul></ul>

@@ -263,7 +263,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 					<?php get_template_part('parts/sidebar', 'profile'); ?>
 				</div>
 			</div>
-			<!-- <div class="center-dashboard-part" style="max-width: 800px;">
+			<div class="center-dashboard-part" style="max-width: 800px;">
 				<div class="center-dashboard-part-inner">
 					<div class="container">
 						<div class="row">
@@ -275,14 +275,14 @@ date_default_timezone_set('Asia/Manila'); ?>
 					</div>
 					<div class="nws-container">
 						               <div class="adsbygoogles">
-					<div class="box-portlet">
+					<!-- <div class="box-portlet">
 						<div class="box-portlet-content">
 							<small>ADVERTISEMENT</small>
 							<div class="adscontainer">
 							<img width="100%" src="<?php echo get_home_url(); ?>/ads/addsample728x90_<?php echo rand(1, 3); ?>.png">
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 					<?php
 						$html = file_get_html('http://news.google.com/search?q=Philippine%20stock%20exchange&hl=en-PH&gl=PH&ceid=PH%3Aen');
@@ -328,7 +328,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 								<div class="container">
 									<div class="nws-businesstitle">Business News</div>
 									<div class="row msbusinesstit">
-										first news
+										<!-- first news -->
 										<div class="col-md-8" style="padding-right: 10px;">
 											<div class="nws-thumbnstopimg sss" style="background: url('<?php echo $images[0]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
 												<div class="nws-toptitle">
@@ -342,7 +342,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 										</div>
 										<div class="col-md-4" style="padding-left: 0px;">
 											<div class="main-innertop">
-												7 to 11
+												<!-- 7 to 11 -->
 												<?php for ($topright = 1; $topright <= 4; $topright++) { ?>
 													<div class="nws-conttype llll">
 														<div class="nws-thumbns sss" style="background: url('<?php echo $images[$topright]; ?>');background-position: center center;background-size: cover;background-repeat: no-repeat;">
@@ -363,7 +363,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 									<div class="row cisz" style="padding-top: 0px; margin-top: -3px;">
 										<div class="hksi col-md-8">
 											<div class="row">
-												1 to 6
+												<!-- 1 to 6 -->
 												<?php for ($topright = 5; $topright <= 8; $topright++) { ?>
 													<div class="col-md-6" style="padding-right: 0px;">
 														<div class="nws-part">
@@ -431,26 +431,26 @@ date_default_timezone_set('Asia/Manila'); ?>
 
 
 
-								<div class="adsbygoogle">
-								<div class="box-portlet row" style="padding: 0px 0%;">-->
-									<!--<div class="tte-spons col-md-2">
-										<h6>Sponsor</h6>
-									</div>-->
-									<!--	<div class="box-portlet-content col-md-10" style="padding: 0 !important;">-->
-									<!-- <small>ADVERTISEMENT</small> -->
-									<!--	<div class="adscontainer" style="width: 900px;">
-										<img src="/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
+								<!-- <div class="adsbygoogle">
+									<div class="box-portlet row" style="padding: 0px 0%;">
+										<div class="tte-spons col-md-2">
+											<h6>Sponsor</h6>
+										</div>
+											<div class="box-portlet-content col-md-10" style="padding: 0 !important;">
+										<small>ADVERTISEMENT</small>
+										<div class="adscontainer" style="width: 900px;">
+											<img src="/ads/addsample728x90_1.png" style="width: 783px;padding-left: 16px;">
+											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								</div> -->
 
 									<div class="nws-businesstitle">Market News</div>
 
-									========================================= Second section ==============================================
+									<!-- ========================================= Second section ============================================== -->
 
 									<div class="row">
-										for 11
+										<!-- for 11 -->
 										<div class="col-md-4">
 											<div class="main-innertop klaska">
 												<div class="nws-part">
@@ -533,7 +533,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<br class="clear">
 				</div>
 				</div>
-			</div> -->
+			</div>
 		</div>
 	</div>
 </div>

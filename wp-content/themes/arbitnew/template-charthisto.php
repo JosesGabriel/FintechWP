@@ -33,7 +33,8 @@
     
         if ($response) {
             $data = json_decode($response->data);
-
+            var_dump($data);
+            die();
             $dstock = strtolower($_GET['query']);
 
             // add params

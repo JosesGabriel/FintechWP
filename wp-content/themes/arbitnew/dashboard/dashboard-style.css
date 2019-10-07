@@ -556,7 +556,7 @@ a.dmeta {
     display: inline-block;
     bottom: 0;
     padding: 10px 20px 10px 20px;
-    width: 478.22px;
+    width: 460.22px;
     background: rgba(18, 39, 62, 0.85);
     z-index: 3;
 }
@@ -2191,7 +2191,117 @@ legend {
 }
 /* EOF Var Calc */
 
-
-
-
 /*------ calc-part-dashboard ------*/
+
+/*------ sidebar-alerts-dashboard ------*/
+
+.alert-handler {
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 999;
+}
+.noti-message {
+    padding: 0;
+    color: #fffffe;
+    min-height: 40px;
+    margin: 8px;
+    /* background: #213f58; */
+    background: linear-gradient(6deg, #0a1c31 0%,#1a3550 100%);
+    border: 1px solid #394f6b !important;
+    border-radius: 5px;
+}
+.vertical-align {
+    margin: 0px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 234px;
+    /*border-right: 1px #1e3554 solid;*/
+}
+.op-btnchart {
+    width: 181px;
+    vertical-align: middle;
+    border-top: 1px solid #394f6b59;
+    /*padding: 0 6px;*/
+    /*display: inline-block;*/
+}
+.cont-logo {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-right: 1px solid #394f6b59;
+}
+.cont-logo span {
+    width: 42px;
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 11px !important;
+    border-color: rgb(244, 67, 54);
+    border: 2px solid;height: 42px;
+    border-color: rgb(244, 67, 54);
+}
+.cont-bodymessage {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 11px;
+    padding: 3px 1px 3px 4px;
+    line-height: 1.1;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+.cont-bodymessage span {
+    font-size: 11px;
+    line-height: 1.1;
+}
+.btn-show {
+    font-size: 11px;
+    padding: 3px 0px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 49%;
+}
+.btn-show a {
+    color: #fff;
+}
+.btn-close {
+    border-left: 1px solid #394f6b59;
+    font-size: 11px;
+    padding: 3px 0px;
+    cursor: pointer;
+    display: inline-block;
+    width: 49%;
+    text-align: center;
+}
+.btn-close:hover {
+    color: #d8d8d8;
+    background: #142c46;
+    border-radius: 4px;
+}
+.btn-show:hover {
+    color: #d8d8d8;
+    background: #142c46;
+    border-radius: 4px;
+}
+.disc-text {
+    color: #999999;
+}
+.md-rightside {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 11px;
+    padding: 0;
+    line-height: 1.1;
+    width: 75.6%;
+    border-left: none;
+    left: 0px;
+    position: relative;
+}
+/*------ sidebar-alerts-dashboard ------*/

@@ -30,11 +30,11 @@
            ]);
 
         $response = $request->content;
-    
+        var_dump($response);
+        die();
+
         if ($response) {
             $data = $response->data;
-            var_dump($data);
-            die();
             $dstock = strtolower($_GET['query']);
 
             // add params

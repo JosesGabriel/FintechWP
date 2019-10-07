@@ -1,6 +1,7 @@
 <?php
 
 require_once ('guzzle-class.php');
+require_once ('data-api.php');
 
 class JournalAPI extends WP_REST_Controller
 {
@@ -195,15 +196,28 @@ class JournalAPI extends WP_REST_Controller
         $allocations[$counter]['stock'] = 'Cash';
         $allocations[$counter]['color'] = $aloccolors[$counter];
 
-        $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $gerdqouteone = curl_exec($curl);
-        curl_close($curl);
+        // $curl = curl_init();
+	    // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // $gerdqouteone = curl_exec($curl);
+        // curl_close($curl);
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+
         
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
-        $gerdqoute = json_decode($gerdqouteone);
+        // $gerdqoute = json_decode($gerdqouteone);
 
         $finallive = [];
         foreach ($ismytrades as $key => $value) {
@@ -436,10 +450,21 @@ class JournalAPI extends WP_REST_Controller
         // $gerdqouteone = curl_exec($curl);
         // curl_close($curl);
 
-        $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        // $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
-        $gerdqoute = json_decode($gerdqouteone);
+        // $gerdqoute = json_decode($gerdqouteone);
 
         $finallive = [];
         foreach ($ismytrades as $key => $value) {

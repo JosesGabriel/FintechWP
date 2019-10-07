@@ -1,5 +1,5 @@
 <div class="latest-news" style="margin-top:10px;">
-    <div class="to-top-title">Bulletins
+    <div class="to-top-title">Bulletin
     </div>
     <hr class="style14 style15">
     <div class="to-content-part">

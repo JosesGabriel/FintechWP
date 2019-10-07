@@ -166,12 +166,12 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 							<div class="meta-details-inner">
 								<ul>
 									<li>
-										<div class="oncount"><a class="profile_peers_count" href="/user/<?php echo um_user('user_login') ?>/?getdpage=friends"><span class="um-ajax-count-friends">0</span></a></div>
-										<div class="onlabel">Peers</div>
+										<div class="oncount"><a class="profile_peers_count"><span class="um-ajax-count-friends">0</span></a></div>
+										<div class="onlabel"><a href="/user/<?php echo um_user('user_login') ?>/?getdpage=friends">Peers</a></div>
 									</li>
 									<li>
-										<div class="oncount"><a class="profile_post_count" href="/user/<?php echo um_user('user_login') ?>/?getdpage=activity">0</a></div>
-										<div class="onlabel">Posts</div>
+										<div class="oncount"><a class="profile_post_count">0</a></div>
+										<div class="onlabel"><a href="/user/<?php echo um_user('user_login') ?>/?getdpage=activity">Posts</a></div>
 									</li>
 								</ul>
 							</div>
@@ -284,14 +284,13 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 			</div>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
-
+					
+					<div class="container-sticky">
                     <?php
-                    #require("parts/sidebar-trendingstocks.php");
-                    #require("parts/sidebar-latestnews.php");
                     require("parts/sidebar-watchlist.php");
-                    #require("parts/sidebar-traders.php");
                     require("parts/sidebar-footer.php");
-                    ?>
+					?>
+					</div>
 
 				</div>
                 

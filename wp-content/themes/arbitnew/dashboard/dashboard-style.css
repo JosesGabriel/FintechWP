@@ -1279,7 +1279,7 @@ time.srr-date div {
     width: 86%;
     display: inline-block;
     position: relative;
-    vertical-align: middle;
+    vertical-align: top;
     padding: 5px;
     margin-bottom: 10px;
 }

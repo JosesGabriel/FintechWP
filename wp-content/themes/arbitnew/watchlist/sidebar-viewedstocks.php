@@ -17,130 +17,91 @@ jQuery(function(){
     jQuery(el).css('border-color',colors[dcount]);
     dcount++;
   });
-
- $.ajax({
-    url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE",
-    type: 'GET',
-    dataType: 'json', // added data type
-    success: function(res) {
-    
-       jQuery.each(res.data, function(i, val) {
-
-       <?php
-
-
-       ?>
-
-        });
-    },
-    error: function (xhr, ajaxOptions, thrownError) {
-        
-    }
-});
-
-   
+ 
 
 });
-
-
 
 </script>
-
 
 <div class="top-stocks">
     <div class="to-top-title"><strong>Most Watched Stocks</strong></div>
     <hr class="style14 style15" style="width: 90% !important;margin-bottom: 2px !important;margin-top: 6px !important;/* margin: 5px 0px !important; */">
     <div class="to-content-part">
 
-        <?php 
-       
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "https://arbitrage.ph/wp-json/data-api/v1/stocks/list");
-        curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($curl);
-        curl_close($curl);
+<?php 
 
-        if ($response !== false) {
-                $response = json_decode($response);
-                $stockinfo = $response->data;
-            }
+global $wpdb;     
 
-        //print_r($stockinfo);
+$count = 0;
+$counter = 0;
+$stock_watched[0][0] = '';
+$stock_watched[0][1] = 1;
 
-        $num = 0;
-        $counter = 1;
-        $stockcount = 0;
-        //$stock_watched = array();      
-        $users = get_users( array( 'fields' => array( 'ID' ) ) );
-
-        foreach($stockinfo as $stkey => $stvals){
-        
-            foreach($users as $user_id){
-           
-                $havemeta = get_user_meta($user_id->ID, '_watchlist_instrumental', true);
-
-                if($havemeta){
-                    
-                            foreach ($havemeta as $key => $value) {        
-                                
-                                        if ($stvals->symbol == $value['stockname']) {
-                                            $stock_watched[$stockcount][0] = $stvals->symbol;
-                                            $stock_watched[$stockcount][1] = $counter;
-                                            $stock_watched[$stockcount][2] = $stvals->description;
-                                            $counter++;   
-                                            //$stockcount++;  
-                                        }
-
-                                 }
-
-                         }       
-
-                     }
-
-                $stockcount++;
-                $counter = 1;
-             }
+$watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta_key = "_watchlist_instrumental" ');
     
-             usort($stock_watched, function($a, $b) {
-                return $b[1] <=> $a[1];
-            });
+  foreach ($watchlist as $mkey => $mvalue) { 
 
-             
+    $metadata = unserialize($mvalue->meta_value); 
+    $count_watchlist = 1; 
 
-             ?>
-             <ul>
-             <?php
+      foreach ($metadata as $key => $value) {      
+          $x = 0;
 
-             for($i = 0; $i < 10; $i++){
+          if($counter == 0) {          
+                $stock_watched[$count][0] = $value['stockname'];
+                $count++;                  
+          }else{
 
-                 if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
-
-                       
-                                    ?>
-                                            <li class="odd">
-                                                <span><?php echo $stock_watched[$i][0]; ?></span>
-                                                <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
-                                            </li>
-
-                                    <?php
-
-                           
-                        }
-
-                     if($i == 4){
-                        echo "<div class='hide-show watched-hidden-content'>";
+              for ($i=0; $i < $count ; $i++) { 
+                    if($stock_watched[$i][0] == $value['stockname']){ 
+                          if($stock_watched[$i][1] != '' ? $stock_watched[$i][1]++ : $stock_watched[$i][1] =  $count_watchlist );
+                          $x = 1; 
                     }
-                   
-                }        
+              }
+              
+              if($x == 0){
+                  $stock_watched[$count][0] = $value['stockname'];
+                  $count++;
+              }
+              
+          }
+     
+      }
 
-                    echo "</div>";
-            
-            ?>  
+      $counter++;
+  }
+   
+ usort($stock_watched, function($a, $b) {
+    return $b[1] <=> $a[1];
+ });
 
-            </ul>
+ ?>
+     <ul>
+     <?php
 
-                       
+     for($i = 0; $i < 10; $i++){
+
+         if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
+               
+              ?>
+                      <li class="odd">
+                          <span><?php echo $stock_watched[$i][0]; ?></span>
+                          <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                      </li>
+
+              <?php
+                  
+                }
+
+             if($i == 4){
+                echo "<div class='hide-show watched-hidden-content'>";
+            }
+           
+        }        
+            echo "</div>";
+    ?>  
+
+    </ul>                      
                
     </div>
  

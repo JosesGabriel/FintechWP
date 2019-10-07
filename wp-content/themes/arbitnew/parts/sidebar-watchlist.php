@@ -6,7 +6,7 @@
             type: 'GET',
             dataType: 'json', // added data type
              success: function(res) {
-                console.log(res.data);
+                console.log(res.data.change);
             },error: function (xhr, ajaxOptions, thrownError) {
                 
             }

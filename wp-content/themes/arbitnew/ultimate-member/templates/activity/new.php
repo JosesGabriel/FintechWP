@@ -18,21 +18,21 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	  crossorigin="anonymous"></script>
 <?php
 global $current_user;
-  if (!is_page(26)){ 
+  if (!is_page(26)){
 	  	$user_id = $user->ID;
 		if(isset($_POST['check_user_share_input'])){
 		  $sharecheck = $_POST['check_user_share_input'];
 		  update_user_meta($user_id, 'check_user_share', $sharecheck);
 		}
-		$checksharing = get_user_meta( $user_id, "check_user_share", true ); 
+		$checksharing = get_user_meta( $user_id, "check_user_share", true );
 		$checkfbshare = get_user_meta( $user_id, "_um_sso_facebook_email", true );
 		if(!$checksharing){
 			if($checkfbshare){
-				header('Location: /share/?'.rand(12345 ,89019));
-				die(); 
+				//header('Location: /share/?'.rand(12345 ,89019));
+				//die();
 			}else{
-				header('Location: /verify/?'.rand(12345 ,89019));
-				die();
+				//header('Location: /verify/?'.rand(12345 ,89019));
+				//die();
 			}
 		}
 		arbitrage_api_verify_user($user_id);
@@ -64,7 +64,7 @@ global $current_user;
 		update_user_meta($user_id, 'check_user_share', "");
 		header('Location: /share/?'.rand(12345 ,89019));
 		die();
-  } 
+  }
 	#elegant_description();
 	#elegant_keywords();
 	#elegant_canonical();
@@ -135,7 +135,7 @@ global $current_user;
 
 					<div class="photo-upload-cont" style="display: inline-block;/* background-color: #11273e; */padding: 4px 14px;border-radius: 25px;border: 1px solid #1e3554 !important;">
 						<img src="/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
-						<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span> 
+						<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span>
 					</div>
 					<!-- <div class="video-upload-cont" style="display: inline-block;background-color: #11273e;padding: 4px 14px;border-radius: 25px;    margin: 0 6px">
 						<img src="/svg/camera-video.svg" style="width: 21px;vertical-align: bottom;">
@@ -153,9 +153,9 @@ global $current_user;
 				do_action( 'um_activity_post_insert_tools' ); ?>
 
 				<div class="um-clear"></div>
-				
+
 			</div>
-			
+
 
 			<div class="um-activity-right">
 				<a href="javascript:void(0);" class="um-button um-activity-post um-disabled">
@@ -213,7 +213,7 @@ global $current_user;
 					   data-ext-err="<?php esc_attr_e( 'Please upload a valid image', 'um-activity' ); ?>">
 						<div class="photo-upload-cont" style="display: inline-block;/* background-color: #11273e; */padding: 4px 14px;border-radius:25px;border: 1px solid #1e3554 !important;margin-top: -2px;">
 							<img src="/svg/photo1.svg" style="width: 21px;vertical-align: bottom;">
-							<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span> 
+							<span style="padding-left: 3px;font-size: 13px;color: #fffffe;">Photo</span>
 						</div>
 					</a>
 				<?php }

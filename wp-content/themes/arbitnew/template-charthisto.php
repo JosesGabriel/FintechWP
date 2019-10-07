@@ -4,6 +4,7 @@
 	* Template page for Watchlist Page Platform
     */
     
+    require_once ('guzzle-class.php');
 
     header('Content-Type: application/json');
     if(isset($_GET['symbol'])){
@@ -16,22 +17,26 @@
     }
 
     if(isset($_GET['query'])){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
+        $guzzle = new GuzzleRequest();
+
+        $request = $guzzle->request('GET', get_site_url(null, '', 'https') . "/wp-json/data-api/v1/stocks/list");
+        $response = $request->content;
+
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($curl);
-        curl_close($curl);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        // $response = curl_exec($curl);
+        // curl_close($curl);
 
-        if ($response !== false) {
-            $response = json_decode($response);
+        if (!$response) {
+            $data = json_decode($response->data);
 
-            $arraymode = $response->data;
             $dstock = strtolower($_GET['query']);
 
             // add params
             $newinfo = [];
-            foreach ($arraymode as $addvalskey => $addvalsvalue) {
+            foreach ($data as $addvalskey => $addvalsvalue) {
                 $addvalsvalue->full_name = $addvalsvalue->symbol;
                 array_push($newinfo,$addvalsvalue);
             }

@@ -1,6 +1,6 @@
 
 <script>
-jQuery(function(){
+jQuery(document).ready(function(){
   
 
   var vstocks = [];

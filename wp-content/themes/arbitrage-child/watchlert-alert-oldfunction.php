@@ -1,7 +1,7 @@
 function checkwatchlist() {
 	        	var dlistofstocks = <?php echo $ismetadis; ?>;
 	        	jQuery.ajax({
-				 	method: "GET",
+				 	method: "post",
 					url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=",
 					
 					// url: 'https://api2.pse.tools/api/quotes',

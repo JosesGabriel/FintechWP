@@ -471,3 +471,57 @@ legend {
 body {
     background-color: #0d1f33 !important;
 }
+.inner-content {
+    padding: 45px 40px 25px 40px;
+    border-radius: 5px;
+    background: #142c46;
+}
+.inner-content--contact {
+    margin: 0 160px;
+    margin-top: 20px;
+}
+.fa-percentage {
+    margin-left: 1px;
+}
+p.content-meta-date {
+    text-align: center;
+    padding-bottom: 20px !important;
+}
+.background-positionfix {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    background: #0b1827;
+    overflow-x: hidden;
+    z-index: 0;
+}
+.footer-container {
+    width: 100%;
+    height: 30px;
+}
+.button-media-container {
+    text-align: center;
+    margin-top: 50px;
+}
+.button-media-container a img {
+    display: inline;
+    width: 40px;
+    margin: 0 5px;
+}
+.a-link-text-align {
+    text-align: center;
+}
+.a-link-text-margin {
+    margin: 20px auto 50px auto;
+}
+.a-text-font, .a-text-font a {
+    color: #d8d8d8;
+}
+.a-text-font a {
+    padding: 5px;
+}
+.a-text-font a:hover {
+    background: #142c46;
+    border-radius: 3px;
+    color: #e4e4e4;
+}

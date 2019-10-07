@@ -90,7 +90,7 @@
                     "async": true,
                     "crossDomain": true,
                     "url": url,
-                    "method": "GET",
+                    "method": "post",
                     "dataType": 'json'
                 };
                 jQuery.ajax(settings).done(function (response) {

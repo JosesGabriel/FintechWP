@@ -1,3 +1,30 @@
+<script>
+  function load_watchlist(userid){
+
+    $.ajax({
+      url: "/wp-json/watchlist-api/v1/watchlists?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+             success: function(res) {
+                
+                 jQuery.each(res.data, function(index, value) {
+                    $('.stocknum_' + value.stockname).text((value.last).toFixed(2));
+                    $('.stockperc_' + value.stockname).text((value.change).toFixed(2));
+                   // console.log(value.change);
+
+                 });
+
+
+            },error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+    });
+  }
+
+
+</script>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
@@ -44,28 +71,6 @@ $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
           }
         }
 
-        //$currentTime = (new DateTime())->modify('+1 day');
-        //$startTime = new DateTime('15:30');
-        //$endTime = (new DateTime('09:00'))->modify('+1 day');
-
-
-
-        // if ($currentTime >= $startTime && $currentTime <= $endTime) {
-        // $curl = curl_init();
-        // curl_setopt($curl, CURLOPT_URL, 'https://chart.pse.tools/api/intraday/?symbol='.$value['stockname'].'&firstDataRequest=true&from='.date('Y-m-d') );
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // $dintrabase = curl_exec($curl);
-        // curl_close($curl);
-
-        //  $dintraforchart = json_decode($dintrabase);
-        //    if (isset($dintraforchart->o)) {
-        //      $open = end($dintraforchart->o);
-        //      $high = end($dintraforchart->h);
-        //      $low = end($dintraforchart->l);
-
-        //      $dhistoflist .= '{"date": '.($counter + 1).', "open": '.$open.', "high": '.$high.', "low": '.$low.', "close": 0},';
-        //    }
-        //}
         ?>
 
         app.controller('minichartarb<?php echo strtolower($value['stockname']); ?>', function($scope) {
@@ -178,7 +183,12 @@ if ($dwatchinfo !== null) :
 
                       ?>
 
-                <?php if ($value['stockname'] != null) {  ?>
+                <?php if ($value['stockname'] != null) {  
+
+                   echo "<script> load_watchlist('$userID');</script>";
+                  ?>
+
+
 
                   <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 
@@ -201,23 +211,23 @@ if ($dwatchinfo !== null) :
 
                     <?php if (strpos($dchange, '-') !== false) : ?>
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox red">
-                          <div class="stockperc" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
                     <?php elseif ($dchange === $dyellow) : ?>
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
                     <?php elseif (strpos($dchange, '-') !== true) : ?>
                       <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
                         <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
+                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
                         </div>
                       </div>
 

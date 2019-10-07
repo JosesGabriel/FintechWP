@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
 		(function($) {
-		    jQuery(document).ready(function() {    	
+		    jQuery(document).ready(function() {
 
 		    	var postid;
 		    	var usersall = `<?php echo json_encode($newuserlist); ?>`;
@@ -30,7 +30,7 @@
 
 					if($(this).parent().find('.comment_tag_' + postid).length == 0){
 						jQuery(this).parents('.um-activity-comment-box').append('<div class="comment_tag_'+postid+'"></div>');
-					
+
 					}
 
 				});
@@ -96,7 +96,7 @@
 									var rgxp = new RegExp(input, "gi");
 
 									if (name.match(rgxp)) {
-										
+
 										var fullname = results[i].displayname;
 										jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont").append('<li class="cgitem num_'+i+'" data-id="'+results[i].id+'"  style="list-style: none; cursor: pointer; display: inline-block !important; padding: 2px 6px;  margin: 3px 0 0 3px; font-size: 13px; color: #d8d8d8; border-radius: 4px; background-color: #213f58;">'+fullname+'</li>');
 										if($countxs > 8) { break; }
@@ -119,7 +119,7 @@
 				    	var stocks = '["2GO","8990P","AAA","AB","ABA","ABC","ABG","ABS","ABSP","AC","ACE","ACPA","ACPB1","ACPB2","ACR","AEV","AGI","ALCO","ALCPB","ALHI","ALI","ALL","ANI","ANS","AP","APC","APL","APO","APX","AR","ARA","AT","ATI","ATN","ATNB","AUB","BC","BCB","BCOR","BCP","BDO","BEL","BH","BHI","BKR","BLFI","BLOOM","BMM","BPI","BRN","BSC","CA","CAB","CAT","CDC","CEB","CEI","CEU","CHI","CHIB","CHP","CIC","CIP","CLC","CLI","CNPF","COAL","COL","COSCO","CPG","CPM","CPV","CPVB","CROWN","CSB","CYBR","DAVIN","DD","DDPR","DELM","DFNN","DIZ","DMC","DMCP","DMPA1","DMPA2","DMW","DNA","DNL","DTEL","DWC","EAGLE","ECP","EDC","EEI","EG","EIBA","EIBB","ELI","EMP","EURO","EVER","EW","FAF","FB","FBP","FBP2","FDC","FERRO","FEU","FFI","FGEN","FGENF","FGENG","FIN","FJP","FJPB","FLI","FMETF","FNI","FOOD","FPH","FPHP","FPHPC","FPI","FYN","FYNB","GEO","GERI","GLO","GLOPA","GLOPP","GMA7","GMAP","GPH","GREEN","GSMI","GTCAP","GTPPA","GTPPB","H2O","HDG","HI","HLCM","HOUSE","HVN","I","ICT","IDC","IMI","IMP","IND","ION","IPM","IPO","IRC","IS","ISM","JAS","JFC","JGS","JOH","KEP","KPH","KPHB","LAND","LBC","LC","LCB","LFM","LIHC","LMG","LOTO","LPZ","LR","LRP","LRW","LSC","LTG","M-O","MA","MAB","MAC","MACAY","MAH","MAHB","MARC","MAXS","MB","MBC","MBT","MED","MEG","MER","MFC","MFIN","MG","MGH","MHC","MJC","MJIC","MPI","MRC","MRP","MRSGI","MVC","MWC","MWIDE","MWP","NI","NIKL","NOW","NRCP","NXGEN","OM","OPM","OPMB","ORE","OV","PA","PAL","PAX","PBB","PBC","PCOR","PCP","PERC","PGOLD","PHA","PHC","PHEN","PHES","PHN","PIP","PIZZA","PLC","PMPC","PMT","PNB","PNC","PNX","PNX3A","PNX3B","PNXP","POPI","PORT","PPC","PPG","PRC","PRF2A","PRF2B","PRIM","PRMX","PRO","PSB","PSE","PSEI","PTC","PTT","PX","PXP","RCB","RCI","REG","RFM","RLC","RLT","ROCK","ROX","RRHI","RWM","SBS","SCC","SECB","SEVN","SFI","SFIP","SGI","SGP","SHLPH","SHNG","SLF","SLI","SM","SMC","SMC2A","SMC2B","SMC2C","SMC2D","SMC2E","SMC2F","SMC2G","SMC2H","SMC2I","SMCP1","SMPH","SOC","SPC","SPM","SRDC","SSI","SSP","STI","STN","STR","SUN","SVC","T","TBGI","TECB2","TECH","TEL","TFC","TFHI","TLII","TLJJ","TUGS","UBP","UNI","UPM","URC","V","VITA","VLL","VMC","VUL","VVT","WEB","WIN","WLCON","WPI","X","ZHI"]';
 
 
-        				stocks = JSON.parse(stocks); 
+        				stocks = JSON.parse(stocks);
 				    	jQuery(this).parent().find(".popname").remove();
 
 						var finddword = dlastitem.toUpperCase();
@@ -147,16 +147,16 @@
 				    	jQuery(this).parent().find(".popname").remove();
 				    }
 				});
-		
+
 
 		jQuery(this).on('keyup','.um-activity-comment-textarea', function(e){
 
-					
+
 					var comment_id = jQuery(this).attr('data-reply_to');
 		        	var counx = 0;
 					//var usersall = `<?php // echo json_encode($newuserlist); ?>`;
 					clearInterval(loopfriends);
-									
+
 		        	if (e.which == 52) { dauto = true; }
 		        	if (e.which == 32) { dauto = false; }
 
@@ -164,7 +164,7 @@
 		        	var res = dcontexttext.split(" ");
 		        	var dlastitem = res[res.length-1];
 		        	var i;
-  	
+
 		        	if(comment_id != 0 ){
 							postid = comment_id;
 					}
@@ -183,20 +183,20 @@
 								 			var name = results[i].displayname;
 								 			var rgxp = new RegExp(input, "gi");
 								 			if (name.match(rgxp)) {
-												
+
 												var fullname = results[i].displayname;
 
 											if(comment_id != 0 ){
 
 												postid = comment_id;
 											}
-								   		
+
 											jQuery(".um-activity-comment-box .comment_tag_"+postid).append('<li class="cgitem num_'+i+'" data-id="'+results[i].id+'" user-login="'+results[i].user_login+'" style="list-style: none; cursor: pointer; display: inline-block !important; padding: 2px 6px;  margin: 3px 0 0 3px; font-size: 13px; color: #d8d8d8; border-radius: 4px; background-color: #213f58; ">'+fullname+'</li>');
-												
+
 												if($countxs > 8) { break; }
 												$countxs++;
 											}
-											
+
 								 		}
 							    }else{
 							      return false;
@@ -210,7 +210,7 @@
 				    	dauto = false;
 
 				    } else {
-				    	dauto = true;	
+				    	dauto = true;
 				    }
 				});
 
@@ -229,7 +229,7 @@
 				var dtextareas = jQuery(this).parents('.um-activity-comment-box').find('textarea').val();
 
 				var dfinalname = isname.replace(' ', '_').toLowerCase();
-				
+
 				var n = dtextareas.lastIndexOf("@");
 
 				var comm = dtextareas.slice(0, n);
@@ -238,7 +238,7 @@
 
 				jQuery(this).parents('.um-activity-comment-box').find('textarea').val(dreplaceditem).focus();
 		  	});
-			
+
 
 
 
@@ -271,9 +271,9 @@
 				jQuery(this).parents('.um-activity-textarea').find('textarea').val(newdesc);
 				jQuery(this).parents('.um-activity-textarea').find(".popname").remove();
 			});
-			
+
 		});
-	 
+
 	})(jQuery);
 </script>
 
@@ -340,7 +340,7 @@
 			jQuery('.left-dashboard-part-overlay').fadeIn("fast");
 		}
 	});
-		
+
 	var el2 = document.getElementById('slidecloseoverlay');
 	swipedetect(el2, function(swipedir){
 		if (swipedir == "left"){
@@ -349,7 +349,7 @@
 			jQuery('.left-dashboard-part-overlay').fadeOut("fast");
 		}
 	});
-		
+
 	jQuery('.top-slide-trigger').click(function(){
 		jQuery('.left-dashboard-part').css("left","0");
 		jQuery('.slidecloseoverlay').css("display","block");
@@ -393,15 +393,15 @@
 			  .then(function(reg){
 
 			 }).catch(function(err) {
-				
+
 			});
 		 }
 		</script>
 	<?php } ?>
 <?php } ?>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lazyfunc.js?<?php echo time(); ?>"></script>
+<!--<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lazyfunc.js?<?php echo time(); ?>"></script>
 
-<div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>
+<div class="left-dashboard-part-overlay" id="left-dashboard-part-overlay"></div>-->
 
 </body>
 </html>

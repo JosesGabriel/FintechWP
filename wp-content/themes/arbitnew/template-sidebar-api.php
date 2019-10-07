@@ -123,9 +123,7 @@ function get_bulletins(){
   dynamic_sidebar( 'Bulletin Sidebar' );
   $content = ob_get_contents();
   ob_end_clean();
-
   echo json_encode(['data' => $content, 'status' => 200, 'success' => true]);
-
 }
 
 function get_user_metas(){

@@ -19,11 +19,11 @@ $user = wp_get_current_user();
 get_header();
 
 
-
 ?>
-
 <?php get_template_part('parts/global', 'cssfooter'); ?>
 <?php get_template_part('parts/global', 'css'); ?>
+
+
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
@@ -32,6 +32,8 @@ get_header();
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/footer/terms-style.css?<?php echo time(); ?>">
 <div class="background-positionfix">
 		<div class="starsNear-2zVFGJ">
 		<svg class="leftConstellation-OiQA13" version="1.1" xmlns="http://www.w3.org/2000/svg">

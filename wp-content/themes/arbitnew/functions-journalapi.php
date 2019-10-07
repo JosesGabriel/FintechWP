@@ -609,9 +609,19 @@ class JournalAPI extends WP_REST_Controller
     {
         global $wpdb;
         $data = $request->get_params();
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $stocks = json_decode($request->content);
 
-        $xmlData = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        $stocks = json_decode($xmlData);
+        // $xmlData = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        // $stocks = json_decode($xmlData);
         return $this->respond(true, ['data' => $stocks->data], 200);
     }
 

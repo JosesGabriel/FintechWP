@@ -1553,7 +1553,7 @@ a:hover {
 }
 .dashboard-sidebar-left-inner {
     position: sticky;
-    top: 10px;
+    top: 65px;
 }
 .left-dashboard-part {
     padding: 10px 0 0 !important;
@@ -1563,5 +1563,9 @@ a:hover {
 
 .dinnerlist .dparams ul {
     padding: 0px;
+}
+
+.top-stocks {
+    margin-bottom: 10px;
 }
 /*------ global-sidebar ------*/

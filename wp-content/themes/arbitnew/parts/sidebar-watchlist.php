@@ -22,8 +22,6 @@ $ismetadis = get_user_meta($userID, '_watchlist_instrumental', true);
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/charts/history?symbol=' . $value['stockname'] . '&exchange=PSE&resolution=1D&from=' . date('Y-m-d', strtotime("-20 days")) . '&to=' . date('Y-m-d'));
 
-        //
-
         curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

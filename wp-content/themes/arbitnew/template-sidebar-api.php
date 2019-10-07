@@ -58,7 +58,7 @@ function get_trendingstocks(){
       $gerdqoute = file_get_contents('https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
       $gerdqoute = json_decode($gerdqoute);
 
-      print_r($gerdqoute);
+      print_r($gerdqoute->data);
 
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {

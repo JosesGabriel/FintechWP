@@ -11,6 +11,7 @@
                   jQuery.each(res.data, function(index, value) {
                       if(symbol == value.symbol){
                         $('.desc_' + symbol).text(value.description);
+                        $('.desc_' + symbol).css("text-overflow","ellipsis");
                       }
                   });
 

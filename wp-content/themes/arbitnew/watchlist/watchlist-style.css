@@ -1351,21 +1351,16 @@ h2.watchtitle {
         font-weight: 500;
     }
     .top-stocks .to-content-part ul .odd a{
-        width: 75%;
+        width: 81%;
     }
 
     .gainers-title:hover, .losers-title:hover {
         cursor: pointer;
-    }
-
-
-       
-    .top-stocks .to-content-part ul .even {
-        display: inline-flex;
-        text-overflow: ellipsis;
-        width: 98%;
-        padding: 7px;
-        padding-left: 11px;
+    }  
+    .top-stocks .to-content-part ul .odd label {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
     }
     .top-stocks .to-content-part ul .odd {
         display: inline-flex;

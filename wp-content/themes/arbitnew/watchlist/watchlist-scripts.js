@@ -40,22 +40,11 @@ function minichart(symbol, from, to){
 function lateststocks(symbol){
 
          jQuery.ajax({
-            url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + symbol + "",
+            url: "/wp-json/data-api/v1/stocks/list",
             type: 'GET',
-            dataType: 'json',
             success: function(res) {
 
-                        var price = parseFloat(res.data.last);
-                        jQuery('.curprice_' + symbol).text('₱ ' + price.toFixed(2));
-                        var curchange = parseFloat(res.data.changepercentage);
-
-                        if(curchange < 0){
-                            jQuery('.curchange_' + symbol).css("color","#eb4d5c");
-                        }else if (curchange > 0) {
-                            jQuery('.curchange_' + symbol).css("color","#53b987");
-                        }
-
-                        jQuery('.curchange_' + symbol).text(curchange.toFixed(2) + '%');
+                        console.log(res.data);
 
             },
             error: function (xhr, ajaxOptions, thrownError) {

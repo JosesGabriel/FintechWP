@@ -74,7 +74,7 @@ div.um-activity {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	position: fixed;
-	background: #fff;
+	background: #142b46;
 	box-shadow: 0 1px 3px #111;
 	z-index: 1999993;
 	box-sizing: border-box;
@@ -98,7 +98,7 @@ div.um-activity {
 	text-align: center;
 	padding: 10px 0;
 	font-weight: bold;
-	color: #333;
+	color: white;
 }
 
 .um-activity-confirm-b a:hover,

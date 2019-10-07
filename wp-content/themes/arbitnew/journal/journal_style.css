@@ -710,6 +710,7 @@ a.smlbtn.blue:hover {
     text-align: center;
 }
 a.smlbtn.green:hover {
+    cursor: pointer;
     background-color: #27ae60;
     color:#FFFFFF;
 }
@@ -731,6 +732,7 @@ a.smlbtn.red {
     text-align: center;
 }
 a.smlbtn.red:hover {
+    cursor: pointer;
     background-color: #e64c3c;
     color:#FFFFFF;
 }

@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+  $(".button-toggle-content").click(function () {
+    $(".watched-hidden-content").toggle('slow');
+    if($(".button-toggle-content").hasClass('isopen')){
+        $(".button-toggle-content").html('<i class="fas fa-sort-down" id="fa-up" style="bottom: 0px;top: -2px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Show more</strong>').removeClass('isopen').slideDown( "slow" );
+        $(".watched-hidden-content").slideUp( "slow" );
+    }else {
+        $(".button-toggle-content").html('<i class="fas fa-sort-up" id="fa-up" style="bottom: 0;top: 4px;position: relative;font-size: 16px;margin-right: 4px;vertical-align: initial;"></i><strong>Hide</strong>').addClass('isopen');
+        $(".watched-hidden-content").slideDown( "slow" );
+    }
+});
 
 $.ajax({
     type:'POST',
@@ -235,104 +245,104 @@ function get24Hr(time){
   return hours;
 }
 
-function newwatchlist(){
-        jQuery.ajax({
-            method: "get",
-            url: "/sidebar-api/?daction=get_user_metas",
-            dataType: 'json',
-            success: function(data){
-              var usermetas = data;
-              $.each(usermetas, function(index, dinfo){
-                var stockname = dinfo.stockname;
-                console.log("Stockname: " + stockname);
-                jQuery.ajax({
-                  method: "post",
-                  url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
-                  dataType: 'json',
-                  success: function(data){
-                    var stocklastdata = parseFloat(data.data.last);
+// function newwatchlist(){
+//         jQuery.ajax({
+//             method: "get",
+//             url: "/sidebar-api/?daction=get_user_metas",
+//             dataType: 'json',
+//             success: function(data){
+//               var usermetas = data;
+//               $.each(usermetas, function(index, dinfo){
+//                 var stockname = dinfo.stockname;
+//                 console.log("Stockname: " + stockname);
+//                 jQuery.ajax({
+//                   method: "post",
+//                   url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
+//                   dataType: 'json',
+//                   success: function(data){
+//                     var stocklastdata = parseFloat(data.data.last);
 
-                    //compare now
+//                     //compare now
 
-                    //Entry Price
+//                     //Entry Price
 
-                      if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
-                        var dslert = '<div class="noti-message">';
-                          dslert += '<div class="vertical-align">';
-                            dslert += '<a class="cont-logo">';
-                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
-                            dslert += '</a>';
-                            dslert += '<div class="md-rightside">';
-                              dslert += '<a class="cont-bodymessage">';
-                                dslert += 'Buy Now! <br>';
-                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+//                       if (parseFloat(dinfo.dconnumber_entry_price) == stocklastdata.toFixed(2)) {
+//                         var dslert = '<div class="noti-message">';
+//                           dslert += '<div class="vertical-align">';
+//                             dslert += '<a class="cont-logo">';
+//                               dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+//                             dslert += '</a>';
+//                             dslert += '<div class="md-rightside">';
+//                               dslert += '<a class="cont-bodymessage">';
+//                                 dslert += 'Buy Now! <br>';
+//                                 dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
 
-                              dslert += '</a>';
-                              dslert += '<div class="op-btnchart">';
-                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
-                                dslert += '<div class="btn-close xclsbtn">Close</div>';
-                              dslert += '</div>';
-                            dslert += '</div>';
-                          dslert += '</div>';
-                        dslert += '</div>';
-                        jQuery(".alert-handler").append(dslert);
+//                               dslert += '</a>';
+//                               dslert += '<div class="op-btnchart">';
+//                                 dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+//                                 dslert += '<div class="btn-close xclsbtn">Close</div>';
+//                               dslert += '</div>';
+//                             dslert += '</div>';
+//                           dslert += '</div>';
+//                         dslert += '</div>';
+//                         jQuery(".alert-handler").append(dslert);
 
-                      }
+//                       }
 
-                    //stoplosspoint
+//                     //stoplosspoint
 
-                      if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
-                        var dslert = '<div class="noti-message">';
-                          dslert += '<div class="vertical-align">';
-                            dslert += '<a class="cont-logo">';
-                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
-                            dslert += '</a>';
-                            dslert += '<div class="md-rightside">';
-                              dslert += '<a class="cont-bodymessage">';
-                                dslert += 'Sell Now and Stop your loss! <br>';
-                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+//                       if (parseFloat(dinfo.dconnumber_stop_loss_point) > stocklastdata.toFixed(2)) {
+//                         var dslert = '<div class="noti-message">';
+//                           dslert += '<div class="vertical-align">';
+//                             dslert += '<a class="cont-logo">';
+//                               dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+//                             dslert += '</a>';
+//                             dslert += '<div class="md-rightside">';
+//                               dslert += '<a class="cont-bodymessage">';
+//                                 dslert += 'Sell Now and Stop your loss! <br>';
+//                                 dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
 
-                              dslert += '</a>';
-                              dslert += '<div class="op-btnchart">';
-                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
-                                dslert += '<div class="btn-close xclsbtn">Close</div>';
-                              dslert += '</div>';
-                            dslert += '</div>';
-                          dslert += '</div>';
-                        dslert += '</div>';
-                        jQuery(".alert-handler").append(dslert);
-                      }
+//                               dslert += '</a>';
+//                               dslert += '<div class="op-btnchart">';
+//                                 dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+//                                 dslert += '<div class="btn-close xclsbtn">Close</div>';
+//                               dslert += '</div>';
+//                             dslert += '</div>';
+//                           dslert += '</div>';
+//                         dslert += '</div>';
+//                         jQuery(".alert-handler").append(dslert);
+//                       }
 
-                    //takeprofit
+//                     //takeprofit
 
-                      if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
-                        var dslert = '<div class="noti-message">';
-                          dslert += '<div class="vertical-align">';
-                            dslert += '<a class="cont-logo">';
-                              dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
-                            dslert += '</a>';
-                            dslert += '<div class="md-rightside">';
-                              dslert += '<a class="cont-bodymessage">';
-                                dslert += 'Sell Now and Secure your Profit! <br>';
-                                dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
+//                       if (parseFloat(dinfo.dconnumber_take_profit_point) < stocklastdata.toFixed(2)) {
+//                         var dslert = '<div class="noti-message">';
+//                           dslert += '<div class="vertical-align">';
+//                             dslert += '<a class="cont-logo">';
+//                               dslert += '<span style="border: 2px solid #f44336 !important;">'+stockname+'</span>';
+//                             dslert += '</a>';
+//                             dslert += '<div class="md-rightside">';
+//                               dslert += '<a class="cont-bodymessage">';
+//                                 dslert += 'Sell Now and Secure your Profit! <br>';
+//                                 dslert += '<span class="disc-text">Current price is now ₱'+stocklastdata.toFixed(2)+'</span>';
 
-                              dslert += '</a>';
-                              dslert += '<div class="op-btnchart">';
-                                dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
-                                dslert += '<div class="btn-close xclsbtn">Close</div>';
-                              dslert += '</div>';
-                            dslert += '</div>';
-                          dslert += '</div>';
-                        dslert += '</div>';
-                        jQuery(".alert-handler").append(dslert);
-                      }
+//                               dslert += '</a>';
+//                               dslert += '<div class="op-btnchart">';
+//                                 dslert += '<div class="btn-show"><a href="/chart/'+stockname+'">Show</a></div>';
+//                                 dslert += '<div class="btn-close xclsbtn">Close</div>';
+//                               dslert += '</div>';
+//                             dslert += '</div>';
+//                           dslert += '</div>';
+//                         dslert += '</div>';
+//                         jQuery(".alert-handler").append(dslert);
+//                       }
 
-                  }
-                });
-              });
-            }
-        });
-}
+//                   }
+//                 });
+//               });
+//             }
+//         });
+// }
 
 
   function removealerts() {

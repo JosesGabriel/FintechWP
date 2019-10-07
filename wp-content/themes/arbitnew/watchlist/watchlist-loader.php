@@ -6,7 +6,55 @@
             dataType: 'json', // added data type
             success: function(data) {
                 console.log(data);
+                // var app = angular.module('arbitrage_wl', ['nvd3']);
                 $(".watchonlist").addClass("after-load");
+                
+                $.each(data.data, function(skey, svalue){
+                    let candles = [];
+                    let stock = svalue.stock;
+                    $.each(svalue.chartdata.t, function(ckey, cvalue){
+                        candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                    });
+                    AmCharts.makeChart( "chartdiv"+stock, {
+                        "type":"serial",
+                        "categoryField":"category",
+                        "autoMarginOffset":0,
+                        "marginBottom":0,
+                        "marginLeft":0,
+                        "marginRight":0,
+                        "backgroundColor":"#142C46",
+                        "borderColor":"#FFFFFF",
+                        "color":"#78909C",
+                        "usePrefixes":!0,
+                        "categoryAxis": {
+                            "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
+                        },
+                        "trendLines":[],
+                        "graphs":[ {
+                            "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": "#ff1744", "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": "#ff1744", "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                        }
+
+                        ],
+                        "guides":[],
+                        "valueAxes":[ {
+                            "gridThickness": 0,
+                            "axisAlpha": 0,
+                            "gridAlpha": 0.1,
+                            "labelsEnabled": false
+                        }],
+                        "allLabels":[],
+                        "balloon": {}
+
+                        ,
+                        // "legend": {
+                        //     "enabled": !0, "useGraphSettings": !0
+                        // },
+                        "titles":[],
+                        "dataProvider": candles
+                    } );
+                });
+
+                
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -20,11 +68,8 @@
             dataType: 'json', // added data type
             success: function(data) {
                 console.log(data);
-                
-                let watchtoadd = '';
-
                 $.each(data.data, function(key, value){
-
+                    let watchtoadd = '';
                     let stockchange = '';
                     stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
 
@@ -42,19 +87,9 @@
                     watchtoadd += stockchange + (value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
-                    watchtoadd += '<div class="col-md-12">';
-                    watchtoadd += '<div class="dchart">';
-                    watchtoadd += '<div class="chartjs">';
-                    watchtoadd += '<div id="chart_div_'+value.stockname+'" class="chart"></div>';
-                    watchtoadd += '<div class="minichartt">';
-                    watchtoadd += '<a href="/chart/'+value.stockname+'" target="_blank" class="stocklnk"></a>';
-                    watchtoadd += '<div ng-controller="minichartarb'+value.stockname+'" class="ng-scope">';
-                    watchtoadd += '<nvd3 options="options" data="data" class="with-3d-shadow with-transitions ng-isolate-scope"></nvd3>';
-                    watchtoadd += '</div>';
-                    watchtoadd += '</div>';
-                    watchtoadd += '</div>';
-                    watchtoadd += '<input type="hidden" class="minchart_'+value.stockname+'" id="minchart_'+value.stockname+'" name="minchart_'+value.stockname+'" autocomplete="off">';
-                    watchtoadd += '</div>';
+                    watchtoadd += '<div class="col-md-12" style="padding: 0;">';
+                    watchtoadd += '<div class="chartarea">';
+                    watchtoadd += '<div class="floatingdiv" id="chartdiv'+value.stockname+'"></div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dparams">';
@@ -80,10 +115,11 @@
                     watchtoadd += '</ul>';
                     watchtoadd += '</div>';
                     watchtoadd += '</li>';
+                    $(".watcherlist > ul").append(watchtoadd);
                 });
-                $(".watcherlist > ul").append(watchtoadd);
                 
-
+                
+                
                 
 
             },
@@ -140,6 +176,8 @@
             }
         });
 
+
+        
         new loadwatctlist(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

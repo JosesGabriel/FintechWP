@@ -18,10 +18,10 @@
                     addliveme += '<div style="width:99%;">';
                     addliveme += '<div style="width:7.5%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></div>';
                     addliveme += '<div style="width:9%" class="table-cell-live">'+value.position+'</div>';
-                    addliveme += '<div style="width:12%" class="table-cell-live">₱'+(value.aveprice).toFixed(3)+'</div>';
-                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2)+'</div>';
-                    addliveme += '<div style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:12%" class="table-cell-live">₱'+(value.aveprice).toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
+                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
+                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
+                    addliveme += '<div style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:7%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2)+'%</div>';
                     addliveme += '<div style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';

@@ -19,7 +19,7 @@
     if(isset($_GET['query'])){
         $guzzle = new GuzzleRequest();
 
-        $request = $guzzle->request("GET", get_site_url(null, '', 'https') . "/wp-json/data-api/v1/stocks/list", [
+        $request = $guzzle->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/list", [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",

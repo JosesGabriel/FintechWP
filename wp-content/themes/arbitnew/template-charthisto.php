@@ -22,7 +22,7 @@
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
 
-        $request = $guzzle->request("GET", $dataUrl, [
+        $request = $guzzle->request("GET", "$dataUrl/api/v1/stocks/list", [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$authorization}",

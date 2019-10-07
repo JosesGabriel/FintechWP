@@ -1,7 +1,7 @@
 
 		(function($) {
 			//global stockList 
-			var stockList;
+			var stockList=[];
 			var vm = this;
 
 		    jQuery(document).ready(function() {
@@ -17,7 +17,12 @@
 
 					success: function(response) {
 						vm.stockList = response.data;
-						console.log('STOCKS LIST', response.data);
+						
+						//append all keys to stockList
+						Object.keys(response.data).forEach(key => {
+							console.log('STOCK KEY', key);
+						});
+						
 					}
 				});
 

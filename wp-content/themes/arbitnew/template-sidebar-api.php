@@ -50,12 +50,13 @@ function get_trendingstocks(){
       global $wpdb;
       $date = date('Y-m-d', time());
       $curl = curl_init();
-      curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/list');
+      curl_setopt($curl, CURLOPT_URL, 'https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/list');
       curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
       curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
       $gerdqoute = curl_exec($curl);
       curl_close($curl);
       $gerdqoute = json_decode($gerdqoute);
+
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {
         $listofstocks = [];

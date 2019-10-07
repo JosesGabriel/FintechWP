@@ -14,6 +14,7 @@
                     let stockchange = '';
                     stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
 
+
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';
                     watchtoadd += '<div class="row">';
                     watchtoadd += '<div class="wlttlstockvals">';

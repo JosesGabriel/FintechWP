@@ -9,6 +9,9 @@ global $current_user;
 $user = wp_get_current_user();
 get_header( 'dashboard' );
 $userID = $current_user->ID;
+require("parts/sidebar-calc.php");
+require("parts/sidebar-varcalc.php");
+require("parts/sidebar-avarageprice.php");
 
 date_default_timezone_set('Asia/Manila');
 

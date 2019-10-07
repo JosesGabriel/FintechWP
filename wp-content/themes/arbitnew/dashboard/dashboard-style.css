@@ -174,7 +174,7 @@ body .um-notification-b.right {
 .ontomitif .um-notification-b.right {
     position: relative;
     top: initial;
-    bottom: initial;
+    bottom: initial !important;
     background: none;
     box-shadow: none;
     padding: 0;
@@ -401,6 +401,10 @@ ul.main-drop > ul li:last-child {
 
 
 /*------ global-sidebar ------*/
+.container-sticky {
+    position: sticky;
+    top: 56px;
+}
 .side-header .right-image .onto-user-meta-details {
     color: #57718b;
 }
@@ -726,7 +730,7 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
 }
 .add-post .um-activity-wall .um-activity-body .um-activity-bodyinner-photo {
     width: 100%;
-    margin: 0 auto;
+    margin: 6px auto 0;
     overflow: hidden;
     display: block;
     position: relative;
@@ -997,10 +1001,10 @@ span.um-activity-seemore {
     height: 100%;
     zoom: 1;
     background: inherit;
-    /* transform: scale(1.4); */
-    filter        : blur(27px);
-    -moz-filter   : blur(27px);
-    -webkit-filter: blur(27px);
+    transform: scale(1.5) !important;
+    filter: blur(15px);
+    -moz-filter: blur(27px);
+    -webkit-filter: blur(15px);
     -o-filter     : blur(27px);
 
     transition        : all 2s linear;
@@ -1147,9 +1151,8 @@ span.um-activity-seemore {
 
 .right-dashboard-part {
     float: left;
-    max-width: 267px;
+    max-width: 282px;
     padding: 11px 0 0;
-    height: 140%;
 }
 .top-stocks,
 .latest-news,

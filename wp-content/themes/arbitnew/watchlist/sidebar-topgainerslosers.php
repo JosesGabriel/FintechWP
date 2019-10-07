@@ -59,10 +59,11 @@
                     stocks2.sort(function(a, b){
                         return b[1] - a[1];
                     });
-                    var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+                    var colorsgainers = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5'];
+                    var colorslossers = ['#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
                     for (var i = 0; i < 5; i++) {
                         
-                        var list = '<li class="odd"> <span style="border-color:' + colors[i] + ';">' + stocks2[i][0] + '</span>';
+                        var list = '<li class="odd"> <span style="border-color:' + colorsgainers[i] + ';">' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #53b987 !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
 
@@ -75,7 +76,7 @@
 
                     for (var i = 0; i < 5; i++) {
                         
-                        var list = '<li class="odd"> <span style="border-color:' + colors[i][6] + ';">' + stocks2[i][0] + '</span>';
+                        var list = '<li class="odd"> <span style="border-color:' + colorslossers[i] + ';">' + stocks2[i][0] + '</span>';
                             list += '<a href="#">' + stocks2[i][2] + '<br><p style="color: #eb4d5c !important;">' + stocks2[i][1].toFixed(2) + '%</p></a>';
                             list += '</li>';
 

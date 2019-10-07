@@ -17,7 +17,6 @@ class DataAPI extends WP_REST_Controller
     {
         $this->guzzleClient = new GuzzleRequest();
         $this->dataBaseUrl = 'data-api.arbitrage.ph';
-        $this->client_secret = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs';
         $this->version = 'v1';
         $this->namespace = 'data-api';
     }
@@ -159,5 +158,6 @@ class DataAPI extends WP_REST_Controller
 add_action('rest_api_init', function () {
     $dataApi = new DataAPI();
     $dataApi->currentUser = GetCurrentUser();
+    $dataApi->client_secret = GetDataApiAuthorization();
     $dataApi->registerRoutes();
 });

@@ -95,16 +95,16 @@
                     addliveme += '<div style="width:7.9%">'+(i + 1)+'</div>';
                     addliveme += '<div style="width:19%">'+value.nicedate+'</div>';
                     addliveme += '<div style="width:15%">'+value.showtext+'</div>';
-                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
-                    addliveme += '<div style="width:20%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2) : "&nbsp;")+'</div>';
-                    addliveme += '<div style="width:18%" class="to-left-align">₱ '+(parseFloat(value.tranamount)).toFixed(2)+'</div>';
+                    addliveme += '<div style="width:19%" class="to-left-align">'+(value.trantype == 'withraw' ? "₱"+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:20%" class="to-left-align">'+(value.trantype == 'deposit' || value.trantype == 'dividend' ? "₱"+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") : "&nbsp;")+'</div>';
+                    addliveme += '<div style="width:18%" class="to-left-align">₱ '+(parseFloat(value.tranamount)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '</div>';
                     addliveme += '</li>';
                     
                 });
                 $(".ledgerlist ul li.toplistpart").after(addliveme);
-                $(".adddebithere").text("₱"+(parseFloat(data.debit)).toFixed(2));
-                $(".addcredithere").text("₱"+(parseFloat(data.creadit)).toFixed(2));
+                $(".adddebithere").text("₱"+(parseFloat(data.debit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $(".addcredithere").text("₱"+(parseFloat(data.creadit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

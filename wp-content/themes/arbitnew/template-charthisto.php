@@ -30,11 +30,9 @@
            ]);
 
         $response = $request->content;
-        var_dump(json_decode($response)->data);
-        die();
-
+    
         if ($response) {
-            $data = $response->data;
+            $data = json_decode($response)->data;
             $dstock = strtolower($_GET['query']);
 
             // add params

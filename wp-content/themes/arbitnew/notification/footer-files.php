@@ -13,7 +13,7 @@
 
         <script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 
-		<script src="<?php echo get_stylesheet_directory_uri(); ?>/dashboard/dashboard-scripts.js?<?php echo time(); ?>"></script>
+		<script src="<?php echo get_stylesheet_directory_uri(); ?>/notification/notification-scripts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
         <?php wp_footer(); ?>

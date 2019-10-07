@@ -8,8 +8,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
     $rootScope.tickerBeep = true;
-
-    $http.get("/wp-json/data-api/v1/stocks/list")
+    $http.post("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
             $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
@@ -246,13 +245,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     //         });
     //     }
     // }
-    $http.get("/wp-json/data-api/v1/stocks/history/latest-active-date")
+    $http.post("/wp-json/data-api/v1/stocks/history/latest-active-date")
         .then(response => {
             if (response.data.success) {
                 $scope.latest_trading_date = moment(response.data.data.date)
             }
         })
-    $http.get("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
+    $http.post("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {
@@ -304,7 +303,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
-            $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+            $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
                 response = response.data;
                 if (!response.success) {
@@ -326,7 +325,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     
     $scope.getStockTrades = function (symbol = '', limit = 20) {
         if (symbol != 'PSEI' && symbol != '') {
-            $http.get('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+            $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
                 .then(response => {
                     response = response.data;
                     if (!response.success) {
@@ -561,7 +560,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 
     $scope.getFullMarketDepth = function (symbol) {
-        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + symbol)
+        $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=' + symbol)
             .then(function (response) {
                 if (response.data.success) {
                     let data = response.data.data;
@@ -582,7 +581,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 
     $scope.getTopMarketDepth = function (symbol) {
-        $http.get('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + symbol)
+        $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/top-depth?exchange=PSE&entry=5&symbol=' + symbol)
             .then(function (response) {
                 if (response.data.success) {
                     let data = response.data.data;

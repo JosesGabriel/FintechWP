@@ -1207,8 +1207,13 @@ h2.watchtitle {
     }
 
     .editmenow {
-        margin: 5px 0 15px 0;
+        margin: 0px 0 0px 90px;
         cursor: pointer;
+        color: white;
+        display: inline-block;
+        background-color: #11273e;
+        padding: 4px 14px !important;
+        border-radius: 25px
     }
     .eventnone {
         cursor: pointer;
@@ -1346,28 +1351,22 @@ h2.watchtitle {
         font-weight: 500;
     }
     .top-stocks .to-content-part ul .odd a{
-        width: 75%;
+        width: 81%;
     }
 
     .gainers-title:hover, .losers-title:hover {
         cursor: pointer;
-    }
-
-
-       
-    .top-stocks .to-content-part ul .even {
-        display: inline-flex;
-        text-overflow: ellipsis;
-        width: 98%;
-        padding: 7px;
-        padding-left: 11px;
+    }  
+    .top-stocks .to-content-part ul .odd label {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
     }
     .top-stocks .to-content-part ul .odd {
         display: inline-flex;
         text-overflow: ellipsis;
         width: 98%;
-        padding: 7px;
-        padding-left: 11px;
+        padding: 7px 0;
     }
     .top-stocks .to-content-part ul .odd span {
         border: 2px solid;

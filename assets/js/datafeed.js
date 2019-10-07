@@ -254,7 +254,7 @@ Datafeeds.UDFCompatibleDatafeed.prototype._send = function(url, params) {
 		}
 	}
 	var response = $.ajax({
-		type: 'GET',
+		type: 'post',
 		url: request,
 		contentType: 'text/plain'
 	});

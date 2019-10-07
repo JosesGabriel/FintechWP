@@ -5,7 +5,7 @@
 
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/list",
-            type: 'GET',
+            type: 'POST',
             success: function(res) {
 
                   jQuery.each(res.data, function(index, value) {
@@ -34,8 +34,8 @@ jQuery(function(){
   };
   var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
   var dcount = 0;
-  jQuery('.top-stocks .to-content-part ul .even span, .top-stocks .to-content-part ul .odd span').each(function(index,el){
-    if (dcount == '10') {dcount = 0; }
+  jQuery('.top-stocks .to-content-part ul .odd span').each(function(index,el){
+    if (dcount == '20') {dcount = 0; }
     jQuery(el).css('border-color',colors[dcount]);
     dcount++;
   });

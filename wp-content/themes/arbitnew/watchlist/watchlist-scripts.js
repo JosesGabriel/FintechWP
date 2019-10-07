@@ -1,14 +1,11 @@
 $(document).ready(function(){
 
-    
-
-
 
 function minichart(symbol, from, to){
 
  jQuery.ajax({
     url: "/wp-json/data-api/v1/charts/history?symbol=" + symbol + "&exchange=PSE&resolution=1D&from="+ from +"&to=" + to + "",
-    type: 'GET',
+    type: 'post',
     dataType: 'json',
     success: function(res) {
 
@@ -63,7 +60,7 @@ function minichart(symbol, from, to){
 
             $.ajax({
                 url: "/wp-json/data-api/v1/stocks/list",
-                type: 'GET',
+                type: 'post',
                 dataType: 'json', // added data type
                 success: function(res) {
 
@@ -195,7 +192,7 @@ function newwatchlist(){
                 var stockname = dinfo.stockname;
                 console.log("Stockname: " + stockname);
                 jQuery.ajax({
-                  method: "get",
+                  method: "post",
                   url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
                   dataType: 'json',
                   success: function(data){

@@ -71,7 +71,7 @@ class WatchlistAPI extends WP_REST_Controller
         global $wpdb;
         $data = $request->get_params();
 
-        $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        $gerdqouteone = file_get_contents('/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         $stocksdata = json_decode($gerdqouteone);
 
         $metadata = "";

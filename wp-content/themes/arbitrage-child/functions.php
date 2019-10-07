@@ -1,11 +1,12 @@
 <?php
-include 'functions-social-api.php';
+// include 'functions-social-api.php';
 include 'functions-api.php';
 include 'functions-journalapi.php';
+include 'functions-data-api.php';
 include 'functions-socket.php';
 include 'functions-um.php';
 include 'functions-arbitrage-api.php';
-include 'functions-accounts-api.php';
+// include 'functions-accounts-api.php';
 
 
 function my_theme_enqueue_styles()
@@ -161,11 +162,6 @@ function myplugin_registration_save($user_id)
         'password_confirmation' => $_POST['user_password-9'],
         'profile_image' => '',
     ];
-    
-    $response = arbitrage_api_curl('api/register', $api_data);
-    if ($response) {
-        add_user_meta($user_id, 'user_uuid', $response['user']['uuid']);
-    }
 
     //region call api
     $curl = curl_init();
@@ -246,7 +242,7 @@ function vyndue_user_update($user_id, $old_user_data)
 {
     //region get users
     $user = get_userdata($user_id);
-    $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    // $user_uuid = arbitrage_api_get_user_uuid($user_id);
     //endregion get users
 
     //region data validation
@@ -265,11 +261,11 @@ function vyndue_user_update($user_id, $old_user_data)
     $data = http_build_query($update);
     //endregion set post data
 
-    arbitrage_api_curl("api/users/$user_uuid/update", [
-        'email' => $user->user_email,
-        'first_name' => $user->first_name,
-        'last_name' => $user->last_name,
-    ]);
+    // arbitrage_api_curl("api/users/$user_uuid/update", [
+    //     'email' => $user->user_email,
+    //     'first_name' => $user->first_name,
+    //     'last_name' => $user->last_name,
+    // ]);
     
     //region call api
     $curl = curl_init();
@@ -289,16 +285,16 @@ function vyndue_password_update($post)
 {
     $user_id = get_current_user_id();
     $user = get_userdata($user_id);
-    $user_uuid = arbitrage_api_get_user_uuid($user_id);
+    // $user_uuid = arbitrage_api_get_user_uuid($user_id);
 
     $data = http_build_query([
         'email_id' => $user->user_email,
         'password' => $_POST['user_password'],
     ]);
 
-    arbitrage_api_curl("api/users/$user_uuid/update", [
-        'password' => $_POST['user_password'],
-    ]);
+    // arbitrage_api_curl("api/users/$user_uuid/update", [
+    //     'password' => $_POST['user_password'],
+    // ]);
 
     //region call api
     $curl = curl_init();

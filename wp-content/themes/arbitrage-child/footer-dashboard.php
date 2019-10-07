@@ -135,9 +135,9 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 
 			<?php /* temp-disabled-start */
 				$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-				//curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
-				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+				curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
+				//
+				
         		curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec($curl);
@@ -151,7 +151,7 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			?>
 			
 			$.ajax({
-				url: "https://data-api.arbitrage.ph/api/v1/stocks/list",
+				url: "/wp-json/data-api/v1/stocks/list",
 				type: 'GET',
 				dataType: 'json', // added data type
 				success: function(res) {
@@ -216,8 +216,8 @@ if ( 'on' === et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 			<?php /* temp-disabled-start */
 			/*
 				$curl = curl_init();
-				curl_setopt($curl, CURLOPT_URL, "https://data-api.arbitrage.ph/api/v1/stocks/list");
-				curl_setopt($curl, CURLOPT_RESOLVE, ['data-api.arbitrage.ph:443:34.92.99.210']);
+				curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
+				
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 				$response = curl_exec($curl);
 				curl_close($curl);

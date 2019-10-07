@@ -19,25 +19,12 @@ div.um-activity {
 }
 
 .um-activity-widget {
-	margin-top: 25px;
-	box-shadow: 0 1px 2px #ddd;
 	background-color: #142c46;
     border-radius: 6px !important;
 }
 
 .um-activity-widget.highlighted {
 
-}
-
-.um-activity-head {
-	background: #fcfcfc;
-	border-radius: 3px 3px 0 0;
-	padding: 8px 6px 8px 15px;
-	border: 1px solid #e5e5e5;
-	border-bottom-color: #f3f3f3;
-	color: #555;
-	font-weight: bold;
-	font-size: 12px;
 }
 
 .um-activity-head a {
@@ -87,7 +74,7 @@ div.um-activity {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	position: fixed;
-	background: #fff;
+	background: #142b46;
 	box-shadow: 0 1px 3px #111;
 	z-index: 1999993;
 	box-sizing: border-box;
@@ -111,7 +98,7 @@ div.um-activity {
 	text-align: center;
 	padding: 10px 0;
 	font-weight: bold;
-	color: #333;
+	color: white;
 }
 
 .um-activity-confirm-b a:hover,
@@ -121,7 +108,7 @@ div.um-activity {
 
 /* Text-wall posts */
 .um-activity-bodyinner-txt {
-    padding: 0px 0px 11px 15px;
+    padding: 0px 0px 0 15px;
 	font-size: 13px;
 	line-height: 20px;
 	color: #666;
@@ -152,48 +139,8 @@ div.um-activity {
 	background: #fff;
 }
 
-.um-activity-bodyinner-txt span.post-meta {
-	border: 1px solid #ddd;
-	display: block;
-	margin: 12px 0 0 0;
-	padding-bottom: 10px;
-	box-shadow: 0 1px 2px #eee;
-	background: #fff;
-}
-
-.um-activity-bodyinner-txt span.post-title {
-	font-weight: bold;
-	color: #333 !important;
-	margin: 10px 12px 0 12px;
-	font-size: 14px;
-	display: block;
-}
-
-.um-activity-bodyinner-txt span.post-excerpt {
-	margin: 5px 12px 0 12px;
-	color: #666 !important;
-	font-size: 12px;
-	line-height: 18px;
-	display: block;
-}
-
-.um-activity-bodyinner-txt span.post-domain {
-	margin: 5px 12px 0 12px;
-	color: #aaa !important;
-	font-size: 11px;
-	line-height: 18px;
-	text-transform: uppercase;
-	display: block;
-}
-
 .um-activity-bodyinner-txt span.post-image {
 	background: #f9f9f9;
-}
-
-.um-activity-bodyinner-txt span.post-image img {
-	max-width: 100%;
-	width: 100%;
-	height: auto;
 }
 
 .um-activity-bodyinner-txt span.post-price {
@@ -250,10 +197,13 @@ div.um-activity {
 }
 
 .um-activity-bodyinner-photo img {
-	max-width: 100% !important;
-	height: auto !important;
-	padding: 0 !important;
-	margin: 0 auto !important;
+	width: auto;
+	height: auto;
+    max-width: 100%;
+    max-height: 375px;
+    position: relative;
+	padding: 0;
+	margin: 0 auto;
 	display: block;
 	overflow: hidden;
 }
@@ -301,7 +251,6 @@ div.um-activity {
 .um-activity-widget div.um-activity-textarea textarea:focus {
 	border: none !important;
 	resize: none;
-	padding: 10px 15px !important;
 	min-height: auto !important;
 	font-size: 13px !important;
 	outline: none !important;
@@ -350,7 +299,7 @@ div.um-activity {
 	margin-right: 5px;
 	line-height: 26px !important;
 	margin-top: 6px;
-	margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .um-activity-foot a.um-button.um-alt,
@@ -420,19 +369,14 @@ div.um-activity {
 	font-size: 13px;
 	margin-left: 6px;
 }
-.um-activity-actions > div {float: left}
 
 /* external dd dialogs */
 .um-activity-dialog {
 	position: absolute;
-	top: 30px;
-	left: 15px;
-	width: 150px;
-	background: #fff;
 	box-shadow: 0 1px 2px #ddd;
 	z-index: 99;
 	display: none;
-	border: 1px solid #e5e5e5;
+	border: 0 2px 0px #0d1f33 !important;
 	border-bottom: 0;
 	border-radius: 3px;
 	padding: 5px 0;
@@ -440,7 +384,7 @@ div.um-activity {
 
 .um-activity-dialog.um-activity-tool-dialog {
 	left: auto;
-	right: -7px;
+	right: 7px;
 	top: 24px;
 	width: 120px;
 }
@@ -449,7 +393,7 @@ div.um-activity {
 	line-height: 1.3em;
 	height: auto;
 	font-size: 12px;
-	color: #666 !important;
+	color: #fff !important;
 	float: none;
 	display: block;
 	padding: 6px 12px;
@@ -463,7 +407,7 @@ div.um-activity {
 	margin: 0 0 4px 0;
 	border-bottom: 1px solid #f5f5f5;
 }
-.um-activity-dialog a:hover {color: #fff !important;}
+.um-activity-dialog a:hover {color: #fff !important;background: #1a3552 !important;}
 .um-activity-dialog a i {margin-right: 8px}
 
 /* author info */
@@ -477,7 +421,7 @@ div.um-activity {
 
 .um-activity-ava a,
 .um-activity-ava img {
-	border-radius: 3px !important;
+	border-radius: 50px;
 	border: none;
 	display: block;
 	padding: 0 !important;
@@ -587,6 +531,7 @@ div.um-activity {
 
 .um-activity-commentwrap {
 	padding-bottom: 1px !important;
+	padding-top: 12px;
 }
 
 .um-activity-comment-child {
@@ -598,18 +543,19 @@ div.um-activity {
 }
 
 .um-activity-comment-child .um-activity-commentl {
-	padding: 3px 0 3px 28px;
-	min-height: 20px;
+	padding: 3px 0 0 28px;
+    margin-top: 10px;
+    min-height: 20px;
 }
 
 .um-activity-commentl {
-	padding: 0 0 10px 40px;
+	padding: 0 0 0 40px;
 	position: relative;
 	min-height: 30px;
 }
 
 .um-activity-commentl.um-activity-comment-area {
-	padding-bottom: 0;
+	padding: 0;
 }
 
 .um-activity-commentl.highlighted {border-left: 2px solid #3ba1da;margin-left: -16px;padding-left: 54px;}
@@ -619,7 +565,7 @@ div.um-activity {
 .um-activity-comment-child .um-activity-commentl.highlighted .um-activity-comment-avatar {left: 10px}
 
 .um-activity-comment-info .um-activity-comment-area {
-	padding: 8px 0 0 30px;
+	padding: 0 0 0 30px;
 }
 
 .um-activity-comment-info .um-activity-comment-avatar {
@@ -657,19 +603,6 @@ div.um-activity {
 	width: 20px !important;
 	height: 20px !important;
 }
-
-div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea {
-	border: 1px solid #eee !important;
-	padding: 4px 6px !important;
-	font-size: 13px !important;
-	resize: none;
-	line-height: 16px !important;
-}
-
-div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:focus {
-	border-color: #ddd !important;
-}
-
 .um-activity-comment-info {
 	position: relative;
 	top: -3px;
@@ -767,45 +700,15 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 .um-activity-comment-meta .um-activity-editc a:active,
 .um-activity-comment-meta .um-activity-editc a:focus {color: #fffffe}
 
-.um-activity-comment-meta .um-activity-editc-d {
-    position: absolute;
-    top: 24px;
-    left: 0;
-    width: 100px;
-    background: #123;
-    display: none;
-    z-index: 999;
-    border-radius: 3px;
-}
-.um-activity-comment-meta .um-activity-editc-d:before {
-	content: "";
-    bottom: 100%;
-    right: 10px;
-    border: solid transparent;
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #123;
-    border-width: 8px;
-}
+
 
 .um-activity-comment-meta span.um-activity-editc-d:after {
 	display: none;
 }
-
-.um-activity-comment-meta .um-activity-editc-d a {
-	display: block;
-    font-size: 12px;
-    padding: 8px 10px;
-    color: #fffffe;
-}
-
 .um-activity-comment-meta .um-activity-editc-d a:hover {
 	color: #fffffe;
-	background: #11273e;
-	border-radius: 3px;
+	background: #1a3552;
+	border-radius: 4px;
 }
 
 /* Comment loading */
@@ -885,7 +788,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 .um-activity-preview img {
     display: block;
     overflow: hidden;
-	max-height: 150px;
+	/* max-height: 150px; */
 }
 
 .um-activity-preview-spn {
@@ -895,6 +798,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
     float: left;
 	max-height: 150px;
 	padding: 4px !important;
+    margin: 2px 10px;
 }
 
 .um-activity-img-remove {
@@ -905,9 +809,9 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 	font-size: 14px;
 	line-height: 14px;
 	height: 14px;
-	display: block;
-	padding: 4px;
-	cursor: pointer;
+	padding: 4px 6px;
+    cursor: pointer;
+    border-radius: 50px;
 }
 .um-activity-img-remove:hover {background: rgba(255, 255, 255, 0.1)}
 .um-activity-img-remove i {
@@ -934,16 +838,15 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 
 .um-activity-widget .upload {
 	box-sizing: content-box;
-	height: 20px !important;
 	line-height: 20px !important;
 	display: block;
-	padding: 10px 12px;
+	padding: 4px 15px;
 	background: transparent !important;
 	color: #999;
 	cursor: pointer !important;
 	border-radius: 0 0 0 3px !important;
 }
-.um-activity-widget .upload:hover {color: #999; background: #f6f6f6 !important}
+/* .um-activity-widget .upload:hover {color: #999; background: #f6f6f6 !important} */
 ::-webkit-file-upload-button { cursor:pointer; }
 
 .um-activity-widget .um-error-block {

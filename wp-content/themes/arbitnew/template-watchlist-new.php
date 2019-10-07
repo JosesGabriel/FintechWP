@@ -102,6 +102,7 @@ if(isset($_GET['addcp'])){
                                                                 </div>
                                                             </li>
                                                         </ul> 
+                                                        <!-- <div id="chartdivAB"></div>   -->
                                                 </div>
                                             </div>
                                             <div class="dclosetab addwatchtab " style="width: 271px;">

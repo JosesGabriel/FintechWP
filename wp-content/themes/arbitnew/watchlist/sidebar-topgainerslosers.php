@@ -1,17 +1,17 @@
 
 <script>
-//     jQuery(function(){
-//           function getRandomInt(min, max) {
-//             return Math.floor(Math.random() * (max - min + 1)) + min;
-//           };
-//           var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
-//           var dcount = 0;
-//           jQuery('.top-stocks .to-content-part ul .odd span').each(function(index,el){
-//             if (dcount == '10') {dcount = 0; }
-//             jQuery(el).css('border-color',colors[dcount]);
-//             dcount++;
-//           });
-// });
+    jQuery(function(){
+          function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+          };
+          var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+          var dcount = 0;
+          jQuery('.top-stocks .to-content-part ul .odd span').each(function(index,tops){
+            if (dcount == '10') {dcount = 0; }
+            jQuery(tops).css('border-color',colors[dcount]);
+            dcount++;
+          });
+});
 
 
     jQuery(document).ready( function() {

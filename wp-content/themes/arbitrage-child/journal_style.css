@@ -1649,3 +1649,9 @@ input#qty_price--input {
 .record_modal .entr_col:nth-child(3) {
     padding-right: 0 !important;
 }
+#preloader{
+    margin-top: 25px;
+    background: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg) no-repeat center;
+    background-size: 50px;
+    height: 60px;
+}

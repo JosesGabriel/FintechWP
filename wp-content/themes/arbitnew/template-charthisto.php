@@ -32,7 +32,7 @@
         $response = $request->content;
     
         if ($response) {
-            $data = json_decode($response->data);
+            $data = $response->data;
             var_dump($data);
             die();
             $dstock = strtolower($_GET['query']);

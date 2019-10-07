@@ -5,6 +5,7 @@
     */
     
     require_once ('guzzle-class.php');
+    require_once ('data-api.php');
 
     header('Content-Type: application/json');
     if(isset($_GET['symbol'])){
@@ -18,10 +19,19 @@
 
     if(isset($_GET['query'])){
         $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
 
-        $request = $guzzle->request('GET', get_site_url(null, '', 'https') . "/wp-json/data-api/v1/stocks/list");
+        $request = $guzzle->request("GET", "$dataUrl/api/v1/stocks/list", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+           ]);
+
         $response = $request->content;
-
+        var_dump($response);
+    
         // $curl = curl_init();
         // curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         
@@ -29,27 +39,27 @@
         // $response = curl_exec($curl);
         // curl_close($curl);
 
-        if (!$response) {
-            $data = json_decode($response->data);
+        // if (!$response) {
+        //     $data = json_decode($response->data);
 
-            $dstock = strtolower($_GET['query']);
+        //     $dstock = strtolower($_GET['query']);
 
-            // add params
-            $newinfo = [];
-            foreach ($data as $addvalskey => $addvalsvalue) {
-                $addvalsvalue->full_name = $addvalsvalue->symbol;
-                array_push($newinfo,$addvalsvalue);
-            }
+        //     // add params
+        //     $newinfo = [];
+        //     foreach ($data as $addvalskey => $addvalsvalue) {
+        //         $addvalsvalue->full_name = $addvalsvalue->symbol;
+        //         array_push($newinfo,$addvalsvalue);
+        //     }
 
-            $listofitems = [];
-            foreach ($newinfo as $key => $value) {
-                if (strpos(strtolower($value->symbol), $dstock) !== false) {
-                    array_push($listofitems, $value);
-                }
-            }
+        //     $listofitems = [];
+        //     foreach ($newinfo as $key => $value) {
+        //         if (strpos(strtolower($value->symbol), $dstock) !== false) {
+        //             array_push($listofitems, $value);
+        //         }
+        //     }
 
-            echo json_encode($listofitems);
-        }
+        //     echo json_encode($listofitems);
+        // }
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "fullstack" ){

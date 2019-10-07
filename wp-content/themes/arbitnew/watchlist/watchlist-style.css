@@ -1568,3 +1568,9 @@ a:hover {
     margin-bottom: 10px;
 }
 /*------ global-sidebar ------*/
+
+
+.floatingdiv {
+    width: 100%;
+    height: 125px;
+}

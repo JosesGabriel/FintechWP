@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/responsive.css?<?php echo time(); ?>">
-    <link href="/wp-content/themes/arbitnew/watchlist/watchlist-style.css" rel="stylesheet">
+    <link href="/wp-content/themes/arbitnew/watchlist/watchlist-style.css?<?php echo time(); ?>" rel="stylesheet">
     
     <?php wp_head(); ?>
     

@@ -5,8 +5,8 @@
       url: "/wp-json/watchlist-api/v1/watchlists?userid="+userid,
             type: 'GET',
             dataType: 'json', // added data type
-             success: function(data) {
-                console.log(data);
+             success: function(res) {
+                console.log(res.data);
             },error: function (xhr, ajaxOptions, thrownError) {
                 
             }

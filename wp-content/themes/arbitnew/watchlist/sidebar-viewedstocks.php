@@ -3,18 +3,24 @@
 
   function lateststocks(symbol){
 
+      var desc;
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/list",
             type: 'GET',
             success: function(res) {
 
-                        console.log(res.data);
-
+                  jQuery.each(res.data, function(index, value) {
+                      if(symbol == value.symbol){
+                        desc = value.description;
+                      }
+                  });
             },
             error: function (xhr, ajaxOptions, thrownError) {
 
             }
         });
+
+         return desc;
 
     }
 
@@ -100,11 +106,12 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
      for($i = 0; $i < 10; $i++){
 
          if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
-               
+            $stockname = $stock_watched[$i][0];
+           
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>
-                          <a href="#"><?php echo "<script> lateststocks('$stock_watched[$i][0]')</script>"; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                          <a href="#"><?php  echo "<script> lateststocks('$stockname');</script>"; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                       </li>
 
               <?php

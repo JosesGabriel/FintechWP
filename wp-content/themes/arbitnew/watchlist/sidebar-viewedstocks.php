@@ -8,9 +8,11 @@
             type: 'GET',
             success: function(res) {
 
-                  //jQuery.each(res.data, function(index, value) {
-                      console.log(res.data.symbol);
-                  //});
+                  jQuery.each(res.data, function(index, value) {
+                      if(symbol == value.symbol){
+                        $('.description').text(value.description);
+                      }
+                  });
             },
             error: function (xhr, ajaxOptions, thrownError) {
 
@@ -105,7 +107,7 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>
-                          <a href="#"><?php echo "<script> lateststocks('$stock_watched[$i][0]')</script>"; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                          <a href="#" class="description"><?php echo "<script> lateststocks('$stock_watched[$i][0]')</script>"; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                       </li>
 
               <?php

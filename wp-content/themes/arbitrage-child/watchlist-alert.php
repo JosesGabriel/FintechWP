@@ -59,7 +59,7 @@
 				$.each(usermetas, function(index, dinfo){
 					var stockname = dinfo.stockname;
 					jQuery.ajax({
-						method: "get",
+						method: "post",
 						url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,
 						dataType: 'json',
 						success: function(data){

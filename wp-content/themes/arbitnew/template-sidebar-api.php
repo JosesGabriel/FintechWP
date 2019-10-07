@@ -57,7 +57,7 @@ function get_trendingstocks(){
       $guzzle = new GuzzleRequest();
       $dataUrl = GetDataApiUrl();
       $authorization = GetDataApiAuthorization();
-      $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/list", [
+      $request = $guzzle->request("POST", "{$dataUrl}/api/v1/stocks/list", [
         "headers" => [
             "Content-type" => "application/json",
             "Authorization" => "Bearer {$authorization}",

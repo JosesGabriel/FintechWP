@@ -30,7 +30,7 @@ class DataAPI extends WP_REST_Controller
 
         register_rest_route($base_route, "{$chart_route}/history", [
              [
-                 'methods' => WP_REST_Server::READABLE,
+                 'methods' => WP_REST_Server::CREATABLE,
                  'callback' => [$this, 'getForwardedResponse'],
              ],
          ]);
@@ -43,19 +43,19 @@ class DataAPI extends WP_REST_Controller
 
         register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/bidask", [
              [
-                 'methods' => WP_REST_Server::READABLE,
+                 'methods' => WP_REST_Server::CREATABLE,
                  'callback' => [$this, 'getForwardedResponse'],
              ],
          ]);
          register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/full-depth", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
         register_rest_route($base_route, "{$stock_route}/{$market_depth_route}/latest/top-depth", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
@@ -64,7 +64,7 @@ class DataAPI extends WP_REST_Controller
          //region stock info
         register_rest_route($base_route, "{$stock_route}/list", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
@@ -75,13 +75,13 @@ class DataAPI extends WP_REST_Controller
 
         register_rest_route($base_route, "{$stock_route}/{$stock_history_route}/latest", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
         register_rest_route($base_route, "{$stock_route}/{$stock_history_route}/latest-active-date", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
@@ -92,7 +92,7 @@ class DataAPI extends WP_REST_Controller
 
         register_rest_route($base_route, "{$stock_route}/{$trade_route}/latest", [
             [
-                'methods' => WP_REST_Server::READABLE,
+                'methods' => WP_REST_Server::CREATABLE,
                 'callback' => [$this, 'getForwardedResponse'],
             ],
         ]);
@@ -112,7 +112,7 @@ class DataAPI extends WP_REST_Controller
         $currentUrl = "https://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
         $forwardUrl = str_replace("{$_SERVER['HTTP_HOST']}/wp-json/{$this->namespace}","{$this->dataBaseUrl}/api",$currentUrl);
 
-        $request = $this->guzzleClient->request("GET", $forwardUrl, [
+        $request = $this->guzzleClient->request("POST", $forwardUrl, [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$this->client_secret}",
@@ -128,7 +128,7 @@ class DataAPI extends WP_REST_Controller
 
         //TODO: sample code for guzzle request
         //region test
-        // $response = $this->guzzleClient->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
+        // $response = $this->guzzleClient->request("POST", "https://data-api.arbitrage.ph/api/v1/stocks/history/latest-active-date", [
         //     "headers" => [
         //         "Content-type" => "application/json",
         //         "Authorization" => "Bearer {$this->client_secret}",

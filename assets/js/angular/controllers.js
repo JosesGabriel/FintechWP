@@ -19,19 +19,21 @@ app.controller('ticker', ['$scope', function($scope) {
     $scope.ticker = [];
 
     socket.on('psec', function (data) {  
-        var transaction = {
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol)
-        };
-        $scope.ticker.push(transaction);
+        if ($scope.enable) {
+            var transaction = {
+                symbol: data.sym,
+                price:  price_format(data.prv),
+                change: data.chg,
+                shares: abbr_format(data.vol)
+            };
+            $scope.ticker.push(transaction);
 
-        if ($scope.ticker.length > 30) {
-            $scope.ticker.shift();
+            if ($scope.ticker.length > 30) {
+                $scope.ticker.shift();
+            }
+
+            $scope.$digest();
         }
-
-        $scope.$digest();
     });
 }]);
 app.controller('template', function($scope, $http) {

@@ -8,7 +8,7 @@
             type: 'GET',
             success: function(res) {
 
-                        console.log(res.data);
+                        console.log(res.data.symbol);
 
             },
             error: function (xhr, ajaxOptions, thrownError) {

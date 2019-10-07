@@ -3,7 +3,6 @@
 
   function lateststocks(symbol){
 
-      var desc;
          jQuery.ajax({
             url: "/wp-json/data-api/v1/stocks/list",
             type: 'GET',
@@ -11,16 +10,17 @@
 
                   jQuery.each(res.data, function(index, value) {
                       if(symbol == value.symbol){
-                        desc = value.description;
+                        var desc = value.description;
+
                       }
                   });
+
+                  return desc;
             },
             error: function (xhr, ajaxOptions, thrownError) {
 
             }
         });
-
-         return desc;
 
     }
 

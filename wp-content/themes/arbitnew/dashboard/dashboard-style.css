@@ -2181,7 +2181,7 @@ legend {
 	outline: 0;
 	background: transparent;
 	font-size: 100%;
-	vertical-align: baseline;
+	/* vertical-align: baseline; */
 	list-style: none !important;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;

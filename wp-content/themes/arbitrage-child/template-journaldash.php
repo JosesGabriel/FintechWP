@@ -1993,7 +1993,12 @@ if($issampledata){
                                                                 </div>
                                                                 <div class="box-portlet-content" style="padding-right: 0;padding-bottom: 0;">
                                                                     <div class="col-md-12" style="padding: 0px;">
-                                                                        <div id="chartdiv2"></div>
+                                                                        <div id="chartdiv2">
+																			<div id="preloader" class="trendingpreloader">
+																				<div id="status">&nbsp;</div>
+																				<div id="status_txt"></div>
+																			</div>
+																		</div>
                                                                     </div>
                                                                     <br class="clear">
                                                                 </div>
@@ -2026,7 +2031,12 @@ if($issampledata){
 																	?>
 																</div>
                                                                 <div class="chartarea col-md-12" style="margin-bottom: -3px;">
-                                                                    <div id="chartdiv4a"></div>
+                                                                    <div id="chartdiv4a">
+																		<div id="preloader" class="trendingpreloader">
+																			<div id="status">&nbsp;</div>
+																			<div id="status_txt"></div>
+																		</div>
+																	</div>
                                                                 </div>
                                                                 <div class="stats-info" style="padding: 0">
 
@@ -2036,11 +2046,11 @@ if($issampledata){
 
                                                                                 <li>
                                                                                     <div class="width60"><span class="bulletclrd clrg1"></span> Wins</div>
-                                                                                    <div class="width35"><?php echo $iswin; ?></div>
+                                                                                    <div class="width35 dclwin"><?php //echo $iswin; ?></div>
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width60"><span class="bulletclrd clrr1"></span> Losses</div>
-                                                                                    <div class="width35"><?php echo $isloss; ?></div>
+                                                                                    <div class="width35 dclloss"><?php //echo $isloss; ?></div>
                                                                                 </li>
 
                                                                             </ul>
@@ -2050,17 +2060,11 @@ if($issampledata){
 																				<?php $totaltrade = $iswin + $isloss; ?>
                                                                                 <li>
                                                                                     <div class="width60">Total Trades</div>
-                                                                                    <div class="width35"><?php echo $totaltrade; ?></div>
+                                                                                    <div class="width35 dcltotals"><?php //echo $totaltrade; ?></div>
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="width60"><strong>Win Rate</strong></div>
-                                                                                    <div class="width35"><strong><?php
-                                                                                        if ($iswin > 0) {
-                                                                                            echo number_format(($iswin / $totaltrade) * 100, 2, '.', ',');
-                                                                                        } else {
-                                                                                            echo '0.00';
-                                                                                        }
-                                                                                     ?>%</strong></div>
+                                                                                    <div class="width35 dclwinrate"></div>
                                                                                 </li>
 
                                                                             </ul>
@@ -3482,6 +3486,7 @@ if($issampledata){
 <script language="javascript">
 	$( document ).ready(function() {
 		new getCurrentAllocation(<?php echo $user->ID; ?>);
+		new getMonthlyPerformance(<?php echo $user->ID; ?>);
 	});
 
 
@@ -3535,89 +3540,7 @@ if($issampledata){
 		}
 	?>
 	// Chart 2 - Monthly Performance (Bar)
-	AmCharts.makeChart("chartdiv2",
-		{
-			"type": "serial",
-			"categoryField": "category",
-			"sequencedAnimation": false,
-			"startDuration": 0,
-			"columnWidth": 0,
-			"minSelectedTime": 5,
-			"mouseWheelScrollEnabled": true,
-			"addClassNames": true,
-			"autoMarginOffset": 0,
-			"marginTop": 10,
-			"plotAreaBorderColor": "#FFFFFF",
-			"zoomOutText": "Reset",
-			"backgroundColor": "#0D1F33",
-			"color": "#78909C",
-			"fontFamily": "Roboto",
-			"handDrawThickness": 4,
-			"usePrefixes": true,
-			"categoryAxis": {
-				"axisAlpha": 0.09,
-				"axisColor": "#FFFFFF",
-				"boldPeriodBeginning": false,
-				"color": "#78909C",
-				"firstDayOfWeek": 6,
-				"gridAlpha": 0.09,
-				"gridThickness": 0,
-				"markPeriodChange": false,
-				"minorGridAlpha": 0,
-				"minorGridEnabled": true,
-				"titleFontSize": 0
-			},
-			"trendLines": [],
-			"graphs": [
-				{
-					"columnWidth": 1,
-					"cornerRadiusTop": 3,
-					"fillAlphas": 1,
-					"fillColors": "#00E676",
-					"fixedColumnWidth": 12,
-					"gapPeriod": 0,
-					"id": "AmGraph-2",
-					"lineColor": "undefined",
-					"lineColorField": "color",
-					"lineThickness": 0,
-					"negativeFillAlphas": 1,
-					"negativeFillColors": "#ff1744",
-					"title": "",
-					"topRadius": 0,
-					"type": "column",
-					"valueField": "column-1"
-				}
-			],
-			"guides": [],
-			"valueAxes": [
-				{
-					"id": "ValueAxis-2",
-					"autoRotateAngle": 90,
-					"axisAlpha": 0.09,
-					"axisColor": "#FFFFFF",
-					"color": "#78909C",
-					"dashLength": 3,
-					"gridAlpha": 0.09,
-					"gridColor": "#FFFFFF",
-					"labelRotation": 48.6,
-					"title": "",
-					"titleBold": false,
-					"titleColor": "#FFFFFF",
-					"titleFontSize": 0
-				}
-			],
-			"allLabels": [],
-			"balloon": {
-				"fixedPosition": false,
-				"fontSize": 10,
-				"showBullet": true
-			},
-			"titles": [],
-			"dataProvider": [
-				<?php echo $formonthperc; ?>
-			]
-		}
-	);
+	
 
 	// Chart 3 - Monthly Performance (Pie) - Removed requested by Ai
 	<?php

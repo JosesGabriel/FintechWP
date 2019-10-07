@@ -1,6 +1,28 @@
 
 <script type="text/javascript">
 
+  function lateststocks(symbol){
+
+         jQuery.ajax({
+            url: "/wp-json/data-api/v1/stocks/list",
+            type: 'GET',
+            success: function(res) {
+
+                  jQuery.each(res.data, function(index, value) {
+                      if(symbol == value.symbol){
+                        $('.desc_' + symbol).text(value.description);
+                        $('.desc_' + symbol).css("text-overflow","ellipsis");
+                      }
+                  });
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+
+            }
+        });
+
+    }
+
 jQuery(function(){
   
 
@@ -18,6 +40,7 @@ jQuery(function(){
     dcount++;
   });
  
+
 
 });
 
@@ -82,11 +105,12 @@ $watchlist = $wpdb->get_results('select meta_value from arby_usermeta where meta
      for($i = 0; $i < 10; $i++){
 
          if($stock_watched[$i][0] != null && $stock_watched[$i][0] != ""){
-               
+            $stockname = $stock_watched[$i][0];
+            echo "<script> lateststocks('$stockname');</script>";
               ?>
                       <li class="odd">
                           <span><?php echo $stock_watched[$i][0]; ?></span>
-                          <a href="#"><?php echo $stock_watched[$i][2]; ?><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
+                          <a href="#"><label class="desc_<?php echo $stockname; ?>"></label><br><p><?php echo $stock_watched[$i][1]; ?> Following</p></a>
                       </li>
 
               <?php

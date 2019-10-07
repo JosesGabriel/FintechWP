@@ -120,7 +120,7 @@
 
 				    if (dauto) {
 				    	var stocks = vm.stockList;
-        				stocks = JSON.parse(stocks);
+        				
 				    	jQuery(this).parent().find(".popname").remove();
 
 						var finddword = dlastitem.toUpperCase();

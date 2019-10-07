@@ -12,9 +12,19 @@
                 $.each(data.data, function(skey, svalue){
                     let candles = [];
                     let stock = svalue.stock;
+                    let ischange = 0;
+                    let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
+                        if(svalue.chartdata.c[ckey] > ischange){
+                            ischange = svalue.chartdata.c[ckey];
+                            changetext = 'up';
+                        } else {
+                            changetext = 'down';
+                        }
                         candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                        
                     });
+                    let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",
@@ -24,17 +34,15 @@
                         "marginRight":0,
                         "backgroundColor":"#142C46",
                         "borderColor":"#FFFFFF",
-                        "color":"#78909C",
+                        "color":'#78909C',
                         "usePrefixes":!0,
                         "categoryAxis": {
                             "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
                         },
                         "trendLines":[],
                         "graphs":[ {
-                            "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": "#ff1744", "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": "#ff1744", "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
-                        }
-
-                        ],
+                            "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                        }],
                         "guides":[],
                         "valueAxes":[ {
                             "gridThickness": 0,
@@ -43,12 +51,7 @@
                             "labelsEnabled": false
                         }],
                         "allLabels":[],
-                        "balloon": {}
-
-                        ,
-                        // "legend": {
-                        //     "enabled": !0, "useGraphSettings": !0
-                        // },
+                        "balloon": {},
                         "titles":[],
                         "dataProvider": candles
                     } );
@@ -129,6 +132,37 @@
 		});
     }
 
+    var loadmostwatch = function(userid){
+		$.ajax({
+			url: "/wp-json/watchlist-api/v1/gettrending?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                console.log(data);
+                var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+                $.each(data.data, function(key, value){
+                    let mostwatch = '';
+                    mostwatch += '<li class="odd">';
+                    mostwatch += '<span style="border-color:'+colors[key]+';">'+value[0]+'</span>';
+                    mostwatch += '<a href="#"><label class="desc_'+value[0]+'">'+value[2]+'</label><br><p>'+value[1]+' Following</p></a>';
+                    mostwatch += '</li>';
+                    if(key < 5){
+                        $(".mostwatchside .topfiveparts").append(mostwatch);
+                    } else {
+                        $(".mostwatchside .toptenparts").append(mostwatch);
+                    }
+                    
+                });
+
+                
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+		});
+    }
+
    
     
     $( document ).ready(function() {
@@ -176,9 +210,9 @@
                 
             }
         });
-
-
         
+        new loadmostwatch(<?php echo $user->ID; ?>);
+
         new loadwatctlist(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

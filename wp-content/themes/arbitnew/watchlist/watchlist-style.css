@@ -1207,7 +1207,7 @@ h2.watchtitle {
     }
 
     .editmenow {
-        margin: 5px 0 15px 0;
+        margin: 0px 0 0px 90px;
         cursor: pointer;
         color: white;
         display: inline-block;

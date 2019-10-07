@@ -2,6 +2,9 @@
 <?php
 include_once "watchlist/header-files.php";
 require("parts/global-header.php");
+require("parts/sidebar-calc.php");
+require("parts/sidebar-varcalc.php");
+require("parts/sidebar-avarageprice.php");
 ?>
 
 <?php

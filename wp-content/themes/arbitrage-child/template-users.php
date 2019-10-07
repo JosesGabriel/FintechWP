@@ -1873,7 +1873,6 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 			</div>
 
 <?php 
-
 	if($_GET['um_action'] == 'edit'){
 		?>
 		<div class="center-dashboard-part" style="max-width: 900px;">
@@ -2023,13 +2022,10 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	    border-radius: 4px;
 	}
 
-
-
-
 	.top-header-inner .um-profile-edit {
 	    right: initial;
-
 	}
+
 	#main-content .container:before {
 		position: absolute;
 		top: 0;

@@ -4,6 +4,7 @@
 	* Template page for Watchlist Page Platform
     */
     
+    require_once ('guzzle-class.php');
 
     header('Content-Type: application/json');
     if(isset($_GET['symbol'])){
@@ -16,35 +17,46 @@
     }
 
     if(isset($_GET['query'])){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
+        $guzzle = new GuzzleRequest();
+
+        $request = $guzzle->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/list", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs",
+                ]
+           ]);
+
+        $response = $request->content;
+        var_dump($response);
+    
+        // $curl = curl_init();
+        // curl_setopt($curl, CURLOPT_URL, "/wp-json/data-api/v1/stocks/list");
         
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($curl);
-        curl_close($curl);
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        // $response = curl_exec($curl);
+        // curl_close($curl);
 
-        if ($response !== false) {
-            $response = json_decode($response);
+        // if (!$response) {
+        //     $data = json_decode($response->data);
 
-            $arraymode = $response->data;
-            $dstock = strtolower($_GET['query']);
+        //     $dstock = strtolower($_GET['query']);
 
-            // add params
-            $newinfo = [];
-            foreach ($arraymode as $addvalskey => $addvalsvalue) {
-                $addvalsvalue->full_name = $addvalsvalue->symbol;
-                array_push($newinfo,$addvalsvalue);
-            }
+        //     // add params
+        //     $newinfo = [];
+        //     foreach ($data as $addvalskey => $addvalsvalue) {
+        //         $addvalsvalue->full_name = $addvalsvalue->symbol;
+        //         array_push($newinfo,$addvalsvalue);
+        //     }
 
-            $listofitems = [];
-            foreach ($newinfo as $key => $value) {
-                if (strpos(strtolower($value->symbol), $dstock) !== false) {
-                    array_push($listofitems, $value);
-                }
-            }
+        //     $listofitems = [];
+        //     foreach ($newinfo as $key => $value) {
+        //         if (strpos(strtolower($value->symbol), $dstock) !== false) {
+        //             array_push($listofitems, $value);
+        //         }
+        //     }
 
-            echo json_encode($listofitems);
-        }
+        //     echo json_encode($listofitems);
+        // }
     }
 
     if(isset($_GET['g']) && $_GET['g'] == "fullstack" ){

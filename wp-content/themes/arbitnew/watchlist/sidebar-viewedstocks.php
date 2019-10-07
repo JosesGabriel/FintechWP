@@ -10,7 +10,7 @@
 
                   jQuery.each(res.data, function(index, value) {
                       if(symbol == value.symbol){
-                        $('.description').text(value.description);
+                        $('.description a').text(value.description);
                       }
                   });
             },

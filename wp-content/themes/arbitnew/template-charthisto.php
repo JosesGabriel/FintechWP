@@ -5,6 +5,7 @@
     */
     
     require_once ('guzzle-class.php');
+    require_once ('data-api.php');
 
     header('Content-Type: application/json');
     if(isset($_GET['symbol'])){
@@ -18,11 +19,13 @@
 
     if(isset($_GET['query'])){
         $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
 
-        $request = $guzzle->request("GET", "https://data-api.arbitrage.ph/api/v1/stocks/list", [
+        $request = $guzzle->request("GET", "$dataUrl/api/v1/stocks/list", [
             "headers" => [
                 "Content-type" => "application/json",
-                "Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfbmFtZSI6IjRSQjErUjQ5MyJ9.SZzdF4-L3TwqaGxfb8sR-xeBWWHmGyM4SCuBc1ffWUs",
+                "Authorization" => "Bearer {$authorization}",
                 ]
            ]);
 

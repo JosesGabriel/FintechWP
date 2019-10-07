@@ -8,6 +8,7 @@
             success: function(data) {
                 $(".adddashequity").text("₱"+(data.equity).toFixed(2));
                 $.each(data.data, function(i, value){
+                    let perfstats = '';
                     if(value.profitperc > 0){
                         let perfstats = 'dgreenpart';
                     }else{

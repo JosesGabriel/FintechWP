@@ -8,9 +8,9 @@
             type: 'GET',
             success: function(res) {
 
-                  jQuery.each(res.data, function(index, value) {
-                        console.log(value.description);
-                  });
+                  //jQuery.each(res.data, function(index, value) {
+                      console.log(res.data.symbol);
+                  //});
             },
             error: function (xhr, ajaxOptions, thrownError) {
 

@@ -179,7 +179,7 @@
                 "columnWidth": 0.17,
                 "rotate": true,
                 "autoMargins": false,
-                "marginLeft": 70,
+                "marginRight": 70,
                 "marginTop": 59,
                 "marginBottom": 79,
                 "startDuration": 1,

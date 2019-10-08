@@ -46,3 +46,5 @@ include "watchlist-sidebarloader.php";
 		    
 	    </div>
   </div>
+
+<?php include "footer-files.php"; ?>

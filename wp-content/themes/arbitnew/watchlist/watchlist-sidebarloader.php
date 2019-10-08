@@ -16,7 +16,7 @@
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
 
-                        console.log(svalue.chartdata.c);
+                        console.log(svalue.chartdata.c[ckey]);
 
                         if(svalue.chartdata.c[ckey] > ischange){
                             ischange = svalue.chartdata.c[ckey];

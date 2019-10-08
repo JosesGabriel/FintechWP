@@ -27,7 +27,7 @@
                     });
 
                     console.log(candles);
-                    
+
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
@@ -57,7 +57,8 @@
                         "allLabels":[],
                         "balloon": {},
                         "titles":[],
-                        "dataProvider": candles
+                        "dataLoader": candles
+                        //"dataProvider": candles
                     } );
                 });
 

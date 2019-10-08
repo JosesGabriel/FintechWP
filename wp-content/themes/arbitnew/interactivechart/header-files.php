@@ -37,7 +37,7 @@
 		.marqueethis {
 			width: 100%;
 			height:40px;
-			right:-100px;
+			right:-45px;
 		}
 		.arb_custom_ticker {
 			font-size: 10px;

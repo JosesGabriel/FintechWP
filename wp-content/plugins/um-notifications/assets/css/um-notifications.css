@@ -255,7 +255,7 @@
 
 /* notifications */
 
-.um-notification.unread {background: #f9f9f9}
+.um-notification.unread {background: #1b3959}
 
 .um-notification.read {background: transparent}
 
@@ -458,7 +458,7 @@
 
 
 .um-notification-live-feed-inner .um-notification {
-
+	text-align: left;
 	font-size: 12px;
 
 }

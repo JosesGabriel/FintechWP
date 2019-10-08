@@ -25,8 +25,11 @@
                         candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
                         
                     });
+
+                    console.log(candles);
+                if (candles && candles.length){
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
-                    AmCharts.makeChart( "chartdiv2"+stock, {
+                    AmCharts.makeChart("chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",
                         "autoMarginOffset":0,
@@ -41,11 +44,11 @@
                             "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
                         },
                         "trendLines":[],
-                        "graphs":[ {
+                        "graphs":[{
                             "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
                         }],
                         "guides":[],
-                        "valueAxes":[ {
+                        "valueAxes":[{
                             "gridThickness": 0,
                             "axisAlpha": 0,
                             "gridAlpha": 0.1,
@@ -55,7 +58,11 @@
                         "balloon": {},
                         "titles":[],
                         "dataProvider": candles
-                    } );
+                    });
+                }else{
+                    console.log('nodata');
+                }
+
                 });
 
                 
@@ -86,7 +93,7 @@
                     watchtoadd += '</a></div>';
                               
                     watchtoadd += '<div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">';
-                    watchtoadd += '<div class="floatingdiv" id="chartdiv2'+value.stockname+'"></div>';
+                    watchtoadd += '<div class="floatingdiv" id="chartdiv'+value.stockname+'"></div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                   

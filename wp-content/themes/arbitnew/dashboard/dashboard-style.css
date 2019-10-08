@@ -272,9 +272,10 @@ body .um-notification-live-feed .um-notification-left {
 body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
+    text-align: left;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
-    background: #222d3a;
+    background: #11253c;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
@@ -1035,6 +1036,10 @@ span.um-activity-seemore {
 }
 .um-activity-head {
     padding: 10px 10px 10px;
+}
+.um-notification span.b2 i img {
+    width: 14px;
+    margin-top: -3px;
 }
 .um-activity-comment-meta .um-activity-editc-d:before {
     content: "";

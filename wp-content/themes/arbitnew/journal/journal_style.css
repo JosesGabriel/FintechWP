@@ -696,7 +696,6 @@ a.smlbtn.blue {
     border-radius: 20px;
     color: #fff;
     font-size: 10px;
-    margin-right: 2px;
     cursor: pointer;
 }
 a.smlbtn.blue:hover {
@@ -750,6 +749,20 @@ a.smlbtn:hover {
 .stats-info .dstatstrade .width35 {
     overflow: hidden;
 }
+.deletelog.smlbtn-delete,
+.deletelive.smlbtn-delete {
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
+    height: 23px;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
 /* .dstatstrade ul li div {color:#fff;} */
 .dstatstrade.overridewidth ul li div.ddetailshere,
 .dstatstrade.overridewidth ul li div.ddetailshere .inner {

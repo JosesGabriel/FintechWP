@@ -4,7 +4,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.9/angular-nvd3.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.6/nv.d3.css">
 <?php
-include "../watchlist/watchlist-loader.php";
+include "../watchlist/watchlist-sidebarloader.php";
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
@@ -164,47 +164,47 @@ if ($dwatchinfo !== null) :
 
                   <div class="to-watch-data" data-dstock="<?php echo $value['stockname']; ?>">
 
-                    <div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">
-                      <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">
-                        <a style="color: #fff;" href="/chart/<?php echo $value['stockname']; ?>" target="_blank">
-                          <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
-                        </a>
-                      </div>
+                          <div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">
+                            <div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">
+                              <a style="color: #fff;" href="/chart/<?php echo $value['stockname']; ?>" target="_blank">
+                                <span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;"><?php echo $value['stockname']; ?></span>
+                              </a>
+                            </div>
 
 
-                      <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
-                        <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
-                        <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                          <!--<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>-->
-                          <div class="floatingdiv" id="chartdiv<?php echo $value['stockname']; ?>"></div>
-                        </div>
-                      </div>
-                    </div>
+                            <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
+                              <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
+                              <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
+                                <!--<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>-->
+                                <div class="floatingdiv" id="chartdiv<?php echo $value['stockname']; ?>"></div>
+                              </div>
+                            </div>
+                          </div>
 
 
-                    <?php if (strpos($dchange, '-') !== false) : ?>
-                      <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
-                        <div class="dbox red">
-                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
-                        </div>
-                      </div>
-                    <?php elseif ($dchange === $dyellow) : ?>
-                      <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
-                        <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
-                        </div>
-                      </div>
-                    <?php elseif (strpos($dchange, '-') !== true) : ?>
-                      <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
-                        <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
-                        <div class="dbox green" style="text-align:right;">
-                          <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
-                        </div>
-                      </div>
+                          <?php if (strpos($dchange, '-') !== false) : ?>
+                            <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
+                              <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                              <div class="dbox red">
+                                <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #e64c3c;"><?php echo $dchange; ?>%</div>
+                              </div>
+                            </div>
+                          <?php elseif ($dchange === $dyellow) : ?>
+                            <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
+                              <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                              <div class="dbox green" style="text-align:right;">
+                                <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #FFC107;"><?php echo $dchange; ?>%</div>
+                              </div>
+                            </div>
+                          <?php elseif (strpos($dchange, '-') !== true) : ?>
+                            <div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">
+                              <div class="stocknum_<?php echo $value['stockname']; ?>" style="font-family: 'Lato', sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;"><?php echo $dprice; ?></div>
+                              <div class="dbox green" style="text-align:right;">
+                                <div class="stockperc_<?php echo $value['stockname']; ?>" style="color: #25ae5f"><?php echo $dchange; ?>%</div>
+                              </div>
+                            </div>
 
-                    <?php endif; ?>
+                          <?php endif; ?>
                   </div>
 
 

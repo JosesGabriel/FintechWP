@@ -71,7 +71,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-
+                 var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
                 $.each(data.data, function(key, value){
                     let watchtoadd = '';
                     let stockchange = '';
@@ -81,7 +81,7 @@
                     watchtoadd += '<div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">';
                     watchtoadd += '<div class="to-stock" style="display: inline-block;position: relative;bottom: 11px;padding: 0 5px;">';
                     watchtoadd += '<a style="color: #fff;" href="/chart/'+value.stockname+'" target="_blank">';
-                    watchtoadd += '<span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid;height: 43px;width: 43px;">'+value.stockname+'</span>';
+                    watchtoadd += '<span style="height: 40px;width: 40px;line-height: 40px;font-size: 11px !important;text-align: center;display: block;border-radius: 25px;border:2px solid; border-color:'+ colors[key] +';height: 43px;width: 43px;">'+value.stockname+'</span>';
                     watchtoadd += '</a></div>';
                               
                     watchtoadd += '<div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">';

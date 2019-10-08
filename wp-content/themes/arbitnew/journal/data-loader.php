@@ -50,6 +50,11 @@
             success: function(data) {
                 $(".showtradelogs ul li.dloglist").remove();
                 $.each(data.data, function(i, value){
+                    if(value.perc > 0){
+                        perfstats = 'dgreenpart';
+                    }else{
+                        perfstats = 'dredpart';
+                    }
                     let addliveme = '';
                     addliveme += '<li class="dloglist">';
                     addliveme += '<div style="width:99%;">';
@@ -60,8 +65,8 @@
                     addliveme += '<div style="width:98px" class="table-cell-live" >₱'+(parseFloat(value.buyvalue)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:68px" class="table-cell-live" >₱'+(parseFloat(value.tlsellprice)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:91px" class="table-cell-live" >₱'+(value.sellvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:80px" class="table-cell-live" id="tploss1">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:76px" class="table-cell-live" id="tpercent1">'+(value.perc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
+                    addliveme += '<div style="width:80px" class="'+ perfstats +' table-cell-live" id="tploss1">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
+                    addliveme += '<div style="width:76px" class="'+ perfstats +' table-cell-live" id="tpercent1">'+(value.perc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
                     addliveme += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="'+value.tlstrats+'" data-tltradeplans="'+value.tltradeplans+'" data-tlemotions="'+value.tlemotions+'" data-tlnotes="'+value.tlnotes+'" data-outcome="'+value.outcome+'" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></div>';
                     addliveme += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="'+value.tlid+'" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
                     addliveme += '</div>';

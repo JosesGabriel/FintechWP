@@ -25,8 +25,11 @@
                         candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
                         
                     });
+
+                    console.log(candles);
+                    
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
-                    AmCharts.makeChart( "chartdiv2"+stock, {
+                    AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",
                         "autoMarginOffset":0,
@@ -86,7 +89,7 @@
                     watchtoadd += '</a></div>';
                               
                     watchtoadd += '<div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">';
-                    watchtoadd += '<div class="floatingdiv" id="chartdiv2'+value.stockname+'"></div>';
+                    watchtoadd += '<div class="floatingdiv" id="chartdiv'+value.stockname+'"></div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                   

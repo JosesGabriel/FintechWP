@@ -14,6 +14,25 @@
 
             /* Top Stocks: Winners */
             var gaugeChart = AmCharts.makeChart("topstockswinners", {
+                {
+            // "type": "gauge",
+            // "theme": "none",
+            // "sequencedAnimation": false,
+            // "startDuration": 0,
+            // "axes": [{
+            //     "axisAlpha": 0,
+            //     "tickAlpha": 0,
+            //     "labelsEnabled": false,
+            //     "startValue": 0,
+            //     "endValue": 100,
+            //     "startAngle": 0,
+            //     "endAngle": 270,
+            //     "bands": [<?php echo $intowinchartbands; ?>]
+            // }],
+            // "allLabels": [<?php echo $intowinchartlabels; ?>],
+
+
+
                 "type": "serial",
                 "categoryField": "category",
                 "columnSpacing": 0,
@@ -118,7 +137,12 @@
                 "allLabels": [],
                 "balloon": {},
                 "titles": [],
-                "dataProvider": [<?php echo $intowinchartlabels; ?>]
+                "dataProvider": [
+                    {
+                        "category": "<?php echo $intowinchartlabels; ?>",
+                        "column-1": <?php echo $intowinchartbands; ?>
+                    }
+                ]
             });
 
             /* Top Stocks: Losers */

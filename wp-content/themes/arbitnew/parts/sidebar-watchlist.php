@@ -240,5 +240,5 @@ if ($dwatchinfo !== null) :
   </div>
 
   <?php
-   include_once "watchlist/watchlist-sidebarloader.php";
+   include "watchlist/watchlist-sidebarloader.php";
   ?>

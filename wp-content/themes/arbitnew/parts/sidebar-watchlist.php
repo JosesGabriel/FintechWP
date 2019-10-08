@@ -174,7 +174,8 @@ if ($dwatchinfo !== null) :
                       <div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">
                         <a href="/chart/<?php echo $value['stockname']; ?>" target="_blank" class="stocklnk"></a>
                         <div ng-controller="minichartarb<?php echo strtolower($value['stockname']); ?>">
-                          <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                          <!--<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>-->
+                          <div class="floatingdiv" id="chartdiv<?php echo $value['stockname']; ?>"></div>
                         </div>
                       </div>
                     </div>

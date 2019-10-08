@@ -71,7 +71,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
+                console.log('data');
                 $.each(data.data, function(key, value){
                     let watchtoadd = '';
                     let stockchange = '';

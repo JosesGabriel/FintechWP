@@ -14,135 +14,22 @@
 
             /* Top Stocks: Winners */
             var gaugeChart = AmCharts.makeChart("topstockswinners", {
-                {
-            // "type": "gauge",
-            // "theme": "none",
-            // "sequencedAnimation": false,
-            // "startDuration": 0,
-            // "axes": [{
-            //     "axisAlpha": 0,
-            //     "tickAlpha": 0,
-            //     "labelsEnabled": false,
-            //     "startValue": 0,
-            //     "endValue": 100,
-            //     "startAngle": 0,
-            //     "endAngle": 270,
-            //     "bands": [<?php echo $intowinchartbands; ?>]
-            // }],
-            // "allLabels": [<?php echo $intowinchartlabels; ?>],
+            "type": "gauge",
+            "theme": "none",
+            "sequencedAnimation": false,
+            "startDuration": 0,
+            "axes": [{
+                "axisAlpha": 0,
+                "tickAlpha": 0,
+                "labelsEnabled": false,
+                "startValue": 0,
+                "endValue": 100,
+                "startAngle": 0,
+                "endAngle": 270,
+                "bands": [<?php echo $intowinchartbands; ?>]
+            }],
+            "allLabels": [<?php echo $intowinchartlabels; ?>]
 
-
-
-                "type": "serial",
-                "categoryField": "category",
-                "columnSpacing": 0,
-                "columnWidth": 0.17,
-                "rotate": true,
-                "autoMargins": false,
-                "marginBottom": 69,
-                "marginTop": 69,
-                "marginLeft": 70,
-                "sequencedAnimation": false,
-                "color": "#ffffff",
-                "fontFamily": "Roboto",
-                "fontSize": 12,
-                "handDrawScatter": 0,
-                "handDrawThickness": 0,
-                "prefixesOfBigNumbers": [
-                    {
-                        "number": 1000,
-                        "prefix": "k"
-                    },
-                    {
-                        "number": 1000000,
-                        "prefix": "M"
-                    },
-                    {
-                        "number": 1000000000,
-                        "prefix": "B"
-                    },
-                    {
-                        "number": 1000000000000,
-                        "prefix": "T"
-                    },
-                    {
-                        "number": 1000000000000000,
-                        "prefix": "P"
-                    },
-                    {
-                        "number": 1000000000000000000,
-                        "prefix": "E"
-                    },
-                    {
-                        "number": 1e+21,
-                        "prefix": "Z"
-                    },
-                    {
-                        "number": 1e+24,
-                        "prefix": "Y"
-                    }
-                ],
-                "categoryAxis": {
-                    "autoRotateCount": 0,
-                    "gridPosition": "start",
-                    "axisThickness": 0,
-                    "gridThickness": 0,
-                    "minorGridAlpha": 0,
-                    "titleBold": false,
-                    "titleFontSize": 0
-                },
-                "trendLines": [],
-                "graphs": [
-                    {
-                        "balloonColor": "#00E676",
-                        "columnWidth": 0,
-                        "cornerRadiusTop": 3,
-                        "fillAlphas": 1,
-                        "fillColors": "#00E676",
-                        "fixedColumnWidth": 20,
-                        "fontSize": 0,
-                        "gapPeriod": 10,
-                        "id": "AmGraph-1",
-                        "lineAlpha": 0,
-                        "lineColor": "undefined",
-                        "lineThickness": 0,
-                        "minDistance": 0,
-                        "showHandOnHover": true,
-                        "stackable": false,
-                        "tabIndex": 0,
-                        "topRadius": 0,
-                        "type": "column",
-                        "valueField": "column-1",
-                        "visibleInLegend": false
-                    }
-                ],
-                "guides": [],
-                "valueAxes": [
-                    {
-                        "axisTitleOffset": 0,
-                        "baseValue": 524,
-                        "id": "ValueAxis-1",
-                        "position": "bottom",
-                        "autoRotateAngle": 0,
-                        "autoRotateCount": 0,
-                        "axisThickness": 0,
-                        "color": "#000000",
-                        "fontSize": 0,
-                        "gridCount": 0,
-                        "gridThickness": 0,
-                        "labelsEnabled": false,
-                        "offset": 172
-                    }
-                ],
-                "allLabels": [],
-                "balloon": {},
-                "titles": [],
-                "dataProvider": [
-                    {
-                        "category": "<?php echo $intowinchartlabels; ?>",
-                        "column-1": <?php echo $intowinchartbands; ?>
-                    }
-                ]
             });
 
             /* Top Stocks: Losers */

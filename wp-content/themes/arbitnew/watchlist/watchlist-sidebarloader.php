@@ -5,9 +5,9 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 // var app = angular.module('arbitrage_wl', ['nvd3']);
-                $(".watchonlist").addClass("after-load");
+                //$(".watchonlist").addClass("after-load");
                 
                 $.each(data.data, function(skey, svalue){
                     let candles = [];
@@ -15,8 +15,6 @@
                     let ischange = 0;
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
-
-                        console.log(svalue.chartdata.t);
 
                         if(svalue.chartdata.c[ckey] > ischange){
                             ischange = svalue.chartdata.c[ckey];
@@ -27,9 +25,13 @@
                         candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
                         
                     });
+
+                    console.log(candles);
+
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
-                    AmCharts.makeChart( "chartdiv"+stock, {
+                    AmCharts.makeChart("chartdiv"+stock, {
                         "type":"serial",
+                        "dataProvider": candles,
                         "categoryField":"category",
                         "autoMarginOffset":0,
                         "marginBottom":0,
@@ -55,9 +57,8 @@
                         }],
                         "allLabels":[],
                         "balloon": {},
-                        "titles":[],
-                        "dataProvider": candles
-                    } );
+                        "titles":[]
+                    });
                 });
 
                 
@@ -113,7 +114,6 @@
   
     
     $( document ).ready(function() {
-        console.log('loader....');
         new loadwatctlistsidebar(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

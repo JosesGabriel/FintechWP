@@ -26,9 +26,9 @@
                 "endValue": 100,
                 "startAngle": 0,
                 "endAngle": 270,    
-                "bands": [<?php echo $intowinchartbands; alert($intowinchartbands) ?>]
+                "bands": [<?php echo $intowinchartbands; var_dump($intowinchartbands) ?>]
             }],
-            "allLabels": [<?php echo $intowinchartlabels;  alert($intowinchartlabels) ?>]
+            "allLabels": [<?php echo $intowinchartlabels;  var_dump($intowinchartlabels) ?>]
 
             });
 

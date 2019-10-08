@@ -571,7 +571,7 @@ span.datestamp_header {
 .marqueethis {
     width:0;
     height:40px;
-    right:-100px;
+    right:-45px;
 }
 .arb_custom_ticker {
     font-size: 10px;
@@ -1289,10 +1289,8 @@ svg {
 }
 .ticker-enabler {
     position: absolute;
-    top: 50%;
-    left: 60px;
-    transform: translateY(-50%);
+    right: 4px;
 }
 .ticker-enabler i {
-    color: #fff;
+    color: orange;
 }

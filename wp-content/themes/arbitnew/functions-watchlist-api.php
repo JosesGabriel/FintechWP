@@ -182,7 +182,7 @@ class WatchlistAPI extends WP_REST_Controller
                         $count++;                  
                 }else{
                     for ($i=0; $i < $count ; $i++) { 
-                            if($stock_watched[$i][0] == $value['stockname']){ 
+                            if($stock_watched[$i][0] == $value['stockname'] && $value['stockname'] != ''){ 
                                 if($stock_watched[$i][1] != '' ? $stock_watched[$i][1]++ : $stock_watched[$i][1] =  $count_watchlist );
                                 $x = 1; 
                             }

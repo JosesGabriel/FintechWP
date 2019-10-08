@@ -110,6 +110,7 @@
   
     
     $( document ).ready(function() {
+        console.log('loader....');
         new loadwatctlistsidebar(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

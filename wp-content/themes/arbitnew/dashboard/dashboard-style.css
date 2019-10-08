@@ -279,6 +279,10 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
 }
+.um-notification span.b2 i img {
+    width: 14px;
+    margin-top: -3px;
+}
 .um-notification-live-feed .um-notification-more {
     padding: 5px 15px !important;
     border-radius: 0 0 5px 5px;

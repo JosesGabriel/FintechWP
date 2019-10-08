@@ -235,11 +235,11 @@
                 "trendLines": [],
                 "graphs": [
                     {
-                        "balloonColor": "#00E676",
+                        "balloonColor": "#ff1744",
                         "columnWidth": 0,
                         "cornerRadiusTop": 3,
                         "fillAlphas": 1,
-                        "fillColors": "#00E676",
+                        "fillColors": "#ff1744",
                         "fixedColumnWidth": 20,
                         "fontSize": 0,
                         "gapPeriod": 10,

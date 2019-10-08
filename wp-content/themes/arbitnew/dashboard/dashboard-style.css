@@ -14,7 +14,7 @@ body,
 .inner-placeholder{
     background: #0d1f33;
     color: #d8d8d8;
-    padding-top: 46px !important; 
+    padding-top: 46px !important;
 }
 hr.style14 {
     position: relative;
@@ -65,7 +65,7 @@ body header#main-header {
 }
 .border-colored {
     height: 4px;
-    background-image: linear-gradient(to right, #894b9d, #eb8023, #c2b819, #49ba6f, #2581bc); 
+    background-image: linear-gradient(to right, #894b9d, #eb8023, #c2b819, #49ba6f, #2581bc);
 }
 .header-dashboard-inner > div {
     height: 34px !important;
@@ -278,6 +278,10 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
+}
+.um-notification span.b2 i img {
+    width: 14px;
+    margin-top: -3px;
 }
 .um-notification-live-feed .um-notification-more {
     padding: 5px 15px !important;
@@ -532,8 +536,8 @@ a:hover {
     padding-top: 13px;
 } */
 .um-activity-bodyinner-txt span.post-meta {
-    border: none; 
-    box-shadow: none; 
+    border: none;
+    box-shadow: none;
     display: block;
     color: #fff;
     margin: 6px 0 0;
@@ -659,7 +663,7 @@ img.inpostimage {
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
     height: 80px !important;
-    border-radius: 0 !important;    
+    border-radius: 0 !important;
     color: #fff;
 }
 .um-form textarea {
@@ -825,7 +829,7 @@ textarea.um-activity-textarea-elem.ui-autocomplete-input {
     margin: 0 auto;
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bearish:hover a span.diconbase {
-    transform: scale(1.3); 
+    transform: scale(1.3);
 }
 .um-activity-widget .um-activity-foot.status .um-activity-bearish {
     margin-left: 10px;
@@ -1031,6 +1035,10 @@ span.um-activity-seemore {
 }
 .um-activity-head {
     padding: 10px 10px 10px;
+}
+.um-notification span.b2 i img {
+    width: 14px;
+    margin-top: -3px;
 }
 .um-activity-comment-meta .um-activity-editc-d:before {
     content: "";
@@ -1579,12 +1587,12 @@ ul.footmore .ddot {
     width: 100%;
     background: #0c1f33;
 }
-.bkcalcboxess input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
--webkit-appearance: none; 
-margin: 0; 
+.bkcalcboxess input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
 }
-.bkcalcboxess input{ 
+.bkcalcboxess input{
     text-align: right;
 }
 .halfts {
@@ -2039,7 +2047,7 @@ input.dpos {
 }
 input.dpos::placeholder, input.dpri::placeholder {
     color: white;
-} 
+}
 .totabs active {
     border-bottom: 2px solid red;
 }

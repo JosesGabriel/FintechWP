@@ -348,59 +348,6 @@ require("parts/global-header.php");
 		return $a['profit'] - $b['profit'];
 	});
 
-// retain
-	$intowinchartbands = '';
-	$intowinchartlabels = '';
-	$winxcount = 0;
-	$winningstocks = [];
-	foreach ($winstocks as $key => $value) {
-		if($value['profit'] > 0 && $winxcount < 3){
-
-			$dwins = [];
-			$dwins['stocks'] = $value['stockname'];
-			$dwins['profit'] = $value['profit'];
-
-			array_push($winningstocks, $dwins); // ibilin
-
-			$profperc = (abs($value['profit']) / $value['profmarketval']) * 100;
-
-			$intowinchartbands .= '{';
-			$intowinchartbands .= '"color": "'.($winxcount == 2 ? '#2C3E51' : ($winxcount == 1 ? '#223448' : ($winxcount == 0 ? '#172A3F' : ''))).'",';
-			$intowinchartbands .= '"startValue": 0,';
-			$intowinchartbands .= '"endValue": "100",';
-			$intowinchartbands .= '"radius": "'.($winxcount == 2 ? '100' : ($winxcount == 1 ? '85' : ($winxcount == 0 ? '70' : ''))).'%",';
-			$intowinchartbands .= '"innerRadius": "'.($winxcount == 2 ? '85' : ($winxcount == 1 ? '70' : ($winxcount == 0 ? '55' : ''))).'%",';
-			$intowinchartbands .= '"alpha": 0.3';
-			$intowinchartbands .= '}, {';
-			$intowinchartbands .= ' "color": "'.($winxcount == 2 ? '#00e676' : ($winxcount == 1 ? '#06af68' : ($winxcount == 0 ? '#0d785a' : ''))).'",';
-			$intowinchartbands .= ' "startValue": 0,';
-			$intowinchartbands .= ' "endValue": '. (($profperc >= 0) ? number_format(abs($profperc), 2, '.', ',') : 0.00 ).',';
-			$intowinchartbands .= ' "radius": "'.($winxcount == 2 ? '100' : ($winxcount == 1 ? '85' : ($winxcount == 0 ? '70' : ''))).'%",';
-			$intowinchartbands .= ' "innerRadius": "'.($winxcount == 2 ? '85' : ($winxcount == 1 ? '70' : ($winxcount == 0 ? '55' : ''))).'%",';
-			$intowinchartbands .= ' "balloonText": "'. ($profperc > 0 ? number_format($profperc, 2, '.', ',') : 0.00).'%"';
-			$intowinchartbands .= '},';
-		
-			$intowinchartlabels .= '{';
-			$intowinchartlabels .= '"text": "'. $value['stockname'] .'",';
-			$intowinchartlabels .= '"x": "49%",';
-			$intowinchartlabels .= '"y": "'.($winxcount == 2 ? '6.5' : ($winxcount == 1 ? '13.4' : ($flosskey == 0 ? '20' : '33'))).'%",';
-			$intowinchartlabels .= '"size": 11,';
-			$intowinchartlabels .= '"bold": false,';
-			$intowinchartlabels .= '"color": "#d8d8d8",';
-			$intowinchartlabels .= '"align": "right",';
-			$intowinchartlabels .= '},';
-			
-			$winxcoun++;
-			if($winxcount == 3){
-				break;
-			}
-		}
-	}
-
-
-	usort($winningstocks, function($a, $b) {
-		return $b['profit'] - $a['profit'];
-	});
 
 	$intolosschartbands = '';
 	$intolosschartlabels = '';

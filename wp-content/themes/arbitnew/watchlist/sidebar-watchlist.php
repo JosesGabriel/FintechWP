@@ -43,13 +43,6 @@ include "watchlist-sidebarloader.php";
 					          </div>
 				        </div>
 			      </div>
-		      <div class="to-bottom-seemore" style="padding: 0 0 10px 16px;">
-		        <?php if ($value['stockname'] != null) { ?>
-		          <a href="/watchlist/">
-		            <strong class="view__all">View all</strong>
-		          </a>
-		        <?php } ?>
-		      </div>
-		    <?php endif; ?>
+		    
 	    </div>
   </div>

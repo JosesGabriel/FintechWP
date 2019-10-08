@@ -37,9 +37,6 @@ include "watchlist-sidebarloader.php";
 				          <!--Table body-->
 					          <div class="even" style="max-height: 302px;display: block;overflow: hidden;">
 
-
-
-
 					          </div>
 				        </div>
 			      </div>
@@ -47,4 +44,5 @@ include "watchlist-sidebarloader.php";
 	    </div>
   </div>
 
-<?php include "footer-files.php"; ?>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>

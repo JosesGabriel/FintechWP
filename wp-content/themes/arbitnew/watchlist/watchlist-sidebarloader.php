@@ -75,7 +75,7 @@
                 $.each(data.data, function(key, value){
                     let watchtoadd = '';
                     let stockchange = '';
-                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
+                    stockchange = '<div class="stockper" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
 
                     watchtoadd += '<div class="to-watch-data" data-dstock='+value.stockname+'>';
                     watchtoadd += '<div class="to-left-watch" style="position: relative;float: left;display: table-cell;vertical-align: middle;top: 3px;">';
@@ -92,7 +92,7 @@
                     watchtoadd += '<div class="dbox-cont" style="float:right;display: inline-block !important;position: relative;top: 23px;padding: 0px 7px 1px 0px;text-align: right;">';
                     watchtoadd += '<div class="stocknum" style="font-family: Lato, sans-serif;text-align: right;margin-bottom: 2px;font-size: 17px;">₱'+value.last+'</div>';
                     watchtoadd += '<div class="dbox red">';
-                    watchtoadd += '<div class="stockper" style="color: #e64c3c;">'+(value.change).toFixed(2)+'%</div>';
+                    watchtoadd += stockchange +(value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';                    
                     watchtoadd += '</div>';

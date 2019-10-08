@@ -151,7 +151,8 @@ if ($dwatchinfo !== null) :
                           $dprice = number_format($stvals->last, 2, '.', ',');
                           $dchange = number_format($stvals->changepercentage, 2, '.', ',');
                         }
-          
+                      }
+
                       $dyellow = '0.00';
 
                       ?>
@@ -237,5 +238,4 @@ if ($dwatchinfo !== null) :
       </div>
     <?php endif; ?>
     </div>
-  </div>            }
-
+  </div>

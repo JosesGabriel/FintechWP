@@ -87,7 +87,7 @@ class WatchlistAPI extends WP_REST_Controller
     {
         global $wpdb;
         $data = $request->get_params();
-        
+
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();

@@ -272,6 +272,7 @@ body .um-notification-live-feed .um-notification-left {
 body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
+    text-align: left
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #222d3a;

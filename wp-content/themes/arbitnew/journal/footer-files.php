@@ -30,7 +30,6 @@
             // }],
             // "allLabels": [<?php echo $intowinchartlabels;?>]
 
-            {
 	"type": "serial",
 	"categoryField": "category",
 	"columnSpacing": 0,
@@ -150,7 +149,6 @@
 			"column-1": 1000000
 		}
 	]
-}
 
             });
 

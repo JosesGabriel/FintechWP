@@ -7,7 +7,7 @@
             success: function(data) {
                 console.log(data);
                 // var app = angular.module('arbitrage_wl', ['nvd3']);
-                $(".watchonlist").addClass("after-load");
+                //$(".watchonlist").addClass("after-load");
                 
                 $.each(data.data, function(skey, svalue){
                     let candles = [];
@@ -15,8 +15,6 @@
                     let ischange = 0;
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
-
-                        console.log(svalue.chartdata.c[ckey]);
 
                         if(svalue.chartdata.c[ckey] > ischange){
                             ischange = svalue.chartdata.c[ckey];
@@ -28,7 +26,7 @@
                         
                     });
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
-                    AmCharts.makeChart( "chartdiv"+stock, {
+                    AmCharts.makeChart( "chartdiv2"+stock, {
                         "type":"serial",
                         "categoryField":"category",
                         "autoMarginOffset":0,
@@ -88,7 +86,7 @@
                     watchtoadd += '</a></div>';
                               
                     watchtoadd += '<div class="minichartt" style="display: inline-block !important;top: 8px;position: relative;">';
-                    watchtoadd += '<div class="floatingdiv" id="chartdiv'+value.stockname+'"></div>';
+                    watchtoadd += '<div class="floatingdiv" id="chartdiv2'+value.stockname+'"></div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                   

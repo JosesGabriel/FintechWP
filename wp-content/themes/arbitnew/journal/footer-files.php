@@ -25,10 +25,10 @@
                 "startValue": 0,
                 "endValue": 100,
                 "startAngle": 0,
-                "endAngle": 270,
-                "bands": [<?php echo $intowinchartbands; ?>]
+                "endAngle": 270,    
+                "bands": [<?php echo $intowinchartbands; alert($intowinchartbands) ?>]
             }],
-            "allLabels": [<?php echo $intowinchartlabels; ?>]
+            "allLabels": [<?php echo $intowinchartlabels;  alert($intowinchartlabels) ?>]
 
             });
 

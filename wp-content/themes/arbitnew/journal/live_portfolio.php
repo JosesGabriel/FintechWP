@@ -9,7 +9,7 @@
                 <td style="width:15%" class="table-title-live table-title-mvalue">Market Value</td>
                 <td style="width:15%" class="table-title-live table-title-profit">Profit</td>
                 <td style="width:8%" class="table-title-live table-title-performance">Perf.</td>
-                <td style="width:105px; text-align:center;">Action</td>
+                <td style="width:105px;text-align: left;padding-left: 25px;">Action</td>
                 </tr></thead>
             </table>
         </li>

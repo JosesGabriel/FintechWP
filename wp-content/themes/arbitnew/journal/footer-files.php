@@ -137,19 +137,19 @@
                 "dataProvider": [
                     {
                         "category": "HLCM",
-                        "column-1": 999997
+                        "column-1": 1000000
                     },
                     {
                         "category": "DMCI",
-                        "column-1": 999998
-                    },
-                    {
-                        "category": "NOW",
                         "column-1": 999999
                     },
                     {
+                        "category": "NOW",
+                        "column-1": 999998
+                    },
+                    {
                         "category": "2GO",
-                        "column-1": 1000000
+                        "column-1": 999997
                     }
                 ]
 
@@ -282,19 +282,19 @@
                 "dataProvider": [
                     {
                         "category": "HLCM",
-                        "column-1": 999997
+                        "column-1": 1000000
                     },
                     {
                         "category": "DMCI",
-                        "column-1": 999998
-                    },
-                    {
-                        "category": "NOW",
                         "column-1": 999999
                     },
                     {
+                        "category": "NOW",
+                        "column-1": 999998
+                    },
+                    {
                         "category": "2GO",
-                        "column-1": 1000000
+                        "column-1": 999997
                     }
                 ]
             });

@@ -1289,10 +1289,8 @@ svg {
 }
 .ticker-enabler {
     position: absolute;
-    top: 50%;
-    left: 60px;
-    transform: translateY(-50%);
+    right: 4px;
 }
 .ticker-enabler i {
-    color: #fff;
+    color: orange;
 }

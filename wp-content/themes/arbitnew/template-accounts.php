@@ -8,7 +8,8 @@
 global $current_user;
 $user = wp_get_current_user();
 $userID = $current_user->ID;
-get_header( 'dashboard' );
+require("account/header-files.php");
+require("parts/global-header.php");
 
 	$topargs = array(
 	    'role'          =>  '',
@@ -717,6 +718,7 @@ get_header( 'dashboard' );
 	    color: #6583a8;
 	    background: none !important;
 	    text-transform: capitalize !important;
+			float:right;
 	}
 	.um-left {
 	    float: right;
@@ -1051,21 +1053,16 @@ get_header( 'dashboard' );
 			<div class="center-dashboard-part" style="max-width: 936px;">
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php //echo do_shortcode('[ultimatemember_activity form_id=dashboardwall]'); ?>
-						<?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-						the_content();
-						endwhile; else: ?>
-						<p>Sorry, no posts matched your criteria.</p>
-						<?php endif; ?>
+						<?php echo do_shortcode("[ultimatemember_account]"); ?>
 					</div>
 				</div>
 			</div>
 			<div class="right-dashboard-part">
 				<div class="right-dashboard-part-inner">
 
-                	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
+                	<?php #get_template_part('parts/sidebar', 'trendingstocks'); ?>
 
-                    <?php get_template_part('parts/sidebar', 'latestnews'); ?>
+                    <?php #get_template_part('parts/sidebar', 'latestnews'); ?>
 
                     <?php get_template_part('parts/sidebar', 'footer'); ?>
 
@@ -1078,6 +1075,4 @@ get_header( 'dashboard' );
 
 </div> <!-- #main-content -->
 
-<?php
-
-get_footer();
+<?php require("account/footer-files.php"); ?>

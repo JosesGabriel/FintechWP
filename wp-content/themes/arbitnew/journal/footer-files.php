@@ -28,7 +28,8 @@
                 "endAngle": 270,
                 "bands": [<?php echo $intowinchartbands; ?>]
             }],
-            "allLabels": [<?php echo $intowinchartlabels; ?>],
+            "allLabels": [<?php echo $intowinchartlabels; ?>]
+
             });
 
             /* Top Stocks: Losers */

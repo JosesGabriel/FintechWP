@@ -20,5 +20,4 @@
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
 <?php
     include "watchlist-loader.php";
-    include "watchlist-sidebarloader.php";
 ?>

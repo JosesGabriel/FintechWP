@@ -97,7 +97,10 @@ class WatchlistAPI extends WP_REST_Controller
                 "Authorization" => "Bearer {$authorization}",
                 ]
         ]);
-        $stocksdata = json_decode($request->content); 
+        $stocksdata = json_decode($request->content);
+
+        // $gerdqouteone = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
+        // $stocksdata = json_decode($gerdqouteone);
 
         $metadata = "";
         $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key = "_watchlist_instrumental" and user_id ='.$data['userid']);
@@ -179,7 +182,7 @@ class WatchlistAPI extends WP_REST_Controller
                         $count++;                  
                 }else{
                     for ($i=0; $i < $count ; $i++) { 
-                            if($stock_watched[$i][0] == $value['stockname']){ 
+                            if($stock_watched[$i][0] == $value['stockname'] && $value['stockname'] != ''){ 
                                 if($stock_watched[$i][1] != '' ? $stock_watched[$i][1]++ : $stock_watched[$i][1] =  $count_watchlist );
                                 $x = 1; 
                             }

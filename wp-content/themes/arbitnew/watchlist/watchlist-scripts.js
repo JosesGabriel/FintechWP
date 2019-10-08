@@ -17,6 +17,7 @@ $.ajax({
     dataType: 'json',
     //data: "stockss="+JSON.stringify(data),
     success: function(response) {
+          $(".trendingpreloader").hide();
         // var myJSON = JSON.stringify(response);
           var stocks = [];
           var stocks2 = [];
@@ -363,14 +364,14 @@ var startTime = '09:30 AM';
 var endTime = '11:30 PM';
 var curr_time = getval();
 if (get24Hr(curr_time) > get24Hr(startTime) && get24Hr(curr_time) < get24Hr(endTime)) {
-  newwatchlist();
+//   newwatchlist();
 
     $counts = 1;
     setInterval(function(){
         $counts++;
         removealerts();
         if ($counts <= 1) {
-        newwatchlist();
+        // newwatchlist();
         }
     },30000);
 }

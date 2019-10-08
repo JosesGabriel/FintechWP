@@ -46,15 +46,6 @@
 						&nbsp;(<strong style="font-weight: bold !important;">{{::transaction.shares}}</strong>)
 					</li>
 				</ul>
-
-				<div class="ticker-enabler">
-					<button 
-						ng-click="enable = !enable"
-						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-eye': enable, 'fa-eye-slash': !enable}"></i></button>
-					<button 
-						ng-click="tickerBeep = !tickerBeep"
-						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-volume-up': tickerBeep, 'fa-volume-off': !tickerBeep}"></i></button>
-				</div>
 			</div>
 		</div>
 
@@ -297,6 +288,14 @@
 																			</div>
 
 																			<div style="padding: 3px 5px 5px 40px; margin-bottom: 2px;" id="sval" class="sd_border_btm">
+																				<div class="ticker-enabler">
+																					<button 
+																						ng-click="enable = !enable"
+																						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-eye': enable, 'fa-eye-slash': !enable}"></i></button>
+																					<button 
+																						ng-click="tickerBeep = !tickerBeep"
+																						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-volume-up': tickerBeep, 'fa-volume-off': !tickerBeep}"></i></button>
+																				</div>
 																				<div class="arb_stock_name"><!-- STOCK NAME -->
 																					<i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
 																					<div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden;
@@ -664,10 +663,10 @@
 
 																								<table class="dstocklistitems table table-condensed m-b-0 text-inverse border-default" style="font-size: 10px; border-bottom: 1px solid; width:97%; margin-top: 19px;">
 																									<tbody>
-
-																										<tr
-																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol"
-																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}"
+																										
+																										<tr 
+																											ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
+																											ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
 																											change-alt="stock"
 																											style="font-weight: bold;"
 																											>

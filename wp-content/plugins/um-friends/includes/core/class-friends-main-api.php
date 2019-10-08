@@ -128,14 +128,14 @@ class Friends_Main_API {
 					}
 
 				} else {
-					$res = '<a href="#" class="um-friend-pending-btn um-button um-alt" style="width: 148px;" data-cancel-friend-request="' . __('Cancel Request','um-friends') . '" data-pending-friend-request="' . __('Request Sent','um-friends') . '" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Request Sent','um-friends'). '</a>';
+					$res = '<a href="#" class="um-friend-pending-btn um-button um-alt" style="width: 148px;" id="mingle-btn" data-cancel-friend-request="' . __('Cancel Request','um-friends') . '" data-pending-friend-request="' . __('Request Sent','um-friends') . '" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Request Sent','um-friends'). '</a>';
 				}
 
 			} else {
-				$res = '<a href="#" class="um-friend-btn um-button um-alt" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Mingle','um-friends'). '</a>';
+				$res = '<a href="#" class="um-friend-btn um-button um-alt" id="mingle-btn" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Mingle','um-friends'). '</a>';
 			}
 		} else {
-			$res = '<a href="#" class="um-unfriend-btn um-button um-alt" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'" data-friends="'.__('Mingled','um-friends').'"  data-unfriend="'.__('Unmingle','um-friends').'">'. __('Mingled','um-friends'). '</a>';
+			$res = '<a href="#" class="um-unfriend-btn um-button um-alt" id="mingle-btn" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'" data-friends="'.__('Mingled','um-friends').'"  data-unfriend="'.__('Unmingle','um-friends').'">'. __('Mingled','um-friends'). '</a>';
 		}
 
 		return $res;

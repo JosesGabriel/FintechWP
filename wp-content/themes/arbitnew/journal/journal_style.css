@@ -689,13 +689,14 @@ a.smlbtn {
 }
 a.smlbtn.blue {
     line-height: 19px;
-    padding: 1.5px 6.63px;
+    padding: 1.8px 7.63px;
     text-align: center;
     border: 2px solid #3597d3;
     background-color: transparent;
     border-radius: 20px;
     color: #fff;
     font-size: 10px;
+    cursor: pointer;
 }
 a.smlbtn.blue:hover {
     background-color: #3597d3;
@@ -739,6 +740,29 @@ a.smlbtn.red:hover {
 a.smlbtn:hover {
     background-color: #bb3527;
 }
+.headerpart table thead tr td {
+    font-weight: 600;
+}
+.stats-info .dstatstrade .width60 {
+    width: 55% !important;
+}
+.stats-info .dstatstrade .width35 {
+    overflow: hidden;
+}
+.deletelog.smlbtn-delete,
+.deletelive.smlbtn-delete {
+    line-height: 19px;
+    padding: 4px 7px 4.8px 4px;
+    width: 32px !important;
+    height: 23px;
+    border: 2px solid #e91e63;
+    background-color: transparent;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
 /* .dstatstrade ul li div {color:#fff;} */
 .dstatstrade.overridewidth ul li div.ddetailshere,
 .dstatstrade.overridewidth ul li div.ddetailshere .inner {
@@ -1312,7 +1336,7 @@ span.legend_circ {
     width: 147px;
 }
 .record_body .groupinput.midd select {
-    width: 148px !important;
+    width: 147px !important;
 }
 .record_body {
     margin: 0;

@@ -1,16 +1,17 @@
 <div id="live_portfolio" class="dstatstrade overridewidth">
     <ul>
         <li class="headerpart">
-            <div style="width:100%;">
-                <div style="width:7%; text-align: left !important;">Stocks</div>
-                <div style="width:9%" class="table-title-live table-title-avprice">Position</div>
-                <div style="width:11%" class="table-title-live table-title-avprice">Avg. Price</div>
-                <div style="width:15%" class="table-title-live table-title-tcost">Total Cost</div>
-                <div style="width:15%" class="table-title-live table-title-mvalue">Market Value</div>
-                <div style="width:15%" class="table-title-live table-title-profit">Profit</div>
-                <div style="width:8%" class="table-title-live table-title-performance">Perf.</div>
-                <div style="width:105px; text-align:center;">Action</div>
-            </div>
+            <table width="100%">
+                <thead><tr><td style="width: 7%;text-align: left !important;">Stocks</td>
+                <td style="width:9%" class="table-title-live table-title-avprice">Position</td>
+                <td style="width: 12%;" class="table-title-live table-title-avprice">Avg. Price</td>
+                <td style="width:15%" class="table-title-live table-title-tcost">Total Cost</td>
+                <td style="width:15%" class="table-title-live table-title-mvalue">Market Value</td>
+                <td style="width:15%" class="table-title-live table-title-profit">Profit</td>
+                <td style="width:8%" class="table-title-live table-title-performance">Perf.</td>
+                <td style="width:105px; text-align:center;">Action</td>
+                </tr></thead>
+            </table>
         </li>
     </ul>
     <div class="hideformodal">

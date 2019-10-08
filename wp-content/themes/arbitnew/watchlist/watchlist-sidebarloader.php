@@ -31,7 +31,6 @@
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                     AmCharts.makeChart("chartdiv"+stock, {
                         "type":"serial",
-                        "dataProvider": candles,
                         "categoryField":"category",
                         "autoMarginOffset":0,
                         "marginBottom":0,
@@ -57,7 +56,8 @@
                         }],
                         "allLabels":[],
                         "balloon": {},
-                        "titles":[]
+                        "titles":[],
+                        "dataProvider": candles
                     });
                 }else{
                     console.log('nodata');

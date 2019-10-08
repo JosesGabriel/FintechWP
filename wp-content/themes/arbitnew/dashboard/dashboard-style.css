@@ -2313,4 +2313,33 @@ legend {
     left: 0px;
     position: relative;
 }
+.mingle-btn {
+    border-radius: 26px !important;
+    border: 2px solid #e77e24 !important;
+    /* padding: 5px 14px !important; */
+    font-family: 'Nunito', sans-serif;
+    color: white !important;
+    background-color: transparent;
+}
+.mingle-btn span {
+    max-width: 0;
+    -webkit-transition: max-width 1s;
+    transition: max-width 1s;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.mingle-btn:hover span {
+    max-width: 7rem;
+}
+.mingle-btn i {
+    font-size: 10px !important;
+    color: white !important;
+    margin: 0 !important;
+    margin-left: 4px !important; 
+}
+.mingle-btn:active {
+    background-color: #e77e24;
+}
 /*------ sidebar-alerts-dashboard ------*/

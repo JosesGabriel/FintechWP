@@ -697,6 +697,7 @@ a.smlbtn.blue {
     color: #fff;
     font-size: 10px;
     margin-right: 2px;
+    cursor: pointer;
 }
 a.smlbtn.blue:hover {
     background-color: #3597d3;
@@ -739,6 +740,9 @@ a.smlbtn.red:hover {
 }
 a.smlbtn:hover {
     background-color: #bb3527;
+}
+.headerpart table thead tr td {
+    font-weight: 600;
 }
 /* .dstatstrade ul li div {color:#fff;} */
 .dstatstrade.overridewidth ul li div.ddetailshere,

@@ -5,7 +5,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 // var app = angular.module('arbitrage_wl', ['nvd3']);
                 //$(".watchonlist").addClass("after-load");
                 
@@ -111,7 +111,6 @@
   
     
     $( document ).ready(function() {
-        console.log('loader....');
         new loadwatctlistsidebar(<?php echo $user->ID; ?>);
         new loadMiniCharts(<?php echo $user->ID; ?>);
     });

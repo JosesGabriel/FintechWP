@@ -10,6 +10,15 @@
 <html <?php language_attributes(); ?>>
 <head>
     <title><?php bloginfo('name'); ?></title>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-147416476-1');
+		</script>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">

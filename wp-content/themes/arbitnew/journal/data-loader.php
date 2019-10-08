@@ -15,25 +15,23 @@
                     }
                     let addliveme = '';
                     addliveme += '<li>';
-                    addliveme += '<div style="width:99%;">';
-                    addliveme += '<div style="width:7.5%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></div>';
-                    addliveme += '<div style="width:9%" class="table-cell-live">'+(value.position).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:12%" class="table-cell-live">₱'+(value.aveprice).toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.totalcost).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:7%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
-                    addliveme += '<div style="width:77px;text-align:center;">';
+                    addliveme += '<table style="width:100%;"><tbody><tr>';
+                    addliveme += '<td style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></td>';
+                    addliveme += '<td style="width:9%" class="table-cell-live" style="padding-right: 2px;">'+(value.position).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:12%" class="table-cell-live" style="padding-right: 3px;">₱'+(value.aveprice).toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:14%" class="table-cell-live">₱'+(value.totalcost).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:8%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</td>';
+                    addliveme += '<td style="width:77px;text-align:center;">';
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
                     addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
-                    addliveme += '</div>';
-                    addliveme += '<div style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></div>';
-                    addliveme += '<div style="width:25px"><a data-stock="'+value.stock+'" data-totalprice="'+value.totalcost+'" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
-                    // addliveme += '<div style="width:25px; margin-left: 2px;">';
-                    // addliveme += '</div>';
-                    addliveme += '</div>';
+                    addliveme += '</td>';
+                    addliveme += '<td style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
+                    addliveme += '<td style="width:25px"><a data-stock="'+value.stock+'" data-totalprice="'+value.totalcost+'" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
+                    addliveme += '</tr></tbody></table>';
                     addliveme += '</li>';
                     $("#live_portfolio ul").append(addliveme).show('slow');
                 });
@@ -52,6 +50,11 @@
             success: function(data) {
                 $(".showtradelogs ul li.dloglist").remove();
                 $.each(data.data, function(i, value){
+                    if(value.perc > 0){
+                        perfstats = 'dgreenpart';
+                    }else{
+                        perfstats = 'dredpart';
+                    }
                     let addliveme = '';
                     addliveme += '<li class="dloglist">';
                     addliveme += '<div style="width:99%;">';
@@ -62,8 +65,8 @@
                     addliveme += '<div style="width:98px" class="table-cell-live" >₱'+(parseFloat(value.buyvalue)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:68px" class="table-cell-live" >₱'+(parseFloat(value.tlsellprice)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
                     addliveme += '<div style="width:91px" class="table-cell-live" >₱'+(value.sellvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:80px" class="table-cell-live" id="tploss1">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
-                    addliveme += '<div style="width:76px" class="table-cell-live" id="tpercent1">'+(value.perc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
+                    addliveme += '<div style="width:80px" class="'+ perfstats +' table-cell-live" id="tploss1">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</div>';
+                    addliveme += '<div style="width:76px" class="'+ perfstats +' table-cell-live" id="tpercent1">'+(value.perc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</div>';
                     addliveme += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="'+value.tlstrats+'" data-tltradeplans="'+value.tltradeplans+'" data-tlemotions="'+value.tlemotions+'" data-tlnotes="'+value.tlnotes+'" data-outcome="'+value.outcome+'" class="smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></div>';
                     addliveme += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="'+value.tlid+'" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
                     addliveme += '</div>';
@@ -71,7 +74,7 @@
                     $(".showtradelogs ul").append(addliveme);
                 });
 
-                let totalprofit = (parseFloat(data.totalprofit)).toFixed(2);
+                let totalprofit = (parseFloat(data.totalprofit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
                 $(".totalplscore").text("₱"+totalprofit);
                 
             },
@@ -137,7 +140,7 @@
             dataType: 'json', // added data type
             success: function(data) {
                 // console.log(data);
-                $("#entertradelive input[name='input_buy_product'], .entertrade input[name='input_buy_product']").val((data.data).toFixed(2));
+                $("#entertradelive input[name='input_buy_product'], .entertrade input[name='input_buy_product']").val((data.data).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 

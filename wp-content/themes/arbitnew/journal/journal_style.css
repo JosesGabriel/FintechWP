@@ -748,24 +748,7 @@ a.smlbtn:hover {
     width: 55% !important;
 }
 .stats-info .dstatstrade .width35 {
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-.stats-info .dstatstrade .width35::-webkit-scrollbar-track
-{
-    background: transparent;
-    width: 0;
-}
-
-.stats-info .dstatstrade .width35::-webkit-scrollbar
-{
-    width: 0;
-    background: transparent;
-}
-
-.stats-info .dstatstrade .width35::-webkit-scrollbar-thumb
-{
-    background: transparent;
+    overflow: hidden;
 }
 /* .dstatstrade ul li div {color:#fff;} */
 .dstatstrade.overridewidth ul li div.ddetailshere,

@@ -287,8 +287,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 					
 					<div class="container-sticky">
                     <?php
-                    //require("parts/sidebar-watchlist.php");
-                    require("watchlist/sidebar-watchlist.php");
+                    require("parts/sidebar-watchlist.php");
+                    //require("watchlist/sidebar-watchlist.php");
                     require("parts/sidebar-footer.php");
 					?>
 					</div>

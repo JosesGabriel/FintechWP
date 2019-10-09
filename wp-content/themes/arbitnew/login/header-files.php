@@ -38,10 +38,10 @@ $user = wp_get_current_user();
 	<?php endif ?>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
-	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
+	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform">
+	<!-- <meta property="og:description" content="Offering tour packages for individuals or groups."> -->
+	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png">
+	<meta property="og:url" content="https://arbitrage.ph">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
 	
 	<?php // Countdown ?>

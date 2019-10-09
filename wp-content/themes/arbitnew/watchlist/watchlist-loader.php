@@ -72,10 +72,8 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                //console.log(data);
-                $.each(data.data, function(key, value){
 
-                    console.log(value.bidask.bid_total_percent);
+                $.each(data.data, function(key, value){
 
                     let watchtoadd = '';
                     let stockchange = '';

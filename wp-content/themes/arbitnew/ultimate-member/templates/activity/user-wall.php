@@ -1,5 +1,4 @@
 <?php date_default_timezone_set("Asia/Manila"); ?>
-
 <?php
 if (!function_exists('getnumformat'))
 {
@@ -290,15 +289,18 @@ foreach ( $wallposts->posts as $post ) {
 
 						</a>
             <!-- Mingle button on user wall ---->
+
             <?php
-            #do not display button is post author is yourself
+            #do not display button if post author is yourself
             if (get_current_user_id() != $author_id){
+              if(author_is_a_friend($author_id, get_current_user_id()) == "false"){
             ?>
                 <button href="#" style="border: 1.3px solid #e77e24 !important;" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
                   <i class="fas fa-plus" aria-hidden="true"></i>
                   <span style="font-size: 0.6em;">Mingle</span>
                 </button>
             <?php
+              }
             }
             ?>
 
@@ -695,3 +697,20 @@ foreach ( $wallposts->posts as $post ) {
 <?php } ?>
 
 <div class="um-activity-load"></div>
+
+<?php
+
+  function author_is_a_friend($friendid,$currentuser){
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+        $userID = $currentuser;
+        $user_id_1 = 0;
+        $res = $conn->query("select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and user_id1 = ".$friendid." and status = 1");
+        if($res->num_rows > 0){
+            return "true";
+        }else{
+            return "false";
+        }
+        mysqli_close($conn);
+  }
+
+?>

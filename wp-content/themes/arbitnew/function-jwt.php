@@ -168,7 +168,7 @@ function sso_login($data, $jwt) {
             $home = home_url();
             
             // TODO create url map for different modules like vyndue, game, charts, etc
-            $url = "https%3A%2F%2Farbitrage.ph%2Fvyndue%2F";
+            $url = urlencode('https://vyndue.com/userview/logout');
             // echo "Redirects to $home/login?sso_login=$sso_login&sso_token=$sso_token";
             wp_safe_redirect( "$home/login?redirect_to=$url");
         }

@@ -48,7 +48,9 @@ function get_whotomingle(){
       }
       mysqli_close($conn);
       echo json_encode($newuserlist);
-  }
+}
+
+
 
 function get_trendingstocks(){
       global $wpdb;

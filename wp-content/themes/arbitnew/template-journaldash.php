@@ -47,9 +47,9 @@ function getjurfees($funmarketval, $funtype)
 		
 
 		if ($total_stocks_price > $buypower) {
-			echo $total_stocks_price ." ~ ". $buypower;
-			// wp_redirect('/journal');
-			// exit;
+			// echo $total_stocks_price ." ~ ". $buypower;
+			wp_redirect('/journal');
+			exit;
 		}
 
 		
@@ -82,8 +82,8 @@ function getjurfees($funmarketval, $funtype)
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
 
-		print_r($_POST);
-		die;
+		// print_r($_POST);
+		// die;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {

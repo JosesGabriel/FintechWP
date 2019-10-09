@@ -46,6 +46,9 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                       <a href="<?php echo get_home_url(); ?>/user" style="color:#fff;"><span><?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?></span></a>
                       <div class="arb_smalltxt">@<?php echo um_user('nickname'); ?></div>
                   </div>
+                  <div class="close-leftsidebar">
+                      <img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitnew/images/cancel.svg" width="15px">
+                  </div>
 
           </div>
       </div>

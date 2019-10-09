@@ -2343,6 +2343,9 @@ legend {
 .mingle-btn:active {
     background-color: #e77e24;
 }
+.mingle-btn:focus {
+    outline:none;
+}
 /*------ sidebar-alerts-dashboard ------*/
 
 .swipe-area-l {

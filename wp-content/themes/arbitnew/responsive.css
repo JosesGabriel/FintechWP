@@ -181,6 +181,8 @@
 	body {
 		overflow-x: hidden;
 	}
+
+
 	.center-dashboard-part {
 		transition: all 0.5s ease;
 	}

@@ -512,7 +512,7 @@ require("parts/global-header.php");
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part" style="max-width: 800px !important;">
+			<div class="center-dashboard-part" style="max-width: 1000px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>

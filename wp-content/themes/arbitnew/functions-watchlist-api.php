@@ -91,6 +91,8 @@ class WatchlistAPI extends WP_REST_Controller
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
+
+
         $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
             "headers" => [
                 "Content-type" => "application/json",
@@ -107,10 +109,19 @@ class WatchlistAPI extends WP_REST_Controller
         foreach ($ismytrades as $sdkey => $dsvalue) { $metadata = unserialize($dsvalue->meta_value); }
         $finalwatch = [];
         foreach ($metadata as $key => $value) {
+            $getbidask = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=".$value['stockname'], [
+                "headers" => [
+                    "Content-type" => "application/json",
+                    "Authorization" => "Bearer {$authorization}",
+                    ]
+            ]);
+            $dbidasklist = json_decode($getbidask->content);
+
             $key = array_search($value['stockname'], array_column($stocksdata->data, 'symbol'));
             $stockdetails = $stocksdata->data[$key];
             $value['last'] = $stockdetails->last;
             $value['change'] = $stockdetails->changepercentage;
+            $value['bidask'] = $dbidasklist->data;
             array_push($finalwatch, $value);
         }
         return $this->respond(true, ['data' => $finalwatch], 200);

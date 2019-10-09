@@ -444,7 +444,7 @@
     //End Notifications ============================================================================================================================
     $('.logo-image').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
-    	$('.right-image').find('.close-leftsidebar').css('display','block');
+    	//$('.right-image').find('.close-leftsidebar').css('display','block');
     });
 
      $('.close-leftsidebar').on('click', function(){

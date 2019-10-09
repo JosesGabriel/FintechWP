@@ -1,6 +1,6 @@
 /*------ global-dashboard-css ------*/
 html {
-    background: #0d1f33;
+    background: #0d1f33 !important;
 }
 dl, ol, ul {
     margin-bottom: 0;
@@ -1171,6 +1171,18 @@ span.um-activity-seemore {
 
 
 /*------ right-sidebar ------*/
+.table {
+    margin:0 !important;
+}
+.watch_price {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff;
+}
+.watch_perc {
+    font-size: 11px;
+    font-weight: 300;
+}
 .right-dashboard-part-inner {
     height: 100%;
 }
@@ -1531,6 +1543,76 @@ ul.footmore li a {
 ul.footmore .ddot {
     top: 2px;
     position: relative;
+}
+
+
+.floatingdiv {
+    width: 100%;
+    /*height: 125px;*/
+    height: 75px;
+}
+
+.floatingdiv .amcharts-chart-div > a {
+    display: none !important;
+}
+
+.sidewatchlist .to-watch-data .to-stock {
+    float: left;
+    padding: 0 5px;
+    height: 100%;
+    top: 16px;
+    position: relative;
+    display: inline-block;
+}
+.sidewatchlist .to-watch-data .chartarea{
+    float:left;
+    width: 55%;
+    bottom: 11px;
+    /* padding: 0 5px; */
+}
+.sidewatchlist .to-watch-data .dbox-cont {
+    float: left;
+    text-align: right;
+    width: 22%;
+    top: 26px;
+    padding: 0 5px;
+    position: relative;
+}
+.swipe-area-l {
+  position: absolute;
+  width: 20px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipeleft-area-l {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swipe-area-r {
+  position: absolute;
+  width: 20px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+}
+.close-leftsidebar {
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    display: none;
 }
 /*------ right-sidebar ------*/
 
@@ -2317,10 +2399,17 @@ legend {
 .mingle-btn {
     border-radius: 26px !important;
     border: 2px solid #e77e24 !important;
-    /* padding: 5px 14px !important; */
     font-family: 'Nunito', sans-serif;
     color: white !important;
     background-color: transparent;
+    padding: 2px;
+    height: 9px;
+    position: absolute;
+    top: -2px;
+    margin-left: 3px;
+    /* position: relative; */
+    /* top: 13px;
+    left: 35px; */
 }
 .mingle-btn span {
     max-width: 0;
@@ -2333,80 +2422,24 @@ legend {
 }
 .mingle-btn:hover span {
     max-width: 7rem;
+    font-size: 0.6em;
 }
 .mingle-btn i {
-    font-size: 10px !important;
-    color: white !important;
+    font-size: 8px !important;
+    color: orange !important;
     margin: 0 !important;
-    margin-left: 4px !important; 
+    margin-left: 3px !important; 
+    position: relative !important;
+    top: -5px !important;
+    left: -2px;
+    width: 2px !important;
+    height: 9px !important;
 }
 .mingle-btn:active {
     background-color: #e77e24;
 }
+.mingle-btn:focus {
+    outline:none;
+}
 /*------ sidebar-alerts-dashboard ------*/
 
-
-.floatingdiv {
-    width: 100%;
-    /*height: 125px;*/
-    height: 75px;
-}
-
-.floatingdiv .amcharts-chart-div > a {
-    display: none !important;
-}
-
-.sidewatchlist .to-watch-data .to-stock {
-    float:left;
-    width: 22%;
-    bottom: 11px;
-    padding: 0 5px;
-}
-.sidewatchlist .to-watch-data .chartarea{
-    float:left;
-    width: 55%;
-    bottom: 11px;
-    padding: 0 5px;
-}
-.sidewatchlist .to-watch-data .dbox-cont {
-    float:left;
-    width: 22%;
-    bottom: 11px;
-    padding: 0 5px;
-}
-.swipe-area-l {
-  position: absolute;
-  width: 20px;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: transparent;
-  z-index: 0;
-}
-
-.swipeleft-area-l {
-  position: absolute;
-  width: 70px;
-  right: 0;
-  margin-top: 50px;
-  top: 0;
-  height: 100%;
-  background: transparent;
-  z-index: 2;
-}
-
-.swipe-area-r {
-  position: absolute;
-  width: 20px;
-  right: 0;
-  top: 0;
-  height: 100%;
-  background: transparent;
-  z-index: 1;
-}
-.close-leftsidebar {
-    position: absolute;
-    right: 10px;
-    top: -3px;
-    display: none;
-}

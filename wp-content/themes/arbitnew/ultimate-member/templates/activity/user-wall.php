@@ -1,8 +1,8 @@
 <?php date_default_timezone_set("Asia/Manila"); ?>
 
 <?php
-if (!function_exists('getnumformat'))  
-{ 
+if (!function_exists('getnumformat'))
+{
     function getnumformat( $n, $precision = 1 ) {
 		if ($n < 900) {
 			// 0 - 900
@@ -33,7 +33,7 @@ if (!function_exists('getnumformat'))
 		return $n_format . $suffix;
 	}
 
-}  
+}
 
 //build posts query
 
@@ -286,13 +286,23 @@ foreach ( $wallposts->posts as $post ) {
 							<?php else: ?>
 								<?php echo um_user('nickname', 'html'); ?>
 							<?php endif ?>
-							
+
 
 						</a>
-						<button href="#" style="border: 1.3px solid #e77e24 !important;" class="mingle-btn">
-							<i class="fas fa-user-plus" aria-hidden="true"></i>
-							<span>Mingle</span>
-						</button>
+            <!-- Mingle button on user wall ---->
+            <?php
+            #do not display button is post author is yourself
+            if (get_current_user_id() != $author_id){
+            ?>
+                <button href="#" style="border: 1.3px solid #e77e24 !important;" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
+                  <i class="fas fa-plus" aria-hidden="true"></i>
+                  <span style="font-size: 0.6em;">Mingle</span>
+                </button>
+            <?php
+            }
+            ?>
+
+            <!-- Mingle button on user wall ---->
 
 						<?php if ( $wall_id && $wall_id != $author_id ) {
 
@@ -366,7 +376,7 @@ foreach ( $wallposts->posts as $post ) {
 						<?php }
 
 
-					
+
 						if ( $author_id != $get_current_user_id ) { ?>
 
 							<span class="sep"></span>
@@ -383,7 +393,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						<?php }  ?>
 
-						
+
 
 					</div>
 
@@ -454,9 +464,9 @@ foreach ( $wallposts->posts as $post ) {
 						// 		}
 						// 	}
 						// }
-							
+
 						?>
-	
+
 						<?php echo $um_activity_post; ?>
 
 					</div>
@@ -487,7 +497,7 @@ foreach ( $wallposts->posts as $post ) {
 
 
 
-			<?php 
+			<?php
 
 
 
@@ -496,7 +506,7 @@ foreach ( $wallposts->posts as $post ) {
 			$numbear = UM()->Activity_API()->api()->get_bearish_number( $post->ID );
 
 			$comments = UM()->Activity_API()->api()->get_comments_number( $post->ID );
-			
+
 			?>
 
 		</div>
@@ -519,7 +529,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							<span class="diconbase"><img src="/assets/svg/ico_bullish_no_ring.svg"></span>
 
-							
+
 
 						</a>
 
@@ -533,7 +543,7 @@ foreach ( $wallposts->posts as $post ) {
 
 							<span class="diconbase"><img src="/assets/svg/ico_bearish_no_ring.svg"></span>
 
-							
+
 
 						</a>
 
@@ -541,7 +551,7 @@ foreach ( $wallposts->posts as $post ) {
 
 					</div>
 
- 					
+
 
 					<div class="dpartmodal">
 
@@ -591,7 +601,7 @@ foreach ( $wallposts->posts as $post ) {
 
 						        		<div class="innerbull">
 
-											<?php 
+											<?php
 
 												$post_bull_people = get_post_meta( $post->ID, '_bull_people', TRUE );
 
@@ -606,11 +616,11 @@ foreach ( $wallposts->posts as $post ) {
 													<img src="/assets/svg/ico_bullish_no_ring_notification.svg" style="width: 24px; padding: 5px;">
 														<?php echo($user_info->display_name != '' ? $user_info->display_name : $user_info->user_nicename); ?>
 													</a>
-															
-												
-										
+
+
+
 											<?php
-											
+
 													endforeach;
 												endif;
 											?>
@@ -621,8 +631,8 @@ foreach ( $wallposts->posts as $post ) {
 
 						        	<div class="bearish">
 
-										<?php 
-										
+										<?php
+
 											$post_bear_people = get_post_meta( $post->ID, '_bear_people', TRUE );
 
 											if ($post_bear_people):
@@ -638,9 +648,9 @@ foreach ( $wallposts->posts as $post ) {
 													<?php echo ($user_info->display_name != "" ? $user_info->display_name : $user_info->user_nicename); ?>
 												</a>
 
-										<?php 
+										<?php
 												endforeach;
-											endif; 
+											endif;
 										?>
 
 						        	</div>

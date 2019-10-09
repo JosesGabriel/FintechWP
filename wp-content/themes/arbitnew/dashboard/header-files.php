@@ -10,15 +10,33 @@
 <html <?php language_attributes(); ?>>
 <head>
     <title><?php bloginfo('name'); ?></title>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+	
+	<?php if (WP_PROD_ENV): ?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-		gtag('config', 'UA-147416476-1');
-		</script>
+	gtag('config', 'UA-147416476-1');
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Ads: 753053364 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-753053364"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'AW-753053364');
+	</script>
+
+	<!-- Event snippet for Traffic to Site conversion page -->
+	<script>
+	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
+	</script>
+	<?php endif ?>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta property="og:title" content="Arbitrage | Stock Trading Platform" />

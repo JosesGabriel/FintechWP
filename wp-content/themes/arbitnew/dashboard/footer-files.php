@@ -40,20 +40,14 @@
                                 let changetext = "";
                                 $.each(svalue.chartdata.t, function(ckey, cvalue){
                                     if(svalue.chartdata.c[ckey] > ischange){
-                                        // tofixed = svalue.chartdata.c[ckey];
                                         ischange = svalue.chartdata.c[ckey];
-                                        // ischange = $(tofixed).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
                                         changetext = 'up';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
                                     console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
-                                    candles.push({"category": ckey,"column-1": ischange});
-                                    // toFixed = svalue.toFixed();
-                                    toFixed = svalue.chartdata.c[ckey];
-                                    valuetoFixed = parseFloat(toFixed).toFixed(2);
-                                    // toFixed = svalue.chartdata.c[ckey];
+                                    candles.push({"category": ckey,"column-1": parseFloat(ischange).toFixed(2)});
                                     
                                 });
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
@@ -78,7 +72,7 @@
                                     },
                                     "trendLines":[],
                                     "graphs":[ {
-                                        "balloonColor": "undefined", "balloonText": valuetoFixed, "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 0.8, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                                        "balloonColor": "undefined", "balloonText": svalue.chartdata.c[ckey], "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 0.8, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
                                     }],
                                     "guides":[],
                                     "valueAxes":[ {

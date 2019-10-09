@@ -8,7 +8,9 @@
             <div class="left-header-part">
                 <div class="left-header-inner">
                     <div class="logo-image">
-                        <a href="/"><img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;"></a>
+                        <!--<a href="/">-->
+                            <img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;">
+                        <!--</a>-->
                     </div>
                     <!-- <div class="searchbar">
                         <div class="inner-seatch">
@@ -81,7 +83,7 @@
                     </ul>
         
                      <div class="right-slider-menu" >
-                        <img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/images/menu.svg" width="22px">
+                       <img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitnew/images/menu.svg" width="22px">
                     </div>
                     <div id="right-menu" class="right-slider-menu1"></div>
 

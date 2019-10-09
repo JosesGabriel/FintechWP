@@ -2,9 +2,9 @@ um_friends_ajax = false;
 
 jQuery( document ).ready(function() {
 	if ( jQuery('.um-friends-m').length ) {
-		
+
 		jQuery('.um-friends-m').each( function(){
-			
+
 			var max = jQuery(this).attr('data-max');
 			if ( max > 0 && jQuery(this).find('.um-friends-m-user').length > max ) {
 				var n = max - 1;
@@ -12,7 +12,7 @@ jQuery( document ).ready(function() {
 				var more = jQuery(this).find('.um-friends-m-user').length - jQuery(this).find('.um-friends-m-user:visible').length;
 				jQuery('<div class="um-friends-m-user show-all">+'+ more + '</div>').insertAfter( jQuery(this).find('.um-friends-m-user:visible:last') );
 			}
-			
+
 		});
 
 		jQuery( document.body ).on( 'click', '.um-friends-m-user.show-all', function(e){
@@ -59,8 +59,8 @@ jQuery( document ).ready(function() {
 	/* Add friend user */
 	jQuery( document.body ).on( 'click', '.um-friend-btn', function(e) {
 		e.preventDefault();
-		if ( um_friends_ajax == true ) { 
-			return false; 
+		if ( um_friends_ajax == true ) {
+			return false;
 		}
 		um_friends_ajax = true;
 		var btn = jQuery(this);
@@ -103,15 +103,15 @@ jQuery( document ).ready(function() {
 		//in_dropdown = false;
 		in_dropdown = true;
 
-		if ( um_friends_ajax == true ) { 
-			return false; 
+		if ( um_friends_ajax == true ) {
+			return false;
 		}
 		um_friends_ajax = true;
 		var btn = jQuery(this);
 		btn.addClass('um_friends_ajax');
 		var user_id1 = jQuery(this).attr('data-user_id1');
 		var user_id2 = jQuery(this).attr('data-user_id2');
-		
+
 		var btn2 = btn.parent().find('.um-friend-reject-btn');
 
 		//if ( btn.parents('.um-dropdown' ).length > 0 ) {
@@ -131,12 +131,12 @@ jQuery( document ).ready(function() {
 			success: function(data){
 
 				if ( in_dropdown == true ) {
-					
+
 					btn.parents('.um-friend-respond-zone').find('.um-friend-respond-btn').replaceWith( data.btn );
 					UM_hide_menus();
-				
+
 				} else {
-					
+
 					btn.replaceWith( data.btn );
 					btn2.remove();
 					btn.removeClass('um_friends_ajax');
@@ -203,13 +203,13 @@ jQuery( document ).ready(function() {
 		btn.addClass('um_friends_ajax');
 		var user_id1 = jQuery(this).attr('data-user_id1');
 		var user_id2 = jQuery(this).attr('data-user_id2');
-		
+
 		var btn2 = btn.parent().find('.um-friend-accept-btn');
-		
+
 		//if ( btn.parents('.um-dropdown' ).length > 0 ) {
 			//in_dropdown = true;
 		//}
-		
+
 		jQuery.ajax({
 			url: wp.ajax.settings.url,
 			type: 'post',
@@ -221,19 +221,19 @@ jQuery( document ).ready(function() {
 			},
 			dataType: 'json',
 			success: function(data){
-			
+
 				if ( in_dropdown == true ) {
-					
+
 					btn.parents('.um-friend-respond-zone').find('.um-friend-respond-btn').replaceWith( data.btn );
 					UM_hide_menus();
-					
+
 				} else {
-					
+
 					btn.replaceWith( data.btn );
 					btn2.remove();
 					btn.removeClass('um_friends_ajax');
 				}
-	
+
 				um_friends_ajax = false;
 			}
 		});

@@ -86,10 +86,10 @@ if(isset($_GET['addcp'])){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="box-portlet">
-                                    <div class="box-portlet-header">
+                                    <!--<div class="box-portlet-header">
 
                                         <h2 class="watchtitle">Watchlist</h2>
-                                    </div>
+                                    </div>-->
                                     <div class="box-portlet-content">
                                         <div class="dtabcontent">
                                             <div class="dclosetab watchtab active">

@@ -617,6 +617,20 @@ input#first_name-9 {
 	border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 /* Responsive */
+
+
+@media only screen and (max-width: 767px){
+  .prtnr_signup, .prtnr_login {
+    width: 150px;
+      height: 150px;
+      border-radius: 100px;
+
+  }
+}
+
+
+
+
 @media only screen and (max-width: 3200px){
 	.prtnr_signup,
 	.prtnr_login,
@@ -638,6 +652,15 @@ input#first_name-9 {
 	.login-submit {
 		background-size:cover;
 	}
+
+  .prtnr_signup, .prtnr_login {
+    width: 150px;
+      height: 150px;
+      border-radius: 100px;
+
+  }
+
+
 }
 @media screen and (min-height: 280px){
 	.ondashboardpage_login_inner {

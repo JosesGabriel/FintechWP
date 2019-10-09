@@ -45,10 +45,14 @@ function getjurfees($funmarketval, $funtype)
 		$total_stocks_price = bcadd($stockquantity, $butstockprice);
 
 		
+
 		if ($total_stocks_price > $buypower) {
+			// echo $total_stocks_price ." ~ ". $buypower;
 			wp_redirect('/journal');
 			exit;
 		}
+
+		
 
         $tradeinfo = [];
 
@@ -77,6 +81,9 @@ function getjurfees($funmarketval, $funtype)
         $tradeinfo['emotion'] = $_POST['inpt_data_emotion'];
         $tradeinfo['tradingnotes'] = $_POST['inpt_data_tradingnotes'];
 		$tradeinfo['status'] = $_POST['inpt_data_status'];
+
+		// print_r($_POST);
+		// die;
 		 
         $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
         if ($dlistofstocks && is_array($dlistofstocks) && in_array($_POST['inpt_data_stock'], $dlistofstocks)) {
@@ -512,7 +519,7 @@ require("parts/global-header.php");
 					</div>
 				</div>
 			</div>
-			<div class="center-dashboard-part" style="max-width: 800px !important;">
+			<div class="center-dashboard-part" style="max-width: 1000px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>

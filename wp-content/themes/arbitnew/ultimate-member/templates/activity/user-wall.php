@@ -291,7 +291,7 @@ foreach ( $wallposts->posts as $post ) {
 						</a>
             <!-- Mingle button on user wall ---->
             <?php
-            #do not display button is post author is yourself
+            #do not display button if post author is yourself
             if (get_current_user_id() != $author_id){
             ?>
                 <button href="#" style="border: 1.3px solid #e77e24 !important;" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">

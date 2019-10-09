@@ -26,6 +26,10 @@ switch($action){
   case 'get_user_metas':
       get_user_metas();
       break;
+  case 'isfriend':
+      $friendid = $_GET['friendid'];
+      is_a_friend($friendid);
+      break;
   default:
   echo 'no action';
 }
@@ -48,7 +52,15 @@ function get_whotomingle(){
       }
       mysqli_close($conn);
       echo json_encode($newuserlist);
-  }
+}
+
+function is_a_friend($friendid){
+      $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+      $userID = $current_user->ID;
+      $res = $conn->query("select distinct user_id1 from arby_um_friends where user_id2 = ".$userID." and status = 1");
+      mysqli_close($conn);
+      echo "true";
+}
 
 function get_trendingstocks(){
       global $wpdb;

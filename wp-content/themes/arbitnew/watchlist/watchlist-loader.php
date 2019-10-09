@@ -72,8 +72,11 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 $.each(data.data, function(key, value){
+
+                    console.log(value.bidask.bid_total_percent);
+
                     let watchtoadd = '';
                     let stockchange = '';
                     stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
@@ -118,6 +121,22 @@
                         watchtoadd += '</li>';
                     }
                     watchtoadd += '</ul>';
+
+                    watchtoadd += '<div class="arb_bar fullbar">';
+                    watchtoadd += '<div class="arb_bar_green" style="width: 12%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_red" style="width: 88%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_clear"></div>';
+                    watchtoadd += '<div class="dlabels">';
+                    watchtoadd += '<div class="buyers">';
+                    watchtoadd += '<span style="font-weight: normal;color: #c9ccce;">BUYERS</span> 12%';
+                    watchtoadd += '</div>';
+                    watchtoadd += '<div class="sellers">';
+                    watchtoadd += '88% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>';
+                    watchtoadd += '</div>';
+                    watchtoadd += '</div>';
+                    watchtoadd += '<div class="arb_clear"></div>';
+                    watchtoadd += '</div>';
+
                     watchtoadd += '</div>';
                     watchtoadd += '</li>';
                     $(".watcherlist > ul").append(watchtoadd);

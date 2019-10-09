@@ -11,6 +11,7 @@ include 'functions-watchlist-api.php';
 #include 'functions-social-api.php';
 include 'functions-socket.php';
 include 'functions-um.php';
+include 'functions-hooks.php';
 
 
 function InitWidgets(){

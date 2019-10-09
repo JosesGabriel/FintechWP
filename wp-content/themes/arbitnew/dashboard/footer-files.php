@@ -69,7 +69,8 @@
                                     },
                                     "chartCursor": {
                                         "enabled": true,
-                                        "cursorColor": dcolor
+                                        "cursorColor": dcolor,
+                                        "balloonPointerOrientation": " vertical",
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

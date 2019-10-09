@@ -2359,10 +2359,11 @@ legend {
   position: absolute;
   width: 70px;
   right: 0;
+  margin-top: 50px;
   top: 0;
   height: 100%;
   background: transparent;
-  z-index: 1;
+  z-index: 2;
 }
 
 .swipe-area-r {
@@ -2373,4 +2374,10 @@ legend {
   height: 100%;
   background: transparent;
   z-index: 1;
+}
+.close-leftsidebar {
+    position: absolute;
+    right: 10px;
+    top: -3px;
+    display: none;
 }

@@ -444,6 +444,11 @@
     //End Notifications ============================================================================================================================
     $('.logo-image').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
+    	$('.right-image').find('.close-leftsidebar').css('display','block');
+    });
+
+     $('.close-leftsidebar').on('click', function(){
+    	$('.left-dashboard-part').css('left','-100%');
     });
 
     $(".swipe-area-l").swipe({
@@ -451,6 +456,7 @@
           {
               if (phase=="move" && direction =="right") {
                    $('.left-dashboard-part').css('left','0');
+                   $('.right-image').find('.close-leftsidebar').css('display','block');
                    return false;
               }
               
@@ -463,6 +469,7 @@
               
               if (phase=="move" && direction =="left") {
                   $('.left-dashboard-part').css('left','-100%');
+                  $('.right-image').find('.close-leftsidebar').css('display','none');
                    return false;
               }
           }

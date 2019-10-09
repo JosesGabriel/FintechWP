@@ -46,9 +46,7 @@
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
-                                    console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
                                     let addslog = (parseFloat(ischange)).toFixed(2);
-                                    candles.push({"category": ckey,"column-1": addslog});
                                     
                                 });
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
@@ -108,7 +106,6 @@
                         type: 'GET',
                         dataType: 'json', // added data type
                         success: function(data) {
-                            console.log(data);
                             var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
                             $.each(data.data, function(key, value){
                                 let watchtoadd = '';

@@ -40,15 +40,15 @@
                                 let changetext = "";
                                 $.each(svalue.chartdata.t, function(ckey, cvalue){
                                     if(svalue.chartdata.c[ckey] > ischange){
-                                        tofixed = svalue.chartdata.c[ckey];
-                                        ischange = $(tofixed).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                                        ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
                                     console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
-                                    candles.push({"category": ckey,"column-1": ischange});
+                                    let addslog = (parseFloat(ischange)).toFixed(2);
+                                    candles.push({"category": ckey,"column-1": addslog});
                                     
                                 });
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
@@ -68,7 +68,8 @@
                                     },
                                     "chartCursor": {
                                         "enabled": true,
-                                        "cursorColor": dcolor
+                                        "cursorColor": dcolor,
+                                        "balloonPointerOrientation": " vertical",
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

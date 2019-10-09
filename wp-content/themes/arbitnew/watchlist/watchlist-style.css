@@ -1049,7 +1049,7 @@ h2.watchtitle {
         margin-right: 0%;
         border-radius: 5px;
         position: relative;
-        min-height: 214px;
+        height: 234px;
         background: #142c46;
         background: -moz-linear-gradient(45deg, #0a1c31 0%, #1a3550 100%);
         background: -webkit-linear-gradient(45deg, #0a1c31 0%,#1a3550 100%);
@@ -1717,4 +1717,28 @@ body .um-notification-live-feed .um-notification-ajax .um-notification span.um-n
 
 .floatingdiv .amcharts-chart-div > a {
     display: none !important;
+}
+
+.arb_bar_red, .arb_bar_green {
+    margin: 1px 0 3px;
+}
+
+.arb_bar_red {
+    float: left;
+    background-color: #e64c3c;
+    color: #fff;
+    padding: 2px 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.arb_bar_green {
+    float: left;
+    background-color: #25ae5f;
+    color: #fff;
+    padding: 2px 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 5px 0 0 5px;
 }

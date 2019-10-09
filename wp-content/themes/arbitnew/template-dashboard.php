@@ -31,11 +31,11 @@ require("parts/sidebar-avarageprice.php");
 						get_template_part('parts/sidebar', 'trendingstocks');
 						get_template_part('parts/sidebar', 'traders');
 						get_template_part('parts/sidebar', 'alert');
+						get_template_part('parts/sidebar', 'latestnews');
 					?>
 					<div class="container-sticky">
 					<?php
-						get_template_part('parts/sidebar', 'latestnews');
-						#get_template_part('parts/sidebar', 'watchlist');
+						get_template_part('parts/sidebar', 'watchlist');
 						#get_template_part('parts/sidebar', 'topplayers');
 						get_template_part('parts/sidebar', 'footer');
 					 ?>	

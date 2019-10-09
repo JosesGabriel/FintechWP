@@ -151,6 +151,7 @@ function sso_login($data, $jwt) {
             $last_name = get_user_meta($user->ID, 'last_name', true);
 
             $token = $login_token->setLoginToken($sso_login)
+                        ->setTokenClaim('id', $user->ID)
                         ->setTokenClaim('user_secret', $user_secret)
                         ->setTokenClaim('user_login', $user->user_login)
                         ->setTokenClaim('first_name', $first_name)

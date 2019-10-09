@@ -17,7 +17,7 @@
                     addliveme += '<li>';
                     addliveme += '<table style="width:100%;"><tbody><tr>';
                     addliveme += '<td style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></td>';
-                    addliveme += '<td style="width:9%" class="table-cell-live" style="padding-right: 2px;">'+(value.position).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
+                    addliveme += '<td style="width:9%" class="table-cell-live" style="padding-right: 2px;">'+(value.position.toString()).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:12%" class="table-cell-live" style="padding-right: 3px;">₱'+(value.aveprice).toFixed(3).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:14%" class="table-cell-live">₱'+(value.totalcost).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:15%" class="table-cell-live">₱'+(value.marketvalue).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';

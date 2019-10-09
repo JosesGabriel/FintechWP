@@ -442,7 +442,9 @@
     }
 
     //End Notifications ============================================================================================================================
-
+    $('.logo-image').on('click', function(){
+    	$('.left-dashboard-part').css('left','0');
+    });
     $('.swipe-area').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
     });

@@ -2399,10 +2399,17 @@ legend {
 .mingle-btn {
     border-radius: 26px !important;
     border: 2px solid #e77e24 !important;
-    /* padding: 5px 14px !important; */
     font-family: 'Nunito', sans-serif;
     color: white !important;
     background-color: transparent;
+    padding: 2px;
+    height: 9px;
+    position: absolute;
+    top: -2px;
+    margin-left: 3px;
+    /* position: relative; */
+    /* top: 13px;
+    left: 35px; */
 }
 .mingle-btn span {
     max-width: 0;
@@ -2415,12 +2422,18 @@ legend {
 }
 .mingle-btn:hover span {
     max-width: 7rem;
+    font-size: 0.6em;
 }
 .mingle-btn i {
-    font-size: 10px !important;
-    color: white !important;
+    font-size: 8px !important;
+    color: orange !important;
     margin: 0 !important;
-    margin-left: 4px !important; 
+    margin-left: 3px !important; 
+    position: relative !important;
+    top: -5px !important;
+    left: -2px;
+    width: 2px !important;
+    height: 9px !important;
 }
 .mingle-btn:active {
     background-color: #e77e24;

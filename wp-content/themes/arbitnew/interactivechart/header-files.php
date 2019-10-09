@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/parts_style.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/page_style.css?<?php echo time(); ?>"> 
 	<!-- Madaot calcs sa chart if dili ni iload ang duha ka css. To be refractored -->
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta property="og:title" content="Arbitrage | Free Stock Trading Platform" />
+	
+    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta property="og:title" content="Arbitrage | Stock Trading Platform" />
+    <meta property="og:description" content="Arbitrage is a free stock trading platform in the Philippines. Effectively trade the Philippine Equity Market with our realtime market data & multiple stock trading tools.">
 	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
 	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
-   
 
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />

@@ -89,7 +89,8 @@ div.um-activity {
 
 .um-activity-confirm-m {
 	padding: 15px;
-	border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #1a3657;
+    color: #fff;
 }
 
 .um-activity-confirm-b a {
@@ -103,7 +104,8 @@ div.um-activity {
 
 .um-activity-confirm-b a:hover,
 .um-activity-confirm-b a:active {
-	color: #333;
+	color: #fff;
+    background: #10233a;
 }
 
 /* Text-wall posts */

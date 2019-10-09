@@ -40,8 +40,9 @@
                                 let changetext = "";
                                 $.each(svalue.chartdata.t, function(ckey, cvalue){
                                     if(svalue.chartdata.c[ckey] > ischange){
-                                        tofixed = svalue.chartdata.c[ckey];
-                                        ischange = $(tofixed).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                                        // tofixed = svalue.chartdata.c[ckey];
+                                        ischange = svalue.chartdata.c[ckey];
+                                        // ischange = $(tofixed).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
                                         changetext = 'up';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];

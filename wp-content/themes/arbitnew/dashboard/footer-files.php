@@ -43,6 +43,7 @@
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
                                     } else {
+                                        ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
                                     console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );

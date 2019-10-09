@@ -8,6 +8,32 @@
 	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
 	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <?php if (WP_PROD_ENV): ?>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-147416476-1');
+	</script>
+
+	<!-- Global site tag (gtag.js) - Google Ads: 753053364 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-753053364"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'AW-753053364');
+	</script>
+
+	<!-- Event snippet for Traffic to Site conversion page -->
+	<script>
+	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
+	</script>
+	<?php endif ?>
     
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">

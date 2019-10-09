@@ -40,14 +40,15 @@
                                 let changetext = "";
                                 $.each(svalue.chartdata.t, function(ckey, cvalue){
                                     if(svalue.chartdata.c[ckey] > ischange){
-                                        ischange = svalue.chartdata.c[ckey];
+                                        tofixed = svalue.chartdata.c[ckey];
+                                        ischange = $(tofixed).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
                                         changetext = 'up';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
                                     console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
-                                    candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                                    candles.push({"category": ckey,"column-1": ischange});
                                     
                                 });
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');

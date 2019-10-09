@@ -17,6 +17,8 @@ require("parts/sidebar-avarageprice.php");
 		<div class="inner-main-content">
 		<?php require("parts/global-sidebar.php"); ?>
 			<div class="center-dashboard-part">
+				<div class="swipe-area-l"></div>
+				<div class="swipe-area-r"></div>
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php echo do_shortcode('[ultimatemember_activity]'); ?>

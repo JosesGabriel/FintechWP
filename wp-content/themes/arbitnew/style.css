@@ -436,8 +436,8 @@ div.uimob800 .um-account-side ul {
 }
 .um-notification-shortcode .um-notification-header .um-notification-left {
     border-bottom: 0 none;
-    text-transform: uppercase;
-    font-weight: normal;
+    text-transform: capitalize;
+    font-weight: 500;
     font-size: 13px !important;
     padding: 0 0 10px;
 }
@@ -452,7 +452,10 @@ div.uimob800 .um-account-side ul {
     background: #3b516a;
 }
 .um-notification-shortcode .um-notification-header {
+    width: 100%;
+    height: 35px;
     border-bottom: 1px solid #273647;
+    padding: 6px 12px;
 }
 .um-notification-shortcode .um-notification-ajax .um-notification {
     border-bottom: 1px solid #273647;
@@ -592,7 +595,7 @@ div.uimob800 .um-account-side ul {
     border-radius: 5px;
 }
 .oncommonsidebar .center-dashboard-part {
-    width: 80%;
+    width: 100%;
 }
 .oncommonsidebar .post-content {
     padding: 25px 15px;

@@ -289,6 +289,10 @@ foreach ( $wallposts->posts as $post ) {
 							
 
 						</a>
+						<button href="#" style="border: 1.3px solid #e77e24 !important;" class="mingle-btn">
+							<i class="fas fa-user-plus" aria-hidden="true"></i>
+							<span>Mingle</span>
+						</button>
 
 						<?php if ( $wall_id && $wall_id != $author_id ) {
 

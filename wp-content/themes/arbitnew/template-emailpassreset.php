@@ -43,7 +43,7 @@ $homeurlgen = get_home_url();
     <title>Reset Password | Arbitrage</title>
 
     <meta property="og:title" content="Reset Password | Arbitrage | Free Stock Trading Platform" />
-    <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitrage-child/images/ogimage_mage.png" />
+    <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
     <meta name="msapplication-TileColor" content="#142c46">
 	<meta name="msapplication-TileImage" content="/assets/icons/launcher-icon-4x.png">
 	<meta name="theme-color" content="#0d1f33">

@@ -87,7 +87,7 @@
                                         "borderColor": "",
                                         "borderThickness": 0,
                                         "fillAlpha": 0,
-                                        "color": dcolor
+                                        "color": "#ffffff"
                                     },
                                     "titles":[],
                                     "dataProvider": candles

@@ -445,13 +445,27 @@
     $('.logo-image').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
     });
-    $('.swipe-area').on('click', function(){
-    	$('.left-dashboard-part').css('left','0');
-    });
-     $('.swipeleft-area').on('click', function(){
-    	$('.left-dashboard-part').css('left','-100%');
-    });
 
+    $(".swipe-area").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+              if (phase=="move" && direction =="right") {
+                   $('.left-dashboard-part').css('left','0');
+                   return false;
+              }
+              
+          }
+  	});
 
+     $(".swipeleft-area").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+              
+              if (phase=="move" && direction =="left") {
+                  $('.left-dashboard-part').css('left','-100%');
+                   return false;
+              }
+          }
+  	});
 
   });

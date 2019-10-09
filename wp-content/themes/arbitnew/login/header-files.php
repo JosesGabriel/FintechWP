@@ -36,7 +36,7 @@ $user = wp_get_current_user();
         });
     </script>
 	<?php endif ?>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta property="og:title" content="Arbitrage | Stock Trading Platform" />
     <meta property="og:description" content="Arbitrage is a free stock trading platform in the Philippines. Effectively trade the Philippine Equity Market with our realtime market data & multiple stock trading tools.">

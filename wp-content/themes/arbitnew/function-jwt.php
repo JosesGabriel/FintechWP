@@ -146,11 +146,12 @@ function sso_login($data, $jwt) {
 
             $login_token = new JWTBuilder();
 
+            $user_secret = get_user_meta($user->ID, 'user_secret', true);
             $first_name = get_user_meta($user->ID, 'first_name', true);
             $last_name = get_user_meta($user->ID, 'last_name', true);
 
             $token = $login_token->setLoginToken($sso_login)
-                        ->setTokenClaim('user_secret', $user->user_secret)
+                        ->setTokenClaim('user_secret', $user_secret)
                         ->setTokenClaim('first_name', $first_name)
                         ->setTokenClaim('last_name', $last_name)
                         ->setTokenClaim('email', $user->user_email)

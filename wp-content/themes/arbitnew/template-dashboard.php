@@ -33,7 +33,7 @@ require("parts/sidebar-avarageprice.php");
 					<div class="container-sticky">
 					<?php
 						get_template_part('parts/sidebar', 'latestnews');
-						#get_template_part('parts/sidebar', 'watchlist');
+						get_template_part('parts/sidebar', 'watchlist');
 						#get_template_part('parts/sidebar', 'topplayers');
 						get_template_part('parts/sidebar', 'footer');
 					 ?>	

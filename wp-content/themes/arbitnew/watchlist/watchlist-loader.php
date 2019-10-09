@@ -123,15 +123,15 @@
                     watchtoadd += '</ul>';
 
                     watchtoadd += '<div class="arb_bar fullbar">';
-                    watchtoadd += '<div class="arb_bar_green" style="width:'+(value.bidask.bid_total_percent).toFixed(2)+'%">&nbsp;</div>';
-                    watchtoadd += '<div class="arb_bar_red" style="width:'+ (value.bidask.ask_total_percent).toFixed(2)+'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_green" style="width:'+ parseFloat(value.bidask.bid_total_percent).toFixed(2) +'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_red" style="width:'+ parseFloat(value.bidask.ask_total_percent).toFixed(2) +'%">&nbsp;</div>';
                     watchtoadd += '<div class="arb_clear"></div>';
                     watchtoadd += '<div class="dlabels">';
                     watchtoadd += '<div class="buyers">';
-                    watchtoadd += '<span style="font-weight: normal;color: #c9ccce;">BUYERS</span> 12%';
+                    watchtoadd += '<span style="font-weight: normal;color: #c9ccce;">BUYERS</span>'+ parseFloat(value.bidask.bid_total_percent).toFixed(2) +'%';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="sellers">';
-                    watchtoadd += '88% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>';
+                    watchtoadd += ''+ parseFloat(value.bidask.ask_total_percent).toFixed(2) +'% <span style="font-weight: normal;color: #c9ccce;">SELLERS</span>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="arb_clear"></div>';

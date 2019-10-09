@@ -175,7 +175,7 @@ if(isset($_GET['addcp'])){
                                                                 <div class="innerdeliver innerdeliver-addstock">
                                                                     <ul>
                                                                         <li><input type="checkbox" name="delivery_type[]" value="web-notif" checked disabled><label class="condition-notif">Website Popup</label></li>
-                                                                        <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>
+                                                                       <!-- <li><input type="checkbox" name="delivery_type[]" value="sms-notif"><label class="condition-notif">SMS Notification</label></li>-->
                                                                     </ul>
                                                                 </div>
                                                         </div>

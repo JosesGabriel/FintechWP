@@ -97,9 +97,8 @@
 	}
 	.um-activity-bodyinner-txt span.post-image img {
 		max-width: 200%;
-		margin-left: -50%;
 		height: auto !important;
-		width: 200% !important;
+		width: 100% !important;
 	}
 	.side-content ul li {
 		margin-bottom: 5px;
@@ -233,9 +232,8 @@
 	}
 	.um-activity-bodyinner-txt span.post-image img {
 		max-width: 200%;
-		margin-left: -50%;
 		height: auto !important;
-		width: 200% !important;
+		width: 100% !important;
 	}
 	.side-content ul li {
 		margin-bottom: 5px;
@@ -672,6 +670,20 @@
 		margin: -325px 45px !important;
 	}
 
+	.um-activity-bodyinner-txt span.post-meta {
+		height: 240px;
+	}
+
+	.closerff {
+		height: 250px;
+	}
+
+
+	.ons2 span.post-image {
+    
+		height: 280px !important;
+    }
+
 	.notif--subb {
     	margin: 20px auto 0px -24px !important;
 	}
@@ -798,6 +810,15 @@
 
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
+
+
+	.um-activity-bodyinner-txt span.post-meta {
+		height: 210px;
+	}
+
+	.closerff {
+		height: 220px;
+	}
 
 	.signup-form {
 		position: absolute !important;

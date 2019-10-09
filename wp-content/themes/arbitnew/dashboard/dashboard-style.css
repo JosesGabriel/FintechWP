@@ -2345,3 +2345,23 @@ legend {
     background-color: #e77e24;
 }
 /*------ sidebar-alerts-dashboard ------*/
+
+.swipe-area {
+  position: absolute;
+  width: 20px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipeleft-area {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+}

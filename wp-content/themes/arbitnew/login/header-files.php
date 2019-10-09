@@ -16,7 +16,8 @@ $user = wp_get_current_user();
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
 <html <?php language_attributes(); ?>><head>
 	<title><?php bloginfo('name'); ?></title>
-	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
+	
+	<?php if (WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
 	<script>
@@ -27,14 +28,19 @@ $user = wp_get_current_user();
 	gtag('config', 'UA-147416476-1');
 	</script>
 
-	<!-- Google Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-7982031973729040",
-            enable_page_level_ads: true
-        });
-    </script>
+	<!-- Global site tag (gtag.js) - Google Ads: 753053364 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-753053364"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'AW-753053364');
+	</script>
+
+	<!-- Event snippet for Traffic to Site conversion page -->
+	<script>
+	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
+	</script>
 	<?php endif ?>
 	
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />

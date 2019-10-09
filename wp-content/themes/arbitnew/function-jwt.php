@@ -152,6 +152,7 @@ function sso_login($data, $jwt) {
 
             $token = $login_token->setLoginToken($sso_login)
                         ->setTokenClaim('user_secret', $user_secret)
+                        ->setTokenClaim('user_login', $user->user_login)
                         ->setTokenClaim('first_name', $first_name)
                         ->setTokenClaim('last_name', $last_name)
                         ->setTokenClaim('email', $user->user_email)

@@ -443,5 +443,13 @@
 
     //End Notifications ============================================================================================================================
 
+    $('.swipe-area').on('click', function(){
+    	$('.left-dashboard-part').css('left','0');
+    });
+     $('.swipeleft-area').on('click', function(){
+    	$('.left-dashboard-part').css('left','-100%');
+    });
+
+
 
   });

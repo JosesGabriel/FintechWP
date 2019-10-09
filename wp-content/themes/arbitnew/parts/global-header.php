@@ -8,9 +8,9 @@
             <div class="left-header-part">
                 <div class="left-header-inner">
                     <div class="logo-image">
-                        <!--<a href="/">-->
+                        <a href="/">
                             <img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;">
-                        <!--</a>-->
+                        </a>
                     </div>
                     <!-- <div class="searchbar">
                         <div class="inner-seatch">

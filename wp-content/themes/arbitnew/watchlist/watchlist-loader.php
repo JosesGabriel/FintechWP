@@ -19,11 +19,13 @@
                             ischange = svalue.chartdata.c[ckey];
                             changetext = 'up';
                         } else {
+                            ischange = svalue.chartdata.c[ckey];
                             changetext = 'down';
                         }
                         candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        
+                        console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
                     });
+                    
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
@@ -70,8 +72,11 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 $.each(data.data, function(key, value){
+
+                    console.log(value.bidask.bid_total_percent);
+
                     let watchtoadd = '';
                     let stockchange = '';
                     stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
@@ -116,6 +121,13 @@
                         watchtoadd += '</li>';
                     }
                     watchtoadd += '</ul>';
+
+                    watchtoadd += '<div class="arb_bar fullbar">';
+                    watchtoadd += '<div class="arb_bar_green" style="width:'+ parseFloat(value.bidask.bid_total_percent).toFixed(2) +'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_red" style="width:'+ parseFloat(value.bidask.ask_total_percent).toFixed(2) +'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_clear"></div>';
+                    watchtoadd += '</div>';
+
                     watchtoadd += '</div>';
                     watchtoadd += '</li>';
                     $(".watcherlist > ul").append(watchtoadd);

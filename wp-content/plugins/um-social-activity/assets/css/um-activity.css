@@ -2,8 +2,8 @@ div.um .um-profile-body.activity,
 div.um-activity {
 	padding-top: 0;
 	padding-bottom: 25px;
-	padding-left: 10px !important;
-	padding-right: 10px !important;
+	padding-left: 10px;
+	padding-right: 10px;
 	width: 100%;
 	max-width: 600px;
 	box-sizing: border-box;
@@ -89,7 +89,8 @@ div.um-activity {
 
 .um-activity-confirm-m {
 	padding: 15px;
-	border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #1a3657;
+    color: #fff;
 }
 
 .um-activity-confirm-b a {
@@ -103,7 +104,8 @@ div.um-activity {
 
 .um-activity-confirm-b a:hover,
 .um-activity-confirm-b a:active {
-	color: #333;
+	color: #fff;
+    background: #10233a;
 }
 
 /* Text-wall posts */

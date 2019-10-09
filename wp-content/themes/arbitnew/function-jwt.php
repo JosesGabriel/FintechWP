@@ -146,8 +146,17 @@ function sso_login($data, $jwt) {
 
             $login_token = new JWTBuilder();
 
+            $user_secret = get_user_meta($user->ID, 'user_secret', true);
+            $first_name = get_user_meta($user->ID, 'first_name', true);
+            $last_name = get_user_meta($user->ID, 'last_name', true);
+
             $token = $login_token->setLoginToken($sso_login)
-                        ->setTokenClaim('user_secret', $user->user_secret)
+                        ->setTokenClaim('id', $user->ID)
+                        ->setTokenClaim('user_secret', $user_secret)
+                        ->setTokenClaim('user_login', $user->user_login)
+                        ->setTokenClaim('first_name', $first_name)
+                        ->setTokenClaim('last_name', $last_name)
+                        ->setTokenClaim('email', $user->user_email)
                         ->generateToken();
             
             $url = $jwt->getEntity($sso_login);
@@ -159,7 +168,7 @@ function sso_login($data, $jwt) {
             $home = home_url();
             
             // TODO create url map for different modules like vyndue, game, charts, etc
-            $url = "https%3A%2F%2Farbitrage.ph%2Fvyndue%2F";
+            $url = urlencode('https://vyndue.com/userview/logout');
             // echo "Redirects to $home/login?sso_login=$sso_login&sso_token=$sso_token";
             wp_safe_redirect( "$home/login?redirect_to=$url");
         }

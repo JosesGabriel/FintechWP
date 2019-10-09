@@ -1,11 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
-<script type="text/javascript">
-			jQuery(document).ready(function(){
-				//jQuery('.um-activity-post').html('Post');
-			});
-</script>
+
 
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
@@ -13,12 +9,143 @@
 
         <script src="/wp-content/plugins/um-friends/assets/js/um-friends.js"></script>
 
+        <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script> 
 		<script src="<?php echo get_stylesheet_directory_uri(); ?>/dashboard/dashboard-scripts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
         <?php wp_footer(); ?>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/lazyfunc.js?<?php echo time(); ?>"></script>
         <?php $user_id = get_current_user_id(); ?>
+        <script type="text/javascript">
+			jQuery(document).ready(function(){
+                //jQuery('.um-activity-post').html('Post');
+                
+                var loadMiniCharts = function(userid){
+                    $.ajax({
+                        url: "/wp-json/watchlist-api/v1/stockcharts?userid="+userid,
+                        type: 'GET',
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            console.log(data);
+                            // var app = angular.module('arbitrage_wl', ['nvd3']);
+                            $(".to-watch-data").addClass("after-load");
+                            
+                            $.each(data.data, function(skey, svalue){
+                                let candles = [];
+                                let stock = svalue.stock;
+                                let ischange = 0;
+                                let changetext = "";
+                                $.each(svalue.chartdata.t, function(ckey, cvalue){
+                                    if(svalue.chartdata.c[ckey] > ischange){
+                                        ischange = svalue.chartdata.c[ckey];
+                                        changetext = 'up';
+                                    } else {
+                                        ischange = svalue.chartdata.c[ckey];
+                                        changetext = 'down';
+                                    }
+                                    console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
+                                    let addslog = (parseFloat(ischange)).toFixed(2);
+                                    candles.push({"category": ckey,"column-1": addslog});
+                                    
+                                });
+                                let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
+                                AmCharts.makeChart( "chartdiv"+stock, {
+                                    "type":"serial",
+                                    "categoryField":"category",
+                                    "autoMarginOffset":0,
+                                    "marginBottom":0,
+                                    "marginLeft":0,
+                                    "marginRight":0,
+                                    "backgroundColor":"#142C46",
+                                    "borderColor":"#FFFFFF",
+                                    "color":'#78909C',
+                                    "usePrefixes":!0,
+                                    "categoryAxis": {
+                                        "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
+                                    },
+                                    "chartCursor": {
+                                        "enabled": true,
+                                        "cursorColor": dcolor,
+                                        "balloonPointerOrientation": " vertical",
+                                    },
+                                    "trendLines":[],
+                                    "graphs":[ {
+                                        "balloonColor": "undefined", "balloonText": "[[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 0.8, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                                    }],
+                                    "guides":[],
+                                    "valueAxes":[ {
+                                        "gridThickness": 0,
+                                        "axisAlpha": 0,
+                                        "gridAlpha": 0.1,
+                                        "labelsEnabled": false
+                                    }],
+                                    "allLabels":[],
+                                    "balloon": {
+                                        "borderAlpha": 0,
+                                        "borderColor": "",
+                                        "borderThickness": 0,
+                                        "fillAlpha": 0,
+                                        "color": "#FFFFFF"
+                                    },
+                                    "titles":[],
+                                    "dataProvider": candles
+                                } );
+                            });
+
+                            
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+                }
+                let loadwatchlist = function(userid){
+                    $.ajax({
+                        url: "/wp-json/watchlist-api/v1/watchlists?userid="+userid,
+                        type: 'GET',
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            console.log(data);
+                            var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+                            $.each(data.data, function(key, value){
+                                let watchtoadd = '';
+                                watchtoadd += '<div class="to-watch-data" data-dstock="'+value.stockname+'">';
+                                watchtoadd += '<div class="to-left-watch">';
+                                watchtoadd += '<div class="to-stock">';
+                                watchtoadd += '<a style="color: #fff;" href="/chart/'+value.stockname+'" target="_blank">';
+                                watchtoadd += '<span style="line-height: 40px; text-align: center; display: block; border-radius: 25px; border: 2px solid '+colors[key]+'; height: 43px; width: 43px; font-size: 11px !important;">'+value.stockname+'</span>';
+                                watchtoadd += '</a>';
+                                watchtoadd += '</div>';
+                                watchtoadd += '<div class="chartarea">';
+                                watchtoadd += '<div class="floatingdiv" id="chartdiv'+value.stockname+'"></div>';
+                                watchtoadd += '</div>';
+                                watchtoadd += '<div class="dbox-cont">';
+                                watchtoadd += '<div class="stocknum_'+value.stockname+' watch_price">'+(value.last).toFixed(2)+'</div>';
+                                watchtoadd += '<div class="dbox '+(value.change > 0 ? 'green' : 'red')+'">';
+                                watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc"><i class="fa '+(value.change > 0 ? 'fa-caret-up' : 'fa-caret-down')+'"></i> '+(value.change).toFixed(2)+'%</div>';
+                                watchtoadd += '</div>';
+                                watchtoadd += '<br class="clear" />';
+
+                                watchtoadd += '</div>';
+                                watchtoadd += '</div>';
+                                $(".sidewatchlist .even").append(watchtoadd);
+                            });
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+                }
+
+                
+                new loadwatchlist(<?php echo $user_id;?>);
+                new loadMiniCharts(<?php echo $user_id;?>);
+			});
+        </script>
+        
     </body>
 </html>
 

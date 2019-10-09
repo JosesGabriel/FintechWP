@@ -75,8 +75,6 @@ $( document ).ready(function() {
         }
     });
 
-
-
     $.ajax({
         url: "/apipge/?daction=topplayers",
         type: 'GET',

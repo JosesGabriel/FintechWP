@@ -66,7 +66,8 @@
                                         "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
                                     },
                                     "chartCursor": {
-                                        "enabled": true
+                                        "enabled": true,
+                                        "cursorColor": dcolor
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

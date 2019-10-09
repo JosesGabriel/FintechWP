@@ -123,8 +123,8 @@
                     watchtoadd += '</ul>';
 
                     watchtoadd += '<div class="arb_bar fullbar">';
-                    watchtoadd += '<div class="arb_bar_green" style="width:'+ value.bidask.bid_total_percent +'%">&nbsp;</div>';
-                    watchtoadd += '<div class="arb_bar_red" style="width:'+ value.bidask.ask_total_percent +'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_green" style="width:'+ parseFloat(value.bidask.bid_total_percent).toFixed(2) +'%">&nbsp;</div>';
+                    watchtoadd += '<div class="arb_bar_red" style="width:'+ parseFloat(value.bidask.ask_total_percent).toFixed(2) +'%">&nbsp;</div>';
                     watchtoadd += '<div class="arb_clear"></div>';
                     watchtoadd += '<div class="dlabels">';
                     watchtoadd += '<div class="buyers">';

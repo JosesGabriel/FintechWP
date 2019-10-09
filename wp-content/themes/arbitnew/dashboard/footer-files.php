@@ -72,7 +72,7 @@
                                     },
                                     "trendLines":[],
                                     "graphs":[ {
-                                        "balloonColor": "undefined", "balloonText": svalue.chartdata.c[ckey], "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 0.8, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                                        "balloonColor": "undefined", "balloonText": "[[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 0.8, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
                                     }],
                                     "guides":[],
                                     "valueAxes":[ {

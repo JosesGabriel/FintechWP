@@ -45,6 +45,8 @@ function getjurfees($funmarketval, $funtype)
 		$total_stocks_price = bcadd($stockquantity, $butstockprice);
 
 		print_r($_POST);
+		die;
+		
 		if ($total_stocks_price > $buypower) {
 			wp_redirect('/journal');
 			exit;

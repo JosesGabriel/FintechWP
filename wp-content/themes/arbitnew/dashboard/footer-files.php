@@ -117,7 +117,7 @@
                                 watchtoadd += '<div class="dbox-cont">';
                                 watchtoadd += '<div class="stocknum_'+value.stockname+' watch_price">'+(value.last).toFixed(2)+'</div>';
                                 watchtoadd += '<div class="dbox '+(value.change > 0 ? 'green' : 'red')+'">';
-                                watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc">'+(value.change).toFixed(2)+'%</div>';
+                                watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc"><i class="fa '+(value.change > 0 ? 'fa-caret-up' : 'fa-caret-down')+'"></i>'+(value.change).toFixed(2)+'%</div>';
                                 watchtoadd += '</div>';
                                 watchtoadd += '<br class="clear" />';
 

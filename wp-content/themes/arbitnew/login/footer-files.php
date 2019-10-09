@@ -356,21 +356,7 @@
 		jQuery('.left-dashboard-part-overlay').fadeIn("fast");
 	});
 
-	jQuery('.right-slider-menu').click(function(){
-
-		if($('#right-menu').hasClass('right-slider-menu1')){
-			jQuery('.right-dashboard-part').css("display","block");
-			jQuery('.right-dashboard-part').css("right","0%");
-			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/cancel.svg');
-			$('#right-slider-icon').attr('width','15px');
-			$('#right-menu').removeClass();
-		}else{
-			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-slider-icon').attr('src','/wp-content/themes/arbitrage-child/images/menu.svg');
-			$('#right-slider-icon').attr('width','20px');
-			$('#right-menu').addClass('right-slider-menu1');
-		}
-	});
+	
 
 	 jQuery(window).scroll(function(){
 	 		if(jQuery('.um-profile').hasClass('topbannerprofile')){

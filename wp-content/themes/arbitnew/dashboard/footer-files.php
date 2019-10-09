@@ -47,7 +47,7 @@
                                         changetext = 'down';
                                     }
                                     console.log(stock+" "+svalue.chartdata.c[ckey] +" "+changetext );
-                                    candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                                    candles.push({"category": ckey,"column-1": ischange});
                                     
                                 });
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');

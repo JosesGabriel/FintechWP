@@ -52,7 +52,7 @@
                                     candles.push({"category": ckey,"column-1": ischange});
                                     // toFixed = svalue.toFixed();
                                     toFixed = svalue.chartdata.c[ckey];
-                                    valuetoFixed = (toFixed.toFixed(2));
+                                    valuetoFixed = toFixed.toFixed(2);
                                     // toFixed = svalue.chartdata.c[ckey];
                                     
                                 });

@@ -47,8 +47,9 @@ function getjurfees($funmarketval, $funtype)
 		
 
 		if ($total_stocks_price > $buypower) {
-			wp_redirect('/journal');
-			exit;
+			echo $total_stocks_price ." ~ ". $buypower;
+			// wp_redirect('/journal');
+			// exit;
 		}
 
 		

@@ -83,7 +83,13 @@
                                         "labelsEnabled": false
                                     }],
                                     "allLabels":[],
-                                    "balloon": {},
+                                    "balloon": {
+                                        "borderAlpha": 0,
+                                        "borderColor": "",
+                                        "borderThickness": 0,
+                                        "fillAlpha": 0
+                                        "color": "#FFFFFF",
+                                    },
                                     "titles":[],
                                     "dataProvider": candles
                                 } );

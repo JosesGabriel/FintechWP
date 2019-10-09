@@ -64,7 +64,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 					  <span>Watcher & Alerts</span></a></li>
                   <li class="seven"><a href="<?php echo get_home_url(); ?>/game/"><img src="<?php echo get_home_url(); ?>/svg/play-station-4.svg" class="icon-game">
             <span>Games</span></a></li>
-                  <li class="five"><a id="vyndue--link" href="https://vyndue.com/userview/im"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
+                  <li class="five"><a id="vyndue--link" href="https://vyndue.com/userview/logout"><img src="<?php echo get_home_url(); ?>/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>
 
             <div class="m-separator"></div>

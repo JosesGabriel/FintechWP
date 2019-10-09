@@ -37,7 +37,7 @@ function getjurfees($funmarketval, $funtype)
 <!-- BOF BUY trades -->
 <?php
     if (isset($_POST['inpt_data_status']) && $_POST['inpt_data_status'] == 'Live') {
-		$buypower = $_POST['input_buy_product'];
+		$buypower = str_replace(",", "", $_POST['input_buy_product']);
 
 		$stockquantity = str_replace(",", "", $_POST['inpt_data_qty']);
 		$butstockprice = str_replace(",", "", $_POST['inpt_data_price']);

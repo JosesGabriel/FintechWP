@@ -1171,6 +1171,9 @@ span.um-activity-seemore {
 
 
 /*------ right-sidebar ------*/
+.table {
+    margin:0 !important;
+}
 .watch_price {
     font-size: 16px;
     font-weight: 300;

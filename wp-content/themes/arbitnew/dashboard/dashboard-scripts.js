@@ -442,6 +442,8 @@
     }
 
     //End Notifications ============================================================================================================================
+    
+
     $('.logo-image').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
     	//$('.right-image').find('.close-leftsidebar').css('display','block');
@@ -490,5 +492,14 @@
 			$('#right-menu').addClass('right-slider-menu1');
 		}
 	});
+
+	$(".um-activity-widget .um-activity-foot.status").mouseover(function(){
+	    $(".swipe-area-l").css("z-index", "-1");
+	  });
+
+	$(".um-activity-widget .um-activity-foot.status").mouseout(function(){
+	   $(".swipe-area-l").css("z-index", "0");
+	});
+
 
   });

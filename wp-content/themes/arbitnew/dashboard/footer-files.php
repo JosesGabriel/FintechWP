@@ -69,6 +69,7 @@
                                         "enabled": true,
                                         "cursorColor": dcolor,
                                         "graphBulletSize": 2,
+                                        "categoryBalloonText": "[[value]]"
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

@@ -41,8 +41,8 @@
 						ng-click="enable = !enable"
 						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-eye': enable, 'fa-eye-slash': !enable}"></i></button>
 					<button 
-						ng-click="tickerBeep = !tickerBeep"
-						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-volume-up': tickerBeep, 'fa-volume-off': !tickerBeep}"></i></button>
+						ng-click="$root.tickerBeep = !$root.tickerBeep"
+						class="btn btn-xs btn-link"><i class="fa" ng-class="{'fa-volume-up': $root.tickerBeep, 'fa-volume-off': !$root.tickerBeep}"></i></button>
 				</div>
 				<ul 
 					ng-if="enable"

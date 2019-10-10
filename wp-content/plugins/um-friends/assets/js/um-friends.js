@@ -80,6 +80,9 @@ jQuery( document ).ready(function() {
 			dataType: 'json',
 			success: function( response ) {
 				if ( response.success ) {
+					console.log(response.data.btn);
+					console.log('===========');
+					console.log(response);
 					// btn.replaceWith( response.data.btn );
 					btn.removeClass( 'um_friends_ajax' );
 				} else {

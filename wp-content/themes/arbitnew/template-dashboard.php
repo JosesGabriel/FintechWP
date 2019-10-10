@@ -26,6 +26,7 @@ require("parts/sidebar-avarageprice.php");
 				</div>
 			</div>
 			<div class="right-dashboard-part">
+				<div class="swiperight-area-r"></div>
 				<div class="right-dashboard-part-inner">
 					<?php
 						get_template_part('parts/sidebar', 'trendingstocks');

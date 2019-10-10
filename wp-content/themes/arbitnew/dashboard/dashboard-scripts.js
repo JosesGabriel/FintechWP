@@ -510,7 +510,7 @@
 
 		if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("display","block");
-			gjQuery('.right-dashboard-part').css("right","0%");
+			jQuery('.right-dashboard-part').css("right","0%");
 			$('#riht-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();

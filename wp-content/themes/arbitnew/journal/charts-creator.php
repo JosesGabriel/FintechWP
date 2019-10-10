@@ -126,8 +126,6 @@
                 let buttomparts = [];
                 $.each(data.data.buttom, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
-                    dprofit.sort(function(a, b){return b-a});
-                    let vsorted = dprofit;
                     let dinss = '<li class="sbuttom'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
                     dinss += '<div class="width35">&#8369; '+vsorted+'</div>';
@@ -140,14 +138,14 @@
                 let topparts = [];
                 $.each(data.data.top, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
-                    dprofit.sort(function(a, b){return b-a});
-                    let vsorted = dprofit;
+                    let dprofits = dprofit.sort(function(a, b){return b-a});
+                    let vsorted = dprofits;
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
-                    dinss += '<div class="width35">&#8369; '+vsorted+'</div>';
+                    dinss += '<div class="width35">&#8369; '+dprofits+'</div>';
                     dinss += '</li>';
                     $(".listoftopstocks .topstocks").prepend(dinss);
-                    topparts.push({ "category": value.isstock, "column-1": vsorted });
+                    topparts.push({ "category": value.isstock, "column-1": dprofits });
                 });
 
                 AmCharts.makeChart("topstocksLosers", {

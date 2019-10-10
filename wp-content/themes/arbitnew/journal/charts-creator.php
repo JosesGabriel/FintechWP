@@ -125,7 +125,7 @@
             dataType: 'json', // added data type
             success: function(data) {
                 console.log(data);
-                let topparts = [];
+                let buttomparts = [];
                 $.each(data.data.buttom, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="sbuttom'+key+'" style="color: #b1e8ce;border: none;">';
@@ -134,9 +134,10 @@
                     dinss += '</li>';
                     $(".listoftopstocks .bottomstocks").append(dinss);
 
-                    topparts.push({ "category": value.isstock, "column-1": dprofit });
+                    buttomparts.push({ "category": value.isstock, "column-1": dprofit });
                 });
-                let buttomparts = [];
+
+                let topparts = [];
                 $.each(data.data.top, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
@@ -144,7 +145,7 @@
                     dinss += '<div class="width35">&#8369; '+dprofit+'</div>';
                     dinss += '</li>';
                     $(".listoftopstocks .topstocks").prepend(dinss);
-                    buttomparts.push({ "category": value.isstock, "column-1": dprofit });
+                    topparts.push({ "category": value.isstock, "column-1": dprofit });
                 });
 
                 AmCharts.makeChart("topstocksLosers", {

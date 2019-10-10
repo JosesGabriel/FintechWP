@@ -69,7 +69,7 @@
                                     "chartCursor": {
                                         "enabled": true,
                                         "cursorColor": dcolor,
-                                        "balloonPointerOrientation": " vertical",
+                                        "categoryBalloonText": addslog
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

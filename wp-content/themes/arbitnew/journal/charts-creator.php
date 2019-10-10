@@ -132,12 +132,12 @@
                     dinss += '</li>';
                     $(".listoftopstocks .bottomstocks").append(dinss);
 
-                    buttomparts.push({ "category": value.isstock, "column-1": vsorted });
+                    buttomparts.push({ "category": value.isstock, "column-1": dprofit });
                 });
 
                 let topparts = [];
                 $.each(data.data.top, function(key, value){
-                    let dprofit = (value.profit).toFixed(2).sort(function(a, b){return b-a});
+                    let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
                     dinss += '<div class="width35">&#8369; '+dprofit+'</div>';

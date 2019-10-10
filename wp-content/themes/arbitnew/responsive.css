@@ -822,6 +822,13 @@
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
 
+	.top-traiders .to-content-part .trader-item .traider-details {
+		margin-left: 16px;
+	}
+
+	.sidewatchlist .to-watch-data .dbox-cont {
+		width: 15%;
+	}
 
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 210px;

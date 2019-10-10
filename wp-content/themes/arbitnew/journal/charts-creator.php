@@ -137,7 +137,8 @@
                 });
 
                 let topparts = [];
-                $.each(data.data.top, function(key, value){
+                let vsortingtop = data.data.top.reverse();
+                $.each(vsortingtop, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';

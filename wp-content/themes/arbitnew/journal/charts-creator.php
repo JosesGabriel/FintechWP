@@ -128,13 +128,13 @@
                 let buttomparts = [];
                 $.each(data.data.buttom, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
+                    console.log(dprofit);
                     let dinss = '<li class="sbuttom'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
                     dinss += '<div class="width35">&#8369; '+dprofit+'</div>';
                     dinss += '</li>';
                     $(".listoftopstocks .bottomstocks").append(dinss);
-                    let sortvalue = dprofit.sort(function(a, b){return a-b});
-                    console.log(sortvalue)
+
                     buttomparts.push({ "category": value.isstock, "column-1": dprofit });
                 });
 

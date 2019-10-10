@@ -58,7 +58,6 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
                 let ismonths = [];
                 $.each(data.data, function(key, value){
                     ismonths.push({"category" : key, "column-1" : (value).toString()});
@@ -141,6 +140,7 @@
                 let topparts = [];
                 $.each(data.data.top, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
+                    console.log(dprofit);
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
                     dinss += '<div class="width35">&#8369; '+dprofit+'</div>';
@@ -172,7 +172,6 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
                 let demotions = [];
                 let emotionlist = '';
                 $.each(data.data, function(key, value){
@@ -260,7 +259,6 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
                 let weekperf = [];
                 $.each(data.data, function(key, value){
                     weekperf.push({"category":key,"column-1": (value).toString(),"column-2": "#673ab7"});
@@ -282,7 +280,6 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                console.log(data);
                 let weekperf = [];
                 $.each(data.data, function(key, value){
                     weekperf.push({"category":key,"column-1": (value).toString(),"column-2": "#673ab7"});

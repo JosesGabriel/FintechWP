@@ -42,6 +42,9 @@
                                     if(svalue.chartdata.c[ckey] > ischange){
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
+                                    } else if(svalue.chartdata.c[ckey] == ischange) {
+                                        ischange = svalue.chartdata.c[ckey];
+                                        changetext = 'equal';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
@@ -50,7 +53,7 @@
                                     candles.push({"category": ckey,"column-1": addslog});
                                     
                                 });
-                                let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
+                                let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                                 AmCharts.makeChart( "chartdiv"+stock, {
                                     "type":"serial",
                                     "categoryField":"category",
@@ -122,7 +125,7 @@
                                 watchtoadd += '</div>';
                                 watchtoadd += '<div class="dbox-cont">';
                                 watchtoadd += '<div class="stocknum_'+value.stockname+' watch_price">'+(value.last).toFixed(2)+'</div>';
-                                watchtoadd += '<div class="dbox '+(value.change > 0 ? 'green' : 'red')+'">';
+                                watchtoadd += '<div class="dbox '+ (value.change == 0 ? 'yellow' : ( value.change > 0 ? 'green' : 'red' ) ) +'">';
                                 watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc"><i class="fa '+(value.change > 0 ? 'fa-caret-up' : 'fa-caret-down')+'"></i> '+(value.change).toFixed(2)+'%</div>';
                                 watchtoadd += '</div>';
                                 watchtoadd += '<br class="clear" />';

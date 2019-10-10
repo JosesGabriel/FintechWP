@@ -471,7 +471,7 @@
               if (phase=="move" && direction =="left") {
                    jQuery('.right-dashboard-part').css("display","block");
 				   jQuery('.right-dashboard-part').css("right","0%");
-					$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
                    return false;
@@ -497,7 +497,7 @@
           {         
               if (phase=="move" && direction =="right") {
             		jQuery('.right-dashboard-part').css("right","-110%");
-					$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
 					$('#right-slider-icon').attr('width','20px');
 					$('#right-menu').addClass('right-slider-menu1');     
                    return false;
@@ -511,12 +511,12 @@
 		if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("display","block");
 			jQuery('.right-dashboard-part').css("right","0%");
-			$('#riht-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+			//$('#riht-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();
 		}else{
 			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
+			//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
 			$('#right-slider-icon').attr('width','20px');
 			$('#right-menu').addClass('right-slider-menu1');
 		}

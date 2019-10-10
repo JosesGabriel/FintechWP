@@ -38,7 +38,7 @@
                                 let stock = svalue.stock;
                                 let ischange = 0;
                                 let changetext = "";
-                                $.each(svalue.chartdata.t, function(ckey, cvalue){
+                                $.each(svalue.chartdata.t, function(i, ckey, cvalue){
                                     if(svalue.chartdata.c[ckey] > ischange){
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
@@ -51,7 +51,7 @@
                                     }
                                     let addslog = (parseFloat(ischange)).toFixed(2);
                                     candles.push({"category": ckey,"column-1": addslog});
-                                    
+                                    return i<4;
                                 });
                                 let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                                 AmCharts.makeChart( "chartdiv"+stock, {

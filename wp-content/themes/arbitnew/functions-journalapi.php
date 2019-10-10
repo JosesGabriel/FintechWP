@@ -168,8 +168,9 @@ class JournalAPI extends WP_REST_Controller
 
     public function getprofits($data)
     {
-        $marketvals = $data->tlvolume * $data->tlaverageprice;
-        $selltotal = $data->tlvolume * $data->tlsellprice;
+        $volume = str_replace(",", "", $data->tlvolume);
+        $marketvals = $volume * $data->tlaverageprice;
+        $selltotal = $volume * $data->tlsellprice;
         $selldata = $selltotal - $this->getjurfees($selltotal, 'sell');
         $profit = $selldata - $marketvals;
 
@@ -316,8 +317,11 @@ class JournalAPI extends WP_REST_Controller
                 array_push($buttomstocks, $value);
             }
         }
-
-        return $this->respond(true, ['data' => ['top' => $topstocks, 'buttom' => $buttomstocks]], 200);
+        usort($topstocks, function($a, $b) { return $a->profit <=> $b->profit; });
+        $finaltop = array_slice($topstocks, 0, 4);
+        usort($buttomstocks, function($a, $b) { return $b->profit <=> $a->profit; });
+        $finalbottom = array_slice($buttomstocks, 0, 4);
+        return $this->respond(true, ['data' => ['top' => $finaltop, 'buttom' => $finalbottom]], 200);
     }
 
     public function getemotionalreport($request)
@@ -554,6 +558,7 @@ class JournalAPI extends WP_REST_Controller
             $selltotal = $volume * $value->tlsellprice;
             $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
             $profit = $sellnet - $buytotal;
+
             $value->buyvalue = $buytotal;
             $value->sellvalue = $sellnet;
             $value->profit = $profit;

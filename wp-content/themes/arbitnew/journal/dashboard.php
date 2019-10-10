@@ -206,7 +206,9 @@
                             <div class="inner-portlet" style="margin-top:20px;">
                                     <div class="stats-info">
                                         <div class="dstatstrade">
-                                            <ul style="overflow: hidden;border-radius: 5px;">
+                                            <ul class="listoftopstocks" style="overflow: hidden;border-radius: 5px;">
+                                                <div class="topstocks"></div>
+                                                <div class="bottomstocks"></div>
                                                 <?php
 
                                                 foreach ($winningstocks as $key => $value) {

@@ -144,7 +144,7 @@ if(isset($_GET['addcp'])){
                                                 <form method="post" action="" id="add-watchlist-param">
                                                     <div class="instumentinner">
                                                         <div class="">
-
+                                                            <select class="editwatchlist2"><option>asdsad</option><option>asdsad</option></select>
 
                                                         <div class="groupinput midd selectstock"><label>Stock Code</label>
 
@@ -244,7 +244,7 @@ if(isset($_GET['addcp'])){
                         <input type="hidden" name="stockname" value="">
                         <div class="instumentinner">
                             <div class="row">
-
+                                
                                 <div class="cond-ion" style="margin: 15px 0px 0px 26px;">
                                     <div class="groupinput midd"><label>Entry Price</label>
                                         <input type="text" name="dconnumber_entry_price" class="inpt_data_price number" value="" >

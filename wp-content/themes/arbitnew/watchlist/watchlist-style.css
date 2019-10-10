@@ -1119,16 +1119,19 @@ h2.watchtitle {
     }
 
     .editwatchlist {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
         float: right;
         height: 21px;
         border-radius: 5px;
         font-size: 12px;
-        margin-left: 0px;
+        margin-left: 5px;
         margin-top: 8px;
         background: transparent;
         border: 0;
         color: #afadb3;
-        direction: rtl;
+        direction: ltr;
     }
 
     select option {

@@ -505,6 +505,18 @@
           }
   	});
 
+  	$(".swiperight-area-r2").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {         
+              if (phase=="move" && direction =="right") {
+            		jQuery('.right-dashboard-part').css("right","-110%");
+					$('#right-slider-icon').attr('width','20px');
+					$('#right-menu').addClass('right-slider-menu1');     
+                   return false;
+              }
+          }
+  	});
+
 
     jQuery('.right-slider-menu').click(function(){
 

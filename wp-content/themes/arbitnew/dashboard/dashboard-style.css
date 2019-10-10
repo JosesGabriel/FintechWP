@@ -1606,7 +1606,17 @@ ul.footmore .ddot {
 .swiperight-area-r{
   position: absolute;
   width: 40px;
-  left: : 0;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swiperight-area-r2{
+  position: absolute;
+  width: 100px;
+  left: 250px;
   margin-top: 50px;
   top: 0;
   height: 100%;

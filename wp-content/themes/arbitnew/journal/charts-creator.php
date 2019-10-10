@@ -124,7 +124,8 @@
             dataType: 'json', // added data type
             success: function(data) {
                 let buttomparts = [];
-                $.each(data.data.buttom, function(key, value){
+                let vsortingbottom = data.data.buttom.reverse();
+                $.each(vsortingbottom, function(key, value){
                     let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="sbuttom'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';

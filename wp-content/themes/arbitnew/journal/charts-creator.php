@@ -128,7 +128,7 @@
                     let dprofit = (value.profit).toFixed(2);
                     let dinss = '<li class="sbuttom'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
-                    dinss += '<div class="width35">&#8369; '+vsorted+'</div>';
+                    dinss += '<div class="width35">&#8369; '+dprofit+'</div>';
                     dinss += '</li>';
                     $(".listoftopstocks .bottomstocks").append(dinss);
 

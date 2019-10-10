@@ -1439,12 +1439,13 @@ span.my_rank-number {
     left:0;
 }
 .dbox.red {
-    border-radius: 50px !important;
     color: #eb4d5c !important;
 }
 .dbox.green {
-    border-radius: 50px !important;
     color: #53b987 !important;
+}
+.dbox.yellow {
+    color: #ffd900 !important;
 }
 .stockperc {
     text-align: right;

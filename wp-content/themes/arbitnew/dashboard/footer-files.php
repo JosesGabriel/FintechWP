@@ -131,6 +131,9 @@
                                 watchtoadd += '</div>';
                                 watchtoadd += '</div>';
                                 $(".sidewatchlist .even").append(watchtoadd);
+                                if(key == 3){
+                                    return false;
+                                }
                             });
                         },
                         error: function (xhr, ajaxOptions, thrownError) {

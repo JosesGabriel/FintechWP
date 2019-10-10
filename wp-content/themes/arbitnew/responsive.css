@@ -55,6 +55,10 @@
 		display: none !important;
 	}
 
+	.logo-image a {
+		pointer-events: none;
+	}
+
 	.center-dashboard-part {
 		transition: all 0.5s ease;
 	}
@@ -181,6 +185,9 @@
 		overflow-x: hidden;
 	}
 
+	.logo-image a {
+		pointer-events: none;
+	}
 
 	.center-dashboard-part {
 		transition: all 0.5s ease;

@@ -453,7 +453,7 @@
     	$('.left-dashboard-part').css('left','-100%');
     });
 
-    $(".swipe-area-l").swipe({
+    $(".center-dashboard-part").swipe({
       swipeStatus:function(event, phase, direction, distance, duration, fingers)
           {
               if (phase=="move" && direction =="right") {
@@ -461,19 +461,14 @@
                    $('.right-image').find('.close-leftsidebar').css('display','block');
                    return false;
               }
-              
-          }
-  	});
 
-  	$(".swipe-area-r").swipe({
-      swipeStatus:function(event, phase, direction, distance, duration, fingers)
-          {
               if (phase=="move" && direction =="left") {
-                   jQuery('.right-dashboard-part').css("display","block");
-				   jQuery('.right-dashboard-part').css("right","0%");
+              		jQuery('.right-dashboard-part').css("display","block");
+				   	jQuery('.right-dashboard-part').css("right","0%");
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
+                   
                    return false;
               }
               

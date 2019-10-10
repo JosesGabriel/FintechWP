@@ -633,7 +633,10 @@ span.postImageBlur:before {
     -o-transition: all 2s linear;
 }
 span.postImageBlur {
-    display: block;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 img.inpostimage {
     width: auto;

@@ -684,10 +684,10 @@ if ( ! class_exists( 'um\core\Builtin' ) ) {
 				),
 
 				'username' => array(
-					'title' => __('Username or E-mail','ultimate-member'),
+					'title' => __('Enter your Username','ultimate-member'),
 					'metakey' => 'username',
 					'type' => 'text',
-					'label' => __('Username or E-mail','ultimate-member'),
+					'label' => __('Enter your Username','ultimate-member'),
 					'required' => 1,
 					'public' => 1,
 					'editable' => 0,
@@ -1094,7 +1094,7 @@ if ( ! class_exists( 'um\core\Builtin' ) ) {
 				),
 
 				'username_b' => array(
-					'title' => __('Username or E-mail','ultimate-member'),
+					'title' => __('Enter your Username','ultimate-member'),
 					'metakey' => 'username_b',
 					'type' => 'text',
 					'placeholder' => __('Enter your username or email','ultimate-member'),

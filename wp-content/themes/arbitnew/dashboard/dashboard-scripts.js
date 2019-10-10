@@ -453,12 +453,22 @@
     	$('.left-dashboard-part').css('left','-100%');
     });
 
-    $(".swipe-area-l").swipe({
+    $(".center-dashboard-part").swipe({
       swipeStatus:function(event, phase, direction, distance, duration, fingers)
           {
               if (phase=="move" && direction =="right") {
                    $('.left-dashboard-part').css('left','0');
                    $('.right-image').find('.close-leftsidebar').css('display','block');
+                   return false;
+              }
+
+              if (phase=="move" && direction =="left") {
+              		jQuery('.right-dashboard-part').css("display","block");
+				   	jQuery('.right-dashboard-part').css("right","0%");
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+					$('#right-slider-icon').attr('width','15px');
+					$('#right-menu').removeClass();
+                   
                    return false;
               }
               
@@ -477,17 +487,43 @@
           }
   	});
 
+    $(".swiperight-area-r").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {         
+              if (phase=="move" && direction =="right") {
+            		jQuery('.right-dashboard-part').css("right","-110%");
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
+					$('#right-slider-icon').attr('width','20px');
+					$('#right-menu').addClass('right-slider-menu1');     
+                   return false;
+              }
+          }
+  	});
+
+  	$(".swiperight-area-r2").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {         
+              if (phase=="move" && direction =="right") {
+            		jQuery('.right-dashboard-part').css("right","-110%");
+					$('#right-slider-icon').attr('width','20px');
+					$('#right-menu').addClass('right-slider-menu1');     
+                   return false;
+              }
+          }
+  	});
+
+
     jQuery('.right-slider-menu').click(function(){
 
 		if($('#right-menu').hasClass('right-slider-menu1')){
 			jQuery('.right-dashboard-part').css("display","block");
 			jQuery('.right-dashboard-part').css("right","0%");
-			$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+			//$('#riht-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 			$('#right-slider-icon').attr('width','15px');
 			$('#right-menu').removeClass();
 		}else{
 			jQuery('.right-dashboard-part').css("right","-110%");
-			$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
+			//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
 			$('#right-slider-icon').attr('width','20px');
 			$('#right-menu').addClass('right-slider-menu1');
 		}

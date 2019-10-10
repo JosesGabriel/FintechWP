@@ -678,12 +678,12 @@ function um_modal_responsive() {
 function um_remove_modal(){
 	jQuery('img.cropper-hidden').cropper('destroy');
 
-	jQuery('body,html,textarea').css("overflow", "auto");
+	jQuery('html,textarea').css("overflow", "auto");
 
 	jQuery(document).unbind('touchmove');
 
 	jQuery('.um-modal div[id^="um_"]').hide().appendTo('body');
-	jQuery('.um-modal,.um-modal-overlay').remove();
+	jQuery('.um-modal,.um-modal-overlay,#um_view_photo').remove();
 
 }
 

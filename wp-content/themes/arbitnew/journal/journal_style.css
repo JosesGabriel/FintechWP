@@ -2766,3 +2766,29 @@ legend {
 }
 /* EOF Var Calc */
 /*------ calc-part-dashboard ------*/
+
+.dstatstrade ul li.sbuttom0 {
+    background-color: #442946;
+}
+.dstatstrade ul li.sbuttom1 {
+    background-color: #732546;
+}
+.dstatstrade ul li.sbuttom2 {
+    background-color: #b91e45;
+}
+.dstatstrade ul li.sbuttom3 {
+    background-color: #b91e45;
+}
+
+.dstatstrade ul li.stop0 {
+    background-color: #0d785a;
+}
+.dstatstrade ul li.stop1 {
+    background-color: #06af68;
+}
+.dstatstrade ul li.stop2 {
+    background-color: #00e676;
+}
+.dstatstrade ul li.stop3 {
+    background-color: #00e676;
+}

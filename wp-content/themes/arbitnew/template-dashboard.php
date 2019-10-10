@@ -17,8 +17,6 @@ require("parts/sidebar-avarageprice.php");
 		<div class="inner-main-content">
 		<?php require("parts/global-sidebar.php"); ?>
 			<div class="center-dashboard-part">
-				<div class="swipe-area-l"></div>
-				<div class="swipe-area-r"></div>
 				<div class="inner-center-dashboard">
 					<div class="add-post">
 						<?php echo do_shortcode('[ultimatemember_activity]'); ?>
@@ -26,6 +24,8 @@ require("parts/sidebar-avarageprice.php");
 				</div>
 			</div>
 			<div class="right-dashboard-part">
+				<div class="swiperight-area-r"></div>
+				<div class="swiperight-area-r2"></div>
 				<div class="right-dashboard-part-inner">
 					<?php
 						get_template_part('parts/sidebar', 'trendingstocks');

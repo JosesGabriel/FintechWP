@@ -47,7 +47,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
                       <div class="arb_smalltxt">@<?php echo um_user('nickname'); ?></div>
                   </div>
                   <div class="close-leftsidebar">
-                      <img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitnew/images/cancel.svg" width="15px">
+                      <!--<img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitnew/images/cancel.svg" width="15px">-->
                   </div>
 
           </div>

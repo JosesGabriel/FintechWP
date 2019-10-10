@@ -5,6 +5,9 @@ html {
 dl, ol, ul {
     margin-bottom: 0;
 }
+body{
+    overflow: unset !important;
+}
 body,
 #page-container,
 #main-content,
@@ -630,7 +633,10 @@ span.postImageBlur:before {
     -o-transition: all 2s linear;
 }
 span.postImageBlur {
-    display: block;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 img.inpostimage {
     width: auto;
@@ -1603,7 +1609,18 @@ ul.footmore .ddot {
 .swiperight-area-r{
   position: absolute;
   width: 40px;
-  left: : 0;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swiperight-area-r2{
+  display: none;
+  position: absolute;
+  width: 100px;
+  left: 250px;
   margin-top: 50px;
   top: 0;
   height: 100%;

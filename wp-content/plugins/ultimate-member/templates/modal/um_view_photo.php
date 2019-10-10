@@ -1,4 +1,4 @@
-<div id="um_view_photo" style="display:none">
+<div id="um_view_photo">
 
 	<a href="#" data-action="um_remove_modal" class="um-modal-close"><i class="um-faicon-times"></i></a>
 	

@@ -29,7 +29,6 @@
                         type: 'GET',
                         dataType: 'json', // added data type
                         success: function(data) {
-                            console.log(data);
                             // var app = angular.module('arbitrage_wl', ['nvd3']);
                             $(".to-watch-data").addClass("after-load");
                             
@@ -196,7 +195,6 @@
          * wp-content/plugins/um-social-activity/assets/js/um-activity.js line 407
          */
         $('.ondashboardpage').on('submit', '.um-activity-publish', function (e) {
-            console.log("post submitted");
             e.stopPropagation();
             e.preventDefault();
 
@@ -231,7 +229,6 @@
                     var template_data;
 
                     if ( form.find('input[name="_post_id"]').val() === '0' ) {
-                        console.log("ed success");
                         var wall = form.parents('.um').find('.um-activity-wall');
 
                         widget_template = wp.template( 'um-activity-widget' );

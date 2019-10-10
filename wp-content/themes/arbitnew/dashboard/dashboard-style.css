@@ -1614,6 +1614,7 @@ ul.footmore .ddot {
 }
 
 .swiperight-area-r2{
+  display: none;
   position: absolute;
   width: 100px;
   left: 250px;

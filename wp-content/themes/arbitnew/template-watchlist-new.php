@@ -144,7 +144,7 @@ if(isset($_GET['addcp'])){
                                                 <form method="post" action="" id="add-watchlist-param">
                                                     <div class="instumentinner">
                                                         <div class="">
-                                                            <select class="editwatchlist2"><option>asdsad</option><option>asdsad</option></select>
+
 
                                                         <div class="groupinput midd selectstock"><label>Stock Code</label>
 

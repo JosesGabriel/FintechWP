@@ -683,7 +683,7 @@ function um_remove_modal(){
 	jQuery(document).unbind('touchmove');
 
 	jQuery('.um-modal div[id^="um_"]').hide().appendTo('body');
-	jQuery('.um-modal,.um-modal-overlay').remove();
+	jQuery('.um-modal,.um-modal-overlay,#um_view_photo').remove();
 
 }
 

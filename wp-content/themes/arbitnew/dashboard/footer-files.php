@@ -69,7 +69,7 @@
                                     "chartCursor": {
                                         "enabled": true,
                                         "cursorColor": dcolor,
-                                        "graphBulletSize": 2
+                                        "graphBulletSize": 2,
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

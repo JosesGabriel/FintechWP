@@ -882,7 +882,7 @@ class UM_Social_Login_API {
 
 			<input type="hidden" name="_social_login_form" id="_social_login_form" value="true" />
 
-			<div class="um-center"><input type="submit" value="<?php _e('Complete Registration','um-social-login'); ?>" class="um-button" /></div>
+			<div class="socialLogin--btn"><input type="submit" value="<?php _e('Complete Registration','um-social-login'); ?>" class="um-button" /></div>
 
 			<div class="um-clear"></div>
 

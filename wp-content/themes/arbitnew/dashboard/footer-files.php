@@ -50,7 +50,6 @@
                                     candles.push({"category": ckey,"column-1": addslog});
                                     
                                 });
-                                let ballontext = (parseFloat(ischange)).toFixed(2);
                                 let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                                 AmCharts.makeChart( "chartdiv"+stock, {
                                     "type":"serial",
@@ -69,7 +68,7 @@
                                     "chartCursor": {
                                         "enabled": true,
                                         "cursorColor": dcolor,
-                                        "categoryBalloonText": ballontext
+                                        "graphBulletSize": 2,
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

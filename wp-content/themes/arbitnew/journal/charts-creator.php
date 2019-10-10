@@ -137,14 +137,13 @@
 
                 let topparts = [];
                 $.each(data.data.top, function(key, value){
-                    let dprofit = (value.profit).toFixed(2);
-                    let dprofits = (dprofit).sort(function(a, b){return b-a});
+                    let dprofit = (value.profit).toFixed(2).sort(function(a, b){return b-a});
                     let dinss = '<li class="stop'+key+'" style="color: #b1e8ce;border: none;">';
                     dinss += '<div class="width60">'+value.isstock+'</div>';
-                    dinss += '<div class="width35">&#8369; '+dprofits+'</div>';
+                    dinss += '<div class="width35">&#8369; '+dprofit+'</div>';
                     dinss += '</li>';
                     $(".listoftopstocks .topstocks").prepend(dinss);
-                    topparts.push({ "category": value.isstock, "column-1": dprofits });
+                    topparts.push({ "category": value.isstock, "column-1": dprofit });
                 });
 
                 AmCharts.makeChart("topstocksLosers", {

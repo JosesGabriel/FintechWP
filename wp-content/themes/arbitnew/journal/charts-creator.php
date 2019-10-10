@@ -134,7 +134,7 @@
                     dinss += '</li>';
                     $(".listoftopstocks .bottomstocks").append(dinss);
 
-                    buttomparts.push({ "category": value.isstock, "column-1": dprofit });
+                    buttomparts.push({ "category": value.isstock, "column-1": dprofit.sort(function(a, b){return a-b}) });
                 });
 
                 let topparts = [];

@@ -295,9 +295,8 @@ foreach ( $wallposts->posts as $post ) {
             if (get_current_user_id() != $author_id){
               if(author_is_a_friend($author_id, get_current_user_id()) == "false"){
             ?>
-                <button href="#" style="border: 1.3px solid #e77e24 !important;" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
+                <button href="#" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
                   <i class="fas fa-plus" aria-hidden="true"></i>
-                  <span style="font-size: 0.6em;">Mingle</span>
                 </button>
             <?php
               }

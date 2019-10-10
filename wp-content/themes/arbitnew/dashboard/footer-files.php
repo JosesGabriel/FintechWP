@@ -68,8 +68,7 @@
                                     "chartCursor": {
                                         "enabled": true,
                                         "cursorColor": dcolor,
-                                        "graphBulletSize": 2,
-                                        "categoryBalloonText": candles
+                                        "graphBulletSize": 2
                                     },
                                     "trendLines":[],
                                     "graphs":[ {

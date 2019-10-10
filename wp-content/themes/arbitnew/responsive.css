@@ -55,6 +55,10 @@
 		display: none !important;
 	}
 
+	.logo-image a {
+		pointer-events: none;
+	}
+
 	.center-dashboard-part {
 		transition: all 0.5s ease;
 	}
@@ -181,6 +185,13 @@
 		overflow-x: hidden;
 	}
 
+	.logo-image a {
+		pointer-events: none;
+	}
+
+	.swiperight-area-r2{
+		display: block;
+	}
 
 	.center-dashboard-part {
 		transition: all 0.5s ease;
@@ -300,7 +311,7 @@
 		top: 40px !important;
 		padding: 15px 35px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 100% !important;
+		width: 85% !important;
 		max-width: 100% !important;
 		height: 100% !important;
 		overflow: scroll;
@@ -811,6 +822,13 @@
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
 
+	.top-traiders .to-content-part .trader-item .traider-details {
+		margin-left: 16px;
+	}
+
+	.sidewatchlist .to-watch-data .dbox-cont {
+		width: 15%;
+	}
 
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 210px;

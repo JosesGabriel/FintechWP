@@ -29,7 +29,6 @@
                         type: 'GET',
                         dataType: 'json', // added data type
                         success: function(data) {
-                            console.log(data);
                             // var app = angular.module('arbitrage_wl', ['nvd3']);
                             $(".to-watch-data").addClass("after-load");
                             
@@ -42,15 +41,17 @@
                                     if(svalue.chartdata.c[ckey] > ischange){
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
+                                    } else if(svalue.chartdata.c[ckey] == ischange) {
+                                        ischange = svalue.chartdata.c[ckey];
+                                        changetext = 'equal';
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
                                     let addslog = (parseFloat(ischange)).toFixed(2);
                                     candles.push({"category": ckey,"column-1": addslog});
-                                    
                                 });
-                                let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
+                                let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                                 AmCharts.makeChart( "chartdiv"+stock, {
                                     "type":"serial",
                                     "categoryField":"category",
@@ -122,14 +123,17 @@
                                 watchtoadd += '</div>';
                                 watchtoadd += '<div class="dbox-cont">';
                                 watchtoadd += '<div class="stocknum_'+value.stockname+' watch_price">'+(value.last).toFixed(2)+'</div>';
-                                watchtoadd += '<div class="dbox '+(value.change > 0 ? 'green' : 'red')+'">';
-                                watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc"><i class="fa '+(value.change > 0 ? 'fa-caret-up' : 'fa-caret-down')+'"></i> '+(value.change).toFixed(2)+'%</div>';
+                                watchtoadd += '<div class="dbox '+ (value.change == 0 ? 'yellow' : ( value.change > 0 ? 'green' : 'red' ) ) +'">';
+                                watchtoadd += '<div class="stockperc_'+value.stockname+' watch_perc"><i class="fa '+ (value.change == 0 ? '' : ( value.change > 0 ? 'fa-caret-up' : 'fa-caret-down' ) ) +'"></i> '+(value.change).toFixed(2)+'%</div>';
                                 watchtoadd += '</div>';
                                 watchtoadd += '<br class="clear" />';
 
                                 watchtoadd += '</div>';
                                 watchtoadd += '</div>';
                                 $(".sidewatchlist .even").append(watchtoadd);
+                                if(key == 3){
+                                    return false;
+                                }
                             });
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
@@ -194,7 +198,6 @@
          * wp-content/plugins/um-social-activity/assets/js/um-activity.js line 407
          */
         $('.ondashboardpage').on('submit', '.um-activity-publish', function (e) {
-            console.log("post submitted");
             e.stopPropagation();
             e.preventDefault();
 
@@ -229,7 +232,6 @@
                     var template_data;
 
                     if ( form.find('input[name="_post_id"]').val() === '0' ) {
-                        console.log("ed success");
                         var wall = form.parents('.um').find('.um-activity-wall');
 
                         widget_template = wp.template( 'um-activity-widget' );

@@ -1580,7 +1580,7 @@ ul.footmore .ddot {
 }
 .swipe-area-l {
   position: absolute;
-  width: 20px;
+  width: 40px;
   left: 0;
   top: 0;
   height: 100%;
@@ -2442,4 +2442,3 @@ legend {
     outline:none;
 }
 /*------ sidebar-alerts-dashboard ------*/
-

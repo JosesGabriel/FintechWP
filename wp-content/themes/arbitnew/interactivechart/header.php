@@ -26,6 +26,7 @@
 	<meta name="msapplication-wide310x150logo" content="https://arbitrage.ph/favicon/mstile-310x150.png" />
 	<meta name="msapplication-square310x310logo" content="https://arbitrage.ph/favicon/mstile-310x310.png" />
 	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<?php if (WP_PROD_ENV != null && WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>

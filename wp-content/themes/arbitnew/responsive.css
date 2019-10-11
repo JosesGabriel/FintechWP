@@ -186,7 +186,7 @@
 		overflow-x: hidden;
 		overflow: auto !important;
 	}
-	.arb_bar .fullbar{
+	.arb_bar.fullbar{
 		margin-top: -4px !important;
 	}
 

@@ -195,6 +195,10 @@
 		font-size: 12px;
 	}
 
+	.last_price {
+		font-size: 15px !important;
+	}
+
 	.logo-image a {
 		pointer-events: none;
 	}

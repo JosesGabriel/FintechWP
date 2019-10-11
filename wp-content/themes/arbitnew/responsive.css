@@ -187,13 +187,27 @@
 		overflow: auto !important;
 	}
 
+	.stocknn {
+		font-size: 15px !important;
+	}
+
+	.dpricechange {
+		font-size: 12px;
+	}
+
 	.logo-image a {
 		pointer-events: none;
 	}
 
 	.dinnerlist > ul > li {
+		padding: 5px 18px 9px 18px !important;
 		width: 45% !important;
 		margin: 10px 8px !important;
+		height: 212px !important;
+	}
+
+	.s_dropdown:after {
+    	top: -3px !important;
 	}
 
 	.dinnerlist .dparams ul {
@@ -201,7 +215,8 @@
 	}
 
 	.dplusbutton .dplsicon {
-		margin: 5px 42px !important;
+		margin: 5px 55px !important;
+		font-size: 40px !important;
 	}
 
 	.watchlisteditsubmit{
@@ -720,7 +735,7 @@
 	}
 
 	.dplusbutton .dplsicon {
-    	margin: 5px 29px !important;
+    	margin: 5px 48px !important;
 	}
 
 	.wlttlstockvals {
@@ -891,7 +906,7 @@
 	}
 
 	.dplusbutton .dplsicon {
-    	margin: 5px 19px !important;
+    	margin: 5px 35px !important;
 	}
 
 	.wlttlstockvals {

@@ -49,6 +49,7 @@
 
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
 	}
 
 	.left-dashboard-part-overlay{
@@ -183,6 +184,7 @@
 @media only screen and (max-width: 767px){
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
 	}
 
 	.logo-image a {
@@ -246,6 +248,7 @@
 		min-width: 317px;
 		width: 100%;
 		max-width: 708px;
+		overflow-y: scroll;
 	}
 	.header-dashboard-inner {
 		padding-left: 10px;
@@ -704,6 +707,14 @@
 		margin: -325px 45px !important;
 	}
 
+	.groupinput.midd input {
+		width: 125px !important;
+	}
+
+	.editmenow {
+		margin: 0px 0 0px 70px !important;
+	}
+
 	.dinnerlist .dparams ul {
     	width: 140px !important;
 	}
@@ -860,6 +871,14 @@
 
 	.top-traiders .to-content-part .trader-item .traider-details {
 		margin-left: 16px;
+	}
+
+	.groupinput.midd input {
+    	width: 100px !important;
+	}
+
+	.editmenow {
+    	margin: 0px 0 0px 47px !important;
 	}
 
 	.dinnerlist > ul > li {

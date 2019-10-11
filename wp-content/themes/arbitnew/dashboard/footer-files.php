@@ -294,11 +294,16 @@
             window.location.href = $this.data('notification_uri')
         }
     });
-    $('.um-activity-textarea').delay(5000).append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>').fadeIn(3000);
-    var qoute = $('.promter_tostocks');
-    setInterval(function(){
-        $(qoute).fadeOut(3000);
-    }, 6000);
+    $('.um-activity-textarea').on('click', function (e) {
+        $('.um-activity-textarea').append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>');
+        var qoute = $('.promter_tostocks');
+        setInterval(function(){
+            $(qoute).fadeOut(3000);
+        }, 7000);
+    });
+    $('.um-activity-textarea').on('keyup', function (e) {
+        $('.promter_tostocks').fadeOut();
+    });
 
 })(jQuery)
 </script>

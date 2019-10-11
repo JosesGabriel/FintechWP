@@ -49,6 +49,7 @@
 
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
 	}
 
 	.left-dashboard-part-overlay{

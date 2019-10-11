@@ -190,7 +190,8 @@
 	}
 
 	.dinnerlist > ul > li {
-		margin: 10px 88px;
+		width: 56% !important;
+		margin: 10px 88px !important;
 	}
 
 	.swiperight-area-r2{

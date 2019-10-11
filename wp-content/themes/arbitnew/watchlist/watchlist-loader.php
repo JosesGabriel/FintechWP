@@ -22,8 +22,10 @@
                             ischange = svalue.chartdata.c[ckey];
                             changetext = 'down';
                         }
-                        candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
+                        let addslog = (parseFloat(ischange)).toFixed(2);
+                        candles.push({"category": ckey,"column-1": addslog});
+                        //candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                        //console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
                     });
                     
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');

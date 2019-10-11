@@ -773,13 +773,25 @@ tr.ng-scope:active {
         display: none;
     }
     .arb_buysell {
-        top: 76px;
-        left: -78px;
-        width: 72px;
+        left: 0px;
+        top: 93%;
         text-align: right;
-        background-color: rgba(255,255,255,.15);
+        width: 100%;
+        position: fixed !important;
+        height: 41px;
+        background-color: #34495e !important;
+        border-radius: 0 !important;
+        padding: 5px 30px 5px 30px;
     }
-    .arb_buy, .arb_sell {width: 66px; margin-bottom:5px;border-radius: 50px 0 0 50px;}
+    .buysell-grip-btn {
+        display: none;
+    }
+    .buttons {
+        border-left: none;
+        padding: 0;
+    }
+    .arb_sell {width: 49%; margin-bottom:5px;border-radius: 0 50px 50px 0;}
+    .arb_buy {width: 49%; margin-bottom:5px;border-radius: 50px 0 0 50px;}
     .vertical-box-column.mobilefull {
         width: 100%;
         display: block;

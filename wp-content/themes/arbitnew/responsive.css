@@ -705,6 +705,10 @@
 		margin: -325px 45px !important;
 	}
 
+	.groupinput.midd input {
+		width: 133px;
+	}
+
 	.dinnerlist .dparams ul {
     	width: 140px !important;
 	}

@@ -206,6 +206,10 @@
 		height: 212px !important;
 	}
 
+	.s_dropdown:after {
+    	top: -3px !important;
+	}
+
 	.dinnerlist .dparams ul {
 		width: 169px !important;
 	}

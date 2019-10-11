@@ -119,8 +119,10 @@ $.ajax({
     });
 
 
-    jQuery('.addwatch').click(function(e){
-      jQuery(".dtabcontent > div").removeClass('active').hide('slow');
+    //jQuery('.addwatch').click(function(e){
+    $('body').on('click touchstart','.addwatch',function(){
+      //jQuery(".dtabcontent > div").removeClass('active').hide('slow');
+      jQuery('.dclosetab').removeClass('active').hide('slow');
       jQuery(".dtabcontent .addwatchtab").addClass('active').show('slow');
 
             $.ajax({

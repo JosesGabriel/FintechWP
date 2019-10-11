@@ -27,7 +27,7 @@
                     addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
                     addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
-                    addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
+                    addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-trades='"+JSON.stringify(value)+"'  data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
                     addliveme += '</td>';
                     addliveme += '<td style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
                     addliveme += '<td style="width:25px"><a data-stock="'+value.stock+'" data-totalprice="'+value.totalcost+'" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
@@ -221,6 +221,7 @@
             $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
             $("#selllivetrade input[name='inpt_avr_price_b']").val((parseFloat($(this).attr("data-averprice"))).toFixed(2));
             $("#selllivetrade input[name='inpt_avr_price']").val($(this).attr("data-averprice"));
+            $("#selllivetrade input[name='dtradelogs']").val($(this).attr("data-trades"));
             $("#opensellbox").click();
         });
 

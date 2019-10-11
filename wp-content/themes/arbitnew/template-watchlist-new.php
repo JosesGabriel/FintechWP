@@ -73,6 +73,7 @@ if(isset($_GET['addcp'])){
     <div class="inner-placeholder">
         <div class="inner-main-content">
             <div class="left-dashboard-part">
+                <div class="swipeleft-area-l"></div>
                 <div class="dashboard-sidebar-left">
                     <div class="dashboard-sidebar-left-inner">
                         <?php include_once "parts/sidebar-profile.php";?>
@@ -187,7 +188,7 @@ if(isset($_GET['addcp'])){
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>-->
-                                                                    <div class="submitform" style="margin-right: -125px;">
+                                                                    <div class="submitform watchlisteditsubmit" style="margin-right: -125px;">
                                                                         <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">
@@ -213,6 +214,8 @@ if(isset($_GET['addcp'])){
             </div>
 
             <div class="right-dashboard-part">
+                <div class="swiperight-area-r"></div>
+                <div class="swiperight-area-r2"></div>
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>
@@ -264,7 +267,7 @@ if(isset($_GET['addcp'])){
                                     <div class="innerdeliver innerdeliver-editstock">
                                         <ul>
                                             <li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" checked><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
-                                            <li id="smscheckboxli"><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif"><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>
+                                            <!--<li id="smscheckboxli"><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif"><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>-->
                                         </ul>
                                     </div>
                                 </div>

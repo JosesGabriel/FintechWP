@@ -187,6 +187,14 @@
 		overflow: auto !important;
 	}
 
+	.stocknn {
+		font-size: 15px !important;
+	}
+
+	.dpricechange {
+		font-size: 12px;
+	}
+
 	.logo-image a {
 		pointer-events: none;
 	}
@@ -194,6 +202,7 @@
 	.dinnerlist > ul > li {
 		width: 45% !important;
 		margin: 10px 8px !important;
+		height: 226px !important;
 	}
 
 	.dinnerlist .dparams ul {

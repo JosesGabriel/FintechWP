@@ -79,7 +79,7 @@
 		margin-left: 0;
 		z-index: 1;
 		min-width: 317px;
-		width: 100%;
+		width: 100% !important;
 		max-width: 708px;
 	}
 	.header-dashboard-inner {
@@ -137,7 +137,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 30%;
+		width: 300px !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}
@@ -167,7 +167,7 @@
 		top: -39px !important;
 		padding: 15px 0px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 50% !important;
+		width: 33% !important;
 		max-width: 512px !important;
 		height: auto !important;
 	}
@@ -189,6 +189,14 @@
 		pointer-events: none;
 	}
 
+	.dinnerlist > ul > li {
+		width: 56% !important;
+		margin: 10px 88px !important;
+	}
+
+	.watchlisteditsubmit{
+		margin-right: 10px !important;
+	}
 	.swiperight-area-r2{
 		display: block;
 	}
@@ -266,7 +274,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 85%;
+		width: 85% !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}
@@ -311,7 +319,7 @@
 		top: 40px !important;
 		padding: 15px 35px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 100% !important;
+		width: 85% !important;
 		max-width: 100% !important;
 		height: 100% !important;
 		overflow: scroll;
@@ -681,6 +689,11 @@
 		margin: -325px 45px !important;
 	}
 
+	.dinnerlist > ul > li {
+		width: 64% !important;
+		margin: 10px 70px !important;
+	}
+
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 240px;
 	}
@@ -822,6 +835,18 @@
 /* Mobile Smallest */
 @media only screen and (max-width: 320px){
 
+	.top-traiders .to-content-part .trader-item .traider-details {
+		margin-left: 16px;
+	}
+
+	.dinnerlist > ul > li {
+		width: 75% !important;
+		margin: 10px 42px !important;
+	}
+
+	.sidewatchlist .to-watch-data .dbox-cont {
+		width: 15%;
+	}
 
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 210px;

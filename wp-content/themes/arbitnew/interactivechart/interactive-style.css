@@ -757,11 +757,11 @@ tr.ng-scope:active {
     }
 }
 @media only screen and (max-width: 667px) { 
-    .vertical-box-inner-cell #tv_chart_container {
+    /* .vertical-box-inner-cell #tv_chart_container {
         left: -53px;
         position: relative;
         width: 114.5% !important;
-    }
+    } */
     div#tv_chart_container:before {
         content: ">";
         position: absolute;

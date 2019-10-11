@@ -22,8 +22,10 @@
                             ischange = svalue.chartdata.c[ckey];
                             changetext = 'down';
                         }
-                        candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
+                        let addslog = (parseFloat(ischange)).toFixed(2);
+                        candles.push({"category": ckey,"column-1": addslog});
+                        //candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
+                        //console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
                     });
                     
                     let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
@@ -43,7 +45,7 @@
                         },
                         "trendLines":[],
                         "graphs":[ {
-                            "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                            "balloonColor": "undefined", "balloonText": "[[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
                         }],
                         "guides":[],
                         "valueAxes":[ {
@@ -53,7 +55,13 @@
                             "labelsEnabled": false
                         }],
                         "allLabels":[],
-                        "balloon": {},
+                        "balloon": {
+                            "borderAlpha": 0,
+                            "borderColor": "",
+                            "borderThickness": 0,
+                            "fillAlpha": 0,
+                            "color": "#ffffff"
+                        },
                         "titles":[],
                         "dataProvider": candles
                     } );
@@ -89,7 +97,7 @@
                     watchtoadd += '<option value="edit" data-stock="'+value.stockname+'" data-entry="'+value.dconnumber_entry_price+'" data-tp="'+value.dconnumber_take_profit_point+'" data-sl="'+value.dconnumber_stop_loss_point+'">Edit</option></select>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';
-                    watchtoadd += ' <div class="curprice_'+value.stockname+'">₱'+value.last+'</div>';
+                    watchtoadd += ' <div class="curprice_'+value.stockname+' last_price">₱'+value.last+'</div>';
                     watchtoadd += stockchange + (value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';

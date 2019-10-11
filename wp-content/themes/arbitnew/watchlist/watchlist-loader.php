@@ -85,7 +85,7 @@
                     watchtoadd += '<div class="wlttlstockvals">';
                     watchtoadd += '<div class="stocknn"><a style="color: #fff;" href="/chart/'+value.stockname+'" target="_blank">'+value.stockname+'</a></div>';
                     watchtoadd += '<div class="s_dropdown" style="display: inline-block;">';
-                    watchtoadd += '<select class="editwatchlist" name="editstock" id="" data-space="'+value.stockname+'"><option value="select"></option><option value="delete">Delete</option>';
+                    watchtoadd += '<select class="editwatchlist" name="editstock" id="" data-space="'+value.stockname+'"><option value="select" hidden></option><option value="delete">Delete</option>';
                     watchtoadd += '<option value="edit" data-stock="'+value.stockname+'" data-entry="'+value.dconnumber_entry_price+'" data-tp="'+value.dconnumber_take_profit_point+'" data-sl="'+value.dconnumber_stop_loss_point+'">Edit</option></select>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';

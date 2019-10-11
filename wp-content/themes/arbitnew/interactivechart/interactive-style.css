@@ -758,11 +758,19 @@ tr.ng-scope:active {
 }
 @media only screen and (max-width: 667px) { 
     .width-250.mobileinithide {
-        width: 265px !important;
-        position: absolute;
-        z-index: 999;
-        right: -260px;
+        width: 100% !important;
         border-left: 5px solid #34495e;
+        display: block;
+        overflow-y: scroll;
+    }
+    .arb_logo_placehldr h2 img {
+        width: 35% !important;
+    }
+    .allstocksbox {
+        height: 100%;
+    }
+    .fixbrdebtm {
+        display: none;
     }
     .arb_buysell {
         top: 76px;
@@ -774,6 +782,7 @@ tr.ng-scope:active {
     .arb_buy, .arb_sell {width: 66px; margin-bottom:5px;border-radius: 50px 0 0 50px;}
     .vertical-box-column.mobilefull {
         width: 100%;
+        display: block;
     }
     .groupinput.midd input {width: 59%;}
     .groupinput.midd label {width: 40%;}

@@ -91,11 +91,11 @@
 
                     let watchtoadd = '';
                     let stockchange = '';
-                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
+                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : ( value.change < 0 ? '#eb4d5c' : '#ffdf40'))+';">';
 
-                    if (value.change == 0.00) {
-                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#ffdf40;">';   
-                    }
+                    //if (value.change == 0.00) {
+                       // stockchange = '<div class="curchange_'+value.stockname+'" style="color:#ffdf40;">';   
+                    //}
 
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';
                     watchtoadd += '<div class="row">';

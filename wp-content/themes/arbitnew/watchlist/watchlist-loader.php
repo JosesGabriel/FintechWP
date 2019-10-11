@@ -91,7 +91,7 @@
                     watchtoadd += '<option value="edit" data-stock="'+value.stockname+'" data-entry="'+value.dconnumber_entry_price+'" data-tp="'+value.dconnumber_take_profit_point+'" data-sl="'+value.dconnumber_stop_loss_point+'">Edit</option></select>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';
-                    watchtoadd += ' <div class="curprice_'+value.stockname+'">₱'+value.last+'</div>';
+                    watchtoadd += ' <div class="curprice_'+value.stockname+' last_price">₱'+value.last+'</div>';
                     watchtoadd += stockchange + (value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';

@@ -1334,6 +1334,17 @@ h2.watchtitle {
     color: white;
 }
 
+.s_dropdown:after {
+    position: absolute;
+    content: "...";
+    font-size: 20px;
+    margin-left: 5px;
+    padding-bottom: 0px;
+    top: 4px;
+    height: 1px;
+    z-index: 0;
+}
+
 /*=============================sidebar-topgainers/losers=====================//*/
 
 .top-stocks .to-content-part ul .even span {

@@ -686,6 +686,11 @@
 		margin: -325px 45px !important;
 	}
 
+	.dinnerlist > ul > li {
+		width: 64% !important;
+		margin: 10px 70px !important;
+	}
+
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 240px;
 	}

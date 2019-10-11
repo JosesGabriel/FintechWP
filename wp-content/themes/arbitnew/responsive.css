@@ -49,6 +49,7 @@
 
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
 	}
 
 	.left-dashboard-part-overlay{
@@ -79,7 +80,7 @@
 		margin-left: 0;
 		z-index: 1;
 		min-width: 317px;
-		width: 100%;
+		width: 100% !important;
 		max-width: 708px;
 	}
 	.header-dashboard-inner {
@@ -137,7 +138,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 30%;
+		width: 300px !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}
@@ -167,7 +168,7 @@
 		top: -39px !important;
 		padding: 15px 0px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 50% !important;
+		width: 33% !important;
 		max-width: 512px !important;
 		height: auto !important;
 	}
@@ -183,10 +184,67 @@
 @media only screen and (max-width: 767px){
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
+	}
+	.arb_bar.fullbar{
+		margin-top: -4px !important;
+	}
+
+	.dvalue span.ontoleft, .dvalue span.ontoright {
+		font-size: 11px !important;
+	}
+
+	.dinnerlist .dparams ul li > div.dcondition {
+		font-size: 9px !important;
+	}
+
+	.stocknn {
+		font-size: 15px !important;
+	}
+
+	.dpricechange {
+		font-size: 12px !important;
+	}
+
+	.last_price {
+		font-size: 15px !important;
+	}
+
+	.dinnerlist .dparams {
+		margin-top: -3px !important;
 	}
 
 	.logo-image a {
 		pointer-events: none;
+	}
+
+	.dinnerlist > ul > li {
+		padding: 5px 18px 9px 18px !important;
+		width: 45% !important;
+		margin: 10px 8px !important;
+		height: 200px !important;
+	}
+
+	.s_dropdown:after {
+    	top: -3px !important;
+	}
+
+	.dinnerlist .dparams ul {
+		width: 169px !important;
+	}
+
+	.dplusbutton .dplsicon {
+		margin: 5px 55px !important;
+		font-size: 40px !important;
+	}
+
+	.watchlisteditsubmit{
+		margin-right: 10px !important;
+	}
+
+	.wlttlstockvals {
+		padding-left: 2px !important;
+    	padding-right: 2px !important;
 	}
 
 	.swiperight-area-r2{
@@ -218,11 +276,13 @@
 		padding: 0 12px;
 	}
 	.center-dashboard-part {
-		margin-left: 0;
+		margin-left: 7px;
+    	margin-right: 7px;
 		z-index: 1;
 		min-width: 317px;
 		width: 100%;
 		max-width: 708px;
+		overflow-y: scroll;
 	}
 	.header-dashboard-inner {
 		padding-left: 10px;
@@ -266,7 +326,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 85%;
+		width: 85% !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}
@@ -681,6 +741,27 @@
 		margin: -325px 45px !important;
 	}
 
+	.groupinput.midd input {
+		width: 125px !important;
+	}
+
+	.editmenow {
+		margin: 0px 0 0px 70px !important;
+	}
+
+	.dinnerlist .dparams ul {
+    	width: 140px !important;
+	}
+
+	.dplusbutton .dplsicon {
+    	margin: 5px 48px !important;
+	}
+
+	.wlttlstockvals {
+		padding-left: 5px;
+    	padding-right: 5px;
+	}
+
 	.um-activity-bodyinner-txt span.post-meta {
 		height: 240px;
 	}
@@ -824,6 +905,32 @@
 
 	.top-traiders .to-content-part .trader-item .traider-details {
 		margin-left: 16px;
+	}
+
+	.groupinput.midd input {
+    	width: 100px !important;
+	}
+
+	.editmenow {
+    	margin: 0px 0 0px 47px !important;
+	}
+
+	.dinnerlist > ul > li {
+		width: 46% !important;
+		margin: 10px 5px !important;
+	}
+
+	.dinnerlist .dparams ul {
+    	width: 130px !important;
+	}
+
+	.dplusbutton .dplsicon {
+    	margin: 5px 35px !important;
+	}
+
+	.wlttlstockvals {
+		padding-left: 0px !important;
+    	padding-right: 0px !important;
 	}
 
 	.sidewatchlist .to-watch-data .dbox-cont {

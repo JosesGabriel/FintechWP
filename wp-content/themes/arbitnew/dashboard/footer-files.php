@@ -294,6 +294,19 @@
             window.location.href = $this.data('notification_uri')
         }
     });
+    $('.um-activity-textarea').on('click', function (e) {
+        $('.um-activity-textarea').append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>');
+        var qoute = $('.promter_tostocks');
+        setInterval(function(){
+            $(qoute).fadeOut(3000);
+        }, 7000);
+    });
+    $('.um-activity-textarea').on('keyup', function (e) {
+        $('.promter_tostocks').fadeOut();
+    });
+    $('.popname ul li').on('click', function (e) {
+        $('.promter_tostocks').hide();
+    });
 
 })(jQuery)
 </script>

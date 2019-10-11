@@ -195,7 +195,7 @@
 	}
 
 	.dinnerlist .dparams ul {
-		width: 169px;
+		width: 169px !important;
 	}
 
 	.watchlisteditsubmit{

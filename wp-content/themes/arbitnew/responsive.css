@@ -246,6 +246,7 @@
 		min-width: 317px;
 		width: 100%;
 		max-width: 708px;
+		overflow-y: scroll;
 	}
 	.header-dashboard-inner {
 		padding-left: 10px;

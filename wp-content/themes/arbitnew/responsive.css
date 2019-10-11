@@ -839,6 +839,11 @@
 		margin-left: 16px;
 	}
 
+	.dinnerlist > ul > li {
+		width: 75% !important;
+		margin: 10px 42px !important;
+	}
+
 	.sidewatchlist .to-watch-data .dbox-cont {
 		width: 15%;
 	}

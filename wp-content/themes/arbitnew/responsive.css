@@ -198,6 +198,10 @@
 		width: 169px !important;
 	}
 
+	.dplusbutton .dplsicon {
+		margin: 5px 42px !important;
+	}
+
 	.watchlisteditsubmit{
 		margin-right: 10px !important;
 	}

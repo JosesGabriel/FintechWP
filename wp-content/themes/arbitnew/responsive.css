@@ -186,6 +186,17 @@
 		overflow-x: hidden;
 		overflow: auto !important;
 	}
+	.arb_bar .fullbar{
+		margin-top: -4px;
+	}
+
+	.dvalue span.ontoleft, .dvalue span.ontoright {
+		font-size: 11px;
+	}
+
+	.dinnerlist .dparams ul li > div.dcondition {
+		font-size: 9px;
+	}
 
 	.stocknn {
 		font-size: 15px !important;
@@ -197,6 +208,10 @@
 
 	.last_price {
 		font-size: 15px !important;
+	}
+
+	.dinnerlist .dparams {
+		margin-top: -3px;
 	}
 
 	.logo-image a {

@@ -190,8 +190,12 @@
 	}
 
 	.dinnerlist > ul > li {
-		width: 56% !important;
-		margin: 10px 88px !important;
+		width: 45% !important;
+		margin: 10px 8px !important;
+	}
+
+	.dinnerlist .dparams ul {
+		width: 169px;
 	}
 
 	.watchlisteditsubmit{

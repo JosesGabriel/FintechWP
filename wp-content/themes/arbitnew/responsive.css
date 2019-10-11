@@ -706,7 +706,11 @@
 	}
 
 	.groupinput.midd input {
-		width: 133px;
+		width: 133px !important;
+	}
+
+	.editmenow {
+		margin: 0px 0 0px 80px;
 	}
 
 	.dinnerlist .dparams ul {

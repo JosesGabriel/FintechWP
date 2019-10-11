@@ -550,7 +550,7 @@ span.promter_tostocks:before {
     -o-transition: all 2s linear;
 }
 .popname ul li:hover {
-    color: #eee53e;
+    background: #faea3c !important;
     transform: scale(1.1);
 }
 .center-dashboard-part {

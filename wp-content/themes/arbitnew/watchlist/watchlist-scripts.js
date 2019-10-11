@@ -145,13 +145,13 @@ $.ajax({
     });
 
     jQuery('#canceladd').click(function(e){
-        //e.preventDefault();
+        e.preventDefault();
         jQuery(".dtabcontent > div").removeClass('active').hide('slow');
         jQuery(".dtabcontent .watchtab").addClass('active').show('slow');
     });
 
     jQuery('#myDropdown').click(function(e){
-                //e.preventDefault();
+                e.preventDefault();
 
                 var dtyped = jQuery(this).val();
 
@@ -172,7 +172,7 @@ $.ajax({
 
 
     jQuery( "#myDropdown" ).keyup(function(e) {
-        //e.preventDefault();
+        e.preventDefault();
 
         var dtyped = jQuery(this).val();
 
@@ -187,7 +187,7 @@ $.ajax({
     });
 
     jQuery(document).on('click','.ddropbase a',function(e){
-        //e.preventDefault();
+        e.preventDefault();
         var dstock = jQuery(this).attr('data-dstock');
 
         jQuery('#myDropdown').val(dstock);
@@ -199,7 +199,7 @@ $.ajax({
     });
 
      jQuery('#submitmenow').click(function(e){
-              //e.preventDefault();
+              e.preventDefault();
               jQuery("#add-watchlist-param").submit();
               var isstock = jQuery(this).parents('#add-watchlist-param').find("#dstockname").val();
              //var countli = jQuery(".listofinfo li").length;

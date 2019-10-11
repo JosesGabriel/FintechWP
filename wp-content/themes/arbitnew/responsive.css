@@ -190,8 +190,16 @@
 	}
 
 	.dinnerlist > ul > li {
-		width: 56% !important;
-		margin: 10px 88px !important;
+		width: 45% !important;
+		margin: 10px 8px !important;
+	}
+
+	.dinnerlist .dparams ul {
+		width: 169px !important;
+	}
+
+	.dplusbutton .dplsicon {
+		margin: 5px 42px !important;
 	}
 
 	.watchlisteditsubmit{
@@ -690,9 +698,12 @@
 		margin: -325px 45px !important;
 	}
 
-	.dinnerlist > ul > li {
-		width: 64% !important;
-		margin: 10px 70px !important;
+	.dinnerlist .dparams ul {
+    	width: 148px !important;
+	}
+
+	.dplusbutton .dplsicon {
+    	margin: 5px 29px !important;
 	}
 
 	.um-activity-bodyinner-txt span.post-meta {

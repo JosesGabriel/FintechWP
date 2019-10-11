@@ -200,9 +200,10 @@
 	}
 
 	.dinnerlist > ul > li {
+		padding: 5px 18px 9px 18px !important;
 		width: 45% !important;
 		margin: 10px 8px !important;
-		height: 226px !important;
+		height: 212px !important;
 	}
 
 	.dinnerlist .dparams ul {

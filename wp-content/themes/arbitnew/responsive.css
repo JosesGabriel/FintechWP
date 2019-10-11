@@ -699,11 +699,16 @@
 	}
 
 	.dinnerlist .dparams ul {
-    	width: 148px !important;
+    	width: 140px !important;
 	}
 
 	.dplusbutton .dplsicon {
     	margin: 5px 29px !important;
+	}
+
+	.wlttlstockvals {
+		padding-left: 5px;
+    	padding-right: 5px;
 	}
 
 	.um-activity-bodyinner-txt span.post-meta {

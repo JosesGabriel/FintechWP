@@ -194,12 +194,12 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
 
-        $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
-        $totalprofit = 0;
-        foreach ($gettradelogs as $key => $value) {
-            $profit = $this->getprofits($value);
-            $cashme += $profit;
-        }
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // $totalprofit = 0;
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $cashme += $profit;
+        // }
 
         
         $allocations[$counter]['value'] = $cashme;
@@ -455,12 +455,12 @@ class JournalAPI extends WP_REST_Controller
             }
         }
 
-        $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
-        $totalprofit = 0;
-        foreach ($gettradelogs as $key => $value) {
-            $profit = $this->getprofits($value);
-            $equity += $profit;
-        }
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // $totalprofit = 0;
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $equity += $profit;
+        // }
 
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
@@ -615,11 +615,11 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
 
-        $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
-        foreach ($gettradelogs as $key => $value) {
-            $profit = $this->getprofits($value);
-            $cashme += $profit;
-        }
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $cashme += $profit;
+        // }
 
         return $this->respond(true, ['data' => $cashme], 200);
     }

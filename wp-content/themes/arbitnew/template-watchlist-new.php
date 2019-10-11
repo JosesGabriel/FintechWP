@@ -188,7 +188,7 @@ if(isset($_GET['addcp'])){
                                                                     <!--<div class="dpaste">
                                                                         <ul class="listofinfo"></ul>
                                                                     </div>-->
-                                                                    <div class="submitform" style="margin-right: -125px;">
+                                                                    <div class="submitform watchlisteditsubmit" style="margin-right: -125px;">
                                                                         <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 30px; height: 30px; display: none; float: right; margin-right: 14px; margin-left: 23px;">
                                                                         <input type="hidden" name="toadddate" value="<?php echo date('m/d/Y h:i:s a', time()); ?>">
                                                                         <input type="hidden" name="isticked" value="<?php echo time(); ?>">

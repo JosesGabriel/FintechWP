@@ -36,7 +36,7 @@
 	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
 	</script>
 	<?php endif ?>
-
+	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta property="og:title" content="Arbitrage | Stock Trading Platform" />

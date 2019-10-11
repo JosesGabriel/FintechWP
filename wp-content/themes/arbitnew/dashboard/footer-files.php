@@ -304,6 +304,9 @@
     $('.um-activity-textarea').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();
     });
+    $('.popname ul li').on('click', function (e) {
+        $('.promter_tostocks').hide();
+    });
 
 })(jQuery)
 </script>

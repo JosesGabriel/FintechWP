@@ -137,7 +137,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 30%;
+		width: 300px !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}
@@ -167,7 +167,7 @@
 		top: -39px !important;
 		padding: 15px 0px 0 8px !important;
 		background-color: rgb(13, 31, 51) !important;
-		width: 50% !important;
+		width: 28% !important;
 		max-width: 512px !important;
 		height: auto !important;
 	}
@@ -266,7 +266,7 @@
 		z-index: 2147483646;
 		top: 0 !important;
 		left: -100%;
-		width: 85%;
+		width: 85% !important;
 		background-color: #0d1f33;
 		bottom: 0;
 	}

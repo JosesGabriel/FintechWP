@@ -73,6 +73,7 @@ if(isset($_GET['addcp'])){
     <div class="inner-placeholder">
         <div class="inner-main-content">
             <div class="left-dashboard-part">
+                <div class="swipeleft-area-l"></div>
                 <div class="dashboard-sidebar-left">
                     <div class="dashboard-sidebar-left-inner">
                         <?php include_once "parts/sidebar-profile.php";?>
@@ -213,6 +214,8 @@ if(isset($_GET['addcp'])){
             </div>
 
             <div class="right-dashboard-part">
+                <div class="swiperight-area-r"></div>
+                <div class="swiperight-area-r2"></div>
                 <div class="right-dashboard-part-inner">
                       <?php include_once "watchlist/sidebar-viewedstocks.php";?>
                       <?php include_once "watchlist/sidebar-topgainerslosers.php";?>

@@ -184,6 +184,7 @@
 @media only screen and (max-width: 767px){
 	body {
 		overflow-x: hidden;
+		overflow: auto !important;
 	}
 
 	.logo-image a {

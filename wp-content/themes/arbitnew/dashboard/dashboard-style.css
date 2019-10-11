@@ -515,7 +515,7 @@ a:hover {
 span.promter_tostocks {
     position: absolute;
     color: #fff;
-    background: #4caf50;
+    background: #ffc107;
     padding: 10px 15px;
     border-radius: 6px;
     top: 100px;
@@ -534,7 +534,7 @@ span.promter_tostocks:before {
     position: absolute;
     pointer-events: none;
     border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #4caf50;
+    border-bottom-color: #ffc107;
     border-width: 8px;
     margin-left: -36px;
 }

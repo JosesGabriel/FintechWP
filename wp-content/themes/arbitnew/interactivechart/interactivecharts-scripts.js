@@ -363,10 +363,9 @@ $(window).bind("resize", function () {
 
     $(".closesidebar").hide();
     
-    $(".toggleButton-13QgefpG-.collapsed-2trH0gCi-").on('click', function(){
-        $(".toggleButton-13QgefpG-.collapsed-2trH0gCi-").addClass('hide_seek');
+    $("div#tv_chart_container:before").on('toggle', function(){
+        $("div#tv_chart_container:before").css({"left" : "0 !important", "width" : "100% !important"});
     });
-
     }
 }).trigger("resize");
     

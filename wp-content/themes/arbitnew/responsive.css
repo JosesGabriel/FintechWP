@@ -857,8 +857,21 @@
 	}
 
 	.dinnerlist > ul > li {
-		width: 75% !important;
-		margin: 10px 42px !important;
+		width: 46% !important;
+		margin: 10px 5px !important;
+	}
+
+	.dinnerlist .dparams ul {
+    	width: 130px !important;
+	}
+
+	.dplusbutton .dplsicon {
+    	margin: 5px 19px !important;
+	}
+
+	.wlttlstockvals {
+		padding-left: 0px;
+    	padding-right: 0px;
 	}
 
 	.sidewatchlist .to-watch-data .dbox-cont {

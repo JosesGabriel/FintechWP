@@ -217,14 +217,18 @@ function getjurfees($funmarketval, $funtype)
 		$sellyear = date('Y', strtotime($_POST['selldate']));
 		$selldayname = date('l', strtotime($_POST['selldate']));
 
-		$toparsesell = parse_str($_POST['inpt_data_sellprice']);
+		$toparsesell = $_POST['inpt_data_sellprice'];
 		$sellprice = rtrim($toparsesell, ',');
 		$sellqty = rtrim($_POST['inpt_data_qty'], ',');
 
 		$pzemos = "";
 		$pzplans = "";
 		$pzstrats = "";
-		$pznotes = "";
+        $pznotes = "";
+
+        print_r($_POST);
+        
+        
 
 		if(isset($_POST['formsource']) && $_POST['formsource'] == "fromchart"){
 			$buyyinginfo = unserialize(stripslashes($_POST['dtradelogs']));
@@ -233,11 +237,11 @@ function getjurfees($funmarketval, $funtype)
 			$pzstrats = $buyyinginfo['data'][0]['strategy'];;
 			$pznotes = $buyyinginfo['data'][0]['tradingnotes'];;
 		} else {
-			$buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
-			$pzemos = $buyyinginfo[0]->emotion;
-			$pzplans = $buyyinginfo[0]->tradeplan;
-			$pzstrats = $buyyinginfo[0]->strategy;
-			$pznotes = $buyyinginfo[0]->tradingnotes;
+            $buyyinginfo = json_decode(stripslashes($_POST['dtradelogs']));
+			$pzemos = $buyyinginfo->emotion;
+			$pzplans = $buyyinginfo->tradeplan;
+			$pzstrats = $buyyinginfo->strategy;
+            $pznotes = $buyyinginfo->tradingnotes;
 		}
         $dstocktraded['totalstock'] = $dstocktraded['totalstock'] - $sellqty;
         if ($dstocktraded['totalstock'] <= 0) {

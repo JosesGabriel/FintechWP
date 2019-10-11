@@ -209,30 +209,6 @@
                                             <ul class="listoftopstocks" style="overflow: hidden;border-radius: 5px;">
                                                 <div class="topstocks"></div>
                                                 <div class="bottomstocks"></div>
-                                                <?php
-
-                                                foreach ($winningstocks as $key => $value) {
-                                                    $dinss = '<li style="background-color: '.($key == 0 ? '#0d785a' : ($key == 1 ? '#06af68' : ($key == 2 ? '#00e676' : ($key >= 3 ? '' : '#00e676')))).';display:'.($key >= 3 ? 'none' : '').';color: #b1e8ce;border: none;">';
-                                                    $dinss .= '<div class="width60">'. $value['stocks'] .'</div>';
-                                                    $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
-                                                    $dinss .= '</li>';
-                                                    echo $dinss;
-                                                    if($key == 3){
-                                                        break;
-                                                    }
-                                                }
-
-                                                foreach ($loosingstocks as $key => $value) {
-                                                    $dinss = '<li style="background-color: '.($key == 0 ? '#b91e45' : ($key == 1 ? '#732546' : ($key == 2 ? '#442946' : ($key >= 3 ? '' : '#b91e45')))).';display:'.($key >= 3 ? 'none' : '').';color: #132941;border: none;">';
-                                                    $dinss .= '<div class="width60">'.$value['stocks'].'</div>';
-                                                    $dinss .= '<div class="width35">&#8369; '.number_format($value['profit'], 2, '.', ',').'</div>';
-                                                    $dinss .= '</li>';
-                                                    echo $dinss;
-                                                    if($key == 3){
-                                                        break;
-                                                    }
-                                                }
-                                                    ?>
                                             </ul>
                                         </div>
                                     </div>

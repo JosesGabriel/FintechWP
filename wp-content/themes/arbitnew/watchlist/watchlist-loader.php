@@ -16,17 +16,20 @@
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
                         if(svalue.chartdata.c[ckey] > ischange){
-                            ischange = svalue.chartdata.c[ckey];
+                        ischange = svalue.chartdata.c[ckey];
                             changetext = 'up';
+                        } else if(svalue.chartdata.c[ckey] == ischange) {
+                            ischange = svalue.chartdata.c[ckey];
+                            changetext = 'equal';
                         } else {
                             ischange = svalue.chartdata.c[ckey];
                             changetext = 'down';
                         }
-                        candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
+                        let addslog = (parseFloat(ischange)).toFixed(2);
+                        candles.push({"category": ckey,"column-1": addslog});
+
                     });
-                    
-                    let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
+                    let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",
@@ -41,9 +44,14 @@
                         "categoryAxis": {
                             "gridPosition": "start", "axisAlpha": 0, "axisColor": "#FFFFFF", "gridAlpha": 0.1, "gridThickness": 0, "gridColor": "#FFFFFF", "labelsEnabled": false
                         },
+                        "chartCursor": {
+                            "enabled": true,
+                            "cursorColor": dcolor,
+                            "graphBulletSize": 2,
+                        },
                         "trendLines":[],
                         "graphs":[ {
-                            "balloonColor": "undefined", "balloonText": "[[category]]: [[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 3, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
+                            "balloonColor": "undefined", "balloonText": "[[value]]", "bullet": "round", "bulletAlpha": 0, "bulletBorderColor": "undefined", "bulletBorderThickness": 6, "bulletColor": "#ff1744", "bulletSize": 0, "columnWidth": 0, "fillAlphas": 0.05, "fillColors": dcolor, "gapPeriod": 3, "id": "AmGraph-1", "legendAlpha": 0, "legendColor": "undefined", "lineColor": dcolor, "lineThickness": 1, "minBulletSize": 18, "minDistance": 0, "negativeBase": 2, "negativeFillAlphas": 0, "negativeLineAlpha": 0, "title": "Expense Report", "topRadius": 0, "type": "smoothedLine", "valueField": "column-1", "visibleInLegend": !1
                         }],
                         "guides":[],
                         "valueAxes":[ {
@@ -53,7 +61,13 @@
                             "labelsEnabled": false
                         }],
                         "allLabels":[],
-                        "balloon": {},
+                        "balloon": {
+                            "borderAlpha": 0,
+                            "borderColor": "",
+                            "borderThickness": 0,
+                            "fillAlpha": 0,
+                            "color": "#ffffff"
+                        },
                         "titles":[],
                         "dataProvider": candles
                     } );
@@ -77,19 +91,18 @@
 
                     let watchtoadd = '';
                     let stockchange = '';
-                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
-
+                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : ( value.change < 0 ? '#eb4d5c' : '#ffdf40'))+';">';
 
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';
                     watchtoadd += '<div class="row">';
                     watchtoadd += '<div class="wlttlstockvals">';
-                    watchtoadd += '<div class="stocknn">'+value.stockname+'</div>';
+                    watchtoadd += '<div class="stocknn"><a style="color: #fff;" href="/chart/'+value.stockname+'" target="_blank">'+value.stockname+'</a></div>';
                     watchtoadd += '<div class="s_dropdown" style="display: inline-block;">';
-                    watchtoadd += '<select class="editwatchlist" name="editstock" id="" data-space="'+value.stockname+'"><option value="select">...</option><option value="delete">Delete</option>';
+                    watchtoadd += '<select class="editwatchlist" name="editstock" id="" data-space="'+value.stockname+'"><option value="select"></option><option value="delete">Delete</option>';
                     watchtoadd += '<option value="edit" data-stock="'+value.stockname+'" data-entry="'+value.dconnumber_entry_price+'" data-tp="'+value.dconnumber_take_profit_point+'" data-sl="'+value.dconnumber_stop_loss_point+'">Edit</option></select>';
                     watchtoadd += '</div>';
                     watchtoadd += '<div class="dpricechange">';
-                    watchtoadd += ' <div class="curprice_'+value.stockname+'">₱'+value.last+'</div>';
+                    watchtoadd += ' <div class="curprice_'+value.stockname+' last_price">₱'+value.last+'</div>';
                     watchtoadd += stockchange + (value.change).toFixed(2)+'%</div>';
                     watchtoadd += '</div>';
                     watchtoadd += '</div>';

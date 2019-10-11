@@ -1193,7 +1193,7 @@ h2.watchtitle {
 
     .center-dashboard-part {
         float: left;
-        width: 55% !important;
+        width: 55%;
         margin-top: 10px;
     }
 
@@ -1332,6 +1332,17 @@ h2.watchtitle {
 }
 .watchlist--buttons a {
     color: white;
+}
+
+.s_dropdown:after {
+    position: absolute;
+    content: "...";
+    font-size: 20px;
+    margin-left: 5px;
+    padding-bottom: 0px;
+    top: 4px;
+    height: 1px;
+    z-index: 0;
 }
 
 /*=============================sidebar-topgainers/losers=====================//*/

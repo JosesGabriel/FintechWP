@@ -186,17 +186,32 @@
 		overflow-x: hidden;
 		overflow: auto !important;
 	}
+	.arb_bar.fullbar{
+		margin-top: -4px !important;
+	}
+
+	.dvalue span.ontoleft, .dvalue span.ontoright {
+		font-size: 11px !important;
+	}
+
+	.dinnerlist .dparams ul li > div.dcondition {
+		font-size: 9px !important;
+	}
 
 	.stocknn {
 		font-size: 15px !important;
 	}
 
 	.dpricechange {
-		font-size: 12px;
+		font-size: 12px !important;
 	}
 
 	.last_price {
 		font-size: 15px !important;
+	}
+
+	.dinnerlist .dparams {
+		margin-top: -3px !important;
 	}
 
 	.logo-image a {
@@ -207,7 +222,7 @@
 		padding: 5px 18px 9px 18px !important;
 		width: 45% !important;
 		margin: 10px 8px !important;
-		height: 212px !important;
+		height: 200px !important;
 	}
 
 	.s_dropdown:after {

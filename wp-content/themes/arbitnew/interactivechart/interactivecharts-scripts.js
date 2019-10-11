@@ -363,9 +363,9 @@ $(window).bind("resize", function () {
 
     $(".closesidebar").hide();
     
-    $("div#tv_chart_container:before").on('toggle', function(){
-        $("div#tv_chart_container:before").css({"left" : "0 !important", "width" : "100% !important"});
-    });
+    // $("div#tv_chart_container:before").on('toggle', function(){
+    //     $("div#tv_chart_container:before").css({"left" : "0 !important", "width" : "100% !important"});
+    // });
     }
 }).trigger("resize");
     

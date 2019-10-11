@@ -762,7 +762,7 @@ tr.ng-scope:active {
         position: relative;
         width: 114.5% !important;
     } */
-    div#tv_chart_container:before {
+    /* div#tv_chart_container:before {
         content: ">";
         position: absolute;
         font-size: 11px;
@@ -772,7 +772,7 @@ tr.ng-scope:active {
         color: #d8d8d8;
         background: #131722;
         border-radius: 10px;
-    }
+    } */
     .width-250.mobileinithide {
         width: 100% !important;
         border-left: 5px solid #34495e;
@@ -806,8 +806,8 @@ tr.ng-scope:active {
         border-left: none !important;
         padding: 0;
     }
-    .arb_sell {width: 49%; margin-bottom:5px;border-radius: 0 50px 50px 0;}
-    .arb_buy {width: 49%; margin-bottom:5px;border-radius: 50px 0 0 50px;}
+    .arb_sell {width: 49%; margin-bottom:5px;border-radius: 50px;}
+    .arb_buy {width: 49%; margin-bottom:5px;border-radius: 50px;}
     .vertical-box-column.mobilefull {
         width: 100%;
         display: block;

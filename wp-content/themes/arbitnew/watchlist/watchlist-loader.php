@@ -16,19 +16,20 @@
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
                         if(svalue.chartdata.c[ckey] > ischange){
-                            ischange = svalue.chartdata.c[ckey];
+                        ischange = svalue.chartdata.c[ckey];
                             changetext = 'up';
+                        } else if(svalue.chartdata.c[ckey] == ischange) {
+                            ischange = svalue.chartdata.c[ckey];
+                            changetext = 'equal';
                         } else {
                             ischange = svalue.chartdata.c[ckey];
                             changetext = 'down';
                         }
                         let addslog = (parseFloat(ischange)).toFixed(2);
                         candles.push({"category": ckey,"column-1": addslog});
-                        //candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        //console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
+
                     });
-                    
-                    let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
+                    let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",
@@ -90,11 +91,7 @@
 
                     let watchtoadd = '';
                     let stockchange = '';
-                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : '#eb4d5c')+';">';
-
-                    if (value.change == 0.00) {
-                        stockchange = '<div class="curchange_'+value.stockname+'" style="color:#ffdf40;">';   
-                    }
+                    stockchange = '<div class="curchange_'+value.stockname+'" style="color:'+(value.change > 0 ? '#53b987' : ( value.change < 0 ? '#eb4d5c' : '#ffdf40'))+';">';
 
                     watchtoadd += '<li class="watchonlist" data-dstock="'+value.stockname+'" data-dhisto="null">';
                     watchtoadd += '<div class="row">';

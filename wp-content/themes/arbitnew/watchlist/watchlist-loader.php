@@ -15,13 +15,6 @@
                     let ischange = 0;
                     let changetext = "";
                     $.each(svalue.chartdata.t, function(ckey, cvalue){
-                        /*if(svalue.chartdata.c[ckey] > ischange){
-                            ischange = svalue.chartdata.c[ckey];
-                            changetext = 'up';
-                        } else {
-                            ischange = svalue.chartdata.c[ckey];
-                            changetext = 'down';
-                        }*/
                         if(svalue.chartdata.c[ckey] > ischange){
                         ischange = svalue.chartdata.c[ckey];
                             changetext = 'up';
@@ -34,11 +27,9 @@
                         }
                         let addslog = (parseFloat(ischange)).toFixed(2);
                         candles.push({"category": ckey,"column-1": addslog});
-                        //candles.push({"category": ckey,"column-1": svalue.chartdata.c[ckey]});
-                        //console.log(stock+" "+svalue.chartdata.c[ckey]+" "+changetext);
+
                     });
                     let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
-                    //let dcolor = (changetext == "up" ? '#53b987' : '#eb4d5c');
                     AmCharts.makeChart( "chartdiv"+stock, {
                         "type":"serial",
                         "categoryField":"category",

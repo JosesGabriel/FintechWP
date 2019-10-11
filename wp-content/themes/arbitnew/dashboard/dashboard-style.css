@@ -512,6 +512,32 @@ a:hover {
 
 
 /*------ center-part-dashboard ------*/
+span.promter_tostocks {
+    position: absolute;
+    color: #fff;
+    background: #4caf50;
+    padding: 10px 15px;
+    border-radius: 6px;
+    top: 100px;
+    z-index: 99999;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.19);
+}
+span.promter_tostocks:before {
+    bottom: 100%;
+    left: 53px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #4caf50;
+    border-width: 8px;
+    margin-left: -36px;
+}
 .popname ul li {
     display: inline-block;
     margin: 1px;

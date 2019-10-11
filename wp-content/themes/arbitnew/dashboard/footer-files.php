@@ -294,6 +294,11 @@
             window.location.href = $this.data('notification_uri')
         }
     });
+    $('.um-activity-textarea').delay(5000).append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>').fadeIn(3000);
+    var qoute = $('.promter_tostocks');
+    setInterval(function(){
+        $(qoute).fadeOut(3000);
+    }, 6000);
 
 })(jQuery)
 </script>

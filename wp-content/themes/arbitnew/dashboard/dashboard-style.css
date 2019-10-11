@@ -544,6 +544,14 @@ span.promter_tostocks:before {
     padding: 0 7px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 2s linear;
+    -moz-transition: all 2s linear;
+    -webkit-transition: all 2s linear;
+    -o-transition: all 2s linear;
+}
+.popname ul li:hover {
+    color: #eee53e;
+    transform: scale(1.1);
 }
 .center-dashboard-part {
     float: left;

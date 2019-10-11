@@ -189,6 +189,10 @@
 		pointer-events: none;
 	}
 
+	.dinnerlist > ul > li {
+		margin: 10px 88px;
+	}
+
 	.swiperight-area-r2{
 		display: block;
 	}

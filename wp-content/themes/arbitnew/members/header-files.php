@@ -30,6 +30,7 @@
 	<meta name="msapplication-wide310x150logo" content="<?php echo get_home_url(); ?>/wp-content/themes/favicon/mstile-310x150.png" />
 	<meta name="msapplication-square310x310logo" content="<?php echo get_home_url(); ?>/wp-content/themes/favicon/mstile-310x310.png" />
 	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
     <meta charset="UTF-8" />
     <meta property="og:title" content="Arbitrage | Stock Trading Platform" />
     <meta property="og:description" content="Arbitrage is a free stock trading platform in the Philippines. Effectively trade the Philippine Equity Market with our realtime market data & multiple stock trading tools.">

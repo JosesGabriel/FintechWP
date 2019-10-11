@@ -63,6 +63,7 @@ $user = wp_get_current_user();
 	<meta name="msapplication-wide310x150logo" content="<?php echo get_home_url(); ?>/wp-content/themes/favicon/mstile-310x150.png" />
 	<meta name="msapplication-square310x310logo" content="<?php echo get_home_url(); ?>/wp-content/themes/favicon/mstile-310x310.png" />
 	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
     <meta property="og:title" content="Arbitrage | Stock Trading Platform" />

@@ -191,7 +191,9 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
                     <?php //} ?>
-                    
+					<label for="rememberme" class="inline um-field-checkbox-option">
+						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Keep me signed in', 'ultimate-member' ); ?>
+					</label>
                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     <?php #if(isset($_GET['active'])){ ?>
 						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>

@@ -107,27 +107,32 @@ $user = wp_get_current_user();
     </style>
 	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
-	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
+	<!-- <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
-		var remember = Cookies.get('sd_remeber');
-		if (remember == 'true') {
-			var email = Cookies.get('username-10');
-			var password = Cookies.get('user_password-10');
-			// autofill the fields
-			jQuery('#username-10').val(email);
-			jQuery('#user_password-10').val(password);
-		}
+		var testObject = { 'one': 1, 'two': 2, 'three': 3 };
 
+		// Put the object into storage
+		// var remember = Cookies.get('sd_remeber');
+		// if (remember == 'true') {
+			// 	var email = Cookies.get('username-10');
+			// 	var password = Cookies.get('user_password-10');
+			// 	// autofill the fields
+			// 	jQuery('#username-10').val(email);
+			// 	jQuery('#user_password-10').val(password);
+			// }
+			
 		$("#um-submit-btn").submit(function() {
 			if ($('#sd_remeber').is(':checked')) {
 				var email = $('#username-10').val();
 				var password = $('#user_password-10').val();
-
+				
 				// set cookies to expire in 14 days
 				Cookies.get('username-10', email, { expires: 14 });
 				Cookies.get('user_password-10', password, { expires: 14 });
-				Cookies.get('sd_remeber', true, { expires: 14 });                
+				Cookies.get('sd_remeber', true, { expires: 14 });
+
+				localStorage.setItem('testObject', JSON.stringify(testObject));
 			} else {
 				// reset cookies
 				Cookies.get('username-10', null);
@@ -136,7 +141,7 @@ $user = wp_get_current_user();
 			}
 		});
 	});
-	</script>
+	</script> -->
 	<script language="javascript">
 	
 		jQuery(window).on('load', function(){

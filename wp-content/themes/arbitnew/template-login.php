@@ -171,7 +171,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
 					<?php echo do_shortcode('[ultimatemember form_id="10"]');?>
 					<label for="rememberme" class="inline um-field-checkbox-option">
-						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Keep me signed in', 'ultimate-member' ); ?>
+						<input name="rememberme" type="checkbox" id="rememberme" value="forever" style="display:block !important;"/> <?php _e( 'Keep me signed in', 'ultimate-member' ); ?>
 					</label>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     

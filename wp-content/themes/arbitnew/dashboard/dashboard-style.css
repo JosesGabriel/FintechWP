@@ -1683,11 +1683,37 @@ ul.footmore .ddot {
   background: transparent;
   z-index: 1;
 }
+
+.swipecenterl{
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipecenterr{
+  position: absolute;
+  width: 40px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+}
+
+
 .close-leftsidebar {
     position: absolute;
     right: 10px;
     top: -3px;
     display: none;
+}
+
+.drop-over-post {
+    z-index: 10;
 }
 /*------ right-sidebar ------*/
 

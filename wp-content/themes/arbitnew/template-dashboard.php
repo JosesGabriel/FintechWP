@@ -17,6 +17,8 @@ require("parts/sidebar-avarageprice.php");
 		<div class="inner-main-content">
 		<?php require("parts/global-sidebar.php"); ?>
 			<div class="center-dashboard-part">
+				<div class="swipecenterl"></div>
+				<div class="swipecenterr"></div>
 				<div class="swipecenter-area-r"></div>
 				<div class="inner-center-dashboard">
 					<div class="add-post">

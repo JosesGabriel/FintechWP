@@ -553,6 +553,37 @@
           }
   	});
 
+  	 $(".swipecenterl").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+
+              if (phase=="move" && direction =="left") {
+              		jQuery('.right-dashboard-part').css("display","block");
+				   	jQuery('.right-dashboard-part').css("right","0%");
+				   	$('.swipecenter-area-r').css('display','block');
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+					$('#right-slider-icon').attr('width','15px');
+					$('#right-menu').removeClass();
+                   
+                   return false;
+              }
+              
+          }
+  	});
+  	$(".swipecenterr").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+
+              if (phase=="move" && direction =="right") {
+              		 $('.left-dashboard-part').css('left','0');
+                   	 $('.swipecenter-area-r').css('display','block');
+                   	 $('.right-image').find('.close-leftsidebar').css('display','block');  
+                   	 return false;
+              }
+              
+          }
+  	});
+
 
     jQuery('.right-slider-menu').click(function(){
 

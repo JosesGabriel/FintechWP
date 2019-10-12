@@ -237,7 +237,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><span class='for_remember'>Remember me | </span><span class='for_pass'>Forgot your password?</span></div>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><input type='checkbox' name='sd_remeber' id='sd_remeber'><span class='for_remember'>Remember me | </span><span class='for_pass'>Forgot your password?</span></div>");
 	
 		
 		jQuery(".hidepassreset").click(function(){

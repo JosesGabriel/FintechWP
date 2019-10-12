@@ -102,7 +102,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		transition: all 0.5s ease;
 	}
 	span.for_pass {
-		display: block;
+		display: inline;
 		padding: 0px 0 20px;
 		font-size: 12px;
 		text-align: center;
@@ -112,6 +112,24 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	span.for_pass:hover {
 		text-decoration: none;
 		color: #d8d8d8;
+	}
+	span.for_remember {
+		display: inline;
+		padding: 0px 0 20px;
+		font-size: 12px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+	}
+	span.for_remember:hover {
+		text-decoration: none;
+		color: #d8d8d8;
+	}
+	.tochecked_cont {
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		text-align: center;
 	}
 </style>
 <div class="ondashboardpage_login">
@@ -219,7 +237,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<span class='for_pass'>Forgot your password?</span>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><span class='for_remember'>Remember me | </span><span class='for_pass'>Forgot your password?</span></div>");
 	
 		
 		jQuery(".hidepassreset").click(function(){

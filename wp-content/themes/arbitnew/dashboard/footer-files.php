@@ -307,8 +307,7 @@
         $('.promter_tostocks').remove();
     });
     $('.um-activity-textarea').on('mouseleave', function (e) {
-        $('.promter_tostocks').fadeOut();
-        $('.promter_tostocks').remove();
+        $('.promter_tostocks').fadeOut(2000).remove();
     });
     $('.popname ul li').on('click', function (e) {
         $('.promter_tostocks').fadeOut();

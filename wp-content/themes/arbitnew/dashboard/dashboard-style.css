@@ -1640,6 +1640,18 @@ ul.footmore .ddot {
   z-index: 2;
 }
 
+.swipecenter-area-r {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background:#0000007a;
+  z-index: 5;
+  display: none;
+}
+
+
 .swiperight-area-r{
   position: absolute;
   width: 40px;

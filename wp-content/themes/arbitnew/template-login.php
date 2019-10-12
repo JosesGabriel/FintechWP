@@ -161,7 +161,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		</div>
 		<div class="error_message"><span class="label_pls"></span></div>
 		
-        <!-- <div class="login-form-wrapper">
+        <div class="login-form-wrapper">
             <div class="login-form" style="display: none;">
                 
                   <div class="forgotpass-wrapper">
@@ -185,7 +185,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 </div>
                 
             </div>
-        </div> -->
+        </div>
 					
       <div class="signup-form-wrapper">
           <div class="signup-form" style="display: none;">

@@ -169,7 +169,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                   </div>
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
-                    <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
+					<?php echo do_shortcode('[ultimatemember form_id="10"]');?>
+					<label for="rememberme" class="inline um-field-checkbox-option">
+						<input name="rememberme" type="checkbox" id="rememberme" value="forever" style="display:block !important;"/> <?php _e( 'Keep me signed in', 'ultimate-member' ); ?>
+					</label>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
 					<?php #if(isset($_GET['active'])){ ?>
@@ -191,7 +194,6 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
                     <?php //} ?>
-                    
                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     <?php #if(isset($_GET['active'])){ ?>
 						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
@@ -237,7 +239,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><span class='for_remember'>Remember me | </span><span class='for_pass'>Forgot your password?</span></div>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><input type='checkbox' name='sd_remeber' id='sd_remeber'><span class='for_remember'>Remember me | </span><span class='for_pass'>Forgot your password?</span></div>");
 	
 		
 		jQuery(".hidepassreset").click(function(){

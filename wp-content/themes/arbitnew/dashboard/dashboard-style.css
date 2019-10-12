@@ -518,7 +518,7 @@ span.promter_tostocks {
     background: #ffc107;
     padding: 10px 15px;
     border-radius: 6px;
-    top: 100px;
+    margin-top: -63px;
     z-index: 99999;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);

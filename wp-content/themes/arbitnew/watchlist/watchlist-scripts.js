@@ -223,6 +223,18 @@ $.ajax({
       $('.left-dashboard-part').css('left','-100%');
     });
 
+    $(".left-dashboard-part").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+              
+              if (phase=="move" && direction =="left") {
+                  $('.left-dashboard-part').css('left','-100%');
+                  $('.right-image').find('.close-leftsidebar').css('display','none');
+                   return false;
+              }
+          }
+    });
+
     $(".center-dashboard-part").swipe({
       swipeStatus:function(event, phase, direction, distance, duration, fingers)
           {
@@ -277,6 +289,19 @@ $.ajax({
           {         
               if (phase=="move" && direction =="right") {
                 jQuery('.right-dashboard-part').css("right","-110%");
+          $('#right-slider-icon').attr('width','20px');
+          $('#right-menu').addClass('right-slider-menu1');     
+                   return false;
+              }
+          }
+    });
+
+    $(".right-dashboard-part").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {         
+              if (phase=="move" && direction =="right") {
+                jQuery('.right-dashboard-part').css("right","-110%");
+          //$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
           $('#right-slider-icon').attr('width','20px');
           $('#right-menu').addClass('right-slider-menu1');     
                    return false;

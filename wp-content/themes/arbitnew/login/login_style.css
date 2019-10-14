@@ -312,6 +312,13 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
     top: -20px;
     left: -115px;
 }
+.forgetmenot label {
+    color: #fff;
+    font-weight: 400;
+}
+p.forgetmenot {
+    display: inline-block;
+}
 .um-login .um-col-alt .um-center {margin-top: -5px !important;}
 .um-login .um-col-alt .um-center:before{
 }

@@ -1653,7 +1653,7 @@ body .um-notification-live-feed {
     box-shadow: 0px 2px 3px 0px rgba(7, 13, 19, 0.52);
     max-width: 365px;
     overflow: visible;
-    right: 55px !important;
+    right: 55px;
     display: none;
 }
 .um-notification-live-feed-inner {
@@ -2791,4 +2791,38 @@ legend {
 }
 .dstatstrade ul li.stop3 {
     background-color: #00e676;
+}
+
+/*========responsive==========*/
+
+.swipeleft-area-l {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swipecenterl{
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipecenter-area-r {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background:#0000007a;
+  z-index: 5;
+  display: none;
 }

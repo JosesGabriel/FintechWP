@@ -285,8 +285,8 @@
 		overflow-y: scroll;
 	}
 	.header-dashboard-inner {
-		padding-left: 10px;
-		padding-right: 10px;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
 	}
 	.searchbar {
 		top: 7px;
@@ -414,6 +414,15 @@
 		float: right;
 		width: 41% !important;
 	}
+
+	.dstatstrade.showtradelogs {
+		width: 750px;
+	}
+
+	.dstatstrade.ledgerlist {
+		width: 750px;
+	}
+
 
 }
 /* Mobile Smaller */

@@ -1,4 +1,5 @@
 /*------ global-dashboard-css ------*/
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 html {
     background: #0d1f33 !important;
 }

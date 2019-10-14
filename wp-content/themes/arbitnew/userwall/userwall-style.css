@@ -794,6 +794,7 @@ ul.main-drops {
     display: inline-block;
     vertical-align: top;
     position:relative;
+    padding-left: 0px;
 }
 .right-header-inner .ontomitif,
 .right-header-inner .main-drop,

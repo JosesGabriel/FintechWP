@@ -3,6 +3,7 @@
 <head>
     <title><?php bloginfo('name'); ?></title>
 	<meta charset="UTF-8" />
+	<?php require ABSPATH .'/wp-content/themes/arbitnew/parts/header-google-code.php' ?>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-114x114.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-72x72.png" />
@@ -31,33 +32,6 @@
     <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-
-    <?php if (WP_PROD_ENV): ?>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-147416476-1');
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google Ads: 753053364 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-753053364"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'AW-753053364');
-	</script>
-
-	<!-- Event snippet for Traffic to Site conversion page -->
-	<script>
-	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
-	</script>
-	<?php endif ?>
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/wp-content/plugins/um-friends/assets/css/um-friends.css" rel="stylesheet">

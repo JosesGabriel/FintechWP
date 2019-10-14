@@ -17,7 +17,7 @@ $( document ).ready(function() {
 
     $.ajax({
         url: "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=PHEN",
-        type: 'GET',
+        type: 'post',
         dataType: 'json', // added data type
         success: function(res) {
             console.log(res);

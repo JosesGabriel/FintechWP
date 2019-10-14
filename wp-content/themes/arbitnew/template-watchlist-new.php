@@ -81,6 +81,7 @@ if(isset($_GET['addcp'])){
                 </div>
             </div>
                         <div class="center-dashboard-part">
+                <div class="swipecenter-area-r"></div>
                 <div class="inner-center-dashboard">
                     <div class="add-post">
                         <!--start content-->
@@ -211,6 +212,8 @@ if(isset($_GET['addcp'])){
                         <!--end content-->
                     </div>
                 </div>
+                <div class="swipecenterl"></div>
+                <div class="swipecenterr"></div>
             </div>
 
             <div class="right-dashboard-part">
@@ -267,7 +270,7 @@ if(isset($_GET['addcp'])){
                                     <div class="innerdeliver innerdeliver-editstock">
                                         <ul>
                                             <li><input id="webpop" type="checkbox" name="delivery_type[]" value="web-notif" checked><label id="webpop" class="label--margin condition-notif">Website Popup</label></li>
-                                            <li id="smscheckboxli"><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif"><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>
+                                            <!--<li id="smscheckboxli"><input id="smspop" type="checkbox" name="delivery_type[]" value="sms-notif"><label id="smspop" class="label--margin condition-notif">SMS Notification</label></li>-->
                                         </ul>
                                     </div>
                                 </div>

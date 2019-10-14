@@ -1334,6 +1334,17 @@ h2.watchtitle {
     color: white;
 }
 
+.s_dropdown:after {
+    position: absolute;
+    content: "...";
+    font-size: 20px;
+    margin-left: 5px;
+    padding-bottom: 0px;
+    top: 4px;
+    height: 1px;
+    z-index: 0;
+}
+
 /*=============================sidebar-topgainers/losers=====================//*/
 
 .top-stocks .to-content-part ul .even span {
@@ -1744,4 +1755,35 @@ body .um-notification-live-feed .um-notification-ajax .um-notification span.um-n
     text-align: center;
     line-height: 0;
     border-radius: 5px 0 0 5px;
+}
+
+.swipecenterl{
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipecenterr{
+  position: absolute;
+  width: 40px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+}
+
+.swipecenter-area-r {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background:#0000007a;
+  z-index: 5;
+  display: none;
 }

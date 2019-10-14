@@ -193,6 +193,15 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
             if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
+
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // $totalprofit = 0;
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $cashme += $profit;
+        // }
+
+        
         $allocations[$counter]['value'] = $cashme;
         $allocations[$counter]['stock'] = 'Cash';
         $allocations[$counter]['color'] = $aloccolors[$counter];
@@ -446,13 +455,12 @@ class JournalAPI extends WP_REST_Controller
             }
         }
 
-        // $curl = curl_init();
-        // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
-        
-        // curl_setopt($curl, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // $gerdqouteone = curl_exec($curl);
-        // curl_close($curl);
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // $totalprofit = 0;
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $equity += $profit;
+        // }
 
         $guzzle = new GuzzleRequest();
         $dataUrl = GetDataApiUrl();
@@ -606,6 +614,12 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
             if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
+
+        // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        // foreach ($gettradelogs as $key => $value) {
+        //     $profit = $this->getprofits($value);
+        //     $cashme += $profit;
+        // }
 
         return $this->respond(true, ['data' => $cashme], 200);
     }

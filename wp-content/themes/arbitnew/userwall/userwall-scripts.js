@@ -26,6 +26,11 @@
                 $('.profile_peers_count').html(html)
             }
         })
+
+        if (window.matchMedia('(max-width: 767px)').matches) {
+            $('.right-header-inner').css('margin-right','25px');
+        }  
+
     });
 
 })(jQuery);

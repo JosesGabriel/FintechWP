@@ -355,6 +355,19 @@ $(document).ready(function(){
 
     });
 });
+$(window).bind("resize", function () {
+    viewHeight = $(window).height();
+    viewWidth = $(window).width();
+    if (viewWidth < 990) {
+    $(".mobilefull").css({"height": (viewHeight - 295)});
+
+    $(".closesidebar").hide();
+    
+    // $("div#tv_chart_container:before").on('toggle', function(){
+    //     $("div#tv_chart_container:before").css({"left" : "0 !important", "width" : "100% !important"});
+    // });
+    }
+}).trigger("resize");
     
 function testDecimals(currentVal) {
     var count;

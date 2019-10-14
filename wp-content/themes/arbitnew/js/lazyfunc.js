@@ -39,7 +39,7 @@ $( document ).ready(function() {
                 toappend += '<p class="'+statuscolor+'">'+ statuscaret +' '+ value.last+' </p><p class="'+statuscolor+'"> ('+value.change+'%)</p></a>';
                 toappend += '</li>';
 
-                if(index < 6){
+                if(index < 10){
                     $("ul.trendingme > .trend-content-hidden").before(toappend);
                 } else {
                     $("ul.trendingme > .trend-content-hidden").append(toappend);

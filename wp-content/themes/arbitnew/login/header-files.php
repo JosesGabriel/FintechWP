@@ -87,7 +87,7 @@ $user = wp_get_current_user();
 	jQuery(document).ready(function() {
 		$('.prtnr_login').click(function() {
 			var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-			if (remember == true) {
+			if (remember == true && remember = "on") {
 				var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
 				var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
 				// autofill the fields

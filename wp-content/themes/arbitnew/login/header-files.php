@@ -85,7 +85,7 @@ $user = wp_get_current_user();
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
-		// $('.prtnr_login').click(function() {
+		$('.prtnr_login').click(function() {
 			var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
 			var rememberone = remember[2].length;
 			if (rememberone > 0) {
@@ -98,10 +98,11 @@ $user = wp_get_current_user();
 				$('#user_password-10').val(password_put);
 				$('#sd_remeber').prop('checked', true);
 			} else {
-				$('#username-10').val(username);
-				$('#user_password-10').val(password);
+				$('#username-10').val(username_put);
+				$('#user_password-10').val(password_put);
+				$('#sd_remeber').prop('checked', false);
 			}
-		// });
+		});
 
 		$('#um-submit-btn').click(function() {
 			if ($('#sd_remeber').is(':checked')) {

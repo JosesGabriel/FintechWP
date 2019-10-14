@@ -350,7 +350,8 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 }
             })
             e.preventDefault();
-        });;
+		});
 </script>
+
 
 <?php require("login/footer-files.php"); ?>

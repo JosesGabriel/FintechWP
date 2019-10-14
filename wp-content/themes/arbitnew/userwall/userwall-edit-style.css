@@ -811,7 +811,7 @@ span.um-field-checkbox-option {
     background: none !important;
     text-transform: capitalize !important;
     width: 49%;
-    padding: 10px 15px !important;
+    padding: 10px 15px;
     font-size: 12px !important;
     /* margin: 0px 5px; */
 }

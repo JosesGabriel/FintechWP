@@ -85,11 +85,10 @@ $user = wp_get_current_user();
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
-		var remember = document.cookie;
-		if (remember == 'true') {
+		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
+		if (remember == 'on') {
 			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
 			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
-			// var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
 			console.log(username[2],password[2]);
 			// autofill the fields
 			jQuery('#username-10').val(username);

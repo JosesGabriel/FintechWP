@@ -1,4 +1,5 @@
 <?php
+    die('test');
 	/*
 	* Template Name: Stock Ticker
 	* Ticker page for All

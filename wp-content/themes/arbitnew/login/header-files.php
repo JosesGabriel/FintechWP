@@ -86,7 +86,7 @@ $user = wp_get_current_user();
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
 		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-		if (remember == 'on') {
+		if (remember == "on") {
 			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
 			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
 			console.log(username[2],password[2]);

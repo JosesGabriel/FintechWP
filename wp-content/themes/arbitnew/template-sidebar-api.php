@@ -112,7 +112,7 @@ function get_trendingstocks(){
         $maxitems = 20;
         $finaltopstocks = [];
         foreach ($drevdds as $fnskey => $fnsvalue) {
-          if ($fnskey + 1 > $maxitems) {
+          if ($fnskey + 3 > $maxitems) {
             break;
           }
           array_push($finaltopstocks, $fnsvalue);

@@ -109,7 +109,7 @@ function get_trendingstocks(){
         }
         usort($listofstocks, 'date_compare');
         $drevdds = array_reverse($listofstocks);
-        $maxitems = 10;
+        $maxitems = 20;
         $finaltopstocks = [];
         foreach ($drevdds as $fnskey => $fnsvalue) {
           if ($fnskey + 1 > $maxitems) {

@@ -82,36 +82,6 @@ $user = wp_get_current_user();
     </style>
 	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
-	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
-	<script type="text/javascript">
-	jQuery(document).ready(function() {
-		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-		if (remember = "on") {
-			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
-			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
-			// autofill the fields
-			jQuery('#username-10').val(username[2]);
-			jQuery('#user_password-10').val(password[2]);
-			jQuery("#sd_remeber").addClass('checked');
-		}
-
-		$('#um-submit-btn').click(function() {
-			if ($('#sd_remeber').is(':checked')) {
-				let email = $('#username-10').val();
-				let password = $('#user_password-10').val();
-				let remember = $('#sd_remeber').val();
-				document.cookie = "username-10=" + encodeURIComponent(email) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
-				document.cookie = "user_password-10=" + encodeURIComponent(password) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
-				document.cookie = "sd_remeber=" + encodeURIComponent(remember) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
-			} else {
-				// reset cookies
-				document.cookie = "username-10=" +"";
-				document.cookie = "user_password-10=" +"";
-				document.cookie = "sd_remeber=" +"";
-			}
-		});
-	});
-	</script>
 	<script language="javascript">
 	
 		jQuery(window).on('load', function(){

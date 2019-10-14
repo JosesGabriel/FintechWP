@@ -241,7 +241,6 @@ jQuery(document).ready(function(){
         type: 'POST',
         dataType: 'json', // added data type
         success: function(data) {
-            console.log(data);
             $.each(data.data, function(key, value){
                 $(".varcalc #stockname").append('<option value="'+value.last+'">'+value.symbol+'</option>');
             });

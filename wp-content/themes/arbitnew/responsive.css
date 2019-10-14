@@ -406,6 +406,15 @@
 		margin: -325px 70px !important;
 	}
 
+	#um_user_photos_download_all {
+		width: 31% !important;
+	}
+
+	#um_user_photos_delete_all {
+		float: right;
+		width: 41% !important;
+	}
+
 }
 /* Mobile Smaller */
 @media only screen and (max-width: 414px){
@@ -688,6 +697,7 @@
 
 	.um-left {
     	float: initial !important;
+    	width: 345px;
 	}
 
 	.um-friends-user-photo {
@@ -770,6 +780,9 @@
 		height: 250px;
 	}
 
+	.um-left {
+    	width: 295px;
+	}
 
 	.ons2 span.post-image {
     
@@ -898,6 +911,9 @@
 		margin: 0px;
 	}
 
+	#um_user_photos_delete_all {
+		padding: 10px 10px !important;
+	}
 }
 
 /* Mobile Smallest */
@@ -943,6 +959,10 @@
 
 	.closerff {
 		height: 220px;
+	}
+
+	.um-left {
+    	width: 240px;
 	}
 
 	.signup-form {

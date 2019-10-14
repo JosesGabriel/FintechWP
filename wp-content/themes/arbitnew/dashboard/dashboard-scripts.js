@@ -320,7 +320,6 @@
                   var usermetas = data;
                   $.each(usermetas, function(index, dinfo){
                     var stockname = dinfo.stockname;
-                    console.log("Stockname: " + stockname);
                     jQuery.ajax({
                       method: "post",
                       url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=" + stockname,

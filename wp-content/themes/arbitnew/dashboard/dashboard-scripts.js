@@ -446,11 +446,20 @@
 
     $('.logo-image').on('click', function(){
     	$('.left-dashboard-part').css('left','0');
+    	 $('.swipecenter-area-r').css('display','block');s
     	//$('.right-image').find('.close-leftsidebar').css('display','block');
     });
 
-     $('.close-leftsidebar').on('click', function(){
-    	$('.left-dashboard-part').css('left','-100%');
+     $('.swipecenter-area-r').on('click touchstart', function(){
+
+    	if($('.left-dashboard-part').css('left') == '0px'){
+    		$('.left-dashboard-part').css('left','-100%');
+    		$('.swipecenter-area-r').css('display','none');
+    	}else {
+    		jQuery('.right-dashboard-part').css("right","-110%");
+            $('.swipecenter-area-r').css('display','none');
+    	}
+
     });
 
     $(".center-dashboard-part").swipe({
@@ -458,6 +467,7 @@
           {
               if (phase=="move" && direction =="right") {
                    $('.left-dashboard-part').css('left','0');
+                   $('.swipecenter-area-r').css('display','block');
                    $('.right-image').find('.close-leftsidebar').css('display','block');
                    return false;
               }
@@ -465,6 +475,7 @@
               if (phase=="move" && direction =="left") {
               		jQuery('.right-dashboard-part').css("display","block");
 				   	jQuery('.right-dashboard-part').css("right","0%");
+				   	$('.swipecenter-area-r').css('display','block');
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
@@ -481,6 +492,7 @@
               
               if (phase=="move" && direction =="left") {
                   $('.left-dashboard-part').css('left','-100%');
+                  $('.swipecenter-area-r').css('display','none');
                   $('.right-image').find('.close-leftsidebar').css('display','none');
                    return false;
               }
@@ -493,6 +505,7 @@
               
               if (phase=="move" && direction =="left") {
                   $('.left-dashboard-part').css('left','-100%');
+                  $('.swipecenter-area-r').css('display','none');
                   $('.right-image').find('.close-leftsidebar').css('display','none');
                    return false;
               }
@@ -504,6 +517,7 @@
           {         
               if (phase=="move" && direction =="right") {
             		jQuery('.right-dashboard-part').css("right","-110%");
+            		$('.swipecenter-area-r').css('display','none');
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
 					$('#right-slider-icon').attr('width','20px');
 					$('#right-menu').addClass('right-slider-menu1');     
@@ -517,6 +531,7 @@
           {         
               if (phase=="move" && direction =="right") {
             		jQuery('.right-dashboard-part').css("right","-110%");
+            		$('.swipecenter-area-r').css('display','none');
 					$('#right-slider-icon').attr('width','20px');
 					$('#right-menu').addClass('right-slider-menu1');     
                    return false;
@@ -529,11 +544,43 @@
           {         
               if (phase=="move" && direction =="right") {
             		jQuery('.right-dashboard-part').css("right","-110%");
+            		$('.swipecenter-area-r').css('display','none');
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/menu.svg');
 					$('#right-slider-icon').attr('width','20px');
 					$('#right-menu').addClass('right-slider-menu1');     
                    return false;
               }
+          }
+  	});
+
+  	 $(".swipecenterl").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+
+              if (phase=="move" && direction =="left") {
+              		jQuery('.right-dashboard-part').css("display","block");
+				   	jQuery('.right-dashboard-part').css("right","0%");
+				   	$('.swipecenter-area-r').css('display','block');
+					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
+					$('#right-slider-icon').attr('width','15px');
+					$('#right-menu').removeClass();
+                   
+                   return false;
+              }
+              
+          }
+  	});
+  	$(".swipecenterr").swipe({
+      swipeStatus:function(event, phase, direction, distance, duration, fingers)
+          {
+
+              if (phase=="move" && direction =="right") {
+              		 $('.left-dashboard-part').css('left','0');
+                   	 $('.swipecenter-area-r').css('display','block');
+                   	 $('.right-image').find('.close-leftsidebar').css('display','block');  
+                   	 return false;
+              }
+              
           }
   	});
 

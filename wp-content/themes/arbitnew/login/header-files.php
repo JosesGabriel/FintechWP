@@ -16,32 +16,7 @@ $user = wp_get_current_user();
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
 <html <?php language_attributes(); ?>><head>
 	<title><?php bloginfo('name'); ?></title>
-	
-	<?php if (WP_PROD_ENV): ?>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147416476-1"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'UA-147416476-1');
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google Ads: 753053364 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-753053364"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'AW-753053364');
-	</script>
-
-	<!-- Event snippet for Traffic to Site conversion page -->
-	<script>
-	gtag('event', 'conversion', {'send_to': 'AW-753053364/BJxpCLndqK4BELTdiucC'});
-	</script>
-	<?php endif ?>
+	<?php include '../parts/header-google-code.php' ?>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-114x114.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-72x72.png" />

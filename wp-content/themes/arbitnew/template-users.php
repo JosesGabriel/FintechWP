@@ -216,6 +216,7 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	<div class="inner-placeholder">
 		<div class="inner-main-content userprofilepage">
 			<div class="left-dashboard-part" id="left-dashboard-part">
+				<div class="swipeleft-area-l"></div>
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
                         <?php require("parts/sidebar-profile.php"); ?>
@@ -226,11 +227,15 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 	if($_GET['um_action'] == 'edit'){
 		?>
 		<div class="center-dashboard-part" style="max-width: 900px;">
+			<div class="swipecenterl"></div>
+				<div class="swipecenter-area-r"></div>
 		<?php
 	}
 	else{ 
 		?>
 		<div class="center-dashboard-part">
+			<div class="swipecenterl"></div>
+				<div class="swipecenter-area-r"></div>
 		<?php
 	}
 
@@ -283,6 +288,8 @@ $ismyprofile = ($user->ID == $profile_id ? true : false);
 				</div>
 			</div>
 			<div class="right-dashboard-part">
+				<div class="swiperight-area-r"></div>
+				<div class="swiperight-area-r2"></div>
 				<div class="right-dashboard-part-inner">
 					
 					<div class="container-sticky">

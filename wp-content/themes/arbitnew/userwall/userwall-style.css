@@ -2089,3 +2089,58 @@ ul li a.um-button.um-alt:hover {
 .um-dropdown-arr {
     top: -16px !important;
 }
+
+/*--------responsive----------*/
+.swipecenterl{
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipecenter-area-r {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background:#0000007a;
+  z-index: 5;
+  display: none;
+}
+
+.swiperight-area-r{
+  position: absolute;
+  width: 40px;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swiperight-area-r2{
+  display: none;
+  position: absolute;
+  width: 100px;
+  left: 250px;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.swipeleft-area-l {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  margin-top: 50px;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 2;
+}

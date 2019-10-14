@@ -688,6 +688,7 @@
 
 	.um-left {
     	float: initial !important;
+    	width: 345px;
 	}
 
 	.um-friends-user-photo {
@@ -770,6 +771,9 @@
 		height: 250px;
 	}
 
+	.um-left {
+    	width: 295px;
+	}
 
 	.ons2 span.post-image {
     
@@ -943,6 +947,10 @@
 
 	.closerff {
 		height: 220px;
+	}
+
+	.um-left {
+    	width: 240px;
 	}
 
 	.signup-form {

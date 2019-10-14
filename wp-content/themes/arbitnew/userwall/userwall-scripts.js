@@ -29,7 +29,7 @@
 
         if (window.matchMedia('(max-width: 767px)').matches) {
             $('.right-header-inner').css('margin-right','25px');
-        }  
+        }
 
     });
 

@@ -838,7 +838,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 115px !important;
+		height: 140px !important;
 	}
 	
 
@@ -993,5 +993,9 @@
 
 	ul.main-drops > ul:before {
     	right: 32% !important;
+	}
+
+	.um-cover-e img {
+		margin-top: 20px !important;
 	}
 }

@@ -16,7 +16,7 @@ $user = wp_get_current_user();
 <!DOCTYPE html><!-- Bidvertiser2000920 -->
 <html <?php language_attributes(); ?>><head>
 	<title><?php bloginfo('name'); ?></title>
-	<?php include '../parts/header-google-code.php' ?>
+	<?php require ABSPATH .'/wp-content/themes/arbitnew/parts/header-google-code.php' ?>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-114x114.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-72x72.png" />
@@ -82,41 +82,37 @@ $user = wp_get_current_user();
     </style>
 	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
-	<!-- <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery_cookies.js?<?php echo time(); ?>"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
-		var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
+		if (remember == "on") {
+			console.log(remember)
+		}
+		// console.log(remember[2]);
+		var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
+		var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
+		// autofill the fields
+		// jQuery('#username-10').val(username[2]);
+		// jQuery('#user_password-10').val(password[2]);
 
-		// Put the object into storage
-		// var remember = Cookies.get('sd_remeber');
-		// if (remember == 'true') {
-			// 	var email = Cookies.get('username-10');
-			// 	var password = Cookies.get('user_password-10');
-			// 	// autofill the fields
-			// 	jQuery('#username-10').val(email);
-			// 	jQuery('#user_password-10').val(password);
-			// }
-			
-		$("#um-submit-btn").submit(function() {
+		$('#um-submit-btn').click(function() {
 			if ($('#sd_remeber').is(':checked')) {
-				var email = $('#username-10').val();
-				var password = $('#user_password-10').val();
-				
-				// set cookies to expire in 14 days
-				Cookies.get('username-10', email, { expires: 14 });
-				Cookies.get('user_password-10', password, { expires: 14 });
-				Cookies.get('sd_remeber', true, { expires: 14 });
-
-				localStorage.setItem('testObject', JSON.stringify(testObject));
+				let email = $('#username-10').val();
+				let password = $('#user_password-10').val();
+				let remember = $('#sd_remeber').val();
+				document.cookie = "username-10=" + encodeURIComponent(email) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
+				document.cookie = "user_password-10=" + encodeURIComponent(password) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
+				document.cookie = "sd_remeber=" + encodeURIComponent(remember) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
 			} else {
 				// reset cookies
-				Cookies.get('username-10', null);
-				Cookies.get('user_password-10', null);
-				Cookies.get('sd_remeber', null);
+				document.cookie('username-10', null);
+				document.cookie('user_password-10', null);
+				document.cookie('sd_remeber', null);
 			}
 		});
 	});
-	</script> -->
+	</script>
 	<script language="javascript">
 	
 		jQuery(window).on('load', function(){

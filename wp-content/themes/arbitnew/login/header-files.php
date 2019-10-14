@@ -92,7 +92,7 @@ $user = wp_get_current_user();
 			// autofill the fields
 			jQuery('#username-10').val(username[2]);
 			jQuery('#user_password-10').val(password[2]);
-			jQuery("#sd_remeber").prop('checked', true);
+			jQuery("#sd_remeber").addClass('checked');
 		}
 
 		$('#um-submit-btn').click(function() {

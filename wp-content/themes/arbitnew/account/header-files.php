@@ -38,7 +38,6 @@
     <meta property="og:description" content="Arbitrage is a free stock trading platform in the Philippines. Effectively trade the Philippine Equity Market with our realtime market data & multiple stock trading tools.">
 	<!-- <meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/uploads/2019/09/2f2a3a12-3a4bc05c-arbitrage-og-02.jpg" /> -->
 	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
-<<<<<<< HEAD
 
 	<?php if (WP_PROD_ENV): ?>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -66,8 +65,6 @@
 	</script>
 	<?php endif ?>
 
-=======
->>>>>>> 619fa978c6bc49b3e9bcdef290537a1c4d0f7528
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">

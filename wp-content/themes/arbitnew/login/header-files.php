@@ -86,15 +86,14 @@ $user = wp_get_current_user();
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
 		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-		if (remember == "on") {
-			console.log(remember)
+		if (remember = "on") {
+			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
+			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
+			// autofill the fields
+			jQuery('#username-10').val(username[2]);
+			jQuery('#user_password-10').val(password[2]);
+			jQuery("#sd_remeber").addClass('checked');
 		}
-		// console.log(remember[2]);
-		var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
-		var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
-		// autofill the fields
-		// jQuery('#username-10').val(username[2]);
-		// jQuery('#user_password-10').val(password[2]);
 
 		$('#um-submit-btn').click(function() {
 			if ($('#sd_remeber').is(':checked')) {
@@ -106,9 +105,9 @@ $user = wp_get_current_user();
 				document.cookie = "sd_remeber=" + encodeURIComponent(remember) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
 			} else {
 				// reset cookies
-				document.cookie('username-10', null);
-				document.cookie('user_password-10', null);
-				document.cookie('sd_remeber', null);
+				document.cookie = "username-10=" +"";
+				document.cookie = "user_password-10=" +"";
+				document.cookie = "sd_remeber=" +"";
 			}
 		});
 	});

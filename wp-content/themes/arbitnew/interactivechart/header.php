@@ -5,7 +5,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	<?php include '../parts/header-google-code.php' ?>
+	<?php require ABSPATH .'/wp-content/themes/arbitnew/parts/header-google-code.php' ?>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://arbitrage.ph/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://arbitrage.ph/favicon/apple-touch-icon-114x114.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://arbitrage.ph/favicon/apple-touch-icon-72x72.png" />

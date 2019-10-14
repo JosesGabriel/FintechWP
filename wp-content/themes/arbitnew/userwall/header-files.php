@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="UTF-8" />
-	<?php include '../parts/header-google-code.php' ?>
+	<?php require ABSPATH .'/wp-content/themes/arbitnew/parts/header-google-code.php' ?>
     <title><?php bloginfo('name'); ?></title>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-114x114.png" />

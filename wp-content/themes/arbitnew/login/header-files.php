@@ -87,13 +87,14 @@ $user = wp_get_current_user();
 	jQuery(document).ready(function() {
 		var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
 		if (remember == "on") {
-			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
-			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
-			console.log(username[2],password[2]);
-			// autofill the fields
-			jQuery('#username-10').val(username);
-			jQuery('#user_password-10').val(password);
+			console.log(remember)
 		}
+		// console.log(remember[2]);
+		var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
+		var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
+		// autofill the fields
+		// jQuery('#username-10').val(username[2]);
+		// jQuery('#user_password-10').val(password[2]);
 
 		$('#um-submit-btn').click(function() {
 			if ($('#sd_remeber').is(':checked')) {
@@ -103,12 +104,6 @@ $user = wp_get_current_user();
 				document.cookie = "username-10=" + encodeURIComponent(email) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
 				document.cookie = "user_password-10=" + encodeURIComponent(password) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
 				document.cookie = "sd_remeber=" + encodeURIComponent(remember) + ";Max-Age=" +(5600*24) + ";SameSite=None;Secure";
-				
-			// 	// set cookies to expire in 14 days
-			// 	Cookies.get('username-10', email, { expires: 14 });
-			// 	Cookies.get('user_password-10', password, { expires: 14 });
-			// 	Cookies.get('sd_remeber', true, { expires: 14 });
-
 			} else {
 				// reset cookies
 				document.cookie('username-10', null);

@@ -90,7 +90,7 @@ $user = wp_get_current_user();
 			var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
 			var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
 			// var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-			// console.log(username[2],password[2],remember[2]);
+			console.log(username[2],password[2]);
 			// autofill the fields
 			jQuery('#username-10').val(username);
 			jQuery('#user_password-10').val(password);

@@ -6,7 +6,7 @@
             type: 'GET',
             dataType: 'json', // added data type
             success: function(data) {
-                $(".adddashequity").text("₱"+(data.equity).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                // $(".adddashequity").text("₱"+(data.equity).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
                 $.each(data.data, function(i, value){
                     if(value.profitperc > 0){
                         perfstats = 'dgreenpart';
@@ -35,6 +35,20 @@
                     addliveme += '</li>';
                     $("#live_portfolio ul").append(addliveme).show('slow');
                 });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
+
+    var LoadEquity = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/equity?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                $(".adddashequity").text("₱"+(data.data.total).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -239,6 +253,7 @@
         new loadStocks();
         new loadBuyPower(<?php echo $user->ID; ?>);
         new loadLivePortfolio(<?php echo $user->ID; ?>);
+        new LoadEquity(<?php echo $user->ID; ?>);
         new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
     });
 </script>

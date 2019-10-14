@@ -1301,8 +1301,8 @@ div#show_hide {
     padding: 7px 0;
 }
 .top-stocks .to-content-part ul .even a p{
-    color: #999999 !important;
     margin-bottom: 0;
+    display: inline-block;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;

@@ -87,16 +87,19 @@ $user = wp_get_current_user();
 	jQuery(document).ready(function() {
 		// $('.prtnr_login').click(function() {
 			var remember = document.cookie.match('(^|;) ?' + "sd_remeber" + '=([^;]*)(;|$)');
-			if (remember == null) {
+			var rememberone = remember[2].length;
+			if (rememberone > 0) {
 				var username = document.cookie.match('(^|;) ?' + "username-10" + '=([^;]*)(;|$)');
 				var password = document.cookie.match('(^|;) ?' + "user_password-10" + '=([^;]*)(;|$)');
+				var username_put = username[2];
+				var password_put = password[2];
 				// autofill the fields
+				$('#username-10').val(username_put);
+				$('#user_password-10').val(password_put);
+				$('#sd_remeber').prop('checked', true);
+			} else {
 				$('#username-10').val(username);
 				$('#user_password-10').val(password);
-				$('#sd_remeber').prop('checked', true);
-			} else if(remember = "on") {
-				$('#username-10').val(username[2]);
-				$('#user_password-10').val(password[2]);
 			}
 		// });
 

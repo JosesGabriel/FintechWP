@@ -1488,6 +1488,15 @@ span.my_rank-number {
 .dbox.yellow {
     color: #ffd900 !important;
 }
+.trendingme .red {
+    color: #eb4d5c !important;
+}
+.trendingme .green {
+    color: #53b987 !important;
+}
+.trendingme .yellow {
+    color: #ffd900 !important;
+}
 .stockperc {
     text-align: right;
     margin-top: 3px;

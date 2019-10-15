@@ -75,12 +75,11 @@ function get_trendingstocks(){
           // $indls['stock'] = $dlskey;
           $indls['stock'] = $dlsvalue->symbol;
           // $dstocknamme = $dlskey;
-          json_decode($dlsvalue);
           $dstocknamme = $dlsvalue->symbol;
           $dstocks = $dlsvalue->description;
           $indls['stnamename'] = $dstocks;
-          $indls['last'] =  $dlsvalue->last;
           $indls['change'] =  $dlsvalue->change;
+          $indls['changepercentage'] =  $dlsvalue->changepercentage;
           $dsprest = $wpdb->get_results( "SELECT * FROM arby_posts WHERE post_content LIKE '%$".strtolower($dstocknamme)."%' AND DATE(post_date) >= DATE_ADD(CURDATE(), INTERVAL -3 DAY)");
           $todayreps = 0; // today
           $countpstock = 0; // 3 days back

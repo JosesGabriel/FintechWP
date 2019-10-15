@@ -66,7 +66,7 @@ function get_trendingstocks(){
             "Authorization" => "Bearer {$authorization}",
             ]
        ]);
-      $gerdqoute = json_decode($request);
+      $gerdqoute = json_decode($request->content);
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {
         $listofstocks = [];
@@ -75,6 +75,7 @@ function get_trendingstocks(){
           // $indls['stock'] = $dlskey;
           $indls['stock'] = $dlsvalue->symbol;
           // $dstocknamme = $dlskey;
+          json_decode($dlsvalue);
           $dstocknamme = $dlsvalue->symbol;
           $dstocks = $dlsvalue->description;
           $indls['stnamename'] = $dstocks;

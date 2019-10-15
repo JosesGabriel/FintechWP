@@ -1,0 +1,153 @@
+.modal-content {
+   	margin: 50px auto;
+    width: 80%;
+}
+
+.modal-body{
+	padding-bottom: 0;
+}
+
+.entr_ttle_bar {
+    width: 100%;
+}
+.btnsell{
+	color: #e64c3c;
+    margin-left: 5px;
+}
+.btnbuy{
+	color: #25ae5f;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btnbuy:hover {
+	cursor: pointer;
+}
+.btnsell:hover {
+	cursor: pointer;
+}
+
+.groupinput.midd.lockedd {
+   	width: 263px;
+}
+
+.desc{
+	margin-top: 10px;
+    /* font-weight: normal; */
+    font-size: 12px;
+}
+
+.crice{
+	float: right;
+	font-size: 12px !important;
+}
+
+.modal-header {
+	border-bottom: 1px solid #6c6c6d;
+	padding: .5rem;
+}
+.modal-footer {
+	border-top: 1px solid #6c6c6d;
+}
+
+.groupinput.midd label {
+    width: 72px;
+}
+.details, .details2 {
+	width: 165px;
+	display: inline-block;
+	font-size: 13px;
+    font-weight: normal;
+}
+
+.arb_bar_green {
+    float: left;
+    background-color: #25ae5f;
+    color: #fff;
+    padding: 2px 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.arb_bar_red {
+    float: left;
+    background-color: #e64c3c;
+    color: #fff;
+    padding: 2px 0;
+    text-align: center;
+    line-height: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.arb_bar.fullbar {
+	width: 340px;
+	margin: 0 auto;
+}
+
+.bars {
+	margin-top: 15px;
+	display: grid;
+}
+.bidaskbar, .marketsents{
+	text-align: center;
+}
+
+.marketsents {
+	margin-top: 5px;
+}
+
+.tdetails {
+	font-size: 12px;
+}
+
+.avfunds {
+	float: right;
+}
+.labelprice, .labelquantity {
+	width: 72px !important;
+}
+
+.inputbuyprice, .inputquantity {
+	width: 100px !important;
+}
+.footer_details {
+	display: flex;
+	margin-top: 5px;
+}
+
+.quantity {
+	margin-left: 21px;
+}
+
+hr {
+	margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.selectstrategy select {
+    width: 144px;
+    margin: 0;
+}
+
+.entry_wrapper_mid {
+	width: 160px;
+	margin-top: 10px;
+}
+
+textarea.tnotes{
+	width: 204px !important;
+	height: 101px !important;
+}
+
+.footer_details2 {
+	display: flex;
+}
+
+.modal2-button-confirm {
+    position: relative;
+}
+
+.details2 {
+	float: right;
+}

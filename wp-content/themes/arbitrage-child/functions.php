@@ -139,6 +139,8 @@ function myplugin_registration_save($user_id)
 {
     global $wpdb;
     
+
+    
     // $secret = $_POST['nickname-9'] . $user_id . str_pad(rand(0, 9999), 3, '0', STR_PAD_LEFT);
     $secret = $_POST['nickname-9'] . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
     add_user_meta($user_id, 'user_secret', $secret);

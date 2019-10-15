@@ -15,5 +15,8 @@ $(document).ready(function(){
 	      }
 	 });
 
+	$('#inpt_data_select_stock').on('change', function() {
+		console.log($(this).val());
+	});
 
 });

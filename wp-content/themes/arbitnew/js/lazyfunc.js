@@ -36,7 +36,7 @@ $( document ).ready(function() {
                 var toappend = '<li class="even '+index+'">';
                 toappend += '<span style="border-color: '+colors[index]+';">'+value.stock+'</span>';
                 toappend += '<a href="#">'+value.stnamename+'<br>';
-                toappend += '<p class="'+statuscolor+'">'+ statuscaret +' '+ value.change+' </p><p class="'+statuscolor+'"> ('+value.changepercentage+'%)</p></a>';
+                toappend += '<p class="'+statuscolor+'">'+ statuscaret +' '+ value.change+' </p><p class="'+statuscolor+'"> ('+(value.changepercentage).toFixed(2)+'%)</p></a>';
                 toappend += '</li>';
 
                 if(index < 5){

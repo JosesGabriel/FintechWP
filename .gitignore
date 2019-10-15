@@ -36,6 +36,7 @@
 !assets/
 assets/*
 !assets/js/
+!assets/tradingview/
 
 # track composer
 !composer.json

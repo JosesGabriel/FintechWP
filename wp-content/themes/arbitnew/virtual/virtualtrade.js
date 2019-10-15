@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$.ajax({
-	    type:'POST',
+	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/virtualdata?stockname=2GO',
 	    dataType: 'json',
 	    success: function(response) {

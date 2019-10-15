@@ -16,26 +16,34 @@ $( document ).ready(function() {
     });
 
     $.ajax({
-        url: "https://dev-v1.arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=PHEN",
+        url: "/sidebar-api/?daction=trendingstocks",
         type: 'POST',
         dataType: 'json', // added data type
         success: function(res) {
             $(".trendingpreloader").hide();
             $.each(res, function( index, value ) {
-                console.log(res);
-                
-                // var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
-                // var toappend = '<li class="even '+index+'">';
-                // toappend += '<span style="border-color: '+colors[index]+';">'+value.stock+'</span>';
-                // toappend += '<a href="#">'+value.stnamename+'<br>';
-                // toappend += '<p>'+value.following+' Hits</p></a>';
-                // toappend += '</li>';
+                if (value.change > 0){
+                    var statuscolor = "green";
+                    var statuscaret = "<i class='fa fa-caret-down'> </i>";
+                } else if (value.change == 0){
+                    var statuscolor = "yellow";
+                    var statuscaret = "";
+                } else {
+                    var statuscolor = "red";
+                    var statuscaret = "<i class='fa fa-caret-up'> </i>";
+                }               
+                var colors = ['#f44336', '#E91E63', '#9C27B0', '#673AB7', '#3F51B5', '#2196F3', '#03A9F4', '#00BCD4', '#009688', '#4CAF50'];
+                var toappend = '<li class="even '+index+'">';
+                toappend += '<span style="border-color: '+colors[index]+';">'+value.stock+'</span>';
+                toappend += '<a href="#">'+value.stnamename+'<br>';
+                toappend += '<p class="'+statuscolor+'">'+ statuscaret +' '+ value.last+' </p><p class="'+statuscolor+'"> ('+value.change+'%)</p></a>';
+                toappend += '</li>';
 
-                // if(index < 6){
-                //     $("ul.trendingme > .trend-content-hidden").before(toappend);
-                // } else {
-                //     $("ul.trendingme > .trend-content-hidden").append(toappend);
-                // }
+                if(index < 5){
+                    $("ul.trendingme > .trend-content-hidden").before(toappend);
+                } else {
+                    $("ul.trendingme > .trend-content-hidden").append(toappend);
+                }
             });
         },
         error: function (xhr, ajaxOptions, thrownError) {

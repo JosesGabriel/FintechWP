@@ -608,5 +608,7 @@
 	   $(".swipe-area-l").css("z-index", "0");
 	});
 
+	
+
 
   });

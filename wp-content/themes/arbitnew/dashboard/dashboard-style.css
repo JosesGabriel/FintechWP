@@ -277,6 +277,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
+    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
@@ -1304,7 +1305,7 @@ div#show_hide {
     margin-bottom: 0;
     display: inline-block;
     margin-right: 3px;
-    font-weight: 200;
+    font-weight: 300;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -1495,6 +1496,11 @@ span.my_rank-number {
 }
 .trendingme .green {
     color: #53b987 !important;
+}
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
 }
 .trendingme .yellow {
     color: #ffd900 !important;

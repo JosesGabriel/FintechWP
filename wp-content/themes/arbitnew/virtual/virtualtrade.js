@@ -7,7 +7,9 @@ $(document).ready(function(){
 	    success: function(response) {
 	    	var opt = '';
 	    	jQuery.each(response.data, function(i, val) {
-	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
+
+	    		var stocks = JSON.stringify(val.symbol);
+	    		opt = "<option value="+ stocks +">" + stocks + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
 	    },

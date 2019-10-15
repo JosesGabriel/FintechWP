@@ -1497,6 +1497,11 @@ span.my_rank-number {
 .trendingme .green {
     color: #53b987 !important;
 }
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
 .trendingme .yellow {
     color: #ffd900 !important;
 }

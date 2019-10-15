@@ -296,7 +296,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             return a;
         }, {});
         
-        $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
+        // $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
     });
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {

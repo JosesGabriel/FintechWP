@@ -602,6 +602,56 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
 	setInterval(updateMarketDepth, 30000);
 }]);
+app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+    $scope.stock = null;
+
+    $rootScope.$on('changeStockSymbol', function (event, symbol) {
+        $scope.getStockData(symbol);
+    });
+
+    $scope.getStockData = function (symbol) {
+        $http.post(`/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=${symbol}`)
+            .then(response => {
+                let data = response.data;
+                if (data.success) {
+                    let stock = data.data;
+
+                    $scope.stock = {
+                        lastupdatetime: moment(stock.lastupdatetime),
+                        last: parseFloat(stock.last),
+                        difference: parseFloat(stock.difference),
+                        change: parseFloat(stock.change),
+                        change_percentage: parseFloat(stock.changepercentage),
+                        previous: parseFloat(stock.close),
+                        open: parseFloat(stock.open),
+                        high: parseFloat(stock.high),
+                        low: parseFloat(stock.low),
+                        average: parseFloat(stock.average),
+                        volume: parseFloat(stock.volume),
+                        value: parseFloat(stock.value),
+                        trades: parseFloat(stock.trades),
+                        displayLast: price_format(stock.last),
+                        displayDifference: price_format(stock.change),
+                        displayOpen: price_format(stock.open),
+                        displayPrevious: price_format(stock.close),
+                        displayAverage: price_format(stock.average),
+                        displayLow: price_format(stock.low),
+                        displayHigh: price_format(stock.high),
+                        displayChange: number_format(stock.changepercentage, '0,0.00'),
+                        displayValue: abbr_format(stock.value).toUpperCase(),
+                        weekYearLow: price_format(stock.weekyearlow),
+                        weekYearHigh: price_format(stock.weekyearhigh),
+                        displayMarketCap: abbr_format(stock.marketcap).toUpperCase(),
+                    }
+                } else {
+                    $scope.stock = null;
+                }
+            })
+            .catch(response => {
+                $scope.stock = null;
+            });
+    }
+}]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",
@@ -811,6 +861,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
 
                         $scope.$parent.dshowsentiment = '';
 
+
+                        $rootScope.$emit('changeStockSymbol', _symbol);
                         $scope.$parent.getStockTrades(_symbol);
                         
                         $scope.$parent.getFullMarketDepth(_symbol);

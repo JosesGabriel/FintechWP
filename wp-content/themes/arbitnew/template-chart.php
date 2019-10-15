@@ -123,6 +123,7 @@
 															<div class="vertical-box-column">
 																<div class="vertical-box">
 																	<div class="vertical-box-row" style="height: 165px; overflow:hidden; display: block;">
+																		<div ng-controller="stockInfo">
 																		<div id="stock-details" style="display:block" ng-show="stock">
 																			<div class="arb_buysell" id="draggable_buysell">
 																				<button class="buysell-grip-btn">
@@ -378,6 +379,7 @@
 
 																		<div class="arb_logo_placehldr">
 																			<h2><img src="/wp-content/themes/arbitrage-child/cd/img/Asset 4.png" style="width:53%;;vertical-align:baseline"></h2>
+																		</div>
 																		</div>
 																	</div>
 

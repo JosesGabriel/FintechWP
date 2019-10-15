@@ -33,13 +33,6 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'pushLiveTrade'],
             ],
         ]);
-
-        register_rest_route($base_route, 'virtualdata', [
-            [
-                'method' => 'GET',
-                'callback' => [$this, 'getVirtualData'],
-            ],
-        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -128,27 +121,6 @@ class VirtualAPI extends WP_REST_Controller
             return $this->respond(true, ['error' => 'inserting not successful'], 400);
         }
         
-    }
-
-    public function getVirtualData($request)
-    {
-        $data = $request->get_params();
-        $guzzle = new GuzzleRequest();
-        $dataUrl = GetDataApiUrl();
-        $authorization = GetDataApiAuthorization();
-
-        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stockname'], [
-            "headers" => [
-                "Content-type" => "application/json",
-                "Authorization" => "Bearer {$authorization}",
-                ]
-        ]);
-        $stocksdata = json_decode($request->content);
-        $intovals['virtualdata'] = $stocksdata->data;
-        array_push($finalwatch, $intovals);
-
-        return $this->respond(true, ['data' => $finalwatch], 200);
-
     }
 
 }

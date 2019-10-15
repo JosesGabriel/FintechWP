@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	$.ajax({
 	    type:'GET',
-	    url:'/wp-json/virtual-api/v1/virtualdata?stockname=2GO',
+	    url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
 	    dataType: 'json',
 	    success: function(response) {
 	    	console.log(response);

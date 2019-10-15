@@ -36,7 +36,7 @@ class VirtualAPI extends WP_REST_Controller
 
         register_rest_route($base_route, 'virtualdata', [
             [
-                'method' => 'GET',
+                'method' => 'POST',
                 'callback' => [$this, 'getVirtualData'],
             ],
         ]);
@@ -137,7 +137,7 @@ class VirtualAPI extends WP_REST_Controller
         $dataUrl = GetDataApiUrl();
         $authorization = GetDataApiAuthorization();
 
-        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stockname'], [
+        $request = $guzzle->request("POST", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stockname'], [
             "headers" => [
                 "Content-type" => "application/json",
                 "Authorization" => "Bearer {$authorization}",

@@ -249,6 +249,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             }
         })
     $http.post("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
+        $rootScope.$emit('changeStockSymbol', _symbol);
+        
         stocks = response.data.data;
         stocks = Object.values(stocks);
         stocks.map(function(stock) {

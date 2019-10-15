@@ -131,7 +131,7 @@
 																					</button>
 																					<div class="buttons">
 																						<a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-																						<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock_details[stock.symbol].symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
+																						<a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stock.symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
 																					</div>
 																				</div>
 
@@ -213,7 +213,7 @@
 																									</div>
 
 																									<div class="groupinput midd lockedd"><label>Stock</label>
-																									<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock_details[stock.symbol].symbol}}" readonly>
+																									<input type="text" name="inpt_data_stock" id="inpt_data_stock" style="margin-left: -3px; text-align: left;" value="{{stock.symbol}}" readonly>
 																									<i class="fa fa-lock" aria-hidden="true"></i></div>
 
 																									<div class="groupinput midd"><label>Buy Price</label><input type="text" class="inpt_data_price number" name="inpt_data_price" required></div>
@@ -301,7 +301,7 @@
 																					<div class="arb_stock_name"><!-- STOCK NAME -->
 																						<i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
 																						<div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden;
-																						text-overflow: ellipsis;">{{stock_details[stock.symbol].description}}</div>
+																						text-overflow: ellipsis;">{{stock.description}}</div>
 																						<div class="figures" style="margin-top: 0; overflow: visible; white-space: nowrap;">
 																							<span style="
 																								font-size: 25px;

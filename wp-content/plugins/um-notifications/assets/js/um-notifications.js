@@ -51,7 +51,6 @@ function um_load_notifications() {
 			if ( data.unread ) {
 
 
-
 				var id_ = jQuery(data.unread).attr('data-notification_id');
 
 
@@ -267,6 +266,7 @@ jQuery(document).ready(function() {
 
 
 	jQuery(document.body).on('click', '.um-notification-hide a',function() {
+		e.preventDefault();
 
 		var notification_id = jQuery(this).parents('.um-notification').attr('data-notification_id');
 
@@ -305,7 +305,6 @@ jQuery(document).ready(function() {
 			},
 
 			success: function(data){
-
 
 
 			}

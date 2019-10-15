@@ -16,7 +16,6 @@
 		}
 	}
 </script>
-
 <script type="text/javascript">
 		(function($) {
 		    jQuery(document).ready(function() {

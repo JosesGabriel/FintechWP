@@ -1,4 +1,8 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit;
+<?php
+
+use function GuzzleHttp\json_encode;
+
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -10,22 +14,23 @@ function um_notification_show_feed() {
 	}
 
 	$notifications = UM()->Notifications_API()->api()->get_notifications( 10 );
+	// echo json_encode($notifications);
 	if ( ! $notifications ) {
 		$template = 'no-notifications';
 	} else {
 		$template = 'notifications';
 	}
 
-	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 0, 'unread', true );
+	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 10, 'unread', true );
 	$unread_count = ( absint( $unread ) > 9 ) ? '+9' : $unread;
 
 	$file = str_replace( '/', DIRECTORY_SEPARATOR, um_notifications_path . "templates/{$template}.php" );
 	$theme_file = str_replace( '/', DIRECTORY_SEPARATOR, get_stylesheet_directory() . "/ultimate-member/templates/notifications/{$template}.php" );
 
+	// echo json_encode($theme_file);
 	if ( file_exists( $theme_file ) ) {
 		$file = $theme_file;
 	} ?>
-
 	<div class="um-notification-b <?php echo esc_attr( UM()->options()->get( 'notify_pos' ) ) ?>"
 	     data-show-always="<?php echo esc_attr( UM()->options()->get( 'notification_icon_visibility' ) ) ?>">
 		<i class="um-icon-ios-bell"></i>
@@ -43,9 +48,8 @@ function um_notification_show_feed() {
 	<?php }else {  ?>		
 
 		<div class="um-notification-live-feed-inner">
-
-		<?php } ?>	
 			<?php include $file; ?>
+			<?php } ?>	
 		</div>
 	</div>
 
@@ -66,3 +70,4 @@ function um_enqueue_feed_scripts() {
 	wp_enqueue_style( 'um_notifications' );
 }
 add_action( 'wp_footer', 'um_enqueue_feed_scripts', -1 );
+?>

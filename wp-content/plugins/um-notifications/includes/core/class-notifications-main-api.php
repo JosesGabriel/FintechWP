@@ -196,7 +196,7 @@ class Notifications_Main_API {
 				"SELECT * 
 				FROM {$table_name} 
 				WHERE user = %d AND 
-					  status = 'unread'",
+					status IN ('read', 'unread')",
 				$user_id
 			) );
 
@@ -208,8 +208,8 @@ class Notifications_Main_API {
 				"SELECT * 
 				FROM {$table_name} 
 				WHERE user = %d AND 
-					  status='unread' 
-				ORDER BY time DESC 
+					status IN ('read', 'unread')
+					ORDER BY arby_um_notifications.time DESC 
 				LIMIT %d",
 				$user_id,
 				$per_page
@@ -221,7 +221,7 @@ class Notifications_Main_API {
 				"SELECT * 
 				FROM {$table_name} 
 				WHERE user = %d 
-				ORDER BY time DESC 
+				ORDER BY arby_um_notifications.time DESC 
 				LIMIT %d",
 				$user_id,
 				$per_page
@@ -411,9 +411,9 @@ class Notifications_Main_API {
 
         if ( $unread ) {
 
-            $refresh_count = ( absint( $unread ) > 9 ) ? '+9' : $unread;
+            // $refresh_count = ( absint( $unread ) > 9 ) ? '+9' : $unread;
 
-            $notifications = $this->get_notifications( 1, 'unread');
+            $notifications = $this->get_notifications( 10, 'unread');
 
             if ( $notifications ) {
                 foreach( $notifications as $notification ) {

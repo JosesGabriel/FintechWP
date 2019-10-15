@@ -516,6 +516,44 @@ foreach ( $wallposts->posts as $post ) {
 			.totabs active {
 				border-bottom: 2px solid #e77e24;
 			}
+			.mingle-btn {
+				background-color: transparent;
+				border: 1px solid #e77e24;
+				color: white !important;
+				cursor: pointer;
+				border-radius: 40px;
+				padding: 0 6px;
+				width: 10px;
+				height: 20px;
+				overflow: hidden;
+				-webkit-transition: width 1s;
+				transition: width 1s;
+				white-space: nowrap; 
+				transform: scale(0.8);
+				position: relative;
+				bottom: 8px;
+			}
+			.mingle-btn i {
+				width: 0.4em !important;
+				font-size: 0.7em !important;
+				margin-left: 1px !important; 
+				margin-bottom: 4px;
+				color: #e77e24 !important;
+				top: 0px !important;
+			}
+			.mingle-btn:hover {
+				background-color: #e77e24;
+				width: 80px;
+				-webkit-transition: width 1s;
+				transition: width 1s;
+			}
+			.mingle-btn:hover::after {
+				content: 'Mingle';
+				font-size: 0.8em;
+			}
+			.mingle-btn:hover i {
+				color: white !important;
+			}
 		</style>
 
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">

@@ -40,13 +40,30 @@ class VirtualAPI extends WP_REST_Controller
     {
         global $wpdb;
 
-        $wpdb->query("create table myguests (
-            id int(6) unsigned auto_increment primary key,
-            firstname varchar(30) not null,
-            lastname varchar(30) not null,
-            email varchar(50),
-            reg_date timestamp default current_timestamp on update current_timestamp
-            )");
+        $wpdb->query("create table if not exists arby_vt_live (
+            id int(10) unsigned auto_increment primary key,
+            stockname varchar(250) not null,
+            buyprice varchar(250) not null,
+            volume varchar(250) not null,
+            emotion varchar(250),
+            strategy varchar(250),
+            tradeplan varchar(250),
+            tradenotes varchar(250),
+            buydate varchar(250),
+            vtcategory varchar(250),
+            vttype varchar(250)
+        )");
+
+        $wpdb->query("create table if not exists arby_vt_tradelog (
+            id int(10) unsigned auto_increment primary key,
+            tradeid varchar(250) not null,
+            volume varchar(250),
+            selldate varchar(250),
+            vtcategory varchar(250),
+            vttype varchar(250)
+        )");
+
+        return $this->respond(true, ['data' => "success?"], 200);
     }
 
 }

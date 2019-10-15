@@ -24,4 +24,28 @@ function InitWidgets(){
 
 add_action('widgets_init','InitWidgets');
 
+
+add_action('user_register', 'adduseronriot', 10, 1);
+function adduseronriot($user_id)
+{
+    global $wpdb;
+
+    $info = json_encode([
+      'username' => $_POST['nickname-9'],
+      'password' => $_POST['user_password-9'],
+      'bind_email' => false,
+      'auth' => ['type' => 'm.login.dummy'],
+    ]);
+
+    $guzzle = new GuzzleRequest();
+    $dataUrl = GetDataApiUrl();
+    $authorization = GetDataApiAuthorization();
+    $request = $guzzle->request("POST", "https://matrix.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+        "headers" => [
+            "Content-type" => "application/json"
+        ],
+        "body" => $info
+    ]);
+}
+
 ?>

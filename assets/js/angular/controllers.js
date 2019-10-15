@@ -667,7 +667,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
     }
 
     $(function() {
-        TradingView.onready(function() {
+        function initTradingView() {
             var override = nightmode ? JSON.parse(JSON.stringify(dark_overrides)) : JSON.parse(JSON.stringify(light_overrides));
             override["paneProperties.background"] = "#2c3e50";
 			override["paneProperties.gridProperties.color"] = "#bdc3c7";
@@ -844,7 +844,8 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 })
 				.html('<div class="button-2-lC3gh4- button-2ioYhFEY- apply-common-tooltip isInteractive-20uLObIc-" style="margin: 0 -10px !important;"><span class="icon-beK_KS0k-"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="28" height="28"><g fill="currentColor"><path d="M21 7v4h1V6h-5v1z"></path><path d="M16.854 11.854l5-5-.708-.708-5 5zM7 7v4H6V6h5v1z"></path><path d="M11.146 11.854l-5-5 .708-.708 5 5zM21 21v-4h1v5h-5v-1z"></path><path d="M16.854 16.146l5 5-.708.708-5-5z"></path><g><path d="M7 21v-4H6v5h5v-1z"></path><path d="M11.146 16.146l-5 5 .708.708 5-5z"></path></g></g></svg></span></div>').css('cursor','pointer');
             });
-        });
+        }
+        window.addEventListener('DOMContentLoaded', initTradingView, false);
     });
 }]);
 

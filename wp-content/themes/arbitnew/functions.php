@@ -40,7 +40,7 @@ function adduseronriot($user_id)
     $guzzle = new GuzzleRequest();
     $dataUrl = GetDataApiUrl();
     $authorization = GetDataApiAuthorization();
-    $request = $guzzle->request("POST", "https://matrix.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+    $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
         "headers" => [
             "Content-type" => "application/json"
         ],

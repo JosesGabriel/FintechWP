@@ -614,6 +614,8 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
                     let stock = data.data;
 
                     $scope.stock = {
+                        symbol: stock.symbol.toUpperCase(),
+                        description: stock.description.toUpperCase(),
                         lastupdatetime: moment(stock.lastupdatetime),
                         last: parseFloat(stock.last),
                         difference: parseFloat(stock.difference),

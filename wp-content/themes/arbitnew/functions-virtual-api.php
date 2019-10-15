@@ -3,7 +3,7 @@ require_once ('guzzle-class.php');
 require_once ('data-api.php');
 
 
-class WatchlistAPI extends WP_REST_Controller
+class VirtualAPI extends WP_REST_Controller
 {
     protected $namespace;
     protected $table_name;
@@ -40,12 +40,18 @@ class WatchlistAPI extends WP_REST_Controller
     {
         global $wpdb;
 
-        
+        $wpdb->query("create table myguests (
+            id int(6) unsigned auto_increment primary key,
+            firstname varchar(30) not null,
+            lastname varchar(30) not null,
+            email varchar(50),
+            reg_date timestamp default current_timestamp on update current_timestamp
+            )");
     }
 
 }
 
 add_action('rest_api_init', function () {
-    $watchlistApi = new WatchlistAPI();
-    $watchlistApi->registerRoutes();
+    $virtualapi = new VirtualAPI();
+    $virtualapi->registerRoutes();
 });

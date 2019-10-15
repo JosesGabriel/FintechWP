@@ -66,7 +66,7 @@ function get_trendingstocks(){
             "Authorization" => "Bearer {$authorization}",
             ]
        ]);
-      $gerdqoute = json_decode($request->content);
+      $gerdqoute = json_decode($request);
       $adminuser = 504; // store on the chart page
       if ($gerdqoute) {
         $listofstocks = [];

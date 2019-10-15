@@ -62,9 +62,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     var vm = this;
     vm.Total = 0;
     $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-    $scope.$watch('$root.stockList', function () {
-        $scope.stock_details = $rootScope.stockList;
-    });
     $scope.latest_trading_date = null;
     $scope.gainers      = 0;
     $scope.losers       = 0;

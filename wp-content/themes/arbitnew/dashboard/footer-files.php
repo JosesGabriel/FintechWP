@@ -151,6 +151,7 @@
     </body>
 </html>
 
+
 <script>
 
 (function ($) {
@@ -295,17 +296,23 @@
         }
     });
     $('.um-activity-textarea').on('click', function (e) {
+        $('.promter_tostocks').remove();
         $('.um-activity-textarea').append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>');
         var qoute = $('.promter_tostocks');
         setInterval(function(){
             $(qoute).fadeOut(3000);
-        }, 7000);
+        }, 4000);
     });
     $('.um-activity-textarea').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();
+        $('.promter_tostocks').remove();
+    });
+    $('.um-activity-textarea').on('mouseleave', function (e) {
+        $('.promter_tostocks').fadeOut(2000).remove();
     });
     $('.popname ul li').on('click', function (e) {
-        $('.promter_tostocks').hide();
+        $('.promter_tostocks').fadeOut();
+        $('.promter_tostocks').remove();
     });
 
 })(jQuery)

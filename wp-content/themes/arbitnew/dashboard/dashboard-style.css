@@ -1,4 +1,5 @@
 /*------ global-dashboard-css ------*/
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 html {
     background: #0d1f33 !important;
 }
@@ -276,6 +277,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
+    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
@@ -518,7 +520,7 @@ span.promter_tostocks {
     background: #ffc107;
     padding: 10px 15px;
     border-radius: 6px;
-    top: 100px;
+    margin-top: -63px;
     z-index: 99999;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.59);
@@ -1300,8 +1302,10 @@ div#show_hide {
     padding: 7px 0;
 }
 .top-stocks .to-content-part ul .even a p{
-    color: #999999 !important;
     margin-bottom: 0;
+    display: inline-block;
+    margin-right: 3px;
+    font-weight: 300;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -1487,6 +1491,20 @@ span.my_rank-number {
 .dbox.yellow {
     color: #ffd900 !important;
 }
+.trendingme .red {
+    color: #eb4d5c !important;
+}
+.trendingme .green {
+    color: #53b987 !important;
+}
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.trendingme .yellow {
+    color: #ffd900 !important;
+}
 .stockperc {
     text-align: right;
     margin-top: 3px;
@@ -1640,6 +1658,18 @@ ul.footmore .ddot {
   z-index: 2;
 }
 
+.swipecenter-area-r {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background:#0000007a;
+  z-index: 5;
+  display: none;
+}
+
+
 .swiperight-area-r{
   position: absolute;
   width: 40px;
@@ -1671,11 +1701,37 @@ ul.footmore .ddot {
   background: transparent;
   z-index: 1;
 }
+
+.swipecenterl{
+  position: absolute;
+  width: 100px;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+}
+
+.swipecenterr{
+  position: absolute;
+  width: 40px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+}
+
+
 .close-leftsidebar {
     position: absolute;
     right: 10px;
     top: -3px;
     display: none;
+}
+
+.drop-over-post {
+    z-index: 10;
 }
 /*------ right-sidebar ------*/
 

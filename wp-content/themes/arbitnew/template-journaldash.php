@@ -364,6 +364,7 @@ require("parts/global-header.php");
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
 			<div class="left-dashboard-part">
+                <div class="swipeleft-area-l"></div>
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 
@@ -373,6 +374,8 @@ require("parts/global-header.php");
 				</div>
 			</div>
 			<div class="center-dashboard-part" style="max-width: 1000px !important;">
+                <div class="swipecenterl"></div>
+                <div class="swipecenter-area-r"></div>
 				<div class="inner-center-dashboard">
 					<div class="post-content">
 						<div>

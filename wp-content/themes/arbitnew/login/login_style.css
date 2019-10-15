@@ -309,7 +309,15 @@ html {-webkit-transition: all 0.5s ease; transition: all 0.5s ease;}
 	border-color: #fff;
 }
 .um-login label.um-field-checkbox {
-    top: -3px !important;
+    top: -20px;
+    left: -115px;
+}
+.forgetmenot label {
+    color: #fff;
+    font-weight: 400;
+}
+p.forgetmenot {
+    display: inline-block;
 }
 .um-login .um-col-alt .um-center {margin-top: -5px !important;}
 .um-login .um-col-alt .um-center:before{
@@ -603,7 +611,7 @@ a.showpassreset {
 .forgotpass-wrapper .um-field-block div {text-align:center;}
 .forgpasslnk {
 	vertical-align: top;
-	display:inline-block;
+	display:none;
 	line-height: 14px;
 	color:#FFFFFF;
 	font-size:11px;

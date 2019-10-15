@@ -102,7 +102,7 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		transition: all 0.5s ease;
 	}
 	span.for_pass {
-		display: block;
+		display: inline;
 		padding: 0px 0 20px;
 		font-size: 12px;
 		text-align: center;
@@ -112,6 +112,24 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 	span.for_pass:hover {
 		text-decoration: none;
 		color: #d8d8d8;
+	}
+	span.for_remember {
+		display: inline;
+		padding: 0px 0 20px;
+		font-size: 12px;
+		text-align: center;
+		color: #fff;
+		cursor: pointer;
+	}
+	span.for_remember:hover {
+		text-decoration: none;
+		color: #d8d8d8;
+	}
+	.tochecked_cont {
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		text-align: center;
 	}
 </style>
 <div class="ondashboardpage_login">
@@ -151,7 +169,10 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                   </div>
                 
                     <div id="loginform" class="hidefromreset" style="position: relative; z-index: 9;">
-                    <?php echo do_shortcode('[ultimatemember form_id="10"]');?>
+					<?php echo do_shortcode('[ultimatemember form_id="10"]');?>
+					<label for="rememberme" class="inline um-field-checkbox-option">
+						<input name="rememberme" type="checkbox" id="rememberme" value="forever" style="display:block !important;"/> <?php _e( 'Keep me signed in', 'ultimate-member' ); ?>
+					</label>
                     <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     
 					<?php #if(isset($_GET['active'])){ ?>
@@ -173,7 +194,6 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 	<?php //if(isset($_GET['active'])){ ?>
                         <?php echo do_shortcode('[ultimatemember form_id="9"]');?>
                     <?php //} ?>
-                    
                    <p class="ordash"><span style="letter-spacing:-3px;margin-right: 7px;">---------------- </span> or <span style="letter-spacing:-3px"> ----------------</span></p>
                     <?php #if(isset($_GET['active'])){ ?>
 						<?php #echo do_shortcode('[ultimatemember_social_login id=3218]');?>
@@ -219,7 +239,8 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		jQuery(".forgotpass-wrapper .um-field-block div").html("Please enter your email address below");
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
-		jQuery("#loginform .um-form .um-row .um-col-1").append("<span class='for_pass'>Forgot your password?</span>");
+		jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><p class='forgetmenot'><label for='rememberme'><input name='rememberme' type='checkbox' id='rememberme' value='forever'  /> Remember Me | </label></p><span class='for_pass'> Forgot your password?</span></div>");
+		// jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'></span><span class='for_pass'>Forgot your password?</span></div>");
 	
 		
 		jQuery(".hidepassreset").click(function(){
@@ -330,7 +351,8 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
                 }
             })
             e.preventDefault();
-        });;
+		});
 </script>
+
 
 <?php require("login/footer-files.php"); ?>

@@ -101,6 +101,13 @@ class JournalAPI extends WP_REST_Controller
             ]
         ]);
 
+        register_rest_route($base_route, 'equity', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getequity'),
+            ]
+        ]);
+
         register_rest_route($base_route, 'portfoliosnap', [ // get method
             [
                 'methods' => 'GET',
@@ -177,6 +184,68 @@ class JournalAPI extends WP_REST_Controller
         return $profit;
     }
 
+    public function getequity($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        // from ledget
+        $cashme = 0;
+        $getequiry = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
+        foreach ($getequiry as $key => $value) {
+            if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
+            if($value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
+        }
+
+        // from tradelogs
+        $tradelogs = 0;
+        $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
+        $totalprofit = 0;
+        foreach ($gettradelogs as $key => $value) {
+            // $profit = $this->getprofits($value);
+            $sellvals = $value->tlvolume * $value->tlsellprice;
+            $isfees = $this->getjurfees($sellvals, 'sell');
+            $tradelogs += $sellvals - $isfees;
+        }
+
+        // from liveportfolio
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
+        $liveportfolio = 0;
+        foreach ($ismytrades as $key => $value) {
+            if($value->meta_value != ""){
+                $dstock = str_replace('_trade_','',$value->meta_key);
+                $trdata = unserialize($value->meta_value);
+                $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
+                $stockdetails = $gerdqoute->data[$key]; 
+
+                $totalcost = $trdata['totalstock'] * $trdata['aveprice'];
+                $marketprofit = $stockdetails->last * $trdata['totalstock'];
+                $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
+                $profit = $marketcost - $totalcost;
+
+                $liveportfolio += $marketcost;
+            }
+            
+        }
+
+        $totaleq = $cashme + $tradelogs + $liveportfolio;
+
+
+
+        return $this->respond(true, ['data' => ['total' => $totaleq, 'cash' => $cashme, 'tradelog' => $tradelogs, 'livetrades' => $liveportfolio]], 200);
+    }
+
 
     // getters
     public function getcurrentallocation($request)
@@ -191,7 +260,7 @@ class JournalAPI extends WP_REST_Controller
         $getequiry = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
         foreach ($getequiry as $key => $value) {
             if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
-            if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
+            if($value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
 
         // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
@@ -450,7 +519,7 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'withraw' || $value->trantype == 'purchase'){
                 $equity -= $value->tranamount;
             }
-            if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){
+            if($value->trantype == 'dividend' || $value->trantype == 'deposit'){
                 $equity += $value->tranamount;
             }
         }

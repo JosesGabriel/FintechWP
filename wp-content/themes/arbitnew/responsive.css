@@ -285,8 +285,8 @@
 		overflow-y: scroll;
 	}
 	.header-dashboard-inner {
-		padding-left: 10px;
-		padding-right: 10px;
+		padding-left: 10px !important;
+		padding-right: 10px !important;
 	}
 	.searchbar {
 		top: 7px;
@@ -405,6 +405,24 @@
 		position: absolute !important;
 		margin: -325px 70px !important;
 	}
+
+	#um_user_photos_download_all {
+		width: 31% !important;
+	}
+
+	#um_user_photos_delete_all {
+		float: right;
+		width: 41% !important;
+	}
+
+	.dstatstrade.showtradelogs {
+		width: 750px;
+	}
+
+	.dstatstrade.ledgerlist {
+		width: 750px;
+	}
+
 
 }
 /* Mobile Smaller */
@@ -644,7 +662,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 115px !important;
+		height: 156px !important;
 	}
 
 	
@@ -688,6 +706,7 @@
 
 	.um-left {
     	float: initial !important;
+    	width: 345px;
 	}
 
 	.um-friends-user-photo {
@@ -770,6 +789,9 @@
 		height: 250px;
 	}
 
+	.um-left {
+    	width: 295px;
+	}
 
 	.ons2 span.post-image {
     
@@ -838,7 +860,7 @@
 	}
 
 	.the_user_top_page .um-cover {
-		height: 115px !important;
+		height: 140px !important;
 	}
 	
 
@@ -898,6 +920,9 @@
 		margin: 0px;
 	}
 
+	#um_user_photos_delete_all {
+		padding: 10px 10px !important;
+	}
 }
 
 /* Mobile Smallest */
@@ -943,6 +968,10 @@
 
 	.closerff {
 		height: 220px;
+	}
+
+	.um-left {
+    	width: 240px;
 	}
 
 	.signup-form {
@@ -993,5 +1022,9 @@
 
 	ul.main-drops > ul:before {
     	right: 32% !important;
+	}
+
+	.um-cover-e img {
+		margin-top: 20px !important;
 	}
 }

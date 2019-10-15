@@ -81,6 +81,7 @@ if(isset($_GET['addcp'])){
                 </div>
             </div>
                         <div class="center-dashboard-part">
+                <div class="swipecenter-area-r"></div>
                 <div class="inner-center-dashboard">
                     <div class="add-post">
                         <!--start content-->
@@ -211,6 +212,8 @@ if(isset($_GET['addcp'])){
                         <!--end content-->
                     </div>
                 </div>
+                <div class="swipecenterl"></div>
+                <div class="swipecenterr"></div>
             </div>
 
             <div class="right-dashboard-part">

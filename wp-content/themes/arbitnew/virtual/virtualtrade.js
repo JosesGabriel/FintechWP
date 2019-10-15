@@ -17,7 +17,7 @@ $(document).ready(function(){
 
 	$('#inpt_data_select_stock').on('change', function() {
 		var stock = $(this).val();
-		console.log();
+		console.log(stock);
 	});
 
 });

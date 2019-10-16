@@ -190,6 +190,7 @@
                         success: function(data) {
                             // console.log(data);
                             $("#vynduemodals").modal('hide');
+                            window.location.href = "https://vyndue.com/#/login";
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             
@@ -222,6 +223,7 @@
                 padding: 5px 10px;
                 /* margin-bottom: 9px; */
                 font-size: 14px;
+                color: #fff;
             }
             #vynduemodals .modal-body input#subspass {
                 width: 100%;

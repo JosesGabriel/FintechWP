@@ -648,32 +648,37 @@
 });
 function checkCurrentPrice(stock, postID) { //joses cute
   var stockCode = stock.substr(1);
-  $.ajax({
-	  url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
-	  type: 'POST',
-	  dataType: 'json', 
-	  success: function(data) {		
-		  if (data.data) {
-			  var change = data.data.change;
-			  var percentageChange = data.data.changepercentage;
-			  percentageChange = percentageChange.toFixed(2);
-			  var totalChange = '― ' + change + ' (' + percentageChange + '%)';
-			  if(change > 0) {
-				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--positive');
-				  totalChange = '▲ ' + change + ' (' + percentageChange + '%)';
-			  } else if(change < 0) {
-				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
-				  totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
-			  }
-			  $('#stockTotalChange-' + postID).text(totalChange);
-		  } else {
-			  $('#stockTotalChange-' + postID).text(data.message);
-		  }
-		  
-	  },
-	  error: function (xhr, ajaxOptions, thrownError) {
-		  $('#stockTotalChange-' + postID).text('Error fetching data.');
-	  }
-  });
+  if($('#stockTotalChange-' + postID).text() == '') {
+	$.ajax({
+		url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
+		type: 'POST',
+		dataType: 'json', 
+		success: function(data) {		
+			if (data.data) {
+				var change = data.data.change;
+				var percentageChange = data.data.changepercentage;
+				percentageChange = percentageChange.toFixed(2);
+				var totalChange = '― ' + change + ' (' + percentageChange + '%)';
+				if(change > 0) {
+					$('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--positive');
+					totalChange = '▲ ' + change + ' (' + percentageChange + '%)';
+				} else if(change < 0) {
+					$('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
+					totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
+				}
+				$('#stockTotalChange-' + postID).text(totalChange);
+			} else {
+				$('#stockTotalChange-' + postID).text(data.message);
+			}
+			
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			$('#stockTotalChange-' + postID).text('Error fetching data.');
+		}
+	});
+  } else {
+	$('#stockTotalChange-' + postID).text('');
+  }
+  
   
 }

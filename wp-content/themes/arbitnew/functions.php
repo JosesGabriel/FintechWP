@@ -79,22 +79,22 @@ function registermoreusers() {
 
     $gerdqoute = json_decode($request->content);
     if(isset($gerdqoute->errcode)){
-      $regpeople = json_encode([
-        'username' => $userlogin,
-        'password' => $pass,
-        'bind_email' => false,
-        'auth' => ['type' => 'm.login.dummy'],
-      ]);
+      // $regpeople = json_encode([
+      //   'username' => $userlogin,
+      //   'password' => $pass,
+      //   'bind_email' => false,
+      //   'auth' => ['type' => 'm.login.dummy'],
+      // ]);
   
-      $guzzle = new GuzzleRequest();
-      $dataUrl = GetDataApiUrl();
-      $authorization = GetDataApiAuthorization();
-      $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
-          "headers" => [
-              "Content-type" => "application/json"
-          ],
-          "body" => $regpeople
-      ]);
+      // $guzzle = new GuzzleRequest();
+      // $dataUrl = GetDataApiUrl();
+      // $authorization = GetDataApiAuthorization();
+      // $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+      //     "headers" => [
+      //         "Content-type" => "application/json"
+      //     ],
+      //     "body" => $regpeople
+      // ]);
     } 
 }
 add_action('wp_login', 'registermoreusers');

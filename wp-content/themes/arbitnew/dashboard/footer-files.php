@@ -187,7 +187,8 @@
                         data: { username: usename, password: passvals, userid : '<?php echo $user_id;?>' },
                         dataType: 'json', // added data type
                         success: function(data) {
-                            console.log(data);
+                            // console.log(data);
+                            $("#vynduemodals").modal('hide');
                         },
                         error: function (xhr, ajaxOptions, thrownError) {
                             

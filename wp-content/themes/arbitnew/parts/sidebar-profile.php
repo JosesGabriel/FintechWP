@@ -8,6 +8,8 @@ $friendstotal1 = UM()->Friends_API()->api()->count_friends( $profile_id );
 $friendstotal = (int) preg_replace('/[^0-9]/', '', $friendstotal1);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
+$login_username = um_user('um_user_profile_url_slug_user_login');
+$display_username = filter_var($login_username, FILTER_VALIDATE_EMAIL) ? '' : "@$login_username";
 
 if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
   $num = 100;
@@ -29,7 +31,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
           <div class="right-image">
               <div class="onto-user-name">
                   <a href="/user" style="color:#fff;"><span><?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?></span></a>
-                  <div class="arb_smalltxt">@<?php echo um_user('nickname'); ?></div>
+                  <div class="arb_smalltxt"><?php echo $display_username; ?></div>
               </div>
               <div class="close-leftsidebar">
               </div>

@@ -337,7 +337,7 @@
 
 
 
-.um-notification-hide a {color: #888 !important}
+.um-notification-hide a {color: #d8d8d8 !important}
 
 
 
@@ -467,4 +467,13 @@
 
 	font-size: 13px;
 
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification {
+	border-bottom: 1px solid #35485f;
+    color: #fff;
+    text-align: left;
+    margin-top: -23px;
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
+    background: #11253c;
 }

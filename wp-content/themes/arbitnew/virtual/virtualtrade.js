@@ -15,7 +15,6 @@ $(document).ready(function(){
 	      }
 	 });
 
-
 	$('.btnbuy').on('click', function(){
 
 		if($('.bbuy').css('display') == 'none'){

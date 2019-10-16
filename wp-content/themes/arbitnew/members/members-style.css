@@ -594,6 +594,7 @@ div#show_hide {
     display: inline-block;
     margin-right: 3px;
     font-weight: 300;
+    font-size: 11px;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -1417,3 +1418,12 @@ select#stockname {
     padding: 7px !important;
 }
 /*------ calc-part-dashboard ------*/
+body .um-notification-live-feed .um-notification-ajax .um-notification {
+	border-bottom: 1px solid #35485f;
+    color: #fff;
+    text-align: left;
+    margin-top: -23px;
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
+    background: #11253c;
+}

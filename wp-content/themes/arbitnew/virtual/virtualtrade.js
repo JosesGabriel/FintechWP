@@ -16,7 +16,8 @@ $(document).ready(function(){
 	 });
 
 	$('#inpt_data_select_stock').on('change', function() {
-		var stock = $(this).val();
+		var stock = $(this).val().toString();
+
 		console.log(stock);
 	});
 

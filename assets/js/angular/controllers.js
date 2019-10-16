@@ -855,7 +855,7 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                 var button = widget.createButton(options);
                 button.setAttribute('title', title);
                 button.addEventListener('click', callback);
-                button.textContent = content;
+                button.innerHTML = `<div class="tradingview-custom-btn">${content}</div>`;
             }
         }
         window.addEventListener('DOMContentLoaded', initTradingView, false);

@@ -95,7 +95,7 @@ function registermoreusers() {
           ],
           "body" => $regpeople
       ]);
-    }
+    } 
 }
 add_action('wp_login', 'registermoreusers');
 

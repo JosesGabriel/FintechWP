@@ -1251,6 +1251,9 @@ a.arb-side-icon {
 	padding: 4px 0 0;
 	display: inline-block;
 }
+a.arb-side-icon:nth-child(3) img {
+    margin-top: 8px !important;
+}
 a.arb-side-icon span {
 	text-align: center;
 	font-size: 11px;

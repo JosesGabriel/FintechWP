@@ -158,12 +158,20 @@ global $current_user;
 
 
 			<div class="um-activity-right">
-				<a href="javascript:void(0);" class="um-button um-activity-post um-disabled">
+				<a href="javascript:void(0);" class="um-button um-activity-post um-disabled" style="float: right;">
 					<?php _e( 'Post', 'um-activity' ); ?>
 				</a>
+				<div class="authorSentiment__inputWrapper" style="display: none;">
+					<input type="hidden" name="_tagged_stock" id="taggedStock">
+					<input type="radio" name="_author_sentiment" id="authorBullish" value="0">
+					<input type="radio" name="_author_sentiment" id="authorBearish" value="1">
+					<div class="authorSentiment__tooltip">What's your current sentiment for this stock?</div>
+					<button type="button" class="authorSentiment authorSentiment--bullish" id="authorSentimentBullish">BULLISH</button>
+					<button type="button" class="authorSentiment authorSentiment--bearish" id="authorSentimentBearish">BEARISH</button>
+				</div>
 			</div>
 			<div class="um-clear"></div>
-
+			
 		</div>
 	</form>
 </div>

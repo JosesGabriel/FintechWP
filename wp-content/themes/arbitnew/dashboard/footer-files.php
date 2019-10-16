@@ -147,7 +147,75 @@
                 new loadMiniCharts(<?php echo $user_id;?>);
 			});
         </script>
-        
+        <script>
+            $(document).ready(function(){
+                $("li.five a").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=4",
+                        type: 'GET',
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            // console.log(data);
+                            if(data.data == "gopop"){
+                                $("#vynduemodals").modal('show');
+                                $("#vynusername").val(data.username);
+                            } else {
+                                window.location.href = "https://vyndue.com/#/login";
+                                // https://vyndue.com/#/login
+                                console.log('redirect');
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+                    // $("#vynduemodals").modal('show');
+                });
+
+                $(".vynduepassnow #subspass").click(function(e){
+                    e.preventDefault();
+
+                    let passvals = $(".vynduepassnow").find("#darbitpass").val();
+                    let usename = $(".vynduepassnow").find("#vynusername").val();
+                    
+                    $.ajax({
+                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                        url: "/wp-json/watchlist-api/v1/fbuser",
+                        type: 'GET',
+                        data: { username: usename, password: passvals, userid : '<?php echo $user_id;?>' },
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            console.log(data);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+
+                });
+            });
+        </script>
+        <div class="modal fade" id="vynduemodals" tabindex="" role="dialog" aria-labelledby="vynduemodalsLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="vynduemodalsLabel">Add password of Vyndue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="pops vynduepassnow">
+                        <input type="password" name="darbitpass" id="darbitpass" placeholder="newpassforarbit">
+                        <input type="hidden" name="vynusername" id="vynusername">
+                        <input type="submit" name="subsnepass" id="subspass">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

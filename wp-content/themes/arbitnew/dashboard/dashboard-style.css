@@ -697,7 +697,7 @@ img.inpostimage {
 .um-activity-widget .um-activity-comments {
     background: #142c46;
     color: #ecf0f1;
-    border: 0 none;
+    border: 0 none !important;
 }
 .um-activity-widget .um-activity-body {
     background: #142c46;
@@ -2553,6 +2553,7 @@ legend {
   .mingle-btn:hover i {
     color: white !important;
   }
+  
 /*------ sidebar-alerts-dashboard ------*/
 
 /* user stock sentiment */

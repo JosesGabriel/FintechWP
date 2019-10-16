@@ -23,7 +23,7 @@
                         <div class="desc">Banco De Oro <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
                         <hr>
                         <div>
-                            <p style="font-size: 14px; margin-bottom: 10px;">STOCK DETAILS</p>
+                            <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
                             <div class="details">
                             <p>Previous <span class="pdetails prev">235.40</span></p>
                             <p>Low <span class="pdetails low">235.10</span></p>
@@ -66,10 +66,10 @@
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" id="entertopdataprice" name="quantity" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataprice" name="quantity" class="inputquantity number" required></div>
                             </div>
                         </div>
-                        <div class="total_cost" style="text-align: right;"><span style="font-size: 11px;">Total Cost: 123,456,789.00</span></div>
+                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: 123,456,789.00</span></div>
                             <div class="footer_details2">  
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">

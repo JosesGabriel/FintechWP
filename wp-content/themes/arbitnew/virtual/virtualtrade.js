@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 	$.ajax({
 	    type:'POST',
 	    url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
@@ -16,23 +17,15 @@ $(document).ready(function(){
 	 });
 
 	$('.btnbuy').on('click', function(){
-
-		if($('.bbuy').css('display') == 'none'){
-			$('.bbuy').css('display','block');
-			$('.bsell').css('display','none');
-		}else{
-			$('.bbuy').css('display','none');
-		}
+		$('.btnbuy').css('background','#25ae5f');
+		$('.btnsell').css('background','none');
+		$('.labelprice').text('Buy Price');
 	});
 
 	$('.btnsell').on('click', function(){
-
-		if($('.bsell').css('display') == 'none'){
-			$('.bsell').css('display','block');
-			$('.bbuy').css('display','none');
-		}else{
-			$('.bsell').css('display','none');
-		}
+		$('.btnsell').css('background','#e64c3c');
+		$('.btnbuy').css('background','none');
+		$('.labelprice').text('Sell Price');
 	});
 
 });

@@ -1430,6 +1430,7 @@ h2.watchtitle {
     .top-stocks .to-content-part ul .even a p{
         color: #999999 !important;
         margin-bottom: 0;
+        font-size: 11px;
     }
     .top-stocks .to-content-part ul .odd a p{
         margin-bottom: 0;

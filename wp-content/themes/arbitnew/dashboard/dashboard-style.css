@@ -1306,6 +1306,7 @@ div#show_hide {
     display: inline-block;
     margin-right: 3px;
     font-weight: 300;
+    font-size: 11px;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;

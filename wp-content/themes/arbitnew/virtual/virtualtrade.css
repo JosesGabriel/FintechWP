@@ -1,23 +1,33 @@
 .modal-content {
    	margin: 50px auto;
     width: 80%;
+    background: #1a2d55;
 }
 
 .modal-body{
 	padding-bottom: 0;
+	padding-top: 0.3rem;
 }
 
 .entr_ttle_bar {
     width: 100%;
 }
 .btnsell{
-	color: #e64c3c;
+	color: #d8d8d8;
     margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #e64c3c;
+    border-radius: 4px;
 }
 .btnbuy{
-	color: #25ae5f;
+	color: #d8d8d8;
     margin-left: 10px;
     margin-right: 5px;
+    background: #25ae5f;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 4px;
 }
 
 .btnbuy:hover {
@@ -34,7 +44,7 @@
 .desc{
 	margin-top: 10px;
     /* font-weight: normal; */
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .crice{
@@ -42,9 +52,14 @@
 	font-size: 12px !important;
 }
 
+.cprice{
+	color: #25ae5f;
+    font-weight: bold !important;
+}
+
 .modal-header {
-	border-bottom: 1px solid #6c6c6d;
-	padding: .5rem;
+	border-bottom: 0px;
+	padding: 1rem;
 }
 .modal-footer {
 	border-top: 1px solid #6c6c6d;
@@ -52,6 +67,7 @@
 
 .groupinput.midd label {
     width: 72px;
+    background: #3b5a9a;
 }
 .details, .details2 {
 	width: 165px;
@@ -103,6 +119,7 @@
 
 .avfunds {
 	float: right;
+	font-size: 11px !important;
 }
 .labelprice, .labelquantity {
 	width: 72px !important;
@@ -121,8 +138,9 @@
 }
 
 hr {
-	margin-top: .5rem;
-    margin-bottom: .5rem;
+	margin-top: .8rem;
+    margin-bottom: .8rem;
+    border-top: 2px solid rgba(55, 96, 189, 0.39);
 }
 
 .selectstrategy select {
@@ -138,6 +156,7 @@ hr {
 textarea.tnotes{
 	width: 204px !important;
 	height: 101px !important;
+	background-color: #567cc7;
 }
 
 .footer_details2 {
@@ -150,4 +169,70 @@ textarea.tnotes{
 
 .details2 {
 	float: right;
+}
+
+.close_btn {
+    color: red;
+    background: transparent;
+    border: 0;
+    font-size: 30px;
+    float: right;
+    cursor: pointer;
+}
+
+.entr_title_bar {
+	width: 100%;
+}
+
+.bidaskbar {
+	margin-bottom: 10px;
+}
+
+.confirm_order {
+	color: white;
+    background: #fcbb29;
+    border: 0;
+    padding: 4px 11px;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.confirm_order:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.groupinput select {
+	background-color: #567cc7;
+}
+
+.groupinput.midd input {
+	background-color: #567cc7;
+}
+
+.pdetails {
+	float: right;
+	font-weight: bolder !important;
+}
+
+.bbuy {
+	width: 30px;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    top: 37px;
+    left: 133px;
+    background: #25ae5f;
+    display: none;
+}
+
+.bsell {
+	width: 30px;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    top: 37px;
+    left: 197px;
+    background: #e64c3c;
+    display: none;
 }

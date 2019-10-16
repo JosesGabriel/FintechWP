@@ -15,9 +15,25 @@ $(document).ready(function(){
 	      }
 	 });
 
-	$('#inpt_data_select_stock').on('change', function() {
-		var stock = $(this).val();
-		console.log(stock);
+
+	$('.btnbuy').on('click', function(){
+
+		if($('.bbuy').css('display') == 'none'){
+			$('.bbuy').css('display','block');
+			$('.bsell').css('display','none');
+		}else{
+			$('.bbuy').css('display','none');
+		}
+	});
+
+	$('.btnsell').on('click', function(){
+
+		if($('.bsell').css('display') == 'none'){
+			$('.bsell').css('display','block');
+			$('.bbuy').css('display','none');
+		}else{
+			$('.bsell').css('display','none');
+		}
 	});
 
 });

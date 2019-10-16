@@ -7,9 +7,9 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
-                    <div class="entr_ttle_bar">
-                        <strong>Enter Order: </strong> <span class="btnbuy">BUY</span>|<span class="btnsell">SELL</span>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="entr_title_bar">
+                        Enter Order: <span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span>
+                        <button type="button" class="close_btn" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -20,45 +20,45 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc">Banco De Oro <span class="crice">Current Price: 123.45</span></div>
+                        <div class="desc">Banco De Oro <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
                         <hr>
                         <div>
-                            <p style="font-size: 12px;">STOCK DETAILS</p>
+                            <p style="font-size: 14px; margin-bottom: 10px;">STOCK DETAILS</p>
                             <div class="details">
-                            <p>Previous</p>
-                            <p>Low</p>
-                            <p>52WKLow</p>
-                            <p>Volume</p>
-                            <p>Trades</p>
+                            <p>Previous <span class="pdetails prev">235.40</span></p>
+                            <p>Low <span class="pdetails low">235.10</span></p>
+                            <p>52WKLow <span class="pdetails klow">212.00</span></p>
+                            <p>Volume <span class="pdetails vol">18.17</span></p>
+                            <p>Trades <span class="pdetails trade">561</span></p>
                             </div>
                             <div class="details2">
-                            <p>Open</p>
-                            <p>High</p>
-                            <p>52WKHigh</p>
-                            <p>Valve</p>
-                            <p>Average</p>
+                            <p>Open <span class="pdetails open">235.20</span></p>
+                            <p>High <span class="pdetails high">235.70</span></p>
+                            <p>52WKHigh <span class="pdetails khigh">350.60</span></p>
+                            <p>Value <span class="pdetails val">22.15M</span></p>
+                            <p>Average <span class="pdetails av">234.20</span></p>
                             </div>
                         </div>
 
                         <div class="bars">
                             <div class="bidaskbar">
-                                <span>Bid/Ask Bar</span>
+                                <span style="font-weight: 600;">Bid/Ask Bar</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green" style="width:60%">&nbsp;</div>
-                                    <div class="arb_bar_red" style="width:40%">&nbsp;</div>
+                                    <div class="arb_bar_green" style="width:60%; height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red" style="width:40%; height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                             <div class="marketsents">
-                                <span>Members Sentiments</span>
+                                <span style="font-weight: 600;">Members Sentiments</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green" style="width:80%">&nbsp;</div>
-                                    <div class="arb_bar_red" style="width:20%">&nbsp;</div>
+                                    <div class="arb_bar_green" style="width:80%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red" style="width:20%;height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="tdetails">
-                            <span>TRADE DETAILS</span>
+                            <span style="font-weight: 600;font-size: 14px;">TRADE DETAILS</span>
                             <span class="avfunds">Available funds: 2,000,000.00</span>
                         </div>
                         <div class="footer_details">
@@ -69,7 +69,7 @@
                                 <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" id="entertopdataprice" name="quantity" class="inputquantity number" required></div>
                             </div>
                         </div>
-                        <div class="total_cost" style="text-align: right;"><span>Total Cost: 123,456,789.00</span></div>
+                        <div class="total_cost" style="text-align: right;"><span style="font-size: 11px;">Total Cost: 123,456,789.00</span></div>
                             <div class="footer_details2">  
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">
@@ -105,7 +105,7 @@
                             </div>
                             <div class="groupinput" style="text-align: right;">
                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
-                                <input type="submit" class="confirmtrd dloadform green modal2-button-confirm" value="Confirm Order">
+                                <input type="submit" class="confirm_order" value="Confirm Order">
                             </div> 
 
                 </div>

@@ -161,6 +161,7 @@
                             if(data.data == "gopop"){
                                 $("#vynduemodals").modal('show');
                                 $("#vynusername").val(data.username);
+                                $(".showusername").text(data.username);
                             } else {
                                 window.location.href = "https://vyndue.com/#/login";
                                 // https://vyndue.com/#/login
@@ -198,20 +199,70 @@
                 });
             });
         </script>
+        <style>
+            
+            #vynduemodals {
+                top: 30%;
+                margin-left: -43px;
+            }
+            #vynduemodals .modal-dialog .modal-content {
+                border-radius: 5px;
+                overflow: hidden;
+                background: #142c46;
+            }
+            #vynduemodals .modal-body {
+                background: #142c46;
+                color: #fff;
+            }
+            #vynduemodals .modal-body input#darbitpass {
+                width: 100%;
+                border: 1px solid #1d3553;
+                background: #10273e;
+                border-radius: 3px;
+                padding: 5px 10px;
+                /* margin-bottom: 9px; */
+                font-size: 14px;
+            }
+            #vynduemodals .modal-body input#subspass {
+                width: 100%;
+                background: none;
+                border: 2px solid #e77e24;
+                color: #e77e24;
+                font-size: 14px;
+                border-radius: 9px;
+                padding: 5px;
+                /* margin-top: 5px; */
+            }
+            #vynduemodals .modal-body p {
+                margin-bottom: 5px;
+                font-size: 14px;
+            }
+        </style>
         <div class="modal fade" id="vynduemodals" tabindex="" role="dialog" aria-labelledby="vynduemodalsLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                <div class="modal-header">
+                <!-- <div class="modal-header">
                     <h5 class="modal-title" id="vynduemodalsLabel">Add password of Vyndue</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                </div> -->
                 <div class="modal-body">
                     <div class="pops vynduepassnow">
-                        <input type="password" name="darbitpass" id="darbitpass" placeholder="newpassforarbit">
-                        <input type="hidden" name="vynusername" id="vynusername">
-                        <input type="submit" name="subsnepass" id="subspass">
+                        <p>To login to Vyndue, you will need your Arbitrage Username.</p>
+                        <p>Your username: <span class="showusername"></span></p>
+                        
+                        <div class="row" style="margin-top: 15px;">
+                            <div class="col-md-6" style="padding: 0;">
+                                <input type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
+                                <input type="hidden" name="vynusername" id="vynusername">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass">
+                            </div>
+                        </div>
+                        <!-- <input type="hidden" name="vynusername" id="vynusername"><br />
+                        <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass"> -->
                     </div>
                 </div>
                 </div>

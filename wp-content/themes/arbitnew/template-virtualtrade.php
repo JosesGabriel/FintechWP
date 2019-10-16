@@ -130,6 +130,21 @@ require("parts/global-header.php");
 									                                    <div style="width:65px; text-align:center">Action</div>
 									                                </div>
 									                            </li>
+									                            <li>
+									                            	<div style="width:100%;">
+									                                    <div style="width:45px">2GO</div>                                                                                	
+									                                    <div style="width:65px">2019-02-23</div>
+									                                    <div style="width:55px" class="table-title-live">2</div>
+									                                    <div style="width:65px" class="table-title-live">₱24.87</div>
+									                                    <div style="width:95px" class="table-title-live">₱24.87</div>
+									                                    <div style="width:65px" class="table-title-live">₱10.00</div>
+									                                    <div style="width:88px" class="table-title-live">₱91.89</div>
+									                                    <div style="width:80px" class="table-title-live">₱22.55</div>
+									                                    <div style="width:65px" class="table-title-live">32.52%</div>
+									                                    <div style="width:65px; text-align:center"></div>
+									                                </div>
+									                            	
+									                            </li>
 									                        </ul>
 									                    </div>
 									                    <div class="deleteform">

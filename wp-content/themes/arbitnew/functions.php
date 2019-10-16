@@ -12,7 +12,7 @@ include 'functions-virtual-api.php';
 #include 'functions-social-api.php';
 include 'functions-socket.php';
 include 'functions-um.php';
-include 'functions-hooks.php';
+// include 'functions-hooks.php';
 
 
 function InitWidgets(){
@@ -40,12 +40,63 @@ function adduseronriot($user_id)
     $guzzle = new GuzzleRequest();
     $dataUrl = GetDataApiUrl();
     $authorization = GetDataApiAuthorization();
-    $request = $guzzle->request("POST", "https://matrix.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+    $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
         "headers" => [
             "Content-type" => "application/json"
         ],
         "body" => $info
     ]);
 }
+
+function registermoreusers() {
+  global $wpdb;
+
+  $user = get_user_by( 'email', $_POST['username-10'] );
+    $userlogin = $user->user_login;
+    $pass = $_POST['user_password-10'];
+
+    // $userlogin = 'arphie';
+    // $pass = 'admin123';
+
+    $info = json_encode([
+      'type' => "m.login.password",
+      'identifier' => [
+        'type' => 'm.id.user',
+        'user' => $userlogin
+      ],
+      'password' => $pass
+    ]);
+
+  $guzzle = new GuzzleRequest();
+    $dataUrl = GetDataApiUrl();
+    $authorization = GetDataApiAuthorization();
+    $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/login", [
+        "headers" => [
+            "Content-type" => "application/json"
+        ],
+        "body" => $info
+    ]);
+
+    $gerdqoute = json_decode($request->content);
+    if(isset($gerdqoute->errcode)){
+      $regpeople = json_encode([
+        'username' => $userlogin,
+        'password' => $pass,
+        'bind_email' => false,
+        'auth' => ['type' => 'm.login.dummy'],
+      ]);
+  
+      $guzzle = new GuzzleRequest();
+      $dataUrl = GetDataApiUrl();
+      $authorization = GetDataApiAuthorization();
+      $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+          "headers" => [
+              "Content-type" => "application/json"
+          ],
+          "body" => $regpeople
+      ]);
+    }
+}
+add_action('wp_login', 'registermoreusers');
 
 ?>

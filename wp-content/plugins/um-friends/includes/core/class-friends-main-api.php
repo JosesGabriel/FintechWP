@@ -111,7 +111,7 @@ class Friends_Main_API {
 					if ( $twobtn == false ) {
 
 						$res = '<div class="um-friend-respond-zone">
-							<a href="#" class="um-friend-respond-btn um-button um-alt" style="top: 2px;" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Respond to Mingle Request','um-friends'). '</a>';
+							<a href="#" class="um-friend-respond-btn um-button um-alt" id="mingle-btn" style="top: 2px;" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Respond to Mingle Request','um-friends'). '</a>';
 
 						$items = array(
 							'confirm' 	=> '<a href="#" class="um-friend-accept-btn" data-user_id1="'.$user_id1.'" data-user_id2="'.$user_id2.'">'. __('Confirm','um-friends'). '</a>',

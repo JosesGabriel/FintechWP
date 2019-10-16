@@ -174,7 +174,7 @@ body .um-notification-b.right {
 .ontomitif .um-notification-b.right {
     position: relative;
     top: initial;
-    bottom: initial;
+    bottom: initial !important;
     background: none;
     box-shadow: none;
     padding: 0;
@@ -1395,4 +1395,25 @@ select#stockname {
 
 
 
+/*------ calc-part-dashboard ------*/
+
+
+/*------ calc-part-dashboard ------*/
+.um-members-friend-btn .um-friend-respond-zone .um-dropdown {
+    left: unset !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+    background: #123;
+    border-radius: 5px;
+    display: none;
+}
+.um-members-friend-btn .um-friend-respond-zone .um-dropdown .um-dropdown-arr *{
+    color: #112233 !important;
+}
+.um-dropdown li a {
+    display: block !important;
+    width: auto !important;
+    padding: 7px !important;
+}
 /*------ calc-part-dashboard ------*/

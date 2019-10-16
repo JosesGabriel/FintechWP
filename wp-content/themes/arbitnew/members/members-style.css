@@ -590,8 +590,10 @@ div#show_hide {
     padding: 7px 0;
 }
 .top-stocks .to-content-part ul .even a p{
-    color: #999999 !important;
     margin-bottom: 0;
+    display: inline-block;
+    margin-right: 3px;
+    font-weight: 300;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -768,14 +770,31 @@ span.my_rank-number {
     top:0;
     left:0;
 }
+/* ------------------ Trending Stocks Value Color Status ------------------ */
 .dbox.red {
-    border-radius: 50px !important;
     color: #eb4d5c !important;
 }
 .dbox.green {
-    border-radius: 50px !important;
     color: #53b987 !important;
 }
+.dbox.yellow {
+    color: #ffd900 !important;
+}
+.trendingme .red {
+    color: #eb4d5c !important;
+}
+.trendingme .green {
+    color: #53b987 !important;
+}
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.trendingme .yellow {
+    color: #ffd900 !important;
+}
+/* ------------------ Trending Stocks Value Color Status ------------------ */
 .stockperc {
     text-align: right;
     margin-top: 3px;

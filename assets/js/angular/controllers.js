@@ -839,16 +839,24 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     }
                 });
 
-				$(widget.createButton())
-                    .on('click', function (e) {
-                        widget.chart().createStudy("Support and Resistance", false, false);
-                     })
-                    .append('<span>S&R</span>');
+                widget.headerReady().then(function() {
+                    widgetCreateButton('Support and Resistance', 'S&R', function (e) {
+                        widget.chart().createStudy('Support and Resistance', false, false);
+                    });
+                })
+
                 $(widget.createButton({align: "right"})).attr('title', 'Fullscreen').on('click', function (e) { 
                     $('#tv_chart_container').toggleFullScreen();
                 })
 				.html('<div class="button-2-lC3gh4- button-2ioYhFEY- apply-common-tooltip isInteractive-20uLObIc-" style="margin: 0 -10px !important;"><span class="icon-beK_KS0k-"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" width="28" height="28"><g fill="currentColor"><path d="M21 7v4h1V6h-5v1z"></path><path d="M16.854 11.854l5-5-.708-.708-5 5zM7 7v4H6V6h5v1z"></path><path d="M11.146 11.854l-5-5 .708-.708 5 5zM21 21v-4h1v5h-5v-1z"></path><path d="M16.854 16.146l5 5-.708.708-5-5z"></path><g><path d="M7 21v-4H6v5h5v-1z"></path><path d="M11.146 16.146l-5 5 .708.708 5-5z"></path></g></g></svg></span></div>').css('cursor','pointer');
             });
+
+            function widgetCreateButton(title, content, callback, options) {
+                var button = widget.createButton(options);
+                button.setAttribute('title', title);
+                button.addEventListener('click', callback);
+                button.textContent = content;
+            }
         }
         window.addEventListener('DOMContentLoaded', initTradingView, false);
     });

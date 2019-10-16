@@ -2978,6 +2978,10 @@ class Activity_Main_API
         /**
 
          * @var $_post_content
+         
+         * @var $_author_sentiment 
+         
+         * @var $_tagged_stock 
 
          * @var $_post_img
 
@@ -3053,9 +3057,10 @@ class Activity_Main_API
 
                 if (isset($safe_content)) {
                     $this->hashtagit($post_id, $safe_content);
-
+                    //joses
                     update_post_meta($post_id, '_original_content', $orig_content);
-
+                    add_post_meta($post_id, '_stock_tagged', $_tagged_stock);
+                    add_post_meta($post_id, '_author_sentiment', $_author_sentiment);
                     $output['orig_content'] = stripslashes_deep($orig_content);
                 }
 

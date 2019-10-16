@@ -44,9 +44,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			border-right-width: 2px;
 		}
 		
-		.um-activity-widget.highlighted .um-activity-comments {
-			border-bottom: 2px solid <?php echo UM()->options()->get('activity_highlight_color'); ?>;
-		}
+		/* .um-activity-widget.highlighted .um-activity-comments {
+			border-bottom: 2px solid <?php //echo UM()->options()->get('activity_highlight_color'); ?>;
+		} */
 		
 		.um-activity-dialog a:hover {background: <?php echo UM()->options()->get('activity_highlight_color'); ?>}
 		ul.ui-autocomplete li.ui-menu-item:hover {background: <?php echo UM()->options()->get('activity_highlight_color'); ?> !important}

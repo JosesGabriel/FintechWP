@@ -147,7 +147,129 @@
                 new loadMiniCharts(<?php echo $user_id;?>);
 			});
         </script>
-        
+        <script>
+            $(document).ready(function(){
+                $("li.five a").click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=4",
+                        type: 'GET',
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            // console.log(data);
+                            if(data.data == "gopop"){
+                                $("#vynduemodals").modal('show');
+                                $("#vynusername").val(data.username);
+                                $(".showusername").text(data.username);
+                            } else {
+                                window.location.href = "https://vyndue.com/#/login";
+                                // https://vyndue.com/#/login
+                                console.log('redirect');
+                            }
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+                    // $("#vynduemodals").modal('show');
+                });
+
+                $(".vynduepassnow #subspass").click(function(e){
+                    e.preventDefault();
+
+                    let passvals = $(".vynduepassnow").find("#darbitpass").val();
+                    let usename = $(".vynduepassnow").find("#vynusername").val();
+                    
+                    $.ajax({
+                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                        url: "/wp-json/watchlist-api/v1/fbuser",
+                        type: 'GET',
+                        data: { username: usename, password: passvals, userid : '<?php echo $user_id;?>' },
+                        dataType: 'json', // added data type
+                        success: function(data) {
+                            // console.log(data);
+                            $("#vynduemodals").modal('hide');
+                            window.location.href = "https://vyndue.com/#/login";
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+
+                });
+            });
+        </script>
+        <style>
+            
+            #vynduemodals {
+                top: 30%;
+                margin-left: -43px;
+            }
+            #vynduemodals .modal-dialog .modal-content {
+                border-radius: 5px;
+                overflow: hidden;
+                background: #142c46;
+            }
+            #vynduemodals .modal-body {
+                background: #142c46;
+                color: #fff;
+            }
+            #vynduemodals .modal-body input#darbitpass {
+                width: 100%;
+                border: 1px solid #1d3553;
+                background: #10273e;
+                border-radius: 3px;
+                padding: 5px 10px;
+                /* margin-bottom: 9px; */
+                font-size: 14px;
+                color: #fff;
+            }
+            #vynduemodals .modal-body input#subspass {
+                width: 100%;
+                background: none;
+                border: 2px solid #e77e24;
+                color: #e77e24;
+                font-size: 14px;
+                border-radius: 9px;
+                padding: 5px;
+                /* margin-top: 5px; */
+            }
+            #vynduemodals .modal-body p {
+                margin-bottom: 5px;
+                font-size: 14px;
+            }
+        </style>
+        <div class="modal fade" id="vynduemodals" tabindex="" role="dialog" aria-labelledby="vynduemodalsLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="vynduemodalsLabel">Add password of Vyndue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div class="modal-body">
+                    <div class="pops vynduepassnow">
+                        <p>To login to Vyndue, you will need your Arbitrage Username.</p>
+                        <p>Your username: <span class="showusername"></span></p>
+                        
+                        <div class="row" style="margin-top: 15px;">
+                            <div class="col-md-6" style="padding: 0;">
+                                <input type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
+                                <input type="hidden" name="vynusername" id="vynusername">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass">
+                            </div>
+                        </div>
+                        <!-- <input type="hidden" name="vynusername" id="vynusername"><br />
+                        <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass"> -->
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

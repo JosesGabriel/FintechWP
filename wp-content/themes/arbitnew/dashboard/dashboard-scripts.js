@@ -67,10 +67,33 @@
 
 		        	if($(this).val().length < 2 || lastChar == '$') {
 		        		jQuery(".um-activity-new-post .um-activity-textarea .tagging_cont > li").remove();
-		        		jQuery(this).parent().find(".popname").remove();
+						jQuery(this).parent().find(".popname").remove();
+						jQuery('.authorSentiment__inputWrapper').hide();
 		        		return;
 		        	}
-
+					////////joses stock tag show price
+					var isStockTagged;
+					var stockTagged;
+					//Check if there is tagged stock, if true, show author sentiments btn
+					// console.log(string.split(" "));
+					var postArray = string.split(" ");
+					for(var i = 0; i < postArray.length; i++) {
+						if(postArray[i].charAt(0) == '$' && postArray[i].length > 1) {
+							isStockTagged = true;
+							stockTagged = postArray[i];
+							break;
+						} else {
+							isStockTagged = false;
+						}
+					}
+					if(isStockTagged) {
+						jQuery('.authorSentiment__inputWrapper').show();
+						jQuery('#taggedStock').val(stockTagged);
+						// jQuery(".um-activity-new-post .um-activity-textarea").append('<div class="sentiment_cont">hatdog</div>');
+					} else {
+						jQuery('#taggedStock').val('');
+					}
+					//// end joses
 
 		        	var counx = 0;
 					clearInterval(loopfriends);
@@ -148,6 +171,20 @@
 				    	jQuery(this).parent().find(".popname").remove();
 				    }
 				});
+				//joses
+				jQuery(this).on('click', '#authorSentimentBullish', function(e) {
+					$('#authorBullish').click()
+					$('#authorSentimentBearish').removeClass('authorSentimentBearish--active');
+					$('.authorSentiment__tooltip').hide();
+					$(this).addClass('authorSentimentBullish--active');
+				});
+				jQuery(this).on('click', '#authorSentimentBearish', function() {
+					$('#authorBearish').click()
+					$('#authorSentimentBullish').removeClass('authorSentimentBullish--active');
+					$('.authorSentiment__tooltip').hide();
+					$(this).addClass('authorSentimentBearish--active');
+				});
+				// end joses
 
 
 		jQuery(this).on('keyup','.um-activity-comment-textarea', function(e){
@@ -607,8 +644,36 @@
 	$(".um-activity-widget .um-activity-foot.status").mouseout(function(){
 	   $(".swipe-area-l").css("z-index", "0");
 	});
-
 	
-
-
+});
+function checkCurrentPrice(stock, postID) { //joses cute
+  var stockCode = stock.substr(1);
+  $.ajax({
+	  url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
+	  type: 'POST',
+	  dataType: 'json', 
+	  success: function(data) {		
+		  if (data.data) {
+			  var change = data.data.change;
+			  var percentageChange = data.data.changepercentage;
+			  percentageChange = percentageChange.toFixed(2);
+			  var totalChange = '― ' + change + ' (' + percentageChange + '%)';
+			  if(change > 0) {
+				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--positive');
+				  totalChange = '▲ ' + change + ' (' + percentageChange + '%)';
+			  } else if(change < 0) {
+				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
+				  totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
+			  }
+			  $('#stockTotalChange-' + postID).text(totalChange);
+		  } else {
+			  $('#stockTotalChange-' + postID).text(data.message);
+		  }
+		  
+	  },
+	  error: function (xhr, ajaxOptions, thrownError) {
+		  $('#stockTotalChange-' + postID).text('Error fetching data.');
+	  }
   });
+  
+}

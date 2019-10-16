@@ -99,7 +99,7 @@ date_default_timezone_set('Asia/Manila'); ?>
 				<div class="right-dashboard-part-inner">
                 	<?php get_template_part('parts/sidebar', 'trendingstocks'); ?>
                     <?php get_template_part('parts/sidebar', 'latestnews'); ?>
-					<?php get_template_part('parts/sidebar', 'watchlist'); ?>
+					<?php //get_template_part('parts/sidebar', 'watchlist'); ?>
 
 					<?php //get_template_part('parts/sidebar', 'topplayers'); ?>
                     <?php //get_template_part('parts/sidebar', 'alert'); ?>

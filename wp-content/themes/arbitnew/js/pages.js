@@ -135,6 +135,15 @@ jQuery(document).ready(function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
 });
+$(window).bind("resize", function () {
+    viewHeight = $(window).height();
+    viewWidth = $(window).width();
+    if (viewWidth < 500) {
+        $("#vyndue--link").attr('href', '');
+    }
+
+}).trigger("resize");
+
 jQuery("body").on('DOMSubtreeModified', ".um-notification-live-count.counter", function(event) {
     
     var counter = parseInt($(event.target));

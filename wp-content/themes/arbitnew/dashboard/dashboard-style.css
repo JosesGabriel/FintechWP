@@ -697,7 +697,7 @@ img.inpostimage {
 .um-activity-widget .um-activity-comments {
     background: #142c46;
     color: #ecf0f1;
-    border: 0 none;
+    border: 0 none !important;
 }
 .um-activity-widget .um-activity-body {
     background: #142c46;
@@ -1240,7 +1240,7 @@ span.um-activity-seemore {
 .top-traiders {
     border-radius: 5px;
     overflow: hidden;
-    border: none;
+    border: 1px solid #1e3554;
     background-color: #142c46;
 }
 .watch-list-inner .to-top-title,
@@ -1306,6 +1306,7 @@ div#show_hide {
     display: inline-block;
     margin-right: 3px;
     font-weight: 300;
+    font-size: 11px;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -2553,4 +2554,100 @@ legend {
   .mingle-btn:hover i {
     color: white !important;
   }
+  
 /*------ sidebar-alerts-dashboard ------*/
+
+/* user stock sentiment */
+.authorSentiment {
+    padding: 4px;
+    font-size: 0.8em;
+    background: transparent;
+    outline: none !important;
+}
+.authorSentiment--bullish {
+    color: #25ae5f;
+    border: 1px solid #25ae5f;
+}
+.authorSentiment--bearish {
+    color: #d04234;
+    border: 1px solid #d04234;
+}
+.authorSentiment--bullish:hover {
+    background-color: #25ae5f;
+    color: white;
+}
+.authorSentiment--bearish:hover {
+    background-color: #d04234;
+    color: white;
+}
+.authorSentiment__dash {
+    position: relative;
+    bottom: 1px;
+    left: 1px;
+}
+.authorSentiment__dash i {
+    font-size: 0.5em !important;
+}
+.authorSentiment__inputWrapper {
+    display: inline;
+    position: relative;
+    top: 10px;
+    right: 5px;
+}
+.authorSentiment__inputWrapper button {
+    margin: 0 1px;
+    border-radius: 2px;
+}
+.authorSentiment__inputWrapper input {
+    display: none;
+}
+.authorSentimentBullish--active {
+    background-color: #25ae5f;
+    color: white;
+}
+.authorSentimentBearish--active {
+    background-color: #d04234;
+    color: white;
+}
+.authorSentiment__tooltip {
+    display: inline;
+    position: absolute;
+    background-color: #333;
+    padding: 3px 10px;
+    bottom: 28px;
+    width: 180px;
+    right: 1px;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+.authorSentiment__tooltip:after {
+    content:'';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-top: solid 7px #333;
+    border-left: solid 7px transparent;
+    border-right: solid 7px transparent;
+}
+.taggedStock__wrapper {
+    margin-left: 15px;
+}
+.taggedStock__wrapper a {
+    font-size: 1em !important;
+}
+.taggedStock__anchor a {
+    color: #007bff !important;
+    cursor: pointer;
+}
+.taggedStock__totalChange {
+    display: block;
+    color: gray;
+}
+.taggedStock__totalChange--positive {
+    color: #25ae5f;
+}
+.taggedStock__totalChange--negative {
+    color: #d04234;
+}

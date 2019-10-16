@@ -174,7 +174,7 @@ body .um-notification-b.right {
 .ontomitif .um-notification-b.right {
     position: relative;
     top: initial;
-    bottom: initial;
+    bottom: initial !important;
     background: none;
     box-shadow: none;
     padding: 0;
@@ -590,8 +590,11 @@ div#show_hide {
     padding: 7px 0;
 }
 .top-stocks .to-content-part ul .even a p{
-    color: #999999 !important;
     margin-bottom: 0;
+    display: inline-block;
+    margin-right: 3px;
+    font-weight: 300;
+    font-size: 11px;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -768,14 +771,31 @@ span.my_rank-number {
     top:0;
     left:0;
 }
+/* ------------------ Trending Stocks Value Color Status ------------------ */
 .dbox.red {
-    border-radius: 50px !important;
     color: #eb4d5c !important;
 }
 .dbox.green {
-    border-radius: 50px !important;
     color: #53b987 !important;
 }
+.dbox.yellow {
+    color: #ffd900 !important;
+}
+.trendingme .red {
+    color: #eb4d5c !important;
+}
+.trendingme .green {
+    color: #53b987 !important;
+}
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.trendingme .yellow {
+    color: #ffd900 !important;
+}
+/* ------------------ Trending Stocks Value Color Status ------------------ */
 .stockperc {
     text-align: right;
     margin-top: 3px;
@@ -1377,3 +1397,33 @@ select#stockname {
 
 
 /*------ calc-part-dashboard ------*/
+
+
+/*------ calc-part-dashboard ------*/
+.um-members-friend-btn .um-friend-respond-zone .um-dropdown {
+    left: unset !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 999;
+    background: #123;
+    border-radius: 5px;
+    display: none;
+}
+.um-members-friend-btn .um-friend-respond-zone .um-dropdown .um-dropdown-arr *{
+    color: #112233 !important;
+}
+.um-dropdown li a {
+    display: block !important;
+    width: auto !important;
+    padding: 7px !important;
+}
+/*------ calc-part-dashboard ------*/
+body .um-notification-live-feed .um-notification-ajax .um-notification {
+	border-bottom: 1px solid #35485f;
+    color: #fff;
+    text-align: left;
+    margin-top: -23px;
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
+    background: #11253c;
+}

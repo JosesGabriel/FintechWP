@@ -1240,7 +1240,7 @@ span.um-activity-seemore {
 .top-traiders {
     border-radius: 5px;
     overflow: hidden;
-    border: none;
+    border: 1px solid #1e3554;
     background-color: #142c46;
 }
 .watch-list-inner .to-top-title,

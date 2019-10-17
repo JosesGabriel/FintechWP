@@ -15,7 +15,7 @@
                 <div class="modal-body">
                    
                          <div class="groupinput midd lockedd"><label>Stock</label>
-                            <select name="inpt_data_stock_y" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 111px;">
+                            <select name="inpt_data_stock_y" class="data_stocks" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 111px;">
                                 <option value="">Select Stocks</option>
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">

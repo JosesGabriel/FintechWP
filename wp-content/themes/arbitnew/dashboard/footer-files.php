@@ -417,7 +417,7 @@
             window.location.href = $this.data('notification_uri')
         }
     });
-    $('.um-activity-textarea').on('click', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('click', function (e) {
         $('.promter_tostocks').remove();
         $('.um-activity-textarea').append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>');
         var qoute = $('.promter_tostocks');

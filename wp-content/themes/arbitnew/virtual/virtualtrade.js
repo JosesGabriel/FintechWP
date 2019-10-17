@@ -31,6 +31,11 @@ $(document).ready(function(){
 	    			$('.pdetails.klow').text(val.weekyearlow);
 	    			$('.pdetails.vol').text(val.volume);
 	    			$('.pdetails.trade').text(val.trades);
+	    			$('.pdetails.open').text(val.open);
+	    			$('.pdetails.high').text(val.high);
+	    			$('.pdetails.khigh').text(val.weekyearhigh);
+	    			$('.pdetails.val').text(val.value);
+	    			$('.pdetails.av').text(val.average);
 	    		} 
 	    });
 

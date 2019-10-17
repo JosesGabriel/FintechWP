@@ -256,7 +256,7 @@
                         
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-6" style="padding: 0;">
-                                <input type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
+                                <input autocomplete=“false” type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
                                 <input type="hidden" name="vynusername" id="vynusername">
                             </div>
                             <div class="col-md-6">

@@ -423,7 +423,7 @@
         var qoute = $('.promter_tostocks');
         setInterval(function(){
             $(qoute).fadeOut(3000);
-        }, 20000);
+        }, 200000);
     });
     $('.um-activity-textarea').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();

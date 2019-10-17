@@ -1,14 +1,12 @@
 $(document).ready(function(){
 
-	var stockdata;
-
+	
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
 	    dataType: 'json',
 	    success: function(response) {
 	    	var opt = '';
-	    	stockdata = response;
 	    	$.each(response.data, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
@@ -20,8 +18,24 @@ $(document).ready(function(){
 	 });
 
 	$('.inpt_data_select_stock').on('change', function(){
-		 let sdata = jQuery.parseJSON(stockdata);
-		console.log(sdata.symbol);
+
+		console.log($(this).val());
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/buyvalues',
+		    dataType: 'json',
+		    success: function(response) {
+		    	var opt = '';
+		    	stockdata = response;
+		    	$.each(response.data, function(i, val) {
+		    		
+		    	});
+
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+
 	});
 
 

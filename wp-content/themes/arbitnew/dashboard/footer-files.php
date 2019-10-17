@@ -151,53 +151,57 @@
             $(document).ready(function(){
                 $("li.five a").click(function(e){
                     e.preventDefault();
-                    $.ajax({
-                        url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
-                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=4",
-                        type: 'GET',
-                        dataType: 'json', // added data type
-                        success: function(data) {
-                            // console.log(data);
-                            if(data.data == "gopop"){
-                                $("#vynduemodals").modal('show');
-                                $("#vynusername").val(data.username);
-                                $(".showusername").text(data.username);
-                            } else {
-                                window.location.href = "https://vyndue.com/#/login";
-                                // https://vyndue.com/#/login
-                                console.log('redirect');
-                            }
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            
-                        }
-                    });
-                    // $("#vynduemodals").modal('show');
+                    $("#vynduemodals").modal('show');
                 });
+                // $("li.five a").click(function(e){
+                //     e.preventDefault();
+                //     $.ajax({
+                //         url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                //         // url: "/wp-json/watchlist-api/v1/hasfb?userid=4",
+                //         type: 'GET',
+                //         dataType: 'json', // added data type
+                //         success: function(data) {
+                //             // console.log(data);
+                //             if(data.data == "gopop"){
+                //                 $("#vynduemodals").modal('show');
+                //                 $("#vynusername").val(data.username);
+                //                 $(".showusername").text(data.username);
+                //             } else {
+                //                 window.location.href = "https://vyndue.com/#/login";
+                //                 // https://vyndue.com/#/login
+                //                 console.log('redirect');
+                //             }
+                //         },
+                //         error: function (xhr, ajaxOptions, thrownError) {
+                            
+                //         }
+                //     });
+                //     // $("#vynduemodals").modal('show');
+                // });
 
-                $(".vynduepassnow #subspass").click(function(e){
-                    e.preventDefault();
+                // $(".vynduepassnow #subspass").click(function(e){
+                //     e.preventDefault();
 
-                    let passvals = $(".vynduepassnow").find("#darbitpass").val();
-                    let usename = $(".vynduepassnow").find("#vynusername").val();
+                //     let passvals = $(".vynduepassnow").find("#darbitpass").val();
+                //     let usename = $(".vynduepassnow").find("#vynusername").val();
                     
-                    $.ajax({
-                        // url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
-                        url: "/wp-json/watchlist-api/v1/fbuser",
-                        type: 'GET',
-                        data: { username: usename, password: passvals, userid : '<?php echo $user_id;?>' },
-                        dataType: 'json', // added data type
-                        success: function(data) {
-                            // console.log(data);
-                            $("#vynduemodals").modal('hide');
-                            window.location.href = "https://vyndue.com/#/login";
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
+                //     $.ajax({
+                //         // url: "/wp-json/watchlist-api/v1/hasfb?userid=<?php echo $user_id;?>",
+                //         url: "/wp-json/watchlist-api/v1/fbuser",
+                //         type: 'GET',
+                //         data: { username: usename, password: passvals, userid : '<?php echo $user_id;?>' },
+                //         dataType: 'json', // added data type
+                //         success: function(data) {
+                //             // console.log(data);
+                //             $("#vynduemodals").modal('hide');
+                //             window.location.href = "https://vyndue.com/#/login";
+                //         },
+                //         error: function (xhr, ajaxOptions, thrownError) {
                             
-                        }
-                    });
+                //         }
+                //     });
 
-                });
+                // });
             });
         </script>
         <style>
@@ -235,7 +239,14 @@
                 padding: 5px;
                 /* margin-top: 5px; */
             }
-            #vynduemodals .modal-body p {
+            .vynduepassnow--phar {
+                margin-bottom: 5px;
+                font-size: 14px;
+                margin: 0 auto;
+                width: 71%;
+                text-align: center;
+            }
+            .vynduepassnow--username {
                 margin-bottom: 5px;
                 font-size: 14px;
             }
@@ -251,8 +262,8 @@
                 </div> -->
                 <div class="modal-body">
                     <div class="pops vynduepassnow">
-                        <p>To login to Vyndue, you will need your Arbitrage Username.</p>
-                        <p>Your username: <span class="showusername"></span></p>
+                        <p class="vynduepassnow--phar">To login to Vyndue, you will need your Arbitrage Username and Username.</p>
+                        <p class="vynduepassnow--username">Your username: <span class="showusername"></span></p>
                         
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-md-6" style="padding: 0;">
@@ -425,12 +436,12 @@
             $(qoute).fadeOut(3000);
         }, 200000);
     });
-    $('.um-activity-textarea').on('keyup', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();
         $('.promter_tostocks').remove();
         $('.authorSentiment__tooltip').css({'display': 'inline'});
     });
-    $('.um-activity-textarea').on('mouseleave', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('mouseleave', function (e) {
         $('.promter_tostocks').fadeOut(2000).remove();
     });
     $('.popname ul li').on('click', function (e) {

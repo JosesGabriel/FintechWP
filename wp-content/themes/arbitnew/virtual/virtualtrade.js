@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	var stockdata;
 
 	$.ajax({
 	    type:'GET',
@@ -7,19 +8,25 @@ $(document).ready(function(){
 	    dataType: 'json',
 	    success: function(response) {
 	    	var opt = '';
+	    	stockdata = response;
 	    	jQuery.each(response.data, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
 
-
-	    	
-
-
 	    },
 	      error: function(response) {                 
 	      }
 	 });
+
+	$('.inpt_data_select_stock').on('change', function(){
+
+		console.log(stockdata);
+
+	});
+
+
+
 
 	$('.btnbuy').on('click', function(){
 		$('.btnbuy').css('background','#25ae5f');

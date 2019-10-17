@@ -17,7 +17,7 @@ $(document).ready(function(){
 	      }
 	 });
 
-	$('.data_stocks').on('change', function(){
+	$('.groupinput').on('change', 'select.data_stocks',function(){
 
 		console.log($(this).val());
 

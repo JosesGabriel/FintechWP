@@ -19,11 +19,9 @@
                 curl_close($curl);
 
                 $dhistoforchart = json_decode($dhistofronold);
-                
-                $userID = $current_user->ID;
             ?>
             <tbody>
-                <?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
+                <?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
                 <?php if ($havemeta && $dhistoforchart): ?>
 
                 <?php foreach ($havemeta as $key => $value) { ?>

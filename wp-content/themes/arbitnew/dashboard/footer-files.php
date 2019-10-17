@@ -149,6 +149,10 @@
         </script>
         <script>
             $(document).ready(function(){
+                $(".vynduepassnow_cancel").click(function(e){
+                    e.preventDefault();
+                    $("#vynduemodals").modal('hide');
+                });
                 $("li.five a").click(function(e){
                     e.preventDefault();
                     $.ajax({
@@ -200,46 +204,11 @@
                 });
             });
         </script>
-        <style>
-            
-            #vynduemodals {
-                top: 30%;
-                margin-left: -43px;
-            }
-            #vynduemodals .modal-dialog .modal-content {
-                border-radius: 5px;
-                overflow: hidden;
-                background: #142c46;
-            }
-            #vynduemodals .modal-body {
-                background: #142c46;
-                color: #fff;
-            }
-            #vynduemodals .modal-body input#darbitpass {
-                width: 100%;
-                border: 1px solid #1d3553;
-                background: #10273e;
-                border-radius: 3px;
-                padding: 5px 10px;
-                /* margin-bottom: 9px; */
-                font-size: 14px;
-                color: #fff;
-            }
-            #vynduemodals .modal-body input#subspass {
-                width: 100%;
-                background: none;
-                border: 2px solid #e77e24;
-                color: #e77e24;
-                font-size: 14px;
-                border-radius: 9px;
-                padding: 5px;
-                /* margin-top: 5px; */
-            }
-            #vynduemodals .modal-body p {
-                margin-bottom: 5px;
-                font-size: 14px;
-            }
-        </style>
+        <?php
+            global $current_user;
+            $userid = get_current_user_id();
+            $unametype = get_user_meta($userid, 'disname', true);
+        ?>
         <div class="modal fade" id="vynduemodals" tabindex="" role="dialog" aria-labelledby="vynduemodalsLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -251,16 +220,24 @@
                 </div> -->
                 <div class="modal-body">
                     <div class="pops vynduepassnow">
-                        <p>To login to Vyndue, you will need your Arbitrage Username.</p>
-                        <p>Your username: <span class="showusername"></span></p>
+                        <img class="vynduepassnow_vyndue-img" src="/svg/vyndue-latest-v2.svg">
+                        <p class="vynduepassnow--phar">To login to Vyndue, you will need your Arbitrage Username and Username.</p>
+                        <div class="vynduepassnow_user-img-main">
+                            <img class="vynduepassnow_user-img" src="<?php echo esc_url( get_avatar_url( $userid ) ); ?>" alt="<?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?>">
+                        </div>
+                        <p class="vynduepassnow--username"><span class="showusername"><?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?></span></p>
+                        <p class="vynduepassnow--username-youornot">( This is your Username )</p>
                         
+                        <hr class="style14 style15">
+                        <p class="vynduepassnow--phar-bot">We have detected that you Register via Facebook, hence no password is associated with your account. Please enter your preferred Password for Vyndue on the dialogue box below.</p>
                         <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-6" style="padding: 0;">
-                                <input type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
+                            <div class="col-md-12" style="padding: 0;">
+                                <input autocomplete=“false” type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
                                 <input type="hidden" name="vynusername" id="vynusername">
                             </div>
-                            <div class="col-md-6">
+                            <div class="vynduepassnow_btns">
                                 <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass">
+                                <a class="vynduepassnow_cancel">Cancel</a>
                             </div>
                         </div>
                         <!-- <input type="hidden" name="vynusername" id="vynusername"><br />
@@ -270,6 +247,7 @@
                 </div>
             </div>
         </div>
+
     </body>
 </html>
 
@@ -417,19 +395,20 @@
             window.location.href = $this.data('notification_uri')
         }
     });
-    $('.um-activity-textarea').on('click', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('click', function (e) {
         $('.promter_tostocks').remove();
         $('.um-activity-textarea').append('<span class="promter_tostocks">Use <strong>$</strong> before stock code to <strong>tag stocks</strong></span>');
         var qoute = $('.promter_tostocks');
         setInterval(function(){
             $(qoute).fadeOut(3000);
-        }, 4000);
+        }, 200000);
     });
-    $('.um-activity-textarea').on('keyup', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();
         $('.promter_tostocks').remove();
+        $('.authorSentiment__tooltip').css({'display': 'inline'});
     });
-    $('.um-activity-textarea').on('mouseleave', function (e) {
+    $('.um-activity-textarea .um-activity-textarea-elem').on('mouseleave', function (e) {
         $('.promter_tostocks').fadeOut(2000).remove();
     });
     $('.popname ul li').on('click', function (e) {

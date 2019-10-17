@@ -1,8 +1,6 @@
 
 	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 	<!--[if lt IE 9]>
@@ -52,6 +50,7 @@
 		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
 		var _post_id    = '<?php echo get_the_id(); ?>';
 	</script>
+
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>
 	<script src="/assets/js/angular/controllers.js?v=<?php echo time() ?>"></script>
 	<script src="/assets/js/angular/directives.js?v=1.218"></script>

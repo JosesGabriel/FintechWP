@@ -165,7 +165,7 @@ global $current_user;
 					<input type="hidden" name="_tagged_stock" id="taggedStock">
 					<input type="radio" name="_author_sentiment" id="authorBullish" value="0">
 					<input type="radio" name="_author_sentiment" id="authorBearish" value="1">
-					<div class="authorSentiment__tooltip">What's your current sentiment for this stock?</div>
+					<div class="authorSentiment__tooltip">Register your sentiment for this stock.</div>
 					<button type="button" class="authorSentiment authorSentiment--bullish" id="authorSentimentBullish">BULLISH</button>
 					<button type="button" class="authorSentiment authorSentiment--bearish" id="authorSentimentBearish">BEARISH</button>
 				</div>

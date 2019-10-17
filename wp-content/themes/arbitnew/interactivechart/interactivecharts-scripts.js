@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     $(window).load(function() {
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
@@ -354,7 +355,24 @@ $(document).ready(function(){
         jQuery(this).val(replaceCommas(currentVal));
 
     });
+
+    /* Start of WebTicker */
+    $('#webTicker').webTicker({
+        speed: 100,
+        height: "50px", 
+        startEmpty:true,
+        hoverpause:true, 
+        transition: "linear"
+    });
+    
+    // jQuery(document).on("mouseenter", "#webTicker", function() {
+    //     // hover starts code here
+    //     console.log('hovered');
+    // });
+    /* End of WebTicker */
+
 });
+
 $(window).bind("resize", function () {
     viewHeight = $(window).height();
     viewWidth = $(window).width();

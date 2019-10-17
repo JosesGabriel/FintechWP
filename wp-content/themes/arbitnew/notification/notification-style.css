@@ -2330,3 +2330,14 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     border-radius: 20px;
 }
 /* -------------- newsticker vyndue ---------------- */
+/* -------------- ex-hide-icon ---------------- */
+.center-dashboard-part .um-notification-ajax {
+    position: relative;
+}
+.center-dashboard-part span.um-notification-hide {
+    display: inline;
+    position: absolute;
+    right: 0;
+    z-index: 0;
+}
+/* -------------- ex-hide-icon ---------------- */

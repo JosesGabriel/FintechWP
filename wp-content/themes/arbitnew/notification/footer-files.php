@@ -167,6 +167,15 @@
             window.location.href = $this.data('notification_uri')
         }
     });
+    jQuery('.um-notification').on('click', function() {
+		var notification_uri = jQuery(this).attr('data-notification_uri');
+        if ( notification_uri ) {
+
+            window.location.href = notification_uri;
+
+        }
+	});
+    
 
 })(jQuery)
 </script>

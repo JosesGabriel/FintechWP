@@ -33,6 +33,34 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'pushLiveTrade'],
             ],
         ]);
+
+        register_rest_route($base_route, 'buyvalues', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getbuyvalues'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'marketdepth', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getmarketdepth'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'stockstosell', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getstockstosell'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'toselldetails', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettoselldetails'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -102,11 +130,11 @@ class VirtualAPI extends WP_REST_Controller
     {
         global $wpdb;
         $data = $details->get_params();
-        // save information
+        
         $sql = "insert into arby_vt_live (stockname, buyprice, volume, emotion, strategy, tradeplan, tradenotes, buydate, vtcategory, vttype, userid) values ('".$data['stockname']."', '".$data['buyprice']."', '".$data['volume']."', '".$data['emotion']."', '".$data['strategy']."', '".$data['tradeplan']."', '".$data['tradenotes']."', '".$data['buydate']."', '".$data['category']."', '".$data['type']."', '".$data['userid']."')";
         $insertlive = $wpdb->query($sql);
         if($insertlive){
-            // return data
+            
             $marketvalue = $data['volume'] * $data['buyprice'];
             $totalcost = $marketvalue - $this->getjurfees($marketvalue, 'sell');
             $data['marketvals'] = $marketvalue;
@@ -122,6 +150,102 @@ class VirtualAPI extends WP_REST_Controller
         }
         
     }
+
+    //getters
+    public function getbuyvalues($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $returningdata = [];
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $dstockdata = json_decode($request->content);
+        $returningdata['stockinfo'] = $dstockdata->data;
+
+        return $this->respond(true, ['data' => $dstockdata->data], 200);
+    }
+
+    public function getmarketdepth($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $stockname = strtoupper($data['stock']);
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/market-depth/latest/full-depth?exchange=PSE&symbol=".$stockname, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $dstockdata = json_decode($request->content);
+
+
+
+        return $this->respond(true, ['data' => $dstockdata->data], 200);
+    }
+
+    public function getstockstosell($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $listofstocks = [];
+        $sql = "select * from arby_vt_live where userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($sql);
+        foreach ($insertlive as $key => $value) { array_push($listofstocks, $value->stockname); }
+        $dstocks = array_unique($listofstocks);
+        return $this->respond(true, ['data' => $dstocks], 200);
+    }
+
+    public function gettoselldetails($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $dstock = [];
+        $dstock['stock'] = $data['stock'];
+        $dstock['emotion'] = "";
+        $dstock['strategy'] = "";
+        $dstock['tradeplan'] = "";
+        $dstock['tradenotes'] = "";
+        $dstock['volume'] = "";
+        $dstock['averageprice'] = "";
+
+        $totalaspertrade = 0;
+
+        $sql = "select * from arby_vt_live where stockname = '".$data['stock']."' and vttype = 'vt' and userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($sql);
+        foreach ($insertlive as $key => $value) {
+
+            $marketvals = $value->buyprice * $value->volume;
+
+            $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
+            $dstock['volume'] += $value->volume;
+            $dstock['emotion'] = $value->emotion;
+            $dstock['strategy'] = $value->strategy;
+            $dstock['tradeplan'] = $value->tradeplan;
+            $dstock['tradenotes'] = $value->tradenotes;
+        }
+        $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+
+        return $this->respond(true, ['sdata' => $dstock, 'data' => $insertlive], 200);
+    }
+
+
+
+
 
 }
 

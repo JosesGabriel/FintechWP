@@ -24,14 +24,14 @@
 
     <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-
+    
+    <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
 	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/interactivechart/interactive-style.css?<?php echo time(); ?>">
     
-    <script src="/assets/assets/js/jquery.webticker.min.js"></script>
-
     <style>
 		.arb_top_ticker {display:block;}
 		.list-inline>li,

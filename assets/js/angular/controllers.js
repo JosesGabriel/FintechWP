@@ -6,13 +6,8 @@ var PineJS;
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
 app.run(['$rootScope', '$http', function($rootScope, $http) {
     $rootScope.newMessages = 0;
-    $rootScope.stockList = [];
     $rootScope.selectedSymbol = _symbol;
     $rootScope.tickerBeep = true;
-    $http.post("/wp-json/data-api/v1/stocks/list")
-        .then(function(response) {
-            $rootScope.stockList = response.data.data;
-        })
 }]);
 app.controller('ticker', ['$scope', '$rootScope', function($scope, $rootScope) {
     $scope.enable = true;

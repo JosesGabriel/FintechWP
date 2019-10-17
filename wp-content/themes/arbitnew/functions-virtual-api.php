@@ -214,6 +214,17 @@ class VirtualAPI extends WP_REST_Controller
         global $wpdb;
         $data = $details->get_params();
 
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stock'], [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $dstockdata = json_decode($request->content);
+
         $dstock = [];
         $dstock['stock'] = $data['stock'];
         $dstock['emotion'] = "";
@@ -222,15 +233,13 @@ class VirtualAPI extends WP_REST_Controller
         $dstock['tradenotes'] = "";
         $dstock['volume'] = "";
         $dstock['averageprice'] = "";
+        $dstock['datainfo'] = $dstockdata->data;
 
         $totalaspertrade = 0;
-
         $sql = "select * from arby_vt_live where stockname = '".$data['stock']."' and vttype = 'vt' and userid = ".$data['userid'];
         $insertlive = $wpdb->get_results($sql);
         foreach ($insertlive as $key => $value) {
-
             $marketvals = $value->buyprice * $value->volume;
-
             $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
             $dstock['volume'] += $value->volume;
             $dstock['emotion'] = $value->emotion;
@@ -240,7 +249,7 @@ class VirtualAPI extends WP_REST_Controller
         }
         $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
 
-        return $this->respond(true, ['sdata' => $dstock, 'data' => $insertlive], 200);
+        return $this->respond(true, ['data' => $dstock], 200);
     }
 
 

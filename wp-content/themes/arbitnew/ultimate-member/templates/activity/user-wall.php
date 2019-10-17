@@ -348,7 +348,18 @@ foreach ( $wallposts->posts as $post ) {
 
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
-
+					<?php
+						#do not display button if post author is yourself
+						if (get_current_user_id() != $author_id){
+						if(author_is_a_friend($author_id, get_current_user_id()) == "false"){
+						?>
+							<a href="#" id="soc-mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
+								Mingle
+							</a>
+					<?php
+					}
+					}
+					?>
 
 
 						<?php if ( ( current_user_can('edit_users') || $author_id == $get_current_user_id ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
@@ -557,7 +568,7 @@ foreach ( $wallposts->posts as $post ) {
 		<div class="taggedStock__wrapper">
 			<input type="hidden" value="<?php $tagged_stock = get_post_meta( $post->ID, '_stock_tagged', TRUE ); echo($tagged_stock);?>">
 			<span class="taggedStock__totalChange" id="stockTotalChange-<?php echo $post->ID ?>"></span>
-			<?php echo $tagged_stock ? '<span class="taggedStock__anchor"><a onclick="checkCurrentPrice('. "'" . $tagged_stock . "','". $post->ID. "'". ')">See current change of ' . $tagged_stock . '</a></span>' : '' ?>
+			<?php echo $tagged_stock ? '<span class="taggedStock__anchor"><a onclick="checkCurrentPrice('. "'" . $tagged_stock . "','". $post->ID. "'". ')">See Stock Details</a></span>' : '' ?>
 		</div>
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
 

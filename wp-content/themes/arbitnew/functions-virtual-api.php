@@ -61,6 +61,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'gettoselldetails'],
             ],
         ]);
+
+        register_rest_route($base_route, 'sellstock', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getsellstock'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -97,30 +104,36 @@ class VirtualAPI extends WP_REST_Controller
     {
         global $wpdb;
 
-        $wpdb->query("create table if not exists arby_vt_live (
-            id int(10) unsigned auto_increment primary key,
-            stockname varchar(250) not null,
-            buyprice varchar(250) not null,
-            volume varchar(250) not null,
-            emotion varchar(250),
-            strategy varchar(250),
-            tradeplan varchar(250),
-            tradenotes varchar(250),
-            buydate varchar(250),
-            vtcategory varchar(250),
-            vttype varchar(250),
-            userid int(10)
-        )");
+        // $wpdb->query("create table if not exists arby_vt_live (
+        //     id int(10) unsigned auto_increment primary key,
+        //     stockname varchar(250) not null,
+        //     buyprice varchar(250) not null,
+        //     volume varchar(250) not null,
+        //     emotion varchar(250),
+        //     strategy varchar(250),
+        //     tradeplan varchar(250),
+        //     tradenotes varchar(250),
+        //     buydate varchar(250),
+        //     vtcategory varchar(250),
+        //     vttype varchar(250),
+        //     userid int(10)
+        // )");
 
-        $wpdb->query("create table if not exists arby_vt_tradelog (
-            id int(10) unsigned auto_increment primary key,
-            tradeid varchar(250) not null,
-            volume varchar(250),
-            selldate varchar(250),
-            vtcategory varchar(250),
-            vttype varchar(250),
-            userid int(10)
-        )");
+        // $wpdb->query("create table if not exists arby_vt_tradelog (
+        //     id int(10) unsigned auto_increment primary key,
+        //     userid varchar(250) not null,
+        //     stock varchar(250) not null,
+        //     volume varchar(250) not null,
+        //     averageprice varchar(250) not null,
+        //     emotion varchar(250) not null,
+        //     strategy varchar(250) not null,
+        //     tradeplan varchar(250) not null,
+        //     tradenotes varchar(250) not null,
+        //     sellprice varchar(250) not null,
+        //     buydate varchar(250) not null,
+        //     profit varchar(250) not null,
+        //     profitperc varchar(250) not null
+        // )");
 
         return $this->respond(true, ['data' => "success?"], 200);
     }
@@ -130,25 +143,43 @@ class VirtualAPI extends WP_REST_Controller
     {
         global $wpdb;
         $data = $details->get_params();
-        
-        $sql = "insert into arby_vt_live (stockname, buyprice, volume, emotion, strategy, tradeplan, tradenotes, buydate, vtcategory, vttype, userid) values ('".$data['stockname']."', '".$data['buyprice']."', '".$data['volume']."', '".$data['emotion']."', '".$data['strategy']."', '".$data['tradeplan']."', '".$data['tradenotes']."', '".$data['buydate']."', '".$data['category']."', '".$data['type']."', '".$data['userid']."')";
-        $insertlive = $wpdb->query($sql);
-        if($insertlive){
-            
-            $marketvalue = $data['volume'] * $data['buyprice'];
-            $totalcost = $marketvalue - $this->getjurfees($marketvalue, 'sell');
-            $data['marketvals'] = $marketvalue;
-            $profit = $totalcost - $marketvalue;
 
-            $profitperc = ($profit / $marketvalue) * 100;
-            $data['profit'] = $profit;
-            $data['profitperc'] = $profitperc;
+        $sql = "select * from arby_vt_live where stockname = '".$data['stockname']."' and userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($sql);
+        if(!empty($insertlive)){
+            $oldinfo = $insertlive[0];
+            $oldmarketvals = $oldinfo->volume * $oldinfo->buyprice;
+            $newmarketvals = $data['buyprice'] * $data['volume'];
+            $newmarketvals = $newmarketvals + $this->getjurfees($newmarketvals, 'buy');
+            $upvolume = $oldinfo->volume + $data['volume'];
+            $averageprice = ($oldmarketvals + $newmarketvals) / $upvolume;
 
-            return $this->respond(true, ['data' => $data], 200);
+            $sql = "update arby_vt_live set buyprice = '".$averageprice."', volume = '".$upvolume."', buydate = '".$data['buydate']."' where id = ".$oldinfo->id;
+            $insertlive = $wpdb->query($sql);
+            return $this->respond(true, ['data' => "updated buy"], 200);
         } else {
-            return $this->respond(true, ['error' => 'inserting not successful'], 400);
+            $sql = "insert into arby_vt_live (stockname, buyprice, volume, emotion, strategy, tradeplan, tradenotes, buydate, vtcategory, vttype, userid) values ('".$data['stockname']."', '".$data['buyprice']."', '".$data['volume']."', '".$data['emotion']."', '".$data['strategy']."', '".$data['tradeplan']."', '".$data['tradenotes']."', '".$data['buydate']."', '".$data['category']."', '".$data['type']."', '".$data['userid']."')";
+            $insertlive = $wpdb->query($sql);
+            if($insertlive){
+                
+                $marketvalue = $data['volume'] * $data['buyprice'];
+                $totalcost = $marketvalue - $this->getjurfees($marketvalue, 'sell');
+                $data['marketvals'] = $marketvalue;
+                $profit = $totalcost - $marketvalue;
+
+                $profitperc = ($profit / $marketvalue) * 100;
+                $data['profit'] = $profit;
+                $data['profitperc'] = $profitperc;
+
+                return $this->respond(true, ['data' => $data], 200);
+            } else {
+                return $this->respond(true, ['error' => 'inserting not successful'], 400);
+            }
+
         }
+
         
+        return $this->respond(true, ['data' => $insertlive], 200);
     }
 
     //getters
@@ -224,7 +255,7 @@ class VirtualAPI extends WP_REST_Controller
                 ]
         ]);
         $dstockdata = json_decode($request->content);
-
+                
         $dstock = [];
         $dstock['stock'] = $data['stock'];
         $dstock['emotion'] = "";
@@ -250,6 +281,47 @@ class VirtualAPI extends WP_REST_Controller
         $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
 
         return $this->respond(true, ['data' => $dstock], 200);
+    }
+
+    public function getsellstock($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $sql = "select * from arby_vt_live where stockname = '".$data['stock']."' and vttype = 'vt' and userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($sql);
+
+        $stockdetails = $insertlive[0];
+
+        $remainingstocks = $stockdetails->volume - $data['volume'];
+
+        $marketvals = $data['averageprice'] * $data['volume'];
+        $sellvals = $data['sellprice'] * $data['volume'];
+        $sellcost = $sellvals - $this->getjurfees($sellvals, 'sell');
+        $profit = $sellcost - $marketvals;
+        $profperc = ($profit / $marketvals) * 100;
+
+        
+
+        if($remainingstocks >= 0){
+            $sql = "insert into arby_vt_tradelog (userid, stock, volume, averageprice, emotion, strategy, tradeplan, tradenotes, sellprice, buydate, profit, profitperc) values ('".$data['userid']."','".$data['stock']."','".$data['volume']."','".$data['averageprice']."','".$data['emotion']."','".$data['strategy']."','".$data['tradeplan']."','".$data['tradenotes']."','".$data['sellprice']."','".$data['buydate']."','".$profit."','".$profperc."')";
+            if($remainingstocks == 0){
+                $updatelivetrade = "delete from arby_vt_live where id = ".$stockdetails->id;
+            } else {
+                $updatelivetrade = "update arby_vt_live set volume = '".$remainingstocks."' where id = ".$stockdetails->id;
+            }
+            $insertlive = $wpdb->query($sql);
+            $insertlive = $wpdb->query($updatelivetrade);
+            
+            
+            return $this->respond(true, ['data' => 'Done Selling'], 200);
+        } else {
+            return $this->respond(true, ['data' => 'cant sell'], 200);
+        }
+
+        
+
+        
     }
 
 

@@ -2610,25 +2610,29 @@ legend {
     color: white;
 }
 .authorSentiment__tooltip {
-    display: inline;
+    display: none;
     position: absolute;
     background-color: #ffc107;
     padding: 8px 14px;
-    bottom: 28px;
+    top: 28px;
     width: 206px;
-    right: -57px;
+    right: -57.7px;
     border-radius: 5px;
+    z-index: 999;
 }
 .authorSentiment__tooltip:after {
-    content:'';
+    content: '';
     position: absolute;
-    top: 100%;
+    top: -6px;
     left: 50%;
     width: 0;
     height: 0;
-    border-top: solid 7px #ffc107;
+    border-bottom: solid 7px #ffc107;
     border-left: solid 7px transparent;
     border-right: solid 7px transparent;
+}
+.um-activity-widget.um-activity-new-post.ss {
+    overflow: visible;
 }
 .taggedStock__wrapper {
     margin-left: 15px;

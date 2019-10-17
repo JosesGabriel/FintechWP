@@ -153,6 +153,10 @@
                     e.preventDefault();
                     $("#vynduemodals").modal('show');
                 });
+                $(".vynduepassnow_cancel").click(function(e){
+                    e.preventDefault();
+                    $("#vynduemodals").modal('hide');
+                });
                 // $("li.five a").click(function(e){
                 //     e.preventDefault();
                 //     $.ajax({
@@ -204,16 +208,23 @@
                 // });
             });
         </script>
+        <?php
+            global $current_user;
+            $userid = get_current_user_id();
+            $unametype = get_user_meta($userid, 'disname', true);
+        ?>
         <style>
             
             #vynduemodals {
-                top: 30%;
+                top: 50px;
                 margin-left: -43px;
             }
             #vynduemodals .modal-dialog .modal-content {
                 border-radius: 5px;
                 overflow: hidden;
                 background: #142c46;
+                width: 350px;
+                margin: 0 auto;
             }
             #vynduemodals .modal-body {
                 background: #142c46;
@@ -223,32 +234,98 @@
                 width: 100%;
                 border: 1px solid #1d3553;
                 background: #10273e;
-                border-radius: 3px;
+                border-radius: 100px;
                 padding: 5px 10px;
                 /* margin-bottom: 9px; */
                 font-size: 14px;
                 color: #fff;
             }
+            #vynduemodals .modal-body input#darbitpass:focus {
+                outline: none;
+            }
             #vynduemodals .modal-body input#subspass {
-                width: 100%;
                 background: none;
                 border: 2px solid #e77e24;
-                color: #e77e24;
-                font-size: 14px;
-                border-radius: 9px;
-                padding: 5px;
-                /* margin-top: 5px; */
+                color: #fff;
+                font-size: 12px;
+                border-radius: 50px;
+                padding: 5px 10px;
+                display: inline-block;
+                cursor: pointer;
+            }
+            #vynduemodals .modal-body input#subspass:hover {
+                border: 2px solid #e77e24;
+                background: #e77e24;
+                color: #fff;
+            }
+            #vynduemodals .modal-body .vynduepassnow_cancel {
+                background: none;
+                border: 2px solid #F44336;
+                color: #fff ;
+                font-size: 12px;
+                border-radius: 50px;
+                padding: 5px 10px;
+                display: inline-block;
+                cursor: pointer;
+            }
+            #vynduemodals .modal-body .vynduepassnow_cancel:hover {
+                border: 2px solid #F44336;
+                background: #F44336;
+                color: #fff;
             }
             .vynduepassnow--phar {
                 margin-bottom: 5px;
-                font-size: 14px;
+                font-size: 13px;
                 margin: 0 auto;
-                width: 71%;
+                line-height: 1.4;
+                text-align: center;
+            }
+            .vynduepassnow--phar-bot {
+                font-size: 11px;
+                font-weight: 300;
+                color: #9c9c9c;
+                margin: 9px auto;
+                line-height: 1.4;
+                text-align: center;
+            }
+            .vynduepassnow--username-youornot {
+                font-size: 11px;
+                font-weight: 300;
+                color: #c9c9c9;
+                margin: 0 auto 10px;
+                line-height: 1.4;
                 text-align: center;
             }
             .vynduepassnow--username {
-                margin-bottom: 5px;
-                font-size: 14px;
+                font-size: 18px;
+                font-weight: 500;
+                text-align: center;
+            }
+            .vynduepassnow_vyndue-img {
+                width: 31%;
+                margin: 0 auto;
+                display: block;
+            }
+            .vynduepassnow_user-img {
+                width: 100%;
+                border-radius: 100px;
+            }
+            .vynduepassnow_user-img-main {
+                display: block;
+                margin: 17px auto;
+                width: 39%;
+                height: 39%;
+                border-radius: 100px;
+                border: 3px solid rgba(101, 131, 168, 0.4196078431372549);
+                padding: 4px;
+                overflow: hidden;
+
+                -webkit-box-shadow: 0px 0px 11px -2px rgba(8, 22, 38, 0.5);
+                -moz-box-shadow: 0px 0px 11px -2px rgba(8, 22, 38, 0.5);
+                box-shadow: 0px 0px 11px -2px rgba(8, 22, 38, 0.5);
+            }
+            .vynduepassnow_btns {
+                margin: 18px 0 3px auto;
             }
         </style>
         <div class="modal fade" id="vynduemodals" tabindex="" role="dialog" aria-labelledby="vynduemodalsLabel" aria-hidden="true">
@@ -262,16 +339,24 @@
                 </div> -->
                 <div class="modal-body">
                     <div class="pops vynduepassnow">
+                        <img class="vynduepassnow_vyndue-img" src="/svg/vyndue-latest-v2.svg">
                         <p class="vynduepassnow--phar">To login to Vyndue, you will need your Arbitrage Username and Username.</p>
-                        <p class="vynduepassnow--username">Your username: <span class="showusername"></span></p>
+                        <div class="vynduepassnow_user-img-main">
+                            <img class="vynduepassnow_user-img" src="<?php echo esc_url( get_avatar_url( $userid ) ); ?>" alt="<?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?>">
+                        </div>
+                        <p class="vynduepassnow--username"><span class="showusername"><?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?></span></p>
+                        <p class="vynduepassnow--username-youornot">( This is your Username )</p>
                         
+                        <hr class="style14 style15">
+                        <p class="vynduepassnow--phar-bot">We have detected that you Register via Facebook, hence no password is associated with your account. Please enter your preferred Password for Vyndue on the dialogue box below.</p>
                         <div class="row" style="margin-top: 15px;">
-                            <div class="col-md-6" style="padding: 0;">
+                            <div class="col-md-12" style="padding: 0;">
                                 <input autocomplete=“false” type="password" name="darbitpass" id="darbitpass" placeholder="Enter Password for Vyndue">
                                 <input type="hidden" name="vynusername" id="vynusername">
                             </div>
-                            <div class="col-md-6">
+                            <div class="vynduepassnow_btns">
                                 <input type="submit" name="subsnepass" value="Continue to Vyndue" id="subspass">
+                                <a class="vynduepassnow_cancel">Cancel</a>
                             </div>
                         </div>
                         <!-- <input type="hidden" name="vynusername" id="vynusername"><br />

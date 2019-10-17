@@ -425,12 +425,10 @@
             $(qoute).fadeOut(3000);
         }, 200000);
     });
-    $('.popname ul li').on('click', function(){
-        $('.authorSentiment__tooltip').css({'display': 'inline'});
-    });
     $('.um-activity-textarea').on('keyup', function (e) {
         $('.promter_tostocks').fadeOut();
         $('.promter_tostocks').remove();
+        $('.authorSentiment__tooltip').css({'display': 'inline'});
     });
     $('.um-activity-textarea').on('mouseleave', function (e) {
         $('.promter_tostocks').fadeOut(2000).remove();

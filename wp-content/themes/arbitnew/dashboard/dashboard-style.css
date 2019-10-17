@@ -2648,6 +2648,9 @@ legend {
     display: block;
     color: gray;
 }
+.taggedStock__totalChange strong {
+    color: white;
+}
 .taggedStock__totalChange--positive {
     color: #25ae5f;
 }

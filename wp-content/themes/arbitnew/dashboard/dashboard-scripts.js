@@ -662,6 +662,7 @@
 });
 function checkCurrentPrice(stock, postID) { //joses cute
   var stockCode = stock.substr(1);
+  var stockCodeEl = '<strong>'+ stockCode +'</strong>'
   if($('#stockTotalChange-' + postID).text() == '') {
 	$.ajax({
 		url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
@@ -680,7 +681,8 @@ function checkCurrentPrice(stock, postID) { //joses cute
 					$('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
 					totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
 				}
-				$('#stockTotalChange-' + postID).text(totalChange);
+				$('#stockTotalChange-' + postID).append(stockCodeEl + ' ' + totalChange);
+				$('.taggedStock__anchor a').text('Hide Stock Details');
 			} else {
 				$('#stockTotalChange-' + postID).text(data.message);
 			}
@@ -692,6 +694,7 @@ function checkCurrentPrice(stock, postID) { //joses cute
 	});
   } else {
 	$('#stockTotalChange-' + postID).text('');
+	$('.taggedStock__anchor a').text('See Stock Details');
   }
   
   

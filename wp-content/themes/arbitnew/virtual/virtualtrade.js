@@ -26,6 +26,11 @@ $(document).ready(function(){
 	    		if(sdata == val.symbol){
 	    			$('.sdesc').text(val.description);
 	    			$('.cprice').text(val.last);
+	    			$('.pdetails.prev').text(val.close);
+	    			$('.pdetails.low').text(val.low);
+	    			$('.pdetails.klow').text(val.weekyearlow);
+	    			$('.pdetails.vol').text(val.volume);
+	    			$('.pdetails.trade').text(val.trades);
 	    		} 
 	    });
 

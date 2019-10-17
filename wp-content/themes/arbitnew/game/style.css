@@ -363,3 +363,15 @@ ul.main-drop > ul li:last-child {
     margin-left: -36px;
     }
 /*------ global-dashboard-css ------*/
+
+/*------ game notification ------*/
+body .um-notification-live-feed .um-notification-ajax .um-notification {
+	border-bottom: 1px solid #35485f;
+    color: #fff;
+    text-align: left;
+    margin-top: -23px;
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
+    background: #11253c;
+}
+/*------ game notification ------*/

@@ -130,6 +130,25 @@ require("parts/global-header.php");
 									                                    <div style="width:65px; text-align:center">Action</div>
 									                                </div>
 									                            </li>
+									                            <li>
+									                            	<div style="width:100%;">
+									                                    <div style="width:45px">2GO</div>                                                                                	
+									                                    <div style="width:65px">2019-02-23</div>
+									                                    <div style="width:55px" class="table-title-live">2</div>
+									                                    <div style="width:65px" class="table-title-live">₱24.87</div>
+									                                    <div style="width:95px" class="table-title-live">₱24.87</div>
+									                                    <div style="width:65px" class="table-title-live">₱10.00</div>
+									                                    <div style="width:88px" class="table-title-live">₱91.89</div>
+									                                    <div style="width:80px" class="table-title-live">₱22.55</div>
+									                                    <div style="width:65px" class="table-title-live">32.52%</div>
+									                                    <div style="width:65px; text-align:center">
+									                                    	<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>
+									                                    	<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>
+
+									                                    </div>
+									                                </div>
+									                            	
+									                            </li>
 									                        </ul>
 									                    </div>
 									                    <div class="deleteform">

@@ -522,7 +522,7 @@ img.arb_newpostimg {
     width: 80%;
 }
 div.uimob800 .um-account-side {
-    padding: 0 0px;
+    padding: 10px 0 0;
     /*padding-top: 14px;*/
     /*background: #142c46;*/
     border-radius: 4px;
@@ -617,7 +617,7 @@ div.uimob800 .um-account-side ul li a:hover {
 .um-account-main {
     float: left;
     width: 50%;
-    padding: 0 15px !important;
+    padding: 10px 15px 0 !important;
     box-sizing: border-box;
 }
 div.uimob800 .um-account-side ul li {

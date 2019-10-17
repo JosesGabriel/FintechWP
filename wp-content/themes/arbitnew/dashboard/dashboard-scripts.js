@@ -184,6 +184,7 @@
 					$('.authorSentiment__tooltip').hide();
 					$(this).addClass('authorSentimentBearish--active');
 				});
+				
 				// end joses
 
 
@@ -481,8 +482,13 @@
     
 
     $('.logo-image').on('click', function(){
+
+
     	$('.left-dashboard-part').css('left','0');
-    	 $('.swipecenter-area-r').css('display','block');s
+    	 
+    	 if (window.matchMedia('(max-width: 767px)').matches) {
+            $('.swipecenter-area-r').css('display','block');
+        }
     	//$('.right-image').find('.close-leftsidebar').css('display','block');
     });
 
@@ -503,7 +509,9 @@
           {
               if (phase=="move" && direction =="right") {
                    $('.left-dashboard-part').css('left','0');
-                   $('.swipecenter-area-r').css('display','block');
+                   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
                    $('.right-image').find('.close-leftsidebar').css('display','block');
                    return false;
               }
@@ -511,7 +519,9 @@
               if (phase=="move" && direction =="left") {
               		jQuery('.right-dashboard-part').css("display","block");
 				   	jQuery('.right-dashboard-part').css("right","0%");
-				   	$('.swipecenter-area-r').css('display','block');
+				   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
@@ -596,7 +606,9 @@
               if (phase=="move" && direction =="left") {
               		jQuery('.right-dashboard-part').css("display","block");
 				   	jQuery('.right-dashboard-part').css("right","0%");
-				   	$('.swipecenter-area-r').css('display','block');
+				   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
@@ -612,7 +624,9 @@
 
               if (phase=="move" && direction =="right") {
               		 $('.left-dashboard-part').css('left','0');
-                   	 $('.swipecenter-area-r').css('display','block');
+                   	 if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
                    	 $('.right-image').find('.close-leftsidebar').css('display','block');  
                    	 return false;
               }
@@ -648,32 +662,37 @@
 });
 function checkCurrentPrice(stock, postID) { //joses cute
   var stockCode = stock.substr(1);
-  $.ajax({
-	  url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
-	  type: 'POST',
-	  dataType: 'json', 
-	  success: function(data) {		
-		  if (data.data) {
-			  var change = data.data.change;
-			  var percentageChange = data.data.changepercentage;
-			  percentageChange = percentageChange.toFixed(2);
-			  var totalChange = '― ' + change + ' (' + percentageChange + '%)';
-			  if(change > 0) {
-				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--positive');
-				  totalChange = '▲ ' + change + ' (' + percentageChange + '%)';
-			  } else if(change < 0) {
-				  $('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
-				  totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
-			  }
-			  $('#stockTotalChange-' + postID).text(totalChange);
-		  } else {
-			  $('#stockTotalChange-' + postID).text(data.message);
-		  }
-		  
-	  },
-	  error: function (xhr, ajaxOptions, thrownError) {
-		  $('#stockTotalChange-' + postID).text('Error fetching data.');
-	  }
-  });
+  if($('#stockTotalChange-' + postID).text() == '') {
+	$.ajax({
+		url: "/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol="+stockCode,
+		type: 'POST',
+		dataType: 'json', 
+		success: function(data) {		
+			if (data.data) {
+				var change = data.data.change;
+				var percentageChange = data.data.changepercentage;
+				percentageChange = percentageChange.toFixed(2);
+				var totalChange = '― ' + change + ' (' + percentageChange + '%)';
+				if(change > 0) {
+					$('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--positive');
+					totalChange = '▲ ' + change + ' (' + percentageChange + '%)';
+				} else if(change < 0) {
+					$('#stockTotalChange-' + postID).addClass('taggedStock__totalChange--negative');
+					totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
+				}
+				$('#stockTotalChange-' + postID).text(totalChange);
+			} else {
+				$('#stockTotalChange-' + postID).text(data.message);
+			}
+			
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			$('#stockTotalChange-' + postID).text('Error fetching data.');
+		}
+	});
+  } else {
+	$('#stockTotalChange-' + postID).text('');
+  }
+  
   
 }

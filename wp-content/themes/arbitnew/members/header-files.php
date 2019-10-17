@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
+	<title><?php bloginfo('name'); ?></title>
+	<meta charset="UTF-8" />
 	<?php require ABSPATH .'/wp-content/themes/arbitnew/parts/header-google-code.php' ?>
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_home_url(); ?>/wp-content/themes/favicon/apple-touch-icon-114x114.png" />

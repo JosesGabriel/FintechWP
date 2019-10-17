@@ -8,6 +8,8 @@ $friendstotal1 = UM()->Friends_API()->api()->count_friends( $profile_id );
 $friendstotal = (int) preg_replace('/[^0-9]/', '', $friendstotal1);
 $coverhphotoactive = um_profile( 'cover_photo' );
 $profilepicactive = um_profile( 'profile_photo' );
+$login_username = um_user('um_user_profile_url_slug_user_login');
+$display_username = filter_var($login_username, FILTER_VALIDATE_EMAIL) ? '' : "@$login_username";
 
 if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
   $num = 100;
@@ -29,7 +31,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
           <div class="right-image">
               <div class="onto-user-name">
                   <a href="/user" style="color:#fff;"><span><?php echo um_user( 'first_name' ) . " " . um_user( 'last_name' ); ?></span></a>
-                  <div class="arb_smalltxt">@<?php echo um_user('nickname'); ?></div>
+                  <div class="arb_smalltxt"><?php echo $display_username; ?></div>
               </div>
               <div class="close-leftsidebar">
               </div>
@@ -47,7 +49,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 					  <span>Watcher & Alerts</span></a></li>
                   <li class="seven"><a href="/game/"><img src="/svg/play-station-4.svg" class="icon-game">
             <span>Games</span></a></li>
-                  <li class="five"><a id="vyndue--link" href="https://vyndue.com/" target="_blank" rel="noopener noreferrer"><img src="/svg/vyndue-newlogo1-1.svg">
+                  <li class="five"><a id="vyndue--link" class="vyndueverify" href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer"><img src="/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>
 
             <div class="m-separator"></div>
@@ -63,6 +65,8 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
       </div>
   </div>
 </div>
+
+
 
 <script type="text/javascript">
 
@@ -102,3 +106,5 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 
   });
 </script>
+
+

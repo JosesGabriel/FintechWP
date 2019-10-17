@@ -47,6 +47,20 @@ class WatchlistAPI extends WP_REST_Controller
                 'callback' => [$this, 'getgettrending'],
             ],
         ]);
+
+        register_rest_route($base_route, 'hasfb', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gethasfb'],
+            ],
+        ]);
+        
+        register_rest_route($base_route, 'fbuser', [
+            [
+                'method' => 'POST',
+                'callback' => [$this, 'addfbuser'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -55,6 +69,56 @@ class WatchlistAPI extends WP_REST_Controller
         $data['success'] = $success;
         $status = $success ? 200 : $status;
         return new WP_REST_Response($data, $status);
+    }
+
+    public function gethasfb($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        
+        $stockss;
+        $whattodo = false;
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where user_id ='.$data['userid']);
+        $username = array_search('um_user_profile_url_slug_user_login', array_column($ismytrades, 'meta_key'));
+        $username = $ismytrades[$username]->meta_value;
+        $ssjet = array_search('_uid_facebook', array_column($ismytrades, 'meta_key'));
+        if($ssjet){
+            $guzzle = new GuzzleRequest();
+            $request = $guzzle->request("GET", "https://im.arbitrage.ph/_matrix/client/r0/profile/@".$username.":im.arbitrage.ph", [
+                "headers" => [
+                    "Content-type" => "application/json",
+                    ]
+            ]);
+            $stockss = json_decode($request->content);
+            if(isset($stockss->errcode)){
+                $whattodo = true;
+            }
+        }
+        $ifhasbo = ($whattodo ? "gopop" : "nopop");
+        return $this->respond(true, ['data' => $ifhasbo, 'username' => $username], 200);
+    }
+
+    public function addfbuser($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $info = json_encode([
+            'username' => $data['username'],
+            'password' => $data['password'],
+            'bind_email' => false,
+            'auth' => ['type' => 'm.login.dummy'],
+        ]);
+    
+        $guzzle = new GuzzleRequest();
+        $request = $guzzle->request("POST", "https://im.arbitrage.ph/_matrix/client/r0/register?kind=user", [
+            "headers" => [
+                "Content-type" => "application/json"
+            ],
+            "body" => $info
+        ]);
+
+        return $this->respond(true, ['data' => $info], 200);
     }
 
     public function fetchUserWatchlist($request)

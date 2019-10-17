@@ -1239,6 +1239,7 @@ div#show_hide {
 .top-stocks .to-content-part ul .even a p{
     color: #999999 !important;
     margin-bottom: 0;
+    font-size: 11px;
 }
 .top-stock .to-content-part {
     padding-bottom: 0 !important;
@@ -2304,3 +2305,28 @@ legend {
     position: relative;
 }
 /*------ sidebar-alerts-dashboard ------*/
+
+
+body .um-notification-live-feed .um-notification-ajax .um-notification {
+	border-bottom: 1px solid #35485f;
+    color: #fff;
+    text-align: left;
+    margin-top: -23px;
+}
+body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
+    background: #11253c;
+}
+
+/* -------------- newsticker vyndue ---------------- */
+#vyndue--link span:after {
+    position: relative;
+    display: inline;
+    content: "New";
+    background: #e91e63;
+    padding: 0px 6px;
+    margin: 0 0 0 5px;
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 20px;
+}
+/* -------------- newsticker vyndue ---------------- */

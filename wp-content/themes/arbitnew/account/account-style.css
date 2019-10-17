@@ -3278,6 +3278,9 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
 /* -------------- account notification ---------------- */
 
 /* -------------- newsticker vyndue ---------------- */
+#vyndue--link span {
+    position: relative;
+}
 #vyndue--link span:after {
     position: absolute;
     display: inline;

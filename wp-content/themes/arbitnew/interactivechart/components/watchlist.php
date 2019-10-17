@@ -19,17 +19,16 @@
                 curl_close($curl);
 
                 $dhistoforchart = json_decode($dhistofronold);
-                $stockinfo = $dhistoforchart->data;
-
+                
                 $userID = $current_user->ID;
             ?>
             <tbody>
                 <?php $havemeta = get_user_meta($userID, '_watchlist_instrumental', true); ?>
-                <?php if ($havemeta): ?>
+                <?php if ($havemeta && $dhistoforchart): ?>
 
                 <?php foreach ($havemeta as $key => $value) { ?>
                 <?php
-
+                    $stockinfo = $dhistoforchart->data;
                     $dstock = $value['stockname'];
                     $dprice = 0;
                     $dchange = 0;

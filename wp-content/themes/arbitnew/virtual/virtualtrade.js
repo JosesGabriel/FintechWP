@@ -9,7 +9,7 @@ $(document).ready(function(){
 	    success: function(response) {
 	    	var opt = '';
 	    	stockdata = response;
-	    	jQuery.each(response.data, function(i, val) {
+	    	$.each(response.data, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
@@ -21,9 +21,7 @@ $(document).ready(function(){
 
 	$('.inpt_data_select_stock').on('change', function(){
 
-			var obj = jQuery.parseJSON(stockdata);
-			console.log(obj);
-
+		console.log('asdasd');
 	});
 
 

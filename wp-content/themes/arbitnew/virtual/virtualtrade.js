@@ -25,6 +25,7 @@ $(document).ready(function(){
 
 	    		if(sdata == val.symbol){
 	    			$('.sdesc').text(val.description);
+	    			$('.cprice').text(val.last);
 	    		} 
 	    });
 

@@ -1,5 +1,5 @@
 <div class="arb_top_ticker">
-    <div ng-controller="dev-ticker" class="sd_border_btm arb_custom_ticker_wrapper">
+    <div ng-controller="ticker" class="sd_border_btm arb_custom_ticker_wrapper">
         <div class="ticker-enabler">
             <button 
                 ng-click="tickerEnabler()"

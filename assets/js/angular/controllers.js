@@ -15,7 +15,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
-app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
+app.controller('ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
     
     $scope.enable = true;
     $scope.isTickerFull = false;
@@ -50,7 +50,7 @@ app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($sco
 
     //region test
     var rawdate = [
-        {"sym":"BPI","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
+        {"sym":"A","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
        // {"sym":"WEB","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
     ]
 
@@ -65,18 +65,17 @@ app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($sco
     }
     
     //endregion test
-    if ($scope.enable) {
-        $interval(function() {
-            if ($scope.data.length > 0) {
-                //add first data item to ticker array
-                $scope.ticker.push($scope.data[0]);
-                $scope.data.shift();
-            }
-            if($scope.ticker.length>0){
-                $scope.ticker.shift();
-            }
-        }, 6000);
-    }
+ 
+    $interval(function() {
+        if ($scope.data.length > 0) {
+            //add first data item to ticker array
+            $scope.ticker.push($scope.data[0]);
+            $scope.data.shift();
+        }
+        if($scope.ticker.length>0){
+            $scope.ticker.shift();
+        }
+    }, 6000);
     
     socket.on('psec', function (data) {  
         if ($scope.enable) {

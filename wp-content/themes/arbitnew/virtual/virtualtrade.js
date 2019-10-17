@@ -20,8 +20,13 @@ $(document).ready(function(){
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){
 
-		console.log($(this).val());
-		console.log(stockdata);
+		var sdata = $(this).val();
+		$.each(stockdata.data, function(i, val) {
+
+	    		if(sdata == val.symbol){
+	    			$('.sdesc').text(val.description);
+	    		} 
+	    });
 
 	});
 

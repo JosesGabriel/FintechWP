@@ -12,30 +12,10 @@
                             <img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;">
                         </a>
                     </div>
-                    <!-- <div class="searchbar">
-                        <div class="inner-seatch">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <?php
-                                //$search_term = get_search_query();
-                                //echo do_shortcode("[et_pb_search admin_label='Search Arbitrage...' background_layout='light' text_orientation='left' exclude_pages='off' exclude_posts='off' hide_button='off' /]");
-                             ?>
-
-                            <script>
-                                jQuery(document).ready(function(e) {
-                                    jQuery(".inner-seatch input[type='text']").val("<?php //if (!$search_term){ echo "Search"; } else { echo $search_term; } ?>");
-                                });
-                            </script>
-							
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="right-header-part">
                 <div class="right-header-inner">
-                    <!-- <div class="optsdropdown">
-
-                    </div> -->
-
                     <ul class="main-drops">
                         <div class="main-user-name" id="main-user-name">
                              <div class="ontotools">
@@ -60,7 +40,7 @@
                     <div class="dmessagepart" <?php if(is_page(2457)){ ?>style="padding-right:0;"<?php } ?>>
                     	<?php if(!is_page(2457)){ ?>
                             <div class="dmessagepart-wrap" data-show-always="1">
-                                <a href="/vyndue/"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top:3px"></a>
+                                <a href="https://vyndue.com" target="_blank" rel="noopener noreferrer"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 20px;display: inline-block;vertical-align: top;margin-top:5px"></a>
                                 <span class="vyndue-notification" style="display: none;">0</span>
                             </div>
                         <?php } ?>
@@ -75,15 +55,14 @@
                         </div>
                         <ul id="droppouts" style="">
                             <li><a href="/user/<?php echo um_user('user_login') ?>/?profiletab=main&amp;um_action=edit" class="real_url">Edit Profile</a></li>
-                            <li><a href="<?php echo get_home_url(); ?>/user/">My Account</a></li>
+                            <li><a href="/user/">My Account</a></li>
                             <hr class="style14 style15">
                             <li class="onto-last-element"><a href="/logout">Logout</a></li>
                         </ul>
                         
                     </ul>
         
-                     <div class="right-slider-menu" >
-                       <!--<img id="right-slider-icon" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitnew/images/menu.svg" width="22px">-->
+                    <div class="right-slider-menu" >
                     </div>
                     <div id="right-menu" class="right-slider-menu1"></div>
 
@@ -91,9 +70,6 @@
                         <div class="notifinnerbase">
                         </div>
                     </div>
-
-                   
-
                 </div>
             </div>
             <br class="clear">

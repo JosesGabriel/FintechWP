@@ -9,10 +9,11 @@
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/gauge.js"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script> 
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/journal/journalscripts.js?<?php echo time(); ?>"></script>
+        <script src="<?php echo get_stylesheet_directory_uri(); ?>/virtual/virtualtrade.js?<?php echo time(); ?>"></script>
     </body>
 </html>
 

@@ -289,22 +289,21 @@ foreach ( $wallposts->posts as $post ) {
 
 						</a>
             <!-- Mingle button on user wall ---->
+	
 
-            <?php
-            #do not display button if post author is yourself
-            if (get_current_user_id() != $author_id){
-              if(author_is_a_friend($author_id, get_current_user_id()) == "false"){
-            ?>
-                <button href="#" id="soc-mingle-btn" class="mingle-btn um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
-                  <i class="fas fa-plus" aria-hidden="true"></i>
-                </button>
-            <?php
-              }
-            }
-            ?>
-
-            <!-- Mingle button on user wall ---->
-
+			<!-- Mingle button on user wall ---->
+					<span>
+						<?php 
+							$author_sentiment = get_post_meta( $post->ID, '_author_sentiment', TRUE );
+							if ($author_sentiment != '' && $author_sentiment == 0) {
+								echo('<span class="authorSentiment__dash"><i class="fas fa-minus"></i></span>');
+								echo('<span class="authorSentiment authorSentiment--bullish">BULLISH</span>');
+							} else if ($author_sentiment != '' && $author_sentiment == 1) {
+								echo('<span class="authorSentiment__dash"><i class="fas fa-minus"></i></span>');
+								echo('<span class="authorSentiment authorSentiment--bearish">BEARISH</span>');
+							}
+						?>
+					</span>
 						<?php if ( $wall_id && $wall_id != $author_id ) {
 
 							um_fetch_user( $wall_id ); ?>
@@ -349,7 +348,18 @@ foreach ( $wallposts->posts as $post ) {
 
 
 					<div class="um-activity-dialog um-activity-tool-dialog">
-
+					<?php
+						#do not display button if post author is yourself
+						if (get_current_user_id() != $author_id){
+						if(author_is_a_friend($author_id, get_current_user_id()) == "false"){
+						?>
+							<a href="#" id="soc-mingle-btn" class="um-friend-btn um-button um-alt outmingle" data-user_id1="<?php echo $author_id; ?>" data-user_id2="<?php echo get_current_user_id(); ?>">
+								Mingle
+							</a>
+					<?php
+					}
+					}
+					?>
 
 
 						<?php if ( ( current_user_can('edit_users') || $author_id == $get_current_user_id ) && ( UM()->Activity_API()->api()->get_action_type( $post->ID ) == 'status' ) ) { ?>
@@ -555,7 +565,11 @@ foreach ( $wallposts->posts as $post ) {
 				color: white !important;
 			}
 		</style>
-
+		<div class="taggedStock__wrapper">
+			<input type="hidden" value="<?php $tagged_stock = get_post_meta( $post->ID, '_stock_tagged', TRUE ); echo($tagged_stock);?>">
+			<span class="taggedStock__totalChange" id="stockTotalChange-<?php echo $post->ID ?>"></span>
+			<?php echo $tagged_stock ? '<span class="taggedStock__anchor"><a onclick="checkCurrentPrice('. "'" . $tagged_stock . "','". $post->ID. "'". ')">See Stock Details</a></span>' : '' ?>
+		</div>
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
 
 			<?php if ( $get_current_user_id ) { ?>

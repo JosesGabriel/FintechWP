@@ -21,9 +21,8 @@ $(document).ready(function(){
 
 	$('.inpt_data_select_stock').on('change', function(){
 
-			jQuery.each(stockdata, function(i, val) {
-	    		console.log(val.symbol);
-	    	});
+			var obj = jQuery.parseJSON(stockdata);
+			console.log(obj);
 
 	});
 

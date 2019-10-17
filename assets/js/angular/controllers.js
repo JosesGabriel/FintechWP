@@ -32,26 +32,26 @@ app.controller('ticker', ['$scope', '$rootScope', function($scope, $rootScope) {
     });
 }]);
 app.controller('template', function($scope, $http) {
-    var settings = {
-        chart: '1',
-        chat: '0',
-        ticker: '2',
-        left: '1',
-        right: '1',
-        disclosure: '1',
-    };
-    var new_settings = JSON.parse(localStorage.getItem('settings'));
-    if (new_settings) {
-        jQuery.extend(settings, new_settings);
-    }
-    $scope.settings = settings;
-    $scope.updateSettings = function(key) {
-        localStorage.setItem('settings', JSON.stringify($scope.settings));
-    }
-    $scope.marketopen = false;
-    socket.on('servertime', function(data) {
-        $scope.marketopen = data.is_market_open == '1';
-    });
+    // var settings = {
+    //     chart: '1',
+    //     chat: '0',
+    //     ticker: '2',
+    //     left: '1',
+    //     right: '1',
+    //     disclosure: '1',
+    // };
+    // var new_settings = JSON.parse(localStorage.getItem('settings'));
+    // if (new_settings) {
+    //     jQuery.extend(settings, new_settings);
+    // }
+    // $scope.settings = settings;
+    // $scope.updateSettings = function(key) {
+    //     localStorage.setItem('settings', JSON.stringify($scope.settings));
+    // }
+    // $scope.marketopen = false;
+    // socket.on('servertime', function(data) {
+    //     $scope.marketopen = data.is_market_open == '1';
+    // });
 });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
     var vm = this;

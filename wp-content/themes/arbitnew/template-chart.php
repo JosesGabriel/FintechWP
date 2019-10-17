@@ -96,7 +96,7 @@
 										</div>
 									</div>
 
-									<div class="vertical-box-column width-250 mobileinithide" id="right-sidebar" ng-show="settings.right">
+									<div class="vertical-box-column width-250 mobileinithide" id="right-sidebar">
 										<div class="showsidemobile">
 											<i class="fa fa-outdent" aria-hidden="true"></i>
 											<i class="fa fa-indent" aria-hidden="true"></i>

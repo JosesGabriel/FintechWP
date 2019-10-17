@@ -118,7 +118,25 @@ require("parts/global-header.php");
 													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
 													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
 													                </td>
-													                <td style="width:27px; text-align:center"><a data-emotion="" data-strategy="" data-tradeplan="" data-tradingnotes" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
+													                </tr></tbody>
+													            </table>
+													        </li>
+													        <li>
+													            <table width="100%">
+													                <tbody><tr><td style="width: 7%;text-align: left !important;">ISM</td>
+													                <td style="width:9%" class="table-title-live">₱10,000</td>
+													                <td style="width: 12%;" class="table-title-live">₱4,975</td>
+													                <td style="width:15%" class="table-title-live">₱49,746.32</td>
+													                <td style="width:15%" class="table-title-live">₱48,858.76</td>
+													                <td style="width:15%" class="dredpart table-title-live">₱-887.56</td>
+													                <td style="width:8%" class="dredpart table-title-live">-1.78%</td>
+													                <td style="width:77px;text-align:center;">
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                </td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-strategy="" data-tradeplan="" data-tradingnotes=""data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
 													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
 													                </tr></tbody>
 													            </table>

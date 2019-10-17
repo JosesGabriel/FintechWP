@@ -15,7 +15,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
-app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
+app.controller('ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
     
     $scope.enable = true;
     $scope.isTickerFull = false;
@@ -77,7 +77,7 @@ app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($sco
         }
     }, 6000);
     
-    socket.on('dev-psec', function (data) {  
+    socket.on('psec', function (data) {  
         if ($scope.enable) {
             var transaction = {
                 symbol: data.sym,

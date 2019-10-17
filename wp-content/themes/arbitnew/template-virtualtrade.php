@@ -78,8 +78,7 @@ require("parts/global-header.php");
                                         <div class="box-portlet">
                                             <div class="box-portlet-header">
                                                 Live Portfolio
-                                                <div class="dltbutton">
-      
+                                                <div class="dltbutton">    
 													<?php require "virtual/enter-trade.php";?>
 													<div class="dbuttondelete">
 														<form action="/virtual-trades" method="post" class="resetform">
@@ -91,7 +90,61 @@ require("parts/global-header.php");
                                             </div>
                                             <div class="box-portlet-content">
                                                 <div class="stats-info">
-                                                    <?php //require "journal/live_portfolio.php";?>
+                                                	<div id="live_portfolio" class="dstatstrade overridewidth">
+	                                                    <ul>
+													        <li class="headerpart">
+													            <table width="100%">
+													                <thead><tr><td style="width: 7%;text-align: left !important;">Stocks</td>
+													                <td style="width:9%" class="table-title-live table-title-avprice">Position</td>
+													                <td style="width: 12%;" class="table-title-live table-title-avprice">Avg. Price</td>
+													                <td style="width:15%" class="table-title-live table-title-tcost">Total Cost</td>
+													                <td style="width:15%" class="table-title-live table-title-mvalue">Market Value</td>
+													                <td style="width:15%" class="table-title-live table-title-profit">Profit</td>
+													                <td style="width:8%" class="table-title-live table-title-performance">Perf.</td>
+													                <td style="width:105px;text-align: left;padding-left: 25px;">Action</td>
+													                </tr></thead>
+													            </table>
+													        </li>
+													        <li>
+													            <table width="100%">
+													                <tbody><tr><td style="width: 7%;text-align: left !important;">PHEN</td>
+													                <td style="width:9%" class="table-title-live">₱15,000</td>
+													                <td style="width: 12%;" class="table-title-live">₱2,213</td>
+													                <td style="width:15%" class="table-title-live">₱33,197.65</td>
+													                <td style="width:15%" class="table-title-live">₱41,029.47</td>
+													                <td style="width:15%" class="dgreenpart table-title-live">₱7,831.82</td>
+													                <td style="width:8%" class="dgreenpart table-title-live">23.59%</td>
+													                <td style="width:77px;text-align:center;">
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                </td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
+													                </tr></tbody>
+													            </table>
+													        </li>
+													        <li>
+													            <table width="100%">
+													                <tbody><tr><td style="width: 7%;text-align: left !important;">ISM</td>
+													                <td style="width:9%" class="table-title-live">₱10,000</td>
+													                <td style="width: 12%;" class="table-title-live">₱4,975</td>
+													                <td style="width:15%" class="table-title-live">₱49,746.32</td>
+													                <td style="width:15%" class="table-title-live">₱48,858.76</td>
+													                <td style="width:15%" class="dredpart table-title-live">₱-887.56</td>
+													                <td style="width:8%" class="dredpart table-title-live">-1.78%</td>
+													                <td style="width:77px;text-align:center;">
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                </td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-strategy="" data-tradeplan="" data-tradingnotes=""data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
+													                </tr></tbody>
+													            </table>
+													        </li>
+
+
+													    </ul>
+													</div>
                                                 </div>
                                             </div>
                                         </div>

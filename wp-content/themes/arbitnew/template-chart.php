@@ -207,7 +207,7 @@
 		<!-- end #content -->
 
 		<!-- begin theme-panel -->
-		<div class="theme-panel">
+		<!-- <div class="theme-panel">
 			<a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn" style="border: 1px solid #ccc; border-right: none; display: none;"><i class="fa fa-cog"></i></a>
 			<div class="theme-panel-content">
 				<h5 class="m-t-0">Settings</h5>
@@ -235,7 +235,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- end theme-panel -->
 
 	</div>

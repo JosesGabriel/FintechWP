@@ -195,6 +195,14 @@ textarea.tnotes{
     cursor: pointer;
 }
 
+.close_btnlogs {
+    color: red;
+    background: transparent;
+    border: 0;
+    float: right;
+    cursor: pointer;
+}
+
 .entr_title_bar {
 	width: 100%;
 }
@@ -255,4 +263,8 @@ textarea.tnotes{
 .close_btn:hover {
 	background: #f9f3f3;
     border-radius: 20px;
+}
+
+.modal_logs {
+    width: 72%;
 }

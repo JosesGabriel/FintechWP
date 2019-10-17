@@ -5,13 +5,12 @@ var PineJS;
 // var INDICES = ['PSEI','ALL','FIN','HDG','IND','M-O','PRO','SVC'];
 var app = angular.module('arbitrage', ['ngSanitize','ngEmbed','ngNumeraljs','yaru22.angular-timeago','luegg.directives']);
 app.run(['$rootScope', '$http', function($rootScope, $http) {
-    $rootScope.newMessages = 0;
-    $rootScope.stockList = [];
+    // $rootScope.newMessages = 0;
     $rootScope.selectedSymbol = _symbol;
     $rootScope.tickerBeep = true;
+
     $http.post("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
-            $rootScope.stockList = response.data.data;
             _stocks = response.data.data;
         })
 }]);
@@ -104,26 +103,26 @@ app.controller('dev-ticker', ['$scope', '$rootScope', '$interval', function($sco
 
 
 app.controller('template', function($scope, $http) {
-    var settings = {
-        chart: '1',
-        chat: '0',
-        ticker: '2',
-        left: '1',
-        right: '1',
-        disclosure: '1',
-    };
-    var new_settings = JSON.parse(localStorage.getItem('settings'));
-    if (new_settings) {
-        jQuery.extend(settings, new_settings);
-    }
-    $scope.settings = settings;
-    $scope.updateSettings = function(key) {
-        localStorage.setItem('settings', JSON.stringify($scope.settings));
-    }
-    $scope.marketopen = false;
-    socket.on('servertime', function(data) {
-        $scope.marketopen = data.is_market_open == '1';
-    });
+    // var settings = {
+    //     chart: '1',
+    //     chat: '0',
+    //     ticker: '2',
+    //     left: '1',
+    //     right: '1',
+    //     disclosure: '1',
+    // };
+    // var new_settings = JSON.parse(localStorage.getItem('settings'));
+    // if (new_settings) {
+    //     jQuery.extend(settings, new_settings);
+    // }
+    // $scope.settings = settings;
+    // $scope.updateSettings = function(key) {
+    //     localStorage.setItem('settings', JSON.stringify($scope.settings));
+    // }
+    // $scope.marketopen = false;
+    // socket.on('servertime', function(data) {
+    //     $scope.marketopen = data.is_market_open == '1';
+    // });
 });
 app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', function($scope, $filter, $http, $rootScope, $timeout) {
     var vm = this;

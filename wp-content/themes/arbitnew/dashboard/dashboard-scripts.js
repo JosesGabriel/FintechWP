@@ -184,9 +184,7 @@
 					$('.authorSentiment__tooltip').hide();
 					$(this).addClass('authorSentimentBearish--active');
 				});
-				$('.popname ul li').on('click', function(){
-					$('.authorSentiment__tooltip').css({'display': 'inline'});
-				});
+				
 				// end joses
 
 

@@ -239,82 +239,13 @@ require("parts/global-header.php");
 									                            <input type="hidden" value="" name="todelete" id="todelete">
 									                        </form>
 									                    </div>
-									                    <!-- <div class="pagination">
-									                        <div class="pginner">
-									                            <ul>
-									                                <?php for ($i = 1; $i <= $dpage; ++$i) {
-									                                    ?>
-									                                    <li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-									                                <?php
-									                                } ?>
-									                            </ul>
-									                        </div>
-									                    </div>	 -->
+									                    
 									                </div>
 									            </div>
 
 									        </div>
 									    </div>
 									    <br class="clear">
-									    <!--
-									    <div class="totalpl">
-									            <p>Total Profit/Loss as of <?php echo date('F j, Y'); ?>: <span class="totalplscore"></span></p>
-									    </div>
-									    <br class="clear">-->
-
-                                    
-                                    <!--
-						            <div class="panel panel-primary">
-						               <div class="panel-heading">
-						                    <span id="journal" class="journaltabs">
-						                     
-						                        <ul class="nav testss">
-						                            <li class="<?php //echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'; ?>"><a href="#tab1" data-toggle="tab" class="<?php echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active show'; ?>">Dashboard</a></li>
-						                            <li class="<?php// echo isset($_GET['pt']) ? 'active' : ''; ?>"><a href="#tab2" data-toggle="tab" class="<?php echo isset($_GET['pt']) ? 'active show' : ''; ?> opentradelogtab">Tradelogs</a></li>
-						                            <li class="<?php //echo isset($_GET['ld']) ? 'active' : ''; ?>"><a href="#tab3" data-toggle="tab" class="<?php echo isset($_GET['ld']) ? 'active show' : ''; ?> openledger">Ledger</a></li>
-						                        </ul>
-						                    </span>
-						                </div>
-						                <div class="panel-body">
-						                    <div class="tab-content">
-						                        <div class="tab-pane <?php //echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'; ?>" id="tab1">
-                                                    <div class="liveportfoliobox">
-                                                        <div class="box-portlet">
-                                                            <div class="box-portlet-header">
-                                                                Live Portfolio
-                                                                <div class="dltbutton">
-                                                                	
-																	<?php //require "journal/enter-trade.php";?>
-
-																	<div class="dbuttondelete">
-																		<form action="/journal" method="post" class="resetform">
-																			<input type="hidden" name="deletedata" value="reset">
-																			<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
-																		</form>
-																	</div>
-																	
-                                                        		</div>
-                                                            </div>
-                                                            <div class="box-portlet-content">
-                                                                <div class="stats-info">
-                                                                    <?php //require "journal/live_portfolio.php";?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                	<?php //require "journal/dashboard.php";?>
-						                        </div>
-						                        <div class="tab-pane <?php //echo isset($_GET['pt']) ? 'active' : ''; ?>" id="tab2">
-													<?php //require "journal/tradelogs.php";?>
-						                        </div>
-						                        <div class="tab-pane <?php //echo isset($_GET['ld']) ? 'active' : ''; ?>" id="tab3">
-													<?php //require "journal/ledger.php";?>
-                                                	<br class="clear">
-						                        </div>
-						                    </div>
-						                </div>
-						            </div> -->
-
 
 						        </div>
 							</div>

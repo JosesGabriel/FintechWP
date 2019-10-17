@@ -1,20 +1,37 @@
 $(document).ready(function(){
 
-
+	var stockdata;
 	$.ajax({
-	    type:'POST',
-	    url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
+	    type:'GET',
+	    url:'/wp-json/virtual-api/v1/buyvalues',
 	    dataType: 'json',
 	    success: function(response) {
 	    	var opt = '';
-	    	jQuery.each(response.data, function(i, val) {
+	    	stockdata = response;
+	    	$.each(response.data, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
+
 	    },
 	      error: function(response) {                 
 	      }
 	 });
+
+	$('.groupinput').on('change', 'select.data_stocks',function(){
+
+		var sdata = $(this).val();
+		$.each(stockdata.data, function(i, val) {
+
+	    		if(sdata == val.symbol){
+	    			$('.sdesc').text(val.description);
+	    		} 
+	    });
+
+	});
+
+
+
 
 	$('.btnbuy').on('click', function(){
 		$('.btnbuy').css('background','#25ae5f');

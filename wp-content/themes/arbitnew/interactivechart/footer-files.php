@@ -44,7 +44,7 @@
 		var dstockpath = dpathss.split("/");
 		dstockpath = dstockpath.filter(function(el) { return el; });
 		dstockpath = dstockpath[(parseInt(dstockpath.length) - 1)];
-		var _stocks     = {};
+		// var _stocks     = {};
 		var _admin 		= false;
 		var _moderator 	= false;
 		var _client_id 	= 'arbitrage.ph';

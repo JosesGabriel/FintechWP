@@ -12,7 +12,6 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
     $http.post("/wp-json/data-api/v1/stocks/list")
         .then(function(response) {
             $rootScope.stockList = response.data.data;
-            _stocks = response.data.data;
         })
 }]);
 app.controller('ticker', ['$scope', '$rootScope', function($scope, $rootScope) {

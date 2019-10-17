@@ -2612,13 +2612,12 @@ legend {
 .authorSentiment__tooltip {
     display: inline;
     position: absolute;
-    background-color: #333;
-    padding: 3px 10px;
+    background-color: #ffc107;
+    padding: 8px 14px;
     bottom: 28px;
-    width: 180px;
-    right: 1px;
+    width: 206px;
+    right: -57px;
     border-radius: 5px;
-    opacity: 0.8;
 }
 .authorSentiment__tooltip:after {
     content:'';
@@ -2627,7 +2626,7 @@ legend {
     left: 50%;
     width: 0;
     height: 0;
-    border-top: solid 7px #333;
+    border-top: solid 7px #ffc107;
     border-left: solid 7px transparent;
     border-right: solid 7px transparent;
 }

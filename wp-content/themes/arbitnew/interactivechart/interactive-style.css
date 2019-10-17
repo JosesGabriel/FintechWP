@@ -703,8 +703,13 @@ span.bullbearsents_label {
 .chart_logo_arbitrage{
     position: absolute;
     z-index: 10;
-    top: 4px;
-    left: 9px;
+    top: 0px;
+    height: 40px;
+    left: 0px;
+    width: 55px;
+    padding-left: 11px;
+    padding-top: 6px;
+    background: linear-gradient(to left, #2c3e5000 5%, #34495e 35%);
 }
 #tv_chart_container iframe {background-color: #34495e !important;}
 .vertical-box-column.width-250 {

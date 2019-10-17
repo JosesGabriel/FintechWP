@@ -54,6 +54,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'getstockstosell'],
             ],
         ]);
+
+        register_rest_route($base_route, 'toselldetails', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettoselldetails'],
+            ],
+        ]);
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -194,10 +201,49 @@ class VirtualAPI extends WP_REST_Controller
         global $wpdb;
         $data = $details->get_params();
 
+        $listofstocks = [];
         $sql = "select * from arby_vt_live where userid = ".$data['userid'];
-
-        return $this->respond(true, ['data' => $sql], 200);
+        $insertlive = $wpdb->get_results($sql);
+        foreach ($insertlive as $key => $value) { array_push($listofstocks, $value->stockname); }
+        $dstocks = array_unique($listofstocks);
+        return $this->respond(true, ['data' => $dstocks], 200);
     }
+
+    public function gettoselldetails($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $dstock = [];
+        $dstock['stock'] = $data['stock'];
+        $dstock['emotion'] = "";
+        $dstock['strategy'] = "";
+        $dstock['tradeplan'] = "";
+        $dstock['tradenotes'] = "";
+        $dstock['volume'] = "";
+        $dstock['averageprice'] = "";
+
+        $totalaspertrade = 0;
+
+        $sql = "select * from arby_vt_live where stockname = '".$data['stock']."' and vttype = 'vt' and userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($sql);
+        foreach ($insertlive as $key => $value) {
+
+            $marketvals = $value->buyprice * $value->volume;
+
+            $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
+            $dstock['volume'] += $value->volume;
+            $dstock['emotion'] = $value->emotion;
+            $dstock['strategy'] = $value->strategy;
+            $dstock['tradeplan'] = $value->tradeplan;
+            $dstock['tradenotes'] = $value->tradenotes;
+        }
+        $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+
+        return $this->respond(true, ['sdata' => $dstock, 'data' => $insertlive], 200);
+    }
+
+
 
 
 

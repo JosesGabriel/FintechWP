@@ -481,8 +481,13 @@
     
 
     $('.logo-image').on('click', function(){
+
+
     	$('.left-dashboard-part').css('left','0');
-    	 $('.swipecenter-area-r').css('display','block');s
+    	 
+    	 if (window.matchMedia('(max-width: 767px)').matches) {
+            $('.swipecenter-area-r').css('display','block');
+        }
     	//$('.right-image').find('.close-leftsidebar').css('display','block');
     });
 
@@ -503,7 +508,9 @@
           {
               if (phase=="move" && direction =="right") {
                    $('.left-dashboard-part').css('left','0');
-                   $('.swipecenter-area-r').css('display','block');
+                   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
                    $('.right-image').find('.close-leftsidebar').css('display','block');
                    return false;
               }
@@ -511,7 +518,9 @@
               if (phase=="move" && direction =="left") {
               		jQuery('.right-dashboard-part').css("display","block");
 				   	jQuery('.right-dashboard-part').css("right","0%");
-				   	$('.swipecenter-area-r').css('display','block');
+				   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
@@ -596,7 +605,9 @@
               if (phase=="move" && direction =="left") {
               		jQuery('.right-dashboard-part').css("display","block");
 				   	jQuery('.right-dashboard-part').css("right","0%");
-				   	$('.swipecenter-area-r').css('display','block');
+				   		if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
 					//$('#right-slider-icon').attr('src','/wp-content/themes/arbitnew/images/cancel.svg');
 					$('#right-slider-icon').attr('width','15px');
 					$('#right-menu').removeClass();
@@ -612,7 +623,9 @@
 
               if (phase=="move" && direction =="right") {
               		 $('.left-dashboard-part').css('left','0');
-                   	 $('.swipecenter-area-r').css('display','block');
+                   	 if (window.matchMedia('(max-width: 767px)').matches) {
+				            $('.swipecenter-area-r').css('display','block');
+				        }
                    	 $('.right-image').find('.close-leftsidebar').css('display','block');  
                    	 return false;
               }

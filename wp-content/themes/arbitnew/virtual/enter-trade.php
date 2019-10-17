@@ -20,7 +20,7 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc">Banco De Oro <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
+                        <div class="desc"><span class="sdesc">Banco De Oro</span> <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>

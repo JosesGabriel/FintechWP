@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 
 	$.ajax({
-	    type:'POST',
-	    url:'/wp-json/data-api/v1/stocks/history/latest?exchange=PSE',
+	    type:'GET',
+	    url:'/wp-json/virtual-api/v1/buyvalues',
 	    dataType: 'json',
 	    success: function(response) {
 	    	var opt = '';
@@ -11,6 +11,11 @@ $(document).ready(function(){
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
+
+
+	    	
+
+
 	    },
 	      error: function(response) {                 
 	      }

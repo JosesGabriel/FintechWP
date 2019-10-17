@@ -78,8 +78,7 @@ require("parts/global-header.php");
                                         <div class="box-portlet">
                                             <div class="box-portlet-header">
                                                 Live Portfolio
-                                                <div class="dltbutton">
-      
+                                                <div class="dltbutton">    
 													<?php require "virtual/enter-trade.php";?>
 													<div class="dbuttondelete">
 														<form action="/virtual-trades" method="post" class="resetform">
@@ -91,7 +90,91 @@ require("parts/global-header.php");
                                             </div>
                                             <div class="box-portlet-content">
                                                 <div class="stats-info">
-                                                    <?php //require "journal/live_portfolio.php";?>
+                                                	<div id="live_portfolio" class="dstatstrade overridewidth">
+	                                                    <ul>
+													        <li class="headerpart">
+													            <table width="100%">
+													                <thead><tr><td style="width: 7%;text-align: left !important;">Stocks</td>
+													                <td style="width:9%" class="table-title-live table-title-avprice">Current Price</td>
+													                <td style="width:9%" class="table-title-live table-title-avprice">Position</td>
+													                <td style="width: 12%;" class="table-title-live table-title-avprice">Avg. Price</td>
+													                <td style="width:15%" class="table-title-live table-title-tcost">Total Cost</td>
+													                <td style="width:15%" class="table-title-live table-title-mvalue">Market Value</td>
+													                <td style="width:10%" class="table-title-live table-title-profit">Profit</td>
+													                <td style="width:8%" class="table-title-live table-title-performance">Perf.</td>
+													                <td style="width:105px;text-align: left;padding-left: 25px;">Action</td>
+													                </tr></thead>
+													            </table>
+													        </li>
+													        <li>
+													            <table width="100%">
+													                <tbody><tr><td style="width: 7%;text-align: left !important;">PHEN</td>
+													                <td style="width:9%" class="table-title-live">2.78</td>
+													                <td style="width:9%" class="table-title-live">₱15,000</td>
+													                <td style="width: 12%;" class="table-title-live">₱2,213</td>
+													                <td style="width:15%" class="table-title-live">₱33,197.65</td>
+													                <td style="width:15%" class="table-title-live">₱41,029.47</td>
+													                <td style="width:10%" class="dgreenpart table-title-live">₱7,831.82</td>
+													                <td style="width:8%" class="dgreenpart table-title-live">23.59%</td>
+													                <td style="width:77px;text-align:center;">
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                </td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
+													                </tr></tbody>
+													            </table>
+													        </li>
+													        <li>
+													            <table width="100%">
+													                <tbody><tr><td style="width: 7%;text-align: left !important;">ISM</td>
+													                <td style="width:9%" class="table-title-live">4.80</td>
+													                <td style="width:9%" class="table-title-live">₱10,000</td>
+													                <td style="width: 12%;" class="table-title-live">₱4,975</td>
+													                <td style="width:15%" class="table-title-live">₱49,746.32</td>
+													                <td style="width:15%" class="table-title-live">₱48,858.76</td>
+													                <td style="width:10%" class="dredpart table-title-live">₱-887.56</td>
+													                <td style="width:8%" class="dredpart table-title-live">-1.78%</td>
+													                <td style="width:77px;text-align:center;">
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                </td>
+													                <td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes=""data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
+													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
+													                </tr></tbody>
+													            </table>
+													        </li>
+
+
+													    </ul>
+
+																 <div class="modal fade" id="livetradenotes" role="dialog">
+																	<div class="modal-dialog">
+																		 <div class="modal-content modal_logs">
+																            <div class="entr_ttle_bar" style="width: 94%;margin: 10px;">
+																                <strong>Trade Details</strong>
+																                 <button type="button" class="close_btnlogs" data-dismiss="modal">&times;</button>
+																            </div>
+																            <hr class="style14 style15" style="width: 93% !important;margin: 5px auto !important;">
+																            <div class="trdlgsbox">
+
+																                <div class="trdleft">
+																                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Strategy:</strong></span> <span class="modal-notes-result modal-notes-result-toleft addstrats">Bottom Picking</span></div>
+																                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Trade Plan:</strong></span> <span class="modal-notes-result modal-notes-result-toleft addtplan">Day Trade</span></div>
+																                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Emotion:</strong></span> <span class="modal-notes-result modal-notes-result-toleft addemotion">Neutral</span></div>
+																                    <div class="onelnetrd"><span class="modal-notes-ftitle"><strong>Outcome:</strong></span> <span class="modal-notes-result modal-notes-result-toleft txtred addoutcome">Winning</span></div>
+																                </div>
+																                <div class="trdright darkbgpadd">
+																                    <div><strong>Notes:</strong></div>
+																                    <div class="addnotes">Trading Notes</div>
+																                </div>
+																                <div class="trdclr"></div>
+																            </div>
+																        </div>
+																    </div>
+																</div>
+
+													</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -156,82 +239,13 @@ require("parts/global-header.php");
 									                            <input type="hidden" value="" name="todelete" id="todelete">
 									                        </form>
 									                    </div>
-									                    <!-- <div class="pagination">
-									                        <div class="pginner">
-									                            <ul>
-									                                <?php for ($i = 1; $i <= $dpage; ++$i) {
-									                                    ?>
-									                                    <li><a href="/journal/?pt=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-									                                <?php
-									                                } ?>
-									                            </ul>
-									                        </div>
-									                    </div>	 -->
+									                    
 									                </div>
 									            </div>
 
 									        </div>
 									    </div>
 									    <br class="clear">
-									    <!--
-									    <div class="totalpl">
-									            <p>Total Profit/Loss as of <?php echo date('F j, Y'); ?>: <span class="totalplscore"></span></p>
-									    </div>
-									    <br class="clear">-->
-
-                                    
-                                    <!--
-						            <div class="panel panel-primary">
-						               <div class="panel-heading">
-						                    <span id="journal" class="journaltabs">
-						                     
-						                        <ul class="nav testss">
-						                            <li class="<?php //echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'; ?>"><a href="#tab1" data-toggle="tab" class="<?php echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active show'; ?>">Dashboard</a></li>
-						                            <li class="<?php// echo isset($_GET['pt']) ? 'active' : ''; ?>"><a href="#tab2" data-toggle="tab" class="<?php echo isset($_GET['pt']) ? 'active show' : ''; ?> opentradelogtab">Tradelogs</a></li>
-						                            <li class="<?php //echo isset($_GET['ld']) ? 'active' : ''; ?>"><a href="#tab3" data-toggle="tab" class="<?php echo isset($_GET['ld']) ? 'active show' : ''; ?> openledger">Ledger</a></li>
-						                        </ul>
-						                    </span>
-						                </div>
-						                <div class="panel-body">
-						                    <div class="tab-content">
-						                        <div class="tab-pane <?php //echo isset($_GET['pt']) || isset($_GET['ld']) ? '' : 'active'; ?>" id="tab1">
-                                                    <div class="liveportfoliobox">
-                                                        <div class="box-portlet">
-                                                            <div class="box-portlet-header">
-                                                                Live Portfolio
-                                                                <div class="dltbutton">
-                                                                	
-																	<?php //require "journal/enter-trade.php";?>
-
-																	<div class="dbuttondelete">
-																		<form action="/journal" method="post" class="resetform">
-																			<input type="hidden" name="deletedata" value="reset">
-																			<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
-																		</form>
-																	</div>
-																	
-                                                        		</div>
-                                                            </div>
-                                                            <div class="box-portlet-content">
-                                                                <div class="stats-info">
-                                                                    <?php //require "journal/live_portfolio.php";?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                	<?php //require "journal/dashboard.php";?>
-						                        </div>
-						                        <div class="tab-pane <?php //echo isset($_GET['pt']) ? 'active' : ''; ?>" id="tab2">
-													<?php //require "journal/tradelogs.php";?>
-						                        </div>
-						                        <div class="tab-pane <?php //echo isset($_GET['ld']) ? 'active' : ''; ?>" id="tab3">
-													<?php //require "journal/ledger.php";?>
-                                                	<br class="clear">
-						                        </div>
-						                    </div>
-						                </div>
-						            </div> -->
-
 
 						        </div>
 							</div>

@@ -20,8 +20,8 @@ $(document).ready(function(){
 	 });
 
 	$('.inpt_data_select_stock').on('change', function(){
-
-		console.log('asdasd');
+		 let sdata = jQuery.parseJSON(stockdata);
+		console.log(sdata.symbol);
 	});
 
 

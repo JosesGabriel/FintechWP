@@ -1,5 +1,5 @@
 <div ng-controller="stockInfo">
-    <div id="stock-details" style="display:block" ng-show="stock">
+    <div id="stock-details" style="display:block" ng-if="stock">
         <?php require "modals/buy-sell.php" ?>
 
         <div style="padding: 3px 5px 5px 40px; margin-bottom: 2px;" id="sval" class="sd_border_btm">

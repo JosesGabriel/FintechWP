@@ -26,11 +26,6 @@
 
 	<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
 
-	<?php
-		$userid = get_current_user_id();
-		$dledger = $wpdb->get_results( "SELECT * FROM arby_ledger where userid = ".$userid);
-	?>
-
 	<div>
 		<div class="chart_logo_arbitrage"><a href="/" target="_blank"><img src="/wp-content/themes/arbitnew/images/arblogo_svg1.svg" style="width: 33px;"></a></div>
 

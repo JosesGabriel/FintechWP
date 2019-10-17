@@ -400,4 +400,12 @@ textarea.tnotes{
 .vynduepassnow_btns {
 	margin: 18px 0 3px auto;
 }
+
+.sdesc {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 239px;
+    display: inline-block;
+    overflow: hidden;
+}
 /* -------------- passwordmodal vyndue ---------------- */

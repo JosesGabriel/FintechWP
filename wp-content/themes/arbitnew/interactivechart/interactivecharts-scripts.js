@@ -358,13 +358,25 @@ $(document).ready(function(){
 
     /* Start of WebTicker */
     $('#webTicker').webTicker({
-        speed: 100,
-        height: "50px", 
+        speed:100,
+        height:"50px", 
         startEmpty:true,
         hoverpause:true, 
-        transition: "linear"
+        transition: "linear",
+        duplicate:false
     });
     
+    jQuery('i#ticker_eye').click(function(){
+        var el = jQuery(this)[0].className;
+        if(el.includes('slash')===false){
+            //console.log('stop');
+            $("#webTicker").webTicker('stop');
+        }else{
+            //console.log('start');
+            $("#webTicker").webTicker('cont');
+        }
+    });
+
     // jQuery(document).on("mouseenter", "#webTicker", function() {
     //     // hover starts code here
     //     console.log('hovered');

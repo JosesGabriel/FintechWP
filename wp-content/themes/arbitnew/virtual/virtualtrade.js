@@ -36,6 +36,20 @@ $(document).ready(function(){
 	    			$('.pdetails.khigh').text(val.weekyearhigh);
 	    			$('.pdetails.val').text(val.value);
 	    			$('.pdetails.av').text(val.average);
+
+	    			$.ajax({
+					    type:'GET',
+					    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,
+					    dataType: 'json',
+					    success: function(response) {
+
+					    	console.log(response.data);
+					    },
+					      error: function(response) {                 
+					      }
+					 });
+
+
 	    		} 
 	    });
 

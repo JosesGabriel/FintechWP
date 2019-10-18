@@ -458,7 +458,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         } else $scope.stocks.push(stock);
 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
-            if ($scope.$parent.settings.chart == '1') {
+            // if ($scope.$parent.settings.chart == '1') {
                 if (stock.change > 0){
                     if ($rootScope.tickerBeep) beep();
                     changicotogreen();
@@ -468,7 +468,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                     changicotored();
                 }
 				if (stock.change = 0){changicotounchanged();}
-            }
+            // }
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
 
             if (current_stock_index) {

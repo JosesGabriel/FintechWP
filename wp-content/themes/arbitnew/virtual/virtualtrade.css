@@ -76,7 +76,7 @@
     font-weight: normal;
 }
 
-.arb_bar_green {
+.arb_bar_green, ..arb_bar_green_m {
     float: left;
     background-color: #25ae5f;
     color: #fff;
@@ -86,7 +86,7 @@
     border-radius: 5px 0 0 5px;
 }
 
-.arb_bar_red {
+.arb_bar_red, .arb_bar_red_m {
     float: left;
     background-color: #e64c3c;
     color: #fff;

@@ -182,7 +182,9 @@ $(document).ready(function(){
 
 		var stockname = $('.data_stocks').val();
 		var buyprice = $('.inputbuyprice').val();
+		var sellprice = $('.inputbuyprice').val();
 		var volume = $('.pdetails.vol').text();
+		var averageprice = $('.pdetails.av').text();
 		var emotion = $('.inpt_data_emotion').val();
 		var strategy = $('.inpt_data_strategy').val();
 		var tradeplan = $('.inpt_data_tradeplan').val();
@@ -190,7 +192,9 @@ $(document).ready(function(){
 		var d = new Date();
 		var buydate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
 		var userid = $('.userid').val();
-		
+		var btn = $('.btnValue').val();
+
+		if(btn == 'buy'){
 			$.ajax({
 			    type:'GET',
 			    url:'/wp-json/virtual-api/v1/livetrade',
@@ -217,6 +221,37 @@ $(document).ready(function(){
 			    error: function(response){                 
 			      }
 			 });
+
+		}else {
+
+			$.ajax({
+			    type:'GET',
+			    url:'/wp-json/virtual-api/v1/livetrade',
+			    dataType: 'json',
+			    data:{
+			    	"userid": userid,
+					"stock": stockname,
+					"volume": volume,
+					"averageprice": averageprice,
+					"emotion": emotion,
+					"strategy": strategy,
+					"tradeplan": tradeplan,
+					"tradenotes": tradenotes,
+					"sellprice": sellprice,
+					"buydate": buydate
+			    },
+			    success: function(response){
+					console.log(response);
+					$('.chart-loader').css('display','block');
+					$('.confirm_order').hide();
+					 window.location.href = "/virtual-trades";
+			    },
+			    error: function(response){                 
+			      }
+			 });
+
+		}
+
 
 	});
 

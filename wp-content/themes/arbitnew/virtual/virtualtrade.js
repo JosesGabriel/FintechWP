@@ -45,8 +45,9 @@ $(document).ready(function(){
 
 					    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
 					    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
-					    	console.log('bid->' + bid + ' ask->' + ask);
-
+					    	
+					    	$('.arb_bar_green').css('width', bid + '%');
+					    	$('.arb_bar_red').css('width', ask + '%');
 					    },
 					      error: function(response) {                 
 					      }

@@ -472,8 +472,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
 
             if (current_stock_index) {
+                $rootScope.$emit('updateStockData', $scope.stocks[current_stock_index]);
                 $scope.stock = $scope.stocks[current_stock_index];
             } else {
+                $rootScope.$emit('updateStockData', stock);
                 $scope.stock = stock;
             }
         }
@@ -673,6 +675,10 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
         $scope.getStockData(symbol);
     });
 
+    $rootScope.$on('updateStockData', function (event, data) {
+        $scope.updateStockData(data);
+    });
+
     $scope.getStockData = function (symbol) {
         $http.post(`/wp-json/data-api/v1/stocks/history/latest?exchange=PSE&symbol=${symbol}`)
             .then(response => {
@@ -717,6 +723,10 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
                 $scope.stock = null;
             });
     }
+
+    $scope.updateStockData = function (data) {
+        $scope.stock = data;
+    };
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {

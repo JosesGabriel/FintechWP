@@ -29,12 +29,12 @@ $(document).ready(function(){
 	    			$('.pdetails.prev').text((val.close).toFixed(2));
 	    			$('.pdetails.low').text((val.low).toFixed(2));
 	    			$('.pdetails.klow').text(val.weekyearlow);
-	    			$('.pdetails.vol').text((val.volume).toFixed(2));
+	    			$('.pdetails.vol').text(val.volume);
 	    			$('.pdetails.trade').text((val.trades).toFixed(2));
 	    			$('.pdetails.open').text((val.open).toFixed(2));
 	    			$('.pdetails.high').text((val.high).toFixed(2));
 	    			$('.pdetails.khigh').text((val.weekyearhigh).toFixed(2));
-	    			$('.pdetails.val').text((val.value).toFixed(2));
+	    			$('.pdetails.val').text(nFormatter(parseFloat(val.value)));
 	    			$('.pdetails.av').text((val.average).toFixed(2));
 
 	    			$.ajax({
@@ -58,6 +58,20 @@ $(document).ready(function(){
 	    });
 
 	});
+
+
+	function nFormatter(num) {
+	     if (num >= 1000000000) {
+	        return (num / 1000000000).toFixed(2).replace(/\.0$/, '') + 'G';
+	     }
+	     if (num >= 1000000) {
+	        return (num / 1000000).toFixed(2).replace(/\.0$/, '') + 'M';
+	     }
+	     if (num >= 1000) {
+	        return (num / 1000).toFixed(2).replace(/\.0$/, '') + 'K';
+	     }
+	     return num;
+	}
 
 
 

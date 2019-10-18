@@ -61,10 +61,8 @@ $(document).ready(function(){
 									      }
 									 });
 
-
 					    		} 
-					    });
-				    	
+					    });		    	
 
 				    },
 				    error: function(response) {                 
@@ -169,7 +167,7 @@ $(document).ready(function(){
 			    url:'/wp-json/virtual-api/v1/livetrade',
 			    dataType: 'json',
 			    data:{
-			    	"stockname": "PHEN",
+			    	"stockname": stockname,
 					"buyprice": buyprice,
 					"volume": volume,
 					"emotion": emotion,

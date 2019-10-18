@@ -1,7 +1,7 @@
 <div class="dbuttonenter" style="margin-right: 1px;">
-    <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
+    <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 
-      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal fade" id="enter_trade" role="dialog">
             <div class="modal-dialog">
             
               <!-- Modal content-->
@@ -9,6 +9,7 @@
                 <div class="modal-header">
                     <div class="entr_title_bar">
                         Enter Order: <span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span>
+                        <input type="hidden" name="" class="btnValue" value="buy">
                         <button type="button" class="close_btn" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
@@ -74,7 +75,7 @@
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_strategy" class="rnd">
+                                            <select name="inpt_data_strategy" class="inpt_data_strategy rnd">
                                                 <option value="" selected>Select Strategy</option>
                                                 <option value="Bottom Picking">Bottom Picking</option>
                                                 <option value="Breakout Play">Breakout Play</option>
@@ -82,7 +83,7 @@
                                             </select>
                                         </div>
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_tradeplan" class="rnd">
+                                            <select name="inpt_data_tradeplan" class="inpt_data_tradeplan rnd">
                                                 <option value="" selected>Select Trade Plan</option>
                                                 <option value="Day Trade">Day Trade</option>
                                                 <option value="Swing Trade">Swing Trade</option>
@@ -90,7 +91,7 @@
                                             </select>
                                         </div>
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_emotion" class="rnd">
+                                            <select name="inpt_data_emotion" class="inpt_data_emotion rnd">
                                                 <option value="" selected>Select Emotion</option>
                                                 <option value="Neutral">Neutral</option>
                                                 <option value="Greedy">Greedy</option>
@@ -102,6 +103,7 @@
                                 <div class="tradenotes">
                                     <textarea class="darktheme tnotes" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
                                 </div>
+                                <input type="hidden" name="userid" class="userid" value="<?php echo $user->ID;?>">
                             </div>
                             <div class="groupinput" style="text-align: right;">
                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">

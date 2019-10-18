@@ -104,36 +104,36 @@ class VirtualAPI extends WP_REST_Controller
     {
         global $wpdb;
 
-        // $wpdb->query("create table if not exists arby_vt_live (
-        //     id int(10) unsigned auto_increment primary key,
-        //     stockname varchar(250) not null,
-        //     buyprice varchar(250) not null,
-        //     volume varchar(250) not null,
-        //     emotion varchar(250),
-        //     strategy varchar(250),
-        //     tradeplan varchar(250),
-        //     tradenotes varchar(250),
-        //     buydate varchar(250),
-        //     vtcategory varchar(250),
-        //     vttype varchar(250),
-        //     userid int(10)
-        // )");
+        $wpdb->query("create table if not exists arby_vt_live (
+            id int(10) unsigned auto_increment primary key,
+            stockname varchar(250) not null,
+            buyprice varchar(250) not null,
+            volume varchar(250) not null,
+            emotion varchar(250),
+            strategy varchar(250),
+            tradeplan varchar(250),
+            tradenotes varchar(250),
+            buydate varchar(250),
+            vtcategory varchar(250),
+            vttype varchar(250),
+            userid int(10)
+        )");
 
-        // $wpdb->query("create table if not exists arby_vt_tradelog (
-        //     id int(10) unsigned auto_increment primary key,
-        //     userid varchar(250) not null,
-        //     stock varchar(250) not null,
-        //     volume varchar(250) not null,
-        //     averageprice varchar(250) not null,
-        //     emotion varchar(250) not null,
-        //     strategy varchar(250) not null,
-        //     tradeplan varchar(250) not null,
-        //     tradenotes varchar(250) not null,
-        //     sellprice varchar(250) not null,
-        //     buydate varchar(250) not null,
-        //     profit varchar(250) not null,
-        //     profitperc varchar(250) not null
-        // )");
+        $wpdb->query("create table if not exists arby_vt_tradelog (
+            id int(10) unsigned auto_increment primary key,
+            userid varchar(250) not null,
+            stock varchar(250) not null,
+            volume varchar(250) not null,
+            averageprice varchar(250) not null,
+            emotion varchar(250) not null,
+            strategy varchar(250) not null,
+            tradeplan varchar(250) not null,
+            tradenotes varchar(250) not null,
+            sellprice varchar(250) not null,
+            buydate varchar(250) not null,
+            profit varchar(250) not null,
+            profitperc varchar(250) not null
+        )");
 
         return $this->respond(true, ['data' => "success?"], 200);
     }

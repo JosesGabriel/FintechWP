@@ -83,6 +83,12 @@ class VirtualAPI extends WP_REST_Controller
             ],
         ]);
 
+        register_rest_route($base_route, 'dstock', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getdstock'],
+            ],
+        ]);
         
     }
 
@@ -423,6 +429,25 @@ class VirtualAPI extends WP_REST_Controller
         
 
         return $this->respond(true, ['data' => $perinfo], 200);
+    }
+
+    public function getdstock($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stock'], [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        return $this->respond(true, ['data' => $gerdqoute->data], 200);
     }
 
 

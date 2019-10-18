@@ -76,11 +76,7 @@ $(document).ready(function(){
 				    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ sdata +'&userid='+userid,
 				    dataType: 'json',
 				    success: function(response) {				    	
-				    	$.each(response.data, function(i, val) {
-
-				    		console.log(val.stock);	
-
-				    	});	
+				    	console.log(response.data.stock);
 				     },
 				    error: function(response) {                 
 				    }

@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 		var sdata = $(this).val();
 		var btn = $('.btnValue').val();
-
+		var userid = $('.userid').val();
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				    type:'GET',
-				    url:'/wp-json/virtual-api/v1/toselldetails?stock=' + sdata,
+				    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ sdata +'&userid='+userid,
 				    dataType: 'json',
 				    success: function(response) {
 				    	console.log(response);

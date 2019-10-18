@@ -1,7 +1,7 @@
 <div class="dbuttonenter" style="margin-right: 1px;">
-    <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
+    <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 
-      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal fade" id="enter_trade" role="dialog">
             <div class="modal-dialog">
             
               <!-- Modal content-->

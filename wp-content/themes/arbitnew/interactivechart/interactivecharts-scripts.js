@@ -50,6 +50,16 @@ $(document).ready(function(){
         });
     }
 
+    jQuery(".ticker_enabler-dropdown").click(function(e){
+        event.stopPropagation();
+        var tickertog = jQuery(".ticker_enabler-dropdown > ul").hasClass("dropopen");
+
+        if (tickertog) {
+            jQuery(".ticker_enabler-dropdown > ul").hide().removeClass("dropopen");
+        } else {
+            jQuery(".ticker_enabler-dropdown > ul").show().addClass("dropopen");
+        }
+    });
     jQuery("ul.main-drops-chart").click(function(e){
         event.stopPropagation();
         var isopen = jQuery("ul.main-drops-chart > ul").hasClass("dropopen");
@@ -59,10 +69,11 @@ $(document).ready(function(){
         } else {
             jQuery("ul.main-drops-chart > ul").show().addClass("dropopen");
         }
-
     });
     jQuery(document).on("click", function () {
+        jQuery(".ticker_enabler-dropdown").hide().removeClass("dropopen");
         jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
+        jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
     });

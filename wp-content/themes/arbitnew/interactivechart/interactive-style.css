@@ -76,13 +76,12 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     width:100%;
 }
 .arb_right_icons_trans {
-    position: absolute;
-    width: 275px;
-    right: -54px;
-    top: 2px;
-    padding-left: 110px;
-    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
+    background: linear-gradient(to right, #2c3e5000 10%, #34495e 43%);
     z-index: 9;
+    position: absolute;
+    right: 0;
+    padding-right: 4px;
+    padding-top: 5px;
 }
 .arb-side-icon i {
     border: none;
@@ -880,6 +879,36 @@ tr.ng-scope:active {
     border-right: 5px solid #34495e !important;
     /*transition: all 0.5s ease !important;*/
 }
+ul.ticker_enabler-dropdown {
+    display: inline-block !important;
+    top: 3px;
+    position: absolute;
+    right: 112px;
+    z-index: 999999;
+}
+.ticker_enabler-dropdown > ul:before {
+    right: -12px;
+    top: 5px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    margin-left: -36px;
+    border-left-color: #142c46;
+    border-width: 6px;
+}
+.ticker_enabler-dropdown > ul {
+    font-size: 13px;
+    position: absolute;
+    right: 34px;
+    top: 2px;
+    width: 55px;
+    background: #142c46;
+    border-radius: 4px;
+    list-style: none;
+}
 ul.main-drops-chart > ul:before {
     bottom: 100% !important;
     right: 2% !important;
@@ -908,8 +937,8 @@ ul.main-drops-chart > ul {
 }
 ul.main-drops-chart {
     display: inline-block !important;
-    width: 12% !important;
-    padding-left: 0 !important;
+    position: relative;
+    top: -3px;
 }
 ul.main-drops-chart > ul li a {
     color: #fff !important;
@@ -1250,14 +1279,10 @@ a.arb-btm-icon span {
 }
 a.arb-side-icon {
 	text-align: center;
-	width: 13%;
-	font-size: 20px;
-	color: #ffffff;
-	padding: 4px 0 0;
-	display: inline-block;
-}
-a.arb-side-icon:nth-child(3) img {
-    margin-top: 8px !important;
+    font-size: 20px;
+    color: #ffffff;
+    display: inline-block;
+    margin: 0 1px;
 }
 a.arb-side-icon span {
 	text-align: center;
@@ -1301,11 +1326,11 @@ small.arb_markcap {
 	border-right: 0 !important;
 	border-left: 4px solid #34495e !important;
 }
-svg {
+/* svg {
 	border: 2px solid white;
 	border-radius: 20px;
 	background: black;
-}
+} */
 .arb_buysell {
 	background-color: rgba(215, 215, 215, .15);
 	position: absolute;
@@ -1333,12 +1358,13 @@ svg {
 	color: #e64c3c;
 }
 .ticker-enabler {
-    position: absolute;
+    /* position: absolute;
     z-index: 10;
     top: -4px;
     transform: scale(0.8);
     left: 45px;
     display: inline-grid;
+    width: 56px; */
 }
 .arb_custom_ticker {
     left: 75px;

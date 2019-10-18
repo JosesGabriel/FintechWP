@@ -226,7 +226,7 @@ $(document).ready(function(){
 
 			$.ajax({
 			    type:'GET',
-			    url:'/wp-json/virtual-api/v1/livetrade',
+			    url:'/wp-json/virtual-api/v1/sellstock',
 			    dataType: 'json',
 			    data:{
 			    	"userid": userid,
@@ -241,7 +241,7 @@ $(document).ready(function(){
 					"buydate": buydate
 			    },
 			    success: function(response){
-					console.log(response);
+					console.log(response.data);
 					$('.chart-loader').css('display','block');
 					$('.confirm_order').hide();
 					 window.location.href = "/virtual-trades";

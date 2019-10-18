@@ -96,4 +96,36 @@ $(document).ready(function(){
 		$('.labelprice').text('Sell Price');
 	});
 
+
+	$('.confirm_order').on('click', function(){
+
+		var stockname = $('.data_stocks').val();
+		console.log(stockname);
+		/*
+			$.ajax({
+			    type:'GET',
+			    url:'/wp-json/virtual-api/v1/livetrade',
+			    dataType: 'json',
+			    data:{
+			    	"stockname": "BDO",
+					"buyprice": "80.15",
+					"volume": "100",
+					"emotion": "Neutral",
+					"strategy": "Trend Following",
+					"tradeplan": "Day Trade",
+					"tradenotes": "test",
+					"buydate": "2019-09-20",
+					"category": "vtrade1",
+					"type": "vt",
+					"userid": 3
+			    }
+			    success: function(response) {
+		
+			    },
+			      error: function(response) {                 
+			      }
+			 });*/
+
+	});
+
 });

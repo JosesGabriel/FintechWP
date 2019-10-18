@@ -117,8 +117,8 @@ require("parts/global-header.php");
 													                <td style="width:10%" class="dgreenpart table-title-live">₱7,831.82</td>
 													                <td style="width:8%" class="dgreenpart table-title-live">23.59%</td>
 													                <td style="width:77px;text-align:center;">
-													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
-													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
+													                	<a class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>
+													                	<a class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
 													                </td>
 													                <td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
 													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>

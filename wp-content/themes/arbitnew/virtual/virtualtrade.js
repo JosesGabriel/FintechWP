@@ -76,7 +76,36 @@ $(document).ready(function(){
 				    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ sdata +'&userid='+userid,
 				    dataType: 'json',
 				    success: function(response) {				    	
-				    	console.log(response.data.datainfo.description);
+				    	
+				    				$('.sdesc').text(response.data.datainfo.description);
+					    			$('.cprice').text((response.data.datainfo.last).toFixed(2));
+					    			$('.pdetails.prev').text((response.data.datainfo.close).toFixed(2));
+					    			$('.pdetails.low').text((response.data.datainfo.low).toFixed(2));
+					    			$('.pdetails.klow').text(response.data.datainfo.weekyearlow);
+					    			$('.pdetails.vol').text(nFormatter(parseFloat(response.data.volume)));
+					    			$('.pdetails.trade').text((response.data.datainfo.trades).toFixed(2));
+					    			$('.pdetails.open').text((response.data.datainfo.open).toFixed(2));
+					    			$('.pdetails.high').text((response.data.datainfo.high).toFixed(2));
+					    			$('.pdetails.khigh').text((response.data.datainfo.weekyearhigh).toFixed(2));
+					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.datainfo.value)));
+					    			$('.pdetails.av').text((response.data.averageprice).toFixed(2));
+
+					    			$.ajax({
+									    type:'GET',
+									    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,
+									    dataType: 'json',
+									    success: function(response) {
+
+									    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
+									    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
+									    	
+									    	$('.arb_bar_green').css('width', bid + '%');
+									    	$('.arb_bar_red').css('width', ask + '%');
+									    },
+									      error: function(response) {                 
+									      }
+									 });
+
 				     },
 				    error: function(response) {                 
 				    }

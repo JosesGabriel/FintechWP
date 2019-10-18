@@ -43,7 +43,10 @@ $(document).ready(function(){
 					    dataType: 'json',
 					    success: function(response) {
 
-					    	console.log(response.data);
+					    	var bid = (response.data.bid_total_percent).toFixed(2);
+					    	var ask = (response.data.ask_total_percent).toFixed(2);
+					    	console.log('bid->' + bid + ' ask->' + ask);
+
 					    },
 					      error: function(response) {                 
 					      }

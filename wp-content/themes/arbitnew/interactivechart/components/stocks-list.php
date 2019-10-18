@@ -37,8 +37,8 @@
                     </div>
                     <div class="ditemone" style="cursor: pointer;">{{::stock.symbol}}</div>
                 </td>
-                <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayLast}}</td>
-                <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.displayChange}}%</td>
+                <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.last | number:2}}</td>
+                <td align="left" ng-click="select(stock.symbol)" style="cursor: pointer;text-align: center;">{{stock.change_percentage | number:2}}%</td>
                 <td align="left" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;">{{stock.displayValue}}</td>
                 <td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;padding-right: 5px !important;">{{stock.trades | numeraljs:'0,0'}}</td>
             </tr>

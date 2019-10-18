@@ -325,9 +325,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             // stock['change']     = parseFloat(stock['change']);
             stock['change_percentage'] = parseFloat(stock['changepercentage']);
             // stock['previous']   = parseFloat(stock['close']);
-            // stock['open']       = parseFloat(stock['open']);
-            // stock['high']       = parseFloat(stock['high']);
-            // stock['low']        = parseFloat(stock['low']);
+            stock['open']       = parseFloat(stock['open']);
+            stock['high']       = parseFloat(stock['high']);
+            stock['low']        = parseFloat(stock['low']);
             // stock['average']    = parseFloat(stock['average']);
             // stock['volume']     = parseFloat(stock['volume']);
             stock['value']      = parseFloat(stock['value']);
@@ -453,14 +453,14 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             trades: data.tr,
             updated_at: full_date,
 
-            displayLast: price_format(data.prv),
+            // displayLast: price_format(data.prv),
             // displayDifference: price_format(data.chg, data.prv),
             // displayOpen: price_format(data.o),
             // displayPrevious: price_format(data.c),
             // displayAverage: price_format(data.avg),
             // displayLow: price_format(data.l),
             // displayHigh: price_format(data.h),
-            displayChange: number_format(data.chgpc, '0,0.00'),
+            // displayChange: number_format(data.chgpc, '0,0.00'),
             displayValue: abbr_format(data.val),
         }
 
@@ -492,8 +492,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 
             $scope.updateTabTitle(stock.symbol, {
                 change: stock.change,
-                displayChange: stock.displayChange,
-                displayLast: stock.displayLast,
+                displayChange: number_format(stock.change_percentage, '0,0.00'),
+                displayLast: price_format(stock.last),
             })
             
             if (current_stock_index) {

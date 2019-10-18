@@ -26,7 +26,7 @@
                         </div>
                         <div class="entr_col">
                             <div class="groupinput midd lockedd"><label>Avr. Price</label><input type="text" id="sellavrprice" name="inpt_avr_price" value="" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                            <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                            <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" id="sellcurrprice" name="inpt_data_price" value="{{stock.last | number:2}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                         </div>
                         <div class="entr_col">
                             <div class="groupinput midd"><label>Sell Price</label><input step="0.01" id="sellprice" name="inpt_data_sellprice" class="no-padding" id="sell_price--input" required></div>
@@ -102,11 +102,11 @@
                 </div>
 
                 <div class="entr_col">
-                    <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="{{stock.displayLast}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                    <div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="{{stock.displayChange}}%" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                    <div class="groupinput midd lockedd"><label>Open</label><input type="text" name="inpt_data_open" value="{{stock.displayOpen}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                    <div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="{{stock.displayLow}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
-                    <div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="{{stock.displayHigh}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <div class="groupinput midd lockedd"><label>Curr. Price</label><input type="text" name="inpt_data_currprice" value="{{stock.last | number:2}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <div class="groupinput midd lockedd"><label>Change</label><input type="text" name="inpt_data_change" value="{{stock.change_percentage | number:2}}%" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <div class="groupinput midd lockedd"><label>Open</label><input type="text" name="inpt_data_open" value="{{stock.open | number:2}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <div class="groupinput midd lockedd"><label>Low</label><input type="text" name="inpt_data_low" value="{{stock.low | number:2}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
+                    <div class="groupinput midd lockedd"><label>High</label><input type="text" name="inpt_data_high" value="{{stock.high | number:2}}" readonly><i class="fa fa-lock" aria-hidden="true"></i></div>
                 </div>
 
                 <div class="entr_col">
@@ -115,7 +115,7 @@
                     <div class="groupinput midd lockedd">
                         <label>Board Lot</label><input type="text" name="inpt_data_boardlot" id="inpt_data_boardlot" value="" readonly>
                         <i class="fa fa-lock" aria-hidden="true"></i>
-                        <input type="hidden" id="inpt_data_boardlot_get" value="{{stock.displayLast}}">
+                        <input type="hidden" id="inpt_data_boardlot_get" value="{{stock.last | number:2}}">
                     </div>
                 </div>
 

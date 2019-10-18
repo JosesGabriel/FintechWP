@@ -29,7 +29,7 @@ $(document).ready(function(){
 	    			$('.pdetails.prev').text((val.close).toFixed(2));
 	    			$('.pdetails.low').text((val.low).toFixed(2));
 	    			$('.pdetails.klow').text(val.weekyearlow);
-	    			$('.pdetails.vol').text(val.volume);
+	    			$('.pdetails.vol').text(nFormatter(parseFloat(val.volume)));
 	    			$('.pdetails.trade').text((val.trades).toFixed(2));
 	    			$('.pdetails.open').text((val.open).toFixed(2));
 	    			$('.pdetails.high').text((val.high).toFixed(2));

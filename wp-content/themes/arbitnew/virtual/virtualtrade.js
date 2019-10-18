@@ -78,7 +78,7 @@ $(document).ready(function(){
 				    success: function(response) {				    	
 				    	$.each(response.data, function(i, val) {
 
-				    		console.log(response.data[i]);	
+				    		console.log(response.data[1]);	
 
 				    	});	
 				     },

@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	    		if(sdata == val.symbol){
 	    			$('.sdesc').text(val.description);
-	    			$('.cprice').text(val.last);
+	    			$('.cprice').text((val.last).toFixed(2));
 	    			$('.pdetails.prev').text(val.close);
 	    			$('.pdetails.low').text(val.low);
 	    			$('.pdetails.klow').text(val.weekyearlow);

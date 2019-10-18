@@ -418,6 +418,21 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
     $scope.getStockTrades(_symbol);
 
+    $scope.updateTabTitle = function (symbol, data) {
+        if (data.change > 0){
+            if ($rootScope.tickerBeep) beep();
+            changicotogreen();
+        }
+        if (data.change < 0){
+            if ($rootScope.tickerBeep) beep();
+            changicotored();
+        }
+        if (data.change = 0){
+            changicotounchanged();
+        }
+        setTitle(symbol, data.displayLast, data.displayChange);
+    }
+
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {
@@ -474,19 +489,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                 displayLow: price_format(data.l),
                 displayHigh: price_format(data.h),
             })
-            // if ($scope.$parent.settings.chart == '1') {
-                if (stock.change > 0){
-                    if ($rootScope.tickerBeep) beep();
-                    changicotogreen();
-                }
-				if (stock.change < 0){
-                    if ($rootScope.tickerBeep) beep();
-                    changicotored();
-                }
-				if (stock.change = 0){changicotounchanged();}
-            // }
-            setTitle(stock.symbol, stock.displayLast, stock.displayChange);
 
+            $scope.updateTabTitle(stock.symbol, {
+                change: stock.change,
+                displayChange: stock.displayChange,
+                displayLast: stock.displayLast,
+            })
+            
             if (current_stock_index) {
                 $scope.stock = $scope.stocks[current_stock_index];
             } else {

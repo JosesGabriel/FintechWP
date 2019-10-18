@@ -76,7 +76,7 @@
     font-weight: normal;
 }
 
-.arb_bar_green, ..arb_bar_green_m {
+.arb_bar_green, .arb_bar_green_m {
     float: left;
     background-color: #25ae5f;
     color: #fff;

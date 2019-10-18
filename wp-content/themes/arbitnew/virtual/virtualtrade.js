@@ -26,16 +26,16 @@ $(document).ready(function(){
 	    		if(sdata == val.symbol){
 	    			$('.sdesc').text(val.description);
 	    			$('.cprice').text((val.last).toFixed(2));
-	    			$('.pdetails.prev').text(val.close);
-	    			$('.pdetails.low').text(val.low);
+	    			$('.pdetails.prev').text((val.close).toFixed(2));
+	    			$('.pdetails.low').text((val.low).toFixed(2));
 	    			$('.pdetails.klow').text(val.weekyearlow);
-	    			$('.pdetails.vol').text(val.volume);
-	    			$('.pdetails.trade').text(val.trades);
-	    			$('.pdetails.open').text(val.open);
-	    			$('.pdetails.high').text(val.high);
-	    			$('.pdetails.khigh').text(val.weekyearhigh);
-	    			$('.pdetails.val').text(val.value);
-	    			$('.pdetails.av').text(val.average);
+	    			$('.pdetails.vol').text((val.volume).toFixed(2));
+	    			$('.pdetails.trade').text((val.trades).toFixed(2));
+	    			$('.pdetails.open').text((val.open).toFixed(2));
+	    			$('.pdetails.high').text((val.high).toFixed(2));
+	    			$('.pdetails.khigh').text((val.weekyearhigh).toFixed(2));
+	    			$('.pdetails.val').text((val.value).toFixed(2));
+	    			$('.pdetails.av').text((val.average).toFixed(2));
 
 	    			$.ajax({
 					    type:'GET',

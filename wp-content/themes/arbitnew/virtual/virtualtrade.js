@@ -36,6 +36,24 @@ $(document).ready(function(){
 	    			$('.pdetails.khigh').text(val.weekyearhigh);
 	    			$('.pdetails.val').text(val.value);
 	    			$('.pdetails.av').text(val.average);
+
+	    			$.ajax({
+					    type:'GET',
+					    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,
+					    dataType: 'json',
+					    success: function(response) {
+
+					    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
+					    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
+					    	
+					    	$('.arb_bar_green').css('width', bid + '%');
+					    	$('.arb_bar_red').css('width', ask + '%');
+					    },
+					      error: function(response) {                 
+					      }
+					 });
+
+
 	    		} 
 	    });
 

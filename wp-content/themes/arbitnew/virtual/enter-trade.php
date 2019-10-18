@@ -26,15 +26,15 @@
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
                             <div class="details">
                             <p>Previous <span class="pdetails prev">235.40</span></p>
-                            <p>Low <span class="pdetails low">235.10</span></p>
-                            <p>52WKLow <span class="pdetails klow">212.00</span></p>
+                            <p>Low <span class="pdetails low" style="color: #e64c3c;">235.10</span></p>
+                            <p>52WKLow <span class="pdetails klow" style="color: #e64c3c;">212.00</span></p>
                             <p>Volume <span class="pdetails vol">18.17</span></p>
                             <p>Trades <span class="pdetails trade">561</span></p>
                             </div>
                             <div class="details2">
                             <p>Open <span class="pdetails open">235.20</span></p>
-                            <p>High <span class="pdetails high">235.70</span></p>
-                            <p>52WKHigh <span class="pdetails khigh">350.60</span></p>
+                            <p>High <span class="pdetails high" style="color: #25ae5f">235.70</span></p>
+                            <p>52WKHigh <span class="pdetails khigh" style="color: #25ae5f">350.60</span></p>
                             <p>Value <span class="pdetails val">22.15M</span></p>
                             <p>Average <span class="pdetails av">234.20</span></p>
                             </div>
@@ -51,8 +51,8 @@
                             <div class="marketsents">
                                 <span style="font-weight: 600;">Members Sentiments</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green" style="width:80%;height: 6px;">&nbsp;</div>
-                                    <div class="arb_bar_red" style="width:20%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_green_m" style="width:80%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red_m" style="width:20%;height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                         </div>

@@ -13,6 +13,9 @@
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
         <script src="<?php echo get_stylesheet_directory_uri(); ?>/virtual/virtualtrade.js?<?php echo time(); ?>"></script>
+        <?php
+            include "data-loader.php";
+        ?>
         <script>
             $(document).ready(function(){
                 $(".vynduepassnow_cancel").click(function(e){

@@ -15,13 +15,14 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
-app.controller('ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
+app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     
+    $scope.ticker_intervalId;
     $scope.enable = true;
     $scope.isTickerFull = false;
-    $scope.ticker_intervalId;
     $scope.ticker = [];
     $scope.data = [];
+    $scope.counter = 0;
     
     $scope.tickerEnabler = function (){
         $scope.enable = !$scope.enable;
@@ -48,54 +49,54 @@ app.controller('ticker', ['$scope', '$rootScope', '$interval', function($scope, 
         $interval.cancel($scope.ticker_intervalId);
     }; 
 
-    //region test
-    var rawdate = [
-        {"sym":"A","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
-       // {"sym":"WEB","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
-    ]
-
+    // cheat to keep ticker plugin start moving
+    var rawdate = [{"sym":"","prv":3.28,"chg":0,"vol":837000 }]
     for(i in rawdate){
         var transaction = {
             symbol: rawdate[i].sym,
             price:  price_format(rawdate[i].prv),
             change: rawdate[i].chg,
-            shares: abbr_format(rawdate[i].vol)
+            shares: abbr_format(rawdate[i].vol),
+            counter: 0
         };
         $scope.ticker.push(transaction);
     }
-    
-    //endregion test
- 
     $interval(function() {
-        if ($scope.data.length > 0) {
-            //add first data item to ticker array
-            $scope.ticker.push($scope.data[0]);
-            $scope.data.shift();
-        }
-        if($scope.ticker.length>0){
-            $scope.ticker.shift();
-        }
-    }, 6000);
+            $scope.ticker.shift(); 
+    }, 1000, parseInt(rawdate.length));
+    // end 
     
-    socket.on('psec', function (data) {  
-        if ($scope.enable) {
-            var transaction = {
-                symbol: data.sym,
-                price:  price_format(data.prv),
-                change: data.chg,
-                shares: abbr_format(data.vol)
+    if($scope.enable){
+        $interval(function() {
+            if ($scope.data.length > 0) {
+                $scope.ticker.push($scope.data[0]);
+                $scope.data.shift();
+                $scope.ticker.shift();
             }
+        }, 1000);
+    }
 
-            if ($scope.ticker.length <= 30 && $scope.isTickerFull == false) {
+    socket.on('psec', function (data) {  
+        
+        //console.log($scope.enable);
+
+        var transaction = {
+            symbol: data.sym,
+            price:  price_format(data.prv),
+            change: data.chg,
+            shares: abbr_format(data.vol),
+            counter: $scope.counter++
+        }
+
+        if($scope.enable){
+            if ($scope.ticker.length <= 50 && $scope.isTickerFull == false) {
                 $scope.ticker.push(transaction);
             } else {
-                if($scope.data.length>100){
-                    $scope.data = [];
-                }
                 $scope.isTickerFull = true
                 $scope.data.push(transaction);
             } 
         }
+
     });   
       
 }]);

@@ -425,26 +425,26 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             symbol: data.sym,
             date: full_date,
             last: data.prv,
-            difference: data.chgpc,
-            change: data.chg,
+            // difference: data.chgpc,
+            // change: data.chg,
             change_percentage: data.chgpc,
-            previous: data.c,
-            open: data.o,
-            high: data.h,
-            low: data.l,
-            average: data.avg,
-            volume: data.vol,
+            // previous: data.c,
+            // open: data.o,
+            // high: data.h,
+            // low: data.l,
+            // average: data.avg,
+            // volume: data.vol,
             value: data.val,
             trades: data.tr,
             updated_at: full_date,
 
             displayLast: price_format(data.prv),
-            displayDifference: price_format(data.chg, data.prv),
-            displayOpen: price_format(data.o),
-            displayPrevious: price_format(data.c),
-            displayAverage: price_format(data.avg),
-            displayLow: price_format(data.l),
-            displayHigh: price_format(data.h),
+            // displayDifference: price_format(data.chg, data.prv),
+            // displayOpen: price_format(data.o),
+            // displayPrevious: price_format(data.c),
+            // displayAverage: price_format(data.avg),
+            // displayLow: price_format(data.l),
+            // displayHigh: price_format(data.h),
             displayChange: number_format(data.chgpc, '0,0.00'),
             displayValue: abbr_format(data.val),
         }
@@ -458,6 +458,22 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         } else $scope.stocks.push(stock);
 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
+            stock = Object.assign(stock, {
+                difference: data.chgpc,
+                change: data.chg,
+                previous: data.c,
+                open: data.o,
+                high: data.h,
+                low: data.l,
+                average: data.avg,
+                volume: data.vol,
+                displayDifference: price_format(data.chg, data.prv),
+                displayOpen: price_format(data.o),
+                displayPrevious: price_format(data.c),
+                displayAverage: price_format(data.avg),
+                displayLow: price_format(data.l),
+                displayHigh: price_format(data.h),
+            })
             // if ($scope.$parent.settings.chart == '1') {
                 if (stock.change > 0){
                     if ($rootScope.tickerBeep) beep();
@@ -472,12 +488,12 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             setTitle(stock.symbol, stock.displayLast, stock.displayChange);
 
             if (current_stock_index) {
-                $rootScope.$emit('updateStockData', $scope.stocks[current_stock_index]);
                 $scope.stock = $scope.stocks[current_stock_index];
             } else {
-                $rootScope.$emit('updateStockData', stock);
                 $scope.stock = stock;
             }
+
+            $rootScope.$emit('updateStockData', stock);
         }
         
         $scope.count = $scope.stocks.reduce( function(a, b) {
@@ -725,7 +741,11 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
     }
 
     $scope.updateStockData = function (data) {
-        $scope.stock = data;
+        if ($scope.stock && data.symbol == $scope.stock.symbol) {
+            $scope.stock = Object.assign($scope.stock, data);
+        } else {
+            $scope.stock = data;
+        }
     };
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {

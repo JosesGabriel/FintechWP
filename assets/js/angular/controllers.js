@@ -694,6 +694,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 	setInterval(updateMarketDepth, 30000);
 }]);
 app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+    $scope.hasData = false;
     $scope.stock = null;
     $scope.stockInfo = null;
 
@@ -710,6 +711,7 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
             .then(response => {
                 let data = response.data;
                 if (data.success) {
+                    $scope.hasData = true;
                     let stock = data.data;
                     $scope.updateStockInfo(stock);
                     $scope.stock = {
@@ -741,10 +743,12 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
                     }
                 } else {
                     $scope.stock = null;
+                    $scope.hasData = false;
                 }
             })
             .catch(response => {
                 $scope.stock = null;
+                $scope.hasData = false;
             });
     }
 

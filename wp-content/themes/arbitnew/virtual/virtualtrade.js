@@ -16,6 +16,7 @@ $(document).ready(function(){
 	      }
 	 });
 
+
 	$('.groupinput').on('change', 'select.data_stocks',function(){
 
 		var sdata = $(this).val();
@@ -100,31 +101,42 @@ $(document).ready(function(){
 	$('.confirm_order').on('click', function(){
 
 		var stockname = $('.data_stocks').val();
-		console.log(stockname);
-		/*
+		var buyprice = $('.inputbuyprice').val();
+		var volume = $('.pdetails.vol').text();
+		var emotion = $('.inpt_data_emotion').val();
+		var strategy = $('.inpt_data_strategy').val();
+		var tradeplan = $('.inpt_data_tradeplan').val();
+		var tradenotes = $('.tnotes').val();
+		var d = new Date();
+		var buydate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+		var userid = $('.userid').val();
+		
 			$.ajax({
 			    type:'GET',
 			    url:'/wp-json/virtual-api/v1/livetrade',
 			    dataType: 'json',
 			    data:{
-			    	"stockname": "BDO",
-					"buyprice": "80.15",
-					"volume": "100",
-					"emotion": "Neutral",
-					"strategy": "Trend Following",
-					"tradeplan": "Day Trade",
-					"tradenotes": "test",
-					"buydate": "2019-09-20",
+			    	"stockname": "PHEN",
+					"buyprice": buyprice,
+					"volume": volume,
+					"emotion": emotion,
+					"strategy": strategy,
+					"tradeplan": tradeplan,
+					"tradenotes": tradenotes,
+					"buydate": buydate,
 					"category": "vtrade1",
 					"type": "vt",
-					"userid": 3
-			    }
-			    success: function(response) {
-		
+					"userid": userid
 			    },
-			      error: function(response) {                 
+			    success: function(response){
+					console.log('success');
+					$('.chart-loader').css('display','block');
+					$('.confirm_order').hide();
+					 window.location.href = "/virtual-trades";
+			    },
+			    error: function(response){                 
 			      }
-			 });*/
+			 });
 
 	});
 

@@ -95,8 +95,23 @@ $(document).ready(function(){
 		$('.btnsell').css('background','#e64c3c');
 		$('.btnbuy').css('background','none');
 		$('.labelprice').text('Sell Price');
-	});
 
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/stockstosell',
+		    dataType: 'json',
+		    success: function(response) {
+		    	$.each(response.data, function(i, val) {
+	    			console.log(val);
+	    		});
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+		console.log('sell');
+
+
+	});
 
 	$('.confirm_order').on('click', function(){
 

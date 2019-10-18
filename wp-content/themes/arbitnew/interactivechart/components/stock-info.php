@@ -12,12 +12,12 @@
                     <span style="
                         font-size: 25px;
                         font-weight: bold;
-                        letter-spacing: -1px;" class="text-default">{{stock.displayLast}}</span>
+                        letter-spacing: -1px;" class="text-default">{{stock.last | number:2}}</span>
                     <span ng-class="{'text-green': stock.change > 0, 'text-red': stock.change < 0, 'text-yellow': stock.change == 0}" style="
                         font-size: 14px;
                         line-height: 1.42857143;">
-                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.displayDifference}}</span>
-                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.displayChange}}%)</span>
+                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">{{stock.change | number:2}}</span>
+                        <span style="font-size: 17px;font-weight: bold;margin-left: 5px;">({{stock.change_percentage | number:2}}%)</span>
                     </span>
                     <small class="arb_markcap">Market Capitalization: {{stock.displayMarketCap}}</small>
                 </div>
@@ -30,15 +30,15 @@
                     <tbody style="font-size: 10px;">
                         <tr>
                             <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Previous</td>
-                            <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-default"><strong>{{stock.displayPrevious}}</strong></td>
+                            <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-default"><strong>{{stock.previous | number:2}}</strong></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Low</td>
-                            <td style="font-weight: bold; padding: 5px;" class="" changediv="stock.low"><strong ng-class="{'text-green': stock.low > stock.previous, 'text-red': stock.low < stock.previous}">{{stock.displayLow}}</strong></td>
+                            <td style="font-weight: bold; padding: 5px;" class="" changediv="stock.low"><strong ng-class="{'text-green': stock.low > stock.previous, 'text-red': stock.low < stock.previous}">{{stock.low | number:2}}</strong></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkLow</td>
-                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow}}</strong></td>
+                            <td style="font-weight: bold; padding: 5px;" class=""><strong ng-class="{'text-green': stock.weekYearLow > stock.last, 'text-red': stock.weekYearLow < stock.last}">{{stock.weekYearLow | number:2}}</strong></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Volume</td>
@@ -57,11 +57,11 @@
                     <tbody style="font-size: 10px;">
                         <tr>
                             <td style="border-top: none; font-weight: bold; padding: 5px;" class="text-uppercase">Open</td>
-                            <td style="border-top: none; font-weight: bold; padding: 5px;"><strong ng-class="{'text-green': stock.open > stock.previous, 'text-red': stock.open < stock.previous}">{{stock.displayOpen}}</strong></td>
+                            <td style="border-top: none; font-weight: bold; padding: 5px;"><strong ng-class="{'text-green': stock.open > stock.previous, 'text-red': stock.open < stock.previous}">{{stock.open | number:2}}</strong></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">High</td>
-                            <td style="font-weight: bold; padding: 5px;" changediv="stock.high"><strong ng-class="{'text-green': stock.high > stock.previous, 'text-red': stock.high < stock.previous}">{{stock.displayHigh}}</strong></td>
+                            <td style="font-weight: bold; padding: 5px;" changediv="stock.high"><strong ng-class="{'text-green': stock.high > stock.previous, 'text-red': stock.high < stock.previous}">{{stock.high | number:2}}</strong></td>
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">52WkHigh</td>
@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td style="font-weight: bold; padding: 5px;" class="text-uppercase">Average</td>
-                            <td style="font-weight: bold; padding: 5px;" changediv="stock.average"><strong ng-class="{'text-green': stock.average > stock.previous, 'text-red': stock.average < stock.previous}">{{stock.displayAverage}}</strong></td>
+                            <td style="font-weight: bold; padding: 5px;" changediv="stock.average"><strong ng-class="{'text-green': stock.average > stock.previous, 'text-red': stock.average < stock.previous}">{{stock.average | number:2}}</strong></td>
                         </tr>
                     </tbody>
                 </table>

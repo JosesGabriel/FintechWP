@@ -78,7 +78,7 @@ $(document).ready(function(){
 				    success: function(response) {				    	
 				    	$.each(response.data, function(i, val) {
 
-				    		$('.sdesc').text(val.datainfo.description);	
+				    		console.log(val.stock);	
 
 				    	});	
 				     },

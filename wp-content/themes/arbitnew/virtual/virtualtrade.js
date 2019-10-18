@@ -89,27 +89,45 @@ $(document).ready(function(){
 		$('.btnbuy').css('background','#25ae5f');
 		$('.btnsell').css('background','none');
 		$('.labelprice').text('Buy Price');
+		$.ajax({
+			    type:'GET',
+			    url:'/wp-json/virtual-api/v1/buyvalues',
+			    dataType: 'json',
+			    success: function(response) {
+			    	var opt = '';
+			    	$('#inpt_data_select_stock option').remove();
+			    	$.each(response.data, function(i, val) {
+			    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
+			    		$('#inpt_data_select_stock').append(opt);
+			    	});
+
+			    },
+			      error: function(response) {                 
+			      }
+			 });
+
 	});
 
 	$('.btnsell').on('click', function(){
 		$('.btnsell').css('background','#e64c3c');
 		$('.btnbuy').css('background','none');
 		$('.labelprice').text('Sell Price');
-
+		var userid = $('.userid').val();
 		$.ajax({
 		    type:'GET',
-		    url:'/wp-json/virtual-api/v1/stockstosell',
+		    url:'/wp-json/virtual-api/v1/stockstosell?userid='+ userid,
 		    dataType: 'json',
-		    success: function(response) {
-		    	$.each(response.data, function(i, val) {
-	    			console.log(val);
-	    		});
+		    success: function(response) {	
+		    	var opt = '';    	
+		    	$('#inpt_data_select_stock option').remove();
+	    		$.each(response.data, function(i, val) {
+		    		opt = "<option value="+ val +">" + val + "</option>";
+	    			$('#inpt_data_select_stock').append(opt);
+		    	});    		
 		    },
 		      error: function(response) {                 
 		      }
 		 });
-		console.log('sell');
-
 
 	});
 

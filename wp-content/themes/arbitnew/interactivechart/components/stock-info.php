@@ -7,7 +7,7 @@
             <div class="arb_stock_name"><!-- STOCK NAME -->
                 <i class="fas " ng-class="{'fa-arrow-up': stock.change > 0, 'fa-arrow-down': stock.change < 0}" style="font-size: 35px;position: absolute; left: 4px;"></i>
                 <div class="name text-uppercase text-default" style="font-size: 15px; font-weight: bold; white-space: nowrap; width: 100%; overflow: hidden;
-                text-overflow: ellipsis;">{{stock.description}}</div>
+                text-overflow: ellipsis;">{{stockInfo.description}}</div>
                 <div class="figures" style="margin-top: 0; overflow: visible; white-space: nowrap;">
                     <span style="
                         font-size: 25px;

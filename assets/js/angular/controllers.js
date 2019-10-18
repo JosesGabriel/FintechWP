@@ -695,6 +695,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 }]);
 app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
     $scope.stock = null;
+    $scope.stockInfo = null;
 
     $rootScope.$on('changeStockSymbol', function (event, symbol) {
         $scope.getStockData(symbol);
@@ -710,10 +711,8 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
                 let data = response.data;
                 if (data.success) {
                     let stock = data.data;
-
+                    $scope.updateStockInfo(stock);
                     $scope.stock = {
-                        symbol: stock.symbol.toUpperCase(),
-                        description: stock.description.toUpperCase(),
                         lastupdatetime: moment(stock.lastupdatetime),
                         last: parseFloat(stock.last),
                         difference: parseFloat(stock.difference),
@@ -750,12 +749,21 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
     }
 
     $scope.updateStockData = function (data) {
-        if ($scope.stock && data.symbol == $scope.stock.symbol) {
+        if ($scope.stock && data.symbol == $scope.stockInfo.symbol) {
             $scope.stock = Object.assign($scope.stock, data);
         } else {
             $scope.stock = data;
         }
     };
+
+    $scope.updateStockInfo = function (data) {
+        if (data) {
+            $scope.stockInfo = {
+                symbol: data.symbol.toUpperCase(),
+                description: data.description.toUpperCase(),
+            }
+        }
+    }
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {

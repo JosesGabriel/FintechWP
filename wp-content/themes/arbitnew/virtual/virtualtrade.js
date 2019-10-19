@@ -26,8 +26,30 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	console.log(response);
+		    	var data_live = '';
 		    	$.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
+
+			    	data_live += '<li>';
+				    data_live += '<table width="100%">';
+				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width: 12%;" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:10%" class="dgreenpart table-title-live">₱</td>';
+				    data_live += '<td style="width:8%" class="dgreenpart table-title-live">%</td>';
+				    data_live += '<td style="width:77px;text-align:center;">';
+				    data_live += '<a class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
+				    data_live += '<a class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';
+				    data_live += '</td>';
+				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
+				    data_live += '<td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
+				    data_live += '</tr></tbody>';
+				    data_live += '</table>';
+				    data_live += '</li>';
+				    $("#live_portfolio > ul").append(data_live);
 		    	});
 		     },
 		    error: function(response) {                 

@@ -180,6 +180,13 @@ $(document).ready(function(){
 	     return num;
 	}
 
+	jQuery(document).on('click', '.buymystocks', function(){
+		var stock = $(this).attr('data-stock');
+
+		$('#inpt_data_select_stock').prop('disabled', 'disabled');
+
+	});
+
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
 		var emotion = $(this).attr('data-emotion');
 		var strategy = $(this).attr('data-strategy');

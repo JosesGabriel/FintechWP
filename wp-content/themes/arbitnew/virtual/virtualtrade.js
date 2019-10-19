@@ -184,7 +184,7 @@ $(document).ready(function(){
 		var stock = $(this).attr('data-stock');
 		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
-
+		$('.bsbutton').hide();
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){

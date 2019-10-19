@@ -68,6 +68,42 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'getsellstock'],
             ],
         ]);
+
+        register_rest_route($base_route, 'buypower', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getbuypower'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'performance', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getperformance'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'dstock', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getdstock'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'liveportfolio', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getliveportfolio'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'deletedata', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'deletedata'],
+            ],
+        ]);
+        
     }
 
     public function respond($success = false, $data = [], $status = 500)
@@ -324,9 +360,162 @@ class VirtualAPI extends WP_REST_Controller
         
     }
 
+    public function getbuypower($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $initialmoney = 100000;
+
+        $checkliveportfolio = "select * from arby_vt_live where vttype = 'vt' and userid = ".$data['userid'];
+        $insertlive = $wpdb->get_results($checkliveportfolio);  
+        $liveammount = 0;
+        foreach ($insertlive as $key => $value) {
+            $totaltr = $value->buyprice * $value->volume;
+            $liveammount += $totaltr;
+        }
+
+        $getliveportfolio = "select * from arby_vt_tradelog where userid = ".$data['userid'];
+        $liveport = $wpdb->get_results($getliveportfolio);  
+        $trammount = 0;
+        foreach ($liveport as $key => $value) {
+            $totaltr = $value->sellprice * $value->volume;
+            $trammount += $totaltr;
+        }
+
+        $totalbuy = ($initialmoney - $liveammount) + $trammount;
+
+        
+        return $this->respond(true, ['data' => $totalbuy], 200);
+    }
+
+    public function getperformance($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        $perinfo = [];
+        $perinfo['capital'] = 100000;
+
+        $gettradelogs = "select * from arby_vt_tradelog where userid = ".$data['userid'];
+        $tradelogsinfo = $wpdb->get_results($gettradelogs);  
+        $perinfo['realized'] = 0;
+        $moneymoves = 0;
+        foreach ($tradelogsinfo as $key => $value) {
+            $sellprice = $value->sellprice * $value->volume;
+            $perinfo['realized'] += $value->profit;
+            $moneymoves += $sellprice;
+        }
+
+        $liveportfolio = "select * from arby_vt_live where vttype = 'vt' and userid = ".$data['userid'];
+        $liveportfolioinfo = $wpdb->get_results($liveportfolio);  
+        $perinfo['unrealize'] = 0;
+        $buytotal = 0;
+        foreach ($liveportfolioinfo as $key => $value) {
+            $stock = $value->stockname;
+            $key = array_search($stock, array_column($gerdqoute->data, 'symbol'));
+            $uneqt = $value->volume * $gerdqoute->data[$key]->last;
+            $totaltr = $value->buyprice * $value->volume;
+
+            $profit = $uneqt - $totaltr;
+
+            $buytotal += $totaltr;
+            $perinfo['unrealize'] += $profit;
+        }
+
+        $perinfo['equity'] = ($perinfo['capital'] + $perinfo['realized'] + $perinfo['unrealize']);
+
+        $profs = $perinfo['equity'] - $perinfo['capital'];
+        $perinfo['percentage'] = ($profs / $perinfo['capital']) * 100;
+
+        $perinfo['buypower'] = ($perinfo['capital'] - $buytotal) + $perinfo['realized'];
+        
+
+        return $this->respond(true, ['data' => $perinfo], 200);
+    }
+
+    public function getdstock($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stock'], [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        return $this->respond(true, ['data' => $gerdqoute->data], 200);
+    }
+
+    public function getliveportfolio($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+
+        $liveportfolio = "select * from arby_vt_live where vttype = 'vt' and userid = ".$data['userid'];
+        $liveportfolioinfo = $wpdb->get_results($liveportfolio);
+
+        $dstock = [];
+        $listofstocks = [];
+        foreach ($liveportfolioinfo as $key => $value) {
+            $marketvals = $value->buyprice * $value->volume;
+            $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
+            $dstock['stockid'] = $value->id;
+            $dstock['stockname'] = $value->stockname;
+            $dstock['volume'] += $value->volume;
+            $dstock['emotion'] = $value->emotion;
+            $dstock['strategy'] = $value->strategy;
+            $dstock['tradeplan'] = $value->tradeplan;
+            $dstock['tradenotes'] = $value->tradenotes;
+            $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+
+            $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$value->stockname, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+            ]);
+            $dstockdata = json_decode($request->content);
+            $dstock['datainfo'] = $dstockdata->data;
+
+            array_push($listofstocks, $dstock);
+        }       
+        return $this->respond(true, ['data' => $listofstocks], 200);
+    }
 
 
-
+    public function deletedata($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
+       if($wpdb->query($liveportfolio)){
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
 
 }
 

@@ -26,6 +26,7 @@
     padding: 3px 11px;
     border: 2px solid #25ae5f;
     border-radius: 15px;
+    background-color: #25ae5f;
 }
 
 .btnbuy:hover {
@@ -285,6 +286,14 @@ textarea.tnotes{
     width: 72%;
 }
 
+.bsbutton {
+	width: 150px;
+    display: inline-block;
+}
+.label_enter {
+	font-size: 16px !important;
+    font-weight: 600 !important;
+}
 
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {

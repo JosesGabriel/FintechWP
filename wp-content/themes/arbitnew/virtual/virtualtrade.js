@@ -191,6 +191,7 @@ $(document).ready(function(){
 	jQuery(document).on('click', '.enter-trade-btn', function(){
 		$('.bsbutton').css('display','inline-block');
 		$('#inpt_data_select_stock').prop('disabled', false);
+		$('.entr_title_bar').text('Enter Order:');
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){

@@ -114,7 +114,7 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
         }, 1000);
     }
 
-    socket.on('dev-psec', function (data) {  
+    socket.on('psec', function (data) {  
 
         var transaction = {
             symbol: data.sym,

@@ -27,7 +27,7 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	var data_live = '';
-		    	$("li .datalive").remove();
+		    	$(".datalive").remove();
 		    	$.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
 			    	data_live += '<li class="datalive">';

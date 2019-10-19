@@ -47,20 +47,18 @@ function livedata(){
 				    dataType: 'json',
 				    success: function(response) {
 
-				    	console.log(response);
-				/*
-					    			$('.sdesc').text(val.description);
-					    			$('.cprice').text((val.last).toFixed(2));
-					    			$('.pdetails.prev').text((val.close).toFixed(2));
-					    			$('.pdetails.low').text((val.low).toFixed(2));
-					    			$('.pdetails.klow').text(val.weekyearlow);
-					    			$('.pdetails.vol').text(nFormatter(parseFloat(val.volume)));
-					    			$('.pdetails.trade').text((val.trades).toFixed(2));
-					    			$('.pdetails.open').text((val.open).toFixed(2));
-					    			$('.pdetails.high').text((val.high).toFixed(2));
-					    			$('.pdetails.khigh').text((val.weekyearhigh).toFixed(2));
-					    			$('.pdetails.val').text(nFormatter(parseFloat(val.value)));
-					    			$('.pdetails.av').text((val.average).toFixed(2));
+					    			$('.sdesc').text(response.data.description);
+					    			$('.cprice').text((response.data.last).toFixed(2));
+					    			$('.pdetails.prev').text((response.data.close).toFixed(2));
+					    			$('.pdetails.low').text((response.data.low).toFixed(2));
+					    			$('.pdetails.klow').text(response.data.weekyearlow);
+					    			$('.pdetails.vol').text(nFormatter(parseFloat(response.data.volume)));
+					    			$('.pdetails.trade').text((response.data.trades).toFixed(2));
+					    			$('.pdetails.open').text((response.data.open).toFixed(2));
+					    			$('.pdetails.high').text((response.data.high).toFixed(2));
+					    			$('.pdetails.khigh').text((response.data.weekyearhigh).toFixed(2));
+					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
+					    			$('.pdetails.av').text((response.data.average).toFixed(2));
 
 					    			$.ajax({
 									    type:'GET',
@@ -76,8 +74,7 @@ function livedata(){
 									    },
 									      error: function(response) {                 
 									      }
-									 });*/
-					  	
+									 });
 				    },
 				    error: function(response) {                 
 				    }

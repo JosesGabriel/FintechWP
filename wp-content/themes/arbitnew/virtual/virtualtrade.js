@@ -26,10 +26,11 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	console.log(response);
-		    	var data_live = '';
+		    	
 		    	$("#live_portfolio > ul li").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
+		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';
@@ -50,7 +51,6 @@ $(document).ready(function(){
 				    data_live += '</table>';
 				    data_live += '</li>';
 				    $("#live_portfolio > ul").append(data_live);
-
 				    console.log(i);
 		    	});
 

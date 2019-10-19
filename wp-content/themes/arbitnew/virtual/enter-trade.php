@@ -8,7 +8,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                     <div class="entr_title_bar">
-                        Enter Order: <span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span>
+                        Enter Order: <div class="bsbutton"><span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span></div>
                         <input type="hidden" name="" class="btnValue" value="buy">
                         <button type="button" class="close_btn" data-dismiss="modal">&times;</button>
                     </div>

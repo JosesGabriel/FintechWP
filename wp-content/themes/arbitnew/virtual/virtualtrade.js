@@ -254,7 +254,8 @@ $(document).ready(function(){
 					console.log('success');
 					$('.chart-loader').css('display','block');
 					$('.confirm_order').hide();
-					$('#enter_trade').modal().hide();
+					$('#enter_trade').modal().close();
+					$("#live_portfolio > ul li .datalive").remove();
 					livedata();
 					// window.location.href = "/virtual-trades";
 			    },

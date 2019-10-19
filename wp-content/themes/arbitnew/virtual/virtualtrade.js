@@ -47,7 +47,8 @@ function livedata(){
 				    dataType: 'json',
 				    success: function(response) {
 
-				    	$.each(response.data, function(i, val) {
+				    	console.log(response);
+				    	/*$.each(response.data, function(i, val) {
 
 					    		if(sdata == val.symbol){
 					    			$('.sdesc').text(val.description);
@@ -80,7 +81,7 @@ function livedata(){
 									 });
 
 					    		} 
-					    });		    	
+					    });	*/	    	
 
 				    },
 				    error: function(response) {                 

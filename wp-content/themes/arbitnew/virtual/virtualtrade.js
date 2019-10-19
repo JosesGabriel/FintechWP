@@ -168,7 +168,7 @@ $(document).ready(function(){
 
 	 jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
-	 	var id = $(this).attr('data-stock');
+	 	var id = $(this).attr('data-stock').val();
 		console.log('id');
 
         Swal.fire({

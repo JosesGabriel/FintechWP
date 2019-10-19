@@ -182,7 +182,16 @@ $(document).ready(function(){
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
 		var emotion = $(this).attr('data-emotion');
-		console.log(emotion);
+		var strategy = $(this).attr('data-strategy');
+		var tradeplan = $(this).attr('data-tradeplan');
+		var notes = $(this).attr('data-tradingnotes');
+		var outcome = $(this).attr('data-outcome');
+
+		$('.addstrats').text(strategy);
+		$('.addtplan').text(tradeplan);
+		$('.addemotion').text(emotion);
+		$('.addoutcome').text(outcome);
+		$('.addnotes').text(notes);
 	});
 
 	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){

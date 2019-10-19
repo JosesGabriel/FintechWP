@@ -291,8 +291,8 @@ textarea.tnotes{
     display: inline-block;
 }
 .label_enter {
-	font-size: 16px;
-    font-weight: 600;
+	font-size: 16px !important;
+    font-weight: 600 !important;
 }
 
 /* -------------- passwordmodal vyndue ---------------- */

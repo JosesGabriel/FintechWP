@@ -474,7 +474,7 @@ class VirtualAPI extends WP_REST_Controller
         foreach ($liveportfolioinfo as $key => $value) {
             $marketvals = $value->buyprice * $value->volume;
             $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
-            $dstock['stockname'] += $value->stockname;
+            $dstock['stockname'] = $value->stockname;
             $dstock['volume'] += $value->volume;
             $dstock['emotion'] = $value->emotion;
             $dstock['strategy'] = $value->strategy;

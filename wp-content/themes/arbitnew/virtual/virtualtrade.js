@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	//livedata();
+	livedata();
 
 	$.ajax({
 	    type:'GET',
@@ -17,22 +17,20 @@ $(document).ready(function(){
 	      error: function(response) {                 
 	      }
 	 });
-/*
+
 function livedata(){
 	var userid = $('.userid').val();
-    $.ajax({
-        url: "vt_live_portfolio.php",
-        method: "GET",
-        data: {userid: userid},
-        success: function(data){
-        	 $("#live_portfolio").html(data);
-        },
-        error: (error) => {
-        console.log(JSON.stringify(error));
-    		}
-      });
-
-}*/
+   	$.ajax({
+	    type:'GET',
+	    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
+	    dataType: 'json',
+	    success: function(response) {
+	    	console.log(response);
+	     },
+	    error: function(response) {                 
+	    }
+	});
+}
 
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){

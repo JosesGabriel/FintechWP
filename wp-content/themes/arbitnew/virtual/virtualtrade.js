@@ -185,6 +185,7 @@ $(document).ready(function(){
 		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
+		$('.entr_title_bar').text('Enter Buy Order:');
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){

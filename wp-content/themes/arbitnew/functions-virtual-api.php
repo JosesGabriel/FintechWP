@@ -89,6 +89,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'getdstock'],
             ],
         ]);
+
+         register_rest_route($base_route, 'liveportfolio', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getliveportfolio'],
+            ],
+        ]);
         
     }
 
@@ -450,9 +457,41 @@ class VirtualAPI extends WP_REST_Controller
         return $this->respond(true, ['data' => $gerdqoute->data], 200);
     }
 
+    public function getliveportfolio($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
 
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
 
+        $liveportfolio = "select * from arby_vt_live where vttype = 'vt' and userid = ".$data['userid'];
+        $liveportfolioinfo = $wpdb->get_results($liveportfolio);
 
+        $dstock = [];
+        foreach ($liveportfolioinfo as $key => $value) {
+            $marketvals = $value->buyprice * $value->volume;
+            $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
+            $dstock['stockname'] += $value->stockname;
+            $dstock['volume'] += $value->volume;
+            $dstock['emotion'] = $value->emotion;
+            $dstock['strategy'] = $value->strategy;
+            $dstock['tradeplan'] = $value->tradeplan;
+            $dstock['tradenotes'] = $value->tradenotes;
+            $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+
+            $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$value->stockname, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+            ]);
+            $dstockdata = json_decode($request->content);
+            $dstock['datainfo'] = $dstockdata->data;
+        }       
+        return $this->respond(true, ['data' => $dstock], 200);
+    }
 
 }
 

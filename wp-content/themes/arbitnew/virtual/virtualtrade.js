@@ -47,7 +47,7 @@ function livedata(){
 				    dataType: 'json',
 				    success: function(response) {
 
-				    	console.log(response);
+				    	console.log(response.data.symbol);
 				    	/*$.each(response.data, function(i, val) {
 
 					    		if(sdata == val.symbol){

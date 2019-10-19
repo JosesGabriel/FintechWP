@@ -182,6 +182,7 @@ $(document).ready(function(){
 
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
+		$('.btnValue').val('buy');
 		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
@@ -190,6 +191,7 @@ $(document).ready(function(){
 
 	jQuery(document).on('click', '.sellmystocks', function(){
 		var stock = $(this).attr('data-stock');
+		$('.btnValue').val('sell');
 		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');

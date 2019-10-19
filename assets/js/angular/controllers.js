@@ -15,6 +15,37 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
+// app.controller('dev-ticker', ['$scope', function($scope) {
+    
+//     $scope.enable = true;
+//     $scope.ticker = [];
+    
+//     $scope.tickerEnabler = function (){
+//         $scope.enable = !$scope.enable;
+//     }
+
+//     socket.on('dev-psec', function (data) {  
+    
+//             var transaction = {
+//                 symbol: data.sym,
+//                 price:  price_format(data.prv),
+//                 change: data.chg,
+//                 shares: abbr_format(data.vol)
+//             }
+
+//             $scope.ticker.push(transaction);
+
+//             console.log($scope.ticker);
+//             console.log($scope.ticker.length);
+
+//             if ($scope.ticker.length > 50) {
+//                 $scope.ticker.shift();
+//             }
+
+//     });   
+      
+// }]);
+
 app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     
     $scope.ticker_intervalId;
@@ -23,13 +54,14 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     $scope.ticker = [];
     $scope.data = [];
     $scope.counter = 0;
+    $scope.width = 0;
     
     $scope.tickerEnabler = function (){
         $scope.enable = !$scope.enable;
         if($scope.enable) {
-            $scope.tickerStart();
+         //   $scope.tickerStart();
         } else {
-            $scope.tickerStop();
+          //  $scope.tickerStop();
         }
     }
 
@@ -50,7 +82,7 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     }; 
 
     // cheat to keep ticker plugin start moving
-    var rawdate = [{"sym":"","prv":3.28,"chg":0,"vol":837000 }]
+    var rawdate = [{"sym":"","prv":0,"chg":0,"vol":0 }]
     for(i in rawdate){
         var transaction = {
             symbol: rawdate[i].sym,
@@ -63,12 +95,18 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     }
     $interval(function() {
             $scope.ticker.shift(); 
-    }, 1000, parseInt(rawdate.length));
+    }, 500, parseInt(rawdate.length));
     // end 
-    
+
+    // $interval(function() {  
+    //     let width = $scope.width+=5;
+    //     jQuery('#webTicker').animate({left: width + 'px'});
+    //     console.log(width);
+    // },100)
+
     if($scope.enable){
-        $interval(function() {
-            if ($scope.data.length > 0) {
+        $interval(function() {  
+            if ($scope.data.length && $scope.isTickerFull == true) {
                 $scope.ticker.push($scope.data[0]);
                 $scope.data.shift();
                 $scope.ticker.shift();
@@ -76,9 +114,7 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
         }, 1000);
     }
 
-    socket.on('psec', function (data) {  
-        
-        //console.log($scope.enable);
+    socket.on('dev-psec', function (data) {  
 
         var transaction = {
             symbol: data.sym,
@@ -89,15 +125,22 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
         }
 
         if($scope.enable){
-            if ($scope.ticker.length <= 50 && $scope.isTickerFull == false) {
+            if ($scope.ticker.length <= 30 && $scope.isTickerFull == false) {
                 $scope.ticker.push(transaction);
             } else {
+                if($scope.data.length>500){
+                    $scope.data = [];
+                }
                 $scope.isTickerFull = true
                 $scope.data.push(transaction);
             } 
         }
+        
+        $scope.$apply();
 
-    });   
+    }); 
+    
+    
       
 }]);
 

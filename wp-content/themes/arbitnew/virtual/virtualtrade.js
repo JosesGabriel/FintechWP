@@ -166,7 +166,7 @@ $(document).ready(function(){
 	}
 
 
-	$('.deletelive.smlbtn-delete').on('click', function(){
+	 jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
 		console.log('delete');
 

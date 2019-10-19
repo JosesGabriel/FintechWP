@@ -168,7 +168,8 @@ $(document).ready(function(){
 
 	 jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
-		console.log('delete');
+	 	var id = $(this).attr('data-stock');
+		console.log('id');
 
         Swal.fire({
             title: 'Are you sure?',

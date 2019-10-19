@@ -35,7 +35,7 @@ $(document).ready(function(){
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
-				    data_live += '<td style="width:9%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';

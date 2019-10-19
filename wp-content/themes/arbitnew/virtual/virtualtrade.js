@@ -27,9 +27,10 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	var data_live = '';
+		    	$("li .datalive").remove();
 		    	$.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
-			    	data_live += '<li>';
+			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';

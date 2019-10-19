@@ -44,7 +44,7 @@ $(document).ready(function(){
 				    data_live += '<a class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
 				    data_live += '<a class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';
 				    data_live += '</td>';
-				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
+				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="'+ response.data[i].emotion +'" data-toggle="modal" data-target="#livetradenotes" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
 				    data_live += '<td style="width:25px"><a data-stock="'+response.data[i].stockid+'" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
 				    data_live += '</tr></tbody>';
 				    data_live += '</table>';
@@ -180,8 +180,12 @@ $(document).ready(function(){
 	     return num;
 	}
 
+	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
+		var emotion = $(this).attr('data-emotion');
+		console.log(emotion);
+	});
 
-	 jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
+	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
 	 	var id = $(this).attr('data-stock');
         Swal.fire({

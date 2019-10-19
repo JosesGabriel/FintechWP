@@ -510,7 +510,6 @@ class VirtualAPI extends WP_REST_Controller
         global $wpdb;
         $data = $details->get_params();
         $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
-        //$deletelive = $wpdb->query($liveportfolio);
        if($wpdb->query($liveportfolio)){
             return $this->respond(true, ['data' => 'Successfully deleted'], 200);
         }else{

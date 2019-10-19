@@ -50,7 +50,11 @@ $(document).ready(function(){
 				    data_live += '</table>';
 				    data_live += '</li>';
 				    $("#live_portfolio > ul").append(data_live);
+
+				    console.log(i);
 		    	});
+
+
 		     },
 		    error: function(response) {                 
 		    }

@@ -25,11 +25,10 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    	console.log(response);
-		    	
+		    			    	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
-		    		console.log(response.data[i].stockname);
+		    		
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
@@ -169,6 +168,9 @@ $(document).ready(function(){
 
 
 	$('.deletelive').on('click', function(){
+
+		console.log('delete');
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -190,7 +192,7 @@ $(document).ready(function(){
             }
         });
 	});
-	
+
 
 	$('.btnbuy').on('click', function(){
 		$('.btnbuy').css('background','#25ae5f');

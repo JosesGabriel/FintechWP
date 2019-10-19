@@ -32,7 +32,7 @@ $(document).ready(function(){
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
-				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';
+				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+(response.data[i].volume).toFixed(2)+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';

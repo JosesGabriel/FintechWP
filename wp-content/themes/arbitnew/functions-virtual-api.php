@@ -90,10 +90,17 @@ class VirtualAPI extends WP_REST_Controller
             ],
         ]);
 
-         register_rest_route($base_route, 'liveportfolio', [
+        register_rest_route($base_route, 'liveportfolio', [
             [
                 'method' => 'GET',
                 'callback' => [$this, 'getliveportfolio'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'deletedata', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'deletedata'],
             ],
         ]);
         
@@ -495,6 +502,20 @@ class VirtualAPI extends WP_REST_Controller
             array_push($listofstocks, $dstock);
         }       
         return $this->respond(true, ['data' => $listofstocks], 200);
+    }
+
+
+    public function deletedata($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
+        $deletelive = $wpdb->query($liveportfolio);
+        if($wpdb->query($liveportfolio)){
+            return $this->respond(true, ['data' => 'successfully deleted'], 200);
+        }else {
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
     }
 
 }

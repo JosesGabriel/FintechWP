@@ -27,7 +27,7 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	
-		    	$("#live_portfolio > ul li .datalive").remove();
+		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
 		    		var data_live = '';
@@ -254,8 +254,7 @@ $(document).ready(function(){
 					console.log('success');
 					$('.chart-loader').css('display','block');
 					$('.confirm_order').hide();
-					$('#enter_trade').modal().close();
-					$("#live_portfolio > ul li .datalive").remove();
+					$('#enter_trade').modal('toggle'); 
 					livedata();
 					// window.location.href = "/virtual-trades";
 			    },

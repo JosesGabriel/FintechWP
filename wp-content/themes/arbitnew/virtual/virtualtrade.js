@@ -252,11 +252,8 @@ $(document).ready(function(){
 			    },
 			    success: function(response){
 					console.log('success');
-					$('.chart-loader').css('display','block');
-					$('.confirm_order').hide();
 					$('#enter_trade').modal('toggle'); 
 					livedata();
-					// window.location.href = "/virtual-trades";
 			    },
 			    error: function(response){                 
 			      }
@@ -282,9 +279,8 @@ $(document).ready(function(){
 			    },
 			    success: function(response){
 					console.log(response.data);
-					$('.chart-loader').css('display','block');
-					$('.confirm_order').hide();
-					 window.location.href = "/virtual-trades";
+					$('#enter_trade').modal('toggle'); 
+					livedata();
 			    },
 			    error: function(response){                 
 			      }

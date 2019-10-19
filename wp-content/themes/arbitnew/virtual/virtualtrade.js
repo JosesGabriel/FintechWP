@@ -29,7 +29,6 @@ $(document).ready(function(){
 		    	var data_live = '';
 		    	$.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
-
 			    	data_live += '<li>';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;">' + response.data[i].stockname + '</td>';

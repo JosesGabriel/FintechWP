@@ -18,19 +18,22 @@ $(document).ready(function(){
 	      }
 	 });
 
-function livedata(){
-	var userid = $('.userid').val();
-   	$.ajax({
-	    type:'GET',
-	    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
-	    dataType: 'json',
-	    success: function(response) {
-	    	console.log(response);
-	     },
-	    error: function(response) {                 
-	    }
-	});
-}
+	function livedata(){
+		var userid = $('.userid').val();
+	   	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	$.each(response.data, function(i, val) {
+		    		console.log(val[i].stockname);
+		    	});
+		     },
+		    error: function(response) {                 
+		    }
+		});
+	}
 
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){

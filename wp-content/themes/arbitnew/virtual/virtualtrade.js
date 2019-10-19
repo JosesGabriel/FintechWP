@@ -168,8 +168,8 @@ $(document).ready(function(){
 
 	 jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
-	 	var id = $(this).attr('data-stock').val();
-		console.log('id');
+	 	var id = $(this).attr('data-stock');
+		console.log(id);
 
         Swal.fire({
             title: 'Are you sure?',

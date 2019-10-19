@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	//livedata();
+
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -15,6 +17,22 @@ $(document).ready(function(){
 	      error: function(response) {                 
 	      }
 	 });
+/*
+function livedata(){
+	var userid = $('.userid').val();
+    $.ajax({
+        url: "vt_live_portfolio.php",
+        method: "GET",
+        data: {userid: userid},
+        success: function(data){
+        	 $("#live_portfolio").html(data);
+        },
+        error: (error) => {
+        console.log(JSON.stringify(error));
+    		}
+      });
+
+}*/
 
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){
@@ -25,7 +43,7 @@ $(document).ready(function(){
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
-				    url:'/wp-json/virtual-api/v1/buyvalues',
+				    url:'/wp-json/virtual-api/v1/dstock?stock='+sdata,
 				    dataType: 'json',
 				    success: function(response) {
 

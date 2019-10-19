@@ -182,7 +182,7 @@ $(document).ready(function(){
 
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
-
+		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 
 	});

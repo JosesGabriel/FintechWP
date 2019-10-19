@@ -185,13 +185,13 @@ $(document).ready(function(){
 		$("#inpt_data_select_stock").val(stock).change();
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
-		//$('.entr_title_bar').text('Enter Buy Order:');
+		$('.label_enter').text('Enter Buy Order:');
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
 		$('.bsbutton').css('display','inline-block');
 		$('#inpt_data_select_stock').prop('disabled', false);
-		//$('.entr_title_bar').text('Enter Order:');
+		$('.label_enter').text('Enter Order:');
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){

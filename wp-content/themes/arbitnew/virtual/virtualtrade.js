@@ -27,7 +27,7 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	$.each(response.data, function(i, val) {
-		    		console.log(val.stockname[i]);
+		    		console.log(response.data[i].stockname);
 		    	});
 		     },
 		    error: function(response) {                 

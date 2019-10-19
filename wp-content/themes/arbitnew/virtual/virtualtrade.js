@@ -167,6 +167,31 @@ $(document).ready(function(){
 	     return num;
 	}
 
+
+	$('.deletelive').on('click', function(){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your Watchlist has been deleted.',
+                    'success'
+                ).then((result) => {
+                    var ditemtoremove = jQuery(this).attr('data-space');
+                    window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+	});
+	
+
 	$('.btnbuy').on('click', function(){
 		$('.btnbuy').css('background','#25ae5f');
 		$('.btnsell').css('background','none');

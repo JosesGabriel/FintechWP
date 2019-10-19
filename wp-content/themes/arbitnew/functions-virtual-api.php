@@ -470,6 +470,7 @@ class VirtualAPI extends WP_REST_Controller
         $liveportfolioinfo = $wpdb->get_results($liveportfolio);
 
         $dstock = [];
+        $listofstocks = [];
         foreach ($liveportfolioinfo as $key => $value) {
             $marketvals = $value->buyprice * $value->volume;
             $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
@@ -489,8 +490,10 @@ class VirtualAPI extends WP_REST_Controller
             ]);
             $dstockdata = json_decode($request->content);
             $dstock['datainfo'] = $dstockdata->data;
+
+            array_push($listofstocks, $dstock);
         }       
-        return $this->respond(true, ['data' => $dstock], 200);
+        return $this->respond(true, ['data' => $listofstocks], 200);
     }
 
 }

@@ -28,7 +28,7 @@ $(document).ready(function(){
 		    	console.log(response);
 		    	var data_live = '';
 		    	$("#live_portfolio > ul li").remove();
-		    	$.each(response.data, function(i, val) {
+		    	jQuery.each(response.data, function(i, val) {
 		    		console.log(response.data[i].stockname);
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';

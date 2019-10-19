@@ -50,7 +50,6 @@ $(document).ready(function(){
 				    data_live += '</table>';
 				    data_live += '</li>';
 				    $("#live_portfolio > ul").append(data_live);
-				    console.log(i);
 		    	});
 
 
@@ -167,7 +166,7 @@ $(document).ready(function(){
 	}
 
 
-	$('.deletelive').on('click', function(){
+	$('.deletelive.smlbtn-delete').on('click', function(){
 
 		console.log('delete');
 

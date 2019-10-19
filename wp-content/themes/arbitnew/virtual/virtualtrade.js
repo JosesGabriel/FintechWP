@@ -187,6 +187,14 @@ $(document).ready(function(){
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Buy Order:');
 	});
+
+	jQuery(document).on('click', '.sellmystocks', function(){
+		var stock = $(this).attr('data-stock');
+		$("#inpt_data_select_stock").val(stock).change();
+		$('#inpt_data_select_stock').prop('disabled', 'disabled');
+		$('.bsbutton').css('display','none');
+		$('.label_enter').text('Enter Sell Order:');
+	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
 		$('.bsbutton').css('display','inline-block');

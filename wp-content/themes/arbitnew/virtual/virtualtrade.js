@@ -188,7 +188,7 @@ $(document).ready(function(){
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
-		$('.bsbutton').css('display','block');
+		$('.bsbutton').css('display','inline-block');
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){

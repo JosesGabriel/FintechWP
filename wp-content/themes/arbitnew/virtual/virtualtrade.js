@@ -47,10 +47,8 @@ function livedata(){
 				    dataType: 'json',
 				    success: function(response) {
 
-				    	console.log(response.data.symbol);
-				    	/*$.each(response.data, function(i, val) {
-
-					    		if(sdata == val.symbol){
+				    	console.log(response);
+				/*
 					    			$('.sdesc').text(val.description);
 					    			$('.cprice').text((val.last).toFixed(2));
 					    			$('.pdetails.prev').text((val.close).toFixed(2));
@@ -78,11 +76,8 @@ function livedata(){
 									    },
 									      error: function(response) {                 
 									      }
-									 });
-
-					    		} 
-					    });	*/	    	
-
+									 });*/
+					  	
 				    },
 				    error: function(response) {                 
 				    }

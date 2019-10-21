@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	livedata();
+	tradelogs();
 
 	$.ajax({
 	    type:'GET',
@@ -25,10 +26,17 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    			    	
+		    		//console.log(response);	    	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		
+		    		var buyprice = parseFloat(response.data[i].buyprice);
+		    		var marketval = response.data[i].datainfo.average * response.data[i].volume;
+		    		var prof = buyprice * response.data[i].volume;
+		    		var profit = marketval - prof;
+		    		var profperc = (profit/marketval) * 100;
+		    		//var totalcost = response.data[i].averageprice *; 
+
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
@@ -37,9 +45,9 @@ $(document).ready(function(){
 				    data_live += '<td style="width:9%" class="table-title-live">'+(response.data[i].volume).toFixed(2)+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
-				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
-				    data_live += '<td style="width:10%" class="dgreenpart table-title-live">₱</td>';
-				    data_live += '<td style="width:8%" class="dgreenpart table-title-live">%</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
+				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';
+				    data_live += '<td style="width:8%" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+(profperc).toFixed(2)+'%</td>';
 				    data_live += '<td style="width:77px;text-align:center;">';
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';
@@ -59,6 +67,46 @@ $(document).ready(function(){
 		});
 	}
 
+
+	function tradelogs(){
+		var userid = $('.userid').val();
+	   	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/tradelogs?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    		console.log(response);
+		    		$(".data_logs").remove();
+		    		jQuery.each(response.data, function(i, val) {
+			    		var data_tradelogs = '';
+			    		var profit = parseFloat(response.data[i].profit).toFixed(2);
+			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
+			    		data_tradelogs += '<li class="data_logs">';
+	                    data_tradelogs += '<div style="width:100%;">';
+	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
+	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
+	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+response.data[i].averageprice+'</div>';
+	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
+	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profit+'</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
+	                    data_tradelogs += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>';
+	                    data_tradelogs += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
+	                    data_tradelogs += '</div>';
+	                    data_tradelogs += '</div>';  	
+	                    data_tradelogs += '</li>';
+	                    $(".showtradelogs > ul").append(data_tradelogs);
+		    		});	
+		    },
+		    error: function(response) {                 
+		    } 
+		});
+	}
+
+
 	function deletedata(id){
 		var userid = $('.userid').val();
 		$.ajax({
@@ -68,6 +116,21 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	livedata();
+		    },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
+	function deletelogs(id){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/deletelogs?id='+id+'&userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	tradelogs();
 		    },
 		    error: function(response) {                 
 		    }
@@ -239,6 +302,30 @@ $(document).ready(function(){
                 	deletedata(id);
                     //var ditemtoremove = jQuery(this).attr('data-space');
                     //window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+	});
+
+	jQuery(document).on('click', '.deletelog', function(){
+
+	 	var id = $(this).attr('data-stock');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your Watchlist has been deleted.',
+                    'success'
+                ).then((result) => {
+                	deletelogs(id);
                 });
             }
         });

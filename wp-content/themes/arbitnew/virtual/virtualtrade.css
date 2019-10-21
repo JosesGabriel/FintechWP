@@ -295,6 +295,16 @@ textarea.tnotes{
     font-weight: 600 !important;
 }
 
+.virtualsidebar {
+	padding: 10px;
+	width: 200px;
+	font-size: 12px;
+}
+
+.sidebarvirtual li {
+	padding-bottom: 10px;
+}
+
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {
 	top: 50px;

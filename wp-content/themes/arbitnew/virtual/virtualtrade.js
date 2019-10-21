@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	livedata();
+	tradelogs();
 
 	$.ajax({
 	    type:'GET',
@@ -25,7 +26,7 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    		console.log(response);	    	
+		    		//console.log(response);	    	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		
@@ -34,8 +35,7 @@ $(document).ready(function(){
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-
-
+		    		var totalcost = response.data[i].averageprice * 
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
@@ -66,6 +66,21 @@ $(document).ready(function(){
 		    }
 		});
 	}
+
+
+	function tradelogs(){
+		var userid = $('.userid').val();
+	   	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/tradelogs?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    		console.log(response);	
+		    },
+		    error: function(response) {                 
+		    } 
+	}
+
 
 	function deletedata(id){
 		var userid = $('.userid').val();

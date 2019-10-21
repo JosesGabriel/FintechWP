@@ -97,6 +97,13 @@ class VirtualAPI extends WP_REST_Controller
             ],
         ]);
 
+        register_rest_route($base_route, 'tradelogs', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettradelogs'],
+            ],
+        ]);
+
         register_rest_route($base_route, 'deletedata', [
             [
                 'method' => 'GET',
@@ -336,7 +343,6 @@ class VirtualAPI extends WP_REST_Controller
         $sellcost = $sellvals - $this->getjurfees($sellvals, 'sell');
         $profit = $sellcost - $marketvals;
         $profperc = ($profit / $marketvals) * 100;
-
         
 
         if($remainingstocks >= 0){
@@ -505,6 +511,32 @@ class VirtualAPI extends WP_REST_Controller
         return $this->respond(true, ['data' => $listofstocks], 200);
     }
 
+     public function gettradelogs($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $tradelogs = "select * from arby_vt_tradelog userid = ".$data['userid'];
+        $tradelogsinfo = $wpdb->get_results($tradelogs);
+
+        $dstock = [];
+        $listofstocks = [];
+        foreach ($tradelogsinfo as $key => $value) {
+             $dstock['stockname'] = $value->stock;
+             $dstock['volume'] = $value->volume;
+             $dstock['averageprice'] = $value->averageprice;
+             $dstock['emotion'] = $value->emotion;
+             $dstock['strategy'] = $value->strategy;
+             $dstock['tradeplan'] = $value->tradeplan;
+             $dstock['tradenotes'] = $value->tradenotes;
+             $dstock['sellprice'] = $value->sellprice;
+             $dstock['buydate'] = $value->buydate;
+             $dstock['profit'] = $value->profit;
+             $dstock['profitperc'] = $value->profitperc;
+             array_push($listofstocks, $dstock);
+        }
+        return $this->respond(true, ['data' => $listofstocks], 200);
+    }
 
     public function deletedata($details)
     {

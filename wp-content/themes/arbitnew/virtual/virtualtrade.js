@@ -42,7 +42,7 @@ $(document).ready(function(){
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
-				    data_live += '<td style="width:9%" class="table-title-live">'+(response.data[i].volume).toFixed(2)+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
@@ -386,7 +386,7 @@ $(document).ready(function(){
 		var stockname = $('.data_stocks').val();
 		var buyprice = $('.inputbuyprice').val();
 		var sellprice = $('.inputbuyprice').val();
-		var volume = $('.pdetails.vol').text();
+		var volume = $('.inputquantity').val();
 		var averageprice = $('.pdetails.av').text();
 		var emotion = $('.inpt_data_emotion').val();
 		var strategy = $('.inpt_data_strategy').val();

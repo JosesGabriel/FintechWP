@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(window).load(function() {
         $('.arb_buysell').draggable();
-        $('.vertical-box').addClass('tabanglord');
+        $('.arb_buysell').addClass('tabanglord');
 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

@@ -489,6 +489,7 @@ class VirtualAPI extends WP_REST_Controller
             $dstock['tradeplan'] = $value->tradeplan;
             $dstock['tradenotes'] = $value->tradenotes;
             $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+            $dstock['buyprice'] = $value->buyprice;
 
             $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$value->stockname, [
             "headers" => [

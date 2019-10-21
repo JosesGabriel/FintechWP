@@ -1,14 +1,6 @@
 
 	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script>
-	$( function() {
-		jQuery( ".border-default" ).draggable();
-		// jQuery( "#draggable_buysell" ).draggable();
-		alert('here');
-	} );
-	</script>
+	
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 	<!--[if lt IE 9]>

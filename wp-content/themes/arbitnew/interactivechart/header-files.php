@@ -30,7 +30,7 @@
 	<script>
 	$( function() {
 		if(typeof jQuery.ui !== 'undefined') {
-			alert('yes');
+			alert('pota');
 		} else {
 			alert('no');
 		}

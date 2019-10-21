@@ -1,6 +1,10 @@
 
 	<!-- ================== BEGIN BASE JS ================== -->
-	
+	<script>
+	  $(window).bind("load", function () {
+		$('#draggable_buysell').draggable();
+		});
+	  </script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 	<!--[if lt IE 9]>

@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(window).load(function() {
         jQuery('#draggable_buysell').draggable();
-        var eleme = document.getElementById('draggable_buysell');
+        var eleme = document.getElementsByClassName('arb_buysell');
         console.log(eleme);
         eleme.classList.add("ui-draggable");
         console.log('potang ina');

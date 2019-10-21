@@ -1,23 +1,45 @@
 $(document).ready(function(){
-    var $dragging = null;
-    $('body').on("mousedown", "#draggable_buysell", function(e) {
-        $(this).attr('unselectable', 'on').addClass('draggable');
-        var el_w = $('.draggable').outerWidth(),
-            el_h = $('.draggable').outerHeight();
-        $('body').on("mousemove", function(e) {
-            if ($dragging) {
-                $dragging.offset({
-                    top: e.pageY - el_h / 2,
-                    left: e.pageX - el_w / 2
-                });
-            }
+    var $body = $('#draggable_buysell');
+        var $target = null;
+        var isDraggEnabled = false;
+
+        $body.on("mousedown", "div", function(e) {
+
+            $this = $(this);
+            isDraggEnabled = $this.data("draggable");
+
+            if (isDraggEnabled) {
+                if(e.offsetX==undefined){
+                    x = e.pageX-$(this).offset().left;
+                    y = e.pageY-$(this).offset().top;
+                }else{
+                    x = e.offsetX;
+                    y = e.offsetY;
+                };
+
+                $this.addClass('draggable');
+                $body.addClass('noselect');
+                $target = $(e.target);
+            };
+
         });
-        $dragging = $(e.target);
-    }).on("mouseup", ".draggable", function(e) {
-        $dragging = null;
-        $(this).removeAttr('unselectable').removeClass('draggable');
-    });
-    
+
+         $body.on("mouseup", function(e) {
+            $target = null;
+            $body.find(".draggable").removeClass('draggable');
+            $body.removeClass('noselect');
+        });
+
+         $body.on("mousemove", function(e) {
+            if ($target) {
+                $target.offset({
+                    top: e.pageY  - y,
+                    left: e.pageX - x
+                });
+            };
+        });
+
+
     $(window).load(function() {
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

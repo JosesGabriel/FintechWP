@@ -29,7 +29,7 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
-		if(window.jQuery) {
+		if(typeof jQuery.ui !== 'undefined') {
 			alert('yes');
 		} else {
 			alert('no');

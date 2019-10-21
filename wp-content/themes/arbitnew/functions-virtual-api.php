@@ -529,6 +529,10 @@ class VirtualAPI extends WP_REST_Controller
         $dstock = [];
         $listofstocks = [];
         foreach ($tradelogsinfo as $key => $value) {
+
+             $selltotal = $value->volume * $value->averageprice;
+             $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
+
              $dstock['id'] = $value->id;
              $dstock['stockname'] = $value->stock;
              $dstock['volume'] = $value->volume;
@@ -541,6 +545,7 @@ class VirtualAPI extends WP_REST_Controller
              $dstock['buydate'] = $value->buydate;
              $dstock['profit'] = $value->profit;
              $dstock['profitperc'] = $value->profitperc;
+             $dstock['sellvalue'] = $sellnet;
              array_push($listofstocks, $dstock);
         }
         return $this->respond(true, ['data' => $listofstocks], 200);

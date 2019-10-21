@@ -81,15 +81,17 @@ $(document).ready(function(){
 			    		var data_tradelogs = '';
 			    		var profit = parseFloat(response.data[i].profit).toFixed(2);
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
+			    		var buyvalue = response.data[i].averageprice * response.data[i].volume;
+
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
 	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
 	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
 	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
-	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+response.data[i].averageprice+'</div>';
-	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+response.data[i].averageprice+'</div>';
+	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱'+ buyvalue +'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
-	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱'+response.data[i].sellvalue+'</div>';
 	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';

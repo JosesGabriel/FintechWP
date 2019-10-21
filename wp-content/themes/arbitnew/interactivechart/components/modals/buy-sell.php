@@ -1,7 +1,7 @@
 <?php
     $dledger = $wpdb->get_results( "SELECT * FROM arby_ledger where userid = ".$user_id);
 ?>
-<div class="arb_buysell ui-draggable ui-draggable-handle" id="draggable_buysell">
+<div class="arb_buysell" id="draggable_buysell">
     <div class="buysell-grip-btn">
         <i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
     </div>

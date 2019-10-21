@@ -6,7 +6,7 @@ $(document).ready(function(){
     })
     $( ".bidaskbar_btn" ).click(function() {
       $( ".bidaskbar_opt" ).slideToggle("fast");
-    });
+    }); 
     $(".bidaskbar_opt ul li a").click(function(e){
         e.preventDefault();
         var dtype = $(this).attr('data-istype');
@@ -50,6 +50,16 @@ $(document).ready(function(){
         });
     }
 
+    jQuery(".ticker_enabler-dropdown").click(function(e){
+        event.stopPropagation();
+        var tickertog = jQuery(".ticker_enabler-dropdown > ul").hasClass("dropopen");
+
+        if (tickertog) {
+            jQuery(".ticker_enabler-dropdown > ul").hide().removeClass("dropopen");
+        } else {
+            jQuery(".ticker_enabler-dropdown > ul").show().addClass("dropopen");
+        }
+    });
     jQuery("ul.main-drops-chart").click(function(e){
         event.stopPropagation();
         var isopen = jQuery("ul.main-drops-chart > ul").hasClass("dropopen");
@@ -59,10 +69,11 @@ $(document).ready(function(){
         } else {
             jQuery("ul.main-drops-chart > ul").show().addClass("dropopen");
         }
-
     });
     jQuery(document).on("click", function () {
+        jQuery(".ticker_enabler-dropdown").hide().removeClass("dropopen");
         jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
+        jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
     });
@@ -357,23 +368,30 @@ $(document).ready(function(){
     });
 
     /* Start of WebTicker */
-    $('#webTicker').webTicker({
+    /*$('#webTicker').webTicker({
         speed:100,
         height:"50px", 
         startEmpty:true,
         hoverpause:true, 
         transition: "linear",
-        duplicate:false
-    });
-    
+    });*/ 
+
+    // $(function () {
+    //     $('.marquee').marquee({
+    //         speed:2000,
+    //         duplicated: true,
+    //         allowCss3Support: true
+    //     });
+    // });
+
     jQuery('i#ticker_eye').click(function(){
         var el = jQuery(this)[0].className;
         if(el.includes('slash')===false){
             //console.log('stop');
-            $("#webTicker").webTicker('stop');
+          //  $("#webTicker").webTicker('stop');
         }else{
             //console.log('start');
-            $("#webTicker").webTicker('cont');
+          //  $("#webTicker").webTicker('cont');
         }
     });
 

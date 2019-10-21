@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+	livedata();
+
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -16,6 +18,62 @@ $(document).ready(function(){
 	      }
 	 });
 
+	function livedata(){
+		var userid = $('.userid').val();
+	   	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    			    	
+		    	$(".datalive").remove();
+		    	jQuery.each(response.data, function(i, val) {
+		    		
+		    		var data_live = '';
+			    	data_live += '<li class="datalive">';
+				    data_live += '<table width="100%">';
+				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+(response.data[i].volume).toFixed(2)+'</td>';
+				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:10%" class="dgreenpart table-title-live">₱</td>';
+				    data_live += '<td style="width:8%" class="dgreenpart table-title-live">%</td>';
+				    data_live += '<td style="width:77px;text-align:center;">';
+				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
+				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';
+				    data_live += '</td>';
+				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="'+ response.data[i].emotion +'" data-toggle="modal" data-target="#livetradenotes" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
+				    data_live += '<td style="width:25px"><a data-stock="'+response.data[i].stockid+'" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
+				    data_live += '</tr></tbody>';
+				    data_live += '</table>';
+				    data_live += '</li>';
+				    $("#live_portfolio > ul").append(data_live);
+		    	});
+
+
+		     },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
+	function deletedata(id){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/deletedata?id='+id+'&userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	livedata();
+		    },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){
 
@@ -25,25 +83,22 @@ $(document).ready(function(){
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
-				    url:'/wp-json/virtual-api/v1/buyvalues',
+				    url:'/wp-json/virtual-api/v1/dstock?stock='+sdata,
 				    dataType: 'json',
 				    success: function(response) {
 
-				    	$.each(response.data, function(i, val) {
-
-					    		if(sdata == val.symbol){
-					    			$('.sdesc').text(val.description);
-					    			$('.cprice').text((val.last).toFixed(2));
-					    			$('.pdetails.prev').text((val.close).toFixed(2));
-					    			$('.pdetails.low').text((val.low).toFixed(2));
-					    			$('.pdetails.klow').text(val.weekyearlow);
-					    			$('.pdetails.vol').text(nFormatter(parseFloat(val.volume)));
-					    			$('.pdetails.trade').text((val.trades).toFixed(2));
-					    			$('.pdetails.open').text((val.open).toFixed(2));
-					    			$('.pdetails.high').text((val.high).toFixed(2));
-					    			$('.pdetails.khigh').text((val.weekyearhigh).toFixed(2));
-					    			$('.pdetails.val').text(nFormatter(parseFloat(val.value)));
-					    			$('.pdetails.av').text((val.average).toFixed(2));
+					    			$('.sdesc').text(response.data.description);
+					    			$('.cprice').text((response.data.last).toFixed(2));
+					    			$('.pdetails.prev').text((response.data.close).toFixed(2));
+					    			$('.pdetails.low').text((response.data.low).toFixed(2));
+					    			$('.pdetails.klow').text(response.data.weekyearlow);
+					    			$('.pdetails.vol').text(nFormatter(parseFloat(response.data.volume)));
+					    			$('.pdetails.trade').text((response.data.trades).toFixed(2));
+					    			$('.pdetails.open').text((response.data.open).toFixed(2));
+					    			$('.pdetails.high').text((response.data.high).toFixed(2));
+					    			$('.pdetails.khigh').text((response.data.weekyearhigh).toFixed(2));
+					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
+					    			$('.pdetails.av').text((response.data.average).toFixed(2));
 
 					    			$.ajax({
 									    type:'GET',
@@ -60,10 +115,6 @@ $(document).ready(function(){
 									      error: function(response) {                 
 									      }
 									 });
-
-					    		} 
-					    });		    	
-
 				    },
 				    error: function(response) {                 
 				    }
@@ -128,6 +179,71 @@ $(document).ready(function(){
 	     }
 	     return num;
 	}
+
+	jQuery(document).on('click', '.buymystocks', function(){
+		var stock = $(this).attr('data-stock');
+		$('.btnValue').val('buy');
+		$("#inpt_data_select_stock").val(stock).change();
+		$('#inpt_data_select_stock').prop('disabled', 'disabled');
+		$('.bsbutton').css('display','none');
+		$('.label_enter').text('Enter Buy Order:');
+	});
+
+	jQuery(document).on('click', '.sellmystocks', function(){
+		var stock = $(this).attr('data-stock');
+		$('.btnValue').val('sell');
+		$("#inpt_data_select_stock").val(stock).change();
+		$('#inpt_data_select_stock').prop('disabled', 'disabled');
+		$('.bsbutton').css('display','none');
+		$('.label_enter').text('Enter Sell Order:');
+	});
+	
+	jQuery(document).on('click', '.enter-trade-btn', function(){
+		$('.bsbutton').css('display','inline-block');
+		$('#inpt_data_select_stock').prop('disabled', false);
+		$('.label_enter').text('Enter Order:');
+	});
+
+	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
+		var emotion = $(this).attr('data-emotion');
+		var strategy = $(this).attr('data-strategy');
+		var tradeplan = $(this).attr('data-tradeplan');
+		var notes = $(this).attr('data-tradingnotes');
+		var outcome = $(this).attr('data-outcome');
+
+		$('.addstrats').text(strategy);
+		$('.addtplan').text(tradeplan);
+		$('.addemotion').text(emotion);
+		$('.addoutcome').text(outcome);
+		$('.addnotes').text(notes);
+	});
+
+	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
+
+	 	var id = $(this).attr('data-stock');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your Watchlist has been deleted.',
+                    'success'
+                ).then((result) => {
+                	deletedata(id);
+                    //var ditemtoremove = jQuery(this).attr('data-space');
+                    //window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+	});
+
 
 	$('.btnbuy').on('click', function(){
 		$('.btnbuy').css('background','#25ae5f');
@@ -214,9 +330,8 @@ $(document).ready(function(){
 			    },
 			    success: function(response){
 					console.log('success');
-					$('.chart-loader').css('display','block');
-					$('.confirm_order').hide();
-					 window.location.href = "/virtual-trades";
+					$('#enter_trade').modal('toggle'); 
+					livedata();
 			    },
 			    error: function(response){                 
 			      }
@@ -242,9 +357,8 @@ $(document).ready(function(){
 			    },
 			    success: function(response){
 					console.log(response.data);
-					$('.chart-loader').css('display','block');
-					$('.confirm_order').hide();
-					 window.location.href = "/virtual-trades";
+					$('#enter_trade').modal('toggle'); 
+					livedata();
 			    },
 			    error: function(response){                 
 			      }

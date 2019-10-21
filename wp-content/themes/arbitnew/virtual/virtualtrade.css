@@ -286,6 +286,24 @@ textarea.tnotes{
     width: 72%;
 }
 
+.bsbutton {
+	width: 150px;
+    display: inline-block;
+}
+.label_enter {
+	font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.virtualsidebar {
+	padding: 10px;
+	width: 200px;
+	font-size: 12px;
+}
+
+.sidebarvirtual li {
+	padding-bottom: 10px;
+}
 
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {

@@ -83,6 +83,26 @@ class VirtualAPI extends WP_REST_Controller
             ],
         ]);
 
+        register_rest_route($base_route, 'dstock', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getdstock'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'liveportfolio', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getliveportfolio'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'deletedata', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'deletedata'],
+            ],
+        ]);
         
     }
 
@@ -425,9 +445,77 @@ class VirtualAPI extends WP_REST_Controller
         return $this->respond(true, ['data' => $perinfo], 200);
     }
 
+    public function getdstock($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stock'], [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        return $this->respond(true, ['data' => $gerdqoute->data], 200);
+    }
+
+    public function getliveportfolio($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+
+        $liveportfolio = "select * from arby_vt_live where vttype = 'vt' and userid = ".$data['userid'];
+        $liveportfolioinfo = $wpdb->get_results($liveportfolio);
+
+        $dstock = [];
+        $listofstocks = [];
+        foreach ($liveportfolioinfo as $key => $value) {
+            $marketvals = $value->buyprice * $value->volume;
+            $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
+            $dstock['stockid'] = $value->id;
+            $dstock['stockname'] = $value->stockname;
+            $dstock['volume'] += $value->volume;
+            $dstock['emotion'] = $value->emotion;
+            $dstock['strategy'] = $value->strategy;
+            $dstock['tradeplan'] = $value->tradeplan;
+            $dstock['tradenotes'] = $value->tradenotes;
+            $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+
+            $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$value->stockname, [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+            ]);
+            $dstockdata = json_decode($request->content);
+            $dstock['datainfo'] = $dstockdata->data;
+
+            array_push($listofstocks, $dstock);
+        }       
+        return $this->respond(true, ['data' => $listofstocks], 200);
+    }
 
 
-
+    public function deletedata($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
+       if($wpdb->query($liveportfolio)){
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
 
 }
 

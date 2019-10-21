@@ -4,7 +4,7 @@
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.29.2/sweetalert2.all.js"></script>
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
         <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>

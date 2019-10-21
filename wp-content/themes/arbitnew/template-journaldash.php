@@ -338,7 +338,7 @@ require("parts/global-header.php");
         // Delete Live Trade
         foreach ($dlistofstocks as $delkey => $delvalue) {
             update_user_meta($user->ID, '_trade_'.$delvalue, '');
-            delete_user_meta($user->ID, '_trade_n  '.$delvalue);
+            delete_user_meta($user->ID, '_trade_'.$delvalue);
 
             // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
         }

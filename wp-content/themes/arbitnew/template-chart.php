@@ -37,14 +37,14 @@
 				<a href="#" class="arb-side-icon">
 					<img src="/svg/menu.svg" style="width: 17px;display: inline-block;vertical-align: top;margin-top: 6px;">
 				</a>
-				<ul id="droppouts" style="box-shadow: 0px 2px 4px 1px rgba(7, 13, 19, 0.52);display: none;">
+				<ul id="droppouts" style="display: none;">
 						<li><a href="#">Buy/Sell Calculator</a></li>
 						<li><a href="#">VAR Calculator</a></li>
 						<li><a href="#">Average Price Calculator</a></li>
 				</ul>
 			</ul>
-			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 5px;"></a>
-			<a href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 2px;"></a>
+			<a href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 21px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
 			<a href="/user/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />

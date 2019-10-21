@@ -119,7 +119,7 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	//console.log(response); 	
 		    	$('.vcapital').text('₱' + addcomma(response.data.capital));
-		    	$('.realized').text('₱' +(response.data.realized).toFixed(2));
+		    	$('.realized').text('₱' + addcomma(response.data.realized));
 		    	$('.unrealized').text('₱' +(response.data.unrealize).toFixed(2));
 		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
 		    	$('.vperformance').text('%' + (response.data.percentage).toFixed(2));

@@ -1,8 +1,7 @@
 $(document).ready(function(){
 
     $(window).load(function() {
-        $('#draggable_buysell').draggable();
-        $('#draggable_buysell').addClass('iyot');
+        $('#draggable_buysell').draggable({cancel:false});
 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

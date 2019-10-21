@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $('#draggable_buysell').ready(function() {
-        console.log($('#draggable_buysell'));
         jQuery('#draggable_buysell').draggable();
+        var eleme = document.getElementById('#draggable_buysell');
+        eleme.classList.add("ui-draggable");
         jQuery('#draggable_buysell').addClass('ui-draggable');
     });
     $(window).load(function() {

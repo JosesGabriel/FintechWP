@@ -134,6 +134,10 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
             //     $scope.isTickerFull = true
             //     $scope.data.push(transaction);
             // } 
+            if ($scope.ticker.length > 30) {
+                $scope.ticker.shift();
+            }
+            $scope.ticker.push(transaction);
         }
         
         // $scope.$apply();

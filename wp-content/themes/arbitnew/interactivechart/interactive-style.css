@@ -1347,8 +1347,8 @@ small.arb_markcap {
 	background: transparent;
 	border: 0px;
 	position: absolute;
-	left: 5px;
-	bottom: 6px;
+	left: 12px;
+	bottom: 8px;
 	outline: none;
 }
 .fa-arrow-up {

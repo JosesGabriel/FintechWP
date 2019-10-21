@@ -2,9 +2,9 @@
     $dledger = $wpdb->get_results( "SELECT * FROM arby_ledger where userid = ".$user_id);
 ?>
 <div class="arb_buysell" id="draggable_buysell">
-    <button class="buysell-grip-btn">
+    <div class="buysell-grip-btn">
         <i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
-    </button>
+    </div>
     <div class="buttons">
         <a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
         <a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stockInfo.symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>

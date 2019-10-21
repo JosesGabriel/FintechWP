@@ -32,7 +32,8 @@
 			alert('dd');
 		$('#draggable_buysell').on('click', function() {
             alert('click');
-        });
+		});
+	}
 	  </script>
 	<!-- <script>
 	$( function() {

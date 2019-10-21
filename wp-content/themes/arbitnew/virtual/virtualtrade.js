@@ -446,6 +446,7 @@ $(document).ready(function(){
 					console.log(response.data);
 					$('#enter_trade').modal('toggle'); 
 					livedata();
+					tradelogs();
 			    },
 			    error: function(response){                 
 			      }

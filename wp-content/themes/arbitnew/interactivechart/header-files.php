@@ -26,7 +26,7 @@
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 	<script>
 	$( function() {
-		$('#draggable_buysell').draggable();
+		$('.arb_stock_name').draggable();
 	});
 	</script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>

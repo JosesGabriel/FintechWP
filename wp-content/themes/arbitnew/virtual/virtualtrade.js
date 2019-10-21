@@ -83,7 +83,7 @@ $(document).ready(function(){
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
-	                    data_tradelogs += '<div style="width:45px">'+response.data[i].stockname+'</div>';                                                                                	
+	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
 	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
 	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+response.data[i].averageprice+'</div>';

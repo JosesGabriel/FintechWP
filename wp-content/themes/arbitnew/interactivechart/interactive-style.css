@@ -1349,7 +1349,8 @@ small.arb_markcap {
 	position: absolute;
 	left: 12px;
 	bottom: 8px;
-	outline: none;
+    outline: none;
+    cursor: pointer;
 }
 .fa-arrow-up {
 	color: #25ae5f;

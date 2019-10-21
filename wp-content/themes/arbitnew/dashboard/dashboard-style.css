@@ -704,7 +704,8 @@ img.inpostimage {
     /* max-height: 461px !important; */
     border: 0;
     overflow:hidden;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
+}
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
     height: 80px !important;

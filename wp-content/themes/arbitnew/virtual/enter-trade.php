@@ -60,7 +60,7 @@
                         <hr>
                         <div class="tdetails">
                             <span style="font-weight: 600;font-size: 14px;">TRADE DETAILS</span>
-                            <span class="avfunds">Available funds: 100,000.00</span>
+                            <span class="avfunds">Available funds: <span class="av_funds" style="font-size: 11px;">100,000.00</span></span>
                         </div>
                         <div class="footer_details">
                             <div class="buyprice">

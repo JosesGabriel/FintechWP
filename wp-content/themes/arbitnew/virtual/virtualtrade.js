@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	livedata();
 	tradelogs();
+	performance();
 
 	$.ajax({
 	    type:'GET',
@@ -26,25 +27,25 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    		//console.log(response);	    	
+		    		console.log(response);	    	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		
 		    		var buyprice = parseFloat(response.data[i].buyprice);
-		    		var marketval = response.data[i].datainfo.average * response.data[i].volume;
+		    		var marketval = response.data[i].datainfo.last * response.data[i].volume;
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-		    		//var totalcost = response.data[i].averageprice *; 
+		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
-				    data_live += '<td style="width:9%" class="table-title-live">'+(response.data[i].volume).toFixed(2)+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
-				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
+				    data_live += '<td style="width:15%" class="table-title-live">₱'+(totalcost).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
 				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';
 				    data_live += '<td style="width:8%" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+(profperc).toFixed(2)+'%</td>';
@@ -75,21 +76,23 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/tradelogs?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    		console.log(response);
+		    		//console.log(response);
 		    		$(".data_logs").remove();
 		    		jQuery.each(response.data, function(i, val) {
 			    		var data_tradelogs = '';
 			    		var profit = parseFloat(response.data[i].profit).toFixed(2);
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
+			    		var buyvalue = response.data[i].averageprice * response.data[i].volume;
+
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
 	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
 	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
 	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
-	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+response.data[i].averageprice+'</div>';
-	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+response.data[i].averageprice+'</div>';
+	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱'+(buyvalue).toFixed(2)+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
-	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱</div>';
+	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱'+(response.data[i].sellvalue).toFixed(2)+'</div>';
 	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
@@ -104,6 +107,29 @@ $(document).ready(function(){
 		    error: function(response) {                 
 		    } 
 		});
+	}
+
+
+	function performance(){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/performance?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	//console.log(response); 	
+		    	$('.vcapital').text('₱' +(response.data.capital).toFixed(2));
+		    	$('.realized').text('₱' +(response.data.realized).toFixed(2));
+		    	$('.unrealized').text('₱' +(response.data.unrealize).toFixed(2));
+		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
+		    	$('.vperformance').text('%' + (response.data.percentage).toFixed(2));
+		    	$('.available_funds').text('₱' +(response.data.buypower).toFixed(2));
+		    	$('.av_funds').text('₱' +(response.data.buypower).toFixed(2));
+		    },
+		    error: function(response) {                 
+		    }
+		});
+
 	}
 
 
@@ -143,12 +169,30 @@ $(document).ready(function(){
 		var sdata = $(this).val();
 		var btn = $('.btnValue').val();
 		var userid = $('.userid').val();
+
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
 				    url:'/wp-json/virtual-api/v1/dstock?stock='+sdata,
 				    dataType: 'json',
 				    success: function(response) {
+
+				    	/*var dboard = 0;
+				        if (response.data.last >= 0.0001 && response.data.last <= 0.0099) {
+				            dboard = '1,000,000';
+				        } else if (response.data.last >= 0.01 && response.data.last <= 0.049) {
+				            dboard = '100,000';
+				        } else if (response.data.last >= 0.05 && response.data.last <= 0.495) {
+				            dboard = '10,000';
+				        } else if (response.data.last >= 0.5 && response.data.last <= 4.99) {
+				            dboard = '1,000';
+				        } else if (response.data.last >= 5 && response.data.last <= 49.95) {
+				            dboard = 100;
+				        } else if (response.data.last >= 50 && response.data.last <= 999.5) {
+				            dboard = 10;
+				        } else if (response.data.last >= 1000) {
+				            dboard = 5;
+				        }*/ 
 
 					    			$('.sdesc').text(response.data.description);
 					    			$('.cprice').text((response.data.last).toFixed(2));
@@ -386,7 +430,7 @@ $(document).ready(function(){
 		var stockname = $('.data_stocks').val();
 		var buyprice = $('.inputbuyprice').val();
 		var sellprice = $('.inputbuyprice').val();
-		var volume = $('.pdetails.vol').text();
+		var volume = $('.inputquantity').val();
 		var averageprice = $('.pdetails.av').text();
 		var emotion = $('.inpt_data_emotion').val();
 		var strategy = $('.inpt_data_strategy').val();
@@ -419,6 +463,7 @@ $(document).ready(function(){
 					console.log('success');
 					$('#enter_trade').modal('toggle'); 
 					livedata();
+					performance();
 			    },
 			    error: function(response){                 
 			      }
@@ -447,6 +492,7 @@ $(document).ready(function(){
 					$('#enter_trade').modal('toggle'); 
 					livedata();
 					tradelogs();
+					performance();
 			    },
 			    error: function(response){                 
 			      }

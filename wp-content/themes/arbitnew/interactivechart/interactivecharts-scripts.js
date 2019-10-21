@@ -1,10 +1,7 @@
 $(document).ready(function(){
     $(window).load(function() {
-        jQuery('.arb_buysell').draggable();
         $('.arb_buysell').draggable();
-        
-        jQuery('.arb_buysell').addClass('yokona');
-        $('.arb_buysell').draggable('tabanglord');
+        $('.vertical-box').addClass('tabanglord');
 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

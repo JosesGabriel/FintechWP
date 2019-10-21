@@ -30,13 +30,9 @@
 	  <script>
 	  $(window).bind("load", function () {
 			
-        $('.arb_buysell').draggable();
-		$('.arb_buysell').addClass('tabanglord');
-		console.log($('#draggable_buysell'));
-		$('#draggable_buysell').draggable();
-		$('#draggable_buysell').addClass('tabanglord');
-		console.log('patya nalangko');
-		});
+		$('#draggable_buysell').on('click', function() {
+            alert('click');
+        });
 	  </script>
 	<!-- <script>
 	$( function() {

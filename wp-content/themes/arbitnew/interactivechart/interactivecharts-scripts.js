@@ -1,9 +1,7 @@
 $(document).ready(function(){
     $(window).load(function() {
 
-        $('#draggable_buysell').on('click', function() {
-            console.log('click');
-        });
+
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

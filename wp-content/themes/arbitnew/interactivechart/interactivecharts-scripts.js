@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
     $(window).load(function() {
+        $('#draggable_buysell').draggable();
+        $('#draggable_buysell').addClass('iyot');
+
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })
@@ -104,9 +107,6 @@ $(document).ready(function(){
     jQuery(".toclasscloserss").on('click', function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
-
-    jQuery('#draggable_buysell').draggable();
-    jQuery('#draggable_buysell').addClass('iyot');
 
     jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 

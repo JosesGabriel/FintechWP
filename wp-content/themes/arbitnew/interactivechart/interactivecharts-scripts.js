@@ -1,8 +1,24 @@
 $(document).ready(function(){
+    var $dragging = null;
+    $('body').on("mousedown", "#draggable_buysell", function(e) {
+        $(this).attr('unselectable', 'on').addClass('draggable');
+        var el_w = $('.draggable').outerWidth(),
+            el_h = $('.draggable').outerHeight();
+        $('body').on("mousemove", function(e) {
+            if ($dragging) {
+                $dragging.offset({
+                    top: e.pageY - el_h / 2,
+                    left: e.pageX - el_w / 2
+                });
+            }
+        });
+        $dragging = $(e.target);
+    }).on("mouseup", ".draggable", function(e) {
+        $dragging = null;
+        $(this).removeAttr('unselectable').removeClass('draggable');
+    });
+    
     $(window).load(function() {
-        $('.arb_buysell').draggable();
-        $('.arb_buysell').addClass('tabanglord');
-
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

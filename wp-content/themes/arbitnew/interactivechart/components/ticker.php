@@ -14,7 +14,7 @@
                 </div>        
             </ul>
         </ul>
-        <ul ng-show="enable" class="list-inline marqueethis arb_custom_ticker">
+        <ul ng-if="enable" class="list-inline marqueethis arb_custom_ticker">
             <li ng-repeat="transaction in ticker" ng-class="::{'text-green': 0 < transaction.change, 'text-red': transaction.change < 0, 'text-grey': transaction.change == 0}">
                 <i class="fas " ng-class="{'fa-arrow-up': transaction.change > 0, 'fa-arrow-down': transaction.change < 0, 'normpadd': transaction.change == 0}" style="font-size: 14px;"></i>
                 <a href="/chart/{{::transaction.symbol}}" target="_blank"><strong class="text-white" style="font-size:14px">{{::transaction.symbol}}</strong></a><br>

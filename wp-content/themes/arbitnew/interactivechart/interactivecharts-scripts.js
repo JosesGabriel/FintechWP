@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-    $('#draggable_buysell').draggable();
-    $('#draggable_buysell').addClass('ui-draggable');
-
     $(window).load(function() {
+        $('#draggable_buysell').draggable();
+        $('#draggable_buysell').addClass('ui-draggable');
+
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

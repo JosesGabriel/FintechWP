@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('#draggable_buysell').draggable();
-    $('#draggable_buysell').addClass('iyot');
+    $('#draggable_buysell').addClass('ui-draggable');
 
     $(window).load(function() {
         $("#status, #status_txt").fadeOut("fast");

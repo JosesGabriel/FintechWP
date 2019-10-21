@@ -124,6 +124,7 @@ $(document).ready(function(){
 		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
 		    	$('.vperformance').text('%' + (response.data.percentage).toFixed(2));
 		    	$('.available_funds').text('₱' +(response.data.buypower).toFixed(2));
+		    	$('.avfunds').text('₱' +(response.data.buypower).toFixed(2));
 		    },
 		    error: function(response) {                 
 		    }

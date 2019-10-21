@@ -30,7 +30,7 @@
 	<script>
 	$( function() {
 		jQuery( "#draggable_buysell" ).draggable();
-		jQuery( "#draggable_buysell" ).addClass('active');
+		jQuery( "#draggable_buysell" ).asdasd();
 		alert('here');
 	} );
 	</script>

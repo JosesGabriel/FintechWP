@@ -27,6 +27,14 @@
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	  <script>
+	 	$(window).load(function() {
+        $('.arb_buysell').draggable();
+		$('.arb_buysell').addClass('tabanglord');
+		$('#draggable_buysell').draggable();
+		$('#draggable_buysell').addClass('tabanglord');
+		 }); 
+	  </script>
 	<!-- <script>
 	$( function() {
 		$('#draggable_buysell').draggable();

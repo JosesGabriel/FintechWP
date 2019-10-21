@@ -4,6 +4,11 @@ $(document).ready(function(){
 	tradelogs();
 	performance();
 
+	setInterval(function(){
+   		livedata();
+  	}, 3000);
+
+
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -355,6 +360,15 @@ $(document).ready(function(){
 		$('.addoutcome').text(outcome);
 		$('.addnotes').text(notes);
 	});
+
+	jQuery(document).on('keyup', '.inputquantity', function(){
+		var price = $('.inputbuyprice').val().replace(/,/g, '');
+        var quantity = $(this).val().replace(/,/g, '');
+
+        console.log(price + ' - ' + quantity);
+
+	});
+
 
 	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 

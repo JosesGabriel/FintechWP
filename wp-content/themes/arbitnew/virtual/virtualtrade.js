@@ -85,8 +85,8 @@ $(document).ready(function(){
 	                    data_tradelogs += '<div style="width:100%;">';
 	                    data_tradelogs += '<div style="width:45px">'+response.data[i].stockname+'</div>';                                                                                	
 	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
-	                    data_tradelogs += '<div style="width:55px; float:right;" class="table-title-live">'+response.data[i].volume+'</div>';
-	                    data_tradelogs += '<div style="width:65px;" class="table-title-live">'+response.data[i].averageprice+'</div>';
+	                    data_tradelogs += '<div style="width:55px" class="table-title-live">'+response.data[i].volume+'</div>';
+	                    data_tradelogs += '<div style="width:65px" class="table-title-live">'+response.data[i].averageprice+'</div>';
 	                    data_tradelogs += '<div style="width:95px" class="table-title-live">₱</div>';
 	                    data_tradelogs += '<div style="width:65px" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
 	                    data_tradelogs += '<div style="width:88px" class="table-title-live">₱</div>';

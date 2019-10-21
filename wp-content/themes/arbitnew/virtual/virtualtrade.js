@@ -118,7 +118,7 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	//console.log(response); 	
-		    	$('.vcapital').text('₱' +(response.data.capital).toFixed(2));
+		    	$('.vcapital').text('₱' + addcomma((response.data.capital).toFixed(2)));
 		    	$('.realized').text('₱' +(response.data.realized).toFixed(2));
 		    	$('.unrealized').text('₱' +(response.data.unrealize).toFixed(2));
 		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
@@ -286,6 +286,16 @@ $(document).ready(function(){
 	     }
 	     return num;
 	}
+
+	function addcomma(n, sep, decimals) {
+	    sep = sep || "."; // Default to period as decimal separator
+	    decimals = decimals || 2; // Default to 2 decimals
+
+	    return n.toLocaleString().split(sep)[0]
+	        + sep
+	        + n.toFixed(decimals).split(sep)[1];
+	}
+
 
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');

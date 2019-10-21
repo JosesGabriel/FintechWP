@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#draggable_buysell').ready(function() {\
+    $('#draggable_buysell').ready(function() {
         console.log($('#draggable_buysell'));
         jQuery('#draggable_buysell').draggable();
         jQuery('#draggable_buysell').addClass('ui-draggable');

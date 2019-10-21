@@ -1,9 +1,8 @@
 $(document).ready(function(){
-    $('#draggable_buysell').ready(function() {
-        alert('1');
+    $('#draggable_buysell').ready(function() {\
+        console.log($('#draggable_buysell'));
         jQuery('#draggable_buysell').draggable();
         jQuery('#draggable_buysell').addClass('ui-draggable');
-        alert('2');
     });
     $(window).load(function() {
         $("#status, #status_txt").fadeOut("fast");

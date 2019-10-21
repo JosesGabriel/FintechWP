@@ -118,6 +118,12 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	console.log(response); 	
+		    	$('.vcapital').text(response.data.capital);
+		    	$('.realized').text(response.data.realized);
+		    	$('.unrealized').text(response.data.unrealize);
+		    	$('.total_equity').text(response.data.equity);
+		    	$('.vperformance').text(response.data.percentage);
+		    	$('.available_funds').text(response.data.buypower);
 		    },
 		    error: function(response) {                 
 		    }

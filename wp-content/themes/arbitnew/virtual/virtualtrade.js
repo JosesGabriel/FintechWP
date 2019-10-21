@@ -117,13 +117,13 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/performance?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    	console.log(response); 	
-		    	$('.vcapital').text(response.data.capital);
-		    	$('.realized').text(response.data.realized);
-		    	$('.unrealized').text(response.data.unrealize);
-		    	$('.total_equity').text(response.data.equity);
-		    	$('.vperformance').text(response.data.percentage);
-		    	$('.available_funds').text(response.data.buypower);
+		    	//console.log(response); 	
+		    	$('.vcapital').text((response.data.capital).toFixed(2));
+		    	$('.realized').text((response.data.realized).toFixed(2));
+		    	$('.unrealized').text((response.data.unrealize).toFixed(2));
+		    	$('.total_equity').text((response.data.equity).toFixed(2));
+		    	$('.vperformance').text((response.data.percentage).toFixed(2));
+		    	$('.available_funds').text((response.data.buypower).toFixed(2));
 		    },
 		    error: function(response) {                 
 		    }

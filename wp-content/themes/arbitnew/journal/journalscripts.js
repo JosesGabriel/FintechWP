@@ -298,10 +298,21 @@ jQuery(document).ready(function(){
 
     });
 
+    function replaceCommas(yourNumber) {
+        var components = yourNumber.toString().split(".");
+        if (components.length === 1) 
+            components[0] = yourNumber;
+        components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if (components.length === 2)
+            components[1] = components[1].replace(/\D/g, "");
+        return components.join(".");
+    }
+
     // calculate total price
     jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
         let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
         let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
+        let dinpus = jQuery(this).val();
         // let quantity = jQuery('#entertopdataquantity').val();
         
         let total_price = parseFloat(price) * Math.trunc(quantity);
@@ -309,17 +320,17 @@ jQuery(document).ready(function(){
 
         let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
         let decnumbs = finaltotal.toFixed(2);
-        jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
-
-        function replaceCommas(yourNumber) {
-            var components = yourNumber.toString().split(".");
-            if (components.length === 1) 
-                components[0] = yourNumber;
-            components[0] = components[0].replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            if (components.length === 2)
-                components[1] = components[1].replace(/\D/g, "");
-            return components.join(".");
+        let buypower = jQuery('input[name="input_buy_product"]').val().replace(/,/g, '');
+        // console.log(buypower+" ~ "+decnumbs);
+        if(parseFloat(decnumbs) > parseFloat(buypower)){
+            swal("Not Enough Buy Power");
+            jQuery(this).val(dinpus.slice(0,-1));
+            return false;
+        } else {
+            jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
+            
         }
+        
     });
     
     jQuery('#selectdepotype').on('change', function() {

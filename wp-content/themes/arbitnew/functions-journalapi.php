@@ -260,7 +260,7 @@ class JournalAPI extends WP_REST_Controller
         $getequiry = $wpdb->get_results('select * from arby_ledger where userid = '.$data['userid'].' order by ledid');
         foreach ($getequiry as $key => $value) {
             if($value->trantype == 'withraw' || $value->trantype == 'purchase'){ $cashme -= $value->tranamount; }
-            if($value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
+            if($value->trantype == 'dividend' || $value->trantype == 'deposit' || $value->trantype == 'selling'){ $cashme += $value->tranamount; }
         }
 
         // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');

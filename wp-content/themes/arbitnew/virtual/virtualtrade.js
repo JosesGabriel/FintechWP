@@ -120,11 +120,11 @@ $(document).ready(function(){
 		    	//console.log(response); 	
 		    	$('.vcapital').text('₱' + addcomma(response.data.capital));
 		    	$('.realized').text('₱' + addcomma(response.data.realized));
-		    	$('.unrealized').text('₱' +(response.data.unrealize).toFixed(2));
-		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
-		    	$('.vperformance').text('%' + (response.data.percentage).toFixed(2));
-		    	$('.available_funds').text('₱' +(response.data.buypower).toFixed(2));
-		    	$('.av_funds').text('₱' +(response.data.buypower).toFixed(2));
+		    	$('.unrealized').text('₱' + addcomma(response.data.unrealize));
+		    	$('.total_equity').text('₱' + addcomma(response.data.equity));
+		    	$('.vperformance').text('%' + addcomma(response.data.percentage));
+		    	$('.available_funds').text('₱' + addcomma(response.data.buypower));
+		    	$('.av_funds').text('₱' + addcomma(response.data.buypower));
 		    },
 		    error: function(response) {                 
 		    }

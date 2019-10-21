@@ -257,7 +257,8 @@ $(document).ready(function(){
 
         } 
     });
-    $('#draggable_buysell').click(function(e) {
+    $('.arb_buysell').click(function(e) {
+        e.preventDefault();
         alert('glory');
     });
     $(".bbs_bear").click(function(e){

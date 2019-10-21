@@ -287,13 +287,13 @@ $(document).ready(function(){
 	     return num;
 	}
 
-	function addcomma(n, sep) {
+	function addcomma(n, sep, decimals) {
 	    sep = sep || "."; // Default to period as decimal separator
-	    //decimals = decimals || 2; // Default to 2 decimals
+	    decimals = decimals || 2; // Default to 2 decimals
 
 	    return n.toLocaleString().split(sep)[0]
 	        + sep
-	        + n.split(sep)[1];
+	        + n.toFixed(2).split(sep)[1];
 	}
 
 

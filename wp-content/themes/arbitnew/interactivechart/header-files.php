@@ -29,8 +29,7 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
-		jQuery( "#draggable_buysell" ).draggable();
-		jQuery( "#draggable_buysell" ).asdasd();
+		jQuery( ".buysell-grip-btn" ).draggable();
 		alert('here');
 	} );
 	</script>

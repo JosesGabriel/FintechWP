@@ -29,9 +29,8 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
-		
-		$('#draggable_buysell').addClass('iyot');
 		$('#draggable_buysell').draggable();
+		$('#draggable_buysell').addClass('iyot');
 	} );
 	</script>
     <!-- <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>

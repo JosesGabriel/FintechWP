@@ -1,11 +1,8 @@
 $(document).ready(function(){
     $(window).load(function() {
-        jQuery('#draggable_buysell').draggable();
-        var eleme = document.getElementsByClassName('arb_buysell');
-        console.log(eleme);
-        eleme.classList.add("ui-draggable");
-        console.log('potang ina');
-        // jQuery('#draggable_buysell').addClass('ui-draggable');
+        jQuery('.arb_buysell').draggable();
+        $('.arb_buysell').draggable();
+        
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

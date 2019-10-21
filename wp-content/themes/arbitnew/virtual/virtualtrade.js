@@ -122,6 +122,21 @@ $(document).ready(function(){
 		});
 	}
 
+	function deletelogs(id){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/deletelogs?id='+id+'&userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	tradelogs();
+		    },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
 
 	$('.groupinput').on('change', 'select.data_stocks',function(){
 
@@ -287,6 +302,30 @@ $(document).ready(function(){
                 	deletedata(id);
                     //var ditemtoremove = jQuery(this).attr('data-space');
                     //window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+	});
+
+	jQuery(document).on('click', '.deletelog', function(){
+
+	 	var id = $(this).attr('data-stock');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your Watchlist has been deleted.',
+                    'success'
+                ).then((result) => {
+                	deletelogs(id);
                 });
             }
         });

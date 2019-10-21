@@ -35,7 +35,7 @@ $(document).ready(function(){
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-		    		var totalcost = response.data[i].averageprice *; 
+		    		//var totalcost = response.data[i].averageprice *; 
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';

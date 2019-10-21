@@ -1368,6 +1368,7 @@ small.arb_markcap {
 }
 .arb_custom_ticker {
     left: 75px;
+    text-align: right;
 }
 .ticker-enabler i {
     color: orange;

@@ -398,6 +398,7 @@ $(document).ready(function(){
     // });
     /* End of WebTicker */
     $('#draggable_buysell').mousedown(function(e) {
+        console.log('mouse');
         if(e.which===1) {
             var button = $(this);
             var parent_height = button.parent().innerHeight();

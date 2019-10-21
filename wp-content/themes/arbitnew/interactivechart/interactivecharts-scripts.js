@@ -105,7 +105,7 @@ $(document).ready(function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
 
-    $('#draggable_buysell').draggable({cancel:false});
+    jQuery('#draggable_buysell').draggable({cancel:false});
 
     jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 

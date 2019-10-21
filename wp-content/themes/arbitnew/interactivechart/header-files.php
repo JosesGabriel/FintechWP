@@ -30,6 +30,7 @@
 	<script>
 	$( function() {
 		jQuery( "#draggable_buysell" ).draggable();
+		jQuery( "#draggable_buysell" ).addClass('active');
 		alert('here');
 	} );
 	</script>

@@ -293,7 +293,7 @@ $(document).ready(function(){
 
 	    return n.toLocaleString().split(sep)[0]
 	        + sep
-	        + n.toFixed(2).split(sep)[1];
+	        + n.split(sep)[1];
 	}
 
 

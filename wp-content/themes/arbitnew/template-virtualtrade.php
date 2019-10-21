@@ -18,9 +18,9 @@ require("parts/global-header.php");
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
-<?php get_template_part('parts/sidebar', 'calc'); ?>
-<?php get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+<?php //get_template_part('parts/sidebar', 'calc'); ?>
+<?php //get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php //get_template_part('parts/sidebar', 'avarageprice'); ?>
 
 <!-- BOF Trade Logs Data from DB -->
 <?php
@@ -38,7 +38,8 @@ require("parts/global-header.php");
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 
-						<?php require("parts/global-sidebar.php"); ?>
+						<?php //require("parts/global-sidebar.php"); ?>
+						<?php require("virtual/virtual-sidebar.php"); ?>
 
 					</div>
 				</div>

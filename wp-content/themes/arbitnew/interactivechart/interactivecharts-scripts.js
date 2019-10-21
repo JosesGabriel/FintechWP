@@ -1,45 +1,4 @@
 $(document).ready(function(){
-    var $body = $('#draggable_buysell');
-        var $target = null;
-        var isDraggEnabled = false;
-
-        $body.on("mousedown", "div", function(e) {
-
-            $this = $(this);
-            isDraggEnabled = $this.data("draggable");
-
-            if (isDraggEnabled) {
-                if(e.offsetX==undefined){
-                    x = e.pageX-$(this).offset().left;
-                    y = e.pageY-$(this).offset().top;
-                }else{
-                    x = e.offsetX;
-                    y = e.offsetY;
-                };
-
-                $this.addClass('draggable');
-                $body.addClass('noselect');
-                $target = $(e.target);
-            };
-
-        });
-
-         $body.on("mouseup", function(e) {
-            $target = null;
-            $body.find(".draggable").removeClass('draggable');
-            $body.removeClass('noselect');
-        });
-
-         $body.on("mousemove", function(e) {
-            if ($target) {
-                $target.offset({
-                    top: e.pageY  - y,
-                    left: e.pageX - x
-                });
-            };
-        });
-
-
     $(window).load(function() {
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
@@ -438,7 +397,41 @@ $(document).ready(function(){
     //     console.log('hovered');
     // });
     /* End of WebTicker */
-
+    $('#draggable_buysell').mousedown(function(e) {
+        if(e.which===1) {
+            var button = $(this);
+            var parent_height = button.parent().innerHeight();
+            var top = parseInt(button.css('top')); //current top position
+            var original_ypos = button.css('top','').position().top; //original ypos (without top)
+            button.css({top:top+'px'}); //restore top pos
+            var drag_min_ypos = 0-original_ypos;
+            var drag_max_ypos = parent_height-original_ypos-button.outerHeight();
+            var drag_start_ypos = e.clientY;
+            $('#log1').text('mousedown top: '+top+', original_ypos: '+original_ypos);
+            $(window).on('mousemove',function(e) {
+                //Drag started
+                button.addClass('drag');
+                var new_top = top+(e.clientY-drag_start_ypos);
+                button.css({top:new_top+'px'});
+                if(new_top<drag_min_ypos) { button.css({top:drag_min_ypos+'px'}); }
+                if(new_top>drag_max_ypos) { button.css({top:drag_max_ypos+'px'}); }
+                $('#log2').text('mousemove min: '+drag_min_ypos+', max: '+drag_max_ypos+', new_top: '+new_top);
+                //Outdated code below (reason: drag contrained too early)
+                /*if(new_top>=drag_min_ypos&&new_top<=drag_max_ypos) {
+                    button.css({top:new_top+'px'});
+                }*/
+            });
+            $(window).on('mouseup',function(e) {
+                 if(e.which===1) {
+                    //Drag finished
+                    $('.button').removeClass('drag');
+                    $(window).off('mouseup mousemove');
+                    $('#log1').text('mouseup');
+                    $('#log2').text('');
+                 }
+            });
+        }
+    });
 });
 
 $(window).bind("resize", function () {

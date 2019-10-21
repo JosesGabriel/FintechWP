@@ -28,8 +28,8 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script>
-	  $(window).bind("load", function () {
-			
+	  $(window).load(function() {
+			alert('dd');
 		$('#draggable_buysell').on('click', function() {
             alert('click');
         });

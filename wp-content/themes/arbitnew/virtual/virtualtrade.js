@@ -462,6 +462,7 @@ $(document).ready(function(){
 					console.log('success');
 					$('#enter_trade').modal('toggle'); 
 					livedata();
+					performance();
 			    },
 			    error: function(response){                 
 			      }
@@ -490,6 +491,7 @@ $(document).ready(function(){
 					$('#enter_trade').modal('toggle'); 
 					livedata();
 					tradelogs();
+					performance();
 			    },
 			    error: function(response){                 
 			      }

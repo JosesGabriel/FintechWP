@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	livedata();
 	tradelogs();
+	performance();
 
 	$.ajax({
 	    type:'GET',
@@ -109,6 +110,22 @@ $(document).ready(function(){
 	}
 
 
+	function performance(){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/performance?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response); 	
+		    },
+		    error: function(response) {                 
+		    }
+		});
+
+	}
+
+
 	function deletedata(id){
 		var userid = $('.userid').val();
 		$.ajax({
@@ -145,12 +162,30 @@ $(document).ready(function(){
 		var sdata = $(this).val();
 		var btn = $('.btnValue').val();
 		var userid = $('.userid').val();
+
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
 				    url:'/wp-json/virtual-api/v1/dstock?stock='+sdata,
 				    dataType: 'json',
 				    success: function(response) {
+
+				    	/*var dboard = 0;
+				        if (response.data.last >= 0.0001 && response.data.last <= 0.0099) {
+				            dboard = '1,000,000';
+				        } else if (response.data.last >= 0.01 && response.data.last <= 0.049) {
+				            dboard = '100,000';
+				        } else if (response.data.last >= 0.05 && response.data.last <= 0.495) {
+				            dboard = '10,000';
+				        } else if (response.data.last >= 0.5 && response.data.last <= 4.99) {
+				            dboard = '1,000';
+				        } else if (response.data.last >= 5 && response.data.last <= 49.95) {
+				            dboard = 100;
+				        } else if (response.data.last >= 50 && response.data.last <= 999.5) {
+				            dboard = 10;
+				        } else if (response.data.last >= 1000) {
+				            dboard = 5;
+				        }*/ 
 
 					    			$('.sdesc').text(response.data.description);
 					    			$('.cprice').text((response.data.last).toFixed(2));

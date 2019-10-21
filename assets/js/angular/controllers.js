@@ -56,14 +56,14 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     // $scope.counter = 0;
     // $scope.width = 0;
     
-    // $scope.tickerEnabler = function (){
-    //     $scope.enable = !$scope.enable;
+    $scope.tickerEnabler = function (){
+        $scope.enable = !$scope.enable;
     //     if($scope.enable) {
     //      //   $scope.tickerStart();
     //     } else {
     //       //  $scope.tickerStop();
     //     }
-    // }
+    }
 
     // $scope.tickerStart = function() {
     //     jQuery('#webTicker').mouseover();

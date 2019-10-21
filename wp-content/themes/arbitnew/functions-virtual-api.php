@@ -97,10 +97,24 @@ class VirtualAPI extends WP_REST_Controller
             ],
         ]);
 
+        register_rest_route($base_route, 'tradelogs', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettradelogs'],
+            ],
+        ]);
+
         register_rest_route($base_route, 'deletedata', [
             [
                 'method' => 'GET',
                 'callback' => [$this, 'deletedata'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'deletelogs', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'deletelogs'],
             ],
         ]);
         
@@ -336,7 +350,6 @@ class VirtualAPI extends WP_REST_Controller
         $sellcost = $sellvals - $this->getjurfees($sellvals, 'sell');
         $profit = $sellcost - $marketvals;
         $profperc = ($profit / $marketvals) * 100;
-
         
 
         if($remainingstocks >= 0){
@@ -483,12 +496,13 @@ class VirtualAPI extends WP_REST_Controller
             $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
             $dstock['stockid'] = $value->id;
             $dstock['stockname'] = $value->stockname;
-            $dstock['volume'] += $value->volume;
+            $dstock['volume'] = $value->volume;
             $dstock['emotion'] = $value->emotion;
             $dstock['strategy'] = $value->strategy;
             $dstock['tradeplan'] = $value->tradeplan;
             $dstock['tradenotes'] = $value->tradenotes;
             $dstock['averageprice'] = $totalaspertrade / $dstock['volume'];
+            $dstock['buyprice'] = $value->buyprice;
 
             $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$value->stockname, [
             "headers" => [
@@ -504,6 +518,38 @@ class VirtualAPI extends WP_REST_Controller
         return $this->respond(true, ['data' => $listofstocks], 200);
     }
 
+     public function gettradelogs($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+
+        $tradelogs = "select * from arby_vt_tradelog where userid = ".$data['userid'];
+        $tradelogsinfo = $wpdb->get_results($tradelogs);
+
+        $dstock = [];
+        $listofstocks = [];
+        foreach ($tradelogsinfo as $key => $value) {
+
+             $selltotal = $value->volume * $value->sellprice;
+             $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
+
+             $dstock['id'] = $value->id;
+             $dstock['stockname'] = $value->stock;
+             $dstock['volume'] = $value->volume;
+             $dstock['averageprice'] = $value->averageprice;
+             $dstock['emotion'] = $value->emotion;
+             $dstock['strategy'] = $value->strategy;
+             $dstock['tradeplan'] = $value->tradeplan;
+             $dstock['tradenotes'] = $value->tradenotes;
+             $dstock['sellprice'] = $value->sellprice;
+             $dstock['buydate'] = $value->buydate;
+             $dstock['profit'] = $value->profit;
+             $dstock['profitperc'] = $value->profitperc;
+             $dstock['sellvalue'] = $sellnet;
+             array_push($listofstocks, $dstock);
+        }
+        return $this->respond(true, ['data' => $listofstocks], 200);
+    }
 
     public function deletedata($details)
     {
@@ -511,6 +557,18 @@ class VirtualAPI extends WP_REST_Controller
         $data = $details->get_params();
         $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
        if($wpdb->query($liveportfolio)){
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
+
+     public function deletelogs($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $tradelogs = "delete from arby_vt_tradelog where id = ".$data['id']." and userid = ".$data['userid'];
+       if($wpdb->query($tradelogs)){
             return $this->respond(true, ['data' => 'Successfully deleted'], 200);
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);

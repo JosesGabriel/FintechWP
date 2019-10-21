@@ -257,7 +257,9 @@ $(document).ready(function(){
 
         } 
     });
-
+    $('#draggable_buysell').click(function(e) {
+        alert('glory');
+    });
     $(".bbs_bear").click(function(e){
         e.preventDefault();
         if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {

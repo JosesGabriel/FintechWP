@@ -28,12 +28,15 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script>
-	  $(window).load(function() {
-			alert('dd');
-		$('#draggable_buysell').on('click', function() {
-            alert('click');
+	  $(window).bind("load", function () {
+			
+        $('.arb_buysell').draggable();
+		$('.arb_buysell').addClass('tabanglord');
+		console.log($('#draggable_buysell'));
+		$('#draggable_buysell').draggable();
+		$('#draggable_buysell').addClass('tabanglord');
+		console.log('patya nalangko');
 		});
-	});
 	  </script>
 	<!-- <script>
 	$( function() {

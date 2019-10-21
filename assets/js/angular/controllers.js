@@ -49,7 +49,7 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
 app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     
     // $scope.ticker_intervalId;
-    $scope.enable = true;
+    $scope.enable = false;
     // $scope.isTickerFull = false;
     $scope.ticker = [];
     // $scope.data = [];

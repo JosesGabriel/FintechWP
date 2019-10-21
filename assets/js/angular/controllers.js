@@ -115,16 +115,15 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     // }
 
     socket.on('psec', function (data) {  
-
-        var transaction = {
-            symbol: data.sym,
-            price:  price_format(data.prv),
-            change: data.chg,
-            shares: abbr_format(data.vol),
-            // counter: $scope.counter++
-        }
-
         if($scope.enable){
+            var transaction = {
+                symbol: data.sym,
+                price:  price_format(data.prv),
+                change: data.chg,
+                shares: abbr_format(data.vol),
+                // counter: $scope.counter++
+            }
+
             // if ($scope.ticker.length <= 30 && $scope.isTickerFull == false) {
             //     $scope.ticker.push(transaction);
             // } else {

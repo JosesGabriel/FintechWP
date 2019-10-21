@@ -397,42 +397,7 @@ $(document).ready(function(){
     //     console.log('hovered');
     // });
     /* End of WebTicker */
-    $('#draggable_buysell').mousedown(function(e) {
-        console.log('mouse');
-        if(e.which===1) {
-            var button = $(this);
-            var parent_height = button.parent().innerHeight();
-            var top = parseInt(button.css('top')); //current top position
-            var original_ypos = button.css('top','').position().top; //original ypos (without top)
-            button.css({top:top+'px'}); //restore top pos
-            var drag_min_ypos = 0-original_ypos;
-            var drag_max_ypos = parent_height-original_ypos-button.outerHeight();
-            var drag_start_ypos = e.clientY;
-            $('#log1').text('mousedown top: '+top+', original_ypos: '+original_ypos);
-            $(window).on('mousemove',function(e) {
-                //Drag started
-                button.addClass('drag');
-                var new_top = top+(e.clientY-drag_start_ypos);
-                button.css({top:new_top+'px'});
-                if(new_top<drag_min_ypos) { button.css({top:drag_min_ypos+'px'}); }
-                if(new_top>drag_max_ypos) { button.css({top:drag_max_ypos+'px'}); }
-                $('#log2').text('mousemove min: '+drag_min_ypos+', max: '+drag_max_ypos+', new_top: '+new_top);
-                //Outdated code below (reason: drag contrained too early)
-                /*if(new_top>=drag_min_ypos&&new_top<=drag_max_ypos) {
-                    button.css({top:new_top+'px'});
-                }*/
-            });
-            $(window).on('mouseup',function(e) {
-                 if(e.which===1) {
-                    //Drag finished
-                    $('.button').removeClass('drag');
-                    $(window).off('mouseup mousemove');
-                    $('#log1').text('mouseup');
-                    $('#log2').text('');
-                 }
-            });
-        }
-    });
+
 });
 
 $(window).bind("resize", function () {
@@ -464,3 +429,46 @@ function replaceCommas(yourNumber) {
         components[1] = components[1].replace(/\D/g, "");
     return components.join(".");
 }
+
+(function($) {
+    $.fn.drags = function(opt) {
+
+        opt = $.extend({handle:"",cursor:"move"}, opt);
+
+        if(opt.handle === "") {
+            var $el = this;
+        } else {
+            var $el = this.find(opt.handle);
+        }
+
+        return $el.css('cursor', opt.cursor).on("mousedown", function(e) {
+            if(opt.handle === "") {
+                var $drag = $(this).addClass('draggable');
+            } else {
+                var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+            }
+            var z_idx = $drag.css('z-index'),
+                drg_h = $drag.outerHeight(),
+                drg_w = $drag.outerWidth(),
+                pos_y = $drag.offset().top + drg_h - e.pageY,
+                pos_x = $drag.offset().left + drg_w - e.pageX;
+            $drag.css('z-index', 1000).parents().on("mousemove", function(e) {
+                $('.draggable').offset({
+                    top:e.pageY + pos_y - drg_h,
+                    left:e.pageX + pos_x - drg_w
+                }).on("mouseup", function() {
+                    $(this).removeClass('draggable').css('z-index', z_idx);
+                });
+            });
+            e.preventDefault(); // disable selection
+        }).on("mouseup", function() {
+            if(opt.handle === "") {
+                $(this).removeClass('draggable');
+            } else {
+                $(this).removeClass('active-handle').parent().removeClass('draggable');
+            }
+        });
+
+    }
+})(jQuery);
+$('#draggable_buysell').drags();

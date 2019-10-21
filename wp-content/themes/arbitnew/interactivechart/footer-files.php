@@ -49,6 +49,7 @@
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
 		var _post_id    = '<?php echo get_the_id(); ?>';
+		var _resolution = 'D';
 	</script>
 
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>

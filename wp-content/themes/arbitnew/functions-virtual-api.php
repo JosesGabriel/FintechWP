@@ -496,7 +496,7 @@ class VirtualAPI extends WP_REST_Controller
             $totalaspertrade += ($marketvals + $this->getjurfees($marketvals, 'buy'));
             $dstock['stockid'] = $value->id;
             $dstock['stockname'] = $value->stockname;
-            $dstock['volume'] += $value->volume;
+            $dstock['volume'] = $value->volume;
             $dstock['emotion'] = $value->emotion;
             $dstock['strategy'] = $value->strategy;
             $dstock['tradeplan'] = $value->tradeplan;

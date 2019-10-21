@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $(window).load(function() {
-        $('#draggable_buysell').draggable({cancel:false});
+        $('#draggable_buysell').draggable();
 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

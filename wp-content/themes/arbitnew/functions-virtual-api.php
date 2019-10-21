@@ -110,6 +110,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'deletedata'],
             ],
         ]);
+
+        register_rest_route($base_route, 'deletelogs', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'deletelogs'],
+            ],
+        ]);
         
     }
 
@@ -522,6 +529,7 @@ class VirtualAPI extends WP_REST_Controller
         $dstock = [];
         $listofstocks = [];
         foreach ($tradelogsinfo as $key => $value) {
+             $dstock['id'] = $value->id;
              $dstock['stockname'] = $value->stock;
              $dstock['volume'] = $value->volume;
              $dstock['averageprice'] = $value->averageprice;
@@ -544,6 +552,18 @@ class VirtualAPI extends WP_REST_Controller
         $data = $details->get_params();
         $liveportfolio = "delete from arby_vt_live where id = ".$data['id']." and userid = ".$data['userid'];
        if($wpdb->query($liveportfolio)){
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
+
+     public function deletelogs($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $tradelogs = "delete from arby_vt_tradelog where id = ".$data['id']." and userid = ".$data['userid'];
+       if($wpdb->query($tradelogs)){
             return $this->respond(true, ['data' => 'Successfully deleted'], 200);
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);

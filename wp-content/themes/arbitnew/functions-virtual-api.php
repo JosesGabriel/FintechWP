@@ -530,7 +530,7 @@ class VirtualAPI extends WP_REST_Controller
         $listofstocks = [];
         foreach ($tradelogsinfo as $key => $value) {
 
-             $selltotal = $value->volume * $value->averageprice;
+             $selltotal = $value->volume * $value->sellprice;
              $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
 
              $dstock['id'] = $value->id;

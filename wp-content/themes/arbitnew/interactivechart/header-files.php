@@ -29,12 +29,7 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
 	$( function() {
-		if(typeof jQuery.ui !== 'undefined') {
-			alert('pota');
-		} else {
-			alert('no');
-		}
-		$( "#draggable_buysell" ).draggable();
+		jQuery( "#draggable_buysell" ).draggable();
 	} );
 	</script>
     <!-- <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>

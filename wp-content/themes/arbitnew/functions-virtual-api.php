@@ -516,7 +516,7 @@ class VirtualAPI extends WP_REST_Controller
         global $wpdb;
         $data = $details->get_params();
 
-        $tradelogs = "select * from arby_vt_tradelog userid = ".$data['userid'];
+        $tradelogs = "select * from arby_vt_tradelog where userid = ".$data['userid'];
         $tradelogsinfo = $wpdb->get_results($tradelogs);
 
         $dstock = [];

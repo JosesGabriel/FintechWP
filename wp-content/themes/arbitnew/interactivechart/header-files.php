@@ -30,7 +30,7 @@
 	<script>
 	$( function() {
 		$('#draggable_buysell').draggable();
-		$('#draggable_buysell').addClass('iyot');
+		$('#draggable_buysell').addClass('ui-draggable');
 	} );
 	</script>
     <!-- <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>

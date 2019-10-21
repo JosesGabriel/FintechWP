@@ -31,8 +31,7 @@ $(document).ready(function(){
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
-		    success: function(response) {
-		    		console.log(response);	    	
+		    success: function(response) {   	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		

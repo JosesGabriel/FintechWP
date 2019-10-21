@@ -3,13 +3,7 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	  <script>
 	  $(window).bind("load", function () {
-		alert('yolo');
-        $('.arb_buysell').draggable();
-		$('.arb_buysell').addClass('tabanglord');
-		console.log($('#draggable_buysell'));
 		$('#draggable_buysell').draggable();
-		$('#draggable_buysell').addClass('tabanglord');
-		console.log('patya nalangko');
 		});
 	  </script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" />

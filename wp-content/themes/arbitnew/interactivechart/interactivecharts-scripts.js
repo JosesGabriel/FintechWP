@@ -257,10 +257,6 @@ $(document).ready(function(){
 
         } 
     });
-    $('.arb_buysell').click(function(e) {
-        e.preventDefault();
-        alert('glory');
-    });
     $(".bbs_bear").click(function(e){
         e.preventDefault();
         if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {

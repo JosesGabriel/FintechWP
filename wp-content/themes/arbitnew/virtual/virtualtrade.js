@@ -46,8 +46,8 @@ $(document).ready(function(){
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
-				    data_live += '<td style="width:10%" class="dgreenpart table-title-live">₱'+(profit).toFixed(2)+'</td>';
-				    data_live += '<td style="width:8%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+(profperc).toFixed(2)+'%</td>';
+				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';
+				    data_live += '<td style="width:8%" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+(profperc).toFixed(2)+'%</td>';
 				    data_live += '<td style="width:77px;text-align:center;">';
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';

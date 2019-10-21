@@ -11,7 +11,7 @@
                   <li><span>Unrealized P/L</span><span class="unrealized" style="float: right;">₱7,000.00</span></li>
                   <li><span>Total Equity</span><span class="total_equity" style="float: right;">₱7,000.00</span></li>
                   <li><span>Port Performance</span><span class="vperformance" style="float: right;">₱7,000.00</span></li>
-                  <li><span>Available Funds</span><span style="float: right;">₱7,000.00</span></li>
+                  <li><span>Available Funds</span><span class="available_funds" style="float: right;">₱7,000.00</span></li>
               </ul>
           </div>
       </div>

@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 	setInterval(function(){
    		livedata();
-  	}, 3000);
+  	}, 5000);
 
 
 	$.ajax({

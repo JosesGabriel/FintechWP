@@ -31,7 +31,7 @@ $(document).ready(function(){
 		    	jQuery.each(response.data, function(i, val) {
 		    		
 		    		var buyprice = parseFloat(response.data[i].buyprice);
-		    		var marketval = response.data[i].datainfo.average * response.data[i].volume;
+		    		var marketval = response.data[i].datainfo.last * response.data[i].volume;
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;

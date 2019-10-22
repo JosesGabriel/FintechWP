@@ -90,9 +90,9 @@
 
                 let totalprofit = (parseFloat(data.totalprofit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
                 if (totalprofit > 0){
-                    $(".totalplscore").text("₱"+totalprofit).css({"color": "#27ae60"});
-                }else{
                     $(".totalplscore").text("₱"+totalprofit).css({"color": "#e44c3c"});
+                }else{
+                    $(".totalplscore").text("₱"+totalprofit).css({"color": "#27ae60"});
                 }
                 
             },

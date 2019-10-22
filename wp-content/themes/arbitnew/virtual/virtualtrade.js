@@ -374,6 +374,8 @@ $(document).ready(function(){
         let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
         let dinpus = jQuery(this).val();
 
+        console.log(price + '-' + quantity);
+
         let total_price = parseFloat(price) * Math.trunc(quantity);
         total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 

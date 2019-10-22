@@ -409,37 +409,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         
         // $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
     });
-    
-    $scope.getStockTrades = function (symbol = '', limit = 20) {
-        if (symbol != 'PSEI' && symbol != '') {
-            $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
-                .then(response => {
-                    response = response.data;
-                    if (!response.success) {
-                        return;
-                    }
-    
-                    let data = response.data;
-    
-                    $scope.transactions = data.map(transaction => {
-                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                        return {
-                            symbol: transaction.symbol,
-                            price:  price_format(transaction.executed_price),
-                            shares: abbr_format(transaction.executed_volume),
-                            buyer:  transaction.buyer,
-                            seller: transaction.seller,
-                            time:   full_time,
-                        };                                    
-                    });
-                    $scope.$digest();
-                })
-                .catch(err => {
-                    
-                });
-        }
-    }
-    $scope.getStockTrades(_symbol);
 
     $scope.updateTabTitle = function (symbol, data) {
         if (data.change > 0){
@@ -544,27 +513,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         $scope.$digest();
     });
 
-    socket.on('pset', function (data) {
-        if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('hh:mm a');
-            let transaction = {
-                symbol: data.sym,
-                price:  price_format(data.exp),
-                shares: abbr_format(data.exvol),
-                buyer:  data.b,
-                seller: data.s,
-                time:   full_time,
-            };
-    
-            $scope.transactions.unshift(transaction);
-            if ($scope.transactions.length > 20) {
-                $scope.transactions.pop();
-            }
-            
-            $scope.$digest();
-        }
-    });
-
     $scope.sortStocks = function(sort) {
         if ($scope.sort == sort) {
             $scope.reverse = !$scope.reverse;
@@ -582,7 +530,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             $scope.stock = null;
         }
         $scope.marketdepth  = [];
-        $scope.transactions = [];
         if (marketdepthTimeout) {
             window.clearTimeout(marketdepthTimeout);
         }
@@ -845,6 +792,66 @@ app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', funct
             'volume': data.vol,
         }
     }
+}]);
+app.controller('transactions', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    $scope.currentStock = '';
+    $scope.transactions = [];
+
+    $scope.getStockTrades = function (symbol = '', limit = 20) {
+        if (symbol != 'PSEI' && symbol != '') {
+            $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+                .then(response => {
+                    response = response.data;
+                    if (!response.success) {
+                        return;
+                    }
+    
+                    let data = response.data;
+    
+                    $scope.transactions = data.map(transaction => {
+                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
+                        return {
+                            symbol: transaction.symbol,
+                            price:  price_format(transaction.executed_price),
+                            shares: abbr_format(transaction.executed_volume),
+                            buyer:  transaction.buyer,
+                            seller: transaction.seller,
+                            time:   full_time,
+                        };                                    
+                    });
+                    $scope.$digest();
+                })
+                .catch(err => {
+                    
+                });
+        }
+    }
+    
+    $rootScope.$on('changeStockSymbol', function (event, symbol) {
+        $scope.currentStock = symbol;
+        $scope.getStockTrades(symbol);
+    });
+
+    socket.on('pset', function (data) {
+        if ($scope.currentStock && $scope.currentStock == data.sym) {
+            let full_time = (moment(data.t * 1000)).format('hh:mm a');
+            let transaction = {
+                symbol: data.sym,
+                price:  price_format(data.exp),
+                shares: abbr_format(data.exvol),
+                buyer:  data.b,
+                seller: data.s,
+                time:   full_time,
+            };
+    
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            
+            $scope.$digest();
+        }
+    });
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {

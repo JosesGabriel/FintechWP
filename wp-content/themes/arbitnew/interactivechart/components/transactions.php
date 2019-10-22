@@ -1,5 +1,7 @@
 <!-- Transactions -->
-<div class="vertical-box tab-pane fade" id="tab-transaxtions">
+<div
+    ng-controller="transactions"
+    class="vertical-box tab-pane fade" id="tab-transaxtions">
     <table class="table table-condensed m-b-0 text-default" style="font-size: 10px;">
         <col width="20%">
         <col width="20%">

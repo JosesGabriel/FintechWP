@@ -372,8 +372,21 @@ $(document).ready(function(){
 	jQuery(document).on('keyup', '.inputquantity', function(){
 		var price = $('.inputbuyprice').val().replace(/,/g, '');
         var quantity = $(this).val().replace(/,/g, '');
+        var total_price = parseFloat(price) * Math.trunc(quantity);
+        total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 
-        console.log(price + ' - ' + quantity);
+        var finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+        var decnumbs = finaltotal;
+        var avfunds = jQuery('.av_funds').text().replace(/,/g, '');
+        var buypower = avfunds.replace(/₱/g, '');
+        
+        if(parseFloat(decnumbs) > parseFloat(buypower)){
+            swal("Not Enough Buy Power");
+            jQuery(this).val(dinpus.slice(0,-1));
+            return false;
+        } else {
+            jQuery('.tlcost').text(addcomma(decnumbs));       
+        }
 
 	});
 

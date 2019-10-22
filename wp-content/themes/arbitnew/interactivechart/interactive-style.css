@@ -1354,6 +1354,9 @@ small.arb_markcap {
 	color: #e64c3c;
 }
 .ticker-enabler {
+    display: grid;
+    position: absolute;
+    left: 45px;
     /* position: absolute;
     z-index: 10;
     top: -4px;
@@ -1519,3 +1522,9 @@ span.ticker_enabler-text {
   .slider.round:before {
     border-radius: 50%;
   }
+  .btn.btn-xs {
+    line-height: 18px;
+    padding: 1px 5px;
+    height: 17px;
+    font-size: 10px;
+}

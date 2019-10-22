@@ -50,7 +50,7 @@
                                     }
                                     let addslog = (parseFloat(ischange)).toFixed(2);
                                     candles.push({"category": ckey,"column-1": addslog});
-                                    console.log(svalue.chartdata.c[ckey])
+                                    console.log(stock, svalue.chartdata.c[ckey])
                                 });
                                 let dcolor = (changetext == "equal" ? '#ffd900' : ( changetext == "up" ? '#53b987' : '#eb4d5c' ) );
                                 AmCharts.makeChart( "chartdiv"+stock, {

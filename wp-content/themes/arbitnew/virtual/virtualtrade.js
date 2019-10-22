@@ -247,7 +247,7 @@ $(document).ready(function(){
 
 				    			$.ajax({
 								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,
+								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
 								    dataType: 'json',
 								    success: function(response) {
 
@@ -291,7 +291,7 @@ $(document).ready(function(){
 				    			$('#entertopdataprice').val((response.data.datainfo.last).toFixed(2));
 				    			$.ajax({
 								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,
+								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
 								    dataType: 'json',
 								    success: function(response) {
 

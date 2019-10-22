@@ -81,8 +81,8 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     z-index: 9;
     position: absolute;
     right: 0;
+    top: 0;
     padding-right: 4px;
-    padding-top: 5px;
 }
 .arb-side-icon i {
     border: none;
@@ -1413,7 +1413,7 @@ span.speed_ticker-toggle {
 .data_ticker_main-toggle,
 .speed_ticker_main-toggle,
 .ticker_main-toggle.sound {
-    margin: 5px 0;
+    margin: 5px 5px;
 }
 .data_ticker_main-toggle:first-child,
 .speed_ticker_main-toggle:first-child{
@@ -1432,9 +1432,12 @@ span.speed_ticker-toggle {
 }
 .ticker_content-toggle {
     text-align: right;
+    width: 100%;
+    padding: 3px 7px;
+    /* text-align: right;
     width: 83%;
     margin: 0 0 0 auto;
-    padding: 3px 7px;
+    padding: 3px 7px; */
 }
 hr.style14 {
     position: relative;
@@ -1459,6 +1462,9 @@ span.ticker_enabler-text {
     display: inline-block;
     float: right;
     margin-top: 2px;
+}
+.ticker_enabler-title .ticker_main-toggle i.fas.fa-times {
+    cursor: pointer;
 }
 .switch {
     position: relative;

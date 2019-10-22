@@ -1,5 +1,7 @@
 <!--Market Depth-->
-<div class="vertical-box tab-pane fade in active" id="tab-marketepth">
+<div
+    ng-controller="marketDepth"
+    class="vertical-box tab-pane fade in active" id="tab-marketepth">
     <table class="table table-condensed m-b-0 text-default" style="font-size: 10px; width:97%">
         <col width="8">
         <col width="17%">

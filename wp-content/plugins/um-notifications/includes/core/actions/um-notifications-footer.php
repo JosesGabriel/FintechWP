@@ -21,7 +21,7 @@ function um_notification_show_feed() {
 		$template = 'notifications';
 	}
 
-	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 0, 'unread', true );
+	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 10, 'unread', true );
 	
 	$unread_count = ( absint( $unread ) > 9 ) ? '9+' : $unread;
 

@@ -26,6 +26,7 @@
     padding: 3px 11px;
     border: 2px solid #25ae5f;
     border-radius: 15px;
+    background-color: #25ae5f;
 }
 
 .btnbuy:hover {
@@ -76,7 +77,7 @@
     font-weight: normal;
 }
 
-.arb_bar_green {
+.arb_bar_green, .arb_bar_green_m {
     float: left;
     background-color: #25ae5f;
     color: #fff;
@@ -86,7 +87,7 @@
     border-radius: 5px 0 0 5px;
 }
 
-.arb_bar_red {
+.arb_bar_red, .arb_bar_red_m {
     float: left;
     background-color: #e64c3c;
     color: #fff;
@@ -285,6 +286,24 @@ textarea.tnotes{
     width: 72%;
 }
 
+.bsbutton {
+	width: 150px;
+    display: inline-block;
+}
+.label_enter {
+	font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.virtualsidebar {
+	padding: 10px;
+	width: 200px;
+	font-size: 12px;
+}
+
+.sidebarvirtual li {
+	padding-bottom: 10px;
+}
 
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {

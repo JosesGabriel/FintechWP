@@ -168,6 +168,8 @@ Datafeeds.UDFCompatibleDatafeed.prototype.getBars = function(symbolInfo, resolut
 		exchange: 'PSE', //TODO: REFACTOR TO GET FROM STOCK_INFORMATION ENDPOINT
 	};
 
+	_resolution = resolution;
+
 	//check for 1m resolution
 	if (resolution != 'D') {
 		params.resolution = '1m'

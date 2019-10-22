@@ -89,13 +89,13 @@
                     listofbase += '<li>';
                     listofbase += '<div style="width:99%">';
                     listofbase += '<div style="width:150px;">'+key+'</div>';
+                    listofbase += '<div style="text-align: center;">'+value.total_trades+'</div>';
                     listofbase += '<div style="text-align: center;">'+value.trwin+'</div>';
                     listofbase += '<div style="text-align: center;">'+value.trloss+'</div>';
-                    listofbase += '<div style="text-align: center;">'+value.total_trades+'</div>';
                     listofbase += '<div style="text-align: center;">'+(value.trwin > 0 ? ((value.trwin/value.total_trades) * 100).toFixed(2) : '0.00')+'%</div>';
                     listofbase += '</div>';
                     listofbase += '</li>';
-                    strattable.push({"category": key,"column-2": (value.trwin).toString(),"Trades": (value.trloss).toString(),"colors": "#06af68","colorsred": "#b7193f"});
+                    strattable.push({"category": key,"column-2": (value.trloss).toString(),"Trades": (value.trwin).toString(),"colors": "#06af68","colorsred": "#b7193f"});
                     stratspie.push({"strategy": key,"winvals": (value.trwin).toString()});
                 });
                 $(".stratstables ul").append(listofbase);
@@ -181,7 +181,7 @@
                     emotionlist += '<div>'+value.trloss+'</div>';
                     emotionlist += '<div>'+(value.trwin > 0 ? ((value.trwin / value.total_trades) * 100).toFixed(2) : '0.00')+'%</div>';
                     emotionlist += '</li>';
-                    demotions.push({"category": key,"column-2": (value.trwin).toString(),"Trades": (value.trloss).toString()});
+                    demotions.push({"category": key,"column-2": (value.trloss).toString(),"Trades": (value.trwin).toString()});
                 });
                 $(".emotioonmlistbase ul").append(emotionlist);
 

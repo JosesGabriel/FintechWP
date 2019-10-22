@@ -1,9 +1,8 @@
 <div class="um-notification-header">
-	<div class="um-notification-left"><?php
-
-use function GuzzleHttp\json_encode;
-
-_e('Notifications','um-notifications'); ?></div>
+	<div class="um-notification-left">
+<?php use function GuzzleHttp\json_encode;
+	_e('Notifications','um-notifications'); 
+?></div>
 	<div class="um-notification-right">
 		<a href="<?php echo UM()->account()->tab_link( 'webnotifications' ); ?>" class="um-notification-i-settings"><i class="um-faicon-cog"></i></a>
 		<a href="#" class="um-notification-i-close"><i class="um-icon-android-close"></i></a>
@@ -13,7 +12,7 @@ _e('Notifications','um-notifications'); ?></div>
 
 <div class="um-notification-ajax">
 	<?php foreach ( $notifications as $notification ) {
-		if ( ! isset( $notification->id ) ) {
+		if ( ! isset( $notification->ID ) ) {
 			continue;
 		}
 		// echo json_encode($notification->id);
@@ -34,7 +33,7 @@ _e('Notifications','um-notifications'); ?></div>
         ?>
 
 		<span class="um-notification-hide"><a href="javascript:void(0);"><i class="um-icon-android-close"></i></a></span>
-		<div class="um-notification <?php echo $notification->type; ?> <?php echo $notification->status; ?>" data-notification_id="<?php echo $notification->id; ?>"  data-notification_uri="<?php echo $notification->url; ?>">
+		<div class="um-notification <?php echo $notification->type; ?> <?php echo $notification->status; ?>" data-notification_id="<?php echo $notification->ID; ?>"  data-notification_uri="<?php echo $notification->url; ?>">
 			<div class="um-notification-inner">
 			<?php echo '<img src="'. um_secure_media_uri( $notification->photo ) .'" data-default="'. um_secure_media_uri( um_get_default_avatar_uri() ) .'" alt="" class="um-notification-photo" />'; ?>
 

@@ -379,13 +379,13 @@ $(document).ready(function(){
         var decnumbs = finaltotal;
         var avfunds = jQuery('.av_funds').text().replace(/,/g, '');
         var buypower = avfunds.replace(/₱/g, '');
-        console.log(buypower+ ' - '+decnumbs);
-
+        
         if(parseFloat(decnumbs) > parseFloat(buypower)){
             swal("Not Enough Buy Power");
             jQuery(this).val(dinpus.slice(0,-1));
             return false;
         } else {
+        	console.log(buypower+ ' - '+decnumbs);
             jQuery('.tlcost').val(addcomma(decnumbs));       
         }
 

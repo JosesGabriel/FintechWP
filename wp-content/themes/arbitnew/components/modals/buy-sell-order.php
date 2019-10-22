@@ -77,6 +77,13 @@
                                                 <option value="Bottom Picking">Bottom Picking</option>
                                                 <option value="Breakout Play">Breakout Play</option>
                                                 <option value="Trend Following">Trend Following</option>
+                                                <option value="1-2-3 Reversal">1-2-3 Reversal</option>
+                                                <option value="First Hour Breakout">First Hour Breakout</option>
+                                                <option value="Range Breakout">Range Breakout</option>
+                                                <option value="Support-Resistance">Support-Resistance</option>
+                                                <option value="Trendline Breakout">Trendline Breakout</option>
+                                                <option value="Darvas Range">Darvas Range</option>
+                                                <option value="Catalyst Driven">Catalyst Driven</option>
                                             </select>
                                         </div>
                                         <div class="groupinput selectstrategy">

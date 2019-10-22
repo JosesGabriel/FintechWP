@@ -240,6 +240,7 @@ $(document).ready(function(){
 					    			$('.pdetails.khigh').text((response.data.weekyearhigh).toFixed(2));
 					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
 					    			$('.pdetails.av').text((response.data.average).toFixed(2));
+					    			$('#entertopdataprice').val((response.data.last).toFixed(2));
 
 					    			$.ajax({
 									    type:'GET',

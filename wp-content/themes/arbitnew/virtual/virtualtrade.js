@@ -377,8 +377,8 @@ $(document).ready(function(){
 
         var finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
         var decnumbs = finaltotal;
-        var buypower = jQuery('.av_funds').text().replace(/,/g, '');
-
+        var avfunds = jQuery('.av_funds').text().replace(/,/g, '');
+        var buypower = avfunds.replace(/₱/g, '');
         console.log(buypower+ ' - '+decnumbs);
 
         if(parseFloat(decnumbs) > parseFloat(buypower)){

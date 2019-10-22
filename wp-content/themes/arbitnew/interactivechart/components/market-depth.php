@@ -23,7 +23,7 @@
     <div class="vertical-box-row">
         <div class="vertical-box-cell">
             <div class="vertical-box-inner-cell">
-                <div ng-show="!enableBidsAndAsks"
+                <div ng-if="!enableBidsAndAsks"
                     style="height: calc(100% - 35px); position: relative">
                     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center">
                         <?php if ( ! WP_PROD_ENV): ?>
@@ -36,7 +36,7 @@
                         <?php endif ?>
                     </div>
                 </div>
-                <div data-scrollbar="true" data-height="90%" class="" ng-show="enableBidsAndAsks">
+                <div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
                     <div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
                         <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
                             <col width="8.335%">

@@ -108,7 +108,7 @@ $(document).ready(function(){
 	                    $(".showtradelogs > ul").append(data_tradelogs);
 		    		});	
 
-		    		$('.totalplscore').text(response.data.totalprofit);
+		    		$('.totalplscore').text(response.totalprofit);
 		    },
 		    error: function(response) {                 
 		    } 

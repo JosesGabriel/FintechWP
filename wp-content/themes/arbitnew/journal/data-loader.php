@@ -89,7 +89,13 @@
                 });
 
                 let totalprofit = (parseFloat(data.totalprofit)).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-                $(".totalplscore").text("₱"+totalprofit);
+                if (totalprofit > 0){
+                    $(".totalplscore").text("₱"+totalprofit).css({"color": "#27ae60"});
+                }else if(totalprofit = 0){
+                    $(".totalplscore").text("₱"+totalprofit).css({"color": "#fff"});
+                }else{
+                    $(".totalplscore").text("₱"+totalprofit).css({"color": "#e44c3c"});
+                }
                 
             },
             error: function (xhr, ajaxOptions, thrownError) {

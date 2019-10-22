@@ -48,6 +48,7 @@
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
                                     }
+                                    console.log(svalue.chartdata.c[ckey])
                                     let addslog = (parseFloat(ischange)).toFixed(2);
                                     candles.push({"category": ckey,"column-1": addslog});
                                 });

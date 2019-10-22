@@ -206,6 +206,9 @@ text-align: center;
 }
 
 .hideformodal {display:none;}
+.modal-content {
+    width: 30% !important;
+}
 /* Enter Trade Form */
 .groupinput label {
     display: inline-block;

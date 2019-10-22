@@ -42,8 +42,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/virtual/virtualtrade.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/interactivechart/interactive-style.css?<?php echo time(); ?>">
-    
-    
 
     <style>
 		.arb_top_ticker {display:block;}

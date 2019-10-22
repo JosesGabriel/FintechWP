@@ -1,10 +1,8 @@
 $(document).ready(function(){
     $(window).load(function() {
         if ( window.location !== window.parent.location ) {
-            alert('iframe');
-          } else {
-            alert('not');
-          }
+            $('#right-sidebar').hide();
+          } 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

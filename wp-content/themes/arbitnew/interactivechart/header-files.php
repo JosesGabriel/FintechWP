@@ -26,7 +26,7 @@
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
 	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script> -->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>hea
 	<!-- <script>
 	$( function() {
 		$('#draggable_buysell').draggable();
@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
 	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/virtual/virtualtrade.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/interactivechart/interactive-style.css?<?php echo time(); ?>">
     
     <style>

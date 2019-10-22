@@ -11,8 +11,8 @@
     </div>
 </div>
 
-<div class="hideformodal">
-    <div class="buytrade" style="display:none" id="buytrade">
+    <?php require __DIR__ . "/../../../components/modals/buy-sell-order.php" ?>
+    <!-- <div class="buytrade" style="display:none" id="buytrade">
         <div class="innerbuy">
             <div class="selltrade selltrade--align" id="selltrade_">
                 <div class="entr_ttle_bar">
@@ -169,5 +169,4 @@
                 </div>
             </div>
         </form>
-    </div>
-</div>
+    </div> -->

@@ -15,37 +15,39 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
-// app.controller('dev-ticker', ['$scope', function($scope) {
+app.controller('ticker', ['$scope', function($scope) {
     
-//     $scope.enable = true;
-//     $scope.ticker = [];
+    $scope.enable = true;
+    $scope.ticker = [];
     
-//     $scope.tickerEnabler = function (){
-//         $scope.enable = !$scope.enable;
-//     }
+    $scope.tickerEnabler = function (){
+        $scope.enable = !$scope.enable;
+    }
 
-//     socket.on('dev-psec', function (data) {  
+    socket.on('psec', function (data) {  
     
-//             var transaction = {
-//                 symbol: data.sym,
-//                 price:  price_format(data.prv),
-//                 change: data.chg,
-//                 shares: abbr_format(data.vol)
-//             }
+            var transaction = {
+                symbol: data.sym,
+                price:  price_format(data.prv),
+                change: data.chg,
+                shares: abbr_format(data.vol)
+            }
 
-//             $scope.ticker.push(transaction);
+            if($scope.enable){
+                
+                $scope.ticker.push(transaction);
 
-//             console.log($scope.ticker);
-//             console.log($scope.ticker.length);
+                if ($scope.ticker.length > 30) {
+                    $scope.ticker.shift();
+                }
 
-//             if ($scope.ticker.length > 50) {
-//                 $scope.ticker.shift();
-//             }
+            }
 
-//     });   
+    });   
       
-// }]);
+}]);
 
+/*
 app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
     
     // $scope.ticker_intervalId;
@@ -143,10 +145,8 @@ app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
 
     }); 
     
-    
-      
 }]);
-
+*/
 
 app.controller('template', function($scope, $http) {
     // var settings = {

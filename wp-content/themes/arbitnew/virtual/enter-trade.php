@@ -1,14 +1,15 @@
 <div class="dbuttonenter" style="margin-right: 1px;">
-    <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
+    <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 
-      <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal fade" id="enter_trade" role="dialog">
             <div class="modal-dialog">
             
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
                     <div class="entr_title_bar">
-                        Enter Order: <span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span>
+                        <span class="label_enter">Enter Order:</span><div class="bsbutton"><span class="btnbuy">BUY</span> <div class="bbuy">&nbsp;</div>|<div class="bsell">&nbsp;</div> <span class="btnsell">SELL</span></div>
+                        <input type="hidden" name="" class="btnValue" value="buy">
                         <button type="button" class="close_btn" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
@@ -26,15 +27,15 @@
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
                             <div class="details">
                             <p>Previous <span class="pdetails prev">235.40</span></p>
-                            <p>Low <span class="pdetails low">235.10</span></p>
-                            <p>52WKLow <span class="pdetails klow">212.00</span></p>
+                            <p>Low <span class="pdetails low" style="color: #e64c3c;">235.10</span></p>
+                            <p>52WKLow <span class="pdetails klow" style="color: #e64c3c;">212.00</span></p>
                             <p>Volume <span class="pdetails vol">18.17</span></p>
                             <p>Trades <span class="pdetails trade">561</span></p>
                             </div>
                             <div class="details2">
                             <p>Open <span class="pdetails open">235.20</span></p>
-                            <p>High <span class="pdetails high">235.70</span></p>
-                            <p>52WKHigh <span class="pdetails khigh">350.60</span></p>
+                            <p>High <span class="pdetails high" style="color: #25ae5f">235.70</span></p>
+                            <p>52WKHigh <span class="pdetails khigh" style="color: #25ae5f">350.60</span></p>
                             <p>Value <span class="pdetails val">22.15M</span></p>
                             <p>Average <span class="pdetails av">234.20</span></p>
                             </div>
@@ -51,30 +52,30 @@
                             <div class="marketsents">
                                 <span style="font-weight: 600;">Members Sentiments</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green" style="width:80%;height: 6px;">&nbsp;</div>
-                                    <div class="arb_bar_red" style="width:20%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_green_m" style="width:80%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red_m" style="width:20%;height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="tdetails">
                             <span style="font-weight: 600;font-size: 14px;">TRADE DETAILS</span>
-                            <span class="avfunds">Available funds: 2,000,000.00</span>
+                            <span class="avfunds">Available funds: <span class="av_funds" style="font-size: 11px;">100,000.00</span></span>
                         </div>
                         <div class="footer_details">
                             <div class="buyprice">
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataprice" name="quantity" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity" required></div>
                             </div>
                         </div>
-                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: 123,456,789.00</span></div>
+                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost:</span><span class="tlcost">123,456,789.00</span></div>
                             <div class="footer_details2">  
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_strategy" class="rnd">
+                                            <select name="inpt_data_strategy" class="inpt_data_strategy rnd">
                                                 <option value="" selected>Select Strategy</option>
                                                 <option value="Bottom Picking">Bottom Picking</option>
                                                 <option value="Breakout Play">Breakout Play</option>
@@ -82,7 +83,7 @@
                                             </select>
                                         </div>
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_tradeplan" class="rnd">
+                                            <select name="inpt_data_tradeplan" class="inpt_data_tradeplan rnd">
                                                 <option value="" selected>Select Trade Plan</option>
                                                 <option value="Day Trade">Day Trade</option>
                                                 <option value="Swing Trade">Swing Trade</option>
@@ -90,7 +91,7 @@
                                             </select>
                                         </div>
                                         <div class="groupinput selectstrategy">
-                                            <select name="inpt_data_emotion" class="rnd">
+                                            <select name="inpt_data_emotion" class="inpt_data_emotion rnd">
                                                 <option value="" selected>Select Emotion</option>
                                                 <option value="Neutral">Neutral</option>
                                                 <option value="Greedy">Greedy</option>
@@ -102,6 +103,7 @@
                                 <div class="tradenotes">
                                     <textarea class="darktheme tnotes" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
                                 </div>
+                                <input type="hidden" name="userid" class="userid" value="<?php echo $user->ID;?>">
                             </div>
                             <div class="groupinput" style="text-align: right;">
                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">

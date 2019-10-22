@@ -1,12 +1,13 @@
 $(document).ready(function(){
-
     $(window).load(function() {
+
+
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })
     $( ".bidaskbar_btn" ).click(function() {
       $( ".bidaskbar_opt" ).slideToggle("fast");
-    });
+    }); 
     $(".bidaskbar_opt ul li a").click(function(e){
         e.preventDefault();
         var dtype = $(this).attr('data-istype');
@@ -50,6 +51,17 @@ $(document).ready(function(){
         });
     }
 
+    jQuery(".ticker_enabler-dropdown").click(function(e){
+        event.stopPropagation();
+        var tickertog = jQuery(".arb_custom_ticker_wrapper #droppouts").hasClass("dropopen");
+
+        if (tickertog) {
+            jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
+        } else {
+            jQuery(".arb_custom_ticker_wrapper #droppouts").show().addClass("dropopen");
+            jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
+        }
+    });
     jQuery("ul.main-drops-chart").click(function(e){
         event.stopPropagation();
         var isopen = jQuery("ul.main-drops-chart > ul").hasClass("dropopen");
@@ -58,10 +70,12 @@ $(document).ready(function(){
             jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
         } else {
             jQuery("ul.main-drops-chart > ul").show().addClass("dropopen");
+            jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
         }
-
     });
     jQuery(document).on("click", function () {
+        // jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
+        jQuery(".ticker_enabler-dropdown").hide().removeClass("dropopen");
         jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
         jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
@@ -93,8 +107,6 @@ $(document).ready(function(){
     jQuery(".toclasscloserss").on('click', function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
-
-    $('#draggable_buysell').draggable({cancel:false});
 
     jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 
@@ -247,7 +259,6 @@ $(document).ready(function(){
 
         } 
     });
-
     $(".bbs_bear").click(function(e){
         e.preventDefault();
         if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {
@@ -357,14 +368,33 @@ $(document).ready(function(){
     });
 
     /* Start of WebTicker */
-    $('#webTicker').webTicker({
-        speed: 100,
-        height: "50px", 
+    /*$('#webTicker').webTicker({
+        speed:100,
+        height:"50px", 
         startEmpty:true,
         hoverpause:true, 
-        transition: "linear"
+        transition: "linear",
+    });*/ 
+
+    // $(function () {
+    //     $('.marquee').marquee({
+    //         speed:2000,
+    //         duplicated: true,
+    //         allowCss3Support: true
+    //     });
+    // });
+
+    jQuery('i#ticker_eye').click(function(){
+        var el = jQuery(this)[0].className;
+        if(el.includes('slash')===false){
+            //console.log('stop');
+          //  $("#webTicker").webTicker('stop');
+        }else{
+            //console.log('start');
+          //  $("#webTicker").webTicker('cont');
+        }
     });
-    
+
     // jQuery(document).on("mouseenter", "#webTicker", function() {
     //     // hover starts code here
     //     console.log('hovered');

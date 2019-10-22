@@ -1,6 +1,10 @@
 
 	<!-- ================== BEGIN BASE JS ================== -->
-    <script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script>
+	  $(window).bind("load", function () {
+		$('#draggable_buysell').draggable();
+		});
+	  </script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 	<!--[if lt IE 9]>
@@ -49,6 +53,7 @@
 		var _user_id 	= '<?php echo $user->ID; ?>'
 		var _symbol 	= dstockpath == 'chart' ? 'PSEI' : dstockpath;
 		var _post_id    = '<?php echo get_the_id(); ?>';
+		var _resolution = 'D';
 	</script>
 
 	<script src="/assets/js/angular/functions.js?v=1.220"></script>

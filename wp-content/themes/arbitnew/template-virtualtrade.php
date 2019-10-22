@@ -18,41 +18,17 @@ require("parts/global-header.php");
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
 
-<?php get_template_part('parts/sidebar', 'calc'); ?>
-<?php get_template_part('parts/sidebar', 'varcalc'); ?>
-<?php get_template_part('parts/sidebar', 'avarageprice'); ?>
+<?php //get_template_part('parts/sidebar', 'calc'); ?>
+<?php //get_template_part('parts/sidebar', 'varcalc'); ?>
+<?php //get_template_part('parts/sidebar', 'avarageprice'); ?>
 
 <!-- BOF Trade Logs Data from DB -->
 <?php
-
-    if (isset($_POST) && strtolower(@$_POST['deletedata']) == 'reset') {
-
-		
-        $dlistofstocks = get_user_meta($user->ID, '_trade_list', true);
-
-        // Delete Live Trade
-        foreach ($dlistofstocks as $delkey => $delvalue) {
-            update_user_meta($user->ID, '_trade_'.$delvalue, '');
-            delete_user_meta($user->ID, '_trade_n  '.$delvalue);
-
-            // $dsotcksss = get_user_meta($user->ID, '_trade_'.$delvalue, true);
-        }
-		delete_user_meta($user->ID, '_trade_list');
-		
-
-		update_user_meta($user->ID, 'issampleactivated', 'no');
-        // delete ledger
-		$wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
-		$deletelogs = 'delete from arby_tradelog where isuser ='.$user->ID;
-		$wpdb->query($deletelogs);
-        wp_redirect('/journal');
-        exit;
-    }
+	//global $wpdb;
+	//$sql = "select * from arby_vt_live where userid = ".$user->ID;
+   // $query = $wpdb->get_results($sql);
+   
 ?>
-<!-- Delete Data -->
-<!-- BOF Record a Trade -->
-	<?php require "journal/record-trade.php";?>
-<!-- EOF Record a Trade -->
 
 
 <div id="main-content" class="oncommonsidebar">
@@ -62,7 +38,8 @@ require("parts/global-header.php");
 				<div class="dashboard-sidebar-left">
 					<div class="dashboard-sidebar-left-inner">
 
-						<?php require("parts/global-sidebar.php"); ?>
+						<?php //require("parts/global-sidebar.php"); ?>
+						<?php require("virtual/virtual-sidebar.php"); ?>
 
 					</div>
 				</div>
@@ -90,8 +67,9 @@ require("parts/global-header.php");
                                             </div>
                                             <div class="box-portlet-content">
                                                 <div class="stats-info">
-                                                	<div id="live_portfolio" class="dstatstrade overridewidth">
-	                                                    <ul>
+                                                	<div id="live_portfolio" class="dstatstrade overridewidth">                     
+                                    	   
+	                                                 <ul>
 													        <li class="headerpart">
 													            <table width="100%">
 													                <thead><tr><td style="width: 7%;text-align: left !important;">Stocks</td>
@@ -106,46 +84,7 @@ require("parts/global-header.php");
 													                </tr></thead>
 													            </table>
 													        </li>
-													        <li>
-													            <table width="100%">
-													                <tbody><tr><td style="width: 7%;text-align: left !important;">PHEN</td>
-													                <td style="width:9%" class="table-title-live">2.78</td>
-													                <td style="width:9%" class="table-title-live">₱15,000</td>
-													                <td style="width: 12%;" class="table-title-live">₱2,213</td>
-													                <td style="width:15%" class="table-title-live">₱33,197.65</td>
-													                <td style="width:15%" class="table-title-live">₱41,029.47</td>
-													                <td style="width:10%" class="dgreenpart table-title-live">₱7,831.82</td>
-													                <td style="width:8%" class="dgreenpart table-title-live">23.59%</td>
-													                <td style="width:77px;text-align:center;">
-													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
-													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
-													                </td>
-													                <td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes="" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
-													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
-													                </tr></tbody>
-													            </table>
-													        </li>
-													        <li>
-													            <table width="100%">
-													                <tbody><tr><td style="width: 7%;text-align: left !important;">ISM</td>
-													                <td style="width:9%" class="table-title-live">4.80</td>
-													                <td style="width:9%" class="table-title-live">₱10,000</td>
-													                <td style="width: 12%;" class="table-title-live">₱4,975</td>
-													                <td style="width:15%" class="table-title-live">₱49,746.32</td>
-													                <td style="width:15%" class="table-title-live">₱48,858.76</td>
-													                <td style="width:10%" class="dredpart table-title-live">₱-887.56</td>
-													                <td style="width:8%" class="dredpart table-title-live">-1.78%</td>
-													                <td style="width:77px;text-align:center;">
-													                	<a class="smlbtn fancybox-inline green buymystocks" data-stockdetails="" data-boardlot="">BUY</a>
-													                	<a class="smlbtn fancybox-inline red sellmystocks" data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>
-													                </td>
-													                <td style="width:27px; text-align:center"><a data-emotion="" data-toggle="modal" data-target="#livetradenotes" data-strategy="" data-tradeplan="" data-tradingnotes=""data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>
-													                <td style="width:25px"><a data-stock="" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>
-													                </tr></tbody>
-													            </table>
-													        </li>
-
-
+													       
 													    </ul>
 
 																 <div class="modal fade" id="livetradenotes" role="dialog">
@@ -213,26 +152,10 @@ require("parts/global-header.php");
 									                                    <div style="width:65px; text-align:center">Action</div>
 									                                </div>
 									                            </li>
-									                            <li>
-									                            	<div style="width:100%;">
-									                                    <div style="width:45px">2GO</div>                                                                                	
-									                                    <div style="width:65px">2019-02-23</div>
-									                                    <div style="width:55px" class="table-title-live">2</div>
-									                                    <div style="width:65px" class="table-title-live">₱24.87</div>
-									                                    <div style="width:95px" class="table-title-live">₱24.87</div>
-									                                    <div style="width:65px" class="table-title-live">₱10.00</div>
-									                                    <div style="width:88px" class="table-title-live">₱91.89</div>
-									                                    <div style="width:80px" class="table-title-live">₱22.55</div>
-									                                    <div style="width:65px" class="table-title-live">32.52%</div>
-									                                    <div style="width:65px; text-align:center">
-									                                    	<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>
-									                                    	<div style="width:25px"><a class="deletelog smlbtn-delete" data-istl="" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>
-
-									                                    </div>
-									                                </div>
-									                            	
-									                            </li>
 									                        </ul>
+									                        <div class="totalpl" style="font-size: 13px;">
+														            <p>Total Profit/Loss as of <?php echo date('F j, Y'); ?>: <span class="totalplscore"></span></p>
+														    </div>
 									                    </div>
 									                    <div class="deleteform">
 									                        <form class="deleteformitem" action="" method="post">
@@ -262,3 +185,4 @@ require("parts/global-header.php");
 <?php
 get_template_part('parts/sidebar', 'alert');
 require "virtual/footer-files.php";
+

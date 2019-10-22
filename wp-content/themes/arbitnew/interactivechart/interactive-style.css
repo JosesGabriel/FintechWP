@@ -76,13 +76,12 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     width:100%;
 }
 .arb_right_icons_trans {
-    position: absolute;
-    width: 275px;
-    right: -54px;
-    top: 2px;
-    padding-left: 110px;
-    background: linear-gradient(to right, #2c3e5000 26%, #34495e 43%);
+    background: linear-gradient(to right, #2c3e5000 10%, #34495e 43%);
     z-index: 9;
+    position: absolute;
+    right: 0;
+    padding-right: 4px;
+    padding-top: 5px;
 }
 .arb-side-icon i {
     border: none;
@@ -583,13 +582,6 @@ span.datestamp_header {
     overflow:hidden; 
 }
 .arb_custom_ticker li {text-align:right;}
-.arb_custom_ticker_wrapper {
-    height:40px;
-    position: relative;
-    overflow: hidden; 
-    background-color:#2c3e50; 
-    text-align:left;
-}
 .bullbearsents_voted,
 .bullbearsents {
     text-align:center;
@@ -880,6 +872,38 @@ tr.ng-scope:active {
     border-right: 5px solid #34495e !important;
     /*transition: all 0.5s ease !important;*/
 }
+ul.ticker_enabler-dropdown {
+    display: inline-block !important;
+    top: 3px;
+    position: absolute;
+    right: 113px;
+    z-index: 999999;
+}
+.arb_custom_ticker_wrapper #droppouts:before {
+    /* right: -12px;
+    top: 5px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    margin-left: -36px;
+    border-left-color: #142c46;
+    border-width: 6px; */
+}
+.arb_custom_ticker_wrapper #droppouts {
+    font-size: 13px;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    right: 0;
+    width: 268px;
+    background: #142c46;
+    border-radius: 4px;
+    list-style: none;
+    margin: 0 auto 0;
+}
 ul.main-drops-chart > ul:before {
     bottom: 100% !important;
     right: 2% !important;
@@ -894,22 +918,22 @@ ul.main-drops-chart > ul:before {
     border-width: 9px !important;
 }
 ul.main-drops-chart > ul {
-    font-size: 13px !important;
-    position: absolute !important;
-    right: 139px !important;
-    top: 37px !important;
-    background: #142c46 !important;
-    min-width: 180px !important;
-    text-align: left !important;
-    border: none !important;
-    border-radius: 4px !important;
-    list-style: none !important;
-    padding: 0 !important;
+    font-size: 13px;
+    position: absolute;
+    right: -6px;
+    top: 37px;
+    background: #142c46;
+    min-width: 180px;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    list-style: none;
+    padding: 0;
 }
 ul.main-drops-chart {
     display: inline-block !important;
-    width: 12% !important;
-    padding-left: 0 !important;
+    position: relative;
+    top: -3px;
 }
 ul.main-drops-chart > ul li a {
     color: #fff !important;
@@ -1250,14 +1274,10 @@ a.arb-btm-icon span {
 }
 a.arb-side-icon {
 	text-align: center;
-	width: 13%;
-	font-size: 20px;
-	color: #ffffff;
-	padding: 4px 0 0;
-	display: inline-block;
-}
-a.arb-side-icon:nth-child(3) img {
-    margin-top: 8px !important;
+    font-size: 20px;
+    color: #ffffff;
+    display: inline-block;
+    margin: 0 1px;
 }
 a.arb-side-icon span {
 	text-align: center;
@@ -1301,11 +1321,11 @@ small.arb_markcap {
 	border-right: 0 !important;
 	border-left: 4px solid #34495e !important;
 }
-svg {
+/* svg {
 	border: 2px solid white;
 	border-radius: 20px;
 	background: black;
-}
+} */
 .arb_buysell {
 	background-color: rgba(215, 215, 215, .15);
 	position: absolute;
@@ -1322,9 +1342,10 @@ svg {
 	background: transparent;
 	border: 0px;
 	position: absolute;
-	left: 5px;
-	bottom: 6px;
-	outline: none;
+	left: 12px;
+	bottom: 8px;
+    outline: none;
+    cursor: pointer;
 }
 .fa-arrow-up {
 	color: #25ae5f;
@@ -1333,16 +1354,168 @@ svg {
 	color: #e64c3c;
 }
 .ticker-enabler {
-    position: absolute;
+    /* position: absolute;
     z-index: 10;
     top: -4px;
     transform: scale(0.8);
     left: 45px;
     display: inline-grid;
+    width: 56px; */
 }
 .arb_custom_ticker {
     left: 75px;
+    text-align: right;
 }
 .ticker-enabler i {
     color: orange;
 }
+/* -------------------Ticker-Settings-modal------------------- */
+.hidden_this-marquee {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 100%;
+}
+.ticker_container-toggle {
+    display: block;
+}
+.view_ticker-toggle,
+.sound_ticker-toggle,
+.allstock_ticker-toggle,
+.sectorial_ticker-toggle,
+.watchlist_ticker-toggle,
+.cheetah_ticker-toggle,
+.rabbit_ticker-toggle,
+.turtle_ticker-toggle {
+    color: #d8d8d8;
+    float: left;
+    font-size: 12px;
+    font-weight: 500;
+}
+span.data_ticker-toggle,
+span.speed_ticker-toggle {
+    display: block;
+    text-align: left;
+    position: absolute;
+    left: 12px;
+    margin-top: 4px;
+    color: #d1d2d3;
+}
+.data_ticker_main-toggle,
+.speed_ticker_main-toggle,
+.ticker_main-toggle.sound {
+    margin: 5px 0;
+}
+.data_ticker_main-toggle:first-child,
+.speed_ticker_main-toggle:first-child{
+    margin: 0 0 5px;
+}
+.data_checkboxes, .speed_checkboxes {
+    background: #1e3554;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+.ticker_main-toggle.sound {
+    background: #1e3554;
+    padding: 4px 6px;
+    border-radius: 2px;
+}
+.ticker_content-toggle {
+    text-align: right;
+    width: 83%;
+    margin: 0 0 0 auto;
+    padding: 3px 7px;
+}
+hr.style14 {
+    position: relative;
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #1e3554;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5px !important;
+    display: flex;
+}
+span.ticker_enabler-title {
+    color: #fff;
+    font-size: 15px;
+    display: block;
+    padding: 10px 10px 2px;
+}
+span.ticker_enabler-text {
+    display: inline-block;
+}
+.ticker_enabler-title .ticker_main-toggle {
+    display: inline-block;
+    float: right;
+    margin-top: 2px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 31px;
+    height: 17px;
+    margin: 0;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4d6176;
+    -webkit-transition: .4s;
+    transition: .4s;
+    font-size: 10px;
+    color: #fff;
+    padding-left: 1px;
+    padding-top: 1px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  /* .slider:after {
+    content: "on";
+    left: 2px;
+    position: absolute;
+} */
+  input:checked + .slider {
+    background-color: #e67f26;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(14px);
+    -ms-transform: translateX(14px);
+    transform: translateX(14px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

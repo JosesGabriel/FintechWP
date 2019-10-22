@@ -88,6 +88,9 @@
 					}
 					if(isStockTagged) {
 						jQuery('.authorSentiment__inputWrapper').show();
+						stockTagged = stockTagged.toUpperCase();
+						stockTagged = stockTagged.replace(/[^0-9a-z]/gi, '');
+						stockTagged = '$' + stockTagged;
 						jQuery('#taggedStock').val(stockTagged);
 						// jQuery(".um-activity-new-post .um-activity-textarea").append('<div class="sentiment_cont">hatdog</div>');
 					} else {

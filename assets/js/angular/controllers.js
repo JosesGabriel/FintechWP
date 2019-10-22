@@ -15,88 +15,135 @@ app.run(['$rootScope', '$http', function($rootScope, $http) {
         })
 }]);
 
-app.controller('ticker', ['$scope', '$rootScope', '$interval', function($scope, $rootScope, $interval) {
+// app.controller('dev-ticker', ['$scope', function($scope) {
     
-    $scope.enable = true;
-    $scope.isTickerFull = false;
-    $scope.ticker_intervalId;
+//     $scope.enable = true;
+//     $scope.ticker = [];
+    
+//     $scope.tickerEnabler = function (){
+//         $scope.enable = !$scope.enable;
+//     }
+
+//     socket.on('dev-psec', function (data) {  
+    
+//             var transaction = {
+//                 symbol: data.sym,
+//                 price:  price_format(data.prv),
+//                 change: data.chg,
+//                 shares: abbr_format(data.vol)
+//             }
+
+//             $scope.ticker.push(transaction);
+
+//             console.log($scope.ticker);
+//             console.log($scope.ticker.length);
+
+//             if ($scope.ticker.length > 50) {
+//                 $scope.ticker.shift();
+//             }
+
+//     });   
+      
+// }]);
+
+app.controller('ticker', ['$scope', '$interval', function($scope, $interval) {
+    
+    // $scope.ticker_intervalId;
+    $scope.enable = false;
+    // $scope.isTickerFull = false;
     $scope.ticker = [];
-    $scope.data = [];
+    // $scope.data = [];
+    // $scope.counter = 0;
+    // $scope.width = 0;
     
     $scope.tickerEnabler = function (){
         $scope.enable = !$scope.enable;
-        if($scope.enable) {
-            $scope.tickerStart();
-        } else {
-            $scope.tickerStop();
-        }
+    //     if($scope.enable) {
+    //      //   $scope.tickerStart();
+    //     } else {
+    //       //  $scope.tickerStop();
+    //     }
     }
 
-    $scope.tickerStart = function() {
-        jQuery('#webTicker').mouseover();
-        jQuery('#webTicker').mouseleave();
-        if ($scope.ticker_intervalId) {
-            $interval.cancel($scope.ticker_intervalId);
-        }
-        $scope.ticker_intervalId = $interval(function(){
-            jQuery('#webTicker').mouseover();
-            jQuery('#webTicker').mouseleave();
-        }, 1000,10);
-    };
+    // $scope.tickerStart = function() {
+    //     jQuery('#webTicker').mouseover();
+    //     jQuery('#webTicker').mouseleave();
+    //     if ($scope.ticker_intervalId) {
+    //         $interval.cancel($scope.ticker_intervalId);
+    //     }
+    //     $scope.ticker_intervalId = $interval(function(){
+    //         jQuery('#webTicker').mouseover();
+    //         jQuery('#webTicker').mouseleave();
+    //     }, 1000,10);
+    // };
 
-    $scope.tickerStop = function() {
-        $interval.cancel($scope.ticker_intervalId);
-    }; 
+    // $scope.tickerStop = function() {
+    //     $interval.cancel($scope.ticker_intervalId);
+    // }; 
 
-    //region test
-    var rawdate = [
-        {"sym":"A","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
-       // {"sym":"WEB","ex":"PSE","prv":3.28,"o":3.35,"c":3.35,"chg":-0.07,"chgpc":-2.0895522,"l":3.27,"h":3.37,"avg":3.2950897,"vol":837000,"val":2757990,"tr":125,"t":1568705214},
-    ]
+    // // cheat to keep ticker plugin start moving
+    // var rawdate = [{"sym":"","prv":0,"chg":0,"vol":0 }]
+    // for(i in rawdate){
+    //     var transaction = {
+    //         symbol: rawdate[i].sym,
+    //         price:  price_format(rawdate[i].prv),
+    //         change: rawdate[i].chg,
+    //         shares: abbr_format(rawdate[i].vol),
+    //         counter: 0
+    //     };
+    //     $scope.ticker.push(transaction);
+    // }
+    // $interval(function() {
+    //         $scope.ticker.shift(); 
+    // }, 500, parseInt(rawdate.length));
+    // // end 
 
-    for(i in rawdate){
-        var transaction = {
-            symbol: rawdate[i].sym,
-            price:  price_format(rawdate[i].prv),
-            change: rawdate[i].chg,
-            shares: abbr_format(rawdate[i].vol)
-        };
-        $scope.ticker.push(transaction);
-    }
-    
-    //endregion test
- 
-    $interval(function() {
-        if ($scope.data.length > 0) {
-            //add first data item to ticker array
-            $scope.ticker.push($scope.data[0]);
-            $scope.data.shift();
-        }
-        if($scope.ticker.length>0){
-            $scope.ticker.shift();
-        }
-    }, 6000);
-    
+    // // $interval(function() {  
+    // //     let width = $scope.width+=5;
+    // //     jQuery('#webTicker').animate({left: width + 'px'});
+    // //     console.log(width);
+    // // },100)
+
+    // if($scope.enable){
+    //     $interval(function() {  
+    //         if ($scope.data.length && $scope.isTickerFull == true) {
+    //             $scope.ticker.push($scope.data[0]);
+    //             $scope.data.shift();
+    //             $scope.ticker.shift();
+    //         }
+    //     }, 1000);
+    // }
+
     socket.on('psec', function (data) {  
-        if ($scope.enable) {
+        if($scope.enable){
             var transaction = {
                 symbol: data.sym,
                 price:  price_format(data.prv),
                 change: data.chg,
-                shares: abbr_format(data.vol)
+                shares: abbr_format(data.vol),
+                // counter: $scope.counter++
             }
 
-            if ($scope.ticker.length <= 30 && $scope.isTickerFull == false) {
-                $scope.ticker.push(transaction);
-            } else {
-                if($scope.data.length>100){
-                    $scope.data = [];
-                }
-                $scope.isTickerFull = true
-                $scope.data.push(transaction);
-            } 
+            // if ($scope.ticker.length <= 30 && $scope.isTickerFull == false) {
+            //     $scope.ticker.push(transaction);
+            // } else {
+            //     if($scope.data.length>500){
+            //         $scope.data = [];
+            //     }
+            //     $scope.isTickerFull = true
+            //     $scope.data.push(transaction);
+            // } 
+            if ($scope.ticker.length > 30) {
+                $scope.ticker.shift();
+            }
+            $scope.ticker.push(transaction);
         }
-    });   
+        
+        // $scope.$apply();
+
+    }); 
+    
+    
       
 }]);
 
@@ -321,29 +368,29 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         stocks.map(function(stock) {
             stock['lastupdatetime'] = moment(stock['lastupdatetime']);
             stock['last']       = parseFloat(stock['last']);
-            stock['difference'] = parseFloat(stock['difference']);
-            stock['change']     = parseFloat(stock['change']);
+            // stock['difference'] = parseFloat(stock['difference']);
+            // stock['change']     = parseFloat(stock['change']);
             stock['change_percentage'] = parseFloat(stock['changepercentage']);
-            stock['previous']   = parseFloat(stock['close']);
+            // stock['previous']   = parseFloat(stock['close']);
             stock['open']       = parseFloat(stock['open']);
             stock['high']       = parseFloat(stock['high']);
             stock['low']        = parseFloat(stock['low']);
-            stock['average']    = parseFloat(stock['average']);
-            stock['volume']     = parseFloat(stock['volume']);
+            // stock['average']    = parseFloat(stock['average']);
+            // stock['volume']     = parseFloat(stock['volume']);
             stock['value']      = parseFloat(stock['value']);
             stock['trades']     = parseFloat(stock['trades']);
             stock['displayLast']  = price_format(stock['last']);
-            stock['displayDifference']  = price_format(stock['change']);
-            stock['displayOpen']  = price_format(stock['open']);
-            stock['displayPrevious']  = price_format(stock['close']);
-            stock['displayAverage']  = price_format(stock['average']);
-            stock['displayLow']  = price_format(stock['low']);
-            stock['displayHigh']  = price_format(stock['high']);
+            // stock['displayDifference']  = price_format(stock['change']);
+            // stock['displayOpen']  = price_format(stock['open']);
+            // stock['displayPrevious']  = price_format(stock['close']);
+            // stock['displayAverage']  = price_format(stock['average']);
+            // stock['displayLow']  = price_format(stock['low']);
+            // stock['displayHigh']  = price_format(stock['high']);
             stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
             stock['displayValue'] = abbr_format(stock['value']).toUpperCase();
-            stock['weekYearLow'] = price_format(stock['weekyearlow']);
-            stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
-            stock['displayMarketCap'] = abbr_format(stock.marketcap).toUpperCase();
+            // stock['weekYearLow'] = price_format(stock['weekyearlow']);
+            // stock['weekYearHigh'] = price_format(stock['weekyearhigh']);
+            // stock['displayMarketCap'] = abbr_format(stock.marketcap).toUpperCase();
             return stock;
         });
 
@@ -418,6 +465,21 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     }
     $scope.getStockTrades(_symbol);
 
+    $scope.updateTabTitle = function (symbol, data) {
+        if (data.change > 0){
+            if ($rootScope.tickerBeep) beep();
+            changicotogreen();
+        }
+        if (data.change < 0){
+            if ($rootScope.tickerBeep) beep();
+            changicotored();
+        }
+        if (data.change = 0){
+            changicotounchanged();
+        }
+        setTitle(symbol, data.displayLast, data.displayChange);
+    }
+
     socket.on('psec', function (data) {
         let full_date = (moment(data.t * 1000)).format('ll')
         let stock = {
@@ -425,27 +487,27 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             symbol: data.sym,
             date: full_date,
             last: data.prv,
-            difference: data.chgpc,
-            change: data.chg,
+            // difference: data.chgpc,
+            // change: data.chg,
             change_percentage: data.chgpc,
-            previous: data.c,
-            open: data.o,
-            high: data.h,
-            low: data.l,
-            average: data.avg,
-            volume: data.vol,
+            // previous: data.c,
+            // open: data.o,
+            // high: data.h,
+            // low: data.l,
+            // average: data.avg,
+            // volume: data.vol,
             value: data.val,
             trades: data.tr,
             updated_at: full_date,
 
-            displayLast: price_format(data.prv),
-            displayDifference: price_format(data.chg, data.prv),
-            displayOpen: price_format(data.o),
-            displayPrevious: price_format(data.c),
-            displayAverage: price_format(data.avg),
-            displayLow: price_format(data.l),
-            displayHigh: price_format(data.h),
-            displayChange: number_format(data.chgpc, '0,0.00'),
+            // displayLast: price_format(data.prv),
+            // displayDifference: price_format(data.chg, data.prv),
+            // displayOpen: price_format(data.o),
+            // displayPrevious: price_format(data.c),
+            // displayAverage: price_format(data.avg),
+            // displayLow: price_format(data.l),
+            // displayHigh: price_format(data.h),
+            // displayChange: number_format(data.chgpc, '0,0.00'),
             displayValue: abbr_format(data.val),
         }
 
@@ -458,26 +520,36 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         } else $scope.stocks.push(stock);
 
         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
-            // if ($scope.$parent.settings.chart == '1') {
-                if (stock.change > 0){
-                    if ($rootScope.tickerBeep) beep();
-                    changicotogreen();
-                }
-				if (stock.change < 0){
-                    if ($rootScope.tickerBeep) beep();
-                    changicotored();
-                }
-				if (stock.change = 0){changicotounchanged();}
-            // }
-            setTitle(stock.symbol, stock.displayLast, stock.displayChange);
+            stock = Object.assign(stock, {
+                difference: data.chgpc,
+                change: data.chg,
+                previous: data.c,
+                open: data.o,
+                high: data.h,
+                low: data.l,
+                average: data.avg,
+                volume: data.vol,
+                // displayDifference: price_format(data.chg, data.prv),
+                // displayOpen: price_format(data.o),
+                // displayPrevious: price_format(data.c),
+                // displayAverage: price_format(data.avg),
+                // displayLow: price_format(data.l),
+                // displayHigh: price_format(data.h),
+            })
 
+            $scope.updateTabTitle(stock.symbol, {
+                change: stock.change,
+                displayChange: number_format(stock.change_percentage, '0,0.00'),
+                displayLast: price_format(stock.last),
+            })
+            
             if (current_stock_index) {
-                $rootScope.$emit('updateStockData', $scope.stocks[current_stock_index]);
                 $scope.stock = $scope.stocks[current_stock_index];
             } else {
-                $rootScope.$emit('updateStockData', stock);
                 $scope.stock = stock;
             }
+
+            $rootScope.$emit('updateStockData', stock);
         }
         
         $scope.count = $scope.stocks.reduce( function(a, b) {
@@ -669,7 +741,9 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
 	setInterval(updateMarketDepth, 30000);
 }]);
 app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+    $scope.hasData = false;
     $scope.stock = null;
+    $scope.stockInfo = null;
 
     $rootScope.$on('changeStockSymbol', function (event, symbol) {
         $scope.getStockData(symbol);
@@ -684,11 +758,10 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
             .then(response => {
                 let data = response.data;
                 if (data.success) {
+                    $scope.hasData = true;
                     let stock = data.data;
-
+                    $scope.updateStockInfo(stock);
                     $scope.stock = {
-                        symbol: stock.symbol.toUpperCase(),
-                        description: stock.description.toUpperCase(),
                         lastupdatetime: moment(stock.lastupdatetime),
                         last: parseFloat(stock.last),
                         difference: parseFloat(stock.difference),
@@ -702,31 +775,48 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
                         volume: parseFloat(stock.volume),
                         value: parseFloat(stock.value),
                         trades: parseFloat(stock.trades),
-                        displayLast: price_format(stock.last),
-                        displayDifference: price_format(stock.change),
-                        displayOpen: price_format(stock.open),
-                        displayPrevious: price_format(stock.close),
-                        displayAverage: price_format(stock.average),
-                        displayLow: price_format(stock.low),
-                        displayHigh: price_format(stock.high),
-                        displayChange: number_format(stock.changepercentage, '0,0.00'),
+                        // displayLast: price_format(stock.last),
+                        // displayDifference: price_format(stock.change),
+                        // displayOpen: price_format(stock.open),
+                        // displayPrevious: price_format(stock.close),
+                        // displayAverage: price_format(stock.average),
+                        // displayLow: price_format(stock.low),
+                        // displayHigh: price_format(stock.high),
+                        // displayChange: number_format(stock.changepercentage, '0,0.00'),
                         displayValue: abbr_format(stock.value).toUpperCase(),
-                        weekYearLow: price_format(stock.weekyearlow),
-                        weekYearHigh: price_format(stock.weekyearhigh),
+                        // weekYearLow: price_format(stock.weekyearlow),
+                        weekYearLow: parseFloat(stock.weekyearlow),
+                        // weekYearHigh: price_format(stock.weekyearhigh),
+                        weekYearHigh: parseFloat(stock.weekyearhigh),
                         displayMarketCap: abbr_format(stock.marketcap).toUpperCase(),
                     }
                 } else {
                     $scope.stock = null;
+                    $scope.hasData = false;
                 }
             })
             .catch(response => {
                 $scope.stock = null;
+                $scope.hasData = false;
             });
     }
 
     $scope.updateStockData = function (data) {
-        $scope.stock = data;
+        if ($scope.stock && data.symbol == $scope.stockInfo.symbol) {
+            $scope.stock = Object.assign($scope.stock, data);
+        } else {
+            $scope.stock = data;
+        }
     };
+
+    $scope.updateStockInfo = function (data) {
+        if (data) {
+            $scope.stockInfo = {
+                symbol: data.symbol.toUpperCase(),
+                description: data.description.toUpperCase(),
+            }
+        }
+    }
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {

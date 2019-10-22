@@ -22,9 +22,17 @@
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 
-    <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-    
+    <!-- <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>hea
+	<!-- <script>
+	$( function() {
+		$('#draggable_buysell').draggable();
+		$('#draggable_buysell').addClass('ui-draggable');
+	} );
+	</script> -->
     <!-- <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script> -->
@@ -32,6 +40,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
 	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/virtual/virtualtrade.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/interactivechart/interactive-style.css?<?php echo time(); ?>">
     
     
@@ -67,11 +76,9 @@
 		}
 		.arb_custom_ticker li {text-align:right;}
 		.arb_custom_ticker_wrapper {
-			height:40px;
-			position: relative;
-			overflow: hidden; 
-			background-color:#2c3e50; 
-			text-align:left;
+			height: 40px;
+			background-color: #2c3e50;
+			text-align: left;
 		}
         .text-white {color: #bdc3c7 !important;}
         div.tickercontainer{

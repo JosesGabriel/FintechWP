@@ -21,8 +21,9 @@ function um_notification_show_feed() {
 		$template = 'notifications';
 	}
 
-	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 10, 'unread', true );
-	$unread_count = ( absint( $unread ) > 9 ) ? '+9' : $unread;
+	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 0, 'unread', true );
+	
+	$unread_count = ( absint( $unread ) > 9 ) ? '9+' : $unread;
 
 	$file = str_replace( '/', DIRECTORY_SEPARATOR, um_notifications_path . "templates/{$template}.php" );
 	$theme_file = str_replace( '/', DIRECTORY_SEPARATOR, get_stylesheet_directory() . "/ultimate-member/templates/notifications/{$template}.php" );

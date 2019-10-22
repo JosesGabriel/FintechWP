@@ -1,8 +1,10 @@
 
 	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-    <script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script>
+	  $(window).bind("load", function () {
+		$('#draggable_buysell').draggable();
+		});
+	  </script>
 	<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<!--[if lt IE 9]>
 		<script src="/assets/crossbrowserjs/html5shiv.js"></script>

@@ -2,6 +2,12 @@ $(document).ready(function(){
 
 	livedata();
 	tradelogs();
+	performance();
+
+	setInterval(function(){
+   		livedata();
+  	}, 5000);
+
 
 	$.ajax({
 	    type:'GET',
@@ -25,8 +31,7 @@ $(document).ready(function(){
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
-		    success: function(response) {
-		    		console.log(response);	    	
+		    success: function(response) {   	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		
@@ -81,16 +86,18 @@ $(document).ready(function(){
 			    		var data_tradelogs = '';
 			    		var profit = parseFloat(response.data[i].profit).toFixed(2);
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
+			    		var buyvalue = response.data[i].averageprice * response.data[i].volume;
+
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
 	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
 	                    data_tradelogs += '<div style="width:65px">'+response.data[i].buydate+'</div>';
 	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
-	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+response.data[i].averageprice+'</div>';
-	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱</div>';
-	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
-	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱</div>';
-	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profit+'</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+response.data[i].averageprice+'</div>';
+	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱'+(buyvalue).toFixed(2)+'</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
+	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱'+(response.data[i].sellvalue).toFixed(2)+'</div>';
+	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
 	                    data_tradelogs += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>';
@@ -100,10 +107,41 @@ $(document).ready(function(){
 	                    data_tradelogs += '</li>';
 	                    $(".showtradelogs > ul").append(data_tradelogs);
 		    		});	
+
+		    		if(response.totalprofit < 0){
+		    			$('.totalplscore').addClass('dredpart');
+		    		}else{
+		    			$('.totalplscore').addClass('dgreenpart');
+		    		}
+
+		    		$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
 		    },
 		    error: function(response) {                 
 		    } 
 		});
+	}
+
+
+	function performance(){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/performance?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	//console.log(response); 	
+		    	$('.vcapital').text('₱' + addcomma(response.data.capital));
+		    	$('.realized').text('₱' + addcomma(response.data.realized));
+		    	$('.unrealized').text('₱' + addcomma(response.data.unrealize));
+		    	$('.total_equity').text('₱' + addcomma(response.data.equity));
+		    	$('.vperformance').text('%' + addcomma(response.data.percentage));
+		    	$('.available_funds').text('₱' + addcomma(response.data.buypower));
+		    	$('.av_funds').text('₱' + addcomma(response.data.buypower));
+		    },
+		    error: function(response) {                 
+		    }
+		});
+
 	}
 
 
@@ -143,12 +181,30 @@ $(document).ready(function(){
 		var sdata = $(this).val();
 		var btn = $('.btnValue').val();
 		var userid = $('.userid').val();
+
 		if(btn == 'buy'){
 				$.ajax({
 				    type:'GET',
 				    url:'/wp-json/virtual-api/v1/dstock?stock='+sdata,
 				    dataType: 'json',
 				    success: function(response) {
+
+				    	/*var dboard = 0;
+				        if (response.data.last >= 0.0001 && response.data.last <= 0.0099) {
+				            dboard = '1,000,000';
+				        } else if (response.data.last >= 0.01 && response.data.last <= 0.049) {
+				            dboard = '100,000';
+				        } else if (response.data.last >= 0.05 && response.data.last <= 0.495) {
+				            dboard = '10,000';
+				        } else if (response.data.last >= 0.5 && response.data.last <= 4.99) {
+				            dboard = '1,000';
+				        } else if (response.data.last >= 5 && response.data.last <= 49.95) {
+				            dboard = 100;
+				        } else if (response.data.last >= 50 && response.data.last <= 999.5) {
+				            dboard = 10;
+				        } else if (response.data.last >= 1000) {
+				            dboard = 5;
+				        }*/ 
 
 					    			$('.sdesc').text(response.data.description);
 					    			$('.cprice').text((response.data.last).toFixed(2));
@@ -243,6 +299,37 @@ $(document).ready(function(){
 	     return num;
 	}
 
+	function addcomma(n, sep, decimals) {
+	    sep = sep || "."; // Default to period as decimal separator
+	    decimals = decimals || 2; // Default to 2 decimals
+
+	    return n.toLocaleString().split(sep)[0]
+	        + sep
+	        + n.toFixed(2).split(sep)[1];
+	}
+
+	function thetradefees(totalfees, istype){
+        // Commissions
+        let dpartcommission = totalfees * 0.0025;
+        let dcommission = (dpartcommission > 20 ? dpartcommission : 20);
+        // TAX
+        let dtax = dcommission * 0.12;
+        // Transfer Fee
+        let dtransferfee = totalfees * 0.00005;
+        // SCCP
+        let dsccp = totalfees * 0.0001;
+        let dsell = totalfees * 0.006;
+        let dall;
+        if (istype == 'buy') {
+            dall = dcommission + dtax + dtransferfee + dsccp;
+        } else {
+            dall = dcommission + dtax + dtransferfee + dsccp + dsell;
+        }
+
+        return dall;
+    }
+
+
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
 		$('.btnValue').val('buy');
@@ -259,6 +346,7 @@ $(document).ready(function(){
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Sell Order:');
+		$('.labelprice').text('Sell Price');
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
@@ -280,6 +368,28 @@ $(document).ready(function(){
 		$('.addoutcome').text(outcome);
 		$('.addnotes').text(notes);
 	});
+
+	jQuery(document).on('keyup', '.inputquantity', function(){
+		var price = $('.inputbuyprice').val().replace(/,/g, '');
+        var quantity = $(this).val().replace(/,/g, '');
+        var total_price = parseFloat(price) * Math.trunc(quantity);
+        total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
+
+        var finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+        var decnumbs = finaltotal;
+        var avfunds = jQuery('.av_funds').text().replace(/,/g, '');
+        var buypower = avfunds.replace(/₱/g, '');
+        
+        if(parseFloat(decnumbs) > parseFloat(buypower)){
+            swal("Not Enough Buy Power");
+            jQuery(this).val(quantity.slice(0,-1));
+            return false;
+        } else {
+            jQuery('.tlcost').text('₱'+addcomma(decnumbs));       
+        }
+
+	});
+
 
 	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 
@@ -419,6 +529,7 @@ $(document).ready(function(){
 					console.log('success');
 					$('#enter_trade').modal('toggle'); 
 					livedata();
+					performance();
 			    },
 			    error: function(response){                 
 			      }
@@ -447,6 +558,7 @@ $(document).ready(function(){
 					$('#enter_trade').modal('toggle'); 
 					livedata();
 					tradelogs();
+					performance();
 			    },
 			    error: function(response){                 
 			      }

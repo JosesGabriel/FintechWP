@@ -153,6 +153,9 @@ require("parts/global-header.php");
 									                                </div>
 									                            </li>
 									                        </ul>
+									                        <div class="totalpl" style="font-size: 13px;padding-top: 12px;">
+														            <p>Total Profit/Loss as of <?php echo date('F j, Y'); ?>: <span class="totalplscore"></span></p>
+														    </div>
 									                    </div>
 									                    <div class="deleteform">
 									                        <form class="deleteformitem" action="" method="post">

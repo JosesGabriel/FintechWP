@@ -379,7 +379,7 @@ $(document).ready(function(){
         var decnumbs = finaltotal;
         var buypower = jQuery('.av_funds').text().replace(/,/g, '');
 
-        console.log(decnumbs);
+        console.log(buypower+ ' - '+decnumbs);
 
         if(parseFloat(decnumbs) > parseFloat(buypower)){
             swal("Not Enough Buy Power");

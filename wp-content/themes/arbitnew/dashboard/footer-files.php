@@ -41,16 +41,14 @@
                                     if(svalue.chartdata.c[ckey] > ischange){
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'up';
-                                        console.log(svalue.chartdata.c[ckey])
                                     } else if(svalue.chartdata.c[ckey] == ischange) {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'equal';
-                                        console.log(svalue.chartdata.c[ckey])
                                     } else {
                                         ischange = svalue.chartdata.c[ckey];
                                         changetext = 'down';
-                                        console.log(svalue.chartdata.c[ckey])
                                     }
+                                    console.log(svalue)
                                     let addslog = (parseFloat(ischange)).toFixed(2);
                                     candles.push({"category": ckey,"column-1": addslog});
                                 });

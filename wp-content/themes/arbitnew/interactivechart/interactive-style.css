@@ -74,6 +74,7 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     left:0;
     z-index:9;
     width:100%;
+    margin-top: -3px;
 }
 .arb_right_icons_trans {
     background: linear-gradient(to right, #2c3e5000 10%, #34495e 43%);

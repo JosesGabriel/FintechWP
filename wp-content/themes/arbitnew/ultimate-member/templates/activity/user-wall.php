@@ -568,7 +568,7 @@ foreach ( $wallposts->posts as $post ) {
 		<div class="taggedStock__wrapper">
 			<input type="hidden" value="<?php $tagged_stock = get_post_meta( $post->ID, '_stock_tagged', TRUE ); echo($tagged_stock);?>">
 			<span class="taggedStock__totalChange" id="stockTotalChange-<?php echo $post->ID ?>"></span>
-			<?php echo $tagged_stock ? '<span class="taggedStock__anchor"><a onclick="checkCurrentPrice('. "'" . $tagged_stock . "','". $post->ID. "'". ')">See Stock Details</a></span>' : '' ?>
+			<?php echo $tagged_stock ? '<span class="taggedStock__anchor"><a class="um-link" onclick="checkCurrentPrice('. "'" . $tagged_stock . "','". $post->ID. "'". ')">See Stock Details</a></span>' : '' ?>
 		</div>
 		<div class="um-activity-foot status" id="wallcomments-<?php echo $post->ID; ?>">
 

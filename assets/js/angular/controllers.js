@@ -595,6 +595,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
      *  au => update price
      *  d => delete
      *  u => update new order
+     *  fd => fully executed delete order (subtract count and volume)
+     *  pd => partially executed delete order (subtract volume)
      */
      socket.on('psebd', function (data) {
         if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
@@ -638,6 +640,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                 });
             }
             list.push($scope.addToBidAskList(data.idn, data));
+        } else if (data.ty = 'fd') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, 0);
+
+            list = $scope.updateBidAskVolume(list, index, (-1 * data.vol));
+        } else if (data.ty = 'pd') {
+            list = $scope.updateBidAskVolume(list, index, data.vol);
         }
         return list;
     }
@@ -651,6 +660,13 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
                     return key != id;
                 });
             }
+        }
+        return list;
+    }
+
+    $scope.updateBidAskVolume = function (list, id, increment) {
+        if (typeof list[id] !== 'undefined') {
+            list[id].volume += increment;
         }
         return list;
     }

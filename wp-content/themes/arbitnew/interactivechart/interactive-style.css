@@ -210,7 +210,7 @@ text-align: center;
     width: 30% !important;
 }
 /* Enter Trade Form */
-.groupinput label {
+/* .groupinput label {
     display: inline-block;
     width: 46px;
     font-weight: 300;
@@ -287,7 +287,7 @@ input[type="submit"].confirmtrd:hover {
     transform: scale(1.07);
 }
 .confirmtrd.green {
-    /*background-color: #27ae60 !important;*/
+    /*background-color: #27ae60 !important;
 }
 .confirmtrd.green:hover {
     background-color: #167b41 !important;
@@ -301,6 +301,7 @@ input[type="submit"].confirmtrd:hover {
 .groupinput {
     margin-bottom: 10px;
 }
+*/
 textarea.darktheme {
     background-color: #4e6a85;
     border: 1px solid #4e6a85;
@@ -380,7 +381,7 @@ textarea.darktheme {
     width: 100%;
     margin: 0 auto;
     margin-bottom: 10px;
-}
+} */
 span.selldot {
     display: inline-block;
     background-color: #e84c3c;

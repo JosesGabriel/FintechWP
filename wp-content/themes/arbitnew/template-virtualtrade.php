@@ -16,7 +16,7 @@ require("parts/global-header.php");
 ?>
 
 
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">
+<!--<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/journal_style.css?<?php echo time(); ?>">-->
 
 <?php //get_template_part('parts/sidebar', 'calc'); ?>
 <?php //get_template_part('parts/sidebar', 'varcalc'); ?>
@@ -60,7 +60,7 @@ require("parts/global-header.php");
 													<div class="dbuttondelete">
 														<form action="/virtual-trades" method="post" class="resetform">
 															<input type="hidden" name="deletedata" value="reset">
-															<input type="submit" name="resetdd" value="Reset" class="delete-data-btn resetdata">
+															<input type="button" name="resetdd" value="Reset" class="delete-data-btn resetdata">
 														</form>
 													</div>												
                                         		</div>
@@ -153,7 +153,7 @@ require("parts/global-header.php");
 									                                </div>
 									                            </li>
 									                        </ul>
-									                        <div class="totalpl" style="font-size: 13px;">
+									                        <div class="totalpl" style="font-size: 13px;padding-top: 12px;">
 														            <p>Total Profit/Loss as of <?php echo date('F j, Y'); ?>: <span class="totalplscore"></span></p>
 														    </div>
 									                    </div>

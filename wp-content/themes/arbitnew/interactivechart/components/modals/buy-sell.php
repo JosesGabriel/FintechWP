@@ -6,8 +6,8 @@
         <i class="fa fa-grip-vertical fa-lg" style="color: white;"></i>
     </div>
     <div class="buttons">
-        <a class="arb_buy" data-fancybox data-src="#entertrade" href="javascript:;"><i class="fas fa-arrow-up"></i> Buy</a>
-        <a class="arb_sell" data-fancybox data-src="#buytrade" href="javascript:;" data-stocksel="{{stockInfo.symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
+        <a class="arb_buy" href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade"><i class="fas fa-arrow-up"></i> Buy</a>
+        <a class="arb_sell" href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" data-stocksel="{{stockInfo.symbol}}" disabled><i class="fas fa-arrow-down"></i> Sell</a>
     </div>
 </div>
 

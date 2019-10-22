@@ -74,12 +74,14 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     left:0;
     z-index:9;
     width:100%;
+    margin-top: -3px;
 }
 .arb_right_icons_trans {
     background: linear-gradient(to right, #2c3e5000 10%, #34495e 43%);
     z-index: 9;
     position: absolute;
     right: 0;
+    top: 0;
     padding-right: 4px;
     padding-top: 5px;
 }
@@ -205,6 +207,9 @@ text-align: center;
 }
 
 .hideformodal {display:none;}
+.modal-content {
+    width: 30% !important;
+}
 /* Enter Trade Form */
 .groupinput label {
     display: inline-block;
@@ -1357,6 +1362,7 @@ small.arb_markcap {
     display: grid;
     position: absolute;
     left: 45px;
+    z-index: 10;
     /* position: absolute;
     z-index: 10;
     /* position: absolute;
@@ -1408,7 +1414,7 @@ span.speed_ticker-toggle {
 .data_ticker_main-toggle,
 .speed_ticker_main-toggle,
 .ticker_main-toggle.sound {
-    margin: 5px 0;
+    margin: 5px 5px;
 }
 .data_ticker_main-toggle:first-child,
 .speed_ticker_main-toggle:first-child{
@@ -1427,9 +1433,12 @@ span.speed_ticker-toggle {
 }
 .ticker_content-toggle {
     text-align: right;
+    width: 100%;
+    padding: 3px 7px;
+    /* text-align: right;
     width: 83%;
     margin: 0 0 0 auto;
-    padding: 3px 7px;
+    padding: 3px 7px; */
 }
 hr.style14 {
     position: relative;
@@ -1454,6 +1463,9 @@ span.ticker_enabler-text {
     display: inline-block;
     float: right;
     margin-top: 2px;
+}
+.ticker_enabler-title .ticker_main-toggle i.fas.fa-times {
+    cursor: pointer;
 }
 .switch {
     position: relative;

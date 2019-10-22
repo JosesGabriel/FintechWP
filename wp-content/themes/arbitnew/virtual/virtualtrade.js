@@ -41,6 +41,7 @@ $(document).ready(function(){
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
 		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
+		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
@@ -57,7 +58,7 @@ $(document).ready(function(){
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline green buymystocks" data-toggle="modal" data-target="#enter_trade" data-stockdetails="" data-boardlot="">BUY</a>';
 				    data_live += '<a data-stock="'+response.data[i].stockname+'" class="smlbtn fancybox-inline red sellmystocks" data-toggle="modal" data-target="#enter_trade"data-stockdetails=""data-trades="" data-position="" data-stock="" data-averprice="" >SELL</a>';
 				    data_live += '</td>';
-				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="'+ response.data[i].emotion +'" data-toggle="modal" data-target="#livetradenotes" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
+				    data_live += '<td style="width:27px; text-align:center"><a data-emotion="'+ response.data[i].emotion +'" data-toggle="modal" data-target="#livetradenotes" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="'+outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
 				    data_live += '<td style="width:25px"><a data-stock="'+response.data[i].stockid+'" data-totalprice="" class="deletelive smlbtn-delete" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></td>';
 				    data_live += '</tr></tbody>';
 				    data_live += '</table>';
@@ -95,9 +96,9 @@ $(document).ready(function(){
 	                    data_tradelogs += '<div style="width:55px; text-align:center" class="table-title-live">'+response.data[i].volume+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+response.data[i].averageprice+'</div>';
 	                    data_tradelogs += '<div style="width:95px; text-align:center" class="table-title-live">₱'+(buyvalue).toFixed(2)+'</div>';
-	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
+	                    data_tradelogs += '<div style="width:65px; text-align:center" class="table-title-live">₱'+parseFloat(response.data[i].sellprice).toFixed(2)+'</div>';
 	                    data_tradelogs += '<div style="width:88px; text-align:center" class="table-title-live">₱'+(response.data[i].sellvalue).toFixed(2)+'</div>';
-	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profit+'</div>';
+	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
 	                    data_tradelogs += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>';
@@ -110,11 +111,14 @@ $(document).ready(function(){
 
 		    		if(response.totalprofit < 0){
 		    			$('.totalplscore').addClass('dredpart');
+		    			$('.totalplscore').removeClass('dgreenpart');
 		    		}else{
 		    			$('.totalplscore').addClass('dgreenpart');
+		    			$('.totalplscore').removeClass('dredpart');
 		    		}
-
-		    		$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
+		    		if(response.totalprofit != null){
+		    			$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
+		    		}
 		    },
 		    error: function(response) {                 
 		    } 
@@ -154,6 +158,23 @@ $(document).ready(function(){
 		    success: function(response) {
 		    	console.log(response);
 		    	livedata();
+		    },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
+	function resetdata(){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/resetdata?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	livedata();
+		    	tradelogs();
+				performance();
 		    },
 		    error: function(response) {                 
 		    }
@@ -225,9 +246,9 @@ $(document).ready(function(){
 									    dataType: 'json',
 									    success: function(response) {
 
-									    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
-									    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
-									    	
+									    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
+									    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
+
 									    	$('.arb_bar_green').css('width', bid + '%');
 									    	$('.arb_bar_red').css('width', ask + '%');
 									    },
@@ -329,6 +350,29 @@ $(document).ready(function(){
         return dall;
     }
 
+    jQuery(document).on('click', '.resetdata', function(){   	
+    	Swal.fire({
+            title: 'Are you sure?',
+            text: "Once deleted, you will not be able to recover your Data!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reset it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                ).then((result) => {
+                	resetdata();
+                    //var ditemtoremove = jQuery(this).attr('data-space');
+                    //window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+    });
 
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
@@ -406,7 +450,7 @@ $(document).ready(function(){
             if (result.value) {
                 Swal.fire(
                     'Deleted!',
-                    'Your Watchlist has been deleted.',
+                    'Your data has been deleted.',
                     'success'
                 ).then((result) => {
                 	deletedata(id);
@@ -432,7 +476,7 @@ $(document).ready(function(){
             if (result.value) {
                 Swal.fire(
                     'Deleted!',
-                    'Your Watchlist has been deleted.',
+                    'Your data has been deleted.',
                     'success'
                 ).then((result) => {
                 	deletelogs(id);

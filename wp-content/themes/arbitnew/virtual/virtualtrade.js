@@ -102,7 +102,7 @@ $(document).ready(function(){
 	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
-	                    data_tradelogs += '<div style="width:27px; text-align:center"><a data-toggle="modal" data-target="#livetradenotes" class="smlbtn blue tldetails" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-emotion="'+ response.data[i].emotion +'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="'+outcome+'"><i class="fas fa-clipboard"></i></a></div>';
+	                    data_tradelogs += '<div style="width:27px; text-align:center"><a data-toggle="modal" data-target="#livetradenotes" class="smlbtn blue tldetails" data-strategylog="'+ response.data[i].strategy +'" data-tradeplanlog="'+response.data[i].tradeplan+'" data-emotionlog="'+ response.data[i].emotion +'" data-tradingnoteslog="'+response.data[i].tradenotes+'" data-outcomelog="'+outcome+'"><i class="fas fa-clipboard"></i></a></div>';
 	                    data_tradelogs += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-stockid="'+ response.data[i].id +'" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
 	                    data_tradelogs += '</div>';
 	                    data_tradelogs += '</div>';  	
@@ -401,17 +401,25 @@ $(document).ready(function(){
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
-		var emotion = '';
-		var strategy = '';
-		var tradeplan = '';
-		var notes = '';
-		var outcome = '';
-
 		var emotion = $(this).attr('data-emotion');
 		var strategy = $(this).attr('data-strategy');
 		var tradeplan = $(this).attr('data-tradeplan');
 		var notes = $(this).attr('data-tradingnotes');
 		var outcome = $(this).attr('data-outcome');
+
+		$('.addstrats').text(strategy);
+		$('.addtplan').text(tradeplan);
+		$('.addemotion').text(emotion);
+		$('.addoutcome').text(outcome);
+		$('.addnotes').text(notes);
+	});
+
+	jQuery(document).on('click', '.tldetails', function(){
+		var emotion = $(this).attr('data-emotionlog');
+		var strategy = $(this).attr('data-strategylog');
+		var tradeplan = $(this).attr('data-tradeplanlog');
+		var notes = $(this).attr('data-tradingnoteslog');
+		var outcome = $(this).attr('data-outcomelog');
 
 		$('.addstrats').text(strategy);
 		$('.addtplan').text(tradeplan);

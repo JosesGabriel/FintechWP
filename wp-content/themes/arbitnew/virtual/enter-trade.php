@@ -136,7 +136,7 @@
                                         $status = 'Close';
                                     }    
                                 ?>
-                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left;"><?php echo $status; ?></span></div>
+                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"><?php echo $status; ?></span></div>
                                 <input type="submit" class="confirm_order" value="Confirm Order">
                             </div> 
 

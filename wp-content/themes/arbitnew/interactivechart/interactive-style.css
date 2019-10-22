@@ -1357,8 +1357,8 @@ small.arb_markcap {
     display: grid;
     position: absolute;
     left: 45px;
-    /* position: absolute;
     z-index: 10;
+    /* position: absolute;
     top: -4px;
     transform: scale(0.8);
     left: 45px;

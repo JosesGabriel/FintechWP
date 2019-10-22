@@ -24,8 +24,8 @@ app.controller('ticker', ['$scope', function($scope) {
         $scope.enable = !$scope.enable;
     }
 
-    socket.on('dev-psec', function (data) {  
-        
+    socket.on('psec', function (data) {  
+    
             var transaction = {
                 symbol: data.sym,
                 price:  price_format(data.prv),

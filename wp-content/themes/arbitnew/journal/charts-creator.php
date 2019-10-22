@@ -176,10 +176,10 @@
                 $.each(data.data, function(key, value){
                     emotionlist += '<li>';
                     emotionlist += '<div>'+key+'</div>';
-                    emotionlist += '<div>'+value.total_trades+'</div>';
-                    emotionlist += '<div>'+value.trwin+'</div>';
-                    emotionlist += '<div>'+value.trloss+'</div>';
-                    emotionlist += '<div>'+(value.trwin > 0 ? ((value.trwin / value.total_trades) * 100).toFixed(2) : '0.00')+'%</div>';
+                    emotionlist += '<div style="text-align: center;width: 19.4% !important;">'+value.total_trades+'</div>';
+                    emotionlist += '<div style="text-align: center;width: 19.4% !important;">'+value.trwin+'</div>';
+                    emotionlist += '<div style="text-align: center;width: 19.4% !important;">'+value.trloss+'</div>';
+                    emotionlist += '<div style="text-align: center;width: 19.4% !important;">'+(value.trwin > 0 ? ((value.trwin / value.total_trades) * 100).toFixed(2) : '0.00')+'%</div>';
                     emotionlist += '</li>';
                     demotions.push({"category": key,"column-2": (value.trloss).toString(),"Trades": (value.trwin).toString()});
                 });

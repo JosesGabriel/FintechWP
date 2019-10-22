@@ -4,6 +4,11 @@ $(document).ready(function(){
 	tradelogs();
 	performance();
 
+	setInterval(function(){
+   		livedata();
+  	}, 5000);
+
+
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -26,8 +31,7 @@ $(document).ready(function(){
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/liveportfolio?userid='+userid,
 		    dataType: 'json',
-		    success: function(response) {
-		    		console.log(response);	    	
+		    success: function(response) {   	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
 		    		
@@ -118,13 +122,13 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	//console.log(response); 	
-		    	$('.vcapital').text('₱' +(response.data.capital).toFixed(2));
-		    	$('.realized').text('₱' +(response.data.realized).toFixed(2));
-		    	$('.unrealized').text('₱' +(response.data.unrealize).toFixed(2));
-		    	$('.total_equity').text('₱' +(response.data.equity).toFixed(2));
-		    	$('.vperformance').text('%' + (response.data.percentage).toFixed(2));
-		    	$('.available_funds').text('₱' +(response.data.buypower).toFixed(2));
-		    	$('.av_funds').text('₱' +(response.data.buypower).toFixed(2));
+		    	$('.vcapital').text('₱' + addcomma(response.data.capital));
+		    	$('.realized').text('₱' + addcomma(response.data.realized));
+		    	$('.unrealized').text('₱' + addcomma(response.data.unrealize));
+		    	$('.total_equity').text('₱' + addcomma(response.data.equity));
+		    	$('.vperformance').text('%' + addcomma(response.data.percentage));
+		    	$('.available_funds').text('₱' + addcomma(response.data.buypower));
+		    	$('.av_funds').text('₱' + addcomma(response.data.buypower));
 		    },
 		    error: function(response) {                 
 		    }
@@ -287,6 +291,37 @@ $(document).ready(function(){
 	     return num;
 	}
 
+	function addcomma(n, sep, decimals) {
+	    sep = sep || "."; // Default to period as decimal separator
+	    decimals = decimals || 2; // Default to 2 decimals
+
+	    return n.toLocaleString().split(sep)[0]
+	        + sep
+	        + n.toFixed(2).split(sep)[1];
+	}
+
+	function thetradefees(totalfees, istype){
+        // Commissions
+        let dpartcommission = totalfees * 0.0025;
+        let dcommission = (dpartcommission > 20 ? dpartcommission : 20);
+        // TAX
+        let dtax = dcommission * 0.12;
+        // Transfer Fee
+        let dtransferfee = totalfees * 0.00005;
+        // SCCP
+        let dsccp = totalfees * 0.0001;
+        let dsell = totalfees * 0.006;
+        let dall;
+        if (istype == 'buy') {
+            dall = dcommission + dtax + dtransferfee + dsccp;
+        } else {
+            dall = dcommission + dtax + dtransferfee + dsccp + dsell;
+        }
+
+        return dall;
+    }
+
+
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
 		$('.btnValue').val('buy');
@@ -303,6 +338,7 @@ $(document).ready(function(){
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Sell Order:');
+		$('.labelprice').text('Sell Price');
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
@@ -324,6 +360,15 @@ $(document).ready(function(){
 		$('.addoutcome').text(outcome);
 		$('.addnotes').text(notes);
 	});
+
+	jQuery(document).on('keyup', '.inputquantity', function(){
+		var price = $('.inputbuyprice').val().replace(/,/g, '');
+        var quantity = $(this).val().replace(/,/g, '');
+
+        console.log(price + ' - ' + quantity);
+
+	});
+
 
 	jQuery(document).on('click', '.deletelive.smlbtn-delete', function(){
 

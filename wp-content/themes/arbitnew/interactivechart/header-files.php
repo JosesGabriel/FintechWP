@@ -22,9 +22,17 @@
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
     <link href="/assets/css/style-chart.css" rel="stylesheet" />
 
-    <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
-	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
-    
+    <!-- <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="/assets/plugins/jquery/jquery-migrate-1.1.0.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- <script>
+	$( function() {
+		$('#draggable_buysell').draggable();
+		$('#draggable_buysell').addClass('ui-draggable');
+	} );
+	</script> -->
     <!-- <script src="/wp-content/themes/arbitnew/interactivechart/jquery.webticker.min.js"></script>
 
     <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script> -->

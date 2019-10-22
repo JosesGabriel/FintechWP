@@ -1,6 +1,7 @@
 $(document).ready(function(){
-
     $(window).load(function() {
+
+
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })
@@ -106,8 +107,6 @@ $(document).ready(function(){
     jQuery(".toclasscloserss").on('click', function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
-
-    $('#draggable_buysell').draggable({cancel:false});
 
     jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 
@@ -260,7 +259,6 @@ $(document).ready(function(){
 
         } 
     });
-
     $(".bbs_bear").click(function(e){
         e.preventDefault();
         if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {

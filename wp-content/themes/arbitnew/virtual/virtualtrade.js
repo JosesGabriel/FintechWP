@@ -8,6 +8,15 @@ $(document).ready(function(){
    		livedata();
   	}, 5000);
 
+	var status = $('.mstatus').text();
+	if(status == 'Open'){
+		$('.mstatus').addClass('dgreenpart');
+		$('.mstatus').removeClass('dredpart');
+	}else{
+		$('.mstatus').addClass('dredpart');
+		$('.mstatus').removeClass('dgreenpart');
+	}
+
 
 	$.ajax({
 	    type:'GET',
@@ -566,66 +575,71 @@ $(document).ready(function(){
 		var buydate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
 		var userid = $('.userid').val();
 		var btn = $('.btnValue').val();
+		var status = $('.mstatus').text();
 
-		if(btn == 'buy'){
-			$.ajax({
-			    type:'GET',
-			    url:'/wp-json/virtual-api/v1/livetrade',
-			    dataType: 'json',
-			    data:{
-			    	"stockname": stockname,
-					"buyprice": buyprice,
-					"volume": volume,
-					"emotion": emotion,
-					"strategy": strategy,
-					"tradeplan": tradeplan,
-					"tradenotes": tradenotes,
-					"buydate": buydate,
-					"category": "vtrade1",
-					"type": "vt",
-					"userid": userid
-			    },
-			    success: function(response){
-					console.log('success');
-					$('#enter_trade').modal('toggle'); 
-					livedata();
-					performance();
-			    },
-			    error: function(response){                 
-			      }
-			 });
+		//if(status == 'Open'){
+					if(btn == 'buy'){
+						$.ajax({
+						    type:'GET',
+						    url:'/wp-json/virtual-api/v1/livetrade',
+						    dataType: 'json',
+						    data:{
+						    	"stockname": stockname,
+								"buyprice": buyprice,
+								"volume": volume,
+								"emotion": emotion,
+								"strategy": strategy,
+								"tradeplan": tradeplan,
+								"tradenotes": tradenotes,
+								"buydate": buydate,
+								"category": "vtrade1",
+								"type": "vt",
+								"userid": userid
+						    },
+						    success: function(response){
+								console.log('success');
+								$('#enter_trade').modal('toggle'); 
+								livedata();
+								performance();
+						    },
+						    error: function(response){                 
+						      }
+						 });
 
-		}else {
+					}else {
 
-			$.ajax({
-			    type:'GET',
-			    url:'/wp-json/virtual-api/v1/sellstock',
-			    dataType: 'json',
-			    data:{
-			    	"userid": userid,
-					"stock": stockname,
-					"volume": volume,
-					"averageprice": averageprice,
-					"emotion": emotion,
-					"strategy": strategy,
-					"tradeplan": tradeplan,
-					"tradenotes": tradenotes,
-					"sellprice": sellprice,
-					"buydate": buydate
-			    },
-			    success: function(response){
-					console.log(response.data);
-					$('#enter_trade').modal('toggle'); 
-					livedata();
-					tradelogs();
-					performance();
-			    },
-			    error: function(response){                 
-			      }
-			 });
+						$.ajax({
+						    type:'GET',
+						    url:'/wp-json/virtual-api/v1/sellstock',
+						    dataType: 'json',
+						    data:{
+						    	"userid": userid,
+								"stock": stockname,
+								"volume": volume,
+								"averageprice": averageprice,
+								"emotion": emotion,
+								"strategy": strategy,
+								"tradeplan": tradeplan,
+								"tradenotes": tradenotes,
+								"sellprice": sellprice,
+								"buydate": buydate
+						    },
+						    success: function(response){
+								console.log(response.data);
+								$('#enter_trade').modal('toggle'); 
+								livedata();
+								tradelogs();
+								performance();
+						    },
+						    error: function(response){                 
+						      }
+						 });
 
-		}
-
+					}
+		/*}else {
+			swal("Market Closed!");
+            return false;
+		}*/
 
 	});
 

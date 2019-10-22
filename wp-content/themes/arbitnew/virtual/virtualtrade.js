@@ -372,15 +372,14 @@ $(document).ready(function(){
 	jQuery(document).on('keyup', '.inputquantity', function(){
 		var price = $('.inputbuyprice').val().replace(/,/g, '');
         var quantity = $(this).val().replace(/,/g, '');
-
-        console.log(price + '-' + quantity);
-
-        let total_price = parseFloat(price) * Math.trunc(quantity);
+        var total_price = parseFloat(price) * Math.trunc(quantity);
         total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 
-        let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-        let decnumbs = finaltotal;
-        let buypower = jQuery('.av_funds').text().replace(/,/g, '');
+        var finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+        var decnumbs = finaltotal;
+        var buypower = jQuery('.av_funds').text().replace(/,/g, '');
+
+        console.log(decnumbs);
 
         if(parseFloat(decnumbs) > parseFloat(buypower)){
             swal("Not Enough Buy Power");

@@ -15,7 +15,7 @@
 		if ( ! isset( $notification->id ) ) {
 			continue;
 		}
-		echo json_encode($notification->ID);
+		// echo json_encode($notification->ID);
 		// types of notification to parse
 		$notification_types = [
 			'',

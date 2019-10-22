@@ -20,7 +20,6 @@
 	<meta property="og:image" content="<?php echo $homeurlgen ?>/wp-content/themes/arbitnew/images/ogimage_mage.png" />
 
     <link href="/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="/assets/css/style-chart.css" rel="stylesheet" />
 
     <!-- <script src="/assets/plugins/jquery/jquery-1.9.1.min.js"></script>
 	<script src="/assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>

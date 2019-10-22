@@ -110,8 +110,10 @@ $(document).ready(function(){
 
 		    		if(response.totalprofit < 0){
 		    			$('.totalplscore').addClass('dredpart');
+		    			$('.totalplscore').removeClass('dgreenpart');
 		    		}else{
 		    			$('.totalplscore').addClass('dgreenpart');
+		    			$('.totalplscore').removeClass('dredpart');
 		    		}
 		    		if(response.totalprofit != null){
 		    			$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));

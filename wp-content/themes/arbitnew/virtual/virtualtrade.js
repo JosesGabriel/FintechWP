@@ -80,7 +80,7 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/tradelogs?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    		console.log(response);
+		    		//console.log(response);
 		    		$(".data_logs").remove();
 		    		jQuery.each(response.data, function(i, val) {
 			    		var data_tradelogs = '';

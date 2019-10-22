@@ -17,7 +17,7 @@
                                                     <div class="widthfull">Trading Results</div>
                                                 </li>
                                                 <li>
-                                                    <div class="width60"><span class="bulletclrd clrg1"></span>Capital</div>
+                                                    <div class="width60"><span class="bulletclrd clrg1"></span>Starting Capital</div>
                                                     <div class="width35 addcapital"></div>
                                                 </li>
                                                 <li>

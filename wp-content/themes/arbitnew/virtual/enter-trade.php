@@ -67,10 +67,10 @@
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataprice" name="quantity" class="inputquantity" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity" required></div>
                             </div>
                         </div>
-                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: 123,456,789.00</span></div>
+                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost:</span><span class="tlcost">123,456,789.00</span></div>
                             <div class="footer_details2">  
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">

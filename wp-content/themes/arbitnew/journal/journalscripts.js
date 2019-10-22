@@ -327,7 +327,7 @@ jQuery(document).ready(function(){
             jQuery(this).val(dinpus.slice(0,-1));
             return false;
         } else {
-            jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
+            jQuery('.tlcost').val(replaceCommas(decnumbs));
             
         }
         

@@ -286,6 +286,29 @@ $(document).ready(function(){
 	});
 
 
+    jQuery(document).on('keyup', '.inputquantity', function (e) {
+    	let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
+        let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
+        let dinpus = jQuery(this).val();
+
+        let total_price = parseFloat(price) * Math.trunc(quantity);
+        total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
+
+        let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+        let decnumbs = finaltotal;
+        let buypower = jQuery('.av_funds').text().replace(/,/g, '');
+
+        if(parseFloat(decnumbs) > parseFloat(buypower)){
+            swal("Not Enough Buy Power");
+            jQuery(this).val(dinpus.slice(0,-1));
+            return false;
+        } else {
+            jQuery('input[name="inpt_data_total_price"]').val(addcomma(decnumbs));       
+        }
+
+    });
+
+
 	function nFormatter(num) {
 	     if (num >= 1000000000) {
 	        return (num / 1000000000).toFixed(2).replace(/\.0$/, '') + 'G';

@@ -11,7 +11,7 @@
     </div>
 </div>
 
-    <?php require __DIR__ . "/../../../components/modals/buy-sell-order.php" ?>
+    <?php require __DIR__ . "/components/modals/buy-sell-order.php" ?>
     <!-- <div class="buytrade" style="display:none" id="buytrade">
         <div class="innerbuy">
             <div class="selltrade selltrade--align" id="selltrade_">

@@ -35,19 +35,19 @@ require("parts/global-header.php");
 	<div class="inner-placeholder">
 		<div class="inner-main-content">
 			<div class="left-dashboard-part">
-				<div class="dashboard-sidebar-left">
+				<div class="dashboard-sidebar-left" id="testdiv">
 					<div class="dashboard-sidebar-left-inner">
 
 						<?php //require("parts/global-sidebar.php"); ?>
 						<?php require("virtual/virtual-sidebar.php"); ?>
-
+						<div id="canvasImg"></div>
 					</div>
 				</div>
 			</div>
 			<div class="center-dashboard-part" style="max-width: 1000px !important;">
 				<div class="inner-center-dashboard">
 					<div class="post-content">
-						<div>
+						<div id="virtual-trade-wrapper">
 							<div class="row">
 								<div class="col-md-12">
 
@@ -55,7 +55,8 @@ require("parts/global-header.php");
                                         <div class="box-portlet">
                                             <div class="box-portlet-header">
                                                 Live Portfolio
-                                                <div class="dltbutton">    
+                                                <div class="dltbutton">
+													<?php require __DIR__ . "/components/modals/share.php" ?>
 													<?php require "virtual/enter-trade.php";?>
 													<div class="dbuttondelete">
 														<form action="/virtual-trades" method="post" class="resetform">

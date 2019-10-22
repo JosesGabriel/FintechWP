@@ -1,4 +1,6 @@
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
         <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
@@ -17,10 +19,24 @@
             include "data-loader.php";
         ?>
         <script>
+            
             $(document).ready(function(){
+                $(window).on('load', function() {
+                    // html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
+                    //         var canvasImg = canvas.toDataURL("image/jpg");
+                    //         $('#modal-header').html('<img src="'+canvasImg+'" alt="">');
+                    // });
+                });
+                
                 $(".vynduepassnow_cancel").click(function(e){
                     e.preventDefault();
                     $("#vynduemodals").modal('hide');
+                });
+                $("#share__btn").click(function(e){ 
+                    html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
+                            var canvasImg = canvas.toDataURL("image/jpg");
+                            $('#share-modal-image-container').html('<img src="'+canvasImg+'" alt="">');
+                    });
                 });
                 $("li.five a").click(function(e){
                     e.preventDefault();

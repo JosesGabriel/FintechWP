@@ -1154,10 +1154,11 @@ input.enter-trade-btn:hover {
 #chartdiv1 .amChartsLegend.amcharts-legend-div {
     display: block;
     height: 116px !important;
-    overflow-y: hidden !important;
+    overflow: hidden
 }
 #chartdiv1 .amChartsLegend.amcharts-legend-div:hover {
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
 }
 
 #chartdiv1 .amChartsLegend.amcharts-legend-div::-webkit-scrollbar-track

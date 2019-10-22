@@ -338,6 +338,7 @@ $(document).ready(function(){
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Sell Order:');
+		$('.labelprice').text('Sell Price');
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){

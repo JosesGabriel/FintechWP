@@ -295,7 +295,7 @@ $(document).ready(function(){
         total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 
         let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-        let decnumbs = finaltotal.toFixed(2);
+        let decnumbs = finaltotal;
         let buypower = jQuery('.av_funds').text().replace(/,/g, '');
 
         if(parseFloat(decnumbs) > parseFloat(buypower)){

@@ -596,6 +596,7 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
      *  d => delete
      *  u => update new order
      *  fd => fully executed delete order (subtract count and volume)
+     *  pd => partially executed delete order (subtract volume)
      */
      socket.on('psebd', function (data) {
         if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
@@ -644,6 +645,8 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             list = $scope.updateBidAskCount(list, index, -1, 0);
 
             list = $scope.updateBidAskVolume(list, index, (-1 * data.vol));
+        } else if (data.ty = 'pd') {
+            list = $scope.updateBidAskVolume(list, index, data.vol);
         }
         return list;
     }

@@ -89,7 +89,7 @@ $(document).ready(function(){
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
 			    		var buyvalue = response.data[i].averageprice * response.data[i].volume;
 			    		var outcome = (profit > 0 ? "Winning" : "Loosing");
-			    		
+
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
 	                    data_tradelogs += '<div style="width:45px"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">'+response.data[i].stockname+'</a></div>';                                                                                	
@@ -401,6 +401,12 @@ $(document).ready(function(){
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
+		var emotion = '';
+		var strategy = '';
+		var tradeplan = '';
+		var notes = '';
+		var outcome = '';
+
 		var emotion = $(this).attr('data-emotion');
 		var strategy = $(this).attr('data-strategy');
 		var tradeplan = $(this).attr('data-tradeplan');

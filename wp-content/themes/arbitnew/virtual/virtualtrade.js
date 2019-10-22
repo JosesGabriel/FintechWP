@@ -108,7 +108,7 @@ $(document).ready(function(){
 	                    $(".showtradelogs > ul").append(data_tradelogs);
 		    		});	
 
-		    		$('.totalplscore').text(response.totalprofit);
+		    		$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
 		    },
 		    error: function(response) {                 
 		    } 

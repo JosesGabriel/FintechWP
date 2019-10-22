@@ -12,10 +12,10 @@
 
 <div class="um-notification-ajax">
 	<?php foreach ( $notifications as $notification ) {
-		if ( ! isset( $notification->ID ) ) {
+		if ( ! isset( $notification->id ) ) {
 			continue;
 		}
-		// echo json_encode($notification->id);
+		// echo json_encode($notification->ID);
 		// types of notification to parse
 		$notification_types = [
 			'',
@@ -33,7 +33,7 @@
         ?>
 
 		<span class="um-notification-hide"><a href="javascript:void(0);"><i class="um-icon-android-close"></i></a></span>
-		<div class="um-notification <?php echo $notification->type; ?> <?php echo $notification->status; ?>" data-notification_id="<?php echo $notification->ID; ?>"  data-notification_uri="<?php echo $notification->url; ?>">
+		<div class="um-notification <?php echo $notification->type; ?> <?php echo $notification->status; ?>" data-notification_id="<?php echo $notification->id; ?>"  data-notification_uri="<?php echo $notification->url; ?>">
 			<div class="um-notification-inner">
 			<?php echo '<img src="'. um_secure_media_uri( $notification->photo ) .'" data-default="'. um_secure_media_uri( um_get_default_avatar_uri() ) .'" alt="" class="um-notification-photo" />'; ?>
 

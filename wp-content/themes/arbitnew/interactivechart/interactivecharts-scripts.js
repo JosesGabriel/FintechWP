@@ -1,6 +1,8 @@
 $(document).ready(function(){
-
     $(window).load(function() {
+        if ( window.location !== window.parent.location ) {
+            $('#right-sidebar').hide();
+          } 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })
@@ -50,14 +52,15 @@ $(document).ready(function(){
         });
     }
 
-    jQuery(".ticker_enabler-dropdown").click(function(e){
+    jQuery(".ticker_enabler-dropdown, .ticker_enabler-title .ticker_main-toggle i").click(function(e){
         event.stopPropagation();
-        var tickertog = jQuery(".ticker_enabler-dropdown > ul").hasClass("dropopen");
+        var tickertog = jQuery(".arb_custom_ticker_wrapper #droppouts").hasClass("dropopen");
 
         if (tickertog) {
-            jQuery(".ticker_enabler-dropdown > ul").hide().removeClass("dropopen");
+            jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
         } else {
-            jQuery(".ticker_enabler-dropdown > ul").show().addClass("dropopen");
+            jQuery(".arb_custom_ticker_wrapper #droppouts").show().addClass("dropopen");
+            jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
         }
     });
     jQuery("ul.main-drops-chart").click(function(e){
@@ -68,12 +71,13 @@ $(document).ready(function(){
             jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
         } else {
             jQuery("ul.main-drops-chart > ul").show().addClass("dropopen");
+            jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
         }
     });
     jQuery(document).on("click", function () {
+        // jQuery(".arb_custom_ticker_wrapper #droppouts").hide().removeClass("dropopen");
         jQuery(".ticker_enabler-dropdown").hide().removeClass("dropopen");
         jQuery("ul.main-drops-chart > ul").hide().removeClass("dropopen");
-        jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
     });
@@ -104,8 +108,6 @@ $(document).ready(function(){
     jQuery(".toclasscloserss").on('click', function(){
         jQuery("#toghandlingers").hide().removeClass("dropthiss");
     });
-
-    $('#draggable_buysell').draggable({cancel:false});
 
     jQuery(".buySell__date-picker").attr('max', moment().format("YYYY-MM-DD"));
 
@@ -258,7 +260,6 @@ $(document).ready(function(){
 
         } 
     });
-
     $(".bbs_bear").click(function(e){
         e.preventDefault();
         if (!$(this).parents('.bullbearsents').hasClass('clickedthis')) {

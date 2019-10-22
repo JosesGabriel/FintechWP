@@ -1,9 +1,3 @@
-<div class="dbuttonenter" style="margin-right: 1px;">
-    <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
-
-    <?php //require __DIR__ . "/../components/modals/buy-sell-order.php" ?>
-</div>
-
 <div class="modal fade" id="enter_trade" role="dialog">
             <div class="modal-dialog">
             
@@ -67,10 +61,10 @@
                         </div>
                         <div class="footer_details">
                             <div class="buyprice">
-                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" disabled></div>
+                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" id="entertopdataquantity" name="quantity" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity" required></div>
                             </div>
                         </div>
                         <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost"></span></div>
@@ -114,29 +108,9 @@
                                     <textarea class="darktheme tnotes" name="inpt_data_tradingnotes" onClick="this.value = ''">Trading Notes</textarea>
                                 </div>
                                 <input type="hidden" name="userid" class="userid" value="<?php echo $user->ID;?>">
-                            </div>                         
-                            
+                            </div>
                             <div class="groupinput" style="text-align: right;">
-                                <?php 
-                                    $status = '';
-                                    //$hour = date('H:i:s');
-                                    $today = strtotime(date("H:i:s"));
-                                    $openAM = strtotime("09:30:00");
-                                    $closeAM = strtotime("11:59:59");
-                                    $recessOpen = strtotime("12:00:00");
-                                    $recessClose = strtotime("13:29:59");
-                                    $openPM = strtotime("13:30:00");
-                                    $closePM = strtotime("15:30:00");
-
-                                    if(($today > $openAM && $today < $closeAM) || ($today > $openPM && $today < $closePM)){
-                                        $status = 'Open';
-                                    }elseif ($today > $recessOpen && $today < $recessClose) {
-                                        $status = 'Recess';
-                                    }else{
-                                        $status = 'Close';
-                                    }    
-                                ?>
-                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"><?php echo $status; ?></span></div>
+                                <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
                                 <input type="submit" class="confirm_order" value="Confirm Order">
                             </div> 
 

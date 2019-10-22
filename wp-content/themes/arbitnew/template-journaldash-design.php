@@ -4191,7 +4191,7 @@ if ($getdstocks && $getdstocks != "") {
 			"backgroundColor": "#000000",
 			"borderColor": "#FFFFFF",
 			"color": "#78909C",
-			"fontFamily": "Roboto",
+			"fontFamily": "'Roboto', sans-serif",
 			"allLabels": [],
 			"balloon": {},
 			"legend": {

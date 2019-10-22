@@ -163,9 +163,10 @@
                     <br class="clear">
                 </div>
                 <div class="col-md-4" style="padding-left:0;">
-                    <div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
+                    <div style="text-align: center; text-transform: capitalize; padding: 17px 0 0; margin-bottom: -6px; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #d8d8d8;">
                         Win Allocations
                     </div>
+                    <span style="font-size: 10px; color: #d8d8d8; display: block; text-align: center; margin-top: 4px;">BY STRATEGY</span>
                     <div class="chartarea">
                         <div id="chartdiv4b"></div>
                     </div>
@@ -196,7 +197,7 @@
                 <div class="topstockgauge">
                     <div class="row" style="margin:0;">
                         <div class="col-md-4" style="padding:20px 0 0">
-                            <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Winners</div>
+                            <div style="text-align: center; padding-bottom: 5px; text-transform: capitalize; font-family: 'Montserrat', sans-serif; font-weight: 600; line-height: 18px;">Winners</div>
                             <div id="topstockswinners"></div>
                         </div>
                         <div class="col-md-4" style="padding-bottom: 15px;">
@@ -215,7 +216,7 @@
                             </div>
                         </div>
                         <div class="col-md-4" style="padding:20px 0 0">
-                            <div style="text-align:center;padding-bottom: 5px;text-transform: uppercase;">Losers</div>
+                            <div style="text-align: center; padding-bottom: 5px; text-transform: capitalize; font-family: 'Montserrat', sans-serif; font-weight: 600; line-height: 18px;">Losers</div>
                             <div id="topstocksLosers"></div>
                         </div>
                     </div>

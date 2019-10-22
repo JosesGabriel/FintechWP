@@ -4,11 +4,11 @@
             <table width="100%">
                 <thead><tr><td style="width: 7%;text-align: left !important;">Stocks</td>
                 <td style="width:9%" class="table-title-live table-title-avprice">Position</td>
-                <td style="width: 12%;" class="table-title-live table-title-avprice">Avg. Price</td>
-                <td style="width:15%" class="table-title-live table-title-tcost">Total Cost</td>
-                <td style="width:15%" class="table-title-live table-title-mvalue">Market Value</td>
-                <td style="width:15%" class="table-title-live table-title-profit">Profit</td>
-                <td style="width:8%" class="table-title-live table-title-performance">Perf.</td>
+                <td style="width: 12.4%;" class="table-title-live table-title-avprice">Avg. Price</td>
+                <td style="width:14%" class="table-title-live table-title-tcost">Total Cost</td>
+                <td style="width:15.1%" class="table-title-live table-title-mvalue">Market Value</td>
+                <td style="width:15.2%" class="table-title-live table-title-profit">Profit</td>
+                <td style="width:8.4%" class="table-title-live table-title-performance">Perf.</td>
                 <td style="width:105px;text-align: left;padding-left: 25px;">Action</td>
                 </tr></thead>
             </table>

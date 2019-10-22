@@ -240,6 +240,7 @@ $(document).ready(function(){
 					    			$('.pdetails.khigh').text((response.data.weekyearhigh).toFixed(2));
 					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
 					    			$('.pdetails.av').text((response.data.average).toFixed(2));
+					    			$('#entertopdataprice').val((response.data.last).toFixed(2));
 
 					    			$.ajax({
 									    type:'GET',
@@ -281,7 +282,7 @@ $(document).ready(function(){
 					    			$('.pdetails.khigh').text((response.data.datainfo.weekyearhigh).toFixed(2));
 					    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.datainfo.value)));
 					    			$('.pdetails.av').text((response.data.averageprice).toFixed(2));
-
+					    			$('#entertopdataprice').val((response.data.datainfo.last).toFixed(2));
 					    			$.ajax({
 									    type:'GET',
 									    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ sdata,

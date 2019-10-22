@@ -108,6 +108,12 @@ $(document).ready(function(){
 	                    $(".showtradelogs > ul").append(data_tradelogs);
 		    		});	
 
+		    		if(response.totalprofit < 0){
+		    			$('.totalplscore').addClass('dredpart');
+		    		}else{
+		    			$('.totalplscore').addClass('dgreenpart');
+		    		}
+
 		    		$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
 		    },
 		    error: function(response) {                 

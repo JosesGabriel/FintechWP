@@ -113,8 +113,9 @@ $(document).ready(function(){
 		    		}else{
 		    			$('.totalplscore').addClass('dgreenpart');
 		    		}
-
-		    		$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
+		    		if(response.totalprofit != null){
+		    			$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
+		    		}
 		    },
 		    error: function(response) {                 
 		    } 

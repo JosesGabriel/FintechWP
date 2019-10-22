@@ -160,6 +160,23 @@ $(document).ready(function(){
 		});
 	}
 
+	function resetdata(){
+		var userid = $('.userid').val();
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/resetdata?userid='+userid,
+		    dataType: 'json',
+		    success: function(response) {
+		    	console.log(response);
+		    	livedata();
+		    	tradelogs();
+				performance();
+		    },
+		    error: function(response) {                 
+		    }
+		});
+	}
+
 	function deletelogs(id){
 		var userid = $('.userid').val();
 		$.ajax({
@@ -329,6 +346,29 @@ $(document).ready(function(){
         return dall;
     }
 
+    jQuery(document).on('click', '.resetdata', function(){   	
+    	Swal.fire({
+            title: 'Are you sure?',
+            text: "Once deleted, you will not be able to recover your Data!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reset it!'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                ).then((result) => {
+                	resetdata();
+                    //var ditemtoremove = jQuery(this).attr('data-space');
+                    //window.location.href = "/watchlist/?remove="+ditemtoremove;
+                });
+            }
+        });
+    });
 
 	jQuery(document).on('click', '.buymystocks', function(){
 		var stock = $(this).attr('data-stock');
@@ -406,7 +446,7 @@ $(document).ready(function(){
             if (result.value) {
                 Swal.fire(
                     'Deleted!',
-                    'Your Watchlist has been deleted.',
+                    'Your data has been deleted.',
                     'success'
                 ).then((result) => {
                 	deletedata(id);
@@ -432,7 +472,7 @@ $(document).ready(function(){
             if (result.value) {
                 Swal.fire(
                     'Deleted!',
-                    'Your Watchlist has been deleted.',
+                    'Your data has been deleted.',
                     'success'
                 ).then((result) => {
                 	deletelogs(id);

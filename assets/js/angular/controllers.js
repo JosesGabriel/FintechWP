@@ -722,11 +722,13 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
 }]);
 app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
     $scope.enableBidsAndAsks = true;
+    $scope.isLoading = false;
     $scope.bids = [];
     $scope.asks = [];
 
     $scope.getBidsAndAsks = function (symbol) {
         if ($scope.enableBidsAndAsks) {
+            $scope.isLoading = true;
             $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
             .then(response => {
                 response = response.data;
@@ -738,10 +740,12 @@ app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', funct
     
                 $scope.bids = Object.values(response.data.bids);
                 $scope.asks = Object.values(response.data.asks);
+                $scope.isLoading = false;
             })
             .catch(err => {
                 $scope.bids = [];
                 $scope.asks = [];
+                $scope.isLoading = false;
             });
         }
     }

@@ -37,33 +37,42 @@
                     </div>
                 </div>
                 <div data-scrollbar="true" data-height="90%" class="" ng-if="enableBidsAndAsks">
-                    <div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
-                        <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
-                            <col width="8.335%">
-                            <col width="8.335%">
-                            <col width="8.335%">
-                            <tbody>
-                                <tr ng-repeat="bid in bids | orderBy: '-price'">
-                                    <td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
-                                    <td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
-                                    <td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div><!--
-                    --><div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
-                        <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
-                            <col width="8.335%">
-                            <col width="8.335%">
-                            <col width="8.335%">
-                            <tbody>
-                                <tr ng-repeat="ask in asks">
-                                    <td class="text-right" ng-class="{'text-green': ask.price > stock.previous, 'text-red': ask.price < stock.previous}" change="ask.volume"><strong>{{ask.price > 0 ? (ask.price | price) : ''}}</strong></td>
-                                    <td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
-                                    <td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div ng-if="!isLoading">
+                        <div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+                            <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+                                <col width="8.335%">
+                                <col width="8.335%">
+                                <col width="8.335%">
+                                <tbody>
+                                    <tr ng-repeat="bid in bids | orderBy: '-price'">
+                                        <td class="text-center" change="bid.count"><span>{{bid.count > 0 ? bid.count : ''}}</span></td>
+                                        <td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
+                                        <td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!--
+                        --><div class="table-responsive" style="display: inline-block; width: 48.5%; vertical-align: top">
+                            <table class="table table-condensed m-b-0 text-default border-bottom-1 border-default" style="font-size: 10px;">
+                                <col width="8.335%">
+                                <col width="8.335%">
+                                <col width="8.335%">
+                                <tbody>
+                                    <tr ng-repeat="ask in asks">
+                                        <td class="text-right" ng-class="{'text-green': ask.price > stock.previous, 'text-red': ask.price < stock.previous}" change="ask.volume"><strong>{{ask.price > 0 ? (ask.price | price) : ''}}</strong></td>
+                                        <td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
+                                        <td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div ng-else
+                        style="display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;">
+                        <img src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" alt="loading" style="width: 35px">
                     </div>
                 </div>
             </div>

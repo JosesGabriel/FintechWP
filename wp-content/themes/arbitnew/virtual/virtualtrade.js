@@ -243,9 +243,9 @@ $(document).ready(function(){
 									    dataType: 'json',
 									    success: function(response) {
 
-									    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
-									    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
-									    	
+									    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
+									    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
+
 									    	$('.arb_bar_green').css('width', bid + '%');
 									    	$('.arb_bar_red').css('width', ask + '%');
 									    },

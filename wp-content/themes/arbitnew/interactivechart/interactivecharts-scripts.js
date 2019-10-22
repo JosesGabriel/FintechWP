@@ -2,8 +2,10 @@ $(document).ready(function(){
     $(window).load(function() {
         if ( window.location !== window.parent.location ) {
             $('#right-sidebar').hide();
-            $('.layout__area--left').hide();
-            $('.chart-toolbar .chart-controls-bar').hide();
+            $('.tv_chart_container iframe').load(function(){
+                $('.tv_chart_container iframe').contents().find('.layout__area--left').hide();
+                $('.tv_chart_container iframe').contents().find('.chart-toolbar .chart-controls-bar').hide();
+            });
           } 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");

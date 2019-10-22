@@ -163,9 +163,10 @@
                     <br class="clear">
                 </div>
                 <div class="col-md-4" style="padding-left:0;">
-                    <div style="text-align:center;text-transform:uppercase;padding: 45px 0 0;margin-bottom: -6px;">
+                    <div style="text-align: center; text-transform: capitalize; padding: 17px 0 0; margin-bottom: -6px; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #d8d8d8;">
                         Win Allocations
                     </div>
+                    <span style="font-size: 10px; color: #d8d8d8; display: block; text-align: center; margin-top: 4px;">BY STRATEGY</span>
                     <div class="chartarea">
                         <div id="chartdiv4b"></div>
                     </div>

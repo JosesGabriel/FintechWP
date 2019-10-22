@@ -51,7 +51,7 @@ $(document).ready(function(){
         });
     }
 
-    jQuery(".ticker_enabler-dropdown").click(function(e){
+    jQuery(".ticker_enabler-dropdown, .ticker_enabler-title .ticker_main-toggle i").click(function(e){
         event.stopPropagation();
         var tickertog = jQuery(".arb_custom_ticker_wrapper #droppouts").hasClass("dropopen");
 

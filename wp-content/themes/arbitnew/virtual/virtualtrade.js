@@ -88,6 +88,7 @@ $(document).ready(function(){
 			    		var profit = parseFloat(response.data[i].profit).toFixed(2);
 			    		var profperc = parseFloat(response.data[i].profitperc).toFixed(2);
 			    		var buyvalue = response.data[i].averageprice * response.data[i].volume;
+			    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
 			    		data_tradelogs += '<li class="data_logs">';
 	                    data_tradelogs += '<div style="width:100%;">';
@@ -101,7 +102,7 @@ $(document).ready(function(){
 	                    data_tradelogs += '<div style="width:80px; text-align:center" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+profit+'</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center" class="'+(profperc < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">'+profperc+'%</div>';
 	                    data_tradelogs += '<div style="width:65px; text-align:center; float:right">';
-	                    data_tradelogs += '<div style="width:27px; text-align:center"><a class="smlbtn blue tldetails" data-tlstrats="" data-tltradeplans="" data-tlemotions="" data-tlnotes="" data-outcome=""><i class="fas fa-clipboard"></i></a></div>';
+	                    data_tradelogs += '<div style="width:27px; text-align:center"><a data-toggle="modal" data-target="#livetradenotes" class="smlbtn blue tldetails" data-strategy="'+ response.data[i].strategy +'" data-tradeplan="'+response.data[i].tradeplan+'" data-emotion="'+ response.data[i].emotion +'" data-tradingnotes="'+response.data[i].tradenotes+'" data-outcome="'+outcome+'"><i class="fas fa-clipboard"></i></a></div>';
 	                    data_tradelogs += '<div style="width:25px"><a class="deletelog smlbtn-delete" data-stockid="'+ response.data[i].id +'" style="cursor:pointer;text-align:center"><i class="fas fa-eraser"></i></a></div>';
 	                    data_tradelogs += '</div>';
 	                    data_tradelogs += '</div>';  	
@@ -400,6 +401,12 @@ $(document).ready(function(){
 	});
 
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
+		var emotion = '';
+		var strategy = '';
+		var tradeplan = '';
+		var notes = '';
+		var outcome = '';
+
 		var emotion = $(this).attr('data-emotion');
 		var strategy = $(this).attr('data-strategy');
 		var tradeplan = $(this).attr('data-tradeplan');

@@ -382,10 +382,10 @@ $(document).ready(function(){
         
         if(parseFloat(decnumbs) > parseFloat(buypower)){
             swal("Not Enough Buy Power");
-            jQuery(this).val(dinpus.slice(0,-1));
+            jQuery(this).val(quantity.slice(0,-1));
             return false;
         } else {
-            jQuery('.tlcost').text(addcomma(decnumbs));       
+            jQuery('.tlcost').text('₱'+addcomma(decnumbs));       
         }
 
 	});

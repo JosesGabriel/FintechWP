@@ -65,11 +65,9 @@
 		}
 		.arb_custom_ticker li {text-align:right;}
 		.arb_custom_ticker_wrapper {
-			height:40px;
-			position: relative;
-			overflow: hidden; 
-			background-color:#2c3e50; 
-			text-align:left;
+			height: 40px;
+			background-color: #2c3e50;
+			text-align: left;
 		}
         .text-white {color: #bdc3c7 !important;}
         div.tickercontainer{

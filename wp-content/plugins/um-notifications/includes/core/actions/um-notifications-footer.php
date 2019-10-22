@@ -23,7 +23,6 @@ function um_notification_show_feed() {
 
 	$unread = (int)UM()->Notifications_API()->api()->get_notifications( 0, 'unread', true );
 	
-	echo json_encode($unread);
 	$unread_count = ( absint( $unread ) > 9 ) ? '9+' : $unread;
 
 	$file = str_replace( '/', DIRECTORY_SEPARATOR, um_notifications_path . "templates/{$template}.php" );

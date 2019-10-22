@@ -67,7 +67,7 @@
                         </div>
                         <div class="footer_details">
                             <div class="buyprice">
-                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
+                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" disabled></div>
                             </div>
                             <div class="quantity">
                                 <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity" required></div>

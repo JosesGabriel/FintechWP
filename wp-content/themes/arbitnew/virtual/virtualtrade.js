@@ -385,8 +385,7 @@ $(document).ready(function(){
             jQuery(this).val(dinpus.slice(0,-1));
             return false;
         } else {
-        	console.log(buypower+ ' - '+decnumbs);
-            jQuery('.tlcost').val(addcomma(decnumbs));       
+            jQuery('.tlcost').text(addcomma(decnumbs));       
         }
 
 	});

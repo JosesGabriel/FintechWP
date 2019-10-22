@@ -1,7 +1,10 @@
 $(document).ready(function(){
     $(window).load(function() {
-
-
+        if ( window.location !== window.parent.location ) {
+            alert('iframe');
+          } else {
+            alert('not');
+          }
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })

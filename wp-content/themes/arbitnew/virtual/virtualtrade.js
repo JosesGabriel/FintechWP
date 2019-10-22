@@ -303,7 +303,7 @@ $(document).ready(function(){
             jQuery(this).val(dinpus.slice(0,-1));
             return false;
         } else {
-            jQuery('.tlcost').val(addcomma(decnumbs));       
+            jQuery('input[name="inpt_data_total_price"]').val(addcomma(decnumbs));       
         }
 
     });

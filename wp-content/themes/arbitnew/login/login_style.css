@@ -586,15 +586,16 @@ a.showpassreset {
     font-size: 11px;
 }
 .um-login .um-field-c .um-field-checkbox {
-    height: 21px;
+    height: 25px;
     margin-bottom: 0;
-    margin-top: 0 !important;
-    position: relative;
+    margin-top: 20px !important;
     font-size: 11px;
-    width: 24px;
+    margin-left: 205px;
     text-align: -webkit-auto;
     display: inline-block;
     vertical-align: top;
+    width: 100px;
+    cursor: pointer;
 }
 .um-login .um-field-checkbox-state i, .um-field-radio-state i {
     font-size: 20px;

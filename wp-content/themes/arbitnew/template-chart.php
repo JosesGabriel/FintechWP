@@ -44,7 +44,7 @@
 				</ul>
 			</ul>
 			<a href="/notifications/" class="arb-side-icon"><img src="/svg/bell.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 2px;"></a>
-			<a href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 21px;display: inline-block;vertical-align: top;margin-top: 4px;"></a>
+			<a href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer" class="arb-side-icon"><img src="/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top: 2px;"></a>
 			<a href="/user/" class="arb-side-icon"><?php
 				if ( $user ) : ?>
 					<img src="<?php echo esc_url( get_avatar_url( $user->ID ) ); ?>" class="arb_proficon" />

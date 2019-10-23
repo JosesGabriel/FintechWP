@@ -12,6 +12,7 @@ $(document).ready(function(){
    		tradelogs();
   	}, 5000);
 
+	
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -543,6 +544,7 @@ $(document).ready(function(){
             jQuery('.tlcost').text('₱'+addcomma(decnumbs));       
         }
 
+      
 	});
 
 
@@ -665,11 +667,15 @@ $(document).ready(function(){
 
 		console.log('volume - ' + volume + '| price -' + buyprice);
 
-		/*if(volume.length == 0 ){
+		if(volume.length == 0 ){
 			swal("Please enter quantity");
             return false;
-		}*/
+		}
 
+		if(stockname == ''){
+			swal("Please select a Stock");
+            return false;
+		}
 		//if(status == 'Open'){
 			
 					if(btn == 'buy'){

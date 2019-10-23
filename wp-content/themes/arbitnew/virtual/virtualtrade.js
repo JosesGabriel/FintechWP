@@ -6,7 +6,7 @@ $(document).ready(function(){
 	marketstatus();
 
 	setInterval(function(){
-   		//livedata();
+   		livedata();
   	}, 5000);
 
 	var status = $('.mstatus').text();
@@ -52,8 +52,6 @@ $(document).ready(function(){
 		    		var profperc = (profit/marketval) * 100;
 		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
-
-		    		console.log('prof='+prof);
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';

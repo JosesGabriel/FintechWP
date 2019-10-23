@@ -9,6 +9,7 @@ $(document).ready(function(){
    		livedata();
    		marketstatus();
    		performance();
+   		tradelogs();
   	}, 5000);
 
 	$.ajax({

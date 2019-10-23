@@ -83,6 +83,7 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     right: 0;
     top: 0;
     padding-right: 4px;
+    height: 36px;
 }
 .arb-side-icon i {
     border: none;
@@ -673,6 +674,7 @@ span.bullbearsents_label {
     background-color: #354960;
     z-index: 99999999;
     height: 100%;
+    margin: 0;
 }
 #status {
     width: 50px;
@@ -1282,6 +1284,8 @@ a.arb-side-icon {
     color: #ffffff;
     display: inline-block;
     margin: 0 1px;
+    top: 3px;
+    position: relative;
 }
 a.arb-side-icon span {
 	text-align: center;

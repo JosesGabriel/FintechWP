@@ -223,20 +223,20 @@ $(document).ready(function(){
 			        } else if (response.data.last >= 1000) {
 			            dboard = 5;
 			        }*/ 
-			        if(response.data.change > 0){
+			        if((response.data.change).toFixed(2) > 0){
 			        	$('.change').addClass('dgreenpart');
 			        	$('.change').removeClass('dredpart');
-			        }else if(response.data.change < 0) {
+			        }else if((response.data.change).toFixed(2) < 0) {
 			        	$('.change').addClass('dredpart');
 			        	$('.change').removeClass('dgreenpart');
 			        }else {
 			        	$('.change').css('color','#fcbb29');
 			        }
 
-			        if(response.data.changepercentage > 0){
+			        if((response.data.changepercentage).toFixed(2) > 0){
 			        	$('.cpercentage').addClass('dgreenpart');
 			        	$('.cpercentage').removeClass('dredpart');
-			        }else if(response.data.changepercentage < 0) {
+			        }else if((response.data.changepercentage).toFixed(2) < 0) {
 			        	$('.cpercentage').addClass('dredpart');
 			        	$('.cpercentage').removeClass('dgreenpart');
 			        }else {

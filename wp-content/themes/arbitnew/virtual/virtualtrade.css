@@ -306,8 +306,10 @@ textarea.tnotes{
 }
 
 .virtual_button {
-	width: 200px;
+	width: 172px;
     display: inline-flex;
+    position: relative;
+    top: -3px;
 }
 
 /* -------------- passwordmodal vyndue ---------------- */

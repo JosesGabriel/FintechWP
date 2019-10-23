@@ -794,11 +794,13 @@ app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', funct
     }
 }]);
 app.controller('transactions', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    $scope.isLoading = false;
     $scope.currentStock = '';
     $scope.transactions = [];
 
     $scope.getStockTrades = function (symbol = '', limit = 20) {
         if (symbol != 'PSEI' && symbol != '') {
+            $scope.isLoading = true;
             $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
                 .then(response => {
                     response = response.data;
@@ -819,10 +821,11 @@ app.controller('transactions', ['$scope', '$rootScope', '$http', function ($scop
                             time:   full_time,
                         };                                    
                     });
+                    $scope.isLoading = false;
                     $scope.$digest();
                 })
                 .catch(err => {
-                    
+                    $scope.isLoading = false;
                 });
         }
     }

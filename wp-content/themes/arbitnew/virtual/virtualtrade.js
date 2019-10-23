@@ -168,6 +168,7 @@ $(document).ready(function(){
 
 	function resetdata(){
 		var userid = $('.userid').val();
+		console.log('userid='+userid);
 		$.ajax({
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/resetdata?userid='+userid,
@@ -410,8 +411,6 @@ $(document).ready(function(){
                     'success'
                 ).then((result) => {
                 	resetdata();
-
-                	console.log('reseted');
                     //var ditemtoremove = jQuery(this).attr('data-space');
                     //window.location.href = "/watchlist/?remove="+ditemtoremove;
                 });

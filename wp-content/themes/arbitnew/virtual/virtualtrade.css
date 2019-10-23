@@ -49,12 +49,10 @@
 }
 
 .crice{
-	float: right;
 	font-size: 12px !important;
 }
 
 .cprice{
-	color: #25ae5f;
     font-weight: bold !important;
 }
 
@@ -305,6 +303,13 @@ textarea.tnotes{
 	padding-bottom: 10px;
 }
 
+.virtual_button {
+	width: 172px;
+    display: inline-flex;
+    position: relative;
+    top: -3px;
+}
+
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {
 	top: 50px;
@@ -423,7 +428,7 @@ textarea.tnotes{
 .sdesc {
 	white-space: nowrap;
     text-overflow: ellipsis;
-    width: 239px;
+    width: 366px;
     display: inline-block;
     overflow: hidden;
 }

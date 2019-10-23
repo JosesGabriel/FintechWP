@@ -1,4 +1,4 @@
-<div class="dbuttonenter" style="margin-right: 1px;">
+<div class="dbuttonenter" style="margin-right: 1px;margin-left: 6px;">
     <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 
     <?php //require __DIR__ . "/../components/modals/buy-sell-order.php" ?>
@@ -24,7 +24,10 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc"><span class="sdesc"></span> <span class="crice">Current Price: <span class="cprice"></span></span></div>
+                        <div class="desc"><span class="sdesc"></span></div>
+                        <div class="crice">
+                            <span>Current Price: </span><span class="cprice" style="font-size: 14px;"></span><span class="change" style="font-size: 12px;"></span><span class="cpercentage" style="font-size: 12px;"></span>
+                        </div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
@@ -70,7 +73,7 @@
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" disabled></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" id="entertopdataquantity" name="quantity" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" autocomplete="off" class="inputquantity number" style="padding-right: 5px;" required></div>
                             </div>
                         </div>
                         <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost"></span></div>
@@ -117,26 +120,7 @@
                             </div>                         
                             
                             <div class="groupinput" style="text-align: right;">
-                                <?php 
-                                    $status = '';
-                                    //$hour = date('H:i:s');
-                                    $today = strtotime(date("H:i:s"));
-                                    $openAM = strtotime("09:30:00");
-                                    $closeAM = strtotime("11:59:59");
-                                    $recessOpen = strtotime("12:00:00");
-                                    $recessClose = strtotime("13:29:59");
-                                    $openPM = strtotime("13:30:00");
-                                    $closePM = strtotime("15:30:00");
-
-                                    if(($today > $openAM && $today < $closeAM) || ($today > $openPM && $today < $closePM)){
-                                        $status = 'Open';
-                                    }elseif ($today > $recessOpen && $today < $recessClose) {
-                                        $status = 'Recess';
-                                    }else{
-                                        $status = 'Close';
-                                    }    
-                                ?>
-                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"><?php echo $status; ?></span></div>
+                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"></span></div>
                                 <input type="button" class="confirm_order" value="Confirm Order">
                             </div> 
 

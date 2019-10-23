@@ -21,13 +21,6 @@
         <script>
             
             $(document).ready(function(){
-                $(window).on('load', function() {
-                    // html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
-                    //         var canvasImg = canvas.toDataURL("image/jpg");
-                    //         $('#modal-header').html('<img src="'+canvasImg+'" alt="">');
-                    // });
-                });
-                
                 $(".vynduepassnow_cancel").click(function(e){
                     e.preventDefault();
                     $("#vynduemodals").modal('hide');
@@ -35,7 +28,7 @@
                 $("#share__btn").click(function(e){ 
                     html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
                             var canvasImg = canvas.toDataURL("image/jpg");
-                            $('#share-modal-image-container').html('<img src="'+canvasImg+'" alt="">');
+                            $('#share-modal-image-container').html('<img id="image-to-share" src="'+canvasImg+'" alt="">');
                     });
                 });
                 $("li.five a").click(function(e){

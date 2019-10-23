@@ -7,18 +7,12 @@ $(document).ready(function(){
 
 	setInterval(function(){
    		livedata();
+   		marketstatus();
+   		performance();
+   		tradelogs();
   	}, 5000);
 
-	var status = $('.mstatus').text();
-	if(status == 'Open'){
-		$('.mstatus').addClass('dgreenpart');
-		$('.mstatus').removeClass('dredpart');
-	}else{
-		$('.mstatus').addClass('dredpart');
-		$('.mstatus').removeClass('dgreenpart');
-	}
-
-
+	
 	$.ajax({
 	    type:'GET',
 	    url:'/wp-json/virtual-api/v1/buyvalues',
@@ -50,7 +44,7 @@ $(document).ready(function(){
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
+		    		var totalcost = response.data[i].datainfo.average * response.data[i].volume; 
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
 		    		var data_live = '';
@@ -59,7 +53,7 @@ $(document).ready(function(){
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
-				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].averageprice).toFixed(2)+'</td>';
+				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].datainfo.average).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(totalcost).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
 				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';
@@ -177,6 +171,7 @@ $(document).ready(function(){
 
 	function resetdata(){
 		var userid = $('.userid').val();
+		//console.log('userid='+userid);
 		$.ajax({
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/resetdata?userid='+userid,
@@ -231,9 +226,34 @@ $(document).ready(function(){
 			        } else if (response.data.last >= 1000) {
 			            dboard = 5;
 			        }*/ 
+			        if((response.data.change).toFixed(2) > 0){
+			        	$('.change').addClass('dgreenpart');
+			        	$('.change').removeClass('dredpart');
+			        }else if((response.data.change).toFixed(2) < 0) {
+			        	$('.change').addClass('dredpart');
+			        	$('.change').removeClass('dgreenpart');
+			        }else {
+			        	$('.change').css('color','#fcbb29');
+			        	$('.change').removeClass('dgreenpart');
+			        	$('.change').removeClass('dredpart');
+			        }
+
+			        if((response.data.changepercentage).toFixed(2) > 0){
+			        	$('.cpercentage').addClass('dgreenpart');
+			        	$('.cpercentage').removeClass('dredpart');
+			        }else if((response.data.changepercentage).toFixed(2) < 0) {
+			        	$('.cpercentage').addClass('dredpart');
+			        	$('.cpercentage').removeClass('dgreenpart');
+			        }else {
+			        	$('.cpercentage').css('color','#fcbb29');
+			        	$('.cpercentage').removeClass('dgreenpart');
+			        	$('.cpercentage').removeClass('dredpart');
+			        }
 
 				    			$('.sdesc').text(response.data.description);
-				    			$('.cprice').text((response.data.last).toFixed(2));
+				    			$('.cprice').text('  '+(response.data.last).toFixed(2));
+				    			$('.change').text('  '+(response.data.change).toFixed(2));
+				    			$('.cpercentage').text(' ('+(response.data.changepercentage).toFixed(2) + '%)');
 				    			$('.pdetails.prev').text((response.data.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.weekyearlow);
@@ -275,10 +295,36 @@ $(document).ready(function(){
 			    type:'GET',
 			    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ stock +'&userid='+userid,
 			    dataType: 'json',
-			    success: function(response) {				    	
+			    success: function(response) {	
+
+						    	if((response.data.datainfo.change).toFixed(2) > 0){
+						        	$('.change').addClass('dgreenpart');
+						        	$('.change').removeClass('dredpart');
+						        }else if((response.data.datainfo.change).toFixed(2) < 0) {
+						        	$('.change').addClass('dredpart');
+						        	$('.change').removeClass('dgreenpart');
+						        }else {
+						        	$('.change').css('color','#fcbb29');
+						        	$('.change').removeClass('dgreenpart');
+						        	$('.change').removeClass('dredpart');
+						        }
+
+						        if((response.data.datainfo.changepercentage).toFixed(2) > 0){
+						        	$('.cpercentage').addClass('dgreenpart');
+						        	$('.cpercentage').removeClass('dredpart');
+						        }else if((response.data.datainfo.changepercentage).toFixed(2) < 0) {
+						        	$('.cpercentage').addClass('dredpart');
+						        	$('.cpercentage').removeClass('dgreenpart');
+						        }else {
+						        	$('.cpercentage').css('color','#fcbb29');
+						        	$('.cpercentage').removeClass('dgreenpart');
+						        	$('.cpercentage').removeClass('dredpart');
+						        }			    	
 			    	
 			    				$('.sdesc').text(response.data.datainfo.description);
-				    			$('.cprice').text((response.data.datainfo.last).toFixed(2));
+				    			$('.cprice').text(' '+(response.data.datainfo.last).toFixed(2));
+				    			$('.change').text(' '+(response.data.datainfo.change).toFixed(2));
+				    			$('.cpercentage').text(' ('+(response.data.datainfo.changepercentage).toFixed(2) + '%)');
 				    			$('.pdetails.prev').text((response.data.datainfo.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.datainfo.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.datainfo.weekyearlow);
@@ -372,20 +418,34 @@ $(document).ready(function(){
     }
 
     function marketstatus(){
-    	var open_am = new Date('09:30:00');
-    	var close_am = new Date('11:59:59');
-    	var recess_open = new Date('12:00:00');
-    	var recess_close = new Date('13:29:59');
-    	var open_pm = new Date('13:30:00');
-    	var close_pm = new Date('15:30:00');
 
-    	var today = new Date();
-		var hour = today.getHours();
-		var min = today.getMinutes();
+    	var open_am = new Date();
+  			open_am.setHours(9, 30, 0);
+    	var close_am = new Date();
+    		close_am.setHours(11, 59, 59);
+    	var recess_open = new Date();
+    		recess_open.setHours(12, 0, 0);
+    	var recess_close = new Date();
+    		recess_close.setHours(13, 29, 59);
+    	var open_pm = new Date();
+    		open_pm.setHours(13, 30, 0);
+    	var close_pm = new Date();
+    		close_pm.setHours(15, 30, 0);
 
-		var open_amt = open_am.getTime();
-		//console.log(open_amt);
-
+		var time = Date.now();
+		
+		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
+			$('.mstatus').text('Open');
+			$('.mstatus').addClass('dgreenpart');
+			$('.mstatus').removeClass('dredpart');
+		}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
+			$('.mstatus').text('Recess');
+		} else{
+			$('.mstatus').text('Close');
+			$('.mstatus').addClass('dredpart');
+			$('.mstatus').removeClass('dgreenpart');
+		}
+		
     }
 
     jQuery(document).on('click', '.resetdata', function(){   	
@@ -484,6 +544,7 @@ $(document).ready(function(){
             jQuery('.tlcost').text('₱'+addcomma(decnumbs));       
         }
 
+      
 	});
 
 
@@ -606,11 +667,15 @@ $(document).ready(function(){
 
 		console.log('volume - ' + volume + '| price -' + buyprice);
 
-		/*if(volume.length == 0 ){
+		if(volume.length == 0 ){
 			swal("Please enter quantity");
             return false;
-		}*/
+		}
 
+		if(stockname == ''){
+			swal("Please select a Stock");
+            return false;
+		}
 		//if(status == 'Open'){
 			
 					if(btn == 'buy'){

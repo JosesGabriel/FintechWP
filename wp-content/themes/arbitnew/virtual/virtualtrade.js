@@ -292,7 +292,31 @@ $(document).ready(function(){
 			    type:'GET',
 			    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ stock +'&userid='+userid,
 			    dataType: 'json',
-			    success: function(response) {				    	
+			    success: function(response) {	
+			    	
+						    	if((response.data.change).toFixed(2) > 0){
+						        	$('.change').addClass('dgreenpart');
+						        	$('.change').removeClass('dredpart');
+						        }else if((response.data.change).toFixed(2) < 0) {
+						        	$('.change').addClass('dredpart');
+						        	$('.change').removeClass('dgreenpart');
+						        }else {
+						        	$('.change').css('color','#fcbb29');
+						        	$('.change').removeClass('dgreenpart');
+						        	$('.change').removeClass('dredpart');
+						        }
+
+						        if((response.data.changepercentage).toFixed(2) > 0){
+						        	$('.cpercentage').addClass('dgreenpart');
+						        	$('.cpercentage').removeClass('dredpart');
+						        }else if((response.data.changepercentage).toFixed(2) < 0) {
+						        	$('.cpercentage').addClass('dredpart');
+						        	$('.cpercentage').removeClass('dgreenpart');
+						        }else {
+						        	$('.cpercentage').css('color','#fcbb29');
+						        	$('.cpercentage').removeClass('dgreenpart');
+						        	$('.cpercentage').removeClass('dredpart');
+						        }			    	
 			    	
 			    				$('.sdesc').text(response.data.datainfo.description);
 				    			$('.cprice').text(' '+(response.data.datainfo.last).toFixed(2));

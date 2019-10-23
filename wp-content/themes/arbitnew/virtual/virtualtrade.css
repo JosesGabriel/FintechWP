@@ -305,6 +305,11 @@ textarea.tnotes{
 	padding-bottom: 10px;
 }
 
+.virtual_button {
+	width: 200px;
+    display: inline-flex;
+}
+
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {
 	top: 50px;

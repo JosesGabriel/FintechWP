@@ -55,7 +55,7 @@ require("parts/global-header.php");
                                         <div class="box-portlet">
                                             <div class="box-portlet-header">
                                                 Live Portfolio
-                                                <div class="dltbutton">
+                                                <div class="dltbutton virtual_button">
 													<?php require __DIR__ . "/components/modals/share.php" ?>
 													<?php require "virtual/enter-trade.php";?>
 													<div class="dbuttondelete">

@@ -24,23 +24,23 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc"><span class="sdesc">Banco De Oro</span> <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
+                        <div class="desc"><span class="sdesc"></span> <span class="crice">Current Price: <span class="cprice"></span></span></div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
                             <div class="details">
-                            <p>Previous <span class="pdetails prev">235.40</span></p>
-                            <p>Low <span class="pdetails low" style="color: #e64c3c;">235.10</span></p>
-                            <p>52WKLow <span class="pdetails klow" style="color: #e64c3c;">212.00</span></p>
-                            <p>Volume <span class="pdetails vol">18.17</span></p>
-                            <p>Trades <span class="pdetails trade">561</span></p>
+                            <p>Previous <span class="pdetails prev"></span></p>
+                            <p>Low <span class="pdetails low" style="color: #e64c3c;"></span></p>
+                            <p>52WKLow <span class="pdetails klow" style="color: #e64c3c;"></span></p>
+                            <p>Volume <span class="pdetails vol"></span></p>
+                            <p>Trades <span class="pdetails trade"></span></p>
                             </div>
                             <div class="details2">
-                            <p>Open <span class="pdetails open">235.20</span></p>
-                            <p>High <span class="pdetails high" style="color: #25ae5f">235.70</span></p>
-                            <p>52WKHigh <span class="pdetails khigh" style="color: #25ae5f">350.60</span></p>
-                            <p>Value <span class="pdetails val">22.15M</span></p>
-                            <p>Average <span class="pdetails av">234.20</span></p>
+                            <p>Open <span class="pdetails open"></span></p>
+                            <p>High <span class="pdetails high" style="color: #25ae5f"></span></p>
+                            <p>52WKHigh <span class="pdetails khigh" style="color: #25ae5f"></span></p>
+                            <p>Value <span class="pdetails val"></span></p>
+                            <p>Average <span class="pdetails av"></span></p>
                             </div>
                         </div>
 
@@ -137,7 +137,7 @@
                                     }    
                                 ?>
                                 <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"><?php echo $status; ?></span></div>
-                                <input type="submit" class="confirm_order" value="Confirm Order">
+                                <input type="button" class="confirm_order" value="Confirm Order">
                             </div> 
 
                 </div>

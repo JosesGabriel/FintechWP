@@ -3,9 +3,10 @@ $(document).ready(function(){
 	livedata();
 	tradelogs();
 	performance();
+	marketstatus();
 
 	setInterval(function(){
-   		livedata();
+   		//livedata();
   	}, 5000);
 
 	var status = $('.mstatus').text();
@@ -370,6 +371,23 @@ $(document).ready(function(){
         return dall;
     }
 
+    function marketstatus(){
+    	var open_am = new Date('09:30:00');
+    	var close_am = new Date('11:59:59');
+    	var recess_open = new Date('12:00:00');
+    	var recess_close = new Date('13:29:59');
+    	var open_pm = new Date('13:30:00');
+    	var close_pm = new Date('15:30:00');
+
+    	var today = new Date();
+		var hour = today.getHours();
+		var min = today.getMinutes();
+
+		var open_amt = open_am.getTime();
+		//console.log(open_amt);
+
+    }
+
     jQuery(document).on('click', '.resetdata', function(){   	
     	Swal.fire({
             title: 'Are you sure?',
@@ -574,7 +592,7 @@ $(document).ready(function(){
 		var stockname = $('.data_stocks').val();
 		var buyprice = $('.inputbuyprice').val();
 		var sellprice = $('.inputbuyprice').val();
-		var volume = $('.inputquantity').val();
+		var volume = $('.inputquantity').val().replace(/,/g, '');
 		var averageprice = $('.pdetails.av').text();
 		var emotion = $('.inpt_data_emotion').val();
 		var strategy = $('.inpt_data_strategy').val();
@@ -586,7 +604,13 @@ $(document).ready(function(){
 		var btn = $('.btnValue').val();
 		var status = $('.mstatus').text();
 
+		/*if(volume.length == 0 ){
+			swal("Please enter quantity");
+            return false;
+		}*/
+
 		//if(status == 'Open'){
+
 					if(btn == 'buy'){
 						$.ajax({
 						    type:'GET',

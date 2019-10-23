@@ -53,6 +53,8 @@ $(document).ready(function(){
 		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
+		    		console.log('current price = '+response.data[i].datainfo.last+ 'volume ='+response.data[i].volume);
+
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';

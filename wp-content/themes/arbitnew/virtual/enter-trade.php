@@ -73,7 +73,7 @@
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" disabled></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" autocomplete="off" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" autocomplete="off" class="inputquantity number" style="padding-right: 5px;" required></div>
                             </div>
                         </div>
                         <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost"></span></div>

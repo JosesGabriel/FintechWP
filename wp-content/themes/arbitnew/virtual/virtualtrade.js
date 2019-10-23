@@ -612,7 +612,7 @@ $(document).ready(function(){
 		}*/
 
 		//if(status == 'Open'){
-			/*
+			
 					if(btn == 'buy'){
 						$.ajax({
 						    type:'GET',
@@ -670,7 +670,7 @@ $(document).ready(function(){
 						      }
 						 });
 
-					}*/
+					}
 		/*}else {
 			swal("Market Closed!");
             return false;

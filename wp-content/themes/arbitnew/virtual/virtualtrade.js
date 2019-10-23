@@ -223,7 +223,7 @@ $(document).ready(function(){
 			        } else if (response.data.last >= 1000) {
 			            dboard = 5;
 			        }*/ 
-
+			        console.log(response);
 				    			$('.sdesc').text(response.data.description);
 				    			$('.cprice').text((response.data.last).toFixed(2));
 				    			$('.pdetails.prev').text((response.data.close).toFixed(2));

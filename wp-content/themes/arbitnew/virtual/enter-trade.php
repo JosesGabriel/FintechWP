@@ -24,7 +24,10 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc"><span class="sdesc"></span> <span class="crice">Current Price: <span class="cprice"></span></span></div>
+                        <div class="desc"><span class="sdesc"></span></div>
+                        <div class="crice">
+                            <span>Current Price:</span><span class="cprice"></span>
+                        </div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>

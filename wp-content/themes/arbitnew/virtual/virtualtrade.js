@@ -230,7 +230,9 @@ $(document).ready(function(){
 			        	$('.change').addClass('dredpart');
 			        	$('.change').removeClass('dgreenpart');
 			        }else {
-			        	$('.change').css('color','#fcbb29 !important');
+			        	$('.change').css('color','#fcbb29');
+			        	$('.change').removeClass('dgreenpart');
+			        	$('.change').removeClass('dredpart');
 			        }
 
 			        if((response.data.changepercentage).toFixed(2) > 0){
@@ -240,7 +242,9 @@ $(document).ready(function(){
 			        	$('.cpercentage').addClass('dredpart');
 			        	$('.cpercentage').removeClass('dgreenpart');
 			        }else {
-			        	$('.cpercentage').css('color','#fcbb29 !important');
+			        	$('.cpercentage').css('color','#fcbb29');
+			        	$('.cpercentage').removeClass('dgreenpart');
+			        	$('.cpercentage').removeClass('dredpart');
 			        }
 
 			        console.log(response);

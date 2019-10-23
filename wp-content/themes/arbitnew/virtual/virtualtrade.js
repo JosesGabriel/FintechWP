@@ -7,17 +7,8 @@ $(document).ready(function(){
 
 	setInterval(function(){
    		livedata();
+   		marketstatus();
   	}, 5000);
-
-	var status = $('.mstatus').text();
-	if(status == 'Open'){
-		$('.mstatus').addClass('dgreenpart');
-		$('.mstatus').removeClass('dredpart');
-	}else{
-		$('.mstatus').addClass('dredpart');
-		$('.mstatus').removeClass('dgreenpart');
-	}
-
 
 	$.ajax({
 	    type:'GET',
@@ -386,20 +377,20 @@ $(document).ready(function(){
     	var close_pm = new Date();
     		close_pm.setHours(15, 30, 0);
 
-    	var today = new Date();
-		var hour = today.getHours();
+		var time = Date.now();
 		
-		//var hours = strtotime(hour);
-		if((hour > open_am && hour < close_am) || (hour > open_pm && hour < close_pm)) {
-			console.log('Open');
-		}else if (hour > recess_open && hour < recess_close ) {
-			console.log('Recess');
-		} else {
-			console.log('Close');
+		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
+			$('.mstatus').text('Open');
+			$('.mstatus').addClass('dgreenpart');
+			$('.mstatus').removeClass('dredpart');
+		}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
+			$('.mstatus').text('Recess');
+		} else{
+			$('.mstatus').text('Close');
+			$('.mstatus').addClass('dredpart');
+			$('.mstatus').removeClass('dgreenpart');
 		}
-		//var open_amt = open_am.getTime();
-		console.log(hours);
-
+		
     }
 
     jQuery(document).on('click', '.resetdata', function(){   	

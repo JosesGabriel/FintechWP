@@ -117,26 +117,7 @@
                             </div>                         
                             
                             <div class="groupinput" style="text-align: right;">
-                                <?php 
-                                    $status = '';
-                                    //$hour = date('H:i:s');
-                                    $today = strtotime(date("H:i:s"));
-                                    $openAM = strtotime("09:30:00");
-                                    $closeAM = strtotime("11:59:59");
-                                    $recessOpen = strtotime("12:00:00");
-                                    $recessClose = strtotime("13:29:59");
-                                    $openPM = strtotime("13:30:00");
-                                    $closePM = strtotime("15:30:00");
-
-                                    if(($today > $openAM && $today < $closeAM) || ($today > $openPM && $today < $closePM)){
-                                        $status = 'Open';
-                                    }elseif ($today > $recessOpen && $today < $recessClose) {
-                                        $status = 'Recess';
-                                    }else{
-                                        $status = 'Close';
-                                    }    
-                                ?>
-                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"><?php echo $status; ?></span></div>
+                                <div class="marketstatus" style="width: 200px;"><span style="float: left;">Market Status:</span><span class="mstatus" style="float: left; padding-left: 5px;"></span></div>
                                 <input type="button" class="confirm_order" value="Confirm Order">
                             </div> 
 

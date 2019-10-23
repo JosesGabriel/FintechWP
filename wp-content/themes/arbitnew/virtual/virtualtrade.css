@@ -305,6 +305,11 @@ textarea.tnotes{
 	padding-bottom: 10px;
 }
 
+.virtual_button {
+	width: 200px;
+    display: inline-flex;
+}
+
 /* -------------- passwordmodal vyndue ---------------- */
 #vynduemodals {
 	top: 50px;
@@ -428,3 +433,82 @@ textarea.tnotes{
     overflow: hidden;
 }
 /* -------------- passwordmodal vyndue ---------------- */
+
+/* share btn style */
+.share-modal-header {
+	display: block;
+}
+.share-modal-header img {
+	width: 100%;
+	border-radius: 10px;
+}
+.share-modal textarea {
+	width: 100%;
+	border: 1px solid blue;
+	border-radius: 5px;
+	font-size: 0.7em;
+	padding: 10px;
+	margin-bottom: 5px;
+}
+#preloader {
+    background-color: transparent;
+    z-index: 99999999;
+	height: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+#status {
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: 45%;
+    background-image: url(/wp-content/plugins/um-social-activity/assets/img/loader.svg);
+    background-size:50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: -25px 0 0 -25px;
+}
+#status_txt {
+    width:100%;
+    /* position: absolute; */
+    top:50%;
+    left:0;
+    z-index:99;
+    color:#fff;
+    text-align:center;
+    font-size:11px;
+}
+.arbitrage-button {
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	color: #ffffff;
+	background: none;
+	border: 2px #fff solid;
+	height: auto;
+	border-radius: 25px;
+	padding: 3px 9px;
+}
+.arbitrage-button--primary {
+	border: 2px #2481bc solid;
+}
+.arbitrage-button--primary:hover {
+	color: #ffffff;
+	background-color: #2481bc !important;
+	transition-duration: 300ms;
+}
+.share__btn--social {
+	padding: 5px;
+	color: white;
+}
+.share--modal__socialWrapper {
+	padding: 5px;
+}
+.share-modal-image-container {
+	display: flex;
+}
+.share-modal-body {
+	padding-bottom: 10px;
+}
+/* end share btn style */

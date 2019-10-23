@@ -190,9 +190,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     $scope.reverse  = true;
     $scope.stock        = null;
     $scope.marketdepth  = [];
-    $scope.enableBidsAndAsks = true;
-    $scope.bids = [];
-    $scope.asks = [];
     $scope.transactions = [];
     $scope.bidtotal = 0;
     $scope.asktotal = 0;
@@ -412,58 +409,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         
         // $scope.stock = $filter('filter')($scope.stocks, {symbol: _symbol}, true)[0];
     });
-    $scope.getBidsAndAsks = function (symbol) {
-        if ($scope.enableBidsAndAsks) {
-            $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
-            .then(response => {
-                response = response.data;
-                if (!response.success) {
-                    $scope.bids = [];
-                    $scope.asks = [];
-                    return;
-                }
-    
-                $scope.bids = Object.values(response.data.bids);
-                $scope.asks = Object.values(response.data.asks);
-            })
-            .catch(err => {
-                $scope.bids = [];
-                $scope.asks = [];
-            });
-        }
-    }
-    $scope.getBidsAndAsks(_symbol);
-    
-    $scope.getStockTrades = function (symbol = '', limit = 20) {
-        if (symbol != 'PSEI' && symbol != '') {
-            $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
-                .then(response => {
-                    response = response.data;
-                    if (!response.success) {
-                        return;
-                    }
-    
-                    let data = response.data;
-    
-                    $scope.transactions = data.map(transaction => {
-                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
-                        return {
-                            symbol: transaction.symbol,
-                            price:  price_format(transaction.executed_price),
-                            shares: abbr_format(transaction.executed_volume),
-                            buyer:  transaction.buyer,
-                            seller: transaction.seller,
-                            time:   full_time,
-                        };                                    
-                    });
-                    $scope.$digest();
-                })
-                .catch(err => {
-                    
-                });
-        }
-    }
-    $scope.getStockTrades(_symbol);
 
     $scope.updateTabTitle = function (symbol, data) {
         if (data.change > 0){
@@ -568,101 +513,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
         $scope.$digest();
     });
 
-    socket.on('pset', function (data) {
-        if ($scope.stock && $scope.stock.symbol == data.sym) {
-            let full_time = (moment(data.t * 1000)).format('hh:mm a');
-            let transaction = {
-                symbol: data.sym,
-                price:  price_format(data.exp),
-                shares: abbr_format(data.exvol),
-                buyer:  data.b,
-                seller: data.s,
-                time:   full_time,
-            };
-    
-            $scope.transactions.unshift(transaction);
-            if ($scope.transactions.length > 20) {
-                $scope.transactions.pop();
-            }
-            
-            $scope.$digest();
-        }
-    });
-
-    /**
-     * Types
-     *  a => add
-     *  au => update price
-     *  d => delete
-     *  u => update new order
-     */
-     socket.on('psebd', function (data) {
-        if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
-            if (data.ov == 'B') {
-                // bid
-                $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
-                $scope.bids = $filter('orderBy')($scope.bids, '-price');
-            } else if (data.ov == 'S') {
-                // ask
-                $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
-            }
-            $scope.$digest();
-        }
-    });
-
-    $scope.updateBidAndAsks = function (list, data) {
-        let index = list.findIndex(function(item){
-            return item.id == data.id
-        });
-        if (data.ty == 'a') {
-            if (typeof list[index] !== 'undefined') {
-                list[index].count++;
-                list[index].volume += data.vol;
-            } else {
-                list.push($scope.addToBidAskList(data.id, data));
-            }
-        } else if (data.ty == 'au') {
-            // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, index, -1, data.vol);
-
-            // add new data.idn to list
-            list.push($scope.addToBidAskList(data.idn, data));
-        } else if (data.ty == 'd') {
-            // decrement data.id's count by 1, if count is zero, remove from list
-            list = $scope.updateBidAskCount(list, index, -1, data.vol);
-        } else if (data.ty == 'u') {
-            // same as au but drop the data.id entirely and add data.idn to list
-            if (typeof list[index] !== 'undefined') {
-                list = list.filter((item, key) => {
-                    return key != index;
-                });
-            }
-            list.push($scope.addToBidAskList(data.idn, data));
-        }
-        return list;
-    }
-
-    $scope.updateBidAskCount = function (list, id, increment, volume) {
-        if (typeof list[id] !== 'undefined') {
-            list[id].count += increment;
-            list[id].volume += volume * increment;
-            if (list[id].count <= 0) {
-                list = list.filter((item, key) => {
-                    return key != id;
-                });
-            }
-        }
-        return list;
-    }
-
-    $scope.addToBidAskList = function (id, data) {
-        return {
-            'id': id,
-            'price': data.p,
-            'count': 1,
-            'volume': data.vol,
-        }
-    }
     $scope.sortStocks = function(sort) {
         if ($scope.sort == sort) {
             $scope.reverse = !$scope.reverse;
@@ -680,7 +530,6 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
             $scope.stock = null;
         }
         $scope.marketdepth  = [];
-        $scope.transactions = [];
         if (marketdepthTimeout) {
             window.clearTimeout(marketdepthTimeout);
         }
@@ -817,6 +666,195 @@ app.controller('stockInfo', ['$scope', '$rootScope', '$http', function($scope, $
             }
         }
     }
+}]);
+app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
+    $scope.enableBidsAndAsks = true;
+    $scope.isLoading = false;
+    $scope.bids = [];
+    $scope.asks = [];
+
+    $scope.getBidsAndAsks = function (symbol) {
+        if ($scope.enableBidsAndAsks) {
+            $scope.isLoading = true;
+            $http.post('/wp-json/data-api/v1/stocks/market-depth/latest/bidask?exchange=PSE&filter-by-last=true&limit=20&symbol=' + symbol)
+            .then(response => {
+                response = response.data;
+                if (!response.success) {
+                    $scope.bids = [];
+                    $scope.asks = [];
+                    return;
+                }
+    
+                $scope.bids = Object.values(response.data.bids);
+                $scope.asks = Object.values(response.data.asks);
+                $scope.isLoading = false;
+            })
+            .catch(err => {
+                $scope.bids = [];
+                $scope.asks = [];
+                $scope.isLoading = false;
+            });
+        }
+    }
+    // $scope.getBidsAndAsks(_symbol);
+
+    $rootScope.$on('changeStockSymbol', function (event, symbol) {
+        $scope.getBidsAndAsks(symbol);
+    });
+
+    /**
+     * Types
+     *  a => add
+     *  au => update price
+     *  d => delete
+     *  u => update new order
+     *  fd => fully executed delete order (subtract count and volume)
+     *  pd => partially executed delete order (subtract volume)
+     */
+     socket.on('psebd', function (data) {
+        if ($scope.selectedStock == data.sym && $scope.enableBidsAndAsks) {
+            if (data.ov == 'B') {
+                // bid
+                $scope.bids = $scope.updateBidAndAsks($scope.bids, data);
+                $scope.bids = $filter('orderBy')($scope.bids, '-price');
+            } else if (data.ov == 'S') {
+                // ask
+                $scope.asks = $scope.updateBidAndAsks($scope.asks, data);
+            }
+            $scope.$digest();
+        }
+    });
+
+    $scope.updateBidAndAsks = function (list, data) {
+        let index = list.findIndex(function(item){
+            return item.id == data.id
+        });
+        if (data.ty == 'a') {
+            if (typeof list[index] !== 'undefined') {
+                list[index].count++;
+                list[index].volume += data.vol;
+            } else {
+                list.push($scope.addToBidAskList(data.id, data));
+            }
+        } else if (data.ty == 'au') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
+
+            // add new data.idn to list
+            list.push($scope.addToBidAskList(data.idn, data));
+        } else if (data.ty == 'd') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, data.vol);
+        } else if (data.ty == 'u') {
+            // same as au but drop the data.id entirely and add data.idn to list
+            if (typeof list[index] !== 'undefined') {
+                list = list.filter((item, key) => {
+                    return key != index;
+                });
+            }
+            list.push($scope.addToBidAskList(data.idn, data));
+        } else if (data.ty = 'fd') {
+            // decrement data.id's count by 1, if count is zero, remove from list
+            list = $scope.updateBidAskCount(list, index, -1, 0);
+
+            list = $scope.updateBidAskVolume(list, index, (-1 * data.vol));
+        } else if (data.ty = 'pd') {
+            list = $scope.updateBidAskVolume(list, index, data.vol);
+        }
+        return list;
+    }
+
+    $scope.updateBidAskCount = function (list, id, increment, volume) {
+        if (typeof list[id] !== 'undefined') {
+            list[id].count += increment;
+            list[id].volume += volume * increment;
+            if (list[id].count <= 0) {
+                list = list.filter((item, key) => {
+                    return key != id;
+                });
+            }
+        }
+        return list;
+    }
+
+    $scope.updateBidAskVolume = function (list, id, increment) {
+        if (typeof list[id] !== 'undefined') {
+            list[id].volume += increment;
+        }
+        return list;
+    }
+
+    $scope.addToBidAskList = function (id, data) {
+        return {
+            'id': id,
+            'price': data.p,
+            'count': 1,
+            'volume': data.vol,
+        }
+    }
+}]);
+app.controller('transactions', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    $scope.isLoading = false;
+    $scope.currentStock = '';
+    $scope.transactions = [];
+
+    $scope.getStockTrades = function (symbol = '', limit = 20) {
+        if (symbol != 'PSEI' && symbol != '') {
+            $scope.isLoading = true;
+            $http.post('/wp-json/data-api/v1/stocks/trades/latest?exchange=PSE&broker=true&sort=DESC&symbol=' + symbol + '&limit=' + limit)
+                .then(response => {
+                    response = response.data;
+                    if (!response.success) {
+                        return;
+                    }
+    
+                    let data = response.data;
+    
+                    $scope.transactions = data.map(transaction => {
+                        let full_time = (moment(transaction.timestamp * 1000)).format('hh:mm a');
+                        return {
+                            symbol: transaction.symbol,
+                            price:  price_format(transaction.executed_price),
+                            shares: abbr_format(transaction.executed_volume),
+                            buyer:  transaction.buyer,
+                            seller: transaction.seller,
+                            time:   full_time,
+                        };                                    
+                    });
+                    $scope.isLoading = false;
+                    $scope.$digest();
+                })
+                .catch(err => {
+                    $scope.isLoading = false;
+                });
+        }
+    }
+    
+    $rootScope.$on('changeStockSymbol', function (event, symbol) {
+        $scope.currentStock = symbol;
+        $scope.getStockTrades(symbol);
+    });
+
+    socket.on('pset', function (data) {
+        if ($scope.currentStock && $scope.currentStock == data.sym) {
+            let full_time = (moment(data.t * 1000)).format('hh:mm a');
+            let transaction = {
+                symbol: data.sym,
+                price:  price_format(data.exp),
+                shares: abbr_format(data.exvol),
+                buyer:  data.b,
+                seller: data.s,
+                time:   full_time,
+            };
+    
+            $scope.transactions.unshift(transaction);
+            if ($scope.transactions.length > 20) {
+                $scope.transactions.pop();
+            }
+            
+            $scope.$digest();
+        }
+    });
 }]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
@@ -1037,8 +1075,6 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                         
                         $scope.$parent.getFullMarketDepth(_symbol);
                         $scope.$parent.getTopMarketDepth(_symbol);
-                            
-                        $scope.$parent.getBidsAndAsks(symbol);
                     } else {
                         $scope.$parent.stock = null;
                         $scope.$parent.marketdepth = [];

@@ -117,6 +117,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'deletelogs'],
             ],
         ]);
+
+        register_rest_route($base_route, 'resetdata', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'resetdata'],
+            ],
+        ]);
         
     }
 
@@ -573,6 +580,21 @@ class VirtualAPI extends WP_REST_Controller
         $tradelogs = "delete from arby_vt_tradelog where id = ".$data['id']." and userid = ".$data['userid'];
        if($wpdb->query($tradelogs)){
             return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
+
+    public function resetdata($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $tradelogs = "delete from arby_vt_tradelog where userid = ".$data['userid'];
+       if($wpdb->query($tradelogs)){
+             $liveportfolio = "delete from arby_vt_live where userid = ".$data['userid'];
+             if($wpdb->query($liveportfolio)){
+                return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+            }
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);
         }

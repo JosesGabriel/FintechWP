@@ -225,9 +225,9 @@ $(document).ready(function(){
 			        }*/ 
 			        console.log(response);
 				    			$('.sdesc').text(response.data.description);
-				    			$('.cprice').text((response.data.last).toFixed(2));
-				    			$('.change').text((response.data.change).toFixed(2));
-				    			$('.cpercentage').text((response.data.changepercentage).toFixed(2));
+				    			$('.cprice').text(' '+(response.data.last).toFixed(2));
+				    			$('.change').text(' '+(response.data.change).toFixed(2));
+				    			$('.cpercentage').text(' ( '+(response.data.changepercentage).toFixed(2) + '% )');
 				    			$('.pdetails.prev').text((response.data.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.weekyearlow);

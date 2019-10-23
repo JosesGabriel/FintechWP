@@ -604,13 +604,15 @@ $(document).ready(function(){
 		var btn = $('.btnValue').val();
 		var status = $('.mstatus').text();
 
+		console.log('volume - ' + volume + '| price -' + buyprice);
+
 		/*if(volume.length == 0 ){
 			swal("Please enter quantity");
             return false;
 		}*/
 
 		//if(status == 'Open'){
-
+			/*
 					if(btn == 'buy'){
 						$.ajax({
 						    type:'GET',
@@ -668,7 +670,7 @@ $(document).ready(function(){
 						      }
 						 });
 
-					}
+					}*/
 		/*}else {
 			swal("Market Closed!");
             return false;

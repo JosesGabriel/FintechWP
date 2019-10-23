@@ -247,7 +247,6 @@ $(document).ready(function(){
 			        	$('.cpercentage').removeClass('dredpart');
 			        }
 
-			        console.log(response);
 				    			$('.sdesc').text(response.data.description);
 				    			$('.cprice').text('  '+(response.data.last).toFixed(2));
 				    			$('.change').text('  '+(response.data.change).toFixed(2));
@@ -296,9 +295,9 @@ $(document).ready(function(){
 			    success: function(response) {				    	
 			    	
 			    				$('.sdesc').text(response.data.datainfo.description);
-				    			$('.cprice').text(' '+(response.data.last).toFixed(2));
-				    			$('.change').text(' '+(response.data.change).toFixed(2));
-				    			$('.cpercentage').text(' ('+(response.data.changepercentage).toFixed(2) + '%)');
+				    			$('.cprice').text(' '+(response.data.datainfo.last).toFixed(2));
+				    			$('.change').text(' '+(response.data.datainfo.change).toFixed(2));
+				    			$('.cpercentage').text(' ('+(response.data.datainfo.changepercentage).toFixed(2) + '%)');
 				    			$('.pdetails.prev').text((response.data.datainfo.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.datainfo.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.datainfo.weekyearlow);

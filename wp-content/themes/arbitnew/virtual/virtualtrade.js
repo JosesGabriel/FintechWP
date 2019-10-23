@@ -168,7 +168,7 @@ $(document).ready(function(){
 
 	function resetdata(){
 		var userid = $('.userid').val();
-		console.log('userid='+userid);
+		//console.log('userid='+userid);
 		$.ajax({
 		    type:'GET',
 		    url:'/wp-json/virtual-api/v1/resetdata?userid='+userid,

@@ -59,7 +59,7 @@
 
                 var fd = new FormData();
                 fd.append("access_token", token);
-                fd.append("source", blob);
+                fd.append("source", imageData);
                 fd.append("no_story", true);
 
                 // Upload image to facebook without story(post to feed)

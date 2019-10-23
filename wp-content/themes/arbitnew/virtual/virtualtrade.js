@@ -223,11 +223,21 @@ $(document).ready(function(){
 			        } else if (response.data.last >= 1000) {
 			            dboard = 5;
 			        }*/ 
+			        if(response.data.change > 0){
+			        	$('.change').addClass('dgreenpart');
+			        	$('.change').removeClass('dredpart');
+			        }else if(response.data.change < 0) {
+			        	$('.change').addClass('dredpart');
+			        	$('.change').removeClass('dgreenpart');
+			        }else {
+			        	$('.change').css('color','#fcbb29');
+			        }
+
 			        console.log(response);
 				    			$('.sdesc').text(response.data.description);
 				    			$('.cprice').text(' '+(response.data.last).toFixed(2));
 				    			$('.change').text(' '+(response.data.change).toFixed(2));
-				    			$('.cpercentage').text(' ( '+(response.data.changepercentage).toFixed(2) + '% )');
+				    			$('.cpercentage').text(' ('+(response.data.changepercentage).toFixed(2) + '%)');
 				    			$('.pdetails.prev').text((response.data.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.weekyearlow);
@@ -272,7 +282,9 @@ $(document).ready(function(){
 			    success: function(response) {				    	
 			    	
 			    				$('.sdesc').text(response.data.datainfo.description);
-				    			$('.cprice').text((response.data.datainfo.last).toFixed(2));
+				    			$('.cprice').text(' '+(response.data.last).toFixed(2));
+				    			$('.change').text(' '+(response.data.change).toFixed(2));
+				    			$('.cpercentage').text(' ('+(response.data.changepercentage).toFixed(2) + '%)');
 				    			$('.pdetails.prev').text((response.data.datainfo.close).toFixed(2));
 				    			$('.pdetails.low').text((response.data.datainfo.low).toFixed(2));
 				    			$('.pdetails.klow').text(response.data.datainfo.weekyearlow);

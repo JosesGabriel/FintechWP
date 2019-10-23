@@ -26,7 +26,7 @@
                         </div>
                         <div class="desc"><span class="sdesc"></span></div>
                         <div class="crice">
-                            <span>Current Price: </span><span class="cprice"></span><span class="change"></span><span class="cpercentage"></span>
+                            <span>Current Price: </span><span class="cprice" style="font-size: 14px;"></span><span class="change" style="font-size: 12px;"></span><span class="cpercentage" style="font-size: 12px;"></span>
                         </div>
                         <hr>
                         <div>

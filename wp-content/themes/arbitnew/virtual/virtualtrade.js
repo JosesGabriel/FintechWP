@@ -410,6 +410,8 @@ $(document).ready(function(){
                     'success'
                 ).then((result) => {
                 	resetdata();
+
+                	console.log('reseted');
                     //var ditemtoremove = jQuery(this).attr('data-space');
                     //window.location.href = "/watchlist/?remove="+ditemtoremove;
                 });

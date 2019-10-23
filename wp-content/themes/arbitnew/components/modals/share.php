@@ -9,7 +9,7 @@
                 <div class="share--modal__socialWrapper">
                     <span>Share on: </span>
                     <button class="btn share__btn--social" onclick="shareOnFB();"><i class="fab fa-facebook-f"></i></button>
-                    <button class="btn share__btn--social"><i class="fab fa-twitter"></i></button>
+                    <button class="btn share__btn--social" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></button>
                     <button type="button" class="close" data-dismiss="modal" style="color: white;">&times;</button>
                 </div>
                 <div id="share-modal-image-container" class="share-modal-image-container">  
@@ -27,7 +27,6 @@
         
     </div>
 </div>
-<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -36,107 +35,59 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <script type="text/javascript">
-            function shareOnFB() {
-                var imageData = $('#image-to-share').attr('src');
-                var mimeType = base64MimeType(imageData);
-                var blob = dataURItoBlob(imageData,mimeType);
-                FB.getLoginStatus(function (response) {
-                    console.log(response);
-                    if (response.status === "connected") {
-                        postImageToFacebook(response.authResponse.accessToken, "Canvas to Facebook/Twitter", "image/png", blob, window.location.href);
-                    } else if (response.status === "not_authorized") {
-                        FB.login(function (response) {
-                            postImageToFacebook(response.authResponse.accessToken, "Canvas to Facebook/Twitter", "image/png", blob, window.location.href);
-                        }, {scope: "publish_actions"});
-                    } else {
-                        FB.login(function (response) {
-                            postImageToFacebook(response.authResponse.accessToken, "Canvas to Facebook/Twitter", "image/png", blob, window.location.href);
-                        }, {scope: "publish_actions"});
-                    }
-                });
+    function shareOnFB() {
+        var imageData = $('#image-to-share').attr('src');
+        var image = dataURLtoFile(imageData, 'screenshot.png');
+        var formData = new FormData();
+        formData.append('file', image);
+        $.ajax({ //post to cloud
+            url: 'https://dev-api.arbitrage.ph/api/storage/upload',
+            data: formData,
+            type: 'POST',
+            contentType: false,
+            processData: false,  
+            success: function(response) {
+                var imageLink = response.data.file.url;
+                FB.ui({
+                    method: 'feed',
+                    link: imageLink,
+                    quote: 'https://arbitrage.ph'
+                }, function(response){});
+            },
+            error: function(e) {
+                console.log(e);
             }
-            function postImageToFacebook(token, filename, mimeType, imageData, message) {
-
-                var fd = new FormData();
-                fd.append("access_token", token);
-                fd.append("source", imageData);
-                fd.append("no_story", true);
-
-                // Upload image to facebook without story(post to feed)
-                $.ajax({
-                    url: "https://graph.facebook.com/me/photos?access_token=" + token,
-                    type: "POST",
-                    data: fd,
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    success: function (data) {
-                        console.log("success: ", data);
-
-                        // Get image source url
-                        FB.api(
-                            "/" + data.id + "?fields=images",
-                            function (response) {
-                                if (response && !response.error) {
-                                    //console.log(response.images[0].source);
-
-                                    // Create facebook post using image
-                                    FB.api(
-                                        "/me/feed",
-                                        "POST",
-                                        {
-                                            "message": "",
-                                            "picture": response.images[0].source,
-                                            "link": window.location.href,
-                                            "name": 'Look at the cute panda!',
-                                            "description": message,
-                                            "privacy": {
-                                                value: 'SELF'
-                                            }
-                                        },
-                                        function (response) {
-                                            if (response && !response.error) {
-                                                /* handle the result */
-                                                console.log("Posted story to facebook");
-                                                console.log(response);
-                                            }
-                                        }
-                                    );
-                                }
-                            }
-                        );
-                    },
-                    error: function (shr, status, data) {
-                        console.log("error " + data + " Status " + JSON.stringify(shr));
-                    },
-                    complete: function (data) {
-                        //console.log('Post to facebook Complete');
-                    }
-                });
+        });
+        
+    }
+    function shareOnTwitter() {
+        var imageData = $('#image-to-share').attr('src');
+        var image = dataURLtoFile(imageData, 'screenshot.png');
+        var formData = new FormData();
+        formData.append('file', image);
+        $.ajax({ //post to cloud
+            url: 'https://dev-api.arbitrage.ph/api/storage/upload',
+            data: formData,
+            type: 'POST',
+            contentType: false,
+            processData: false,  
+            success: function(response) {
+                var imageLink = response.data.file.url;
+                imageLink = encodeURIComponent(imageLink);
+                var twitterURL = 'https://twitter.com/intent/tweet?url=' + imageLink + '&via=arbitrageph&hashtags=arbitrageph';
+                window.open(twitterURL,"mywindow","menubar=1,resizable=1,width=350,height=250");
+            },
+            error: function(e) {
+                console.log(e);
             }
-            function dataURItoBlob(dataURI,mime) {
-                var byteString = atob(dataURI.split(',')[1]);
-                    var ab = new ArrayBuffer(byteString.length);
-                    var ia = new Uint8Array(ab);
-
-                    for (var i = 0; i < byteString.length; i++) {
-                        ia[i] = byteString.charCodeAt(i);
-                    }
-                    return new Blob([ab], { type: 'image/png' });
-                }
-                function base64MimeType(encoded) {
-                    var result = null;
-
-                    if (typeof encoded !== 'string') {
-                        return result;
-                    }
-
-                    var mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
-
-                    if (mime && mime.length) {
-                        result = mime[1];
-                    }
-
-                    return result;
-                }
-            </script>
+        });
+    }
+    function dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, {type:mime});
+    }
+</script>

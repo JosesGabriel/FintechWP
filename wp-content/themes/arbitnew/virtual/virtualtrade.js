@@ -53,7 +53,7 @@ $(document).ready(function(){
 		    		var totalcost = response.data[i].averageprice * response.data[i].volume; 
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
-		    		console.log(marketval);
+		    		console.log('buyprice='+buyprice);
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';

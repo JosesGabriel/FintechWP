@@ -8,6 +8,7 @@ $(document).ready(function(){
 	setInterval(function(){
    		livedata();
    		marketstatus();
+   		performance();
   	}, 5000);
 
 	$.ajax({
@@ -293,7 +294,7 @@ $(document).ready(function(){
 			    url:'/wp-json/virtual-api/v1/toselldetails?stock='+ stock +'&userid='+userid,
 			    dataType: 'json',
 			    success: function(response) {	
-			    	
+
 						    	if((response.data.datainfo.change).toFixed(2) > 0){
 						        	$('.change').addClass('dgreenpart');
 						        	$('.change').removeClass('dredpart');

@@ -183,6 +183,10 @@
         });
     }
 
+    var buytrade = function(userid){
+
+    }
+
     $( document ).ready(function() {
 
         // initialize fancy box
@@ -249,6 +253,56 @@
 
         $(".openledger").click(function(e){
             new loadLedger(<?php echo $user->ID; ?>);
+        });
+
+        $(".confirm_order").click(function(e){
+            e.preventDefault();
+            let stocks = $(".buytrades #inpt_data_select_stock option:selected").val();
+            if(stocks != ""){
+                let volume = $(".buytrades #entertopdataquantity").val();
+                let buyprice = $(".buytrades #entertopdataprice").val();
+                let notes = $(".buytrades .tnotes").val();
+                let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
+                let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
+                let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
+                let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
+
+                let newstocks = $.parseJSON(stocks);
+                let dstockname = newstocks.symbol;
+                console.log(dstockname);
+
+
+                $.ajax({
+                    url: "/wp-json/journal-api/v1/buystocks",
+                    type: 'GET',
+                    data: {
+                        "qty": volume,
+                        "price": buyprice,
+                        "buymonth": ddate,
+                        "strategy": strategy,
+                        "tradeplan": tradeplan,
+                        "emotion": emotion,
+                        "stock": dstockname,
+                        "userid" : <?php echo $user->ID; ?>
+                    },
+                    dataType: 'json', // added data type
+                    success: function(data) {
+                        console.log("return data");
+                        console.log(data);
+                        $("#enter_trade").modal("hide");
+
+                        
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        
+                    }
+                });
+
+            } else {
+                swal("please select a stock");
+            }
+
+            // console.log(strategy);
         });
 
 

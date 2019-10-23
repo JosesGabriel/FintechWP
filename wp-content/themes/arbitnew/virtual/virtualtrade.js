@@ -233,6 +233,16 @@ $(document).ready(function(){
 			        	$('.change').css('color','#fcbb29');
 			        }
 
+			        if(response.data.changepercentage > 0){
+			        	$('.cpercentage').addClass('dgreenpart');
+			        	$('.cpercentage').removeClass('dredpart');
+			        }else if(response.data.changepercentage < 0) {
+			        	$('.cpercentage').addClass('dredpart');
+			        	$('.cpercentage').removeClass('dgreenpart');
+			        }else {
+			        	$('.cpercentage').css('color','#fcbb29');
+			        }
+
 			        console.log(response);
 				    			$('.sdesc').text(response.data.description);
 				    			$('.cprice').text(' '+(response.data.last).toFixed(2));

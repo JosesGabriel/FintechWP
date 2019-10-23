@@ -230,7 +230,7 @@ $(document).ready(function(){
 			        	$('.change').addClass('dredpart');
 			        	$('.change').removeClass('dgreenpart');
 			        }else {
-			        	$('.change').css('color','#fcbb29');
+			        	$('.change').css('color','#fcbb29 !important');
 			        }
 
 			        if((response.data.changepercentage).toFixed(2) > 0){
@@ -240,7 +240,7 @@ $(document).ready(function(){
 			        	$('.cpercentage').addClass('dredpart');
 			        	$('.cpercentage').removeClass('dgreenpart');
 			        }else {
-			        	$('.cpercentage').css('color','#fcbb29');
+			        	$('.cpercentage').css('color','#fcbb29 !important');
 			        }
 
 			        console.log(response);

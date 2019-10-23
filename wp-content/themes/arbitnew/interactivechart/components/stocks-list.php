@@ -1,4 +1,6 @@
-<div class="vertical-box tab-pane fade in active" id="allstock">
+<div
+    ng-controller="stocksList"
+    class="vertical-box tab-pane fade in active" id="allstock">
     <?php if ( ! WP_PROD_ENV): ?>
     <table class="table table-condensed m-b-0" style="font-size: 10px; width:90%;">
         <thead style="position: fixed; background-color: #2c3e50">
@@ -27,7 +29,7 @@
             
             <tr 
                 ng-repeat="stock in stocks | orderBy: sort : reverse track by stock.symbol" 
-                ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'bg-grey-transparent-5': stock.symbol == $parent.stock.symbol, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
+                ng-class="{'text-green': stock.displayChange > 0, 'text-red': stock.displayChange < 0, 'text-yellow': stock.displayChange == 0, 'hidden': sort != 'symbol' && !latest_trading_date.isSame(stock.lastupdatetime, 'day')}" 
                 change-alt="stock"
                 style="font-weight: bold;"
                 >
@@ -43,7 +45,7 @@
                 <td align="right" class="text-default" ng-click="select(stock.symbol)" style="cursor: pointer;padding-right: 5px !important;">{{stock.trades | numeraljs:'0,0'}}</td>
             </tr>
             <tr ng-if="stocks.length == 0">
-                <td colspan="5" align="center">No Data Found</td>
+                <td colspan="5" align="center" style="color: #fff">No Data Found</td>
             </tr>
         </tbody>
     </table>

@@ -372,19 +372,33 @@ $(document).ready(function(){
     }
 
     function marketstatus(){
-    	var open_am = new Date('09:30:00');
-    	var close_am = new Date('11:59:59');
-    	var recess_open = new Date('12:00:00');
-    	var recess_close = new Date('13:29:59');
-    	var open_pm = new Date('13:30:00');
-    	var close_pm = new Date('15:30:00');
+
+    	var open_am = new Date();
+  			open_am.setHours(9, 30, 0);
+    	var close_am = new Date();
+    		close_am.setHours(11, 59, 59);
+    	var recess_open = new Date();
+    		recess_open.setHours(12, 0, 0);
+    	var recess_close = new Date();
+    		recess_close.setHours(13, 29, 59);
+    	var open_pm = new Date();
+    		open_pm.setHours(13, 30, 0);
+    	var close_pm = new Date();
+    		close_pm.setHours(15, 30, 0);
 
     	var today = new Date();
 		var hour = today.getHours();
-		var min = today.getMinutes();
-
-		var open_amt = open_am.getTime();
-		//console.log(open_amt);
+		
+		//var hours = strtotime(hour);
+		if((hour > open_am && hour < close_am) || (hour > open_pm && hour < close_pm)) {
+			console.log('Open');
+		}else if (hour > recess_open && hour < recess_close ) {
+			console.log('Recess');
+		} else {
+			console.log('Close');
+		}
+		//var open_amt = open_am.getTime();
+		console.log(hours);
 
     }
 

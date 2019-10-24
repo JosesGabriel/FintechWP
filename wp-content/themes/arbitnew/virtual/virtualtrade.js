@@ -295,10 +295,10 @@ $(document).ready(function(){
 								    	if(bear == null || bear == ''){
 								    		bear = 0;
 								    	}
-								    	var vtotal = bull + bear;
+								    	var vtotal = parseFloat(bull) + parseFloat(bear);
 								    	
-								    	var bullperc = (parseFloat(bull) / vtotal) * 100;
-								    	var bearperc = (parseFloat(bear) / vtotal) * 100;
+								    	var bullperc = (bull / vtotal) * 100;
+								    	var bearperc = (bear / vtotal) * 100;
 
 								    	console.log('bull => '+ bull + ' bear => ' + bear);
 								    	console.log('vtotal => '+ vtotal);

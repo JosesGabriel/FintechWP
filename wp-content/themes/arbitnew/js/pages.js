@@ -92,7 +92,7 @@ jQuery(".ontomitif").click(function(e){
                 window.location = notification_uri;
             }
         });
-        jQuery('.um-notification-hide').on('click', function() {
+        jQuery('.um-notification-hide, .um-notification-hide a, .um-notification-hide i, .um-notification-hide i:before').on('click', function() {
             event.preventDefault();
         });
 

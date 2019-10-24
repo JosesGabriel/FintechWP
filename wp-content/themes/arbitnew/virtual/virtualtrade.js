@@ -458,7 +458,7 @@ $(document).ready(function(){
 		//var time_now = t.hour():t.minute(), t.second());
     	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
     	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
-    	console.log(t.hour());
+    	//console.log(t.hour());
 		var time = Date.now();
 		
 		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	

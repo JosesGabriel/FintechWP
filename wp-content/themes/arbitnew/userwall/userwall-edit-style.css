@@ -98,7 +98,6 @@ td.to-stock {
 }
 #mingle-btn {
     border-radius: 26px !important;
-    border: 1.3px solid #6583a8 !important;
     padding: 5px 14px !important;
     font-family: 'Nunito', sans-serif;
     color: #6583a8;
@@ -707,7 +706,7 @@ input[type=submit].um-button, input[type=submit].um-button:focus {
 }
 .select2-container--default .select2-results__option[aria-selected=true] {
     background-color: #0d1d2d;
-    border-radius: 25px;
+    border-radius: 2px;
 }
 .select2-results li {
     color: #fffffe !important;
@@ -715,7 +714,7 @@ input[type=submit].um-button, input[type=submit].um-button:focus {
 .select2-results li.select2-results__option.select2-results__option--highlighted {
     background: #102235 !important;
     color: #fffffe !important;
-    border-radius: 25px;
+    border-radius: 2px;
 }
 .select2-container--default .select2-results>.select2-results__options::-webkit-scrollbar-track
 {

@@ -58,8 +58,8 @@
                             <div class="marketsents">
                                 <span style="font-weight: 600;">Members Sentiments</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green_m" style="width:80%;height: 6px;">&nbsp;</div>
-                                    <div class="arb_bar_red_m" style="width:20%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_green_m" style="width:50%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red_m" style="width:50%;height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                         </div>

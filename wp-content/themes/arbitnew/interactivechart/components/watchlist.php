@@ -19,6 +19,7 @@
                 curl_close($curl);
 
                 $dhistoforchart = json_decode($dhistofronold);
+                json_decode($dhistoforchart);
             ?>
             <tbody>
                 <?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
@@ -26,21 +27,21 @@
 
                 <?php foreach ($havemeta as $key => $value) { ?>
                 <?php
-                    $stockinfo = $dhistoforchart->data;
-                    $dstock = $value['stockname'];
-                    $dprice = 0;
-                    $dchange = 0;
+                    // $stockinfo = $dhistoforchart->data;
+                    // $dstock = $value['stockname'];
+                    // $dprice = 0;
+                    // $dchange = 0;
 
-                        foreach($stockinfo as $stkey => $stvals){
-                            if($stvals->symbol == $dstock ){
-                                $dprice = $stvals->last;
-                                $dchange = $stvals->changepercentage;
-                                $dlow = $stvals->low;
-                                $dhigh = $stvals->high;
-                            }
-                        }
+                    //     foreach($stockinfo as $stkey => $stvals){
+                    //         if($stvals->symbol == $dstock ){
+                    //             $dprice = $stvals->last;
+                    //             $dchange = $stvals->changepercentage;
+                    //             $dlow = $stvals->low;
+                    //             $dhigh = $stvals->high;
+                    //         }
+                    //     }
                     ?>
-                    <tr class="tr-background">
+                    <!-- <tr class="tr-background">
                         <td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
                         <td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $dlow, 2, '.', ',' ); ?> ~ <?php echo number_format( $dhigh, 2, '.', ',' ); ?></td>
                         <td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
@@ -58,7 +59,7 @@
                             <?php endif ?>
 
                         </td>
-                    </tr>
+                    </tr> -->
                 <?php } ?>
                 <?php endif ?>
 

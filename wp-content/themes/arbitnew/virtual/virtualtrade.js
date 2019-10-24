@@ -382,6 +382,36 @@ $(document).ready(function(){
 								      }
 								 });
 
+				    			$.ajax({
+								    type:'GET',
+								    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
+								    dataType: 'json',
+								    success: function(response) {
+								    	var bull = response.bull;
+								    	var bear = response.bear;
+
+								    	if(bull == null || bull == ''){
+								    		bull = 0;
+								    	}
+								    	if(bear == null || bear == ''){
+								    		bear = 0;
+								    	}
+								    	var vtotal = parseFloat(bull) + parseFloat(bear);
+								    	if(vtotal != 0){
+									    	var bullperc = (bull / vtotal) * 100;
+									    	var bearperc = (bear / vtotal) * 100;
+									    	$('.arb_bar_green_m').css('width', bullperc + '%');
+								    		$('.arb_bar_red_m').css('width', bearperc + '%');
+								    	}else{
+								    		var bullperc = 0;
+									    	var bearperc = 0;
+								    	}
+								    	
+								    },
+								      error: function(response) {                 
+								      }
+								 });
+
 			     },
 			    error: function(response) {                 
 			    }

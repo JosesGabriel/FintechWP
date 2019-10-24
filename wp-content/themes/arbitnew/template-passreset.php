@@ -702,8 +702,8 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
 </style> 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		jQuery(".um-password .um-field-block div").html('<div style="text-align: center">Please enter your email address below</div>');
-		jQuery(".um-password #um-submit-btn").val("Reset");
+		jQuery(".um-password .um-field-block div").html('<div style="text-align: center">Please enter your email address belowssss</div>');
+		jQuery(".um-password #um-submit-btn").val("Reset Password");
 		jQuery("#username_b").attr("placeholder", "Email Address");
 	});
 </script>

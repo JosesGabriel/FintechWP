@@ -101,9 +101,9 @@ jQuery(".ontomitif").click(function(e){
 
 
 jQuery(document).on("click", function () {
-    jQuery("ul.main-drop > ul").hide().removeClass("dropopen");
-    jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
-    jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
+    // jQuery("ul.main-drop > ul").hide().removeClass("dropopen");
+    // jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
+    // jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
 });
 
 jQuery(document).ready(function(){

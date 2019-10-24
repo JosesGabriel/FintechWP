@@ -2835,10 +2835,16 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
-    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
+}
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 0 !important;
+    right: 0 !important;
 }
 .um-notification-hide a {
     position: relative;

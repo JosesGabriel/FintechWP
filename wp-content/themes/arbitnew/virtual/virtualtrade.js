@@ -280,6 +280,26 @@ $(document).ready(function(){
 								      error: function(response) {                 
 								      }
 								 });
+
+				    			$.ajax({
+								    type:'GET',
+								    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
+								    dataType: 'json',
+								    success: function(response) {
+								    	var bull = parseFloat(response.bull).toFixed(2);
+								    	var bear = parseFloat(response.bear).toFixed(2);
+								    	var vtotal = bull + bear;
+								    	
+								    	var bullperc = (bull / vtotal) * 100;
+								    	var bearperc = (bear / vtotal) * 100;
+
+								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
+
+								    },
+								      error: function(response) {                 
+								      }
+								 });
+
 			    },
 			    error: function(response) {                 
 			    }
@@ -438,7 +458,7 @@ $(document).ready(function(){
 		//var time_now = t.hour():t.minute(), t.second());
     	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
     	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
-    	console.log(t.hour());
+    	//console.log(t.hour());
 		var time = Date.now();
 		
 		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	

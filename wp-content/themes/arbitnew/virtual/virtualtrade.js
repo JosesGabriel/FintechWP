@@ -286,13 +286,14 @@ $(document).ready(function(){
 								    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
 								    dataType: 'json',
 								    success: function(response) {
-								    	var bull = parseFloat(response.bull).toFixed(2);
-								    	var bear = parseFloat(response.bear).toFixed(2);
-								    	var vtotal = bull + bear;
+								    	var bull = response.bull;
+								    	var bear = response.bear;
+								    	var vtotal = parseFloat(bull) + parseFloat(bear);
 								    	
 								    	var bullperc = (bull / vtotal) * 100;
 								    	var bearperc = (bear / vtotal) * 100;
-
+								    	console.log('bull => '+ bull + ' bear => ' + bear);
+								    	console.log('vtotal => '+ vtotal);
 								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
 
 								    },

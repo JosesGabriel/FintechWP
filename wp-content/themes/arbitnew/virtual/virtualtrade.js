@@ -713,7 +713,7 @@ $(document).ready(function(){
 			swal("Please select a Stock");
             return false;
 		}
-		if(status == 'Open'){
+		//if(status == 'Open'){
 			
 					if(btn == 'buy'){
 						$.ajax({
@@ -773,10 +773,10 @@ $(document).ready(function(){
 						 });
 
 					}
-		}else {
+		/*}else {
 			swal("Market Closed!");
             return false;
-		}
+		}*/
 
 	});
 

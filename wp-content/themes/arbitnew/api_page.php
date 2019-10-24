@@ -493,7 +493,19 @@
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
-
+		
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'share_post') {
+		$my_post = array(
+		    'post_content'  => $_GET['caption'],
+		    'post_status'   => 'publish',
+		    'post_author'   => $_GET['authorId'],
+		    'post_category' => array( 8,39 ),
+		    'post_type'     => 'um_activity',
+		    'meta_input'    => array(
+		        '_photo'    => $_GET['link']
+		    )    
+		 );
+		 wp_insert_post( $my_post );
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_manual'){
 		global $wpdb;
         $emailstr = stripslashes($_GET['email']);

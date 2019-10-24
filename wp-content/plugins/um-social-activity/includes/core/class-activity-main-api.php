@@ -855,9 +855,14 @@ class Activity_Main_API
         if (empty($photo_url)) {
             return '';
         }
-
-        $photo_url = '/wp-content/uploads/ultimatemember/' . $author_id . '/' . get_post_meta($post_id, '_photo', true);
-
+        $tempImage = get_post_meta($post_id, '_photo', true);
+        if (preg_match('/(\.jpg|\.png|\.jpeg)$/', $tempImage) && (substr($tempImage, 0, 4) == 'http')) {
+            $photo_url = $tempImage;
+        // check if there is image in string
+        } else {
+            $photo_url = '/wp-content/uploads/ultimatemember/' . $author_id . '/' . get_post_meta($post_id, '_photo', true);
+        }
+        
         // $photo_url = esc_attr( $photo_url );
 
         $content = '';

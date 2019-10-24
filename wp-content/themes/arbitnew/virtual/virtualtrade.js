@@ -473,11 +473,16 @@ $(document).ready(function(){
     	//var d = JSJoda.LocalDateTime;
     	var dt = JSJoda.ZonedDateTime.now(JSJoda.ZoneOffset.UTC);// 2013-02-24T00:00:00
 		var t = dt.plusHours(8);
+
+		//console.log(date);
+		//const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		//const currentTime = moment().tz(timezone).format();
 		
+		//console.log(currentTime);
 		//var time_now = t.hour():t.minute(), t.second());
     	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
     	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
-    	//console.log(t.hour());
+    	
 		var time = Date.now();
 		
 		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
@@ -651,6 +656,7 @@ $(document).ready(function(){
 		$('.labelprice').text('Buy Price');
 		$('.btnValue').val('buy');
 		$('#inpt_data_select_stock option').remove();
+		$('.footer_details2').slideDown();
 		getstocks();
 	});
 
@@ -659,7 +665,7 @@ $(document).ready(function(){
 		$('.btnbuy').css('background','none');
 		$('.labelprice').text('Sell Price');
 		$('.btnValue').val('sell');
-
+		$('.footer_details2').slideUp();
 		var userid = $('.userid').val();
 		$.ajax({
 		    type:'GET',

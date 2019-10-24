@@ -2845,6 +2845,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     z-index: 9 !important;
     top: 0 !important;
     right: 0 !important;
+    margin: 0 !important;
 }
 .um-notification-hide a {
     position: relative;

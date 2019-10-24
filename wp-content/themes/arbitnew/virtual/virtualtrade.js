@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	getstocks();
 	livedata();
 	tradelogs();
 	performance();
@@ -11,37 +12,36 @@ $(document).ready(function(){
    		performance();
   	}, 5000);
 
-	
-	$.ajax({
-	    type:'GET',
-	    url:'/wp-json/virtual-api/v1/buyvalues',
-	    dataType: 'json',
-	    success: function(response) {
-	    	var opt = '';
 
-	    	var sorted = response.data.sort(function (a, b) {
-    				if (a.symbol > b.symbol) {
-      					return 1;
-      				}
-    				if (a.symbol < b.symbol) {
-     					 return -1;
-     				}
-    				return 0;
-			   });
-	    	$.each(sorted, function(i, val) {
-	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
-	    		$('#inpt_data_select_stock').append(opt);
-	    	});
+	function getstocks(){
 
-	    	/*$.each(response.data, function(i, val) {
-	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
-	    		$('#inpt_data_select_stock').append(opt);
-	    	});*/
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/buyvalues',
+		    dataType: 'json',
+		    success: function(response) {
+		    	var opt = '';
 
-	    },
-	      error: function(response) {                 
-	      }
-	 });
+		    	var sorted = response.data.sort(function (a, b) {
+	    				if (a.symbol > b.symbol) {
+	      					return 1;
+	      				}
+	    				if (a.symbol < b.symbol) {
+	     					 return -1;
+	     				}
+	    				return 0;
+				   });
+
+		    	$.each(sorted, function(i, val) {
+		    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
+		    		$('#inpt_data_select_stock').append(opt);
+		    	});
+
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
 
 	function livedata(){
 		var userid = $('.userid').val();
@@ -650,23 +650,7 @@ $(document).ready(function(){
 		$('.btnsell').css('background','none');
 		$('.labelprice').text('Buy Price');
 		$('.btnValue').val('buy');
-		$.ajax({
-			    type:'GET',
-			    url:'/wp-json/virtual-api/v1/buyvalues',
-			    dataType: 'json',
-			    success: function(response) {
-			    	var opt = '';
-			    	$('#inpt_data_select_stock option').remove();
-			    	$.each(response.data, function(i, val) {
-			    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
-			    		$('#inpt_data_select_stock').append(opt);
-			    	});
-
-			    },
-			      error: function(response) {                 
-			      }
-			 });
-
+		getstocks();
 	});
 
 	$('.btnsell').on('click', function(){

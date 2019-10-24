@@ -21,7 +21,7 @@ require("parts/sidebar-avarageprice.php");
 				<div class="swipecenter-area-r"></div>
 				<div class="inner-center-dashboard">
 					<div class="add-post">
-						<?php echo do_shortcode('[ultimatemember_activity]'); ?>
+						<?php //echo do_shortcode('[ultimatemember_activity]'); ?>
 					</div>
 				</div>
 

@@ -1559,3 +1559,14 @@ span.ticker_enabler-text {
     border-radius: 3px;
     cursor: pointer;
 }
+.watch-content {
+    margin: 0 0 5px !important;
+    border-bottom: 1px solid #34495e;
+}
+span.watch_stockcode {
+    font-weight: 600;
+    font-size: 13px;
+}
+span.watch_stockname {
+    color: #a2a2a2;
+}

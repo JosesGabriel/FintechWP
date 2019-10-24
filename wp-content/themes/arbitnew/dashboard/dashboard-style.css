@@ -290,7 +290,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     display: inline !important;
     position: absolute !important;
     z-index: 9 !important;
-    top: 0 !important;
+    top: 4px !important;
     right: 0 !important;
     margin: 0 !important;
 }

@@ -2840,6 +2840,14 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
 }
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.fa-times:before {
+	font-size: 11px;
+}
 /* -----------------journal notification----------------- */
 /* -------------- newsticker vyndue ---------------- */
 #vyndue--link span {

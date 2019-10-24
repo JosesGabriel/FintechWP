@@ -105,7 +105,7 @@ div.uimob800 .um-account-side li a.current:hover
 .um .um-form input[type=password],
 .um .um-form textarea
 {
-    color: #666666;
+    /* color: #666666; */
 }
 
 .um .um-form input:-webkit-autofill {

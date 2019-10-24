@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	getstocks();
 	livedata();
 	tradelogs();
 	performance();
@@ -9,25 +10,38 @@ $(document).ready(function(){
    		livedata();
    		marketstatus();
    		performance();
-   		tradelogs();
   	}, 5000);
 
-	
-	$.ajax({
-	    type:'GET',
-	    url:'/wp-json/virtual-api/v1/buyvalues',
-	    dataType: 'json',
-	    success: function(response) {
-	    	var opt = '';
-	    	$.each(response.data, function(i, val) {
-	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
-	    		$('#inpt_data_select_stock').append(opt);
-	    	});
 
-	    },
-	      error: function(response) {                 
-	      }
-	 });
+	function getstocks(){
+
+		$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/buyvalues',
+		    dataType: 'json',
+		    success: function(response) {
+		    	var opt = '';
+
+		    	var sorted = response.data.sort(function (a, b) {
+	    				if (a.symbol > b.symbol) {
+	      					return 1;
+	      				}
+	    				if (a.symbol < b.symbol) {
+	     					 return -1;
+	     				}
+	    				return 0;
+				   });
+
+		    	$.each(sorted, function(i, val) {
+		    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
+		    		$('#inpt_data_select_stock').append(opt);
+		    	});
+
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
 
 	function livedata(){
 		var userid = $('.userid').val();
@@ -202,6 +216,57 @@ $(document).ready(function(){
 		});
 	}
 
+	function get_marketdepth(stock){
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
+		    dataType: 'json',
+		    success: function(response) {
+
+		    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
+		    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
+
+		    	$('.arb_bar_green').css('width', bid + '%');
+		    	$('.arb_bar_red').css('width', ask + '%');
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
+
+
+	function get_sentiments(stock){
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
+		    dataType: 'json',
+		    success: function(response) {
+		    	var bull = response.bull;
+		    	var bear = response.bear;
+
+		    	if(bull == null || bull == ''){
+		    		bull = 0;
+		    	}
+		    	if(bear == null || bear == ''){
+		    		bear = 0;
+		    	}
+		    	var vtotal = parseFloat(bull) + parseFloat(bear);
+		    	if(vtotal != 0){
+			    	var bullperc = (bull / vtotal) * 100;
+			    	var bearperc = (bear / vtotal) * 100;
+			    	$('.arb_bar_green_m').css('width', bullperc + '%');
+		    		$('.arb_bar_red_m').css('width', bearperc + '%');
+		    	}else{
+		    		$('.arb_bar_green_m').css('width','50%');
+		    		$('.arb_bar_red_m').css('width','50%');
+		    	}
+		    	
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
+
 	function buydata(stock){
 
 			$.ajax({
@@ -265,22 +330,8 @@ $(document).ready(function(){
 				    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
 				    			$('.pdetails.av').text((response.data.average).toFixed(2));
 				    			$('#entertopdataprice').val((response.data.last).toFixed(2));
-
-				    			$.ajax({
-								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
-								    dataType: 'json',
-								    success: function(response) {
-
-								    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
-								    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
-
-								    	$('.arb_bar_green').css('width', bid + '%');
-								    	$('.arb_bar_red').css('width', ask + '%');
-								    },
-								      error: function(response) {                 
-								      }
-								 });
+				    			get_marketdepth(stock);
+				    			get_sentiments(stock);
 			    },
 			    error: function(response) {                 
 			    }
@@ -336,21 +387,8 @@ $(document).ready(function(){
 				    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.datainfo.value)));
 				    			$('.pdetails.av').text((response.data.averageprice).toFixed(2));
 				    			$('#entertopdataprice').val((response.data.datainfo.last).toFixed(2));
-				    			$.ajax({
-								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
-								    dataType: 'json',
-								    success: function(response) {
-
-								    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
-								    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
-								    	
-								    	$('.arb_bar_green').css('width', bid + '%');
-								    	$('.arb_bar_red').css('width', ask + '%');
-								    },
-								      error: function(response) {                 
-								      }
-								 });
+				    			get_marketdepth(stock);
+				    			get_sentiments(stock);
 
 			     },
 			    error: function(response) {                 
@@ -432,6 +470,19 @@ $(document).ready(function(){
     	var close_pm = new Date();
     		close_pm.setHours(15, 30, 0);
 
+    	//var d = JSJoda.LocalDateTime;
+    	var dt = JSJoda.ZonedDateTime.now(JSJoda.ZoneOffset.UTC);// 2013-02-24T00:00:00
+		var t = dt.plusHours(8);
+
+		//console.log(date);
+		//const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+		//const currentTime = moment().tz(timezone).format();
+		
+		//console.log(currentTime);
+		//var time_now = t.hour():t.minute(), t.second());
+    	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
+    	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
+    	
 		var time = Date.now();
 		
 		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
@@ -604,23 +655,9 @@ $(document).ready(function(){
 		$('.btnsell').css('background','none');
 		$('.labelprice').text('Buy Price');
 		$('.btnValue').val('buy');
-		$.ajax({
-			    type:'GET',
-			    url:'/wp-json/virtual-api/v1/buyvalues',
-			    dataType: 'json',
-			    success: function(response) {
-			    	var opt = '';
-			    	$('#inpt_data_select_stock option').remove();
-			    	$.each(response.data, function(i, val) {
-			    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
-			    		$('#inpt_data_select_stock').append(opt);
-			    	});
-
-			    },
-			      error: function(response) {                 
-			      }
-			 });
-
+		$('#inpt_data_select_stock option').remove();
+		$('.footer_details2').slideDown();
+		getstocks();
 	});
 
 	$('.btnsell').on('click', function(){
@@ -628,7 +665,7 @@ $(document).ready(function(){
 		$('.btnbuy').css('background','none');
 		$('.labelprice').text('Sell Price');
 		$('.btnValue').val('sell');
-
+		$('.footer_details2').slideUp();
 		var userid = $('.userid').val();
 		$.ajax({
 		    type:'GET',
@@ -676,7 +713,7 @@ $(document).ready(function(){
 			swal("Please select a Stock");
             return false;
 		}
-		//if(status == 'Open'){
+		if(status == 'Open'){
 			
 					if(btn == 'buy'){
 						$.ajax({
@@ -736,10 +773,10 @@ $(document).ready(function(){
 						 });
 
 					}
-		/*}else {
+		}else {
 			swal("Market Closed!");
             return false;
-		}*/
+		}
 
 	});
 

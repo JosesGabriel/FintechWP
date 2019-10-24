@@ -1206,9 +1206,11 @@ legend {
 	}
 	#main-content .container {
 		width: 100%;
-		padding-top: 0px;
-	    padding-right: 31px;
-	    padding-left: 31px;
+        padding-top: 0px;
+        padding-right: 0;
+        padding-left: 0;
+        max-width: 1000px;
+        margin: 0 auto;
 	}
 	.et_fixed_nav.et_show_nav #page-container {
 		padding-top: 45px !important;
@@ -1906,7 +1908,7 @@ a.dmeta {
     display: inline-block;
     bottom: 0;
     padding: 10px 20px 10px 20px;
-    width: 478.22px;
+    width: 458.22px;
     background: rgba(18, 39, 62, 0.85);
     z-index: 3;
 }
@@ -2010,7 +2012,7 @@ img.inpostimage {
     overflow:hidden;
 }
 .um-activity-widget div.um-activity-textarea textarea, .um-activity-widget div.um-activity-textarea textarea:hover, .um-activity-widget div.um-activity-textarea textarea:focus {
-    height: 80px !important;
+    height: 53px !important;
     border-radius: 0 !important;    
     color: #fff;
 }
@@ -2813,16 +2815,36 @@ ul li a.um-button.um-alt:hover {
   background: transparent;
   z-index: 2;
 }
+/* -------------- notification area ---------------- */
 body .um-notification-live-feed .um-notification-ajax .um-notification {
-	border-bottom: 1px solid #35485f;
+    border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
-    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
 }
-
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 4px !important;
+    right: 0 !important;
+    margin: 0 !important;
+}
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.fa-times:before {
+	font-size: 11px;
+}
+.um-notification span.b2 i img {
+    width: 15px;
+    position: relative;
+    top: -1px;
+}
 /* -------------- newsticker vyndue ---------------- */
 #vyndue--link span {
     position: relative;

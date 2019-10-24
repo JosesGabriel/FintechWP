@@ -296,10 +296,13 @@ $(document).ready(function(){
 								    		bear = 0;
 								    	}
 								    	var vtotal = parseFloat(bull) + parseFloat(bear);
-								    	
-								    	var bullperc = (bull / vtotal) * 100;
-								    	var bearperc = (bear / vtotal) * 100;
-
+								    	if(vtotal != 0){
+									    	var bullperc = (bull / vtotal) * 100;
+									    	var bearperc = (bear / vtotal) * 100;
+								    	}else{
+								    		var bullperc = 0;
+									    	var bearperc = 0;
+								    	}
 								    	console.log('bull => '+ bull + ' bear => ' + bear);
 								    	console.log('vtotal => '+ vtotal);
 								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);

@@ -31,9 +31,9 @@
         });
 
         jQuery('#um-submit-btn').val('Login');
-        $( ".um-field-checkbox" ).append( "<span id='span_login_rememberme'>Remember Me</span>" );
-        //$("div.um-col-alt").css("margin","0px");
-
+        jQuery(".um-field-checkbox").append("<span id='span_login_rememberme'>Remember Me</span>");
+        jQuery(".um-field-checkbox").append("<span id='span_login_forgetpassword'>Forgot Password?</span>");
+	
 		$(".login-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".login-form-wrapper .ordash");
 		$(".signup-form-wrapper a.um-button.um-alt.um-button-social.um-button-facebook").appendTo(".signup-form-wrapper .ordash");
 		jQuery('a.um-button.um-alt.um-button-social.um-button-facebook').html('<i class="um-faicon-facebook"></i>');
@@ -46,7 +46,7 @@
 		jQuery(".forgotpass-wrapper #username_b").attr("placeholder", "Email Address");
 		jQuery(".um-col-alt-b a.um-link-alt").hide();
 		//jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'><p class='forgetmenot'><label for='rememberme'><input name='rememberme' type='checkbox' id='rememberme' value='forever'  /> Remember Me | </label></p><span class='for_pass'> Forgot your password?</span></div>");
-		// jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'></span><span class='for_pass'>Forgot your password?</span></div>");
+		//jQuery("#loginform .um-form .um-row .um-col-1").append("<div class='tochecked_cont'></span><span class='for_pass'>Forgot Password?</span></div>");
 	
 		
 		jQuery(".hidepassreset").click(function(){
@@ -55,11 +55,32 @@
 			});
 		});
 
-		jQuery(".for_pass").click(function(){
+		jQuery("#span_login_forgetpassword").click(function(){
 			jQuery(".login-form").fadeOut(300, function(){
+                jQuery("#email_info").val("");
 				jQuery(".email_pass_reset_cont").fadeIn(400);
 			});
 		});
+
+
+        jQuery("#before_resetpwd").click(function(){
+			jQuery(".email_pass_reset_cont").fadeOut(300, function(){
+				jQuery(".login-form").fadeIn(400);
+			});
+		});
+
+        jQuery("#after_resetpwd").click(function(){
+			jQuery(".confirmed_cont").fadeOut(300, function(){
+				jQuery(".login-form").fadeIn(400);
+			});
+		});
+
+        jQuery("#error_resetpwd").click(function(){
+			jQuery(".error_message").fadeOut(300, function(){
+				jQuery(".login-form").fadeIn(400);
+			});
+		});
+        
 
 
 		jQuery(".prtnr_login").click(function(){
@@ -137,25 +158,53 @@
 	})
 	.on('submit', '#email_pass_reset', function (e) {
             
-            var email = jQuery("#email_info").val();
-            var hasvalemail = jQuery("#email_info").val().length;
+            var email = jQuery("#email_info").val().trim();
+
+            if(isEmail(email) == false){
+                alert('Error: Invalid Email Format');
+                e.preventDefault();
+                return;
+            }
 
             var url = "<?php echo $homeurlgen; ?>/apipge/?daction=email_pass_reset&email="+email;
-            jQuery.ajax({
-                'url': url,
-                'method': 'GET',
-                'data': '',
-                'dataType': 'json',
-                'success': function (response) {
-                    if (response.success) {
-                        jQuery(".email_pass_reset_cont").hide();
-                        jQuery(".confirmed_cont").show();
-                        return;
-                    }
-                    jQuery('.error_message').show();
-                    return;
+            
+            console.log(url);
+
+            fetch(url,{
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                },
+            }).then(function(response) {
+                if (response.ok) {
+                    response.json().then(json => {
+                        //console.log(json);
+                        if (json.success) {
+                            jQuery("#span_used_email").text(json.email);
+                            jQuery(".email_pass_reset_cont").fadeOut(300, function(){
+                                jQuery(".confirmed_cont").fadeIn(400);
+                            });
+                            return;
+                        }else{
+                            jQuery('#pwdemail_error_message').text(json.message);
+                            jQuery(".email_pass_reset_cont").fadeOut(300, function(){
+                                jQuery(".error_message").fadeIn(400);
+                            });
+                            return;
+                        }
+                    });
                 }
             })
-            e.preventDefault();
-		});
+            .catch(function(error) {
+                alert('Error: Please try again later.');
+                e.preventDefault();
+                return;
+            });   
+            
+    });
+      
+        function isEmail(email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
 </script>

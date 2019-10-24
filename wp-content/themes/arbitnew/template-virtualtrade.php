@@ -169,7 +169,7 @@ require("parts/global-header.php");
 
 									        </div>
 									    </div>
-									    <br class="clear">
+									    <!-- <br class="clear"> needed ni rock? -joses -->
 
 						        </div>
 							</div>
@@ -178,7 +178,7 @@ require("parts/global-header.php");
 					</div>
 				</div>
 			</div>
-			<br class="clear">
+			<br class="clear"> 
 		</div>
 	</div>
 </div> <!-- #main-content -->

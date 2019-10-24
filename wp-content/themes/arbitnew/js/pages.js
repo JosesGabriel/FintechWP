@@ -84,7 +84,15 @@ jQuery(".ontomitif").click(function(e){
         jQuery(".opennotification .notifinnerbase").empty();
         jQuery(".um-notification-live-feed").clone().appendTo(".opennotification .notifinnerbase");
         jQuery(".opennotification .notifinnerbase .um-notification-live-feed").show().addClass("dropopen");
-        
+        jQuery('.um-notification').on('click', function() {
+            var notification_uri = jQuery(".um-notification").attr("data-notification_uri");
+            console.log(notification_uri)
+            if ( notification_uri ) {
+
+                window.location = notification_uri;
+            }
+        });
+
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").append('<img src="/assets/svg/ico_bullish_no_ring_notification.svg">');
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").removeClass();
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").empty();
@@ -101,9 +109,9 @@ jQuery(".ontomitif").click(function(e){
 
 
 jQuery(document).on("click", function () {
-    jQuery("ul.main-drop > ul").hide().removeClass("dropopen");
-    jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
-    jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
+    // jQuery("ul.main-drop > ul").hide().removeClass("dropopen");
+    // jQuery("ul.main-drops > ul").hide().removeClass("dropopen");
+    // jQuery(".opennotification .notifinnerbase .um-notification-live-feed").hide().removeClass("dropopen");
 });
 
 jQuery(document).ready(function(){

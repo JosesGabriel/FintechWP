@@ -1419,13 +1419,28 @@ select#stockname {
 }
 /*------ calc-part-dashboard ------*/
 body .um-notification-live-feed .um-notification-ajax .um-notification {
-	border-bottom: 1px solid #35485f;
+    border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
-    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
+}
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 4px !important;
+    right: 0 !important;
+    margin: 0 !important;
+}
+.fa-times:before {
+	font-size: 11px;
 }
 
 /* -------------- newsticker vyndue ---------------- */

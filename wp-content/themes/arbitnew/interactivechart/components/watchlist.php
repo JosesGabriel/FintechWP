@@ -1,14 +1,14 @@
 <div class="vertical-box tab-pane fade" id="watchlists">
     <div class="arb_watchlst_cont">
         <table>
-            <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
+            <!-- <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
                 <tr>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Stock</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Day Range</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Price</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Change</strong></th>
                 </tr>
-            </thead>
+            </thead> -->
             <?php
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );

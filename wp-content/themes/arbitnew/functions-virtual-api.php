@@ -124,6 +124,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'resetdata'],
             ],
         ]);
+
+        register_rest_route($base_route, 'memsentiment', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getmemsentiment'],
+            ],
+        ]);
         
     }
 
@@ -598,6 +605,16 @@ class VirtualAPI extends WP_REST_Controller
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);
         }
+    }
+
+    public function getmemsentiment($details)
+    {   
+        global $wpdb;
+        $data = $details->get_params();
+        $dsentbear = get_post_meta(504, '_sentiment_'.$data['stock'].'_bear', true );
+        $dsentbull = get_post_meta(504, '_sentiment_'.$data['stock'].'_bull', true );
+
+        return $this->respond(true, ['bull' => $dsentbull, 'bear' => $dsentbear], 200);
     }
 
 }

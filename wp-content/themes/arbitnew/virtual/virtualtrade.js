@@ -201,6 +201,57 @@ $(document).ready(function(){
 		});
 	}
 
+	function get_marketdepth(stock){
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
+		    dataType: 'json',
+		    success: function(response) {
+
+		    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
+		    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
+
+		    	$('.arb_bar_green').css('width', bid + '%');
+		    	$('.arb_bar_red').css('width', ask + '%');
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
+
+
+	function get_sentiments(stock){
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
+		    dataType: 'json',
+		    success: function(response) {
+		    	var bull = response.bull;
+		    	var bear = response.bear;
+
+		    	if(bull == null || bull == ''){
+		    		bull = 0;
+		    	}
+		    	if(bear == null || bear == ''){
+		    		bear = 0;
+		    	}
+		    	var vtotal = parseFloat(bull) + parseFloat(bear);
+		    	if(vtotal != 0){
+			    	var bullperc = (bull / vtotal) * 100;
+			    	var bearperc = (bear / vtotal) * 100;
+			    	$('.arb_bar_green_m').css('width', bullperc + '%');
+		    		$('.arb_bar_red_m').css('width', bearperc + '%');
+		    	}else{
+		    		var bullperc = 0;
+			    	var bearperc = 0;
+		    	}
+		    	
+		    },
+		      error: function(response) {                 
+		      }
+		 });
+	}
+
 	function buydata(stock){
 
 			$.ajax({
@@ -264,51 +315,8 @@ $(document).ready(function(){
 				    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.value)));
 				    			$('.pdetails.av').text((response.data.average).toFixed(2));
 				    			$('#entertopdataprice').val((response.data.last).toFixed(2));
-
-				    			$.ajax({
-								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
-								    dataType: 'json',
-								    success: function(response) {
-
-								    	var bid = (response.data.bid_total_percent == null ? 0 : parseFloat(response.data.bid_total_percent).toFixed(2));
-								    	var ask = (response.data.ask_total_percent == null ? 0 : parseFloat(response.data.ask_total_percent).toFixed(2));
-
-								    	$('.arb_bar_green').css('width', bid + '%');
-								    	$('.arb_bar_red').css('width', ask + '%');
-								    },
-								      error: function(response) {                 
-								      }
-								 });
-
-				    			$.ajax({
-								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
-								    dataType: 'json',
-								    success: function(response) {
-								    	var bull = response.bull;
-								    	var bear = response.bear;
-
-								    	if(bull == null || bull == ''){
-								    		bull = 0;
-								    	}
-								    	if(bear == null || bear == ''){
-								    		bear = 0;
-								    	}
-								    	var vtotal = parseFloat(bull) + parseFloat(bear);
-								    	
-								    	var bullperc = (bull / vtotal) * 100;
-								    	var bearperc = (bear / vtotal) * 100;
-
-								    	console.log('bull => '+ bull + ' bear => ' + bear);
-								    	console.log('vtotal => '+ vtotal);
-								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
-
-								    },
-								      error: function(response) {                 
-								      }
-								 });
-
+				    			get_marketdepth(stock);
+				    			get_sentiments(stock);
 			    },
 			    error: function(response) {                 
 			    }
@@ -364,21 +372,8 @@ $(document).ready(function(){
 				    			$('.pdetails.val').text(nFormatter(parseFloat(response.data.datainfo.value)));
 				    			$('.pdetails.av').text((response.data.averageprice).toFixed(2));
 				    			$('#entertopdataprice').val((response.data.datainfo.last).toFixed(2));
-				    			$.ajax({
-								    type:'GET',
-								    url:'/wp-json/virtual-api/v1/marketdepth?stock='+ stock,
-								    dataType: 'json',
-								    success: function(response) {
-
-								    	var bid = parseFloat(response.data.bid_total_percent).toFixed(2);
-								    	var ask = parseFloat(response.data.ask_total_percent).toFixed(2);
-								    	
-								    	$('.arb_bar_green').css('width', bid + '%');
-								    	$('.arb_bar_red').css('width', ask + '%');
-								    },
-								      error: function(response) {                 
-								      }
-								 });
+				    			get_marketdepth(stock);
+				    			get_sentiments(stock);
 
 			     },
 			    error: function(response) {                 

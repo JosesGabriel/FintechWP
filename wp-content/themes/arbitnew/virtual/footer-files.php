@@ -22,13 +22,6 @@
         <script>
             
             $(document).ready(function(){
-                $(window).on('load', function() {
-                    // html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
-                    //         var canvasImg = canvas.toDataURL("image/jpg");
-                    //         $('#modal-header').html('<img src="'+canvasImg+'" alt="">');
-                    // });
-                });
-                
                 $(".vynduepassnow_cancel").click(function(e){
                     e.preventDefault();
                     $("#vynduemodals").modal('hide');

@@ -10,7 +10,7 @@
                         <button type="button" class="close_btn" data-dismiss="modal">&times;</button>
                     </div>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body buytrades">
                    
                          <div class="groupinput midd lockedd"><label>Stock</label>
                             <select name="inpt_data_stock_y" class="data_stocks" id="inpt_data_select_stock" style="margin-left: -4px; text-align: left;width: 111px;">

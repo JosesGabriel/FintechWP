@@ -288,10 +288,18 @@ $(document).ready(function(){
 								    success: function(response) {
 								    	var bull = response.bull;
 								    	var bear = response.bear;
+
+								    	if(bull == null || bull == ''){
+								    		bull = 0;
+								    	}
+								    	if(bear == null || bear == ''){
+								    		bear = 0;
+								    	}
 								    	var vtotal = parseFloat(bull) + parseFloat(bear);
 								    	
 								    	var bullperc = (bull / vtotal) * 100;
 								    	var bearperc = (bear / vtotal) * 100;
+
 								    	console.log('bull => '+ bull + ' bear => ' + bear);
 								    	console.log('vtotal => '+ vtotal);
 								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);

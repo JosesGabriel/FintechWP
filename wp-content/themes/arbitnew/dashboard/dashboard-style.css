@@ -282,6 +282,22 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
 }
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+}
+.fa-times:before {
+	font-size: 11px;
+}
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
 }
@@ -320,15 +336,6 @@ body .um-notification-live-feed .um-notification-ajax .um-notification span.um-n
 }
 .right-header-inner .dmessagepart .vyndue-notification.has-notification {
     display: block !important;
-}
-.um-notification-hide a {
-    position: relative;
-    top: 6px;
-    right: 5px;
-}
-
-.fa-times:before {
-	font-size: 11px;
 }
 ul.main-drop > ul {
     font-size: 13px !important;

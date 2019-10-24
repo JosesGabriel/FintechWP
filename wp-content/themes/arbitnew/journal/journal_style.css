@@ -2830,7 +2830,7 @@ legend {
 }
 
 
-/* -----------------journal notification----------------- */
+/* -------------- notification area ---------------- */
 body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
@@ -2855,7 +2855,6 @@ body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
 .fa-times:before {
 	font-size: 11px;
 }
-/* -----------------journal notification----------------- */
 /* -------------- newsticker vyndue ---------------- */
 #vyndue--link span {
     position: relative;

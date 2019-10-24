@@ -337,7 +337,12 @@
 
 
 
-.um-notification-hide a {color: #d8d8d8 !important}
+.um-notification-hide a {
+	color: #fff!important;
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
 
 
 
@@ -467,4 +472,8 @@
 
 	font-size: 13px;
 
+}
+
+.fa-times:before {
+	font-size: 11px;
 }

@@ -292,7 +292,7 @@ $(document).ready(function(){
 								    	
 								    	var bullperc = (bull / vtotal) * 100;
 								    	var bearperc = (bear / vtotal) * 100;
-								    	console.log('bullperc => '+ bull + ' bear => ' + bear);
+								    	console.log('bull => '+ bull + ' bear => ' + bear);
 								    	console.log('vtotal => '+ vtotal);
 								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
 

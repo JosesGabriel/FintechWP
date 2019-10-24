@@ -288,7 +288,7 @@ $(document).ready(function(){
 								    success: function(response) {
 								    	var bull = response.bull;
 								    	var bear = response.bear;
-								    	var vtotal = parseFloat(bull).toFixed(2) + parseFloat(bear).toFixed(2);
+								    	var vtotal = parseFloat(bull) + parseFloat(bear);
 								    	
 								    	var bullperc = (bull / vtotal) * 100;
 								    	var bearperc = (bear / vtotal) * 100;

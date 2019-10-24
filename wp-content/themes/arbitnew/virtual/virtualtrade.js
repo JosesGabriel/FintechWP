@@ -9,7 +9,6 @@ $(document).ready(function(){
    		livedata();
    		marketstatus();
    		performance();
-   		tradelogs();
   	}, 5000);
 
 	
@@ -432,6 +431,14 @@ $(document).ready(function(){
     	var close_pm = new Date();
     		close_pm.setHours(15, 30, 0);
 
+    	//var d = JSJoda.LocalDateTime;
+    	var dt = JSJoda.ZonedDateTime.now(JSJoda.ZoneOffset.UTC);// 2013-02-24T00:00:00
+		var t = dt.plusHours(8);
+		
+		//var time_now = t.hour():t.minute(), t.second());
+    	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
+    	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
+    	console.log(t.hour());
 		var time = Date.now();
 		
 		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
@@ -676,7 +683,7 @@ $(document).ready(function(){
 			swal("Please select a Stock");
             return false;
 		}
-		//if(status == 'Open'){
+		if(status == 'Open'){
 			
 					if(btn == 'buy'){
 						$.ajax({
@@ -736,10 +743,10 @@ $(document).ready(function(){
 						 });
 
 					}
-		/*}else {
+		}else {
 			swal("Market Closed!");
             return false;
-		}*/
+		}
 
 	});
 

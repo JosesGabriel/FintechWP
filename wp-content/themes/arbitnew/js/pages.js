@@ -92,6 +92,9 @@ jQuery(".ontomitif").click(function(e){
                 window.location = notification_uri;
             }
         });
+        jQuery('.um-notification-hide').on('click', function() {
+            event.preventDefault();
+        });
 
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").append('<img src="/assets/svg/ico_bullish_no_ring_notification.svg">');
         jQuery(".um-notification span.b2 .um-faicon-thumbs-up").removeClass();

@@ -1217,6 +1217,7 @@ div#show_hide {
     display: inline-block;
     cursor: pointer;
 }
+
 .top-stocks .to-content-part ul .even span {
     border: 2px solid;
     height: 42px;
@@ -1237,8 +1238,10 @@ div#show_hide {
     padding: 7px 0;
 }
 .top-stocks .to-content-part ul .even a p{
-    color: #999999 !important;
     margin-bottom: 0;
+    display: inline-block;
+    margin-right: 3px;
+    font-weight: 300;
     font-size: 11px;
 }
 .top-stock .to-content-part {
@@ -1252,6 +1255,20 @@ div#show_hide {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 2px 0 2px 10px;
+}
+.trendingme .red {
+    color: #eb4d5c !important;
+}
+.trendingme .green {
+    color: #53b987 !important;
+}
+.trendingme i.fa.fa-caret-down {
+    display: inline-block;
+    top: -1px;
+    position: relative;
+}
+.trendingme .yellow {
+    color: #ffd900 !important;
 }
 .dauthor {
     display: none;

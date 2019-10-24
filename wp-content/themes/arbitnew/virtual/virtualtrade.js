@@ -280,6 +280,26 @@ $(document).ready(function(){
 								      error: function(response) {                 
 								      }
 								 });
+
+				    			$.ajax({
+								    type:'GET',
+								    url:'/wp-json/virtual-api/v1/memsentiment?stock='+ stock,
+								    dataType: 'json',
+								    success: function(response) {
+								    	var bull = parseFloat(response.bull).toFixed(2);
+								    	var bear = parseFloat(response.bear).toFixed(2);
+								    	var vtotal = bull + bear;
+								    	
+								    	var bullperc = (bull / vtotal) * 100;
+								    	var bearperc = (bear / vtotal) * 100;
+
+								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
+
+								    },
+								      error: function(response) {                 
+								      }
+								 });
+
 			    },
 			    error: function(response) {                 
 			    }

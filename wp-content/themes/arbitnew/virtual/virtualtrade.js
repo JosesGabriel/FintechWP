@@ -19,10 +19,24 @@ $(document).ready(function(){
 	    success: function(response) {
 	    	var opt = '';
 
-	    	$.each(response.data, function(i, val) {
+	    	var sorted = response.data.sort(function (a, b) {
+    				if (a.symbol > b.symbol) {
+      					return 1;
+      				}
+    				if (a.symbol < b.symbol) {
+     					 return -1;
+     				}
+    				return 0;
+			   });
+	    	$.each(sorted, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
 	    	});
+
+	    	/*$.each(response.data, function(i, val) {
+	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
+	    		$('#inpt_data_select_stock').append(opt);
+	    	});*/
 
 	    },
 	      error: function(response) {                 

@@ -11,9 +11,9 @@
 
 <!-- new charts -->
 
-<link rel='stylesheet' id='um_notifications-css'  href='<?php echo get_home_url(); ?>/wp-content/plugins/um-notifications/assets/css/um-notifications.min.css?ver=2.1.0' type='text/css' media='all' />
-<script type='text/javascript' src='<?php echo get_home_url(); ?>/wp-content/plugins/um-notifications/assets/js/moment-with-locales.min.js?ver=2.1.0'></script>
-<script type='text/javascript' src='<?php echo get_home_url(); ?>/wp-content/plugins/um-notifications/assets/js/moment-timezone.min.js?ver=2.1.0'></script>
+ <script src="<?php echo get_home_url(); ?>/wp-content/plugins/um-notifications/assets/js/um-notifications.min.js"></script> 
+ <script src="<?php echo get_home_url(); ?>/wp-content/plugins/um-notifications/assets/js/um-notifications.js"></script> 
+
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script> 
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>

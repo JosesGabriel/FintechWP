@@ -299,14 +299,13 @@ $(document).ready(function(){
 								    	if(vtotal != 0){
 									    	var bullperc = (bull / vtotal) * 100;
 									    	var bearperc = (bear / vtotal) * 100;
+									    	$('.arb_bar_green_m').css('width', bullperc + '%');
+								    		$('.arb_bar_red_m').css('width', bearperc + '%');
 								    	}else{
 								    		var bullperc = 0;
 									    	var bearperc = 0;
 								    	}
-								    	console.log('bull => '+ bull + ' bear => ' + bear);
-								    	console.log('vtotal => '+ vtotal);
-								    	console.log('bullperc => '+ bullperc + ' bearperc => ' + bearperc);
-
+								    	
 								    },
 								      error: function(response) {                 
 								      }

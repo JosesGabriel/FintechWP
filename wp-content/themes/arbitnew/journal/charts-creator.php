@@ -3,34 +3,7 @@
 
     
     
-    var getCurrentAllocation = function(userid){
-        $.ajax({
-            url: "/wp-json/journal-api/v1/currentallocation?userid="+userid,
-            type: 'GET',
-            dataType: 'json', // added data type
-            success: function(data) {
-                                
-                let colors = [];
-                let items = [];
-                $.each(data.data, function(key, value){
-                    colors.push(value.color);
-                    items.push({"category" : value.stock, "column-1" : ((value.value).toFixed(2)).toString()});
-                });
-                AmCharts.makeChart("chartdiv1",
-                {
-                    "type": "pie","balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>","innerRadius": "40%","pieX": "45%","pieY": "50%","radius": 50,"pullOutRadius": "0%","startRadius": "0%","pullOutDuration": 0,"sequencedAnimation": false,"startDuration": 0,
-                    "colors": colors,
-                    "labelColorField": "#FFFFFF","labelsEnabled": false,"labelTickAlpha": 1,"labelTickColor": "#FFFFFF","titleField": "category","valueField": "column-1","backgroundColor": "#000000","borderColor": "#FFFFFF","color": "#78909C","fontFamily": "Roboto","allLabels": [],"balloon": {},
-                    "legend": {"enabled": true,"align": "center","autoMargins": false,"color": "#78909C","left": 0,"markerSize": 14,"markerType": "circle","position": "left","valueWidth": 80},"titles": [],
-                    "dataProvider": items
-                }
-            );
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                
-            }
-        });
-    }
+    
     var getTradeStats = function(userid){
         $.ajax({
             url: "/wp-json/journal-api/v1/tradestatistics?userid="+userid,
@@ -341,7 +314,7 @@
             }
 
         });
-        new getCurrentAllocation(<?php echo $user->ID; ?>);
+        
         new getTradeStats(<?php echo $user->ID; ?>);
         new getMonthlyPerformance(<?php echo $user->ID; ?>);
         

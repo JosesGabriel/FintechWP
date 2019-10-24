@@ -15,7 +15,7 @@
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/pages.js?<?php echo time(); ?>"></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/parts.js?<?php echo time(); ?>"></script>
 <script src="/wp-content/themes/arbitnew/watchlist/watchlist-scripts.js?<?php echo time(); ?>"></script>
-
+<?php wp_footer(); ?>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
 <?php

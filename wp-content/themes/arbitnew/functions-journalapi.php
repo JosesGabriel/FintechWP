@@ -142,6 +142,34 @@ class JournalAPI extends WP_REST_Controller
                 'callback' => array($this, 'getallstocks'),
             ]
         ]);
+
+        register_rest_route($base_route, 'buystocks', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getbuystocks'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'stockstosell', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getstockstosell'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'sellstock', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getsellstock'),
+            ]
+        ]);
+
+        register_rest_route($base_route, 'dosell', [ // get method
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'getdosell'),
+            ]
+        ]);
     }
 
     // generic information
@@ -711,6 +739,173 @@ class JournalAPI extends WP_REST_Controller
         // $xmlData = file_get_contents('https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
         // $stocks = json_decode($xmlData);
         return $this->respond(true, ['data' => $stocks->data], 200);
+    }
+
+    public function getbuystocks($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+        
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE&symbol=".$data['stock'], [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $gerdqoute = json_decode($request->content);
+
+        $currentprice  = $gerdqoute->data->last;
+
+        $ifhasbase = "";
+        $dledger = $wpdb->get_results('select * from arby_usermeta where user_id = '.$data['userid'].' and meta_key = "_trade_'.$data['stock'].'"');
+        if(!empty($dledger)){
+            $imid = $dledger[0]->umeta_id;
+
+            $ifhasbase = unserialize($dledger[0]->meta_value);
+            $isdata = $ifhasbase['data'];
+
+            $newinformation = [];
+            $newinformation['qty'] = $data['qty'];
+            $newinformation['price'] = $data['price'];
+            $newinformation['buymonth'] = $data['buymonth'];
+            $newinformation['strategy'] = $data['strategy'];
+            $newinformation['tradeplan'] = $data['tradeplan'];
+            $newinformation['emotion'] = $data['emotion'];
+
+            array_push($ifhasbase['data'], $newinformation);
+            $ifhasbase['totalstock'] += $data['qty'];
+            $ifhasbase['stock'] = $data['stock'];
+
+            // get average price
+            $allmarket = 0;
+            $allvoluem = 0;
+            foreach ($ifhasbase['data'] as $key => $value) {
+                $marketvalue = $value['price'] * $value['qty'];
+                $allmarket += $marketvalue + $this->getjurfees($marketvalue, 'buy');
+                $allvoluem += $value['qty'];
+            }
+
+            $ifhasbase['aveprice'] = $allmarket / $allvoluem;
+            $ifhasbase['totalcost'] = $ifhasbase['aveprice'] * $allvoluem;
+            $ifhasbase['marketval'] = $currentprice * $allvoluem;
+            $ifhasbase['currentprice'] = $currentprice;
+            $ifhasbase['profit'] = $ifhasbase['marketval'] - $ifhasbase['totalcost'];
+            $ifhasbase['perc'] = ($ifhasbase['profit'] / $ifhasbase['marketval']) * 100;
+
+            $newsql = 'update arby_usermeta set meta_value="'.serialize($ifhasbase).'" where umeta_id = '.$imid;
+            $wpdb->query($newsql);
+
+            return $this->respond(true, ['data' => $ifhasbase], 200);
+        } else {
+            $ifhasbase = "no data";
+
+            $infodata = [];
+            $infodata['data'] = [];
+            $newinformation = [];
+            $newinformation['qty'] = $data['qty'];
+            $newinformation['price'] = $data['price'];
+            $newinformation['buymonth'] = $data['buymonth'];
+            $newinformation['strategy'] = $data['strategy'];
+            $newinformation['tradeplan'] = $data['tradeplan'];
+            $newinformation['emotion'] = $data['emotion'];
+
+            array_push($infodata['data'], $newinformation);
+
+            $marketvalue = $data['price'] * $data['qty'];
+            $newtotal = $marketvalue + $this->getjurfees($marketvalue, 'buy');
+
+            $infodata['totalstock'] = $data['qty'];
+            $infodata['stock'] = $data['stock'];
+            $infodata['aveprice'] = $newtotal / $data['qty'];
+
+            $infodata['totalcost'] = $infodata['aveprice'] * $data['qty'];
+            $infodata['marketval'] = $currentprice * $data['qty'];
+            $infodata['currentprice'] = $currentprice;
+            $infodata['profit'] = $infodata['marketval'] - $infodata['totalcost'];
+            $infodata['perc'] = ($infodata['profit'] / $infodata['marketval']) * 100;
+
+            $newsql = "insert into arby_usermeta (user_id, meta_key, meta_value) values ('".$data['userid']."', '_trade_".$data['stock']."', '".serialize($infodata)."')";
+            $wpdb->query($newsql);
+            
+            return $this->respond(true, ['data' => $infodata], 200);
+        }
+
+        // return $this->respond(true, ['data' => $currentprice], 200);
+        
+    }
+
+    public function getstockstosell($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET", "{$dataUrl}/api/v1/stocks/history/latest?exchange=PSE", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+        ]);
+        $stocks = json_decode($request->content);
+
+        $listofstocks = [];
+        $dledger = $wpdb->get_results('select * from arby_usermeta where user_id = '.$data['userid'].' and meta_key like "%_trade_%" and meta_key != "_trade_list"');
+        foreach ($dledger as $key => $value) {
+            $dstock = str_replace("_trade_", "", $value->meta_key);
+            $key = array_search($dstock, array_column($stocks->data, 'symbol'));
+            $dstockinfo = $stocks->data[$key];
+            
+            array_push($listofstocks, $dstockinfo);
+        }
+        return $this->respond(true, ['data' => $listofstocks], 200);
+    }
+
+    public function getsellstock($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $dledger = $wpdb->get_results('select * from arby_usermeta where user_id = '.$data['userid'].' and meta_key = "_trade_'.$data['stock'].'"');
+        $tradeinfo = unserialize($dledger[0]->meta_value);
+
+
+
+        return $this->respond(true, ['data' => $tradeinfo], 200);
+    }
+
+    public function getdosell($request)
+    {
+        global $wpdb;
+        $data = $request->get_params();
+
+        $stock = $data['stock'];
+
+        $dledger = $wpdb->get_results('select * from arby_usermeta where user_id = '.$data['userid'].' and meta_key = "_trade_'.$stock.'"');
+        $stockdetails = unserialize($dledger[0]->meta_value);
+        $strats = $stockdetails['data'][0];
+
+        $sql = "insert into arby_tradelog (tldate, tlvolume, tlaverageprice, tlsellprice, tlstrats, tltradeplans, tlemotions, tlnotes, isuser, isstock) values ('".date('Y-m-d')."', '".$data['volume']."', '".$stockdetails['aveprice']."', '".$data['sellprice']."', '".$strats['strategy']."', '".$strats['tradeplan']."', '".$strats['emotion']."', 'test', '".$data['userid']."', '".$data['stock']."')";
+
+        $wpdb->query($sql);
+
+        $remainingstocks = $stockdetails['totalstock'] - $data['volume'];
+
+        $newsql = "";
+        if($remainingstocks > 0){
+            $stockdetails['totalstock'] = $remainingstocks;
+            $newsql = "update arby_usermeta set meta_value = '".serialize($stockdetails)."' where umeta_id = ".$dledger[0]->umeta_id;
+            
+        } else {
+            $newsql = "delete from arby_usermeta where umeta_id = ".$dledger[0]->umeta_id;
+        }
+        $wpdb->query($newsql);
+
+        return $this->respond(true, ['data' => $stockdetails, 'sql' => $newsql], 200);
     }
 
 }

@@ -25,7 +25,7 @@ function um_load_notifications() {
 		},
 
 		success: function( data ) {
-
+			console.log(data)
 			var um_notification_icon_show = jQuery('.um-notification-b').data('show-always');
 
 

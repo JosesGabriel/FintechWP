@@ -521,6 +521,4 @@ date_default_timezone_set('Asia/Manila'); ?>
 	</div>
 </div>
 
-<?php
-
-get_footer();
+<?php require("news/footer-files.php"); ?>

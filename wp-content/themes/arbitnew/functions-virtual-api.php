@@ -124,6 +124,13 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'resetdata'],
             ],
         ]);
+
+        register_rest_route($base_route, 'memsentiment', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getmemsentiment'],
+            ],
+        ]);
         
     }
 
@@ -590,14 +597,24 @@ class VirtualAPI extends WP_REST_Controller
         global $wpdb;
         $data = $details->get_params();
         $tradelogs = "delete from arby_vt_tradelog where userid = ".$data['userid'];
-       if($wpdb->query($tradelogs)){
-             $liveportfolio = "delete from arby_vt_live where userid = ".$data['userid'];
-             if($wpdb->query($liveportfolio)){
-                return $this->respond(true, ['data' => 'Successfully deleted'], 200);
-            }
+        $liveportfolio = "delete from arby_vt_live where userid = ".$data['userid'];  
+        if($wpdb->query($tradelogs)){               
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);        
+        }else if ($wpdb->query($liveportfolio)) {
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);
         }
+    }
+
+    public function getmemsentiment($details)
+    {   
+        global $wpdb;
+        $data = $details->get_params();
+        $dsentbear = get_post_meta(504, '_sentiment_'.$data['stock'].'_bear', true );
+        $dsentbull = get_post_meta(504, '_sentiment_'.$data['stock'].'_bull', true );
+
+        return $this->respond(true, ['bull' => $dsentbull, 'bear' => $dsentbear], 200);
     }
 
 }

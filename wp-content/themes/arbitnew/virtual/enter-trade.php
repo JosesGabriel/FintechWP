@@ -1,4 +1,4 @@
-<div class="dbuttonenter" style="margin-right: 1px;">
+<div class="dbuttonenter" style="margin-right: 1px;margin-left: 6px;">
     <a href="javascript:void(0)" data-toggle="modal" data-target="#enter_trade" class="fancybox-inline enter-trade-btn" style="font-weight: 400;">Trade</a>
 
     <?php //require __DIR__ . "/../components/modals/buy-sell-order.php" ?>
@@ -24,7 +24,10 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc"><span class="sdesc"></span> <span class="crice">Current Price: <span class="cprice"></span></span></div>
+                        <div class="desc"><span class="sdesc"></span></div>
+                        <div class="crice">
+                            <span>Current Price: </span><span class="cprice" style="font-size: 14px;"></span><span class="change" style="font-size: 12px;"></span><span class="cpercentage" style="font-size: 12px;"></span>
+                        </div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
@@ -55,8 +58,8 @@
                             <div class="marketsents">
                                 <span style="font-weight: 600;">Members Sentiments</span>
                                 <div class="arb_bar fullbar">
-                                    <div class="arb_bar_green_m" style="width:80%;height: 6px;">&nbsp;</div>
-                                    <div class="arb_bar_red_m" style="width:20%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_green_m" style="width:50%;height: 6px;">&nbsp;</div>
+                                    <div class="arb_bar_red_m" style="width:50%;height: 6px;">&nbsp;</div>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +73,7 @@
                                 <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" disabled></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" id="entertopdataquantity" name="quantity" class="inputquantity number" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="text" autocomplete="off" class="inputquantity number" style="padding-right: 5px;" required></div>
                             </div>
                         </div>
                         <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost"></span></div>

@@ -40,7 +40,7 @@
                     <div class="dmessagepart" <?php if(is_page(2457)){ ?>style="padding-right:0;"<?php } ?>>
                     	<?php if(!is_page(2457)){ ?>
                             <div class="dmessagepart-wrap" data-show-always="1">
-                                <a href="https://vyndue.com" target="_blank" rel="noopener noreferrer"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 20px;display: inline-block;vertical-align: top;margin-top:5px"></a>
+                                <a href="https://vyndue.com" target="_blank" rel="noopener noreferrer"><img src="<?php echo $cdnorlocal; ?>/svg/vyndue-newlogo-white.svg" style="width: 19px;display: inline-block;vertical-align: top;margin-top:3px"></a>
                                 <span class="vyndue-notification" style="display: none;">0</span>
                             </div>
                         <?php } ?>

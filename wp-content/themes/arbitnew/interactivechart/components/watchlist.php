@@ -1,14 +1,14 @@
 <div class="vertical-box tab-pane fade" id="watchlists">
     <div class="arb_watchlst_cont">
         <table>
-            <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
+            <!-- <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
                 <tr>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Stock</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Day Range</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Price</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Change</strong></th>
                 </tr>
-            </thead>
+            </thead> -->
             <?php
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
@@ -64,5 +64,77 @@
 
             </tbody>
         </table>
+        <ul class="watchlist_main">
+            <li>
+                <div class="watch-content watchlist_1">
+                    <span class="watch_left">
+                        <span class="watch_stockcode">BDO</span>
+                        <span class="watch_stockname">Banco De Oro</span>
+                    </span>
+                    <span class="watch_right">
+                        <span class="watch_stockprice">148.30</span>
+                        <span class="watch_stockchange" style="color: #25ae5f;">
+                            <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                            <span class="stock_prcntchange">(1.02%)</span>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_2">
+                    <span class="watch_left">
+                        <span class="watch_stockcode">BDO</span>
+                        <span class="watch_stockname">Banco De Oro</span>
+                    </span>
+                    <span class="watch_right">
+                        <span class="watch_stockprice">148.30</span>
+                        <span class="watch_stockchange" style="color: #25ae5f;">
+                            <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                            <span class="stock_prcntchange">(1.02%)</span>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_3">
+                    <span class="watch_left">
+                        <span class="watch_stockcode">BDO</span>
+                        <span class="watch_stockname">Banco De Oro</span>
+                    </span>
+                    <span class="watch_right">
+                        <span class="watch_stockprice">148.30</span>
+                        <span class="watch_stockchange" style="color: #25ae5f;">
+                            <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                            <span class="stock_prcntchange">(1.02%)</span>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_4">
+                    <span class="watch_left">
+                        <span class="watch_stockcode">BDO</span>
+                        <span class="watch_stockname">Banco De Oro</span>
+                    </span>
+                    <span class="watch_right">
+                        <span class="watch_stockprice">148.30</span>
+                        <span class="watch_stockchange" style="color: #25ae5f;">
+                            <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                            <span class="stock_prcntchange">(1.02%)</span>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_5">
+                    <span class="watch_left">
+                        <span class="watch_stockcode">BDO</span>
+                        <span class="watch_stockname">Banco De Oro</span>
+                    </span>
+                    <span class="watch_right">
+                        <span class="watch_stockprice">148.30</span>
+                        <span class="watch_stockchange" style="color: #25ae5f;">
+                            <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                            <span class="stock_prcntchange">(1.02%)</span>
+                    </span>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

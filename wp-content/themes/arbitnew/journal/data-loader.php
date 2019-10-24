@@ -1,5 +1,33 @@
 
 <script>
+    var getCurrentAllocation = function(userid){
+        $.ajax({
+            url: "/wp-json/journal-api/v1/currentallocation?userid="+userid,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(data) {
+                                
+                let colors = [];
+                let items = [];
+                $.each(data.data, function(key, value){
+                    colors.push(value.color);
+                    items.push({"category" : value.stock, "column-1" : ((value.value).toFixed(2)).toString()});
+                });
+                AmCharts.makeChart("chartdiv1",
+                {
+                    "type": "pie","balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>","innerRadius": "40%","pieX": "45%","pieY": "50%","radius": 50,"pullOutRadius": "0%","startRadius": "0%","pullOutDuration": 0,"sequencedAnimation": false,"startDuration": 0,
+                    "colors": colors,
+                    "labelColorField": "#FFFFFF","labelsEnabled": false,"labelTickAlpha": 1,"labelTickColor": "#FFFFFF","titleField": "category","valueField": "column-1","backgroundColor": "#000000","borderColor": "#FFFFFF","color": "#78909C","fontFamily": "Roboto","allLabels": [],"balloon": {},
+                    "legend": {"enabled": true,"align": "center","autoMargins": false,"color": "#78909C","left": 0,"markerSize": 14,"markerType": "circle","position": "left","valueWidth": 80},"titles": [],
+                    "dataProvider": items
+                }
+            );
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                
+            }
+        });
+    }
     var loadLivePortfolio = function(userid){
         $.ajax({
             url: "/wp-json/journal-api/v1/liveportfolio?userid="+userid,
@@ -14,7 +42,7 @@
                         perfstats = 'dredpart';
                     }
                     let addliveme = '';
-                    addliveme += '<li>';
+                    addliveme += '<li class="liveitems">';
                     addliveme += '<table style="width:100%;"><tbody><tr>';
                     addliveme += '<td style="width:7%;color: #fffffe;"><a target="_blank" class="stock-label" href="/chart/'+value.stock+'">'+value.stock+'</a></td>';
                     addliveme += '<td style="width:9%" class="table-cell-live" style="padding-right: 2px;">'+(value.position.toString()).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
@@ -183,6 +211,10 @@
         });
     }
 
+    var buytrade = function(userid){
+
+    }
+
     $( document ).ready(function() {
 
         // initialize fancy box
@@ -251,6 +283,186 @@
             new loadLedger(<?php echo $user->ID; ?>);
         });
 
+        $(".confirm_order").click(function(e){
+            e.preventDefault();
+            $actiontype = $("#enter_trade .modeofaction").val();
+            if($actiontype == "buystock"){
+                let stocks = $(".buytrades #inpt_data_select_stock option:selected").val();
+                if(stocks != ""){
+                    let volume = $(".buytrades #entertopdataquantity").val();
+                    let buyprice = $(".buytrades #entertopdataprice").val();
+                    let notes = $(".buytrades .tnotes").val();
+                    let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
+                    let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
+                    let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
+                    let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
+
+                    let newstocks = $.parseJSON(stocks);
+                    let dstockname = newstocks.symbol;
+                    console.log(dstockname);
+
+
+                    $.ajax({
+                        url: "/wp-json/journal-api/v1/buystocks",
+                        type: 'GET',
+                        data: {
+                            "qty": volume,
+                            "price": buyprice,
+                            "buymonth": ddate,
+                            "strategy": strategy,
+                            "tradeplan": tradeplan,
+                            "emotion": emotion,
+                            "stock": dstockname,
+                            "userid" : <?php echo $user->ID; ?>
+                        },
+                        dataType: 'json', // added data type
+                        success: function(data) { 
+                            $("#live_portfolio ul li.liveitems").remove();
+                            $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
+                            new loadStocks();
+                            new loadLivePortfolio(<?php echo $user->ID; ?>);
+                            new loadBuyPower(<?php echo $user->ID; ?>);
+                            new LoadEquity(<?php echo $user->ID; ?>);
+                            new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+
+                            new getCurrentAllocation(<?php echo $user->ID; ?>);
+                            $("#enter_trade").modal("hide");
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                        }
+                    });
+
+                } else {
+                    swal("please select a stock");
+                }
+            } else {
+                console.log("sell the stock");
+                
+                let stockinfo = $.parseJSON($("#inpt_data_sell_stock option:selected").val());
+                let stock = stockinfo.symbol;
+                let volume = $("#entertopdataquantity").val();
+                let sellprice = $("#entertopdataprice").val();
+
+                $.ajax({
+                    url: "/wp-json/journal-api/v1/dosell",
+                    type: 'GET',
+                    data: {
+                        "sellprice" : sellprice,
+                        "volume" : volume,
+                        "stock": stock,
+                        "userid" : <?php echo $user->ID; ?>
+                    },
+                    dataType: 'json', // added data type
+                    success: function(data) { 
+                        // console.log(data);
+                        $("#live_portfolio ul li.liveitems").remove();
+                        $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
+                        new loadStocks();
+                        new loadLivePortfolio(<?php echo $user->ID; ?>);
+                        new loadBuyPower(<?php echo $user->ID; ?>);
+                        new LoadEquity(<?php echo $user->ID; ?>);
+                        new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+
+                        new getCurrentAllocation(<?php echo $user->ID; ?>);
+                        $("#enter_trade").modal("hide");
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        
+                    }
+                });
+                
+
+            }
+            // console.log(strategy);
+        });
+
+        $("#enter_trade .btnsell").click(function(e){
+            e.preventDefault(); 
+            $(".footer_details2").hide();
+            $(".buyprice .labelprice").text("Sell Price");
+            $(".modeofaction").val("sellstock");
+            $.ajax({
+                url: "/wp-json/journal-api/v1/stockstosell",
+                type: 'GET',
+                data: {
+                    "userid" : <?php echo $user->ID; ?>
+                },
+                dataType: 'json', // added data type
+                success: function(data) { 
+                    // console.log(data);
+                    $("select[name='inpt_data_stock_y']").attr("id","inpt_data_sell_stock").addClass("tosell");
+                    $("#inpt_data_sell_stock option").each(function() { $(this).remove(); });
+                    $("#inpt_data_sell_stock").append('<option value="">Select a Stock</option>');
+                    
+                    $.each(data.data, function(i, event){
+                        $("#inpt_data_sell_stock").append("<option value='"+JSON.stringify(event)+"'>"+event.symbol+"</option>");
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+        });
+
+        $("#enter_trade .btnbuy").click(function(e){
+            // new loadStocks();
+            e.preventDefault(); 
+            $(".footer_details2").show();
+            $(".buyprice .labelprice").text("Buy Price");
+            $(".modeofaction").val("buystock");
+            $.ajax({
+                url: "/wp-json/journal-api/v1/allstocks?userid=",
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function(data) {
+                    // console.log(data);
+                    $("select[name='inpt_data_stock_y']").attr("id","inpt_data_select_stock").removeClass("tosell");
+                    $("#inpt_data_select_stock option").each(function() { $(this).remove(); });
+                    $("#inpt_data_select_stock").append('<option value="">Select a Stock</option>');
+                    
+                    $.each(data.data, function(key, value){
+                        $("#inpt_data_select_stock").append("<option value='"+JSON.stringify(value)+"'>"+value.symbol+"</option>");
+                        $("#inpt_data_stock_bought").append("<option value='"+value.symbol+"'>"+value.symbol+"</option>");
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+        });
+
+        $('#enter_trade').on('change', "select.tosell", function() {
+            let stockinformation = $.parseJSON(this.value);
+            $("#enter_trade .cprice").text(stockinformation.last);
+            $("#enter_trade .pdetails.low").text(stockinformation.low);
+            $("#enter_trade .pdetails.open").text(stockinformation.open);
+            $("#enter_trade .pdetails.high").text(stockinformation.high);
+            $("#enter_trade .pdetails.klow").text(stockinformation.weekyearlow);
+            $("#enter_trade .pdetails.khigh").text(stockinformation.weekyearhigh);
+            $("#enter_trade .pdetails.vol").text(stockinformation.volume);
+            $("#enter_trade .pdetails.val").text(stockinformation.value);
+            $("#enter_trade .pdetails.av").text(stockinformation.average);
+            $.ajax({
+                url: "/wp-json/journal-api/v1/sellstock",
+                type: 'GET',
+                data: {
+                    "stock": stockinformation.symbol,
+	                "userid": <?php echo $user->ID; ?>
+                },
+                dataType: 'json', // added data type
+                success: function(data) {
+                    // console.log(data);
+                    $("#enter_trade #entertopdataquantity").val(parseFloat(data.data.totalstock));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+
+        });
+
 
 
         // load 
@@ -259,5 +471,8 @@
         new loadLivePortfolio(<?php echo $user->ID; ?>);
         new LoadEquity(<?php echo $user->ID; ?>);
         new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+
+        //
+        new getCurrentAllocation(<?php echo $user->ID; ?>);
     });
 </script>

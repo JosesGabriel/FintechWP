@@ -1,11 +1,6 @@
 
 	#main-content .container:before {
-		width: 100%;
-        padding-top: 0px;
-        padding-right: 0;
-        padding-left: 0;
-        max-width: 1000px;
-        margin: 0 auto;
+		background-color: none !important;
 	}
 	.um-header-outer {
 	    background: #142c46 !important;
@@ -1211,9 +1206,11 @@ legend {
 	}
 	#main-content .container {
 		width: 100%;
-		padding-top: 0px;
-	    padding-right: 31px;
-	    padding-left: 31px;
+        padding-top: 0px;
+        padding-right: 0;
+        padding-left: 0;
+        max-width: 1000px;
+        margin: 0 auto;
 	}
 	.et_fixed_nav.et_show_nav #page-container {
 		padding-top: 45px !important;

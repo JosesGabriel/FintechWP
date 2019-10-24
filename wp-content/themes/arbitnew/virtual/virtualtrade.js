@@ -242,8 +242,8 @@ $(document).ready(function(){
 			    	$('.arb_bar_green_m').css('width', bullperc + '%');
 		    		$('.arb_bar_red_m').css('width', bearperc + '%');
 		    	}else{
-		    		var bullperc = 0;
-			    	var bearperc = 0;
+		    		$('.arb_bar_green_m').css('width','50%');
+		    		$('.arb_bar_red_m').css('width','50%');
 		    	}
 		    	
 		    },

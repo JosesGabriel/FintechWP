@@ -19,13 +19,10 @@ $(document).ready(function(){
 	    success: function(response) {
 	    	var opt = '';
 
-	    	response.data.sort(function(a,b){
-	    		return "<option value"+ a.symbol +">" + a.symbol + "</option>" > "<option value"+ b.symbol +">" + b.symbol + "</option>" ;
-	    	}).append('#inpt_data_select_stock');
-	    	/*$.each(response.data, function(i, val) {
+	    	$.each(response.data, function(i, val) {
 	    		opt = "<option value="+ val.symbol +">" + val.symbol + "</option>";
 	    		$('#inpt_data_select_stock').append(opt);
-	    	});*/
+	    	});
 
 	    },
 	      error: function(response) {                 

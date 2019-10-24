@@ -650,6 +650,7 @@ $(document).ready(function(){
 		$('.btnsell').css('background','none');
 		$('.labelprice').text('Buy Price');
 		$('.btnValue').val('buy');
+		$('#inpt_data_select_stock option').remove();
 		getstocks();
 	});
 

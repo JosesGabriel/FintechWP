@@ -39,7 +39,8 @@
 }
 
 .groupinput.midd.lockedd {
-   	width: 263px;
+   	width: 367px;
+    display: flex;
 }
 
 .desc{

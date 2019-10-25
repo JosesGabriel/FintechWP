@@ -23,7 +23,11 @@
                                 <option value="">Select Stocks</option>
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
+                            <div class="date_now" style="position: absolute;right: 0;">
+                                <span>Date:</span><span style="margin-left: 5px;"><?php echo date("M. d, Y"); ?></span>
+                            </div>
                         </div>
+
                         <div class="desc"><span class="sdesc"></span></div>
                         <div class="crice">
                             <span>Current Price: </span><span class="cprice" style="font-size: 14px;"></span><span class="change" style="font-size: 12px;"></span><span class="cpercentage" style="font-size: 12px;"></span>

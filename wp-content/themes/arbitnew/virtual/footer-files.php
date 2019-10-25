@@ -30,6 +30,15 @@
                     html2canvas(document.getElementById("virtual-trade-wrapper")).then(function(canvas) {
                             var canvasImg = canvas.toDataURL("image/jpg");
                             $('#share-modal-image-container').html('<img id="image-to-share" src="'+canvasImg+'" alt="">');
+                            let rbShareBtn = document.getElementById("rbShareBtn");
+                            let fbShareBtn = document.getElementById("fbShareBtn");
+                            let twitterShareBtn = document.getElementById("twitterShareBtn");
+                            rbShareBtn.removeAttribute("disabled");
+                            rbShareBtn.classList.remove("um-disabled");
+                            fbShareBtn.removeAttribute("disabled");
+                            fbShareBtn.classList.remove("um-disabled");
+                            twitterShareBtn.removeAttribute("disabled");
+                            twitterShareBtn.classList.remove("um-disabled");
                     });
                 });
                 $("li.five a").click(function(e){

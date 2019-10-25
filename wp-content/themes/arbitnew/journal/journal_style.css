@@ -1480,7 +1480,7 @@ hr.style20 {
     margin-bottom: -1px !important;
 }
 .inner-main-content {
-    max-width: 1000px;
+    max-width: 1020px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -1930,11 +1930,15 @@ a:hover {
 }
 .dashboard-sidebar-left-inner {
     position: sticky;
-    top: 65px;
+    top: 57px;
+    background: #142c46;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid #1e3554;
 }
 .left-dashboard-part {
-    padding: 0 !important;
-    width: 196px;
+    padding: 10px 0 0 !important;
+    width: 218px;
 }
 .side-content ul li a span {
     top: -2px;

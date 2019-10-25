@@ -511,4 +511,7 @@ textarea.tnotes{
 .share-modal-body {
 	padding-bottom: 10px;
 }
+#virtual-trade-wrapper {
+	background-color: #0c1f33;
+}
 /* end share btn style */

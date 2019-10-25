@@ -1,14 +1,14 @@
 <div class="vertical-box tab-pane fade" id="watchlists">
     <div class="arb_watchlst_cont">
         <table>
-            <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
+            <!-- <thead style="text-transform: uppercase;font-weight: normal !important;font-family: 'Roboto', Arial !important;">
                 <tr>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Stock</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Day Range</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Price</strong></th>
                     <th style="font-weight: normal !important;font-family: 'Roboto', Arial !important;color: #dedede;"><strong>Change</strong></th>
                 </tr>
-            </thead>
+            </thead> -->
             <?php
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, '/wp-json/data-api/v1/stocks/history/latest?exchange=PSE' );
@@ -19,7 +19,6 @@
                 curl_close($curl);
 
                 $dhistoforchart = json_decode($dhistofronold);
-                json_decode($dhistoforchart);
             ?>
             <tbody>
                 <?php $havemeta = get_user_meta($user_id, '_watchlist_instrumental', true); ?>
@@ -27,21 +26,21 @@
 
                 <?php foreach ($havemeta as $key => $value) { ?>
                 <?php
-                    // $stockinfo = $dhistoforchart->data;
-                    // $dstock = $value['stockname'];
-                    // $dprice = 0;
-                    // $dchange = 0;
+                    $stockinfo = $dhistoforchart->data;
+                    $dstock = $value['stockname'];
+                    $dprice = 0;
+                    $dchange = 0;
 
-                    //     foreach($stockinfo as $stkey => $stvals){
-                    //         if($stvals->symbol == $dstock ){
-                    //             $dprice = $stvals->last;
-                    //             $dchange = $stvals->changepercentage;
-                    //             $dlow = $stvals->low;
-                    //             $dhigh = $stvals->high;
-                    //         }
-                    //     }
+                        foreach($stockinfo as $stkey => $stvals){
+                            if($stvals->symbol == $dstock ){
+                                $dprice = $stvals->last;
+                                $dchange = $stvals->changepercentage;
+                                $dlow = $stvals->low;
+                                $dhigh = $stvals->high;
+                            }
+                        }
                     ?>
-                    <!-- <tr class="tr-background">
+                    <tr class="tr-background">
                         <td ng-click="select('<?php echo $value['stockname']; ?>')">	<div class="block"><?php echo $value['stockname']; ?></div></td>
                         <td ng-click="select('<?php echo $value['stockname']; ?>')"><?php echo number_format( $dlow, 2, '.', ',' ); ?> ~ <?php echo number_format( $dhigh, 2, '.', ',' ); ?></td>
                         <td style="text-align: left;" ng-click="select('<?php echo $value['stockname']; ?>')">
@@ -59,11 +58,88 @@
                             <?php endif ?>
 
                         </td>
-                    </tr> -->
+                    </tr>
                 <?php } ?>
                 <?php endif ?>
 
             </tbody>
         </table>
+        <ul class="watchlist_main">
+            <li>
+                <div class="watch-content watchlist_1 row" style="margin:0;">
+                        <div class="watch_left col-md-6 col-xs-6">
+                            <span class="watch_stockcode">BDO</span><br>
+                            <span class="watch_stockname">Banco De Oro</span>
+                        </div>
+                        <div class="watch_right col-md-6  col-xs-6">
+                            <span class="watch_stockprice">148.30</span><br>
+                            <span class="watch_stockchange" style="color: #25ae5f;">
+                                <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                                <span class="stock_prcntchange">(1.02%)</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_1 row" style="margin:0;">
+                        <div class="watch_left col-md-6 col-xs-6">
+                            <span class="watch_stockcode">BDO</span><br>
+                            <span class="watch_stockname">Banco De Oro</span>
+                        </div>
+                        <div class="watch_right col-md-6  col-xs-6">
+                            <span class="watch_stockprice">148.30</span><br>
+                            <span class="watch_stockchange" style="color: #25ae5f;">
+                                <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                                <span class="stock_prcntchange">(1.02%)</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_1 row" style="margin:0;">
+                        <div class="watch_left col-md-6 col-xs-6">
+                            <span class="watch_stockcode">BDO</span><br>
+                            <span class="watch_stockname">Banco De Oro</span>
+                        </div>
+                        <div class="watch_right col-md-6  col-xs-6">
+                            <span class="watch_stockprice">148.30</span><br>
+                            <span class="watch_stockchange" style="color: #25ae5f;">
+                                <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                                <span class="stock_prcntchange">(1.02%)</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_1 row" style="margin:0;">
+                        <div class="watch_left col-md-6 col-xs-6">
+                            <span class="watch_stockcode">BDO</span><br>
+                            <span class="watch_stockname">Banco De Oro</span>
+                        </div>
+                        <div class="watch_right col-md-6  col-xs-6">
+                            <span class="watch_stockprice">148.30</span><br>
+                            <span class="watch_stockchange" style="color: #25ae5f;">
+                                <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                                <span class="stock_prcntchange">(1.02%)</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="watch-content watchlist_1 row" style="margin:0;">
+                        <div class="watch_left col-md-6 col-xs-6">
+                            <span class="watch_stockcode">BDO</span><br>
+                            <span class="watch_stockname">Banco De Oro</span>
+                        </div>
+                        <div class="watch_right col-md-6  col-xs-6">
+                            <span class="watch_stockprice">148.30</span><br>
+                            <span class="watch_stockchange" style="color: #25ae5f;">
+                                <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
+                                <span class="stock_prcntchange">(1.02%)</span>
+                        </span>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>

@@ -110,6 +110,7 @@
                                 <input type="hidden" name="userid" class="userid" value="<?php echo $user->ID;?>">
                             </div>
                             <div class="groupinput" style="text-align: right;">
+                                <input type="hidden" class="modeofaction" value="buystock">
                                 <img class="chart-loader" src="/wp-content/plugins/um-social-activity/assets/img/loader.svg" style="width: 25px; height: 25px; display: none; float: right;margin-right: 10px;">
                                 <input type="submit" class="confirm_order" value="Confirm Order">
                             </div> 

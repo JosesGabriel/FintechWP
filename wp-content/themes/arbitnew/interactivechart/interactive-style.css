@@ -1544,3 +1544,34 @@ span.ticker_enabler-text {
     height: 17px;
     font-size: 10px;
 }
+/* ----------------watchlist component-------------- */
+
+.watch_left {
+    text-align: left;
+    padding: 0 5px;
+}
+.watch_right {
+    text-align: right;
+    padding: 0 5px;
+}
+.watch-content:hover {
+    background: #34495e;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.watch-content {
+    margin: 0 0 5px !important;
+    border-bottom: 1px solid #34495e;
+}
+span.watch_stockcode {
+    font-weight: 600;
+    font-size: 13px;
+}
+span.watch_stockname {
+    color: #a2a2a2;
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

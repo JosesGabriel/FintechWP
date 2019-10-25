@@ -131,12 +131,41 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 		margin: 0 auto;
 		text-align: center;
     }
+    
     span#span_login_rememberme{
         color: #fff;
         margin-left: 20px;
         line-height: 2;
         font-weight: normal;
     }
+    span#span_login_rememberme:hover{
+        text-decoration: underline;
+    }
+    span#span_login_forgetpassword{
+        color: #fff;
+        margin-left: 60px;
+        line-height: 2;
+        font-weight: normal;
+        width: 100px;
+        position: absolute;
+    }
+    span#span_login_forgetpassword:hover{
+        text-decoration: underline;
+    }
+    span.span_backtologin{
+        color: #fff;
+        font-size: 11px;
+        cursor:pointer;
+    }
+    span.span_backtologin:hover{
+        text-decoration: underline;
+    }
+    span#span_used_email{
+        color: #1CA5DF;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
 </style>
 <div class="ondashboardpage_login">
 	<div class="ondashboardpage_login_inner">
@@ -158,14 +187,25 @@ $get_bgfimage = "loginbg".$setrand.".jpg";
 				<span class="label_pls">Please enter your email address below</span><br>
 				<input type="email" required class="email-info" id="email_info"><br>
 
-				<input type="submit" value="Reset" id="email_btn_info">
-			</form>
+				<input type="submit" value="Reset Password" id="email_btn_info">
+                <div>
+                    <span class="span_backtologin" id="before_resetpwd">Back to Login</span>
+                </div>
+        	</form>
 		</div>
 		<div class="confirmed_cont">
-			<span class="label_pls">You have successfully reset your password! Please check your email.</span><br>
-			<a class="backto-login" href>Back to login</a>
+			<span class="label_pls">Alright! Now we sent your temporary password at <span id="span_used_email"></span>. Please check your email.</span><br>
+			<!-- <a class="backto-login" href>Back to Login</a> -->
+            <div>
+                <span class="span_backtologin" id="after_resetpwd">Back to Login</span>
+            </div>
 		</div>
-		<div class="error_message"><span class="label_pls"></span></div>
+		<div class="error_message">
+            <span class="label_pls" id="pwdemail_error_message">Sorry! we unable to send email. :(</span>
+            <div>
+                <span class="span_backtologin" id="error_resetpwd">Back to Login</span>
+            </div>
+        </div>
 		
         <div class="login-form-wrapper">
             <div class="login-form" style="display: none;">

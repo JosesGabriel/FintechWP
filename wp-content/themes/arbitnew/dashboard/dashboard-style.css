@@ -301,7 +301,7 @@ body .um-notification-live-feed .um-notification-ajax .um-notification span.um-n
     color: #fff !important;
 }
 .um-notification span.b2 i img {
-    width: 14px;
+    width: 15px;
     margin-top: -3px;
 }
 .um-notification-live-feed .um-notification-more {
@@ -1096,10 +1096,6 @@ span.um-activity-seemore {
 }
 .um-activity-head {
     padding: 10px 10px 10px;
-}
-.um-notification span.b2 i img {
-    width: 14px;
-    margin-top: -3px;
 }
 .um-activity-comment-meta .um-activity-editc-d:before {
     content: "";

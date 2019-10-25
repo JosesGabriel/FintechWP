@@ -52,7 +52,7 @@ $(document).ready(function(){
 		    success: function(response) {   	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
-		    		console.log(response.data);
+		    		//console.log(response.data);
 		    		var buyprice = parseFloat(response.data[i].buyprice);
 		    		var marketval = 0;
 			    	var totalcost = 0;
@@ -551,6 +551,7 @@ $(document).ready(function(){
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Sell Order:');
 		$('.labelprice').text('Sell Price');
+		$('.footer_details2').slideUp();
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){

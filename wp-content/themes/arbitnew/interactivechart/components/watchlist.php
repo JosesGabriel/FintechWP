@@ -78,6 +78,7 @@
                                 <span class="stock_prcntchange">(1.02%)</span>
                         </span>
                     </div>
+                    <hr class="style14 style15">
                 </div>
             </li>
             <li>

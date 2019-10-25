@@ -1560,8 +1560,8 @@ span.ticker_enabler-text {
     cursor: pointer;
 }
 .watch-content {
-    margin: 0 0 5px !important;
-    border-bottom: 1px solid #34495e;
+    /* border-bottom: 1px solid #34495e; */
+    padding: 2px;
 }
 span.watch_stockcode {
     font-weight: 600;
@@ -1574,4 +1574,11 @@ span.watch_stockname {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+.stock_pricechange i.fas {
+    font-size: 10px;
+    margin-right: 1px;
+}
+span.watch_stockprice {
+    font-size: 13px;
 }

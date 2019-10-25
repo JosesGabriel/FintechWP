@@ -131,6 +131,12 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'getmemsentiment'],
             ],
         ]);
+        register_rest_route($base_route, 'gettime', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettime'],
+            ],
+        ]);
         
     }
 
@@ -615,6 +621,22 @@ class VirtualAPI extends WP_REST_Controller
         $dsentbull = get_post_meta(504, '_sentiment_'.$data['stock'].'_bull', true );
 
         return $this->respond(true, ['bull' => $dsentbull, 'bear' => $dsentbear], 200);
+    }
+
+    public function gettime()
+    {
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET","http://api.timezonedb.com/v2.1/get-time-zone?key=XW74QJ5A2BAX&format=json&by=zone&zone=Asia/Manila", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+            ]);
+        $data = json_decode($request->content);
+        $timestamp['timestamp'] = $data->timestamp;
+        return $this->respond(true, ['timestamp' => $timestamp], 200);
     }
 
 }

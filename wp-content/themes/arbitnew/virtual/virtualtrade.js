@@ -5,12 +5,12 @@ $(document).ready(function(){
 	tradelogs();
 	performance();
 	marketstatus();
-
 	setInterval(function(){
    		livedata();
    		marketstatus();
    		performance();
   	}, 5000);
+
 
 
 	function getstocks(){
@@ -467,47 +467,49 @@ $(document).ready(function(){
     }
 
     function marketstatus(){
+    	    	
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/gettime',
+		    dataType: 'json',
+		    success: function(response) {	    	
+		    	var times = response.timestamp;
+		    	time = times.timestamp * 1000;
 
-    	var open_am = new Date();
-  			open_am.setHours(9, 30, 0);
-    	var close_am = new Date();
-    		close_am.setHours(11, 59, 59);
-    	var recess_open = new Date();
-    		recess_open.setHours(12, 0, 0);
-    	var recess_close = new Date();
-    		recess_close.setHours(13, 29, 59);
-    	var open_pm = new Date();
-    		open_pm.setHours(13, 30, 0);
-    	var close_pm = new Date();
-    		close_pm.setHours(15, 30, 0);
+		    	var open_am = new Date();
+		  			open_am.setHours(9, 30, 0);
+		    	var close_am = new Date();
+		    		close_am.setHours(11, 59, 59);
+		    	var recess_open = new Date();
+		    		recess_open.setHours(12, 0, 0);
+		    	var recess_close = new Date();
+		    		recess_close.setHours(13, 29, 59);
+		    	var open_pm = new Date();
+		    		open_pm.setHours(13, 30, 0);
+		    	var close_pm = new Date();
+		    		close_pm.setHours(15, 30, 0);
 
-    	//var d = JSJoda.LocalDateTime;
-    	var dt = JSJoda.ZonedDateTime.now(JSJoda.ZoneOffset.UTC);// 2013-02-24T00:00:00
-		var t = dt.plusHours(8);
+		    	if(time == null){
+		    		time = Date.now();
+		    	}
 
-		//console.log(date);
-		//const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-		//const currentTime = moment().tz(timezone).format();
-		
-		//console.log(currentTime);
-		//var time_now = t.hour():t.minute(), t.second());
-    	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
-    	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
-    	
-		var time = Date.now();
-		
-		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
-			$('.mstatus').text('Open');
-			$('.mstatus').addClass('dgreenpart');
-			$('.mstatus').removeClass('dredpart');
-		}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
-			$('.mstatus').text('Recess');
-		} else{
-			$('.mstatus').text('Close');
-			$('.mstatus').addClass('dredpart');
-			$('.mstatus').removeClass('dgreenpart');
-		}
-		
+				    if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
+						$('.mstatus').text('Open');
+						$('.mstatus').addClass('dgreenpart');
+						$('.mstatus').removeClass('dredpart');
+					}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
+						$('.mstatus').text('Recess');
+					} else{
+						$('.mstatus').text('Close');
+						$('.mstatus').addClass('dredpart');
+						$('.mstatus').removeClass('dgreenpart');
+					}
+				
+		     },
+		    error: function(response) {                 
+		    }
+		});
+	
     }
 
     jQuery(document).on('click', '.resetdata', function(){   	

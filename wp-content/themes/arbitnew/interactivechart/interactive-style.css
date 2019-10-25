@@ -1447,10 +1447,9 @@ hr.style14 {
     position: relative;
     border: 0;
     height: 1px;
-    width: 100%;
-    background: #1e3554;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5px !important;
+    width: 94%;
+    background: #34495e;
+    margin: 1px auto;
     display: flex;
 }
 span.ticker_enabler-title {
@@ -1581,4 +1580,14 @@ span.watch_stockname {
 }
 span.watch_stockprice {
     font-size: 13px;
+}
+span.watch_stockname, span.watch_stockchange {
+    font-size: 11px;
+}
+.watchlist-dragdrop {
+    padding: 0;
+    display: inline;
+    position: relative;
+    vertical-align: middle;
+    margin: 9px 0;
 }

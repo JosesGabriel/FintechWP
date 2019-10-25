@@ -185,6 +185,7 @@ class WatchlistAPI extends WP_REST_Controller
             $stockdetails = $stocksdata->data[$key];
             $value['last'] = $stockdetails->last;
             $value['change'] = $stockdetails->changepercentage;
+            $value['change_price'] = $stockdetails->change;
             $value['bidask'] = $dbidasklist->data;
             array_push($finalwatch, $value);
         }

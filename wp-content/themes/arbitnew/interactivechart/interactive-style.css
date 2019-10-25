@@ -1569,4 +1569,9 @@ span.watch_stockcode {
 }
 span.watch_stockname {
     color: #a2a2a2;
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

@@ -135,6 +135,7 @@
             <hr class="style14 style15">
             <li>
                 <div class="watch-content watchlist_1 row" style="margin:0;">
+                    <div class="watchlist-dragdrop col-md-1 col-xs-1"><i class="fas fa-bars"></i></div>
                         <div class="watch_left col-md-6 col-xs-6">
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>

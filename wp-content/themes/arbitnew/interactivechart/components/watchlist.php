@@ -72,7 +72,7 @@
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>
                         </div>
-                        <div class="watch_right col-md-6  col-xs-6">
+                        <div class="watch_right col-md-5  col-xs-5">
                             <span class="watch_stockprice">148.30</span><br>
                             <span class="watch_stockchange" style="color: #25ae5f;">
                                 <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
@@ -89,7 +89,7 @@
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>
                         </div>
-                        <div class="watch_right col-md-6  col-xs-6">
+                        <div class="watch_right col-md-5  col-xs-5">
                             <span class="watch_stockprice">148.30</span><br>
                             <span class="watch_stockchange" style="color: #25ae5f;">
                                 <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
@@ -106,7 +106,7 @@
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>
                         </div>
-                        <div class="watch_right col-md-6  col-xs-6">
+                        <div class="watch_right col-md-5  col-xs-5">
                             <span class="watch_stockprice">148.30</span><br>
                             <span class="watch_stockchange" style="color: #25ae5f;">
                                 <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
@@ -123,7 +123,7 @@
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>
                         </div>
-                        <div class="watch_right col-md-6  col-xs-6">
+                        <div class="watch_right col-md-5  col-xs-5">
                             <span class="watch_stockprice">148.30</span><br>
                             <span class="watch_stockchange" style="color: #25ae5f;">
                                 <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>
@@ -139,7 +139,7 @@
                             <span class="watch_stockcode">BDO</span><br>
                             <span class="watch_stockname">Banco De Oro</span>
                         </div>
-                        <div class="watch_right col-md-6  col-xs-6">
+                        <div class="watch_right col-md-5  col-xs-5">
                             <span class="watch_stockprice">148.30</span><br>
                             <span class="watch_stockchange" style="color: #25ae5f;">
                                 <span class="stock_pricechange"><i class="fas  fa-arrow-up"></i>1.50</span>

@@ -1447,10 +1447,9 @@ hr.style14 {
     position: relative;
     border: 0;
     height: 1px;
-    width: 100%;
-    background: #1e3554;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5px !important;
+    width: 94%;
+    background: #34495e;
+    margin: 1px auto;
     display: flex;
 }
 span.ticker_enabler-title {
@@ -1543,4 +1542,52 @@ span.ticker_enabler-text {
     padding: 1px 5px;
     height: 17px;
     font-size: 10px;
+}
+/* ----------------watchlist component-------------- */
+
+.watch_left {
+    text-align: left;
+    padding: 0 5px;
+}
+.watch_right {
+    text-align: right;
+    padding: 0 5px;
+}
+.watch-content:hover {
+    background: #34495e;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.watch-content {
+    /* border-bottom: 1px solid #34495e; */
+    padding: 2px;
+}
+span.watch_stockcode {
+    font-weight: 600;
+    font-size: 13px;
+}
+span.watch_stockname {
+    color: #a2a2a2;
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.stock_pricechange i.fas {
+    font-size: 10px;
+    margin-right: 1px;
+}
+span.watch_stockprice {
+    font-size: 13px;
+}
+span.watch_stockname, span.watch_stockchange {
+    font-size: 11px;
+}
+.watchlist-dragdrop {
+    padding: 0;
+    display: inline;
+    position: relative;
+    vertical-align: middle;
+    margin: 9px 0;
 }

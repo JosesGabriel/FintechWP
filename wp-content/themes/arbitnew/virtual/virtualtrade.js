@@ -5,12 +5,12 @@ $(document).ready(function(){
 	tradelogs();
 	performance();
 	marketstatus();
-
 	setInterval(function(){
    		livedata();
    		marketstatus();
    		performance();
   	}, 5000);
+
 
 
 	function getstocks(){
@@ -52,22 +52,33 @@ $(document).ready(function(){
 		    success: function(response) {   	
 		    	$(".datalive").remove();
 		    	jQuery.each(response.data, function(i, val) {
-		    		
+		    		//console.log(response.data);
 		    		var buyprice = parseFloat(response.data[i].buyprice);
-		    		var marketval = response.data[i].datainfo.last * response.data[i].volume;
+		    		var marketval = 0;
+			    	var totalcost = 0;
+			    	var last = 0;
+			    	var average = 0;
+
+		    		if(response.data[i].datainfo != null){
+		    			last = response.data[i].datainfo.last;
+			    		marketval = response.data[i].datainfo.last * response.data[i].volume;
+			    		totalcost = response.data[i].datainfo.average * response.data[i].volume; 
+			    		average = response.data[i].datainfo.average;
+		    		}
+
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-		    		var totalcost = response.data[i].datainfo.average * response.data[i].volume; 
+		    		
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
-				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+last+'</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
-				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].datainfo.average).toFixed(2)+'</td>';
+				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(average).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(totalcost).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
 				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';
@@ -456,47 +467,49 @@ $(document).ready(function(){
     }
 
     function marketstatus(){
+    	    	
+    	$.ajax({
+		    type:'GET',
+		    url:'/wp-json/virtual-api/v1/gettime',
+		    dataType: 'json',
+		    success: function(response) {	    	
+		    	var times = response.timestamp;
+		    	time = times.timestamp * 1000;
 
-    	var open_am = new Date();
-  			open_am.setHours(9, 30, 0);
-    	var close_am = new Date();
-    		close_am.setHours(11, 59, 59);
-    	var recess_open = new Date();
-    		recess_open.setHours(12, 0, 0);
-    	var recess_close = new Date();
-    		recess_close.setHours(13, 29, 59);
-    	var open_pm = new Date();
-    		open_pm.setHours(13, 30, 0);
-    	var close_pm = new Date();
-    		close_pm.setHours(15, 30, 0);
+		    	var open_am = new Date();
+		  			open_am.setHours(9, 30, 0);
+		    	var close_am = new Date();
+		    		close_am.setHours(11, 59, 59);
+		    	var recess_open = new Date();
+		    		recess_open.setHours(12, 0, 0);
+		    	var recess_close = new Date();
+		    		recess_close.setHours(13, 29, 59);
+		    	var open_pm = new Date();
+		    		open_pm.setHours(13, 30, 0);
+		    	var close_pm = new Date();
+		    		close_pm.setHours(15, 30, 0);
 
-    	//var d = JSJoda.LocalDateTime;
-    	var dt = JSJoda.ZonedDateTime.now(JSJoda.ZoneOffset.UTC);// 2013-02-24T00:00:00
-		var t = dt.plusHours(8);
+		    	if(time == null){
+		    		time = Date.now();
+		    	}
 
-		//console.log(date);
-		//const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-		//const currentTime = moment().tz(timezone).format();
-		
-		//console.log(currentTime);
-		//var time_now = t.hour():t.minute(), t.second());
-    	//var zdt = JSJoda.ZonedDateTime.now(JSJoda.ZoneId.of("Europe/Paris"));
-    	//console.log(d.ofInstant(JSJoda.Instant.now())); // 12:34);
-    	
-		var time = Date.now();
-		
-		if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
-			$('.mstatus').text('Open');
-			$('.mstatus').addClass('dgreenpart');
-			$('.mstatus').removeClass('dredpart');
-		}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
-			$('.mstatus').text('Recess');
-		} else{
-			$('.mstatus').text('Close');
-			$('.mstatus').addClass('dredpart');
-			$('.mstatus').removeClass('dgreenpart');
-		}
-		
+				    if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
+						$('.mstatus').text('Open');
+						$('.mstatus').addClass('dgreenpart');
+						$('.mstatus').removeClass('dredpart');
+					}else if (time > Date.parse(recess_open) && time < Date.parse(recess_close)) {
+						$('.mstatus').text('Recess');
+					} else{
+						$('.mstatus').text('Close');
+						$('.mstatus').addClass('dredpart');
+						$('.mstatus').removeClass('dgreenpart');
+					}
+				
+		     },
+		    error: function(response) {                 
+		    }
+		});
+	
     }
 
     jQuery(document).on('click', '.resetdata', function(){   	
@@ -530,6 +543,7 @@ $(document).ready(function(){
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Buy Order:');
+		$('.footer_details2').slideDown();
 	});
 
 	jQuery(document).on('click', '.sellmystocks', function(){
@@ -540,6 +554,7 @@ $(document).ready(function(){
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Sell Order:');
 		$('.labelprice').text('Sell Price');
+		$('.footer_details2').slideUp();
 	});
 	
 	jQuery(document).on('click', '.enter-trade-btn', function(){
@@ -713,7 +728,7 @@ $(document).ready(function(){
 			swal("Please select a Stock");
             return false;
 		}
-		if(status == 'Open'){
+		//if(status == 'Open'){
 			
 					if(btn == 'buy'){
 						$.ajax({
@@ -773,10 +788,10 @@ $(document).ready(function(){
 						 });
 
 					}
-		}else {
+		/*}else {
 			swal("Market Closed!");
             return false;
-		}
+		}*/
 
 	});
 

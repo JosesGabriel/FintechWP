@@ -47,7 +47,7 @@ if ($coverhphotoactive && $profilepicactive && $friendstotal >= 3){
 					  <span>Trading Journal</span></a></li>
                   <li class="four"><a href="/watchlist/"><img src="/svg/binoculars5-2.svg">
 					  <span>Watcher & Alerts</span></a></li>
-                  <li class="seven"><a href="/game/"><img src="/svg/play-station-4.svg" class="icon-game">
+                  <li class="seven" style="display: none;"><a href="/game/"><img src="/svg/play-station-4.svg" class="icon-game">
             <span>Games</span></a></li>
                   <li class="five"><a id="vyndue--link" class="vyndueverify" href="https://vyndue.com/#/login" target="_blank" rel="noopener noreferrer"><img src="/svg/vyndue-newlogo1-1.svg">
             <span>Vyndue</span></a></li>

@@ -54,18 +54,27 @@ $(document).ready(function(){
 		    	jQuery.each(response.data, function(i, val) {
 		    		console.log(response.data);
 		    		var buyprice = parseFloat(response.data[i].buyprice);
-		    		var marketval = response.data[i].datainfo.last * response.data[i].volume;
+		    		var marketval = 0;
+			    	var totalcost = 0;
+			    	var last = 0;
+
+		    		if(response.data[i].datainfo != null){
+		    			last = response.data[i].datainfo.last;
+			    		marketval = response.data[i].datainfo.last * response.data[i].volume;
+			    		totalcost = response.data[i].datainfo.average * response.data[i].volume; 
+		    		}
+
 		    		var prof = buyprice * response.data[i].volume;
 		    		var profit = marketval - prof;
 		    		var profperc = (profit/marketval) * 100;
-		    		var totalcost = response.data[i].datainfo.average * response.data[i].volume; 
+		    		
 		    		var outcome = (profit > 0 ? "Winning" : "Loosing");
 
 		    		var data_live = '';
 			    	data_live += '<li class="datalive">';
 				    data_live += '<table width="100%">';
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
-				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].datainfo.last+'</td>';
+				    data_live += '<td style="width:9%" class="table-title-live">'+last+'</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
 				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].datainfo.average).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(totalcost).toFixed(2)+'</td>';

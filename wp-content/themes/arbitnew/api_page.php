@@ -493,7 +493,19 @@
 		$checkQuery = "SELECT * FROM arby_notifyme_emails where email like '$str'";
 		$addQuery = "INSERT INTO `arby_notifyme_emails` (`id`, `email`, `created_at`) VALUES (NULL, '$str', NULL)";
 		$exist = $wpdb->query($addQuery);
-
+		
+	}elseif(isset($_GET['daction']) && $_GET['daction'] == 'share_post') {
+		$my_post = array(
+		    'post_content'  => $_GET['caption'],
+		    'post_status'   => 'publish',
+		    'post_author'   => $_GET['authorId'],
+		    'post_category' => array( 8,39 ),
+		    'post_type'     => 'um_activity',
+		    'meta_input'    => array(
+		        '_photo'    => $_GET['link']
+		    )    
+		 );
+		 wp_insert_post( $my_post );
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset_manual'){
 		global $wpdb;
         $emailstr = stripslashes($_GET['email']);
@@ -511,18 +523,26 @@
         }
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'email_pass_reset'){
+
+
 		global $wpdb;
 		$homeurlgen = get_home_url();
 		$emailstr = stripslashes($_GET['email']);
-		$user = get_user_by( 'email', $emailstr );
+        $user = get_user_by( 'email', $emailstr );
+        
+        // check if user existing;
+        if(!$user){
+			echo json_encode(['message'=>'Oops! '.$emailstr.' is not registered.','email'=>$emailstr,'status' => 500, 'success' => false]);
+			die();
+        }
 
 		$data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
 		$passgen = substr(str_shuffle($data), 50);
 
 		$passhash = wp_hash_password( $passgen );
-		$updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
-		$wpdb->query($updatepass);
-
+        $updatepass = "UPDATE arby_users SET user_pass = '$passhash' WHERE id = ".$user->data->ID;
+    	$wpdb->query($updatepass);
+        
 		$to = $emailstr;
 		$subject = 'Password Reset Confirmation';
 		$message = '
@@ -554,12 +574,13 @@
 		if (!$success) {
 			$errorMessage = error_get_last();
 
-			echo json_encode(['status' => 500, 'success' => false]);
+			echo json_encode(['message'=>$errorMessage,'email'=>$emailstr,'status' => 500, 'success' => false]);
 			die();
 		}
-		// return to user success
-		echo json_encode(['status' => 200, 'success' => true]);
-		die();
+        
+        echo json_encode(['message'=>$passgen,'email'=>$emailstr,'status' => 200, 'success' => true]);
+        die();
+
 
     }elseif(isset($_GET['daction']) && $_GET['daction'] == 'send_batch_verification'){
 

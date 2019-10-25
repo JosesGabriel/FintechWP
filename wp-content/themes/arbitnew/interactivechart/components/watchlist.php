@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </li>
+            <hr class="style14 style15">
             <li>
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                         <div class="watch_left col-md-6 col-xs-6">
@@ -95,6 +96,7 @@
                     </div>
                 </div>
             </li>
+            <hr class="style14 style15">
             <li>
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                         <div class="watch_left col-md-6 col-xs-6">
@@ -110,6 +112,7 @@
                     </div>
                 </div>
             </li>
+            <hr class="style14 style15">
             <li>
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                         <div class="watch_left col-md-6 col-xs-6">
@@ -125,6 +128,7 @@
                     </div>
                 </div>
             </li>
+            <hr class="style14 style15">
             <li>
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                         <div class="watch_left col-md-6 col-xs-6">

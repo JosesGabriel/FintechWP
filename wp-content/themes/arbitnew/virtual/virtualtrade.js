@@ -57,11 +57,13 @@ $(document).ready(function(){
 		    		var marketval = 0;
 			    	var totalcost = 0;
 			    	var last = 0;
+			    	var average = 0;
 
 		    		if(response.data[i].datainfo != null){
 		    			last = response.data[i].datainfo.last;
 			    		marketval = response.data[i].datainfo.last * response.data[i].volume;
 			    		totalcost = response.data[i].datainfo.average * response.data[i].volume; 
+			    		average = response.data[i].datainfo.average;
 		    		}
 
 		    		var prof = buyprice * response.data[i].volume;
@@ -76,7 +78,7 @@ $(document).ready(function(){
 				    data_live += '<tbody><tr><td style="width: 7%;text-align: left !important;"><a target="_blank" class="stock-label" href="/chart/'+ response.data[i].stockname +'">' + response.data[i].stockname + '</a></td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+last+'</td>';
 				    data_live += '<td style="width:9%" class="table-title-live">'+response.data[i].volume+'</td>';
-				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(response.data[i].datainfo.average).toFixed(2)+'</td>';
+				    data_live += '<td style="width: 12%;" class="table-title-live">₱'+(average).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(totalcost).toFixed(2)+'</td>';
 				    data_live += '<td style="width:15%" class="table-title-live">₱'+(marketval).toFixed(2)+'</td>';
 				    data_live += '<td style="width:10%" class="'+(profit < 0 ? 'dredpart ' : 'dgreenpart ')+'table-title-live">₱'+(profit).toFixed(2)+'</td>';

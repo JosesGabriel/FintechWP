@@ -976,6 +976,44 @@ app.controller('stocksList', ['$scope', '$rootScope', '$http', '$filter', functi
         $scope.$digest();
     });
 }]);
+app.controller('watchlist', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
+    $scope.isLoading = false;
+    $scope.watchlist = [];
+
+    $scope.getWatchlist = function () {
+        $scope.isLoading = true;
+        $http.get('/wp-json/watchlist-api/v1/watchlists?userid=' + _user_id)
+        .then(res => {
+            if (res.data.status) {
+                $scope.watchlist = res.data.data.map(stock => {
+                    return Object.assign(stock, {
+                        symbol: stock.stockname,
+                        value: stock.last,
+                        change: stock.change_price,
+                        change_percentage: stock.change,
+                    });
+                });
+            }
+        })
+        .finally(() => {
+            $scope.isLoading = false;
+        })
+    }
+    $scope.getWatchlist();
+
+    $rootScope.$on('updateStockData', function (event, stock) {
+        var wl_stock = $filter('filter')($scope.watchlist, {stockname: stock.symbol}, true);
+        if (wl_stock.length) {
+            console.log(stock, wl_stock)
+            var stock_index = $scope.watchlist.indexOf(wl_stock[0]);
+            $scope.watchlist[stock_index] = Object.assign($scope.watchlist[stock_index], {
+                value: stock.displayValue,
+                change: stock.change,
+                change_percentage: stock.change_percentage,
+            });
+        }
+    })
+}]);
 app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', function($scope, $filter, $http, $rootScope) {
     var dark_overrides = {
         "paneProperties.background":"#34495e",

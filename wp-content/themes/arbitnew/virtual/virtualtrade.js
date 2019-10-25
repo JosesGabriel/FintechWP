@@ -541,6 +541,7 @@ $(document).ready(function(){
 		$('#inpt_data_select_stock').prop('disabled', 'disabled');
 		$('.bsbutton').css('display','none');
 		$('.label_enter').text('Enter Buy Order:');
+		$('.footer_details2').slideDown();
 	});
 
 	jQuery(document).on('click', '.sellmystocks', function(){

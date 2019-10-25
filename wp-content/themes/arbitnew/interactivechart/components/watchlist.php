@@ -3,7 +3,9 @@
     class="vertical-box tab-pane fade" id="watchlists">
     <div class="arb_watchlst_cont">
         <ul class="watchlist_main">
-            <li ng-repeat="stock in watchlist">
+            <li 
+                ng-if="watchlist.length"
+                ng-repeat="stock in watchlist">
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                     <div class="watch_left col-md-6 col-xs-6">
                         <span class="watch_stockcode">{{::stock.symbol}}</span><br>
@@ -22,6 +24,8 @@
                     </div>
                 </div>
             </li>
+            <li ng-else
+                style="padding: 20px; text-align: center; color: #fff;">No watchlist data.</li>
         </ul>
     </div>
 </div>

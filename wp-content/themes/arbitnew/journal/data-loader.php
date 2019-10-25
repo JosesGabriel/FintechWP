@@ -217,6 +217,18 @@
 
     $( document ).ready(function() {
 
+        $("#enter_trade .prev").text(0);
+        $("#enter_trade .trade").text(0);
+        $("#enter_trade .cprice").text(0);
+        $("#enter_trade .pdetails.low").text(0);
+        $("#enter_trade .pdetails.open").text(0);
+        $("#enter_trade .pdetails.high").text(0);
+        $("#enter_trade .pdetails.klow").text(0);
+        $("#enter_trade .pdetails.khigh").text(0);
+        $("#enter_trade .pdetails.vol").text(0);
+        $("#enter_trade .pdetails.val").text(0);
+        $("#enter_trade .pdetails.av").text(0);
+
         // initialize fancy box
         $("#openboxmode, #opentradedetails, #opensellbox").fancybox({
             'zoomSpeedIn': 300,
@@ -380,6 +392,19 @@
 
         $("#enter_trade .btnsell").click(function(e){
             e.preventDefault(); 
+
+            $("#enter_trade .prev").text(0);
+            $("#enter_trade .trade").text(0);
+            $("#enter_trade .cprice").text(0);
+            $("#enter_trade .pdetails.low").text(0);
+            $("#enter_trade .pdetails.open").text(0);
+            $("#enter_trade .pdetails.high").text(0);
+            $("#enter_trade .pdetails.klow").text(0);
+            $("#enter_trade .pdetails.khigh").text(0);
+            $("#enter_trade .pdetails.vol").text(0);
+            $("#enter_trade .pdetails.val").text(0);
+            $("#enter_trade .pdetails.av").text(0);
+
             $(".footer_details2").hide();
             $(".buyprice .labelprice").text("Sell Price");
             $(".modeofaction").val("sellstock");
@@ -409,6 +434,19 @@
         $("#enter_trade .btnbuy").click(function(e){
             // new loadStocks();
             e.preventDefault(); 
+
+            $("#enter_trade .prev").text(0);
+            $("#enter_trade .trade").text(0);
+            $("#enter_trade .cprice").text(0);
+            $("#enter_trade .pdetails.low").text(0);
+            $("#enter_trade .pdetails.open").text(0);
+            $("#enter_trade .pdetails.high").text(0);
+            $("#enter_trade .pdetails.klow").text(0);
+            $("#enter_trade .pdetails.khigh").text(0);
+            $("#enter_trade .pdetails.vol").text(0);
+            $("#enter_trade .pdetails.val").text(0);
+            $("#enter_trade .pdetails.av").text(0);
+
             $(".footer_details2").show();
             $(".buyprice .labelprice").text("Buy Price");
             $(".modeofaction").val("buystock");
@@ -462,6 +500,40 @@
             });
 
         });
+
+        $('#enter_trade').on('change', "select#inpt_data_select_stock", function() {
+            let stockinformation = $.parseJSON(this.value);
+            $("#enter_trade .cprice").text(stockinformation.last);
+            $("#enter_trade .pdetails.low").text(stockinformation.low);
+            $("#enter_trade .pdetails.open").text(stockinformation.open);
+            $("#enter_trade .pdetails.high").text(stockinformation.high);
+            $("#enter_trade .pdetails.klow").text(stockinformation.weekyearlow);
+            $("#enter_trade .pdetails.khigh").text(stockinformation.weekyearhigh);
+            $("#enter_trade .pdetails.vol").text(stockinformation.volume);
+            $("#enter_trade .pdetails.val").text(stockinformation.value);
+            $("#enter_trade .pdetails.av").text(stockinformation.average);
+
+            console.log(stockinformation);
+            // $.ajax({
+            //     url: "/wp-json/journal-api/v1/sellstock",
+            //     type: 'GET',
+            //     data: {
+            //         "stock": stockinformation.symbol,
+	        //         "userid": <?php echo $user->ID; ?>
+            //     },
+            //     dataType: 'json', // added data type
+            //     success: function(data) {
+            //         // console.log(data);
+            //         $("#enter_trade #entertopdataquantity").val(parseFloat(data.data.totalstock));
+            //     },
+            //     error: function (xhr, ajaxOptions, thrownError) {
+                    
+            //     }
+            // });
+
+        });
+
+
 
 
 

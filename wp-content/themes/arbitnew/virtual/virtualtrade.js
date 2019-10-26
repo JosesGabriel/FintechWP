@@ -853,8 +853,8 @@ $(document).ready(function(){
       			height: 60
       		},
       	  slices: {
-      	  	0: {color: '#e44c3c'}, 
-      	  	1: {color: '#27ae60'}
+      	  	0: {color: '#27ae60'}, 
+      	  	1: {color: '#e44c3c'}
       		},
         };
 

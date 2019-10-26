@@ -4,11 +4,11 @@
 </div>
 <div class="chart_win">
 	<span style="font-size: 10px;"><i class="fas fa-arrow-up" style="width: 100%;"></i></span>
-	<div style="width: 100%;"><span class="total_wins">37</span></div>
+	<div style="width: 100%;"><span class="total_wins"></span></div>
 	<span style="font-size: 10px;" style="width: 100%;">Wins</span>
 </div>
 <div class="chart_loss">
 	<span style="font-size: 10px;"><i class="fas fa-arrow-up" style="width: 100%;"></i></span>
-	<div style="width: 100%;"><span class="total_loss" style="width: 100%;">2</span></div>
+	<div style="width: 100%;"><span class="total_loss" style="width: 100%;"></span></div>
 	<span style="font-size: 10px;" style="width: 100%;">Losses</span>
 </div>

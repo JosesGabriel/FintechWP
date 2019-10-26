@@ -36,11 +36,14 @@ require("parts/global-header.php");
 		<div class="inner-main-content">
 			<div class="left-dashboard-part">
 				<div class="dashboard-sidebar-left" id="testdiv">
-					<div class="dashboard-sidebar-left-inner">
+					<div class="dashboard-sidebar-left-inner" style="width: 220px;">
 
 						<?php //require("parts/global-sidebar.php"); ?>
 						<?php require("virtual/virtual-sidebar.php"); ?>
 						<div id="canvasImg"></div>
+					</div>
+					<div class="virtual-sidebar-left">
+						<?php //require("virtual/sidebar-virtual-chart.php"); ?>
 					</div>
 				</div>
 			</div>

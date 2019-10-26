@@ -164,6 +164,33 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    success: function(response) {
 		    	//console.log(response); 	
+		    	if(response.data.realized < 0){
+		    		$('.realized').addClass('dredpart');
+		    		$('.realized').removeClass('dgreenpart');
+		    		$('.up_arrow_realized').css('display','none');
+		    		$('.down_arrow_realized').css('display','block');
+		    	}else{
+		    		$('.realized').addClass('dgreenpart');
+		    		$('.realized').removeClass('dredpart');
+		    	}
+
+		    	if(response.data.unrealize < 0){
+		    		$('.unrealized').addClass('dredpart');
+		    		$('.unrealized').removeClass('dgreenpart');
+		    		$('.up_arrow_unrealized').css('display','none');
+		    		$('.down_arrow_unrealized').css('display','block');
+		    	}else{
+		    		$('.unrealized').addClass('dgreenpart');
+		    		$('.unrealized').removeClass('dredpart');
+		    	}
+		    	if(response.data.percentage < 0){
+		    		$('.vperformance').addClass('dredpart');
+		    		$('.vperformance').removeClass('dgreenpart');
+		    	}else{
+		    		$('.vperformance').addClass('dgreenpart');
+		    		$('.vperformance').removeClass('dredpart');
+		    	}
+
 		    	$('.vcapital').text('₱' + addcomma(response.data.capital));
 		    	$('.realized').text('₱' + addcomma(response.data.realized));
 		    	$('.unrealized').text('₱' + addcomma(response.data.unrealize));
@@ -794,5 +821,41 @@ $(document).ready(function(){
 		}*/
 
 	});
+
+	///=======================chart=====================//
+	google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          //['Work',     11],
+         // ['Eat',      2],
+         // ['Commute',  2],
+          ['Loss', 2],
+          ['Wins',    7]
+        ]);
+
+        var options = {
+          width: 180,
+  		  height: 100,
+  		  backgroundColor:'transparent',
+          pieHole: 0.4,
+          legend: 'none',
+      	  chartArea: {
+      	  		left: 5,
+      	  		top: 5,
+      			width: 60, 
+      			height: 60
+      		},
+      	  slices: {
+      	  	0: {color: '#e44c3c'}, 
+      	  	1: {color: '#27ae60'}
+      		},
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+
 
 });

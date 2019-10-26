@@ -829,13 +829,15 @@ $(document).ready(function(){
 	google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
+      	var wins = $('.total_wins').text();
+      	var loss = $('.total_loss').text();
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
           //['Work',     11],
          // ['Eat',      2],
          // ['Commute',  2],
-          ['Loss', 2],
-          ['Wins',    7]
+          ['Loss', loss],
+          ['Wins',    wins]
         ]);
 
         var options = {

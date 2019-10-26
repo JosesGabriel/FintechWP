@@ -548,6 +548,8 @@ class VirtualAPI extends WP_REST_Controller
 
         $dstock = [];
         $listofstocks = [];
+        $totalwins = 0;
+        $totalloss = 0;
         foreach ($tradelogsinfo as $key => $value) {
 
              $buytotal = $value->volume * $value->averageprice;

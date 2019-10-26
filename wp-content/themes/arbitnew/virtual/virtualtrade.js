@@ -836,8 +836,8 @@ $(document).ready(function(){
           //['Work',     11],
          // ['Eat',      2],
          // ['Commute',  2],
-          ['Loss', loss],
-          ['Wins',    wins]
+          ['Wins', wins],
+          ['Loss', loss]
         ]);
 
         var options = {

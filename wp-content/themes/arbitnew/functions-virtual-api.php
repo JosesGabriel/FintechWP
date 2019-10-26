@@ -569,9 +569,21 @@ class VirtualAPI extends WP_REST_Controller
              $dstock['profitperc'] = $value->profitperc;
              $dstock['sellvalue'] = $sellnet;
              $totalprofit += $profit;
+
+             if($profit > 0){
+                $totalwins += 1;
+             }else{
+                $totalloss += 1;
+             }
+
              array_push($listofstocks, $dstock);
         }
-        return $this->respond(true, ['data' => $listofstocks, 'totalprofit' => $totalprofit], 200);
+        return $this->respond(true, [
+            'data' => $listofstocks, 
+            'totalprofit' => $totalprofit,
+            'totalwins' => $totalwins,
+            'totalloss' => $totalloss,
+        ], 200);
     }
 
     public function deletedata($details)

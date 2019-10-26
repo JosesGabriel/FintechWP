@@ -43,7 +43,7 @@ require("parts/global-header.php");
 						<div id="canvasImg"></div>
 					</div>
 					<div class="virtual-sidebar-left">
-						<?php //require("virtual/sidebar-virtual-chart.php"); ?>
+						<?php require("virtual/sidebar-virtual-chart.php"); ?>
 					</div>
 				</div>
 			</div>

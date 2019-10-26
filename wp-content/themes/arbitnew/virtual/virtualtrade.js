@@ -149,6 +149,9 @@ $(document).ready(function(){
 		    		if(response.totalprofit != null){
 		    			$('.totalplscore').text('₱'+(response.totalprofit).toFixed(2));
 		    		}
+
+		    		$('.total_wins').text(response.totalwins);
+		    		$('.total_loss').text(response.totalloss);
 		    },
 		    error: function(response) {                 
 		    } 

@@ -110,7 +110,7 @@ $(document).ready(function(){
 		    url:'/wp-json/virtual-api/v1/tradelogs?userid='+userid,
 		    dataType: 'json',
 		    success: function(response) {
-		    		console.log(response);
+		    		//console.log(response);
 		    		$(".data_logs").remove();
 		    		jQuery.each(response.data, function(i, val) {
 			    		var data_tradelogs = '';
@@ -847,8 +847,8 @@ $(document).ready(function(){
           pieHole: 0.4,
           legend: 'none',
       	  chartArea: {
-      	  		left: 5,
-      	  		top: 5,
+      	  		left: 6,
+      	  		top: 10,
       			width: 60, 
       			height: 60
       		},

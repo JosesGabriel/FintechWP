@@ -81,38 +81,39 @@ $user = wp_get_current_user();
 	}
     </style>
 	<link href="<?php echo $homeurlgen; ?>/assets/css/preloader.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>  -->
 	<script language="javascript">
 	
-		jQuery(window).on('load', function(){
-			jQuery("#status, #status_txt").fadeOut();
-			jQuery("#preloader").delay(400).fadeOut("slow");
-			jQuery(".um-field-checkbox-option").html("");
-			jQuery(".forgotpass-wrapper .um-button").val("Reset password");
-			// jQuery(".um-field-error").html("!");
-		});
-		jQuery(document).ready(function(){
-			jQuery("#emailNotify__form").submit(function(){
-				var hasemail = jQuery("#email--input").val().length;
-				var email = jQuery("#email--input").val();
-				if( hasemail >= 1 ) {
-					jQuery.ajax({
-						method: "POST",
-						url: "/apipge/?daction=notify_me_email",
-						// url: 'https://api2.pse.tools/api/quotes',
-						data: {
-							'email' : email
-						},
-						success: function(data) {
-							jQuery("#email__text").show();
-						},
-						error: function(requestObject, error, errorThrown) {
+		// jQuery(window).on('load', function(){
+		// 	jQuery("#status, #status_txt").fadeOut();
+		// 	jQuery("#preloader").delay(400).fadeOut("slow");
+		// 	jQuery(".um-field-checkbox-option").html("");
+		// 	jQuery(".forgotpass-wrapper .um-button").val("Reset password");
+		// 	// jQuery(".um-field-error").html("!");
+		// });
+		// jQuery(document).ready(function(){
+		// 	jQuery("#emailNotify__form").submit(function(){
+		// 		var hasemail = jQuery("#email--input").val().length;
+		// 		var email = jQuery("#email--input").val();
+		// 		if( hasemail >= 1 ) {
+		// 			jQuery.ajax({
+		// 				method: "POST",
+		// 				url: "/apipge/?daction=notify_me_email",
+		// 				// url: 'https://api2.pse.tools/api/quotes',
+		// 				data: {
+		// 					'email' : email
+		// 				},
+		// 				success: function(data) {
+		// 					jQuery("#email__text").show();
+		// 				},
+		// 				error: function(requestObject, error, errorThrown) {
 
-						}
-					});
-				}
-			});
-		});
+		// 				}
+		// 			});
+		// 		}
+		// 	});
+		// });
 		
 	</script>
     <?php /* Global Header Scritps */ //get_template_part('parts/global', 'scripts'); ?>
@@ -129,20 +130,6 @@ $user = wp_get_current_user();
 
 
 
-<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> 
-<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/cd/js/kinetic.js"></script>
-<script type="text/javascript" src="<?php echo get_home_url(); ?>/wp-content/themes/arbitrage-child/jquery.final-countdown.js"></script> -->
-<script type="text/javascript">  
-    $('document').ready(function() {
- /*       'use strict';
-        const timestamp = parseInt(Date.now()/1000);
-    	$('.countdown').final_countdown({
-            'start': 1565338684,
-            'end': 1568595600,
-            'now': timestamp     
-        }); */
-    });
-</script>
 <?php /* Global CSS Overrides  get_template_part('parts/global', 'css'); */ ?>
 <div id="preloader">
     <div id="status">&nbsp;</div>

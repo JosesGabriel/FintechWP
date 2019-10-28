@@ -74,14 +74,16 @@ html, body, .page-content-full-height .content {overflow:hidden;}
     left:0;
     z-index:9;
     width:100%;
+    margin-top: -3px;
 }
 .arb_right_icons_trans {
     background: linear-gradient(to right, #2c3e5000 10%, #34495e 43%);
     z-index: 9;
     position: absolute;
     right: 0;
+    top: 0;
     padding-right: 4px;
-    padding-top: 5px;
+    height: 36px;
 }
 .arb-side-icon i {
     border: none;
@@ -205,6 +207,9 @@ text-align: center;
 }
 
 .hideformodal {display:none;}
+.modal-content {
+    width: 30% !important;
+}
 /* Enter Trade Form */
 .groupinput label {
     display: inline-block;
@@ -669,6 +674,7 @@ span.bullbearsents_label {
     background-color: #354960;
     z-index: 99999999;
     height: 100%;
+    margin: 0;
 }
 #status {
     width: 50px;
@@ -1278,6 +1284,8 @@ a.arb-side-icon {
     color: #ffffff;
     display: inline-block;
     margin: 0 1px;
+    top: 3px;
+    position: relative;
 }
 a.arb-side-icon span {
 	text-align: center;
@@ -1409,7 +1417,7 @@ span.speed_ticker-toggle {
 .data_ticker_main-toggle,
 .speed_ticker_main-toggle,
 .ticker_main-toggle.sound {
-    margin: 5px 0;
+    margin: 5px 5px;
 }
 .data_ticker_main-toggle:first-child,
 .speed_ticker_main-toggle:first-child{
@@ -1428,18 +1436,20 @@ span.speed_ticker-toggle {
 }
 .ticker_content-toggle {
     text-align: right;
+    width: 100%;
+    padding: 3px 7px;
+    /* text-align: right;
     width: 83%;
     margin: 0 0 0 auto;
-    padding: 3px 7px;
+    padding: 3px 7px; */
 }
 hr.style14 {
     position: relative;
     border: 0;
     height: 1px;
-    width: 100%;
-    background: #1e3554;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5px !important;
+    width: 94%;
+    background: #34495e;
+    margin: 1px auto;
     display: flex;
 }
 span.ticker_enabler-title {
@@ -1455,6 +1465,9 @@ span.ticker_enabler-text {
     display: inline-block;
     float: right;
     margin-top: 2px;
+}
+.ticker_enabler-title .ticker_main-toggle i.fas.fa-times {
+    cursor: pointer;
 }
 .switch {
     position: relative;
@@ -1529,4 +1542,52 @@ span.ticker_enabler-text {
     padding: 1px 5px;
     height: 17px;
     font-size: 10px;
+}
+/* ----------------watchlist component-------------- */
+
+.watch_left {
+    text-align: left;
+    padding: 0 5px;
+}
+.watch_right {
+    text-align: right;
+    padding: 0 5px;
+}
+.watch-content:hover {
+    background: #34495e;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.watch-content {
+    /* border-bottom: 1px solid #34495e; */
+    padding: 2px;
+}
+span.watch_stockcode {
+    font-weight: 600;
+    font-size: 13px;
+}
+span.watch_stockname {
+    color: #a2a2a2;
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.stock_pricechange i.fas {
+    font-size: 10px;
+    margin-right: 1px;
+}
+span.watch_stockprice {
+    font-size: 13px;
+}
+span.watch_stockname, span.watch_stockchange {
+    font-size: 11px;
+}
+.watchlist-dragdrop {
+    padding: 0;
+    display: inline;
+    position: relative;
+    vertical-align: middle;
+    margin: 9px 0;
 }

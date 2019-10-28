@@ -586,15 +586,16 @@ a.showpassreset {
     font-size: 11px;
 }
 .um-login .um-field-c .um-field-checkbox {
-    height: 21px;
+    height: 25px;
     margin-bottom: 0;
-    margin-top: 0 !important;
-    position: relative;
+    margin-top: 20px !important;
     font-size: 11px;
-    width: 24px;
+    margin-left: 80px;
     text-align: -webkit-auto;
     display: inline-block;
     vertical-align: top;
+    width: 100px;
+    cursor: pointer;
 }
 .um-login .um-field-checkbox-state i, .um-field-radio-state i {
     font-size: 20px;
@@ -610,12 +611,14 @@ a.showpassreset {
 .um .um-field-checkbox.active:not(.um-field-radio-state-disabled) i {color: #4eb770;}
 .forgotpass-wrapper .um-field-block div {text-align:center;}
 .forgpasslnk {
-	vertical-align: top;
-	display:none;
-	line-height: 14px;
-	color:#FFFFFF;
-	font-size:11px;
-	padding: 2px 0 0 0;
+    display: none;
+    line-height: 14px;
+    color: #FFFFFF;
+    font-size: 11px;
+    /* padding: 2px 0 0 0; */
+    position: absolute;
+    top: 4px;
+    left: 175px;
 }
 input#last_name-9 {
     border-radius: 0 35px 35px 0 !important;
@@ -784,7 +787,7 @@ div#um-shortcode-social-133 a.um-button.um-button-social i {
     font-family: "Roboto", Arial;
     border: none !important;
     padding: 8px 15px !important;
-    width: 200px;
+    width: 280px;
 }
 span.label_pls {
     display: inline-block;

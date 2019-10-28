@@ -117,6 +117,26 @@ class VirtualAPI extends WP_REST_Controller
                 'callback' => [$this, 'deletelogs'],
             ],
         ]);
+
+        register_rest_route($base_route, 'resetdata', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'resetdata'],
+            ],
+        ]);
+
+        register_rest_route($base_route, 'memsentiment', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'getmemsentiment'],
+            ],
+        ]);
+        register_rest_route($base_route, 'gettime', [
+            [
+                'method' => 'GET',
+                'callback' => [$this, 'gettime'],
+            ],
+        ]);
         
     }
 
@@ -528,6 +548,8 @@ class VirtualAPI extends WP_REST_Controller
 
         $dstock = [];
         $listofstocks = [];
+        $totalwins = 0;
+        $totalloss = 0;
         foreach ($tradelogsinfo as $key => $value) {
 
              $buytotal = $value->volume * $value->averageprice;
@@ -549,9 +571,21 @@ class VirtualAPI extends WP_REST_Controller
              $dstock['profitperc'] = $value->profitperc;
              $dstock['sellvalue'] = $sellnet;
              $totalprofit += $profit;
+
+             if($profit > 0){
+                $totalwins += 1;
+             }else{
+                $totalloss += 1;
+             }
+
              array_push($listofstocks, $dstock);
         }
-        return $this->respond(true, ['data' => $listofstocks, 'totalprofit' => $totalprofit], 200);
+        return $this->respond(true, [
+            'data' => $listofstocks, 
+            'totalprofit' => $totalprofit,
+            'totalwins' => $totalwins,
+            'totalloss' => $totalloss,
+        ], 200);
     }
 
     public function deletedata($details)
@@ -576,6 +610,47 @@ class VirtualAPI extends WP_REST_Controller
         }else{
             return $this->respond(true, ['data' => 'Error'], 200);
         }
+    }
+
+    public function resetdata($details)
+    {
+        global $wpdb;
+        $data = $details->get_params();
+        $tradelogs = "delete from arby_vt_tradelog where userid = ".$data['userid'];
+        $liveportfolio = "delete from arby_vt_live where userid = ".$data['userid'];  
+        if($wpdb->query($tradelogs)){               
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);        
+        }else if ($wpdb->query($liveportfolio)) {
+            return $this->respond(true, ['data' => 'Successfully deleted'], 200);
+        }else{
+            return $this->respond(true, ['data' => 'Error'], 200);
+        }
+    }
+
+    public function getmemsentiment($details)
+    {   
+        global $wpdb;
+        $data = $details->get_params();
+        $dsentbear = get_post_meta(504, '_sentiment_'.$data['stock'].'_bear', true );
+        $dsentbull = get_post_meta(504, '_sentiment_'.$data['stock'].'_bull', true );
+
+        return $this->respond(true, ['bull' => $dsentbull, 'bear' => $dsentbear], 200);
+    }
+
+    public function gettime()
+    {
+        $guzzle = new GuzzleRequest();
+        $dataUrl = GetDataApiUrl();
+        $authorization = GetDataApiAuthorization();
+        $request = $guzzle->request("GET","http://api.timezonedb.com/v2.1/get-time-zone?key=XW74QJ5A2BAX&format=json&by=zone&zone=Asia/Manila", [
+            "headers" => [
+                "Content-type" => "application/json",
+                "Authorization" => "Bearer {$authorization}",
+                ]
+            ]);
+        $data = json_decode($request->content);
+        $timestamp['timestamp'] = $data->timestamp;
+        return $this->respond(true, ['timestamp' => $timestamp], 200);
     }
 
 }

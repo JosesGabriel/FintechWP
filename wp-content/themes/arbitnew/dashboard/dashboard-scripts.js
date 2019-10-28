@@ -685,7 +685,7 @@ function checkCurrentPrice(stock, postID) { //joses cute
 					totalChange = '▼ ' + change + ' (' + percentageChange + '%)';
 				}
 				$('#stockTotalChange-' + postID).append(stockCodeEl + ' ' + totalChange);
-				$('.taggedStock__anchor a').text('Hide Stock Details');
+				$('#taggedStock__anchor-' + postID + ' a').text('Hide Stock Details');
 			} else {
 				$('#stockTotalChange-' + postID).text(data.message);
 			}
@@ -697,7 +697,7 @@ function checkCurrentPrice(stock, postID) { //joses cute
 	});
   } else {
 	$('#stockTotalChange-' + postID).text('');
-	$('.taggedStock__anchor a').text('See Stock Details');
+	$('#taggedStock__anchor-' + postID + ' a').text('See Stock Details');
   }
   
   

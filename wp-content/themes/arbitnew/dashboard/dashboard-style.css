@@ -37,7 +37,7 @@ hr.style20 {
     margin-bottom: -1px !important;
 }
 .inner-main-content {
-    max-width: 1000px;
+    max-width: 1020px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -277,16 +277,31 @@ body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
-    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
+}
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 4px !important;
+    right: 0 !important;
+    margin: 0 !important;
+}
+.fa-times:before {
+	font-size: 11px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification span.um-notification-hide a {
     color: #fff !important;
 }
 .um-notification span.b2 i img {
-    width: 14px;
+    width: 15px;
     margin-top: -3px;
 }
 .um-notification-live-feed .um-notification-more {
@@ -501,11 +516,15 @@ a:hover {
 }
 .dashboard-sidebar-left-inner {
     position: sticky;
-    top: 65px;
+    top: 57px;
+    background: #142c46;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid #1e3554;
 }
 .left-dashboard-part {
     padding: 10px 0 0 !important;
-    width: 196px;
+    width: 218px;
 }
 .seven.calc-menu-buysell img {
     height: 23px;
@@ -600,7 +619,7 @@ a.dmeta {
     display: inline-block;
     bottom: 0;
     padding: 10px 20px 10px 20px;
-    width: 460.22px;
+    width: 458.22px;
     background: rgba(18, 39, 62, 0.85);
     z-index: 3;
 }
@@ -970,7 +989,7 @@ div.um .um-form .um-activity-comment-box textarea.um-activity-comment-textarea:f
 }
 .um a.um-link {
     color: #6583a8 !important;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 .um-activity-comment-data {
     background-color: #2b405b3d;
@@ -1081,10 +1100,6 @@ span.um-activity-seemore {
 }
 .um-activity-head {
     padding: 10px 10px 10px;
-}
-.um-notification span.b2 i img {
-    width: 14px;
-    margin-top: -3px;
 }
 .um-activity-comment-meta .um-activity-editc-d:before {
     content: "";

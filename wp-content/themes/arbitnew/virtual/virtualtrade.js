@@ -506,24 +506,26 @@ $(document).ready(function(){
 		    	var times = response.timestamp;
 		    	time = times.timestamp * 1000;
 
+		    	console.log(time);
+
 		    	var open_am = new Date();
-		  			open_am.setHours(9, 30, 0);
+		  			open_am.setHours(17, 30, 0);
 		    	var close_am = new Date();
-		    		close_am.setHours(11, 59, 59);
+		    		close_am.setHours(19, 59, 59);
 		    	var recess_open = new Date();
-		    		recess_open.setHours(12, 0, 0);
+		    		recess_open.setHours(20, 0, 0);
 		    	var recess_close = new Date();
-		    		recess_close.setHours(13, 29, 59);
+		    		recess_close.setHours(21, 29, 59);
 		    	var open_pm = new Date();
-		    		open_pm.setHours(13, 30, 0);
+		    		open_pm.setHours(21, 30, 0);
 		    	var close_pm = new Date();
-		    		close_pm.setHours(15, 30, 0);
+		    		close_pm.setHours(23, 30, 0);
 
 		    	if(time == null){
 		    		time = Date.now();
 		    	}
 
-				    if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
+		    	    if((time > Date.parse(open_am) && time < Date.parse(close_am)) || (time > Date.parse(open_pm) && time < Date.parse(close_pm))) {	
 						$('.mstatus').text('Open');
 						$('.mstatus').addClass('dgreenpart');
 						$('.mstatus').removeClass('dredpart');

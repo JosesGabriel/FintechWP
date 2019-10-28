@@ -67,7 +67,7 @@
                             </table>
                         </div>
                     </div>
-                    <div ng-else
+                    <div ng-if="isLoading"
                         style="display: flex;
                             align-items: center;
                             justify-content: center;

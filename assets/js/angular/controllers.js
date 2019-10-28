@@ -687,13 +687,14 @@ app.controller('marketDepth', ['$scope', '$rootScope', '$http', '$filter', funct
     
                 $scope.bids = Object.values(response.data.bids);
                 $scope.asks = Object.values(response.data.asks);
-                $scope.isLoading = false;
             })
             .catch(err => {
                 $scope.bids = [];
                 $scope.asks = [];
+            })
+            .finally(() => {
                 $scope.isLoading = false;
-            });
+            })
         }
     }
     // $scope.getBidsAndAsks(_symbol);

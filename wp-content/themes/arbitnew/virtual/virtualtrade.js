@@ -835,10 +835,8 @@ function chart_load(){
 	      	var wins = $('.total_wins').text();
 	      	var loss = $('.total_loss').text();
 	        var data = google.visualization.arrayToDataTable([
-	          ['Task', 'Hours per Day'],
-	          //['Work',     11],
-	         // ['Eat',      2],
-	         // ['Commute',  2],
+	          ['Task', 'Wins/Losses'],
+
 	          ['Wins', wins],
 	          ['Loss', loss]
 	        ]);
@@ -849,6 +847,7 @@ function chart_load(){
 	  		  backgroundColor:'transparent',
 	          pieHole: 0.4,
 	          legend: 'none',
+	          BorderColor : "transparent",
 	      	  chartArea: {
 	      	  		left: 6,
 	      	  		top: 10,

@@ -506,8 +506,6 @@ $(document).ready(function(){
 		    	var times = response.timestamp;
 		    	time = times.timestamp * 1000;
 
-		    	console.log(time);
-
 		    	var open_am = new Date();
 		  			open_am.setHours(17, 30, 0);
 		    	var close_am = new Date();

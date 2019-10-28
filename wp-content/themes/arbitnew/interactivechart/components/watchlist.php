@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </li>
-            <li ng-else
+            <li ng-if="watchlist.length < 1"
                 style="padding: 20px; text-align: center; color: #fff;">No watchlist data.</li>
         </ul>
     </div>

@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $(window).load(function() {
-
-
+        if ( window.location !== window.parent.location ) {
+            $('#right-sidebar').hide();
+          } 
         $("#status, #status_txt").fadeOut("fast");
         $("#preloader").delay(400).fadeOut("slow");
     })
@@ -51,7 +52,7 @@ $(document).ready(function(){
         });
     }
 
-    jQuery(".ticker_enabler-dropdown").click(function(e){
+    jQuery(".ticker_enabler-dropdown, .ticker_enabler-title .ticker_main-toggle i").click(function(e){
         event.stopPropagation();
         var tickertog = jQuery(".arb_custom_ticker_wrapper #droppouts").hasClass("dropopen");
 

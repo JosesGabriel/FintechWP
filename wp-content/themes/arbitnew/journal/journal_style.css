@@ -1480,7 +1480,7 @@ hr.style20 {
     margin-bottom: -1px !important;
 }
 .inner-main-content {
-    max-width: 1000px;
+    max-width: 1020px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -1930,11 +1930,15 @@ a:hover {
 }
 .dashboard-sidebar-left-inner {
     position: sticky;
-    top: 65px;
+    top: 57px;
+    background: #142c46;
+    padding: 14px;
+    border-radius: 5px;
+    border: 1px solid #1e3554;
 }
 .left-dashboard-part {
-    padding: 0 !important;
-    width: 196px;
+    padding: 10px 0 0 !important;
+    width: 218px;
 }
 .side-content ul li a span {
     top: -2px;
@@ -2830,17 +2834,36 @@ legend {
 }
 
 
-/* -----------------journal notification----------------- */
+/* -------------- notification area ---------------- */
 body .um-notification-live-feed .um-notification-ajax .um-notification {
     border-bottom: 1px solid #35485f;
     color: #fff;
     text-align: left;
-    margin-top: -23px;
 }
 body .um-notification-live-feed .um-notification-ajax .um-notification:hover {
     background: #11253c;
 }
-/* -----------------journal notification----------------- */
+.um-notification-hide {
+    display: inline !important;
+    position: absolute !important;
+    z-index: 9 !important;
+    top: 4px !important;
+    right: 0 !important;
+    margin: 0 !important;
+}
+.um-notification-hide a {
+    position: relative;
+    top: 6px;
+    right: 5px;
+}
+.fa-times:before {
+	font-size: 11px;
+}
+.um-notification span.b2 i img {
+    width: 15px;
+    position: relative;
+    top: -1px;
+}
 /* -------------- newsticker vyndue ---------------- */
 #vyndue--link span {
     position: relative;

@@ -220,7 +220,7 @@ if ( is_user_logged_in() ) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=310546216473988&version=v2.0&message=This%20is%20awesome!";
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=407039123333666&version=v2.0&message=This%20is%20awesome!";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 </body>

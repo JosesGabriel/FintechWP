@@ -795,10 +795,10 @@ class JournalAPI extends WP_REST_Controller
             $ifhasbase['profit'] = $ifhasbase['marketval'] - $ifhasbase['totalcost'];
             $ifhasbase['perc'] = ($ifhasbase['profit'] / $ifhasbase['marketval']) * 100;
 
-            $newsql = 'update arby_usermeta set meta_value="'.serialize($ifhasbase).'" where umeta_id = '.$imid;
+            $newsql = "update arby_usermeta set meta_value='".serialize($ifhasbase)."' where umeta_id = ".$imid;
             $wpdb->query($newsql);
 
-            return $this->respond(true, ['data' => $ifhasbase], 200);
+            return $this->respond(true, ['data' => $newsql], 200);
         } else {
             $ifhasbase = "no data";
 

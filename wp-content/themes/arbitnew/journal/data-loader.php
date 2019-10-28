@@ -187,6 +187,8 @@
             success: function(data) {
                 // console.log(data);
                 $("#entertradelive input[name='input_buy_product'], .entertrade input[name='input_buy_product']").val((data.data).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $("#enter_trade .av_funds").text((data.data).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                $("#enter_trade #dbuypower").val(data.data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 
@@ -230,7 +232,7 @@
         $("#enter_trade .pdetails.av").text(0);
 
         // initialize fancy box
-        $("#openboxmode, #opentradedetails, #opensellbox").fancybox({
+        $("#openboxmode, #opentradedetails, #opensellbox, #enter_trade").fancybox({
             'zoomSpeedIn': 300,
             'zoomSpeedOut': 300,
             'overlayShow': true
@@ -259,33 +261,178 @@
         $("#live_portfolio ul").on("click", ".buymystocks", function(e){
             e.preventDefault();
             let sdata = $(this).attr("data-stockdetails");
-            let dstatobj = jQuery.parseJSON(sdata);
+            let dstatobj = jQuery.parseJSON(sdata);``
             console.log(dstatobj);
 
-            $("#entertradelive #inpt_data_stock").val(dstatobj.symbol);
-            $("#entertradelive input[name='inpt_data_currprice']").val(dstatobj.last);
-            $("#entertradelive input[name='inpt_data_change']").val((dstatobj.changepercentage).toFixed(2));
-            $("#entertradelive input[name='inpt_data_open']").val(dstatobj.open);
-            $("#entertradelive input[name='inpt_data_low']").val(dstatobj.low);
-            $("#entertradelive input[name='inpt_data_high']").val(dstatobj.high);
-            $("#entertradelive input[name='inpt_data_volume']").val(dstatobj.volume);
-            $("#entertradelive input[name='inpt_data_value']").val(dstatobj.value);
-            $("#entertradelive input[name='inpt_data_boardlot']").val($(this).attr("data-boardlot"));
-            $("#openboxmode").click();
+            $("#enter_trade .cprice").text(dstatobj.last);
+            $("#enter_trade .pdetails.low").text(dstatobj.low);
+            $("#enter_trade .pdetails.open").text(dstatobj.open);
+            $("#enter_trade .pdetails.high").text(dstatobj.high);
+            $("#enter_trade .pdetails.klow").text(dstatobj.weekyearlow);
+            $("#enter_trade .pdetails.khigh").text(dstatobj.weekyearhigh);
+            $("#enter_trade .pdetails.vol").text(dstatobj.volume);
+            $("#enter_trade .pdetails.val").text(dstatobj.value);
+            $("#enter_trade .pdetails.av").text(dstatobj.average);
+            $("#enter_trade .sdesc").text(dstatobj.description);
+
+            // $("a.fancy").fancybox({
+            //     'zoomSpeedIn': 300,
+            //     'zoomSpeedOut': 300,
+            //     'overlayShow': false
+            // }); 
+
+            // $("#entertradelive #inpt_data_stock").val(dstatobj.symbol);
+            // $("#entertradelive input[name='inpt_data_currprice']").val(dstatobj.last);
+            // $("#entertradelive input[name='inpt_data_change']").val((dstatobj.changepercentage).toFixed(2));
+            // $("#entertradelive input[name='inpt_data_open']").val(dstatobj.open);
+            // $("#entertradelive input[name='inpt_data_low']").val(dstatobj.low);
+            // $("#entertradelive input[name='inpt_data_high']").val(dstatobj.high);
+            // $("#entertradelive input[name='inpt_data_volume']").val(dstatobj.volume);
+            // $("#entertradelive input[name='inpt_data_value']").val(dstatobj.value);
+            // $("#entertradelive input[name='inpt_data_boardlot']").val($(this).attr("data-boardlot"));
+            $(".opentradeitem").click();
+
+            
+            $("#enter_trade #entertopdataquantity").addClass('buymode');
+            $("#enter_trade #entertopdataprice").addClass('buymodecash');
+            $("#enter_trade #entertopdataquantity").val('');
+            $(".footer_details2").show();
+            $(".buyprice .labelprice").text("Buy Price");
+            $(".modeofaction").val("buystock");
+            $.ajax({
+                url: "/wp-json/journal-api/v1/allstocks?userid=",
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function(data) {
+                    // console.log(data);
+                    $("select[name='inpt_data_stock_y']").attr("id","inpt_data_select_stock").removeClass("tosell");
+                    $("#inpt_data_select_stock option").each(function() { $(this).remove(); });
+                    $("#inpt_data_select_stock").append('<option value="">Select a Stock</option>');
+                    
+                    $.each(data.data, function(key, value){
+                        $("#inpt_data_select_stock").append("<option value='"+JSON.stringify(value)+"' "+(value.symbol == dstatobj.symbol ? "selected='selected'" : '')+">"+value.symbol+"</option>");
+                        $("#inpt_data_stock_bought").append("<option value='"+value.symbol+"'>"+value.symbol+"</option>");
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+
+            
         });
 
         $("#live_portfolio ul").on("click", ".sellmystocks", function(e){
             e.preventDefault();
             let sdata = $(this).attr("data-stockdetails");
             let dstatobj = jQuery.parseJSON(sdata);
-            $("#selllivetrade input[name='inpt_data_stock']").val($(this).attr("data-stock"));
-            $("#selllivetrade input[name='inpt_data_position']").val($(this).attr("data-position"));
-            $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
-            $("#selllivetrade input[name='inpt_avr_price_b']").val((parseFloat($(this).attr("data-averprice"))).toFixed(2));
-            $("#selllivetrade input[name='inpt_avr_price']").val($(this).attr("data-averprice"));
-            $("#selllivetrade input[name='dtradelogs']").val($(this).attr("data-trades"));
-            $("#opensellbox").click();
+            console.log(dstatobj);
+            // $("#selllivetrade input[name='inpt_data_stock']").val($(this).attr("data-stock"));
+            // $("#selllivetrade input[name='inpt_data_position']").val($(this).attr("data-position"));
+            // $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
+            // $("#selllivetrade input[name='inpt_avr_price_b']").val((parseFloat($(this).attr("data-averprice"))).toFixed(2));
+            // $("#selllivetrade input[name='inpt_avr_price']").val($(this).attr("data-averprice"));
+            // $("#selllivetrade input[name='dtradelogs']").val($(this).attr("data-trades"));
+
+            $("#enter_trade .cprice").text(dstatobj.last);
+            $("#enter_trade .pdetails.low").text(dstatobj.low);
+            $("#enter_trade .pdetails.open").text(dstatobj.open);
+            $("#enter_trade .pdetails.high").text(dstatobj.high);
+            $("#enter_trade .pdetails.klow").text(dstatobj.weekyearlow);
+            $("#enter_trade .pdetails.khigh").text(dstatobj.weekyearhigh);
+            $("#enter_trade .pdetails.vol").text(dstatobj.volume);
+            $("#enter_trade .pdetails.val").text(dstatobj.value);
+            $("#enter_trade .pdetails.av").text(dstatobj.average);
+            $("#enter_trade .sdesc").text(dstatobj.description);
+
+            $("#enter_trade #entertopdataquantity").removeClass('buymode');
+            $("#enter_trade #entertopdataprice").removeClass('buymodecash');
+            $("#enter_trade #entertopdataprice").val('');
+            $(".footer_details2").hide();
+            $(".buyprice .labelprice").text("Sell Price");
+            $(".modeofaction").val("sellstock");
+
+            
+            $.ajax({
+                url: "/wp-json/journal-api/v1/sellstock",
+                type: 'GET',
+                data: {
+                    "stock": dstatobj.symbol,
+	                "userid": <?php echo $user->ID; ?>
+                },
+                dataType: 'json', // added data type
+                success: function(data) {
+                    // console.log(data);
+                    $("#enter_trade #entertopdataquantity").val(parseFloat(data.data.totalstock));
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+
+            $.ajax({
+                url: "/wp-json/journal-api/v1/stockstosell",
+                type: 'GET',
+                data: {
+                    "userid" : <?php echo $user->ID; ?>
+                },
+                dataType: 'json', // added data type
+                success: function(data) { 
+                    // console.log(data);
+                    $("select[name='inpt_data_stock_y']").attr("id","inpt_data_sell_stock").addClass("tosell");
+                    $("#inpt_data_sell_stock option").each(function() { $(this).remove(); });
+                    $("#inpt_data_sell_stock").append('<option value="">Select a Stock</option>');
+                    $.each(data.data, function(i, event){
+                        $("#inpt_data_sell_stock").append("<option value='"+JSON.stringify(event)+"' "+(event.symbol == dstatobj.symbol ? "selected='selected'" : '')+">"+event.symbol+"</option>");
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    
+                }
+            });
+
+            $(".opentradeitem").click();
+
+
+            
         });
+
+        $( ".buymode" ).keyup(function(e) {
+            let buypower = parseFloat($("#dbuypower").val());
+            let buyprice = parseFloat($("#entertopdataprice").val());
+            let vals = $(this).val();
+
+            let totals = vals * buyprice;
+            totals = (isNaN(totals) ? 0 : totals);
+            // console.log(totals);
+
+            if(totals > buypower){
+                $(this).val(vals.substr(0, vals.length - 1))
+                swal("not enough buy power");
+                return false;
+            } else {
+                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+            }
+        });
+
+        $(".buymodecash").keyup(function(e) {
+            let price = $(this).val();
+            let quantity = parseFloat($("#entertopdataquantity").val());
+            let buypower = parseFloat($("#dbuypower").val());
+
+            let totals = price * quantity;
+            totals = (isNaN(totals) ? 0 : totals);
+
+            if(totals > buypower){
+                $(this).val(vals.substr(0, vals.length - 1))
+                swal("not enough buy power");
+                return false;
+            } else {
+                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+            }
+
+        });
+
 
         $(".opentradelogtab").click(function(e){
             new loadTradeLogs(<?php echo $user->ID; ?>);
@@ -405,6 +552,8 @@
             $("#enter_trade .pdetails.val").text(0);
             $("#enter_trade .pdetails.av").text(0);
 
+            $("#enter_trade #entertopdataquantity").removeClass('buymode');
+            $("#enter_trade #entertopdataprice").removeClass('buymodecash');
             $(".footer_details2").hide();
             $(".buyprice .labelprice").text("Sell Price");
             $(".modeofaction").val("sellstock");
@@ -446,6 +595,9 @@
             $("#enter_trade .pdetails.vol").text(0);
             $("#enter_trade .pdetails.val").text(0);
             $("#enter_trade .pdetails.av").text(0);
+
+            $("#enter_trade #entertopdataquantity").addClass('buymode');
+            $("#enter_trade #entertopdataprice").addClass('buymodecash');
 
             $(".footer_details2").show();
             $(".buyprice .labelprice").text("Buy Price");

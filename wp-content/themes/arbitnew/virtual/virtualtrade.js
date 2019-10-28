@@ -594,6 +594,12 @@ $(document).ready(function(){
 		$('.label_enter').text('Enter Order:');
 	});
 
+	jQuery(".buymystocks").click(function(e){
+		e.preventDefault();
+
+		console.log("this is a test");
+	});
+
 	jQuery(document).on('click', '.livetrbut.smlbtn', function(){
 		var emotion = $(this).attr('data-emotion');
 		var strategy = $(this).attr('data-strategy');

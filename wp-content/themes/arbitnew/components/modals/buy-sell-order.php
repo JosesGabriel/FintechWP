@@ -18,7 +18,7 @@
                             </select>
                             <input type="hidden" name="inpt_data_stock" id="dfinstocks">
                         </div>
-                        <div class="desc"><span class="sdesc">Banco De Oro</span> <span class="crice">Current Price: <span class="cprice">123.45</span></span></div>
+                        <div class="desc"><span class="sdesc"> </span> <span class="crice">Current Price: <span class="cprice"></span></span></div>
                         <hr>
                         <div>
                             <p style="font-size: 14px; margin-bottom: 3px;">STOCK DETAILS</p>
@@ -58,16 +58,17 @@
                         <div class="tdetails">
                             <span style="font-weight: 600;font-size: 14px;">TRADE DETAILS</span>
                             <span class="avfunds">Available funds: <span class="av_funds" style="font-size: 11px;">100,000.00</span></span>
+                            <input type="hidden" id="dbuypower">
                         </div>
                         <div class="footer_details">
                             <div class="buyprice">
-                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number" required></div>
+                                <div class="groupinput midd"><label class="labelprice">Buy Price</label><input type="text" id="entertopdataprice" name="inpt_data_price" class="inputbuyprice number buymodecash" required></div>
                             </div>
                             <div class="quantity">
-                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity" required></div>
+                                <div class="groupinput midd"><label class="labelquantity">Quantity</label><input type="number" id="entertopdataquantity" name="quantity" class="inputquantity buymode" required></div>
                             </div>
                         </div>
-                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost"></span></div>
+                        <div class="total_cost" style="text-align: right; margin-top: -5px;"><span style="font-size: 11px;">Total Cost: </span><span class="tlcost">0.00</span></div>
                             <div class="footer_details2">  
                                 <div class="entry_wrapper_mid">
                                     <div class="dropdown_btn">

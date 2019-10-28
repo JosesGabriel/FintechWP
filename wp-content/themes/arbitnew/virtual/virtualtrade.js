@@ -847,6 +847,7 @@ function chart_load(){
 	  		  backgroundColor:'transparent',
 	          pieHole: 0.4,
 	          legend: 'none',
+	          BorderColor : "transparent",
 	      	  chartArea: {
 	      	  		left: 6,
 	      	  		top: 10,

@@ -1209,37 +1209,37 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     // }, function myError(error) {
                         
                     // });
-                     
-                    if (found.length) {
+                    $rootScope.$emit('changeStockSymbol', symbol);
+                    // if (found.length) {
 
-                        if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
-                            $scope.$parent.stock = $scope.$parent.stocks[$scope.$parent.stocks.indexOf(found[0])];
-                        }
-                        $scope.$parent.marketdepth = [];
-                        $scope.$parent.transactions = [];
-                        $scope.$parent.bidtotal = 0;
-                        $scope.$parent.asktotal = 0;
-                        $scope.$parent.bidperc = 0;
-                        $scope.$parent.askperc = 0;
-                        $scope.$parent.fullbidtotal = 0;
-                        $scope.$parent.fullasktotal = 0;
-                        $scope.$parent.fullbidperc = 0;
-                        $scope.$parent.fullaskperc = 0;
+                    //     if ( ! $scope.$parent.stock || $scope.$parent.stock.symbol != symbol) {
+                    //         $scope.$parent.stock = $scope.$parent.stocks[$scope.$parent.stocks.indexOf(found[0])];
+                    //     }
+                    //     $scope.$parent.marketdepth = [];
+                    //     $scope.$parent.transactions = [];
+                    //     $scope.$parent.bidtotal = 0;
+                    //     $scope.$parent.asktotal = 0;
+                    //     $scope.$parent.bidperc = 0;
+                    //     $scope.$parent.askperc = 0;
+                    //     $scope.$parent.fullbidtotal = 0;
+                    //     $scope.$parent.fullasktotal = 0;
+                    //     $scope.$parent.fullbidperc = 0;
+                    //     $scope.$parent.fullaskperc = 0;
 
-                        $scope.$parent.dshowsentiment = '';
+                    //     $scope.$parent.dshowsentiment = '';
 
 
-                        $rootScope.$emit('changeStockSymbol', _symbol);
-                        $scope.$parent.getStockTrades(_symbol);
                         
-                        $scope.$parent.getFullMarketDepth(_symbol);
-                        $scope.$parent.getTopMarketDepth(_symbol);
-                    } else {
-                        $scope.$parent.stock = null;
-                        $scope.$parent.marketdepth = [];
-                        $scope.$parent.transactions = [];
-                    }
-                    $scope.$parent.$digest();
+                    //     // $scope.$parent.getStockTrades(_symbol);
+                        
+                    //     // $scope.$parent.getFullMarketDepth(_symbol);
+                    //     // $scope.$parent.getTopMarketDepth(_symbol);
+                    // } else {
+                    //     $scope.$parent.stock = null;
+                    //     $scope.$parent.marketdepth = [];
+                    //     $scope.$parent.transactions = [];
+                    // }
+                    // $scope.$parent.$digest();
 
                     var url = '/chart/' + symbol; 
                     var title = symbol + ' | Arbitrage Trading Tools';

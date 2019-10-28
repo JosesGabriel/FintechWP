@@ -49,6 +49,7 @@
                                         <td class="text-left text-uppercase" change="bid.volume"><span>{{bid.volume > 0 ? (bid.volume | abbr) : ''}}</span></td>
                                         <td class="text-left" ng-class="{'text-green': bid.price > stock.previous, 'text-red': bid.price < stock.previous}" change="bid.price"><strong>{{bid.price > 0 ? (bid.price | price) : ''}}</strong></td>
                                     </tr>
+                                    <tr ng-show="bids.length == 0"><td colspan="3" align="center"><br />No recent bids</td></tr>
                                 </tbody>
                             </table>
                         </div><!--
@@ -63,6 +64,7 @@
                                         <td class="text-right text-uppercase" change="ask.volume"><span>{{ask.volume > 0 ? (ask.volume | abbr) : ''}}</span></td>
                                         <td class="text-right" style="padding-right: 12px !important;" change="ask.count"><span>{{ask.count > 0 ? ask.count : ''}}</span></td>
                                     </tr>
+                                    <tr ng-show="asks.length == 0"><td colspan="3" align="center"><br />No recent asks</td></tr>
                                 </tbody>
                             </table>
                         </div>

@@ -52,9 +52,9 @@
                     addliveme += '<td style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:8%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</td>';
                     addliveme += '<td style="width:77px;text-align:center;">';
-                    addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
-                    addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline red sellmystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-trades='"+JSON.stringify(value)+"'  data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
                     addliveme += '</td>';
                     addliveme += '<td style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
@@ -232,7 +232,7 @@
         $("#enter_trade .pdetails.av").text(0);
 
         // initialize fancy box
-        $("#openboxmode, #opentradedetails, #opensellbox, #enter_trade").fancybox({
+        $("#openboxmode, #opentradedetails, #opensellbox").fancybox({
             'zoomSpeedIn': 300,
             'zoomSpeedOut': 300,
             'overlayShow': true
@@ -240,6 +240,7 @@
 
         $("#live_portfolio ul").on("click", ".livetrbut", function(e){
             e.preventDefault();
+            console.log("libsddd");
             $("#livetradenotes .addstrats").text($(this).attr("data-strategy"));
             $("#livetradenotes .addtplan").text($(this).attr("data-tradeplan"));
             $("#livetradenotes .addemotion").text($(this).attr("data-emotion"));

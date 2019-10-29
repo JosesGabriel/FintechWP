@@ -19,10 +19,6 @@ app.controller('ticker', ['$scope', function($scope) {
     
     $scope.enable = true;
     $scope.ticker = [];
-    
-    $scope.tickerEnabler = function (){
-        $scope.enable = !$scope.enable;
-    }
 
     socket.on('psec', function (data) {  
     

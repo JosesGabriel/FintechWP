@@ -52,9 +52,9 @@
                     addliveme += '<td style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:8%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</td>';
                     addliveme += '<td style="width:77px;text-align:center;">';
-                    addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
-                    addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline red sellmystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-trades='"+JSON.stringify(value)+"'  data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
                     addliveme += '</td>';
                     addliveme += '<td style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
@@ -240,6 +240,7 @@
 
         $("#live_portfolio ul").on("click", ".livetrbut", function(e){
             e.preventDefault();
+            console.log("libsddd");
             $("#livetradenotes .addstrats").text($(this).attr("data-strategy"));
             $("#livetradenotes .addtplan").text($(this).attr("data-tradeplan"));
             $("#livetradenotes .addemotion").text($(this).attr("data-emotion"));
@@ -450,48 +451,51 @@
                 if(stocks != ""){
                     let volume = $(".buytrades #entertopdataquantity").val();
                     let buyprice = $(".buytrades #entertopdataprice").val();
-                    let notes = $(".buytrades .tnotes").val();
-                    let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
-                    let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
-                    let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
-                    let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
+                    if(volume != "" && buyprice != ""){
+                        let notes = $(".buytrades .tnotes").val();
+                        let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
+                        let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
+                        let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
+                        let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
 
-                    let newstocks = $.parseJSON(stocks);
-                    let dstockname = newstocks.symbol;
-                    console.log(dstockname);
+                        let newstocks = $.parseJSON(stocks);
+                        let dstockname = newstocks.symbol;
+                        console.log(dstockname);
 
 
-                    $.ajax({
-                        url: "/wp-json/journal-api/v1/buystocks",
-                        type: 'GET',
-                        data: {
-                            "qty": volume,
-                            "price": buyprice,
-                            "buymonth": ddate,
-                            "strategy": strategy,
-                            "tradeplan": tradeplan,
-                            "emotion": emotion,
-                            "stock": dstockname,
-                            "userid" : <?php echo $user->ID; ?>
-                        },
-                        dataType: 'json', // added data type
-                        success: function(data) { 
-                            $("#live_portfolio ul li.liveitems").remove();
-                            $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
-                            new loadStocks();
-                            new loadLivePortfolio(<?php echo $user->ID; ?>);
-                            new loadBuyPower(<?php echo $user->ID; ?>);
-                            new LoadEquity(<?php echo $user->ID; ?>);
-                            new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+                        $.ajax({
+                            url: "/wp-json/journal-api/v1/buystocks",
+                            type: 'GET',
+                            data: {
+                                "qty": volume,
+                                "price": buyprice,
+                                "buymonth": ddate,
+                                "strategy": strategy,
+                                "tradeplan": tradeplan,
+                                "emotion": emotion,
+                                "stock": dstockname,
+                                "userid" : <?php echo $user->ID; ?>
+                            },
+                            dataType: 'json', // added data type
+                            success: function(data) { 
+                                $("#live_portfolio ul li.liveitems").remove();
+                                $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
+                                new loadStocks();
+                                new loadLivePortfolio(<?php echo $user->ID; ?>);
+                                new loadBuyPower(<?php echo $user->ID; ?>);
+                                new LoadEquity(<?php echo $user->ID; ?>);
+                                new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
 
-                            new getCurrentAllocation(<?php echo $user->ID; ?>);
-                            $("#enter_trade").modal("hide");
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            
-                        }
-                    });
-
+                                new getCurrentAllocation(<?php echo $user->ID; ?>);
+                                $("#enter_trade").modal("hide");
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                
+                            }
+                        });
+                    } else {
+                        swal("please Add Quantity and Price");
+                    }
                 } else {
                     swal("please select a stock");
                 }

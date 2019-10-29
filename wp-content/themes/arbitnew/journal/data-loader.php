@@ -232,7 +232,7 @@
         $("#enter_trade .pdetails.av").text(0);
 
         // initialize fancy box
-        $("#openboxmode, #opentradedetails, #opensellbox").fancybox({
+        $("#openboxmode, #opentradedetails, #opensellbox, #enter_trade").fancybox({
             'zoomSpeedIn': 300,
             'zoomSpeedOut': 300,
             'overlayShow': true

@@ -1156,9 +1156,9 @@ app.controller('tradingview', ['$scope','$filter', '$http', '$rootScope', functi
                     $('#tv_chart_container iframe').contents().find('.tv-chart-events-source__tooltip').remove();
                     var symbol = symbolData.ticker;
                     $rootScope.selectedSymbol = $scope.$parent.selectedStock = _symbol = symbol;
-                    if (symbolData.type == 'index') {
-                    }
-                    var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
+                    // if (symbolData.type == 'index') {
+                    // }
+                    // var found = $filter('filter')($scope.$parent.stocks, {symbol: symbol}, true);
                     angular.element(".arb_bullbear").show();
 
                     angular.element(".arb_sell").attr("data-stocksel",_symbol); //setter

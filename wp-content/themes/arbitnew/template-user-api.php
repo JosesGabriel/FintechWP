@@ -50,7 +50,7 @@ if ($uuid == '') {
 $data = [
     'uuid' => $uuid,
     'name' => $user->display_name,
-    'avatar' => "https://arbitrage.ph/wp-content/uploads/ultimatemember/$user->ID/profile_photo-80x80.jpg"
+    'avatar' => "/wp-content/uploads/ultimatemember/$user->ID/profile_photo-80x80.jpg"
 ];
 
 echo json_encode([

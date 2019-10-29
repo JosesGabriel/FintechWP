@@ -347,7 +347,8 @@ require("parts/global-header.php");
 
 		update_user_meta($user->ID, 'issampleactivated', 'no');
         // delete ledger
-		$wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
+        $wpdb->get_results('delete from arby_ledger where userid = '.$user->ID);
+        $wpdb->get_results('delete from arby_usermeta where meta_key like "%_trade_%" and user_id = '.$user->ID);
 		$deletelogs = 'delete from arby_tradelog where isuser ='.$user->ID;
 		$wpdb->query($deletelogs);
         wp_redirect('/journal');

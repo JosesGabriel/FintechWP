@@ -451,48 +451,51 @@
                 if(stocks != ""){
                     let volume = $(".buytrades #entertopdataquantity").val();
                     let buyprice = $(".buytrades #entertopdataprice").val();
-                    let notes = $(".buytrades .tnotes").val();
-                    let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
-                    let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
-                    let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
-                    let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
+                    if(volume != "" && buyprice != ""){
+                        let notes = $(".buytrades .tnotes").val();
+                        let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
+                        let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
+                        let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
+                        let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
 
-                    let newstocks = $.parseJSON(stocks);
-                    let dstockname = newstocks.symbol;
-                    console.log(dstockname);
+                        let newstocks = $.parseJSON(stocks);
+                        let dstockname = newstocks.symbol;
+                        console.log(dstockname);
 
 
-                    $.ajax({
-                        url: "/wp-json/journal-api/v1/buystocks",
-                        type: 'GET',
-                        data: {
-                            "qty": volume,
-                            "price": buyprice,
-                            "buymonth": ddate,
-                            "strategy": strategy,
-                            "tradeplan": tradeplan,
-                            "emotion": emotion,
-                            "stock": dstockname,
-                            "userid" : <?php echo $user->ID; ?>
-                        },
-                        dataType: 'json', // added data type
-                        success: function(data) { 
-                            $("#live_portfolio ul li.liveitems").remove();
-                            $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
-                            new loadStocks();
-                            new loadLivePortfolio(<?php echo $user->ID; ?>);
-                            new loadBuyPower(<?php echo $user->ID; ?>);
-                            new LoadEquity(<?php echo $user->ID; ?>);
-                            new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+                        $.ajax({
+                            url: "/wp-json/journal-api/v1/buystocks",
+                            type: 'GET',
+                            data: {
+                                "qty": volume,
+                                "price": buyprice,
+                                "buymonth": ddate,
+                                "strategy": strategy,
+                                "tradeplan": tradeplan,
+                                "emotion": emotion,
+                                "stock": dstockname,
+                                "userid" : <?php echo $user->ID; ?>
+                            },
+                            dataType: 'json', // added data type
+                            success: function(data) { 
+                                $("#live_portfolio ul li.liveitems").remove();
+                                $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
+                                new loadStocks();
+                                new loadLivePortfolio(<?php echo $user->ID; ?>);
+                                new loadBuyPower(<?php echo $user->ID; ?>);
+                                new LoadEquity(<?php echo $user->ID; ?>);
+                                new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
 
-                            new getCurrentAllocation(<?php echo $user->ID; ?>);
-                            $("#enter_trade").modal("hide");
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            
-                        }
-                    });
-
+                                new getCurrentAllocation(<?php echo $user->ID; ?>);
+                                $("#enter_trade").modal("hide");
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                
+                            }
+                        });
+                    } else {
+                        swal("please Add Quantity and Price");
+                    }
                 } else {
                     swal("please select a stock");
                 }

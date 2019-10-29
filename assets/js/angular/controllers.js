@@ -538,6 +538,10 @@ app.controller('chart', ['$scope','$filter', '$http', '$rootScope', '$timeout', 
     //     }, 100);
     //     $('#select-' + symbol).focus();
     // };
+    $rootScope.$on('changeStockSymbol', function (event, symbol) {
+        goToChart(symbol)
+    });
+
     // TODO: ANGULARJS NATIVE TIMEOUT
     function updateMarketDepth(force) {
         if ($scope.stock) {

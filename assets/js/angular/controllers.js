@@ -857,126 +857,126 @@ app.controller('transactions', ['$scope', '$rootScope', '$http', function ($scop
         }
     });
 }]);
-app.controller('stocksList', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
-    $scope.stocks = [];
-    $scope.latest_trading_date = null;
+// app.controller('stocksList', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
+//     $scope.stocks = [];
+//     $scope.latest_trading_date = null;
 
-    $scope.sortStocks = function(sort) {
-        if ($scope.sort == sort) {
-            $scope.reverse = !$scope.reverse;
-        } else {
-            $scope.reverse = false;
-            $scope.sort = sort;
-        }
-    }
+//     $scope.sortStocks = function(sort) {
+//         if ($scope.sort == sort) {
+//             $scope.reverse = !$scope.reverse;
+//         } else {
+//             $scope.reverse = false;
+//             $scope.sort = sort;
+//         }
+//     }
 
-    $scope.select = function (symbol) {
-        $rootScope.$emit('changeStockSymbol', symbol);
-    };
+//     $scope.select = function (symbol) {
+//         $rootScope.$emit('changeStockSymbol', symbol);
+//     };
 
-    $scope.updateTabTitle = function (symbol, data) {
-        if (data.change > 0){
-            if ($rootScope.tickerBeep) beep();
-            changicotogreen();
-        }
-        if (data.change < 0){
-            if ($rootScope.tickerBeep) beep();
-            changicotored();
-        }
-        if (data.change = 0){
-            changicotounchanged();
-        }
-        setTitle(symbol, data.displayLast, data.displayChange);
-    }
+//     $scope.updateTabTitle = function (symbol, data) {
+//         if (data.change > 0){
+//             if ($rootScope.tickerBeep) beep();
+//             changicotogreen();
+//         }
+//         if (data.change < 0){
+//             if ($rootScope.tickerBeep) beep();
+//             changicotored();
+//         }
+//         if (data.change = 0){
+//             changicotounchanged();
+//         }
+//         setTitle(symbol, data.displayLast, data.displayChange);
+//     }
 
-    $scope.getLatestActiveDate = function () {
-        $http.post("/wp-json/data-api/v1/stocks/history/latest-active-date")
-        .then(response => {
-            if (response.data.success) {
-                $scope.latest_trading_date = moment(response.data.data.date)
-            }
-        });
-    }
+//     $scope.getLatestActiveDate = function () {
+//         $http.post("/wp-json/data-api/v1/stocks/history/latest-active-date")
+//         .then(response => {
+//             if (response.data.success) {
+//                 $scope.latest_trading_date = moment(response.data.data.date)
+//             }
+//         });
+//     }
 
-    $scope.getStocksList = function () {
-        $http.post("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
-            stocks = response.data.data;
-            stocks = Object.values(stocks);
-            stocks.map(function(stock) {
-                stock['lastupdatetime'] = moment(stock['lastupdatetime']);
-                stock['last']       = parseFloat(stock['last']);
-                stock['change_percentage'] = parseFloat(stock['changepercentage']);
-                stock['open']       = parseFloat(stock['open']);
-                stock['high']       = parseFloat(stock['high']);
-                stock['low']        = parseFloat(stock['low']);
-                stock['value']      = parseFloat(stock['value']);
-                stock['trades']     = parseFloat(stock['trades']);
-                stock['displayLast']  = price_format(stock['last']);
-                stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
-                stock['displayValue'] = abbr_format(stock['value']).toUpperCase();
-                return stock;
-            });
+//     $scope.getStocksList = function () {
+//         $http.post("/wp-json/data-api/v1/stocks/history/latest?exchange=PSE").then( function (response) {
+//             stocks = response.data.data;
+//             stocks = Object.values(stocks);
+//             stocks.map(function(stock) {
+//                 stock['lastupdatetime'] = moment(stock['lastupdatetime']);
+//                 stock['last']       = parseFloat(stock['last']);
+//                 stock['change_percentage'] = parseFloat(stock['changepercentage']);
+//                 stock['open']       = parseFloat(stock['open']);
+//                 stock['high']       = parseFloat(stock['high']);
+//                 stock['low']        = parseFloat(stock['low']);
+//                 stock['value']      = parseFloat(stock['value']);
+//                 stock['trades']     = parseFloat(stock['trades']);
+//                 stock['displayLast']  = price_format(stock['last']);
+//                 stock['displayChange']  = number_format(stock['changepercentage'], '0,0.00');
+//                 stock['displayValue'] = abbr_format(stock['value']).toUpperCase();
+//                 return stock;
+//             });
     
-            $scope.stocks = stocks;
-        });
-    }
+//             $scope.stocks = stocks;
+//         });
+//     }
 
-    $scope.initializeList = function () {
-        $scope.getLatestActiveDate();
-        $scope.getStocksList();
-        $rootScope.$emit('changeStockSymbol', _symbol);
-    }
+//     $scope.initializeList = function () {
+//         $scope.getLatestActiveDate();
+//         $scope.getStocksList();
+//         $rootScope.$emit('changeStockSymbol', _symbol);
+//     }
 
-    $scope.initializeList();
+//     $scope.initializeList();
 
-    socket.on('psec', function (data) {
-        let full_date = (moment(data.t * 1000)).format('ll')
-        let stock = {
-            id: data.sym,
-            symbol: data.sym,
-            date: full_date,
-            last: data.prv,
-            change_percentage: data.chgpc,
-            value: data.val,
-            trades: data.tr,
-            updated_at: full_date,
-            displayValue: abbr_format(data.val).toUpperCase(),
-        }
+//     socket.on('psec', function (data) {
+//         let full_date = (moment(data.t * 1000)).format('ll')
+//         let stock = {
+//             id: data.sym,
+//             symbol: data.sym,
+//             date: full_date,
+//             last: data.prv,
+//             change_percentage: data.chgpc,
+//             value: data.val,
+//             trades: data.tr,
+//             updated_at: full_date,
+//             displayValue: abbr_format(data.val).toUpperCase(),
+//         }
 
-        // UPDATE STOCK
-        var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
+//         // UPDATE STOCK
+//         var found = $filter('filter')($scope.stocks, {symbol: stock.symbol}, true);
 
-        if (found.length) {
-            var stock_index = $scope.stocks.indexOf(found[0]);
-            $scope.stocks[stock_index] = Object.assign($scope.stocks[stock_index], stock);
-        } else {
-            $scope.stocks.push(stock);
-        }
+//         if (found.length) {
+//             var stock_index = $scope.stocks.indexOf(found[0]);
+//             $scope.stocks[stock_index] = Object.assign($scope.stocks[stock_index], stock);
+//         } else {
+//             $scope.stocks.push(stock);
+//         }
 
-        if ($scope.stock && $scope.stock.symbol == stock.symbol) {
-            stock = Object.assign(stock, {
-                difference: data.chgpc,
-                change: data.chg,
-                previous: data.c,
-                open: data.o,
-                high: data.h,
-                low: data.l,
-                average: data.avg,
-                volume: data.vol,
-            })
+//         if ($scope.stock && $scope.stock.symbol == stock.symbol) {
+//             stock = Object.assign(stock, {
+//                 difference: data.chgpc,
+//                 change: data.chg,
+//                 previous: data.c,
+//                 open: data.o,
+//                 high: data.h,
+//                 low: data.l,
+//                 average: data.avg,
+//                 volume: data.vol,
+//             })
 
-            $scope.updateTabTitle(stock.symbol, {
-                change: stock.change,
-                displayChange: number_format(stock.change_percentage, '0,0.00'),
-                displayLast: price_format(stock.last),
-            })
+//             $scope.updateTabTitle(stock.symbol, {
+//                 change: stock.change,
+//                 displayChange: number_format(stock.change_percentage, '0,0.00'),
+//                 displayLast: price_format(stock.last),
+//             })
 
-            $rootScope.$emit('updateStockData', stock);
-        }
+//             $rootScope.$emit('updateStockData', stock);
+//         }
 
-        $scope.$digest();
-    });
-}]);
+//         $scope.$digest();
+//     });
+// }]);
 app.controller('watchlist', ['$scope', '$rootScope', '$http', '$filter', function ($scope, $rootScope, $http, $filter) {
     $scope.isLoading = false;
     $scope.watchlist = [];

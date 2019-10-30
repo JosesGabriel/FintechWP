@@ -265,6 +265,9 @@
             let dstatobj = jQuery.parseJSON(sdata);``
             console.log(dstatobj);
 
+            $(".btnsell").removeClass("active");
+            $(".btnbuy").addClass("active");
+
             $("#enter_trade .cprice").text(dstatobj.last);
             $("#enter_trade .pdetails.low").text(dstatobj.low);
             $("#enter_trade .pdetails.open").text(dstatobj.open);
@@ -328,6 +331,9 @@
             let sdata = $(this).attr("data-stockdetails");
             let dstatobj = jQuery.parseJSON(sdata);
             console.log(dstatobj);
+
+            $(".btnsell").addClass("active");
+            $(".btnbuy").removeClass("active");
             // $("#selllivetrade input[name='inpt_data_stock']").val($(this).attr("data-stock"));
             // $("#selllivetrade input[name='inpt_data_position']").val($(this).attr("data-position"));
             // $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
@@ -399,38 +405,53 @@
         });
 
         $( ".buymode" ).keyup(function(e) {
-            let buypower = parseFloat($("#dbuypower").val());
-            let buyprice = parseFloat($("#entertopdataprice").val());
-            let vals = $(this).val();
+            let modeofaction = $(".modeofaction").val();
+            console.log(modeofaction);
+            if(modeofaction != "sellstock"){
+                console.log("still 2");
+                let buypower = parseFloat($("#dbuypower").val());
+                let buyprice = parseFloat($("#entertopdataprice").val());
+                let vals = $(this).val();
 
-            let totals = vals * buyprice;
-            totals = (isNaN(totals) ? 0 : totals);
-            // console.log(totals);
+            
 
-            if(totals > buypower){
-                $(this).val(vals.substr(0, vals.length - 1))
-                swal("not enough buy power");
-                return false;
-            } else {
-                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                let totals = vals * buyprice;
+                totals = (isNaN(totals) ? 0 : totals);
+                console.log(totals);
+
+                if(totals > buypower){
+                    $(this).val(vals.substr(0, vals.length - 1))
+                    swal("not enough buy power");
+                    return false;
+                } else {
+                    $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                }
             }
         });
 
         $(".buymodecash").keyup(function(e) {
-            let price = $(this).val();
-            let quantity = parseFloat($("#entertopdataquantity").val());
-            let buypower = parseFloat($("#dbuypower").val());
+            let modeofaction = $(".modeofaction").val();
+            console.log(modeofaction);
+            if(modeofaction != "sellstock"){
+                console.log("still");
+                let price = $(this).val();
+                let quantity = parseFloat($("#entertopdataquantity").val());
+                let buypower = parseFloat($("#dbuypower").val());
+                
 
-            let totals = price * quantity;
-            totals = (isNaN(totals) ? 0 : totals);
+                let totals = price * quantity;
+                totals = (isNaN(totals) ? 0 : totals);
 
-            if(totals > buypower){
-                $(this).val(vals.substr(0, vals.length - 1))
-                swal("not enough buy power");
-                return false;
-            } else {
-                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                if(totals > buypower){
+                    $(this).val(vals.substr(0, vals.length - 1))
+                    swal("not enough buy power");
+                    return false;
+                } else {
+                    $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                }
             }
+            
+            
 
         });
 
@@ -544,6 +565,9 @@
         $("#enter_trade .btnsell").click(function(e){
             e.preventDefault(); 
 
+            $(".btnsell").addClass("active");
+            $(".btnbuy").removeClass("active");
+
             $("#enter_trade .prev").text(0);
             $("#enter_trade .trade").text(0);
             $("#enter_trade .cprice").text(0);
@@ -587,6 +611,9 @@
         $("#enter_trade .btnbuy").click(function(e){
             // new loadStocks();
             e.preventDefault(); 
+
+            $(".btnsell").removeClass("active");
+            $(".btnbuy").addClass("active");
 
             $("#enter_trade .prev").text(0);
             $("#enter_trade .trade").text(0);

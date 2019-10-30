@@ -241,10 +241,18 @@ class JournalAPI extends WP_REST_Controller
         $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
         $totalprofit = 0;
         foreach ($gettradelogs as $key => $value) {
+
+            $volume = str_replace(",", "", $value->tlvolume);
+            $buytotal = $volume * $value->tlaverageprice;
+            $selltotal = $volume * $value->tlsellprice;
+            $sellnet = $selltotal - $this->getjurfees($selltotal, 'sell');
+            $profit = $sellnet - $buytotal;
+            
+
             // $profit = $this->getprofits($value);
             $sellvals = $value->tlvolume * $value->tlsellprice;
             $isfees = $this->getjurfees($sellvals, 'sell');
-            $tradelogs += $sellvals - $isfees;
+            $tradelogs += $profit;
         }
 
         // from liveportfolio
@@ -262,7 +270,7 @@ class JournalAPI extends WP_REST_Controller
                 $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
                 $profit = $marketcost - $totalcost;
 
-                $liveportfolio += $marketcost;
+                $liveportfolio += $profit;
             }
             
         }
@@ -299,9 +307,7 @@ class JournalAPI extends WP_REST_Controller
         // }
 
         
-        $allocations[$counter]['value'] = $cashme;
-        $allocations[$counter]['stock'] = 'Cash';
-        $allocations[$counter]['color'] = $aloccolors[$counter];
+        
 
         // $curl = curl_init();
 	    // curl_setopt($curl, CURLOPT_URL, 'https://arbitrage.ph/wp-json/data-api/v1/stocks/history/latest?exchange=PSE');
@@ -335,11 +341,19 @@ class JournalAPI extends WP_REST_Controller
             $stockdetails = $gerdqoute->data[$key];
             $marketprofit = $stockdetails->last * $trdata['totalstock'];
             $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
+
+            $cashme -= $marketcost;
+
+
             $allocations[$counter]['value'] = $marketcost;
             $allocations[$counter]['stock'] = $dstock;
             $allocations[$counter]['color'] = $aloccolors[$counter];
             
         }
+
+        $allocations[0]['value'] = $cashme;
+        $allocations[0]['stock'] = 'Cash';
+        $allocations[0]['color'] = $aloccolors[$counter];
         return $this->respond(true, ['data' => $allocations], 200);
     }
 
@@ -712,13 +726,34 @@ class JournalAPI extends WP_REST_Controller
             if($value->trantype == 'selling' || $value->trantype == 'dividend' || $value->trantype == 'deposit'){ $cashme += $value->tranamount; }
         }
 
+        $ismytrades = $wpdb->get_results('select * from arby_usermeta where meta_key like "_trade_%" and meta_key not in ("_trade_list") and user_id = '.$data['userid']);
+        // $gerdqoute = json_decode($gerdqouteone);
+        $tosting = 0;
+        $syntaqx = "";
+        $finallive = [];
+        foreach ($ismytrades as $key => $value) {
+            $counter++;
+            $dstock = str_replace('_trade_','',$value->meta_key);
+            $trdata = unserialize($value->meta_value);
+            $key = array_search($dstock, array_column($gerdqoute->data, 'symbol'));
+            $stockdetails = $gerdqoute->data[$key];
+            $marketprofit = $stockdetails->last * $trdata['totalstock'];
+            $marketcost = $marketprofit - $this->getjurfees($marketprofit, 'sell');
+
+            // $syntaqx = $trdata['totalcost'];
+            $tosting += $trdata['totalcost'];
+            
+        }
+
+        $totalcosting = $cashme - $tosting;
+
         // $gettradelogs = $wpdb->get_results('select * from arby_tradelog where isuser = '.$data['userid'].' order by tldate');
         // foreach ($gettradelogs as $key => $value) {
         //     $profit = $this->getprofits($value);
         //     $cashme += $profit;
         // }
 
-        return $this->respond(true, ['data' => $cashme], 200);
+        return $this->respond(true, ['data' => $totalcosting], 200);
     }
 
     public function getallstocks($request)

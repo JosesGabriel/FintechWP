@@ -52,9 +52,9 @@
                     addliveme += '<td style="width:15%" class="'+ perfstats +' table-cell-live">₱'+(value.profit).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'</td>';
                     addliveme += '<td style="width:8%" class="'+ perfstats +' table-cell-live">'+(value.profitperc).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+'%</td>';
                     addliveme += '<td style="width:77px;text-align:center;">';
-                    addliveme += '<a class="smlbtn fancybox-inline green buymystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline green buymystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-boardlot='"+value.boardlot+"'>BUY</a>";
-                    addliveme += '<a class="smlbtn fancybox-inline red sellmystocks"';
+                    addliveme += '<a title=" " class="smlbtn fancybox-inline red sellmystocks"';
                     addliveme += "data-stockdetails='"+JSON.stringify(value.livedetails)+"' data-trades='"+JSON.stringify(value)+"'  data-position='"+value.position+"' data-stock='"+value.stock+"' data-averprice='"+value.aveprice+"' >SELL</a>";
                     addliveme += '</td>';
                     addliveme += '<td style="width:27px; text-align:center"><a data-emotion="'+value.emotion+'" data-strategy="'+value.strategy+'" data-tradeplan="'+value.tradeplan+'" data-tradingnotes="'+value.tradingnotes+'" data-outcome="'+value.outcome+'" class="livetrbut smlbtn blue fancybox-inline"><i class="fas fa-clipboard"></i></a></td>';
@@ -240,6 +240,7 @@
 
         $("#live_portfolio ul").on("click", ".livetrbut", function(e){
             e.preventDefault();
+            console.log("libsddd");
             $("#livetradenotes .addstrats").text($(this).attr("data-strategy"));
             $("#livetradenotes .addtplan").text($(this).attr("data-tradeplan"));
             $("#livetradenotes .addemotion").text($(this).attr("data-emotion"));
@@ -263,6 +264,9 @@
             let sdata = $(this).attr("data-stockdetails");
             let dstatobj = jQuery.parseJSON(sdata);``
             console.log(dstatobj);
+
+            $(".btnsell").removeClass("active");
+            $(".btnbuy").addClass("active");
 
             $("#enter_trade .cprice").text(dstatobj.last);
             $("#enter_trade .pdetails.low").text(dstatobj.low);
@@ -327,6 +331,9 @@
             let sdata = $(this).attr("data-stockdetails");
             let dstatobj = jQuery.parseJSON(sdata);
             console.log(dstatobj);
+
+            $(".btnsell").addClass("active");
+            $(".btnbuy").removeClass("active");
             // $("#selllivetrade input[name='inpt_data_stock']").val($(this).attr("data-stock"));
             // $("#selllivetrade input[name='inpt_data_position']").val($(this).attr("data-position"));
             // $("#selllivetrade input[name='inpt_data_price']").val(dstatobj.last);
@@ -398,38 +405,53 @@
         });
 
         $( ".buymode" ).keyup(function(e) {
-            let buypower = parseFloat($("#dbuypower").val());
-            let buyprice = parseFloat($("#entertopdataprice").val());
-            let vals = $(this).val();
+            let modeofaction = $(".modeofaction").val();
+            console.log(modeofaction);
+            if(modeofaction != "sellstock"){
+                console.log("still 2");
+                let buypower = parseFloat($("#dbuypower").val());
+                let buyprice = parseFloat($("#entertopdataprice").val());
+                let vals = $(this).val();
 
-            let totals = vals * buyprice;
-            totals = (isNaN(totals) ? 0 : totals);
-            // console.log(totals);
+            
 
-            if(totals > buypower){
-                $(this).val(vals.substr(0, vals.length - 1))
-                swal("not enough buy power");
-                return false;
-            } else {
-                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                let totals = vals * buyprice;
+                totals = (isNaN(totals) ? 0 : totals);
+                console.log(totals);
+
+                if(totals > buypower){
+                    $(this).val(vals.substr(0, vals.length - 1))
+                    swal("not enough buy power");
+                    return false;
+                } else {
+                    $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                }
             }
         });
 
         $(".buymodecash").keyup(function(e) {
-            let price = $(this).val();
-            let quantity = parseFloat($("#entertopdataquantity").val());
-            let buypower = parseFloat($("#dbuypower").val());
+            let modeofaction = $(".modeofaction").val();
+            console.log(modeofaction);
+            if(modeofaction != "sellstock"){
+                console.log("still");
+                let price = $(this).val();
+                let quantity = parseFloat($("#entertopdataquantity").val());
+                let buypower = parseFloat($("#dbuypower").val());
+                
 
-            let totals = price * quantity;
-            totals = (isNaN(totals) ? 0 : totals);
+                let totals = price * quantity;
+                totals = (isNaN(totals) ? 0 : totals);
 
-            if(totals > buypower){
-                $(this).val(vals.substr(0, vals.length - 1))
-                swal("not enough buy power");
-                return false;
-            } else {
-                $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                if(totals > buypower){
+                    $(this).val(vals.substr(0, vals.length - 1))
+                    swal("not enough buy power");
+                    return false;
+                } else {
+                    $(".tlcost").text((totals).toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+                }
             }
+            
+            
 
         });
 
@@ -450,48 +472,51 @@
                 if(stocks != ""){
                     let volume = $(".buytrades #entertopdataquantity").val();
                     let buyprice = $(".buytrades #entertopdataprice").val();
-                    let notes = $(".buytrades .tnotes").val();
-                    let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
-                    let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
-                    let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
-                    let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
+                    if(volume != "" && buyprice != ""){
+                        let notes = $(".buytrades .tnotes").val();
+                        let strategy = $(".buytrades .inpt_data_strategy option:selected").val();
+                        let tradeplan = $(".buytrades .inpt_data_tradeplan option:selected").val();
+                        let emotion = $(".buytrades .inpt_data_emotion option:selected").val();
+                        let ddate = $.datepicker.formatDate('yy-mm-dd', new Date());
 
-                    let newstocks = $.parseJSON(stocks);
-                    let dstockname = newstocks.symbol;
-                    console.log(dstockname);
+                        let newstocks = $.parseJSON(stocks);
+                        let dstockname = newstocks.symbol;
+                        console.log(dstockname);
 
 
-                    $.ajax({
-                        url: "/wp-json/journal-api/v1/buystocks",
-                        type: 'GET',
-                        data: {
-                            "qty": volume,
-                            "price": buyprice,
-                            "buymonth": ddate,
-                            "strategy": strategy,
-                            "tradeplan": tradeplan,
-                            "emotion": emotion,
-                            "stock": dstockname,
-                            "userid" : <?php echo $user->ID; ?>
-                        },
-                        dataType: 'json', // added data type
-                        success: function(data) { 
-                            $("#live_portfolio ul li.liveitems").remove();
-                            $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
-                            new loadStocks();
-                            new loadLivePortfolio(<?php echo $user->ID; ?>);
-                            new loadBuyPower(<?php echo $user->ID; ?>);
-                            new LoadEquity(<?php echo $user->ID; ?>);
-                            new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
+                        $.ajax({
+                            url: "/wp-json/journal-api/v1/buystocks",
+                            type: 'GET',
+                            data: {
+                                "qty": volume,
+                                "price": buyprice,
+                                "buymonth": ddate,
+                                "strategy": strategy,
+                                "tradeplan": tradeplan,
+                                "emotion": emotion,
+                                "stock": dstockname,
+                                "userid" : <?php echo $user->ID; ?>
+                            },
+                            dataType: 'json', // added data type
+                            success: function(data) { 
+                                $("#live_portfolio ul li.liveitems").remove();
+                                $(".addcapital, .addyearpl, .addyearplperc, .adddeposit, .addwidthraw, .adddashequity").text();
+                                new loadStocks();
+                                new loadLivePortfolio(<?php echo $user->ID; ?>);
+                                new loadBuyPower(<?php echo $user->ID; ?>);
+                                new LoadEquity(<?php echo $user->ID; ?>);
+                                new loadPortfolioSnapshot(<?php echo $user->ID; ?>);
 
-                            new getCurrentAllocation(<?php echo $user->ID; ?>);
-                            $("#enter_trade").modal("hide");
-                        },
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            
-                        }
-                    });
-
+                                new getCurrentAllocation(<?php echo $user->ID; ?>);
+                                $("#enter_trade").modal("hide");
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                
+                            }
+                        });
+                    } else {
+                        swal("please Add Quantity and Price");
+                    }
                 } else {
                     swal("please select a stock");
                 }
@@ -540,6 +565,9 @@
         $("#enter_trade .btnsell").click(function(e){
             e.preventDefault(); 
 
+            $(".btnsell").addClass("active");
+            $(".btnbuy").removeClass("active");
+
             $("#enter_trade .prev").text(0);
             $("#enter_trade .trade").text(0);
             $("#enter_trade .cprice").text(0);
@@ -583,6 +611,9 @@
         $("#enter_trade .btnbuy").click(function(e){
             // new loadStocks();
             e.preventDefault(); 
+
+            $(".btnsell").removeClass("active");
+            $(".btnbuy").addClass("active");
 
             $("#enter_trade .prev").text(0);
             $("#enter_trade .trade").text(0);

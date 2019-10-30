@@ -309,29 +309,29 @@ jQuery(document).ready(function(){
     }
 
     // calculate total price
-    jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
-        let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
-        let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
-        let dinpus = jQuery(this).val();
-        // let quantity = jQuery('#entertopdataquantity').val();
+    // jQuery(document).on('keyup', '#entertopdataprice, #entertopdataquantity', function (e) {
+    //     let price = jQuery('#entertopdataprice').val().replace(/,/g, '');
+    //     let quantity = jQuery('#entertopdataquantity').val().replace(/,/g, '');
+    //     let dinpus = jQuery(this).val();
+    //     // let quantity = jQuery('#entertopdataquantity').val();
         
-        let total_price = parseFloat(price) * Math.trunc(quantity);
-        total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
+    //     let total_price = parseFloat(price) * Math.trunc(quantity);
+    //     total_price = isNaN(total_price) || total_price < 0 ? 0 : parseFloat(total_price).toFixed(2);
 
-        let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
-        let decnumbs = finaltotal.toFixed(2);
-        let buypower = jQuery('input[name="input_buy_product"]').val().replace(/,/g, '');
-        // console.log(buypower+" ~ "+decnumbs);
-        if(parseFloat(decnumbs) > parseFloat(buypower)){
-            swal("Not Enough Buy Power");
-            jQuery(this).val(dinpus.slice(0,-1));
-            return false;
-        } else {
-            jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
+    //     let finaltotal = parseFloat(total_price) + parseFloat(thetradefees(total_price, 'buy'));
+    //     let decnumbs = finaltotal.toFixed(2);
+    //     let buypower = jQuery('input[name="input_buy_product"]').val().replace(/,/g, '');
+    //     // console.log(buypower+" ~ "+decnumbs);
+    //     if(parseFloat(decnumbs) > parseFloat(buypower)){
+    //         swal("Not Enough Buy Power");
+    //         jQuery(this).val(dinpus.slice(0,-1));
+    //         return false;
+    //     } else {
+    //         jQuery('input[name="inpt_data_total_price"]').val(replaceCommas(decnumbs));
             
-        }
+    //     }
         
-    });
+    // });
     
     jQuery('#selectdepotype').on('change', function() {
         // alert( this.value );

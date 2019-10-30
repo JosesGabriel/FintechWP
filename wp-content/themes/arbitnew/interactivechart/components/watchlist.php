@@ -1,6 +1,6 @@
 <div
     ng-controller="watchlist"
-    class="vertical-box tab-pane fade" id="watchlists">
+    class="vertical-box tab-pane" id="watchlists">
     <div class="arb_watchlst_cont">
         <ul class="watchlist_main">
             <li 

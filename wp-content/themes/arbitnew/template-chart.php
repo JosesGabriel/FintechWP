@@ -139,12 +139,12 @@
 
 																	<div class="vertical-box-row allstocksbox" style="border-bottom-width:6px;">
 																		<ul class="nav nav-tabs" style="border-radius: 0;">
-																			<li class="active">
+																			<!-- <li class="active">
 																				<a href="#allstock" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="true">
 																					<small>All Stocks</small>
 																				</a>
-																			</li>
-																			<li class="">
+																			</li> -->
+																			<li class="active">
 																				<a href="#watchlists" data-toggle="tab" style="padding: 5px 15px; margin-right: 0px;font-weight: bold;" aria-expanded="false">
 																					<small>Watchlist</small>
 																				</a>
@@ -158,7 +158,7 @@
 																				<div class="vertical-box-cell">
 																					<div class="tab-content vertical-box-inner-cell" style="background-color: transparent; border-radius: 0; padding: 0; margin-bottom: 0;">
 																						<div data-scrollbar="true" data-height="100%" style="height: 100%;">
-																							<?php require "interactivechart/components/stocks-list.php" ?>
+																							<?php //require "interactivechart/components/stocks-list.php" ?>
 																							<?php require "interactivechart/components/watchlist.php" ?>
 																						</div>
 																					</div>

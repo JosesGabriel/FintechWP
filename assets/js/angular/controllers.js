@@ -1002,6 +1002,10 @@ app.controller('watchlist', ['$scope', '$rootScope', '$http', '$filter', functio
     }
     $scope.getWatchlist();
 
+    $scope.select = function (symbol) {
+        $rootScope.$emit('changeStockSymbol', symbol);
+    }
+
     $rootScope.$on('updateStockData', function (event, stock) {
         var wl_stock = $filter('filter')($scope.watchlist, {stockname: stock.symbol}, true);
         if (wl_stock.length) {

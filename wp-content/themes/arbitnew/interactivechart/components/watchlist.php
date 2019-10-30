@@ -1,11 +1,12 @@
 <div
     ng-controller="watchlist"
-    class="vertical-box tab-pane fade" id="watchlists">
+    class="vertical-box tab-pane" id="watchlists">
     <div class="arb_watchlst_cont">
         <ul class="watchlist_main">
             <li 
                 ng-if="watchlist.length"
-                ng-repeat="stock in watchlist">
+                ng-repeat="stock in watchlist"
+                ng-click="select(stock.symbol)">
                 <div class="watch-content watchlist_1 row" style="margin:0;">
                     <div class="watch_left col-md-6 col-xs-6">
                         <span class="watch_stockcode">{{::stock.symbol}}</span><br>

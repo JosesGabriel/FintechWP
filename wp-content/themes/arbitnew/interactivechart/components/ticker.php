@@ -72,15 +72,15 @@
                     <div class="ticker_main-toggle sound">
                         <span class="view_ticker-toggle">Ticker View</span>
                         <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round" ng-click="tickerEnabler()"></span>
+                            <input type="checkbox" ng-model="enable">
+                            <span class="slider round"></span>
                         </label>
                     </div>
                     <div class="ticker_main-toggle sound">
                         <span class="sound_ticker-toggle">Ticker Sound</span>
                         <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round" ng-click="$root.tickerBeep = !$root.tickerBeep"></span>
+                            <input type="checkbox" ng-model="$root.tickerBeep">
+                            <span class="slider round"></span>
                         </label>
                     </div>
                 </div>

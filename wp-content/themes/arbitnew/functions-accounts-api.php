@@ -1,36 +1,52 @@
 <?php
 
-// update profile or cover after resize
-add_filter('um_ajax_resize_image', function ($output) {
-    extract( $_REQUEST );
+class AccountsAPI extends ArbitrageAPI
+{
+    protected $namespace;
+    protected $primary_key;
+    protected $version;
 
-    if (in_array($key, ['profile_photo','cover_photo'])) {
-
-        $response = arbitrage_api_upload_to_gcs($output['image']['source_path']);
-
-        if ($response) {
-            $user_uuid = arbitrage_api_get_user_uuid( get_current_user_id() );
-            $key = (explode('_', $key))[0] . '_image';
-
-            $data = [
-                $key => $response['file']['url'],
-            ];
-    
-            arbitrage_api_curl_multipart("api/users/$user_uuid/update", $data);
-        }
+    public function __construct()
+    {
+        $this->version = 'v1';
+        $this->namespace = 'accounts-api';
+        $this->primary_key = 'user_uuid';
     }
 
-    return $output;
+    public function registerRoutes()
+    {
+        $base_route = "$this->namespace/$this->version";
+
+        register_rest_route($base_route, 'user', [
+            [
+                'methods' => 'GET',
+                'callback' => array($this, 'fetchUser'),
+            ],
+        ]);
+    }
+
+    public function fetchUser($request)
+    {
+        $data = $request->get_params();
+
+        //region Data validation
+        if (!isset($data['id'])) {
+            return $this->respond(false, [
+                'message' => 'The id is not set or invalid.',
+            ]);
+        }
+        //endregion Data validation
+
+        $request = $this->setMethod('GET')
+            ->setUri("/api/users/{$data['id']}")
+            ->request();
+
+        return $request;
+    }
+}
+
+// Register API endpoints
+add_action('rest_api_init', function () {
+    $accounts_api = new AccountsAPI();
+    $accounts_api->registerRoutes();
 });
-
-// delete profile photo
-add_action('um_after_remove_profile_photo', function ($user_id) {
-    $user_uuid = arbitrage_api_get_user_uuid($user_id);
-    $response = arbitrage_api_curl("api/users/$user_uuid/profile_image/delete", $data);
-}, 10, 1);
-
-// delete cover photo
-add_action('um_after_remove_cover_photo', function ($user_id) {
-    $user_uuid = arbitrage_api_get_user_uuid($user_id);
-    $response = arbitrage_api_curl("api/users/$user_uuid/cover_image/delete", $data);
-}, 10, 1);
